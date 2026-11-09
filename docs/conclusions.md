@@ -575,21 +575,32 @@ médiane et de 47 % une fois sur vingt, de quoi dessiner deux courbes bien sépa
 trompe quand on trie : opposer les cinq meilleurs essais aux cinq pires donne 31 % de faux
 positifs.
 
-**La statistique de 2018, hors de portée de nos essais.** Henderson et ses coauteurs testaient
-autre chose que les scores finaux. Leur légende parle d'un test t moyen sur toute la courbe
-d'apprentissage. Leur figure concerne TRPO [@henderson2018matters]. Les groupes n'étaient pas
-triés, précise Pineau. Nous avons donc refait leur statistique sur nos trente courbes : un test
-de Welch à chacun des vingt points d'évaluation, puis la moyenne. Une fois sur vingt, la valeur
-absolue du t moyen dépasse 1,4 quand les groupes sont tirés au hasard, 2,5 quand on les trie.
-Aucun de nos 20 000 tirages n'atteint 9. Avec des groupes tirés au hasard, comme les leurs, nos
-essais restent donc très loin de leur chiffre. Deux explications restent ouvertes : TRPO dispersait
-en 2018 beaucoup plus que PPO en 2026, ou leur calcul différait du nôtre. Une expérience avec TRPO
-tranchera. Cette analyse a été ajoutée après les premiers résultats de E1,
-ce que le protocole déclare. Sur nos essais, le hasard des graines aléatoires trompe donc l'œil
-bien plus souvent que le test. La faille reste entière pour qui compare deux courbes sans
-intervalle.
+**La statistique de 2018, hors de portée de nos essais.** Henderson et ses coauteurs testaient autre
+chose que les scores finaux. Leur légende parle d'un test t moyen sur toute la courbe
+d'apprentissage. Leur figure concerne TRPO [@henderson2018matters]. Les groupes n'étaient pas triés,
+précise Pineau. Nous avons donc refait leur statistique sur nos trente courbes de PPO : un test de
+Welch à chacun des vingt points d'évaluation, puis la moyenne. Une fois sur vingt, la valeur absolue
+du t moyen dépasse 1,4 quand les groupes sont tirés au hasard, 2,5 quand on les trie. Aucun de nos
+20 000 tirages n'atteint 9. Cette analyse a été ajoutée après les premiers résultats de E1, ce que
+le protocole déclare.
 
-![Nos trente essais de PPO, comparés au chiffre publié en 2018. Pour chaque façon de répartir dix essais en deux groupes de cinq, au hasard ou triés par score final, la barre donne la valeur absolue du t moyen le long de la courbe d'apprentissage dépassée une fois sur vingt, sur 10 000 tirages. La barre de Henderson et ses coauteurs est la valeur qu'ils publient, sur leurs propres essais.](figures/e1-henderson.svg){width=85%}
+**Avec leur algorithme, toujours pas (B1).** Deux explications restaient ouvertes : TRPO disperse
+plus que PPO, ou leur calcul différait du nôtre. Nous avons écrit le plan avant tout entraînement :
+trente essais de TRPO, avec ses réglages par défaut, sur la même tâche, et trois lectures de leur
+légende. TRPO disperse bien davantage : son écart type vaut 48 % de sa moyenne, contre 34 % pour
+PPO. Pourtant, avec des groupes tirés au hasard, le t moyen ne dépasse 1,4 qu'une fois sur vingt,
+comme pour PPO ; triés, 1,9. La troisième lecture empile les cent points des cinq courbes de chaque
+groupe, comme s'ils étaient indépendants. Elle monte à 5,0 au hasard et à 6,3 triés. Aucun tirage,
+dans aucune lecture, n'atteint 9. Cette lecture a un défaut plus grave : elle déclare une différence
+dans 53 % des tirages au hasard, alors que les deux groupes font tourner le même code. Ni la
+dispersion de TRPO ni ces façons de calculer n'expliquent donc leur chiffre. Notre TRPO de 2026
+n'est toutefois pas le leur, et leur calcul exact reste inconnu.
+
+Sur nos essais, le hasard des graines aléatoires trompe donc l'œil bien plus souvent que le test. La
+faille reste entière pour qui compare deux courbes sans intervalle, ou traite les points d'une même
+courbe comme des essais indépendants.
+
+![Nos trente essais de PPO et nos trente essais de TRPO, comparés au chiffre publié en 2018. Pour chaque façon de répartir dix essais en deux groupes de cinq, au hasard ou triés par score final, la barre donne la valeur absolue du t moyen le long de la courbe d'apprentissage dépassée une fois sur vingt, sur 10 000 tirages. La barre des points empilés traite les cent points des courbes de chaque groupe comme des observations indépendantes, avec des groupes tirés au hasard. La barre de Henderson et ses coauteurs est la valeur qu'ils publient, sur leurs propres essais.](figures/e1-henderson.svg){width=85%}
 
 **Les meilleurs sur N, devenus rares (F10).** Dans E1, garder les trois meilleurs essais sur dix
 gonfle la moyenne de 33 % (2 249 contre 1 692). Dans les articles de 2026, la pratique est devenue

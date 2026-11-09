@@ -1,4 +1,7 @@
 region,value
-"Our 30 runs, random",1.4
-"Our 30 runs, sorted",2.5
-"Henderson et al. 2018, published",9.1
+"PPO, random",1.4
+"PPO, sorted",2.5
+"TRPO, random",1.4
+"TRPO, sorted",1.9
+"TRPO, stacked points",5.0
+Henderson 2018,9.1

@@ -540,19 +540,30 @@ fool the test (1.2%). They do fool the eye: their means differ by 17% at the med
 time in twenty, enough to draw two well-separated curves. The test goes wrong when the runs are
 sorted: setting the five best runs against the five worst gives 31% false positives.
 
-**The 2018 statistic, beyond the reach of our runs.** Henderson and co-authors tested something other
-than final scores. Their caption describes a t-test averaged over the whole learning curve. Their
-figure concerns TRPO [@henderson2018matters]. The groups were not sorted, Pineau specifies. So we
-redid their statistic on our thirty curves: a Welch test at each of the twenty evaluation points,
-then the average. One time in twenty, the absolute value of the average t exceeds 1.4 when the groups
-are drawn at random, 2.5 when they are sorted. None of our 20,000 draws reaches 9. With groups drawn
-at random, like theirs, our runs therefore stay very far from their figure. Two explanations remain
-open: TRPO spread far more in 2018 than PPO does in 2026, or their calculation differed from ours. An
-experiment with TRPO will settle it. We added this analysis after the first results of E1, as the
-protocol declares. On our runs, then, the luck of the random seeds fools the eye far more often than
-it fools the test. The flaw stands in full for anyone who compares two curves without an interval.
+**The 2018 statistic, beyond the reach of our runs.** Henderson and co-authors tested something
+other than final scores. Their caption describes a t-test averaged over the whole learning curve.
+Their figure concerns TRPO [@henderson2018matters]. The groups were not sorted, Pineau specifies. So
+we redid their statistic on our thirty PPO curves: a Welch test at each of the twenty evaluation
+points, then the average. One time in twenty, the absolute value of the average t exceeds 1.4 when
+the groups are drawn at random, 2.5 when they are sorted. None of our 20,000 draws reaches 9. We
+added this analysis after the first results of E1, as the protocol declares.
 
-![Our thirty runs of PPO (Proximal Policy Optimization), compared with the figure published in 2018. For each way of splitting ten runs into two groups of five, at random or sorted by final score, the bar gives the absolute value of the t statistic averaged along the learning curve that is exceeded one time in twenty, over 10,000 draws. The bar for Henderson and co-authors is the value they published, on their own runs.](figures/e1-henderson-en.svg){width=85%}
+**With their algorithm, still not (B1).** Two explanations remained open: TRPO spreads more than
+PPO, or their calculation differed from ours. We wrote the plan before any training: thirty TRPO
+runs with its default settings on the same task, and three readings of their caption. TRPO does
+spread far more: its standard deviation is 48% of its mean, against 34% for PPO. Yet with groups
+drawn at random, the average t exceeds 1.4 only one time in twenty, as with PPO; sorted, 1.9. The
+third reading stacks the hundred points of each group's five curves as if they were independent. It
+rises to 5.0 at random and 6.3 sorted. No draw, under any reading, reaches 9. This reading has a
+worse defect: it declares a difference in 53% of random draws, although both groups run the same
+code. Neither the spread of TRPO nor these ways of computing explain their figure. Our 2026 TRPO is
+not theirs, though, and their exact calculation remains unknown.
+
+On our runs, then, the luck of the random seeds fools the eye far more often than it fools the test.
+The flaw stands in full for anyone who compares two curves without an interval, or treats the points
+of one curve as independent runs.
+
+![Our thirty runs of PPO (Proximal Policy Optimization) and our thirty runs of TRPO, compared with the figure published in 2018. For each way of splitting ten runs into two groups of five, at random or sorted by final score, the bar gives the absolute value of the t statistic averaged along the learning curve that is exceeded one time in twenty, over 10,000 draws. The stacked-points bar treats the hundred points of each group's curves as independent observations, with groups drawn at random. The bar for Henderson and co-authors is the value they published, on their own runs.](figures/e1-henderson-en.svg){width=85%}
 
 **Best of N, now rare (F10).** In E1, keeping the three best runs out of ten inflates the mean by 33%
 (2,249 against 1,692). In 2026 papers, the practice has become rare or hidden: 2 papers out of 45

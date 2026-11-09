@@ -1,0 +1,5608 @@
+[
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Bridging Distributional and Risk-sensitive Reinforcement Learning with Provable Regret Bounds",
+  "url": "https://neurips.cc/virtual/2025/poster/121971",
+  "draw_rank": 2,
+  "id": "K001",
+  "pdf": null
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "MolEditRL: Structure-Preserving Molecular Editing via Discrete Diffusion and Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/cc1de06a58ba1db43538a37e076e466d-Abstract-Conference.html",
+  "draw_rank": 3,
+  "id": "K002",
+  "pdf": "pdf/K002.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2505.20131v1"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Refined Analysis of Entropy-Regularized Actor-Critic",
+  "url": "https://icml.cc/virtual/2026/poster/60597",
+  "draw_rank": 4,
+  "id": "K003",
+  "pdf": "pdf/K003.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2605.24357v1"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Spotlight on Token Perception for Multimodal Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/a8e3197f627b9c88f86c0d3eb1ade5d7-Abstract-Conference.html",
+  "draw_rank": 5,
+  "id": "K004",
+  "pdf": "pdf/K004.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2510.09285v2"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Cognitive Predictive Processing: A Human-inspired Framework for Adaptive Exploration in Open-World Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/120120",
+  "draw_rank": 6,
+  "id": "K005",
+  "pdf": null
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Joint Selection for Large-Scale Pre-Training Data via Policy Gradient-based Mask Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/b3e3925c10625e96346c09a8a7e81cae-Abstract-Conference.html",
+  "draw_rank": 8,
+  "id": "K006",
+  "pdf": "pdf/K006.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2512.24265v1"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Scalable Offline Model-Based RL with Action Chunks",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/1056d17e239b7f82fbfe47170cced506-Abstract-Conference.html",
+  "draw_rank": 9,
+  "id": "K007",
+  "pdf": null,
+  "pdf_note": "official proceedings unreachable on 2026-11-09 (<urlopen error timed out>); rerun to retry"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "OPHR: Mastering Volatility Trading with Multi-Agent Deep Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/120100",
+  "draw_rank": 10,
+  "id": "K008",
+  "pdf": null
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "HMARL-CBF – Hierarchical Multi-Agent Reinforcement Learning with Control Barrier Functions for Safety-Critical Autonomous Systems",
+  "url": "https://neurips.cc/virtual/2025/poster/116828",
+  "draw_rank": 16,
+  "id": "K009",
+  "pdf": null
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "CorrectionPlanner: Self-Correction Planner with Reinforcement Learning in Autonomous Driving",
+  "url": "https://icml.cc/virtual/2026/poster/63375",
+  "draw_rank": 18,
+  "id": "K010",
+  "pdf": null
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Post-Training with Policy Gradients: Optimality and the Base Model Barrier",
+  "url": "https://icml.cc/virtual/2026/poster/61683",
+  "draw_rank": 19,
+  "id": "K011",
+  "pdf": null
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Deep RL Needs Deep Behavior Analysis: Exploring Implicit Planning by Model-Free Agents in Open-Ended Environments",
+  "url": "https://neurips.cc/virtual/2025/poster/118159",
+  "draw_rank": 20,
+  "id": "K012",
+  "pdf": "pdf/K012.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2506.06981v2"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Learn to change the world: Multi-level reinforcement learning with model-changing actions",
+  "url": "https://icml.cc/virtual/2026/poster/66277",
+  "draw_rank": 21,
+  "id": "K013",
+  "pdf": null
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Principled RL for Flow Matching Emerges from the Chunk-level Policy Optimization",
+  "url": "https://icml.cc/virtual/2026/poster/61130",
+  "draw_rank": 22,
+  "id": "K014",
+  "pdf": "pdf/K014.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2510.21583v3"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Tracking Drift: Variation-Aware Entropy Scheduling for Non-Stationary Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/62777",
+  "draw_rank": 23,
+  "id": "K015",
+  "pdf": "pdf/K015.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2601.19624v3"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Safety Generalization Under Distribution Shift in Safe Reinforcement Learning: A Diabetes Testbed",
+  "url": "https://icml.cc/virtual/2026/poster/62037",
+  "draw_rank": 25,
+  "id": "K016",
+  "pdf": "pdf/K016.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2601.21094v2"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Long-Horizon Model-Based Offline Reinforcement Learning Without Explicit Conservatism",
+  "url": "https://icml.cc/virtual/2026/poster/64471",
+  "draw_rank": 26,
+  "id": "K017",
+  "pdf": "pdf/K017.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2512.04341v3"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "DeepEyes: Incentivizing &quot;Thinking with Images&quot; via Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/cdb347d7516d52a9280ea9d6708911f6-Abstract-Conference.html",
+  "draw_rank": 27,
+  "id": "K018",
+  "pdf": null,
+  "pdf_note": "official proceedings unreachable on 2026-11-09 (<urlopen error timed out>); rerun to retry"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Effects of Structural Reward Shaping on Biophysical Properties in RL-Trained Plasmid Generators",
+  "url": "https://icml.cc/virtual/2026/poster/60994",
+  "draw_rank": 28,
+  "id": "K019",
+  "pdf": null
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Finite-Time Analysis of Actor-Critic Methods with Deep Neural Network Approximation",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/81e1cdaa570954321d8b06be386cc3d4-Abstract-Conference.html",
+  "draw_rank": 29,
+  "id": "K020",
+  "pdf": null,
+  "pdf_note": "official proceedings unreachable on 2026-11-09 (<urlopen error timed out>); rerun to retry"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Beyond Distributions: Geometric Action Control for Continuous Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/e58fa42d4b7a798eef8d0d75098f87ad-Abstract-Conference.html",
+  "draw_rank": 31,
+  "id": "K021",
+  "pdf": "pdf/K021.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2511.08234v3"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Neural+Symbolic Approaches for Interpretable Actor-Critic Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/6f53585249098ea8d108c5c875356e1f-Abstract-Conference.html",
+  "draw_rank": 35,
+  "id": "K022",
+  "pdf": null,
+  "pdf_note": "official proceedings unreachable on 2026-11-09 (<urlopen error timed out>); rerun to retry"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Sample-Efficient Tabular Self-Play for Offline Robust Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/115235",
+  "draw_rank": 36,
+  "id": "K023",
+  "pdf": "pdf/K023.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2512.00352v1"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Continuity-Regularized Flow Matching for Offline Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/61224",
+  "draw_rank": 37,
+  "id": "K024",
+  "pdf": null
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Emergence of Spatial Representation in an Actor-Critic Agent with Hippocampus-Inspired Sequence Generator",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/88291ec1991a6e460398ce23852901a2-Abstract-Conference.html",
+  "draw_rank": 38,
+  "id": "K025",
+  "pdf": null,
+  "pdf_note": "official proceedings unreachable on 2026-11-09 (<urlopen error timed out>); rerun to retry"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Flow Matching with Injected Noise for Offline-to-Online Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/97190e9cd821aa90f41aabf2a1be63fb-Abstract-Conference.html",
+  "draw_rank": 39,
+  "id": "K026",
+  "pdf": null,
+  "pdf_note": "official proceedings unreachable on 2026-11-09 (<urlopen error timed out>); rerun to retry"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "SafeMPO: Constrained Reinforcement Learning with Probabilistic Incremental Improvement",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/1fa0c4e5a7e189729230d018b229abc7-Abstract-Conference.html",
+  "draw_rank": 40,
+  "id": "K027",
+  "pdf": null,
+  "pdf_note": "official proceedings unreachable on 2026-11-09 (<urlopen error timed out>); rerun to retry"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "PoLi-RL: A Point-to-List Reinforcement Learning Framework for Conditional Semantic Textual Similarity",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/1fcb52fc47b2b7e940b4662fd33eb28d-Abstract-Conference.html",
+  "draw_rank": 41,
+  "id": "K028",
+  "pdf": "pdf/K028.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2510.04080v3"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "3D-aware Disentangled Representation for Compositional Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/696346120014b604da93b5d841ab2989-Abstract-Conference.html",
+  "draw_rank": 42,
+  "id": "K029",
+  "pdf": null,
+  "pdf_note": "official proceedings unreachable on 2026-11-09 (<urlopen error timed out>); rerun to retry"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "State Entropy Regularization for Robust Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/115739",
+  "draw_rank": 44,
+  "id": "K030",
+  "pdf": "pdf/K030.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2506.07085v3"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "PRO-MOF: Policy Optimization with Universal Atomistic Models for Controllable MOF Generation",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/f7f47a73d631c0410cbc2748a8015241-Abstract-Conference.html",
+  "draw_rank": 49,
+  "id": "K031",
+  "pdf": null,
+  "pdf_note": "official proceedings unreachable on 2026-11-09 (<urlopen error timed out>); rerun to retry"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Unbiased Dynamic Pruning for Efficient Group-Based Policy Optimization",
+  "url": "https://icml.cc/virtual/2026/poster/65323",
+  "draw_rank": 50,
+  "id": "K032",
+  "pdf": "pdf/K032.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2603.04135v1"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "FANS: A Flatness-Aware Network Structure for Generalization in Offline Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/115726",
+  "draw_rank": 51,
+  "id": "K033",
+  "pdf": null
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Bottleneck-Guided Spectral Subgoals For Offline Goal-Conditioned RL",
+  "url": "https://icml.cc/virtual/2026/poster/61973",
+  "draw_rank": 53,
+  "id": "K034",
+  "pdf": null
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Learning Interactive World Model for Object-Centric Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119171",
+  "draw_rank": 54,
+  "id": "K035",
+  "pdf": "pdf/K035.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2511.02225v1"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Q-Insight: Understanding Image Quality via Visual Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119363",
+  "draw_rank": 55,
+  "id": "K036",
+  "pdf": "pdf/K036.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2503.22679v2"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "MARC: Memory-Augmented RL Token Compression for Efficient Video Understanding",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/16049e0c3f47899091ac46f8b3afb178-Abstract-Conference.html",
+  "draw_rank": 56,
+  "id": "K037",
+  "pdf": "pdf/K037.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2510.07915v3"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "1000 Layer Networks for Self-Supervised RL: Scaling Depth Can Enable New Goal-Reaching Capabilities",
+  "url": "https://neurips.cc/virtual/2025/poster/115731",
+  "draw_rank": 57,
+  "id": "K038",
+  "pdf": "pdf/K038.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2503.14858v5"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "DeepDiver: Adaptive Web-Search Intensity Scaling via Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119266",
+  "draw_rank": 58,
+  "id": "K039",
+  "pdf": "pdf/K039.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2505.24332v2"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "IEC: When Information-Driven Exploration Meets Spectral Consensus via Primal–Dual Reward Regularization in Decentralized Multi-Agent RL",
+  "url": "https://icml.cc/virtual/2026/poster/65199",
+  "draw_rank": 60,
+  "id": "K040",
+  "pdf": null
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Learning Anisotropic Value Geometry with Finsler Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/61020",
+  "draw_rank": 63,
+  "id": "K041",
+  "pdf": null
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Squeezing More from the Stream : Learning Representation Online for Streaming Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/62516",
+  "draw_rank": 65,
+  "id": "K042",
+  "pdf": "pdf/K042.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2602.09396v1"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Intrinsic Benefits of Categorical Distributional Loss: Uncertainty-aware Regularized Exploration in Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/115698",
+  "draw_rank": 66,
+  "id": "K043",
+  "pdf": "pdf/K043.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2110.03155v8"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "From Verifiable Dot to Reward Chain: Harnessing Verifiable Reference-based Rewards for Reinforcement Learning of Open-ended Generation",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/1be5bc25d50895ee656b8c2d9eb89d6a-Abstract-Conference.html",
+  "draw_rank": 69,
+  "id": "K044",
+  "pdf": "pdf/K044.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2601.18533v1"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "From Observations to Events: Event-Aware World Models for Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/fc09b26b85ab3abb2832bd555a2e4215-Abstract-Conference.html",
+  "draw_rank": 70,
+  "id": "K045",
+  "pdf": "pdf/K045.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2601.19336v1"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Beyond Average Value Function in Precision Medicine: Maximum Probability-Driven Reinforcement Learning for  Survival Analysis",
+  "url": "https://neurips.cc/virtual/2025/poster/118678",
+  "draw_rank": 71,
+  "id": "K046",
+  "pdf": null
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Adaptive Surrogate Gradients for Sequential Reinforcement Learning in Spiking Neural Networks",
+  "url": "https://neurips.cc/virtual/2025/poster/116054",
+  "draw_rank": 72,
+  "id": "K047",
+  "pdf": "pdf/K047.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2510.24461v1"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Scaling Off-Policy Reinforcement Learning with Batch and Weight Normalization",
+  "url": "https://neurips.cc/virtual/2025/poster/119063",
+  "draw_rank": 73,
+  "id": "K048",
+  "pdf": null
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Safe Continuous-time Multi-Agent Reinforcement Learning via Epigraph Form",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/150398ac1ba98266532afa20c3eaf303-Abstract-Conference.html",
+  "draw_rank": 74,
+  "id": "K049",
+  "pdf": "pdf/K049.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2602.17078v1"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Gradient-Aware Scheduling: Coupling Curriculum and Staleness for Async Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/65913",
+  "draw_rank": 75,
+  "id": "K050",
+  "pdf": null
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Hierarchical Reinforcement Learning for Sparse-Reward Search in Commutative Algebra",
+  "url": "https://icml.cc/virtual/2026/poster/65477",
+  "draw_rank": 79,
+  "id": "K051",
+  "pdf": "pdf/K051.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2606.22922v1"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "RL-SPH: Learning to Achieve Feasible Solutions for Integer Linear Programs",
+  "url": "https://icml.cc/virtual/2026/poster/60718",
+  "draw_rank": 81,
+  "id": "K052",
+  "pdf": "pdf/K052.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2411.19517v8"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "DECOR: Learning to Decompose and Collaborate in Deep Search via Multi-Agent Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/62745",
+  "draw_rank": 83,
+  "id": "K053",
+  "pdf": null
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "When Can You Poison Rewards? A Tight Characterization of Reward Poisoning in Linear MDPs",
+  "url": "https://icml.cc/virtual/2026/poster/64485",
+  "draw_rank": 84,
+  "id": "K054",
+  "pdf": "pdf/K054.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2604.10062v3"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Towards Large-Scale In-Context Reinforcement Learning by Meta-Training in Randomized Worlds",
+  "url": "https://neurips.cc/virtual/2025/poster/117209",
+  "draw_rank": 85,
+  "id": "K055",
+  "pdf": "pdf/K055.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2502.02869v4"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "RAMAC: Multimodal Risk-Aware Offline Reinforcement Learning and the Role of Behavior Regularization",
+  "url": "https://icml.cc/virtual/2026/poster/62421",
+  "draw_rank": 88,
+  "id": "K056",
+  "pdf": "pdf/K056.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2510.02695v3"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Knapsack RL: Compute-Efficient Reinforcement Learning via Heterogeneous Rollout Allocation",
+  "url": "https://icml.cc/virtual/2026/poster/60948",
+  "draw_rank": 89,
+  "id": "K057",
+  "pdf": null
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Adaptive Neighborhood-Constrained Q Learning for Offline Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/115847",
+  "draw_rank": 90,
+  "id": "K058",
+  "pdf": "pdf/K058.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2511.02567v1"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "ReTabSyn: Realistic Tabular Data Synthesis via Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/64790",
+  "draw_rank": 91,
+  "id": "K059",
+  "pdf": "pdf/K059.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2603.10823v2"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "ARM-FM: Automated Reward Machines via Foundation Models for Compositional Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/68f24fad8f460d4b7bbac402c252ebbb-Abstract-Conference.html",
+  "draw_rank": 92,
+  "id": "K060",
+  "pdf": "pdf/K060.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2510.14176v3"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Enhancing Geometric Perception in VLMs via Translator-Guided Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/b2d4051f03a7038a2771dfbbe5c7b54e-Abstract-Conference.html",
+  "draw_rank": 93,
+  "id": "K061",
+  "pdf": "pdf/K061.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2602.22703v1"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "From Absolute to Relative: Rethinking Reward Shaping in Group-Based Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/62345",
+  "draw_rank": 95,
+  "id": "K062",
+  "pdf": "pdf/K062.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2601.23058v1"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Benchmarking the Limits of In-Context Reinforcement Learning for Ad-Hoc Teamwork",
+  "url": "https://icml.cc/virtual/2026/poster/65339",
+  "draw_rank": 97,
+  "id": "K063",
+  "pdf": "pdf/K063.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2605.24423v3"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Critique-Coder: Enhancing Coder Models by Critique Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/2184d8450c8a641f9a10c49279087c97-Abstract-Conference.html",
+  "draw_rank": 99,
+  "id": "K064",
+  "pdf": "pdf/K064.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2509.22824v2"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Reinforcement Learning for Tool-Calling Agents in Fast Healthcare Interoperability Resources (FHIR)",
+  "url": "https://icml.cc/virtual/2026/poster/65318",
+  "draw_rank": 100,
+  "id": "K065",
+  "pdf": "pdf/K065.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2605.14126v1"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Bridging the performance-gap between target-free and target-based reinforcement learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/5ce377d14a21ef1fea0400049ad324b4-Abstract-Conference.html",
+  "draw_rank": 101,
+  "id": "K066",
+  "pdf": "pdf/K066.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2506.04398v3"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Reinforcement Learning Teachers of Test Time Scaling",
+  "url": "https://neurips.cc/virtual/2025/poster/115573",
+  "draw_rank": 102,
+  "id": "K067",
+  "pdf": "pdf/K067.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2506.08388v3"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "WebSailor-V2: Bridging the Chasm to Proprietary Agents via Synthetic Data and Scalable Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/9760f18785acf535321e50405fd36578-Abstract-Conference.html",
+  "draw_rank": 104,
+  "id": "K068",
+  "pdf": "pdf/K068.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2509.13305v1"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Expanding the Capabilities of Reinforcement Learning via Text Feedback",
+  "url": "https://icml.cc/virtual/2026/poster/66412",
+  "draw_rank": 106,
+  "id": "K069",
+  "pdf": "pdf/K069.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2602.02482v2"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Transformers with RL or SFT Provably Learn Sparse Boolean Functions, But Differently",
+  "url": "https://icml.cc/virtual/2026/poster/63661",
+  "draw_rank": 107,
+  "id": "K070",
+  "pdf": null
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "The Choice of Divergence: A Neglected Key to Mitigating Diversity Collapse in Reinforcement Learning with Verifiable Reward",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/6a1b224b153e55c40a6359f9c9fb9d8c-Abstract-Conference.html",
+  "draw_rank": 108,
+  "id": "K071",
+  "pdf": null,
+  "pdf_note": "official proceedings unreachable on 2026-11-09 (<urlopen error timed out>); rerun to retry"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Continuous Q-Score Matching: Diffusion Guided Reinforcement Learning for Continuous-Time Control",
+  "url": "https://neurips.cc/virtual/2025/poster/116077",
+  "draw_rank": 110,
+  "id": "K072",
+  "pdf": "pdf/K072.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2510.17122v1"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "SMAC: Score-Matched Actor-Critics for Robust Offline-to-Online Transfer",
+  "url": "https://icml.cc/virtual/2026/poster/64368",
+  "draw_rank": 111,
+  "id": "K073",
+  "pdf": "pdf/K073.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2602.17632v3"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Reinforcement Learning with Action-Triggered Observations",
+  "url": "https://icml.cc/virtual/2026/poster/62118",
+  "draw_rank": 112,
+  "id": "K074",
+  "pdf": null
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "CUDA-L1: Improving CUDA Optimization via  Contrastive Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/c94bbbef466ab1b2cfa100e41413b3a8-Abstract-Conference.html",
+  "draw_rank": 118,
+  "id": "K075",
+  "pdf": "pdf/K075.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2507.14111v12"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Role-Level Inductive Bias for Cross-Task Generalization in Multi-Agent Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/61552",
+  "draw_rank": 119,
+  "id": "K076",
+  "pdf": null
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Reinforcement Unlearning via Group Relative Policy Optimization",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/71dbba3a3731f8eb9dcfa682460627a3-Abstract-Conference.html",
+  "draw_rank": 120,
+  "id": "K077",
+  "pdf": "pdf/K077.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2601.20568v3"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Diffusion Guided Adversarial State Perturbations in Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/118756",
+  "draw_rank": 122,
+  "id": "K078",
+  "pdf": "pdf/K078.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2511.07701v1"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "From Static Constraints to Dynamic Adaptation: Sample-Level Constraint Relaxation for Offline-to-Online Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/63495",
+  "draw_rank": 124,
+  "id": "K079",
+  "pdf": "pdf/K079.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2511.03828v3"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Reinforcement learning for one-shot DAG scheduling with comparability identification and dense reward",
+  "url": "https://neurips.cc/virtual/2025/poster/118664",
+  "draw_rank": 125,
+  "id": "K080",
+  "pdf": null
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Structured Reinforcement Learning for Combinatorial Decision-Making",
+  "url": "https://neurips.cc/virtual/2025/poster/118965",
+  "draw_rank": 127,
+  "id": "K081",
+  "pdf": "pdf/K081.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2505.19053v2"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Retrosynthesis Planning via Worst-path Policy Optimisation in Tree-structured MDPs",
+  "url": "https://neurips.cc/virtual/2025/poster/116230",
+  "draw_rank": 128,
+  "id": "K082",
+  "pdf": "pdf/K082.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2509.10504v2"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Use the Online Network If You Can: Towards Fast and Stable Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/ffbc863edf0a708ee331540517abe0fc-Abstract-Conference.html",
+  "draw_rank": 130,
+  "id": "K083",
+  "pdf": "pdf/K083.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2510.02590v2"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Approximating Shapley Explanations in Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/116290",
+  "draw_rank": 131,
+  "id": "K084",
+  "pdf": "pdf/K084.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2511.06094v1"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Scalable Reinforcement Learning via Adaptive Batch Scaling",
+  "url": "https://icml.cc/virtual/2026/poster/63301",
+  "draw_rank": 132,
+  "id": "K085",
+  "pdf": "pdf/K085.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2605.21557v2"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Compute-Optimal Scaling for Value-Based Deep RL",
+  "url": "https://neurips.cc/virtual/2025/poster/119555",
+  "draw_rank": 133,
+  "id": "K086",
+  "pdf": "pdf/K086.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2508.14881v2"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Adaptive Context Length Optimization with Low-Frequency Truncation for Multi-Agent Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119966",
+  "draw_rank": 134,
+  "id": "K087",
+  "pdf": null
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Structured Expert Routing with Multi-View Task Priors for Offline Meta-Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/66279",
+  "draw_rank": 135,
+  "id": "K088",
+  "pdf": null
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Partially Equivariant Reinforcement Learning in Symmetry-Breaking Environments",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/951f87360544eeda24b5e72cf725da1d-Abstract-Conference.html",
+  "draw_rank": 136,
+  "id": "K089",
+  "pdf": "pdf/K089.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2512.00915v2"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Performative Policy Gradient: Optimality in Performative Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/65820",
+  "draw_rank": 137,
+  "id": "K090",
+  "pdf": "pdf/K090.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2512.20576v2"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "TACTIC: Task-Aware Sparse Coordination Graphs for Multi-Task Multi-agent Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/66706",
+  "draw_rank": 138,
+  "id": "K091",
+  "pdf": null
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Beyond Softmax and Entropy: Convergence Rates of Policy Gradients with $\\boldsymbol{f}$-SoftArgmax Parameterization $\\&amp;$ Coupled Regularization",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/17a5dab745d625415c119f127b9fd121-Abstract-Conference.html",
+  "draw_rank": 141,
+  "id": "K092",
+  "pdf": null,
+  "pdf_note": "official proceedings unreachable on 2026-11-09 (<urlopen error timed out>); rerun to retry"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Cross-Embodiment Offline Reinforcement Learning for Heterogeneous Robot Datasets",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/24a0f56452202e8433d582dbf5095c32-Abstract-Conference.html",
+  "draw_rank": 144,
+  "id": "K093",
+  "pdf": "pdf/K093.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2602.18025v1"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "CHPO: Constrained Hybrid-action Policy Optimization for Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/118654",
+  "draw_rank": 147,
+  "id": "K094",
+  "pdf": null
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Robust In-Context Reinforcement Learning Under Reward Poisoning Attacks",
+  "url": "https://icml.cc/virtual/2026/poster/61251",
+  "draw_rank": 148,
+  "id": "K095",
+  "pdf": "pdf/K095.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2506.06891v3"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "D²Evo: Dual Difficulty-Aware Self-Evolution for Data-Efficient Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/62266",
+  "draw_rank": 149,
+  "id": "K096",
+  "pdf": "pdf/K096.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2605.17037v1"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Expected Returns and Policy Inconsistency-Aware Offline Federated Deep Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/63115",
+  "draw_rank": 150,
+  "id": "K097",
+  "pdf": null
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Towards Provable Emergence of In-Context Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/117162",
+  "draw_rank": 151,
+  "id": "K098",
+  "pdf": "pdf/K098.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2509.18389v2"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "On the Sample Complexity of Differentially Private Policy Optimization",
+  "url": "https://neurips.cc/virtual/2025/poster/118810",
+  "draw_rank": 152,
+  "id": "K099",
+  "pdf": "pdf/K099.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2510.21060v3"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Decentralized and Disentangled Task–Role Representation Learning for Generalizable Offline Multi-Agent Meta Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/61278",
+  "draw_rank": 153,
+  "id": "K100",
+  "pdf": null
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Improving and Accelerating Offline RL in Large Discrete Action Spaces with Structured Policy Initialization",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/90fecf45eff4afdce8b7cf2b67d7aa6e-Abstract-Conference.html",
+  "draw_rank": 155,
+  "id": "K101",
+  "pdf": null,
+  "pdf_note": "official proceedings unreachable on 2026-11-09 (<urlopen error timed out>); rerun to retry"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Pretraining a Shared Q-Network for Data-Efficient Offline Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119658",
+  "draw_rank": 158,
+  "id": "K102",
+  "pdf": "pdf/K102.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2505.05701v2"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "GUI Exploration Lab: Enhancing Screen Navigation in Agents via Multi-Turn Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/117497",
+  "draw_rank": 161,
+  "id": "K103",
+  "pdf": "pdf/K103.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2512.02423v1"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "BubbleSpec: Turning Long-Tail Bubbles into Speculative Rollout Drafts for Synchronous Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/64109",
+  "draw_rank": 163,
+  "id": "K104",
+  "pdf": null
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "The Surprising Difficulty of Search in Model-Based Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/62452",
+  "draw_rank": 165,
+  "id": "K105",
+  "pdf": "pdf/K105.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2601.21306v2"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Anchored Policy Optimization: Mitigating Exploration Collapse via Support-Constrained Rectification",
+  "url": "https://icml.cc/virtual/2026/poster/65360",
+  "draw_rank": 166,
+  "id": "K106",
+  "pdf": "pdf/K106.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2602.05717v1"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "SOMBRL: Scalable and Optimistic Model-Based RL",
+  "url": "https://neurips.cc/virtual/2025/poster/116938",
+  "draw_rank": 169,
+  "id": "K107",
+  "pdf": "pdf/K107.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2511.20066v1"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "EVOLVING ROLLOUTS: Harnessing Historical Experience for Web Agent Evolution in Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/61544",
+  "draw_rank": 170,
+  "id": "K108",
+  "pdf": null
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "On the Global Optimality of Policy Gradient Methods in General Utility Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/117237",
+  "draw_rank": 173,
+  "id": "K109",
+  "pdf": "pdf/K109.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2410.04108v3"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Kevin: Multi-Turn RL for Generating CUDA Kernels",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/86ba836d4c5dd859d795a172911745e2-Abstract-Conference.html",
+  "draw_rank": 174,
+  "id": "K110",
+  "pdf": "pdf/K110.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2507.11948v1"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Polychromic Objectives for Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/3ee63632d4c26ddc3d350c86ffca381c-Abstract-Conference.html",
+  "draw_rank": 176,
+  "id": "K111",
+  "pdf": "pdf/K111.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2509.25424v6"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Q-Flow: Stable and Expressive Reinforcement Learning with Flow-based Policy",
+  "url": "https://icml.cc/virtual/2026/poster/61595",
+  "draw_rank": 178,
+  "id": "K112",
+  "pdf": null
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "DAIL: Beyond Task Ambiguity for Language-Conditioned Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/116688",
+  "draw_rank": 179,
+  "id": "K113",
+  "pdf": "pdf/K113.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2510.19562v2"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Coarse-to-fine Q-Network with Action Sequence for Data-Efficient Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/117653",
+  "draw_rank": 180,
+  "id": "K114"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "IntentRL: Training Proactive User-intent Agents for Open-ended Deep Research via Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/61305",
+  "draw_rank": 181,
+  "id": "K115"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "CoIRL-AD: Collaborative-Competitive Imitation-Reinforcement Learning in Latent World Models for Autonomous Driving",
+  "url": "https://icml.cc/virtual/2026/poster/62362",
+  "draw_rank": 182,
+  "id": "K116"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "CocoRNA: Collective RNA Design with Cooperative Multi-agent Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/65353",
+  "draw_rank": 183,
+  "id": "K117"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "CompleteP for RL: Maintaining Feature Learning When Scaling Deep Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/66419",
+  "draw_rank": 184,
+  "id": "K118"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Sharp asymptotic theory for Q-learning with \\texttt{LD2Z} learning rate and its generalization",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/b3b52663b1c01ae961895e419a55fb28-Abstract-Conference.html",
+  "draw_rank": 185,
+  "id": "K119"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Gradient Regularization Mitigates Reward Hacking in Reinforcement Learning from Human Feedback and Verifiable Rewards",
+  "url": "https://icml.cc/virtual/2026/poster/63860",
+  "draw_rank": 188,
+  "id": "K120"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Sample Complexity of Distributionally Robust Average-Reward Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119539",
+  "draw_rank": 190,
+  "id": "K121"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "On the Generalization of SFT: A Reinforcement Learning Perspective with Reward Rectification",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/2e53c02ea028cbf603f4b6b47fef3d97-Abstract-Conference.html",
+  "draw_rank": 192,
+  "id": "K122"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Virne: A Comprehensive Benchmark for RL-based Network Resource Allocation in NFV",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/782906be37b7bce606d62d8df35bf439-Abstract-Conference.html",
+  "draw_rank": 193,
+  "id": "K123"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Adaptive Rollout Allocation for Online Reinforcement Learning with Verifiable Rewards",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/dc62cd4ec77f3bbec8e6245d0bd91d08-Abstract-Conference.html",
+  "draw_rank": 195,
+  "id": "K124"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Constrained Meta Reinforcement Learning with Provable Test-Time Safety",
+  "url": "https://icml.cc/virtual/2026/poster/66356",
+  "draw_rank": 196,
+  "id": "K125"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Generalizable End-to-End Tool-Use RL with Synthetic CodeGym",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/1e4322fddd833f83c855660ac65e428d-Abstract-Conference.html",
+  "draw_rank": 201,
+  "id": "K126"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Efficiently Solving Discounted MDPs via Predictions with Unknown Prediction Errors",
+  "url": "https://icml.cc/virtual/2026/poster/66749",
+  "draw_rank": 203,
+  "id": "K127"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "GUI-Shift: Enhancing VLM-Based GUI Agents through Self-supervised Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/41effeded300e4c99c16f35bb3206fe0-Abstract-Conference.html",
+  "draw_rank": 204,
+  "id": "K128"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Active Curriculum Refinement for Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/65627",
+  "draw_rank": 206,
+  "id": "K129"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Offline Reinforcement Learning with Generative Trajectory Policies",
+  "url": "https://icml.cc/virtual/2026/poster/64599",
+  "draw_rank": 207,
+  "id": "K130"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Continuous-Time Value Iteration for Multi-Agent Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/979d5a0ecc2cc3653928c5b793fc416b-Abstract-Conference.html",
+  "draw_rank": 209,
+  "id": "K131"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Contextual Rollout Bandits for Reinforcement Learning with Verifiable Rewards",
+  "url": "https://icml.cc/virtual/2026/poster/60796",
+  "draw_rank": 210,
+  "id": "K132"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "ArenaRL: Scaling RL for Open-Ended Agents via Tournament-based Relative Ranking",
+  "url": "https://icml.cc/virtual/2026/poster/66670",
+  "draw_rank": 211,
+  "id": "K133"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Distillation Models are Good Samplers for Diffusion Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/63591",
+  "draw_rank": 212,
+  "id": "K134"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Learning Nonlinear Causal Reductions to Explain Reinforcement Learning Policies",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/c01dfe01b97aadc10fc16a201faa80d8-Abstract-Conference.html",
+  "draw_rank": 213,
+  "id": "K135"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Harmonized Dual Policy Improvement for Modelic Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/65707",
+  "draw_rank": 214,
+  "id": "K136"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Doubly Regularized Markov Decision Processes for Robust Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/62655",
+  "draw_rank": 215,
+  "id": "K137"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Analytic Energy-Guided Policy Optimization for Offline Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/116269",
+  "draw_rank": 216,
+  "id": "K138"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Efficient, Property-Aligned Fan-Out Retrieval via RL-Compiled Diffusion",
+  "url": "https://icml.cc/virtual/2026/poster/66354",
+  "draw_rank": 218,
+  "id": "K139"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Adaptive Scaling of Policy Constraints for Offline Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/713939ee5a7b14a6fecf69e692ec3799-Abstract-Conference.html",
+  "draw_rank": 221,
+  "id": "K140"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "CSPO: Constraint-Sensitive Policy Optimization for Safe Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/66410",
+  "draw_rank": 222,
+  "id": "K141"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Automaton Constrained Q-Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119224",
+  "draw_rank": 224,
+  "id": "K142"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Compositional Transduction with Latent Analogies for Offline Goal-Conditioned Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/64324",
+  "draw_rank": 225,
+  "id": "K143"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Shift Before You Learn: Enabling Low-Rank Representations in Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/116260",
+  "draw_rank": 226,
+  "id": "K144"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "XQC: Well-conditioned Optimization Accelerates Deep Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/f0862823b6d749fe61bfae68dec2c2a9-Abstract-Conference.html",
+  "draw_rank": 227,
+  "id": "K145"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Understanding and Improving Hyperbolic Deep Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/94d116f073d7eabf53f8ee0dd9ea2c66-Abstract-Conference.html",
+  "draw_rank": 229,
+  "id": "K146"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Temporal Logic-Based Multi-Vehicle Backdoor Attacks against Offline RL Agents in End-to-end Autonomous Driving",
+  "url": "https://neurips.cc/virtual/2025/poster/116536",
+  "draw_rank": 230,
+  "id": "K147"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "ECHO: Entropy-Confidence Hybrid Optimization for Test-Time Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/63137",
+  "draw_rank": 233,
+  "id": "K148"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "SVL: Goal-Conditioned Reinforcement Learning as Survival Learning",
+  "url": "https://icml.cc/virtual/2026/poster/61425",
+  "draw_rank": 235,
+  "id": "K149"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "AegisGuard: RL-Guided Adapter Tuning for TEE-Based Efficient & Secure On-Device Inference",
+  "url": "https://neurips.cc/virtual/2025/poster/116589",
+  "draw_rank": 236,
+  "id": "K150"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Breaking the Computational Barrier: Provably Efficient Actor–Critic for Low-Rank MDPs",
+  "url": "https://icml.cc/virtual/2026/poster/60983",
+  "draw_rank": 237,
+  "id": "K151"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Offline Reinforcement Learning with Adaptive Feature Fusion",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/4657c9281abb5e55428c7301d818ccd5-Abstract-Conference.html",
+  "draw_rank": 238,
+  "id": "K152"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "What Matters for Batch Online Reinforcement Learning in Robotics?",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/b650f2838de7e1e817b5408b48a19a63-Abstract-Conference.html",
+  "draw_rank": 239,
+  "id": "K153"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "VIPO: Value Function Inconsistency Penalized Offline Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/63445",
+  "draw_rank": 241,
+  "id": "K154"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "SAC Flow: Sample-Efficient Reinforcement Learning of Flow-Based Policies via Velocity-Reparameterized Sequential Modeling",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/c66a3f3d3317da8d4b9c1579e2bc97d5-Abstract-Conference.html",
+  "draw_rank": 245,
+  "id": "K155"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Self-Improving Skill Learning for Robust Skill-based Meta-Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/b03289925195cbdb80970003cd1c168a-Abstract-Conference.html",
+  "draw_rank": 246,
+  "id": "K156"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Revisiting Regularized Policy Optimization for Stable and Efficient Reinforcement Learning in Two-Player Games",
+  "url": "https://icml.cc/virtual/2026/poster/61227",
+  "draw_rank": 250,
+  "id": "K157"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Enhancing Safety in Reinforcement Learning with Human Feedback via Rectified Policy Optimization",
+  "url": "https://neurips.cc/virtual/2025/poster/115844",
+  "draw_rank": 251,
+  "id": "K158"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Learning to Route Languages for Multilingual Policy Optimization",
+  "url": "https://icml.cc/virtual/2026/poster/66718",
+  "draw_rank": 252,
+  "id": "K159"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "A Differential and Pointwise Control Approach to Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/115206",
+  "draw_rank": 255,
+  "id": "K160"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Rate or Fate? RLV$^{\\varepsilon}$R: Reinforcement Learning with Verifiable Noisy Rewards",
+  "url": "https://icml.cc/virtual/2026/poster/64587",
+  "draw_rank": 256,
+  "id": "K161"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Breaking the Performance Ceiling in Reinforcement Learning requires Inference Strategies",
+  "url": "https://neurips.cc/virtual/2025/poster/117975",
+  "draw_rank": 257,
+  "id": "K162"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Sample-Efficient Diffusion-based Reinforcement Learning with Critic Guidance",
+  "url": "https://icml.cc/virtual/2026/poster/66308",
+  "draw_rank": 258,
+  "id": "K163"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Online Robust Reinforcement Learning with General Function Approximation",
+  "url": "https://icml.cc/virtual/2026/poster/62551",
+  "draw_rank": 259,
+  "id": "K164"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Action-Free Offline-To-Online RL via Discretised State Policies",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/a0bc6dfb643fd8b19b19f1f0e07c72c6-Abstract-Conference.html",
+  "draw_rank": 261,
+  "id": "K165"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Sample-efficient and Scalable Exploration in Continuous-Time RL",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/77b6da696f6fe10ef3cbe748bd8526b3-Abstract-Conference.html",
+  "draw_rank": 264,
+  "id": "K166"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Zero-Shot Context Generalization in Reinforcement Learning from Few Training Contexts",
+  "url": "https://neurips.cc/virtual/2025/poster/115730",
+  "draw_rank": 265,
+  "id": "K167"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Scaling Offline RL via Efficient and Expressive Shortcut Models",
+  "url": "https://neurips.cc/virtual/2025/poster/115493",
+  "draw_rank": 266,
+  "id": "K168"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "On Feasible Rewards in Multi-Agent Inverse Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/115831",
+  "draw_rank": 267,
+  "id": "K169"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Reflect-then-Correct: Rebalancing Task Optimization for Generalizable Meta-Reinforcement Learning via Distributional Value Error Reduction",
+  "url": "https://icml.cc/virtual/2026/poster/65771",
+  "draw_rank": 270,
+  "id": "K170"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Efficient Morphology-Control Co-Design via Stackelberg Proximal Policy Optimization",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/e9750610639c3e7a849cff746bf60dbd-Abstract-Conference.html",
+  "draw_rank": 271,
+  "id": "K171"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Ego-Foresight: Self-supervised Learning of Agent-Aware Representations for Improved RL",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/7504142a20a3e1fe9dd7de42f475828c-Abstract-Conference.html",
+  "draw_rank": 275,
+  "id": "K172"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Helix: Evolutionary Reinforcement Learning for Open-Ended Scientific Problem Solving",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/83b88ee6429a0e3704d55c645d7d6bf5-Abstract-Conference.html",
+  "draw_rank": 276,
+  "id": "K173"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Guided Policy Optimization under Partial Observability",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/398753ddd2e10ce39d0c620e85fab922-Abstract-Conference.html",
+  "draw_rank": 277,
+  "id": "K174"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "MARS-SQL: A Multi-Agent Reinforcement Learning Framework For Text-To-SQL",
+  "url": "https://icml.cc/virtual/2026/poster/65053",
+  "draw_rank": 279,
+  "id": "K175"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "GuirlVG: Incentivize GUI Visual Grounding via Empirical Exploration on Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/684d0a96bc636537748fc13c8dd58641-Abstract-Conference.html",
+  "draw_rank": 280,
+  "id": "K176"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Efficient and Uncertainty-Aware Diffusion Framework for Offline-to-Online Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/65167",
+  "draw_rank": 281,
+  "id": "K177"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Fast Non-Episodic Finite-Horizon RL with K-Step Lookahead Thresholding",
+  "url": "https://icml.cc/virtual/2026/poster/61363",
+  "draw_rank": 285,
+  "id": "K178"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Test-time Offline Reinforcement Learning on Goal-related Experience",
+  "url": "https://icml.cc/virtual/2026/poster/64462",
+  "draw_rank": 287,
+  "id": "K179"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "How reinforcement learning after next-token prediction facilitates learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/d520b8a07d3a59d10353d9f81c609412-Abstract-Conference.html",
+  "draw_rank": 288,
+  "id": "K180"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Geometry of Uncertainty: Learning Metric Spaces for Multimodal State Estimation in RL",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/f320c3c23515859acf4d0b951b15a3ce-Abstract-Conference.html",
+  "draw_rank": 292,
+  "id": "K181"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Modelling the control of offline processing with reinforcement learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119392",
+  "draw_rank": 293,
+  "id": "K182"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Local Reinforcement Learning with Action-Conditioned Root Mean Squared Q-Functions",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/a5e3ce2098c86f8fdc6adba390bca5c0-Abstract-Conference.html",
+  "draw_rank": 296,
+  "id": "K183"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Towards Generalizable Multi-Policy Optimization with Self-Evolution for Job Scheduling",
+  "url": "https://neurips.cc/virtual/2025/poster/117689",
+  "draw_rank": 297,
+  "id": "K184"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "All Roads Lead to Likelihood: The Value of Reinforcement Learning in Fine-Tuning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/e77d684aae157abd84df1eeb76d8b9cd-Abstract-Conference.html",
+  "draw_rank": 298,
+  "id": "K185"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Q-Learning with Adjoint Matching",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/0f85efb1e7545dc35a1b5e4d45aaf3c2-Abstract-Conference.html",
+  "draw_rank": 299,
+  "id": "K186"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Trajectory Generation with Conservative Value Guidance for Offline Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/3072c1be85bb98d539bcb3a828ab41b1-Abstract-Conference.html",
+  "draw_rank": 301,
+  "id": "K187"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Generative Online Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/66002",
+  "draw_rank": 302,
+  "id": "K188"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Peak-Return Greedy Slicing: Subtrajectory Selection for Transformer-based Offline RL",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/439bf902de1807088d8b731ca20b0777-Abstract-Conference.html",
+  "draw_rank": 303,
+  "id": "K189"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "When Can Model-Free Reinforcement Learning be Enough for Thinking?",
+  "url": "https://neurips.cc/virtual/2025/poster/116888",
+  "draw_rank": 305,
+  "id": "K190"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Staggered Environment Resets Improve Massively Parallel On-Policy Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/116628",
+  "draw_rank": 306,
+  "id": "K191"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "RLVER: Reinforcement Learning with Verifiable Emotion Rewards for Empathetic Agents",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/302cffe73187dca597aeb309cad1c1cb-Abstract-Conference.html",
+  "draw_rank": 307,
+  "id": "K192"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "TikZilla: Scaling Text-to-TikZ with High-Quality Data and Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/a7c13541b789e4279363bb527fdde282-Abstract-Conference.html",
+  "draw_rank": 309,
+  "id": "K193"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Fine-Tuning Discrete Diffusion Models with Policy Gradient Methods",
+  "url": "https://neurips.cc/virtual/2025/poster/115769",
+  "draw_rank": 310,
+  "id": "K194"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Boosting CVaR Policy Optimization with Quantile Gradients",
+  "url": "https://icml.cc/virtual/2026/poster/66379",
+  "draw_rank": 311,
+  "id": "K195"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Language Agents for Hypothesis-driven Clinical Decision Making with Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/fcedb4cd8eea1ac0f139228376e4348d-Abstract-Conference.html",
+  "draw_rank": 312,
+  "id": "K196"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Unraveling the Complexity of Memory in RL Agents: an Approach for Classification and Evaluation",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/467a02a02aa88a71a4a2e7e259c60206-Abstract-Conference.html",
+  "draw_rank": 313,
+  "id": "K197"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Toward Subspace-Perturbed Trajectory-Aware Backdoor Attacks in Deep Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/60676",
+  "draw_rank": 314,
+  "id": "K198"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "EUBRL: Epistemic Uncertainty Directed Bayesian Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/6f6dce15868976893d40f7c8b8fc22e3-Abstract-Conference.html",
+  "draw_rank": 317,
+  "id": "K199"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Mixture-of-World Models: Scaling Multi-Task Reinforcement Learning with Modular Latent Dynamics",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/33b47b3d2441a17b95344cd635f3dd01-Abstract-Conference.html",
+  "draw_rank": 320,
+  "id": "K200"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Raw2Drive: Reinforcement Learning with Aligned World Models for End-to-End Autonomous Driving (in CARLA v2)",
+  "url": "https://neurips.cc/virtual/2025/poster/119310",
+  "draw_rank": 322,
+  "id": "K201"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Multi-Agent Guided Policy Optimization",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/a3769fddee1b20552d2490c4ff18b136-Abstract-Conference.html",
+  "draw_rank": 323,
+  "id": "K202"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "RL&#x27;s Razor: Why Online Reinforcement Learning Forgets Less",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/618c95f4557c15b253fb0e6f548ea0c0-Abstract-Conference.html",
+  "draw_rank": 324,
+  "id": "K203"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Active Policy Optimization for Individualized Dosing via Gradient Variance Minimization",
+  "url": "https://icml.cc/virtual/2026/poster/63774",
+  "draw_rank": 325,
+  "id": "K204"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Robust and Diverse Multi-Agent Learning via Rational Policy Gradient",
+  "url": "https://neurips.cc/virtual/2025/poster/116523",
+  "draw_rank": 326,
+  "id": "K205"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Memo: Training Memory-Efficient Embodied Agents with Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119524",
+  "draw_rank": 329,
+  "id": "K206"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "On the Computational Limits of AI4S-RL : A Unified $\\varepsilon$-$N$ Analysis",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/f24272663fafadf87616f488e13f99d0-Abstract-Conference.html",
+  "draw_rank": 330,
+  "id": "K207"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Test-Time Graph Search for Goal-Conditioned Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/61785",
+  "draw_rank": 331,
+  "id": "K208"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Offline Reinforcement Learning with Universal Horizon Models",
+  "url": "https://icml.cc/virtual/2026/poster/65156",
+  "draw_rank": 334,
+  "id": "K209"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Spatial-Aware Decision-Making with Ring Attractors in Reinforcement Learning Systems",
+  "url": "https://neurips.cc/virtual/2025/poster/119004",
+  "draw_rank": 335,
+  "id": "K210"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Plug-and-Play Benchmarking of Reinforcement Learning Algorithms for Large-Scale Flow Control",
+  "url": "https://icml.cc/virtual/2026/poster/62198",
+  "draw_rank": 336,
+  "id": "K211"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Dynamic Configuration for Cutting Plane Separators via Reinforcement Learning on Incremental Graph",
+  "url": "https://neurips.cc/virtual/2025/poster/116555",
+  "draw_rank": 339,
+  "id": "K212"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "PAMD: Structured Adaptive Distances for Bisimulation Representations in Visual Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/65963",
+  "draw_rank": 340,
+  "id": "K213"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Continual Knowledge Adaptation for Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/118130",
+  "draw_rank": 341,
+  "id": "K214"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "REG: In-Sample RL via Regularizing the Evaluation Gap",
+  "url": "https://icml.cc/virtual/2026/poster/66501",
+  "draw_rank": 342,
+  "id": "K215"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "OmniVL-Guard: Towards Unified Vision-Language Forgery Detection and Grounding via Balanced RL",
+  "url": "https://icml.cc/virtual/2026/poster/63742",
+  "draw_rank": 343,
+  "id": "K216"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Vulnerable Agent Identification in Large-Scale Multi-Agent Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/64200",
+  "draw_rank": 344,
+  "id": "K217"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Sharp Gap-Dependent Variance-Aware Regret Bounds for Tabular MDPs",
+  "url": "https://neurips.cc/virtual/2025/poster/115932",
+  "draw_rank": 345,
+  "id": "K218"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Learning What Reinforcement Learning Can&#x27;t: Interleaved Online Fine-Tuning for Hardest Questions",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/82c4ad0c3d3d4898a77be5df7b2ede3a-Abstract-Conference.html",
+  "draw_rank": 346,
+  "id": "K219"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Predictive Coding Enhances Meta-RL To Achieve Interpretable Bayes-Optimal Belief Representation Under Partial Observability",
+  "url": "https://neurips.cc/virtual/2025/poster/115113",
+  "draw_rank": 347,
+  "id": "K220"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "What Reward Structure Enables Efficient Sparse-Reward RL? A Proof-of-Concept with Policy-Aware Matrix Completion",
+  "url": "https://icml.cc/virtual/2026/poster/62842",
+  "draw_rank": 348,
+  "id": "K221"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "GRL-SNAM: Geometric Reinforcement Learning with Differential Hamiltonians for Navigation and Mapping in Unknown Environments",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/0faa9c5e8368e31bf7a9d425958e4e05-Abstract-Conference.html",
+  "draw_rank": 349,
+  "id": "K222"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "RESTRAIN: From Spurious Votes to Signals — Self-Training RL with Self-Penalization",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/0a2b005d2ea5dbd28331065427017c68-Abstract-Conference.html",
+  "draw_rank": 351,
+  "id": "K223"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "You Can Learn Tokenization End-to-End with Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/66744",
+  "draw_rank": 352,
+  "id": "K224"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "SE-GUI: Enhancing Visual Grounding for GUI Agents via Self-Evolutionary Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/118788",
+  "draw_rank": 354,
+  "id": "K225"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Chart Deep Research in LVLMs via Parallel Relative Policy Optimization",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/504bfc60c2a7fed53aed76eeed409cd1-Abstract-Conference.html",
+  "draw_rank": 363,
+  "id": "K226"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "REINFORCEMENT LEARNING FOR INDIVIDUAL OPTIMAL POLICY FROM HETEROGENEOUS DATA",
+  "url": "https://neurips.cc/virtual/2025/poster/122015",
+  "draw_rank": 366,
+  "id": "K227"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Chunk-Guided Q-Learning",
+  "url": "https://icml.cc/virtual/2026/poster/60579",
+  "draw_rank": 367,
+  "id": "K228"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "RAST-MoE-RL: A Regime-Aware Spatio-Temporal MoE Framework for Deep Reinforcement Learning in Ride-Hailing",
+  "url": "https://icml.cc/virtual/2026/poster/63114",
+  "draw_rank": 368,
+  "id": "K229"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Reinforcement Learning from Bagged Reward",
+  "url": "https://icml.cc/virtual/2026/poster/68801",
+  "draw_rank": 369,
+  "id": "K230"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Deep Reinforcement Learning Finds Bayes-Nash Equilibrium in Competitive Newsvendor Problems",
+  "url": "https://icml.cc/virtual/2026/poster/62273",
+  "draw_rank": 371,
+  "id": "K231"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Counterfactual Bootstrap for Robust Meta-Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/62901",
+  "draw_rank": 372,
+  "id": "K232"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Advantage Collapse in Group Relative Policy Optimization: Diagnosis and Mitigation",
+  "url": "https://icml.cc/virtual/2026/poster/64547",
+  "draw_rank": 373,
+  "id": "K233"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Quagmires in SFT-RL Post-Training: When High SFT Scores Mislead and What to Use Instead",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/5d6ae8ba43ecb378030753c4408ef9bd-Abstract-Conference.html",
+  "draw_rank": 374,
+  "id": "K234"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Mean-Field Sampling for Cooperative Multi-Agent Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119285",
+  "draw_rank": 376,
+  "id": "K235"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Intentional Updates for Streaming Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/64761",
+  "draw_rank": 377,
+  "id": "K236"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Certifying Stability of Reinforcement Learning Policies using Generalized Lyapunov Functions",
+  "url": "https://neurips.cc/virtual/2025/poster/118402",
+  "draw_rank": 378,
+  "id": "K237"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Regularized Offline Policy Optimization with Posterior Hybrid Bayesian Belief",
+  "url": "https://icml.cc/virtual/2026/poster/60945",
+  "draw_rank": 379,
+  "id": "K238"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Chebyshev Policies and the Mountain Car Problem: Reinforcement Learning for Low-dimensional Control Tasks",
+  "url": "https://icml.cc/virtual/2026/poster/63070",
+  "draw_rank": 381,
+  "id": "K239"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Near-Optimal Sample Complexity for Online Constrained MDPs",
+  "url": "https://neurips.cc/virtual/2025/poster/116370",
+  "draw_rank": 382,
+  "id": "K240"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Fast and Highly Expressive Policy Learning for Offline Reinforcement Learning via Bootstrapped Flow Q-Learning",
+  "url": "https://icml.cc/virtual/2026/poster/66531",
+  "draw_rank": 383,
+  "id": "K241"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Scaling RL to Long Videos",
+  "url": "https://neurips.cc/virtual/2025/poster/117803",
+  "draw_rank": 384,
+  "id": "K242"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Stable Gradients for Stable Learning at Scale in Deep Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/117652",
+  "draw_rank": 385,
+  "id": "K243"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Boundary-to-Region Supervision for Offline Safe Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/115428",
+  "draw_rank": 386,
+  "id": "K244"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "A Snapshot of Influence: A Local Data Attribution Framework for Online Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/115685",
+  "draw_rank": 388,
+  "id": "K245"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Multi-Agent Reinforcement Learning with Communication-Constrained Priors",
+  "url": "https://neurips.cc/virtual/2025/poster/120198",
+  "draw_rank": 389,
+  "id": "K246"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Secure Multi-agent Reinforcement Learning for Service Systems with Affinity and Byzantine Nodes: Stability Analysis and Protection Design",
+  "url": "https://icml.cc/virtual/2026/poster/62838",
+  "draw_rank": 390,
+  "id": "K247"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Instance-Dependent Fixed-Budget Pure Exploration in Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/ca549a1547bc8e8ca2df968aeaf57715-Abstract-Conference.html",
+  "draw_rank": 391,
+  "id": "K248"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Non-Asymptotic Guarantees for Average-Reward Q-Learning with Adaptive Stepsizes",
+  "url": "https://neurips.cc/virtual/2025/poster/116402",
+  "draw_rank": 392,
+  "id": "K249"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Multi-Agent Reinforcement Learning with Submodular Reward",
+  "url": "https://icml.cc/virtual/2026/poster/61139",
+  "draw_rank": 393,
+  "id": "K250"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Information Gain-based Policy Optimization: A Simple and Effective Approach for Multi-Turn Search Agents",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/aadaedf7fc275bf68ad217bf1b38626e-Abstract-Conference.html",
+  "draw_rank": 400,
+  "id": "K251"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Finite-time Convergence Analysis of Actor-Critic with Evolving Reward",
+  "url": "https://icml.cc/virtual/2026/poster/62305",
+  "draw_rank": 401,
+  "id": "K252"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Probabilistic Performance Guarantees for Multi-Task Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/62230",
+  "draw_rank": 402,
+  "id": "K253"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Provable and Practical In-Context Policy Optimization for Self-Improvement",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/e50ff94d174465348f15c45760f58f9f-Abstract-Conference.html",
+  "draw_rank": 403,
+  "id": "K254"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "WebGen-Agent: Enhancing Interactive Website Generation with Multi-Level Feedback and Step-Level Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/86c408308bec72ecce4d86edf243634c-Abstract-Conference.html",
+  "draw_rank": 404,
+  "id": "K255"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "AutoTool: Automatic Scaling of Tool-Use Capabilities in RL via Decoupled Entropy Constraints",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/65ea878cb90b440e8b4cd34fe0959914-Abstract-Conference.html",
+  "draw_rank": 405,
+  "id": "K256"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Replicable Reinforcement Learning with Linear Function Approximation",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/cd890e766dc8a84f97a067c9d1eb8ad9-Abstract-Conference.html",
+  "draw_rank": 406,
+  "id": "K257"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "ACTG-ARL: Differentially Private Conditional Text Generation with RL-Boosted Control",
+  "url": "https://icml.cc/virtual/2026/poster/60863",
+  "draw_rank": 408,
+  "id": "K258"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Bayesian Ego-graph inference for Networked Multi-Agent Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119992",
+  "draw_rank": 409,
+  "id": "K259"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Hierarchical Value-Decomposed Offline Reinforcement Learning for Whole-Body Control",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/86dbb21b9fd447c6e289563d67c44760-Abstract-Conference.html",
+  "draw_rank": 410,
+  "id": "K260"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "TABX: A High-Throughput Sandbox Battle Simulator for Multi-Agent Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/62035",
+  "draw_rank": 411,
+  "id": "K261"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Sample Efficient Offline RL via T-Symmetry Enforced Latent State-Stitching",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/e23133d34964a0a09f6d076fc4b922a4-Abstract-Conference.html",
+  "draw_rank": 413,
+  "id": "K262"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "ScaleMoE: Mixture-of-Experts for Scalable Continuous Control in Actor-Critic Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/61609",
+  "draw_rank": 415,
+  "id": "K263"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Fair Reinforcement Learning for Just AI",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/33ffc1a4a06e19865ac6cba04c753121-Abstract-Conference.html",
+  "draw_rank": 418,
+  "id": "K264"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Scaling Goal-conditioned Reinforcement Learning with Multistep Quasimetric Distances",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/eddc0fab5a42f8d8de6eb5566cd9f1d3-Abstract-Conference.html",
+  "draw_rank": 419,
+  "id": "K265"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Distributionally Robust Reinforcement Learning from Human Feedback",
+  "url": "https://icml.cc/virtual/2026/poster/66158",
+  "draw_rank": 422,
+  "id": "K266"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "ELMUR: External Layer Memory with Update/Rewrite for Long-Horizon RL Problems",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/e58dfd0157cb9de91e7a513d3148aad5-Abstract-Conference.html",
+  "draw_rank": 423,
+  "id": "K267"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Adapting to Stochastic and Adversarial Losses in Episodic MDPs with Aggregate Bandit Feedback",
+  "url": "https://neurips.cc/virtual/2025/poster/119322",
+  "draw_rank": 424,
+  "id": "K268"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Guided Flow Policy: Learning from High-Value Actions in Offline Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/33f131b806a93d376cf0ce1a456464bb-Abstract-Conference.html",
+  "draw_rank": 425,
+  "id": "K269"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Meta-World+: An Improved, Standardized, RL Benchmark",
+  "url": "https://neurips.cc/virtual/2025/poster/121865",
+  "draw_rank": 427,
+  "id": "K270"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "OrbitZoo: Real Orbital Systems Challenges for Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/116058",
+  "draw_rank": 428,
+  "id": "K271"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "VidBridge-R1: Bridging QA and Captioning for RL-based Video Understanding Models with Intermediate Proxy Tasks",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/bd391cf5bdc4b63674d6da3edc1bde0d-Abstract-Conference.html",
+  "draw_rank": 433,
+  "id": "K272"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Frictional Q-Learning",
+  "url": "https://icml.cc/virtual/2026/poster/61312",
+  "draw_rank": 434,
+  "id": "K273"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Ratio-Variance Regularized Policy Optimization",
+  "url": "https://icml.cc/virtual/2026/poster/64454",
+  "draw_rank": 435,
+  "id": "K274"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Revisiting Group Relative Policy Optimization: Insights into On-Policy and Off-Policy Training",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/b4008025c2182bfe16fcc8566ee14d64-Abstract-Conference.html",
+  "draw_rank": 437,
+  "id": "K275"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Provably Efficient RL under Episode-Wise Safety in Constrained MDPs with Linear Function Approximation",
+  "url": "https://neurips.cc/virtual/2025/poster/115750",
+  "draw_rank": 438,
+  "id": "K276"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Centralized Reward Agent for Knowledge Sharing and Transfer in Multi-Task Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/118416",
+  "draw_rank": 440,
+  "id": "K277"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "On the Convergence of Single-Timescale Actor-Critic",
+  "url": "https://neurips.cc/virtual/2025/poster/118273",
+  "draw_rank": 441,
+  "id": "K278"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Noisy-Space Policy Gradient for Diffusion Policies in Offline Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/62289",
+  "draw_rank": 442,
+  "id": "K279"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Constrained Multi-Objective Reinforcement Learning with Max-Min Criterion",
+  "url": "https://icml.cc/virtual/2026/poster/62579",
+  "draw_rank": 444,
+  "id": "K280"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "ReFORM: Reflected Flows for On-support Offline RL via Noise Manipulation",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/1c10d0c087c14689628124bbc8fa69f6-Abstract-Conference.html",
+  "draw_rank": 445,
+  "id": "K281"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Gymnasium: A Standard Interface for Reinforcement Learning Environments",
+  "url": "https://neurips.cc/virtual/2025/poster/121446",
+  "draw_rank": 446,
+  "id": "K282"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "PMSPO: Progressive Matching and Semantic-Aware Policy Optimization for Camouflaged Object Detection",
+  "url": "https://icml.cc/virtual/2026/poster/65362",
+  "draw_rank": 447,
+  "id": "K283"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Parallel-R1: Towards Parallel Thinking via Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/c4f3846c9a230cfd3373ff419b202bd5-Abstract-Conference.html",
+  "draw_rank": 450,
+  "id": "K284"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Webscale-RL: Automated Data Pipeline for Scaling RL Data to Pretraining Levels",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/8cbcfde8edbe295ab6f83adb03a2e20f-Abstract-Conference.html",
+  "draw_rank": 451,
+  "id": "K285"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Correlated Policy Optimization in Multi-Agent Subteams",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/e34a8bc77eb5f2006fff49071f6bad32-Abstract-Conference.html",
+  "draw_rank": 452,
+  "id": "K286"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Praxis-VLM: Vision-Grounded Decision Making via Text-Driven Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/117793",
+  "draw_rank": 453,
+  "id": "K287"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Compositional Behavioral Semantics for State Abstraction in Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/62002",
+  "draw_rank": 454,
+  "id": "K288"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "On Group Relative Policy Optimization Collapse in Agent Search: The Lazy Likelihood-Displacement",
+  "url": "https://icml.cc/virtual/2026/poster/63945",
+  "draw_rank": 456,
+  "id": "K289"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Emergent Dexterity Via Diverse Resets and Large-Scale Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/8e3e3488623d64c493a7f11cf1f2e49f-Abstract-Conference.html",
+  "draw_rank": 457,
+  "id": "K290"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "ICR-RL: Deep Reinforcement Learning via In-Context-Regression",
+  "url": "https://icml.cc/virtual/2026/poster/64274",
+  "draw_rank": 460,
+  "id": "K291"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Reinforcement Learning with Discrete Diffusion Policies for Combinatorial Action Spaces",
+  "url": "https://icml.cc/virtual/2026/poster/61107",
+  "draw_rank": 461,
+  "id": "K292"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "What Makes Value Learning Efficient in Residual Reinforcement Learning?",
+  "url": "https://icml.cc/virtual/2026/poster/61121",
+  "draw_rank": 462,
+  "id": "K293"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "UFO-RL: Uncertainty-Focused Optimization for Efficient Reinforcement Learning Data Selection",
+  "url": "https://neurips.cc/virtual/2025/poster/115706",
+  "draw_rank": 463,
+  "id": "K294"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Direct Flow Q-Learning",
+  "url": "https://icml.cc/virtual/2026/poster/64018",
+  "draw_rank": 464,
+  "id": "K295"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "MARL2Grid-TR: A Multi-Agent RL Benchmark in Power Grid Operations",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/d9a7358e7778a9c1facbfe53cb26e459-Abstract-Conference.html",
+  "draw_rank": 465,
+  "id": "K296"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "floq: Training Critics via Flow-Matching for Scaling Compute in Value-Based RL",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/59d15ab03bd84330d44313eb203c3bb6-Abstract-Conference.html",
+  "draw_rank": 466,
+  "id": "K297"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Convergence Theorems for Entropy-Regularized and Distributional Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/120264",
+  "draw_rank": 468,
+  "id": "K298"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Optimal Regret Bounds via Low-Rank Structured Variation in Non-Stationary Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/117077",
+  "draw_rank": 469,
+  "id": "K299"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Scalable Policy-Based RL Algorithms for POMDPs",
+  "url": "https://neurips.cc/virtual/2025/poster/118737",
+  "draw_rank": 471,
+  "id": "K300"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Temporal Difference Learning with Compressed Updates: Error-Feedback meets Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/68777",
+  "draw_rank": 473,
+  "id": "K301"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Accelerating Q-learning through Efficient Value-sharing across Actions",
+  "url": "https://icml.cc/virtual/2026/poster/62964",
+  "draw_rank": 474,
+  "id": "K302"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Offline RL by Reward-Weighted Fine-Tuning for Conversation Optimization",
+  "url": "https://neurips.cc/virtual/2025/poster/117620",
+  "draw_rank": 475,
+  "id": "K303"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Learning to Reason as Action Abstractions with Scalable Mid-Training RL",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/3b40ca4e86ff4306b68f8d5c0c6296ed-Abstract-Conference.html",
+  "draw_rank": 478,
+  "id": "K304"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Robust Reinforcement Learning in a Sample-Efficient Setting",
+  "url": "https://icml.cc/virtual/2026/poster/68794",
+  "draw_rank": 479,
+  "id": "K305"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "How Does the Lagrangian Guide Safe Reinforcement Learning through Diffusion Models?",
+  "url": "https://icml.cc/virtual/2026/poster/61858",
+  "draw_rank": 480,
+  "id": "K306"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Peng&#x27;s Q($\\lambda$) for Conservative Value Estimation in Offline Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/14c1c1c1dabd8179f77895de25391ce9-Abstract-Conference.html",
+  "draw_rank": 482,
+  "id": "K307"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "SimpleVLA-RL: Scaling VLA Training via Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/cbfbcb4da14235bd69b134070898ae9d-Abstract-Conference.html",
+  "draw_rank": 483,
+  "id": "K308"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Risk-Averse Total-Reward Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119439",
+  "draw_rank": 484,
+  "id": "K309"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "On-Policy RL Meets Off-Policy Experts: Harmonizing Supervised Fine-Tuning and Reinforcement Learning via Dynamic Weighting",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/c44a04289beaf0a7d968a94066a1d696-Abstract-Conference.html",
+  "draw_rank": 486,
+  "id": "K310"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Dichotomous Diffusion Policy Optimization",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/64a0192102e1421a2b2c15ae0bdb9f3a-Abstract-Conference.html",
+  "draw_rank": 487,
+  "id": "K311"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Position: RL Researchers Need to Distinguish Between Solving Simulators and Using Simulators as a Proxy",
+  "url": "https://icml.cc/virtual/2026/poster/67184",
+  "draw_rank": 490,
+  "id": "K312"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Is Pure Exploitation Sufficient in Exogenous MDPs with Linear Function Approximation?",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/19d19ce7ebd10414aef3ed6c2acb9e01-Abstract-Conference.html",
+  "draw_rank": 491,
+  "id": "K313"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "How Ensembles of Distilled Policies Improve Generalisation in Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119498",
+  "draw_rank": 494,
+  "id": "K314"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Sample-Efficient Distributionally Robust Multi-Agent Reinforcement Learning via Online Interaction",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/f6640819ae4ce63d646f8989e9f4c025-Abstract-Conference.html",
+  "draw_rank": 495,
+  "id": "K315"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Comparing Deterministic and Soft Policy Gradients for Optimizing Gaussian Mixture Actors",
+  "url": "https://icml.cc/virtual/2026/poster/68792",
+  "draw_rank": 496,
+  "id": "K316"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Flow Matching Policy Gradients",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/3d43cc5692bf68944ee7cd31b97d0c11-Abstract-Conference.html",
+  "draw_rank": 500,
+  "id": "K317"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "ReAugment: Targeted Few-Shot Time Series Augmentation via Model Zoo-Guided Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/63111",
+  "draw_rank": 501,
+  "id": "K318"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "HyPOLE: Hyperproperty-Guided Multi-Agent Reinforcement Learning under Partial Observation",
+  "url": "https://icml.cc/virtual/2026/poster/65345",
+  "draw_rank": 502,
+  "id": "K319"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Rationality Measurement and Theory for Reinforcement Learning Agents",
+  "url": "https://icml.cc/virtual/2026/poster/64009",
+  "draw_rank": 503,
+  "id": "K320"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Perception-R1: Pioneering Perception Policy with Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119361",
+  "draw_rank": 504,
+  "id": "K321"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Projection-based Lyapunov method for fully heterogeneous weakly-coupled MDPs",
+  "url": "https://neurips.cc/virtual/2025/poster/117242",
+  "draw_rank": 507,
+  "id": "K322"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Return-Critic: Bridging Goal Discrepancy for Efficient Visual Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/66199",
+  "draw_rank": 508,
+  "id": "K323"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Learning To Draft: Adaptive Speculative Decoding with Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/34345e243156da67605d4b63d71c8d98-Abstract-Conference.html",
+  "draw_rank": 509,
+  "id": "K324"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "EEPO: Exploration-Enhanced Policy Optimization via Sample-Then-Forget",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/f39158699fc2f660de36102dd1b61975-Abstract-Conference.html",
+  "draw_rank": 512,
+  "id": "K325"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Trust-Region Diffusion Policies for Massively Parallel On-Policy RL",
+  "url": "https://icml.cc/virtual/2026/poster/61866",
+  "draw_rank": 514,
+  "id": "K326"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "STAIRS-Former: Spatio-Temporal Attention with Interleaved Recursive Structure TransFormer for Offline Mulit-task Multi-agent Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/9d034c0c3c320a44cb62952e511bb9b7-Abstract-Conference.html",
+  "draw_rank": 516,
+  "id": "K327"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Towards Principled Unsupervised Multi-Agent Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/117531",
+  "draw_rank": 518,
+  "id": "K328"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "PolicyFlow: Policy Optimization with Continuous Normalizing Flow in Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/1529a05fdff470f4e7c239c80d85e28e-Abstract-Conference.html",
+  "draw_rank": 520,
+  "id": "K329"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Neuro-evolutionary Continual Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/65001",
+  "draw_rank": 522,
+  "id": "K330"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Robust Reinforcement Learning in Finance:  Modeling Market Impact with Elliptic Uncertainty Sets",
+  "url": "https://neurips.cc/virtual/2025/poster/118821",
+  "draw_rank": 523,
+  "id": "K331"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "FrugalRAG: Less is More in RL Finetuning for Multi-hop Question Answering",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/ede6f43d254731152970009c172d5561-Abstract-Conference.html",
+  "draw_rank": 524,
+  "id": "K332"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Position: Machine Learning for Heart Transplant Allocation Policy Optimization Should Account for Incentives",
+  "url": "https://icml.cc/virtual/2026/poster/67226",
+  "draw_rank": 525,
+  "id": "K333"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Fuz-RL: A Fuzzy-Guided Robust Framework for Safe Reinforcement Learning under Uncertainty",
+  "url": "https://neurips.cc/virtual/2025/poster/117895",
+  "draw_rank": 527,
+  "id": "K334"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Chain-of-Goals Hierarchical Policy for Long-Horizon Offline Goal-Conditioned RL",
+  "url": "https://icml.cc/virtual/2026/poster/66315",
+  "draw_rank": 530,
+  "id": "K335"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "RN-D: Discretized Categorical Actors for On-Policy Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/61217",
+  "draw_rank": 532,
+  "id": "K336"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Fox in the Henhouse: Supply-Chain Backdoor Attacks Against Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/66677",
+  "draw_rank": 533,
+  "id": "K337"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Learning to Reason Efficiently with Discounted Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/f08223bc8d177df6807811c32f5acfed-Abstract-Conference.html",
+  "draw_rank": 535,
+  "id": "K338"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Corruption-Tolerant Asynchronous Q-Learning with Near-Optimal Rates",
+  "url": "https://icml.cc/virtual/2026/poster/64666",
+  "draw_rank": 538,
+  "id": "K339"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "In-Context Fully Decentralized Cooperative Multi-Agent Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119882",
+  "draw_rank": 539,
+  "id": "K340"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "QHyer: Q-conditioned Hybrid Attention-mamba Transformer for Offline Goal-conditioned RL",
+  "url": "https://icml.cc/virtual/2026/poster/64553",
+  "draw_rank": 540,
+  "id": "K341"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Sparse Topology-Aware Pairwise Scoring for Large-Scale Multi-Agent Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/65907",
+  "draw_rank": 542,
+  "id": "K342"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "CURE: Co-Evolving Coders and Unit Testers via Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/115329",
+  "draw_rank": 543,
+  "id": "K343"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Transferable Reinforcement Learning via Probabilistic Latent Embeddings and Dynamic Policy Adaptation for Sim-to-Real Deployment",
+  "url": "https://icml.cc/virtual/2026/poster/60802",
+  "draw_rank": 544,
+  "id": "K344"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Long Live The Balance: Information Bottleneck Driven Tree-based Policy Optimization",
+  "url": "https://icml.cc/virtual/2026/poster/62699",
+  "draw_rank": 545,
+  "id": "K345"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Minimax Optimal Strategy for Delayed Observations in Online Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/62587",
+  "draw_rank": 546,
+  "id": "K346"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Neural Predictor-Corrector: Solving Homotopy Problems with Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/3104e1ab39875cf54fe1eb4473e7c5a1-Abstract-Conference.html",
+  "draw_rank": 547,
+  "id": "K347"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Structure Matters: Dynamic Policy Gradient",
+  "url": "https://neurips.cc/virtual/2025/poster/117495",
+  "draw_rank": 549,
+  "id": "K348"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Global Convergence for Average Reward Constrained MDPs with Primal-Dual Actor Critic Algorithm",
+  "url": "https://neurips.cc/virtual/2025/poster/119553",
+  "draw_rank": 550,
+  "id": "K349"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "WebSeer: Training Deeper Search Agents through Reinforcement Learning with Self-Reflection",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/ad922aa85d4027ff3502e8e5f406e828-Abstract-Conference.html",
+  "draw_rank": 552,
+  "id": "K350"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Solving Parameter-Robust Avoid Problems with Unknown Feasibility using Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/8e8597bdfab95eefe65a4ce02a70b7e2-Abstract-Conference.html",
+  "draw_rank": 553,
+  "id": "K351"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Discrete Compositional Generation via General Soft Operators and Robust Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/7688bc1bfa9e1f0c540bca03974df304-Abstract-Conference.html",
+  "draw_rank": 555,
+  "id": "K352"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "MAGE: Multi-scale Autoregressive Generation for Offline Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/15163b538e6be5446614de2ecbbfa026-Abstract-Conference.html",
+  "draw_rank": 556,
+  "id": "K353"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Primal-Dual Policy Optimization for Linear CMDPs with Adversarial Losses",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/51f547584cd1fcb87114ea022822a60d-Abstract-Conference.html",
+  "draw_rank": 557,
+  "id": "K354"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Q-learning with Posterior Sampling",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/9ecca44ee9150cfe350bcb3660d18c98-Abstract-Conference.html",
+  "draw_rank": 558,
+  "id": "K355"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Octax: Accelerated CHIP-8 Arcade Environments for Reinforcement Learning in JAX",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/75a4942c01cec89683de7de83858e21b-Abstract-Conference.html",
+  "draw_rank": 560,
+  "id": "K356"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Towards Pareto-Optimal Tool-Integrated Agents with Pareto Ranking Policy Optimization",
+  "url": "https://icml.cc/virtual/2026/poster/65819",
+  "draw_rank": 561,
+  "id": "K357"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Provably Convergent Actor-Critic in Risk-averse MARL",
+  "url": "https://icml.cc/virtual/2026/poster/64418",
+  "draw_rank": 562,
+  "id": "K358"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Impact of Connectivity on Laplacian Representations in Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/60778",
+  "draw_rank": 564,
+  "id": "K359"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Quantum Robust Inner Minimization for Reinforcement Learning with Quadratic Speed-Up in Query Complexity",
+  "url": "https://icml.cc/virtual/2026/poster/66116",
+  "draw_rank": 565,
+  "id": "K360"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Recurrent Structural Policy Gradient for Partially Observable Mean Field Games",
+  "url": "https://icml.cc/virtual/2026/poster/63589",
+  "draw_rank": 567,
+  "id": "K361"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Learning to summarize user information for personalized reinforcement learning from human feedback",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/c7af751b5e0a407c62ac023e3cb381f9-Abstract-Conference.html",
+  "draw_rank": 569,
+  "id": "K362"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Langevin Rollout Optimization for Modelic Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/61665",
+  "draw_rank": 570,
+  "id": "K363"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Stable Deep Reinforcement Learning via Isotropic Gaussian Representations",
+  "url": "https://icml.cc/virtual/2026/poster/62436",
+  "draw_rank": 571,
+  "id": "K364"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Enhancing Interpretability in Deep Reinforcement Learning through Semantic Clustering",
+  "url": "https://neurips.cc/virtual/2025/poster/117419",
+  "draw_rank": 574,
+  "id": "K365"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Policy Gradient Methods Converge Globally in Imperfect-Information Extensive-Form Games",
+  "url": "https://neurips.cc/virtual/2025/poster/117678",
+  "draw_rank": 575,
+  "id": "K366"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Adversarial Diffusion for Robust Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119337",
+  "draw_rank": 577,
+  "id": "K367"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "The Value of Variance: Mitigating Debate Collapse in Multi-Agent Systems via Uncertainty-Driven Policy Optimization",
+  "url": "https://icml.cc/virtual/2026/poster/65638",
+  "draw_rank": 578,
+  "id": "K368"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "BRIDGE: Bi-level Reinforcement Learning for Dynamic Group Structure in Coalition Formation Games",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/6960aa296f19962a8efcb21445acdee3-Abstract-Conference.html",
+  "draw_rank": 581,
+  "id": "K369"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "BoreaRL: A Multi-Objective Reinforcement Learning Environment for Climate-Adaptive Boreal Forest Management",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/63f2f854afe4905829a6df735aa1693b-Abstract-Conference.html",
+  "draw_rank": 582,
+  "id": "K370"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Bi-Level Knowledge Transfer for Multi-Task Multi-Agent Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119769",
+  "draw_rank": 583,
+  "id": "K371"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Convergence of an actor-critic gradient flow for entropy regularised MDPs in general spaces",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/a178bd942c97f51ec069ddceeb55591b-Abstract-Conference.html",
+  "draw_rank": 584,
+  "id": "K372"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Open Materials Generation with Inference-Time Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/60682",
+  "draw_rank": 586,
+  "id": "K373"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Bayes Adaptive Monte Carlo Tree Search for Offline Model-based Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/43f55776896a2e33239c2954519f605e-Abstract-Conference.html",
+  "draw_rank": 587,
+  "id": "K374"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Non-rectangular Robust MDPs with Normed  Uncertainty Sets",
+  "url": "https://neurips.cc/virtual/2025/poster/117462",
+  "draw_rank": 589,
+  "id": "K375"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "What Does Vision Tool-Use Reinforcement Learning Really Learn? Disentangling Tool-Induced and Intrinsic Effects for Crop-and-Zoom",
+  "url": "https://icml.cc/virtual/2026/poster/62232",
+  "draw_rank": 591,
+  "id": "K376"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "LongWriter-Zero: Mastering Ultra-Long Text Generation via Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/ea5cb7d9fd2deb0554def3552962d276-Abstract-Conference.html",
+  "draw_rank": 594,
+  "id": "K377"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Revisiting Zeroth-Order Hessian Approximation: A Single-Step Policy Optimization Lens",
+  "url": "https://icml.cc/virtual/2026/poster/61753",
+  "draw_rank": 595,
+  "id": "K378"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Flowing Through States: Neural ODE Regularization for Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/ed4f4356fd9f0d437d9688cdf22d38d8-Abstract-Conference.html",
+  "draw_rank": 596,
+  "id": "K379"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Trajectory-Level Data Augmentation for Offline Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/64589",
+  "draw_rank": 597,
+  "id": "K380"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "RLGF: Reinforcement Learning with Geometric Feedback for Autonomous Driving Video Generation",
+  "url": "https://neurips.cc/virtual/2025/poster/119158",
+  "draw_rank": 598,
+  "id": "K381"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Dissecting Post-Training: Uncovering the Complementary Roles of SFT and RL for Document Parsing",
+  "url": "https://icml.cc/virtual/2026/poster/62458",
+  "draw_rank": 599,
+  "id": "K382"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "The Sample Complexity of Online Reinforcement Learning: A Multi-model Perspective",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/c2fe991f6e2a95c6e865c5f8f46cc3bb-Abstract-Conference.html",
+  "draw_rank": 600,
+  "id": "K383"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "One Subgoal at a Time: Zero-Shot Generalization to Arbitrary Linear Temporal Logic Requirements in Multi-Task Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/118386",
+  "draw_rank": 601,
+  "id": "K384"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "ReTrace: Reinforcement Learning-Guided Reconstruction Attacks on Machine Unlearning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/390add18bf52537f1cff222285e426bd-Abstract-Conference.html",
+  "draw_rank": 602,
+  "id": "K385"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Covariance Volume Maximization for Embodied Latent Exploration in Deep Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/61693",
+  "draw_rank": 603,
+  "id": "K386"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Black-Box Combinatorial Optimization with Order-Invariant Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/62945",
+  "draw_rank": 604,
+  "id": "K387"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Multivariate Distributional Reinforcement Learning Using Sliced Divergences",
+  "url": "https://icml.cc/virtual/2026/poster/60594",
+  "draw_rank": 605,
+  "id": "K388"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Forensic Prompting with Dual-Action Policy Optimization for Vision-Language Forgery Detection and Localization",
+  "url": "https://icml.cc/virtual/2026/poster/60710",
+  "draw_rank": 606,
+  "id": "K389"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "An Improved Model-free Decision-estimation Coefficient with Applications in Adversarial MDPs",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/0c4bc137edaf0eb7f66a87275a8be706-Abstract-Conference.html",
+  "draw_rank": 607,
+  "id": "K390"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Automating the Refinement of Reinforcement Learning Specifications",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/396ea38391e8b96a3add6126006f1a53-Abstract-Conference.html",
+  "draw_rank": 608,
+  "id": "K391"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Hierarchical Entity-centric Reinforcement Learning with Factored Subgoal Diffusion",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/de2bc3eed995c24307e8011161ac1438-Abstract-Conference.html",
+  "draw_rank": 611,
+  "id": "K392"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "EchoRL: Reinforcement Learning via Rollout Echoing",
+  "url": "https://icml.cc/virtual/2026/poster/65790",
+  "draw_rank": 613,
+  "id": "K393"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "UCPO: Uncertainty-Aware Policy Optimization",
+  "url": "https://icml.cc/virtual/2026/poster/62953",
+  "draw_rank": 615,
+  "id": "K394"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "To Distill or Decide? Understanding the Algorithmic Trade-off in Partially Observable RL",
+  "url": "https://neurips.cc/virtual/2025/poster/116574",
+  "draw_rank": 618,
+  "id": "K395"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Investigating Memory in RL with POPGym Arcade",
+  "url": "https://icml.cc/virtual/2026/poster/60940",
+  "draw_rank": 619,
+  "id": "K396"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "SHAPO: Sharpness-Aware Policy Optimization for Safe Exploration",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/5cfbaa614adaf59bffc697cb0844143b-Abstract-Conference.html",
+  "draw_rank": 620,
+  "id": "K397"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Confounding Robust Deep Reinforcement Learning: A Causal Approach",
+  "url": "https://neurips.cc/virtual/2025/poster/119520",
+  "draw_rank": 623,
+  "id": "K398"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "A Primer on SO(3) Action Representations in Deep Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/64b87a2117389be8d783029ab063e58f-Abstract-Conference.html",
+  "draw_rank": 624,
+  "id": "K399"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Toward Training Superintelligent Software Agents through Self-Play SWE-RL",
+  "url": "https://icml.cc/virtual/2026/poster/66747",
+  "draw_rank": 625,
+  "id": "K400"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Sequential Monte Carlo for Policy Optimization in Continuous POMDPs",
+  "url": "https://neurips.cc/virtual/2025/poster/117329",
+  "draw_rank": 626,
+  "id": "K401"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "SHAP-Guided Kernel Actor-Critic for Explainable Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/63005",
+  "draw_rank": 627,
+  "id": "K402"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Diffusion Fine-Tuning via Reparameterized Policy Gradient of the Soft Q-Function",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/7f072dfceefc8e8f88e2b198529f8706-Abstract-Conference.html",
+  "draw_rank": 628,
+  "id": "K403"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Escaping the Mode: Multi-Answer Reinforcement Learning in LMs",
+  "url": "https://icml.cc/virtual/2026/poster/60952",
+  "draw_rank": 629,
+  "id": "K404"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Co-Reinforcement Learning for Unified Multimodal Understanding and Generation",
+  "url": "https://neurips.cc/virtual/2025/poster/117287",
+  "draw_rank": 630,
+  "id": "K405"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "URB - Urban Routing Benchmark for RL-equipped Connected Autonomous Vehicles",
+  "url": "https://neurips.cc/virtual/2025/poster/121647",
+  "draw_rank": 631,
+  "id": "K406"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Robust and Scalable Autonomous Reinforcement Learning in Irreversible Environments",
+  "url": "https://neurips.cc/virtual/2025/poster/117025",
+  "draw_rank": 635,
+  "id": "K407"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Towards Achieving Optimal Strong Regret and Constraint Violation via Computationally Efficient Model-free RL",
+  "url": "https://icml.cc/virtual/2026/poster/60646",
+  "draw_rank": 637,
+  "id": "K408"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Tackling Heavy-Tailed Q-Value Bias in Offline-to-Online Reinforcement Learning with Laplace-Robust Modeling",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/398083bb901e9a2addc252e8926d5d11-Abstract-Conference.html",
+  "draw_rank": 638,
+  "id": "K409"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "RAD: Training an End-to-End Driving Policy via Large-Scale 3DGS-based Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119535",
+  "draw_rank": 640,
+  "id": "K410"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Emergence of Exploration in Policy Gradient Reinforcement Learning via Retrying",
+  "url": "https://icml.cc/virtual/2026/poster/64417",
+  "draw_rank": 642,
+  "id": "K411"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Mean Flow Policy Optimization",
+  "url": "https://icml.cc/virtual/2026/poster/65993",
+  "draw_rank": 643,
+  "id": "K412"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Efficient and Safe Molecular Assembly via Reinforcement Learning and Constraint Solving",
+  "url": "https://icml.cc/virtual/2026/poster/63386",
+  "draw_rank": 644,
+  "id": "K413"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Potentially Optimal Joint Actions Recognition for Cooperative Multi-Agent Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/4ee545c1205c2c7b7ccaa12428e14751-Abstract-Conference.html",
+  "draw_rank": 645,
+  "id": "K414"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Flow Actor-Critic for Offline Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/c4e7c50f41480db1de200689c9c8f32d-Abstract-Conference.html",
+  "draw_rank": 648,
+  "id": "K415"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Latent Spherical Flow Policy for Reinforcement Learning with Combinatorial Actions",
+  "url": "https://icml.cc/virtual/2026/poster/66809",
+  "draw_rank": 649,
+  "id": "K416"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Equilibrium Policy Generalization: A Reinforcement Learning Framework for Cross-Graph Zero-Shot Generalization in Pursuit-Evasion Games",
+  "url": "https://neurips.cc/virtual/2025/poster/115079",
+  "draw_rank": 650,
+  "id": "K417"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Adaptive Divergence Regularized Policy Optimization for Fine-tuning Generative Models",
+  "url": "https://neurips.cc/virtual/2025/poster/117259",
+  "draw_rank": 652,
+  "id": "K418"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Mind Your Entropy: From Maximum Entropy to Trajectory Entropy-Constrained RL",
+  "url": "https://icml.cc/virtual/2026/poster/66817",
+  "draw_rank": 653,
+  "id": "K419"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Mixture-of-Experts Meets In-Context Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/117694",
+  "draw_rank": 655,
+  "id": "K420"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Reparameterization Flow Policy Optimization",
+  "url": "https://icml.cc/virtual/2026/poster/63464",
+  "draw_rank": 656,
+  "id": "K421"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Taming Aleatoric Impulse in Off-Policy Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/66527",
+  "draw_rank": 658,
+  "id": "K422"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Outcome-Based Online Reinforcement Learning: Algorithms and Fundamental Limits",
+  "url": "https://neurips.cc/virtual/2025/poster/115682",
+  "draw_rank": 659,
+  "id": "K423"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Less Is More: Clustered Cross-Covariance Control for Offline RL",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/e4cdb4090e04816422afcbb08d4badcf-Abstract-Conference.html",
+  "draw_rank": 660,
+  "id": "K424"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Value-Guided Decision Transformer: A Unified Reinforcement Learning Framework for Online and Offline Settings",
+  "url": "https://neurips.cc/virtual/2025/poster/118278",
+  "draw_rank": 661,
+  "id": "K425"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Rubrics as Rewards: Reinforcement Learning Beyond Verifiable Domains",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/cfd7bee7a651ee9af525098ef67a9e45-Abstract-Conference.html",
+  "draw_rank": 662,
+  "id": "K426"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Mirror Descent Policy Optimisation for Robust Constrained Markov Decision Processes",
+  "url": "https://icml.cc/virtual/2026/poster/68816",
+  "draw_rank": 663,
+  "id": "K427"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Safe In-Context Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/61906",
+  "draw_rank": 664,
+  "id": "K428"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Stackelberg Coupling of Online Representation  Learning and Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/050f729db878738a9d44d4a7f995bf36-Abstract-Conference.html",
+  "draw_rank": 666,
+  "id": "K429"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Angel or Demon: Investigating the Plasticity Interventions' Impact on Backdoor Threats in Deep Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/64505",
+  "draw_rank": 667,
+  "id": "K430"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Risk-Averse Constrained Reinforcement Learning with Optimized Certainty Equivalents",
+  "url": "https://neurips.cc/virtual/2025/poster/115294",
+  "draw_rank": 668,
+  "id": "K431"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Action Manifold Smoothing: A Lipschitz Pathway Perspective on High-Dimensional Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/64723",
+  "draw_rank": 669,
+  "id": "K432"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "RIDER: 3D RNA Inverse Design with Reinforcement Learning-Guided Diffusion",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/80098914b3b3bad79b80377751a85430-Abstract-Conference.html",
+  "draw_rank": 670,
+  "id": "K433"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "FIDIA: Function-Informed Sequence Design via Inference-Aligned Policy Optimization",
+  "url": "https://icml.cc/virtual/2026/poster/61459",
+  "draw_rank": 671,
+  "id": "K434"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Imagine Beyond ! Distributionally Robust Autoencoding for State Space Coverage in Online Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/117532",
+  "draw_rank": 672,
+  "id": "K435"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Learning Human-Robot Collaboration via Heterogeneous-Agent Lyapunov Policy Optimization",
+  "url": "https://icml.cc/virtual/2026/poster/61049",
+  "draw_rank": 673,
+  "id": "K436"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Forecasting in Offline Reinforcement Learning for Non-stationary Environments",
+  "url": "https://neurips.cc/virtual/2025/poster/120177",
+  "draw_rank": 674,
+  "id": "K437"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Breaking the SFT Plateau: Multimodal Structured Reinforcement Learning for Chart-to-Code Generation",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/b95c7e24501f5d1dddbc5e8526cda7ae-Abstract-Conference.html",
+  "draw_rank": 677,
+  "id": "K438"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Tackling Continual Offline RL through Selective Weights Activation on Aligned Spaces",
+  "url": "https://neurips.cc/virtual/2025/poster/118618",
+  "draw_rank": 679,
+  "id": "K439"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "What Can RL Bring to VLA Generalization? An Empirical Study",
+  "url": "https://neurips.cc/virtual/2025/poster/115842",
+  "draw_rank": 682,
+  "id": "K440"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "GRACE: Generative Representation Learning via Contrastive Policy Optimization",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/2c0e78cc177dfeca260ef990a8c99209-Abstract-Conference.html",
+  "draw_rank": 683,
+  "id": "K441"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Designing Time Series Experiments in A/B Testing with Transformer Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/344557362acf03326c0235d9043ecb6e-Abstract-Conference.html",
+  "draw_rank": 684,
+  "id": "K442"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Expected Return Causes Outcome-Level Mode Collapse in Reinforcement Learning and How to Fix It with Inverse Probability Scaling",
+  "url": "https://icml.cc/virtual/2026/poster/63579",
+  "draw_rank": 685,
+  "id": "K443"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "A Principle of Targeted Intervention for Multi-Agent Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/117666",
+  "draw_rank": 688,
+  "id": "K444"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Online Optimization for Offline Safe Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/116952",
+  "draw_rank": 690,
+  "id": "K445"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "One-Step Flow Q-Learning: Addressing the Diffusion Policy Bottleneck in Offline Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/14f75513f0f1ca01de1e826b52e6b840-Abstract-Conference.html",
+  "draw_rank": 691,
+  "id": "K446"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "MOSDT: Self-Distillation-Based Decision Transformer for Multi-Agent Offline Safe Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/117926",
+  "draw_rank": 692,
+  "id": "K447"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Generative Modeling of Discrete Latent Structures via Dynamic Policy Gradients",
+  "url": "https://icml.cc/virtual/2026/poster/66814",
+  "draw_rank": 693,
+  "id": "K448"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "RELO: Reinforcement Learning to Localize for Visual Object Tracking",
+  "url": "https://icml.cc/virtual/2026/poster/64964",
+  "draw_rank": 694,
+  "id": "K449"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Does “Do Differentiable Simulators Give Better Policy Gradients?” Give Better Policy Gradients?",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/4f0a2a0b2ca6ffd5c8d5de26d3e8d54d-Abstract-Conference.html",
+  "draw_rank": 696,
+  "id": "K450"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Sim2Reason: Solving Physics Olympiad via Reinforcement Learning on Physics Simulators",
+  "url": "https://icml.cc/virtual/2026/poster/61318",
+  "draw_rank": 697,
+  "id": "K451"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Learning to Generate Unit Test via Adversarial Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/efb02f96766a3b599c76852abf4d42dd-Abstract-Conference.html",
+  "draw_rank": 698,
+  "id": "K452"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Counteractive RL: Rethinking Core Principles for Efficient and Scalable Deep Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/115854",
+  "draw_rank": 699,
+  "id": "K453"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Q-Learning with Fine-Grained Gap-Dependent Regret",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/4f8d1e02a057beb7920618ac73788078-Abstract-Conference.html",
+  "draw_rank": 700,
+  "id": "K454"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "The ODE Method for Stochastic Approximation and Reinforcement Learning with Markovian Noise",
+  "url": "https://neurips.cc/virtual/2025/poster/121980",
+  "draw_rank": 701,
+  "id": "K455"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "APC-RL: Exceeding data-driven behavior priors with adaptive policy composition",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/cb22704ebc9bc4e0ef875d1959651012-Abstract-Conference.html",
+  "draw_rank": 705,
+  "id": "K456"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Target-Driven Policy Optimization for Sequential Counterfactual Outcome Control",
+  "url": "https://icml.cc/virtual/2026/poster/66587",
+  "draw_rank": 707,
+  "id": "K457"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Learning from Comparison: Constrained Projection Policy Optimization for Pareto-Front Improvement",
+  "url": "https://icml.cc/virtual/2026/poster/63575",
+  "draw_rank": 709,
+  "id": "K458"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Horizon Reduction Makes RL Scalable",
+  "url": "https://neurips.cc/virtual/2025/poster/116623",
+  "draw_rank": 712,
+  "id": "K459"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "SPOT: Scalable Policy Optimization with Trees for Markov Decision Processes",
+  "url": "https://neurips.cc/virtual/2025/poster/118292",
+  "draw_rank": 713,
+  "id": "K460"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Dyn-VPP: Video Prediction Policy Optimization for Improved Visual Dynamics",
+  "url": "https://icml.cc/virtual/2026/poster/66506",
+  "draw_rank": 715,
+  "id": "K461"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Advantage Weighted Matching: Aligning RL with Pretraining in Diffusion Models",
+  "url": "https://icml.cc/virtual/2026/poster/61737",
+  "draw_rank": 716,
+  "id": "K462"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Meta-RL Induces Exploration in Language Agents",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/06c6b876c4890d4d57442365d7e6d864-Abstract-Conference.html",
+  "draw_rank": 717,
+  "id": "K463"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Transitive RL: Value Learning via Divide and Conquer",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/066ac8a48e27c78aadcf934b580a0383-Abstract-Conference.html",
+  "draw_rank": 718,
+  "id": "K464"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Tournament Style RL: Stabilizing Policy Optimization on Non Verifiable Problems",
+  "url": "https://icml.cc/virtual/2026/poster/62722",
+  "draw_rank": 720,
+  "id": "K465"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Learning Personalized Ad Impact via Contextual Reinforcement Learning under Delayed Rewards",
+  "url": "https://neurips.cc/virtual/2025/poster/118550",
+  "draw_rank": 725,
+  "id": "K466"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "TESTING STATIONARITY AND CHANGE POINT DETECTION IN REINFORCEMENT LEARNING",
+  "url": "https://neurips.cc/virtual/2025/poster/122017",
+  "draw_rank": 726,
+  "id": "K467"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "KAGE-Bench: Fast Known-Axis Visual Generalization Evaluation for Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/62565",
+  "draw_rank": 729,
+  "id": "K468"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Improving Zero-Shot Offline RL via Behavioral Task Sampling",
+  "url": "https://icml.cc/virtual/2026/poster/63580",
+  "draw_rank": 730,
+  "id": "K469"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "EXPO: Stable Reinforcement Learning with Expressive Policies",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/d56a652ad743308b24b6c4d0e6411dd7-Abstract-Conference.html",
+  "draw_rank": 731,
+  "id": "K470"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Reinforcement Learning for Reachability: Guaranteeing Asymptotic Optimality",
+  "url": "https://icml.cc/virtual/2026/poster/62441",
+  "draw_rank": 733,
+  "id": "K471"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Minimax Optimal Adversarial Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/19f461132d8ed04764f58f88b7a8e842-Abstract-Conference.html",
+  "draw_rank": 735,
+  "id": "K472"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Off-policy Reinforcement Learning with Model-based Exploration Augmentation",
+  "url": "https://neurips.cc/virtual/2025/poster/118740",
+  "draw_rank": 736,
+  "id": "K473"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "RL with Learnable Textual Feedback: A Bilevel Approach",
+  "url": "https://icml.cc/virtual/2026/poster/60911",
+  "draw_rank": 737,
+  "id": "K474"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Offline Guarded Safe Reinforcement Learning for Medical Treatment Optimization Strategies",
+  "url": "https://neurips.cc/virtual/2025/poster/119943",
+  "draw_rank": 738,
+  "id": "K475"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "RFS: Reinforcement learning with Residual flow steering for dexterous manipulation",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/e5681277af35789f6c9dfcaf83047aec-Abstract-Conference.html",
+  "draw_rank": 740,
+  "id": "K476"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Informed Asymmetric Actor-Critic: Leveraging Privileged Signals Beyond Full-State Access",
+  "url": "https://icml.cc/virtual/2026/poster/66074",
+  "draw_rank": 742,
+  "id": "K477"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Enhancing Tactile-based Reinforcement Learning for Robotic Control",
+  "url": "https://neurips.cc/virtual/2025/poster/117811",
+  "draw_rank": 744,
+  "id": "K478"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Reuse your FLOPs: Scaling RL on Hard Problems by Conditioning on Very Off-Policy Prefixes",
+  "url": "https://icml.cc/virtual/2026/poster/63106",
+  "draw_rank": 745,
+  "id": "K479"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Dr. Kernel: Reinforcement Learning Done Right for Triton Kernel Generations",
+  "url": "https://icml.cc/virtual/2026/poster/65609",
+  "draw_rank": 746,
+  "id": "K480"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Janus-Pro-R1: Advancing Collaborative Visual Comprehension and Generation via Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119162",
+  "draw_rank": 747,
+  "id": "K481"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Heterogeneous Agent Q-weighted Policy Optimization",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/1626be0ab7f3d7b3c639fbfd5951bc40-Abstract-Conference.html",
+  "draw_rank": 748,
+  "id": "K482"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Why Dedicated Critics: Eliminating Target Drift in Multi-Constraint RL",
+  "url": "https://icml.cc/virtual/2026/poster/62544",
+  "draw_rank": 749,
+  "id": "K483"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Globally Optimal Policy Gradient Algorithms for Reinforcement Learning with PID Control Policies",
+  "url": "https://neurips.cc/virtual/2025/poster/115320",
+  "draw_rank": 752,
+  "id": "K484"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "MVR: Multi-view Video Reward Shaping for Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/617f72363e338e0a945b8a39df2196cc-Abstract-Conference.html",
+  "draw_rank": 754,
+  "id": "K485"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Token Hidden Reward: Steering Exploration-Exploitation in Group Relative Deep Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/c6989f4c36acb6f0e0fdd60f1c12e8a0-Abstract-Conference.html",
+  "draw_rank": 756,
+  "id": "K486"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Off-Policy Evaluation for Missingness-Aware Policies in MDPs with Rewards Missing Not at Random",
+  "url": "https://icml.cc/virtual/2026/poster/60871",
+  "draw_rank": 758,
+  "id": "K487"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Distributional Inverse Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/63146",
+  "draw_rank": 760,
+  "id": "K488"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Operator Theory-Driven Autoformulation of MDPs for Control of Queueing Systems",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/b1b4f0ca1d60a3be5c16defcff9ef30b-Abstract-Conference.html",
+  "draw_rank": 765,
+  "id": "K489"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Retaining Suboptimal Actions to Follow Shifting Optima in Multi-Agent Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/ab989891ac2a4b35ee76d80139cec5fb-Abstract-Conference.html",
+  "draw_rank": 767,
+  "id": "K490"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "The Rank and Gradient Lost in Non-stationarity: Sample Weight Decay for Mitigating Plasticity Loss in Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/2886558a03d11f95d4020a460fe4a390-Abstract-Conference.html",
+  "draw_rank": 769,
+  "id": "K491"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "SWE-MiniSandbox: Container-Free Reinforcement Learning for Building Software Engineering Agents",
+  "url": "https://icml.cc/virtual/2026/poster/61850",
+  "draw_rank": 771,
+  "id": "K492"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Learning to Reason over Continuous Tokens with Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/2cb880950081ceb85100951b0ad0d542-Abstract-Conference.html",
+  "draw_rank": 776,
+  "id": "K493"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "COLA: Towards Efficient Multi-Objective Reinforcement Learning with Conflict Objective Regularization in Latent Space",
+  "url": "https://neurips.cc/virtual/2025/poster/119269",
+  "draw_rank": 777,
+  "id": "K494"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "ADG: Ambient Diffusion-Guided Dataset Recovery for Corruption-Robust Offline Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119600",
+  "draw_rank": 779,
+  "id": "K495"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Stabilizing the Q-Gradient Field for Policy Smoothness in Actor-Critic Methods",
+  "url": "https://icml.cc/virtual/2026/poster/63664",
+  "draw_rank": 781,
+  "id": "K496"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Relative Entropy Pathwise Policy Optimization",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/3c2fd72a28fb98facf98546727320249-Abstract-Conference.html",
+  "draw_rank": 782,
+  "id": "K497"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "BiTrajDiff: Bidirectional Trajectory Generation with Diffusion Models for Offline Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/63499",
+  "draw_rank": 783,
+  "id": "K498"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "AdvEvo-MARL: Shaping Internalized Safety through Adversarial Co-Evolution in Multi-Agent Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/66275",
+  "draw_rank": 784,
+  "id": "K499"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Dual-Robust Cross-Domain Offline Reinforcement Learning Against Dynamics Shifts",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/71cc3acb2578bdd1e52bf9f85bbb1af0-Abstract-Conference.html",
+  "draw_rank": 785,
+  "id": "K500"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "In-Context Compositional Q-Learning for Offline  Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/40b9dbda250d23f125eba074ae4ed46a-Abstract-Conference.html",
+  "draw_rank": 786,
+  "id": "K501"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "From Seeing to Experiencing: Scaling Navigation Foundation Models with Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/125be378b39b10676f56e12e6923b902-Abstract-Conference.html",
+  "draw_rank": 787,
+  "id": "K502"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Optimal Single-Policy Sample Complexity and Transient Coverage for Average-Reward Offline RL",
+  "url": "https://neurips.cc/virtual/2025/poster/118440",
+  "draw_rank": 788,
+  "id": "K503"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Maximum Likelihood Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/65332",
+  "draw_rank": 791,
+  "id": "K504"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "ProRL: Effective Reinforcement Learning for Proactive Recommendation via Rectified Policy Gradient Estimation",
+  "url": "https://icml.cc/virtual/2026/poster/61903",
+  "draw_rank": 792,
+  "id": "K505"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Afterburner: Reinforcement Learning Facilitates Self-Improving Code Efficiency Optimization",
+  "url": "https://neurips.cc/virtual/2025/poster/119429",
+  "draw_rank": 793,
+  "id": "K506"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Hybrid Reinforcement Learning in Adversarial Markov Decision Processes",
+  "url": "https://icml.cc/virtual/2026/poster/61289",
+  "draw_rank": 794,
+  "id": "K507"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Learning Generalizable Skill Policy with Data-Efficient Unsupervised RL",
+  "url": "https://icml.cc/virtual/2026/poster/61397",
+  "draw_rank": 795,
+  "id": "K508"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Self-Improving Vision-Language-Action Models with Data Generation via Residual RL",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/163a875ab0c2631ed30b7435c4c9b8f1-Abstract-Conference.html",
+  "draw_rank": 797,
+  "id": "K509"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Multi-Objective Reinforcement Learning with Max-Min Criterion: A Game-Theoretic Approach",
+  "url": "https://neurips.cc/virtual/2025/poster/117434",
+  "draw_rank": 798,
+  "id": "K510"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Adaptive Reinforcement Learning for Unobservable Random Delays",
+  "url": "https://icml.cc/virtual/2026/poster/64105",
+  "draw_rank": 799,
+  "id": "K511"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Bringing Code ALIVE: Optimizing Interactive Frontend Mini-Games via Automated Play and Reinforcement Learning at Scale",
+  "url": "https://icml.cc/virtual/2026/poster/61947",
+  "draw_rank": 800,
+  "id": "K512"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Empirical Study on Robustness and Resilience in Cooperative Multi-Agent Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/115636",
+  "draw_rank": 801,
+  "id": "K513"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "VIKI‑R: Coordinating Embodied Multi-Agent Cooperation via Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/121684",
+  "draw_rank": 802,
+  "id": "K514"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Beyond Rewards in RL for Cyber Defence",
+  "url": "https://icml.cc/virtual/2026/poster/64372",
+  "draw_rank": 805,
+  "id": "K515"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Interaction-Breaking Adversarial Learning Framework for Robust Multi-Agent Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/61001",
+  "draw_rank": 806,
+  "id": "K516"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "The Promise of RL for Autoregressive Image Editing",
+  "url": "https://neurips.cc/virtual/2025/poster/117430",
+  "draw_rank": 808,
+  "id": "K517"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Towards High Data Efficiency in Reinforcement Learning with Verifiable Reward",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/374050dc3f211267bd6bf0ea24eae184-Abstract-Conference.html",
+  "draw_rank": 809,
+  "id": "K518"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Offline Actor-Critic for Average Reward MDPs",
+  "url": "https://neurips.cc/virtual/2025/poster/117313",
+  "draw_rank": 810,
+  "id": "K519"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Entropy-preserving reinforcement learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/124dde499d62b58e97e42a45b26d7369-Abstract-Conference.html",
+  "draw_rank": 811,
+  "id": "K520"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Shrinking the Variance: Shrinkage Baselines for Reinforcement Learning with Verifiable Rewards",
+  "url": "https://icml.cc/virtual/2026/poster/64613",
+  "draw_rank": 812,
+  "id": "K521"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Trajectory Graph Learning: Aligning with Long Trajectories in Reinforcement Learning Without Reward Design",
+  "url": "https://neurips.cc/virtual/2025/poster/118090",
+  "draw_rank": 813,
+  "id": "K522"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "VaporTok: RL-Driven Adaptive Video Tokenizer with Prior & Task Awareness",
+  "url": "https://neurips.cc/virtual/2025/poster/117172",
+  "draw_rank": 814,
+  "id": "K523"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Focus-Then-Contact: Speeding Up Robotic Contact-Rich Task Learning with Affordance-Guided Real-World Residual Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/66289",
+  "draw_rank": 815,
+  "id": "K524"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "High-order Interactions Modeling for Interpretable Multi-Agent Q-Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/118713",
+  "draw_rank": 818,
+  "id": "K525"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Reverse Flow Matching: A Unified Framework for Online Reinforcement Learning with Diffusion and Flow Policies",
+  "url": "https://icml.cc/virtual/2026/poster/60898",
+  "draw_rank": 819,
+  "id": "K526"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "From Ticks to Flows: Dynamics of Neural Reinforcement Learning in Continuous Environments",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/7a8e7fd295aa04eac4b470ae27f8785c-Abstract-Conference.html",
+  "draw_rank": 821,
+  "id": "K527"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "GIPO: Gaussian Importance Sampling Policy Optimization",
+  "url": "https://icml.cc/virtual/2026/poster/64193",
+  "draw_rank": 822,
+  "id": "K528"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Why Linear Recurrent Memory Works in Partially Observable Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/60568",
+  "draw_rank": 823,
+  "id": "K529"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "AdamO: A Collapse-Suppressed Optimizer for Offline RL",
+  "url": "https://icml.cc/virtual/2026/poster/61849",
+  "draw_rank": 824,
+  "id": "K530"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "MIRACLE: Model-free Imitation and Reinforcement Learning for Adaptive Cut-Selection",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/0f8be7310d7ed5fca40f3b133d2394e9-Abstract-Conference.html",
+  "draw_rank": 828,
+  "id": "K531"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Position: RL Should Be Used to Adjust Foundation Models, NOT Abused",
+  "url": "https://icml.cc/virtual/2026/poster/67153",
+  "draw_rank": 829,
+  "id": "K532"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "AgentPO: Enhancing Multi-Agent Collaboration via Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/e79a54e19892f7a0b21aa5af3f52b882-Abstract-Conference.html",
+  "draw_rank": 830,
+  "id": "K533"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Learning Human-Like RL Agents Through Trajectory Optimization With Action Quantization",
+  "url": "https://neurips.cc/virtual/2025/poster/120253",
+  "draw_rank": 831,
+  "id": "K534"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Tree-based Dialogue Reinforced Policy Optimization for Red-Teaming Attacks",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/5ac1428c23b5da5e66d029646ea3206d-Abstract-Conference.html",
+  "draw_rank": 832,
+  "id": "K535"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Strict Subgoal Execution: Reliable Long-Horizon Planning in Hierarchical Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/ec94195bca07a55e83968fbfa6efb8b0-Abstract-Conference.html",
+  "draw_rank": 834,
+  "id": "K536"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Value Diffusion Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/115568",
+  "draw_rank": 835,
+  "id": "K537"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Credit-assigned Policy Gradient for Early Stage Retrieval in Two-stage Ranking",
+  "url": "https://icml.cc/virtual/2026/poster/62104",
+  "draw_rank": 836,
+  "id": "K538"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Draft-and-Audit Reinforcement Learning for Optimization Modeling",
+  "url": "https://icml.cc/virtual/2026/poster/66426",
+  "draw_rank": 838,
+  "id": "K539"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "CapRL: Stimulating Dense Image Caption Capabilities via Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/15f1dbc086bfd94d8c32557b573cbe18-Abstract-Conference.html",
+  "draw_rank": 841,
+  "id": "K540"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Algorithmic Guarantees for Distilling Supervised and Offline RL Datasets",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/6bfd8e0962d08cbfee31f2a53937a8d3-Abstract-Conference.html",
+  "draw_rank": 842,
+  "id": "K541"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Pretrain Value, Not Reward: Decoupled Value Policy Optimization",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/bb2405685bc44cbf1e7bf5a5de5cd4f2-Abstract-Conference.html",
+  "draw_rank": 843,
+  "id": "K542"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Improving Retrieval-Augmented Generation through Multi-Agent Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119552",
+  "draw_rank": 844,
+  "id": "K543"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "ATGen: Adversarial Reinforcement Learning for Test Case Generation",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/eed25c037bc08afcbefab6f7a6b700e0-Abstract-Conference.html",
+  "draw_rank": 845,
+  "id": "K544"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "HTAC: Hierarchical Task-Aware Composition for Continual Offline Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/63033",
+  "draw_rank": 846,
+  "id": "K545"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Closing the Sim-to-Real Gap in Non-Markovian Spreading Processes via GPU-Accelerated Distributional RL",
+  "url": "https://icml.cc/virtual/2026/poster/61274",
+  "draw_rank": 847,
+  "id": "K546"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "SocialJax: An Evaluation Suite for Multi-agent Reinforcement Learning in Sequential Social Dilemmas",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/5681251fa039cf49d6d11b906eded1b3-Abstract-Conference.html",
+  "draw_rank": 848,
+  "id": "K547"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Optimal Regret for Policy Optimization in Contextual Bandits",
+  "url": "https://icml.cc/virtual/2026/poster/65543",
+  "draw_rank": 850,
+  "id": "K548"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Mind the Budget: Accelerating Deep Reinforcement Learning using Constrained Early Exit Neural Networks",
+  "url": "https://icml.cc/virtual/2026/poster/61963",
+  "draw_rank": 851,
+  "id": "K549"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Good SFT Optimizes for SFT, Better SFT Prepares for Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/62456",
+  "draw_rank": 852,
+  "id": "K550"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "DPAIL: Training Diffusion Policy for Adversarial Imitation Learning without Policy Optimization",
+  "url": "https://neurips.cc/virtual/2025/poster/119072",
+  "draw_rank": 854,
+  "id": "K551"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Learning Reward–Cost Balance in Safe RL via Score-Based World Models",
+  "url": "https://icml.cc/virtual/2026/poster/61706",
+  "draw_rank": 857,
+  "id": "K552"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Regret Analysis of Average-Reward Unichain MDPs via an Actor-Critic Approach",
+  "url": "https://neurips.cc/virtual/2025/poster/115748",
+  "draw_rank": 858,
+  "id": "K553"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "VideoTrace-R1: Long Video-based Retrieval-Augmented Generation via Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/64591",
+  "draw_rank": 859,
+  "id": "K554"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Belief-Based Offline Reinforcement Learning for Delay-Robust Policy Optimization",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/da1131a86ac3c70e0b7cae89c3d4df22-Abstract-Conference.html",
+  "draw_rank": 860,
+  "id": "K555"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "ATPO: ADAPTIVE TREE POLICY OPTIMIZATION FOR MULTI-TURN MEDICAL DIALOGUE",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/34b3a40ec9752c1ae48fe85fef8fe8dc-Abstract-Conference.html",
+  "draw_rank": 866,
+  "id": "K556"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "FLAC: Maximum Entropy RL via Kinetic Energy Regularized Bridge Matching",
+  "url": "https://icml.cc/virtual/2026/poster/60961",
+  "draw_rank": 867,
+  "id": "K557"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Posterior Sampling Reinforcement Learning with Gaussian Processes for Continuous Control: Sublinear Regret Bounds for Unbounded State Spaces",
+  "url": "https://icml.cc/virtual/2026/poster/64056",
+  "draw_rank": 868,
+  "id": "K558"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Reparameterization Proximal Policy Optimization",
+  "url": "https://icml.cc/virtual/2026/poster/63789",
+  "draw_rank": 869,
+  "id": "K559"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Learning What to Generate: A Reinforcement Learning-based Closed-Loop Augmentation Framework for Person Re-identification",
+  "url": "https://icml.cc/virtual/2026/poster/65717",
+  "draw_rank": 870,
+  "id": "K560"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Selftok-Zero: Reinforcement Learning for Visual Generation via Discrete and Autoregressive Visual Tokens",
+  "url": "https://neurips.cc/virtual/2025/poster/117399",
+  "draw_rank": 872,
+  "id": "K561"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Estimation and Inference in Distributional Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/122012",
+  "draw_rank": 873,
+  "id": "K562"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "GenPO: Generative Diffusion Models Meet On-Policy Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119348",
+  "draw_rank": 875,
+  "id": "K563"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Uni-RL: Unifying Online and Offline RL via Implicit Value Regularization",
+  "url": "https://neurips.cc/virtual/2025/poster/116192",
+  "draw_rank": 877,
+  "id": "K564"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Improving Model-Based Reinforcement Learning by Converging to Flatter Minima",
+  "url": "https://neurips.cc/virtual/2025/poster/115396",
+  "draw_rank": 878,
+  "id": "K565"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "A Clean Slate for Offline Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119622",
+  "draw_rank": 880,
+  "id": "K566"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Reinforcement Learning from Human Feedback with Active Queries",
+  "url": "https://icml.cc/virtual/2026/poster/68804",
+  "draw_rank": 881,
+  "id": "K567"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Behavior-Invariant Task Representation Learning with Transformer-based World Models for Offline Meta-Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/61775",
+  "draw_rank": 882,
+  "id": "K568"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Faster Fixed-Point Methods for Multichain MDPs",
+  "url": "https://neurips.cc/virtual/2025/poster/115382",
+  "draw_rank": 883,
+  "id": "K569"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Towards Unified Multimodal Interleaved Generation via Group Relative Policy Optimization",
+  "url": "https://neurips.cc/virtual/2025/poster/116276",
+  "draw_rank": 884,
+  "id": "K570"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Reward-Aware Proto-Representations in Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119610",
+  "draw_rank": 885,
+  "id": "K571"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Composite Flow Matching for Reinforcement Learning with Shifted-Dynamics Data",
+  "url": "https://neurips.cc/virtual/2025/poster/119685",
+  "draw_rank": 886,
+  "id": "K572"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "WorldCompass: Reinforcement Learning for Long-Horizon World Models",
+  "url": "https://icml.cc/virtual/2026/poster/60526",
+  "draw_rank": 888,
+  "id": "K573"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Reinforcement Learning with Backtracking Feedback",
+  "url": "https://neurips.cc/virtual/2025/poster/120267",
+  "draw_rank": 889,
+  "id": "K574"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Vinci: Deep Thinking in Text-to-Image Generation using Unified Model with Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/116284",
+  "draw_rank": 890,
+  "id": "K575"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Principled Fast and Meta Knowledge Learners for Continual Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/2230ffcd5da10015ce0c6ce588fc2936-Abstract-Conference.html",
+  "draw_rank": 891,
+  "id": "K576"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Expertise Can Be Helpful for Reinforcement Learning-based Macro Placement",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/cbc1ad2066f0afebbcea930c5688fc1f-Abstract-Conference.html",
+  "draw_rank": 892,
+  "id": "K577"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Multivariate Dynamic Mediation Analysis under a Reinforcement Learning Framework",
+  "url": "https://neurips.cc/virtual/2025/poster/122020",
+  "draw_rank": 894,
+  "id": "K578"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "DRIVE: Best Data Scheduling Practices for Reinforcement Learning with Verifiable Reward in Competitive Code Generation",
+  "url": "https://icml.cc/virtual/2026/poster/63072",
+  "draw_rank": 895,
+  "id": "K579"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "TD-JEPA: Latent-predictive Representations for Zero-Shot Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/3d158f054ff0cb83397367234899db07-Abstract-Conference.html",
+  "draw_rank": 896,
+  "id": "K580"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Salus: Strategic Diagnostic Testing for Complex Diagnosis via Multi-Agent Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/64732",
+  "draw_rank": 897,
+  "id": "K581"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Mind the GAP! The Challenges of Scale in Pixel-based Deep Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/118523",
+  "draw_rank": 899,
+  "id": "K582"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Distributionally Robust Cooperative Multi-agent Reinforcement Learning with Value Factorization",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/101074481b94b857085a38994117511f-Abstract-Conference.html",
+  "draw_rank": 900,
+  "id": "K583"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Adaptive Code Watermarking Through Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/66298",
+  "draw_rank": 901,
+  "id": "K584"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Uncertainty-Aware Multi-Objective Reinforcement Learning-Guided Diffusion Models for 3D De Novo Molecular Design",
+  "url": "https://neurips.cc/virtual/2025/poster/116249",
+  "draw_rank": 904,
+  "id": "K585"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Clipped Q-Learning: Your Value Clipping Is Secretly A Robust Operator",
+  "url": "https://icml.cc/virtual/2026/poster/65691",
+  "draw_rank": 905,
+  "id": "K586"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "SAM-R1: Leveraging SAM for Reward Feedback in Multimodal Segmentation via Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/117014",
+  "draw_rank": 906,
+  "id": "K587"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Time Reversal Symmetry for Efficient Robotic Manipulations in Deep Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/118280",
+  "draw_rank": 907,
+  "id": "K588"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Trust, But Verify: A Self-Verification Approach to Reinforcement Learning with Verifiable Rewards",
+  "url": "https://neurips.cc/virtual/2025/poster/116768",
+  "draw_rank": 909,
+  "id": "K589"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Multi-Task Vehicle Routing Solver via Mixture of Specialized Experts under State-Decomposable MDP",
+  "url": "https://neurips.cc/virtual/2025/poster/116872",
+  "draw_rank": 912,
+  "id": "K590"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Reinforcement Learning with Action Chunking",
+  "url": "https://neurips.cc/virtual/2025/poster/117499",
+  "draw_rank": 913,
+  "id": "K591"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Group Verification-based Policy Optimization for Interactive Coding Agents",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/4d42cada32bb5119df5e5a2f0704c014-Abstract-Conference.html",
+  "draw_rank": 914,
+  "id": "K592"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Trust-Region Adaptive Policy Optimization",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/54e1381d0c0598127b90af4c940fd3d9-Abstract-Conference.html",
+  "draw_rank": 915,
+  "id": "K593"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Strategyproof Reinforcement Learning from Human Feedback",
+  "url": "https://neurips.cc/virtual/2025/poster/119861",
+  "draw_rank": 916,
+  "id": "K594"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Goal Reaching with Eikonal-Constrained Hierarchical Quasimetric Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/60d166781779c460d8ad83d78f2ba03a-Abstract-Conference.html",
+  "draw_rank": 920,
+  "id": "K595"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Text Generation as Continuous Latent Dynamics via Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/66391",
+  "draw_rank": 921,
+  "id": "K596"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "GXPO: Group Cross-Lingual Relative Policy Optimization for Code Generation",
+  "url": "https://icml.cc/virtual/2026/poster/66616",
+  "draw_rank": 923,
+  "id": "K597"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "A Provable Approach for End-to-End Safe Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119993",
+  "draw_rank": 925,
+  "id": "K598"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "UAV$^2$: A Unified and Adaptive Scheduling Framework for UAV Autopilot System with Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/66262",
+  "draw_rank": 926,
+  "id": "K599"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Rubric Curriculum RL: Exploiting the Generation-Verification Gap in Non-Verifiable Domains",
+  "url": "https://icml.cc/virtual/2026/poster/64634",
+  "draw_rank": 927,
+  "id": "K600"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Continuous Soft Actor-Critic: An Off-Policy Learning Method Robust to Time Discretization",
+  "url": "https://neurips.cc/virtual/2025/poster/119083",
+  "draw_rank": 929,
+  "id": "K601"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Positive–Unlabeled Reinforcement Learning Distillation for On-Premise Small Models",
+  "url": "https://icml.cc/virtual/2026/poster/63460",
+  "draw_rank": 930,
+  "id": "K602"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Stochastic Minimum-Cost Reach-Avoid Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/64017",
+  "draw_rank": 932,
+  "id": "K603"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Chunking the Critic: A Transformer-based Soft Actor-Critic with N-Step Returns",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/c33cd281f8cd784626a57de340e43fe4-Abstract-Conference.html",
+  "draw_rank": 935,
+  "id": "K604"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Structural Information-based Hierarchical Diffusion for Offline Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/117921",
+  "draw_rank": 936,
+  "id": "K605"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Process-Verified Reinforcement Learning for Theorem Proving via Lean",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/554a5982e26d0129f4038ad7a68fb3aa-Abstract-Conference.html",
+  "draw_rank": 937,
+  "id": "K606"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Beyond Token-level Supervision: Unlocking the Potential of Decoding-based Regression via Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/60986",
+  "draw_rank": 938,
+  "id": "K607"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "A Bayesian Fast-Slow Framework to Mitigate Interference in Non-Stationary Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/118436",
+  "draw_rank": 940,
+  "id": "K608"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "From Prior to Pro: Efficient Skill Mastery via Distribution Contractive RL Finetuning",
+  "url": "https://icml.cc/virtual/2026/poster/65416",
+  "draw_rank": 941,
+  "id": "K609"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Reinforcement Learning via Value Gradient Flow",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/291a1c80e9025f0ac2273fcf017fbd63-Abstract-Conference.html",
+  "draw_rank": 942,
+  "id": "K610"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Exploratory Diffusion Model for Unsupervised Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/04b943ec09ae71cc0fac482fb3edf8d8-Abstract-Conference.html",
+  "draw_rank": 945,
+  "id": "K611"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Revisiting OOD Generalization in Programmatic RL",
+  "url": "https://icml.cc/virtual/2026/poster/61736",
+  "draw_rank": 947,
+  "id": "K612"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Geometric Control of Out-of-Distribution Shift in Safe Offline RL",
+  "url": "https://icml.cc/virtual/2026/poster/60708",
+  "draw_rank": 948,
+  "id": "K613"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Model-based Offline RL via Robust Value-Aware Model Learning with Implicitly Differentiable Adaptive Weighting",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/7a209a1c557e5087272014e7dd37035f-Abstract-Conference.html",
+  "draw_rank": 949,
+  "id": "K614"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "This State Looks Like That: Self-Interpretable Reinforcement Learning Agents using Prototype Soft Actor-Critic",
+  "url": "https://icml.cc/virtual/2026/poster/62377",
+  "draw_rank": 950,
+  "id": "K615"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "DISCOVER: Automated Curricula for Sparse-Reward Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/116697",
+  "draw_rank": 952,
+  "id": "K616"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Flow-Based Policy for Online Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119311",
+  "draw_rank": 954,
+  "id": "K617"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Robust Policy Expansion for Offline-to-Online RL under Diverse Data Corruption",
+  "url": "https://neurips.cc/virtual/2025/poster/119066",
+  "draw_rank": 955,
+  "id": "K618"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Option-aware Temporally Abstracted Value for Offline Goal-Conditioned Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/116719",
+  "draw_rank": 957,
+  "id": "K619"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Robust Deep Reinforcement Learning against Adversarial Behavior Manipulation",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/15b780350b302a1bf9a3bd273f5c15a4-Abstract-Conference.html",
+  "draw_rank": 958,
+  "id": "K620"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Succeed or Learn Slowly: Sample Efficient Off-Policy Reinforcement Learning for Mobile App Control",
+  "url": "https://neurips.cc/virtual/2025/poster/119910",
+  "draw_rank": 959,
+  "id": "K621"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "PromptRL: Prompt Matters in RL for Flow-Based Image Generation",
+  "url": "https://icml.cc/virtual/2026/poster/63294",
+  "draw_rank": 961,
+  "id": "K622"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Single-stream Policy Optimization",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/e46fc33e80e9fa2febcdb058fba4beca-Abstract-Conference.html",
+  "draw_rank": 962,
+  "id": "K623"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "GDPO: Group reward-Decoupled Normalization Policy Optimization for Multi-reward RL Optimization",
+  "url": "https://icml.cc/virtual/2026/poster/63333",
+  "draw_rank": 963,
+  "id": "K624"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Efficient Safe Meta-Reinforcement Learning: Provable Near-Optimality and Anytime Safety",
+  "url": "https://neurips.cc/virtual/2025/poster/117317",
+  "draw_rank": 964,
+  "id": "K625"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Policy-Driven World Model Adaptation for Robust Offline Model-based Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/62695",
+  "draw_rank": 966,
+  "id": "K626"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Replay Failures as Successes: Sample-Efficient Reinforcement Learning for Instruction Following",
+  "url": "https://icml.cc/virtual/2026/poster/63253",
+  "draw_rank": 967,
+  "id": "K627"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Open-Reasoner-Zero: An Open Source Approach to Scaling Up Reinforcement Learning on the Base Model",
+  "url": "https://neurips.cc/virtual/2025/poster/118391",
+  "draw_rank": 969,
+  "id": "K628"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "SARL: Structure-Aligned Reinforcement Learning for Bridging the Perception-Action Gap in Airspace",
+  "url": "https://icml.cc/virtual/2026/poster/62482",
+  "draw_rank": 970,
+  "id": "K629"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Preserving Expert-Level Privacy in Offline Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/68835",
+  "draw_rank": 974,
+  "id": "K630"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "TGPO: Efficient Policy Optimization through Sequence Anchor and Information Gating",
+  "url": "https://icml.cc/virtual/2026/poster/62975",
+  "draw_rank": 975,
+  "id": "K631"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Factored Value Functions for Graph-Based Multi-Agent Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/62462",
+  "draw_rank": 976,
+  "id": "K632"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Optimizing the Unknown: Black Box Bayesian Optimization with Energy-Based Model and Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/118328",
+  "draw_rank": 978,
+  "id": "K633"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "RLtools: A Fast, Portable Deep Reinforcement Learning Library for Continuous Control",
+  "url": "https://neurips.cc/virtual/2025/poster/121970",
+  "draw_rank": 981,
+  "id": "K634"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Tackling Length Inflation Without Trade-offs: Group Relative Reward Rescaling for Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/61369",
+  "draw_rank": 982,
+  "id": "K635"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "ViCrit: A Verifiable Reinforcement Learning Proxy Task for Visual Perception in VLMs",
+  "url": "https://neurips.cc/virtual/2025/poster/116500",
+  "draw_rank": 983,
+  "id": "K636"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "BFM-Zero: A Promptable Behavioral Foundation Model for Humanoid Control Using Unsupervised Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/80b677bb4d17f77220be88e1d1fdebde-Abstract-Conference.html",
+  "draw_rank": 984,
+  "id": "K637"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Q-SAM: Unlocking Sharpness-Aware Minimization for Generalization in Offline Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/61812",
+  "draw_rank": 985,
+  "id": "K638"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "GEPO: Group Expectation Policy Optimization for Stable Heterogeneous Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/bd19ca8039547b339a6a37bd4df24405-Abstract-Conference.html",
+  "draw_rank": 986,
+  "id": "K639"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "FIRE: Learning to Navigate and Act on Real-World Files via Stateful Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/61960",
+  "draw_rank": 987,
+  "id": "K640"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Towards Efficient and Expressive Offline RL via Flow-Anchored Noise-conditioned Q-Learning",
+  "url": "https://icml.cc/virtual/2026/poster/61532",
+  "draw_rank": 989,
+  "id": "K641"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "LaSeR: Reinforcement Learning with Last-Token Self-Rewarding",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/e711dbcd6fb91da02c6d0599ec633c80-Abstract-Conference.html",
+  "draw_rank": 991,
+  "id": "K642"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Geometric Coherence Learning for Structuring Value Functions in Plain MDPs",
+  "url": "https://icml.cc/virtual/2026/poster/65328",
+  "draw_rank": 992,
+  "id": "K643"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Real-World Reinforcement Learning of Active Perception Behaviors",
+  "url": "https://neurips.cc/virtual/2025/poster/117999",
+  "draw_rank": 993,
+  "id": "K644"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Pass@K Policy Optimization: Solving Harder Reinforcement Learning Problems",
+  "url": "https://neurips.cc/virtual/2025/poster/117623",
+  "draw_rank": 994,
+  "id": "K645"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Geometric-Mean Policy Optimization",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/44a1f18afd6d5cc34d7e5c3d8a80f63b-Abstract-Conference.html",
+  "draw_rank": 996,
+  "id": "K646"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Parameter-Efficient Reinforcement Learning using Prefix Optimization",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/faa0586111749877e57abc54a23b2c38-Abstract-Conference.html",
+  "draw_rank": 998,
+  "id": "K647"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Adaptive Social Learning via Mode Policy Optimization for Language Agents",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/063d1fadbde557466bf5bcffe814a64e-Abstract-Conference.html",
+  "draw_rank": 999,
+  "id": "K648"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Lagrangian Perturbation Diffusion Steering: Latent Reinforcement Learning for Generative Policies",
+  "url": "https://icml.cc/virtual/2026/poster/65007",
+  "draw_rank": 1002,
+  "id": "K649"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Beyond Penalization: Diffusion-based Out-of-Distribution Detection and Selective Regularization in Offline Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/3a2dbdf0aca2006f4751abf0804620c0-Abstract-Conference.html",
+  "draw_rank": 1005,
+  "id": "K650"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "HPS: Hyperspherical Parameter Sharing for Efficient Multi-Agent Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/65604",
+  "draw_rank": 1006,
+  "id": "K651"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Reward-Preserving Counterfactual State Editing for Offline Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/66163",
+  "draw_rank": 1007,
+  "id": "K652"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "MRPO: Magnitude-Regularized Policy Optimization via L1 Constraints",
+  "url": "https://icml.cc/virtual/2026/poster/62705",
+  "draw_rank": 1008,
+  "id": "K653"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Physics-informed Value Learner for Offline Goal-Conditioned Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/118557",
+  "draw_rank": 1009,
+  "id": "K654"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "When RL Meets Adaptive Speculative Training:  A Unified Training-Serving System",
+  "url": "https://icml.cc/virtual/2026/poster/66675",
+  "draw_rank": 1011,
+  "id": "K655"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Reinforcement Learning for Machine Learning Engineering Agents",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/fe32a779aba1dc51a00861708944ee35-Abstract-Conference.html",
+  "draw_rank": 1012,
+  "id": "K656"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "SPHERE: Mitigating the Loss of Spectral Plasticity in Mixture-of-Experts for Deep Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/62337",
+  "draw_rank": 1013,
+  "id": "K657"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Posterior Behavioral Cloning: Pretraining BC Policies for Efficient RL Finetuning",
+  "url": "https://icml.cc/virtual/2026/poster/65049",
+  "draw_rank": 1018,
+  "id": "K658"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Occupancy Reward Shaping: Improving Credit Assignment for Offline Goal-Conditioned Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/5683583b88da51c79d2eb263f295286e-Abstract-Conference.html",
+  "draw_rank": 1021,
+  "id": "K659"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "On Computation and Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/65047",
+  "draw_rank": 1022,
+  "id": "K660"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Explainably Safe Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/116312",
+  "draw_rank": 1024,
+  "id": "K661"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/0e9e708b6f48e14fd0ac29e167413f76-Abstract-Conference.html",
+  "draw_rank": 1025,
+  "id": "K662"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "TTRL: Test-Time Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/117645",
+  "draw_rank": 1026,
+  "id": "K663"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Knothe-Rosenblatt Quantile Regression for Risk-sensitive Multi-objective Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/62476",
+  "draw_rank": 1027,
+  "id": "K664"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "A Reward-Free Viewpoint on Multi-Objective Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/54e12eaf098fa4eaeb215e6ff66c0abe-Abstract-Conference.html",
+  "draw_rank": 1028,
+  "id": "K665"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Commit to the Bit: Reactive Reinforcement Learning Done Right",
+  "url": "https://icml.cc/virtual/2026/poster/65442",
+  "draw_rank": 1029,
+  "id": "K666"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Bayesian Robust Cooperative Multi-Agent Reinforcement Learning Against Unknown Adversaries",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/352a1df3ee24f7b308619d3e8d180d18-Abstract-Conference.html",
+  "draw_rank": 1030,
+  "id": "K667"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Episodic Memory-Guided Controllable Experience Synthesis for Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/61811",
+  "draw_rank": 1031,
+  "id": "K668"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "On the Convergence of Projected Policy Gradient for Any Constant Step Sizes",
+  "url": "https://neurips.cc/virtual/2025/poster/121981",
+  "draw_rank": 1032,
+  "id": "K669"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Exploration from a Primal-Dual Lens: Value-Incentivized Actor-Critic Methods for Sample-Efficient Online RL",
+  "url": "https://neurips.cc/virtual/2025/poster/119479",
+  "draw_rank": 1036,
+  "id": "K670"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Model-Free Robust Average-Reward Reinforcement Learning with Sample Complexity Analysis",
+  "url": "https://icml.cc/virtual/2026/poster/65147",
+  "draw_rank": 1037,
+  "id": "K671"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "OmniSapiens: A Foundation Model for Social Behavior Processing via Heterogeneity-Aware Relative Policy Optimization",
+  "url": "https://icml.cc/virtual/2026/poster/64508",
+  "draw_rank": 1039,
+  "id": "K672"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Multi-timescale Reinforcement Learning by Value Reconstruction",
+  "url": "https://icml.cc/virtual/2026/poster/65186",
+  "draw_rank": 1040,
+  "id": "K673"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "DEAS: DEtached value learning with Action Sequence for Scalable Offline RL",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/68b7f71467c83d5d32275c5acbf6b588-Abstract-Conference.html",
+  "draw_rank": 1041,
+  "id": "K674"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "DR-SAC: Distributionally Robust Soft Actor-Critic for Reinforcement Learning under Uncertainty",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/957d6f822a7f518468b90aae6c78f9d7-Abstract-Conference.html",
+  "draw_rank": 1042,
+  "id": "K675"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Don’t Trade Off Safety: Diffusion Regularization for Constrained Offline RL",
+  "url": "https://neurips.cc/virtual/2025/poster/116918",
+  "draw_rank": 1046,
+  "id": "K676"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Exploring Data Scaling Trends and Effects in Reinforcement Learning from Human Feedback",
+  "url": "https://neurips.cc/virtual/2025/poster/117766",
+  "draw_rank": 1047,
+  "id": "K677"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Measure gradients, not activations! Enhancing neuronal activity in deep reinforcement learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119016",
+  "draw_rank": 1049,
+  "id": "K678"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Object-Centric World Models from Few-Shot Annotations for Sample-Efficient Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/93a4fc360b66fd23d6276156ca69eb50-Abstract-Conference.html",
+  "draw_rank": 1056,
+  "id": "K679"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "OnePO: Direct One-stage Policy Optimization for SFT-free Domain Adaptation",
+  "url": "https://icml.cc/virtual/2026/poster/64568",
+  "draw_rank": 1057,
+  "id": "K680"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Cypher-RI: Reinforcement Learning for Integrating Schema Selection into Cypher Generation",
+  "url": "https://neurips.cc/virtual/2025/poster/119900",
+  "draw_rank": 1058,
+  "id": "K681"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Learning to Watch: Active Video Anomaly Understanding via Interleaved Policy Optimization",
+  "url": "https://icml.cc/virtual/2026/poster/60569",
+  "draw_rank": 1059,
+  "id": "K682"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Frozen Policy Iteration: Computationally Efficient RL under Linear $Q^{\\pi}$ Realizability for Deterministic Dynamics",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/1fd79230a683f2c70b07cac5ad704f21-Abstract-Conference.html",
+  "draw_rank": 1060,
+  "id": "K683"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "BraVE: Offline Reinforcement Learning for Discrete Combinatorial Action Spaces",
+  "url": "https://neurips.cc/virtual/2025/poster/118272",
+  "draw_rank": 1061,
+  "id": "K684"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Real-World Adverse Weather Image Restoration via Dual-Level Reinforcement Learning with High-Quality Cold Start",
+  "url": "https://neurips.cc/virtual/2025/poster/119689",
+  "draw_rank": 1064,
+  "id": "K685"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "WMPO: World Model-based Policy Optimization for Vision-Language-Action Models",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/6605c7d1c1ae1521b328d036df5be1ae-Abstract-Conference.html",
+  "draw_rank": 1065,
+  "id": "K686"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "DRL-STAF: A Deep Reinforcement Learning Framework for State-Aware Forecasting of Complex Multivariate Hidden Markov Processes",
+  "url": "https://icml.cc/virtual/2026/poster/62284",
+  "draw_rank": 1066,
+  "id": "K687"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "HyperMARL: Adaptive Hypernetworks for Multi-Agent RL",
+  "url": "https://neurips.cc/virtual/2025/poster/119896",
+  "draw_rank": 1067,
+  "id": "K688"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Efficient Reinforcement Learning by Guiding World Models with Non-Curated Data",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/7ff013b7e372ba5b790352ccd6908f03-Abstract-Conference.html",
+  "draw_rank": 1068,
+  "id": "K689"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "BroRL: Scaling Reinforcement Learning via Broadened Exploration",
+  "url": "https://icml.cc/virtual/2026/poster/64690",
+  "draw_rank": 1069,
+  "id": "K690"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Computational Hardness of Reinforcement Learning with Partial $q^{\\pi}$-Realizability",
+  "url": "https://neurips.cc/virtual/2025/poster/115317",
+  "draw_rank": 1070,
+  "id": "K691"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Online Estimation and Inference for Robust Policy Evaluation in Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/122011",
+  "draw_rank": 1071,
+  "id": "K692"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "PAC-Bayesian Reinforcement Learning Trains Generalizable Policies",
+  "url": "https://icml.cc/virtual/2026/poster/66232",
+  "draw_rank": 1072,
+  "id": "K693"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "The Role of Target Update Frequencies in Q-Learning",
+  "url": "https://icml.cc/virtual/2026/poster/63451",
+  "draw_rank": 1073,
+  "id": "K694"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "On the Sample Complexity Bounds of Bilevel Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/116657",
+  "draw_rank": 1074,
+  "id": "K695"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "ReinFlow: Fine-tuning Flow Matching Policy with Online Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119473",
+  "draw_rank": 1075,
+  "id": "K696"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Exact Unlearning in Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/61630",
+  "draw_rank": 1077,
+  "id": "K697"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Offline Goal-conditioned Reinforcement Learning with Quasimetric Representations",
+  "url": "https://neurips.cc/virtual/2025/poster/118249",
+  "draw_rank": 1078,
+  "id": "K698"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "A Reinforcement Learning-based Bidding Strategy for Data Consumers in Auction-based Federated Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/115067",
+  "draw_rank": 1080,
+  "id": "K699"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Uncertainty-Based Smooth Policy Regularisation for Reinforcement Learning with Few Demonstrations",
+  "url": "https://neurips.cc/virtual/2025/poster/118461",
+  "draw_rank": 1081,
+  "id": "K700"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "TensorRL-QAS: Reinforcement learning with tensor networks for improved quantum architecture search",
+  "url": "https://neurips.cc/virtual/2025/poster/120287",
+  "draw_rank": 1084,
+  "id": "K701"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Angles Don’t Lie: Unlocking Training‑Efficient RL Through the Model’s Own Signals",
+  "url": "https://neurips.cc/virtual/2025/poster/118660",
+  "draw_rank": 1087,
+  "id": "K702"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "The Cost of Commitment in Option-Based Hierarchical RL",
+  "url": "https://icml.cc/virtual/2026/poster/66480",
+  "draw_rank": 1088,
+  "id": "K703"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Trust Region Inverse Reinforcement Learning: Explicit Dual Ascent using Local Policy Updates",
+  "url": "https://icml.cc/virtual/2026/poster/63401",
+  "draw_rank": 1090,
+  "id": "K704"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "MACS: Multi-Agent Reinforcement Learning for Optimization of Crystal Structures",
+  "url": "https://neurips.cc/virtual/2025/poster/117463",
+  "draw_rank": 1091,
+  "id": "K705"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "RLAC: Reinforcement Learning with Adversarial Critic for Free-Form Generation Tasks",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/e1bb743495a56babd23a99909bfc151e-Abstract-Conference.html",
+  "draw_rank": 1092,
+  "id": "K706"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Clipping Low-Probability Tokens in SFT Yields a Generalizable Initialization for RL",
+  "url": "https://icml.cc/virtual/2026/poster/61171",
+  "draw_rank": 1094,
+  "id": "K707"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Graph-Theoretic Intrinsic Reward: Guiding RL with Effective Resistance",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/4ec3ddc465c6d650c9c419fb91f1c00a-Abstract-Conference.html",
+  "draw_rank": 1095,
+  "id": "K708"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "GAR: Generative Adversarial Reinforcement Learning for Formal Theorem Proving",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/39ca8893ea38905a9d2ffe786e85af0f-Abstract-Conference.html",
+  "draw_rank": 1098,
+  "id": "K709"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Ctrl-DNA: Controllable Cell-Type-Specific Regulatory DNA Design via Constrained RL",
+  "url": "https://neurips.cc/virtual/2025/poster/118704",
+  "draw_rank": 1099,
+  "id": "K710"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "CaRe-BN: Precise Moving Statistics for Stabilizing Spiking Neural Networks in Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/5321b1dabcd2be188d796c21b733e8c7-Abstract-Conference.html",
+  "draw_rank": 1100,
+  "id": "K711"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "HyMTRL: A Hybrid Multi-Task Reinforcement Learning Framework via Phased Policy Evolution",
+  "url": "https://icml.cc/virtual/2026/poster/64787",
+  "draw_rank": 1101,
+  "id": "K712"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Reinforcement Learning via Self-Distillation",
+  "url": "https://icml.cc/virtual/2026/poster/64121",
+  "draw_rank": 1102,
+  "id": "K713"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Prior-Guided Diffusion Planning for Offline Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/116306",
+  "draw_rank": 1103,
+  "id": "K714"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Lookahead Tree-Based Rollouts for Enhanced Trajectory-Level Exploration in Reinforcement Learning with Verifiable Rewards",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/355d36f5f0922d050d9b6eaa3511d301-Abstract-Conference.html",
+  "draw_rank": 1104,
+  "id": "K715"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Automata-Conditioned Cooperative Multi-Agent Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/63254",
+  "draw_rank": 1109,
+  "id": "K716"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Breaking the Self-Confirming Loop: Diagnosing and Mitigating Systemic Reward Bias in Self-Rewarding RL",
+  "url": "https://icml.cc/virtual/2026/poster/61643",
+  "draw_rank": 1110,
+  "id": "K717"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Group Critical-token Policy Optimization for Autoregressive Image Generation",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/54c9bfb0885ae07f23607f617ab64c2b-Abstract-Conference.html",
+  "draw_rank": 1114,
+  "id": "K718"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "COGNAC: Cooperative Graph-based Networked Agent Challenges for Multi-Agent Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/121486",
+  "draw_rank": 1115,
+  "id": "K719"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "HYPRL: Reinforcement Learning of Control Policies for Hyperproperties",
+  "url": "https://neurips.cc/virtual/2025/poster/116291",
+  "draw_rank": 1116,
+  "id": "K720"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Learning to Clean: Reinforcement Learning for Noisy Label Correction",
+  "url": "https://neurips.cc/virtual/2025/poster/115438",
+  "draw_rank": 1117,
+  "id": "K721"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Test-Time Reinforcement Learning for Flow Matching",
+  "url": "https://icml.cc/virtual/2026/poster/63456",
+  "draw_rank": 1118,
+  "id": "K722"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Learning Interpretable Options by Identifying Reward Diffusion Bottlenecks in Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/64243",
+  "draw_rank": 1119,
+  "id": "K723"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Asymmetric Prompt Weighting for Reinforcement Learning with Verifiable Rewards",
+  "url": "https://icml.cc/virtual/2026/poster/61714",
+  "draw_rank": 1120,
+  "id": "K724"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "On the Tension Between Optimality and Adversarial Robustness in Policy Optimization",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/cf1213a76c2e981b799943122dabe097-Abstract-Conference.html",
+  "draw_rank": 1122,
+  "id": "K725"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Accelerating Diffusion Planners in Offline RL via Reward-Aware Consistency Trajectory Distillation",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/89f8c6687c4adafe4d500444cd3db39a-Abstract-Conference.html",
+  "draw_rank": 1124,
+  "id": "K726"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Leveraging Explanation to Improve Generalization of Meta Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/cd0697d4d1231335cc68a93fd0ed6774-Abstract-Conference.html",
+  "draw_rank": 1125,
+  "id": "K727"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Memory, Benchmark &amp; Robots: A Benchmark for Solving Complex Tasks with Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/1088fffae5f2aa8c8324e4f45f62248d-Abstract-Conference.html",
+  "draw_rank": 1127,
+  "id": "K728"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "From Generative to Episodic: Sample-Efficient Replicable Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/63040",
+  "draw_rank": 1128,
+  "id": "K729"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Demystifying The Mechanisms Behind Emergent Exploration in Goal-Conditioned RL",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/cbaffeeda13dbd8bf9489feb3f198ff4-Abstract-Conference.html",
+  "draw_rank": 1129,
+  "id": "K730"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Text2Grad: Reinforcement Learning from Natural Language Feedback",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/52fbb930ec6941099f1384321d8b9461-Abstract-Conference.html",
+  "draw_rank": 1131,
+  "id": "K731"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Consistently Simulating Human Personas with Multi-Turn Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119491",
+  "draw_rank": 1132,
+  "id": "K732"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Reusing Trajectories in Policy Gradients Enables Fast Convergence",
+  "url": "https://icml.cc/virtual/2026/poster/62435",
+  "draw_rank": 1133,
+  "id": "K733"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Efficient Offline Reinforcement Learning via Peer-Influenced Constraint",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/6f95a050a7eedab83ae7c27bae38e2e0-Abstract-Conference.html",
+  "draw_rank": 1134,
+  "id": "K734"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Rendering-Aware Reinforcement Learning for Vector Graphics Generation",
+  "url": "https://neurips.cc/virtual/2025/poster/120143",
+  "draw_rank": 1135,
+  "id": "K735"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Mastering Sparse CUDA Generation through Pretrained Models and Deep Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/32400dbdd8b99abe47a49e43dcb1fcf5-Abstract-Conference.html",
+  "draw_rank": 1137,
+  "id": "K736"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Reevaluating Policy Gradient Methods for Imperfect-Information Games",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/fe1c4991d57f37dfef62d01b3901ca54-Abstract-Conference.html",
+  "draw_rank": 1138,
+  "id": "K737"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Regret-Optimal Q-Learning with Low Cost for Single-Agent and Federated Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/116846",
+  "draw_rank": 1140,
+  "id": "K738"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "CORE: Collaborative Optimization with Reinforcement Learning and Evolutionary Algorithm for Floorplanning",
+  "url": "https://neurips.cc/virtual/2025/poster/119653",
+  "draw_rank": 1141,
+  "id": "K739"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Rethinking Policy Diversity in Ensemble Policy Gradient in Large-Scale Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/a597efe55fbf28afdd4d3f29a0e5fc3b-Abstract-Conference.html",
+  "draw_rank": 1144,
+  "id": "K740"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Scalable In-Context Q-Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/9e76870b97621b3153b84782062143ef-Abstract-Conference.html",
+  "draw_rank": 1145,
+  "id": "K741"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Stabilizing MoE Reinforcement Learning by Aligning Training and Inference Routers",
+  "url": "https://icml.cc/virtual/2026/poster/63177",
+  "draw_rank": 1148,
+  "id": "K742"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "SELF-HARMONY: LEARNING TO HARMONIZE SELF-SUPERVISION AND SELF-PLAY IN TEST-TIME REINFORCEMENT LEARNING",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/86178c06fd59ebc58dc31f8edb3c54af-Abstract-Conference.html",
+  "draw_rank": 1155,
+  "id": "K743"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "SCRIBES: Web-Scale Script-Based Semi-Structured Data Extraction with Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/d8af89af081e3e3b52fca7c92bd6ccab-Abstract-Conference.html",
+  "draw_rank": 1156,
+  "id": "K744"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "ComputerRL: Scaling End-to-End Online Reinforcement Learning for Computer Use Agents",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/28707388472adc117714e83d44bfaebb-Abstract-Conference.html",
+  "draw_rank": 1159,
+  "id": "K745"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "How to Lose Inherent Counterfactuality in Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/587cd6e13f848e5a8b41614b5a2713ba-Abstract-Conference.html",
+  "draw_rank": 1160,
+  "id": "K746"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Rethinking the Design Space of Reinforcement Learning for Diffusion Models: On the Importance of Likelihood Estimation Beyond Loss Design",
+  "url": "https://icml.cc/virtual/2026/poster/66436",
+  "draw_rank": 1162,
+  "id": "K747"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "A Unifying View of Linear Function Approximation in Off-Policy RL Through Matrix Splitting and Preconditioning",
+  "url": "https://neurips.cc/virtual/2025/poster/115971",
+  "draw_rank": 1163,
+  "id": "K748"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Efficient Policy Optimization in Robust Constrained MDPs with Iteration Complexity Guarantees",
+  "url": "https://neurips.cc/virtual/2025/poster/120039",
+  "draw_rank": 1165,
+  "id": "K749"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "KL-Regularized Reinforcement Learning for Generative Modelling is Designed to Mode Collapse",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/5306f6ce1082d29e4968acdacab84fd7-Abstract-Conference.html",
+  "draw_rank": 1166,
+  "id": "K750"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Discounted Beta–Bernoulli Reward Estimation for Sample-Efficient Reinforcement Learning with Verifiable Rewards",
+  "url": "https://icml.cc/virtual/2026/poster/64040",
+  "draw_rank": 1167,
+  "id": "K751"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Offline Multi-Agent Reinforcement Learning via Sequential Score Decomposition",
+  "url": "https://icml.cc/virtual/2026/poster/64191",
+  "draw_rank": 1168,
+  "id": "K752"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Off-Policy Safe Reinforcement Learning with Cost-Constrained Optimistic Exploration",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/c383e44d9a878d1982d9abb838bd5d8a-Abstract-Conference.html",
+  "draw_rank": 1169,
+  "id": "K753"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "A$^2$Search: Ambiguity-Aware Question Answering with Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/dcbdb995a239204228305ab34c5da096-Abstract-Conference.html",
+  "draw_rank": 1170,
+  "id": "K754"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "PolicyGuard: Towards Test-time and Step-level Adversary Defense for Reinforcement Learning Agent",
+  "url": "https://icml.cc/virtual/2026/poster/65628",
+  "draw_rank": 1172,
+  "id": "K755"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "APPLE: Toward General Active Perception via Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/9e8c2895db691eaab85af37bddee75aa-Abstract-Conference.html",
+  "draw_rank": 1174,
+  "id": "K756"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Near-Optimal Regret for Policy Optimization in Contextual MDPs with General Offline Function Approximation",
+  "url": "https://icml.cc/virtual/2026/poster/66220",
+  "draw_rank": 1176,
+  "id": "K757"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Reinforcement Learning with Evolving Rubrics for Deep Research",
+  "url": "https://icml.cc/virtual/2026/poster/65886",
+  "draw_rank": 1177,
+  "id": "K758"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Instance-Dependent Continuous-Time Reinforcement Learning via Maximum Likelihood Estimation",
+  "url": "https://icml.cc/virtual/2026/poster/63052",
+  "draw_rank": 1178,
+  "id": "K759"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "EAPO: Enhancing Policy Optimization with On-Demand Expert Assistance",
+  "url": "https://icml.cc/virtual/2026/poster/61893",
+  "draw_rank": 1180,
+  "id": "K760"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "FOCUS: Forcing In-Context Object Localization through Visual Support Constraints and Policy Optimization",
+  "url": "https://icml.cc/virtual/2026/poster/64698",
+  "draw_rank": 1181,
+  "id": "K761"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Offline imitation learning in $Q^\\pi$-realizable MDPs without expert realizability",
+  "url": "https://neurips.cc/virtual/2025/poster/115543",
+  "draw_rank": 1183,
+  "id": "K762"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Learning to Reason in Structured In-context Environments with Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/4b32c2943a02331792877cc6b5205f49-Abstract-Conference.html",
+  "draw_rank": 1184,
+  "id": "K763"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Solving Continuous Mean Field Games: Deep Reinforcement Learning for Non-Stationary Dynamics",
+  "url": "https://neurips.cc/virtual/2025/poster/118686",
+  "draw_rank": 1185,
+  "id": "K764"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Role-aware Multi-agent Reinforcement Learning for Coordinated Emergency Traffic Control",
+  "url": "https://neurips.cc/virtual/2025/poster/118063",
+  "draw_rank": 1188,
+  "id": "K765"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Rebalancing Return Coverage for Conditional Sequence Modeling in Offline Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/115162",
+  "draw_rank": 1189,
+  "id": "K766"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "VTool-R1: VLMs Learn to Think with Images via Reinforcement Learning on Multimodal Tool Use",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/7e6f445a74cdb71931aac64f1e3f49c9-Abstract-Conference.html",
+  "draw_rank": 1192,
+  "id": "K767"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Consolidating Reinforcement Learning for Multimodal Discrete Diffusion Models",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/ef6c94e9cf4d169298479ee2e230ee13-Abstract-Conference.html",
+  "draw_rank": 1194,
+  "id": "K768"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Skill Learning via Policy Diversity Yields Identifiable Representations for Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/247a729f6b08f91a9b27de6d8e38980b-Abstract-Conference.html",
+  "draw_rank": 1195,
+  "id": "K769"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Optimal Dynamic Regret by Transformers for Non-Stationary Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/118814",
+  "draw_rank": 1198,
+  "id": "K770"
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Learning More with Less: A Dynamic Dual-Level Down-Sampling Framework for Efficient Policy Optimization",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/9c3156498c31f8c46cb47cffb22df683-Abstract-Conference.html",
+  "draw_rank": 1199,
+  "id": "K771"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Convergence of Two-Timescale Markovian Stochastic Approximations with Applications in Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/64873",
+  "draw_rank": 1201,
+  "id": "K772"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Simultaneous Statistical Inference for Off-Policy Evaluation in Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119382",
+  "draw_rank": 1202,
+  "id": "K773"
+ }
+]

@@ -74,6 +74,7 @@ NAMES = {"fr": {"Q3": "Hyperparam. méthode", "Q4": "Hyperparam. réf.", "Q5": "
                 "Q7": "Held-out", "Q8": "Signif. test", "X2": "Uncertainty", "X4": "Baselines tuned",
                 "X7": "Compute"}}
 curve = json.load(open(ROOT / "sim/analysis/e1_curve.json"))
+b1 = json.load(open(ROOT / "sim/analysis/b1_trpo.json"))["trpo"]
 for lang, names in NAMES.items():
     hu = lambda x: int(Decimal(str(x * 100)).quantize(Decimal("1"), ROUND_HALF_UP))
     pts = lambda t: (hu(t["diff"]), hu(t["lo"]), hu(t["hi"]))
@@ -82,9 +83,12 @@ for lang, names in NAMES.items():
     write(f"ecarts_classique_{lang}", ["g", "mean", "lo", "hi"],
           [(names[k], *pts(audit[k]["classic_vs_ours2018"])) for k in ("Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "X2", "X4", "X7")])
     write(f"e1_henderson_{lang}", ["region", "value"], [
-        ("Nos 30 essais, au hasard" if lang == "fr" else "Our 30 runs, random", round(curve["random_5v5"]["abs_mean_t_p95"], 1)),
-        ("Nos 30 essais, triés" if lang == "fr" else "Our 30 runs, sorted", round(curve["sorted_5v5"]["abs_mean_t_p95"], 1)),
-        ("Henderson et al. 2018, publié" if lang == "fr" else "Henderson et al. 2018, published", 9.1)])
+        ("PPO, au hasard" if lang == "fr" else "PPO, random", round(curve["random_5v5"]["abs_mean_t_p95"], 1)),
+        ("PPO, triés" if lang == "fr" else "PPO, sorted", round(curve["sorted_5v5"]["abs_mean_t_p95"], 1)),
+        ("TRPO, au hasard" if lang == "fr" else "TRPO, random", round(b1["random_5v5"]["mean_t"]["abs_t_p95"], 1)),
+        ("TRPO, triés" if lang == "fr" else "TRPO, sorted", round(b1["sorted_5v5"]["mean_t"]["abs_t_p95"], 1)),
+        ("TRPO, points empilés" if lang == "fr" else "TRPO, stacked points", round(b1["random_5v5"]["pooled"]["abs_t_p95"], 1)),
+        ("Henderson 2018" if lang == "fr" else "Henderson 2018", 9.1)])
 
 # Every figure in the academic theme (Okabe-Ito palette, serif text). FIXES are deterministic edits of the
 # rendered SVG for what the kinds expose no option for; the PDF is then drawn from that same SVG.
@@ -123,8 +127,8 @@ T = {
             "--set", "y_axis_title=Écart en points (2026 moins 2018)",
             "--set", "x_axis_title=Critère de la grille"],
         "e1-henderson": [
-            "--title", "Nos essais n'approchent pas la statistique de 2018",
-            "--set", "subtitle=PPO-SB3 sur HalfCheetah-v5, deux groupes de 5 essais. Nos barres : 95e centile sur 10 000 tirages",
+            "--title", "Ni PPO ni TRPO n'approchent la statistique de 2018",
+            "--set", "subtitle=HalfCheetah-v5, deux groupes de 5 essais parmi 30. Nos barres : 95e centile sur 10 000 tirages",
             "--set", "x_label=Origine des essais",
             "--set", "y_label=Valeur absolue du t moyen le long de la courbe", "--set", "language=fr"],
     },
@@ -162,8 +166,8 @@ T = {
             "--set", "y_axis_title=Gap in points (2026 minus 2018)",
             "--set", "x_axis_title=Checklist item"],
         "e1-henderson": [
-            "--title", "Our runs come nowhere near the 2018 statistic",
-            "--set", "subtitle=PPO-SB3 on HalfCheetah-v5, two groups of 5 runs. Our bars: 95th percentile over 10,000 draws",
+            "--title", "Neither PPO nor TRPO comes near the 2018 statistic",
+            "--set", "subtitle=HalfCheetah-v5, two groups of 5 runs out of 30. Our bars: 95th percentile over 10,000 draws",
             "--set", "x_label=Where the runs come from",
             "--set", "y_label=Absolute mean t along the learning curve"],
     },
@@ -177,7 +181,7 @@ KINDS = {"remesure-dumbbell": ("dumbbell", "remesure_dumbbell", [
          "grpo-truncation": ("stacked-bar", "grpo_truncation", []),
          "ecarts-pineau": ("errorbar", "ecarts_pineau", ["--set", "width=1040"]),
          "ecarts-classique": ("errorbar", "ecarts_classique", ["--set", "width=1160"]),
-         "e1-henderson": ("bar", "e1_henderson", [])}
+         "e1-henderson": ("bar", "e1_henderson", ["--set", "width=900"])}
 
 for lang in L:
     for name, (kind, data, common) in KINDS.items():

@@ -19,6 +19,7 @@ res = {r["k"]: r for r in J("study/results_final.json")}
 audit = {r["k"]: r for r in J("study/audit_stats.json")["rows"]}
 agree = J("study/audit_stats.json")["agreement"]
 e1, curve = J("sim/analysis/e1.json"), J("sim/analysis/e1_curve.json")
+b1 = J("sim/analysis/b1_trpo.json")
 
 # Survey counts that analyze.py does not write out: recount them from the codes, with the same rules.
 import os
@@ -141,6 +142,20 @@ q_r, q_s = curve["random_5v5"]["abs_mean_t_p95"], curve["sorted_5v5"]["abs_mean_
 add("curve p95", f"dépasse {half_up(q_r, 1)} quand les groupes sont tirés au hasard, {half_up(q_s, 1)} quand on les trie".replace(".", ","),
     f"exceeds {half_up(q_r, 1)} when the groups are drawn at random, {half_up(q_s, 1)} when")
 assert curve["random_5v5"]["share_abs_mean_t_ge_9"] == 0 and curve["sorted_5v5"]["share_abs_mean_t_ge_9"] == 0
+# B1, Henderson's statistic with TRPO (b1_trpo.py).
+tr, pp = b1["trpo"], b1["ppo_sb3"]
+fr1 = lambda x: str(half_up(x, 1)).replace(".", ",")
+add("B1 spread", f"son écart type vaut {pct(tr['cv'])} de sa moyenne, contre {pct(pp['cv'])} pour PPO",
+    f"its standard deviation is {pct(tr['cv'], lang='en')} of its mean, against {pct(pp['cv'], lang='en')} for PPO")
+add("B1 mean t", f"le t moyen ne dépasse {fr1(tr['random_5v5']['mean_t']['abs_t_p95'])} qu'une fois sur vingt, comme pour PPO ; triés, {fr1(tr['sorted_5v5']['mean_t']['abs_t_p95'])}",
+    f"the average t exceeds {half_up(tr['random_5v5']['mean_t']['abs_t_p95'], 1)} only one time in twenty, as with PPO; sorted, {half_up(tr['sorted_5v5']['mean_t']['abs_t_p95'], 1)}")
+add("B1 pooled", f"Elle monte à {fr1(tr['random_5v5']['pooled']['abs_t_p95'])} au hasard et à {fr1(tr['sorted_5v5']['pooled']['abs_t_p95'])} triés",
+    f"It rises to {half_up(tr['random_5v5']['pooled']['abs_t_p95'], 1)} at random and {half_up(tr['sorted_5v5']['pooled']['abs_t_p95'], 1)} sorted")
+add("B1 pooled FP", f"elle déclare une différence dans {pct(tr['random_5v5']['pooled']['false_positive'])} des tirages au hasard",
+    f"it declares a difference in {pct(tr['random_5v5']['pooled']['false_positive'], lang='en')} of random draws")
+assert half_up(tr["random_5v5"]["mean_t"]["abs_t_p95"], 1) == half_up(curve["random_5v5"]["abs_mean_t_p95"], 1)  # "comme pour PPO"
+assert all(r[m]["share_abs_t_ge_henderson"] == 0 for a in b1.values() if isinstance(a, dict) and "cv" in a
+           for s in ("random_5v5", "sorted_5v5") for r in [a[s]] for m in r)  # "Aucun tirage, dans aucune lecture"
 
 norm = lambda s: re.sub(r"\s+", " ", s)
 bad = 0

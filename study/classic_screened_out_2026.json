@@ -1,0 +1,3985 @@
+[
+ {
+  "venue": "ICML 2026",
+  "title": "From Player to Master: Enhancing Test-Time Learning of LLM Agents via Reinforcement Learning over Memory",
+  "url": "https://icml.cc/virtual/2026/poster/62463",
+  "draw_rank": 1,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "PS-PPO : Prefix-Sampling PPO for Critic-Free RLHF",
+  "url": "https://icml.cc/virtual/2026/poster/62531",
+  "draw_rank": 7,
+  "prescreen_hit": [
+   "rlhf"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Rethinking the Trust Region in LLM Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/62611",
+  "draw_rank": 11,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "LLM-Explorer: A Plug-in Reinforcement Learning Policy Exploration Enhancement Driven by Large Language Models",
+  "url": "https://neurips.cc/virtual/2025/poster/117709",
+  "draw_rank": 12,
+  "prescreen_hit": [
+   "llm",
+   "language model"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "On Effectiveness and Efficiency of Agentic Tool-calling and RL Training",
+  "url": "https://icml.cc/virtual/2026/poster/66433",
+  "draw_rank": 13,
+  "prescreen_hit": [
+   "agentic"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Reward Redistribution for CVaR MDPs using a Bellman Operator on L-infinity",
+  "url": "https://icml.cc/virtual/2026/poster/65973",
+  "draw_rank": 14,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "MMedAgent-RL: Optimizing Multi-Agent Collaboration for Multimodal Medical Reasoning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/83e25d16305255ae61e2cfb34639e177-Abstract-Conference.html",
+  "draw_rank": 15,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "LaRes: Evolutionary Reinforcement Learning with LLM-based Adaptive Reward Search",
+  "url": "https://neurips.cc/virtual/2025/poster/116462",
+  "draw_rank": 17,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Learning to Correct: Reinforcement Learning for Multi-Attempt Chain-of-Thought",
+  "url": "https://icml.cc/virtual/2026/poster/66555",
+  "draw_rank": 24,
+  "prescreen_hit": [
+   "chain-of-thought"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Improving Reward Models with Proximal Policy Exploration for Preference-Based Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119549",
+  "draw_rank": 30,
+  "prescreen_hit": [
+   "preference",
+   "reward model"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "General Exploratory Bonus for Optimistic Exploration in RLHF",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/e90edb290360871d352c47886c68c0d3-Abstract-Conference.html",
+  "draw_rank": 32,
+  "prescreen_hit": [
+   "rlhf"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Reinforcement Learning for Reasoning in Large Language Models with One Training Example",
+  "url": "https://neurips.cc/virtual/2025/poster/118838",
+  "draw_rank": 33,
+  "prescreen_hit": [
+   "language model",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "BREAD: Branched Rollouts from Expert Anchors Bridge SFT & RL for Reasoning",
+  "url": "https://neurips.cc/virtual/2025/poster/118358",
+  "draw_rank": 34,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "SeRL: Self-play Reinforcement Learning for Large Language Models with Limited Data",
+  "url": "https://neurips.cc/virtual/2025/poster/117365",
+  "draw_rank": 43,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Reasoning Models Hallucinate More: Factuality-Aware Reinforcement Learning for Large Reasoning Models",
+  "url": "https://neurips.cc/virtual/2025/poster/118780",
+  "draw_rank": 45,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Mitigating Reward Hacking in RLHF via Bayesian Non-negative Reward Modeling",
+  "url": "https://icml.cc/virtual/2026/poster/65437",
+  "draw_rank": 46,
+  "prescreen_hit": [
+   "rlhf",
+   "reward model"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "PRIMT: Preference-based Reinforcement Learning with Multimodal Feedback and Trajectory Synthesis from Foundation Models",
+  "url": "https://neurips.cc/virtual/2025/poster/119903",
+  "draw_rank": 47,
+  "prescreen_hit": [
+   "preference"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Process vs. Outcome Reward: Which is Better for Agentic RAG Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/116682",
+  "draw_rank": 48,
+  "prescreen_hit": [
+   "agentic"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Learning When to Think: Shaping Adaptive Reasoning in R1-Style Models via Multi-Stage RL",
+  "url": "https://neurips.cc/virtual/2025/poster/118864",
+  "draw_rank": 52,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "$f$-Divergence Regularized RLHF: Two Tales of Sampling and Unified Analyses",
+  "url": "https://icml.cc/virtual/2026/poster/63348",
+  "draw_rank": 59,
+  "prescreen_hit": [
+   "rlhf"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "How RLHF Amplifies Sycophancy",
+  "url": "https://icml.cc/virtual/2026/poster/63414",
+  "draw_rank": 61,
+  "prescreen_hit": [
+   "rlhf"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Using Reinforcement Learning to Train Large Language Models to Explain Human Decisions",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/32727f9e251e1a6301fc61a435ef15ee-Abstract-Conference.html",
+  "draw_rank": 62,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Revisual-R1: Advancing Multimodal Reasoning From Optimized Cold Start to Staged Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/3792ac815260f4ba55ed71c7906cce36-Abstract-Conference.html",
+  "draw_rank": 64,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Unified Algorithms for RL with Decision-Estimation Coefficients: PAC, Reward-Free, Preference-Based Learning, and Beyond",
+  "url": "https://neurips.cc/virtual/2025/poster/122019",
+  "draw_rank": 67,
+  "prescreen_hit": [
+   "preference"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Reinforcement Learning Finetunes Small Subnetworks in Large Language Models",
+  "url": "https://neurips.cc/virtual/2025/poster/120324",
+  "draw_rank": 68,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Refining Hybrid Genetic Search for CVRP via Reinforcement Learning-Finetuned LLM",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/b54532b0e57eb963b19e00583376cda3-Abstract-Conference.html",
+  "draw_rank": 76,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Group Distributionally Robust Optimization-Driven RL for LLM Reasoning",
+  "url": "https://icml.cc/virtual/2026/poster/61281",
+  "draw_rank": 77,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Trust Region Masking for Long-Horizon LLM Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/62782",
+  "draw_rank": 78,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "TruthRL: Incentivizing Truthful LLMs via Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/63785",
+  "draw_rank": 80,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Quantile Advantage Estimation: Stabilizing RLVR for LLM Reasoning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/d6520fa7f71dc8e09ed5939a60a64218-Abstract-Conference.html",
+  "draw_rank": 82,
+  "prescreen_hit": [
+   "llm",
+   "reasoning",
+   "rlvr"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Depth-Breadth Synergy in RLVR: Unlocking LLM Reasoning Gains with Adaptive Exploration",
+  "url": "https://icml.cc/virtual/2026/poster/60955",
+  "draw_rank": 86,
+  "prescreen_hit": [
+   "llm",
+   "reasoning",
+   "rlvr"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Agentic RL Scaling Law: Spontaneous Code Execution for Mathematical Problem Solving",
+  "url": "https://neurips.cc/virtual/2025/poster/116372",
+  "draw_rank": 87,
+  "prescreen_hit": [
+   "math",
+   "agentic"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "ReSearch: Learning to Reason with Search for LLMs via Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/118259",
+  "draw_rank": 94,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Reinforcement Learning with Imperfect Transition Predictions: A Bellman-Jensen Approach",
+  "url": "https://neurips.cc/virtual/2025/poster/119213",
+  "draw_rank": 96,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "On Entropy Control in LLM-RL Algorithms",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/dd0f29b61307b08e69cf93a50e3298fb-Abstract-Conference.html",
+  "draw_rank": 98,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Graph-R1: Towards Agentic GraphRAG Framework via End-to-end Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/63269",
+  "draw_rank": 103,
+  "prescreen_hit": [
+   "agentic"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Reinforcement Learning with Verifiable Rewards: GRPO's Loss, Dynamics, and Success Amplification",
+  "url": "https://icml.cc/virtual/2026/poster/60548",
+  "draw_rank": 105,
+  "prescreen_hit": [
+   "grpo"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Unifying Value Alignment and Assignment in Cross-Domain Offline Reinforcement Learning with Heterogeneous Datasets",
+  "url": "https://icml.cc/virtual/2026/poster/62450",
+  "draw_rank": 109,
+  "prescreen_hit": [
+   "alignment"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Perception-Aware Policy Optimization for Multimodal Reasoning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/82846e19e6d42ebfd4ace4361def29ae-Abstract-Conference.html",
+  "draw_rank": 113,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Asymmetric Proximal Policy Optimization: mini-critics boost LLM reasoning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/1533b2d13d0e0078fd193ec78ac3f8a5-Abstract-Conference.html",
+  "draw_rank": 114,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Agentic Reinforcement Learning with Implicit Step Rewards",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/d1e6739f319be4ba8e748cc05f23bba1-Abstract-Conference.html",
+  "draw_rank": 115,
+  "prescreen_hit": [
+   "agentic"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "ResT: Reshaping Token-Level Policy Gradients for Tool-Use Large Language Models",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/8730837e119f6b5d1b25f6da1dc2c28a-Abstract-Conference.html",
+  "draw_rank": 116,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "The Obfuscation Atlas: Mapping Where Honesty Emerges in RLVR with Deception Probes",
+  "url": "https://icml.cc/virtual/2026/poster/60766",
+  "draw_rank": 117,
+  "prescreen_hit": [
+   "rlvr"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "h1: Bootstrapping LLMs to Reason over Longer Horizons via Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/66494",
+  "draw_rank": 121,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "B-Spar: Bayesian Sparse-Reward Modeling for RL-based Image Editing",
+  "url": "https://icml.cc/virtual/2026/poster/63022",
+  "draw_rank": 123,
+  "prescreen_hit": [
+   "reward model"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "TreeGRPO: Tree-Advantage GRPO for Online RL Post-Training of Diffusion Models",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/1227a7a80529ecfe033065b9fcc5a042-Abstract-Conference.html",
+  "draw_rank": 126,
+  "prescreen_hit": [
+   "grpo"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Beyond Normalization: Rethinking the Partition Function as a Difficulty Scheduler for RLVR",
+  "url": "https://icml.cc/virtual/2026/poster/63739",
+  "draw_rank": 129,
+  "prescreen_hit": [
+   "rlvr"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Factored Causal Representation Learning for Robust Reward Modeling in RLHF",
+  "url": "https://icml.cc/virtual/2026/poster/65508",
+  "draw_rank": 139,
+  "prescreen_hit": [
+   "rlhf",
+   "reward model"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Segment Policy Optimization: Effective Segment-Level Credit Assignment in RL for Large Language Models",
+  "url": "https://neurips.cc/virtual/2025/poster/119509",
+  "draw_rank": 140,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Emergent Hierarchical Reasoning in LLMs through Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/79322f3668888f8f7fc99bbd98fbbaed-Abstract-Conference.html",
+  "draw_rank": 142,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "RePrompt: Reasoning-Augmented Reprompting for Text-to-Image Generation via Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/176eb6c51427bd7581d514aaf2a365ed-Abstract-Conference.html",
+  "draw_rank": 143,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "StepCodeReasoner: Aligning Code Reasoning with Stepwise Execution Traces via Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/66738",
+  "draw_rank": 145,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Slow-Fast Policy Optimization: Reposition-Before-Update for LLM Reasoning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/1ac50421cc847c5866eb8ff920e6d790-Abstract-Conference.html",
+  "draw_rank": 146,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "GoT-R1: Unleashing Reasoning Capability of Autoregressive Visual Generation with Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/c0c165157df7e3082f9c6d70d3a4b6e9-Abstract-Conference.html",
+  "draw_rank": 154,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Understanding the Performance Gap in Preference Learning: A Dichotomy of RLHF and DPO",
+  "url": "https://icml.cc/virtual/2026/poster/61206",
+  "draw_rank": 156,
+  "prescreen_hit": [
+   "rlhf",
+   "preference"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Med-Scout: Curing MLLMs' Geometric Blindness in Medical Perception via Geometry-Aware RL Post-Training",
+  "url": "https://icml.cc/virtual/2026/poster/62231",
+  "draw_rank": 157,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "SetPO: Set-Level Policy Optimization for Diversity-Preserving LLM Reasoning",
+  "url": "https://icml.cc/virtual/2026/poster/61114",
+  "draw_rank": 159,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Injecting Distributional Awareness into MLLMs via Reinforcement Learning for Deep Imbalanced Regression",
+  "url": "https://icml.cc/virtual/2026/poster/63018",
+  "draw_rank": 160,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "ResRL: Boosting LLM Reasoning via Negative Sample Projection Residual Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/62006",
+  "draw_rank": 162,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "S-GRPO: Early Exit via Reinforcement Learning in Reasoning Models",
+  "url": "https://neurips.cc/virtual/2025/poster/115333",
+  "draw_rank": 164,
+  "prescreen_hit": [
+   "reasoning",
+   "grpo"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Semi-off-Policy Reinforcement Learning for Vision-Language Slow-Thinking Reasoning",
+  "url": "https://neurips.cc/virtual/2025/poster/115068",
+  "draw_rank": 167,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Efficient RL Training for LLMs with Experience Replay",
+  "url": "https://icml.cc/virtual/2026/poster/63133",
+  "draw_rank": 168,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Boosting Multi-Domain Reasoning of LLMs via Curvature-Guided Policy Optimization",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/f0bb0cc7cd2a027cff5f237f28def7eb-Abstract-Conference.html",
+  "draw_rank": 171,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "On Robustness and Chain-of-Thought Consistency of RL-Finetuned VLMs",
+  "url": "https://icml.cc/virtual/2026/poster/65763",
+  "draw_rank": 172,
+  "prescreen_hit": [
+   "chain-of-thought"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Reshaping Reasoning in LLMs: A Theoretical Analysis of RL Training Dynamics through Pattern Selection",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/19a100e9a85108b143c47671b89ef157-Abstract-Conference.html",
+  "draw_rank": 175,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "SRPO: Self-Reflective Policy Optimization for Long-Horizon Reasoning",
+  "url": "https://icml.cc/virtual/2026/poster/64480",
+  "draw_rank": 177,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "PeRL: Permutation-Enhanced Reinforcement Learning for Interleaved Vision-Language Reasoning",
+  "url": "https://neurips.cc/virtual/2025/poster/116647",
+  "draw_rank": 186,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "On the Emergence of Implicit Curriculum in RLVR Learning Dynamics",
+  "url": "https://icml.cc/virtual/2026/poster/64677",
+  "draw_rank": 187,
+  "prescreen_hit": [
+   "rlvr"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "DistFlow: A Fully Distributed RL Framework for Scalable and Efficient LLM Post-Training",
+  "url": "https://icml.cc/virtual/2026/poster/63064",
+  "draw_rank": 189,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Scaling Large Vision-Language Model RL Training via Efficient Load Balancing",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/8cb31912235561112339f04903657f72-Abstract-Conference.html",
+  "draw_rank": 191,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "RLVR-World: Training World Models with Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/116433",
+  "draw_rank": 194,
+  "prescreen_hit": [
+   "rlvr"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Controllable Exploration in Hybrid-Policy RLVR for Multi-Modal Reasoning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/66c779f6f017f804d134fe44f378a6d2-Abstract-Conference.html",
+  "draw_rank": 197,
+  "prescreen_hit": [
+   "reasoning",
+   "rlvr"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Act Only When It Pays: Efficient Reinforcement Learning for LLM Reasoning via Selective Rollouts",
+  "url": "https://neurips.cc/virtual/2025/poster/115272",
+  "draw_rank": 198,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "HCRMP: An LLM-Hinted Contextual Reinforcement Learning Framework for Autonomous Driving",
+  "url": "https://neurips.cc/virtual/2025/poster/120251",
+  "draw_rank": 199,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Hierarchy-of-Groups Policy Optimization for Long-Horizon Agentic Tasks",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/2e7eb932f93d5db3b61c7a001e72fd0f-Abstract-Conference.html",
+  "draw_rank": 200,
+  "prescreen_hit": [
+   "agentic"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "ProRL: Prolonged Reinforcement Learning Expands Reasoning Boundaries in Large Language Models",
+  "url": "https://neurips.cc/virtual/2025/poster/117423",
+  "draw_rank": 202,
+  "prescreen_hit": [
+   "language model",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "STVG-R1: Incentivizing Instance-Level Reasoning and Grounding in Videos via Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/ee6630dcbcff857026e474fc857aa9f0-Abstract-Conference.html",
+  "draw_rank": 205,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "RiskPO: Risk-based Policy Optimization with Verifiable Reward for LLM Post-Training",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/096b1019463f34eb241e87cfce8dfe16-Abstract-Conference.html",
+  "draw_rank": 208,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "REA-RL: Reflection-Aware Online Reinforcement Learning for Efficient Reasoning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/4f5cd5f496a81d5f0f8e6714b0068682-Abstract-Conference.html",
+  "draw_rank": 217,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Break the Block: Dynamic-size Reasoning Blocks for Diffusion Large Language Models via Monotonic Entropy Descent with Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/66581",
+  "draw_rank": 219,
+  "prescreen_hit": [
+   "language model",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "LC-Opt: Benchmarking Reinforcement Learning and Agentic AI for End-to-End Liquid Cooling Optimization in Data Centers",
+  "url": "https://neurips.cc/virtual/2025/poster/121589",
+  "draw_rank": 220,
+  "prescreen_hit": [
+   "agentic"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Selective Expert Guidance for Effective and Diverse Exploration in Reinforcement Learning of LLMs",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/66c2e8fcd514b14be28b0e046f08f07b-Abstract-Conference.html",
+  "draw_rank": 223,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "How RL Unlocks the Aha Moment in Geometric Interleaved Reasoning",
+  "url": "https://icml.cc/virtual/2026/poster/64817",
+  "draw_rank": 228,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "CoRe: Combined Rewards with Vision-Language Model Feedback for Preference-Aligned Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/65271",
+  "draw_rank": 231,
+  "prescreen_hit": [
+   "language model",
+   "preference"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "IAPO: Information-Aware Policy Optimization for Token-Efficient Reasoning",
+  "url": "https://icml.cc/virtual/2026/poster/63983",
+  "draw_rank": 232,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Chasing Moving Targets with Online Self-Play Reinforcement Learning for Safer Language Models",
+  "url": "https://icml.cc/virtual/2026/poster/61969",
+  "draw_rank": 234,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Breaking the Exploration Bottleneck: Rubric-Scaffolded Reinforcement Learning for Open-Ended LLM Reasoning",
+  "url": "https://icml.cc/virtual/2026/poster/64959",
+  "draw_rank": 240,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Omni-Perception Policy Optimization for Multimodal Emotion Reasoning",
+  "url": "https://icml.cc/virtual/2026/poster/66328",
+  "draw_rank": 242,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "PyVision-RL: Forging Open Agentic Vision Models via RL",
+  "url": "https://icml.cc/virtual/2026/poster/65374",
+  "draw_rank": 243,
+  "prescreen_hit": [
+   "agentic"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Which Heads Matter for Reasoning? RL-Guided KV Cache Compression",
+  "url": "https://icml.cc/virtual/2026/poster/62599",
+  "draw_rank": 244,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Attention Illuminates LLM Reasoning: The Uncovered Preplan-and-Anchor Rhythm Enables Fine-Grained Policy Optimization",
+  "url": "https://icml.cc/virtual/2026/poster/61925",
+  "draw_rank": 247,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "CausalXRL: Explainable Reinforcement Learning through Causal Graph Reasoning",
+  "url": "https://icml.cc/virtual/2026/poster/64755",
+  "draw_rank": 248,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "MM-HELIX: Boosting Multimodal Long-Chain Reflective Reasoning with Holistic Platform and Adaptive Hybrid Policy Optimization",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/bc82dbfbfa43232be85b8d9838f49c3e-Abstract-Conference.html",
+  "draw_rank": 249,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Rank-GRPO: Training LLM-based Conversational Recommender Systems with Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/fb8f2d4e90018c0fae060dff09a91ce3-Abstract-Conference.html",
+  "draw_rank": 253,
+  "prescreen_hit": [
+   "llm",
+   "grpo"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Compiler-R1: Towards Agentic Compiler Auto-tuning with Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/115582",
+  "draw_rank": 254,
+  "prescreen_hit": [
+   "agentic"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Detecting Data Contamination from Reinforcement Learning Post-training for Large Language Models",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/ab003a4f85ecb1b7b1514ff539dc7395-Abstract-Conference.html",
+  "draw_rank": 260,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "TraPO: A Semi-Supervised Reinforcement Learning Framework for Boosting LLM Reasoning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/bb290ccaacc433da7ec192e6c4d909b3-Abstract-Conference.html",
+  "draw_rank": 262,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Provably Efficient Online RLHF with One-Pass Reward Modeling",
+  "url": "https://neurips.cc/virtual/2025/poster/119981",
+  "draw_rank": 263,
+  "prescreen_hit": [
+   "rlhf",
+   "reward model"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "ReMA: Learning to Meta-Think for LLMs with Multi-agent Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/115462",
+  "draw_rank": 268,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "SPIRAL: Self-Play on Zero-Sum Games Incentivizes Reasoning via Multi-Agent Multi-Turn Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/3ba7c8c36b71b2fc31fae3361aefefbf-Abstract-Conference.html",
+  "draw_rank": 269,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Phase-Aware Mixture of Experts for Agentic Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/64382",
+  "draw_rank": 272,
+  "prescreen_hit": [
+   "agentic"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "ARLArena: A Unified Framework for Stable Agentic Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/65909",
+  "draw_rank": 273,
+  "prescreen_hit": [
+   "agentic"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "The Easy, the Hard, and the Learnable: Confidence and Difficulty-Adaptive Policy Optimization for LLM Reasoning",
+  "url": "https://icml.cc/virtual/2026/poster/62741",
+  "draw_rank": 274,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Conditional Equivalence of DPO and RLHF: Assumptions, Failure Modes, and Provable Alignment",
+  "url": "https://icml.cc/virtual/2026/poster/66055",
+  "draw_rank": 278,
+  "prescreen_hit": [
+   "rlhf",
+   "alignment"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Safe Reinforcement Learning with Preference-based Constraint Inference",
+  "url": "https://icml.cc/virtual/2026/poster/66726",
+  "draw_rank": 282,
+  "prescreen_hit": [
+   "preference"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "StitchCUDA: An Automated Multi-Agents End-to-End GPU Programing Framework with Rubric-based Agentic Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/64924",
+  "draw_rank": 283,
+  "prescreen_hit": [
+   "agentic"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Alignment Tampering: How Reinforcement Learning from Human Feedback Is Exploited to Optimize Misaligned Biases",
+  "url": "https://icml.cc/virtual/2026/poster/61418",
+  "draw_rank": 284,
+  "prescreen_hit": [
+   "alignment"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Flow-GRPO: Training Flow Matching Models via Online RL",
+  "url": "https://neurips.cc/virtual/2025/poster/116065",
+  "draw_rank": 286,
+  "prescreen_hit": [
+   "grpo"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "PCPO: Proportionate Credit Policy Optimization for Preference Alignment of Image Generation Models",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/ce182e31662883d4decc84a0255335b6-Abstract-Conference.html",
+  "draw_rank": 289,
+  "prescreen_hit": [
+   "preference",
+   "alignment"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "STAIR: Addressing Stage Misalignment through Temporal-Aligned Preference Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/117607",
+  "draw_rank": 290,
+  "prescreen_hit": [
+   "preference",
+   "alignment"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Path-Coupled Bellman Flows for Distributional Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/64218",
+  "draw_rank": 291,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Beyond the 80/20 Rule: High-Entropy Minority Tokens Drive Effective Reinforcement Learning for LLM Reasoning",
+  "url": "https://neurips.cc/virtual/2025/poster/115123",
+  "draw_rank": 294,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "RL Tango: Reinforcing Generator and Verifier Together for Language Reasoning",
+  "url": "https://neurips.cc/virtual/2025/poster/118724",
+  "draw_rank": 295,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "GPG: A Simple and Strong Reinforcement Learning Baseline for Model Reasoning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/61715c5379f9061abc9d8efe3f1723e4-Abstract-Conference.html",
+  "draw_rank": 300,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "ETS: Energy-Guided Test-Time Scaling for Training-Free RL Alignment",
+  "url": "https://icml.cc/virtual/2026/poster/61604",
+  "draw_rank": 304,
+  "prescreen_hit": [
+   "alignment"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "RL for Reasoning by Adaptively Revealing Rationales",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/c073a9d002f3dab99a7af18642d74bdb-Abstract-Conference.html",
+  "draw_rank": 308,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "The Two-Hump Problem: Bridging the Difficulty Gap in Mathematical Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/64251",
+  "draw_rank": 315,
+  "prescreen_hit": [
+   "math"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Single-Rollout Hidden-State Dynamics for Training-Free RLVR Data Selection",
+  "url": "https://icml.cc/virtual/2026/poster/61458",
+  "draw_rank": 316,
+  "prescreen_hit": [
+   "rlvr"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "See First, Reason Later: Mutual Information-Guided Reinforcement Learning for Vision-Language Models",
+  "url": "https://icml.cc/virtual/2026/poster/63334",
+  "draw_rank": 318,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "HiPER: Hierarchical Plan–Execute RL for Multi-Turn LLM Agents",
+  "url": "https://icml.cc/virtual/2026/poster/64058",
+  "draw_rank": 319,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Mitigating the Safety Alignment Tax with Null-Space Constrained Policy Optimization",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/e664650506f1cf2b4696df892147c06e-Abstract-Conference.html",
+  "draw_rank": 321,
+  "prescreen_hit": [
+   "alignment"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Jackpot: Align Actor-Policy Distribution for scalable and stable RL for LLM",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/7038ef06db52353d2e4afefbd1a55e5b-Abstract-Conference.html",
+  "draw_rank": 327,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "LLM-Guided Communication for Cooperative Multi-Agent Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/61721",
+  "draw_rank": 328,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Preference-based Policy Optimization from Sparse-reward Offline Dataset",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/8aec95bc5344290249c32841c07c9dd1-Abstract-Conference.html",
+  "draw_rank": 332,
+  "prescreen_hit": [
+   "preference"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Preference Distillation via Value based Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/116869",
+  "draw_rank": 333,
+  "prescreen_hit": [
+   "preference"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Coupled Variational Reinforcement Learning for Language Model General Reasoning",
+  "url": "https://icml.cc/virtual/2026/poster/63261",
+  "draw_rank": 337,
+  "prescreen_hit": [
+   "language model",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Erase to Improve: Erasable Reinforcement Learning for Search-Augmented LLMs",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/9ffc16880822e689abcf6801e11f7f53-Abstract-Conference.html",
+  "draw_rank": 338,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Preference-Enhanced Reinforcement Learning for Pluralistic Image Inpainting",
+  "url": "https://icml.cc/virtual/2026/poster/63619",
+  "draw_rank": 350,
+  "prescreen_hit": [
+   "preference"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "KL-Regularized RLHF with Multiple Reference Models: Exact Solutions and Sample Complexity",
+  "url": "https://neurips.cc/virtual/2025/poster/116496",
+  "draw_rank": 353,
+  "prescreen_hit": [
+   "rlhf"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "The Optimal Token Baseline: Variance Reduction for Long-Horizon LLM-RL",
+  "url": "https://icml.cc/virtual/2026/poster/62303",
+  "draw_rank": 355,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Fine-tuning Behavioral Cloning Policies with Preference‑Based Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/88bdfbf58591102f4b8855a22ac76437-Abstract-Conference.html",
+  "draw_rank": 356,
+  "prescreen_hit": [
+   "preference"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Efficient Preference-Based Reinforcement Learning: Randomized Exploration meets Experimental Design",
+  "url": "https://neurips.cc/virtual/2025/poster/115890",
+  "draw_rank": 357,
+  "prescreen_hit": [
+   "preference"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "LLMs are Greedy Agents: Effects of RL Fine-tuning on Decision-Making Abilities",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/cf2fcda40de8520027af2eadcafdecd6-Abstract-Conference.html",
+  "draw_rank": 358,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Hista and Numca: Estimate State Value Effectively for Large Language Model Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/62546",
+  "draw_rank": 359,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Beyond Euclidean Clipping: Overcoming Exploration Collapse in LLM RL via Riemannian Isometric Policy Optimization",
+  "url": "https://icml.cc/virtual/2026/poster/61727",
+  "draw_rank": 360,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "GVPO: Group Variance Policy Optimization for Large Language Model Post-Training",
+  "url": "https://neurips.cc/virtual/2025/poster/117119",
+  "draw_rank": 361,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Decoupling Reasoning and Confidence: Resurrecting Calibration in Reinforcement Learning from Verifiable Rewards",
+  "url": "https://icml.cc/virtual/2026/poster/66459",
+  "draw_rank": 362,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Scaf-GRPO: Scaffolded Group Relative Policy Optimization for Enhancing LLM Reasoning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/d604a371bf833227ef4f0daf3c1c8135-Abstract-Conference.html",
+  "draw_rank": 364,
+  "prescreen_hit": [
+   "llm",
+   "reasoning",
+   "grpo"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Unifying Stable Optimization and Reference Regularization in RLHF",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/4290cccf23be59e42a575d026ccbeeb8-Abstract-Conference.html",
+  "draw_rank": 365,
+  "prescreen_hit": [
+   "rlhf"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Alternating Reinforcement Learning for Rubric-Based Reward Modeling in Non-Verifiable LLM Post-Training",
+  "url": "https://icml.cc/virtual/2026/poster/66465",
+  "draw_rank": 370,
+  "prescreen_hit": [
+   "llm",
+   "reward model"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "T$^2$PO: Uncertainty-Guided Exploration Control for Stable Multi-Turn Agentic Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/63090",
+  "draw_rank": 375,
+  "prescreen_hit": [
+   "agentic"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "MATH-Beyond: A Benchmark for RL to Expand Beyond the Base Model",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/6fdf57c71bc1f1ee29014b8dc52e723f-Abstract-Conference.html",
+  "draw_rank": 380,
+  "prescreen_hit": [
+   "math"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Reinforcement Learning with Pairwise Preferences in Long-Term Decision Problems",
+  "url": "https://icml.cc/virtual/2026/poster/65387",
+  "draw_rank": 387,
+  "prescreen_hit": [
+   "preference"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Optimizing Anytime Reasoning via Budget Relative Policy Optimization",
+  "url": "https://neurips.cc/virtual/2025/poster/116484",
+  "draw_rank": 394,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "UDM-GRPO: Stable and Efficient Group Relative Policy Optimization for Uniform Discrete Diffusion Models",
+  "url": "https://icml.cc/virtual/2026/poster/63538",
+  "draw_rank": 395,
+  "prescreen_hit": [
+   "grpo"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Mirage or Method? How Model–Task Alignment Induces Divergent RL Conclusions",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/c8d2860e1b51a1ffadc7ed0a06f8d8f5-Abstract-Conference.html",
+  "draw_rank": 396,
+  "prescreen_hit": [
+   "alignment"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Risk-Sensitive Reinforcement Learning for Alleviating Exploration Dilemmas in Large Language Models",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/4e6d14709eae0cbc49a1d19d87fb8b21-Abstract-Conference.html",
+  "draw_rank": 397,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Greedy Sampling Is Provably Efficient For RLHF",
+  "url": "https://neurips.cc/virtual/2025/poster/116468",
+  "draw_rank": 398,
+  "prescreen_hit": [
+   "rlhf"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Dynamics-Predictive Sampling for Active RL Finetuning of Large Reasoning Models",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/2ae33575c3374050654ae7802326c81d-Abstract-Conference.html",
+  "draw_rank": 399,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Beyond Majority Voting: Self-Reflective Test-Time Reinforcement Learning for LLM Reasoning",
+  "url": "https://icml.cc/virtual/2026/poster/62036",
+  "draw_rank": 407,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "InftyThink+: Effective and Efficient Infinite-Horizon Reasoning via Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/61068",
+  "draw_rank": 412,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "AREAL: A Large-Scale Asynchronous Reinforcement Learning System for Language Reasoning",
+  "url": "https://neurips.cc/virtual/2025/poster/117538",
+  "draw_rank": 414,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "From Shortcuts to Reasoning: Robust Post-Training of Theory of Mind with Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/64668",
+  "draw_rank": 416,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Exploration vs Exploitation: Rethinking RLVR through Clipping, Entropy, and Spurious Reward",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/d99e8e80a6c41e148db686918dd7eab3-Abstract-Conference.html",
+  "draw_rank": 417,
+  "prescreen_hit": [
+   "rlvr"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "FastGRPO: Accelerating Policy Optimization via Concurrency-aware Speculative Decoding and Online Draft Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/61674667d642ae52f6bb281bea90ee29-Abstract-Conference.html",
+  "draw_rank": 420,
+  "prescreen_hit": [
+   "grpo"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Beyond RLHF and NLHF: Population-Proportional Alignment under an Axiomatic Framework",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/4a05804445b94eb76108bc54f16f73ca-Abstract-Conference.html",
+  "draw_rank": 421,
+  "prescreen_hit": [
+   "rlhf",
+   "alignment"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Seeing is Solving: Unlocking Efficient Multimodal RL via View Alignment",
+  "url": "https://icml.cc/virtual/2026/poster/64627",
+  "draw_rank": 426,
+  "prescreen_hit": [
+   "alignment"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "RL makes MLLMs see better than SFT",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/804dbf8d3b8eee1ef875c6857efc64eb-Abstract-Conference.html",
+  "draw_rank": 429,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "WHAT MAKES MATH PROBLEMS HARD FOR REINFORCEMENT LEARNING: A CASE STUDY",
+  "url": "https://neurips.cc/virtual/2025/poster/118658",
+  "draw_rank": 430,
+  "prescreen_hit": [
+   "math"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Solver-Informed RL: Grounding Large Language Models for Authentic Optimization Modeling",
+  "url": "https://neurips.cc/virtual/2025/poster/119660",
+  "draw_rank": 431,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "On Predictability of Reinforcement Learning Dynamics for Large Language Models",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/4c454d34f3a4c8d6b4ca85a918e5d7ba-Abstract-Conference.html",
+  "draw_rank": 432,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Segment-Aligned Policy Optimization for Multi-Modal Reasoning",
+  "url": "https://icml.cc/virtual/2026/poster/66325",
+  "draw_rank": 436,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "SRPO: Enhancing Multimodal LLM Reasoning via Reflection-Aware Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/116679",
+  "draw_rank": 439,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Agentic Monte Carlo: Simulating Reinforcement Learning for Black-Box Agents",
+  "url": "https://icml.cc/virtual/2026/poster/62740",
+  "draw_rank": 443,
+  "prescreen_hit": [
+   "agentic"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Incentivizing Agentic Reasoning in LLM Judges via Tool-Integrated Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/fd5871d681aff88f1ed824394daf441d-Abstract-Conference.html",
+  "draw_rank": 448,
+  "prescreen_hit": [
+   "llm",
+   "reasoning",
+   "agentic"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Agentic Reinforced Policy Optimization",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/1c58e53bdf1fb045440256fd567531ae-Abstract-Conference.html",
+  "draw_rank": 449,
+  "prescreen_hit": [
+   "agentic"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Do Not Let Low-Probability Tokens Over-Dominate in RL for LLMs",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/be0e41aa31bb4bc7e882035d82f2d781-Abstract-Conference.html",
+  "draw_rank": 455,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Prompted Policy Search: Reinforcement Learning through Linguistic and Numerical Reasoning in LLMs",
+  "url": "https://neurips.cc/virtual/2025/poster/119575",
+  "draw_rank": 458,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "J1: Incentivizing Thinking in LLM-as-a-Judge via Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/118c2d372db0939c7dcd716ebe6447b2-Abstract-Conference.html",
+  "draw_rank": 459,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Sparse but Critical: A Token-Level Analysis of Distributional Shifts in RLVR Fine-Tuning of LLMs",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/c9b7e6175f2bd3c2824f24aa7ac313d6-Abstract-Conference.html",
+  "draw_rank": 467,
+  "prescreen_hit": [
+   "llm",
+   "rlvr"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Quantile Reward Policy Optimization: Alignment with Pointwise Regression and Exact Partition Functions",
+  "url": "https://neurips.cc/virtual/2025/poster/117851",
+  "draw_rank": 470,
+  "prescreen_hit": [
+   "alignment"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Rewarding Doubt: A Reinforcement Learning Approach to Calibrated Confidence Expression of Large Language Models",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/bf8065446507b0d3842838564ac4f1f3-Abstract-Conference.html",
+  "draw_rank": 472,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Attention as a Compass: Efficient Exploration for Process-Supervised RL in Reasoning Models",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/b5758cf47184e79c7e3564a0285b5783-Abstract-Conference.html",
+  "draw_rank": 476,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "MURKA: Multi-Reward Reinforcement Learning with Knowledge Alignment for Optimization Tasks",
+  "url": "https://neurips.cc/virtual/2025/poster/116867",
+  "draw_rank": 477,
+  "prescreen_hit": [
+   "alignment"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Exploration Hacking: Can LLMs Learn to Resist RL Training?",
+  "url": "https://icml.cc/virtual/2026/poster/64674",
+  "draw_rank": 481,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Experience is the Best Teacher: Motivating Effective Exploration in Reinforcement Learning for LLMs",
+  "url": "https://icml.cc/virtual/2026/poster/65561",
+  "draw_rank": 485,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "PortraitRL: Reinforcement Learning for Personalized Portrait Pose Transfer with Multi-Objective Reward Modeling",
+  "url": "https://icml.cc/virtual/2026/poster/60581",
+  "draw_rank": 488,
+  "prescreen_hit": [
+   "reward model"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Learning to Explore: Scaling Agentic Reasoning via Exploration-Aware Policy Optimization",
+  "url": "https://icml.cc/virtual/2026/poster/63287",
+  "draw_rank": 489,
+  "prescreen_hit": [
+   "reasoning",
+   "agentic"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "BOOSTAPR: Boosting Automated Program Repair via Execution-Grounded Reinforcement Learning with Dual Reward Models",
+  "url": "https://icml.cc/virtual/2026/poster/64866",
+  "draw_rank": 492,
+  "prescreen_hit": [
+   "reward model"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "SPG: Sandwiched Policy Gradient for Masked Diffusion Language Models",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/2a2de7a4dcda5c6aac2db8cd771e6a47-Abstract-Conference.html",
+  "draw_rank": 493,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Reasoning Gym: Reasoning Environments for Reinforcement Learning with Verifiable Rewards",
+  "url": "https://neurips.cc/virtual/2025/poster/121745",
+  "draw_rank": 497,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "RL Grokking Recipe: How Does RL Unlock and Transfer New Algorithms in LLMs?",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/96842011407c2691ab4eefff48fc864d-Abstract-Conference.html",
+  "draw_rank": 498,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Reasoning Cache: Continual Improvement Over Long Horizons via Short-Horizon RL",
+  "url": "https://icml.cc/virtual/2026/poster/64887",
+  "draw_rank": 499,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Scaling up Multi-Turn Off-Policy RL and Multi-Agent Tree Search for LLM Step-Provers",
+  "url": "https://icml.cc/virtual/2026/poster/65141",
+  "draw_rank": 505,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Landmark-Guided Policy Optimization for Multi-Objective Language Model Selection",
+  "url": "https://icml.cc/virtual/2026/poster/62547",
+  "draw_rank": 506,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "iGRPO: Fast Online RL for Flow Matching Model with Instant Reward",
+  "url": "https://icml.cc/virtual/2026/poster/61183",
+  "draw_rank": 510,
+  "prescreen_hit": [
+   "grpo"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "VL-Rethinker: Incentivizing Self-Reflection of Vision-Language Models with Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119918",
+  "draw_rank": 511,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "CFPO: Counterfactual Policy Optimization for Multimodal Reasoning",
+  "url": "https://icml.cc/virtual/2026/poster/65634",
+  "draw_rank": 513,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "QeRL: Beyond Efficiency - Quantization-enhanced Reinforcement Learning for LLMs",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/a15a2ece7f0663d1ba7db91103ac61c9-Abstract-Conference.html",
+  "draw_rank": 515,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Consistent Paths Lead to Truth: Self-Rewarding Reinforcement Learning for LLM Reasoning",
+  "url": "https://neurips.cc/virtual/2025/poster/117063",
+  "draw_rank": 517,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Dual-Objective Reinforcement Learning with Novel Hamilton-Jacobi-Bellman Formulations",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/df55ee6e59f8ac4a625219e11fe9ddba-Abstract-Conference.html",
+  "draw_rank": 519,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "NFT: Bridging Supervised Learning and Reinforcement Learning in Math Reasoning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/c9867d5a22653ce98b02595061e40f12-Abstract-Conference.html",
+  "draw_rank": 521,
+  "prescreen_hit": [
+   "reasoning",
+   "math"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Flash-GRPO: Efficient Alignment for Video Diffusion via One-Step Policy Optimization",
+  "url": "https://icml.cc/virtual/2026/poster/63629",
+  "draw_rank": 526,
+  "prescreen_hit": [
+   "grpo",
+   "alignment"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Efficient Preference Poisoning Attack on Offline RLHF",
+  "url": "https://icml.cc/virtual/2026/poster/66514",
+  "draw_rank": 528,
+  "prescreen_hit": [
+   "rlhf",
+   "preference"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Curriculum Reinforcement Learning for Black-Box Prompt Tuning via Large Language Models",
+  "url": "https://icml.cc/virtual/2026/poster/66416",
+  "draw_rank": 529,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "OPPO: Accelerating PPO-based RLHF via Pipeline Overlap",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/6b4fd4a4607f57fe65b5e276bdb17ed1-Abstract-Conference.html",
+  "draw_rank": 531,
+  "prescreen_hit": [
+   "rlhf"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "CPMöbius: Iterative Coach–Player Reasoning for Data-Free Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/64791",
+  "draw_rank": 534,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "On the Interplay of Pre-Training, Mid-Training, and RL on Reasoning Language Models",
+  "url": "https://icml.cc/virtual/2026/poster/63850",
+  "draw_rank": 536,
+  "prescreen_hit": [
+   "language model",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Graph-GRPO: Training Graph Flow Models with Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/65744",
+  "draw_rank": 537,
+  "prescreen_hit": [
+   "grpo"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Implicit Turn-Wise Policy Optimization for Proactive User-LLM Interaction",
+  "url": "https://icml.cc/virtual/2026/poster/64167",
+  "draw_rank": 541,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "AgentTailor: A Semantic-Aware LLM-Based Multi-Agent System with Actor-Critic Structure",
+  "url": "https://icml.cc/virtual/2026/poster/60754",
+  "draw_rank": 548,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Diversity-Aware Policy Optimization for Large Language Model Reasoning",
+  "url": "https://neurips.cc/virtual/2025/poster/119844",
+  "draw_rank": 551,
+  "prescreen_hit": [
+   "language model",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Thinking on the Fly: Test-Time Reasoning Enhancement via Latent Thought Policy Optimization",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/fce2d8a485746f76aac7b5650db2679d-Abstract-Conference.html",
+  "draw_rank": 554,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "First SFT, Second RL, Third UPT: Continual Improving Multi-Modal LLM Reasoning via Unsupervised Post-Training",
+  "url": "https://neurips.cc/virtual/2025/poster/118898",
+  "draw_rank": 559,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Tapered Off-Policy REINFORCE - Stable and efficient reinforcement learning for large language models",
+  "url": "https://neurips.cc/virtual/2025/poster/116762",
+  "draw_rank": 563,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Beyond Two-Stage Training: Cooperative SFT and RL for LLM Reasoning",
+  "url": "https://icml.cc/virtual/2026/poster/60691",
+  "draw_rank": 566,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "VisualQuality-R1: Reasoning-Induced Image Quality Assessment via Reinforcement Learning to Rank",
+  "url": "https://neurips.cc/virtual/2025/poster/115506",
+  "draw_rank": 568,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Reinforcement Learning for Out-of-Distribution Reasoning in LLMs: An Empirical Study on Diagnosis-Related Group Coding",
+  "url": "https://neurips.cc/virtual/2025/poster/120291",
+  "draw_rank": 572,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Plan Then Action: High-Level Planning Guidance Reinforcement Learning  for LLM Reasoning",
+  "url": "https://icml.cc/virtual/2026/poster/63817",
+  "draw_rank": 573,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Linguistic Relative Policy Optimization for Video Anomaly Reasoning",
+  "url": "https://icml.cc/virtual/2026/poster/64285",
+  "draw_rank": 576,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Spectral Bellman Method: Unifying Representation and Exploration in RL",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/58a5aafe8df63a20a7f6d7840100067c-Abstract-Conference.html",
+  "draw_rank": 579,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Adversarial Reinforcement Learning for Robust Diffusion Large Language Model Unlearning",
+  "url": "https://icml.cc/virtual/2026/poster/65904",
+  "draw_rank": 580,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Incentivizing LLM Reasoning via Reinforcement Learning with Functional Monte Carlo Tree Search",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/23a3f2649b71ed108bbf9bab17c65a6f-Abstract-Conference.html",
+  "draw_rank": 585,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Stable Asynchrony: Variance-Controlled Off-Policy RL for LLMs",
+  "url": "https://icml.cc/virtual/2026/poster/62012",
+  "draw_rank": 588,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Implicit Actor Critic Coupling via a Supervised Learning Framework for RLVR",
+  "url": "https://icml.cc/virtual/2026/poster/63889",
+  "draw_rank": 590,
+  "prescreen_hit": [
+   "rlvr"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Accelerating RL for LLM Reasoning with Optimal Advantage Regression",
+  "url": "https://neurips.cc/virtual/2025/poster/117885",
+  "draw_rank": 592,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Curriculum Reinforcement Learning from Easy to Hard Tasks Improves LLM Reasoning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/fe1d9d163a8b88f413553d99cc48fa5a-Abstract-Conference.html",
+  "draw_rank": 593,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "SpatialReward: Bridging the Perception Gap in Online RL for Image Editing via Explicit Spatial Reasoning",
+  "url": "https://icml.cc/virtual/2026/poster/62017",
+  "draw_rank": 609,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "D-ARL: A Distribution-Matched Asynchronous Reinforcement Learning Framework for Language Reasoning",
+  "url": "https://icml.cc/virtual/2026/poster/60620",
+  "draw_rank": 610,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "ExPO: Unlocking Hard Reasoning with Self-Explanation-Guided Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119250",
+  "draw_rank": 612,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Evaluating Parameter Efficient Methods for RLVR",
+  "url": "https://icml.cc/virtual/2026/poster/66095",
+  "draw_rank": 614,
+  "prescreen_hit": [
+   "rlvr"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Reverse Engineering Human Preferences with Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/116630",
+  "draw_rank": 616,
+  "prescreen_hit": [
+   "preference"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Planning without Search: Refining Frontier LLMs with Offline Goal-Conditioned RL",
+  "url": "https://neurips.cc/virtual/2025/poster/116333",
+  "draw_rank": 617,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "MMDuet2: Enhancing Proactive Interaction of Video MLLMs with Multi-Turn Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/281970ef377580ab9ec3c7d3781110d4-Abstract-Conference.html",
+  "draw_rank": 621,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Buffer Matters: Unleashing the Power of Off-Policy Reinforcement Learning in Large Language Model Reasoning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/4ddea64304e8b069eed08c10c6feaa55-Abstract-Conference.html",
+  "draw_rank": 622,
+  "prescreen_hit": [
+   "language model",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Reasoning as Representation: Rethinking Visual Reinforcement Learning in Image Quality Assessment",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/a66caa1703fe34705a4368c3014c1966-Abstract-Conference.html",
+  "draw_rank": 632,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "IsoCompute Playbook: Optimally Scaling Sampling Compute for LLM RL",
+  "url": "https://icml.cc/virtual/2026/poster/61333",
+  "draw_rank": 633,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Explainable Reinforcement Learning from Human Feedback to Improve Alignment",
+  "url": "https://neurips.cc/virtual/2025/poster/116413",
+  "draw_rank": 634,
+  "prescreen_hit": [
+   "alignment"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Simple Policy Gradients for Reasoning with Diffusion Language Models",
+  "url": "https://icml.cc/virtual/2026/poster/65988",
+  "draw_rank": 636,
+  "prescreen_hit": [
+   "language model",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Shuffle-R1: Efficient RL framework for Multimodal Large Language Models via Data-centric Dynamic Shuffle",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/c520d1cb9108a27c27227ba039229246-Abstract-Conference.html",
+  "draw_rank": 639,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "The Hidden Link between RLHF and Contrastive Learning",
+  "url": "https://icml.cc/virtual/2026/poster/64549",
+  "draw_rank": 641,
+  "prescreen_hit": [
+   "rlhf"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Improving Reasoning for Diffusion Language Models via Group Diffusion Policy Optimization",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/0428b72cab14bc38db5b2bad183e1987-Abstract-Conference.html",
+  "draw_rank": 646,
+  "prescreen_hit": [
+   "language model",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Human-in-the-Loop Policy Optimization for Preference-Based Multi-Objective Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/61185",
+  "draw_rank": 647,
+  "prescreen_hit": [
+   "preference"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Clipping Bottleneck: Stabilizing RLVR via Stochastic Recovery of Near-Boundary Signals",
+  "url": "https://icml.cc/virtual/2026/poster/63158",
+  "draw_rank": 651,
+  "prescreen_hit": [
+   "rlvr"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Group-in-Group Policy Optimization for LLM Agent Training",
+  "url": "https://neurips.cc/virtual/2025/poster/118123",
+  "draw_rank": 654,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Rethinking Human Intent-to-CAD: Parametric CAD Model Generation via Cooperative Multi-Task Alignment and Spatial-Aware Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/66611",
+  "draw_rank": 657,
+  "prescreen_hit": [
+   "alignment"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Scheduling Your LLM Reinforcement Learning with Reasoning Trees",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/fa93d7bfb48450e1af63c8fa647d317f-Abstract-Conference.html",
+  "draw_rank": 665,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Beyond Pass@ 1: Self-Play with Variational Problem Synthesis Sustains RLVR",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/805cd624d38e39ca061e8fd431e20825-Abstract-Conference.html",
+  "draw_rank": 675,
+  "prescreen_hit": [
+   "rlvr"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Table2LaTeX-RL: High-Fidelity LaTeX Code Generation from Table Images via Reinforced Multimodal Language Models",
+  "url": "https://neurips.cc/virtual/2025/poster/120302",
+  "draw_rank": 676,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Inpainting-Guided Policy Optimization for Diffusion Large Language Models",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/0ac8748d8afc0745c30150f1a2076c72-Abstract-Conference.html",
+  "draw_rank": 678,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Position: Measuring Human Preferences in RLHF is a Social Science Problem",
+  "url": "https://icml.cc/virtual/2026/poster/67229",
+  "draw_rank": 680,
+  "prescreen_hit": [
+   "rlhf",
+   "preference"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Provable Benefits of RLVR over SFT for Reasoning Models: Learning to Backtrack Efficiently",
+  "url": "https://icml.cc/virtual/2026/poster/64293",
+  "draw_rank": 681,
+  "prescreen_hit": [
+   "reasoning",
+   "rlvr"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Distortion of AI Alignment Revisited: RLHF is a Decent Utilitarian Aligner",
+  "url": "https://icml.cc/virtual/2026/poster/60739",
+  "draw_rank": 686,
+  "prescreen_hit": [
+   "rlhf",
+   "alignment"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "RLVMR: Reinforcement Learning with Verifiable Meta-Reasoning Rewards for Robust Long-Horizon Agents",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/baa41b7368408670c6a14e06a04420d9-Abstract-Conference.html",
+  "draw_rank": 687,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "SQL-R1: Training Natural Language to SQL Reasoning Model By Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/116624",
+  "draw_rank": 689,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Stratified GRPO: Handling Structural Heterogeneity in Reinforcement Learning of LLM Search Agents",
+  "url": "https://icml.cc/virtual/2026/poster/63159",
+  "draw_rank": 695,
+  "prescreen_hit": [
+   "llm",
+   "grpo"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Experience Augmented Policy Optimization for LLM Reasoning",
+  "url": "https://icml.cc/virtual/2026/poster/64153",
+  "draw_rank": 702,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Generative RLHF-V: Learning Principles from Multi-modal Human Preference",
+  "url": "https://neurips.cc/virtual/2025/poster/119087",
+  "draw_rank": 703,
+  "prescreen_hit": [
+   "rlhf",
+   "preference"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "One-Way Policy Optimization for Self-Evolving LLMs",
+  "url": "https://icml.cc/virtual/2026/poster/63408",
+  "draw_rank": 704,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "DVLA-RL: Dual-Level Vision–Language Alignment with Reinforcement Learning Gating for Few-Shot Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/414f24cac3f3a79b7a09772d4584d845-Abstract-Conference.html",
+  "draw_rank": 706,
+  "prescreen_hit": [
+   "alignment"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "CellDuality: Unlocking Biological Reasoning in LLMs with Self-Supervised RLVR",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/bb6e447ee34aa4e95840bb89d2294662-Abstract-Conference.html",
+  "draw_rank": 708,
+  "prescreen_hit": [
+   "llm",
+   "reasoning",
+   "rlvr"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "From Reward-Free Representations to Preferences: Rethinking Offline Preference-Based Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/61243",
+  "draw_rank": 710,
+  "prescreen_hit": [
+   "preference"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "MIRA: Memory-Integrated Reinforcement Learning Agent  with Limited LLM Guidance",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/ca03ccaf61b63cf3ee5de18140f5885b-Abstract-Conference.html",
+  "draw_rank": 711,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "FAPO: Flawed-Aware Policy Optimization for Efficient and Reliable Reasoning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/fe5c31e525e9a26a1426ab0b589f42fe-Abstract-Conference.html",
+  "draw_rank": 714,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Memory-T1: Reinforcement Learning for Temporal Reasoning in Multi-session Agents",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/6010a57158b77359f5f531d9af69181c-Abstract-Conference.html",
+  "draw_rank": 719,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Progress Reward Model for Reinforcement Learning via Large Language Models",
+  "url": "https://neurips.cc/virtual/2025/poster/117861",
+  "draw_rank": 721,
+  "prescreen_hit": [
+   "language model",
+   "reward model"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Benchmarking and Improving Fine-Grained Text-to-Image Alignment via Paired Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/61758",
+  "draw_rank": 722,
+  "prescreen_hit": [
+   "alignment"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "wd1:  Weighted Policy Optimization for Reasoning in Diffusion Language Models",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/f381114cf5aba4e45552869863deaaa7-Abstract-Conference.html",
+  "draw_rank": 723,
+  "prescreen_hit": [
+   "language model",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "CPPO: Accelerating the Training of Group Relative Policy Optimization-Based Reasoning Models",
+  "url": "https://neurips.cc/virtual/2025/poster/117932",
+  "draw_rank": 724,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Swap-guided Preference Learning for Personalized Reinforcement Learning from Human Feedback",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/ee33a5775e0f5022fa01f518df287217-Abstract-Conference.html",
+  "draw_rank": 727,
+  "prescreen_hit": [
+   "preference"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "RLVE: Scaling Up Reinforcement Learning for Language Models with Adaptive Verifiable Environments",
+  "url": "https://icml.cc/virtual/2026/poster/65461",
+  "draw_rank": 728,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "RLAnything: Forge Environment, Policy, and Reward Model in Completely Dynamic RL System",
+  "url": "https://icml.cc/virtual/2026/poster/64832",
+  "draw_rank": 732,
+  "prescreen_hit": [
+   "reward model"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Native Parallel Reasoner: Reasoning in Parallelism via Self-Distilled Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/61069",
+  "draw_rank": 734,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Reinforcement Learning with Verifiable Rewards Implicitly Incentivizes Correct Reasoning in Base LLMs",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/517f9b9c227b9dd51dba4560f37165ed-Abstract-Conference.html",
+  "draw_rank": 739,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Spurious Rewards: Rethinking Training Signals in RLVR",
+  "url": "https://icml.cc/virtual/2026/poster/61082",
+  "draw_rank": 741,
+  "prescreen_hit": [
+   "rlvr"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "DARTS: Distribution-Aware Active Rollout Trajectory Shaping for Accelerating LLM Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/61634",
+  "draw_rank": 743,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "R1-Code-Interpreter: LLMs Reason with Code via Supervised and Multi-stage Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/90043ebd68500f9efe84fedf860a64f3-Abstract-Conference.html",
+  "draw_rank": 750,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Probing RLVR Training Instability through the Lens of Objective-Level Hacking",
+  "url": "https://icml.cc/virtual/2026/poster/64695",
+  "draw_rank": 751,
+  "prescreen_hit": [
+   "rlvr"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "LightningRL: Breaking the Accuracy–Parallelism Trade-off of Block-wise dLLMs via Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/65221",
+  "draw_rank": 753,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Do We Need Adam? Surprisingly Strong and Sparse Reinforcement Learning with SGD in LLMs",
+  "url": "https://icml.cc/virtual/2026/poster/60553",
+  "draw_rank": 755,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Beyond Markovian: Reflective Exploration via Bayes-Adaptive RL for LLM Reasoning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/c3837ae3d17a91b08bf5cc19280e7fd2-Abstract-Conference.html",
+  "draw_rank": 757,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "DAPO : Improving Multi-Step Reasoning Abilities of Large Language Models with Direct Advantage-Based Policy Optimization",
+  "url": "https://neurips.cc/virtual/2025/poster/119738",
+  "draw_rank": 759,
+  "prescreen_hit": [
+   "language model",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "rePIRL: Learn PRM with Inverse RL for LLM Reasoning",
+  "url": "https://icml.cc/virtual/2026/poster/65059",
+  "draw_rank": 761,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "RewardMap: Tackling Sparse Rewards in Fine-grained Visual Reasoning via Multi-Stage Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/0967d7c8b171dd81b77c43067c02bebf-Abstract-Conference.html",
+  "draw_rank": 762,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "iVGR: Internalizing Visually Grounded Reasoning for MLLMs with Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/63651",
+  "draw_rank": 763,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "From f(x) and g(x) to f(g(x)): LLMs Learn New Skills in RL by Composing Old Ones",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/eeae43a68515325cad64c0f54b2d0c70-Abstract-Conference.html",
+  "draw_rank": 764,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Agent World Model: Infinity Synthetic Environments for Agentic Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/64306",
+  "draw_rank": 766,
+  "prescreen_hit": [
+   "agentic"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "AceReason-Nemotron 1.1: Advancing Math and Code Reasoning through SFT and RL Synergy",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/72398f80dc0f81159f79e6ff8fd1e376-Abstract-Conference.html",
+  "draw_rank": 768,
+  "prescreen_hit": [
+   "reasoning",
+   "math"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "ReTool: Reinforcement Learning for Strategic Tool Use in LLMs",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/4038c9208dfc22644c60ad39c24e5c53-Abstract-Conference.html",
+  "draw_rank": 770,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Token-Sparse Medical Multimodal Reasoning via Dual-Stream Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/62640",
+  "draw_rank": 772,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Enhancing Reasoning for Diffusion LLMs via Distribution Matching Policy Optimization",
+  "url": "https://icml.cc/virtual/2026/poster/66806",
+  "draw_rank": 773,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "EditScore: Unlocking Online RL for Image Editing via High-Fidelity Reward Modeling",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/381ceeae4a1feb1abc59c773f7e61839-Abstract-Conference.html",
+  "draw_rank": 774,
+  "prescreen_hit": [
+   "reward model"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Beyond Accuracy: Dissecting Mathematical Reasoning for LLMs Under Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/115406",
+  "draw_rank": 775,
+  "prescreen_hit": [
+   "llm",
+   "reasoning",
+   "math"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "SWE-RL: Advancing LLM Reasoning via Reinforcement Learning on Open Software Evolution",
+  "url": "https://neurips.cc/virtual/2025/poster/117772",
+  "draw_rank": 778,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "On Information Self-Locking in Reinforcement Learning for Active Reasoning of LLM agents",
+  "url": "https://icml.cc/virtual/2026/poster/61624",
+  "draw_rank": 780,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Principled RL for Diffusion LLMs Emerges from a Sequence-Level Perspective",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/0907335ecf28faf15be54485dbcbe70e-Abstract-Conference.html",
+  "draw_rank": 789,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "VRAG-RL: Empower Vision-Perception-Based RAG for Visually Rich Information Understanding via Iterative Reasoning with Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119116",
+  "draw_rank": 790,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Reinforcement Learning Fine-Tuning Enhances Activation Intensity and Diversity in the Internal Circuitry of LLMs",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/67d1e25d35292dab646b58c0af77151a-Abstract-Conference.html",
+  "draw_rank": 796,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "RL of Thoughts: Navigating LLM Reasoning with Inference-time Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/c09916f6f0c428a97a09a53648e5002e-Abstract-Conference.html",
+  "draw_rank": 803,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Vision-SR1: Self-Rewarding Vision-Language Model via Reasoning Decomposition and Multi-Reward Policy Optimization",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/8442d394d8266db6fdf92583a4783e8c-Abstract-Conference.html",
+  "draw_rank": 804,
+  "prescreen_hit": [
+   "language model",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Harnessing Uncertainty: Entropy-Modulated Policy Gradients for Long-Horizon LLM Agents",
+  "url": "https://icml.cc/virtual/2026/poster/63273",
+  "draw_rank": 807,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Behavior Injection: Preparing Language Models for Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/116177",
+  "draw_rank": 816,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Revolutionizing Reinforcement Learning Framework for Diffusion Large Language Models",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/a61023ce36d21010f1423304f8ec49af-Abstract-Conference.html",
+  "draw_rank": 817,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "One Tool Is Enough: Reinforcement Learning of LLM Agents for Repository-Level Code Navigation",
+  "url": "https://icml.cc/virtual/2026/poster/63517",
+  "draw_rank": 820,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Understanding Reasoning Collapse in LLM Agent Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/66821",
+  "draw_rank": 825,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Cross-Domain Policy Optimization via Bellman Consistency and Hybrid Critics",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/9eb919f16383fd92c686a9b6a5bd6f7b-Abstract-Conference.html",
+  "draw_rank": 826,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Getting Your LLMs Ready for Reinforcement Learning with Lightweight SFT",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/bebed4d2aaa8a0ebfcc9fd55ce811e83-Abstract-Conference.html",
+  "draw_rank": 827,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "QUATRO: Query-Adaptive Trust Region Policy Optimization for LLM Fine-tuning",
+  "url": "https://icml.cc/virtual/2026/poster/65885",
+  "draw_rank": 833,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "DREAM-R: Multimodal Speculative Reasoning with RL-Based Refined Drafting, Precise Verification, and Fully Parallel Execution",
+  "url": "https://icml.cc/virtual/2026/poster/66253",
+  "draw_rank": 837,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Preference-based Reinforcement Learning beyond Pairwise Comparisons: Benefits of Multiple Options",
+  "url": "https://neurips.cc/virtual/2025/poster/116211",
+  "draw_rank": 839,
+  "prescreen_hit": [
+   "preference"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "MobileRL: Online Agentic Reinforcement Learning for Mobile GUI Agents",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/3b6aaffec941f98930753fa6d6de7263-Abstract-Conference.html",
+  "draw_rank": 840,
+  "prescreen_hit": [
+   "agentic"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Beyond Magnitude: Leveraging Direction of RLVR Updates for LLM Reasoning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/63ba9e874e75608d65e172f9f4a1666a-Abstract-Conference.html",
+  "draw_rank": 849,
+  "prescreen_hit": [
+   "llm",
+   "reasoning",
+   "rlvr"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Designing Observation and Action Models for Efficient Reinforcement Learning with LLMs",
+  "url": "https://icml.cc/virtual/2026/poster/64309",
+  "draw_rank": 853,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "PRM-PBE: Process Reward Model for Reinforcement Learning in Programming-by-Example",
+  "url": "https://icml.cc/virtual/2026/poster/64522",
+  "draw_rank": 855,
+  "prescreen_hit": [
+   "reward model"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Beyond Trajectory-Level Attribution: Graph-Based Credit Assignment for Agentic Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/60543",
+  "draw_rank": 856,
+  "prescreen_hit": [
+   "agentic"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Video-Based Optimal Transport for Feedback-Efficient Offline Preference-Based Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/65169",
+  "draw_rank": 861,
+  "prescreen_hit": [
+   "preference"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "WS-GRPO: Weakly-Supervised Group-Relative Policy Optimization for Rollout-Efficient Reasoning",
+  "url": "https://icml.cc/virtual/2026/poster/64686",
+  "draw_rank": 862,
+  "prescreen_hit": [
+   "reasoning",
+   "grpo"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Unlocking the Essence of Beauty: Advanced Aesthetic Reasoning with Relative-Absolute Policy Optimization",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/93397b489222f1e66a862f795fc32b96-Abstract-Conference.html",
+  "draw_rank": 863,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "CRPO: Character-centric Group Relative Policy Optimization for Role-aware Reasoning in Role-playing Agents",
+  "url": "https://icml.cc/virtual/2026/poster/62395",
+  "draw_rank": 864,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Adaptive Collaboration with Humans: Metacognitive Policy Optimization for Multi-Agent LLMs with Continual Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/688964ef60e83fb3c3efebdffe2f06f7-Abstract-Conference.html",
+  "draw_rank": 865,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Inverse Reinforcement Learning with Dynamic Reward Scaling for LLM Alignment",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/61162d94822d468ee6e92803340f2040-Abstract-Conference.html",
+  "draw_rank": 871,
+  "prescreen_hit": [
+   "llm",
+   "alignment"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Tricks or Traps? A Deep Dive into RL for LLM Reasoning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/f3b910fbc36298f9570cd929e115cb02-Abstract-Conference.html",
+  "draw_rank": 874,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Achieving Olympia-Level Geometry Large Language Model Agent via Complexity Boosting Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/4036b46c4ce009433cf739a777d43db0-Abstract-Conference.html",
+  "draw_rank": 876,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "OPRIDE: Efficient Offline Preference-based Reinforcement Learning via In-Dataset Exploration",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/6e3ad6ea8b3e23696e47db634ed9cf04-Abstract-Conference.html",
+  "draw_rank": 879,
+  "prescreen_hit": [
+   "preference"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "EmotionThinker: Prosody-Aware Reinforcement Learning for Explainable Speech Emotion Reasoning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/f96c211fa349bf9872aee9715f111015-Abstract-Conference.html",
+  "draw_rank": 887,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?",
+  "url": "https://neurips.cc/virtual/2025/poster/119944",
+  "draw_rank": 893,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Generative Adversarial Reasoner: Enhancing LLM Reasoning with Adversarial Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/5aded482dfc82e6bbb822400cf94b038-Abstract-Conference.html",
+  "draw_rank": 898,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "EARL: Towards a Unified Analysis-Guided Reinforcement Learning Framework for Egocentric Interaction Reasoning and Pixel Grounding",
+  "url": "https://icml.cc/virtual/2026/poster/61023",
+  "draw_rank": 902,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "VideoSEG-O3: A Multi-turn Reinforcement Learning Framework for Reasoning Video Object Segmentation",
+  "url": "https://icml.cc/virtual/2026/poster/66737",
+  "draw_rank": 903,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Offline Reinforcement Learning of High-Quality Behaviors Under Robust Style Alignment",
+  "url": "https://icml.cc/virtual/2026/poster/62084",
+  "draw_rank": 908,
+  "prescreen_hit": [
+   "alignment"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Omni-R1: Reinforcement Learning for Omnimodal Reasoning via Two-System Collaboration",
+  "url": "https://neurips.cc/virtual/2025/poster/119706",
+  "draw_rank": 910,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Direct Preference Optimization for Primitive-Enabled Hierarchical RL: A Bilevel Approach",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/03f99ca79b87c513d0b502e737a41a41-Abstract-Conference.html",
+  "draw_rank": 911,
+  "prescreen_hit": [
+   "preference"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "AlphaRouter: Token-level Routing Between SLM and LLM with Reinforcement Learning and Tree Search",
+  "url": "https://icml.cc/virtual/2026/poster/63811",
+  "draw_rank": 917,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "SwS: Self-aware Weakness-driven Problem Synthesis in Reinforcement Learning for LLM Reasoning",
+  "url": "https://neurips.cc/virtual/2025/poster/120292",
+  "draw_rank": 918,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Spurious Rewards Paradox: Mechanistically Understanding How RLVR Activates Memorization Shortcuts in LLMs",
+  "url": "https://icml.cc/virtual/2026/poster/63951",
+  "draw_rank": 919,
+  "prescreen_hit": [
+   "llm",
+   "rlvr"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "RLCracker: Evaluating the Worst-Case Vulnerability of LLM Watermarks with Adaptive RL Attacks",
+  "url": "https://icml.cc/virtual/2026/poster/63933",
+  "draw_rank": 922,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "BandPO: Bridging Trust Regions and Ratio Clipping via Probability-Aware Bounds for LLM Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/63735",
+  "draw_rank": 924,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Enhancing the Outcome Reward-based RL Training of MLLMs with Self-Consistency Sampling",
+  "url": "https://neurips.cc/virtual/2025/poster/117113",
+  "draw_rank": 928,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Conditional Advantage Estimation for Reinforcement Learning in Large Reasoning Models",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/097269005c77713aa32bb45b393ccd49-Abstract-Conference.html",
+  "draw_rank": 931,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "FactGuard: Agentic Video Misinformation Detection via Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/65720",
+  "draw_rank": 933,
+  "prescreen_hit": [
+   "agentic"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "DisPPO: Quantile-Based Distributional Reinforcement Learning for Large Language Models",
+  "url": "https://icml.cc/virtual/2026/poster/63791",
+  "draw_rank": 934,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Delving into RL for Image Generation with CoT: A Study on DPO vs. GRPO",
+  "url": "https://neurips.cc/virtual/2025/poster/115601",
+  "draw_rank": 939,
+  "prescreen_hit": [
+   "grpo"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Enough is as good as a feast: A Comprehensive Analysis of How Reinforcement Learning Mitigates Task Conflicts in LLMs",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/2abb64561fc02424152256eef40f220e-Abstract-Conference.html",
+  "draw_rank": 943,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Learn More with Less: Uncertainty Consistency Guided Query Selection for RLVR",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/1fb18f013463e77021b7ac4bdc374b6d-Abstract-Conference.html",
+  "draw_rank": 944,
+  "prescreen_hit": [
+   "rlvr"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Metis: Learning to Jailbreak LLMs via Self-Evolving Metacognitive Policy Optimization",
+  "url": "https://icml.cc/virtual/2026/poster/63565",
+  "draw_rank": 946,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Game-RL: Synthesizing Multimodal Verifiable Game Data to Boost VLMs&#x27; General Reasoning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/3ad98e6306c5ed8a228b7240152f65af-Abstract-Conference.html",
+  "draw_rank": 951,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Doctor-R1: Mastering Clinical Inquiry with Experiential Agentic Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/f9c2ab8d429044e0c35bcece2ff6d123-Abstract-Conference.html",
+  "draw_rank": 953,
+  "prescreen_hit": [
+   "agentic"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "LongRLVR: Long-Context Reinforcement Learning Requires Verifiable Context Rewards",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/2aacf95ddc1ebd79832474bb41d13943-Abstract-Conference.html",
+  "draw_rank": 956,
+  "prescreen_hit": [
+   "rlvr"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Critique-RL: Training Language Models For Critiquing Through Two-Stage Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/d0e08f7a2d1b2d5c2da159395e8d61aa-Abstract-Conference.html",
+  "draw_rank": 960,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Evolution Strategies at Scale: LLM Fine-Tuning Beyond Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/62279",
+  "draw_rank": 965,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "GeoAlign: Geometric Rollout Curation for Robust LLM Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/60634",
+  "draw_rank": 968,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Grounded Reinforcement Learning for Visual Reasoning",
+  "url": "https://neurips.cc/virtual/2025/poster/120218",
+  "draw_rank": 971,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "ADEPT: RL-Aligned Agentic Decoding of Emotion via Evidence Probing Tools — From Consensus Learning to Ambiguity-Driven Emotion Reasoning",
+  "url": "https://icml.cc/virtual/2026/poster/61830",
+  "draw_rank": 972,
+  "prescreen_hit": [
+   "reasoning",
+   "agentic"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "AgentGym-RL: An Open-Source Framework to Train LLM Agents for Long-Horizon Decision Making via Multi-Turn RL",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/1571ce1ff735be4551db50887043726e-Abstract-Conference.html",
+  "draw_rank": 973,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "d1: Scaling Reasoning in Diffusion Large Language Models via Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119692",
+  "draw_rank": 977,
+  "prescreen_hit": [
+   "language model",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Small Generalizable Prompt Predictive Models Can Steer Efficient RL Post-Training of Large Reasoning Models",
+  "url": "https://icml.cc/virtual/2026/poster/60937",
+  "draw_rank": 979,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Hybrid Latent Reasoning via Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/118535",
+  "draw_rank": 980,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "On-Policy Optimization with Group Equivalent Preference for Multi-Programming Language Understanding",
+  "url": "https://neurips.cc/virtual/2025/poster/119908",
+  "draw_rank": 988,
+  "prescreen_hit": [
+   "preference"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "$\\texttt{G1}$: Teaching LLMs to Reason on Graphs with Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/118526",
+  "draw_rank": 990,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Learn the Ropes, Then Trust the Wins: Self-imitation with Progressive Exploration for Agentic Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/6aa4967920e495e90aeeaa3acf18d019-Abstract-Conference.html",
+  "draw_rank": 995,
+  "prescreen_hit": [
+   "agentic"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "LoongRL: Reinforcement Learning for Advanced Reasoning over Long Contexts",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/e2fd57d0a7f1bc5d3d4863f63241f4df-Abstract-Conference.html",
+  "draw_rank": 997,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "AceReason-Nemotron: Advancing Math and Code Reasoning through Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119111",
+  "draw_rank": 1000,
+  "prescreen_hit": [
+   "reasoning",
+   "math"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Geometry-Preserving Orthonormal Initialization for Low-Rank Adaptation in RLVR",
+  "url": "https://icml.cc/virtual/2026/poster/63355",
+  "draw_rank": 1001,
+  "prescreen_hit": [
+   "rlvr"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Contextual Integrity in LLMs via Reasoning and Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/117480",
+  "draw_rank": 1003,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "FineRS: Fine-grained Reasoning and Segmentation of Small Objects with Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/115465",
+  "draw_rank": 1004,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "The Unlearnability Phenomenon in RLVR for Language Models",
+  "url": "https://icml.cc/virtual/2026/poster/64909",
+  "draw_rank": 1010,
+  "prescreen_hit": [
+   "language model",
+   "rlvr"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Beyond Verifiable Rewards: Scaling Reinforcement Learning in Language Models to Unverifiable Data",
+  "url": "https://neurips.cc/virtual/2025/poster/115945",
+  "draw_rank": 1014,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "THOR: Tool-Integrated Hierarchical Optimization via RL for Mathematical Reasoning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/245b7f8357fdc26797ed6714cda5bd94-Abstract-Conference.html",
+  "draw_rank": 1015,
+  "prescreen_hit": [
+   "reasoning",
+   "math"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "CDE: Curiosity-Driven Exploration for Efficient Reinforcement Learning in Large Language Models",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/60cefc59610f8f59ea10099f99a36726-Abstract-Conference.html",
+  "draw_rank": 1016,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "SAGE: Shaping Anchors for Guided Exploration in RLVR of LLMs",
+  "url": "https://icml.cc/virtual/2026/poster/63563",
+  "draw_rank": 1017,
+  "prescreen_hit": [
+   "llm",
+   "rlvr"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Think or Not? Selective Reasoning via Reinforcement Learning for Vision-Language Models",
+  "url": "https://neurips.cc/virtual/2025/poster/115882",
+  "draw_rank": 1019,
+  "prescreen_hit": [
+   "language model",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Safe RLHF-V: Safe Reinforcement Learning from Multi-modal Human Feedback",
+  "url": "https://neurips.cc/virtual/2025/poster/118304",
+  "draw_rank": 1020,
+  "prescreen_hit": [
+   "rlhf"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Stronger-MAS: Multi-Agent Reinforcement Learning for Collaborative LLMs",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/f3da4165893c2465fd7e8df453c41ffa-Abstract-Conference.html",
+  "draw_rank": 1023,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Grounding Multi-Hop Reasoning in Structural Causal Models via Group Relative Policy Optimization",
+  "url": "https://icml.cc/virtual/2026/poster/60883",
+  "draw_rank": 1033,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "No Prompt Left Behind: Exploiting Zero-Variance Prompts in LLM Reinforcement Learning via Entropy-Guided Advantage Shaping",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/c64dfa06f20f746486da743d64f4c624-Abstract-Conference.html",
+  "draw_rank": 1034,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Prosperity before Collapse: How Far Can Off-Policy RL Reach with Stale Data on LLMs?",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/8590b946e4f0c2b1262cb5b047924653-Abstract-Conference.html",
+  "draw_rank": 1035,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "PROS: Towards Compute-Efficient RLVR via Rollout Prefix Reuse",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/4badb55ba9c18bccb9d4146be328a948-Abstract-Conference.html",
+  "draw_rank": 1038,
+  "prescreen_hit": [
+   "rlvr"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Is PRM Necessary? Problem-Solving RL Implicitly Induces PRM Capability in LLMs",
+  "url": "https://neurips.cc/virtual/2025/poster/116005",
+  "draw_rank": 1043,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "POLIA: Policy Optimization with Visual-Object-Level Intrinsic Advantage for Multimodal Reasoning",
+  "url": "https://icml.cc/virtual/2026/poster/66069",
+  "draw_rank": 1044,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Monitorability as a Free Gift: How RLVR Spontaneously Aligns Reasoning",
+  "url": "https://icml.cc/virtual/2026/poster/65831",
+  "draw_rank": 1045,
+  "prescreen_hit": [
+   "reasoning",
+   "rlvr"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Not All Rollouts are Useful: Down-Sampling Rollouts in LLM Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/68826",
+  "draw_rank": 1048,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Exploratory Memory-Augmented LLM Agent via Hybrid On- and Off-Policy Optimization",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/b589d92785e39486e978fa273d0dc343-Abstract-Conference.html",
+  "draw_rank": 1050,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Policy Likelihood-based Query Sampling and Critic-Exploited Reset for Efficient Preference-based Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/efe406d6d2674d176cdcd958ce605d17-Abstract-Conference.html",
+  "draw_rank": 1051,
+  "prescreen_hit": [
+   "preference"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Latent Representation Alignment for Offline Goal-Conditioned Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/61589",
+  "draw_rank": 1052,
+  "prescreen_hit": [
+   "alignment"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Revisiting Reinforcement Learning for LLM Reasoning from A Cross-Domain Perspective",
+  "url": "https://neurips.cc/virtual/2025/poster/121387",
+  "draw_rank": 1053,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Benefits and Pitfalls of Reinforcement Learning for Language Model Planning: A Theoretical Perspective",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/01a8d63f9cb6dcbaa3092ccddd2075ac-Abstract-Conference.html",
+  "draw_rank": 1054,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "GRACE: A Language Model Framework for Explainable Inverse Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/194b8dac525581c346e30a2cebe9a369-Abstract-Conference.html",
+  "draw_rank": 1055,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "AuTAgent: A Reinforcement Learning Framework for Tool-Augmented Audio Reasoning",
+  "url": "https://icml.cc/virtual/2026/poster/64128",
+  "draw_rank": 1062,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "On the Design of KL-Regularized Policy Gradient Algorithms for LLM Reasoning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/8e49d32f4668a41b013fbc1ed929c007-Abstract-Conference.html",
+  "draw_rank": 1063,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Time-Consistent Robust Multi-Objective Reinforcement Learning via a Bellman–Isaacs Weight-Adversary Recursion",
+  "url": "https://icml.cc/virtual/2026/poster/62960",
+  "draw_rank": 1076,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "SSVPO: Effective Step-Level Credit Assignment for RL Training of Language Models",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/4da4dd613cc9e63932d643b9c6e8f86f-Abstract-Conference.html",
+  "draw_rank": 1079,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Optimizing Chain-of-Thought Reasoners via Gradient Variance Minimization in Rejection Sampling and RL",
+  "url": "https://neurips.cc/virtual/2025/poster/115623",
+  "draw_rank": 1082,
+  "prescreen_hit": [
+   "chain-of-thought"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Toward Conservative Planning from Human-AI Preferences in Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/f3bfc162187bd140d00ef13ff9d2568f-Abstract-Conference.html",
+  "draw_rank": 1083,
+  "prescreen_hit": [
+   "preference"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "How Far Can Unsupervised RLVR Scale LLM Training?",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/18929f3253e4d4e28086a89ab88d1276-Abstract-Conference.html",
+  "draw_rank": 1085,
+  "prescreen_hit": [
+   "llm",
+   "rlvr"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Just-In-Time Reinforcement Learning: Continual Learning in LLM Agents Without Gradient Updates",
+  "url": "https://icml.cc/virtual/2026/poster/61517",
+  "draw_rank": 1086,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "AlphaAlign: Incentivizing Safety Alignment with Extremely Simplified Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/e58bfc4bb698a285fa4ea1de8aafe186-Abstract-Conference.html",
+  "draw_rank": 1089,
+  "prescreen_hit": [
+   "alignment"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "RL Squeezes, SFT Expands: A Comparative Study of Reasoning LLMs",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/e52554a70e0df57a0bea11d1eca0c9b5-Abstract-Conference.html",
+  "draw_rank": 1093,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "How Does Reasoning Flow? Tracing Attention-Induced Information Flow for Targeted RL in LLMs",
+  "url": "https://icml.cc/virtual/2026/poster/63245",
+  "draw_rank": 1096,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Sample More to Think Less: Group Filtered Policy Optimization for Concise Reasoning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/a00ef870c140f09263ba2288855be50b-Abstract-Conference.html",
+  "draw_rank": 1097,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Co-rewarding: Stable Self-supervised RL for Eliciting Reasoning in Large Language Models",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/8587c39571f3e327725e2812749a9389-Abstract-Conference.html",
+  "draw_rank": 1105,
+  "prescreen_hit": [
+   "language model",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "VisionReasoner: Unified Reasoning-Integrated Visual Perception via Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/97c2f0fac182353062d304d0322ae285-Abstract-Conference.html",
+  "draw_rank": 1106,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Generalization of RLVR Using Causal Reasoning as a Testbed",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/610fbcfec45e125c59b4bfaebb979d20-Abstract-Conference.html",
+  "draw_rank": 1107,
+  "prescreen_hit": [
+   "reasoning",
+   "rlvr"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "AlphaAgentEvo: Evolution-Oriented Alpha Mining via Self-Evolving Agentic Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/741aab8b41a2987867acc9939ad50383-Abstract-Conference.html",
+  "draw_rank": 1108,
+  "prescreen_hit": [
+   "agentic"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Contrastive Reasoning Alignment: Reinforcement Learning from Hidden Representations",
+  "url": "https://icml.cc/virtual/2026/poster/66283",
+  "draw_rank": 1111,
+  "prescreen_hit": [
+   "reasoning",
+   "alignment"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Motion-R1: Enhancing Motion Generation with Decomposed Chain-of-Thought and RL Binding",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/7a4cf58610e1c911e06970c8d75b86dc-Abstract-Conference.html",
+  "draw_rank": 1112,
+  "prescreen_hit": [
+   "chain-of-thought"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Unlocking Long-Horizon Agentic Search with Large-Scale End-to-End RL",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/af125cae03cf4c7198f93060a7edec1f-Abstract-Conference.html",
+  "draw_rank": 1113,
+  "prescreen_hit": [
+   "agentic"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "R1-Reward: Training Multimodal Reward Model Through Stable Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/3469a586c2e8ebdf59ee66381fd87454-Abstract-Conference.html",
+  "draw_rank": 1121,
+  "prescreen_hit": [
+   "reward model"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Reference-guided Policy Optimization for Molecular Optimization via LLM Reasoning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/6aef7804ba7374e447f2a74b8469543e-Abstract-Conference.html",
+  "draw_rank": 1123,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Dynamic Optimizations of LLM Ensembles with Two-Stage Reinforcement Learning Agents",
+  "url": "https://icml.cc/virtual/2026/poster/64593",
+  "draw_rank": 1126,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "SPELL: Self-Play Reinforcement Learning for Evolving Long-Context Language Models",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/61af4e55bbc1e29b4f8e2669a829a683-Abstract-Conference.html",
+  "draw_rank": 1130,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "$\\textbf{Re}^{2}$: Unlocking LLM Reasoning via Reinforcement Learning with Re-solving",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/63b6f5737c100ee1d8c902fb00cd5c29-Abstract-Conference.html",
+  "draw_rank": 1136,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "VidGuard-R1: AI-Generated Video Detection and Explanation via Reasoning MLLMs and RL",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/b00ef390dcd5f147fd7c5c2bb35f09be-Abstract-Conference.html",
+  "draw_rank": 1139,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Demystifying Entropy Control in LLM RL Training: Theoretical Analysis and Dynamic Scheduling",
+  "url": "https://icml.cc/virtual/2026/poster/62302",
+  "draw_rank": 1142,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "ReDit: Reward Dithering for Improved LLM Policy Optimization",
+  "url": "https://neurips.cc/virtual/2025/poster/115973",
+  "draw_rank": 1143,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "QuRL: Low-Precision Reinforcement Learning for Efficient Reasoning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/6b4880ced785077159b340710ceb7681-Abstract-Conference.html",
+  "draw_rank": 1146,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Reducing Belief Deviation in Reinforcement Learning for Active Reasoning of LLM Agents",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/2468f84a13ff8bb6767a67518fb596eb-Abstract-Conference.html",
+  "draw_rank": 1147,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "RE-PO: Robust Enhanced Policy Optimization as a General Framework for LLM Alignment",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/b292ef48c211e2d8288146ff045dd61d-Abstract-Conference.html",
+  "draw_rank": 1149,
+  "prescreen_hit": [
+   "llm",
+   "alignment"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Shop-R1: Rewarding LLMs to Simulate Human Behavior in Online Shopping via Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/0e705ac30e573d1526f81a0fd071a151-Abstract-Conference.html",
+  "draw_rank": 1150,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Temperature as a Meta-Policy: Adaptive Temperature in LLM Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/fac53ffd015140927453fa7b00ceb329-Abstract-Conference.html",
+  "draw_rank": 1151,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Beyond English-Centric Training: How Reinforcement Learning Improves Cross-Lingual Reasoning in LLMs",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/9320df227557d00ce68f1b8b07ea2d49-Abstract-Conference.html",
+  "draw_rank": 1152,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Stabilizing Policy Gradients for Sample-Efficient Reinforcement Learning in LLM Reasoning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/2b187165e28fdfdc0ffb34d1bfff2b0c-Abstract-Conference.html",
+  "draw_rank": 1153,
+  "prescreen_hit": [
+   "llm",
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Reinforcement Learning Meets Masked Generative Models: Mask-GRPO for Text-to-Image Generation",
+  "url": "https://neurips.cc/virtual/2025/poster/119326",
+  "draw_rank": 1154,
+  "prescreen_hit": [
+   "grpo"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "SimpleTIR: End-to-End Reinforcement Learning for Multi-Turn Tool-Integrated Reasoning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/0e769ec2c2cd99b6ad69c9d75113e386-Abstract-Conference.html",
+  "draw_rank": 1157,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "$Q\\sharp$: Provably Optimal Distributional RL for LLM Post-Training",
+  "url": "https://neurips.cc/virtual/2025/poster/118428",
+  "draw_rank": 1158,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Near-Minimax Multi-Objective RL under Predictable Adversarial Preferences and Preference-Free Exploration in Linear MDPs",
+  "url": "https://icml.cc/virtual/2026/poster/66342",
+  "draw_rank": 1161,
+  "prescreen_hit": [
+   "preference"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Golden Goose: A Simple Trick to Synthesize Unlimited RLVR Tasks from Unverifiable Internet Text",
+  "url": "https://icml.cc/virtual/2026/poster/64606",
+  "draw_rank": 1164,
+  "prescreen_hit": [
+   "rlvr"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Robot-R1: Reinforcement Learning for Enhanced Embodied Reasoning in Robotics",
+  "url": "https://neurips.cc/virtual/2025/poster/118410",
+  "draw_rank": 1171,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Avoiding exp(R) scaling in RLHF through Preference-based Exploration",
+  "url": "https://neurips.cc/virtual/2025/poster/117857",
+  "draw_rank": 1173,
+  "prescreen_hit": [
+   "rlhf",
+   "preference"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "ACTIVE-o3 : Empowering MLLMs with Active Perception via Pure Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/66636",
+  "draw_rank": 1175,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "HiPO: Self-Hint Policy Optimization for RLVR",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/0c0936a505992ce0d45169cd595b9755-Abstract-Conference.html",
+  "draw_rank": 1179,
+  "prescreen_hit": [
+   "rlvr"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Supervised Reinforcement Learning: From Expert Trajectories to Step-wise Reasoning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/7ab7fc1278add78fd6eae2da7a14c79b-Abstract-Conference.html",
+  "draw_rank": 1182,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Alignment Risks from Capability-Seeking RL Training",
+  "url": "https://icml.cc/virtual/2026/poster/64024",
+  "draw_rank": 1186,
+  "prescreen_hit": [
+   "alignment"
+  ]
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "STAR: Efficient Preference-based Reinforcement Learning via Dual Regularization",
+  "url": "https://neurips.cc/virtual/2025/poster/119159",
+  "draw_rank": 1187,
+  "prescreen_hit": [
+   "preference"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "PosterAgent: Agentic Poster Generation via Stage-Aware Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/62650",
+  "draw_rank": 1190,
+  "prescreen_hit": [
+   "agentic"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "HARDTESTGEN: A High-Quality RL Verifier Generation Pipeline for LLM Algorithimic Coding",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/3c11cea35aa2e4797b2f239da378927b-Abstract-Conference.html",
+  "draw_rank": 1191,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "BAPO: Stabilizing Off-Policy Reinforcement Learning for LLMs via Balanced Policy Optimization with Adaptive Clipping",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/cca4df598d8066ac9e985852dd1d48b5-Abstract-Conference.html",
+  "draw_rank": 1193,
+  "prescreen_hit": [
+   "llm"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "DRPO: Efficient Reasoning via Decoupled Reward Policy Optimization",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/dc146cfab1e4519222cd2f40ca6a7a50-Abstract-Conference.html",
+  "draw_rank": 1196,
+  "prescreen_hit": [
+   "reasoning"
+  ]
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "AReaL-DTA: Dynamic Tree Attention for Efficient Reinforcement Learning of Large Language Models",
+  "url": "https://icml.cc/virtual/2026/poster/62287",
+  "draw_rank": 1197,
+  "prescreen_hit": [
+   "language model"
+  ]
+ },
+ {
+  "venue": "ICLR 2026",
+  "title": "Tree Search for LLM Agent Reinforcement Learning",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/8c7304e77c832ddc70075dfee081ca6c-Abstract-Conference.html",
+  "draw_rank": 1200,
+  "prescreen_hit": [
+   "llm"
+  ]
+ }
+]

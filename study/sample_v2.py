@@ -25,7 +25,8 @@ per venue are that quota minus the 6 already held. The rest of the population (a
 listing order ICML, NeurIPS, ICLR) is shuffled once with random.Random(2018) and walked in that
 order; a paper is taken if its venue quota is not yet full and a valid free PDF is obtained,
 otherwise (no PDF) it is recorded in replacements_2018.json and the walk continues, so the
-replacement is the next paper of the draw order.
+replacement is the next paper of the draw order. ICML and NeurIPS 2018 proceedings are open
+access, so a failure there is a network outage: the script stops instead of replacing.
 Ids: C1<k> ICML, C2<k> NeurIPS, C3<k> ICLR, k continuing after the existing ones (C17, C18,
 C19, C110, C111, ...).
 
@@ -160,6 +161,7 @@ def fetch(r):
     if valid_pdf(f, r['title']):
         r['pdf'] = f
         r['pdf_src'] = PREV.get((r['id'], r['title']))
+        r.pop('pdf_note', None)
         return True
     if os.path.exists(f):
         os.remove(f)
@@ -191,11 +193,14 @@ def fetch(r):
                 time.sleep(1)
             if save_if_valid(get(s), f, r['title']):
                 r['pdf'], r['pdf_src'] = f, s
+                r.pop('pdf_note', None)
                 print(r['id'], 'OK', s, flush=True)
                 return True
             print(r['id'], 'invalid file from', s, flush=True)
         except Exception as e:
             print(r['id'], 'ERR', s, e, flush=True)
+            if s == srcs[0] and v == 'ICLR 2026':
+                r['pdf_note'] = f'official proceedings unreachable on {time.strftime("%Y-%m-%d")} ({e}); rerun to retry'
     if v in ('ICML 2018', 'NeurIPS 2018'):
         # These proceedings are open access: a failure here is a network outage, not a paper
         # without a free PDF, so it must not trigger a replacement. Stop and rerun later.
