@@ -99,4 +99,4 @@ Warith Harchaoui, "Did we listen to Joelle Pineau in 2018?", 2026.
 
 ## License
 
-To be decided before publication.
+BSD 3-Clause, the license of scikit-learn: see [LICENSE](LICENSE).

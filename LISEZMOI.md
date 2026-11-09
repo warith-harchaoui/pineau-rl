@@ -103,4 +103,4 @@ Warith Harchaoui, « A-t-on écouté Joelle Pineau en 2018 ? », 2026.
 
 ## Licence
 
-À préciser avant publication.
+BSD à trois clauses (BSD-3-Clause), la licence de scikit-learn : voir [LICENSE](LICENSE).
