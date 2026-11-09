@@ -2,7 +2,7 @@
 # Reduced GRPO (plan option a): one run at a time, 100 steps, seeds 0-2, true vs random reward, lr 3e-6.
 # MPS memory capped; a guard kills the current run if free disk < 10 GB or swap grows > 4 GB.
 cd "$(dirname "$0")"
-export PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.35 PYTORCH_MPS_LOW_WATERMARK_RATIO=0.25 EVAL_EVERY=50
+export OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 TOKENIZERS_PARALLELISM=false PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.35 PYTORCH_MPS_LOW_WATERMARK_RATIO=0.25 EVAL_EVERY=50
 swap_mb() { sysctl -n vm.swapusage | sed -E 's/.*used = ([0-9.]+)M.*/\1/' | cut -d. -f1; }
 free_gb() { df -g / | awk 'NR==2{print $4}'; }
 base=$(swap_mb)
