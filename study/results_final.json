@@ -10,7 +10,7 @@
   "p2026": 0.9,
   "lo": 0.786,
   "hi": 0.957,
-  "verdict": "ambigu (down/same)"
+  "verdict": "aucun changement détectable"
  },
  {
   "k": "Q2",
@@ -23,7 +23,11 @@
   "p2026": 0.889,
   "lo": 0.765,
   "hi": 0.952,
-  "verdict": "pas bougé"
+  "p_vs_pineau": 1.0,
+  "p_vs_ours2018": 0.6137,
+  "p_vs_pineau_holm": 1.0,
+  "p_vs_ours2018_holm": 1.0,
+  "verdict": "aucun changement détectable"
  },
  {
   "k": "Q3",
@@ -36,7 +40,11 @@
   "p2026": 0.667,
   "lo": 0.521,
   "hi": 0.786,
-  "verdict": "ambigu (down/same)"
+  "p_vs_pineau": 0.0062,
+  "p_vs_ours2018": 0.7234,
+  "p_vs_pineau_holm": 0.031,
+  "p_vs_ours2018_holm": 1.0,
+  "verdict": "en baisse, non confirmé contre notre lecture de 2018"
  },
  {
   "k": "Q4",
@@ -49,7 +57,11 @@
   "p2026": 0.182,
   "lo": 0.095,
   "hi": 0.32,
-  "verdict": "régressé"
+  "p_vs_pineau": 0.0,
+  "p_vs_ours2018": 0.022,
+  "p_vs_pineau_holm": 0.0003,
+  "p_vs_ours2018_holm": 0.2419,
+  "verdict": "en baisse, non confirmé contre notre lecture de 2018"
  },
  {
   "k": "Q5",
@@ -62,7 +74,11 @@
   "p2026": 0.667,
   "lo": 0.521,
   "hi": 0.786,
-  "verdict": "pas bougé"
+  "p_vs_pineau": 0.3018,
+  "p_vs_ours2018": 0.4967,
+  "p_vs_pineau_holm": 1.0,
+  "p_vs_ours2018_holm": 1.0,
+  "verdict": "aucun changement détectable"
  },
  {
   "k": "Q6",
@@ -75,20 +91,28 @@
   "p2026": 0.267,
   "lo": 0.16,
   "hi": 0.41,
-  "verdict": "pas bougé"
+  "p_vs_pineau": 0.4743,
+  "p_vs_ours2018": 1.0,
+  "p_vs_pineau_holm": 1.0,
+  "p_vs_ours2018_holm": 1.0,
+  "verdict": "aucun changement détectable"
  },
  {
   "k": "Q7",
   "label": "Hold-out evaluation",
   "pineau2018": 0.1,
-  "ours2018": "4/10",
-  "ours2018_p": 0.4,
+  "ours2018": "4/11",
+  "ours2018_p": 0.364,
   "y2026": 31,
   "n2026": 44,
   "p2026": 0.705,
   "lo": 0.558,
   "hi": 0.818,
-  "verdict": "amélioré"
+  "p_vs_pineau": 0.0,
+  "p_vs_ours2018": 0.0759,
+  "p_vs_pineau_holm": 0.0,
+  "p_vs_ours2018_holm": 0.7588,
+  "verdict": "en hausse, non confirmé contre notre lecture de 2018"
  },
  {
   "k": "Q8",
@@ -101,7 +125,11 @@
   "p2026": 0.044,
   "lo": 0.012,
   "hi": 0.148,
-  "verdict": "pas bougé"
+  "p_vs_pineau": 1.0,
+  "p_vs_ours2018": 0.4881,
+  "p_vs_pineau_holm": 1.0,
+  "p_vs_ours2018_holm": 1.0,
+  "verdict": "aucun changement détectable"
  },
  {
   "k": "X2",
@@ -114,7 +142,9 @@
   "p2026": 0.467,
   "lo": 0.329,
   "hi": 0.609,
-  "verdict": "ambigu (None/down)"
+  "p_vs_ours2018": 0.1808,
+  "p_vs_ours2018_holm": 1.0,
+  "verdict": "aucun changement détectable"
  },
  {
   "k": "X3",
@@ -127,32 +157,38 @@
   "p2026": 0.044,
   "lo": 0.012,
   "hi": 0.148,
-  "verdict": "ambigu (None/up)"
+  "p_vs_ours2018": 1.0,
+  "p_vs_ours2018_holm": 1.0,
+  "verdict": "aucun changement détectable"
  },
  {
   "k": "X4",
   "label": "Baselines tuned like the method",
   "pineau2018": null,
-  "ours2018": "4/10",
-  "ours2018_p": 0.4,
+  "ours2018": "1/11",
+  "ours2018_p": 0.091,
   "y2026": 2,
   "n2026": 44,
   "p2026": 0.045,
   "lo": 0.013,
   "hi": 0.151,
-  "verdict": "ambigu (None/down)"
+  "p_vs_ours2018": 0.4952,
+  "p_vs_ours2018_holm": 1.0,
+  "verdict": "aucun changement détectable"
  },
  {
   "k": "X7",
   "label": "Compute reported",
   "pineau2018": null,
-  "ours2018": "4/11",
-  "ours2018_p": 0.364,
+  "ours2018": "3/11",
+  "ours2018_p": 0.273,
   "y2026": 21,
   "n2026": 45,
   "p2026": 0.467,
   "lo": 0.329,
   "hi": 0.609,
-  "verdict": "pas bougé"
+  "p_vs_ours2018": 0.3191,
+  "p_vs_ours2018_holm": 1.0,
+  "verdict": "aucun changement détectable"
  }
 ]

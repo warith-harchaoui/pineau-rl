@@ -370,7 +370,7 @@ qu'elle manque.
 inconnus. Pour savoir si notre lecture ressemble à la sienne, nous avons aussi lu 12 articles de
 2018, avec la même grille et les mêmes agents. Sur les hyperparamètres de la méthode, nous sommes
 plus sévères qu'elle (6 sur 10 contre 90 %). Sur l'évaluation tenue à part, plus indulgents
-(4 sur 10 contre 10 %).
+(4 sur 11 contre 10 %).
 
 **Comparer deux échantillons.** Les 50 articles de Pineau forment eux aussi un échantillon. Avec
 un autre tirage, son 55 % de code en lien serait sorti entre 41 % et 68 %. Traiter son chiffre
@@ -431,13 +431,13 @@ fois : avec la vraie récompense, puis avec une récompense tirée à pile ou fa
 |:------------------------------------|:----|--------:|----------:|-------------:|
 | Q5, le code est en lien | F1 | 55 % | 6 sur 11 | 67 % [52, 79] |
 | Q3, tous les hyperparamètres de la méthode sont donnés | F2, F4 | 90 % | 6 sur 10 | 67 % [52, 79] |
-| X7, le calcul employé est chiffré | F2, F3 | non mesuré | 4 sur 11 | 47 % [33, 61] |
+| X7, le calcul employé est chiffré | F2, F3 | non mesuré | 3 sur 11 | 47 % [33, 61] |
 | Q6, la façon de choisir les hyperparamètres est décrite | F5 | 20 % | 2 sur 10 | 27 % [16, 41] |
 | Q4, tous les hyperparamètres des références sont donnés | F7 | 60 % | 6 sur 11 | **18 % [10, 32]** |
-| X4, les références sont réglées avec le même soin | F7 | non mesuré | 4 sur 10 | 5 % [1, 15] |
+| X4, les références sont réglées avec le même soin | F7 | non mesuré | 1 sur 11 | 5 % [1, 15] |
 | X2, une incertitude est rapportée | F12 | non mesuré | 8 sur 11 | 47 % [33, 61] |
 | Q8, un test statistique est appliqué | F12 | 5 % | 1 sur 11 | 4 % [1, 15] |
-| Q7, l'évaluation se fait sur des conditions tenues à part | F15 | 10 % | 4 sur 10 | **70 % [56, 82]** |
+| Q7, l'évaluation se fait sur des conditions tenues à part | F15 | 10 % | 4 sur 11 | **70 % [56, 82]** |
 
 : La grille de Pineau réappliquée, critère par critère. En gras, les deux écarts avec ses chiffres qui passent la correction de Holm et que notre grille n'explique pas. Le recul des hyperparamètres de la méthode la passe aussi, mais notre lecture de 2018 montre qu'il vient de notre grille, plus sévère que la sienne. « Non mesuré » : Pineau n'avait pas ce critère. Données : `study/results_final.json` et `study/audit_stats.json`.
 
@@ -626,7 +626,7 @@ de leurs références.
 à 73 avec son intervalle. La hausse vient presque entière du RL de grands modèles : 26 articles sur
 27. Leurs bancs d'essai, des recueils de problèmes de mathématiques, séparent par construction les
 problèmes d'entraînement et les problèmes de test. Le RL classique reste à 5 articles sur 13,
-contre 4 sur 10 dans notre lecture de 2018 : nous n'y détectons aucun changement. La faille a donc
+contre 4 sur 11 dans notre lecture de 2018 : nous n'y détectons aucun changement. La faille a donc
 reculé parce que le RL a changé de terrain, bien plus que parce que le RL classique a changé de
 pratique. L'expérience E7 mesure, sur nos propres agents, ce que coûte une
 physique modifiée.

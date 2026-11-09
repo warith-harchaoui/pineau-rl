@@ -1,4 +1,38 @@
-{"_doc":"Harmonisation appliquée selon PROTOCOL.md, Écarts 1, 2, 5 ; décidée sur les citations, avant tout calcul de pourcentage.",
- "X4":{"LR07":"no","LR08":"no","LR11":"no","LR17":"no","ML01":"no","ML06":"no"},
- "X7":{"LR03":"no","LR05":"no","LR09":"no","LR14":"no","LR15":"no","LR16":"no","LR17":"no","ML07":"no","ML12":"no","ML17":"no","MLR06":"no","NE05":"no","NE06":"no"},
- "X3":{"LR10":"yes"}}
+{
+ "_doc": "Harmonisation appliquée selon PROTOCOL.md, Écarts 1, 2, 5 ; décidée sur les citations, avant tout calcul de pourcentage.",
+ "X4": {
+  "LR07": "no",
+  "LR08": "no",
+  "LR11": "no",
+  "LR17": "no",
+  "ML01": "no",
+  "ML06": "no",
+  "C11": "no",
+  "C13": "no",
+  "C16": "no",
+  "C14": "no"
+ },
+ "X7": {
+  "LR03": "no",
+  "LR05": "no",
+  "LR09": "no",
+  "LR14": "no",
+  "LR15": "no",
+  "LR16": "no",
+  "LR17": "no",
+  "ML07": "no",
+  "ML12": "no",
+  "ML17": "no",
+  "MLR06": "no",
+  "NE05": "no",
+  "NE06": "no",
+  "C14": "no"
+ },
+ "X3": {
+  "LR10": "yes"
+ },
+ "Q7": {
+  "C14": "no"
+ },
+ "_doc_2018": "Écart 15 (9 novembre 2026) : les harmonisations des écarts 1, 2 et 4, jusque-là appliquées aux seuls articles de 2026, appliquées aussi à la calibration de 2018, depuis les citations. X4 : C11, C13, C16 (même configuration, aucun réglage décrit) et C14 (référence Gurobi comparée, aucun réglage décrit, donc no et non na). Q7 : C14 (théorie à expériences jouets, no et non na). X7 : C14 (seul le nom du matériel)."
+}

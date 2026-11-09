@@ -1,0 +1,828 @@
+[
+ {
+  "venue": "ICML 2018",
+  "title": "State Abstractions for Lifelong Reinforcement Learning",
+  "url": "http://proceedings.mlr.press/v80/abel18a/abel18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/abel18a/abel18a.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/abel18a/abel18a-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Policy and Value Transfer in Lifelong Reinforcement Learning",
+  "url": "http://proceedings.mlr.press/v80/abel18b/abel18b.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/abel18b/abel18b.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/abel18b/abel18b-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Lipschitz Continuity in Model-based Reinforcement Learning",
+  "url": "http://proceedings.mlr.press/v80/asadi18a/asadi18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/asadi18a/asadi18a.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/asadi18a/asadi18a-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Transfer in Deep Reinforcement Learning Using Successor Features and Generalised Policy Improvement",
+  "url": "http://proceedings.mlr.press/v80/barreto18a/barreto18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/barreto18a/barreto18a.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Structured Evolution with Compact Architectures for Scalable Policy Optimization",
+  "url": "http://proceedings.mlr.press/v80/choromanski18a/choromanski18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/choromanski18a/choromanski18a.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/choromanski18a/choromanski18a-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Path Consistency Learning in Tsallis Entropy Regularized MDPs",
+  "url": "http://proceedings.mlr.press/v80/chow18a/chow18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/chow18a/chow18a.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/chow18a/chow18a-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Self-Consistent Trajectory Autoencoder: Hierarchical Reinforcement Learning with Trajectory Embeddings",
+  "url": "http://proceedings.mlr.press/v80/co-reyes18a/co-reyes18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/co-reyes18a/co-reyes18a.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/co-reyes18a/co-reyes18a-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "GEP-PG: Decoupling Exploration and Exploitation in Deep Reinforcement Learning Algorithms",
+  "url": "http://proceedings.mlr.press/v80/colas18a/colas18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/colas18a/colas18a.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Efficient Model-Based Deep Reinforcement Learning with Variational State Tabulation",
+  "url": "http://proceedings.mlr.press/v80/corneil18a/corneil18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/corneil18a/corneil18a.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/corneil18a/corneil18a-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Mix & Match Agent Curricula for Reinforcement Learning",
+  "url": "http://proceedings.mlr.press/v80/czarnecki18a/czarnecki18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/czarnecki18a/czarnecki18a.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/czarnecki18a/czarnecki18a-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Implicit Quantile Networks for Distributional Reinforcement Learning",
+  "url": "http://proceedings.mlr.press/v80/dabney18a/dabney18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/dabney18a/dabney18a.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/dabney18a/dabney18a-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "SBEED: Convergent Reinforcement Learning with Nonlinear Function Approximation",
+  "url": "http://proceedings.mlr.press/v80/dai18c/dai18c.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/dai18c/dai18c.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Learning to Act in Decentralized Partially Observable MDPs",
+  "url": "http://proceedings.mlr.press/v80/dibangoye18a/dibangoye18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/dibangoye18a/dibangoye18a.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/dibangoye18a/dibangoye18a-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Discovering and Removing Exogenous State Variables and Rewards for Reinforcement Learning",
+  "url": "http://proceedings.mlr.press/v80/dietterich18a/dietterich18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/dietterich18a/dietterich18a.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/dietterich18a/dietterich18a-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Coordinated Exploration in Concurrent Reinforcement Learning",
+  "url": "http://proceedings.mlr.press/v80/dimakopoulou18a/dimakopoulou18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/dimakopoulou18a/dimakopoulou18a.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Beyond the One-Step Greedy Approach in Reinforcement Learning",
+  "url": "http://proceedings.mlr.press/v80/efroni18a/efroni18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/efroni18a/efroni18a.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/efroni18a/efroni18a-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "IMPALA: Scalable Distributed Deep-RL with Importance Weighted Actor-Learner Architectures",
+  "url": "http://proceedings.mlr.press/v80/espeholt18a/espeholt18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/espeholt18a/espeholt18a.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/espeholt18a/espeholt18a-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Global Convergence of Policy Gradient Methods for the Linear Quadratic Regulator",
+  "url": "http://proceedings.mlr.press/v80/fazel18a/fazel18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/fazel18a/fazel18a.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/fazel18a/fazel18a-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Fourier Policy Gradients",
+  "url": "http://proceedings.mlr.press/v80/fellows18a/fellows18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/fellows18a/fellows18a.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/fellows18a/fellows18a-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Automatic Goal Generation for Reinforcement Learning Agents",
+  "url": "http://proceedings.mlr.press/v80/florensa18a/florensa18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/florensa18a/florensa18a.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/florensa18a/florensa18a-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Efficient Bias-Span-Constrained Exploration-Exploitation in Reinforcement Learning",
+  "url": "http://proceedings.mlr.press/v80/fruit18a/fruit18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/fruit18a/fruit18a.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/fruit18a/fruit18a-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Addressing Function Approximation Error in Actor-Critic Methods",
+  "url": "http://proceedings.mlr.press/v80/fujimoto18a/fujimoto18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/fujimoto18a/fujimoto18a.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/fujimoto18a/fujimoto18a-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Clipped Action Policy Gradient",
+  "url": "http://proceedings.mlr.press/v80/fujita18a/fujita18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/fujita18a/fujita18a.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/fujita18a/fujita18a-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Latent Space Policies for Hierarchical Reinforcement Learning",
+  "url": "http://proceedings.mlr.press/v80/haarnoja18a/haarnoja18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/haarnoja18a/haarnoja18a.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/haarnoja18a/haarnoja18a-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning with a Stochastic Actor",
+  "url": "http://proceedings.mlr.press/v80/haarnoja18b/haarnoja18b.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/haarnoja18b/haarnoja18b.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/haarnoja18b/haarnoja18b-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Fast Bellman Updates for Robust MDPs",
+  "url": "http://proceedings.mlr.press/v80/ho18a/ho18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/ho18a/ho18a.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/ho18a/ho18a-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Using Reward Machines for High-Level Task Specification and Decomposition in Reinforcement Learning",
+  "url": "http://proceedings.mlr.press/v80/icarte18a/icarte18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/icarte18a/icarte18a.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/icarte18a/icarte18a-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Deep Variational Reinforcement Learning for POMDPs",
+  "url": "http://proceedings.mlr.press/v80/igl18a/igl18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/igl18a/igl18a.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/igl18a/igl18a-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Feedback-Based Tree Search for Reinforcement Learning",
+  "url": "http://proceedings.mlr.press/v80/jiang18a/jiang18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/jiang18a/jiang18a.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/jiang18a/jiang18a-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Regret Minimization for Partially Observable Deep Reinforcement Learning",
+  "url": "http://proceedings.mlr.press/v80/jin18c/jin18c.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/jin18c/jin18c.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/jin18c/jin18c-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Policy Optimization with Demonstrations",
+  "url": "http://proceedings.mlr.press/v80/kang18a/kang18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/kang18a/kang18a.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/kang18a/kang18a-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Continual Reinforcement Learning with Complex Synapses",
+  "url": "http://proceedings.mlr.press/v80/kaplanis18a/kaplanis18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/kaplanis18a/kaplanis18a.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Hierarchical Imitation and Reinforcement Learning",
+  "url": "http://proceedings.mlr.press/v80/le18a/le18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/le18a/le18a.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/le18a/le18a-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Deep Reinforcement Learning in Continuous Action Spaces: a Case Study in the Game of Simulated Curling",
+  "url": "http://proceedings.mlr.press/v80/lee18b/lee18b.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/lee18b/lee18b.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "RLlib: Abstractions for Distributed Reinforcement Learning",
+  "url": "http://proceedings.mlr.press/v80/liang18b/liang18b.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/liang18b/liang18b.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/liang18b/liang18b-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "End-to-end Active Object Tracking via Reinforcement Learning",
+  "url": "http://proceedings.mlr.press/v80/luo18a/luo18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/luo18a/luo18a.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "An Efficient, Generalized Bellman Update For Cooperative Inverse Reinforcement Learning",
+  "url": "http://proceedings.mlr.press/v80/malik18a/malik18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/malik18a/malik18a.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Reinforcement Learning with Function-Valued Action Spaces for Partial Differential Equation Control",
+  "url": "http://proceedings.mlr.press/v80/pan18a/pan18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/pan18a/pan18a.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/pan18a/pan18a-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Stochastic Variance-Reduced Policy Gradient",
+  "url": "http://proceedings.mlr.press/v80/papini18a/papini18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/papini18a/papini18a.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Time Limits in Reinforcement Learning",
+  "url": "http://proceedings.mlr.press/v80/pardo18a/pardo18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/pardo18a/pardo18a.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Can Deep Reinforcement Learning Solve Erdos-Selfridge-Spencer Games?",
+  "url": "http://proceedings.mlr.press/v80/raghu18a/raghu18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/raghu18a/raghu18a.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/raghu18a/raghu18a-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Modeling Others using Oneself in Multi-Agent Reinforcement Learning",
+  "url": "http://proceedings.mlr.press/v80/raileanu18a/raileanu18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/raileanu18a/raileanu18a.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "QMIX: Monotonic Value Function Factorisation for Deep Multi-Agent Reinforcement Learning",
+  "url": "http://proceedings.mlr.press/v80/rashid18a/rashid18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/rashid18a/rashid18a.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/rashid18a/rashid18a-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "An Inference-Based Policy Gradient Method for Learning Options",
+  "url": "http://proceedings.mlr.press/v80/smith18a/smith18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/smith18a/smith18a.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Structured Control Nets for Deep Reinforcement Learning",
+  "url": "http://proceedings.mlr.press/v80/srouji18a/srouji18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/srouji18a/srouji18a.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/srouji18a/srouji18a-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Importance Weighted Transfer of Samples in Reinforcement Learning",
+  "url": "http://proceedings.mlr.press/v80/tirinzoni18a/tirinzoni18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/tirinzoni18a/tirinzoni18a.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/tirinzoni18a/tirinzoni18a-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "The Mirage of Action-Dependent Baselines in Reinforcement Learning",
+  "url": "http://proceedings.mlr.press/v80/tucker18a/tucker18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/tucker18a/tucker18a.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Programmatically Interpretable Reinforcement Learning",
+  "url": "http://proceedings.mlr.press/v80/verma18a/verma18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/verma18a/verma18a.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/verma18a/verma18a-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Competitive Multi-agent Inverse Reinforcement Learning with Sub-optimal Demonstrations",
+  "url": "http://proceedings.mlr.press/v80/wang18d/wang18d.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/wang18d/wang18d.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/wang18d/wang18d-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Learning to Explore via Meta-Policy Gradient",
+  "url": "http://proceedings.mlr.press/v80/xu18d/xu18d.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/xu18d/xu18d.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Mean Field Multi-Agent Reinforcement Learning",
+  "url": "http://proceedings.mlr.press/v80/yang18d/yang18d.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/yang18d/yang18d.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/yang18d/yang18d-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Policy Optimization as Wasserstein Gradient Flows",
+  "url": "http://proceedings.mlr.press/v80/zhang18a/zhang18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/zhang18a/zhang18a.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/zhang18a/zhang18a-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Problem Dependent Reinforcement Learning Bounds Which Can Identify Bandit Structure in MDPs",
+  "url": "http://proceedings.mlr.press/v80/zanette18a/zanette18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/zanette18a/zanette18a.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/zanette18a/zanette18a-supp.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Fully Decentralized Multi-Agent Reinforcement Learning with Networked Agents",
+  "url": "http://proceedings.mlr.press/v80/zhang18n/zhang18n.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/zhang18n/zhang18n.pdf",
+  "supp_url": "http://proceedings.mlr.press/v80/zhang18n/zhang18n-supp.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Hierarchical Reinforcement Learning for Zero-shot Generalization with Subtask Dependencies",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/018dd1e07a2de4a08e6612341bf2323e-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/018dd1e07a2de4a08e6612341bf2323e-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Total stochastic gradient algorithms and applications in reinforcement learning",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/0d59701b3474225fca5563e015965886-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/0d59701b3474225fca5563e015965886-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Scalable Coordinated Exploration in Concurrent Reinforcement Learning",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/1f4fe6a4411edc2ff625888b4093e917-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/1f4fe6a4411edc2ff625888b4093e917-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Fighting Boredom in Recommender Systems with Linear Reinforcement Learning",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/210f760a89db30aa72ca258a3483cc7f-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/210f760a89db30aa72ca258a3483cc7f-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Meta-Gradient Reinforcement Learning",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/2715518c875999308842e3455eda2fe3-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/2715518c875999308842e3455eda2fe3-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Bayesian Control of Large MDPs with Unknown Dynamics in Data-Poor Environments",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/2cbd9c540641923027adb8ab89decc05-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/2cbd9c540641923027adb8ab89decc05-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Lifelong Inverse Reinforcement Learning",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/2d969e2cee8cfa07ce7ca0bb13c7a36d-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/2d969e2cee8cfa07ce7ca0bb13c7a36d-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Q-learning with Nearest Neighbors",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/309fee4e541e51de2e41f21bebb342aa-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/309fee4e541e51de2e41f21bebb342aa-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Constrained Cross-Entropy Method for Safe Reinforcement Learning",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/34ffeb359a192eb8174b6854643cc046-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/34ffeb359a192eb8174b6854643cc046-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Deep Reinforcement Learning in a Handful of Trials using Probabilistic Dynamics Models",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/3de568f8597b94bda53149c7d7f5958c-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/3de568f8597b94bda53149c7d7f5958c-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "An Off-policy Policy Gradient Theorem Using Emphatic Weightings",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/3ef815416f775098fe977004015c6193-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/3ef815416f775098fe977004015c6193-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Multiple-Step Greedy Policies in Approximate and Online Reinforcement Learning",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/3f998e713a6e02287c374fd26835d87e-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/3f998e713a6e02287c374fd26835d87e-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Meta-Reinforcement Learning of Structured Exploration Strategies",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/4de754248c196c85ee4fbdcee89179bd-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/4de754248c196c85ee4fbdcee89179bd-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "A Lyapunov-based Approach to Safe Reinforcement Learning",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/4fe5149039b52765bde64beb9f674940-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/4fe5149039b52765bde64beb9f674940-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "On Learning Intrinsic Rewards for Policy Gradient Methods",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/51de85ddd068f0bc787691d356176df9-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/51de85ddd068f0bc787691d356176df9-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Reinforcement Learning of Theorem Proving",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/55acf8539596d25624059980986aaa78-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/55acf8539596d25624059980986aaa78-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Multi-Agent Reinforcement Learning via Double Averaging Primal-Dual Optimization",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/5a378f8490c8d6af8647a753812f6e31-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/5a378f8490c8d6af8647a753812f6e31-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Randomized Prior Functions for Deep Reinforcement Learning",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/5a7b238ba0f6502e5d6be14424b20ded-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/5a7b238ba0f6502e5d6be14424b20ded-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Negotiable Reinforcement Learning for Pareto Optimal Sequential Decision-Making",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/5b8e4fd39d9786228649a8a8bec4e008-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/5b8e4fd39d9786228649a8a8bec4e008-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Learning Temporal Point Processes via Reinforcement Learning",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/5d50d22735a7469266aab23fd8aeb536-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/5d50d22735a7469266aab23fd8aeb536-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "On Oracle-Efficient PAC RL with Rich Observations",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/5f0f5e5f33945135b874349cfbed4fb9-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/5f0f5e5f33945135b874349cfbed4fb9-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Non-delusional Q-learning and value-iteration",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/5fd0245f6c9ddbdf3eff0f505975b6a7-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/5fd0245f6c9ddbdf3eff0f505975b6a7-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Learn What Not to Learn: Action Elimination with Deep Reinforcement Learning",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/645098b086d2f9e1e0e939c27f9f2d6f-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/645098b086d2f9e1e0e939c27f9f2d6f-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Policy Optimization via Importance Sampling",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/6aed000af86a084f9cb0264161e29dd3-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/6aed000af86a084f9cb0264161e29dd3-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Deep Reinforcement Learning of Marked Temporal Point Processes",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/71a58e8cb75904f24cde464161c3e766-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/71a58e8cb75904f24cde464161c3e766-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Transfer of Deep Reactive Policies for MDP Planning",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/74627b65e6e6a4c21e06809b8e02114a-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/74627b65e6e6a4c21e06809b8e02114a-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Simple random search of static linear policies is competitive for reinforcement learning",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/7634ea65a4e6d9041cfd3f7de18e334a-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/7634ea65a4e6d9041cfd3f7de18e334a-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Evolved Policy Gradients",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/7876acb66640bad41f1e1371ef30c180-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/7876acb66640bad41f1e1371ef30c180-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Visual Reinforcement Learning with Imagined Goals",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/7ec69dd44416c46745f6edd947b470cd-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/7ec69dd44416c46745f6edd947b470cd-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Distributed Multitask Reinforcement Learning with Quadratic Convergence",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/8073bd4ed0fe0c330290c58056a2cd5e-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/8073bd4ed0fe0c330290c58056a2cd5e-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Evolution-Guided Policy Gradient in Reinforcement Learning",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/85fc37b18c57097425b52fc7afbb6969-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/85fc37b18c57097425b52fc7afbb6969-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Post: Device Placement with Cross-Entropy Minimization and Proximal Policy Optimization",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/92650b2e92217715fe312e6fa7b90d82-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/92650b2e92217715fe312e6fa7b90d82-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Credit Assignment For Collective Multiagent RL With Global Rewards",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/94bb077f18daa6620efa5cf6e6f178d2-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/94bb077f18daa6620efa5cf6e6f178d2-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Unsupervised Video Object Segmentation for Deep Reinforcement Learning",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/96f2b50b5d3613adf9c27049b2a888c7-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/96f2b50b5d3613adf9c27049b2a888c7-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Representation Balancing MDPs for Off-policy Policy Evaluation",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/980ecd059122ce2e50136bda65c25e07-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/980ecd059122ce2e50136bda65c25e07-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Reinforcement Learning for Solving the Vehicle Routing Problem",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/9fb4651c05b2ed70fba5afe0b039a550-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/9fb4651c05b2ed70fba5afe0b039a550-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Diversity-Driven Exploration Strategy for Deep Reinforcement Learning",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/a2802cade04644083dcde1c8c483ed9a-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/a2802cade04644083dcde1c8c483ed9a-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Improving Exploration in Evolution Strategies for Deep Reinforcement Learning via a Population of Novelty-Seeking Agents",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/b1301141feffabac455e1f90a7de2054-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/b1301141feffabac455e1f90a7de2054-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "REFUEL: Exploring Sparse Features in Deep Reinforcement Learning for Fast Disease Diagnosis",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/b5a1d925221b37e2e399f7b319038ba0-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/b5a1d925221b37e2e399f7b319038ba0-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Reinforcement Learning with Multiple Experts: A Bayesian Model Combination Approach",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/ba4002d88b8860b6a684ade8357aba56-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/ba4002d88b8860b6a684ade8357aba56-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "The Importance of Sampling inMeta-Reinforcement Learning",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/d0f5722f11a0cc839fa2ca6ea49d8585-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/d0f5722f11a0cc839fa2ca6ea49d8585-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Is Q-Learning Provably Efficient?",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/d3b1fb02964aa64e257f9f26a31f72cf-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/d3b1fb02964aa64e257f9f26a31f72cf-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Genetic-Gated Networks for Deep Reinforcement Learning",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/d516b13671a4179d9b7b458a6ebdeb92-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/d516b13671a4179d9b7b458a6ebdeb92-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Exploration in Structured Reinforcement Learning",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/d693d554e0ede0d75f7d2873b015f228-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/d693d554e0ede0d75f7d2873b015f228-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Zero-Shot Transfer with Deictic Object-Oriented Representation in Reinforcement Learning",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/df0aab058ce179e4f7ab135ed4e641a9-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/df0aab058ce179e4f7ab135ed4e641a9-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Actor-Critic Policy Optimization in Partially Observable Multiagent Environments",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/e22dd5dabde45eda5a1a67772c8e25dd-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/e22dd5dabde45eda5a1a67772c8e25dd-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Data-Efficient Hierarchical Reinforcement Learning",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/e6384711491713d29bc63fc5eeb5ba4f-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/e6384711491713d29bc63fc5eeb5ba4f-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Verifiable Reinforcement Learning via Policy Extraction",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/e6d8545daa42d5ced125a4bf747b3688-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/e6d8545daa42d5ced125a4bf747b3688-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Sample-Efficient Reinforcement Learning with Stochastic Ensemble Value Expansion",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/f02208a057804ee16ac72ff4d3cec53b-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/f02208a057804ee16ac72ff4d3cec53b-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Inference Aided Reinforcement Learning for Incentive Mechanism Design in Crowdsourcing",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/f2e43fa3400d826df4195a9ac70dca62-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/f2e43fa3400d826df4195a9ac70dca62-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Memory Augmented Policy Optimization for Program Synthesis and Semantic Parsing",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/f4e369c0a468d3aeeda0593ba90b5e55-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/f4e369c0a468d3aeeda0593ba90b5e55-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Fast deep reinforcement learning using online adjustments from the past",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/f7bdb0e100275600f9e183e25d81822d-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/f7bdb0e100275600f9e183e25d81822d-Paper.pdf"
+ },
+ {
+  "venue": "ICLR 2018",
+  "title": "Maximum a Posteriori Policy Optimisation",
+  "url": "https://openreview.net/forum?id=S1ANxQW0b",
+  "pdf_url": "https://openreview.net/pdf?id=S1ANxQW0b"
+ },
+ {
+  "venue": "ICLR 2018",
+  "title": "TreeQN and ATreeC: Differentiable Tree-Structured Models for Deep Reinforcement Learning",
+  "url": "https://openreview.net/forum?id=H1dh6Ax0Z",
+  "pdf_url": "https://openreview.net/pdf?id=H1dh6Ax0Z"
+ },
+ {
+  "venue": "ICLR 2018",
+  "title": "Distributed Distributional Deterministic Policy Gradients",
+  "url": "https://openreview.net/forum?id=SyZipzbCb",
+  "pdf_url": "https://openreview.net/pdf?id=SyZipzbCb"
+ },
+ {
+  "venue": "ICLR 2018",
+  "title": "Reinforcement Learning on Web Interfaces using Workflow-Guided Exploration",
+  "url": "https://openreview.net/forum?id=ryTp3f-0-",
+  "pdf_url": "https://openreview.net/pdf?id=ryTp3f-0-"
+ },
+ {
+  "venue": "ICLR 2018",
+  "title": "TRUNCATED HORIZON POLICY SEARCH: COMBINING REINFORCEMENT LEARNING & IMITATION LEARNING",
+  "url": "https://openreview.net/forum?id=ryUlhzWCZ",
+  "pdf_url": "https://openreview.net/pdf?id=ryUlhzWCZ"
+ },
+ {
+  "venue": "ICLR 2018",
+  "title": "Go for a Walk and Arrive at the Answer: Reasoning Over Paths in Knowledge Bases using Reinforcement Learning",
+  "url": "https://openreview.net/forum?id=Syg-YfWCW",
+  "pdf_url": "https://openreview.net/pdf?id=Syg-YfWCW"
+ },
+ {
+  "venue": "ICLR 2018",
+  "title": "Divide-and-Conquer Reinforcement Learning",
+  "url": "https://openreview.net/forum?id=rJwelMbR-",
+  "pdf_url": "https://openreview.net/pdf?id=rJwelMbR-"
+ },
+ {
+  "venue": "ICLR 2018",
+  "title": "Action-dependent Control Variates for Policy Optimization via Stein Identity",
+  "url": "https://openreview.net/forum?id=H1mCp-ZRZ",
+  "pdf_url": "https://openreview.net/pdf?id=H1mCp-ZRZ"
+ },
+ {
+  "venue": "ICLR 2018",
+  "title": "Ask the Right Questions: Active Question Reformulation with Reinforcement Learning",
+  "url": "https://openreview.net/forum?id=S1CChZ-CZ",
+  "pdf_url": "https://openreview.net/pdf?id=S1CChZ-CZ"
+ },
+ {
+  "venue": "ICLR 2018",
+  "title": "Temporal Difference Models: Model-Free Deep RL for Model-Based Control",
+  "url": "https://openreview.net/forum?id=Skw0n-W0Z",
+  "pdf_url": "https://openreview.net/pdf?id=Skw0n-W0Z"
+ },
+ {
+  "venue": "ICLR 2018",
+  "title": "Model-Ensemble Trust-Region Policy Optimization",
+  "url": "https://openreview.net/forum?id=SJJinbWRZ",
+  "pdf_url": "https://openreview.net/pdf?id=SJJinbWRZ"
+ },
+ {
+  "venue": "ICLR 2018",
+  "title": "N2N learning: Network to Network Compression via Policy Gradient Reinforcement Learning",
+  "url": "https://openreview.net/forum?id=B1hcZZ-AW",
+  "pdf_url": "https://openreview.net/pdf?id=B1hcZZ-AW"
+ },
+ {
+  "venue": "ICLR 2018",
+  "title": "Variance Reduction for Policy Gradient with Action-Dependent Factorized Baselines",
+  "url": "https://openreview.net/forum?id=H1tSsb-AW",
+  "pdf_url": "https://openreview.net/pdf?id=H1tSsb-AW"
+ },
+ {
+  "venue": "ICLR 2018",
+  "title": "Leave no Trace: Learning to Reset for Safe and Autonomous Reinforcement Learning",
+  "url": "https://openreview.net/forum?id=S1vuO-bCW",
+  "pdf_url": "https://openreview.net/pdf?id=S1vuO-bCW"
+ },
+ {
+  "venue": "ICLR 2018",
+  "title": "Hierarchical and Interpretable Skill Acquisition in Multi-task Reinforcement Learning",
+  "url": "https://openreview.net/forum?id=SJJQVZW0b",
+  "pdf_url": "https://openreview.net/pdf?id=SJJQVZW0b"
+ },
+ {
+  "venue": "ICLR 2018",
+  "title": "The Reactor: A fast and sample-efficient Actor-Critic agent for Reinforcement Learning",
+  "url": "https://openreview.net/forum?id=rkHVZWZAZ",
+  "pdf_url": "https://openreview.net/pdf?id=rkHVZWZAZ"
+ },
+ {
+  "venue": "ICLR 2018",
+  "title": "Learning Robust Rewards with Adverserial Inverse Reinforcement Learning",
+  "url": "https://openreview.net/forum?id=rkHywl-A-",
+  "pdf_url": "https://openreview.net/pdf?id=rkHywl-A-"
+ },
+ {
+  "venue": "ICLR 2018",
+  "title": "Policy Optimization by Genetic Distillation",
+  "url": "https://openreview.net/forum?id=ByOnmlWC-",
+  "pdf_url": "https://openreview.net/pdf?id=ByOnmlWC-"
+ },
+ {
+  "venue": "ICLR 2018",
+  "title": "Guide Actor-Critic for Continuous Control",
+  "url": "https://openreview.net/forum?id=BJk59JZ0b",
+  "pdf_url": "https://openreview.net/pdf?id=BJk59JZ0b"
+ },
+ {
+  "venue": "ICLR 2018",
+  "title": "TD or not TD: Analyzing the Role of Temporal Differencing in Deep Reinforcement Learning",
+  "url": "https://openreview.net/forum?id=HyiAuyb0b",
+  "pdf_url": "https://openreview.net/pdf?id=HyiAuyb0b"
+ },
+ {
+  "venue": "ICLR 2018",
+  "title": "Neural Map: Structured Memory for Deep Reinforcement Learning",
+  "url": "https://openreview.net/forum?id=Bk9zbyZCZ",
+  "pdf_url": "https://openreview.net/pdf?id=Bk9zbyZCZ"
+ },
+ {
+  "venue": "ICLR 2018",
+  "title": "RESIDUAL LOSS PREDICTION: REINFORCEMENT LEARNING WITH NO INCREMENTAL FEEDBACK",
+  "url": "https://openreview.net/forum?id=HJNMYceCW",
+  "pdf_url": "https://openreview.net/pdf?id=HJNMYceCW"
+ },
+ {
+  "venue": "ICLR 2018",
+  "title": "Leveraging Grammar and Reinforcement Learning for Neural Program Synthesis",
+  "url": "https://openreview.net/forum?id=H1Xw62kRZ",
+  "pdf_url": "https://openreview.net/pdf?id=H1Xw62kRZ"
+ },
+ {
+  "venue": "ICLR 2018",
+  "title": "Reinforcement Learning Algorithm Selection",
+  "url": "https://openreview.net/forum?id=SyoDInJ0-",
+  "pdf_url": "https://openreview.net/pdf?id=SyoDInJ0-"
+ },
+ {
+  "venue": "ICLR 2018",
+  "title": "Progressive Reinforcement Learning with Distillation for Multi-Skilled Motion Control",
+  "url": "https://openreview.net/forum?id=B13njo1R-",
+  "pdf_url": "https://openreview.net/pdf?id=B13njo1R-"
+ }
+]

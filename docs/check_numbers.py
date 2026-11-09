@@ -73,6 +73,12 @@ for k in ("Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "X2", "X4", "X7"):
     r = res[k]
     p26, (lo, hi) = r["y2026"] / r["n2026"], audit[k]["wilson2026"]  # exact k/n, full-precision Wilson bounds
     add(f"{k} 2026 with Wilson CI", f"{pct(p26)} {ci(lo, hi)}", f"{pct(p26, lang='en')} {ci(lo, hi)}")
+for k in ("Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "X2", "X4", "X7"):  # our 2018 reading, table column
+    a18, n18 = res[k]["ours2018"].split("/")
+    add(f"{k} ours 2018", f"| {a18} sur {n18} |", f"| {a18} of {n18} |")
+q7a, q7n = res["Q7"]["ours2018"].split("/")
+add("Q7 ours 2018 in text", f"({q7a} sur {q7n} contre 10 %)", f"({q7a} out of {q7n} against 10%)")
+add("Q7 classic vs ours 2018", f"contre {q7a} sur {q7n} dans notre lecture de 2018", f"against {q7a} out of {q7n} in our reading of 2018")
 add("experimental papers 2026", f"{len(exp)} articles expérimentaux", f"{len(exp)} experimental papers")
 silent, single = sum(s is None for s in seeds), sum(s == 1 for s in seeds)
 med = int(statistics.median([s for s in seeds if s]))

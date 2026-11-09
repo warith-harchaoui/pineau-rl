@@ -345,7 +345,7 @@ papers is planned. This document flags the gap for as long as that rereading is 
 **Checking our reading.** How Pineau drew her papers and how she settled the doubtful cases remain
 unknown. To find out whether our reading resembles hers, we also read 12 papers from 2018 with the
 same grid and the same agents. On the method's hyperparameters, we are stricter than she was (6 out
-of 10 against 90%). On held-out evaluation, we are more lenient (4 out of 10 against 10%).
+of 10 against 90%). On held-out evaluation, we are more lenient (4 out of 11 against 10%).
 
 **Comparing two samples.** Pineau's 50 papers form a sample too. With another draw, her 55% of linked
 code would have come out between 41% and 68%. Treating her figure as exact would inflate the
@@ -403,13 +403,13 @@ by a coin toss. The protocol (`sim/llm/LLM_PROTOCOL.md`) announces this small sc
 |:------------------------------------|:----|--------:|----------:|-------------:|
 | Q5, the code is linked | F1 | 55% | 6 of 11 | 67% [52, 79] |
 | Q3, all of the method's hyperparameters are given | F2, F4 | 90% | 6 of 10 | 67% [52, 79] |
-| X7, the compute used is quantified | F2, F3 | not measured | 4 of 11 | 47% [33, 61] |
+| X7, the compute used is quantified | F2, F3 | not measured | 3 of 11 | 47% [33, 61] |
 | Q6, how the hyperparameters were chosen is described | F5 | 20% | 2 of 10 | 27% [16, 41] |
 | Q4, all of the baselines' hyperparameters are given | F7 | 60% | 6 of 11 | **18% [10, 32]** |
-| X4, the baselines are tuned with the same care | F7 | not measured | 4 of 10 | 5% [1, 15] |
+| X4, the baselines are tuned with the same care | F7 | not measured | 1 of 11 | 5% [1, 15] |
 | X2, an uncertainty is reported | F12 | not measured | 8 of 11 | 47% [33, 61] |
 | Q8, a statistical test is applied | F12 | 5% | 1 of 11 | 4% [1, 15] |
-| Q7, evaluation uses held-out conditions | F15 | 10% | 4 of 10 | **70% [56, 82]** |
+| Q7, evaluation uses held-out conditions | F15 | 10% | 4 of 11 | **70% [56, 82]** |
 
 : Joelle Pineau's grid for deep reinforcement learning papers, reapplied criterion by criterion. The 2026 column gives a share with its 95% Wilson confidence interval, in percent. In bold, the two gaps from her figures that pass the Holm correction for multiple comparisons and that our grid does not explain. The drop for the method's hyperparameters passes it too, yet our reading of 2018 shows that it comes from our grid, which is stricter than hers. "Not measured": Pineau did not have this criterion. Data: `study/results_final.json` and `study/audit_stats.json`.
 
@@ -584,7 +584,7 @@ those where their method loses and say where the code of their baselines comes f
 held-out conditions, against 10% for Pineau: a gap of 60 points, from 42 to 73 with its interval.
 Nearly all of the rise comes from RL on large models: 26 papers out of 27. Their benchmarks,
 collections of mathematics problems, separate training problems from test problems by construction.
-Classical RL stays at 5 papers out of 13, against 4 out of 10 in our reading of 2018: we detect no
+Classical RL stays at 5 papers out of 13, against 4 out of 11 in our reading of 2018: we detect no
 change there. So the flaw receded because RL changed terrain, far more than because classical RL
 changed its practice. Experiment E7 measures, on our own agents, what modified physics costs.
 
