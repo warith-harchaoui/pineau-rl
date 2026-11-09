@@ -1,0 +1,3337 @@
+{
+ "source": "https://iclr.cc/Conferences/2018/Schedule",
+ "retrieved": "2026-11-09",
+ "note": "OpenReview API (api.openreview.net) and dblp returned bot challenges on 2026-11-09; this is the official ICLR 2018 schedule. Conference track = Oral + Poster cards; Workshop cards are the separate workshop track.",
+ "cards": [
+  {
+   "type": "Oral",
+   "title": "Spectral Normalization for Generative Adversarial Networks",
+   "authors": "Takeru Miyato · Toshiki Kataoka · Masanori Koyama · Yuichi Yoshida",
+   "forum": "B1QRgziT-"
+  },
+  {
+   "type": "Oral",
+   "title": "AmbientGAN: Generative models from lossy measurements",
+   "authors": "Ashish Bora · Eric Price · Alexandros Dimakis",
+   "forum": "Hy7fDog0b"
+  },
+  {
+   "type": "Oral",
+   "title": "Progressive Growing of GANs for Improved Quality, Stability, and Variation",
+   "authors": "Tero Karras · Timo Aila · Samuli Laine · Jaakko Lehtinen",
+   "forum": "Hk99zCeAb"
+  },
+  {
+   "type": "Poster",
+   "title": "Deep Complex Networks",
+   "authors": "Rachel Teo · Tan Nguyen",
+   "forum": "H1T2hmZAb"
+  },
+  {
+   "type": "Poster",
+   "title": "Universal Agent for Disentangling Environments and Tasks",
+   "authors": "Ahmet Üstün",
+   "forum": "B1mvVm-C-"
+  },
+  {
+   "type": "Poster",
+   "title": "Improving the Improved Training of Wasserstein GANs: A Consistency Term and Its Dual Effect",
+   "authors": "",
+   "forum": "SJx9GQb0-"
+  },
+  {
+   "type": "Poster",
+   "title": "Fraternal Dropout",
+   "authors": "Yan Zuo · Gil Avraham · Thalaiyasingam Ajanthan · Sameera Ramasinghe · Alexander Long",
+   "forum": "SJyVzQ-C-"
+  },
+  {
+   "type": "Poster",
+   "title": "Learning an Embedding Space for Transferable Robot Skills",
+   "authors": "Pierre Ablin · Angelos Katharopoulos · Skyler Seto · David Grangier",
+   "forum": "rk07ZXZRb"
+  },
+  {
+   "type": "Poster",
+   "title": "Hierarchical Density Order Embeddings",
+   "authors": "Sneha Kudugunta",
+   "forum": "HJCXZQbAZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Model compression via distillation and quantization",
+   "authors": "Olga Golovneva",
+   "forum": "S1XolQbRW"
+  },
+  {
+   "type": "Poster",
+   "title": "Maximum a Posteriori Policy Optimisation",
+   "authors": "",
+   "forum": "S1ANxQW0b"
+  },
+  {
+   "type": "Poster",
+   "title": "MaskGAN: Better Text Generation via Filling in the _______",
+   "authors": "",
+   "forum": "ByOExmWAb"
+  },
+  {
+   "type": "Poster",
+   "title": "Kronecker-factored Curvature Approximations for Recurrent Neural Networks",
+   "authors": "",
+   "forum": "HyMTkQZAb"
+  },
+  {
+   "type": "Poster",
+   "title": "Scalable Private Learning with PATE",
+   "authors": "Max Ryabinin",
+   "forum": "rkZB1XbRZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Online Learning Rate Adaptation with Hypergradient Descent",
+   "authors": "",
+   "forum": "BkrsAzWAb"
+  },
+  {
+   "type": "Poster",
+   "title": "Relational Neural Expectation Maximization: Unsupervised Discovery of Objects and their Interactions",
+   "authors": "",
+   "forum": "ryH20GbRW"
+  },
+  {
+   "type": "Poster",
+   "title": "Learning Awareness Models",
+   "authors": "",
+   "forum": "r1HhRfWRZ"
+  },
+  {
+   "type": "Poster",
+   "title": "On the regularization of Wasserstein GANs",
+   "authors": "",
+   "forum": "B1hYRMbCW"
+  },
+  {
+   "type": "Poster",
+   "title": "Spatially Transformed Adversarial Examples",
+   "authors": "",
+   "forum": "HyydRMZC-"
+  },
+  {
+   "type": "Poster",
+   "title": "Decision-Based Adversarial Attacks: Reliable Attacks Against Black-Box Machine Learning Models",
+   "authors": "Arthur Douillard",
+   "forum": "SyZI0GWCZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Communication Algorithms via Deep Learning",
+   "authors": "Arthur Douillard",
+   "forum": "ryazCMbR-"
+  },
+  {
+   "type": "Poster",
+   "title": "Towards Image Understanding from Deep Compression Without Decoding",
+   "authors": "Róbert Torfason · Fabian Mentzer · Eirikur Agustsson · Michael Tschannen · Radu Timofte · Luc Van Gool",
+   "forum": "HkXWCMbRW"
+  },
+  {
+   "type": "Poster",
+   "title": "Unsupervised Machine Translation Using Monolingual Corpora Only",
+   "authors": "Guillaume Lample · · Ludovic Denoyer · Marc'Aurelio Ranzato",
+   "forum": "rkYTTf-AZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Boosting the Actor with Dual Critic",
+   "authors": "Bo Dai · Albert Shaw · Niao He · Lihong Li · Le Song",
+   "forum": "BkUp6GZRW"
+  },
+  {
+   "type": "Poster",
+   "title": "A DIRT-T Approach to Unsupervised Domain Adaptation",
+   "authors": "Rui Shu · Hung H Bui · Hirokazu Narui · Stefano Ermon",
+   "forum": "H1q-TM-AW"
+  },
+  {
+   "type": "Poster",
+   "title": "LEARNING TO SHARE: SIMULTANEOUS PARAMETER TYING AND SPARSIFICATION IN DEEP LEARNING",
+   "authors": "Dejiao Zhang · Haozhu Wang · Mario Figueiredo · Laura Balzano",
+   "forum": "rypT3fb0b"
+  },
+  {
+   "type": "Poster",
+   "title": "Parametrized Hierarchical Procedures for Neural Programming",
+   "authors": "Roy Fox · Richard Shin · Sanjay Krishnan · Ken Goldberg · Dawn Song · Ion Stoica",
+   "forum": "rJl63fZRb"
+  },
+  {
+   "type": "Poster",
+   "title": "Auto-Encoding Sequential Monte Carlo",
+   "authors": "Tuan Anh Le · Maximilian Igl · Tom Rainforth · Tom Jin · Frank Wood",
+   "forum": "BJ8c3f-0b"
+  },
+  {
+   "type": "Poster",
+   "title": "Syntax-Directed Variational Autoencoder for Structured Data",
+   "authors": "Hanjun Dai · Yingtao Tian · Bo Dai · Steven Skiena · Le Song",
+   "forum": "SyqShMZRb"
+  },
+  {
+   "type": "Poster",
+   "title": "Learn to Pay Attention",
+   "authors": "Saumya Jetley · Nicholas A. Lord · Namhoon Lee · Philip Torr",
+   "forum": "HyzbhfWRW"
+  },
+  {
+   "type": "Poster",
+   "title": "The power of deeper networks for expressing natural functions",
+   "authors": "David Rolnick · Max Tegmark",
+   "forum": "SyProzZAW"
+  },
+  {
+   "type": "Poster",
+   "title": "Deep Learning for Physical Processes: Incorporating Prior Scientific Knowledge",
+   "authors": "Emmanuel d Bezenac · Arthur Pajot · patrick Gallinari",
+   "forum": "By4HsfWAZ"
+  },
+  {
+   "type": "Poster",
+   "title": "WHAI: Weibull Hybrid Autoencoding Inference for Deep Topic Modeling",
+   "authors": "Hao Zhang · Bo Chen · Dandan Guo · Mingyuan Zhou",
+   "forum": "S1cZsf-RW"
+  },
+  {
+   "type": "Poster",
+   "title": "Divide and Conquer Networks",
+   "authors": "Alex Nowak · David Folqué Garcia · Joan Bruna",
+   "forum": "B1jscMbAW"
+  },
+  {
+   "type": "Poster",
+   "title": "Hierarchical Representations for Efficient Architecture Search",
+   "authors": "Hanxiao Liu · Karen Simonyan · Oriol Vinyals · Chrisantha Fernando · Koray Kavukcuoglu",
+   "forum": "BJQRKzbA-"
+  },
+  {
+   "type": "Poster",
+   "title": "On the insufficiency of existing momentum schemes for Stochastic Optimization",
+   "authors": "Rahul Kidambi · Praneeth Netrapalli · Prateek Jain · Sham M Kakade",
+   "forum": "rJTutzbA-"
+  },
+  {
+   "type": "Poster",
+   "title": "Beyond Shared Hierarchies: Deep Multitask Learning through Soft Layer Ordering",
+   "authors": "Elliot Meyerson · Risto Miikkulainen",
+   "forum": "BkXmYfbAZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Towards Deep Learning Models Resistant to Adversarial Attacks",
+   "authors": "Aleksander Madry · Aleksandar A Makelov · Ludwig Schmidt · Dimitris Tsipras · Adrian Vladu",
+   "forum": "rJzIBfZAb"
+  },
+  {
+   "type": "Poster",
+   "title": "Breaking the Softmax Bottleneck: A High-Rank RNN Language Model",
+   "authors": "Zhilin Yang · Zihang Dai · Ruslan Salakhutdinov · William W Cohen",
+   "forum": "HkwZSG-CZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Neural Speed Reading via Skim-RNN",
+   "authors": "Minjoon Seo · Sewon Min · Ali Farhadi · Hannaneh Hajishirzi",
+   "forum": "Sy-dQG-Rb"
+  },
+  {
+   "type": "Poster",
+   "title": "TreeQN and ATreeC: Differentiable Tree-Structured Models for Deep Reinforcement Learning",
+   "authors": "Gregory Farquhar · Tim Rocktaeschel · Maximilian Igl · Shimon Whiteson",
+   "forum": "H1dh6Ax0Z"
+  },
+  {
+   "type": "Poster",
+   "title": "Gradient Estimators for Implicit Models",
+   "authors": "Yingzhen Li · Richard E Turner",
+   "forum": "SJi9WOeRb"
+  },
+  {
+   "type": "Poster",
+   "title": "Rethinking the Smaller-Norm-Less-Informative Assumption in Channel Pruning of Convolution Layers",
+   "authors": "Jianbo Ye · Xin Lu · Zhe Lin · James Z Wang",
+   "forum": "HJ94fqApW"
+  },
+  {
+   "type": "Poster",
+   "title": "When is a Convolutional Filter Easy to Learn?",
+   "authors": "Simon Du · Jason D Lee · Yuandong Tian",
+   "forum": "SkA-IE06W"
+  },
+  {
+   "type": "Poster",
+   "title": "MGAN: Training Generative Adversarial Nets with Multiple Generators",
+   "authors": "Quan Hoang · Tu D Nguyen · Trung Le · Dinh Phung",
+   "forum": "rkmu5b0a-"
+  },
+  {
+   "type": "Workshop",
+   "title": "Feature Incay for Representation Regularization",
+   "authors": "YUHUI YUAN · Kuiyuan Yang · Jianyuan Guo · Chao Zhang · Jingdong Wang",
+   "forum": "rycPR0Luz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Capturing Human Category Representations by Sampling in Deep Feature Spaces",
+   "authors": "Joshua Peterson · Krisha Aghi · Jordan W Suchow · Alexander Ku · Thomas L Griffiths",
+   "forum": "H1xPRyzwz"
+  },
+  {
+   "type": "Workshop",
+   "title": "STOCHASTIC GRADIENT LANGEVIN DYNAMICS THAT EXPLOIT NEURAL NETWORK STRUCTURE",
+   "authors": "Zachary Nado · Jasper Snoek · Roger Grosse · David Duvenaud · James Martens · Bowen Xu",
+   "forum": "ry-Se9kvG"
+  },
+  {
+   "type": "Workshop",
+   "title": "Towards Mixed-initiative generation of multi-channel sequential structure",
+   "authors": "Anna Huang · Sherol Chen · Mark Nelson · Douglas Eck",
+   "forum": "Sksy1ckvG"
+  },
+  {
+   "type": "Workshop",
+   "title": "Semi-Supervised Learning With GANs: Revisiting Manifold Regularization",
+   "authors": "Bruno Lecouat · Chuan-Sheng Foo · Houssam Zenati · Vijay Chandrasekhar",
+   "forum": "Hy5QRt1wz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Predicting Embryo Morphokinetics in Videos with Late Fusion Nets & Dynamic Decoders",
+   "authors": "Nathan Ng · Julian McAuley · Julian Gingold · Nina Desai · Zachary Lipton",
+   "forum": "By1QAYkvz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Differentiable Neural Network Architecture Search",
+   "authors": "Richard Shin · Charles Packer · Dawn Song",
+   "forum": "BJ-MRKkwG"
+  },
+  {
+   "type": "Workshop",
+   "title": "Towards Specification-Directed Program Repair",
+   "authors": "Richard Shin · Illia Polosukhin · Dawn Song",
+   "forum": "B1iZRFkwz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Local Explanation Methods for Deep Neural Networks Lack Sensitivity to Parameter Values",
+   "authors": "Julius Adebayo · Justin Gilmer · Ian Goodfellow · Been Kim",
+   "forum": "SJOYTK1vM"
+  },
+  {
+   "type": "Workshop",
+   "title": "ShakeDrop regularization",
+   "authors": "Yoshihiro Yamada · Masakazu Iwamura · Koichi Kise",
+   "forum": "Bymu6tJwz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Faster Neural Networks Straight from JPEG",
+   "authors": "Lionel Gueguen · Alexander Sergeev · Ruoqian Liu · Jason Yosinski",
+   "forum": "S1ry6Y1vG"
+  },
+  {
+   "type": "Workshop",
+   "title": "Generative Modeling for Protein Structures",
+   "authors": "Namrata Anand · Possu Huang",
+   "forum": "HJFXnYJvG"
+  },
+  {
+   "type": "Workshop",
+   "title": "Selecting the Best in GANs Family: a Post Selection Inference Framework",
+   "authors": "Yao-Hung Hubert Tsai · Yi Wu · Makoto Yamada · Ruslan Salakhutdinov · Ichiro Takeuchi · Kenji Fukumizu",
+   "forum": "SkpC5K1vG"
+  },
+  {
+   "type": "Workshop",
+   "title": "Stable and Effective Trainable Greedy Decoding for Sequence to Sequence Learning",
+   "authors": "Yun Chen · Kyunghyun Cho · Sam Bowman · Victor OK Li",
+   "forum": "rJZlKFkvM"
+  },
+  {
+   "type": "Workshop",
+   "title": "A Language and Compiler View on Differentiable Programming",
+   "authors": "Fei Wang · Tiark Rompf",
+   "forum": "SJxJtYkPG"
+  },
+  {
+   "type": "Workshop",
+   "title": "Tempered Adversarial Networks",
+   "authors": "Mehdi Sajjadi · Giambattista Parascandolo · Arash Mehrjou · Bernhard Schoelkopf",
+   "forum": "BkuSOYkvG"
+  },
+  {
+   "type": "Workshop",
+   "title": "Towards Provable Control for Unknown Linear Dynamical Systems",
+   "authors": "Sanjeev Arora · Elad Hazan · Holden Lee · Karan Singh · Cyril Zhang · Yi Zhang",
+   "forum": "HJGuXK1vM"
+  },
+  {
+   "type": "Workshop",
+   "title": "LSTM Iteration Networks: An Exploration of Differentiable Path Finding",
+   "authors": "Lisa Lee · Emilio Parisotto · Devendra Singh Chaplot · Ruslan Salakhutdinov",
+   "forum": "ryF9WtyDf"
+  },
+  {
+   "type": "Workshop",
+   "title": "Exploring Deep Recurrent Models with Reinforcement Learning for Molecule Design",
+   "authors": "Daniel Neil · Marwin Segler · Laura Guasch · Mohamed Ahmed · Dean Plumbley · Matthew Sellwood · Nathan Brown",
+   "forum": "Bk0xiI1Dz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Policy Optimization with Second-Order Advantage Information",
+   "authors": "Jiajin Li · Baoxiang Wang",
+   "forum": "HkQdaV1vf"
+  },
+  {
+   "type": "Workshop",
+   "title": "Deep Convolutional Malware Classifiers Can Learn from Raw Executables and Labels Only",
+   "authors": "Marek Krčál · Ondřej Švec · Martin Bálek · Otakar Jašek",
+   "forum": "HkHrmM1PM"
+  },
+  {
+   "type": "Workshop",
+   "title": "TransNets for Review Generation",
+   "authors": "Rose Kanjirathinkal · William W Cohen",
+   "forum": "rJKaKjC8f"
+  },
+  {
+   "type": "Workshop",
+   "title": "Extending the Framework of Equilibrium Propagation to General Dynamics",
+   "authors": "Benjamin Scellier · Anirudh Goyal · Jonathan Binas · Thomas Mesnard · Yoshua Bengio",
+   "forum": "BJ5V4ICIG"
+  },
+  {
+   "type": "Workshop",
+   "title": "Tree-to-tree Neural Networks for Program Translation",
+   "authors": "Xinyun Chen · Chang Liu · Dawn Song",
+   "forum": "H1xSvMh8M"
+  },
+  {
+   "type": "Oral",
+   "title": "Wasserstein Auto-Encoders",
+   "authors": "Ilya Tolstikhin · Olivier Bousquet · Sylvain Gelly · Bernhard Schoelkopf",
+   "forum": "HkL7n1-0b"
+  },
+  {
+   "type": "Oral",
+   "title": "On the Convergence of Adam and Beyond",
+   "authors": "Sashank Reddi · Satyen Kale · Sanjiv Kumar",
+   "forum": "ryQu7f-RZ"
+  },
+  {
+   "type": "Oral",
+   "title": "On the insufficiency of existing momentum schemes for Stochastic Optimization",
+   "authors": "Rahul Kidambi · Praneeth Netrapalli · Prateek Jain · Sham M Kakade",
+   "forum": "rJTutzbA-"
+  },
+  {
+   "type": "Poster",
+   "title": "Improving GAN Training via Binarized Representation Entropy (BRE) Regularization",
+   "authors": "Yanshuai Cao · Gavin Weiguang Ding · Yik Chau Lui · Ruitong Huang",
+   "forum": "BkLhaGZRW"
+  },
+  {
+   "type": "Poster",
+   "title": "Distributed Distributional Deterministic Policy Gradients",
+   "authors": "Gabriel Barth-maron · Matthew Hoffman · David Budden · Will Dabney · Daniel Horgan · Dhruva Tirumala · Alistair Muldal · Nicolas Heess · Timothy Lillicrap",
+   "forum": "SyZipzbCb"
+  },
+  {
+   "type": "Poster",
+   "title": "Reinforcement Learning on Web Interfaces using Workflow-Guided Exploration",
+   "authors": "Evan Liu · Kelvin Guu · Panupong Pasupat · Tim Shi · Percy Liang",
+   "forum": "ryTp3f-0-"
+  },
+  {
+   "type": "Poster",
+   "title": "Learning a Generative Model for Validity in Complex Discrete Structures",
+   "authors": "David Janz · Jos van der Westhuizen · Brooks Paige · Matt J Kusner · José Miguel Hernández Lobato",
+   "forum": "rkrC3GbRW"
+  },
+  {
+   "type": "Poster",
+   "title": "TRUNCATED HORIZON POLICY SEARCH: COMBINING REINFORCEMENT LEARNING & IMITATION LEARNING",
+   "authors": "Wen Sun · J. A Bagnell · Byron Boots",
+   "forum": "ryUlhzWCZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Flipout: Efficient Pseudo-Independent Weight Perturbations on Mini-Batches",
+   "authors": "Yeming Wen · Paul Vicol · Jimmy Ba · Dustin Tran · Roger Grosse",
+   "forum": "rJNpifWAb"
+  },
+  {
+   "type": "Poster",
+   "title": "Lifelong Learning with Dynamically Expandable Networks",
+   "authors": "Jaehong Yoon · Eunho Yang · Jeongtae Lee · Sung Ju Hwang",
+   "forum": "Sk7KsfW0-"
+  },
+  {
+   "type": "Poster",
+   "title": "Simulated+Unsupervised Learning With Adaptive Data Generation and Bidirectional Mappings",
+   "authors": "Kangwook Lee · Hoon Kim · Changho Suh",
+   "forum": "SkHDoG-Cb"
+  },
+  {
+   "type": "Poster",
+   "title": "Quantitatively Evaluating GANs With Divergences Proposed for Training",
+   "authors": "Daniel Im · He Ma · Graham W Taylor · Kristin Branson",
+   "forum": "SJQHjzZ0-"
+  },
+  {
+   "type": "Poster",
+   "title": "Attacking Binarized Neural Networks",
+   "authors": "Angus Galloway · Graham W Taylor · Medhat Moussa",
+   "forum": "HkTEFfZRb"
+  },
+  {
+   "type": "Poster",
+   "title": "Go for a Walk and Arrive at the Answer: Reasoning Over Paths in Knowledge Bases using Reinforcement Learning",
+   "authors": "Rajarshi Das · Shehzaad Dhuliawala · Manzil Zaheer · Luke Vilnis · Ishan Durugkar · Akshay Krishnamurthy · Alex Smola · Andrew McCallum",
+   "forum": "Syg-YfWCW"
+  },
+  {
+   "type": "Poster",
+   "title": "Zero-Shot Visual Imitation",
+   "authors": "Deepak Pathak · Parsa Mahmoudieh · Guanghao Luo · Pulkit Agrawal · Dian Chen · Fred Shentu · Evan Shelhamer · Jitendra Malik · Alexei Efros · Trevor Darrell",
+   "forum": "BkisuzWRW"
+  },
+  {
+   "type": "Poster",
+   "title": "Mixed Precision Training of Convolutional Neural Networks using Integer Operations",
+   "authors": "Dipankar Das · Naveen Mellempudi · Dheevatsa Mudigere · Dhiraj Kalamkar · Sasikanth Avancha · Kunal Banerjee · Srinivas Sridharan · Karthik Vaidyanathan · Bharat Kaul · Evangelos Georganas · Alexander Heinecke · Pradeep K Dubey · Jesus Corbal · Nikita Shustrov · Roma Dubtsov · Evarist Fomenko · Vadim Pirogov",
+   "forum": "H135uzZ0-"
+  },
+  {
+   "type": "Poster",
+   "title": "Imitation Learning from Visual Data with Multiple Intentions",
+   "authors": "Aviv Tamar · Khashayar Rohanimanesh · Yinlam Chow · Chris Vigorito · Ben Goodrich · Michael Kahane · Derik Pridmore",
+   "forum": "Hk3ddfWRW"
+  },
+  {
+   "type": "Poster",
+   "title": "Demystifying MMD GANs",
+   "authors": "Mikolaj Binkowski · [deadname] Sutherland · Michael Arbel · Arthur Gretton",
+   "forum": "r1lUOzWCW"
+  },
+  {
+   "type": "Poster",
+   "title": "A Framework for the Quantitative Evaluation of Disentangled Representations",
+   "authors": "Cian Eastwood · Chris Williams",
+   "forum": "By-7dz-AZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Decision Boundary Analysis of Adversarial Examples",
+   "authors": "Warren He · Bo Li · Dawn Song",
+   "forum": "BkpiPMbA-"
+  },
+  {
+   "type": "Poster",
+   "title": "Routing Networks: Adaptive Selection of Non-Linear Functions for Multi-Task Learning",
+   "authors": "Clemens Rosenbaum · Tim Klinger · Matt Riemer",
+   "forum": "ry8dvM-R-"
+  },
+  {
+   "type": "Poster",
+   "title": "Compositional Attention Networks for Machine Reasoning",
+   "authors": "Drew A. Hudson · Christopher Manning",
+   "forum": "S1Euwz-Rb"
+  },
+  {
+   "type": "Poster",
+   "title": "Memory-based Parameter Adaptation",
+   "authors": "Pablo Sprechmann · Siddhant Jayakumar · Jack Rae · Alexander Pritzel · Adria Puigdomenech Badia · Benigno Uria · Oriol Vinyals · Demis Hassabis · Razvan Pascanu · Charles Blundell",
+   "forum": "rkfOvGbCW"
+  },
+  {
+   "type": "Poster",
+   "title": "Semi-parametric topological memory for navigation",
+   "authors": "Nikolay Savinov · Alexey Dosovitskiy · Vladlen Koltun",
+   "forum": "SygwwGbRW"
+  },
+  {
+   "type": "Poster",
+   "title": "Latent Constraints: Learning to Generate Conditionally from Unconditional Generative Models",
+   "authors": "Jesse Engel · Matthew D Hoffman · Adam Roberts",
+   "forum": "Sy8XvGb0-"
+  },
+  {
+   "type": "Poster",
+   "title": "On the Information Bottleneck Theory of Deep Learning",
+   "authors": "Andrew Saxe · Yamini Bansal · Joel Dapello · Madhu Advani · Artemy Kolchinsky · Brendan D Tracey · David D Cox",
+   "forum": "ry_WPG-A-"
+  },
+  {
+   "type": "Poster",
+   "title": "Sensitivity and Generalization in Neural Networks: an Empirical Study",
+   "authors": "Roman Novak · Yasaman Bahri · Daniel Abolafia · Jeffrey Pennington · Jascha Sohl-Dickstein",
+   "forum": "HJC2SzZCW"
+  },
+  {
+   "type": "Poster",
+   "title": "Deep Gradient Compression: Reducing the Communication Bandwidth for Distributed Training",
+   "authors": "Yujun Lin · song han · · Yu Wang · Bill Dally",
+   "forum": "SkhQHMW0W"
+  },
+  {
+   "type": "Poster",
+   "title": "Skip Connections Eliminate Singularities",
+   "authors": "Emin Orhan · Xaq Pitkow",
+   "forum": "HkwBEMWCZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Diffusion Convolutional Recurrent Neural Network: Data-Driven Traffic Forecasting",
+   "authors": "Yaguang Li · Rose Yu · Cyrus Shahabi · Yan Liu",
+   "forum": "SJiHXGWAZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Simulating Action Dynamics with Neural Process Networks",
+   "authors": "Antoine Bosselut · Omer Levy · Ariel Holtzman · Corin Ennis · Dieter Fox · Yejin Choi",
+   "forum": "rJYFzMZC-"
+  },
+  {
+   "type": "Poster",
+   "title": "Twin Networks: Matching the Future for Sequence Generation",
+   "authors": "Dmitriy Serdyuk · Nan Rosemary Ke · Alessandro Sordoni · Adam Trischler · Christopher Pal · Yoshua Bengio",
+   "forum": "BydLzGb0Z"
+  },
+  {
+   "type": "Poster",
+   "title": "Deep Learning as a Mixed Convex-Combinatorial Optimization Problem",
+   "authors": "Abram Friesen · Pedro Domingos",
+   "forum": "B1Lc-Gb0Z"
+  },
+  {
+   "type": "Poster",
+   "title": "Fast and Accurate Reading Comprehension by Combining Self-Attention and Convolution",
+   "authors": "Wei Yu · David Dohan · Thang Luong · Rui Zhao · Kai Chen · Mohammad Norouzi · Quoc V Le",
+   "forum": "B14TlG-RW"
+  },
+  {
+   "type": "Poster",
+   "title": "Multi-Mention Learning for Reading Comprehension with Neural Cascades",
+   "authors": "Swabha Swayamdipta · Ankur Parikh · Tom Kwiatkowski",
+   "forum": "HyRnez-RW"
+  },
+  {
+   "type": "Poster",
+   "title": "A Compressed Sensing View of Unsupervised Text Embeddings, Bag-of-n-Grams, and LSTMs",
+   "authors": "Sanjeev Arora · Mikhail Khodak · Nikunj Umesh Saunshi · Kiran Vodrahalli",
+   "forum": "B1e5ef-C-"
+  },
+  {
+   "type": "Poster",
+   "title": "Learning General Purpose Distributed Sentence Representations via Large Scale Multi-task Learning",
+   "authors": "Sandeep Subramanian · Adam Trischler · Yoshua Bengio · Christopher Pal",
+   "forum": "B18WgG-CZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Evidence Aggregation for Answer Re-Ranking in Open-Domain Question Answering",
+   "authors": "Shuohang Wang · Mo Yu · Jing Jiang · Wei Zhang · Xiaoxiao Guo · Shiyu Chang · Zhiguo Wang · Tim Klinger · Gerald Tesauro · Murray Campbell",
+   "forum": "rJl3yM-Ab"
+  },
+  {
+   "type": "Poster",
+   "title": "The Kanerva Machine: A Generative Distributed Memory",
+   "authors": "Yan Wu · Greg Wayne · Alex Graves · Timothy Lillicrap",
+   "forum": "S1HlA-ZAZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Predicting Floor-Level for 911 Calls with Neural Networks and Smartphone Sensor Data",
+   "authors": "William A Falcon · Henning Schulzrinne",
+   "forum": "ryBnUWb0b"
+  },
+  {
+   "type": "Poster",
+   "title": "Deep Active Learning for Named Entity Recognition",
+   "authors": "Yanyao Shen · Hyokun Yun · Zachary Lipton · Yakov Kronrod · anima anandkumar",
+   "forum": "ry018WZAZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Variational Network Quantization",
+   "authors": "Jan Achterhold · Jan Koehler · Anke Schmeink · Tim Genewein",
+   "forum": "ry-TW-WAb"
+  },
+  {
+   "type": "Poster",
+   "title": "Neural-Guided Deductive Search for Real-Time Program Synthesis from Examples",
+   "authors": "Ashwin Vijayakumar · Abhishek Mohta · Alex Polozov · Dhruv Batra · Prateek Jain · Sumit Gulwani",
+   "forum": "rywDjg-RW"
+  },
+  {
+   "type": "Poster",
+   "title": "Cascade Adversarial Machine Learning Regularized with a Unified Embedding",
+   "authors": "Taesik Na · Jong Hwan Ko · Saibal Mukhopadhyay",
+   "forum": "HyRVBzap-"
+  },
+  {
+   "type": "Poster",
+   "title": "Training and Inference with Integers in Deep Neural Networks",
+   "authors": "Shuang Wu · Guoqi Li · Feng Chen · Luping Shi",
+   "forum": "HJGXzmspb"
+  },
+  {
+   "type": "Workshop",
+   "title": "Winner's Curse? On Pace, Progress, and Empirical Rigor",
+   "authors": "D. Sculley · Jasper Snoek · Alex Wiltschko · Ali Rahimi",
+   "forum": "rJWF0Fywf"
+  },
+  {
+   "type": "Workshop",
+   "title": "Realistic Evaluation of Semi-Supervised Learning Algorithms",
+   "authors": "Avital Oliver · Augustus Odena · Colin Raffel · Ekin Cubuk · Ian Goodfellow",
+   "forum": "ByCZsFyPf"
+  },
+  {
+   "type": "Workshop",
+   "title": "Learning to Learn Without Labels",
+   "authors": "Luke Metz · Niru Maheswaranathan · Brian Cheung",
+   "forum": "ByoT9Fkvz"
+  },
+  {
+   "type": "Workshop",
+   "title": "MemCNN: a Framework for Developing Memory Efficient Deep Invertible Networks",
+   "authors": "Sil van de Leemput · Jonas Teuwen · Rashindra Manniesing",
+   "forum": "r1KzqK1wz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Conditional Networks for Few-Shot Semantic Segmentation",
+   "authors": "Kate Rakelly · Evan Shelhamer · Trevor Darrell · Alexei Efros · Sergey Levine",
+   "forum": "SkMjFKJwG"
+  },
+  {
+   "type": "Workshop",
+   "title": "An Optimization View on Dynamic Routing Between Capsules",
+   "authors": "Dilin Wang · Qiang Liu",
+   "forum": "HJjtFYJDf"
+  },
+  {
+   "type": "Workshop",
+   "title": "Gradients explode - Deep Networks are shallow - ResNet explained",
+   "authors": "Georg Philipp · Dawn Song · Jaime Carbonell",
+   "forum": "rJjcdFkPM"
+  },
+  {
+   "type": "Workshop",
+   "title": "Learning Invariance with Compact Transforms",
+   "authors": "Anna Thomas · Albert Gu · Tri Dao · Atri Rudra · Christopher Re",
+   "forum": "ryGtdFJPf"
+  },
+  {
+   "type": "Workshop",
+   "title": "An interpretable LSTM neural network for autoregressive exogenous model",
+   "authors": "Tian Guo · Tao Lin · Yao Lu",
+   "forum": "S1nzIYJvz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Are Efficient Deep Representations Learnable?",
+   "authors": "Maxwell Nye · Andrew Saxe",
+   "forum": "B1HI4FyvM"
+  },
+  {
+   "type": "Workshop",
+   "title": "FigureQA: An Annotated Figure Dataset for Visual Reasoning",
+   "authors": "Samira Ebrahimi Kahou · Vincent Michalski · Adam Atkinson · Ákos Kádár · Adam Trischler · Yoshua Bengio",
+   "forum": "H1mz0OyDz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Learning via social awareness: improving sketch representations with facial feedback",
+   "authors": "Natasha Jaques · Jesse Engel · David Ha · · Rosalind Picard · Douglas Eck",
+   "forum": "Bkyn3dJPG"
+  },
+  {
+   "type": "Workshop",
+   "title": "HoME: a Household Multimodal Environment",
+   "authors": "Simon Brodeur · · Ankesh Anand · Florian Golemo · Luca Celotti · Florian Strub · Jean Rouat · Hugo Larochelle · Aaron Courville",
+   "forum": "B1pJ3dkwG"
+  },
+  {
+   "type": "Workshop",
+   "title": "Negative eigenvalues of the Hessian in deep neural networks",
+   "authors": "Guillaume Alain · Nicolas Le Roux · Pierre-Antoine Manzagol",
+   "forum": "S1iiddyDG"
+  },
+  {
+   "type": "Workshop",
+   "title": "GILBO: One Metric to Measure Them All",
+   "authors": "Alexander Alemi · Ian Fischer",
+   "forum": "HyV7vdJPM"
+  },
+  {
+   "type": "Workshop",
+   "title": "GitGraph - from Computational Subgraphs to Smaller Architecture Search Spaces",
+   "authors": "Kamil Bennani-Smires · Claudiu Cristian Musat · Andreea Hossmann · Michael Baeriswyl",
+   "forum": "rkiO1_1Pz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Combating Adversarial Attacks Using Sparse Representations",
+   "authors": "Soorya Gopalakrishnan · Zhinus Marzi · Upamanyu Madhow · Ramtin Pedarsani",
+   "forum": "S10qYwywf"
+  },
+  {
+   "type": "Workshop",
+   "title": "Bayesian Incremental Learning for Deep Neural Networks",
+   "authors": "Maxim Kochurov · Timur Garipov · Dmitrii Podoprikhin · Dmitry Molchanov · Arsenii Ashukha · Dmitry Vetrov",
+   "forum": "ByZzFPJDG"
+  },
+  {
+   "type": "Workshop",
+   "title": "Can Deep Reinforcement Learning solve Erdos-Selfridge-Spencer Games?",
+   "authors": "Maithra Raghu · Alex Irpan · Jacob Andreas · Robert Kleinberg · Quoc V Le · Jon Kleinberg",
+   "forum": "SJbKi81wf"
+  },
+  {
+   "type": "Workshop",
+   "title": "Predict Responsibly: Increasing Fairness by Learning to Defer",
+   "authors": "David Madras · Richard Zemel · Toniann Pitassi",
+   "forum": "HyjVKLJwz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Resilient Backpropagation (Rprop) for Batch-learning in TensorFlow",
+   "authors": "Ciprian Florescu · Christian Igel",
+   "forum": "r1R0o7yDz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Semiparametric Reinforcement Learning",
+   "authors": "Mika Jain · John Lindsey",
+   "forum": "B1LRWg1wz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Learning Deep Models: Critical Points and Local Openness",
+   "authors": "Maher Nouiehed · Meisam Razaviyayn",
+   "forum": "HkX3i7CLM"
+  },
+  {
+   "type": "Workshop",
+   "title": "Pelee: A Real-Time Object Detection System on Mobile Devices",
+   "authors": "Jun Wang · · Shuang Ao ·",
+   "forum": "r1PhalTLf"
+  },
+  {
+   "type": "Workshop",
+   "title": "ComboGAN: Unrestricted Scalability for Image Domain Translation",
+   "authors": "Asha Anoosheh · Eirikur Agustsson ·",
+   "forum": "r1UXpPoLz"
+  },
+  {
+   "type": "Oral",
+   "title": "Learning to Represent Programs with Graphs",
+   "authors": "Miltiadis Allamanis · Marc Brockschmidt · Mahmoud Khademi",
+   "forum": "BJOFETxR-"
+  },
+  {
+   "type": "Oral",
+   "title": "Neural Sketch Learning for Conditional Program Generation",
+   "authors": "Vijayaraghavan Murali · Letao Qi · Swarat Chaudhuri · Chris Jermaine",
+   "forum": "HkfXMz-Ab"
+  },
+  {
+   "type": "Oral",
+   "title": "Characterizing Adversarial Subspaces Using Local Intrinsic Dimensionality",
+   "authors": "Xingjun Ma · Bo Li · Yisen Wang · Sarah Erfani · Sudanthi Wijewickrema · Grant Schoenebeck · Dawn Song · Michael E Houle · James Bailey",
+   "forum": "B1gJ1L2aW"
+  },
+  {
+   "type": "Oral",
+   "title": "Certifying Some Distributional Robustness with Principled Adversarial Training",
+   "authors": "Aman Sinha · Hong Namkoong · John Duchi",
+   "forum": "Hk6kPgZA-"
+  },
+  {
+   "type": "Poster",
+   "title": "Hierarchical Subtask Discovery with Non-Negative Matrix Factorization",
+   "authors": "Adam Earle · Andrew Saxe · Benjamin Rosman",
+   "forum": "ry80wMW0W"
+  },
+  {
+   "type": "Poster",
+   "title": "A Simple Neural Attentive Meta-Learner",
+   "authors": "Nikhil Mishra · Mostafa Rohaninejad · Xi Chen · Pieter Abbeel",
+   "forum": "B1DmUzWAW"
+  },
+  {
+   "type": "Poster",
+   "title": "Dynamic Neural Program Embeddings for Program Repair",
+   "authors": "Ke Wang · Rishabh Singh · Zhendong Su",
+   "forum": "BJuWrGW0Z"
+  },
+  {
+   "type": "Poster",
+   "title": "Stochastic Activation Pruning for Robust Adversarial Defense",
+   "authors": "Guneet Dhillon · Kamyar Azizzadenesheli · Zachary Lipton · Jeremy Bernstein · Jean Kossaifi · Aran Khanna · anima anandkumar",
+   "forum": "H1uR4GZRZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Do GANs learn the distribution? Some Theory and Empirics",
+   "authors": "Sanjeev Arora · Andrej Risteski · Yi Zhang",
+   "forum": "BJehNfW0-"
+  },
+  {
+   "type": "Poster",
+   "title": "Learning Parametric Closed-Loop Policies for Markov Potential Games",
+   "authors": "Sergio Valcarcel Macua · Javier Zazo · Santiago Zazo",
+   "forum": "rJm7VfZA-"
+  },
+  {
+   "type": "Poster",
+   "title": "Learning Approximate Inference Networks for Structured Prediction",
+   "authors": "Lifu Tu · Kevin Gimpel",
+   "forum": "H1WgVz-AZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Fidelity-Weighted Learning",
+   "authors": "Mostafa Dehghani · Arash Mehrjou · Stephan Gouws · Jaap Kamps · Bernhard Schoelkopf",
+   "forum": "B1X0mzZCW"
+  },
+  {
+   "type": "Poster",
+   "title": "HexaConv",
+   "authors": "Emiel Hoogeboom · Jorn Peters · Taco Cohen · Max Welling",
+   "forum": "r1vuQG-CW"
+  },
+  {
+   "type": "Poster",
+   "title": "On the Convergence of Adam and Beyond",
+   "authors": "Sashank Reddi · Satyen Kale · Sanjiv Kumar",
+   "forum": "ryQu7f-RZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Generalizing Across Domains via Cross-Gradient Training",
+   "authors": "Shiv Shankar · Vihari Piratla · Soumen Chakrabarti · Siddhartha Chaudhuri · Preethi Jyothi · Sunita Sarawagi",
+   "forum": "r1Dx7fbCW"
+  },
+  {
+   "type": "Poster",
+   "title": "Understanding image motion with group representations",
+   "authors": "Andrew Jaegle · Stephen Phillips · Daphne Ippolito · Kostas Daniilidis",
+   "forum": "SJLlmG-AZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Matrix capsules with EM routing",
+   "authors": "Geoffrey E Hinton · Sara Sabour · Nicholas Frosst",
+   "forum": "HJWLfGWRb"
+  },
+  {
+   "type": "Poster",
+   "title": "Global Optimality Conditions for Deep Neural Networks",
+   "authors": "Chulhee Yun · Suvrit Sra · Ali Jadbabaie",
+   "forum": "BJk7Gf-CZ"
+  },
+  {
+   "type": "Poster",
+   "title": "A PAC-Bayesian Approach to Spectrally-Normalized Margin Bounds for Neural Networks",
+   "authors": "Behnam Neyshabur · Srinadh Bhojanapalli · Nathan Srebro",
+   "forum": "Skz_WfbCZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Evaluating the Robustness of Neural Networks: An Extreme Value Theory Approach",
+   "authors": "Tsui-Wei Weng · Huan Zhang · Pin-Yu Chen · Jinfeng Yi · Dong Su · Yupeng Gao · Cho-Jui Hsieh · Luca Daniel",
+   "forum": "BkUHlMZ0b"
+  },
+  {
+   "type": "Poster",
+   "title": "Sobolev GAN",
+   "authors": "Youssef Mroueh · Chun-Liang Li · Tom Sercu · Anant Raj · Yu Cheng",
+   "forum": "SJA7xfb0b"
+  },
+  {
+   "type": "Poster",
+   "title": "Divide-and-Conquer Reinforcement Learning",
+   "authors": "Dibya Ghosh · Avi Singh · Aravind Rajeswaran · Vikash Kumar · Sergey Levine",
+   "forum": "rJwelMbR-"
+  },
+  {
+   "type": "Poster",
+   "title": "i-RevNet: Deep Invertible Networks",
+   "authors": "Joern-Henrik Jacobsen · Arnold W Smeulders · Edouard Oyallon",
+   "forum": "HJsjkMb0Z"
+  },
+  {
+   "type": "Poster",
+   "title": "Multi-View Data Generation Without View Supervision",
+   "authors": "Mickael Chen · Ludovic Denoyer · thierry artieres",
+   "forum": "ryRh0bb0Z"
+  },
+  {
+   "type": "Poster",
+   "title": "Action-dependent Control Variates for Policy Optimization via Stein Identity",
+   "authors": "Hao Liu · Yihao Feng · Yi Mao · Dengyong Zhou · Jian Peng · Qiang Liu",
+   "forum": "H1mCp-ZRZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Ask the Right Questions: Active Question Reformulation with Reinforcement Learning",
+   "authors": "Christian Buck · Jannis Bulian · Massimiliano Ciaramita · Wojciech Gajewski · Andrea Gesmundo · Neil Houlsby · Wei Wang.",
+   "forum": "S1CChZ-CZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Temporal Difference Models: Model-Free Deep RL for Model-Based Control",
+   "authors": "Vitchyr Pong · Shixiang Gu · Murtaza Dalal · Sergey Levine",
+   "forum": "Skw0n-W0Z"
+  },
+  {
+   "type": "Poster",
+   "title": "Model-Ensemble Trust-Region Policy Optimization",
+   "authors": "Thanard Kurutach · Ignasi Clavera · Yan Duan · Aviv Tamar · Pieter Abbeel",
+   "forum": "SJJinbWRZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Generating Wikipedia by Summarizing Long Sequences",
+   "authors": "Peter J Liu · Mohammad Saleh · Etienne Pot · Ben Goodrich · Ryan Sepassi · Lukasz Kaiser · Noam Shazeer",
+   "forum": "Hyg0vbWC-"
+  },
+  {
+   "type": "Poster",
+   "title": "Neural Language Modeling by Jointly Learning Syntax and Lexicon",
+   "authors": "Yikang Shen · Zhouhan Lin · Chin-Wei Huang · Aaron Courville",
+   "forum": "rkgOLb-0W"
+  },
+  {
+   "type": "Poster",
+   "title": "Deep Autoencoding Gaussian Mixture Model for Unsupervised Anomaly Detection",
+   "authors": "Bo Zong · Qi Song · Martin Min · Wei Cheng · Cristian Lumezanu · Daeki Cho · Haifeng Chen",
+   "forum": "BJJLHbb0-"
+  },
+  {
+   "type": "Poster",
+   "title": "An efficient framework for learning sentence representations",
+   "authors": "Lajanugen Logeswaran · Honglak Lee",
+   "forum": "rJvJXZb0W"
+  },
+  {
+   "type": "Poster",
+   "title": "Latent Space Oddity: on the Curvature of Deep Generative Models",
+   "authors": "Georgios Arvanitidis · Lars Kai Hansen · Søren Hauberg",
+   "forum": "SJzRZ-WCZ"
+  },
+  {
+   "type": "Poster",
+   "title": "N2N learning: Network to Network Compression via Policy Gradient Reinforcement Learning",
+   "authors": "Anubhav Ashok · Nicholas Rhinehart · Fares Beainy · Kris M Kitani",
+   "forum": "B1hcZZ-AW"
+  },
+  {
+   "type": "Poster",
+   "title": "Variational Message Passing with Structured Inference Networks",
+   "authors": "Wu Lin · Nicolas Daniel Hubacher · Mohammad Emtiyaz Khan",
+   "forum": "HyH9lbZAW"
+  },
+  {
+   "type": "Poster",
+   "title": "Emergence of Linguistic Communication from Referential Games with Symbolic and Pixel Input",
+   "authors": "Angeliki Lazaridou · Karl M Hermann · Karl Tuyls · Stephen Clark",
+   "forum": "HJGv1Z-AW"
+  },
+  {
+   "type": "Poster",
+   "title": "SCAN: Learning Hierarchical Compositional Visual Concepts",
+   "authors": "Irina Higgins · Nicolas Sonnerat · Loic Matthey · Arka Pal · Christopher Burgess · Matko Bošnjak · Murray Shanahan · Matthew Botvinick · · Alexander Lerchner",
+   "forum": "rkN2Il-RZ"
+  },
+  {
+   "type": "Poster",
+   "title": "The Role of Minimal Complexity Functions in Unsupervised Learning of Semantic Mappings",
+   "authors": "Tomer Galanti · Lior Wolf · Sagie Benaim",
+   "forum": "H1VjBebR-"
+  },
+  {
+   "type": "Poster",
+   "title": "Learning Sparse Latent Representations with the Deep Copula Information Bottleneck",
+   "authors": "Aleksander Wieczorek · Mario Wieser · Damian Murezzan · Volker Roth",
+   "forum": "Hk0wHx-RW"
+  },
+  {
+   "type": "Poster",
+   "title": "Learning From Noisy Singly-labeled Data",
+   "authors": "Ashish Khetan · Zachary Lipton · anima anandkumar",
+   "forum": "H1sUHgb0Z"
+  },
+  {
+   "type": "Poster",
+   "title": "Gaussian Process Behaviour in Wide Deep Neural Networks",
+   "authors": "Alexander Matthews · Jiri Hron · Mark Rowland · Richard E Turner · Zoubin Ghahramani",
+   "forum": "H1-nGgWC-"
+  },
+  {
+   "type": "Poster",
+   "title": "Critical Points of Linear Neural Networks: Analytical Forms and Landscape Properties",
+   "authors": "Yi Zhou · Yingbin Liang",
+   "forum": "SysEexbRb"
+  },
+  {
+   "type": "Poster",
+   "title": "Apprentice: Using Knowledge Distillation Techniques To Improve Low-Precision Network Accuracy",
+   "authors": "Asit Mishra · Debbie Marr",
+   "forum": "B1ae1lZRb"
+  },
+  {
+   "type": "Poster",
+   "title": "Wavelet Pooling for Convolutional Neural Networks",
+   "authors": "Travis Williams · Robert Li",
+   "forum": "rkhlb8lCZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Characterizing Adversarial Subspaces Using Local Intrinsic Dimensionality",
+   "authors": "Xingjun Ma · Bo Li · Yisen Wang · Sarah Erfani · Sudanthi Wijewickrema · Grant Schoenebeck · Dawn Song · Michael E Houle · James Bailey",
+   "forum": "B1gJ1L2aW"
+  },
+  {
+   "type": "Poster",
+   "title": "Learning Intrinsic Sparse Structures within Long Short-Term Memory",
+   "authors": "Wei Wen · Yuxiong He · Samyam Rajbhandari · Minjia Zhang · Wenhan Wang · Fang Liu · Bin Hu · Yiran Chen · Hai Li",
+   "forum": "rk6cfpRjZ"
+  },
+  {
+   "type": "Workshop",
+   "title": "Investigating Human Priors for Playing Video Games",
+   "authors": "Rachit Dubey · Pulkit Agrawal · Deepak Pathak · Alexei Efros · Thomas L Griffiths",
+   "forum": "rJov3dxDM"
+  },
+  {
+   "type": "Workshop",
+   "title": "An Evaluation of Fisher Approximations Beyond Kronecker Factorization",
+   "authors": "César Laurent · Thomas George · Xavier Bouthillier · Nicolas Ballas · Pascal Vincent",
+   "forum": "ryVC6tkwG"
+  },
+  {
+   "type": "Workshop",
+   "title": "ChatPainter: Improving Text to Image Generation using Dialogue",
+   "authors": "Shikhar Sharma · Dendi Suhubdy · Vincent Michalski · Samira Ebrahimi Kahou · Yoshua Bengio",
+   "forum": "rJsnEYJwG"
+  },
+  {
+   "type": "Workshop",
+   "title": "Meta-Learning for Batch Mode Active Learning",
+   "authors": "Sachin Ravi · Hugo Larochelle",
+   "forum": "r1PsGFJPz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Learning and Memorization",
+   "authors": "Satrajit Chatterjee",
+   "forum": "S1XFzYyPM"
+  },
+  {
+   "type": "Workshop",
+   "title": "Spatially Parallel Convolutions",
+   "authors": "Peter Jin · Boris Ginsburg · Kurt Keutzer",
+   "forum": "S1Yt0d1vG"
+  },
+  {
+   "type": "Workshop",
+   "title": "Fast and Accurate Text Classification: Skimming, Rereading and Early Stopping",
+   "authors": "Keyi Yu · Yang Liu · Alex Schwing · Jian Peng",
+   "forum": "r1wlAd1vM"
+  },
+  {
+   "type": "Workshop",
+   "title": "Analysis of Cosmic Microwave Background with Deep Learning",
+   "authors": "Siyu He · Siamak Ravanbakhsh · Shirley Ho",
+   "forum": "B15uoOyvz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Monotonic models for real-time dynamic malware detection",
+   "authors": "Alexander Chistyakov · · Aleksandr Shevelev ·",
+   "forum": "rkjatuyvM"
+  },
+  {
+   "type": "Workshop",
+   "title": "Nonlinear Acceleration of CNNs",
+   "authors": "Damien Scieur · Edouard Oyallon · Alexandre d'Aspremont · Francis Bach",
+   "forum": "HkNpF_kDM"
+  },
+  {
+   "type": "Workshop",
+   "title": "Decoupling Dynamics and Reward for Transfer Learning",
+   "authors": "Harsh Satija · Amy Zhang · Joelle Pineau",
+   "forum": "H1aoddyvM"
+  },
+  {
+   "type": "Workshop",
+   "title": "Uncertainty Estimation via Stochastic Batch Normalization",
+   "authors": "Andrei Atanov · Arsenii Ashukha · Dmitry Molchanov · Kirill Neklyudov · Dmitry P. Vetrov",
+   "forum": "r1yXEdkvz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Learning Efficient Tensor Representations with Ring Structure Networks",
+   "authors": "Qibin Zhao · Masashi Sugiyama · Longhao Yuan · Andrzej Cichocki",
+   "forum": "r1KdWO1PM"
+  },
+  {
+   "type": "Workshop",
+   "title": "To Prune, or Not to Prune: Exploring the Efficacy of Pruning for Model Compression",
+   "authors": "Michael Zhu · Suyog Gupta",
+   "forum": "Sy1iIDkPM"
+  },
+  {
+   "type": "Workshop",
+   "title": "On the Limitation of Local Intrinsic Dimensionality for Characterizing the Subspaces of Adversarial Examples",
+   "authors": "Pei-Hsuan Lu · Pin-Yu Chen · Chia-Mu Yu",
+   "forum": "HytESwywf"
+  },
+  {
+   "type": "Workshop",
+   "title": "Hockey-Stick GAN",
+   "authors": "Edgar Minasyan · Vinay Prabhu",
+   "forum": "HJOt7P1wz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Fast Node Embeddings: Learning Ego-Centric Representations",
+   "authors": "Tiago Pimentel · Adriano Veloso · Nivio Ziviani",
+   "forum": "ryhG1PkwG"
+  },
+  {
+   "type": "Workshop",
+   "title": "Synthesizing Audio with GANs",
+   "authors": "Chris Donahue · Julian McAuley · Miller Puckette",
+   "forum": "r1RwYIJPM"
+  },
+  {
+   "type": "Workshop",
+   "title": "Multi-Agent Generative Adversarial Imitation Learning",
+   "authors": "Jiaming Song · Hongyu Ren · Dorsa Sadigh · Stefano Ermon",
+   "forum": "rJNJIU1vf"
+  },
+  {
+   "type": "Workshop",
+   "title": "LEARNING AND ANALYZING VECTOR ENCODING OF SYMBOLIC REPRESENTATION",
+   "authors": "· · Paul Smolensky · Rishabh Singh",
+   "forum": "SkUnhG1PG"
+  },
+  {
+   "type": "Workshop",
+   "title": "SGD on Random Mixtures: Private Machine Learning under Data Breach Threats",
+   "authors": "Kangwook Lee · Kyungmin Lee · Hoon Kim · Changho Suh · Kannan Ramchandran",
+   "forum": "r17_wzJPM"
+  },
+  {
+   "type": "Workshop",
+   "title": "Neuron as an Agent",
+   "authors": "Shohei Ohsawa · Kei Akuzawa · Tatsuya Matsushima · Gustavo Bezerra · Yusuke Iwasawa · Hiroshi Kajino · · Yutaka Matsuo",
+   "forum": "SkcLNJJwf"
+  },
+  {
+   "type": "Workshop",
+   "title": "Weightless: Lossy weight encoding for deep neural network compression",
+   "authors": "Brandon Reagen · Udit Gupta · Robert Adolf · Michael Mitzenmacher · Alexander Rush · Alexander Rush · Gu-Yeon Wei",
+   "forum": "rJpXxgaIG"
+  },
+  {
+   "type": "Workshop",
+   "title": "A Dataset To Evaluate The Representations Learned By Video Prediction Models",
+   "authors": "Ryan Szeto · Simon Stent · German Ros · Jason J Corso",
+   "forum": "rJEXGGKLf"
+  },
+  {
+   "type": "Workshop",
+   "title": "Empirical Analysis of the Hessian of Over-Parametrized Neural Networks",
+   "authors": "Levent Sagun · Utku Evci · Veli Ugur Guney · Yann Dauphin · Leon Bottou",
+   "forum": "rJO1_M0Lf"
+  },
+  {
+   "type": "Oral",
+   "title": "Boosting Dilated Convolutional Networks with Mixed Tensor Decompositions",
+   "authors": "Nadav Cohen · Ronen Tamari · Amnon Shashua",
+   "forum": "S1JHhv6TW"
+  },
+  {
+   "type": "Oral",
+   "title": "Spherical CNNs",
+   "authors": "Taco Cohen · Mario Geiger · Jonas Koehler · Max Welling",
+   "forum": "Hkbd5xZRb"
+  },
+  {
+   "type": "Oral",
+   "title": "Zero-Shot Visual Imitation",
+   "authors": "Deepak Pathak · Parsa Mahmoudieh · Guanghao Luo · Pulkit Agrawal · Dian Chen · Fred Shentu · Evan Shelhamer · Jitendra Malik · Alexei Efros · Trevor Darrell",
+   "forum": "BkisuzWRW"
+  },
+  {
+   "type": "Oral",
+   "title": "Multi-Scale Dense Networks for Resource Efficient Image Classification",
+   "authors": "Gao Huang · Danlu Chen · Tianhong Li · Felix Wu · Laurens van der Maaten · Kilian Weinberger",
+   "forum": "Hk2aImxAb"
+  },
+  {
+   "type": "Poster",
+   "title": "FearNet: Brain-Inspired Model for Incremental Learning",
+   "authors": "Ronald Kemker · Christopher Kanan",
+   "forum": "SJ1Xmf-Rb"
+  },
+  {
+   "type": "Poster",
+   "title": "Variational Inference of Disentangled Latent Concepts from Unlabeled Observations",
+   "authors": "Abhishek Kumar · Prasanna Sattigeri · Avinash Balakrishnan",
+   "forum": "H1kG7GZAW"
+  },
+  {
+   "type": "Poster",
+   "title": "Meta-Learning for Semi-Supervised Few-Shot Classification",
+   "authors": "Mengye Ren · Eleni Triantafillou · Sachin Ravi · Jake Snell · Kevin Swersky · Joshua B Tenenbaum · Hugo Larochelle · Richard Zemel",
+   "forum": "HJcSzz-CZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Neural Sketch Learning for Conditional Program Generation",
+   "authors": "Vijayaraghavan Murali · Letao Qi · Swarat Chaudhuri · Chris Jermaine",
+   "forum": "HkfXMz-Ab"
+  },
+  {
+   "type": "Poster",
+   "title": "Deep Neural Networks as Gaussian Processes",
+   "authors": "Jaehoon Lee · Yasaman Bahri · Roman Novak · Samuel Schoenholz · Jeffrey Pennington · Jascha Sohl-Dickstein",
+   "forum": "B1EA-M-0Z"
+  },
+  {
+   "type": "Poster",
+   "title": "Initialization matters: Orthogonal Predictive State Recurrent Neural Networks",
+   "authors": "Krzysztof Choromanski · Carlton Downey · Byron Boots",
+   "forum": "HJJ23bW0b"
+  },
+  {
+   "type": "Poster",
+   "title": "Expressive power of recurrent neural networks",
+   "authors": "Valentin Khrulkov · Alexander Novikov · Ivan Oseledets",
+   "forum": "S1WRibb0Z"
+  },
+  {
+   "type": "Poster",
+   "title": "Defense-GAN: Protecting Classifiers Against Adversarial Attacks Using Generative Models",
+   "authors": "Pouya Samangouei · Maya Kabkab · Rama Chellappa",
+   "forum": "BkJ3ibb0-"
+  },
+  {
+   "type": "Poster",
+   "title": "Variance Reduction for Policy Gradient with Action-Dependent Factorized Baselines",
+   "authors": "Cathy Wu · Aravind Rajeswaran · Yan Duan · Vikash Kumar · Alexandre M Bayen · Sham M Kakade · Igor Mordatch · Pieter Abbeel",
+   "forum": "H1tSsb-AW"
+  },
+  {
+   "type": "Poster",
+   "title": "Certified Defenses against Adversarial Examples",
+   "authors": "Aditi Raghunathan · Jacob Steinhardt · Percy Liang",
+   "forum": "Bys4ob-Rb"
+  },
+  {
+   "type": "Poster",
+   "title": "Semantic Interpolation in Implicit Models",
+   "authors": "Yannic Kilcher · Aurelien Lucchi · Thomas Hofmann",
+   "forum": "H15odZ-C-"
+  },
+  {
+   "type": "Poster",
+   "title": "Leave no Trace: Learning to Reset for Safe and Autonomous Reinforcement Learning",
+   "authors": "Benjamin Eysenbach · Shixiang Gu · Julian Ibarz · Sergey Levine",
+   "forum": "S1vuO-bCW"
+  },
+  {
+   "type": "Poster",
+   "title": "Learning One-hidden-layer Neural Networks with Landscape Design",
+   "authors": "Rong Ge · Jason Lee · Tengyu Ma",
+   "forum": "BkwHObbRZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Thermometer Encoding: One Hot Way To Resist Adversarial Examples",
+   "authors": "Jacob Buckman · Aurko Roy · Colin Raffel · Ian Goodfellow",
+   "forum": "S18Su--CW"
+  },
+  {
+   "type": "Poster",
+   "title": "Training GANs with Optimism",
+   "authors": "Constantinos C Daskalakis · Andrew Ilyas · Vasilis Syrgkanis · Haoyang Zeng",
+   "forum": "SJJySbbAZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Hierarchical and Interpretable Skill Acquisition in Multi-task Reinforcement Learning",
+   "authors": "Tianmin Shu · Caiming Xiong · richard socher",
+   "forum": "SJJQVZW0b"
+  },
+  {
+   "type": "Poster",
+   "title": "The Reactor: A fast and sample-efficient Actor-Critic agent for Reinforcement Learning",
+   "authors": "Audrunas Gruslys · Will Dabney · Mohammad Gheshlaghi Azar · Bilal Piot · Marc G Bellemare · Remi Munos",
+   "forum": "rkHVZWZAZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Distributed Prioritized Experience Replay",
+   "authors": "Daniel Horgan · John Quan · David Budden · Gabriel Barth-maron · Matteo Hessel · Hado van Hasselt · David Silver",
+   "forum": "H1Dy---0Z"
+  },
+  {
+   "type": "Poster",
+   "title": "Adversarial Dropout Regularization",
+   "authors": "Kuniaki Saito · Yoshitaka Ushiku · Tatsuya Harada · Kate Saenko",
+   "forum": "HJIoJWZCZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Countering Adversarial Images using Input Transformations",
+   "authors": "Chuan Guo · Mayank Rana · Moustapha Cisse · Laurens van der Maaten",
+   "forum": "SyJ7ClWCb"
+  },
+  {
+   "type": "Poster",
+   "title": "Generating Natural Adversarial Examples",
+   "authors": "Zhengli Zhao · Dheeru Dua · Sameer Singh",
+   "forum": "H1BLjgZCb"
+  },
+  {
+   "type": "Poster",
+   "title": "Spherical CNNs",
+   "authors": "Taco Cohen · Mario Geiger · Jonas Koehler · Max Welling",
+   "forum": "Hkbd5xZRb"
+  },
+  {
+   "type": "Poster",
+   "title": "Intrinsic Motivation and Automatic Curricula via Asymmetric Self-Play",
+   "authors": "Sainbayar Sukhbaatar · Zeming Lin · Ilya Kostrikov · Gabriel Synnaeve · Arthur Szlam · Rob Fergus",
+   "forum": "SkT5Yg-RZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Beyond Word Importance: Contextual Decomposition to Extract Interactions from LSTMs",
+   "authors": "William Murdoch · Peter J Liu · Bin Yu",
+   "forum": "rkRwGg-0Z"
+  },
+  {
+   "type": "Poster",
+   "title": "Unsupervised Neural Machine Translation",
+   "authors": "Mikel Artetxe · Gorka Labaka · Eneko Agirre · Kyunghyun Cho",
+   "forum": "Sy2ogebAW"
+  },
+  {
+   "type": "Poster",
+   "title": "Smooth Loss Functions for Deep Top-k Classification",
+   "authors": "Leonard Berrada · Andrew Zisserman · M. Pawan Kumar",
+   "forum": "Hk5elxbRW"
+  },
+  {
+   "type": "Poster",
+   "title": "Synthetic and Natural Noise Both Break Neural Machine Translation",
+   "authors": "Yonatan Belinkov · Yonatan Bisk",
+   "forum": "BJ8vJebC-"
+  },
+  {
+   "type": "Poster",
+   "title": "Can Neural Networks Understand Logical Entailment?",
+   "authors": "Richard Evans · David Saxton · David Amos · Pushmeet Kohli · Edward Grefenstette",
+   "forum": "SkZxCk-0Z"
+  },
+  {
+   "type": "Poster",
+   "title": "Mastering the Dungeon: Grounded Language Learning by Mechanical Turker Descent",
+   "authors": "Zhilin Yang · Saizheng Zhang · Jack Urbanek · Will Feng · Alexander Miller · Arthur Szlam · Douwe Kiela · Jason Weston",
+   "forum": "SJ-C6JbRW"
+  },
+  {
+   "type": "Poster",
+   "title": "Many Paths to Equilibrium: GANs Do Not Need to Decrease a Divergence At Every Step",
+   "authors": "William Fedus · Mihaela Rosca · Balaji Lakshminarayanan · Andrew Dai · Shakir Mohamed · Ian Goodfellow",
+   "forum": "ByQpn1ZA-"
+  },
+  {
+   "type": "Poster",
+   "title": "Learning Latent Permutations with Gumbel-Sinkhorn Networks",
+   "authors": "gonzalo mena · David Belanger · Scott Linderman · Jasper Snoek",
+   "forum": "Byt3oJ-0W"
+  },
+  {
+   "type": "Poster",
+   "title": "Can recurrent neural networks warp time?",
+   "authors": "Corentin Tallec · Yann Ollivier",
+   "forum": "SJcKhk-Ab"
+  },
+  {
+   "type": "Poster",
+   "title": "Learning Differentially Private Recurrent Language Models",
+   "authors": "H. Brendan McMahan · Daniel Ramage · Kunal Talwar · Li Zhang",
+   "forum": "BJ0hF1Z0b"
+  },
+  {
+   "type": "Poster",
+   "title": "Deep Gaussian Embedding of Graphs: Unsupervised Inductive Learning via Ranking",
+   "authors": "Aleksandar Bojchevski · Stephan Günnemann",
+   "forum": "r1ZdKJ-0W"
+  },
+  {
+   "type": "Poster",
+   "title": "SEARNN: Training RNNs with global-local losses",
+   "authors": "Rémi Leblond · Jean-Baptiste Alayrac · Anton Osokin · Simon Lacoste-Julien",
+   "forum": "HkUR_y-RZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Learning to Teach",
+   "authors": "Yang Fan · Fei Tian · Tao Qin · Tie-Yan Liu",
+   "forum": "HJewuJWCZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Active Learning for Convolutional Neural Networks: A Core-Set Approach",
+   "authors": "Ozan Sener · Silvio Savarese",
+   "forum": "H1aIuk-RW"
+  },
+  {
+   "type": "Poster",
+   "title": "Sparse Persistent RNNs: Squeezing Large Recurrent Networks On-Chip",
+   "authors": "Feiwen Zhu · Jeff Pool · Michael Andersch · Jeremy Appleyard · Fung Xie",
+   "forum": "HkxF5RgC-"
+  },
+  {
+   "type": "Poster",
+   "title": "WRPN: Wide Reduced-Precision Networks",
+   "authors": "Asit Mishra · Eriko Nurvitadhi · Jeffrey J Cook · Debbie Marr",
+   "forum": "B1ZvaaeAZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Deep Voice 3: Scaling Text-to-Speech with Convolutional Sequence Learning",
+   "authors": "Wei Ping · Kainan Peng · Andrew Gibiansky · Sercan Arik · Ajay Kannan · SHARAN NARANG · Jonathan Raiman · John Miller",
+   "forum": "HJtEm4p6Z"
+  },
+  {
+   "type": "Poster",
+   "title": "Spectral Normalization for Generative Adversarial Networks",
+   "authors": "Takeru Miyato · Toshiki Kataoka · Masanori Koyama · Yuichi Yoshida",
+   "forum": "B1QRgziT-"
+  },
+  {
+   "type": "Workshop",
+   "title": "Universal Successor Representations for Transfer Reinforcement Learning",
+   "authors": "Chen Ma · Junfeng Wen · Yoshua Bengio",
+   "forum": "HJ_CpYyDz"
+  },
+  {
+   "type": "Workshop",
+   "title": "A Proximal Block Coordinate Descent Algorithm for Deep Neural Network Training",
+   "authors": "Tsz Kit Lau · Jinshan Zeng · Baoyuan Wu · Yuan Yao",
+   "forum": "HycIjFkPM"
+  },
+  {
+   "type": "Workshop",
+   "title": "Jointly Learning \"What\" and \"How\" from Instructions and Goal-States",
+   "authors": "Dzmitry Bahdanau · Felix Hill · Jan Leike · Edward Hughes · Pushmeet Kohli · Edward Grefenstette",
+   "forum": "BkmZvdkPM"
+  },
+  {
+   "type": "Workshop",
+   "title": "Deep learning mutation prediction enables early stage lung cancer detection in liquid biopsy",
+   "authors": "Steven T. Kothen-Hill · Asaf Zviran · Rafael Schulman · Sunil Deochand · Federico Gaiti · Dillon Maloney · Kevin Huang · Willey Liao · Nicolas Robine · Nathaniel Omans · Dan Landau",
+   "forum": "HyKC-OyDz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Evaluating visual \"common sense\" using fine-grained classification and captioning tasks",
+   "authors": "Raghav Goyal · Farzaneh Mahdisoltani · Guillaume Berger · Waseem Gharbieh · Ingo Bax · Roland Memisevic",
+   "forum": "rkX9Z_kwf"
+  },
+  {
+   "type": "Workshop",
+   "title": "Deep Neural Maps",
+   "authors": "Mehran Pesteie · Purang Abolmaesumi · Robert Rohling",
+   "forum": "HyG76D1wf"
+  },
+  {
+   "type": "Workshop",
+   "title": "Comparing Fixed and Adaptive Computation Time for Recurrent Neural Networks",
+   "authors": "Daniel Fojo · Víctor Campos · Xavier Giro-i-Nieto",
+   "forum": "SkZq3vyDf"
+  },
+  {
+   "type": "Workshop",
+   "title": "Compression by the signs: distributed learning is a two-way street",
+   "authors": "Jeremy Bernstein · Yu-Xiang Wang · Kamyar Azizzadenesheli · anima anandkumar",
+   "forum": "SJn0cw1PM"
+  },
+  {
+   "type": "Workshop",
+   "title": "Rethinking Style and Content Disentanglement in Variational Autoencoders",
+   "authors": "Rui Shu · Shengjia Zhao · Mykel J Kochenderfer",
+   "forum": "B1rQtwJDG"
+  },
+  {
+   "type": "Workshop",
+   "title": "Clustering Meets Implicit Generative Models",
+   "authors": "Francesco Locatello · Damien Vincent · Ilya Tolstikhin · Gunnar Rätsch · Sylvain Gelly · Bernhard Schoelkopf",
+   "forum": "rk4QYDkwz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Minimally Redundant Laplacian Eigenmaps",
+   "authors": "David Pfau · Christopher Burgess",
+   "forum": "rkmf_v1vf"
+  },
+  {
+   "type": "Workshop",
+   "title": "Neural Program Search: Solving Programming Tasks from Description and Examples",
+   "authors": "Illia Polosukhin ·",
+   "forum": "BJTtWDyPM"
+  },
+  {
+   "type": "Workshop",
+   "title": "ReinforceWalk: Learning to Walk in Graph with Monte Carlo Tree Search",
+   "authors": "Yelong Shen · Jianshu Chen · Po-Sen Huang · Yuqing Guo · Jianfeng Gao",
+   "forum": "HJCRT81DM"
+  },
+  {
+   "type": "Workshop",
+   "title": "Adversarial Spheres",
+   "authors": "Justin Gilmer · Luke Metz · Fartash Faghri · Samuel Schoenholz · · Martin Wattenberg · Ian Goodfellow",
+   "forum": "SkthlLkPf"
+  },
+  {
+   "type": "Workshop",
+   "title": "Attacking the Madry Defense Model with $L_1$-based Adversarial Examples",
+   "authors": "Yash Sharma · Pin-Yu Chen",
+   "forum": "Sy8WeUJPf"
+  },
+  {
+   "type": "Workshop",
+   "title": "Stable Distribution Alignment Using the Dual of the Adversarial Distance",
+   "authors": "Ben Usman · Kate Saenko · Brian Kulis",
+   "forum": "ryxEJLyvM"
+  },
+  {
+   "type": "Workshop",
+   "title": "A Flexible Approach to Automated RNN Architecture Generation",
+   "authors": "Martin Schrimpf · Stephen Merity · James Bradbury · richard socher",
+   "forum": "BJDCPSJPM"
+  },
+  {
+   "type": "Workshop",
+   "title": "Variance-based Gradient Compression for Efficient Distributed Deep Learning",
+   "authors": "Yusuke Tsuzuku · Hiroto Imachi · Takuya Akiba",
+   "forum": "Sy6hd7kvM"
+  },
+  {
+   "type": "Workshop",
+   "title": "A differentiable BLEU loss. Analysis and first results",
+   "authors": "noe casas · Marta R. Costa-jussà · Jose A.R Fonollosa",
+   "forum": "HkG7hzyvf"
+  },
+  {
+   "type": "Workshop",
+   "title": "Kronecker Recurrent Units",
+   "authors": "Cijo Jose · Moustapha Cisse · Francois Fleuret",
+   "forum": "SyR6Ul1Pf"
+  },
+  {
+   "type": "Workshop",
+   "title": "Expert-based reward function training: the novel method to train sequence generators",
+   "authors": "Joji Toyama · Yusuke Iwasawa · Kotaro Nakayama · Yutaka Matsuo",
+   "forum": "ByuM23RUG"
+  },
+  {
+   "type": "Workshop",
+   "title": "The loss surface and expressivity of deep convolutional neural networks",
+   "authors": "Quynh Nguyen · Matthias Hein",
+   "forum": "rJJfrm68M"
+  },
+  {
+   "type": "Workshop",
+   "title": "Semi-Supervised Few-Shot Learning with MAML",
+   "authors": "Rinu Boney · Alexander Ilin",
+   "forum": "r1n5Osurf"
+  },
+  {
+   "type": "Workshop",
+   "title": "Stacked Filters Stationary Flow For Hardware-Oriented Acceleration Of Deep Convolutional Neural Networks",
+   "authors": "Yuechao Gao · Nianhong Liu · Zhang Sheng",
+   "forum": "HkeAoQQHM"
+  },
+  {
+   "type": "Oral",
+   "title": "Training and Inference with Integers in Deep Neural Networks",
+   "authors": "Shuang Wu · Guoqi Li · Feng Chen · Luping Shi",
+   "forum": "HJGXzmspb"
+  },
+  {
+   "type": "Oral",
+   "title": "Ask the Right Questions: Active Question Reformulation with Reinforcement Learning",
+   "authors": "Christian Buck · Jannis Bulian · Massimiliano Ciaramita · Wojciech Gajewski · Andrea Gesmundo · Neil Houlsby · Wei Wang.",
+   "forum": "S1CChZ-CZ"
+  },
+  {
+   "type": "Oral",
+   "title": "Emergence of Linguistic Communication from Referential Games with Symbolic and Pixel Input",
+   "authors": "Angeliki Lazaridou · Karl M Hermann · Karl Tuyls · Stephen Clark",
+   "forum": "HJGv1Z-AW"
+  },
+  {
+   "type": "Poster",
+   "title": "Combining Symbolic Expressions and Black-box Function Evaluations in Neural Programs",
+   "authors": "Forough Arabshahi · Sameer Singh · anima anandkumar",
+   "forum": "Hksj2WWAW"
+  },
+  {
+   "type": "Poster",
+   "title": "Debiasing Evidence Approximations: On Importance-weighted Autoencoders and Jackknife Variational Inference",
+   "authors": "Sebastian Nowozin",
+   "forum": "HyZoi-WRb"
+  },
+  {
+   "type": "Poster",
+   "title": "Measuring the Intrinsic Dimension of Objective Landscapes",
+   "authors": "Chunyuan Li · Heerad Farkhoor · Ruoqian Liu · Jason Yosinski",
+   "forum": "ryup8-WCW"
+  },
+  {
+   "type": "Poster",
+   "title": "A Hierarchical Model for Device Placement",
+   "authors": "Azalia Mirhoseini · Anna Goldie · Hieu Pham · Benoit Steiner · Quoc V Le · Jeff Dean",
+   "forum": "Hkc-TeZ0W"
+  },
+  {
+   "type": "Poster",
+   "title": "Synthesizing realistic neural population activity patterns using Generative Adversarial Networks",
+   "authors": "Manuel Molano-Mazon · Arno Onken · Eugenio Piasini · Stefano Panzeri",
+   "forum": "r1VVsebAZ"
+  },
+  {
+   "type": "Poster",
+   "title": "FastGCN: Fast Learning with Graph Convolutional Networks via Importance Sampling",
+   "authors": "Jie Chen · Tengfei Ma · Cao Xiao",
+   "forum": "rytstxWAW"
+  },
+  {
+   "type": "Poster",
+   "title": "Certifying Some Distributional Robustness with Principled Adversarial Training",
+   "authors": "Aman Sinha · Hong Namkoong · John Duchi",
+   "forum": "Hk6kPgZA-"
+  },
+  {
+   "type": "Poster",
+   "title": "Learning Robust Rewards with Adverserial Inverse Reinforcement Learning",
+   "authors": "Justin Fu · Katie Luo · Sergey Levine",
+   "forum": "rkHywl-A-"
+  },
+  {
+   "type": "Poster",
+   "title": "META LEARNING SHARED HIERARCHIES",
+   "authors": "Kevin Frans · Jonathan Ho · · Pieter Abbeel · John Schulman",
+   "forum": "SyX0IeWAW"
+  },
+  {
+   "type": "Poster",
+   "title": "Boundary Seeking GANs",
+   "authors": "R Devon Hjelm · Athul Paul Jacob · Adam Trischler · Tong Che · Kyunghyun Cho · Yoshua Bengio",
+   "forum": "rkTS8lZAb"
+  },
+  {
+   "type": "Poster",
+   "title": "GANITE: Estimation of Individualized Treatment Effects using Generative Adversarial Nets",
+   "authors": "Jinsung Yoon · James Jordan · Mihaela v Schaar",
+   "forum": "ByKWUeWA-"
+  },
+  {
+   "type": "Poster",
+   "title": "Ensemble Adversarial Training: Attacks and Defenses",
+   "authors": "Florian Tramer · Alexey Kurakin · Nicolas Papernot · Ian Goodfellow · Dan Boneh · Patrick McDaniel",
+   "forum": "rkZvSe-RZ"
+  },
+  {
+   "type": "Poster",
+   "title": "CausalGAN: Learning Causal Implicit Generative Models with Adversarial Training",
+   "authors": "Murat Kocaoglu · Christopher Snyder · Alexandros Dimakis · Sriram Vishwanath",
+   "forum": "BJE-4xW0W"
+  },
+  {
+   "type": "Poster",
+   "title": "Policy Optimization by Genetic Distillation",
+   "authors": "Tanmay Gangwani · Jian Peng",
+   "forum": "ByOnmlWC-"
+  },
+  {
+   "type": "Poster",
+   "title": "Stochastic Variational Video Prediction",
+   "authors": "Mohammad Babaeizadeh · Chelsea Finn · Dumitru Erhan · Roy H Campbell · Sergey Levine",
+   "forum": "rk49Mg-CW"
+  },
+  {
+   "type": "Poster",
+   "title": "PixelDefend: Leveraging Generative Models to Understand and Defend against Adversarial Examples",
+   "authors": "Yang Song · Taesup Kim · Sebastian Nowozin · Stefano Ermon · Nate Kushman",
+   "forum": "rJUYGxbCW"
+  },
+  {
+   "type": "Poster",
+   "title": "Modular Continual Learning in a Unified Visual Environment",
+   "authors": "Kevin Feigelis · Blue Sheffer · Daniel L Yamins",
+   "forum": "rkPLzgZAZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Trust-PCL: An Off-Policy Trust Region Method for Continuous Control",
+   "authors": "Ofir Nachum · Mohammad Norouzi · Kelvin Xu · Dale Schuurmans",
+   "forum": "HyrCWeWCb"
+  },
+  {
+   "type": "Poster",
+   "title": "Continuous Adaptation via Meta-Learning in Nonstationary and Competitive Environments",
+   "authors": "Maruan Al-Shedivat · Trapit Bansal · Yuri Burda · Ilya Sutskever · Igor Mordatch · Pieter Abbeel",
+   "forum": "Sk2u1g-0-"
+  },
+  {
+   "type": "Poster",
+   "title": "mixup: Beyond Empirical Risk Minimization",
+   "authors": "Hongyi Zhang · Moustapha Cisse · Yann N Dauphin · David Lopez-Paz",
+   "forum": "r1Ddp1-Rb"
+  },
+  {
+   "type": "Poster",
+   "title": "Meta-Learning and Universality: Deep Representations and Gradient Descent can Approximate any Learning Algorithm",
+   "authors": "Chelsea Finn · Sergey Levine",
+   "forum": "HyjC5yWCW"
+  },
+  {
+   "type": "Poster",
+   "title": "Few-shot Autoregressive Density Estimation: Towards Learning to Learn Distributions",
+   "authors": "Scott Reed · Yutian Chen · Thomas Paine · Aaron v den · S. M. Ali Eslami · Danilo Jimenez Rezende · Oriol Vinyals · Nando de Freitas",
+   "forum": "r1wEFyWCW"
+  },
+  {
+   "type": "Poster",
+   "title": "Interpretable Counting for Visual Question Answering",
+   "authors": "Alexander Trott · Caiming Xiong · richard socher",
+   "forum": "S1J2ZyZ0Z"
+  },
+  {
+   "type": "Poster",
+   "title": "Improving the Universality and Learnability of Neural Programmer-Interpreters with Combinator Abstraction",
+   "authors": "Da Xiao · Jo-Yu Liao · Xingyuan Yuan",
+   "forum": "rJlMAAeC-"
+  },
+  {
+   "type": "Poster",
+   "title": "Variational Continual Learning",
+   "authors": "Viet Cuong Nguyen · Yingzhen Li · Thang Bui · Richard E Turner",
+   "forum": "BkQqq0gRb"
+  },
+  {
+   "type": "Poster",
+   "title": "Loss-aware Weight Quantization of Deep Networks",
+   "authors": "LU HOU · James Kwok",
+   "forum": "BkrSv0lA-"
+  },
+  {
+   "type": "Poster",
+   "title": "Memory Architectures in Recurrent Neural Network Language Models",
+   "authors": "Dani Yogatama · yishu miao · Gábor Melis · Wang Ling · Adhiguna Kuncoro · Chris Dyer · Phil Blunsom",
+   "forum": "SkFqf0lAZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Monotonic Chunkwise Attention",
+   "authors": "Chung-Cheng Chiu · Colin Raffel",
+   "forum": "Hko85plCW"
+  },
+  {
+   "type": "Poster",
+   "title": "On the State of the Art of Evaluation in Neural Language Models",
+   "authors": "Gábor Melis · Chris Dyer · Phil Blunsom",
+   "forum": "ByJHuTgA-"
+  },
+  {
+   "type": "Poster",
+   "title": "Fix your classifier: the marginal value of training the last weight layer",
+   "authors": "Elad Hoffer · Itay Hubara · Daniel Soudry",
+   "forum": "S1Dh8Tg0-"
+  },
+  {
+   "type": "Poster",
+   "title": "VoiceLoop: Voice Fitting and Synthesis via a Phonological Loop",
+   "authors": "Yaniv Taigman · Lior Wolf · Adam Polyak · Eliya Nachmani",
+   "forum": "SkFAWax0-"
+  },
+  {
+   "type": "Poster",
+   "title": "Learning Sparse Neural Networks through L_0 Regularization",
+   "authors": "Christos Louizos · Max Welling · Diederik Kingma",
+   "forum": "H1Y8hhg0b"
+  },
+  {
+   "type": "Poster",
+   "title": "A Scalable Laplace Approximation for Neural Networks",
+   "authors": "Hippolyt Ritter · Aleksandar Botev · David Barber",
+   "forum": "Skdvd2xAZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Training Confidence-calibrated Classifiers for Detecting Out-of-Distribution Samples",
+   "authors": "Kimin Lee · Honglak Lee · Kibok Lee · Jinwoo Shin",
+   "forum": "ryiAv2xAZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Identifying Analogies Across Domains",
+   "authors": "Yedid Hoshen · Lior Wolf",
+   "forum": "BkN_r2lR-"
+  },
+  {
+   "type": "Poster",
+   "title": "Unsupervised Representation Learning by Predicting Image Rotations",
+   "authors": "Spyros Gidaris · Praveer Singh · Nikos Komodakis",
+   "forum": "S1v4N2l0-"
+  },
+  {
+   "type": "Poster",
+   "title": "On the importance of single directions for generalization",
+   "authors": "Ari Morcos · David Barrett · Neil C Rabinowitz · Matthew Botvinick",
+   "forum": "r1iuQjxCZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Bi-Directional Block Self-Attention for Fast and Memory-Efficient Sequence Modeling",
+   "authors": "Tao Shen · Tianyi Zhou · Guodong Long · Jing Jiang · Chengqi Zhang",
+   "forum": "H1cWzoxA-"
+  },
+  {
+   "type": "Poster",
+   "title": "Alternating Multi-bit Quantization for Recurrent Neural Networks",
+   "authors": "Chen Xu · Jianqiang Yao · Zhouchen Lin · Baigui Sun · Yuanbin Cao · Zhirong Wang · Hongbin Zha",
+   "forum": "S19dR9x0b"
+  },
+  {
+   "type": "Poster",
+   "title": "SGD Learns Over-parameterized Networks that Provably Generalize on Linearly Separable Data",
+   "authors": "Alon Brutzkus · Amir Globerson · Eran Malach · Shai Shalev-Shwartz",
+   "forum": "rJ33wwxRb"
+  },
+  {
+   "type": "Poster",
+   "title": "Boosting Dilated Convolutional Networks with Mixed Tensor Decompositions",
+   "authors": "Nadav Cohen · Ronen Tamari · Amnon Shashua",
+   "forum": "S1JHhv6TW"
+  },
+  {
+   "type": "Poster",
+   "title": "Word translation without parallel data",
+   "authors": "Guillaume Lample · · Marc'Aurelio Ranzato · · Hervé Jégou",
+   "forum": "H196sainb"
+  },
+  {
+   "type": "Workshop",
+   "title": "Learning Invariances for Policy Generalization",
+   "authors": "Remi Combes · · Harm Seijen",
+   "forum": "BJHRaK1PG"
+  },
+  {
+   "type": "Workshop",
+   "title": "Practical Hyperparameter Optimization",
+   "authors": "Stefan Falkner · ·",
+   "forum": "HJMudFkDf"
+  },
+  {
+   "type": "Workshop",
+   "title": "Concept Learning with Energy-Based Models",
+   "authors": "Igor Mordatch",
+   "forum": "H12Y1dJDG"
+  },
+  {
+   "type": "Workshop",
+   "title": "Adapting to Continuously Shifting Domains",
+   "authors": "Andreea Bobu · Eric Tzeng · Judy Hoffman · Trevor Darrell",
+   "forum": "BJsBjPJvf"
+  },
+  {
+   "type": "Workshop",
+   "title": "AUTOMATED DESIGN USING NEURAL NETWORKS AND GRADIENT DESCENT",
+   "authors": "oliver hennigh",
+   "forum": "ByICvwkvM"
+  },
+  {
+   "type": "Workshop",
+   "title": "Learning Longer-term Dependencies in RNNs with Auxiliary Losses",
+   "authors": "Trieu Trinh · Andrew Dai · Thang Luong · Quoc V Le",
+   "forum": "Hy9xDwyPM"
+  },
+  {
+   "type": "Workshop",
+   "title": "Depth separation and weight-width trade-offs for sigmoidal neural networks",
+   "authors": "Amit Jayant Deshpande · Navin Goyal ·",
+   "forum": "ByYzNv1vM"
+  },
+  {
+   "type": "Workshop",
+   "title": "Analyzing and Exploiting NARX Recurrent Neural Networks for Long-Term Dependencies",
+   "authors": "Robert DiPietro · Christian Rupprecht · Nassir Navab · Gregory Hager",
+   "forum": "HkElQvkvz"
+  },
+  {
+   "type": "Workshop",
+   "title": "THE EFFECTIVENESS OF A TWO-LAYER NEURAL NETWORK FOR RECOMMENDATIONS",
+   "authors": "Oleg Rybakov · Vijai Mohan · · Scott LeGrand · Rejith Joseph · Kiuk Chung · Siddharth Singh · Qian You · Eric Nalisnick · Leo Dirac · Runfei Luo",
+   "forum": "S108WDJvf"
+  },
+  {
+   "type": "Workshop",
+   "title": "Coupled Ensembles of Neural Networks",
+   "authors": "Anuvabh Dutt · Denis Pellerin · Georges Quénot",
+   "forum": "rylRCUJDG"
+  },
+  {
+   "type": "Workshop",
+   "title": "SpectralWords: Spectral Embeddings Approach to Word Similarity Task for Large Vocabularies",
+   "authors": "Ivan Lobov",
+   "forum": "BytSNIyvM"
+  },
+  {
+   "type": "Workshop",
+   "title": "Diversity-Driven Exploration Strategy for Deep Reinforcement Learning",
+   "authors": "Zhang-Wei Hong · Tzu-Yun Shann · Shih-Yang Su · Yi-Hsiang Chang · Chun-Yi Lee",
+   "forum": "BJsD7L1vz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Understanding the Loss Surface of Single-Layered Neural Networks for Binary Classification",
+   "authors": "Shiyu Liang · Ruoyu Sun · Yixuan Li ·",
+   "forum": "BJ_UWIJwM"
+  },
+  {
+   "type": "Workshop",
+   "title": "Distributional Adversarial Networks",
+   "authors": "Chengtao Li · David Alvarez-Melis · Keyulu Xu · Stefanie Jegelka · Suvrit Sra",
+   "forum": "HJtk5HkDG"
+  },
+  {
+   "type": "Workshop",
+   "title": "Multiple Source Domain Adaptation with Adversarial Learning",
+   "authors": "Han Zhao · Shanghang Zhang · Guanhang Wu · · José Moura · Geoff Gordon",
+   "forum": "BkzXYSkvz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Black-box Attacks on Deep Neural Networks via Gradient Estimation",
+   "authors": "Arjun Nitin Bhagoji · Warren He · Bo Li · Dawn Song",
+   "forum": "SJ9nVSkvG"
+  },
+  {
+   "type": "Workshop",
+   "title": "Decoding Decoders: Finding Optimal Representation Spaces for Unsupervised Similarity Tasks",
+   "authors": "Vitalii Zhelezniak · Dan Busbridge · April Shen · Samuel Smith · Nils Hammerla",
+   "forum": "SJOOAEJwf"
+  },
+  {
+   "type": "Workshop",
+   "title": "IamNN: Iterative and Adaptive Mobile Neural Network for efficient image classification",
+   "authors": "Sam Leroux · Pavlo Molchanov · Pieter Simoens · Bart Dhoedt · Thomas Breuel · Jan Kautz",
+   "forum": "BkG3_ykDz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Isolating Sources of Disentanglement in Variational Autoencoders",
+   "authors": "Tian Qi Chen · Xuechen Li · Roger Grosse · David Duvenaud",
+   "forum": "BJdMRoCIf"
+  },
+  {
+   "type": "Workshop",
+   "title": "No Spurious Local Minima in a Two Hidden Unit ReLU Network",
+   "authors": "Chenwei Wu · jiajun luo · Jason D Lee",
+   "forum": "BJD_sj0If"
+  },
+  {
+   "type": "Workshop",
+   "title": "COLD FUSION: TRAINING SEQ2SEQ MODELS TOGETHER WITH LANGUAGE MODELS",
+   "authors": "Anuroop Sriram · Heewoo Jun · Sanjeev Satheesh · Adam Coates",
+   "forum": "Syor6PRLf"
+  },
+  {
+   "type": "Workshop",
+   "title": "Covariant Compositional Networks For Learning Graphs",
+   "authors": "Risi Kondor · Truong Son Hy · · Brandon Anderson · Shubhendu Trivedi",
+   "forum": "SkIv3MAUf"
+  },
+  {
+   "type": "Workshop",
+   "title": "Challenges in Disentangling Independent Factors of Variation",
+   "authors": "Attila Szabo · Qiyang Hu · Tiziano Portenier · Matthias Zwicker · Paolo Favaro",
+   "forum": "B1e7-DsIf"
+  },
+  {
+   "type": "Poster",
+   "title": "Few-Shot Learning with Graph Neural Networks",
+   "authors": "Victor Garcia Satorras · Joan Bruna",
+   "forum": "BJj6qGbRW"
+  },
+  {
+   "type": "Poster",
+   "title": "Temporally Efficient Deep Learning with Spikes",
+   "authors": "Peter OConnor · Efstratios Gavves · Matthias Reisser · Max Welling",
+   "forum": "HkZy-bW0-"
+  },
+  {
+   "type": "Poster",
+   "title": "Stochastic gradient descent performs variational inference, converges to limit cycles for deep networks",
+   "authors": "Pratik A Chaudhari · Stefano Soatto",
+   "forum": "HyWrIgW0W"
+  },
+  {
+   "type": "Poster",
+   "title": "Understanding Deep Neural Networks with Rectified Linear Units",
+   "authors": "Raman Arora · Amitabh Basu · Poorya Mianjy · Anirbit Mukherjee",
+   "forum": "B1J_rgWRW"
+  },
+  {
+   "type": "Poster",
+   "title": "On Unifying Deep Generative Models",
+   "authors": "Zhiting Hu · · Ruslan Salakhutdinov · Eric P Xing",
+   "forum": "rylSzl-R-"
+  },
+  {
+   "type": "Poster",
+   "title": "Neumann Optimizer: A Practical Optimization Algorithm for Deep Neural Networks",
+   "authors": "Shankar Krishnan · Ying Xiao · Rif A. Saurous",
+   "forum": "rkLyJl-0-"
+  },
+  {
+   "type": "Poster",
+   "title": "Wasserstein Auto-Encoders",
+   "authors": "Ilya Tolstikhin · Olivier Bousquet · Sylvain Gelly · Bernhard Schoelkopf",
+   "forum": "HkL7n1-0b"
+  },
+  {
+   "type": "Poster",
+   "title": "Guide Actor-Critic for Continuous Control",
+   "authors": "Voot Tangkaratt · · Masashi Sugiyama",
+   "forum": "BJk59JZ0b"
+  },
+  {
+   "type": "Poster",
+   "title": "TD or not TD: Analyzing the Role of Temporal Differencing in Deep Reinforcement Learning",
+   "authors": "Artemij Amiranashvili · Alexey Dosovitskiy · Vladlen Koltun · Thomas Brox",
+   "forum": "HyiAuyb0b"
+  },
+  {
+   "type": "Poster",
+   "title": "Neural Map: Structured Memory for Deep Reinforcement Learning",
+   "authors": "Emilio Parisotto · Ruslan Salakhutdinov",
+   "forum": "Bk9zbyZCZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Eigenoption Discovery through the Deep Successor Representation",
+   "authors": "Marlos C. Machado · Clemens Rosenbaum · Xiaoxiao Guo · Miao Liu · Gerald Tesauro · Murray Campbell",
+   "forum": "Bk8ZcAxR-"
+  },
+  {
+   "type": "Poster",
+   "title": "Progressive Growing of GANs for Improved Quality, Stability, and Variation",
+   "authors": "Tero Karras · Timo Aila · Samuli Laine · Jaakko Lehtinen",
+   "forum": "Hk99zCeAb"
+  },
+  {
+   "type": "Poster",
+   "title": "Learning a neural response metric for retinal prosthesis",
+   "authors": "Nishal Shah · Sasidhar Madugula · E.J. Chichilnisky · Yoram Singer · Jonathon Shlens",
+   "forum": "HJhIM0xAW"
+  },
+  {
+   "type": "Poster",
+   "title": "Self-ensembling for visual domain adaptation",
+   "authors": "Geoff W French · Michal Mackiewicz · Mark Fisher",
+   "forum": "rkpoTaxA-"
+  },
+  {
+   "type": "Poster",
+   "title": "PixelNN: Example-based Image Synthesis",
+   "authors": "Aayush Bansal · Yaser Sheikh · Deva Ramanan",
+   "forum": "Syhr6pxCW"
+  },
+  {
+   "type": "Poster",
+   "title": "Emergent Communication through Negotiation",
+   "authors": "Kris Cao · Angeliki Lazaridou · Marc Lanctot · Joel Z Leibo · Karl Tuyls · Stephen Clark",
+   "forum": "Hk6WhagRW"
+  },
+  {
+   "type": "Poster",
+   "title": "Emergent Communication in a Multi-Modal, Multi-Step Referential Game",
+   "authors": "Katrina Evtimova · Andrew Drozdov · Douwe Kiela · Kyunghyun Cho",
+   "forum": "rJGZq6g0-"
+  },
+  {
+   "type": "Poster",
+   "title": "Stabilizing Adversarial Nets with Prediction Methods",
+   "authors": "Abhay Kumar Yadav · Sohil Shah · Zheng Xu · David Jacobs · Tom Goldstein",
+   "forum": "Skj8Kag0Z"
+  },
+  {
+   "type": "Poster",
+   "title": "Learning to Represent Programs with Graphs",
+   "authors": "Miltiadis Allamanis · Marc Brockschmidt · Mahmoud Khademi",
+   "forum": "BJOFETxR-"
+  },
+  {
+   "type": "Poster",
+   "title": "cGANs with Projection Discriminator",
+   "authors": "Takeru Miyato · Masanori Koyama",
+   "forum": "ByS1VpgRZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Generative Models of Visually Grounded Imagination",
+   "authors": "Shanmukha Ramakrishna Vedantam · Ian Fischer · Jonathan Huang · Kevin P Murphy",
+   "forum": "HkCsm6lRb"
+  },
+  {
+   "type": "Poster",
+   "title": "Emergent Translation in Multi-Agent Communication",
+   "authors": "Jason Lee · Kyunghyun Cho · Jason Weston · Douwe Kiela",
+   "forum": "H1vEXaxA-"
+  },
+  {
+   "type": "Poster",
+   "title": "Minimal-Entropy Correlation Alignment for Unsupervised Deep Domain Adaptation",
+   "authors": "Pietro Morerio · Jacopo Cavazza · Vittorio Murino",
+   "forum": "rJWechg0Z"
+  },
+  {
+   "type": "Poster",
+   "title": "An image representation based convolutional network for DNA classification",
+   "authors": "Bojian Yin · Marleen Balvert · Davide Zambrano · Alexander Schoenhuth · Sander Bohte",
+   "forum": "HJvvRoe0W"
+  },
+  {
+   "type": "Poster",
+   "title": "Overcoming Catastrophic Interference using Conceptor-Aided Backpropagation",
+   "authors": "Xu He · Herbert Jaeger",
+   "forum": "B1al7jg0b"
+  },
+  {
+   "type": "Poster",
+   "title": "Deep Sensing: Active Sensing using Multi-directional Recurrent Neural Networks",
+   "authors": "Jinsung Yoon · William R Zame · Mihaela v Schaar",
+   "forum": "r1SnX5xCb"
+  },
+  {
+   "type": "Poster",
+   "title": "Non-Autoregressive Neural Machine Translation",
+   "authors": "Jiatao Gu · James Bradbury · Caiming Xiong · Victor OK Li · richard socher",
+   "forum": "B1l8BtlCb"
+  },
+  {
+   "type": "Poster",
+   "title": "Compressing Word Embeddings via Deep Compositional Code Learning",
+   "authors": "Raphael Shu · Hideki Nakayama",
+   "forum": "BJRZzFlRb"
+  },
+  {
+   "type": "Poster",
+   "title": "Emergence of grid-like representations by training recurrent neural networks to perform spatial localization",
+   "authors": "Christopher Cueva · Xue-Xin Wei",
+   "forum": "B17JTOe0-"
+  },
+  {
+   "type": "Poster",
+   "title": "FusionNet: Fusing via Fully-aware Attention with Application to Machine Comprehension",
+   "authors": "Hsin-Yuan Huang · Chenguang Zhu · Yelong Shen · Weizhu Chen",
+   "forum": "BJIgi_eCZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Depthwise Separable Convolutions for Neural Machine Translation",
+   "authors": "Lukasz Kaiser · Aidan Gomez · Francois Chollet",
+   "forum": "S1jBcueAb"
+  },
+  {
+   "type": "Poster",
+   "title": "Parallelizing Linear Recurrent Neural Nets Over Sequence Length",
+   "authors": "Eric Martin · Christopher Cundy",
+   "forum": "HyUNwulC-"
+  },
+  {
+   "type": "Poster",
+   "title": "Large scale distributed neural network training through online distillation",
+   "authors": "Rohan Anil · Gabriel Pereyra · Alexandre Tachard Passos · Robert Ormandi · George Dahl · Geoffrey E Hinton",
+   "forum": "rkr1UDeC-"
+  },
+  {
+   "type": "Poster",
+   "title": "Viterbi-based Pruning for Sparse Matrix with Fixed and High Index Compression Ratio",
+   "authors": "Dongsoo Lee · Daehyun Ahn · Taesu Kim · Pierce I Chuang · Jae-Joon Kim",
+   "forum": "S1D8MPxA-"
+  },
+  {
+   "type": "Poster",
+   "title": "DCN+: Mixed Objective And Deep Residual Coattention for Question Answering",
+   "authors": "Caiming Xiong · richard socher · Victor Zhong",
+   "forum": "H1meywxRW"
+  },
+  {
+   "type": "Poster",
+   "title": "Enhancing The Reliability of Out-of-distribution Image Detection in Neural Networks",
+   "authors": "R. Srikant · Shiyu Liang · Yixuan Li",
+   "forum": "H1VGkIxRZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Residual Connections Encourage Iterative Inference",
+   "authors": "Stanislaw Jastrzebski · Devansh Arpit · Nicolas Ballas · Vikas Verma · Tong Che · Yoshua Bengio",
+   "forum": "SJa9iHgAZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Towards Synthesizing Complex Programs From Input-Output Examples",
+   "authors": "Xinyun Chen · Chang Liu · Dawn Song",
+   "forum": "Skp1ESxRZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Don't Decay the Learning Rate, Increase the Batch Size",
+   "authors": "Samuel Smith · Pieter-Jan Kindermans · Chris Ying · Quoc V Le",
+   "forum": "B1Yy1BxCZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Minimax Curriculum Learning: Machine Teaching with Desirable Difficulties and Scheduled Diversity",
+   "authors": "Tianyi Zhou · Jeff Bilmes",
+   "forum": "BywyFQlAW"
+  },
+  {
+   "type": "Poster",
+   "title": "Multi-Scale Dense Networks for Resource Efficient Image Classification",
+   "authors": "Gao Huang · Danlu Chen · Tianhong Li · Felix Wu · Laurens van der Maaten · Kilian Weinberger",
+   "forum": "Hk2aImxAb"
+  },
+  {
+   "type": "Poster",
+   "title": "A Deep Reinforced Model for Abstractive Summarization",
+   "authors": "Romain Paulus · Caiming Xiong · richard socher",
+   "forum": "HkAClQgA-"
+  },
+  {
+   "type": "Poster",
+   "title": "Unbiased Online Recurrent Optimization",
+   "authors": "Corentin Tallec · Yann Ollivier",
+   "forum": "rJQDjk-0b"
+  },
+  {
+   "type": "Workshop",
+   "title": "DiCE: The Infinitely Differentiable Monte-Carlo Estimator",
+   "authors": "Jakob Foerster · Gregory Farquhar · Maruan Al-Shedivat · Tim Rocktaeschel · Eric P Xing · Shimon Whiteson",
+   "forum": "BJ9witJvG"
+  },
+  {
+   "type": "Workshop",
+   "title": "Easing non-convex optimization with neural networks",
+   "authors": "David Lopez-Paz · Levent Sagun",
+   "forum": "rJXIPK1PM"
+  },
+  {
+   "type": "Workshop",
+   "title": "In reinforcement learning, all objective functions are not equal",
+   "authors": "Romain Laroche · Harm van Seijen",
+   "forum": "rJT1k_JDf"
+  },
+  {
+   "type": "Workshop",
+   "title": "Weighted Geodesic Distance Following Fermat's Principle",
+   "authors": "Facundo Sapienza · Pablo Groisman · Matthieu Jonckheere",
+   "forum": "BJfaMIJwG"
+  },
+  {
+   "type": "Workshop",
+   "title": "Wasserstein Auto-Encoders: Latent Dimensionality and Random Encoders",
+   "authors": "Paul Rubenstein · Bernhard Schoelkopf · Ilya Tolstikhin",
+   "forum": "r157GIJvz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Learning Disentangled Representations with Wasserstein Auto-Encoders",
+   "authors": "Paul Rubenstein · Bernhard Schoelkopf · Ilya Tolstikhin",
+   "forum": "Hy79-UJPM"
+  },
+  {
+   "type": "Workshop",
+   "title": "Time-Dependent Representation for Neural Event Sequence Prediction",
+   "authors": "Yang Li · Nan Du · Samy Bengio",
+   "forum": "HyrT5Hkvf"
+  },
+  {
+   "type": "Workshop",
+   "title": "Feature-Based Metrics for Exploring the Latent Space of Generative Models",
+   "authors": "Samuli Laine",
+   "forum": "BJslDBkwG"
+  },
+  {
+   "type": "Workshop",
+   "title": "Convolutional Sequence Modeling Revisited",
+   "authors": "Shaojie Bai · Zico Kolter · Vladlen Koltun",
+   "forum": "BJEX-H1Pf"
+  },
+  {
+   "type": "Workshop",
+   "title": "Scalable Estimation via LSH Samplers (LSS)",
+   "authors": "Ryan Spring · Anshumali Shrivastava",
+   "forum": "BJazbHkPG"
+  },
+  {
+   "type": "Workshop",
+   "title": "Searching for Activation Functions",
+   "authors": "Prajit Ramachandran · Barret Zoph · Quoc V Le",
+   "forum": "Hkuq2EkPf"
+  },
+  {
+   "type": "Workshop",
+   "title": "Efficient Entropy For Policy Gradient with Multi-Dimensional Action Space",
+   "authors": "Yiming Zhang · Quan Vuong · Kenny Song · Xiao-Yue Gong · Keith Ross",
+   "forum": "rJc8sN1vG"
+  },
+  {
+   "type": "Workshop",
+   "title": "NAM - Unsupervised Cross-Domain Image Mapping without Cycles or GANs",
+   "authors": "Yedid Hoshen · Lior Wolf",
+   "forum": "BJPlJVywz"
+  },
+  {
+   "type": "Workshop",
+   "title": "3D-Scene-GAN: Three-dimensional Scene Reconstruction with Generative Adversarial Networks",
+   "authors": "Chong Yu · Yun Wang",
+   "forum": "SkNEsmJwf"
+  },
+  {
+   "type": "Workshop",
+   "title": "Ensemble Robustness and Generalization of Stochastic Deep Learning Algorithms",
+   "authors": "Tom Zahavy · Bingyi Kang · Alexander Sivak · Jiashi Feng · huan xu · Shie Mannor",
+   "forum": "HyJf8QJDz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Learning How Not to Act in Text-based Games",
+   "authors": "Matan Haroush · Tom Zahavy · Daniel Mankowitz · Shie Mannor",
+   "forum": "B1-tVX1Pz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Iterative GANs for Rotating Visual Objects",
+   "authors": "Ysbrand Galama · Thomas Mensink",
+   "forum": "HJ7rdGkPz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Training Shallow and Thin Networks for Acceleration via Knowledge Distillation with Conditional Adversarial Networks",
+   "authors": "Zheng Xu · Yen-Chang Hsu · Jiawei Huang",
+   "forum": "BJbtuRRLM"
+  },
+  {
+   "type": "Workshop",
+   "title": "LSH-SAMPLING BREAKS THE COMPUTATIONAL CHICKEN-AND-EGG LOOP IN ADAPTIVE STOCHASTIC GRADIENT ESTIMATION",
+   "authors": "Beidi Chen · Yingchen Xu · Anshumali Shrivastava",
+   "forum": "Hk8zZjRLf"
+  },
+  {
+   "type": "Workshop",
+   "title": "Graph Partition Neural Networks for Semi-Supervised Classification",
+   "authors": "Renjie Liao · Marc Brockschmidt · Danny Tarlow · Alexander Gaunt · Raquel Urtasun · Richard Zemel",
+   "forum": "ByM6TrTUz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Aspect-based Question Generation",
+   "authors": "Wenpeng Hu · Bing Liu · Jinwen Ma · Dongyan Zhao · Rui Yan",
+   "forum": "rkRR1ynIf"
+  },
+  {
+   "type": "Workshop",
+   "title": "DNA-GAN: Learning Disentangled Representations from Multi-Attribute Images",
+   "authors": "Taihong Xiao · Jiapeng Hong · Jinwen Ma",
+   "forum": "rkX1FF_UM"
+  },
+  {
+   "type": "Workshop",
+   "title": "Beyond Finite Layer Neural Networks: Bridging Deep Architectures and Numerical Differential Equations",
+   "authors": "Yiping Lu · Aoxiao Zhong · Quanzheng Li · Bin Dong",
+   "forum": "B1LatDVUM"
+  },
+  {
+   "type": "Workshop",
+   "title": "Additive Margin Softmax for Face Verification",
+   "authors": "Feng Wang · Weiyang Liu · Hanjun Dai · Haijun Liu · Jian Cheng",
+   "forum": "BJ2r2p6IM"
+  },
+  {
+   "type": "Oral",
+   "title": "Learning Deep Mean Field Games for Modeling Large Population Behavior",
+   "authors": "Jiachen Yang · Xiaojing Ye · Rakshit Trivedi · huan xu · Hongyuan Zha",
+   "forum": "HktK4BeCZ"
+  },
+  {
+   "type": "Oral",
+   "title": "Variance Reduction for Policy Gradient with Action-Dependent Factorized Baselines",
+   "authors": "Cathy Wu · Aravind Rajeswaran · Yan Duan · Vikash Kumar · Alexandre M Bayen · Sham M Kakade · Igor Mordatch · Pieter Abbeel",
+   "forum": "H1tSsb-AW"
+  },
+  {
+   "type": "Oral",
+   "title": "Continuous Adaptation via Meta-Learning in Nonstationary and Competitive Environments",
+   "authors": "Maruan Al-Shedivat · Trapit Bansal · Yuri Burda · Ilya Sutskever · Igor Mordatch · Pieter Abbeel",
+   "forum": "Sk2u1g-0-"
+  },
+  {
+   "type": "Poster",
+   "title": "Kernel Implicit Variational Inference",
+   "authors": "Matt Beton · Seth Howes · Alex Cheema · Mohamed Baioumy",
+   "forum": "r1l4eQW0Z"
+  },
+  {
+   "type": "Poster",
+   "title": "Generative networks as inverse problems with Scattering transforms",
+   "authors": "Tomás Angles · Stéphane Mallat",
+   "forum": "r1NYjfbR-"
+  },
+  {
+   "type": "Poster",
+   "title": "Deep Bayesian Bandits Showdown: An Empirical Comparison of Bayesian Deep Networks for Thompson Sampling",
+   "authors": "Carlos Riquelme · George Tucker · Jasper Snoek",
+   "forum": "SyYe6k-CW"
+  },
+  {
+   "type": "Poster",
+   "title": "Large Scale Optimal Transport and Mapping Estimation",
+   "authors": "Vivien Seguy · Bharath Bhushan Damodaran · Rémi Flamary · Nicolas Courty · Antoine Rolet · Mathieu Blondel",
+   "forum": "B1zlp1bRW"
+  },
+  {
+   "type": "Poster",
+   "title": "Backpropagation through the Void: Optimizing control variates for black-box gradient estimation",
+   "authors": "Will Grathwohl · Dami Choi · Yuhuai Wu · Geoffrey Roeder · David Duvenaud",
+   "forum": "SyzKd1bCW"
+  },
+  {
+   "type": "Poster",
+   "title": "Activation Maximization Generative Adversarial Nets",
+   "authors": "Zhiming Zhou · Han Cai · Shu Rong · Yuxuan Song · Kan Ren · Weinan Zhang · Jun Wang · Yong Yu",
+   "forum": "HyyP33gAZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Parameter Space Noise for Exploration",
+   "authors": "Matthias Plappert · Rein Houthooft · Prafulla Dhariwal · Szymon Sidor · Richard Chen · Xi Chen · Tamim Asfour · Pieter Abbeel · Marcin Andrychowicz",
+   "forum": "ByBAl2eAZ"
+  },
+  {
+   "type": "Poster",
+   "title": "AmbientGAN: Generative models from lossy measurements",
+   "authors": "Ashish Bora · Eric Price · Alexandros Dimakis",
+   "forum": "Hy7fDog0b"
+  },
+  {
+   "type": "Poster",
+   "title": "RESIDUAL LOSS PREDICTION: REINFORCEMENT LEARNING WITH NO INCREMENTAL FEEDBACK",
+   "authors": "Hal Daumé III · John Langford · Paul Mineiro · Amr Mohamed Nabil Aly Aly Sharaf",
+   "forum": "HJNMYceCW"
+  },
+  {
+   "type": "Poster",
+   "title": "Mitigating Adversarial Effects Through Randomization",
+   "authors": "Cihang Xie · Jianyu Wang · Zhishuai Zhang · Zhou Ren · Alan Yuille",
+   "forum": "Sk9yuql0Z"
+  },
+  {
+   "type": "Poster",
+   "title": "Understanding Short-Horizon Bias in Stochastic Meta-Optimization",
+   "authors": "Yuhuai Wu · Mengye Ren · Renjie Liao · Roger Grosse",
+   "forum": "H1MczcgR-"
+  },
+  {
+   "type": "Poster",
+   "title": "Towards Reverse-Engineering Black-Box Neural Networks",
+   "authors": "Seong Joon Oh · Max Augustin · Mario Fritz · Bernt Schiele",
+   "forum": "BydjJte0-"
+  },
+  {
+   "type": "Poster",
+   "title": "The High-Dimensional Geometry of Binary Neural Networks",
+   "authors": "Alexander Anderson · Cory P Berg",
+   "forum": "B1IDRdeCW"
+  },
+  {
+   "type": "Poster",
+   "title": "On the Discrimination-Generalization Tradeoff in GANs",
+   "authors": "Pengchuan Zhang · Qiang Liu · Dengyong Zhou · Tao Xu · Xiaodong He",
+   "forum": "Hk9Xc_lR-"
+  },
+  {
+   "type": "Poster",
+   "title": "Learning Latent Representations in Neural Networks for Clustering through Pseudo Supervision and Graph-based Activity Regularization",
+   "authors": "Ozsel Kilinc · Ismail Uysal",
+   "forum": "HkMvEOlAb"
+  },
+  {
+   "type": "Poster",
+   "title": "Coulomb GANs: Provably Optimal Nash Equilibria via Potential Fields",
+   "authors": "Thomas Unterthiner · Bernhard Nessler · Calvin Seward · Günter Klambauer · Martin Heusel · Hubert Ramsauer · Sepp Hochreiter",
+   "forum": "SkVqXOxCb"
+  },
+  {
+   "type": "Poster",
+   "title": "Learning to Multi-Task by Active Sampling",
+   "authors": "Sahil Sharma · Ashutosh Kumar Jha · Parikshit Hegde · Balaraman Ravindran",
+   "forum": "B1nZ1weCZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Learning from Between-class Examples for Deep Sound Recognition",
+   "authors": "Yuji Tokozume · Yoshitaka Ushiku · Tatsuya Harada",
+   "forum": "B1Gi6LeRZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Emergent Complexity via Multi-Agent Competition",
+   "authors": "Trapit Bansal · Jakub Pachocki · Szymon Sidor · Ilya Sutskever · Igor Mordatch",
+   "forum": "Sy0GnUxCb"
+  },
+  {
+   "type": "Poster",
+   "title": "DORA The Explorer: Directed Outreaching Reinforcement Action-Selection",
+   "authors": "Lior Fox · Leshem Choshen · Yonatan Loewenstein",
+   "forum": "ry1arUgCW"
+  },
+  {
+   "type": "Poster",
+   "title": "Polar Transformer Networks",
+   "authors": "Carlos Esteves · Christine Allen-Blanchette · Xiaowei Zhou · Kostas Daniilidis",
+   "forum": "HktRlUlAZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Compositional Obverter Communication Learning from Raw Visual Input",
+   "authors": "Edward Choi · Angeliki Lazaridou · Nando de Freitas",
+   "forum": "rknt2Be0-"
+  },
+  {
+   "type": "Poster",
+   "title": "Auto-Conditioned Recurrent Networks for Extended Complex Human Motion Synthesis",
+   "authors": "Yi Zhou · Zimo Li · Shuangjiu Xiao · Chong He · Zeng Huang · Hao Li",
+   "forum": "r11Q2SlRW"
+  },
+  {
+   "type": "Poster",
+   "title": "Multi-Task Learning for Document Ranking and Query Suggestion",
+   "authors": "Wasi Ahmad · Kai-Wei Chang · Hongning Wang",
+   "forum": "SJ1nzBeA-"
+  },
+  {
+   "type": "Poster",
+   "title": "Adaptive Quantization of Neural Networks",
+   "authors": "Soroosh Khoram · Jing Li",
+   "forum": "SyOK1Sg0W"
+  },
+  {
+   "type": "Poster",
+   "title": "Interactive Grounded Language Acquisition and Generalization in a 2D World",
+   "authors": "Haonan Yu · Haichao Zhang · Wei Xu",
+   "forum": "H1UOm4gA-"
+  },
+  {
+   "type": "Poster",
+   "title": "Hyperparameter optimization: a spectral approach",
+   "authors": "Elad Hazan · Adam Klivans · Yang Yuan",
+   "forum": "H1zriGeCZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Deep Learning with Logged Bandit Feedback",
+   "authors": "Thorsten Joachims · Adith Swaminathan · Maarten de Rijke",
+   "forum": "SJaP_-xAb"
+  },
+  {
+   "type": "Poster",
+   "title": "Generalizing Hamiltonian Monte Carlo with Neural Networks",
+   "authors": "Daniel Levy · Matthew D Hoffman · Jascha Sohl-Dickstein",
+   "forum": "B1n8LexRZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Detecting Statistical Interactions from Neural Network Weights",
+   "authors": "Michael Tsang · Dehua Cheng · Yan Liu",
+   "forum": "ByOfBggRZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Robustness of Classifiers to Universal Perturbations: A Geometric Perspective",
+   "authors": "Seyed Mohsen Moosavi Dezfooli · Alhussein Fawzi · Omar Fawzi · Pascal Frossard · Stefano Soatto",
+   "forum": "ByrZyglCb"
+  },
+  {
+   "type": "Poster",
+   "title": "Adaptive Dropout with Rademacher Complexity Regularization",
+   "authors": "Ke Zhai · Huan Wang",
+   "forum": "S1uxsye0Z"
+  },
+  {
+   "type": "Poster",
+   "title": "Mixed Precision Training",
+   "authors": "Paulius Micikevicius · SHARAN NARANG · Jonah Alben · Gregory Diamos · Erich K Elsen · David Garcia · Boris Ginsburg · Michael Houston · Oleksii Kuchaiev · Ganesh Venkatesh · Hao Wu",
+   "forum": "r1gs9JgRZ"
+  },
+  {
+   "type": "Poster",
+   "title": "SpectralNet: Spectral Clustering using Deep Neural Networks",
+   "authors": "Uri Shaham · Kelly Stanton · Henry Li · Ronen Basri · Boaz Nadler · Yuval Kluger",
+   "forum": "HJ_aoCyRZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Deep Rewiring: Training very sparse deep networks",
+   "authors": "Guillaume Bellec · David Kappel · Wolfgang Maass · Robert Legenstein",
+   "forum": "BJ_wN01C-"
+  },
+  {
+   "type": "Poster",
+   "title": "A Neural Representation of Sketch Drawings",
+   "authors": "David Ha · Douglas Eck",
+   "forum": "Hy6GHpkCW"
+  },
+  {
+   "type": "Poster",
+   "title": "Leveraging Grammar and Reinforcement Learning for Neural Program Synthesis",
+   "authors": "Rudy Bunel · Matthew Hausknecht · Jacob Devlin · Rishabh Singh · Pushmeet Kohli",
+   "forum": "H1Xw62kRZ"
+  },
+  {
+   "type": "Poster",
+   "title": "All-but-the-Top: Simple and Effective Postprocessing for Word Representations",
+   "authors": "Jiaqi Mu · Pramod Viswanath",
+   "forum": "HkuGJ3kCb"
+  },
+  {
+   "type": "Poster",
+   "title": "Graph Attention Networks",
+   "authors": "Petar Veličković · Guillem Cucurull Preixens · Arantxa Casanova Paga · Adriana Romero · Pietro Liò · Yoshua Bengio",
+   "forum": "rJXMpikCZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Towards better understanding of gradient-based attribution methods for Deep Neural Networks",
+   "authors": "Marco Ancona · Enea Ceolini · Cengiz Öztireli · Markus Gross",
+   "forum": "Sy21R9JAW"
+  },
+  {
+   "type": "Poster",
+   "title": "Critical Percolation as a Framework to Analyze the Training of Deep Networks",
+   "authors": "Zohar Ringel · Rodrigo Andrade de Bem",
+   "forum": "BJGWO9k0Z"
+  },
+  {
+   "type": "Poster",
+   "title": "Learning to Count Objects in Natural Images for Visual Question Answering",
+   "authors": "Yan Zhang · Jonathon Hare · Adam Prugel-Bennett",
+   "forum": "B12Js_yRb"
+  },
+  {
+   "type": "Workshop",
+   "title": "Exponentially vanishing sub-optimal local minima in multilayer neural networks",
+   "authors": "Daniel Soudry · Elad Hoffer",
+   "forum": "rkmcPYhIM"
+  },
+  {
+   "type": "Workshop",
+   "title": "The Mirage of Action-Dependent Baselines in Reinforcement Learning",
+   "authors": "George Tucker · Surya Bhupatiraju · Shixiang Gu · Richard E Turner · Zoubin Ghahramani · Sergey Levine",
+   "forum": "HyL0IKJwM"
+  },
+  {
+   "type": "Workshop",
+   "title": "Gradient-based Optimization of Neural Network Architecture",
+   "authors": "Will Grathwohl · Elliot Creager · Seyed Ghasemipour · Richard Zemel",
+   "forum": "HkSm8t1PM"
+  },
+  {
+   "type": "Workshop",
+   "title": "Building Generalizable Agents with a Realistic and Rich 3D Environment",
+   "authors": "Yi Wu · Yuxin Wu · Georgia Gkioxari · Yuandong Tian",
+   "forum": "r1bO6vyDG"
+  },
+  {
+   "type": "Workshop",
+   "title": "Adaptive Path-Integral Approach for Representation Learning and Planning",
+   "authors": "Jung-Su Ha · Young-Jin Park · Hyeok-Joo Chae · Soon-Seo Park · Han-Lim Choi",
+   "forum": "HyoOUrkwz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Benefits of Depth for Long-Term Memory of Recurrent Networks",
+   "authors": "Yoav Levine · Or Sharir · Amnon Shashua",
+   "forum": "BJKt3VyPz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Accelerating Neural Architecture Search using Performance Prediction",
+   "authors": "Bowen Baker · Otkrist Gupta · Ramesh Raskar · Nikhil Naik",
+   "forum": "HJqk3N1vG"
+  },
+  {
+   "type": "Workshop",
+   "title": "Faster Discovery of Neural Architectures by Searching for Paths in a Large Model",
+   "authors": "Hieu Pham · Melody Y. Guan · Barret Zoph · Quoc V Le · Jeff Dean",
+   "forum": "rJkCq4JvM"
+  },
+  {
+   "type": "Workshop",
+   "title": "DLVM: A modern compiler infrastructure for deep learning systems",
+   "authors": "Richard Wei · Lane Schwartz · Vikram Adve",
+   "forum": "HJxPq4ywz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Reconstructing evolutionary trajectories of mutations in cancer",
+   "authors": "Yulia Rubanova · Ruian Shi · Roujia Li · Jeff Wintersinger · Amit Deshwar · Nil Sahin · Quaid Morris",
+   "forum": "Hkjg7N1Pz"
+  },
+  {
+   "type": "Workshop",
+   "title": "DeepNCM: Deep Nearest Class Mean Classifiers",
+   "authors": "Samantha Guerriero · Barbara Caputo · Thomas Mensink",
+   "forum": "rkPLZ4JPM"
+  },
+  {
+   "type": "Workshop",
+   "title": "Causal Discovery Using Proxy Variables",
+   "authors": "Mateo Rojas-Carulla · Marco Baroni · David Lopez-Paz",
+   "forum": "B1VKG7kDM"
+  },
+  {
+   "type": "Workshop",
+   "title": "PixelSNAIL: An Improved Autoregressive Generative Model",
+   "authors": "Xi Chen · Nikhil Mishra · Mostafa Rohaninejad · Pieter Abbeel",
+   "forum": "Sk7gI0CUG"
+  },
+  {
+   "type": "Workshop",
+   "title": "PPP-Net: Platform-aware Progressive Search for Pareto-optimal Neural Architectures",
+   "authors": "Jin-Dong Dong · An-Chieh Cheng · Da-Cheng Juan · Wei Wei · Min Sun",
+   "forum": "B1NT3TAIM"
+  },
+  {
+   "type": "Workshop",
+   "title": "Intriguing Properties of Adversarial Examples",
+   "authors": "Ekin Cubuk · Barret Zoph · Samuel Schoenholz · Quoc V Le",
+   "forum": "Skz1zaRLz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Efficient Recurrent Neural Networks using Structured Matrices in FPGAs",
+   "authors": "Zhe Li · Shuo Wang · Caiwen Ding · Qinru Qiu · Yanzhi Wang · Yun Liang",
+   "forum": "SJgAA3AUG"
+  },
+  {
+   "type": "Workshop",
+   "title": "Censoring Representations with Multiple-Adversaries over Random Subspaces",
+   "authors": "Yusuke Iwasawa · Kotaro Nakayama · Yutaka Matsuo",
+   "forum": "rJ6thh0Lf"
+  },
+  {
+   "type": "Workshop",
+   "title": "Systematic Weight Pruning of DNNs using Alternating Direction Method of Multipliers",
+   "authors": "Tianyun Zhang · · Yipeng Zhang · Yanzhi Wang · Makan Fardad",
+   "forum": "B1_u3cRUG"
+  },
+  {
+   "type": "Workshop",
+   "title": "Spectral Capsule Networks",
+   "authors": "Mohammad Taha Bahadori",
+   "forum": "ByVJlqR8G"
+  },
+  {
+   "type": "Workshop",
+   "title": "One-Shot Imitation from Observing Humans via Domain-Adaptive Meta-Learning",
+   "authors": "Tianhe Yu · Chelsea Finn · Annie Xie · Sudeep Dasari · Tianhao Zhang · Pieter Abbeel · Sergey Levine",
+   "forum": "Bk6p7YCLf"
+  },
+  {
+   "type": "Workshop",
+   "title": "Towards Variational Generation of Small Graphs",
+   "authors": "Martin Simonovsky · Nikos Komodakis",
+   "forum": "rJY7hoi8z"
+  },
+  {
+   "type": "Workshop",
+   "title": "Rotational Unit of Memory",
+   "authors": "Rumen R Dangovski · Li Jing · Marin Soljacic",
+   "forum": "H1GRX4qIM"
+  },
+  {
+   "type": "Workshop",
+   "title": "Autoregressive Generative Adversarial Networks",
+   "authors": "Yasin YAZICI · Kim-Hui Yap · Stefan Winkler",
+   "forum": "Hyo9zDuIz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Regret Minimization for Partially Observable Deep Reinforcement Learning",
+   "authors": "Peter Jin · Sergey Levine · Kurt Keutzer",
+   "forum": "BJoBhUUUG"
+  },
+  {
+   "type": "Workshop",
+   "title": "PDE-Net: Learning PDEs from Data",
+   "authors": "Zichao Long · Yiping Lu · Xianzhong Ma · Bin Dong",
+   "forum": "r1DUPizUM"
+  },
+  {
+   "type": "Oral",
+   "title": "Synthetic and Natural Noise Both Break Neural Machine Translation",
+   "authors": "Yonatan Belinkov · Yonatan Bisk",
+   "forum": "BJ8vJebC-"
+  },
+  {
+   "type": "Oral",
+   "title": "Beyond Word Importance: Contextual Decomposition to Extract Interactions from LSTMs",
+   "authors": "William Murdoch · Peter J Liu · Bin Yu",
+   "forum": "rkRwGg-0Z"
+  },
+  {
+   "type": "Oral",
+   "title": "Breaking the Softmax Bottleneck: A High-Rank RNN Language Model",
+   "authors": "Zhilin Yang · Zihang Dai · Ruslan Salakhutdinov · William W Cohen",
+   "forum": "HkwZSG-CZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Variational image compression with a scale hyperprior",
+   "authors": "Johannes Ballé · David Minnen · Saurabh Singh · Sung Jin Hwang · Nick Johnston",
+   "forum": "rkcQFMZRb"
+  },
+  {
+   "type": "Poster",
+   "title": "NerveNet: Learning Structured Policy with Graph Neural Networks",
+   "authors": "Tingwu Wang · Renjie Liao · Jimmy Ba · Sanja Fidler",
+   "forum": "S1sqHMZCb"
+  },
+  {
+   "type": "Poster",
+   "title": "Proximal Backpropagation",
+   "authors": "Thomas Frerix · Thomas Möllenhoff · Michael Moeller · Daniel Cremers",
+   "forum": "ByeqORgAW"
+  },
+  {
+   "type": "Poster",
+   "title": "On the Expressive Power of Overlapping Architectures of Deep Learning",
+   "authors": "Or Sharir · Amnon Shashua",
+   "forum": "HkNGsseC-"
+  },
+  {
+   "type": "Poster",
+   "title": "The Implicit Bias of Gradient Descent on Separable Data",
+   "authors": "Daniel Soudry · Elad Hoffer · Mor Shpigel Nacson · Nathan Srebro",
+   "forum": "r1q7n9gAb"
+  },
+  {
+   "type": "Poster",
+   "title": "Multi-level Residual Networks from Dynamical Systems View",
+   "authors": "Bo Chang · Lili Meng · Eldad Haber · Frederick Tung · David Begert",
+   "forum": "SyJS-OgR-"
+  },
+  {
+   "type": "Poster",
+   "title": "Learning Deep Mean Field Games for Modeling Large Population Behavior",
+   "authors": "Jiachen Yang · Xiaojing Ye · Rakshit Trivedi · huan xu · Hongyuan Zha",
+   "forum": "HktK4BeCZ"
+  },
+  {
+   "type": "Poster",
+   "title": "TRAINING GENERATIVE ADVERSARIAL NETWORKS VIA PRIMAL-DUAL SUBGRADIENT METHODS: A LAGRANGIAN PERSPECTIVE ON GAN",
+   "authors": "Xu Chen · Jiang Wang · Hao Ge",
+   "forum": "BJNRFNlRW"
+  },
+  {
+   "type": "Poster",
+   "title": "Implicit Causal Models for Genome-wide Association Studies",
+   "authors": "Dustin Tran · David Blei",
+   "forum": "SyELrEeAb"
+  },
+  {
+   "type": "Poster",
+   "title": "Unsupervised Cipher Cracking Using Discrete GANs",
+   "authors": "Aidan Gomez · Sicong(Sheldon) Huang · Ivan Zhang · Bryan Li · Muhammad Osama · Lukasz Kaiser",
+   "forum": "BkeqO7x0-"
+  },
+  {
+   "type": "Poster",
+   "title": "Semantically Decomposing the Latent Spaces of Generative Adversarial Networks",
+   "authors": "Chris Donahue · Zachary Lipton · Akshay Balsubramani · Julian McAuley",
+   "forum": "S1nQvfgA-"
+  },
+  {
+   "type": "Poster",
+   "title": "Not-So-Random Features",
+   "authors": "Brian Bullins · Cyril Zhang · Yi Zhang",
+   "forum": "Hk8XMWgRb"
+  },
+  {
+   "type": "Poster",
+   "title": "A Bayesian Perspective on Generalization and Stochastic Gradient Descent",
+   "authors": "Samuel Smith · Quoc V Le",
+   "forum": "BJij4yg0Z"
+  },
+  {
+   "type": "Poster",
+   "title": "Memorization Precedes Generation: Learning Unsupervised GANs with Memory Networks",
+   "authors": "Youngjin Kim · Minjung Kim · Gunhee Kim",
+   "forum": "rkO3uTkAZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Reinforcement Learning Algorithm Selection",
+   "authors": "Romain Laroche · Raphaël Féraud",
+   "forum": "SyoDInJ0-"
+  },
+  {
+   "type": "Poster",
+   "title": "Improving GANs Using Optimal Transport",
+   "authors": "Tim Salimans · Han Zhang · Alec Radford · Dimitris Metaxas",
+   "forum": "rkQkBnJAb"
+  },
+  {
+   "type": "Poster",
+   "title": "Efficient Sparse-Winograd Convolutional Neural Networks",
+   "authors": "Xingyu Liu · Jeff Pool · song han · Bill Dally",
+   "forum": "HJzgZ3JCW"
+  },
+  {
+   "type": "Poster",
+   "title": "Progressive Reinforcement Learning with Distillation for Multi-Skilled Motion Control",
+   "authors": "Glen Berseth · Cheng Xie · Paul Cernek · Michiel van de Panne",
+   "forum": "B13njo1R-"
+  },
+  {
+   "type": "Poster",
+   "title": "An Online Learning Approach to Generative Adversarial Networks",
+   "authors": "Paulina Grnarova · Kfir Y Levy · Aurelien Lucchi · Thomas Hofmann · Andreas Krause",
+   "forum": "H1Yp-j1Cb"
+  },
+  {
+   "type": "Poster",
+   "title": "Espresso: Efficient Forward Propagation for Binary Deep Neural Networks",
+   "authors": "Fabrizio Pedersoli · George Tzanetakis · Andrea Tagliasacchi",
+   "forum": "Sk6fD5yCb"
+  },
+  {
+   "type": "Poster",
+   "title": "Learning Wasserstein Embeddings",
+   "authors": "Nicolas Courty · Rémi Flamary · Mélanie Ducoffe",
+   "forum": "SJyEH91A-"
+  },
+  {
+   "type": "Poster",
+   "title": "Towards Neural Phrase-based Machine Translation",
+   "authors": "Po-Sen Huang · Chong Wang · Sitao Huang · Dengyong Zhou · Li Deng",
+   "forum": "HktJec1RZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Noisy Networks For Exploration",
+   "authors": "Meire Fortunato · Mohammad Gheshlaghi Azar · Bilal Piot · Jacob Menick · Matteo Hessel · Ian Osband · Alex Graves · Volodymyr Mnih · Remi Munos · Demis Hassabis · Olivier Pietquin · Charles Blundell · Shane Legg",
+   "forum": "rywHCPkAW"
+  },
+  {
+   "type": "Poster",
+   "title": "Unsupervised Learning of Goal Spaces for Intrinsically Motivated Goal Exploration",
+   "authors": "Alexandre Péré · Sébastien Forestier · Olivier Sigaud · Pierre-Yves Oudeyer",
+   "forum": "S1DWPP1A-"
+  },
+  {
+   "type": "Poster",
+   "title": "Deep Learning and Quantum Entanglement: Fundamental Connections with Implications to Network Design",
+   "authors": "Yoav Levine · David Yakira · Nadav Cohen · Amnon Shashua",
+   "forum": "SywXXwJAb"
+  },
+  {
+   "type": "Poster",
+   "title": "Training wide residual networks for deployment using a single bit for each weight",
+   "authors": "Mark D. McDonnell",
+   "forum": "rytNfI1AZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Skip RNN: Learning to Skip State Updates in Recurrent Neural Networks",
+   "authors": "Víctor Campos · Brendan Jou · Xavier Giro-i-Nieto · Jordi Torres · Shih-Fu Chang",
+   "forum": "HkwVAXyCW"
+  },
+  {
+   "type": "Poster",
+   "title": "Recasting Gradient-Based Meta-Learning as Hierarchical Bayes",
+   "authors": "Erin Grant · Chelsea Finn · Sergey Levine · Trevor Darrell · Thomas L Griffiths",
+   "forum": "BJ_UL-k0b"
+  },
+  {
+   "type": "Poster",
+   "title": "Learning Discrete Weights Using the Local Reparameterization Trick",
+   "authors": "Oran Shayer · Dan Levi · Ethan Fetaya",
+   "forum": "BySRH6CpW"
+  },
+  {
+   "type": "Poster",
+   "title": "Regularizing and Optimizing LSTM Language Models",
+   "authors": "Stephen Merity · Nitish Shirish Keskar · richard socher",
+   "forum": "SyyGPP0TZ"
+  },
+  {
+   "type": "Poster",
+   "title": "Active Neural Localization",
+   "authors": "Devendra Singh Chaplot · Emilio Parisotto · Ruslan Salakhutdinov",
+   "forum": "ry6-G_66b"
+  },
+  {
+   "type": "Poster",
+   "title": "Memory Augmented Control Networks",
+   "authors": "Arbaaz Khan · Clark Zhang · Nikolay Atanasov · Konstantinos Karydis · Vijay Kumar · Daniel D Lee",
+   "forum": "HyfHgI6aW"
+  },
+  {
+   "type": "Poster",
+   "title": "Learning how to explain neural networks: PatternNet and PatternAttribution",
+   "authors": "Pieter-Jan Kindermans · Kristof T Schütt · Maximilian Alber · Klaus R Muller · Dumitru Erhan · Been Kim · Sven Dähne",
+   "forum": "Hkn7CBaTW"
+  },
+  {
+   "type": "Poster",
+   "title": "A New Method of Region Embedding for Text Classification",
+   "authors": "Chao Qiao · Bo Huang · Guocheng Niu · daren li · daxiang dong · wei he · Dianhai Yu · hua wu",
+   "forum": "BkSDMA36Z"
+  },
+  {
+   "type": "Poster",
+   "title": "Distributed Fine-tuning of Language Models on Private Data",
+   "authors": "Vadim Popov · Mikhail Kudinov · Irina Piontkovskaya · Petr Vytovtov · Alex Nevidomsky",
+   "forum": "HkgNdt26Z"
+  },
+  {
+   "type": "Poster",
+   "title": "Automatically Inferring Data Quality for Spatiotemporal Forecasting",
+   "authors": "Sungyong Seo · Arash Mohegh · George Ban-Weiss · Yan Liu",
+   "forum": "ByJIWUnpW"
+  },
+  {
+   "type": "Poster",
+   "title": "Empirical Risk Landscape Analysis for Understanding Deep Neural Networks",
+   "authors": "Pan Zhou · Jiashi Feng · Pan Zhou",
+   "forum": "B1QgVti6Z"
+  },
+  {
+   "type": "Poster",
+   "title": "Decoupling the Layers in Residual Networks",
+   "authors": "Ricky Fok · Aijun An · Zana Rashidi · Xiaogang Wang",
+   "forum": "SyMvJrdaW"
+  },
+  {
+   "type": "Poster",
+   "title": "Learning to cluster in order to transfer across domains and tasks",
+   "authors": "Yen-Chang Hsu · Zhaoyang Lv · Zsolt Kira",
+   "forum": "ByRWCqvT-"
+  },
+  {
+   "type": "Poster",
+   "title": "Natural Language Inference over Interaction Space",
+   "authors": "Yichen Gong · Heng Luo · Jian Zhang",
+   "forum": "r1dHXnH6-"
+  },
+  {
+   "type": "Poster",
+   "title": "Consequentialist conditional cooperation in social dilemmas with imperfect information",
+   "authors": "Alex Peysakhovich · Adam Lerer",
+   "forum": "BkabRiQpb"
+  },
+  {
+   "type": "Poster",
+   "title": "SMASH: One-Shot Model Architecture Search through HyperNetworks",
+   "authors": "Andrew Brock · Theo Lim · James Ritchie · Nick Weston",
+   "forum": "rydeCEhs-"
+  },
+  {
+   "type": "Workshop",
+   "title": "Inference in probabilistic graphical models by Graph Neural Networks",
+   "authors": "KiJung Yoon · Renjie Liao · Yuwen Xiong · Lisa Zhang · Ethan Fetaya · Raquel Urtasun · Richard Zemel · Xaq Pitkow",
+   "forum": "rkN1pF1vz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Reward Estimation for Variance Reduction in Deep Reinforcement Learning",
+   "authors": "Joshua Romoff · Alexandre Piche · Peter Henderson · Vincent Francois-Lavet · Joelle Pineau",
+   "forum": "r1vcHYJvM"
+  },
+  {
+   "type": "Workshop",
+   "title": "Online variance-reducing optimization",
+   "authors": "Nicolas Le Roux · Reza Babanezhad Harikandeh · Pierre-Antoine Manzagol",
+   "forum": "r1qKBtJvG"
+  },
+  {
+   "type": "Workshop",
+   "title": "Extending Robust Adversarial Reinforcement Learning Considering Adaptation and Diversity",
+   "authors": "Hiroaki Shioya · Yusuke Iwasawa · Yutaka Matsuo",
+   "forum": "BJ7Upwyvf"
+  },
+  {
+   "type": "Workshop",
+   "title": "Leveraging Constraint Logic Programming for Neural Guided Program Synthesis",
+   "authors": "Lisa Zhang · Gregory Rosenblatt · Ethan Fetaya · Renjie Liao · William Byrd · Raquel Urtasun · Richard Zemel",
+   "forum": "HJIHtIJvz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Simple and efficient architecture search for Convolutional Neural Networks",
+   "authors": "Thomas Elsken · Jan Hendrik Metzen · Frank Hutter",
+   "forum": "H1hymrkDf"
+  },
+  {
+   "type": "Workshop",
+   "title": "Adversarial Policy Gradient for Alternating Markov Games",
+   "authors": "Chao Gao · Martin Mueller · Ryan Hayward",
+   "forum": "ByINFNJDz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Meta-Learning a Dynamical Language Model",
+   "authors": "Thomas Wolf · Julien Chaumond · clement delangue",
+   "forum": "SyikZmkDM"
+  },
+  {
+   "type": "Workshop",
+   "title": "A moth brain learns to read MNIST",
+   "authors": "Charles Delahunt · Nathan Kutz",
+   "forum": "HyYuqoCUz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Learning Representations and Generative Models for 3D Point Clouds",
+   "authors": "Panagiotis Achlioptas · Olga Diamanti · Ioannis Mitliagkas · Leonidas Guibas",
+   "forum": "r14RP5AUz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Designing Efficient Neural Attention Systems Towards Achieving Human-level Sharp Vision",
+   "authors": "Abdul Rahman Abdul Ghani · Nishanth Koganti · Alfredo Solano · Yusuke Iwasawa · Kotaro Nakayama · Yutaka Matsuo",
+   "forum": "rJxqQY0LM"
+  },
+  {
+   "type": "Workshop",
+   "title": "Finding Flatter Minima with SGD",
+   "authors": "Devansh Arpit",
+   "forum": "r1VF9dCUG"
+  },
+  {
+   "type": "Workshop",
+   "title": "eCommerceGAN: A Generative Adversarial Network for e-commerce",
+   "authors": "Ashutosh Kumar · Arijit Biswas · Subhajit Sanyal",
+   "forum": "H1V8G-0Iz"
+  },
+  {
+   "type": "Workshop",
+   "title": "SufiSent - Universal Sentence Representations Using Suffix Encodings",
+   "authors": "Siddhartha Brahma",
+   "forum": "By93_yAUG"
+  },
+  {
+   "type": "Workshop",
+   "title": "Regularization Neural Networks via Constrained Virtual Movement Field",
+   "authors": "Zhendong Zhang · Cheolkon Jung",
+   "forum": "Bkco4ATIG"
+  },
+  {
+   "type": "Workshop",
+   "title": "Neural network parameter regression for lattice quantum chromodynamics simulations in nuclear and particle physics",
+   "authors": "Phiala Shanahan · Daniel Trewartha · William Detmold",
+   "forum": "HJVRNlhIM"
+  },
+  {
+   "type": "Workshop",
+   "title": "Shifting Mean Activation Towards Zero with Bipolar Activation Functions",
+   "authors": "Lars Eidnes · Arild Nøkland",
+   "forum": "B1XqwdoIz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Learning to Organize Knowledge with N-Gram Machines",
+   "authors": "Fan Yang · Jiazhong Nie · William W Cohen · Ni Lao",
+   "forum": "rkqJIc5UM"
+  },
+  {
+   "type": "Workshop",
+   "title": "An Experimental Study of Neural Networks for Variable Graphs",
+   "authors": "Xavier Bresson · Thomas Laurent",
+   "forum": "SJexcZc8G"
+  },
+  {
+   "type": "Workshop",
+   "title": "Reinforcement Learning from Imperfect Demonstrations",
+   "authors": "Yang Gao · Huazhe Xu · Ji Lin · Fisher Yu · Sergey Levine · Trevor Darrell",
+   "forum": "HytbCQG8z"
+  },
+  {
+   "type": "Workshop",
+   "title": "Adaptive Memory Networks",
+   "authors": "Daniel Li · Asim Kadav",
+   "forum": "rkdEtxf8z"
+  },
+  {
+   "type": "Workshop",
+   "title": "Parametric Adversarial Divergences are Good Task Losses for Generative Modeling",
+   "authors": "Gabriel Huang · Hugo Berard · Ahmed Touati · Gauthier Gidel · Pascal Vincent · Simon Lacoste-Julien",
+   "forum": "B1TgRe-Iz"
+  },
+  {
+   "type": "Workshop",
+   "title": "Learning to Infer",
+   "authors": "Joe Marino · Yisong Yue · Stephan Mandt",
+   "forum": "HJIza50Sf"
+  },
+  {
+   "type": "Workshop",
+   "title": "3D-FilterMap: A Compact Architecture for Deep Convolutional Neural Networks",
+   "authors": "Yingzhen Yang · Jianchao Yang · Ning Xu · Wei Han · Nebojsa Jojic · Thomas Huang",
+   "forum": "Sk4_LURHf"
+  },
+  {
+   "type": "Workshop",
+   "title": "GeoSeq2Seq: Information Geometric Sequence-to-Sequence Networks",
+   "authors": "Alessandro Bay · Biswa Sengupta",
+   "forum": "rJ4dWt6HM"
+  },
+  {
+   "type": "Workshop",
+   "title": "Learning Rich Image Representation with Deep Layer Aggregation",
+   "authors": "Fisher Yu · Dequan Wang · Evan Shelhamer · Trevor Darrell",
+   "forum": "HJXVjtJvz"
+  }
+ ]
+}
