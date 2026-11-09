@@ -12,7 +12,7 @@ scène 0,04), puis quelques images prises à la main dans les trous. Les images 
 (leur `times.txt` est vide). Trois images pleine résolution des diapositives clés :
 `video/slide23-full.png`, `video/slide30-full.png`, `video/slide31-full.png`.
 
-Le numéro est celui imprimé en bas de la diapositive quand il est lisible ; sinon, il est
+Numéros 25 et 26 corrigés le 9 novembre 2026 d'après l'image à 25:30, où le numéro 26 se lit sur « How should we measure… ». Le numéro est celui imprimé en bas de la diapositive quand il est lisible ; sinon, il est
 déduit de l'ordre (marqué « ~ »). Les diapositives 1, 2, 7, 10, 11, 25, 27 et 32 n'apparaissent
 pas à l'écran de façon lisible (titre, transitions, ou diapositive passée trop vite).
 
@@ -38,8 +38,8 @@ pas à l'écran de façon lisible (titre, transitions, ou diapositive passée tr
 | 22 | 21:33 | s-031 | Codebase comparison : capture d'une recherche GitHub « TRPO » (une dizaine de dépôts) + courbes HalfCheetah-v1 (TRPO, Codebase Comparison), trois implémentations |
 | 23 | 22:23 | s-032 | Codebase comparison : TRPO implementations (3 courbes) et DDPG implementations (3 courbes) sur HalfCheetah |
 | 24 | 22:48 | s-033 | Effect of hyper-parameter configurations : structure du réseau (64,64), (100,50,25), (400,300) pour PPO ; activation tanh, relu, leaky_relu pour TRPO |
-| 26 | 23:30 | s-034 | An intricate interplay of hyper-parameters : DDPG, échelle de récompense avec et sans layer norm ; en rouge « When testing a baseline, how motivated are we to find the best hyper-parameters? » |
-| ~27 | 25:20 | s-035 | How should we measure performance of the learned policy? : courbes HalfCheetah Alg.1 à 4 |
+| 25 | 23:30 | s-034 | An intricate interplay of hyper-parameters : DDPG, échelle de récompense avec et sans layer norm ; en rouge « When testing a baseline, how motivated are we to find the best hyper-parameters? » |
+| 26 | 25:20 | s-035 | How should we measure performance of the learned policy? : courbes HalfCheetah Alg.1 à 4 |
 | 28 | 26:30 | s-036 | How many trials? : tableau de 7 articles (noms masqués en jaune) : top-5, 3-9, 5 (5), 3, 5, 5, top-2 / top-3 |
 | 29 | 27:07 | s-037 | Consider the case of n=10 : dix courbes, une ligne « Baseline to beat » |
 | 30 | 27:45 | gaps/g-002745 | Idem + « Top-3 results » : « Strong positive bias: seems to beat the baseline! Variance appears much smaller. » |
