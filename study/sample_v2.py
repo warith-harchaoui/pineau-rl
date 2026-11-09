@@ -46,10 +46,13 @@ RX = re.compile(r'reinforcement learning|\bRL\b|\bRLHF\b|\bRLVR\b|policy optimi[
 PRESCREEN = ['llm', 'language model', 'reasoning', 'rlhf', 'rlvr', 'grpo', 'preference',
              'alignment', 'reward model', 'chain-of-thought', 'math', 'agentic']
 N2018 = 50
-MIN_PDF = 70
+MIN_PDF = int(os.environ.get('A3_MIN_PDF', 70))  # raised when 36 classic papers are not reached
 PDFDIR = 'pdf'
 DOWNLOAD = '--no-download' not in sys.argv
 PREV = {}  # (id, title) -> pdf_src from a previous run, so a resumed run keeps provenance
+FROZEN = {}  # A3 papers already tried without a PDF: skipped for good (PROTOCOL.md, écart 17)
+if os.path.exists('classic_queue_2026.json'):
+    FROZEN = {(r['id'], r['title']): r for r in json.load(open('classic_queue_2026.json')) if 'pdf' in r and not r['pdf']}
 for _f in ('calib_2018_v2.json', 'classic_queue_2026.json'):
     if os.path.exists(_f):
         PREV.update({(r['id'], r['title']): r.get('pdf_src') for r in json.load(open(_f)) if r.get('pdf')})
@@ -303,6 +306,9 @@ def draw_a3():
     for r in queue:
         if n_ok >= MIN_PDF:
             break
+        if (r['id'], r['title']) in FROZEN:
+            r.update({k: v for k, v in FROZEN[(r['id'], r['title'])].items() if k in ('pdf', 'pdf_note')})
+            continue
         n_ok += fetch(r)
         dump(queue, 'classic_queue_2026.json')
     dump(queue, 'classic_queue_2026.json')
