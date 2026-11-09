@@ -22,7 +22,7 @@ situations qui avaient servi à les entraîner [@pineau2018iclr; @pineau2018neur
 
 Ce document reprend la liste entière, faille par faille. Il pose chaque fois la même question :
 huit ans plus tard, l'avons-nous écoutée ? Deux instruments répondent. Le premier est un sondage :
-nous relisons 50 articles de 2025 et 2026 tirés au sort, avec la grille de lecture de Pineau, et
+nous relisons 50 articles de 2025 et 2026 tirés au sort, avec la grille de lecture de Pineau. Nous relisons aussi
 12 articles de 2018 pour vérifier que notre lecture retrouve ses chiffres. Le second rassemble des
 expériences : nous refaisons celles de 2018 avec les algorithmes de 2026, en écrivant le protocole
 avant le premier entraînement.
@@ -37,9 +37,10 @@ comparaisons multiples. Pour trois autres, nous ne détectons aucun changement :
 statistique (4 % des articles), la description de la façon dont on règle une méthode (27 %) et le
 nombre d'essais, que la moitié des articles taisent. Nos expériences précisent la faille la plus
 célèbre. Sur nos trente essais, deux groupes de cinq tirés au hasard ne trompent un test
-statistique que dans 1,2 % des cas. Le test se laisse tromper quand on trie les essais (31 %), et
-garder les meilleurs gonfle le score de 33 %. Elles confirment la plus discrète : la méthode
-concurrente mal réglée de notre propre expérience, c'était nous. Six failles restent à mesurer :
+statistique que dans 1,2 % des cas. Le test se laisse tromper quand on trie les essais (31 %). Garder
+les meilleurs gonfle le score de 33 %. Elles montrent aussi pourquoi un résultat trop beau se vérifie : notre
+propre référence s'est effondrée, une erreur de notre code semblait l'expliquer. Sa correction n'a
+rien changé. Six failles restent à mesurer :
 ce document dit comment.
 
 # Deux conférences en 2018
@@ -58,7 +59,10 @@ reproductible, réutilisable et robuste ».
 **Une question simple.** Si une équipe publie un résultat, une autre équipe qui suit la recette
 obtient-elle le même ? Pineau part d'un sondage de la revue *Nature* : sur 1 576 chercheurs de
 toutes disciplines, plus de 70 % disaient avoir déjà échoué à reproduire l'expérience d'un collègue
-[@baker2016reproducibility]. Elle cite ensuite une phrase de deux chercheurs de Stanford,
+[@baker2016reproducibility]. Dans le même sondage, 52 % des chercheurs voient une crise
+« significative » de la reproductibilité, 38 % une crise « légère ». Pineau a posé la même question
+à vingt spécialistes de l'apprentissage automatique lors d'un atelier, en décembre 2017 : 80 % y
+voient une crise, légère ou significative [@pineau2018iclr]. Elle cite ensuite une phrase de deux chercheurs de Stanford,
 Buckheit et Donoho, écrite en 1995 pour condenser une idée de leur collègue Jon Claerbout : un
 article scientifique sur le calcul est seulement la publicité de la recherche. La recherche
 elle-même, c'est l'environnement logiciel complet et l'ensemble des instructions qui ont produit
@@ -68,7 +72,7 @@ domaine pour mériter la confiance. Les figures viennent pour la plupart d'un ar
 
 **Ce que nous faisons de cette conférence.** Huit ans ont passé. Le domaine a changé de taille et
 de terrain. NeurIPS a adopté en 2019 la liste de contrôle que Pineau proposait
-[@pineau2021improving], et d'autres congrès ont suivi avec leurs propres listes. Nous voulons savoir ce qu'elle a changé dans les articles eux-mêmes. Nous
+[@pineau2021improving]. D'autres congrès ont suivi avec leurs propres listes. Nous voulons savoir ce qu'elle a changé dans les articles eux-mêmes. Nous
 prenons donc sa liste de failles comme une grille, nous l'appliquons aux articles d'aujourd'hui,
 puis à nos propres expériences. C'était la règle qu'elle demandait : la critique s'applique
 d'abord à soi.
@@ -111,6 +115,69 @@ méthodes étaient en vérité équivalentes : c'est la valeur p. Par convention
 l'écart « significatif ». Un intervalle de confiance à 95 % donne une plage de valeurs compatibles
 avec les données : plus il est large, moins la mesure est sûre. Nous employons l'intervalle de
 Wilson, adapté aux proportions calculées sur peu d'articles [@wilson1927probable].
+
+# Du backgammon aux modèles de langue
+
+**Vingt ans avec un seul exemple.** En 1995, Gerald Tesauro, chercheur chez IBM, décrit TD-Gammon :
+un réseau de neurones qui apprend le backgammon en jouant contre lui-même. Sa version 2.1 atteint
+un niveau de maître « extrêmement proche » de celui des meilleurs joueurs humains
+[@tesauro1995tdgammon]. À Vancouver, Pineau raconte que les chercheurs du RL ont cité ce résultat
+pendant près de vingt ans comme le plus remarquable de leur domaine. AlphaGo, vainqueur de Lee
+Sedol au go en 2016, leur a enfin donné un autre exemple [@silver2016alphago; @pineau2018iclr].
+
+**Un domaine qui a grandi très vite.** Pineau commence à travailler sur le RL vers 1999. Vers
+2000, à un atelier sur le RL du congrès NIPS (le nom de NeurIPS jusqu'en 2018), trente-cinq
+personnes occupent la salle. En 2016, elle compte environ treize mille articles de RL publiés dans
+l'année. Avec un tel volume, note-t-elle, un nouveau venu peine à savoir lesquels font vraiment
+avancer le domaine [@pineau2018iclr].
+
+**Des erreurs qui commencent à coûter.** À la fin de sa conférence de Vancouver, Pineau dit
+pourquoi ces questions lui importent tant. Longtemps, le RL a joué au backgammon et à rien
+d'autre, si bien que ses imprécisions ne coûtaient rien. Il s'approche maintenant, dit-elle, de
+problèmes qui comptent : la conception de traitements médicaux, la gestion des ressources
+naturelles, des réseaux d'énergie et des systèmes financiers [@pineau2018iclr]. Le doute venait
+aussi des praticiens. En février 2018, Alex Irpan, de l'équipe de recherche Google Brain, écrit
+sur son blog : « Quand quelqu'un me demande si l'apprentissage par renforcement peut résoudre son
+problème, je lui réponds que non. Je pense avoir raison au moins 70 % du temps. » Pineau projette
+l'adresse de ce billet à NeurIPS [@irpan2018rlhard; @pineau2018neurips].
+
+**Le RL apprend à converser.** En 2022, OpenAI décrit InstructGPT, un modèle de langue affiné en
+deux temps. Des annotateurs écrivent d'abord des exemples de bonnes réponses, que le modèle apprend
+à imiter. Ils classent ensuite plusieurs réponses du modèle, de la meilleure à la pire. Un
+apprentissage par renforcement à partir de ces retours humains (RLHF, *reinforcement learning from
+human feedback*) fait le reste. Les évaluateurs préfèrent les réponses de la version
+d'InstructGPT à 1,3 milliard de paramètres à celles de GPT-3, qui en compte 175 milliards, cent
+fois plus [@ouyang2022instructgpt]. Le 30 novembre 2022, OpenAI présente ChatGPT, entraîné « avec
+les mêmes méthodes qu'InstructGPT » [@openai2022chatgpt].
+
+**Une récompense qu'un programme vérifie.** L'entreprise chinoise DeepSeek publie dans *Nature*,
+en septembre 2025, le modèle R1. Sa première version, R1-Zero, apprend à raisonner par RL seul,
+sans exemples de raisonnement écrits par des humains. La récompense se calcule par des règles. Pour
+un problème de mathématiques, un programme compare la réponse finale à la bonne réponse. Pour un
+problème de programmation, un compilateur fait tourner le code sur des tests fixés d'avance. Sur
+l'AIME 2024 (*American Invitational Mathematics Examination*, un concours de mathématiques
+américain), la part de problèmes résolus au premier essai passe de 15,6 % à 77,9 % au fil de
+l'entraînement [@deepseek2025r1]. Les annexes de l'article chiffrent le calcul : 147 000 heures de
+processeur graphique, soit 294 000 dollars au tarif de location de 2 dollars l'heure. Ce compte
+couvre R1-Zero, la préparation des données et R1. Il exclut l'entraînement du modèle de départ,
+DeepSeek-V3. En mars 2025, l'Association for Computing Machinery (ACM), société savante
+d'informatique, remet son prix Turing à Andrew Barto et Richard Sutton pour avoir posé « les
+fondations conceptuelles et algorithmiques » du RL [@acm2025turing].
+
+**Ce que ces succès ont en commun.** Chacun dispose d'un monde qu'on relance sans frais : un
+plateau de jeu, une liste de problèmes corrigés, des tests de programmation. Chacun reçoit aussi
+une récompense qu'un programme calcule sans se tromper. Les auteurs de DeepSeek-R1 le disent
+eux-mêmes : le succès du RL pur dépend d'une récompense fiable. Attribuée par un autre modèle au
+lieu de règles fixées d'avance, la récompense se laisse plus facilement exploiter [@deepseek2025r1]. Même
+dans ces conditions, le signal reste pauvre. Andrej Karpathy, qui a participé aux débuts d'OpenAI,
+le résume en octobre 2025 : « L'apprentissage par renforcement est terrible. Il se trouve
+simplement que tout ce que nous avions avant est bien pire. » Le modèle travaille parfois une
+minute entière pour recevoir une seule note à la fin, appliquée ensuite à chacune de ses actions,
+les bonnes comme les mauvaises : « on aspire la supervision à travers une paille »
+[@patel2025karpathy]. Un apprentissage aussi bruité donne des scores qui changent d'une graine
+aléatoire à l'autre. Pour séparer un progrès du hasard, il faut alors lancer chaque expérience
+plusieurs fois, avec des références réglées aussi bien que la méthode. Les seize failles de 2018
+décrivent ce qui arrive quand ce calcul manque.
 
 # Les seize failles de 2018
 
@@ -404,7 +471,8 @@ grille est simplement plus sévère que celle de Pineau. Le verdict reste imposs
 
 **L'infrastructure, chiffrée une fois sur deux (F3).** Moins d'un article sur deux chiffre son
 calcul en 2026, alors que le RL de grands modèles a fait du calcul un poste de budget à part entière
-[@khatri2025art]. Les versions des logiciels (critère Y10) attendent la seconde grille.
+[@khatri2025art]. Une seule étude de 2025 sur la croissance du RL de ces modèles a consommé plus de
+400 000 heures de processeur graphique. Les versions des logiciels (critère Y10) attendent la seconde grille.
 
 # Le réglage : hyperparamètres et références (F4 à F7)
 
@@ -425,29 +493,52 @@ hyperparamètres des références sont tous donnés dans 18 % des articles de 20
 Pineau et 6 sur 11 dans notre lecture de 2018. Seuls 5 % des articles disent avoir réglé leurs
 références avec le même soin que leur méthode. Notre échantillon ne dit pas d'où vient ce recul.
 
-**La référence mal réglée, c'était nous.** Notre expérience E6 voulait illustrer la faille. Elle
-oppose PPO sur Hopper avec les valeurs par défaut de la bibliothèque à PPO avec les réglages
-publiés par le recueil RL Baselines3 Zoo [@raffin2020zoo], qui font foi pour cette bibliothèque.
-Premier passage : la version par défaut atteint une moyenne interquartile de 2 877 [2 272, 3 346],
-la version réglée 1 003 [859, 1 156]. La moyenne interquartile (*interquartile mean*, IQM) écarte le
+**Une référence qui s'effondre (E6).** Notre expérience E6 voulait illustrer la faille. Elle oppose
+PPO sur Hopper avec les valeurs par défaut de la bibliothèque à PPO avec les réglages publiés par
+le recueil RL Baselines3 Zoo [@raffin2020zoo], qui font foi pour cette bibliothèque. Premier
+passage : la version par défaut atteint une moyenne interquartile de 2 877 [2 268, 3 365], la
+version réglée 1 003 [852, 1 158]. La moyenne interquartile (*interquartile mean*, IQM) écarte le
 quart le plus bas et le quart le plus haut des essais, puis fait la moyenne du reste
-[@agarwal2021precipice]. Les réglages publiés feraient trois fois moins bien que les réglages par
-défaut ? Le résultat était trop beau pour notre démonstration, à l'envers. Nous avons vérifié. Notre
-code normalisait les observations avec un facteur d'actualisation de 0,99, alors que le recueil
-emploie celui de l'algorithme, 0,999. La référence mal réglée, c'était nous. Le premier passage est
-conservé tel quel dans les résultats. La recette corrigée a été relancée, dix graines aléatoires
-par condition, sur Hopper dans ses versions 4 et 5. Ce diagnostic a été décidé après avoir vu le
-premier résultat, ce que le protocole déclare. Les trente essais sont finis, l'analyse reste à
-faire.
+[@agarwal2021precipice]. Les réglages publiés feraient trois fois moins bien que les valeurs par
+défaut ? Le résultat était trop beau. En vérifiant, nous avons trouvé une erreur de notre côté :
+notre code normalisait les observations avec un facteur d'actualisation de 0,99, alors que le
+recueil emploie celui de l'algorithme, 0,999. Nous avons relancé la recette corrigée, dix graines
+aléatoires par condition, sur Hopper dans ses versions 4 et 5. Ce diagnostic a été décidé après
+avoir vu le premier résultat, ce que le protocole déclare.
+
+**L'erreur corrigée ne change rien.** La recette corrigée obtient 1 012 [902, 1 138] sur la
+version 5 contre 984 [785, 1 003] sur la version 4, celle pour laquelle le recueil a été réglé. Les
+valeurs par défaut obtiennent 2 423 [1 673, 3 067] sur la version 4. La probabilité qu'un essai
+corrigé batte un essai avec l'erreur vaut 0,47, autant dire le hasard. Notre erreur
+était réelle, sans expliquer l'écart. Deux possibilités demeurent : la recette publiée fait
+vraiment moins bien que les valeurs par défaut avec les versions actuelles des bibliothèques, ou
+notre façon de l'appliquer diffère encore de celle du recueil. Pour trancher, nous entraînons
+dix agents avec le script officiel du recueil, puis nous les évaluons avec notre protocole. D'ici
+là, E6 n'illustre aucune faille. Elle montre seulement pourquoi un résultat trop beau se vérifie
+jusqu'au bout.
 
 # Les graines aléatoires et la statistique (F8 à F12)
 
 **La mesure, à définir (F8).** Le critère Y1 dira si les articles de 2026 définissent leur mesure
-de performance, le critère Y2 s'ils disent ce que représentent leurs barres d'erreur.
+de performance, le critère Y2 s'ils disent ce que représentent leurs barres d'erreur. Le RL de
+grands modèles offre déjà un exemple de mesure qui renverse un classement. En 2025, Yang Yue et ses
+coauteurs, surtout de l'université Tsinghua, comparent des modèles avant et après un RL à
+récompense vérifiable. Leur mesure, le pass@k, donne la part des problèmes résolus en au plus k
+tentatives. Pour une seule tentative, le modèle entraîné l'emporte. Pour un grand nombre de
+tentatives, le modèle de départ obtient le meilleur score. Les auteurs en concluent que les
+raisonnements du modèle entraîné existaient déjà dans le modèle de départ. La distillation, qui
+fait imiter un modèle plus fort, en apporte au contraire de nouveaux [@yue2025rlvr]. Un article
+qui annonce un gain sans dire combien de tentatives il compte laisse le lecteur ignorer lequel des
+deux modèles gagne.
 
 **Toujours cinq essais (F9).** Sur 41 articles de RL expérimentaux de 2026, 20 ne disent pas
 combien d'entraînements indépendants soutiennent leurs résultats. Quatre n'en ont qu'un. La
 médiane des autres est cinq, la valeur la plus fréquente dans le tableau que Pineau montrait. La faille n'a pas été écoutée.
+Le coût explique une part de cette économie. En 2021, Agarwal et ses coauteurs relèvent que trois à
+dix essais par tâche restent la norme du RL profond : cinq essais sur plus de cinquante jeux Atari
+demandent déjà plus de mille jours de calcul sur carte graphique. Sur Atari 100k, un banc d'essai
+à petit budget de données, il faudrait plutôt de 50 à 100 essais pour estimer la médiane des
+scores avec assez de précision [@agarwal2021precipice].
 L'expérience E5 dira combien de graines aléatoires il faut vraiment.
 
 ## Même code, autre graine aléatoire (F11)
@@ -486,7 +577,7 @@ positifs.
 
 **La statistique de 2018, hors de portée de nos essais.** Henderson et ses coauteurs testaient
 autre chose que les scores finaux. Leur légende parle d'un test t moyen sur toute la courbe
-d'apprentissage, et leur figure porte sur TRPO [@henderson2018matters]. Les groupes n'étaient pas
+d'apprentissage. Leur figure concerne TRPO [@henderson2018matters]. Les groupes n'étaient pas
 triés, précise Pineau. Nous avons donc refait leur statistique sur nos trente courbes : un test
 de Welch à chacun des vingt points d'évaluation, puis la moyenne. Une fois sur vingt, la valeur
 absolue du t moyen dépasse 1,4 quand les groupes sont tirés au hasard, 2,5 quand on les trie.
@@ -510,7 +601,15 @@ entre algorithmes elle inverse.
 mondes. Le RL classique la rapporte toujours (14 articles sur 14). Le RL de grands modèles presque
 jamais (4 sur 27), alors qu'une équipe surtout basée à Tübingen y a mesuré, en 2025, des écarts types
 de 5 à 15 points de pourcentage pour un même modèle évalué avec différentes graines aléatoires
-d'échantillonnage, sur de petits bancs d'essai comme AIME 2024 [@hochlehnert2025sober].
+d'échantillonnage, sur de petits bancs d'essai comme AIME 2024 [@hochlehnert2025sober]. Sur les
+30 problèmes d'AIME 2024, une seule réponse juste de plus déplace le score de 3,3 points.
+Réévaluées dans un cadre commun, la plupart des méthodes de RL de leur étude gagnent peu, « bien en
+deçà » de ce que leurs articles annonçaient. Le RL classique a connu la même réanalyse. En 2021,
+Agarwal et ses coauteurs recalculent des résultats publiés sur les jeux Atari avec des intervalles
+de confiance. Plusieurs améliorations annoncées s'y fondent dans l'incertitude : un algorithme,
+M-IQN, se disait meilleur qu'un autre, Rainbow, alors que leurs intervalles se chevauchent
+nettement. Leur article a reçu le prix de l'article remarquable de NeurIPS 2021
+[@agarwal2021precipice].
 
 ![Part des articles de 2026 qui satisfont chaque critère, avec son intervalle de confiance de Wilson à 95 %. Les barres verticales montrent la plage compatible avec nos 45 articles expérimentaux. Avec un échantillon de cette taille, un écart de moins de quinze points avec 2018 se confond avec le hasard du tirage.](figures/remesure-ic.svg){width=100%}
 
@@ -536,7 +635,12 @@ physique modifiée.
 d'échelle sans changer de risque. Seize articles sur 27 n'essaient qu'une seule famille de modèles
 de langue. Or une équipe de l'université de Washington a montré en 2025 qu'une récompense tirée au
 sort améliore les modèles Qwen en mathématiques, mais pas les modèles Llama ou OLMo
-[@shao2025spurious]. Un résultat obtenu sur une seule famille renseigne sur cette famille,
+[@shao2025spurious]. Sur le modèle Qwen2.5-Math-7B et le banc d'essai MATH-500, la vraie
+récompense fait gagner 29,1 points de pourcentage. Une récompense qui félicite une réponse fausse
+fixée d'avance en fait gagner 24,1, une récompense tirée au hasard 21,4. Les auteurs l'expliquent
+par un comportement que l'entraînement amplifie sans le créer : le modèle écrit son raisonnement
+sous forme de code, sans l'exécuter, dans 65 % des réponses avant l'entraînement et dans plus de
+90 % après un entraînement à récompense trompeuse. Ils recommandent de valider une méthode de RL sur plusieurs familles de modèles. Un résultat obtenu sur une seule famille renseigne sur cette famille,
 sans rien prouver de la méthode.
 
 **Une limite de longueur qui fausse le gain.** Notre volet GRPO a fait apparaître un piège de banc
@@ -566,16 +670,38 @@ hyperparamètres, le nombre exact d'essais, la définition des statistiques et d
 le matériel employé.
 
 **Le défi de reproduction.** Elle présentait aussi le défi de reproduction d'ICLR 2018
-(diapositives 37 à 43 à ICLR) : n'importe qui pouvait tenter de refaire un article soumis. D'après
+(diapositives 37 à 43 à ICLR) : n'importe qui pouvait tenter de refaire un article soumis. Le
+défi est né dans son cours de McGill, où environ 180 étudiants de master et de doctorat avaient
+besoin d'un projet de fin de semestre. D'après
 la conférence, 124 équipes ou personnes se sont inscrites et 95 articles ont été choisis. Parmi les
 participants qui ont répondu au sondage, 54,5 % en ont reproduit une partie, 32,7 % l'essentiel.
-Sur 26 auteurs qui ont répondu, 61 % comptaient mettre à jour leur soumission.
+Sur 26 auteurs qui ont répondu, 61 % comptaient mettre à jour leur soumission. Pour 22 % des
+participants, l'exercice a été très difficile. Enfin, 79 % des 28 auteurs interrogés voulaient
+voir leur article de 2019 passer par le même examen.
 
 **Ce que la liste a changé.** La liste de contrôle a gagné l'institution : NeurIPS l'impose depuis
 2019 [@pineau2021improving]. Notre grille dit ce qu'elle a changé dans les articles. Le code un
 peu, l'évaluation tenue à part beaucoup, la statistique pas du tout, la description des
 références dans le mauvais sens. Une liste fait cocher des cases. Lancer dix graines aléatoires et
 régler ses références coûte du calcul. Aucune case ne le paie.
+
+**Sept questions pour lire une annonce de RL.** La liste de contrôle s'adresse aux auteurs. Le
+lecteur d'un article, d'un communiqué ou d'une démonstration en tire sept questions, qui ne
+demandent pas de savoir programmer. Chacune renvoie aux failles qu'elle détecte.
+
+- Combien de graines aléatoires ? Avec moins de cinq essais, ou avec « les meilleurs essais », le
+  résultat dit peu de chose (F9 et F10).
+- Quelle incertitude ? Une moyenne sans intervalle de confiance ni bande autour de la courbe ne
+  permet pas de juger un écart (F11 et F12).
+- Quelle référence, réglée comment ? Si la méthode a reçu un mois de réglages et la référence ses
+  valeurs par défaut, l'écart mesure le mois de réglages (F7).
+- Combien de tâches, combien de familles de modèles ? Un résultat obtenu sur une seule tâche avec
+  un seul modèle de départ vaut pour ce couple-là (F13 et F16).
+- Évalué où ? Un agent jugé sur les situations de son entraînement a pu les apprendre par cœur
+  (F15).
+- Quel code ? Sans code publié, le lecteur ignore ce que l'article a vraiment fait (F1 et F14).
+- Quel calcul ? Un résultat dont personne d'autre ne peut payer le calcul ne se reproduit pas
+  (F2 et F3).
 
 # Travaux voisins
 
@@ -639,9 +765,9 @@ garder les meilleurs, qui changent ces écarts en faux positifs. Nous en tirons 
 consignes : ne jamais trier les graines aléatoires, montrer un intervalle à côté de chaque
 courbe.
 
-**La grille s'applique d'abord à soi.** Nous avons mal réglé la référence que nous voulions montrer
-mal réglée. Notre premier indicateur GRPO mesurait une limite de longueur. Nous avons trouvé les
-deux erreurs parce que le protocole était écrit d'avance et que nous avons vérifié les résultats
+**La grille s'applique d'abord à soi.** Dans E6, nous avons trouvé une erreur dans notre propre
+code, puis constaté qu'elle n'expliquait rien. Notre premier indicateur GRPO mesurait une limite de
+longueur. Nous avons trouvé ces deux pièges parce que le protocole était écrit d'avance et que nous avons vérifié les résultats
 surprenants avant de les publier. C'était le conseil de Pineau en 2018 : être aussi critique envers
 ses bons résultats qu'envers ses mauvais.
 
@@ -670,7 +796,7 @@ réplication de Shao et ses coauteurs.
 # Ce qui reste à mesurer
 
 - La seconde grille (Y1 à Y12) sur les 50 articles de 2026 et les 12 de 2018, avec les mêmes règles et une double lecture de 10 articles. Le plan est écrit.
-- Les expériences E2 à E5 et E7, quand les 75 entraînements restants seront finis. L'analyse de E6, dont les essais sont terminés.
+- Les expériences E2 à E5 et E7, quand les 75 entraînements restants seront finis. Pour E6, les dix entraînements du script officiel du recueil Zoo, préenregistrés.
 - Les neuf essais GRPO restants, relancés la nuit, avec la part de réponses coupées mesurée à chaque évaluation.
 
 # Reproductibilité

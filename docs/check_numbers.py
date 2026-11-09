@@ -105,6 +105,13 @@ add("Q4 classic vs ours", f"de {d[0]} à {d[1]} points", f"from {d[0]} to {d[1]}
 t = audit["Q4"]["vs_ours2018"]
 add("Q4 vs ours", f"(−{abs(int(half_up(Decimal(str(t['diff'])) * 100)))} points contre elle)",
     f"(−{abs(int(half_up(Decimal(str(t['diff'])) * 100)))} points against that reading)")
+# E6 diagnostic (analysis/e6_diag.py): IQM with bootstrap interval per group, probability of improvement.
+e6 = J("sim/analysis/e6_diag.json")
+iv = lambda g, lang="fr": f"{num(g['iqm'], lang)} [{num(g['iqm_ci'][0], lang)}, {num(g['iqm_ci'][1], lang)}]"
+for k in ("default v5", "zoo v5 (bug)", "zoofix v5", "zoofix v4", "default v4"):
+    add(f"E6 {k}", iv(e6["groups"][k]), "")
+pb = next(c for c in e6["comparisons"] if c["b"] == "zoo v5 (bug)")
+add("E6 bug vs fix", f"vaut {pb['p_improve']:.2f}".replace(".", ","), "")
 # E1, final scores.
 add("E1 mean, sd, median", f"Moyenne {num(e1['mean'])}, écart type {num(e1['sd'])}, médiane {num(e1['median'])}",
     f"Mean {num(e1['mean'], 'en')}, standard deviation {num(e1['sd'], 'en')}, median {num(e1['median'], 'en')}")
