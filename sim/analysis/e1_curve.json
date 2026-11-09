@@ -1,0 +1,18 @@
+{
+ "random_5v5": {
+  "fp_mean_t": 0.0027,
+  "fp_mean_p": 0.0001,
+  "fp_final": 0.0131,
+  "abs_mean_t_p95": 1.3607836079381819,
+  "share_abs_mean_t_ge_9": 0.0,
+  "share_mean_p_le_0016": 0.0
+ },
+ "sorted_5v5": {
+  "fp_mean_t": 0.0628,
+  "fp_mean_p": 0.0005,
+  "fp_final": 0.3065,
+  "abs_mean_t_p95": 2.536332561880536,
+  "share_abs_mean_t_ge_9": 0.0,
+  "share_mean_p_le_0016": 0.0
+ }
+}

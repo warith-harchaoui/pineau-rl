@@ -63,6 +63,27 @@ for lang, l in L.items():
     write(f"grpo_truncation_{lang}", ["quarter", "type", "share"],
           [(q.replace("*", " × "), l["kinds"][k], count[(q, k)]) for q in problems for k in range(3)])
 
+# Audit (study/audit_stats.json, sim/analysis/e1_curve.json): differences with their Newcombe interval, and
+# Henderson et al.'s curve statistic against what our 30 runs produce.
+audit = {r["k"]: r for r in json.load(open(ROOT / "study/audit_stats.json"))["rows"]}
+NAMES = {"fr": {"Q3": "Hyperparam. méthode", "Q4": "Hyperparam. réf.", "Q5": "Code", "Q6": "Choix hyperparam.",
+                "Q7": "Tenue à part", "Q8": "Test signif.", "X2": "Incertitude", "X4": "Réf. réglées",
+                "X7": "Calcul"},
+         "en": {"Q3": "Method params", "Q4": "Baseline params", "Q5": "Code", "Q6": "Tuning method",
+                "Q7": "Held-out", "Q8": "Signif. test", "X2": "Uncertainty", "X4": "Baselines tuned",
+                "X7": "Compute"}}
+curve = json.load(open(ROOT / "sim/analysis/e1_curve.json"))
+for lang, names in NAMES.items():
+    pts = lambda t: (round(100 * t["diff"]), round(100 * t["lo"]), round(100 * t["hi"]))
+    write(f"ecarts_pineau_{lang}", ["g", "mean", "lo", "hi"],
+          [(names[k], *pts(audit[k]["vs_pineau"])) for k in ("Q3", "Q4", "Q5", "Q6", "Q7", "Q8")])
+    write(f"ecarts_classique_{lang}", ["g", "mean", "lo", "hi"],
+          [(names[k], *pts(audit[k]["classic_vs_ours2018"])) for k in ("Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "X2", "X4", "X7")])
+    write(f"e1_henderson_{lang}", ["region", "value"], [
+        ("Nos 30 essais, au hasard" if lang == "fr" else "Our 30 runs, random", round(curve["random_5v5"]["abs_mean_t_p95"], 1)),
+        ("Nos 30 essais, triés" if lang == "fr" else "Our 30 runs, sorted", round(curve["sorted_5v5"]["abs_mean_t_p95"], 1)),
+        ("Henderson et al. 2018, publié" if lang == "fr" else "Henderson et al. 2018, published", 9.1)])
+
 # Every figure in the academic theme (Okabe-Ito palette, serif text). FIXES are deterministic edits of the
 # rendered SVG for what the kinds expose no option for; the PDF is then drawn from that same SVG.
 T = {
@@ -89,6 +110,21 @@ T = {
             "--title", "Le modèle de départ ne finit pas ses réponses",
             "--set", "subtitle=Qwen2.5-0.5B-Instruct, lot du pas 10, 8 réponses tirées par problème",
             "--set", "y_axis_title=Part des 8 réponses", "--set", "x_axis_title=Problème"],
+        "ecarts-pineau": [
+            "--title", "Écart entre 2026 et les chiffres de Pineau",
+            "--set", "subtitle=45 articles expérimentaux de 2026 contre ses 50 de 2018, intervalle de Newcombe à 95 %",
+            "--set", "y_axis_title=Écart en points (2026 moins 2018)",
+            "--set", "x_axis_title=Critère de la grille"],
+        "ecarts-classique": [
+            "--title", "Le RL classique seul, de 2018 à 2026",
+            "--set", "subtitle=14 articles de 2026 contre nos 12 de 2018, même grille, intervalle de Newcombe à 95 %",
+            "--set", "y_axis_title=Écart en points (2026 moins 2018)",
+            "--set", "x_axis_title=Critère de la grille"],
+        "e1-henderson": [
+            "--title", "Nos essais n'approchent pas la statistique de 2018",
+            "--set", "subtitle=PPO-SB3 sur HalfCheetah-v5, deux groupes de 5 essais. Nos barres : 95e centile sur 10 000 tirages",
+            "--set", "x_label=Origine des essais",
+            "--set", "y_label=Valeur absolue du t moyen le long de la courbe", "--set", "language=fr"],
     },
     "en": {
         "remesure-dumbbell": [
@@ -113,6 +149,21 @@ T = {
             "--title", "The base model does not finish its answers",
             "--set", "subtitle=Qwen2.5-0.5B-Instruct, step-10 batch, 8 sampled answers per problem",
             "--set", "y_axis_title=Share of the 8 answers", "--set", "x_axis_title=Problem"],
+        "ecarts-pineau": [
+            "--title", "Gap between 2026 and Pineau's figures",
+            "--set", "subtitle=45 experimental papers from 2026 against her 50 from 2018, 95% Newcombe interval",
+            "--set", "y_axis_title=Gap in points (2026 minus 2018)",
+            "--set", "x_axis_title=Checklist item"],
+        "ecarts-classique": [
+            "--title", "Classic RL alone, from 2018 to 2026",
+            "--set", "subtitle=14 papers from 2026 against our 12 from 2018, same grid, 95% Newcombe interval",
+            "--set", "y_axis_title=Gap in points (2026 minus 2018)",
+            "--set", "x_axis_title=Checklist item"],
+        "e1-henderson": [
+            "--title", "Our runs come nowhere near the 2018 statistic",
+            "--set", "subtitle=PPO-SB3 on HalfCheetah-v5, two groups of 5 runs. Our bars: 95th percentile over 10,000 draws",
+            "--set", "x_label=Where the runs come from",
+            "--set", "y_label=Absolute mean t along the learning curve"],
     },
 }
 KINDS = {"remesure-dumbbell": ("dumbbell", "remesure_dumbbell", [
@@ -121,7 +172,10 @@ KINDS = {"remesure-dumbbell": ("dumbbell", "remesure_dumbbell", [
          "remesure-ic": ("errorbar", "remesure_ic", ["--set", "width=1040"]),
          "e1-seeds": ("beeswarm", "e1_seeds", []),
          "e1-false-positive": ("bar", "e1_false_positive", []),
-         "grpo-truncation": ("stacked-bar", "grpo_truncation", [])}
+         "grpo-truncation": ("stacked-bar", "grpo_truncation", []),
+         "ecarts-pineau": ("errorbar", "ecarts_pineau", ["--set", "width=1040"]),
+         "ecarts-classique": ("errorbar", "ecarts_classique", ["--set", "width=1160"]),
+         "e1-henderson": ("bar", "e1_henderson", [])}
 
 for lang in L:
     for name, (kind, data, common) in KINDS.items():
