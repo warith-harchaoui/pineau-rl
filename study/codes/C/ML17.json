@@ -1,0 +1,83 @@
+{
+ "id": "ML17",
+ "coder": "C",
+ "title": "InfoPO: Information-Driven Policy Optimization for User-Centric Agents",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "5. Experiments",
+   "page": 5
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We use Qwen2.5-7B-Instruct (Qwen et al., 2025) and Qwen-3-4B (Yang et al., 2025a) as our base models.",
+   "page": 6
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "The key hyperparameters used for training across all environments are summarized in Table 4.",
+   "page": 19
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "We compare InfoPO against the following baselines: (i) UserRL ... (ii) RAGEN ... (iii) Search-R1",
+   "page": 5
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "https://github.com/kfq20/InfoPO.",
+   "page": 1
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "As shown in our sensitivity analysis in Appendix B.3, a range of 0.1 to 0.5 provides a stable training signal across diverse interaction paradigms. The choice of T in the variance-gating function ... is based on the typical magnitude of the external reward variance",
+   "page": 19
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "we report the success rate or accumulated reward across eight tasks, including three held-out settings to test cross-purpose generalization.",
+   "page": 5
+  },
+  "Q8": {
+   "value": "yes",
+   "quote": "We performed both parametric (t-test) and non-parametric (Mann-Whitney U test) comparisons between each alternative strategy and the default string placeholder.",
+   "page": 21
+  },
+  "X1": {
+   "value": 3,
+   "quote": "Solid lines and shaded regions represent mean ± std across three seeds.",
+   "page": 7
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Solid lines and shaded regions represent mean ± std across three seeds.",
+   "page": 7
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "We use group-based rollouts with n=5 samples per prompt.",
+   "page": 6
+  },
+  "X6": {
+   "value": 1,
+   "quote": "We use Qwen2.5-7B-Instruct (Qwen et al., 2025) and Qwen-3-4B (Yang et al., 2025a) as our base models.",
+   "page": 6
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "All experiments are conducted on 4× NVIDIA A800 GPUs (80GB).",
+   "page": 6
+  }
+ },
+ "notes": "Q8 yes à la lettre (t et Mann-Whitney sur une comparaison), mais les tests portent sur des stratégies de masquage et un diagnostic, pas sur InfoPO contre les références. Le tableau 1 ne dit pas son nombre de graines ; X1=3 vient de la figure 3, le seul nombre annoncé (Avg@4 désigne des essais à l'évaluation, pas des graines)."
+}

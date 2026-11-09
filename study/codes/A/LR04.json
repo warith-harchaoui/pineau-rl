@@ -1,0 +1,83 @@
+{
+ "id": "LR04",
+ "coder": "A",
+ "title": "The Art of Scaling Reinforcement Learning Compute for LLMs",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "In this section, we conduct RL experiments using an 8B dense model on verifiable math problems.",
+   "page": 5
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We run S CALE RL for 100k GPU hours on an 8B dense model, and 50k GPU hours on a 17Bx16 MoE (Scout).",
+   "page": 1
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "We use a constant learning rate of 5 × 10−7 , AdamW optimizer (Loshchilov & Hutter, 2019) with ϵ = 10−15 , weight decay of 0.01 [...] — mais le seuil de troncature ϵmax de CISPO retenu pour S CALE RL n'est jamais donné (« We ablate the higher clipping ratio for CISPO [...] we find little difference »), ni le modèle de base 8B",
+   "page": 16
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "DeepSeek (GRPO) [...] with ϵmin = ϵmax = 0.2 [...] MiniMax This refers to the recipe used in MiniMax et al. (2025). It uses CISPO loss, FP32 precision fix at the LM head, PPO-offpolicy algorithm, and prompt average. [seuil CISPO de MiniMax non donné]",
+   "page": 25
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "To enable future studies to fit compute-performance RL scaling curves, we release a minimal code repository at www.devvrit.com/scalerl curve fitting.",
+   "page": 10
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "We structure our experiments in three stages – we first ablate design choices on top of the baseline at 3.5k to 4k GPU-hours [...] Then, we combine the best choices into S CALE RL / When doing the “forward” ablations starting from the baseline method, we opt for asymptotic performance first and foremost.",
+   "page": 5
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "we hold out randomly selected 1, 000 prompts from the Polaris-53k dataset for validation and use the remainder for training / (b) Downstream evaluation on AIME-24 shows a consistent scaling trend for S CALE RL, thus generalizing beyond the training data distribution.",
+   "page": 5
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections 3-5 et annexes A.5-A.20 : comparaisons par paramètres de courbes ajustées (A, B) et marge d'erreur, sans test",
+   "page": null
+  },
+  "X1": {
+   "value": 1,
+   "quote": "To estimate the error margin of our fits, we trained three independent S CALE RL runs [...] (les autres configurations, y compris les références de la Figure 2 et la course de 100k GPU-heures, sont des entraînements uniques)",
+   "page": 18
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We found that the fit values of A varied by at most ±0.015, suggesting 0.02 as a reasonable error margin on the estimates of asymptotic performance.",
+   "page": 18
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture : pas de sélection de meilleurs essais ou de point de contrôle sur le test",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "Qwen2.5 (DAPO) This recipe follows DAPO Yu et al. (2025). It includes the DAPO loss function (Appendix A.2) with ϵmin = 0.2, ϵmax = 0.26 (Appendix A.18.1). [ϵmax de DAPO balayé, mais GRPO et Magistral pris tels quels ; pas de budget commun]",
+   "page": 25
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "The Art of Scaling Reinforcement Learning Compute for LLMs",
+   "page": 1
+  },
+  "X6": {
+   "value": 1,
+   "quote": "Training the 17B×16 Llama-4 Scout MoE with ScaleRL exhibits the same predictable scaling behavior as the 8B model [l'« 8B dense model » n'est jamais nommé]",
+   "page": 8
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "We used 80 Nvidia GB200 GPU for a single run, with a compute budget ranging from 3.5-4K GPU hours [...] and finally 30k-100K GPU hours for our larger scale runs",
+   "page": 16
+  }
+ },
+ "notes": "X6 : le modèle 8B dense n'est jamais identifié (probablement interne à Meta) ; seule Llama-4 Scout est nommée, donc 1. Q3 no car le seuil CISPO retenu manque. Q5 yes mais le lien ne couvre que l'ajustement des courbes (et p.18 promet encore un dépôt « after acceptance »). X2 yes discutable : marge ±0.02 estimée sur 3 courses à part, pas de bandes sur les courbes principales."
+}

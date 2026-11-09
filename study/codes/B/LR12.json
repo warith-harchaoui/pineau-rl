@@ -1,0 +1,83 @@
+{
+ "id": "LR12",
+ "coder": "B",
+ "title": "GAS: Enhancing Reward-Cost Balance of Generative Model-assisted Offline Safe RL",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "6 EXPERIMENT In this section, we aim to evaluate our proposed GAS",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "GAS is faster than CDT as GAS only utilizes the MLP architecture, but CDT utilize the Transformer architecture.",
+   "page": 20
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Table 3: Hyperparameters of GAS. Number of layers 7 Hidden size 128 ... Learning rate 0.0001 ... Expectile level α 0.8",
+   "page": 18
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections 6 et annexes E : aucun hyperparamètre des références (CPQ, COptiDICE, WSAC, VOCE, CDT, FISOR, CAPS, CCAC), seulement leurs nombres d'itérations (Table 6)",
+   "page": 20
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "The experimental code is available at https://github.com/Ziffer-byakuya/GAS.",
+   "page": 11
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture : Table 3 donne les valeurs sans dire comment elles ont été choisies (seule une analyse de sensibilité sur q% et ϵ, E.5)",
+   "page": 18
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture : RL hors ligne évalué par déploiement sur les mêmes tâches DSRL dont proviennent les jeux de données",
+   "page": 8
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture : « mean±std » sans test",
+   "page": 8
+  },
+  "X1": {
+   "value": 5,
+   "quote": "Each value represents the average performance over 10 evaluation episodes with 5 seeds and 3 thresholds.",
+   "page": 8
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Values shown as “mean±std” represent the mean and standard deviation.",
+   "page": 8
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture : moyenne sur 5 graines",
+   "page": 8
+  },
+  "X4": {
+   "value": "no",
+   "quote": "For most baselines, we follow the same iteration times. As for WSAC and VOCE, we follow the training standard of the original paper",
+   "page": 20
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We evaluate GAS on the widely used Bullet-Safety-Gym (Gronauer, 2022) and Safety-Gymnasium (Ji et al., 2023) benchmarks.",
+   "page": 8
+  },
+  "X6": {
+   "value": null,
+   "quote": "sans objet (pas llm)",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "GPT version: NVIDIA GeForce RTX 3080 ... Table 6: Training iterations and time for GAS and baselines on task CarCircle ... GAS ... 8h20min",
+   "page": 20
+  }
+ },
+ "notes": "Q7 : RL hors ligne évalué en ligne sur les mêmes tâches ; les seuils de coût variés (adaptation zero-shot) ne sont pas des tâches non vues, donc no. X4 : seul le nombre d'itérations est aligné, pas de réglage décrit pour les références."
+}

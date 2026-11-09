@@ -1,0 +1,98 @@
+{
+ "id": "C23",
+ "coder": "F",
+ "title": "Q-learning with Nearest Neighbors",
+ "criteria": {
+  "Q1": {
+   "value": "no",
+   "quote": "absent après lecture de l'article entier et de l'annexe supplémentaire (QLNN_Supplement.pdf, 16 p., preuves) : aucune expérience ni simulation numérique",
+   "page": null,
+   "source": "main"
+  },
+  "Q2": {
+   "value": "no",
+   "quote": "We focused on a reinforcement learning algorithm NNQL that is based on kernelized nearest neighbor regression. (aucun réseau de neurones)",
+   "page": 9,
+   "source": "main"
+  },
+  "Q3": {
+   "value": "na",
+   "quote": "non applicable : aucune expérience (article entier et annexe supplémentaire lus)",
+   "page": null,
+   "source": "main"
+  },
+  "Q4": {
+   "value": "na",
+   "quote": "non applicable : aucune expérience (article entier et annexe supplémentaire lus)",
+   "page": null,
+   "source": "main"
+  },
+  "Q5": {
+   "value": "na",
+   "quote": "non applicable : aucune expérience (article entier et annexe supplémentaire lus) ; aucun lien vers du code",
+   "page": null,
+   "source": "main"
+  },
+  "Q6": {
+   "value": "na",
+   "quote": "non applicable : aucune expérience (article entier et annexe supplémentaire lus)",
+   "page": null,
+   "source": "main"
+  },
+  "Q7": {
+   "value": "na",
+   "quote": "non applicable : aucune expérience (article entier et annexe supplémentaire lus)",
+   "page": null,
+   "source": "main"
+  },
+  "Q8": {
+   "value": "na",
+   "quote": "non applicable : aucune expérience (article entier et annexe supplémentaire lus)",
+   "page": null,
+   "source": "main"
+  },
+  "X1": {
+   "value": null,
+   "quote": "non applicable : aucune expérience (article entier et annexe supplémentaire lus)",
+   "page": null,
+   "source": "main"
+  },
+  "X2": {
+   "value": "na",
+   "quote": "non applicable : aucune expérience (article entier et annexe supplémentaire lus)",
+   "page": null,
+   "source": "main"
+  },
+  "X3": {
+   "value": "na",
+   "quote": "non applicable : aucune expérience (article entier et annexe supplémentaire lus)",
+   "page": null,
+   "source": "main"
+  },
+  "X4": {
+   "value": "na",
+   "quote": "non applicable : aucune expérience (article entier et annexe supplémentaire lus)",
+   "page": null,
+   "source": "main"
+  },
+  "X5": {
+   "value": "theory",
+   "quote": "We established nearly tight finite-sample convergence guarantees showing that NNQL can accurately estimate optimal Q function using nearly optimal number of samples.",
+   "page": 9,
+   "source": "main"
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable (theory)",
+   "page": null,
+   "source": "main"
+  },
+  "X7": {
+   "value": "na",
+   "quote": "non applicable : aucune expérience (article entier et annexe supplémentaire lus)",
+   "page": null,
+   "source": "main"
+  }
+ },
+ "notes": "Article purement théorique (bornes de complexité d'échantillonnage pour NNQL, borne inférieure). Aucune expérience dans l'article ni dans l'annexe supplémentaire NeurIPS (lue dans un dossier temporaire, hors study/). Q1 no ; Q3-Q8, X2-X4, X7 na. Q5 aurait été no (pas de lien) si l'on ne réservait pas na aux articles sans expérience."
+}

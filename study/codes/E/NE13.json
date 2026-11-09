@@ -1,0 +1,83 @@
+{
+ "id": "NE13",
+ "coder": "E",
+ "title": "Planning and Learning in Average Risk-aware MDPs",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "In this section, we provide numerical experiments confirming the convergence of our MLMC-based Q-learning algorithm",
+   "page": 8
+  },
+  "Q2": {
+   "value": "no",
+   "quote": "absent après lecture : algorithmes tabulaires (MDP aléatoire à 10 états et 5 actions, problèmes de gestion à états discrets), aucun réseau",
+   "page": 8
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "We choose γ(n) := (1/(n + 1))^{2/3} [...] the expectile with τ = 0.75 and OCE with loss function ℓ(x) := γ1 x+ − γ2 x− where γ1 = 2 and γ2 = 0.5. We run the MLMC Q-learning algorithm 100 times independently with r = 0.49",
+   "page": 8
+  },
+  "Q4": {
+   "value": "na",
+   "quote": "pas de référence externe : comparaison entre les deux algorithmes proposés (MLMC et UBSR Q-learning) et l'itération sur les valeurs",
+   "page": 9
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent : MDP aléatoires et problèmes tabulaires, aucune tâche tenue à l'écart",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 100,
+   "quote": "We run the MLMC Q-learning algorithm 100 times independently with r = 0.49 and plot the mean value of f (Qn ) in Figure 5.1",
+   "page": 8
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "with the 95th and 5th percentiles as the confidence interval (CI).",
+   "page": 8
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "na",
+   "quote": "pas de référence comparée",
+   "page": null
+  },
+  "X5": {
+   "value": "theory",
+   "quote": "randomly generated MDP with 10 states and 5 actions per state",
+   "page": 8
+  },
+  "X6": {
+   "value": null,
+   "quote": "sans objet (theory)",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "All the experiments were carried out using Python 3.9 on a Linux server equipped with a 64-core AMD EPYC 7763 processor.",
+   "page": 33
+  }
+ },
+ "notes": "Article de théorie avec expériences tabulaires illustratives (X5 theory) mais Q1 yes car il a des expériences. X7 no : un processeur est nommé mais ni GPU, ni durée, ni FLOP ; Q7 no plutôt que na faute de règle pour les articles théoriques."
+}

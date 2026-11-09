@@ -1,0 +1,83 @@
+{
+ "id": "LR17",
+ "coder": "B",
+ "title": "MedVR: Annotation-Free Medical Visual Reasoning via Agentic Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "4.2 MAIN RESULTS As presented in Table 1, MedVR establishes a new state-of-the-art (SOTA)",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We implement MedVR using the Qwen2.5-VL-7B model as our backbone.",
+   "page": 6
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "we use a batch size of 256 prompts. For each prompt, the agent generates 16 trajectories ... Key hyperparameters are set as follows: Pbase = 0.5, γ = 0.5 for EVR, and η = 0.5 for CCA. [taux d'apprentissage, optimiseur et paramètres de clip-higher absents après lecture de 4.1 et des annexes D-E]",
+   "page": 6
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "we ensured maximum controlled consistency between the two models [Textual RL] ... using the exact same RL settings, rollout budget, and training corpora. [mêmes réglages, eux-mêmes incomplets]",
+   "page": 28
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "We plan to release the source code for MedVR and the necessary configuration files to the research community upon completion of our institution’s internal review process",
+   "page": 30
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "This analysis validates our hyperparameter choice [sensibilité de γ mesurée sur OmniMedVQA après coup, pas de méthode de choix décrite]",
+   "page": 8
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "To assess out-of-domain (OOD) generalization, we conduct zero-shot evaluations on the test sets of PMC-VQA and MedXpertQA. ... We then evaluate its OOD generalization on PathVQA.",
+   "page": 6
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture : scores ponctuels, « significantly » sans test",
+   "page": 7
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture de la section 4 et des annexes : nombre d'entraînements RL non dit",
+   "page": null
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture : Table 1 et Table 3 sans incertitude (seule la Table 5, annexe, donne des ± sur le mIoU)",
+   "page": 7
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture : aucune sélection de meilleur essai mentionnée",
+   "page": 7
+  },
+  "X4": {
+   "value": "yes",
+   "quote": "For each backbone, we compared a zero-shot baseline, a standard Textual RL approach, and our MedVR framework, using the exact same RL settings, rollout budget, and training corpora.",
+   "page": 9
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "The policy is optimized using the Group Relative Policy Optimization (GRPO) algorithm (Shao et al., 2024; Guo et al., 2025)",
+   "page": 6
+  },
+  "X6": {
+   "value": 1,
+   "quote": "multiple backbone models: Qwen2.5-VL-3B, Qwen2.5-VL-7B, Qwen2.5-VL-32B, and Lingshu-7B on OmniMedVQA.",
+   "page": 9
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "for 64 iterations on a distributed setup of 32 H20 GPUs.",
+   "page": 6
+  }
+ },
+ "notes": "Q3 no faute de taux d'apprentissage et d'optimiseur. X6 = 1 : Lingshu-7B est « built upon the Qwen2.5-VL architecture » (p.28), donc même famille. X4 yes pour la référence Textual RL entraînée avec les mêmes réglages ; les autres références sont des modèles publiés évalués tels quels."
+}

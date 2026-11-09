@@ -1,0 +1,83 @@
+{
+ "id": "NER02",
+ "coder": "E",
+ "title": "Text-to-Decision Agent: Offline Meta-Reinforcement Learning from Natural Language Supervision",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We comprehensively evaluate and analyze our method on popular benchmarking domains across datasets of varying qualities",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "the trajectory encoder consists of a transformer encoder with 6 layers",
+   "page": 21
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Table 6: Configurations and hyperparameters in the training process of T2DA-T.",
+   "page": 22
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "For a fair comparison, all baselines are adjusted to an aligned zero-shot setting, where no warm-start data is available before policy evaluation.",
+   "page": 21
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Our code is available at https://github.com/NJU-RL/T2DA.",
+   "page": 1
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "For each domain, we randomly sample a distribution of tasks captioned with text descriptions, and split them into training and test sets.",
+   "page": 7
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "The mean of received return is plotted as the bold line, with 95% bootstrapped confidence intervals of the mean indicated by the shaded region.",
+   "page": 7
+  },
+  "X1": {
+   "value": 5,
+   "quote": "For evaluation, all experiments are conducted using five different random seeds.",
+   "page": 7
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "with 95% bootstrapped confidence intervals of the mean indicated by the shaded region.",
+   "page": 7
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We evaluate T2DA on three benchmarks that are widely adopted to assess generalization capacities of RL algorithms: i) the 2D navigation Point-Robot; ii) the multi-task MuJoCo locomotion control",
+   "page": 7
+  },
+  "X6": {
+   "value": null,
+   "quote": "sans objet (classic)",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "We train our models on one Nvidia RTX4080 GPU [...] The generalist policy training cost about 0.5-3 hours",
+   "page": 22
+  }
+ },
+ "notes": "X5 classic : les encodeurs de texte (CLIP, BERT, T5-small) servent de représentation, le RL porte sur des agents de contrôle. Q8 no : les intervalles bootstrap sont des bandes par courbe, pas un test appliqué à une différence."
+}

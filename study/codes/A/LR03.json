@@ -1,0 +1,83 @@
+{
+ "id": "LR03",
+ "coder": "A",
+ "title": "MOBODY: Model-Based Off-Dynamics Offline Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "In this section, we empirically evaluate MOBODY in off-dynamics offline RL settings using four MuJoCo environments from the ODRL benchmark",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "Actor network (256, 256) Critic network (256, 256)",
+   "page": 24
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Table 11: Hyperparameter of the MOBODY and baselines. [...] Rollout length 1, 2 or 3 / MOPO-Style Reward Penalty β 1,5 or 10 / Q-weighted behavior cloning 0.05, 0.1 or 1",
+   "page": 24
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "Table 11 donne BOSA, IQL, TD3_BC, MOPO, DARA mais pas SRPO ni REAG, deux des références principales du Tableau 1 (« We further include representative off-dynamics offline RL methods DARA (Liu et al., 2022), BOSA (Liu et al., 2024a), and SRPO (Xue et al., 2023) and REAG (Wang et al., 2026). »)",
+   "page": 6
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Our codes are available at: https://github.com/guoyihonggyh/MOBODY-Model-Based-Off-Dynamics-Offline-Reinforcement-Learning.",
+   "page": 11
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "From there, we primarily tune the BC loss weight based on the convergence behavior of the policy. In most cases, using a MOPO penalty of 5 and a BC loss weight selected from the range 0.05, 0.1, 1, 2 yields strong performance.",
+   "page": 22
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections 4, C.3-C.6 : la politique est évaluée dans le domaine cible dont proviennent les 5 000 transitions d'entraînement (« We report normalized target-domain scores (mean ± std over three seeds). »)",
+   "page": 7
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "We report normalized target-domain scores (mean ± std over three seeds).",
+   "page": 7
+  },
+  "X1": {
+   "value": 3,
+   "quote": "We report normalized target-domain scores (mean ± std over three seeds).",
+   "page": 7
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We report normalized target-domain scores (mean ± std over three seeds).",
+   "page": 7
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections 4 et C : moyenne sur trois graines, pas de sélection des meilleurs essais signalée",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "In this section, we introduce the baselines in detail and the implementation follows the ODRL benchmark (Lyu et al., 2024b). [aucun budget de réglage décrit pour les références]",
+   "page": 17
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "four MuJoCo environments from the ODRL benchmark: HalfCheetah-v2, Ant-v2, Walker2d-v2, and Hopper-v2 and manipulation tasks in Adroit: Pen and Door",
+   "page": 6
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable (pas llm)",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "We run all experiments on a single GPU (NVIDIA RTX A5000, 24,564 MiB) paired with 8 CPUs (AMD Ryzen Threadripper 3960X, 24-Core).",
+   "page": 22
+  }
+ },
+ "notes": "Q3 yes malgré des valeurs données comme ensembles (« 1, 2 or 3 ») sans dire laquelle par tâche ; Q4 no car SRPO et REAG absents du tableau. Q7 no : offline RL évalué dans le domaine cible même dont viennent les données, pas de tâche tenue à l'écart."
+}

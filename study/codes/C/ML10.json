@@ -1,0 +1,83 @@
+{
+ "id": "ML10",
+ "coder": "C",
+ "title": "Data- and Variance-dependent Regret Bounds for Online Tabular MDPs",
+ "criteria": {
+  "Q1": {
+   "value": "no",
+   "quote": "absent après lecture complète : article de bornes de regret, aucune expérience ni simulation",
+   "page": null
+  },
+  "Q2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q3": {
+   "value": "na",
+   "quote": "pas d'expérience",
+   "page": null
+  },
+  "Q4": {
+   "value": "na",
+   "quote": "pas d'expérience",
+   "page": null
+  },
+  "Q5": {
+   "value": "na",
+   "quote": "pas d'expérience",
+   "page": null
+  },
+  "Q6": {
+   "value": "na",
+   "quote": "pas d'expérience",
+   "page": null
+  },
+  "Q7": {
+   "value": "na",
+   "quote": "pas d'expérience",
+   "page": null
+  },
+  "Q8": {
+   "value": "na",
+   "quote": "pas d'expérience",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "pas d'expérience",
+   "page": null
+  },
+  "X2": {
+   "value": "na",
+   "quote": "pas d'expérience",
+   "page": null
+  },
+  "X3": {
+   "value": "na",
+   "quote": "pas d'expérience",
+   "page": null
+  },
+  "X4": {
+   "value": "na",
+   "quote": "pas d'expérience",
+   "page": null
+  },
+  "X5": {
+   "value": "theory",
+   "quote": "This work studies online episodic tabular Markov decision processes (MDPs) with known transitions and develops best-of-both-worlds algorithms",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "pas llm",
+   "page": null
+  },
+  "X7": {
+   "value": "na",
+   "quote": "pas d'expérience",
+   "page": null
+  }
+ },
+ "notes": "Article purement théorique. Q5 codé na (pas d'expérience, donc pas de code à lier) plutôt que no ; à harmoniser si les autres lecteurs comptent Q5 sur tous les articles."
+}

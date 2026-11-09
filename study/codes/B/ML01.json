@@ -1,0 +1,83 @@
+{
+ "id": "ML01",
+ "coder": "B",
+ "title": "dTRPO : Trajectory Reduction in Policy Optimization of Diffusion Large Language Models",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "Training Details. Following SmolLM3, we primarily use the SmolTalk2 preference dataset",
+   "page": 8
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "Our base model, Fast-dLLM-v2-7B, is derived from Qwen2.5-7B-Instruct via diffusion pre-training.",
+   "page": 20
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "Optimization is performed using AdamW (Loshchilov and Hutter, 2017) with a learning rate of 5 × 10−7 ... For the remaining hyperparameters, we follow the training script of SmolLM3 (Bakouch et al., 2025).",
+   "page": 8
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "To ensure consistency, these baselines utilize the same training data and configurations as dTRPO. [donc la même liste incomplète]",
+   "page": 22
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Code: https://github.com/facebookresearch/dllm_post_training",
+   "page": 1
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections 4 et annexes D-E : λ = 0.05 et k = 0.1 donnés sans méthode de choix ; l'ablation de λ (Figure 6b) est faite a posteriori",
+   "page": 8
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "For math reasoning, we report results on GPQA (Rein et al., 2024), GSM8K (Cobbe et al., 2021), and MATH ... All benchmarks are evaluated in the zero-shot setting.",
+   "page": 8
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture : scores ponctuels, aucun test",
+   "page": 8
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections 4 et annexes : nombre d'entraînements indépendants non dit",
+   "page": null
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture : Table 2 sans écart type ni intervalle",
+   "page": 8
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture : aucune sélection de meilleur essai ; décodage glouton",
+   "page": 8
+  },
+  "X4": {
+   "value": "yes",
+   "quote": "we reproduce several training methodologies—including SFT, VRPO, and DPO with mean-field probability estimation ... To ensure consistency, these baselines utilize the same training data and configurations as dTRPO.",
+   "page": 22
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "This phase serves as the counterpart to the offline Reinforcement Learning (RL) stage in traditional ARM pipelines",
+   "page": 20
+  },
+  "X6": {
+   "value": 2,
+   "quote": "dTRPO on LLaDA. We further apply dTRPO to LLaDA ... dTRPO yields a substantial improvement over the LLaDA backbone. [en plus de Fast-dLLM-v2, dérivé de Qwen2.5]",
+   "page": 10
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "across 64 NVIDIA A100 (80GB) GPUs; total training takes approximately 5 hours.",
+   "page": 8
+  }
+ },
+ "notes": "Q3 no à la lettre : les hyperparamètres principaux sont donnés mais « the remaining » renvoient au script de SmolLM3 sans version ; Q4 suit puisque les références reprennent la même configuration. X5 llm bien que l'optimisation soit hors ligne de type DPO (l'article la présente comme l'étape RL hors ligne). X6 = 2 : Fast-dLLM-v2 (issu de Qwen2.5) et LLaDA."
+}

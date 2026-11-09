@@ -1,0 +1,83 @@
+{
+ "id": "LR07",
+ "coder": "A",
+ "title": "DeepSearch: Overcome the Bottleneck of Reinforcement Learning with Verifiable Rewards via Tree-based Search",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We evaluate DeepSearch against state-of-the-art 1.5B reasoning models on six mathematical benchmarks: AIME 2024/2025, AMC2023, MATH500 (Hendrycks et al., 2021), Minerva (Lewkowycz et al., 2022), and Olympiad",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "The policy model is initialized with Nemotron-Research-Reasoning-Qwen-1.5B v2",
+   "page": 15
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "The actor model is optimized using AdamW with a conservative learning rate of 1 × 10−6 and 10 warmup steps, along with weight decay of 0.1 and gradient clipping at 1.0 [...] (A.1-A.5 : lot, longueurs, MCTS λ=2.0, profondeur 64, 256 jetons, 8 enfants, λ3=0.01, température 1.0, 100 pas)",
+   "page": 15
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "To ensure a fair comparison with a well-aligned policy, we additionally perform DAPO-based extended training using the Nemotron-Research-Reasoning-Qwen-1.5B-v2 initialization, with the same training configuration as DeepSearch.",
+   "page": 15
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "https://github.com/smiles724/DeepSearch https://huggingface.co/fangwu97/DeepSearch-1.5B",
+   "page": 1
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "Table 3 compares our global frontier selection against vanilla UCT under different configurations on 1.2K samples from extremely hard DeepMath-103K problems. [...] We adopt √(d(s)/dT) with λ1 = 0.4, λ3 = 0.01 as our default, balancing computational efficiency (189.3 iterations), search quality (-0.65 reward), and stable performance.",
+   "page": 9
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "DeepMath-103K is a large-scale mathematical dataset designed to be highly challenging and rigorously decontaminated across numerous benchmarks. We evaluate DeepSearch [...] on six mathematical benchmarks",
+   "page": 7
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture de la section 5 et des annexes A-C : Tableau 1 en scores ponctuels « Pass1@1 accuracy estimated with n = 32 samples »",
+   "page": 8
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture : nombre d'entraînements indépendants non dit (les 32 échantillons d'évaluation ne sont pas des graines)",
+   "page": null
+  },
+  "X2": {
+   "value": "no",
+   "quote": "We report Pass1@1 accuracy estimated with n = 32 samples. [aucun écart type sur les Tableaux 1, 2, 4, 5 ; seul le Tableau 3 sur les statistiques de recherche a des ±]",
+   "page": 8
+  },
+  "X3": {
+   "value": "no",
+   "quote": "The complete training protocol spans 100 steps with model checkpointing performed every 5 steps. [quel point de contrôle est rapporté n'est pas dit ; pas de sélection explicite]",
+   "page": 16
+  },
+  "X4": {
+   "value": "yes",
+   "quote": "we additionally perform DAPO-based extended training using the Nemotron-Research-Reasoning-Qwen-1.5B-v2 initialization, with the same training configuration as DeepSearch.",
+   "page": 15
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "We present DeepSearch, a framework that integrates Monte Carlo Tree Search (MCTS) directly into RLVR training.",
+   "page": 1
+  },
+  "X6": {
+   "value": 1,
+   "quote": "We train DeepSearch based on Nemotron-Research-Reasoning-Qwen-1.5B v2 (Liu et al., 2025a)",
+   "page": 7
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Training is conducted on 16×H100 GPUs, each with 96GB of memory / DeepSearch-1.5B Tree-GRPO +50 102.4 20.6 330 [GPU Hours]",
+   "page": 15
+  }
+ },
+ "notes": "X1 null : un seul modèle présenté, nombre de graines jamais dit. Q4/X4 yes pour la seule référence entraînée (DAPO prolongé, même configuration) ; les autres références sont des modèles publiés évalués tels quels. X3 no faute de mention, mais le point de contrôle rapporté parmi ceux sauvés tous les 5 pas n'est pas précisé."
+}

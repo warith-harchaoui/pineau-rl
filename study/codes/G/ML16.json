@@ -1,0 +1,83 @@
+{
+ "id": "ML16",
+ "coder": "G",
+ "title": "Causal Flow Q-Learning for Robust Offline Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "In this section, we evaluate the newly proposed Causal Flow Q-Learning on 25 OGBench (Park et al., 2025a) visual tasks.",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "To maintain a fair comparison, we use similar sized value/policy/actor networks for all methods and use the image encoder from IMPALA (Espeholt et al., 2018) in all tasks.",
+   "page": 6
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "Detailed hyperparameters are presented in Sec. F. (la section F ne liste que les références) ... we do observe consistent performance improvement in all visual tasks over FQL using the default FQL hyperparameters.",
+   "page": 16
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "We take default hyper-parameters recommended in FQL and Value Flows code base. See the attached link in footnote for detailed command to replicate the results. (valeurs non listées, pas de version)",
+   "page": 17
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "Causal-FQL is built upon the codebase of FQL (Park et al., 2025b)3 ... https://github.com/seohongpark/fql (lien vers le code de FQL, pas vers celui de la méthode proposée)",
+   "page": 16
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "We mainly tuned the hyperparameters in task 1 of visual-cube-double for its moderate difficulty. ... Discriminator loss coefficient. We sweep the discriminator loss coefficient over {1, 5, 10, 15}.",
+   "page": 8
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "We mainly tuned the hyperparameters in task 1 of visual-cube-double for its moderate difficulty. For each task group, we further tune the initial discriminator loss coefficient for task 1. (évaluation sur 25 tâches dont les tâches 2 à 5 de chaque groupe n'ont pas servi au réglage)",
+   "page": 8
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 7
+  },
+  "X1": {
+   "value": 4,
+   "quote": "Due to high computation requirements, we report results averaged over 4 seeds",
+   "page": 7
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "averaging results over 4 seeds and present the results with mean and standard deviations.",
+   "page": 6
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 7
+  },
+  "X4": {
+   "value": "no",
+   "quote": "We take default hyper-parameters recommended in FQL and Value Flows code base. ... reuse results from prior work when available (Park et al., 2025b; Dong et al., 2025).",
+   "page": 17
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We evaluate our methods on offline RL tasks from the recently proposed OGBench (Park et al., 2025a).",
+   "page": 6
+  },
+  "X6": {
+   "value": null,
+   "quote": "sans objet (pas llm)",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (seulement « Due to high computation requirements »)",
+   "page": 7
+  }
+ },
+ "notes": "Pages = index PDF. Q7 coté yes à la lettre du protocole (tâches non vues au réglage) : le réglage est fait sur la tâche 1 et l'évaluation porte sur 25 tâches ; chaque tâche reste entraînée et évaluée sur elle-même, un lecteur plus strict coderait no. Q5 no : le seul lien GitHub pointe vers le code de base FQL et Value Flows, pas vers Causal-FQL. Les résultats des références sont en partie repris de travaux antérieurs."
+}

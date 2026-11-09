@@ -1,0 +1,83 @@
+{
+ "id": "LR14",
+ "coder": "B",
+ "title": "TimeSearch-R: Adaptive Temporal Search for Long-Form Video Understanding via Self-Verification Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "3 EXPERIMENTS 3.1 EXPERIMENTAL SETUP",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We train TimeSearch-R based on Qwen2.5-VL-7B-Instruct (Bai et al., 2025).",
+   "page": 7
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "In the RL training, we use the AdamW (Loshchilov & Hutter, 2017) optimizer with a learning rate of 1e-6, a KL penalty coefficient β = 0.005, and a batch size of 4 with 8 rollouts per prompt. [+ Table 8: Training hyperparameters of TimeSearch-R]",
+   "page": 7
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections 3 et annexes C-G : les références (VideoAgent, T*, VideoTree, Video-R1, GPT-4o…) sont listées avec leur nombre d'images, sans hyperparamètres",
+   "page": 6
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Our code is available at https://github.com/Time-Search/TimeSearch-R.",
+   "page": 1
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture : « We summarize the key hyperparameters in Table 8 for reproducibility » sans méthode de choix",
+   "page": 21
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "Long-form video understanding on VideoMME (Fu et al., 2024), MLVU (Zhou et al., 2024), and LongVideoBench (Wu et al., 2024). (3) Complex video reasoning on Video-Holmes (Cheng et al., 2025).",
+   "page": 6
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture : scores ponctuels, « significantly » employé sans test",
+   "page": 8
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections 3 et annexes : nombre d'entraînements RL non dit",
+   "page": null
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture : tableaux sans écart type ni intervalle",
+   "page": 7
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture : aucune sélection de meilleur essai mentionnée",
+   "page": 7
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture : références reprises ou évaluées sans réglage décrit",
+   "page": 6
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "we further conduct RL post-training based on the proposed GRPO-CSV algorithm to stimulate the temporal reasoning capability of the model.",
+   "page": 6
+  },
+  "X6": {
+   "value": 1,
+   "quote": "We train TimeSearch-R based on Qwen2.5-VL-7B-Instruct (Bai et al., 2025).",
+   "page": 7
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Training is conducted on 32 A100 GPUs.",
+   "page": 7
+  }
+ },
+ "notes": "X7 : le nombre de GPU est donné mais pas la durée ; compté yes car le matériel utilisé est rapporté. Q7 yes : bancs d'essai d'évaluation distincts des données d'entraînement RL (Haystack-Ego4D sert aussi à l'entraînement, mais VideoMME, MLVU, LongVideoBench, Video-Holmes non)."
+}

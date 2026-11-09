@@ -1,0 +1,83 @@
+{
+ "id": "NE07",
+ "coder": "D",
+ "title": "Finite-Sample Analysis of Policy Evaluation for Robust Average Reward Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "no",
+   "quote": "In this section, we provide numerical examples that directly verify the one-step strict contraction across the settings studied. — seule partie numérique : vérification de lemmes sur des matrices 5×5 à 8×8, l'algorithme proposé n'est jamais exécuté",
+   "page": 37
+  },
+  "Q2": {
+   "value": "no",
+   "quote": "absent : analyse théorique de l'évaluation de politique tabulaire, aucun réseau de neurones",
+   "page": 1
+  },
+  "Q3": {
+   "value": "na",
+   "quote": "sans objet : aucune expérience de l'algorithme (seuls des pas ηt, βt définis théoriquement)",
+   "page": 9
+  },
+  "Q4": {
+   "value": "na",
+   "quote": "sans objet : aucune référence comparée expérimentalement",
+   "page": 37
+  },
+  "Q5": {
+   "value": "na",
+   "quote": "sans objet : pas d'expérience ; aucun lien de code dans l'article",
+   "page": 37
+  },
+  "Q6": {
+   "value": "na",
+   "quote": "sans objet : pas d'expérience",
+   "page": 37
+  },
+  "Q7": {
+   "value": "na",
+   "quote": "sans objet : pas d'expérience",
+   "page": 37
+  },
+  "Q8": {
+   "value": "na",
+   "quote": "sans objet : pas d'expérience",
+   "page": 37
+  },
+  "X1": {
+   "value": null,
+   "quote": "sans objet : pas d'expérience",
+   "page": 37
+  },
+  "X2": {
+   "value": "na",
+   "quote": "sans objet : pas d'expérience",
+   "page": 37
+  },
+  "X3": {
+   "value": "na",
+   "quote": "sans objet : pas d'expérience",
+   "page": 37
+  },
+  "X4": {
+   "value": "na",
+   "quote": "sans objet : pas d'expérience",
+   "page": 37
+  },
+  "X5": {
+   "value": "theory",
+   "quote": "We present the first finite-sample analysis of policy evaluation in robust average-reward Markov Decision Processes (MDPs).",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "sans objet (pas llm)",
+   "page": 1
+  },
+  "X7": {
+   "value": "na",
+   "quote": "sans objet : pas d'expérience",
+   "page": 37
+  }
+ },
+ "notes": "Pure theory paper. The only numerical content (App. E) checks the contraction lemmas on 5-8-state matrices; the proposed algorithm is never run. I coded Q1 = no and the experiment-dependent criteria as na (the most defensible choice). If a reader counts App. E as an illustrative experiment, Q1 becomes yes and X5 stays theory."
+}

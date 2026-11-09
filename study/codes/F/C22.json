@@ -1,0 +1,98 @@
+{
+ "id": "C22",
+ "coder": "F",
+ "title": "Learning Temporal Point Processes via Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We evaluate our algorithm by comparing with state-of-the-arts on both synthetic and real datasets.",
+   "page": 6,
+   "source": "main"
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "The policy in our method RLPP is parameterized as LSTM with 64 hidden neurons",
+   "page": 7,
+   "source": "main"
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "The policy in our method RLPP is parameterized as LSTM with 64 hidden neurons, and π(a|Θ(h)) is chosen to be exponential distribution. Batch size is 32 (the number of sampled sequences L and M are 32 in Algorithm 1, and learning rate is 1e-3. We use Gaussian kernel ... The kernel bandwidth σ is estimated using the “median trick”",
+   "page": 7,
+   "source": "main"
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "For WGANTPP, we have used the exact experimental setup as [27], which adopts Adam optimization method [17] with learning rate 1e-4, β1 = 0.5, β2 = 0.9, and the batch size is 256. For RMTPP, batch size is 256, state size is 64, and learning rate is 1e-4.",
+   "page": 7,
+   "source": "main"
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences (5), de l'article entier et des liens (pas de fichier supplémentaire publié sur papers.nips.cc) (liens GitHub uniquement vers le code des références WGANTPP et RMTPP)",
+   "page": null,
+   "source": "main"
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "The kernel bandwidth σ is estimated using the “median trick” based on the observations [13]. (seul σ a une règle de choix ; taux d'apprentissage, taille de lot, taille de LSTM sans méthode)",
+   "page": 7,
+   "source": "main"
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences (5), de l'article entier et des liens (pas de fichier supplémentaire publié sur papers.nips.cc) (aucune séparation entraînement / test : intensités empiriques des séquences générées comparées aux séquences observées)",
+   "page": null,
+   "source": "main"
+  },
+  "Q8": {
+   "value": "yes",
+   "quote": "More rigorously, we perform the KS test. Fig. 7 illustrates the cumulative distributions (CDF) of p-values.",
+   "page": 8,
+   "source": "main"
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences (5), de l'article entier et des liens (pas de fichier supplémentaire publié sur papers.nips.cc)",
+   "page": null,
+   "source": "main"
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences (5), de l'article entier et des liens (pas de fichier supplémentaire publié sur papers.nips.cc) (figures 4-5 : courbes d'intensité sans bande ni barre)",
+   "page": null,
+   "source": "main"
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences (5), de l'article entier et des liens (pas de fichier supplémentaire publié sur papers.nips.cc)",
+   "page": null,
+   "source": "main"
+  },
+  "X4": {
+   "value": "no",
+   "quote": "For WGANTPP, we have used the exact experimental setup as [27] (réglages repris de l'article d'origine, pas de réglage commun décrit)",
+   "page": 7,
+   "source": "main"
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "Algorithm RLPP: Mini-batch Reinforcement Learning for Learning Point Processes",
+   "page": 6,
+   "source": "main"
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable (classic)",
+   "page": null,
+   "source": "main"
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Table 1: Comparison of runtime. Method RLPP WGANTPP RMTPP SE SC IP Time 80m 1560m 60m 2m 2m 2m",
+   "page": 8,
+   "source": "main"
+  }
+ },
+ "notes": "RL (gradient de politique) utilisé comme méthode d'apprentissage de processus ponctuels, pas un agent de contrôle ; X5 classic faute de meilleure case (ni LLM ni théorie). Q8 cas limite : test de Kolmogorov-Smirnov d'adéquation appliqué à chaque modèle (échantillons générés vs loi exponentielle unité) et utilisé pour comparer les méthodes -> yes ; lecture stricte 'test de A contre B' -> no. X7 : temps de calcul en minutes (tableau 1), sans matériel."
+}

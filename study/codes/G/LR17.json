@@ -1,0 +1,83 @@
+{
+ "id": "LR17",
+ "coder": "G",
+ "title": "MedVR: Annotation-Free Medical Visual Reasoning via Agentic Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "4 EXPERIMENTS 4.1 EXPERIMENTAL SETUP Evaluation Benchmarks We evaluate the effectiveness of MedVR across six public medical VQA benchmarks.",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We implement MedVR using the Qwen2.5-VL-7B model as our backbone.",
+   "page": 6
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "Key hyperparameters are set as follows: Pbase = 0.5, γ = 0.5 for EVR, and η = 0.5 for CCA. (taux d'apprentissage, coefficient de clip et autres réglages GRPO absents)",
+   "page": 6
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "RL baseline was trained using the same optimization algorithm (GRPO), training dataset, and key hyperparameters (e.g., batch size) as MedVR.",
+   "page": 29
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "We plan to release the source code for MedVR and the necessary configuration files to the research community upon completion of our institution’s internal review process",
+   "page": 30
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "As depicted in Figure 3(a), we vary γ and evaluate performance on OmniMedVQA. ... This analysis validates our hyperparameter choice (pas de méthode de choix énoncée)",
+   "page": 8
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "To assess out-of-domain (OOD) generalization, we conduct zero-shot evaluations on the test sets of PMC-VQA and MedXpertQA.",
+   "page": 6
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 7
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens (un seul entraînement par configuration, nombre de graines non dit)",
+   "page": 6
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent pour les résultats principaux (Table 1) ; seul le Table 5 en annexe donne « 17.54 ± 2.13 »",
+   "page": 7
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 7
+  },
+  "X4": {
+   "value": "no",
+   "quote": "RL baseline was trained using the same optimization algorithm (GRPO), training dataset, and key hyperparameters (e.g., batch size) as MedVR. (aucun réglage des références décrit ; les autres références sont des modèles publiés évalués tels quels)",
+   "page": 29
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "The policy is optimized using the Group Relative Policy Optimization (GRPO) algorithm",
+   "page": 6
+  },
+  "X6": {
+   "value": 1,
+   "quote": "we conducted a series of controlled ablation studies across multiple backbone models: Qwen2.5-VL-3B, Qwen2.5-VL-7B, Qwen2.5-VL-32B, and Lingshu-7B on OmniMedVQA.",
+   "page": 9
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "for 64 iterations on a distributed setup of 32 H20 GPUs.",
+   "page": 6
+  }
+ },
+ "notes": "Pages = index PDF. X6 = 1 : Lingshu-7B est « built upon the Qwen2.5-VL architecture » (p28), donc même famille Qwen ; un lecteur comptant Lingshu à part coderait 2. Q7 yes : bancs hors domaine (PMC-VQA, MedXpertQA, PathVQA). γ = 0.5 justifié a posteriori par sa courbe sur OmniMedVQA (évaluation), sans méthode de choix dite. X7 yes au titre du nombre de GPU, sans heures."
+}

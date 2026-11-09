@@ -1,0 +1,25 @@
+period,region,v
+Experiments,"Pineau, 2018",100
+Experiments,Our re-reading of 2018,92
+Experiments,"Our measurement, 2026",90
+Neural nets,"Pineau, 2018",90
+Neural nets,Our re-reading of 2018,82
+Neural nets,"Our measurement, 2026",89
+Method settings,"Pineau, 2018",90
+Method settings,Our re-reading of 2018,60
+Method settings,"Our measurement, 2026",67
+Baseline settings,"Pineau, 2018",60
+Baseline settings,Our re-reading of 2018,55
+Baseline settings,"Our measurement, 2026",18
+Code linked,"Pineau, 2018",55
+Code linked,Our re-reading of 2018,55
+Code linked,"Our measurement, 2026",67
+Tuning method,"Pineau, 2018",20
+Tuning method,Our re-reading of 2018,20
+Tuning method,"Our measurement, 2026",27
+Held-out test,"Pineau, 2018",10
+Held-out test,Our re-reading of 2018,40
+Held-out test,"Our measurement, 2026",70
+Significance test,"Pineau, 2018",5
+Significance test,Our re-reading of 2018,9
+Significance test,"Our measurement, 2026",4

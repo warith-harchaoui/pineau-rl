@@ -1,0 +1,83 @@
+{
+ "id": "ML11",
+ "coder": "C",
+ "title": "Randomized Advantage Transformation (RAT): Computing Natural Policy Gradients via Direct Backpropagation",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "5. Experiments",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "Policies and value functions are parameterized by two-layer MLPs with 256 hidden units and Tanh activations",
+   "page": 7
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "We summarize the hyperparameters used in our experiments in Table 3. ... Table 4. Hyperparameters for RAT.",
+   "page": 19
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "Table 5. Hyperparameters for KFAC (adopted from (George et al., 2018)). ... Table 6. Hyperparameters for PPO.",
+   "page": 20
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "The code for reproducing our results is available at Code URL ... https://github.com/agent-lab/ICML2026-RAT",
+   "page": 7
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "All methods are implemented within the same codebase, and baseline hyperparameters are tuned for best performance.",
+   "page": 7
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "training follows the standard Procgen protocol for evaluating sample efficiency, i.e., training and testing on the same distribution of levels in each environment.",
+   "page": 9
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (« significantly » sans test)",
+   "page": 8
+  },
+  "X1": {
+   "value": 5,
+   "quote": "Table 1. Final performance (mean ± stderr over 5 seeds)",
+   "page": 7
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "The shaded region denotes the standard error over 5 random seeds.",
+   "page": 7
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "baseline hyperparameters are tuned for best performance.",
+   "page": 7
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We next evaluate RAT on standard continuous control benchmarks from OpenAI Gym (Brockman et al., 2016) implemented in MuJoCo",
+   "page": 7
+  },
+  "X6": {
+   "value": null,
+   "quote": "pas llm",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Table 2 reports wallclock time per update (in ms; averaged over 124 updates on Xeon(R) w5-2445 GeForce RTX 4090).",
+   "page": 8
+  }
+ },
+ "notes": "Q4 no : tables pour KFAC/ACKTR et PPO, rien pour FVP+CG ni Sophia. X4 no : « tuned for best performance » sans budget ni méthode. X7 yes de justesse : matériel et temps par mise à jour, pas de total."
+}

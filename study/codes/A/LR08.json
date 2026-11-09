@@ -1,0 +1,83 @@
+{
+ "id": "LR08",
+ "coder": "A",
+ "title": "TROLL: Trust Regions Improve Reinforcement Learning for Large Language Models",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We evaluate TROLL by finetuning LLMs for mathematical reasoning and code generation using an Reinforcement Learning from Verifiable Rewards (RLVR) setup.",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We experiment with Qwen3-{0.6B, 1.7B, 4B, 8B, 14B} (Yang et al., 2025a), which we use in thinking mode, and Qwen2.5-{0.5B,1.5B,3B,7B}-Instruct",
+   "page": 7
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Table 3: Hyperparameters. We use these parameters for all experiments unless mentioned otherwise. [ϵ 0.05, α 1.0, 1−δ 0.99999, K 64, lr 10−6, batch 32 ...]",
+   "page": 25
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "We provide hyperparameters for our training setup in Table 3. We maintain consistent hyperparameters across all experiments, except for Appendix E.1, where we always vary exactly one parameter. [Clip Value ϵppo 0.2, Learning Rate Critic (PPO only) 10−5 dans le Tableau 3]",
+   "page": 26
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Project page, code, and datasets available at https://niklasfreymuth.github.io/troll/",
+   "page": 1
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "We base our experiments on the verl repository3 , using default parameters and training recipes where applicable. [la sensibilité à ϵ et K est étudiée a posteriori, sans procédure de choix]",
+   "page": 8
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "From their training set, we set aside 1024 samples as an in-domain validation set (DAPO Eval) [...] For broader out-of-distribution evaluation, we again follow Cui et al. (2025b) and use a benchmark suite, we refer to as Math-Eval",
+   "page": 24
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections 5-6 et annexes C-E : « significantly » employé sans test",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture : nombre de graines non dit ; une courbe par configuration, lissée (« we use sliding windows of size 7 and 21 »)",
+   "page": 8
+  },
+  "X2": {
+   "value": "no",
+   "quote": "Full-opacity lines mark smoothed results, while the background shows original values. [pas d'écart type ni de bande d'incertitude]",
+   "page": 7
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture : valeurs finales rapportées, pas de sélection de meilleurs essais",
+   "page": null
+  },
+  "X4": {
+   "value": "yes",
+   "quote": "We maintain consistent hyperparameters across all experiments [...] We always train Clip and TROLL on identical hardware to ensure a fair comparison.",
+   "page": 26
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "Reinforcement Learning (RL) with PPO-like clip objectives has become the standard choice for reward-based fine-tuning of large language models (LLMs).",
+   "page": 1
+  },
+  "X6": {
+   "value": 4,
+   "quote": "Models. We experiment with Qwen3-{...} and Qwen2.5-{...}-Instruct (Yang et al., 2025b). Furthermore, we include both the instruct and non-instruct versions of Llama-3.1-8B, Llama-3.2-3B (Grattafiori et al., 2024), and Apertus-8B (Hernández-Cano et al., 2025). Finally, we include Smol-LM3-3B",
+   "page": 7
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "We train on clusters with Nvidia A100, H100, and H200 nodes, each equipped with 4 GPUs. [...] We train most experiments for up to 2 days",
+   "page": 26
+  }
+ },
+ "notes": "Q5 yes par le lien vers la page du projet (« Project page, code, and datasets available »), alors que la déclaration de reproductibilité dit encore « will be made available after deanonymization ». X4 yes : mêmes hyperparamètres non réglés pour Clip et TROLL, dit explicitement ; X1 null car aucune graine mentionnée. X6 = 4 (Qwen, Llama dont FineMath-Llama, Apertus, SmolLM)."
+}

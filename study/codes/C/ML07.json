@@ -1,0 +1,83 @@
+{
+ "id": "ML07",
+ "coder": "C",
+ "title": "PRPO: Paragraph-level Policy Optimization for Vision-Language Deepfake Detection",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "4. Experiment",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "A pretrained LLaVA-7B is used with a frozen CLIP ConvNeXT backbone.",
+   "page": 6
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "We set the learning rate to 2 × 10−5 for fine-tuning and 3 × 10−7 for PRPO reasoning, using the verl package (Sheng et al., 2025).",
+   "page": 7
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "Table 4 reports detection accuracy against deepfake detection baselines, including LLaVA (Liu et al., 2023), DEFAKE (Sha et al., 2023), FakeShield (Xu et al., 2025), UnivCLIP (Ojha et al., 2023), and SIDA (Huang et al., 2025).",
+   "page": 7
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Code and dataset are available at https://github.com/tuanrpt/PRPO.",
+   "page": 2
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "We conduct an ablation study to testify the sensitivity of α and β.",
+   "page": 24
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "PRPO, a novel test-time reinforcement learning algorithm ... The experiments are trained on four domains and tested on a held-out domain (interdomain).",
+   "page": 9
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (« significantly » sans test)",
+   "page": 7
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens : tableaux 4-11 en valeurs ponctuelles",
+   "page": 7
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "Paragraph-level Relative Policy Optimization (PRPO), a novel test-time reinforcement learning algorithm that aligns MLLM reasoning with image content",
+   "page": 2
+  },
+  "X6": {
+   "value": 1,
+   "quote": "A pretrained LLaVA-7B is used ... We further apply our PRPO method to both LLaVA and DX-LLaVA",
+   "page": 8
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "All experiments are conducted on 8 NVIDIA H200 GPUs (143 GB each)",
+   "page": 7
+  }
+ },
+ "notes": "Q7 : l'apprentissage RL (PRPO) se fait au moment du test, sans étiquettes, sur les images du domaine tenu à l'écart ; ces images servent donc à l'entraînement RL, et α, β sont étudiés sur ce même domaine DDIM : codé no à la lettre de la règle llm, alors que le domaine est bien tenu à l'écart du SFT. Q3 no : lr, α, β donnés, mais ni taille de groupe, ni clip, ni nombre d'itérations pour PRPO. X7 yes sur la seule mention du matériel (8 H200), sans heures."
+}

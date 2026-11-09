@@ -1,0 +1,83 @@
+{
+ "id": "NE08",
+ "coder": "D",
+ "title": "Pixel Reasoner: Incentivizing Pixel-Space Reasoning via Curiosity-Driven Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "5 Experiments In this section, we first outline the training and evaluation settings.",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "Ours (Initialized from Qwen2.5-VL-7B)",
+   "page": 7
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "For Instruction Tuning, we use a batch size of 128. The learning rate is 1e−6 with 10% warm up steps. For RL, we set employ a cosine learning rate schedule with initial learning rate 1e−6 and 3% warm up iterations. During RL training, we sample 8 trajectories per training query and set hyperparameters to α = 0.5, β = 0.05, H = 0.3, and N = 1.",
+   "page": 17
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens : modèles comparés repris tels quels (GPT-4o, Qwen2.5-VL, Video-R1, SEAL…), sans hyperparamètres",
+   "page": 7
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "We include training details in the appendix, and will release code, models, and data to support reproducibility.",
+   "page": 7
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "This configuration reflects our objectives: the threshold H = 0.3 encourages the policy to utilize pixel-space reasoning in approximately 30% of responses generated for a given query",
+   "page": 17
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "We evaluated our model and other baselines on four representative multimodal benchmarks using greedy decoding: TallyQA, V*, InfographicVQA, and MVBench.",
+   "page": 6
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "7. Experiment statistical significance ... Answer: [No]",
+   "page": 26
+  },
+  "X1": {
+   "value": 1,
+   "quote": "Due to the high computational cost of our experiments, we did not perform multiple runs and thus did not report error bars. Nonetheless, we used fixed seeds and consistent settings across experiments",
+   "page": 26
+  },
+  "X2": {
+   "value": "no",
+   "quote": "we did not perform multiple runs and thus did not report error bars.",
+   "page": 26
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 7
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 7
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "We adopt GRPO [DeepSeek-AI et al., 2025] with selective sample relay due to vanishing advantages",
+   "page": 7
+  },
+  "X6": {
+   "value": 1,
+   "quote": "Ours (Initialized from Qwen2.5-VL-7B)",
+   "page": 7
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Our 7B model is trained on 4 × 8 sets of A800 (80G) for 20 hours .",
+   "page": 17
+  }
+ },
+ "notes": "X1 = 1: the only paper in my batch that states its seed count, in the NeurIPS checklist ('we did not perform multiple runs'). Q5 no: 'will release code' with no link in the PDF (URL annotations checked). Q6 no: α, β, H and N are justified by design intent ('reflects our objectives'), not by a search."
+}

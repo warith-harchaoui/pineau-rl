@@ -1,0 +1,110 @@
+[
+ {
+  "venue": "ICML 2018",
+  "title": "RLlib: Abstractions for Distributed Reinforcement Learning",
+  "url": "http://proceedings.mlr.press/v80/liang18b/liang18b.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/liang18b/liang18b.pdf",
+  "id": "C11",
+  "pdf": "pdf/C11.pdf",
+  "pdf_src": "http://proceedings.mlr.press/v80/liang18b/liang18b.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Efficient Model-Based Deep Reinforcement Learning with Variational State Tabulation",
+  "url": "http://proceedings.mlr.press/v80/corneil18a/corneil18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/corneil18a/corneil18a.pdf",
+  "id": "C12",
+  "pdf": "pdf/C12.pdf",
+  "pdf_src": "http://proceedings.mlr.press/v80/corneil18a/corneil18a.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Policy and Value Transfer in Lifelong Reinforcement Learning",
+  "url": "http://proceedings.mlr.press/v80/abel18b/abel18b.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/abel18b/abel18b.pdf",
+  "id": "C13",
+  "pdf": "pdf/C13.pdf",
+  "pdf_src": "http://proceedings.mlr.press/v80/abel18b/abel18b.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Fast Bellman Updates for Robust MDPs",
+  "url": "http://proceedings.mlr.press/v80/ho18a/ho18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/ho18a/ho18a.pdf",
+  "id": "C14",
+  "pdf": "pdf/C14.pdf",
+  "pdf_src": "http://proceedings.mlr.press/v80/ho18a/ho18a.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "Can Deep Reinforcement Learning Solve Erdos-Selfridge-Spencer Games?",
+  "url": "http://proceedings.mlr.press/v80/raghu18a/raghu18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/raghu18a/raghu18a.pdf",
+  "id": "C15",
+  "pdf": "pdf/C15.pdf",
+  "pdf_src": "http://proceedings.mlr.press/v80/raghu18a/raghu18a.pdf"
+ },
+ {
+  "venue": "ICML 2018",
+  "title": "QMIX: Monotonic Value Function Factorisation for Deep Multi-Agent Reinforcement Learning",
+  "url": "http://proceedings.mlr.press/v80/rashid18a/rashid18a.pdf",
+  "pdf_url": "http://proceedings.mlr.press/v80/rashid18a/rashid18a.pdf",
+  "id": "C16",
+  "pdf": "pdf/C16.pdf",
+  "pdf_src": "http://proceedings.mlr.press/v80/rashid18a/rashid18a.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Credit Assignment For Collective Multiagent RL With Global Rewards",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/94bb077f18daa6620efa5cf6e6f178d2-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/94bb077f18daa6620efa5cf6e6f178d2-Paper.pdf",
+  "id": "C21",
+  "pdf": "pdf/C21.pdf",
+  "pdf_src": "https://papers.nips.cc/paper_files/paper/2018/file/94bb077f18daa6620efa5cf6e6f178d2-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Learning Temporal Point Processes via Reinforcement Learning",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/5d50d22735a7469266aab23fd8aeb536-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/5d50d22735a7469266aab23fd8aeb536-Paper.pdf",
+  "id": "C22",
+  "pdf": "pdf/C22.pdf",
+  "pdf_src": "https://papers.nips.cc/paper_files/paper/2018/file/5d50d22735a7469266aab23fd8aeb536-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Q-learning with Nearest Neighbors",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/309fee4e541e51de2e41f21bebb342aa-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/309fee4e541e51de2e41f21bebb342aa-Paper.pdf",
+  "id": "C23",
+  "pdf": "pdf/C23.pdf",
+  "pdf_src": "https://papers.nips.cc/paper_files/paper/2018/file/309fee4e541e51de2e41f21bebb342aa-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Evolved Policy Gradients",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/7876acb66640bad41f1e1371ef30c180-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/7876acb66640bad41f1e1371ef30c180-Paper.pdf",
+  "id": "C24",
+  "pdf": "pdf/C24.pdf",
+  "pdf_src": "https://papers.nips.cc/paper_files/paper/2018/file/7876acb66640bad41f1e1371ef30c180-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Representation Balancing MDPs for Off-policy Policy Evaluation",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/980ecd059122ce2e50136bda65c25e07-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/980ecd059122ce2e50136bda65c25e07-Paper.pdf",
+  "id": "C25",
+  "pdf": "pdf/C25.pdf",
+  "pdf_src": "https://papers.nips.cc/paper_files/paper/2018/file/980ecd059122ce2e50136bda65c25e07-Paper.pdf"
+ },
+ {
+  "venue": "NeurIPS 2018",
+  "title": "Reinforcement Learning for Solving the Vehicle Routing Problem",
+  "url": "https://papers.nips.cc/paper_files/paper/2018/hash/9fb4651c05b2ed70fba5afe0b039a550-Abstract.html",
+  "pdf_url": "https://papers.nips.cc/paper_files/paper/2018/file/9fb4651c05b2ed70fba5afe0b039a550-Paper.pdf",
+  "id": "C26",
+  "pdf": "pdf/C26.pdf",
+  "pdf_src": "https://papers.nips.cc/paper_files/paper/2018/file/9fb4651c05b2ed70fba5afe0b039a550-Paper.pdf"
+ }
+]

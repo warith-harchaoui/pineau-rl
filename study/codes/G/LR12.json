@@ -1,0 +1,83 @@
+{
+ "id": "LR12",
+ "coder": "G",
+ "title": "GAS: Enhancing Reward-Cost Balance of Generative Model-assisted Offline Safe RL",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "Tasks: We evaluate GAS on the widely used Bullet-Safety-Gym (Gronauer, 2022) and Safety- Gymnasium (Ji et al., 2023) benchmarks.",
+   "page": 8
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "Besides, GAS is faster than CDT as GAS only utilizes the MLP architecture, but CDT utilize the Transformer architecture.",
+   "page": 20
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Table 3: Hyperparameters of GAS. ... Number of layers 7 Hidden size 128 Embedding size 64 Batch Size 2048 Learning rate 0.0001",
+   "page": 18
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "For most baselines, we follow the same iteration times. As for WSAC and VOCE, we follow the training standard of the original paper (aucun tableau d'hyperparamètres des références)",
+   "page": 20
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "The experimental code is available at https://github.com/Ziffer-byakuya/GAS.",
+   "page": 11
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (analyses de sensibilité sur α, q%, ϵ, mais pas de méthode de choix)",
+   "page": 19
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens : évaluation dans les mêmes tâches DSRL que le jeu de données hors ligne ; seuils de contrainte variés (zero-shot) mais pas de tâche non vue",
+   "page": 9
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 8
+  },
+  "X1": {
+   "value": 5,
+   "quote": "Each value represents the average performance over 10 evaluation episodes with 5 seeds and 3 thresholds.",
+   "page": 8
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Values shown as “mean±std” represent the mean and standard deviation.",
+   "page": 8
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 8
+  },
+  "X4": {
+   "value": "no",
+   "quote": "As for WSAC and VOCE, we follow the training standard of the original paper and make sure their convergence",
+   "page": 20
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "Offline Safe Reinforcement Learning (OSRL) aims to learn a policy ... using only pre-collected datasets.",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "sans objet (pas llm)",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "1. GPT version: NVIDIA GeForce RTX 3080. ... Table 6: Training iterations and time for GAS and baselines on task CarCircle.",
+   "page": 20
+  }
+ },
+ "notes": "Pages = index PDF. Offline safe RL (DSRL, Bullet-Safety-Gym, Safety-Gymnasium). Q7 no : la 'zero-shot adaptation' porte sur des seuils de coût différents dans la même tâche, pas sur des tâches ou environnements non vus. Les références n'ont pas d'hyperparamètres listés."
+}

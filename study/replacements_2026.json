@@ -1,0 +1,204 @@
+[
+ {
+  "venue": "ICML 2026",
+  "title": "AgentTailor: A Semantic-Aware LLM-Based Multi-Agent System with Actor-Critic Structure",
+  "url": "https://icml.cc/virtual/2026/poster/60754",
+  "id": "MLR01",
+  "replaces_venue": "ICML 2026"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "REAL: Regression-Aware Reinforcement Learning for LLM-as-a-Judge",
+  "url": "https://icml.cc/virtual/2026/poster/62715",
+  "id": "MLR02",
+  "replaces_venue": "ICML 2026",
+  "pdf": "pdf/MLR02.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2603.17145v2"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Stabilizing Reinforcement Learning for Diffusion Language Models",
+  "url": "https://icml.cc/virtual/2026/poster/63228",
+  "id": "MLR03",
+  "replaces_venue": "ICML 2026",
+  "pdf": "pdf/MLR03.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2603.06743v1"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "HTAC: Hierarchical Task-Aware Composition for Continual Offline Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/63033",
+  "id": "MLR04",
+  "replaces_venue": "ICML 2026"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Reward-Preserving Counterfactual State Editing for Offline Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/66163",
+  "id": "MLR05",
+  "replaces_venue": "ICML 2026"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Estimation of Treatment Effects Under Nonstationarity via the Truncated Policy Gradient Estimator",
+  "url": "https://icml.cc/virtual/2026/poster/63435",
+  "id": "MLR06",
+  "replaces_venue": "ICML 2026",
+  "pdf": "pdf/MLR06.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2506.05308v4"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Text Before Vision: Staged Knowledge Injection Matters for Agentic RLVR in Ultra-High-Resolution Remote Sensing Understanding",
+  "url": "https://icml.cc/virtual/2026/poster/66614",
+  "id": "MLR07",
+  "replaces_venue": "ICML 2026",
+  "pdf": "pdf/MLR07.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2602.14225v1"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Fox in the Henhouse: Supply-Chain Backdoor Attacks Against Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/66677",
+  "id": "MLR08",
+  "replaces_venue": "ICML 2026",
+  "pdf": "pdf/MLR08.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2505.19532v2"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Safety Generalization Under Distribution Shift in Safe Reinforcement Learning: A Diabetes Testbed",
+  "url": "https://icml.cc/virtual/2026/poster/62037",
+  "id": "MLR09",
+  "replaces_venue": "ICML 2026",
+  "pdf": "pdf/MLR09.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2601.21094v2"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "ReAugment: Targeted Few-Shot Time Series Augmentation via Model Zoo-Guided Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/63111",
+  "id": "MLR10",
+  "replaces_venue": "ICML 2026"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "IntentRL: Training Proactive User-intent Agents for Open-ended Deep Research via Reinforcement Learning",
+  "url": "https://icml.cc/virtual/2026/poster/61305",
+  "id": "MLR11",
+  "replaces_venue": "ICML 2026",
+  "pdf": "pdf/MLR11.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2602.03468v1"
+ },
+ {
+  "venue": "ICML 2026",
+  "title": "Revisiting Zeroth-Order Hessian Approximation: A Single-Step Policy Optimization Lens",
+  "url": "https://icml.cc/virtual/2026/poster/61753",
+  "id": "MLR12",
+  "replaces_venue": "ICML 2026",
+  "pdf": "pdf/MLR12.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2605.30960v1"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "DAPO: An Open-Source LLM Reinforcement Learning System at Scale",
+  "url": "https://neurips.cc/virtual/2025/poster/120129",
+  "id": "NER01",
+  "replaces_venue": "NeurIPS 2025",
+  "pdf": "pdf/NER01.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2503.14476v2"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Text-to-Decision Agent: Offline Meta-Reinforcement Learning from Natural Language Supervision",
+  "url": "https://neurips.cc/virtual/2025/poster/119507",
+  "id": "NER02",
+  "replaces_venue": "NeurIPS 2025",
+  "pdf": "pdf/NER02.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2504.15046v5"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Cognitive Predictive Processing: A Human-inspired Framework for Adaptive Exploration in Open-World Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/120120",
+  "id": "NER03",
+  "replaces_venue": "NeurIPS 2025"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Asymmetric REINFORCE for off-Policy Reinforcement Learning: Balancing positive and negative rewards",
+  "url": "https://neurips.cc/virtual/2025/poster/118103",
+  "id": "NER04",
+  "replaces_venue": "NeurIPS 2025",
+  "pdf": "pdf/NER04.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2506.20520v2"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Trust, But Verify: A Self-Verification Approach to Reinforcement Learning with Verifiable Rewards",
+  "url": "https://neurips.cc/virtual/2025/poster/116768",
+  "id": "NER05",
+  "replaces_venue": "NeurIPS 2025"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "FairDICE: Fairness-Driven Offline Multi-Objective Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/120111",
+  "id": "NER06",
+  "replaces_venue": "NeurIPS 2025",
+  "pdf": "pdf/NER06.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2506.08062v2"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Reinforcement Learning for Out-of-Distribution Reasoning in LLMs: An Empirical Study on Diagnosis-Related Group Coding",
+  "url": "https://neurips.cc/virtual/2025/poster/120291",
+  "id": "NER07",
+  "replaces_venue": "NeurIPS 2025",
+  "pdf": "pdf/NER07.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2505.21908v2"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Meta-World+: An Improved, Standardized, RL Benchmark",
+  "url": "https://neurips.cc/virtual/2025/poster/121865",
+  "id": "NER08",
+  "replaces_venue": "NeurIPS 2025",
+  "pdf": "pdf/NER08.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2505.11289v2"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "COLA: Towards Efficient Multi-Objective Reinforcement Learning with Conflict Objective Regularization in Latent Space",
+  "url": "https://neurips.cc/virtual/2025/poster/119269",
+  "id": "NER09",
+  "replaces_venue": "NeurIPS 2025"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Sharp Gap-Dependent Variance-Aware Regret Bounds for Tabular MDPs",
+  "url": "https://neurips.cc/virtual/2025/poster/115932",
+  "id": "NER10",
+  "replaces_venue": "NeurIPS 2025",
+  "pdf": "pdf/NER10.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2506.06521v1"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "Flow-Based Policy for Online Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/119311",
+  "id": "NER11",
+  "replaces_venue": "NeurIPS 2025",
+  "pdf": "pdf/NER11.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2506.12811v1"
+ },
+ {
+  "venue": "NeurIPS 2025",
+  "title": "A Differential and Pointwise Control Approach to Reinforcement Learning",
+  "url": "https://neurips.cc/virtual/2025/poster/115206",
+  "id": "NER12",
+  "replaces_venue": "NeurIPS 2025",
+  "pdf": "pdf/NER12.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2404.15617v4"
+ }
+]

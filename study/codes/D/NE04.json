@@ -1,0 +1,83 @@
+{
+ "id": "NE04",
+ "coder": "D",
+ "title": "OpenVLThinker: Complex Vision-Language Reasoning via Iterative SFT-RL Cycles",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "5. Experiments Training setup. We take Qwen2.5-VL-7B [3] as the base model and perform three iterations of the SFT-RL cycle",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We take Qwen2.5-VL-7B [3] as the base model ... applying full fine-tuning for both SFT and RL.",
+   "page": 7
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "In Table 13 and 14, we detail the hyperparameters that we used for SFT, GRPO and inference.",
+   "page": 24
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "RL-only: Qwen2.5-VL trained exclusively with GRPO on the full 12K dataset. — hyperparamètres des références absents après lecture des sections expériences et annexes",
+   "page": 22
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "and data are held at https://github.com/yihedeng9/OpenVLThinker.",
+   "page": 1
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "Based on our preliminary experiments, we equally draw 500 examples from each source to form the SFT seed dataset of 7K examples",
+   "page": 7
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "We employ six established benchmarks to examine model's ability thoroughly: • Math reasoning: MathVista [44], MathVerse [88] and MathVision [69]. ... • General reasoning: MMMU-Pro [82] and EMMA [22]. ... • Perception: HallusionBench [19]",
+   "page": 8
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 9
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 9
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture : Table 1 en valeurs ponctuelles",
+   "page": 9
+  },
+  "X3": {
+   "value": "no",
+   "quote": "Both baselines were trained to full convergence, and checkpoints were selected based on validation performance.",
+   "page": 22
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture : les références concurrentes sont des points de contrôle publiés, réglage non décrit",
+   "page": 8
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "We take Qwen2.5-VL-7B [3] as the base model and perform three iterations of the SFT-RL cycle",
+   "page": 7
+  },
+  "X6": {
+   "value": 1,
+   "quote": "We additionally train a 3B model using a single iteration of the SFT-RL pipeline ... our base model, Qwen2.5-VL-3B",
+   "page": 8
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Table 8: Approximate GPU hours per stage for iterative SFT→RL training.",
+   "page": 21
+  }
+ },
+ "notes": "Q4 coded no: the main baselines are public checkpoints re-evaluated by the authors, and the RL-only and SFT-only baselines (App. A.3) are described without their hyperparameters. Q6 no: the data choices come from 'preliminary experiments' with no method given; checkpoint selection on validation applies to the baselines (so X3 = no)."
+}

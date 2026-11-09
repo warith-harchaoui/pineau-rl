@@ -1,0 +1,83 @@
+{
+ "id": "NE14",
+ "coder": "E",
+ "title": "Beyond Scalar Rewards: An Axiomatic Framework for Lexicographic MDPs",
+ "criteria": {
+  "Q1": {
+   "value": "no",
+   "quote": "absent après lecture intégrale : article purement axiomatique, aucune section expérimentale",
+   "page": null
+  },
+  "Q2": {
+   "value": "no",
+   "quote": "absent : aucun réseau de neurones",
+   "page": null
+  },
+  "Q3": {
+   "value": "na",
+   "quote": "pas d'expérience",
+   "page": null
+  },
+  "Q4": {
+   "value": "na",
+   "quote": "pas d'expérience ni de référence",
+   "page": null
+  },
+  "Q5": {
+   "value": "na",
+   "quote": "pas d'expérience ni de code ; aucun lien de code dans l'article",
+   "page": null
+  },
+  "Q6": {
+   "value": "na",
+   "quote": "pas d'expérience",
+   "page": null
+  },
+  "Q7": {
+   "value": "na",
+   "quote": "pas d'expérience",
+   "page": null
+  },
+  "Q8": {
+   "value": "na",
+   "quote": "pas d'expérience",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "pas d'expérience",
+   "page": null
+  },
+  "X2": {
+   "value": "na",
+   "quote": "pas d'expérience",
+   "page": null
+  },
+  "X3": {
+   "value": "na",
+   "quote": "pas d'expérience",
+   "page": null
+  },
+  "X4": {
+   "value": "na",
+   "quote": "pas d'expérience",
+   "page": null
+  },
+  "X5": {
+   "value": "theory",
+   "quote": "We provide a full characterization of such reward functions, as well as the general d-dimensional case, in Markov Decision Processes (MDPs) under a memorylessness assumption on preferences.",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "sans objet (theory)",
+   "page": null
+  },
+  "X7": {
+   "value": "na",
+   "quote": "pas d'expérience",
+   "page": null
+  }
+ },
+ "notes": "Aucune expérience : Q1 no et tous les critères expérimentaux en na. Q5 mis en na (aucun code à lier) ; si l'analyse veut Q5 sur tous les articles, la valeur serait no."
+}

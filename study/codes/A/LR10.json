@@ -1,0 +1,83 @@
+{
+ "id": "LR10",
+ "coder": "A",
+ "title": "Agnostics: Learning to Synthesize Code in Any Programming Language with a Universal Reinforcement Learning Environment",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "To evaluate Agnostics, we train and benchmark models on 5 low-resource programming languages.",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "Using Agnostics, we train Qwen 3 4B and 8B on Ag-Codeforces-X specialized to Fortran, Julia, R, Lua, and OCaml.",
+   "page": 7
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "We use the AdamW optimizer (Loshchilov & Hutter, 2019) with a learning rate of 5 × 10−6 and a cosine decay schedule with a warmup of 0.1 epochs. We process 4 prompts in each batch, with group size 32 per prompt. When training we use temperature 0.7 and disable reasoning in hybrid models.",
+   "page": 6
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "We fine-tune Qwen 3 4B for 3 epochs (batch size 64, learning rate 2 × 10−5 , cosine learning rate decay with warmup ratio 0.1). [seule référence entraînée : la distillation ; les autres références sont des modèles publiés évalués tels quels]",
+   "page": 8
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "We provide references to our data, code, and artifacts at agnostics.abgru.me. [...] and our training framework at github.com/nuprl/agnostics-framework.",
+   "page": 10
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "We compared between GRPO group sizes of 16, 32 and 64 by training the same model on Lua. [...] As we found no significant difference between the temperature settings and between group sizes 32 and 64, we chose the smaller group size due to limited resources, and used the recommended temperature settings.",
+   "page": 21
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "Ag-LiveCodeBench-X, a contribution of this paper, is a new multi-language benchmark derived from LiveCodeBench. (The benchmark has no overlap with our training data; see §A.)",
+   "page": 7
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture de la section 4 et des annexes C : scores pass@1 ponctuels, « significant » sans test",
+   "page": null
+  },
+  "X1": {
+   "value": 1,
+   "quote": "Table 6: Hyperparameter sweep, pass@1 score. Qwen3-4B-CF-Lua 32 0.7 23.00 / normal-r1 32 0.7 19.87 / normal-r2 32 0.7 21.58 [le modèle des tableaux principaux est un entraînement unique ; répétitions seulement dans le balayage d'annexe]",
+   "page": 22
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture : Tableaux 1-4 en pass@1 ponctuels sans incertitude",
+   "page": 7
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture : aucune sélection annoncée ; mais le Tableau 6 montre que le modèle rapporté (23.00) dépasse ses deux répétitions de même configuration (19.87, 21.58)",
+   "page": 22
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture : les références (Llama 3.3 70B, Qwen 3 32B, DeepSeek Coder v2 Lite…) sont évaluées telles quelles ; la distillation n'a qu'une configuration, sans réglage décrit",
+   "page": 8
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "We propose Agnostics, a language-agnostic post-training pipeline [...] including the reinforcement learning setup",
+   "page": 10
+  },
+  "X6": {
+   "value": 5,
+   "quote": "we found that Agnostics training on Ag-Codeforces-X does not improve two smaller models, Qwen 3 1.7B and Llama 3.2 3B Instruct [...] we train SmolLM 3 (SmolLM3 Team, 2025), Phi 4 Mini Instruct (Microsoft, 2025), and DeepSeek Coder 6.7B Instruct",
+   "page": 8
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "R1 has 2 AMD EPYC 9454 48-Core CPUs, 8 NVIDIA H100 80GB [...] the group size 32 models trained at the same time on the same machine took ∼ 12h on average.",
+   "page": 25
+  }
+ },
+ "notes": "X3 délicat : rien n'annonce une sélection, mais le modèle Lua rapporté est le meilleur de trois entraînements de même configuration (Tableau 6) — codé no faute d'énoncé. X6 = 5 en comptant Llama 3.2 3B, entraîné sans gain. X1 = 1 déduit du Tableau 6."
+}

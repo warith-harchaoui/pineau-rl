@@ -1,0 +1,83 @@
+{
+ "id": "NE10",
+ "coder": "E",
+ "title": "Towards Robust Zero-Shot Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We conduct extensive evaluations of BREEZE against previous offline zero-shot RL algorithms across various challenging domains with distinct tasks.",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "BREEZE employs expressive attention-based architectures for representation modeling",
+   "page": 1
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "This section provides the detailed hyperparameter setup. In our experiments, the model architecture and basic algorithm hyperparameters remain unchanged, as detailed in Table 4. Domain-specific hyperparameters are detailed in Table 5 and Table 6.",
+   "page": 20
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "We set the batch size to 512 to ensure a fair comparison with other methods, while keeping all other hyperparameters at their default values.",
+   "page": 18
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "The official implementation is available at: https://github.com/Whiterrrrr/BREEZE.",
+   "page": 1
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "We ablate two key hyperparameters in our behavior-constrained algorithm: the expectile value τ and the temperature α. [...] Consequently, we select τ = 0.99 and α = 0.05 as defaults in ExORL",
+   "page": 9
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "Each domain has four tasks for evaluation at test time.",
+   "page": 18
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens ; « significantly higher performance » sans test, barres ± écart type seulement",
+   "page": 8
+  },
+  "X1": {
+   "value": 3,
+   "quote": "Figure 6: Learning Curves on 100k-subsample transitions on ExORL APS Walker domain. The solid lines represent the average return over 3 random seeds",
+   "page": 9
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Table 1 reports this score across all tasks on each domain of ExORL, averaged on 5 random seeds, with standard deviations.",
+   "page": 8
+  },
+  "X3": {
+   "value": "yes",
+   "quote": "we record the highest aggregated mean performance across random seeds in the offline pretrain stage.",
+   "page": 8
+  },
+  "X4": {
+   "value": "no",
+   "quote": "while keeping all other hyperparameters at their default values.",
+   "page": 18
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "Extensive experiments on ExORL and D4RL Kitchen demonstrate that BREEZE achieves the best or near-the-best performance",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "sans objet (classic)",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "all reported results use a batch size of 512, and training for 1 million steps takes approximately 20 hours [...] Experiments are conducted on a single NVIDIA A6000 GPU.",
+   "page": 29
+  }
+ },
+ "notes": "X1 : Table 1 et Figure 5 à 5 graines, Kitchen (Figure 4) à 4, Figure 6 (résultat principal, section 5.1) à 3 ; la règle du plus petit nombre donne 3. Q6 : seuls τ et α sont choisis par un balayage décrit (pic sur Quadruped-RND), les hyperparamètres par domaine (Tables 5-6) sans méthode ; codé yes par indulgence. X3 yes car le meilleur point de contrôle est retenu sur la performance d'évaluation."
+}

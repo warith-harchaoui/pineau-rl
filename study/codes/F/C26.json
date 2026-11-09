@@ -1,0 +1,98 @@
+{
+ "id": "C26",
+ "coder": "F",
+ "title": "Reinforcement Learning for Solving the Vehicle Routing Problem",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "In this section, we compare the solutions found using our framework with those obtained from the Clarke-Wright savings heuristic (CW), the Sweep heuristic (SW), and Google's optimization tools (OR-Tools).",
+   "page": 7,
+   "source": "main"
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "Our policy model consists of a recurrent neural network (RNN) decoder",
+   "page": 2,
+   "source": "main"
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "For training both networks, we use the REINFORCE Algorithm and Adam optimizer [20] with learning rate 10−4. The batch size N is 128, and we clip the gradients when their norm is greater than 2. We use dropout with probability 0.1 in the decoder LSTM.",
+   "page": 4,
+   "source": "supp"
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "Finally, we use Google's OR-Tools [16], which is a more competitive baseline. (OR-Tools : seul le nombre de véhicules (10) et la mise à l'échelle sont donnés ; ni version, ni métaheuristique retenue, ni limite de temps ; les paramètres de randomisation de CW et Sweep sont donnés)",
+   "page": 7,
+   "source": "main"
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "The TensorFlow implementation of our code is available at https://github.com/OptMLGroup/VRP-RL.",
+   "page": 4,
+   "source": "supp"
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections 4-5, de l'annexe supplémentaire NeurIPS (vrp_neurips_2018_supplementary.pdf, B-C) et des liens ('we tried the entropy regularizer ... it does not show any improvement' sans procédure)",
+   "page": null,
+   "source": "main"
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "The results are based on 1000 instances, sampled for each problem size. ... It is also possible to decode all 1000 test problems in a batch",
+   "page": 7,
+   "source": "main"
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "Parts 3c and 3d give the proportion of the samples for which the algorithms in the rows outperform those in the columns (taux de victoire, aucun test)",
+   "page": 7,
+   "source": "main"
+  },
+  "X1": {
+   "value": null,
+   "quote": "It is worthwhile to mention that, unlike other RL areas, our findings are not affected by the training seed. (nombre de graines non dit)",
+   "page": 5,
+   "source": "supp"
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Table 2 provides the average and the standard deviation of tour lengths for different VRPs.",
+   "page": 4,
+   "source": "supp"
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections 4-5, de l'annexe supplémentaire NeurIPS (vrp_neurips_2018_supplementary.pdf, B-C) et des liens",
+   "page": null,
+   "source": "main"
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections 4-5, de l'annexe supplémentaire NeurIPS (vrp_neurips_2018_supplementary.pdf, B-C) et des liens",
+   "page": null,
+   "source": "main"
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "Our policy model consists of a recurrent neural network (RNN) decoder ... To train the network, we use well-known policy gradient approaches.",
+   "page": 6,
+   "source": "main"
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable (classic)",
+   "page": null,
+   "source": "main"
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "On a single GPU K80, every 100 training steps of the VRP with 20 customer nodes takes approximately 35 seconds. Training for 20 epochs requires about 13.5 hours.",
+   "page": 4,
+   "source": "supp"
+  }
+ },
+ "notes": "Annexe NeurIPS lue (zip officiel, dossier temporaire hors study/) : hyperparamètres, lien GitHub et calcul y sont, pas dans l'article principal ; sur l'article seul Q3, Q5, X7 seraient no. Q7 yes : 1000 instances de test tirées à part de l'entraînement. X2 yes cas limite : l'écart type porte sur la dispersion entre instances de test, pas entre graines. X1 null : affirmation que la graine n'a pas d'effet, sans nombre."
+}

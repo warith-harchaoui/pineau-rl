@@ -1,0 +1,83 @@
+{
+ "id": "LR01",
+ "coder": "A",
+ "title": "Optimal Robust Subsidy Policies for Irrational Agent in Principal-Agent MDPs",
+ "criteria": {
+  "Q1": {
+   "value": "no",
+   "quote": "we prove that the optimal robust subsidy scheme problem simplifies to a one-dimensional concave optimization",
+   "page": 1
+  },
+  "Q2": {
+   "value": "no",
+   "quote": "absent après lecture de l'article entier (sections 1-6 et annexes A.1-A.7) : aucun réseau de neurones, analyse purement formelle",
+   "page": null
+  },
+  "Q3": {
+   "value": "na",
+   "quote": "absent après lecture de l'article entier (sections 1-6 et annexes A.1-A.7) : pas d'expérience",
+   "page": null
+  },
+  "Q4": {
+   "value": "na",
+   "quote": "absent après lecture de l'article entier (sections 1-6 et annexes A.1-A.7) : pas d'expérience ni de référence comparée",
+   "page": null
+  },
+  "Q5": {
+   "value": "na",
+   "quote": "absent après lecture de l'article entier (sections 1-6 et annexes A.1-A.7) : aucun lien de code, mais rien à exécuter",
+   "page": null
+  },
+  "Q6": {
+   "value": "na",
+   "quote": "absent après lecture de l'article entier (sections 1-6 et annexes A.1-A.7)",
+   "page": null
+  },
+  "Q7": {
+   "value": "na",
+   "quote": "absent après lecture de l'article entier (sections 1-6 et annexes A.1-A.7)",
+   "page": null
+  },
+  "Q8": {
+   "value": "na",
+   "quote": "absent après lecture de l'article entier (sections 1-6 et annexes A.1-A.7)",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture de l'article entier (sections 1-6 et annexes A.1-A.7)",
+   "page": null
+  },
+  "X2": {
+   "value": "na",
+   "quote": "absent après lecture de l'article entier (sections 1-6 et annexes A.1-A.7)",
+   "page": null
+  },
+  "X3": {
+   "value": "na",
+   "quote": "absent après lecture de l'article entier (sections 1-6 et annexes A.1-A.7)",
+   "page": null
+  },
+  "X4": {
+   "value": "na",
+   "quote": "absent après lecture de l'article entier (sections 1-6 et annexes A.1-A.7)",
+   "page": null
+  },
+  "X5": {
+   "value": "theory",
+   "quote": "We introduce a theoretical framework based on Markov Decision Processes (MDPs) to model the principal-agent problem",
+   "page": 2
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable (pas llm)",
+   "page": null
+  },
+  "X7": {
+   "value": "na",
+   "quote": "absent après lecture de l'article entier (sections 1-6 et annexes A.1-A.7)",
+   "page": null
+  }
+ },
+ "notes": "Article purement théorique : seules des figures de courbes calculées sur des exemples jouets (Fig. 2, 4). Q3-Q8 codés na faute d'expérience ; Q5 na plutôt que no puisqu'il n'y a pas de code à publier."
+}

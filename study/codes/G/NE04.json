@@ -1,0 +1,83 @@
+{
+ "id": "NE04",
+ "coder": "G",
+ "title": "OpenVLThinker: Complex Vision-Language Reasoning via Iterative SFT-RL Cycles",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "Table 1: Evaluation results across visual math reasoning benchmarks (MathVista, MathVerse, MathVision), general visual reasoning benchmarks (MMMU-Pro, EMMA), and perception (HallusionBench).",
+   "page": 9
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We take Qwen2.5-VL-7B [3] as the base model and perform three iterations of the SFT-RL cycle",
+   "page": 7
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "Table 14: GRPO hyperparameters. Rollout batch size 512 Global batch size 128 Max grad norm 1.0 ... Learning rate 1e-6 ... Rollout temperature 1.0 (nombre de réponses par prompt, coefficient KL β et borne de clipping ϵ non donnés ; EasyR1 sans version)",
+   "page": 25
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "Both baselines were trained to full convergence, and checkpoints were selected based on validation performance. (hyperparamètres des références RL-only et SFT-only non listés ; les autres références sont des modèles publiés)",
+   "page": 22
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "and data are held at https://github.com/yihedeng9/OpenVLThinker.",
+   "page": 1
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 24
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "We source our training data from the established LLaVA-OneVision [34] and specifically consider the 14 data sources in overlap with MathV360K [58] ... (évaluation sur MathVista, MathVerse, MathVision, MMMU-Pro, EMMA, HallusionBench)",
+   "page": 7
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 9
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 9
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (Table 1 sans dispersion)",
+   "page": 9
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 9
+  },
+  "X4": {
+   "value": "no",
+   "quote": "Both baselines were trained to full convergence, and checkpoints were selected based on validation performance.",
+   "page": 22
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "we take Qwen2.5-VL-7B [3] as the base model and perform three iterations of the SFT-RL cycle ... EasyR1 for RL",
+   "page": 7
+  },
+  "X6": {
+   "value": 1,
+   "quote": "we compare the performance of our 3B model against current representative models at the same scale, including our base model, Qwen2.5-VL-3B (7B et 3B : même famille Qwen2.5-VL)",
+   "page": 8
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Experiments were conducted on GPU clusters to the similar level of NVIDIA H100 80GB GPU. SFT/Distillation requires 30 minutes and RL requires 20 hours for each iteration.",
+   "page": 24
+  }
+ },
+ "notes": "Pages = index PDF. VLM Qwen2.5-VL entraîné par cycles SFT puis GRPO : llm. Q3 no par rigueur : le Table 14 omet la taille de groupe GRPO, le coefficient KL et le clipping ; un lecteur indulgent coderait yes. Q7 yes : bancs d'évaluation distincts des données d'entraînement (LLaVA-OneVision / MathV360K). X6 = 1 (Qwen2.5-VL 7B et 3B)."
+}

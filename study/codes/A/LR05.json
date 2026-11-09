@@ -1,0 +1,83 @@
+{
+ "id": "LR05",
+ "coder": "A",
+ "title": "SPIKE-RL: Video-LLMs meet Bayesian Surprise",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We first evaluate how well SPIKE and SPIKE-RL can identify surprising segments of a video.",
+   "page": 5
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We use Qwen2.5-VL-7B-Instruct as the Video-LLM model (M) and Olmo-7B-hf as the LLM-Match reward model.",
+   "page": 5
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "All runs use Qwen2.5-VL-7B-Instruct as the backbone, with FlashAttention-2, bfloat16 precision, and PEFT enabled. / Table 3: Key hyperparameters for GRPO training. [configuration PEFT (rang, alpha), température d'échantillonnage et optimiseur absents]",
+   "page": 16
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections 4-5 et annexes C-G : seuls le budget de 64 images et le principe des méthodes de détection de plans sont donnés (« We use a maximum frame budget F of 64 frames for all our baselines »), sans leurs seuils ; les Video-LLM de référence sans réglages",
+   "page": 9
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "Code, data and models will be made public at https://github.com/sahithyaravi/SPIKE-RL.. / our training code for SPIKE-RL will be made available on GitHub.",
+   "page": 1
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "We fixed our hypothesis set size to N = 3, as it worked well for surprise detection across our benchmarks",
+   "page": 17
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "Oops! is a surprise detection task, whose test set contains 4,791 videos [...] It is worth noting that this significant boost is despite the fact that FunQA [...] is out-of-distribution for SPIKE-RL.",
+   "page": 6
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections 4-5 et annexes : scores ponctuels sans test (« significant » employé sans test)",
+   "page": null
+  },
+  "X1": {
+   "value": 1,
+   "quote": "Random seed 42",
+   "page": 16
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture : Tableaux 1 et 2 sans écart type ni intervalle",
+   "page": 7
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture : un seul entraînement, pas de sélection rapportée",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture : aucun réglage décrit pour les références",
+   "page": null
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "Instead, we leverage GRPO (Shao et al., 2024) to optimize SPIKE using reinforcement learning.",
+   "page": 4
+  },
+  "X6": {
+   "value": 1,
+   "quote": "All runs use Qwen2.5-VL-7B-Instruct as the backbone [32B Qwen2.5-VL en évaluation ; OLMo seulement comme juge de récompense]",
+   "page": 16
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "We train using 4 H100s on a single node with DeepSpeed ZeRO-3 offload.",
+   "page": 16
+  }
+ },
+ "notes": "Q5 no à la lettre : l'URL GitHub est donnée mais au futur (« will be made public »). Q3 no car la configuration PEFT manque ; tableau dit « Key hyperparameters ». X7 yes sur le seul nombre de GPU, sans heures."
+}

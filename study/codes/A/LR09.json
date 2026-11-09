@@ -1,0 +1,83 @@
+{
+ "id": "LR09",
+ "coder": "A",
+ "title": "Wavelet Predictive Representations for Non-Stationary Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We mainly performed experiments on the following three benchmarks, and more details are in Appendix B.",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "Model Architecture All components of WISDOM are implemented as MLPs.",
+   "page": 21
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Hyperparameters The hyperparameters utilized in the experiments are outlined in Table 4.",
+   "page": 20
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "For fair comparison, WISDOM and all baseline models, except TRIO and RL2 which emphasize the use of a recurrent encoder, employed the same MLP network architecture for their context encoders. [aucun hyperparamètre propre aux sept références n'est donné]",
+   "page": 18
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Source code is available at https://github.com/MinWangcs/WISDOM",
+   "page": 1
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "The compactness of task representations may be influenced by decomposition levels in the wavelet representation network, necessitating tuning appropriate decomposition levels based on specific environments. [valeurs par environnement au Tableau 4 sans procédure de choix]",
+   "page": 10
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "ML1 uses single Meta-World tasks, with the meta-training tasks corresponding to 50 random initial object and goal positions, and meta-testing conducted on 10 held-out positions.",
+   "page": 19
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "Table 1: Converged average test success rate ± standard error (%) on Meta-World. [pas de test]",
+   "page": 8
+  },
+  "X1": {
+   "value": 6,
+   "quote": "For evaluating the policy’s performance on Meta-World, the average success rate was computed across six random seeds. On MuJoCo and Type-1 Diabetes control, the average return was computed across six random seeds.",
+   "page": 18
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Table 1: Converged average test success rate ± standard error (%) on Meta-World.",
+   "page": 8
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture : moyenne sur six graines, pas de sélection",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture de B.1 et D : seule l'architecture de l'encodeur est alignée, aucun réglage des références décrit",
+   "page": 18
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "Experimental results on Meta-World, MuJoCo, and Type-1 Diabetes benchmarks demonstrate its superb adaptability",
+   "page": 10
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable (pas llm)",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "We evaluate our proposed method and other baselines on the NVIDIA GeForce RTX 3090 GPU.",
+   "page": 21
+  }
+ },
+ "notes": "X1 = 6 pour les résultats principaux (3 graines seulement pour les annexes E.7, E.9). X7 yes sur le seul modèle de GPU, sans heures. Q6 no : niveaux de décomposition et coefficients différents par tâche sans procédure de choix."
+}

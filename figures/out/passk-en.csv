@@ -1,0 +1,19 @@
+hour,platform,sessions
+1,Base model,12
+2,Base model,19
+4,Base model,27
+8,Base model,35
+16,Base model,43
+32,Base model,51
+64,Base model,58
+128,Base model,64
+256,Base model,69
+1,After RL with verifiable rewards,28
+2,After RL with verifiable rewards,34
+4,After RL with verifiable rewards,40
+8,After RL with verifiable rewards,45
+16,After RL with verifiable rewards,49
+32,After RL with verifiable rewards,52
+64,After RL with verifiable rewards,55
+128,After RL with verifiable rewards,57
+256,After RL with verifiable rewards,59

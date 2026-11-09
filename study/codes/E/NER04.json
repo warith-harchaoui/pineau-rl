@@ -1,0 +1,83 @@
+{
+ "id": "NER04",
+ "coder": "E",
+ "title": "Asymmetric REINFORCE for off-Policy Reinforcement Learning: Balancing positive and negative rewards",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "Finally, we validate our results on a larger scale by training Llama 8B and Qwen 3B models on real-world",
+   "page": 2
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We train Llama-3.1-8B-Instruct (Dubey et al., 2024) (which we refer to as Llama 8B),",
+   "page": 8
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "We trained Llama-3.1-8B-Instruct with the AdamW optimizer Loshchilov and Hutter (2017) with a learning rate of 6 × 10−8 .",
+   "page": 20
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "we also observe that our loss compares favorably to GRPO both in terms of training speed and final accuracy in the off-policy setting",
+   "page": 9
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "We train and test on the MATH dataset (Hendrycks et al. (2021), 12.5k high school-level problems)",
+   "page": 8
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 3,
+   "quote": "Figure 3 Training dynamics of Llama 8B on the MATH dataset (results are averaged over 3 seeds, and a moving average with a window of size 3 is applied).",
+   "page": 9
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent : courbes moyennes sans bande ni écart type (Figures 3, 4, 5 droite)",
+   "page": 9
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "We train Llama-3.1-8B-Instruct [...] Llama-3.2-3B-Instruct [...] and Qwen2.5-3B-Instruct (Yang et al., 2024)",
+   "page": 8
+  },
+  "X6": {
+   "value": 2,
+   "quote": "We train Llama-3.1-8B-Instruct (Dubey et al., 2024) (which we refer to as Llama 8B), Llama-3.2-3B-Instruct (which we refer to as Llama 3B) and Qwen2.5-3B-Instruct",
+   "page": 8
+  },
+  "X7": {
+   "value": "no",
+   "quote": "The GPUs were split into two categories: workers that generated the responses to the prompt sampled from the dataset, and trainers",
+   "page": 20
+  }
+ },
+ "notes": "Q3 no : taux d'apprentissage donné pour Llama 8B seulement, pas pour Qwen 3B ni Llama 3B, et rien sur GRPO (Q4). X1 = 3 (Figures 3-4) ; la comparaison à GRPO (Figure 5 droite) ne dit pas ses graines ; Figure 5 gauche montre 7 essais individuels, non compté comme incertitude."
+}

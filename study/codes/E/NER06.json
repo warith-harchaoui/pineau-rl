@@ -1,0 +1,83 @@
+{
+ "id": "NER06",
+ "coder": "E",
+ "title": "FairDICE: Fairness-Driven Offline Multi-Objective Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We evaluate our method on the D4MORL benchmark [31], a standard MORL benchmark in continuous control domains.",
+   "page": 8
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "The policy and value networks are constructed with three hidden layers, each containing 768 units.",
+   "page": 24
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Table 3 provides a summary of our default hyperparameters. [...] Optimization is performed using the Adam optimizer with a learning rate of 3×10−4 and a discount factor of γ = 0.99.",
+   "page": 24
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "Specifically, we adopt three baselines that learn preference-conditioned policies [31].",
+   "page": 8
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Our code is available at: https://github.com/ku-dmlab/FairDICE.git.",
+   "page": 24
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "we conduct a hyperparameter sweep over β ∈ {1.0, 0.1, 0.01, 0.001, 0.0001}.",
+   "page": 24
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent : évaluation dans les mêmes environnements D4MORL que ceux des jeux de données ; aucune tâche tenue à l'écart",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 5,
+   "quote": "Each curve shows the average NSW over 5 seeds and 10 evaluation episodes per seed.",
+   "page": 8
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Results are averaged over 1000 seeds, and reported with 95 % confidence intervals.",
+   "page": 7
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "we compare against three offline MORL approaches with linear scalarization, additionally searching for preference weights that maximize NSW by uniformly discretizing the simplex",
+   "page": 8
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "Our main experiments include five two-objective tasks (e.g., MO-Hopper, MO-Walker2d, MO-HalfCheetah, MO-Ant, MO-Swimmer)",
+   "page": 8
+  },
+  "X6": {
+   "value": null,
+   "quote": "sans objet (classic)",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "an NVIDIA RTX 3090 GPU. Training a single FairDICE policy on each D4MORL task required approximately 10 to 20 minutes on average.",
+   "page": 25
+  }
+ },
+ "notes": "Q6 yes sur la grille de β, mais le critère retenant la valeur de β des résultats principaux n'est pas dit (un X3 caché reste possible, codé no faute de preuve). X4 no : la recherche des poids de préférence pour les références n'est pas un réglage de leurs hyperparamètres, jamais décrits. X2 : Figure 2 avec IC 95 % ; Figure 4 sans incertitude visible."
+}

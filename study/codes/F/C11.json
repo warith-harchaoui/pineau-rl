@@ -1,0 +1,98 @@
+{
+ "id": "C11",
+ "coder": "F",
+ "title": "RLlib: Abstractions for Distributed Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We evaluate the performance of RLlib on Evolution Strategies (ES), Proximal Policy Optimization (PPO), and A3C, comparing against specialized systems built specifically for those algorithms",
+   "page": 8,
+   "source": "main"
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We used TensorFlow to define neural networks for the RLlib algorithms evaluated.",
+   "page": 8,
+   "source": "main"
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "A.1 Hyperparameters for Evolution Strategies ... A.2 Hyperparameters for Proximal Policy Optimization (tables: Noise standard deviation 0.02, Adam stepsize 0.01 ... Timesteps per batch 320000, SGD minibatch size 32768 ...)",
+   "page": 1,
+   "source": "supp"
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "The same hyperparameters were used in all experiments.",
+   "page": 8,
+   "source": "main"
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "RLlib documentation can be found at http://rllib.io",
+   "page": 1,
+   "source": "main"
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences (5), annexe supplémentaire (A, B) et liens",
+   "page": null,
+   "source": "main"
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "The time required to achieve a reward of 6000 on the Humanoid-v1 task. (évaluation = temps pour atteindre un seuil sur l'environnement d'entraînement)",
+   "page": 8,
+   "source": "main"
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences (5), annexe supplémentaire (A, B) et liens",
+   "page": null,
+   "source": "main"
+  },
+  "X1": {
+   "value": null,
+   "quote": "With 8192 cores, we achieve a reward of 6000 in a median time of 3.7 minutes (médiane sur un nombre d'essais non dit)",
+   "page": 8,
+   "source": "main"
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Figure 8. The time required to achieve a reward of 6000 on the Humanoid-v1 task. (barres d'erreur visibles sur les histogrammes de la figure 8, non définies)",
+   "page": 8,
+   "source": "main"
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences (5), annexe supplémentaire (A, B) et liens",
+   "page": null,
+   "source": "main"
+  },
+  "X4": {
+   "value": "yes",
+   "quote": "comparing against specialized systems built specifically for those algorithms ... The same hyperparameters were used in all experiments.",
+   "page": 8,
+   "source": "main"
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We evaluate the performance of RLlib on Evolution Strategies (ES), Proximal Policy Optimization (PPO), and A3C",
+   "page": 8,
+   "source": "main"
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable (classic)",
+   "page": null,
+   "source": "main"
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "RLlib's ES implementation scales well on the Humanoid-v1 task to 8192 cores using AWS m4.16xl CPU instances",
+   "page": 8,
+   "source": "main"
+  }
+ },
+ "notes": "Article de systèmes (bibliothèque) : les 'expériences' mesurent débit et temps de résolution, pas une méthode d'apprentissage nouvelle. Q3 : hyperparamètres ES et PPO dans l'annexe supplémentaire (-supp.pdf, p.1) ; ceux de A3C (Pong) et d'Ape-X ne sont pas listés, mais ce sont des résultats secondaires. Q4/X4 : les références (OpenAI ES, MPI PPO) tournent avec les mêmes hyperparamètres ; pas de réglage, comparaison de débit. Q5 : lien vers le site du projet (rllib.io), pas de GitHub direct. X2 : barres d'erreur dessinées sur la figure 8 sans définition dans le texte. Cas limite pour X5 (classic plutôt que theory : vraies expériences RL à grande échelle)."
+}

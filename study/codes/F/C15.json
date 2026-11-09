@@ -1,0 +1,98 @@
+{
+ "id": "C15",
+ "coder": "F",
+ "title": "Can Deep Reinforcement Learning Solve Erdos-Selfridge-Spencer Games?",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "Identically to above, we evaluate PPO, A2C and DQN on varying start state potentials and K.",
+   "page": 5,
+   "source": "main"
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "To train our defender agent, we use a fully connected deep neural network with 2 hidden layers of width 300 to represent our policy.",
+   "page": 1,
+   "source": "supp"
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "To train our defender agent, we use a fully connected deep neural network with 2 hidden layers of width 300 to represent our policy. We decided on these hyperparameters after some experimentation with different depths and widths (seule l'architecture est donnée ; taux d'apprentissage, taille de lot, etc. absents ; 'OpenAI Baselines implementations' sans version)",
+   "page": 1,
+   "source": "supp"
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "We evaluate Proximal Policy Optimization (PPO) (Schulman et al., 2017), Advantage Actor Critic (A2C) (Mnih et al., 2016), and Deep Q-Networks (DQN) (Mnih et al., 2015), using the OpenAI Baselines implementations (Hesse et al., 2017). (aucun hyperparamètre listé, ni version de la bibliothèque ; idem pour l'agent supervisé comparé)",
+   "page": 5,
+   "source": "main"
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections 4-6, de l'annexe supplémentaire (-supp.pdf, 4 p.) et des liens (seul lien GitHub : OpenAI Baselines dans la bibliographie, pas le code de l'article)",
+   "page": null,
+   "source": "main"
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "We decided on these hyperparameters after some experimentation with different depths and widths",
+   "page": 1,
+   "source": "supp"
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "we train RL agents for the defender against an attacker playing optimally, and test these agents for the defender on the disjoint support attacker.",
+   "page": 5,
+   "source": "main"
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections 4-6, de l'annexe supplémentaire (-supp.pdf, 4 p.) et des liens ('significantly' employé sans test)",
+   "page": null,
+   "source": "main"
+  },
+  "X1": {
+   "value": 3,
+   "quote": "Each algorithm is run with 3 random seeds, and in all plots we show minimum, mean, and maximum performance.",
+   "page": 5,
+   "source": "main"
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Each algorithm is run with 3 random seeds, and in all plots we show minimum, mean, and maximum performance.",
+   "page": 5,
+   "source": "main"
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections 4-6, de l'annexe supplémentaire (-supp.pdf, 4 p.) et des liens",
+   "page": null,
+   "source": "main"
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections 4-6, de l'annexe supplémentaire (-supp.pdf, 4 p.) et des liens",
+   "page": null,
+   "source": "main"
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "Training defender agent with PPO, A2C and DQN for varying values of potentials and two different choices of K with a deep network.",
+   "page": 4,
+   "source": "main"
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable (classic)",
+   "page": null,
+   "source": "main"
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections 4-6, de l'annexe supplémentaire (-supp.pdf, 4 p.) et des liens",
+   "page": null,
+   "source": "main"
+  }
+ },
+ "notes": "Article-banc d'essai : pas de méthode nouvelle, on compare PPO/A2C/DQN (OpenAI Baselines) et un agent supervisé. Q3 : la 'méthode' est l'ensemble de ces agents ; seule l'architecture (2x300) est donnée -> no. Annexe supplémentaire ICML téléchargée (-supp.pdf). Q7 yes : tests explicites sur un adversaire différent, sur d'autres potentiels et d'autres K que ceux d'entraînement. X1 = 3 (fig. 3-4) ; 8 graines pour la fig. 6. 'with best hyperparams' (fig. 11, DQN attaquant) mentionne un choix d'hyperparamètres sans procédure ; pas de sélection d'essais."
+}

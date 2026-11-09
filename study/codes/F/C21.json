@@ -1,0 +1,98 @@
+{
+ "id": "C21",
+ "coder": "F",
+ "title": "Credit Assignment For Collective Multiagent RL With Global Rewards",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We test on two real world domains—taxi supply-demand matching [43], and the police patrolling problem [10].",
+   "page": 8,
+   "source": "main"
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "Typically, critic Qw is represented using a neural network; we normalize all count inputs to the network",
+   "page": 6,
+   "source": "main"
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences (5), de l'article entier et des liens (annexe citée mais non publiée sur papers.nips.cc : pas de fichier supplémentaire)",
+   "page": null,
+   "source": "main"
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences (5), de l'article entier et des liens (annexe citée mais non publiée sur papers.nips.cc : pas de fichier supplémentaire)",
+   "page": null,
+   "source": "main"
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences (5), de l'article entier et des liens (annexe citée mais non publiée sur papers.nips.cc : pas de fichier supplémentaire)",
+   "page": null,
+   "source": "main"
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences (5), de l'article entier et des liens (annexe citée mais non publiée sur papers.nips.cc : pas de fichier supplémentaire)",
+   "page": null,
+   "source": "main"
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "We have access to real world data about all incidents for 31 days in 24 zones. (aucune séparation entraînement / test des données décrite)",
+   "page": 9,
+   "source": "main"
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences (5), de l'article entier et des liens (annexe citée mais non publiée sur papers.nips.cc : pas de fichier supplémentaire) ('significantly' employé sans test)",
+   "page": null,
+   "source": "main"
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences (5), de l'article entier et des liens (annexe citée mais non publiée sur papers.nips.cc : pas de fichier supplémentaire)",
+   "page": null,
+   "source": "main"
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Figure 3: (a)-(c) Police patrolling problem; (d)-(h) synthetic grid patrolling with varying population M, grids (barres d'erreur sur les fig. 2-3 et bandes sur les courbes 3d-h, non définies dans le texte)",
+   "page": 9,
+   "source": "main"
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences (5), de l'article entier et des liens (annexe citée mais non publiée sur papers.nips.cc : pas de fichier supplémentaire)",
+   "page": null,
+   "source": "main"
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences (5), de l'article entier et des liens (annexe citée mais non publiée sur papers.nips.cc : pas de fichier supplémentaire)",
+   "page": null,
+   "source": "main"
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "The fleet contains 8000 taxis (or agents) with the city divided in 81 zones.",
+   "page": 8,
+   "source": "main"
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable (classic)",
+   "page": null,
+   "source": "main"
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences (5), de l'article entier et des liens (annexe citée mais non publiée sur papers.nips.cc : pas de fichier supplémentaire)",
+   "page": null,
+   "source": "main"
+  }
+ },
+ "notes": "Aucun hyperparamètre (taux d'apprentissage, architecture du critique, itérations) dans l'article ; il renvoie à une 'appendix' qui n'est pas publiée avec l'article sur papers.nips.cc (pas de lien Supplemental ; l'URL -Supplemental.zip rend 404). Codé sur l'article seul ; je n'ai pas cherché de version arXiv. X2 : barres et bandes visibles sur les figures 2-3 sans définition ni nombre d'essais."
+}

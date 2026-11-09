@@ -1,0 +1,98 @@
+{
+ "id": "C16",
+ "coder": "F",
+ "title": "QMIX: Monotonic Value Function Factorisation for Deep Multi-Agent Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We perform our experiments on the StarCraft II Learning Environment (SC2LE) (Vinyals et al., 2017)",
+   "page": 6,
+   "source": "main"
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "The architecture of all agent networks is a DRQN with a recurrent layer comprised of a GRU with a 64-dimensional hidden state",
+   "page": 3,
+   "source": "supp"
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "The mixing network consists of a single hidden layer of 32 units, utilising an ELU non-linearity. ... All neural networks are trained using RMSprop with learning rate 5 × 10−4.",
+   "page": 3,
+   "source": "supp"
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "The architecture of all agent networks is a DRQN ... we anneal ε linearly from 1.0 to 0.05 over 50k time steps ... The replay buffer contains the most recent 5000 episodes. We sample batches of 32 episodes ... All neural networks are trained using RMSprop with learning rate 5 × 10−4.",
+   "page": 3,
+   "source": "supp"
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections 5-6, de l'annexe supplémentaire (-supp.pdf) et des liens",
+   "page": null,
+   "source": "main"
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections 5-6, de l'annexe supplémentaire (-supp.pdf) et des liens",
+   "page": null,
+   "source": "main"
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "for each run of a method, we pause training every 100 episodes and run 20 independent episodes with each agent performing greedy decentralised action selection. (test sur les mêmes cartes que l'entraînement ; seule la position initiale des unités varie)",
+   "page": 7,
+   "source": "main"
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "Figures 3 and 4 plot the mean test win rate across 20 runs for each method on selected maps, together with 95% confidence intervals. (intervalles seulement, aucun test)",
+   "page": 7,
+   "source": "main"
+  },
+  "X1": {
+   "value": 20,
+   "quote": "Figures 3 and 4 plot the mean test win rate across 20 runs for each method on selected maps, together with 95% confidence intervals.",
+   "page": 7,
+   "source": "main"
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "together with 95% confidence intervals",
+   "page": 7,
+   "source": "main"
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections 5-6, de l'annexe supplémentaire (-supp.pdf) et des liens",
+   "page": null,
+   "source": "main"
+  },
+  "X4": {
+   "value": "yes",
+   "quote": "The architecture of all agent networks is a DRQN ... All neural networks are trained using RMSprop with learning rate 5 × 10−4. (mêmes hyperparamètres pour IQL, VDN, QMIX et ablations ; pas de réglage décrit pour aucune)",
+   "page": 3,
+   "source": "supp"
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "we focus on the decentralised micromanagement problem in StarCraft II, in which each of the learning agents controls an individual army unit.",
+   "page": 6,
+   "source": "main"
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable (classic)",
+   "page": null,
+   "source": "main"
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections 5-6, de l'annexe supplémentaire (-supp.pdf) et des liens",
+   "page": null,
+   "source": "main"
+  }
+ },
+ "notes": "Hyperparamètres en annexe supplémentaire ICML (-supp.pdf, C.2, p.2), communs à toutes les méthodes. Q5 no : aucun lien vers du code dans l'article ni l'annexe. X4 yes par traitement identique (mêmes hyperparamètres pour toutes les méthodes), mais aucun réglage n'est décrit ; lecture alternative : no. Q7 no : 'test win rate' = épisodes gloutons sur la même carte."
+}

@@ -1,0 +1,83 @@
+{
+ "id": "NE16",
+ "coder": "E",
+ "title": "Sharp Analysis for KL-Regularized Contextual Bandits and RLHF",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "In this section, we conduct experiments with synthetic data to investigate the benefit of mixed-policy sampling and the effect of KL-regularization coefficient on the sample complexity of the problem.",
+   "page": 21
+  },
+  "Q2": {
+   "value": "no",
+   "quote": "absent : récompenses linéaires R(ϕ, x, a) = ⟨x, ϕ(a)⟩ sur données synthétiques, aucun réseau",
+   "page": 21
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "We consider the case where context distribution d0 is a projected Gaussian distribution over the unit sphere and A is a discrete set with |A| = 5.",
+   "page": 21
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (référence « Offline Sampling » sans paramètres propres)",
+   "page": null
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent : données synthétiques, aucune évaluation tenue à l'écart",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 10,
+   "quote": "All the trials are repeated for 10 times and plotted with the standard variation.",
+   "page": 21
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "All the trials are repeated for 10 times and plotted with the standard variation.",
+   "page": 21
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "theory",
+   "quote": "we conduct experiments with synthetic data to investigate the benefit of mixed-policy sampling",
+   "page": 21
+  },
+  "X6": {
+   "value": null,
+   "quote": "sans objet (theory)",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "notes": "Article de théorie avec une annexe d'expériences synthétiques (X5 theory). Q3 no : le cadre est décrit mais η des panneaux (a), l'estimateur et sa régularisation ne sont pas donnés ; valeur discutable."
+}

@@ -1,0 +1,83 @@
+{
+ "id": "NER04",
+ "coder": "G",
+ "title": "Asymmetric REINFORCE for off-Policy Reinforcement Learning: Balancing positive and negative rewards",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "5.2 Large Language Models We validate our findings by training LLMs on reasoning tasks.",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We train Llama-3.1-8B-Instruct (Dubey et al., 2024) (which we refer to as Llama 8B), Llama-3.2-3B-Instruct (which we refer to as Llama 3B) and Qwen2.5-3B-Instruct",
+   "page": 8
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "We trained Llama-3.1-8B-Instruct with the AdamW optimizer Loshchilov and Hutter (2017) with a learning rate of 6 × 10−8 . (taux d'apprentissage et réglages non donnés pour Qwen 3B et Llama 3B)",
+   "page": 20
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens : aucun hyperparamètre pour la référence GRPO (Figure 5 droite, Figure 13)",
+   "page": 10
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 20
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 20
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "We train and test on the MATH dataset (Hendrycks et al. (2021), 12.5k high school-level problems), as well as on a subset of size 142k of the NuminaMath dataset ... (courbes « Test accuracy on MATH » sur le découpage test)",
+   "page": 8
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 9
+  },
+  "X1": {
+   "value": 3,
+   "quote": "Figure 3 Training dynamics of Llama 8B on the MATH dataset (results are averaged over 3 seeds, and a moving average with a window of size 3 is applied).",
+   "page": 9
+  },
+  "X2": {
+   "value": "no",
+   "quote": "results are averaged over 3 seeds (moyennes sans bande ni écart type sur les Figures 3 et 4 ; seule la Figure 5 gauche trace 7 essais individuels)",
+   "page": 9
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 9
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 10
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "We train Llama-3.1-8B-Instruct ... and Qwen2.5-3B-Instruct ... with the AsymRE objective",
+   "page": 8
+  },
+  "X6": {
+   "value": 2,
+   "quote": "We train Llama-3.1-8B-Instruct (Dubey et al., 2024) (which we refer to as Llama 8B), Llama-3.2-3B-Instruct (which we refer to as Llama 3B) and Qwen2.5-3B-Instruct",
+   "page": 8
+  },
+  "X7": {
+   "value": "no",
+   "quote": "The GPUs were split into two categories: workers that generated the responses ... and trainers (ni type, ni nombre, ni heures)",
+   "page": 20
+  }
+ },
+ "notes": "Pages = index PDF. Article d'abord théorique (bandit, théorèmes) mais avec de vrais entraînements RL de LLM (Llama 8B/3B, Qwen 3B sur MATH et NuminaMath) : codé llm, pas theory. Q7 yes : évaluation sur le découpage test de MATH / sous-ensemble de 2k de NuminaMath distinct de l'entraînement ; un lecteur exigeant un banc distinct coderait no. X2 no : pas de dispersion rapportée, seule la Figure 5 gauche montre les 7 essais individuels. X6 = 2 (Llama, Qwen)."
+}

@@ -1,0 +1,83 @@
+{
+ "id": "LR15",
+ "coder": "B",
+ "title": "Asynchronous Policy Gradient Aggregation for Efficient Distributed Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "In this section, we empirically test the performance of Rennala NIGT and compare it with the previous state-of-the-art method by (Lan et al., 2025) and the synchronized version of NIGT",
+   "page": 9
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We take the neural network architecture s → Linear(ds , 64) → Tanh → Linear(64, 64) → Tanh",
+   "page": 28
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "in the following experiments, we tune α ∈ {2−10 , 2−9 , . . . , 2−1 } for every plot and algorithm. Our algorithm Rennala NIGT has the additional parameters M and Minit . We take Minit = M which is tuned as M ∈ {20, 30, 50}.",
+   "page": 28
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "α is tuned differently for different algorithms. Thus, in the following experiments, we tune α ∈ {2−10 , 2−9 , . . . , 2−1 } for every plot and algorithm.",
+   "page": 28
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "The code was written in Python 3 using PyTorch (Paszke et al., 2019). [aucun lien après lecture de l'article entier]",
+   "page": 28
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "We tune both on the Humanoid-v4 task with equal computation speeds and zero communication delays and observe that η = 0.1 is the best choice for all algorithms.",
+   "page": 28
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture de la section 6 et de l'annexe H : réglage et évaluation sur les mêmes tâches MuJoCo",
+   "page": 28
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "We run every experiment with 5 seeds and report (20%, 80%) confidence intervals.",
+   "page": 28
+  },
+  "X1": {
+   "value": 5,
+   "quote": "We run every experiment with 5 seeds",
+   "page": 28
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We run every experiment with 5 seeds and report (20%, 80%) confidence intervals.",
+   "page": 28
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture : aucune sélection de meilleure graine",
+   "page": 28
+  },
+  "X4": {
+   "value": "yes",
+   "quote": "All methods start from the same point, for a fixed seed, and have two parameters: the momentum η ∈ {0.001, 0.01, 0.1} and the learning rate α ∈ {2−10 , . . . , 2−1 }. ... we tune α ... for every plot and algorithm.",
+   "page": 28
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "Following previous works (Lan et al., 2025; Fatkhullin et al., 2023), we focus on the MuJoCo tasks (Todorov et al., 2012).",
+   "page": 9
+  },
+  "X6": {
+   "value": null,
+   "quote": "sans objet (pas llm)",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "The distributed environment was emulated on machines with Intel(R) Xeon(R) Gold 6278C CPU @ 2.60GHz and 52 CPUs.",
+   "page": 28
+  }
+ },
+ "notes": "Q3/Q4 no : les grilles sont données mais pas les valeurs de α retenues par figure ni la taille M retenue. X5 : article surtout théorique, mais expériences sur MuJoCo (Humanoid, Walker2d, Hopper, Reacher) avec réseaux, donc classic plutôt que theory. X7 : matériel CPU donné sans durée."
+}

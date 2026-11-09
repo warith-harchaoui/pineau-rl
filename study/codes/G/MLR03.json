@@ -1,0 +1,83 @@
+{
+ "id": "MLR03",
+ "coder": "G",
+ "title": "Stabilizing Reinforcement Learning for Diffusion Language Models",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We evaluate StableDRL on two diffusion diffusion architectures: full-attention masked diffusion (LLaDA-8B-Instruct) and semi-autoregressive block diffusion (SDAR-8B).",
+   "page": 8
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We fine-tune the LLaDA-8B-Instruct model using iterative decoding with a generation length of 256 tokens",
+   "page": 25
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Table 3 Hyperparameter Configuration for Full-Attention Diffusion (LLaDA-8B-Instruct) ... Learning Rate 1.0 × 10−6 (Linear Decay) ... Table 4 Hyperparameter Configuration for Block Diffusion (SDAR-8B-Chat)",
+   "page": 25
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "We follow the experimental protocol of ESPO (Ou et al., 2025a) and SPG (Wang et al., 2025a) ... (aucun hyperparamètre listé pour D1, WD1, UniGRPO, ESPO, SPG, Trado)",
+   "page": 9
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Code: https://github.com/JianyuanZhong/StableDRL",
+   "page": 1
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "We set ϵ = 5 for the best performance. (pas de méthode de choix dite)",
+   "page": 9
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "We train on the selected MATH training data Lightman et al. (2023). Evaluation uses both (i) static (greedy block-wise) and (ii) dynamic (temperature 1.0) sampling. (Table 2 : MATH500, GSM8K, AIME 24)",
+   "page": 10
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 9
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 9
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (Tables 1 et 2 sans dispersion)",
+   "page": 9
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 9
+  },
+  "X4": {
+   "value": "no",
+   "quote": "We take ESPO Ou et al. (2025a) as a representative for GRPO and follow its original training setting.",
+   "page": 8
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "Stabilizing Reinforcement Learning for Diffusion Language Models ... We perform RL fine-tuning using the AdamW optimizer",
+   "page": 8
+  },
+  "X6": {
+   "value": 2,
+   "quote": "We evaluate StableDRL on two diffusion diffusion architectures: full-attention masked diffusion (LLaDA-8B-Instruct) and semi-autoregressive block diffusion (SDAR-8B).",
+   "page": 8
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (« Batch Size 1 per GPU » sans type ni nombre de GPU ni heures)",
+   "page": 25
+  }
+ },
+ "notes": "Pages = index PDF. Modèles de langage à diffusion (LLaDA-8B, SDAR-8B) entraînés par RL : llm. X6 = 2 (LLaDA et SDAR, familles distinctes ; SDAR est issu de Qwen3 mais publié comme famille propre — un lecteur qui le rattache à Qwen compterait quand même 2 car LLaDA est distinct). Q7 yes : pour SDAR entraînement sur MATH, évaluation sur GSM8K et AIME 24 ; pour LLaDA mêmes bancs avec découpage train/test officiel. ϵ = 5 « for the best performance » sans méthode."
+}

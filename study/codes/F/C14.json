@@ -1,0 +1,98 @@
+{
+ "id": "C14",
+ "coder": "F",
+ "title": "Fast Bellman Updates for Robust MDPs",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "In this section, we evaluate the numerical performance of the proposed algorithms by measuring their times to compute a single Bellman update.",
+   "page": 7,
+   "source": "main"
+  },
+  "Q2": {
+   "value": "no",
+   "quote": "All algorithms were implemented in C++ (algorithmes exacts de type homotopie et bissection, aucun réseau de neurones)",
+   "page": 7,
+   "source": "main"
+  },
+  "Q3": {
+   "value": "na",
+   "quote": "Note that since the methods are exact, they have no effect on the number of iterations taken by the (approximate) policy or value iteration method. (méthodes exactes sans hyperparamètre ; les paramètres de problème κ, S sont donnés)",
+   "page": 7,
+   "source": "main"
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "We compare the proposed methods with Gurobi 7.5, a state-of-the-art commercial LP solver.",
+   "page": 7,
+   "source": "main"
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "All algorithms were implemented in C++ and the code is available from the publications section of http://cs.unh.edu/˜mpetrik.",
+   "page": 7,
+   "source": "main"
+  },
+  "Q6": {
+   "value": "na",
+   "quote": "Instead of using a specific value of κ, we examine the runtime of all methods on a range of possible κ values. (aucun hyperparamètre à choisir)",
+   "page": 7,
+   "source": "main"
+  },
+  "Q7": {
+   "value": "na",
+   "quote": "The first set of problems are generated randomly. (rien n'est appris ni réglé : mesure de temps de calcul d'une mise à jour exacte)",
+   "page": 7,
+   "source": "main"
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections résultats numériques (5), annexes A-D (-supp.pdf) et liens",
+   "page": null,
+   "source": "main"
+  },
+  "X1": {
+   "value": 5,
+   "quote": "The results are averaged over 5 runs.",
+   "page": 7,
+   "source": "main"
+  },
+  "X2": {
+   "value": "no",
+   "quote": "To enhance clarity, we omit confidence intervals which are very small.",
+   "page": 7,
+   "source": "main"
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections résultats numériques (5), annexes A-D (-supp.pdf) et liens",
+   "page": null,
+   "source": "main"
+  },
+  "X4": {
+   "value": "na",
+   "quote": "We compare the proposed methods with Gurobi 7.5 (ni la méthode ni la référence ne sont réglées)",
+   "page": 7,
+   "source": "main"
+  },
+  "X5": {
+   "value": "theory",
+   "quote": "We proposed two new methods for computing robust Bellman updates. Our new algorithms have a computational complexity of O(S A log(S A))",
+   "page": 8,
+   "source": "main"
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable (theory)",
+   "page": null,
+   "source": "main"
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "All results were generated on a PC with i7-6700 3.4 GHz CPU with 32 GB RAM.",
+   "page": 7,
+   "source": "main"
+  }
+ },
+ "notes": "Article d'algorithmique (mises à jour de Bellman robustes exactes) ; les expériences sont des chronométrages contre Gurobi sur problèmes aléatoires, gestion de stock et (annexe D, p.17-18 du -supp.pdf qui reprend l'article entier) cart-pole/pendule/mountain car discrétisés. X5 cas limite : ni agent ni apprentissage -> theory, mais les bancs de temps sont systématiques, un autre lecteur pourrait dire classic. Q3/Q6/Q7/X4 codés na faute d'hyperparamètres et d'apprentissage ; un lecteur strict aurait 'yes' vacant pour Q3 et 'no' pour Q6/Q7. Q4 yes par la règle (version de Gurobi donnée, réglages par défaut implicites). Q5 : lien vers la page de publications de l'auteur, pas un dépôt."
+}

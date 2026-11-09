@@ -1,0 +1,83 @@
+{
+ "id": "LR11",
+ "coder": "G",
+ "title": "Predictive CVaR Q-learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "5 EXPERIMENTS In this section, we evaluate the performance of Predictive CVaR Q-learning algorithm in a controlled setting",
+   "page": 8
+  },
+  "Q2": {
+   "value": "no",
+   "quote": "A tabular function approximator is used for each of these functions: f θ , g ϕ , and uθ",
+   "page": 12
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Key settings include: • Learning rates: αθ = 0.01, αϕ = 0.0001 • Epsilon decay: ϵt = 0.1 · 0.9⌊t/100⌋ • Batch size: 8 sampled trajectories per episode",
+   "page": 12
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "The same hyperparameter configuration is applied to both Predictive CVaR Q-learning and CVaR Q-learning algorithms to ensure consistency.",
+   "page": 13
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "All code and experimental results will be released as a ZIP file.",
+   "page": 13
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "whose hyperparameters can be tuned through standard experimental procedures, just as is common",
+   "page": 6
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens : évaluation sur le même arbre de décision et la même grille qu'à l'entraînement",
+   "page": 9
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 9
+  },
+  "X1": {
+   "value": 10,
+   "quote": "Each solid line represents the mean performance across 10 independent trials.",
+   "page": 9
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Each solid line represents the mean performance across 10 independent trials. (bandes ombrées visibles sur les Figures 2b et 3b)",
+   "page": 9
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 9
+  },
+  "X4": {
+   "value": "yes",
+   "quote": "The same hyperparameter configuration is applied to both Predictive CVaR Q-learning and CVaR Q-learning algorithms to ensure consistency.",
+   "page": 13
+  },
+  "X5": {
+   "value": "theory",
+   "quote": "We design a finite-horizon MDP to highlight risk-return trade-offs under CVaR optimiza- tion.",
+   "page": 8
+  },
+  "X6": {
+   "value": null,
+   "quote": "sans objet (pas llm)",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "All experiments were conducted on a system with an 11th Gen Intel(R) Core(TM) i7-11700K processor ... Each experiment for a given seed typically requires about 20 (tree) and 90 (grid-world) minutes to complete.",
+   "page": 13
+  }
+ },
+ "notes": "Article surtout théorique (équation de Bellman CVaR, théorèmes) avec deux environnements tabulaires jouets (arbre de décision, grille 8x10) : codé theory. Q4 yes : CVaR-Q reçoit la même configuration ; RN (Q-learning neutre au risque) n'a pas d'hyperparamètres listés séparément. X1 = 10 dit pour l'arbre seulement, la grille ne donne pas le nombre d'essais. X4 yes au sens 'même configuration', aucun réglage n'est décrit pour aucune méthode."
+}

@@ -1,0 +1,83 @@
+{
+ "id": "MLR06",
+ "coder": "D",
+ "title": "Estimation of Treatment Effects Under Nonstationarity via the Truncated Policy Gradient Estimator",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "7 Numerical results In this section, we evaluate the performance of our TPG estimator through a series of experiments.",
+   "page": 17
+  },
+  "Q2": {
+   "value": "no",
+   "quote": "absent après lecture : estimateurs statistiques (DM, TPG, BC, DQ, LSTD-OPE), aucun réseau de neurones",
+   "page": 17
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "We set α = 1 as the default value, corresponding to a stability threshold of one estimated standard error.",
+   "page": 29
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "We compare the TPG estimator with the stationary DQ and LSTD-OPE (Farias et al. 2022), and with the bias-corrected (BC) estimator (with burn-in) under the Bernoulli switchback design (Hu and Wager 2022). — réglages de DQ/LSTD-OPE absents après lecture de l'annexe I",
+   "page": 18
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "All code and experiment details are publicly available. https://github.com/wenqian-xing/TPG-Estimator",
+   "page": 17
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "As a practical guideline, we suggest starting with the standard DM estimator (k = 0) and increasing k until the change in the estimate is small relative to its estimated standard error. ... A practical heuristic k-selection algorithm is provided in Appendix B.",
+   "page": 15
+  },
+  "Q7": {
+   "value": "na",
+   "quote": "absent : aucun apprentissage ni réglage, les estimateurs sont comparés à la vraie GATE calculée dans des simulateurs",
+   "page": 17
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture : intervalles de confiance du TPG étudiés (couverture, Table 2) mais aucun test appliqué à une comparaison entre estimateurs",
+   "page": 18
+  },
+  "X1": {
+   "value": 100,
+   "quote": "We run the simulator for 500,000 rider arrivals, i.e., approximately 142 hours of simulated time, across 100 simulated experiment trajectories.",
+   "page": 19
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Reported metrics are MAE (mean absolute error, in %) and STD (standard deviation).",
+   "page": 17
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 18
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture : BC montré pour plusieurs b, DQ/LSTD-OPE sans réglage décrit",
+   "page": 18
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "(ii) a queueing simulator calibrated using real-world nonstationary patient arrival data adapted from Li et al. (2026), and (iii) a large-scale NYC ride-sharing simulator with real data",
+   "page": 17
+  },
+  "X6": {
+   "value": null,
+   "quote": "sans objet (pas llm)",
+   "page": 17
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "All experiments were run on a PC with a 12-core CPU and 18 GB of RAM.",
+   "page": 60
+  }
+ },
+ "notes": "Statistical-estimation paper (policy-gradient view of A/B-test estimators), no learned agent: X5 coded classic rather than theory because the queueing and NYC ride-sharing simulators built on real data go beyond toy illustrations. Q7 coded na because nothing is trained or tuned, so there is no hold-out to speak of; X1 = 100 independent simulated trajectories (ride-sharing), the smallest among the main studies; X7 yes on the strength of the hardware statement (CPU, RAM) without hours."
+}

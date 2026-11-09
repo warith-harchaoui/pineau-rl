@@ -1,0 +1,83 @@
+{
+ "id": "MLR03",
+ "coder": "D",
+ "title": "Stabilizing Reinforcement Learning for Diffusion Language Models",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "4 Experiments We evaluate StableDRL on two diffusion diffusion architectures: full-attention masked diffusion (LLaDA-8B-Instruct) and semi-autoregressive block diffusion (SDAR-8B).",
+   "page": 8
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "For both LLaDA-8B-Instruct and SDAR-8B, We perform RL fine-tuning using the AdamW optimizer with a learning rate of 1.0 × 10−6 .",
+   "page": 8
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Table 3 summarizes the complete hyperparameter configuration.",
+   "page": 25
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens : D1, WD1, UniGRPO, ESPO, SPG, Trado comparés sans leurs hyperparamètres (« We follow the experimental protocol of ESPO ... and SPG »)",
+   "page": 9
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Code: https://github.com/JianyuanZhong/StableDRL",
+   "page": 1
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "All experiments were conducted using the StableDRL framework, with hyperparameters chosen to isolate the contribution of our stability mechanisms.",
+   "page": 25
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "benchmarks include GSM8K ..., MATH500 ..., Countdown ..., and Sudoku ..., with the same train and test splits, and evaluation procedure.",
+   "page": 9
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 9
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 9
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture : Tables 1 et 2 sans écart type ni intervalle, courbes sans bande",
+   "page": 9
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 9
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture : réglage des références non décrit",
+   "page": 9
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "full-attention masked diffusion (LLaDA-8B-Instruct) and semi-autoregressive block diffusion (SDAR-8B)",
+   "page": 8
+  },
+  "X6": {
+   "value": 2,
+   "quote": "We evaluate StableDRL on two diffusion diffusion architectures: full-attention masked diffusion (LLaDA-8B-Instruct) and semi-autoregressive block diffusion (SDAR-8B).",
+   "page": 8
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture : seul « Batch Size 1 per GPU (Grad Accumulation = 4) », ni type ni nombre de GPU ni heures",
+   "page": 25
+  }
+ },
+ "notes": "Q6 coded no: only ε is justified by a sensitivity sweep ('We set ϵ = 5 for the best performance'); the appendix says hyperparameters were 'chosen to isolate the contribution of our stability mechanisms' without a method. Q7 yes because evaluation uses held-out test splits and, for SDAR, AIME/GSM8K distinct from the MATH RL training data. X6 counts LLaDA and SDAR as two families (Qwen3 appears only as an untrained reference)."
+}

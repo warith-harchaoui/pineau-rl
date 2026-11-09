@@ -1,0 +1,83 @@
+{
+ "id": "ML16",
+ "coder": "C",
+ "title": "Causal Flow Q-Learning for Robust Offline Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "4. Experiments",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "use the image encoder from IMPALA (Espeholt et al., 2018) in all tasks",
+   "page": 6
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "we don't have the capacity to fully tune the full hyperparameter space of Causal-FQL on visual tasks. But we do observe consistent performance improvement in all visual tasks over FQL using the default FQL hyperparameters.",
+   "page": 16
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "We take default hyper-parameters recommended in FQL and Value Flows code base.",
+   "page": 17
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "Causal-FQL is built upon the codebase of FQL (Park et al., 2025b) ... https://github.com/seohongpark/fql",
+   "page": 16
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "We mainly tuned the hyperparameters in task 1 of visual-cube-double for its moderate difficulty. ... We sweep the discriminator loss coefficient over {1, 5, 10, 15}.",
+   "page": 8
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens : OGBench, mêmes tâches à l'entraînement et à l'évaluation",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 4,
+   "quote": "we run 500K steps training for all baselines and Causal-FQL proposed, averaging results over 4 seeds and present the results with mean and standard deviations.",
+   "page": 6
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "averaging results over 4 seeds and present the results with mean and standard deviations.",
+   "page": 6
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "We take default hyper-parameters recommended in FQL and Value Flows code base.",
+   "page": 17
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "we evaluate the newly proposed Causal Flow Q-Learning on 25 OGBench (Park et al., 2025a) visual tasks.",
+   "page": 6
+  },
+  "X6": {
+   "value": null,
+   "quote": "pas llm",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (« Due to high computation requirements » sans chiffre)",
+   "page": null
+  }
+ },
+ "notes": "Q5 no : les seuls liens mènent aux dépôts des références (FQL, Value Flows), pas au code de Causal-FQL. Q3 no : « Detailed hyperparameters are presented in Sec. F », mais la section F ne donne que les réglages par défaut des références, sans les valeurs retenues pour Causal-FQL. X4 no : la méthode a sa grille, les références restent aux réglages par défaut ; certains résultats sont même repris de la littérature."
+}

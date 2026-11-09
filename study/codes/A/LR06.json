@@ -1,0 +1,83 @@
+{
+ "id": "LR06",
+ "coder": "A",
+ "title": "Near-Optimal Sample Complexity Bounds for Constrained Average-Reward MDPs",
+ "criteria": {
+  "Q1": {
+   "value": "no",
+   "quote": "In this work, we address this gap by studying the sample complexity of learning an ε-optimal policy in CAMDPs under a generative model. [...] a matching lower bound [...] is established",
+   "page": 1
+  },
+  "Q2": {
+   "value": "no",
+   "quote": "absent après lecture de l'article entier (sections 1-8 et annexes A-G) : aucun réseau de neurones, analyse de complexité d'échantillonnage tabulaire",
+   "page": null
+  },
+  "Q3": {
+   "value": "na",
+   "quote": "absent après lecture de l'article entier (sections 1-8 et annexes A-G) : pas d'expérience",
+   "page": null
+  },
+  "Q4": {
+   "value": "na",
+   "quote": "absent après lecture de l'article entier (sections 1-8 et annexes A-G) : pas d'expérience ni de référence comparée",
+   "page": null
+  },
+  "Q5": {
+   "value": "na",
+   "quote": "absent après lecture de l'article entier (sections 1-8 et annexes A-G) : aucun lien de code, rien à exécuter",
+   "page": null
+  },
+  "Q6": {
+   "value": "na",
+   "quote": "absent après lecture de l'article entier (sections 1-8 et annexes A-G)",
+   "page": null
+  },
+  "Q7": {
+   "value": "na",
+   "quote": "absent après lecture de l'article entier (sections 1-8 et annexes A-G)",
+   "page": null
+  },
+  "Q8": {
+   "value": "na",
+   "quote": "absent après lecture de l'article entier (sections 1-8 et annexes A-G)",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture de l'article entier (sections 1-8 et annexes A-G)",
+   "page": null
+  },
+  "X2": {
+   "value": "na",
+   "quote": "absent après lecture de l'article entier (sections 1-8 et annexes A-G)",
+   "page": null
+  },
+  "X3": {
+   "value": "na",
+   "quote": "absent après lecture de l'article entier (sections 1-8 et annexes A-G)",
+   "page": null
+  },
+  "X4": {
+   "value": "na",
+   "quote": "absent après lecture de l'article entier (sections 1-8 et annexes A-G)",
+   "page": null
+  },
+  "X5": {
+   "value": "theory",
+   "quote": "we establish the first minimax-optimal sample complexity bounds for learning in CAMDPs under a generative model",
+   "page": 9
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable (pas llm)",
+   "page": null
+  },
+  "X7": {
+   "value": "na",
+   "quote": "absent après lecture de l'article entier (sections 1-8 et annexes A-G)",
+   "page": null
+  }
+ },
+ "notes": "Article purement théorique (bornes supérieure et inférieure, instances difficiles construites dans les figures), aucune expérience numérique ; Q3-Q8 et X2-X4, X7 codés na."
+}

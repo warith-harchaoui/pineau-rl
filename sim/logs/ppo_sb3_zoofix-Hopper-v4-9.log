@@ -1,0 +1,5 @@
+/Users/warithharchaoui/pineau-rl/sim/env/lib/python3.11/site-packages/gymnasium/envs/registration.py:519: DeprecationWarning: [33mWARN: The environment Hopper-v4 is out of date. You should consider upgrading to version `v5`.[0m
+  logger.deprecation(
+/Users/warithharchaoui/pineau-rl/sim/env/lib/python3.11/site-packages/gymnasium/envs/registration.py:519: DeprecationWarning: [33mWARN: The environment Hopper-v4 is out of date. You should consider upgrading to version `v5`.[0m
+  logger.deprecation(
+{"algo": "ppo_sb3_zoofix", "task": "Hopper-v4", "seed": 9, "final": 991.1493344695913, "perturbed": 990.8891386780608, "wall": 1997.7}

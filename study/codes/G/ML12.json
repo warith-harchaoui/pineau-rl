@@ -1,0 +1,83 @@
+{
+ "id": "ML12",
+ "coder": "G",
+ "title": "VideoVeritas: AI-Generated Video Detection via Perception Pretext Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "4. Experiments 4.1. Experimental Setup Evaluation Protocols. In-domain (ID) testing includes test sets of GenBuster-200K (Wen et al., 2025a) and Talking- headBench (Xiong et al., 2025).",
+   "page": 5
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We implement the VIDEOVERITAS with Qwen3-VL-8B (Bai et al., 2025a).",
+   "page": 6
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "For PPRL, the model is trained for 2 epochs with the same LoRA setting, and the learning rate is set to 1 × 10−5 with a batch size of 32. The temperature is set to 1.0. ... Specifically, G is set to 4 in our method. ϵ1 and ϵ2 are set to 3 × 10−4 and 4 × 10−4",
+   "page": 6
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "4 SoTA binary detectors are trained on our dataset using their original preprocessing. (hyperparamètres des références non donnés)",
+   "page": 6
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "§ Project: https://github.com/EricTan7/VideoVeritas",
+   "page": 1
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 6
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "Out-of-domain (OOD) testing involves existing benchmarks GenBuster++ (Wen et al., 2025b), LOKI (Ye et al., 2024) (using their video set)",
+   "page": 5
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 6
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 6
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (Table 1 : précisions ponctuelles sans dispersion)",
+   "page": 6
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 6
+  },
+  "X4": {
+   "value": "no",
+   "quote": "4 SoTA binary detectors are trained on our dataset using their original preprocessing.",
+   "page": 6
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "we adopt Group Sequence Policy Optimization (GSPO) (Zheng et al., 2025a) for training.",
+   "page": 5
+  },
+  "X6": {
+   "value": 1,
+   "quote": "We implement the VIDEOVERITAS with Qwen3-VL-8B (Bai et al., 2025a).",
+   "page": 6
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Our model is trained with 8 PPUE GPUs based on ms-swift (Zhao et al., 2024).",
+   "page": 15
+  }
+ },
+ "notes": "Pages = index PDF. RL (GSPO) sur un VLM Qwen3-VL-8B pour la détection de vidéos générées : llm. Un seul modèle de base entraîné. Q7 yes : bancs hors domaine (GenBuster++, LOKI, MintVid). X7 yes au titre du nombre de GPU, sans heures."
+}

@@ -1,0 +1,83 @@
+{
+ "id": "NE06",
+ "coder": "D",
+ "title": "SATURN: SAT-based Reinforcement Learning to Unleash LLMs Reasoning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "3.2 Experimental Setup SATURN Hyperparameters For SATURN-1.5B and SATURN-7B, we set the initial SAT instance parameters (n, k, l) to (3, 5, 5) and (3, 5, 13), respectively.",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We apply SATURN to DeepSeek-R1-Distill-Qwen-1.5B and 7B",
+   "page": 6
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "The hyperparameters used in training are summarized in Table 8. All other parameters not listed above consistently follow the default settings of OpenRLHF.",
+   "page": 25
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "In addition, we include a supervised fine-tuning (SFT)-only baseline trained on the Math training dataset [19] ... for one epoch of SFT — hyperparamètres de la SFT et de Logic-RL absents après lecture des annexes",
+   "page": 6
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "https://github.com/gtxygyzb/Saturn-code.",
+   "page": 1
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "These experiments validate the effectiveness of curriculum learning and the design of various SAT training configurations.",
+   "page": 30
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "SATURN-2.6k further includes 1,000 test instances from 10 unseen harder difficulty levels, with 100 instances per level. ... For math and programming tasks, following DeepSeek-AI [11], we use AIME 24/25 [2], AMC 22/23 [1], MATH-500 [19], GPQA Diamond [35], and LiveCodeBench",
+   "page": 6
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "7. Experiment statistical significance ... Answer: [No] Justification: Following current evaluation practices in recent large model benchmarks, we report the unbiased estimator of the pass@k metric.",
+   "page": 18
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens (« sample 12 times per problem » concerne l'évaluation, pas les graines)",
+   "page": 6
+  },
+  "X2": {
+   "value": "no",
+   "quote": "Although we do not report explicit error bars, pass@k inherently reflects statistical reliability.",
+   "page": 18
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 7
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture : références concurrentes reprises telles quelles, réglage non décrit",
+   "page": 6
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "We apply SATURN to DeepSeek-R1-Distill-Qwen-1.5B and 7B, obtaining SATURN-1.5B and SATURN-7B",
+   "page": 5
+  },
+  "X6": {
+   "value": 1,
+   "quote": "Beyond the DeepSeek-R1-Distill-Qwen-7B, we introduce two additional models: Qwen2.5-7B-Instruct-1M [39, 49] following Logic-RL [47] settings, and DeepScaleR-1.5B-Preview [29]",
+   "page": 8
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "All experiments are conducted on NVIDIA 8×A100 (40GB) GPUs.",
+   "page": 6
+  }
+ },
+ "notes": "Q3 coded no under the strict rule: Tables 6 and 8 are detailed, but 'All other parameters not listed above consistently follow the default settings of OpenRLHF' gives no OpenRLHF version. X6 = 1: DeepSeek-R1-Distill-Qwen, DeepScaleR and Qwen2.5-7B-Instruct-1M all sit on Qwen2.5 weights (2 if DeepSeek-distill is counted as its own family). Q6 no: the Appendix H ablations compare configurations on the test benchmarks without stating a selection procedure, and the thresholds ε = 0.5/0.75 are not justified."
+}

@@ -1,0 +1,83 @@
+{
+ "id": "ML14",
+ "coder": "C",
+ "title": "Position: Deployed Reinforcement Learning should be Continual",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "Figure 4 (left) shows two agents in the Pendulum environment. The solid curve is a Sarsa(λ) agent",
+   "page": 14
+  },
+  "Q2": {
+   "value": "no",
+   "quote": "The value function is linear in tile-coded features (Sutton & Barto, 2018), and the action space is discretized into 7 equal bins.",
+   "page": 14
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "Both agents use a fixed step-size of α = 0.1 and a trace decay parameter of λ = 0.95.",
+   "page": 14
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "The dashed curve is the train-then-fix paradigm, where checkpoints of the solid curve's policy are taken every 30k steps and ran without updates.",
+   "page": 14
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "Spending compute tuning the learning rate may reduce this gap on a problem-to-problem basis.",
+   "page": 14
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 1,
+   "quote": "Both agents run for a single, 250k step episode, with no resets.",
+   "page": 14
+  },
+  "X2": {
+   "value": "no",
+   "quote": "Faint curves show individual runs, whereas the opaque curve is the mean performance. Confidence intervals did not accurately capture the distribution of failure modes.",
+   "page": 15
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "theory",
+   "quote": "We will use a toy problem with wear-and-tear to demonstrate the advantage of continual adaptation over train-then-fix.",
+   "page": 14
+  },
+  "X6": {
+   "value": null,
+   "quote": "pas llm",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "notes": "Article de position avec une seule expérience jouet en annexe (Rusting Pendulum) : X5 theory, mais Q1 yes puisqu'il y a une expérience, et les autres critères sont codés sur elle. Q3 no : ni le pavage (tilings), ni l'exploration, ni γ. X1=1 pour la figure 4, la figure 5 reprend 30 essais ; X2 no car on montre les essais individuels, sans écart type ni intervalle."
+}

@@ -1,0 +1,83 @@
+{
+ "id": "ML06",
+ "coder": "B",
+ "title": "MEAL: A Benchmark for Continual Multi-Agent Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "5.1. Baseline Comparison ... Figure 3 (top) compares our baselines on Level 1, and Table 2 reports the exact metrics for all levels.",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "MLP (default) : observation tensor is flattened to a vector and passed through 2 fully-connected layers of width 128.",
+   "page": 18
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Table 6 lists settings that are constant across every experiment unless stated otherwise. [Table 6 : Adam, learning rate 10−3, 2048 parallel envs, rollout 400, 8 epochs, 16 minibatches, γ 0.99, GAE λ 0.95, clip 0.2 …]",
+   "page": 18
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "Reg. coefficient λ 1011 (EWC), 109 (MAS), 107 (L2) ... Online EWC/MAS decay 0.9 ... AGEM Memory size 100 000 transitions ... AGEM Sample size (per proj.) 1024",
+   "page": 19
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "The code and environments are accessible on GitHub. [hyperlien vers https://github.com/TTomilin/MEAL]",
+   "page": 1
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "We adopt many of JaxMARL’s default settings for our network configuration, IPPO setup, and training processes. [aucune méthode de choix des coefficients λ après lecture de l'annexe C]",
+   "page": 6
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections 4-5 et annexes : les métriques (Average Soup Delivery, forgetting) portent sur les tâches de la séquence d'entraînement",
+   "page": 6
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "The results in Table 8 show no statistically significant difference between the two strategies on Level 2, given the high variance. [jugement sur intervalles de confiance, aucun test nommé]",
+   "page": 21
+  },
+  "X1": {
+   "value": 5,
+   "quote": "error bars, shaded regions, and table ± ranges denote 95% confidence intervals computed across the five seeds.",
+   "page": 6
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Table 2. Comparison of CL methods in combination with IPPO across three difficulty levels with 95% confidence intervals.",
+   "page": 6
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture : moyennes sur les cinq graines",
+   "page": 6
+  },
+  "X4": {
+   "value": "yes",
+   "quote": "Table 6 lists settings that are constant across every experiment unless stated otherwise.",
+   "page": 18
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "MEAL ... enables training on sequences of 100 tasks on a single GPU in a few hours. [Overcooked multi-agent, IPPO]",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "sans objet (pas llm)",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Our experiments are conducted on a dedicated compute node with a 72-core 3.2 GHz AMD EPYC 7F72 CPU and a single NVIDIA H100 GPU. The wall-clock time to train a task for 108 steps on our hardware is ∼ 2 minutes.",
+   "page": 6
+  }
+ },
+ "notes": "Article de banc d'essai : la « méthode » et les références sont les mêmes méthodes CL, toutes avec la configuration fixe de la Table 6 (d'où Q3, Q4, X4 yes, mais aucune méthode de choix des λ). Q8 no : la phrase « no statistically significant difference » (annexe) repose sur les IC à 95 % sans test nommé ; Q7 no car on évalue sur les tâches de la séquence entraînée (les partenaires de l'annexe M sont aussi entraînés séquentiellement)."
+}

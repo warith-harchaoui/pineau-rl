@@ -1,0 +1,83 @@
+{
+ "id": "NE02",
+ "coder": "D",
+ "title": "VisionThink: Smart and Efficient Vision Language Model via Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "4 Experiments 4.1 Evaluation Setup Benchmarks. We evaluate VisionThink on several general VQA benchmarks",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We conduct experiments based on Qwen2.5-VL-7B-Instruct[5].",
+   "page": 7
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "We use a total batch size of 512 with mixed-precision (FP16) training. The mini-batch size is set to 32, and the KL divergence coefficient is 0.001. The policy model is optimized using an initial learning rate of 1 × 10−6 . For each prompt, we generate 16 candidate responses using a temperature of 1.0",
+   "page": 20
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "The retained ratio of the baseline methods is a predefined hyperparameter, while for VisionThink, the ratio is determined autonomously by the model",
+   "page": 9
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Codes and models: https://github.com/dvlab-research/VisionThink",
+   "page": 1
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "we set θ as 0.2 here. We will discuss the impact of the threshold in Appendix C.3.",
+   "page": 6
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "We evaluate VisionThink on several general VQA benchmarks, including ChartQA [43], OCRBench [37], MathVista [40], MMVet [83], RealWorldQA [68], and MathVerse [88], etc.",
+   "page": 7
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 9
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 7
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture : Tables 1, 2, 6 et 7 en valeurs ponctuelles",
+   "page": 9
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 7
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 9
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "We conduct experiments based on Qwen2.5-VL-7B-Instruct[5]. For training, we employ veRL[54] framework",
+   "page": 7
+  },
+  "X6": {
+   "value": 1,
+   "quote": "In this paper, we conduct experiments using Qwen2.5-VL-7B-Instruct [5] as the base model",
+   "page": 20
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture : seule mention « in order to save the GPU memory and improve the inference speed, we utilize the vLLM[25] framework »",
+   "page": 21
+  }
+ },
+ "notes": "Q4 coded no: the efficient-VLM baselines (FastV, SparseVLM, VisionZip) give only their retained-token ratio, and QwenRL/QwenRL 1/4, which the authors trained themselves, have no configuration listed. Q6 coded no: the penalty threshold θ and the prompt are explored through ablations (App. C.3-C.4) with no stated selection criterion ('we set θ as 0.2 here'), and nothing is said about choosing the learning rate or batch size."
+}

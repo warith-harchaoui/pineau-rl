@@ -1,0 +1,83 @@
+{
+ "id": "ML17",
+ "coder": "G",
+ "title": "InfoPO: Information-Driven Policy Optimization for User-Centric Agents",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "Table 1. Experimental results on UserGym, ColBench, and τ 2 -Bench.",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We use Qwen2.5-7B-Instruct (Qwen et al., 2025) and Qwen-3-4B (Yang et al., 2025a) as our base models.",
+   "page": 6
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Table 4. Key hyperparameters for training on UserGym, ColBench, and τ 2 -Bench environments. ... Learning rate 3 × 10−7 3 × 10−7 1 × 10−6",
+   "page": 19
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens : UserRL, RAGEN et Search-R1 sont décrits (« We adopt its strongest Equalized/R2G setting ») sans leurs hyperparamètres",
+   "page": 5
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "https://github.com/kfq20/InfoPO.",
+   "page": 1
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "As shown in our sensitivity analysis in Appendix B.3, a range of 0.1 to 0.5 provides a stable training signal ... The choice of T in the variance-gating function ... is based on the typical magnitude of the external reward variance (σgext ) observed during the initial training phase. (pas de méthode d'ensemble ; taux d'apprentissage et autres valeurs sans justification)",
+   "page": 19
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "we report the success rate or accumulated reward across eight tasks, including three held-out settings to test cross-purpose generalization.",
+   "page": 5
+  },
+  "Q8": {
+   "value": "yes",
+   "quote": "We performed both parametric (t-test) and non-parametric (Mann-Whitney U test) comparisons between each alternative strategy and the default string placeholder. ... all comparisons yielded non-significant results (all p > 0.24)",
+   "page": 21
+  },
+  "X1": {
+   "value": 3,
+   "quote": "Solid lines and shaded regions represent mean ± std across three seeds.",
+   "page": 7
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Solid lines and shaded regions represent mean ± std across three seeds.",
+   "page": 7
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": 6
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens : aucun réglage décrit pour les références",
+   "page": 6
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "We use Qwen2.5-7B-Instruct (Qwen et al., 2025) and Qwen-3-4B (Yang et al., 2025a) as our base models. ... all RL training is conducted directly without any SFT cold-start.",
+   "page": 6
+  },
+  "X6": {
+   "value": 1,
+   "quote": "We use Qwen2.5-7B-Instruct (Qwen et al., 2025) and Qwen-3-4B (Yang et al., 2025a) as our base models.",
+   "page": 6
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "All experiments are conducted on 4× NVIDIA A800 GPUs (80GB).",
+   "page": 6
+  }
+ },
+ "notes": "Pages = index PDF. Q8 yes à la lettre : t-test et Mann-Whitney appliqués à une comparaison, mais il s'agit d'une analyse de robustesse du marqueur de masquage (annexe), pas de la comparaison principale InfoPO contre références ; le Table 1 n'a ni test ni dispersion. X1 = 3 (courbes de la Figure 3) ; le nombre de graines du Table 1 n'est pas dit, Avg@4 = 4 exécutions à l'évaluation, pas des graines. X6 = 1 (Qwen2.5 et Qwen3, même famille)."
+}

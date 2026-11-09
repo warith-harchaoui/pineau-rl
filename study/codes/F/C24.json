@@ -1,0 +1,98 @@
+{
+ "id": "C24",
+ "coder": "F",
+ "title": "Evolved Policy Gradients",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We apply our method to several randomized continuous control MuJoCo environments",
+   "page": 5,
+   "source": "main"
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "The agent's MLP policy has 2 hidden layers of 64 units with tanh activation.",
+   "page": 3,
+   "source": "supp"
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "We use W = 256 inner-loop workers in Algorithm 1, combined with V = 64 ES noise vectors. The loss function is evolved over 5000 epochs ... We tabulate the hyperparameters for each randomized environment in Table 1 in Section G. ... The inner loop step size is fixed to 10−3, while the outer loop step size is annealed linearly from 10−2 to 10−3 over the first 2000 epochs.",
+   "page": 3,
+   "source": "supp"
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "The off-the-shelf PG algorithm (PPO) was moderately tuned to perform well on these tasks (hyperparamètres de PPO non listés ; MAML repris de [6] ('data from [6]'), RL2 sans hyperparamètres)",
+   "page": 3,
+   "source": "supp"
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "An implementation of EPG is available at http://github.com/openai/EPG.",
+   "page": 2,
+   "source": "main"
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "The off-the-shelf PG algorithm (PPO) was moderately tuned to perform well on these tasks (aucune méthode de choix dite, ni pour PPO ni pour les valeurs EPG par environnement)",
+   "page": 3,
+   "source": "supp"
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "EPG evolves a loss function that trains agents to quickly reach goals sampled from negative x-axis, never seen during metatraining.",
+   "page": 8,
+   "source": "main"
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections 4-5, de l'annexe supplémentaire NeurIPS (Evolved_Policy_Gradients_Supp.pdf, C-G, tableau 1) et des liens ('significantly' employé sans test)",
+   "page": null,
+   "source": "main"
+  },
+  "X1": {
+   "value": 20,
+   "quote": "The plots in this section show the mean value of 20 test-time training curves as a solid line, while the shaded area represents the interquartile range.",
+   "page": 5,
+   "source": "main"
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "the shaded area represents the interquartile range",
+   "page": 5,
+   "source": "main"
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections 4-5, de l'annexe supplémentaire NeurIPS (Evolved_Policy_Gradients_Supp.pdf, C-G, tableau 1) et des liens",
+   "page": null,
+   "source": "main"
+  },
+  "X4": {
+   "value": "no",
+   "quote": "The off-the-shelf PG algorithm (PPO) was moderately tuned to perform well on these tasks",
+   "page": 3,
+   "source": "supp"
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We apply our method to several randomized continuous control MuJoCo environments",
+   "page": 5,
+   "source": "main"
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable (classic)",
+   "page": null,
+   "source": "main"
+  },
+  "X7": {
+   "value": "no",
+   "quote": "each inner-loop worker takes approximately 196 million steps to evolve the loss function used in the RandomReacher experiments (pas encore du calcul au sens GPU / heures / FLOP)",
+   "page": 7,
+   "source": "supp"
+  }
+ },
+ "notes": "Annexe supplémentaire NeurIPS lue (zip officiel papers.nips.cc, extrait dans un dossier temporaire hors study/). X1 cas limite : 20 entraînements de politique à l'essai (test-time training) avec la perte évoluée ; le nombre de méta-entraînements EPG indépendants n'est pas dit (annexe fig. 4 : 'various random seeds'). Q7 yes : MDP de test tirés au hasard et buts hors distribution (GoalAnt, côté gauche). X7 no : 256 workers et 196 M de pas, sans matériel ni durée."
+}

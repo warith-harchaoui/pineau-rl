@@ -1,0 +1,83 @@
+{
+ "id": "ML03",
+ "coder": "B",
+ "title": "CoCoEdit: Content-Consistent Image Editing via Region Regularized Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "4. Experiments 4.1. Experimental Settings",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We train our CoCoEdit models by finetuning FLUX.1 Kontext [Dev] (Labs et al., 2025) and Qwen-Image-Edit [2509] (Wu et al., 2025a) using LoRA (Hu et al., 2022) with rank of 32.",
+   "page": 6
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "we train all models with learning rate set to 3e−4 at a resolution of 512 × 512. During sampling, we set sampling inference steps to 10, the number of images per prompt to 12, and the number of groups to 24; for training, we set the KL loss weight to 0.0001.",
+   "page": 18
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture de 4.1 et de l'annexe C : pour les références (Edit-R1, MotionNFT, SFT on 40K) seuls les réglages d'inférence sont donnés (« we follow the default settings of each model »), aucun hyperparamètre d'entraînement",
+   "page": 19
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Codes, data and models of CoCoEdit can be found at CoCoEdit. [hyperlien vers https://github.com/langmanbusi/CoCoEdit]",
+   "page": 1
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture : « Following the training setup in (Lin et al., 2025) » et valeurs de λ données sans méthode de choix",
+   "page": 18
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "We evaluate the compared methods on ImgEdit (Ye et al., 2025) and GEdit-Bench (Liu et al., 2025b) with mask annotations.",
+   "page": 7
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture : scores ponctuels et rang moyen de l'étude utilisateur, sans test",
+   "page": 8
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture de la section 4 et de l'annexe C : nombre d'entraînements RL non dit",
+   "page": null
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture : Tables 1-2 sans écart type ni intervalle",
+   "page": 6
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture : aucune sélection de meilleur essai mentionnée",
+   "page": 6
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture : aucun réglage décrit pour les références",
+   "page": 7
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "We train our CoCoEdit models by finetuning FLUX.1 Kontext [Dev] ... and Qwen-Image-Edit [2509] ... the MLLM reward is obtained by deploying Qwen2.5-VL-32B",
+   "page": 6
+  },
+  "X6": {
+   "value": 2,
+   "quote": "by finetuning FLUX.1 Kontext [Dev] (Labs et al., 2025) and Qwen-Image-Edit [2509] (Wu et al., 2025a)",
+   "page": 6
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "The entire training process takes approximately 4 days on 8 NVIDIA A800 GPUs.",
+   "page": 19
+  }
+ },
+ "notes": "X5 : RL (de type GRPO) sur de grands modèles génératifs d'édition d'image avec récompense d'un MLLM ; ce ne sont pas des LLM stricto sensu mais le plus proche est llm (et non classic). X6 = 2 : FLUX (Black Forest Labs) et Qwen. Q5 : le lien n'apparaît que comme hyperlien sur le mot « CoCoEdit »."
+}

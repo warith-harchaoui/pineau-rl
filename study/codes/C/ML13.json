@@ -1,0 +1,83 @@
+{
+ "id": "ML13",
+ "coder": "C",
+ "title": "GenCircuit-RL: Reinforcement Learning from Hierarchical Verification for Genetic Circuit Design",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "4. Experiments",
+   "page": 5
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "Experiments use the Qwen3-8B model (Yang et al., 2025) as the primary base architecture",
+   "page": 5
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Table 19 lists best performing hyperparameters for the SFT phase. ... Table 20 summarizes best performing hyperparameters for the RL phase.",
+   "page": 36
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "RLVF-Binary uses GRPO training with binary rewards ... SFT provides the initialization for all RLVF experiments",
+   "page": 6
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "We evaluated LoRA with ranks r ∈ {16, 32, 64, 128} on the validation set. ... The 30% augmentation ratio was selected via grid search over {10%, 20%, 30%, 50%, 100%}",
+   "page": 41
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "The OOD Cello evaluation circuits use 5 held-out repressorpromoter pairs that never appear during training.",
+   "page": 7
+  },
+  "Q8": {
+   "value": "yes",
+   "quote": "For pairwise method comparisons, we use a two-sided t-test and and consider p < 0.05 (post-correction) as statistically significant.",
+   "page": 6
+  },
+  "X1": {
+   "value": 5,
+   "quote": "We report mean ± standard deviation computed over 5 independent training seeds with different random initializations.",
+   "page": 6
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Results show mean ± std over 5 seeds.",
+   "page": 6
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens : les variantes RLVF partagent le pipeline mais aucun réglage égal n'est affirmé",
+   "page": null
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "Training uses Group Relative Policy Optimization (GRPO)",
+   "page": 2
+  },
+  "X6": {
+   "value": 3,
+   "quote": "we additionally train Llama-3.1-8B (Grattafiori et al., 2024) and Gemma-3-12B (Gemma Team et al., 2025) under identical conditions",
+   "page": 5
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "RL fine-tuning on 8× A100 80 GB required approximately 1,280 GPU-hours (∼160 hours wall-clock)",
+   "page": 44
+  }
+ },
+ "notes": "Q6 yes discutable : la sélection est décrite (grille, jeu de validation) pour le rang LoRA et le taux d'augmentation, mais le lr GRPO est seulement « 1e-6 provided stable training ». Q4 yes parce que les références RL sont des variantes du même pipeline GRPO (table 20) et que le SFT a sa table ; Claude Opus en prompting n'a pas d'hyperparamètres d'entraînement."
+}

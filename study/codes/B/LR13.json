@@ -1,0 +1,83 @@
+{
+ "id": "LR13",
+ "coder": "B",
+ "title": "MemAgent: Reshaping Long-Context LLM with Multi-Conv RL-based Memory Agent",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "3 EXPERIMENTS 3.1 EXPERIMENTAL SETUP",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "we choose Qwen2.5-7B-Instruct and Qwen2.5-14B-Instruct (Yang et al., 2024) as backbone models.",
+   "page": 6
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "We use the DAPO algorithm for training, applying a KL factor of 1 × 10−3 and disabling the entropy loss. The AdamW optimizer is employed with a constant learning rate of 1 × 10−6 ... rollout batchsize of 256, with a group size of 16.",
+   "page": 17
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "Table 6: Generation configurations of baseline models. QwenLong-L1 (Wan et al., 2025) 128K 120,000 / 10,000",
+   "page": 18
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "The training and evaluation code, as well as the dataset and model weights, will be available in open-source platforms.",
+   "page": 11
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "we set the default configuration of MEMAGENT to use a 1,024-token memory and context chunks of 5,000 tokens, based on preliminary validation results.",
+   "page": 8
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "LongBench-SUM. We also adopt two long-context summay tasks, GovReport(Huang et al., 2021) and QMSum(Zhong et al., 2021) from LongBench(Bai et al., 2024) to evaluate the performance in different task category",
+   "page": 7
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections 3 et annexes A-D : scores ponctuels, aucun test",
+   "page": 7
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections 3 et annexes : nombre d'entraînements RL non dit",
+   "page": null
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture : tableaux et cartes de chaleur sans écart type ni intervalle",
+   "page": 7
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture : aucune sélection de meilleur essai ou de point de contrôle sur le test mentionnée",
+   "page": 18
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture : les références sont des modèles publiés évalués tels quels, sans réglage décrit",
+   "page": 7
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "we adopt the RLVR recipe (OpenAI, 2024; Guo et al., 2025; Seed et al., 2025)",
+   "page": 4
+  },
+  "X6": {
+   "value": 1,
+   "quote": "we choose Qwen2.5-7B-Instruct and Qwen2.5-14B-Instruct (Yang et al., 2024) as backbone models.",
+   "page": 6
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture : ni GPU ni heures ; l'annexe B estime des FLOP d'inférence (complexité), pas le calcul d'entraînement utilisé",
+   "page": 19
+  }
+ },
+ "notes": "Q4 : les références sont des modèles pré-entraînés non ré-entraînés ; leur configuration de génération est donnée (Table 6), compté yes. Q6 : seul le choix de la taille mémoire invoque une « preliminary validation », trop partiel pour yes."
+}

@@ -1,0 +1,83 @@
+{
+ "id": "ML08",
+ "coder": "C",
+ "title": "Towards Practical World Model-based Reinforcement Learning for Vision-Language-Action Models",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "5. Experiments",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "Vision-Language-Action (VLA) models ... finetuning them with reinforcement learning",
+   "page": 1
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "We present the detailed training hyperparameters for the UMM-World and the downstream policy optimization in Table 4 and Table 5.",
+   "page": 23
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "We compare VLA-MBPO against four baselines: (1)π0.5 (SFT) ... (2) BC (WM) ... (3) an online RL baseline πRL ... and (4) IDQL",
+   "page": 7
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "our method maintains a single set of hyperparameters across all tasks (Table 5)",
+   "page": 5
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "Evaluation is conducted on 50 trajectories per task: 30 seen and 20 unseen, where the latter include novel objects, backgrounds, and spatial configurations.",
+   "page": 9
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens : tableau 2 et figure 5 sans barre d'erreur",
+   "page": 8
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "an online RL baseline πRL (Chen et al., 2025a) under an equivalent real-world interaction budget",
+   "page": 7
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "Vision-Language-Action (VLA) models show strong generalization for robotic control, but finetuning them with reinforcement learning (RL) is constrained",
+   "page": 1
+  },
+  "X6": {
+   "value": 1,
+   "quote": "the behavior policy is obtained via π0.5 with one-shot SFT",
+   "page": 7
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "All experiments were conducted on 8 NVIDIA H100 GPUs. The computational cost for UMM-World training on the collected dataset requires approximately 7-8 hours.",
+   "page": 27
+  }
+ },
+ "notes": "X5 discutable : RL de robotique, mais la politique entraînée est un VLA (π0.5, bâti sur un VLM) ; codé llm puisque le protocole range le RL appliqué aux modèles de vision-langage dans llm, X6=1 (π0.5 seul). X4 no : le budget égal pour πRL est un budget d'interactions, pas de réglage."
+}

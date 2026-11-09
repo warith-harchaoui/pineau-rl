@@ -1,0 +1,9 @@
+.private/
+video/
+sim/env/
+sim/env-an/
+sim/env-llm/
+study/pdf/
+__pycache__/
+*.pyc
+.DS_Store
