@@ -18,90 +18,125 @@ def write(name, header, rows):
         w = csv.writer(f); w.writerow(header); w.writerows(rows)
 
 
-# Remesure (study/RESULTS.md): Pineau's 2018 figures against our 2026 sample, and our 2026 Wilson intervals.
-write("remesure_dumbbell", ["category", "group_a", "group_b"], [
-    ("Hyperparamètres des références", 60, 18),
-    ("Hyperparamètres de la méthode", 90, 67),
-    ("Choix des hyperparamètres décrit", 20, 27),
-    ("Code en lien", 55, 67),
-    ("Évaluation tenue à part", 10, 70),
-])
-write("remesure_ic", ["g", "mean", "lo", "hi"], [
-    ("Réf. réglées", 5, 1, 15),
-    ("Test signif.", 4, 1, 15),
-    ("Hyperparam. réf.", 18, 10, 32),
-    ("Choix hyperparam.", 27, 16, 41),
-    ("Incertitude", 47, 33, 61),
-    ("Calcul", 47, 33, 61),
-    ("Code", 67, 52, 79),
-    ("Tenue à part", 70, 56, 82),
-])
+# Every label in both languages: <name>.svg is French (conclusions.md), <name>-en.svg is English (conclusions-en.md).
+L = {
+    "fr": dict(
+        dumbbell=["Hyperparamètres des références", "Hyperparamètres de la méthode",
+                  "Choix des hyperparamètres décrit", "Code en lien", "Évaluation tenue à part"],
+        ic=["Réf. réglées", "Test signif.", "Hyperparam. réf.", "Choix hyperparam.", "Incertitude", "Calcul",
+            "Code", "Tenue à part"],
+        fp=["3 c. 3, au hasard", "5 c. 5, au hasard", "10 c. 10, au hasard", "5 meilleures c. 5 pires"],
+        kinds=["Complète et juste", "Complète et fausse", "Coupée à 160 jetons"],
+        median="Médiane globale"),
+    "en": dict(
+        dumbbell=["Baseline hyperparameters", "Method hyperparameters", "Tuning method described",
+                  "Code linked", "Held-out evaluation"],
+        ic=["Baselines tuned", "Signif. test", "Baseline hyperparams", "Tuning method", "Uncertainty",
+            "Compute", "Code", "Held-out"],
+        fp=["3 vs 3, random", "5 vs 5, random", "10 vs 10, random", "5 best vs 5 worst"],
+        kinds=["Complete and right", "Complete and wrong", "Cut at 160 tokens"],
+        median="Overall median"),
+}
 
-# E1 (sim/analysis/e1.json): the 30 final returns, and the false-positive rate of each cut.
+# Remesure (study/RESULTS.md): Pineau's 2018 figures against our 2026 sample, and our 2026 Wilson intervals.
+DUMBBELL = [(60, 18), (90, 67), (20, 27), (55, 67), (10, 70)]
+IC = [(5, 1, 15), (4, 1, 15), (18, 10, 32), (27, 16, 41), (47, 33, 61), (47, 33, 61), (67, 52, 79), (70, 56, 82)]
 e1 = json.load(open(ROOT / "sim/analysis/e1.json"))
-write("e1_seeds", ["group", "value"], [("PPO-SB3", round(v)) for v in e1["seeds_sorted"]])
-write("e1_false_positive", ["region", "value"], [
-    ("3 c. 3, au hasard", round(100 * e1["random_3v3"]["false_positive"], 1)),
-    ("5 c. 5, au hasard", round(100 * e1["random_5v5"]["false_positive"], 1)),
-    ("10 c. 10, au hasard", round(100 * e1["random_10v10"]["false_positive"], 1)),
-    ("5 meilleures c. 5 pires", round(100 * e1["extreme_5v5_of_10"]["false_positive"], 1)),
-])
+FP = [round(100 * e1[k]["false_positive"], 1) for k in ("random_3v3", "random_5v5", "random_10v10", "extreme_5v5_of_10")]
 
 # GRPO diagnostic (sim/llm/diag/replay_batch.json): base model on the pilot's step-10 batch.
 from transformers import AutoTokenizer
 tok = AutoTokenizer.from_pretrained("Qwen/Qwen2.5-0.5B-Instruct")
 replay = json.load(open(ROOT / "sim/llm/diag/replay_batch.json"))
-kinds = ("Complète et juste", "Complète et fausse", "Coupée à 160 jetons")
 count = collections.Counter()
 for r in replay:
     cut = len(tok(r["text"])["input_ids"]) >= 158
-    count[(r["q"], kinds[2] if cut else kinds[0] if r["right"] else kinds[1])] += 1
+    count[(r["q"], 2 if cut else 0 if r["right"] else 1)] += 1
 problems = list(dict.fromkeys(r["q"] for r in replay))
-write("grpo_truncation", ["quarter", "type", "share"],
-      [(q.replace("*", " × "), k, count[(q, k)]) for q in problems for k in kinds])
+
+for lang, l in L.items():
+    write(f"remesure_dumbbell_{lang}", ["category", "group_a", "group_b"],
+          [(c, a, b) for c, (a, b) in zip(l["dumbbell"], DUMBBELL)])
+    write(f"remesure_ic_{lang}", ["g", "mean", "lo", "hi"], [(g, *v) for g, v in zip(l["ic"], IC)])
+    write(f"e1_seeds_{lang}", ["group", "value"], [("PPO-SB3", round(v)) for v in e1["seeds_sorted"]])
+    write(f"e1_false_positive_{lang}", ["region", "value"], list(zip(l["fp"], FP)))
+    write(f"grpo_truncation_{lang}", ["quarter", "type", "share"],
+          [(q.replace("*", " × "), l["kinds"][k], count[(q, k)]) for q in problems for k in range(3)])
 
 # Every figure in the academic theme (Okabe-Ito palette, serif text). FIXES are deterministic edits of the
 # rendered SVG for what the kinds expose no option for; the PDF is then drawn from that same SVG.
-FIGURES = [
-    ("remesure-dumbbell", "dumbbell", "remesure_dumbbell", [
-        "--title", "La grille de 2018 réappliquée, de 2018 à 2026",
-        "--set", "subtitle_template=Part des articles expérimentaux : Pineau ({a}) contre nous ({b})",
-        "--set", "axis_title=Part des articles (%, plus haut est mieux)",
-        "--set", "group_a_label=2018", "--set", "group_b_label=2026",
-        "--set", "value_prefix=", "--set", "value_suffix="]),
-    ("remesure-ic", "errorbar", "remesure_ic", [
-        "--title", "Ce que les articles de 2026 rapportent",
-        "--set", "subtitle=Part des articles expérimentaux, IC de Wilson à 95 %",
-        "--set", "y_axis_title=Part des articles (%, plus haut est mieux)",
-        "--set", "x_axis_title=Critère de la grille", "--set", "width=1040"]),
-    ("e1-seeds", "beeswarm", "e1_seeds", [
-        "--title", "Même code, trente graines",
-        "--set", "subtitle=PPO-SB3 sur HalfCheetah-v5, retour d'évaluation final à 1 M de pas, un point par graine",
-        "--set", "y_axis_title=Retour d'évaluation final (plus haut est mieux)", "--set", "language=fr"]),
-    ("e1-false-positive", "bar", "e1_false_positive", [
-        "--title", "Ce qui trompe le test, ce n'est pas le hasard",
-        "--set", "subtitle=10 000 tirages de deux groupes du même code : part des p < 0,05 (Welch)",
-        "--set", "x_label=Façon de former les deux groupes",
-        "--set", "y_label=Faux positifs (%, plus bas est mieux)", "--set", "language=fr"]),
-    ("grpo-truncation", "stacked-bar", "grpo_truncation", [
-        "--title", "Le modèle de base ne finit pas ses réponses",
-        "--set", "subtitle=Qwen2.5-0.5B-Instruct, lot du pas 10, 8 réponses échantillonnées par problème",
-        "--set", "y_axis_title=Part des 8 réponses", "--set", "x_axis_title=Problème"]),
-]
-FIXES = {
-    "remesure-dumbbell": [("Overall median", "Médiane globale")],
-    "grpo-truncation": [("#009E73", "#8E8E93")],  # a wrong answer is not good news: grey, not green
+T = {
+    "fr": {
+        "remesure-dumbbell": [
+            "--title", "La grille de Pineau, en 2018 et en 2026",
+            "--set", "subtitle_template=Part des articles expérimentaux : Pineau ({a}) contre nous ({b})",
+            "--set", "axis_title=Part des articles (%, plus haut est mieux)"],
+        "remesure-ic": [
+            "--title", "Ce que les articles de 2026 rapportent",
+            "--set", "subtitle=Part des articles expérimentaux, intervalle de Wilson à 95 %",
+            "--set", "y_axis_title=Part des articles (%, plus haut est mieux)",
+            "--set", "x_axis_title=Critère de la grille"],
+        "e1-seeds": [
+            "--title", "Même code, trente graines aléatoires",
+            "--set", "subtitle=PPO-SB3 sur HalfCheetah-v5, score final à 1 M de pas, un point par essai",
+            "--set", "y_axis_title=Score d'évaluation final (plus haut est mieux)", "--set", "language=fr"],
+        "e1-false-positive": [
+            "--title", "Trier les essais trompe le test",
+            "--set", "subtitle=10 000 tirages de deux groupes du même code : part des p < 0,05 (Welch)",
+            "--set", "x_label=Façon de former les deux groupes",
+            "--set", "y_label=Faux positifs (%, plus bas est mieux)", "--set", "language=fr"],
+        "grpo-truncation": [
+            "--title", "Le modèle de départ ne finit pas ses réponses",
+            "--set", "subtitle=Qwen2.5-0.5B-Instruct, lot du pas 10, 8 réponses tirées par problème",
+            "--set", "y_axis_title=Part des 8 réponses", "--set", "x_axis_title=Problème"],
+    },
+    "en": {
+        "remesure-dumbbell": [
+            "--title", "Pineau's grid, in 2018 and in 2026",
+            "--set", "subtitle_template=Share of experimental papers: Pineau ({a}) against us ({b})",
+            "--set", "axis_title=Share of papers (%, higher is better)"],
+        "remesure-ic": [
+            "--title", "What 2026 papers report",
+            "--set", "subtitle=Share of experimental papers, 95% Wilson interval",
+            "--set", "y_axis_title=Share of papers (%, higher is better)",
+            "--set", "x_axis_title=Checklist item"],
+        "e1-seeds": [
+            "--title", "Same code, thirty random seeds",
+            "--set", "subtitle=PPO-SB3 on HalfCheetah-v5, final score at 1M steps, one dot per run",
+            "--set", "y_axis_title=Final evaluation score (higher is better)"],
+        "e1-false-positive": [
+            "--title", "Sorting the runs fools the test",
+            "--set", "subtitle=10,000 draws of two groups of the same code: share with p < 0.05 (Welch)",
+            "--set", "x_label=How the two groups are formed",
+            "--set", "y_label=False positives (%, lower is better)"],
+        "grpo-truncation": [
+            "--title", "The base model does not finish its answers",
+            "--set", "subtitle=Qwen2.5-0.5B-Instruct, step-10 batch, 8 sampled answers per problem",
+            "--set", "y_axis_title=Share of the 8 answers", "--set", "x_axis_title=Problem"],
+    },
 }
+KINDS = {"remesure-dumbbell": ("dumbbell", "remesure_dumbbell", [
+             "--set", "group_a_label=2018", "--set", "group_b_label=2026",
+             "--set", "value_prefix=", "--set", "value_suffix="]),
+         "remesure-ic": ("errorbar", "remesure_ic", ["--set", "width=1040"]),
+         "e1-seeds": ("beeswarm", "e1_seeds", []),
+         "e1-false-positive": ("bar", "e1_false_positive", []),
+         "grpo-truncation": ("stacked-bar", "grpo_truncation", [])}
 
-for name, kind, data, opts in FIGURES:
-    svg = HERE / f"{name}.svg"
-    subprocess.run(["sprezzature-figures", "render", kind, "--data", str(DATA / f"{data}.csv"),
-                    "--out", str(svg), "--theme", "academic", *opts], check=True)
-    text = svg.read_text()
-    for old, new in FIXES.get(name, []):
-        assert old in text, (name, old)
-        text = text.replace(old, new)
-    svg.write_text(text)
-    subprocess.run(["rsvg-convert", "-f", "pdf", "-o", str(HERE / f"{name}.pdf"), str(svg)], check=True)
-    subprocess.run(["sprezzature-figures", "check", str(svg), "--expect-title", opts[1]])
+for lang in L:
+    for name, (kind, data, common) in KINDS.items():
+        opts = T[lang][name]
+        out = name if lang == "fr" else f"{name}-en"
+        svg = HERE / f"{out}.svg"
+        subprocess.run(["sprezzature-figures", "render", kind, "--data", str(DATA / f"{data}_{lang}.csv"),
+                        "--out", str(svg), "--theme", "academic", *opts, *common], check=True)
+        text = svg.read_text()
+        fixes = {"remesure-dumbbell": [("Overall median", L[lang]["median"])] if lang == "fr" else [],
+                 "grpo-truncation": [("#009E73", "#8E8E93")]}  # a wrong answer is not good news: grey, not green
+        for old, new in fixes.get(name, []):
+            assert old in text, (name, old)
+            text = text.replace(old, new)
+        svg.write_text(text)
+        subprocess.run(["rsvg-convert", "-f", "pdf", "-o", str(HERE / f"{out}.pdf"), str(svg)], check=True)
+        subprocess.run(["sprezzature-figures", "check", str(svg), "--expect-title", opts[1]])
 print("figures written to", HERE)

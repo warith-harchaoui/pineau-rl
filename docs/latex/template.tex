@@ -5,7 +5,7 @@
 \setmainfont{Libertinus Serif}
 \setsansfont{Libertinus Sans}
 \setmonofont{Libertinus Mono}[Scale=MatchLowercase]
-\usepackage[french]{babel}
+\usepackage[$babel$]{babel}
 \usepackage{csquotes}
 \usepackage{microtype}
 \usepackage{xcolor}
@@ -34,7 +34,7 @@ $for(bibliography)$
 $endfor$
 \usepackage[hidelinks]{hyperref}
 \hypersetup{colorlinks=true,linkcolor=link,citecolor=link,urlcolor=link,
-  pdftitle={$title$},pdfauthor={$author$},pdflang={fr}}
+  pdftitle={$title$},pdfauthor={$author$},pdflang={$pdflang$}}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{}
 
 \title{\textbf{$title$}$if(subtitle)$\\[0.4em]\large $subtitle$$endif$}
@@ -46,5 +46,5 @@ $endfor$
 
 $body$
 
-\printbibliography[title={Références}]
+\printbibliography[title={$bibtitle$}]
 \end{document}

@@ -4,7 +4,7 @@
 <style>.errbar{transition:opacity .15s ease;}.errbar:hover,.errbar:focus{opacity:.72;outline:none;}@media (prefers-reduced-motion: reduce){.errbar{transition:none;}}.tip{opacity:0;pointer-events:none;transition:opacity .12s ease}#errbar-0:hover~#errbartip-0,#errbar-0:focus~#errbartip-0{opacity:1}#errbar-1:hover~#errbartip-1,#errbar-1:focus~#errbartip-1{opacity:1}#errbar-2:hover~#errbartip-2,#errbar-2:focus~#errbartip-2{opacity:1}#errbar-3:hover~#errbartip-3,#errbar-3:focus~#errbartip-3{opacity:1}#errbar-4:hover~#errbartip-4,#errbar-4:focus~#errbartip-4{opacity:1}#errbar-5:hover~#errbartip-5,#errbar-5:focus~#errbartip-5{opacity:1}#errbar-6:hover~#errbartip-6,#errbar-6:focus~#errbartip-6{opacity:1}#errbar-7:hover~#errbartip-7,#errbar-7:focus~#errbartip-7{opacity:1}@media (prefers-reduced-motion:reduce){.tip{transition:none}}</style>
 <rect width="1040" height="420" fill="#FFFFFF"/>
 <text x="40" y="46" font-size="22" font-weight="700" fill="#1D1D1F" letter-spacing="-0.3">Ce que les articles de 2026 rapportent</text>
-<text x="40" y="70" font-size="14" fill="#6E6E73">Part des articles expérimentaux, IC de Wilson à 95 %</text>
+<text x="40" y="70" font-size="14" fill="#6E6E73">Part des articles expérimentaux, intervalle de Wilson à 95 %</text>
 <line x1="64.0" y1="334.4" x2="1010.0" y2="334.4" stroke="#E5E5EA" stroke-width="1"/>
 <text x="54.0" y="338.4" font-size="12" font-family="LM Mono, Latin Modern Mono, ui-monospace, monospace" fill="#6E6E73" text-anchor="end">0</text>
 <line x1="64.0" y1="288.4" x2="1010.0" y2="288.4" stroke="#E5E5EA" stroke-width="1"/>
