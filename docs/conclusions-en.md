@@ -157,7 +157,7 @@ without error. The authors of DeepSeek-R1 say so themselves: the success of pure
 reliable reward. When another model assigns the reward in place of rules fixed in advance, the
 reward is easier to exploit [@deepseek2025r1]. Even under these conditions, the signal stays thin.
 Andrej Karpathy, who took part in the early days of OpenAI, summed it up in October 2025:
-"Reinforcement learning is terrible. It just so happens that everything that we had before is much
+"Reinforcement learning is terrible. It just so happens that everything that we had before it is much
 worse." The model sometimes works for a whole minute to receive a single grade at the end, which is
 then applied to every one of its actions, good and bad alike: "you're sucking supervision through a
 straw" [@patel2025karpathy]. Learning this noisy gives scores that change from one random seed to
