@@ -1,0 +1,143 @@
+{
+ "id": "K082",
+ "coder": "K5",
+ "title": "Retrosynthesis Planning via Worst-path Policy Optimisation in Tree-structured MDPs",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We evaluate performance on three benchmarks of increasing difficulty: Retro*-190",
+   "page": 8
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "The single-step model and our proposed value function encode the molecule using a message passing neural network",
+   "page": 7
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "For training, we run 6 parallel exploration processes and collect 36 synthetic trees per iteration. [learning rate, γ, clipping C, final β and max_steps not given]",
+   "page": 7
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "Baseline results are produced from their official implementations or the Syntheseus project",
+   "page": 8
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "GitHub repository: https://github.com/MianchuWang/InterRetro.",
+   "page": 7
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "The proposed method is trained by creating synthetic routes for nearly 300k molecules in the USPTO50k dataset with commercially available building blocks from the eMolecules dataset",
+   "page": 8
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "InterRetro treats a single-step model as an agent operating within the tree MDP",
+   "page": 2
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable : famille classic",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Our models are trained on a single NVIDIA RTX A5000 GPU and, without pre-training the single-step model, require approximately 48 hours to fully converge.",
+   "page": 7
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "Success rate measures the percentage of target molecules that can be successfully decomposed into building blocks. In Table 1, we firstly compare methods under different model-call budgets: 100, 200, and 500.",
+   "page": 8
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "non applicable",
+   "page": null
+  },
+  "Y3": {
+   "value": 1,
+   "quote": "The proposed method is trained by creating synthetic routes for nearly 300k molecules in the USPTO50k dataset",
+   "page": 8
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "non applicable",
+   "page": null
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "Baseline results are produced from their official implementations or the Syntheseus project",
+   "page": 8
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "we compare the route length with other baselines on the 138 target molecules that all methods can resolve.",
+   "page": 8
+  },
+  "Y7": {
+   "value": "yes",
+   "quote": "Retro*-190 [...] ChEMBL-1000 [...] and GDB17-1000 [...] where the suffix indicates the dataset size.",
+   "page": 8
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "We evaluate performance on three benchmarks of increasing difficulty: Retro*-190 [...] ChEMBL-1000 [...] and GDB17-1000",
+   "page": 8
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Figure 4c shows the learning curve on the Retro*-190 test set with β ∈ {0, 1, 2, 5, 10, 20}.",
+   "page": 9
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "non applicable",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X5 : RL sur un modèle de rétrosynthèse à graphes (Graph2Edits), pas sur un grand modèle de langage, d'où classic. Y3 : un seul cadre d'entraînement (USPTO-50k), les trois bancs n'étant que des évaluations, d'où 1 et Y4 na. Y5 : « official implementations or the Syntheseus project » nomme des sources de code sans dire laquelle pour chaque référence ; codé yes. Y8 : ChEMBL-1000 et GDB17-1000 sont des distributions de molécules distinctes de l'entraînement, présentées comme plus difficiles, pas explicitement comme hors distribution. Y6 : la longueur de route restreinte aux 138 molécules résolues par tous comptée comme exclusion dite ; les « − » du tableau 1 restent sans raison. X1 : nombre d'entraînements jamais dit, d'où null."
+}

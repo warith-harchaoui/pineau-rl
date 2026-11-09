@@ -1,0 +1,144 @@
+{
+ "id": "K086",
+ "coder": "K6",
+ "title": "Compute-Optimal Scaling for Value-Based Deep RL",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "For our experiments, we use a total of 17 tasks from two benchmarks (DeepMind Control (Tunyasuvunakool et al., 2020) and HumanoidBench (Sferrazza et al., 2024))",
+   "page": 22
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "approaches based on SAC (Haarnoja et al., 2018) that use a regularized residual network to represent the Q-values",
+   "page": 4
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "We keep other hyperparameters fixed across all tasks at values suggested by Nauman et al. (2024b).",
+   "page": 4
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "Table 2: Data efficiency ratios of various approaches to [...] allocate compute to our approach of compute-optimal",
+   "page": 11
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "Out of the 17 tasks, we run a full 3-dimensional grid search 𝐵 × 𝑁 × 𝜎 on 4 of them",
+   "page": 22
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "To do so, we create a validation environment, which is identical to the training environment with a different random seed, and a corresponding validation replay buffer.",
+   "page": 25
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 5,
+   "quote": "and run at least 5 random seeds per configuration",
+   "page": 23
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Evaluation. We show that this dependency is predictable in Figure 7, including evaluating confidence",
+   "page": 11
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "In this paper, we investigate compute scaling for online, value-based deep RL.",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable : article classic",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "We thank NCSA Delta cluster for providing GPU resources that supported the experiments in this work. [aucune quantité de calcul consommée]",
+   "page": 14
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "where 𝒟𝐽 (𝜎, 𝑁 ) denotes the total amount of samples needed to attain performance 𝐽",
+   "page": 3
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "Evaluation. We show that this dependency is predictable in Figure 7, including evaluating confidence interval",
+   "page": 11
+  },
+  "Y3": {
+   "value": 17,
+   "quote": "For our experiments, we use a total of 17 tasks from two benchmarks",
+   "page": 22
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "As shown in Figures 8, 20 and 21, however, the optimal UTD and model size for a given budget ℱ0 are unpredictable.",
+   "page": 36
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "we therefore remove post-reset return drops from our analysis (Figure 10, left)",
+   "page": 26
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "h1-crawl-v0 [les tâches HumanoidBench sont en -v0, les tâches DMC ne sont pas versionnées]",
+   "page": 4
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "To do so, we create a validation environment, which is identical to the training environment with a different random seed, and a corresponding validation replay buffer.",
+   "page": 25
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We run hyperparameter sweeps over (model size, UTD, learning rate) and (model size, batch size, learning rate), where lr ∈ {1e-4, 2e-4, 3e-4, 6e-4}.",
+   "page": 28
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "ci",
+   "quote": "Evaluation. We show that this dependency is predictable in Figure 7, including evaluating confidence interval",
+   "page": 11
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q4/Y5 : les seules comparaisons sont des stratégies d'allocation (UTD seul, taille seule, taille de lot fixe) sur le même algorithme BRO ; traitées comme références, sans hyperparamètres complets ni origine du code. Q7/Y8 : l'erreur TD de validation est mesurée dans un environnement à graine différente mais « i.i.d. from the same distribution » ; codé yes selon la règle des graines d'environnement annoncées, mais discutable pour Y8. X2/Y2/Y11 : les intervalles de confiance portent sur les ajustements de lois d'échelle (niveau non précisé), pas sur des retours. X1 : « at least 5 random seeds » sur les 4 tâches à grille complète ; 10 graines reprises de Nauman et al. pour DMC. X7 : le calcul est une variable d'étude (FLOP par configuration), mais aucun total consommé n'est donné. Y4 : il n'y a pas de méthode gagnante au sens usuel ; codé yes car l'article montre des tâches où la loi d'échelle échoue (R² négatif sur h1-pole)."
+}

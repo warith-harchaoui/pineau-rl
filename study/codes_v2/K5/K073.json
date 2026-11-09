@@ -1,0 +1,147 @@
+{
+ "id": "K073",
+ "coder": "K5",
+ "title": "SMAC: Score-Matched Actor-Critics for Robust Offline-to-Online Transfer",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We evaluate on six D4RL (Fu et al., 2021) benchmarks",
+   "page": 3
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "Table 7. SMAC (non-diffusion) hyper-parameters across task families. [...] Critic hidden dims",
+   "page": [
+    23,
+    28
+   ]
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Table 7. SMAC (non-diffusion) hyper-parameters across task families. Diffusion-related fields are excluded and in section above.",
+   "page": 28
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "Table 9. CQL / Cal-QL hyper-parameters across task families",
+   "page": 24
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "We selected the final values in Table 7 by a coarse manual sweep, choosing values that reliably produced strong offline performance without an initial online drop.",
+   "page": 20
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 4,
+   "quote": "Unless otherwise noted, each offline-to-online pair is evaluated with 5 seeds per environment; Figure 4 uses 4 seeds.",
+   "page": 3
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Entries are mean ± std over seeds",
+   "page": 16
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "Locomotion/Kitchen columns are filled using the IQL default config in get config and then overridden where specified in the task config.",
+   "page": 23
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "SMAC transfers smoothly to SAC, TD3 (Fujimoto et al., 2018), and TD3+BC",
+   "page": 2
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable : famille classic",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "In our implementation, training the diffusion score model adds roughly 3–4 GPU hours on a single L40S",
+   "page": 9
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "For each environment, we compute cumulative [...] regret over the evaluated online fine-tuning horizon as [...] where R∗ is the highest reward observed in that environment across all agents and Rt is the reward at online step t. We then min-max normalize regret within each environment",
+   "page": 6
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "Lines show mean over 4 seeds with shading being standard error.",
+   "page": 4
+  },
+  "Y3": {
+   "value": 6,
+   "quote": "We evaluate on six D4RL (Fu et al., 2021) benchmarks",
+   "page": 3
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "In the remaining two environments, SMAC attains the second- and thirdlowest regret.",
+   "page": 6
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "Locomotion/Kitchen columns are filled using the IQL default config in get config and then overridden where specified in the task config.",
+   "page": 23
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "The modifications made to them are removing failure demonstrations, and terminating episodes at states where the goal is achieved",
+   "page": 26
+  },
+  "Y7": {
+   "value": "yes",
+   "quote": "hopper-medium-replay-v2, walker2d-m [...] edium-replay-v2, kitchen-partial-v0, door [...] -binary-v0, pen-binary-v0, and relocate-bin",
+   "page": 3
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "In Figure 19, we evaluate SMAC in Kitchen across a range of score-matching weights κ.",
+   "page": 20
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "We use the CleanDiffuser (Dong et al., 2024) package for initializing, training, and inferencing the diffusion models. [no version]",
+   "page": 22
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "Lines show mean over 4 seeds with shading being standard error.",
+   "page": 4,
+   "kind": "se"
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X1 : 5 graines pour les courbes de transfert, 4 pour la figure 4 (interpolation, contribution annoncée du texte principal) ; le plus petit (4) retenu. Y2/Y11 : l'annexe G dit « mean and standard error » mais les légendes des tableaux disent « mean ± std » ; kind se retenu d'après la figure 4. Q6 : seule la manière de choisir κ (balayage manuel grossier, critère dit) est décrite, compté yes. X4 : les références suivent des configurations par défaut, sans réglage décrit, d'où no. Y5 : « IQL default config in get config » laisse deviner un dépôt sans le nommer, d'où no. Y6 : retrait des démonstrations d'échec compté comme exclusion de données dite. Y7 : suffixes D4RL donnés, mais les jeux Adroit binaires sont modifiés par les auteurs sans publication ; codé yes avec ce doute. Q5 : aucun lien de code trouvé."
+}

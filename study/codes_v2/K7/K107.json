@@ -1,0 +1,144 @@
+{
+ "id": "K107",
+ "coder": "K7",
+ "title": "SOMBRL: Scalable and Optimistic Model-Based RL",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "In our experiments, we showcase the flexibility and scalability of SOMBRL by combining it with three different model-based RL algorithms",
+   "page": 8
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "For all tasks we use a (256, 256) neural network architecture with 5 ensembles",
+   "page": 31
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "We use the same hyperparameters as Sukhija et al. (2024a) for all our state-based experiments. [values not listed]",
+   "page": 31
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "For the rest, we use the same hyperparemters as D REAMER [values not listed]",
+   "page": 31
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "Video is available at https://sukhijab.github.io/projects/sombrl/ [video page, no code link for the method]",
+   "page": 9
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 5,
+   "quote": "In all our experiments, we report the episodic returns using the median over 5 seeds along with its standard deviation.",
+   "page": 8
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "In all our experiments, we report the episodic returns using the median over 5 seeds along with its standard deviation.",
+   "page": 8
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We propose Scalable and Optimistic MBRL (SOMBRL), an approach based on the principle of optimism in the face of uncertainty.",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Table 3: Computation cost comparison for SOMBRL with different base algorithms. [...] (Time per 100k steps, 5 ensembles, GPU: NVIDIA GeForce RTX 4090)",
+   "page": 32
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "We report the median episode reward J(πN ) over an episode with 5 seeds and its standard deviation.",
+   "page": 7
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "In all our experiments, we report the episodic returns using the median over 5 seeds along with its standard deviation.",
+   "page": 8
+  },
+  "Y3": {
+   "value": 12,
+   "quote": "Figure 3: Left: Learning curves for the state-based tasks from DMC using MBPO as the base algorithm. [...] Right: Learning curves for the visual control tasks from DMC and Atari using D REAMER as the base algorithm.",
+   "page": 9
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "However, for certain environments such as Reacher Hard or Finger Turn Hard, D REAMER is more sample-efficient.",
+   "page": 29
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "We use the 12 million size model and the official D REAMERV 3 implementation (https://github.com/ danijar/dreamerv3/tree/main).",
+   "page": 31
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "In all our experiments, we report the episodic returns using the median over 5 seeds along with its standard deviation.",
+   "kind": "std",
+   "page": 8
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X5 : article mixte, bornes de regret et expériences profondes étendues (DMC, Atari, voiture RC) ; codé classic car l'algorithme est évalué empiriquement comme contribution principale. Q5 : seule une page vidéo du projet est liée, aucun lien vers le code de SOMBRL. Q3 : les hyperparamètres sont renvoyés à Sukhija et al. (2024a) et aux valeurs par défaut de DreamerV3 sans être listés, donc no. Q6 : λn est réglé automatiquement par une méthode publiée, mais rien ne décrit le choix des autres hyperparamètres, donc no. Y1 : rendement d'épisode médian de la politique πN le long des courbes, codé yes. Y3 : 12 environnements de la figure 3 (6 MBPO + 6 Dreamer), sans compter les 2 tâches GP ni la voiture RC. Y5 : implémentations officielles liées pour DreamerV3, SimFSVGD et HUCRL/OPAX ; MBPO-Mean et MBPO-PETS sont des variantes internes, codé yes. X7 : temps par 100k pas sur un GPU nommé (tableau 3), codé yes."
+}

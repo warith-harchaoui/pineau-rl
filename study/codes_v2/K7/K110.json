@@ -1,0 +1,146 @@
+{
+ "id": "K110",
+ "coder": "K7",
+ "title": "Kevin: Multi-Turn RL for Generating CUDA Kernels",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We compare Kevin against frontier models and the single-turn RL baseline on our aforementioned KernelBench eval set of 100 tasks",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "Hence, we use a stronger base model, Qwen QwQ-32B",
+   "page": 4
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "For our final training run for Kevin, we use 16 parallel trajectories and 4 refinement turns per task. Each batch contains 8 tasks. [no learning rate given]",
+   "page": 6
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "We conduct ablations on the reward formulation. [...] We evaluate both forms with γ = 0.4 and γ = 0.8. Experiments show that sum with γ = 0.4 scales best over 8 turns",
+   "page": [
+    5,
+    6
+   ]
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "Here we evaluate models on 100 unseen KernelBench tasks",
+   "page": 7
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "We present Kevin - K(ernel D)evin, the first model trained with multi-turn RL for CUDA kernel generation and optimization.",
+   "page": 1
+  },
+  "X6": {
+   "value": 1,
+   "quote": "Hence, we use a stronger base model, Qwen QwQ-32B",
+   "page": 4
+  },
+  "X7": {
+   "value": "no",
+   "quote": "Each full RL training run took multiple days due to the limited compute we have.",
+   "page": 17
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "We mark a given trajectory correct if it contains at least one correct kernel. Its performance is the speedup of the fastest kernel (within the trajectory) over the PyTorch Eager reference",
+   "page": 6
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y3": {
+   "value": 1,
+   "quote": "In the end, we chose a total of 180 tasks as training environments, with 90 of the 100 Level 1 problems and 90 Level 2 problems",
+   "page": 15
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "We built our training framework on top of the OpenRLHF",
+   "page": 17
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Figure 3: Sum with γ = 0.4 is the most effective reward formulation.",
+   "page": 6
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X5 : RL multi-tours sur un LLM (QwQ-32B) pour générer du CUDA, llm ; X6 = 1 (famille Qwen). Q3 : aucun taux d'apprentissage n'est donné, donc no. Q6 : la formulation de la récompense (somme/max, γ) et le poids de correction sont choisis par ablation sur le meilleur résultat, codé yes ; l'ensemble sur lequel ce choix est évalué n'est pas dit. X1 : le nombre d'entraînements n'est pas dit (un seul run final suggéré), donc null. X7 : « multiple days » sur 8 GPU n'est pas une quantité, donc no. Y5 : OpenRLHF est nommé (sans version) pour l'entraînement, les modèles o4-mini/o3-mini sont appelés par leur nom, codé yes. Y7 et Y8 : l'ensemble d'évaluation de 100 tâches est construit par les auteurs et non publié, et il est présenté comme « unseen » mais pas comme hors distribution, donc no aux deux. Y9 : γ = 0.4 contre 0.8 (figure 3) et le coefficient KL (figure 13) sont balayés, codé yes."
+}

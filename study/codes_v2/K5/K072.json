@@ -1,0 +1,147 @@
+{
+ "id": "K072",
+ "coder": "K5",
+ "title": "Continuous Q-Score Matching: Diffusion Guided Reinforcement Learning for Continuous-Time Control",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "In this section, we present numerical evaluations on LQ control tasks.",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "The policy follows π(a|x) ∼ e λ Q(x,a) and is reparameterized using a neural transformation of samples from a fixed distribution.",
+   "page": 21
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "The learning rate is initialized as αθ = αv = 0.01 [LQ only; no hyperparameters for the DeepMind Control Suite runs of Appendix F.2]",
+   "page": 8
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 5,
+   "quote": "To evaluate performance and stability, each experiment is repeated five times with different random seeds for sample generation.",
+   "page": 8
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We plot the mean running average reward over time and the shaded areas represent the standard deviation across the runs.",
+   "page": 9
+  },
+  "X3": {
+   "value": "yes",
+   "quote": "Each experiment is repeated with 10 random seeds, and we report the average episode return across runs (removing extremely poor results).",
+   "page": 21
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We evaluate CQSM against the baselines (TD3, SAC, and Diffusion-QL) on a range of MuJoCo continuous control tasks",
+   "page": 21
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable : famille classic",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "The time cost for each experiment is 352 seconds on a computer with Intel Core i5-10500 CPU and 32G Memory.",
+   "page": 8
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "we compare the performance of our CQSM algorithm against two benchmark methods in terms of the running average reward obtained during the learning process.",
+   "page": 9
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "We plot the mean running average reward over time and the shaded areas represent the standard deviation across the runs.",
+   "page": 9
+  },
+  "Y3": {
+   "value": 1,
+   "quote": "We further demonstrate the effectiveness of CQSM [...] in an LQ setting, showing promising results compared to existing continuous-time reinforcement",
+   "page": [
+    9,
+    10
+   ]
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "non applicable",
+   "page": null
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "Policy Gradient described in Algorithm 3 in [...] q-Learning described in Algorithm 4 in [...] [algorithm cited, implementation not said]",
+   "page": 9
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "we report the average episode return across runs (removing extremely poor results). [which runs, how many, not said]",
+   "page": 21
+  },
+  "Y7": {
+   "value": "yes",
+   "quote": "In our simulations, to ensure the stationarity of the controlled state process, we use the following model parameters: A = −1, B = C = 0, D = 1, M = N = P ′ = 2, R = P = 1, β = 1, λ = 0.1.",
+   "page": 8
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Figure 3 presents the running average rewards and standard deviations for all three methods under three step sizes, ∆t = 0.01, 0.1, 1.",
+   "page": 9
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "the shaded areas represent the standard deviation across the runs.",
+   "page": 9,
+   "kind": "std"
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X5 : article surtout théorique, expérience principale LQ (jouet), mais l'annexe F.2 compare à TD3, SAC et Diffusion-QL sur six tâches DeepMind Control, d'où classic plutôt que theory. Q2 : le LQ est linéaire ; seuls l'annexe F.2 et ses références emploient des réseaux, d'où yes. Q3 : hyperparamètres complets pour le LQ, absents pour les tâches DeepMind Control, d'où no. X1 : le texte dit « five times » puis « ten times » pour les mêmes expériences LQ ; le plus petit (5) est retenu. X3 : « removing extremely poor results » compté comme sélection des meilleurs essais. Y6 : l'exclusion est annoncée sans dire quels essais ni combien, d'où no. Y3 : conclusion principale portée par la seule tâche LQ (trois pas de temps), les six tâches de l'annexe n'étant pas dans la conclusion. Y7 : la tâche LQ est entièrement spécifiée par ses paramètres, comptée comme versionnée ; les tâches DeepMind Control n'ont pas de version. Y9 : Δt est présenté comme hyperparamètre et balayé."
+}

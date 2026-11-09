@@ -1,0 +1,144 @@
+{
+ "id": "K081",
+ "coder": "K5",
+ "title": "Structured Reinforcement Learning for Combinatorial Decision-Making",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We evaluate SRL across six environments that reflect industrial applications with large combinatorial action spaces.",
+   "page": 8
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "the actor model φw is a convolutional neural network, based on the logic of a truncated ResNet18",
+   "page": 20
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Table 6: Overview over hyperparameters in the DVSP.",
+   "page": 24
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "Hyperparameter SIL PPO SRL",
+   "page": 17
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Our code is available at https://github.com/tumBAIS/Structured-RL.",
+   "page": 1
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "We tune the exploration standard deviation σf , the perturbation standard deviation σb , the temperature parameter τ , and the learning rate – typically shared between actor and critic, or set slightly higher for the critic – using a grid search for each algorithm. Each grid search involves between 3 and 30 training runs.",
+   "page": 18
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "We train all algorithms using the same number of episodes, employing environment-specific train/validation/test splits.",
+   "page": 9
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 10,
+   "quote": "Each algorithm is retrained using ten random seeds.",
+   "page": 9
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Table 1: Standard deviation of validation rewards during training, final testing rewards over 10 random model initializations, and training time of algorithms in the DVSP, DAP and GSPP.",
+   "page": 10
+  },
+  "X3": {
+   "value": "no",
+   "quote": "We save the actor model whenever it achieves the best performance observed so far. At the end of training, the best-performing actor model is restored and used for final evaluation on the training and test datasets. [selection on train/validation, not on test]",
+   "page": 18
+  },
+  "X4": {
+   "value": "yes",
+   "quote": "using a grid search for each algorithm. Each grid search involves between 3 and 30 training runs.",
+   "page": 18
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We compare SRL against two baselines: SIL, a structured imitation learning approach, and Proximal Policy Optimization (PPO)",
+   "page": 8
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable : famille classic",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "We conduct all experiments on a MacBook Air M3, using the Julia programming language. Given the usually small neural networks required for COAML-pipelines in our environments, the experiments take between 3 and 90 minutes.",
+   "page": 17
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "we run the best saved model of each algorithm after each run with different random model initializations on the train and the test dataset. We calculate the mean over the ten models per instance of the train and test dataset",
+   "page": 18
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "We report the mean of the standard deviations across the validation and final test rewards of the ten runs in the tables.",
+   "page": 18
+  },
+  "Y3": {
+   "value": 6,
+   "quote": "We evaluate SRL across six environments that reflect industrial applications with large combinatorial action spaces.",
+   "page": 8
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "While SRL performs comparably to SIL in the DVSP, it outperforms SIL in the DAP by 8% and in the GSPP by 78%",
+   "page": 9
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "We separate all instances into a train, validation, and test dataset.",
+   "page": 17
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "We report the mean of the standard deviations across the validation and final test rewards of the ten runs in the tables.",
+   "page": 18,
+   "kind": "std"
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X3 : le meilleur point de contrôle est choisi sur l'entraînement et la validation, pas sur le test, d'où no. X4 : réglage par grille pour chaque algorithme (références comprises), d'où yes. Y5 : SIL et PPO semblent réimplémentés dans le pipeline Julia des auteurs, mais ce n'est jamais dit, d'où no. Y8 : instances de test tenues à part (même distribution d'instances) comptées comme graines d'environnement annoncées. X2/Y2 : les écarts types sont donnés dans des tableaux séparés des boîtes à moustaches des résultats principaux. Y7 : environnements adaptés de travaux antérieurs, sans version ni dépôt de données nommé."
+}

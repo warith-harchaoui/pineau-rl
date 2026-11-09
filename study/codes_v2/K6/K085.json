@@ -1,0 +1,144 @@
+{
+ "id": "K085",
+ "coder": "K6",
+ "title": "Scalable Reinforcement Learning via Adaptive Batch Scaling",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We first evaluate ABS on the full Atari-57 benchmark.",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "specifically the PQN-L [...] (CNN + 10-layer MLP) and PQN-XL (CNN + 20-layer",
+   "page": 7
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Tables 5 through 8 provide the detailed hyperparameter configurations used for our experiments on the Atari benchmark.",
+   "page": 17
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "Tables 7 specifies the hyperparameters for the PQN, incorporating GNS based dynamic batch scheduling method.",
+   "page": 17
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Our code is available at https:// github.com/daisophila/ABS.",
+   "page": 1
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "We therefore select K = 50 as the default adapt frequency, as it achieves the most stable performance across all environments.",
+   "page": 8
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "yes",
+   "quote": "Table 1 summarizes these results with IQM HNS ± 95% confidence intervals.",
+   "page": 7
+  },
+  "X1": {
+   "value": 3,
+   "quote": "We train all agents for 20 million steps (5M for MuJoCo) across 3 independent seeds following standard protocols",
+   "page": 6
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Table 1 summarizes these results with IQM HNS ± 95% confidence intervals.",
+   "page": 7
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "with the Parallelised Q-Network (PQN) algorithm [...] and evaluated on the ALE benchmark",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable : article classic",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "For evaluation, we report the mean score over 100 evaluation episodes per seed (total 300 episodes) after training concludes.",
+   "page": 6
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "Table 1 summarizes these results with IQM HNS ± 95% confidence intervals.",
+   "page": 7
+  },
+  "Y3": {
+   "value": 57,
+   "quote": "We first evaluate ABS on the full Atari-57 benchmark.",
+   "page": 6
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "ABS achieves the superior score in 8 out of 10 environments.",
+   "page": 7
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "Our implementation is built upon the CleanRL library1 .",
+   "page": 5
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "yes",
+   "quote": "Amidar-v5 [...] BattleZone-v5 [...] Riverraid-v5",
+   "page": 7
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Figure 5 presents the hyperparameter sensitivity of ABS with respect to the rollout range L (Top), policy change thresholds δ (Center), and adapt frequency K (Bottom) on Atari-10.",
+   "page": 8
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "ci",
+   "quote": "Table 1 summarizes these results with IQM HNS ± 95% confidence intervals.",
+   "page": 7
+  },
+  "Y12": {
+   "value": "yes",
+   "quote": "Table 2 presents the IQM HNS with 95% confidence intervals on the Atari-10 benchmark.",
+   "page": 7
+  }
+ },
+ "doubts": "Q8 : IQM avec IC à 95 % par jeu sur 3 graines, en citant Agarwal et al. 2021, sans test ni bootstrap stratifié nommé ; codé yes selon la lettre de la règle. Q6 : les seuils de ABS sont choisis par un balayage sur les mêmes jeux Atari-10 que l'évaluation ; la méthode de choix est dite, mais rien sur les références. Y3 : 57 (Atari-57, figure 2) ; les tableaux principaux portent sur Atari-10. Y5 : PQN vient de CleanRL, GNS semble réimplémenté par les auteurs sans que ce soit dit en toutes lettres. Y7 : jeux Atari en -v5, mais les tâches MuJoCo (extension) ne sont pas versionnées et les noms de la figure 2 ne sont pas lisibles."
+}

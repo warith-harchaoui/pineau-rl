@@ -1,0 +1,143 @@
+{
+ "id": "K109",
+ "coder": "K7",
+ "title": "On the Global Optimality of Policy Gradient Methods in General Utility Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "no",
+   "quote": "It would definitely be interesting to conduct experiments in very large scale environments such as DMLab or Atari.",
+   "page": 26
+  },
+  "Q2": {
+   "value": "na",
+   "quote": "non applicable : l'article n'a pas d'expérience (Q1 no)",
+   "page": null
+  },
+  "Q3": {
+   "value": "na",
+   "quote": "non applicable : l'article n'a pas d'expérience (Q1 no)",
+   "page": null
+  },
+  "Q4": {
+   "value": "na",
+   "quote": "non applicable : l'article n'a pas d'expérience (Q1 no)",
+   "page": null
+  },
+  "Q5": {
+   "value": "na",
+   "quote": "non applicable : l'article n'a pas d'expérience (Q1 no)",
+   "page": null
+  },
+  "Q6": {
+   "value": "na",
+   "quote": "non applicable : l'article n'a pas d'expérience (Q1 no)",
+   "page": null
+  },
+  "Q7": {
+   "value": "na",
+   "quote": "non applicable : l'article n'a pas d'expérience (Q1 no)",
+   "page": null
+  },
+  "Q8": {
+   "value": "na",
+   "quote": "non applicable : l'article n'a pas d'expérience (Q1 no)",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "non applicable : l'article n'a pas d'expérience (Q1 no)",
+   "page": null
+  },
+  "X2": {
+   "value": "na",
+   "quote": "non applicable : l'article n'a pas d'expérience (Q1 no)",
+   "page": null
+  },
+  "X3": {
+   "value": "na",
+   "quote": "non applicable : l'article n'a pas d'expérience (Q1 no)",
+   "page": null
+  },
+  "X4": {
+   "value": "na",
+   "quote": "non applicable : l'article n'a pas d'expérience (Q1 no)",
+   "page": null
+  },
+  "X5": {
+   "value": "theory",
+   "quote": "In this work, we establish global optimality guarantees of PG methods for RLGU in which the objective is a general concave utility function of the state-action occupancy measure.",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable : l'article n'a pas d'expérience (Q1 no)",
+   "page": null
+  },
+  "X7": {
+   "value": "na",
+   "quote": "non applicable : l'article n'a pas d'expérience (Q1 no)",
+   "page": null
+  },
+  "Y1": {
+   "value": "na",
+   "quote": "non applicable : l'article n'a pas d'expérience (Q1 no)",
+   "page": null
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "non applicable : l'article n'a pas d'expérience (Q1 no)",
+   "page": null
+  },
+  "Y3": {
+   "value": null,
+   "quote": "non applicable : l'article n'a pas d'expérience (Q1 no)",
+   "page": null
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "non applicable : l'article n'a pas d'expérience (Q1 no)",
+   "page": null
+  },
+  "Y5": {
+   "value": "na",
+   "quote": "non applicable : l'article n'a pas d'expérience (Q1 no)",
+   "page": null
+  },
+  "Y6": {
+   "value": "na",
+   "quote": "non applicable : l'article n'a pas d'expérience (Q1 no)",
+   "page": null
+  },
+  "Y7": {
+   "value": "na",
+   "quote": "non applicable : l'article n'a pas d'expérience (Q1 no)",
+   "page": null
+  },
+  "Y8": {
+   "value": "na",
+   "quote": "non applicable : l'article n'a pas d'expérience (Q1 no)",
+   "page": null
+  },
+  "Y9": {
+   "value": "na",
+   "quote": "non applicable : l'article n'a pas d'expérience (Q1 no)",
+   "page": null
+  },
+  "Y10": {
+   "value": "na",
+   "quote": "non applicable : l'article n'a pas d'expérience (Q1 no)",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "non applicable : l'article n'a pas d'expérience (Q1 no)",
+   "page": null
+  },
+  "Y12": {
+   "value": "na",
+   "quote": "non applicable : l'article n'a pas d'expérience (Q1 no)",
+   "page": null
+  }
+ },
+ "doubts": "Q1 : aucune expérience ni simulation dans l'article ni dans les annexes (les expériences sont renvoyées à des travaux futurs), donc Q1 no et tout le reste na ; X5 theory."
+}

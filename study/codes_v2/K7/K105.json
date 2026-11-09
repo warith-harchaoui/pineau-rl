@@ -1,0 +1,144 @@
+{
+ "id": "K105",
+ "coder": "K7",
+ "title": "The Surprising Difficulty of Search in Model-Based Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "Benchmarks. We evaluate on over 50 tasks spanning three [...] benchmark domains: MuJoCo",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "This section describes MRS.Q’s network architecture using PyTorch code blocks",
+   "page": 18
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Table 4. MRS.Q Hyperparameters. New or changed hyperparameters from MR.Q are highlighted. Hyperparameters values are kept fixed across all benchmarks.",
+   "page": 15
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "All experiments were run for 10 seeds over 1M environment steps and use default author-provided hyperparameters for all tasks. [...] commit 8bbc14ebabdb32ea7ada5c801dc525d0dc73bafe",
+   "page": 20
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Code can be found at https:// [...] github.com/facebookresearch/MRSQ.",
+   "page": 1
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "yes",
+   "quote": "Table 2. Aggregate Results. Average final performance across each benchmark at 1M time steps. [...] indicate 95% stratified bootstrap confidence intervals over 10 seeds.",
+   "page": 8
+  },
+  "X1": {
+   "value": 10,
+   "quote": "Evaluation protocol. For each task, we train agents for 1M [...] environment steps and 10 seeds.",
+   "page": 8
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "The shaded area captures a 95% stratified bootstrap confidence interval across 10 seeds.",
+   "page": 8
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "All experiments were run for 10 seeds over 1M environment steps and use default author-provided hyperparameters for all tasks.",
+   "page": 20
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We instantiate this approach in a new algorithm: Model- [...] based Representations for Search and Q-learning (MRS.Q).",
+   "page": 2
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "We evaluate the computational cost of MRS.Q against our baselines using consistent hardware, with results reported in Table 6. [...] 53 hours",
+   "page": 22
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "Average final performance across each benchmark at 1M time steps. [...] environment steps and 10 seeds. We evaluate agents every [...] 5k steps for 10 episodes without exploration noise.",
+   "page": 8
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "The shaded area captures a 95% stratified bootstrap confidence interval across 10 seeds.",
+   "page": 8
+  },
+  "Y3": {
+   "value": 61,
+   "quote": "We evaluate on the same 28 environments used by MR.Q [...] We evaluate on the same set of 14 -v0 environments for both HumanoidBench experiment configurations. [...] We evaluate on the same five environments used by MR.Q",
+   "page": 20
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "MRS.Q outperforms [...] all baselines on three out of four benchmarks and remains [...] competitive on the fourth (DMC).",
+   "page": 8
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "TD-MPC2 (Hansen et al., 2024). Results were obtained by re-running the authors’ code (https://github.com/ nicklashansen/tdmpc2, commit 8bbc14ebabdb32ea7ada5c801dc525d0dc73bafe).",
+   "page": 20
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "we omit the reach task from aggregate scores due to its different reward scale.",
+   "page": 20
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "DM Control Suite (DMC) (Tassa et al., 2018). We evaluate on the same 28 environments used by MR.Q, with an action repeat of 2 [no DMC version; Gym -v4 and HumanoidBench -v0 are given]",
+   "page": 20
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Number of value functions. We vary the number of value [...] functions used in the ensemble. We find that performance [...] improves as the ensemble size increases up to approxi- [...] mately 10 value functions, after which gains plateau.",
+   "page": 8
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "indicate 95% stratified bootstrap confidence intervals over 10 seeds",
+   "kind": "ci",
+   "page": 8
+  },
+  "Y12": {
+   "value": "yes",
+   "quote": "indicate 95% stratified bootstrap confidence intervals over 10 seeds",
+   "page": 8
+  }
+ },
+ "doubts": "Q4 : les références utilisent les « default author-provided hyperparameters » non listés, mais le commit de chaque dépôt est donné, ce que j'ai compté comme la version exigée, donc yes. Q8 : les intervalles bootstrap stratifiés à 95 % (avec IQM) servent à comparer les méthodes, codé yes. Y3 : 5 Gym + 28 DMC + 14 HumanoidBench sans main + 14 avec main = 61 environnements d'entraînement (reach exclu des agrégats). Y7 : versions données pour Gym (-v4) et HumanoidBench (-v0), mais pas pour DMC, donc no selon « chaque ». Y9 : la taille de l'ensemble (2, 5, 10, 20) figure parmi les hyperparamètres du tableau 4, codé yes. X7 : temps de calcul en heures (tableau 6) mesuré sur HalfCheetah seulement, codé yes."
+}

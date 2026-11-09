@@ -1,0 +1,147 @@
+{
+ "id": "K102",
+ "coder": "K7",
+ "title": "Pretraining a Shared Q-Network for Data-Efficient Offline Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "Extensive experiments on the D4RL, Robomimic, V-D4RL, and ExoRL benchmarks show that our method substantially improves both performance and data efficiency",
+   "page": 1
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "hφ corresponds to the fully connected layers shared with the transition model in (1)",
+   "page": 3
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "For D4RL experiments, each agent is trained for 1 million gradient steps per environment across five random seeds. [no learning rate, network size or pretraining steps given]",
+   "page": 16
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "The values on the left represent the baseline scores reported in the original literature [baseline hyperparameters not listed]",
+   "page": 6
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Additionally, the source code is available in our GitHub repository2 [...] https://github.com/daisophila/PSQN.git",
+   "page": 2
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 5,
+   "quote": "All results are reported with the mean and standard deviation scores over five random seeds.",
+   "page": 6
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "All results are reported with the mean and standard deviation scores over five random seeds.",
+   "page": 6
+  },
+  "X3": {
+   "value": "yes",
+   "quote": "All reported results in tables and figures correspond to the best evaluation scores achieved during training.",
+   "page": 16
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "we propose a simple yet effective plug-and-play pretraining framework that initializes the feature representation of a Q-network to enhance data efficiency in offline RL",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "All experiments were conducted on a single NVIDIA RTX A5000 GPU for both training and evaluation. [no duration]",
+   "page": 16
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "Table 2: Average normalized scores on the D4RL benchmark. [...] All reported results in tables and figures correspond to the best evaluation scores achieved during training.",
+   "page": [
+    6,
+    16
+   ]
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "All results are reported with the mean and standard deviation scores over five random seeds.",
+   "page": 6
+  },
+  "Y3": {
+   "value": 3,
+   "quote": "with three agents (HalfCheetah, Hopper, Walker2d) and five dataset types",
+   "page": 6
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "In seven out of eight tasks, our method yields a substantial improvement in success rate across both environments.",
+   "page": 7
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "we build directly on open-source implementations for fair and consistent comparisons. Specifically, we adopt publicly available PyTorch-based repositories for each baseline",
+   "page": 16
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "with three agents (HalfCheetah, Hopper, Walker2d) and five dataset types (random, medium-replay, medium, medium-expert, expert) [no dataset version]",
+   "page": 6
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "All results are reported with the mean and standard deviation scores over five random seeds.",
+   "kind": "std",
+   "page": 6
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y3 : la conclusion couvre aussi Robomimic, V-D4RL, ExoRL et Adroit ; j'ai compté les 3 environnements D4RL du tableau principal (2 ou plus de toute façon). Y5 : les dépôts sont donnés pour AWAC, CQL, IQL, TD3+BC et Robomimic, mais pas pour MOPO, MOBILE, ACL ni DrQ+BC ; codé yes sur les références principales. Q4 : les chiffres des références du tableau 2 sont dits « reported in the original literature » sans hyperparamètres listés, donc no. Q7 et Y8 : évaluation dans l'environnement même des jeux de données ; les jeux réduits ou d'autres stratégies de collecte ne sont pas des conditions tenues à part, donc no."
+}

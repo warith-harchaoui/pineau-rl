@@ -1,0 +1,144 @@
+{
+ "id": "K113",
+ "coder": "K7",
+ "title": "DAIL: Beyond Task Ambiguity for Language-Conditioned Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We conduct extensive experiments on both structured observation",
+   "page": 2
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "For BabyAI, we adopt the original visual encoding framework from BabyAI",
+   "page": 37
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "All models are implemented with PyTorch, and trained with a batch size of 64, using the Adam optimizer",
+   "page": 37
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "In this work, all the baselines share the same language encoder and similar observation encoder, and only differ in the decision module.",
+   "page": 38
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Our implementation is available at https://github.com/RunpengXie/Distributional-Aligned-Learning.",
+   "page": 1
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "To evaluate the algorithms generalizations, we divide the task space into in-distribution tasks and out-of-distribution tasks.",
+   "page": 7
+  },
+  "Q8": {
+   "value": "yes",
+   "quote": "Statistical analysis confirms that at 20 epochs, DAIL holds a significant lead over the other three ablation models, as demonstrated by Kolmogorov-Smirnov tests on the AUC results (p = 0.004).",
+   "page": 44
+  },
+  "X1": {
+   "value": 3,
+   "quote": "Table 1: Success rate of out-of-distribution BabyAI tasks. Each score is evaluated over 3 seeds.",
+   "page": 7
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We provide the standard deviation in all the experimental results in the paper.",
+   "page": 21
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We choose three state-of-the-art offline RL algorithms, CQL",
+   "page": 7
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "no",
+   "quote": "Table 1: Success rate of out-of-distribution BabyAI tasks. Each score is evaluated over 3 seeds. [evaluation checkpoint not stated]",
+   "page": 7
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "We provide the standard deviation in all the experimental results in the paper.",
+   "page": 21
+  },
+  "Y3": {
+   "value": 2,
+   "quote": "is a language learning research platform with different levels of tasks [...] benchmarks sequential decision-making tasks involving household activities",
+   "page": 7
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "CQL 98.7±0.3 92.2±0.9 [...] DAIL (ours) 97.2±0.2 96.5±1.4",
+   "page": 43
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "we implement CQL (w/o distributional) based on DDPG",
+   "page": 39
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "We also investigate recent approaches of language-conditioned IL such as LLfP [...] but they perform poorly in prior experiments, so only BC-Z is chosen as the representative in the final baselines.",
+   "page": 39
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "All trajectories in the offline dataset are collected under in-distribution instructions, while tasks encountered during testing outside this set are considered out-of-distribution tasks.",
+   "page": 35
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "The experimental results in Figure 8 show that there is no noticeable performance difference between",
+   "page": 13
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "We provide the standard deviation in all the experimental results in the paper.",
+   "kind": "std",
+   "page": 21
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X5 : RL hors ligne conditionné par le langage avec un encodeur CLIP gelé, sans affinage d'un LLM, codé classic. Q4 : les références partagent encodeurs, optimiseur et taux d'apprentissage, et les coefficients propres de CQL et IQL sont donnés, mais pas tous ceux de GRIF (température, nombre de négatifs), codé yes. Q8 : un test de Kolmogorov-Smirnov compare DAIL aux ablations (pas aux références principales), codé yes. Y1 : taux de réussite sans point de mesure (dernière époque, meilleur point) ; l'AUC n'est utilisée que dans une ablation annexe, donc no. Y4 : aucune perte n'est dite dans le texte, mais le tableau 5 montre DAIL derrière CQL sur Open en distribution, codé yes. Y5 : les références sont réimplémentées sur des encodeurs communs (« we implement CQL ... based on DDPG ») sans que ce soit dit pour chacune, codé yes. Y6 : LLfP et R3M écartés des références avec leur raison, compté comme exclusion dite. Y7 : SynthLoc et ALFRED sont nommés sans version, et le jeu hors ligne est construit par les auteurs (fourni en matériel supplémentaire, non lié), donc no. X7 : la liste de contrôle renvoie aux ressources de calcul en annexe F, introuvables, donc no."
+}

@@ -1,0 +1,144 @@
+{
+ "id": "K099",
+ "coder": "K7",
+ "title": "On the Sample Complexity of Differentially Private Policy Optimization",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We conduct experiments on the CartPole-v1 environment from OpenAI Gym",
+   "page": 36
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "Policies are represented by two-layer fully-connected neural networks with 64 hidden units",
+   "page": 36
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "All algorithms are trained for 100 epochs with batch size 10 (i.e., 10 episodes per gradient update) and discount factor γ = 0.99. [learning rate and noise scale not given]",
+   "page": 36
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "All algorithms are trained for 100 epochs with batch size 10 (i.e., 10 episodes per gradient update) and discount factor γ = 0.99. [no learning rate for PG or NPG]",
+   "page": 36
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "We conduct experiments on the CartPole-v1 environment from OpenAI Gym [theory paper, toy experiment, écart 4]",
+   "page": 36
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 3,
+   "quote": "Each algorithm is trained with 3 random seeds, and we report the average performance with standard deviation.",
+   "page": 36
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Std Final Reward: standard deviation of final rewards across seeds",
+   "page": 36
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "theory",
+   "quote": "In this paper, we initiate a theoretical study of differentially private policy optimization, focusing explicitly on its sample complexity.",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "Mean Final Reward: average reward in the final epoch across all seeds",
+   "page": 36
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "Std Final Reward: standard deviation of final rewards across seeds",
+   "page": 36
+  },
+  "Y3": {
+   "value": 1,
+   "quote": "We conduct experiments on the CartPole-v1 environment from OpenAI Gym",
+   "page": 36
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "We conduct experiments on the CartPole-v1 environment from OpenAI Gym",
+   "page": 36
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "yes",
+   "quote": "We conduct experiments on the CartPole-v1 environment from OpenAI Gym",
+   "page": 36
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "Std Final Reward: standard deviation of final rewards across seeds",
+   "kind": "std",
+   "page": 36
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X3 : le tableau rapporte aussi un « Best Epoch Mean » (meilleure époque), mais la mesure principale est la récompense finale, donc no. Y9 : le budget de confidentialité ε (5 et 3) est balayé, mais c'est un paramètre de confidentialité du problème plutôt qu'un hyperparamètre présenté comme tel, donc no. X5 : article de théorie avec une expérience jouet en annexe H, codé theory."
+}

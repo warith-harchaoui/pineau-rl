@@ -1,0 +1,147 @@
+{
+ "id": "K095",
+ "coder": "K6",
+ "title": "Robust In-Context Reinforcement Learning Under Reward Poisoning Attacks",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We evaluate the effectiveness of our approach against standard bandit algorithms, including robust baselines designed to handle reward contamination.",
+   "page": 1
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "The Transformer has 4 layers, 4 attention heads per layer, embedding dimension – 32, no dropout.",
+   "page": 5
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "The Transformer has 4 layers, 4 attention heads per layer, embedding dimension – 32, no dropout. [...] learning rate η = 0.001",
+   "page": 5
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "For the MDP baselines we choose two policy-gradient based [...] proximal policy optimization (PPO, Schulman et al., 2017); [hyperparamètres de NPG et Q-learning non donnés]",
+   "page": [
+    5,
+    6
+   ]
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Code available at github.com/PauliusSasnauskas/AT-DPT.",
+   "page": 9
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "To evaluate AT-DPT on attacks trained for it, we cross-validate to prevent evaluation on the same attack AT-DPT has seen during training",
+   "page": 6
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 10,
+   "quote": "We report the mean and 95% confidence interval (2×SEM) across 10 different experiment replications.",
+   "page": 6
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We report the mean and 95% confidence interval (2×SEM) across 10 different experiment replications.",
+   "page": 6
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "yes",
+   "quote": "tuned C̄ for our setup: C̄ = 0.5 – RTS performance is better than TS; indicated as RTS (C̄ tuned).",
+   "page": 15
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We study the corruption-robustness of in-context reinforcement learning (ICRL), focusing on the Decision-Pretrained Transformer (DPT, Lee et al., 2023).",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable : article classic",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Approximate GPU machine runtime of experiments, per run:",
+   "page": 24
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "For evaluation, we present the empirical cumulative regret",
+   "page": 5
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "We report the mean and 95% confidence interval (2×SEM) across 10 different experiment replications.",
+   "page": 6
+  },
+  "Y3": {
+   "value": 4,
+   "quote": "In Table 5 we additionally show experiments from the Miniworld environment [bandit, bandit linéaire, Darkroom2, Miniworld]",
+   "page": 7
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "From the results in Table 3 we see CRLinUCB performing only marginally better than all other algorithms in the clean case.",
+   "page": 6
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "For the PPO baseline in Tables 5 and 11 we use the cleanrl implementation (Huang et al., 2022). [origine du code non dite pour NPG, Q-learning, TS, UCB]",
+   "page": 22
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "While we test on out-of-distribution attacks in all experiments, meaning the test-phase attacks differ from the train-phase attacks",
+   "page": 19
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We present experiments showing how AT-DPT trains on different attack budgets B in Figure 3.",
+   "page": 19
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "ci",
+   "quote": "We report the mean and 95% confidence interval (2×SEM) across 10 different experiment replications.",
+   "page": 6
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X5 : un transformeur GPT-2 de 4 couches entraîné de zéro sur des bandits et des grilles n'est pas un grand modèle de langage, d'où classic. Q4/Y5 : les références de bandit sont détaillées (annexe A) et PPO vient de cleanrl, mais rien sur les hyperparamètres ni le code de NPG et Q-learning. Q6 : seul le réglage des références est décrit, pas celui d'AT-DPT. X4 : réglage décrit pour RTS, crUCB et CRLinUCB (les références robustes principales), pas pour NPG/Q-learning ; codé yes. X3 : les meilleures variantes de références sont retenues sur les résultats rapportés, ce qui avantage les références et non la méthode ; codé no. Y9 : le budget d'attaque B pendant l'entraînement est-il un hyperparamètre de la méthode ou une condition d'environnement ? codé yes. Y3 : 4 cadres (bandit, bandit linéaire, Darkroom2, Miniworld)."
+}

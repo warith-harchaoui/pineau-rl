@@ -1,0 +1,144 @@
+{
+ "id": "K079",
+ "coder": "K5",
+ "title": "From Static Constraints to Dynamic Adaptation: Sample-Level Constraint Relaxation for Offline-to-Online Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We evaluate DARE on three standard D4RL benchmarks",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "Hidden dimension (actor / critic)",
+   "page": 22
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "DARE introduces only one additional hyperparameter: the update frequency for the class-conditional mean µc and variance σc of the deviation statistic d(s, a). We update (µc , σc ) every 1000 training steps by sampling 10,000 samples from the offline dataset and 10,000 from the online replay buffer",
+   "page": 22
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "Please refer to Tab. 5 for the details about the hyperparameters in our CQL-based implementation.",
+   "page": 22
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "publicly available at https://github.com/ [...] lpzu/DARE.",
+   "page": 1
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "primarily follow the authors’ recommended hyperparameters (Tarasov et al., 2023)",
+   "page": 22
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 5,
+   "quote": "Each result is averaged over the final 4 evaluations and 5 random seeds ± standard deviation.",
+   "page": 7
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Each result is averaged over the final 4 evaluations and 5 random seeds ± standard deviation.",
+   "page": 7
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "For a fair comparison, all methods are initialized from the same offline-trained models",
+   "page": 22
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "Experiments on D4RL demonstrate that DARE consistently improves fine-tuning stability",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable : famille classic",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Runtime comparison. We further evaluate the runtime on hopper-medium-replay-v2, with all experiments conducted on the same NVIDIA GeForce RTX 5090 GPU.",
+   "page": 33
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "Table 1. Performance after 0.2M online fine-tuning. Each result is averaged over the final 4 evaluations and 5 random seeds",
+   "page": 7
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "Each result is averaged over the final 4 evaluations and 5 random seeds ± standard deviation.",
+   "page": 7
+  },
+  "Y3": {
+   "value": 6,
+   "quote": "Abbreviations: HC = halfcheetah, H = hopper, W2D = walker2d, L = locomotion, AM = antmaze",
+   "page": 7
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "with highest scores on 13/15 tasks under the CQL group and on 12/15 tasks under the IQL group.",
+   "page": 7
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "We implement the CQL and Cal-QL based on https://github.com/tinkoff-ai/CORL",
+   "page": 22
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "yes",
+   "quote": "All environments use -v2 version.",
+   "page": 7
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Setting Kmax = 32 achieves a total score of 877.1, while setting Kmax = 128, which is effectively uncapped under our batch setting, achieves 878.2.",
+   "page": 33
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "5 random seeds ± standard deviation.",
+   "page": 7,
+   "kind": "std"
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y3 : 15 jeux D4RL ramenés à 6 environnements (halfcheetah, hopper, walker2d et trois tailles d'AntMaze), les variantes medium/replay/expert et diverse/play comptant pour une tâche ; les tailles de labyrinthe sont comptées comme environnements distincts. Y9 : le plafond Kmax (32 contre 128) est une option d'implémentation balayée avec chiffres, compté comme hyperparamètre. X4 : références et méthode partent des mêmes modèles hors ligne avec les hyperparamètres recommandés, aucun réglage décrit, d'où no. Y5 : CORL, PEX et EDIS identifiés par leurs dépôts. X7 : temps d'exécution par méthode sur un GPU RTX 5090 donnés (tableau 15), d'où yes."
+}

@@ -1,0 +1,146 @@
+{
+ "id": "K069",
+ "coder": "K5",
+ "title": "Expanding the Capabilities of Reinforcement Learning via Text Feedback",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We compare with a comprehensive set of baselines: for reward-only RL, we use GRPO",
+   "page": 8
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "we use Llama-3.1-8B-Instruct (Grattafiori et al., 2024) as the learner",
+   "page": 8
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Table 2: Hyperparameters for all multi-turn RL experiments. [...] Group size [...] Groups per batch [...] Max tokens [...] LoRA rank [...] Learning rate [...] KL penalty",
+   "page": [
+    19,
+    40
+   ]
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "Across all tasks, we perform 5 rounds of prompt improvement on the training set, collect all candidate prompts encountered during optimization, evaluate them on a held-out validation set, and select the best-performing prompt for final evaluation on the test set. We used a temperature of 0.6 for Reasoning Gym and competition math and a temperature of 0.7 for creative writing.",
+   "page": 40
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "Our website is available at: https://rl-textfeedback.github.io. [project page, no code announced]",
+   "page": 1
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "We use 19.8K examples for training and the remaining 200 examples for testing.",
+   "page": 39
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X3": {
+   "value": "no",
+   "quote": "We report single-turn accuracy after 2-turn training (i.e., JSingleTurn (π)) of the last checkpoint.",
+   "page": 8
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "We study learning from text feedback in the context of RL for LLM reasoning",
+   "page": 10
+  },
+  "X6": {
+   "value": 1,
+   "quote": "we use Llama-3.1-8B-Instruct (Grattafiori et al., 2024) as the learner",
+   "page": 8
+  },
+  "X7": {
+   "value": "no",
+   "quote": "All of our training experiments are performed using Tinker (Lab, 2025). [no quantity]",
+   "page": 43
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "We report single-turn accuracy after 2-turn training (i.e., JSingleTurn (π)) of the last checkpoint. For the reasoning tasks and LitBench, we report the mean@1 accuracy, judged by either verifiable reward or LLM-as-a-judge. For the math tasks, we report the mean@32 accuracy from the last checkpoint from the training.",
+   "page": 8
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "non applicable",
+   "page": null
+  },
+  "Y3": {
+   "value": 6,
+   "quote": "including reasoning puzzles (Knights and Knaves, Binary Matrix, Shortest Path) (Stojanovski et al., 2025; Tajwar et al., 2025), competition math (training on DAPO (Yu et al., 2025) and Deepmath (He et al., 2025) and testing on MATH500",
+   "page": 8
+  },
+  "Y4": {
+   "value": "no",
+   "quote": "Note that RLTF-SD and RLTF-FM consistently outperform all baselines across tasks.",
+   "page": 8
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "There is no publicly available codebase for Feedback Descent, so we reimplement the algorithm based on details from the Feedback Descent (Lee et al., 2025) paper [GRPO implementation not identified]",
+   "page": 40
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "For all environments, we procedurally generate 20K problems in similar style to the Reasoning Gym code",
+   "page": 39
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "For WritingBench evaluation, we use the same checkpoint from training on the LitBench training set, but WritingBench has tasks beyond story writing, which is the only task in LitBench.",
+   "page": 9
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "non applicable",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q4 : hyperparamètres de Feedback Descent détaillés, GRPO supposé suivre le tableau 2 « for all multi-turn RL experiments » (le GRPO mono-tour n'est pas nommé), d'où yes. Q5 : seule une page de projet est donnée, sans annonce de code, d'où no (à vérifier à l'analyse). Y4 : RLTF-SD et RLTF-FM se battent l'un l'autre selon les tâches mais battent toujours les références ; codé no. Y5 : Feedback Descent réimplémenté, mais l'origine du code GRPO n'est pas dite (Tinker sans version), d'où no. Y7 : MATH500, AIME24 et LitBench sont nommés, mais les problèmes Reasoning Gym sont générés par les auteurs sans publication, d'où no. Y8 : WritingBench présenté comme allant au-delà de la seule tâche de LitBench, compté comme test hors distribution. Y9 : le nombre de tours d'auto-critique à l'inférence (figure 4) est traité comme une mise à l'échelle, pas comme un hyperparamètre. Y3 : six cadres d'entraînement (trois puzzles, DAPO, DeepMath, LitBench)."
+}

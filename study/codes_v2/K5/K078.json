@@ -1,0 +1,147 @@
+{
+ "id": "K078",
+ "coder": "K5",
+ "title": "Diffusion Guided Adversarial State Perturbations in Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We evaluate SHIFT using four Atari environments [...] Doom game [...] and Airsim [...] autonomous driving simulator.",
+   "page": 8
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We usually train a neural network θ to learn the denoising function D(x, σ)",
+   "page": 29
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "We keep other hyperparameters the same as Alonso et al. [...] for training the EDM diffusion model. [autoencoder training settings not given]",
+   "page": [
+    30,
+    31
+   ]
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Our code can be found at this GitHub Repo. [hyperlink to https://github.com/SliencerX/Diffusion_Guided_Adversarial_State_Perturbations_in_Reinforcement_Learning]",
+   "page": 1
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "We set the policy guidance strength Γ2 differently in each environment under each defense.",
+   "page": 31
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 10,
+   "quote": "All results are reported with mean and std over 10 runs.",
+   "page": 8
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "All results are reported with mean and std over 10 runs.",
+   "page": 8
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We consider state-of-the-art defenses including SA-DQN",
+   "page": 8
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable : famille classic",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "We conduct all our experiments on a workstation equipped with an Intel I9-12900KF CPU, an RTX 3090 GPU, and 64GB system RAM.",
+   "page": 31
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "Reward [...] (average episode return over 10 runs)",
+   "page": 9
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "All results are reported with mean and std over 10 runs.",
+   "page": 8
+  },
+  "Y3": {
+   "value": 4,
+   "quote": "Table 1: Episode reward of SHIFT-O and SHIFT-I against various defense methods in different environments",
+   "page": 8
+  },
+  "Y4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Figure 3b illustrates the performance of our attack across various levels of policy guidance strength Γ2 .",
+   "page": 10
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "All results are reported with mean and std over 10 runs.",
+   "page": 8,
+   "kind": "std"
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q5 : le texte dit seulement « this GitHub Repo », mais l'hyperlien du PDF mène à un dépôt GitHub, d'où yes. Q3 : la diffusion renvoie aux hyperparamètres d'Alonso et al. sans les lister et l'autoencodeur n'est pas décrit, d'où no. X1 : « 10 runs » peut désigner 10 épisodes d'évaluation plutôt que 10 entraînements indépendants ; 10 retenu. Q7/Y8 : le modèle de diffusion est entraîné sur des trajectoires de πref et testé contre d'autres politiques victimes, mais ce n'est pas présenté comme un test tenu à part, d'où no. Y3 : quatre environnements du tableau 1 (Pong, Freeway, Doom, AirSim), BankHeist et RoadRunner restent en annexe. Y4 : la comparaison aux attaques de référence ne porte que sur Freeway ; SHIFT n'y domine pas toutes les mesures de discrétion, mais aucune tâche perdue n'est montrée, d'où no. X7 : matériel seul, plus un temps par perturbation, pas de quantité totale, d'où no."
+}
