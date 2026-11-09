@@ -1,6 +1,6 @@
 ---
-title: "Survey, revisited"
-subtitle: "La grille de Pineau (2018) réappliquée à la littérature de 2025-2026, puis à nos propres expériences"
+title: "Did we listen to Joelle Pineau in 2018?"
+subtitle: "Un survey, revisité : chaque faille montrée en 2018, mesurée dans les articles de 2018 à 2026 et dans nos propres expériences"
 author: "Warith Harchaoui"
 date: "9 novembre 2026 · état intermédiaire"
 lang: fr
@@ -10,128 +10,184 @@ link-citations: true
 
 # Résumé {.unnumbered}
 
-En 2018, Joelle Pineau a passé 50 articles d'apprentissage par renforcement (RL) au crible d'une
-grille de reproductibilité, et montré avec Henderson et al. qu'un même code, lancé avec deux graines,
-peut ressembler à deux algorithmes [@pineau2018iclr; @pineau2018neurips; @henderson2018matters].
-Notre approche, *survey, revisited*, refait ce travail sur deux plans. D'abord le sondage : la même
-grille, appliquée à 50 articles tirés au hasard parmi les 1 252 articles de RL d'ICLR 2026, d'ICML
-2026 et de NeurIPS 2025. Ensuite les expériences : celles de 2018, relancées avec les algorithmes de
-2026 et sous les règles que la grille réclame, protocole écrit avant le premier entraînement.
+En 2018, Joelle Pineau a dressé, à ICLR puis à NeurIPS, la liste de ce qui rendait l'apprentissage
+par renforcement (RL) profond peu crédible : code absent, hyperparamètres tus, références moins
+réglées que la méthode, trop peu d'essais, meilleurs essais seuls publiés, pas de test statistique,
+classements qui changent d'une tâche à l'autre, implémentations qui divergent, évaluation sur
+l'ensemble d'entraînement, bancs d'essai trop simples [@pineau2018iclr; @pineau2018neurips;
+@henderson2018matters]. Ce travail reprend la liste entière, faille par faille, et pose pour chacune
+la même question : l'avons-nous écoutée ? Deux instruments y répondent. Un sondage : la grille de
+2018, réappliquée aux articles de 2018 à 2026, de 12 articles de 2018 qui calibrent notre lecture à
+50 articles tirés au hasard parmi les 1 252 articles de RL d'ICLR 2026, d'ICML 2026 et de NeurIPS
+2025. Des expériences : celles de 2018, relancées avec les algorithmes de 2026, sous un protocole
+écrit avant le premier entraînement.
 
-Trois résultats sont acquis à ce jour. (1) L'évaluation tenue à part est passée de 10 % à 70 % des
-articles, mais les hyperparamètres des références ne sont plus donnés que dans 18 % des articles
-(60 % en 2018) et le test de significativité reste à 4 %. (2) Sur 30 graines de PPO, deux groupes de
-cinq tirés au hasard ne trompent le test de Welch que dans 1,2 % des cas ; ce qui trompe, c'est
-l'écart apparent (17 % en médiane), la coupe « cinq meilleures contre cinq pires » (31 % de faux
-positifs) et la sélection des trois meilleures sur dix (+33 %). (3) Notre propre référence « mal
-réglée » l'était d'abord par nous. Le reste du programme (E2 à E5, E7, GRPO) est en cours ; ce
-document le dit section par section.
+Sur seize failles, une seule a été nettement écoutée : l'évaluation tenue à part est passée de 10 % à 70 % des
+articles. Une a reculé : les hyperparamètres des références ne sont plus donnés que dans 18 % des
+articles, contre 60 % en 2018. Trois n'ont pas bougé : le test de significativité (4 %), la méthode
+de choix des hyperparamètres (27 %) et le nombre d'essais, que la moitié des articles ne disent
+pas. Nos expériences nuancent la faille la plus célèbre : deux groupes de cinq graines tirés au
+hasard ne trompent le test de Welch que dans 1,2 % des cas ; ce qui le trompe, c'est de trier
+(31 %) et de garder les meilleurs (+33 %). Elles confirment la plus discrète : la référence mal
+réglée de notre propre expérience, c'était nous. Six failles restent à mesurer ; ce document dit
+lesquelles et comment.
 
 # Introduction
 
-La conférence invitée de Pineau à ICLR 2018 tient en une thèse : un résultat n'est crédible que s'il
-est reproductible, et le RL profond ne l'était pas [@pineau2018iclr]. Elle s'appuyait sur deux
-mesures. Un sondage de 50 articles, où environ 5 % font un test de significativité, et une série
-d'expériences sur MuJoCo [@todorov2012mujoco] où le classement des algorithmes change d'une tâche à
-l'autre, où deux implémentations du même algorithme divergent, et où deux paquets de cinq graines du
-même code TRPO dessinent deux courbes séparées [@henderson2018matters]. L'argument rejoint celui de
-Buckheit et Donoho : un article est la publicité de la recherche, pas la recherche
-[@buckheit1995wavelab]. Il s'inscrit dans une inquiétude plus large, mesurée la même année par
-*Nature* [@baker2016reproducibility].
+La conférence invitée de Pineau à ICLR 2018, reprise et augmentée à NeurIPS 2018, part d'une
+définition (un résultat n'est crédible que s'il se reproduit), d'un constat partagé, celui d'un
+sondage de *Nature* auprès de 1 576 chercheurs [@baker2016reproducibility], et d'une phrase de
+Buckheit et Donoho : un article n'est que la publicité de la recherche [@buckheit1995wavelab]. Elle
+en tire une thèse en trois mots, *reproducibility, reusability, robustness*, puis montre, figures de
+Henderson et al. à l'appui [@henderson2018matters], tout ce qui manque au RL profond pour la
+satisfaire. Elle finit sur des remèdes : une liste de contrôle de reproductibilité, un défi de
+reproduction ouvert aux étudiants, et un conseil personnel, « être aussi critique des bons
+résultats que des mauvais ».
 
-Depuis, la liste de contrôle de NeurIPS 2019, issue du programme qu'elle a dirigé, est devenue la
-norme [@pineau2021improving] ; les statistiques du RL ont été revues [@agarwal2021precipice] ; les
-détails d'implémentation ont été mesurés [@engstrom2020implementation; @andrychowicz2021matters].
-Le RL a aussi changé de terrain : il affine désormais de grands modèles de langue à partir de
-récompenses vérifiables [@shao2024deepseekmath; @deepseek2025r1], et les mêmes pièges y
-reparaissent. Une récompense tirée au sort y « marche » sur une famille de modèles et pas sur les
-autres [@shao2025spurious] ; le gain en pass@1 peut se payer en pass@k [@yue2025rlvr].
+Huit ans plus tard, la liste de contrôle est devenue la norme des conférences
+[@pineau2021improving], les statistiques du RL ont été refaites [@agarwal2021precipice], les
+détails d'implémentation mesurés [@engstrom2020implementation; @andrychowicz2021matters], et le RL a
+changé de terrain : il affine de grands modèles de langue à partir de récompenses vérifiables
+[@shao2024deepseekmath; @deepseek2025r1], où des pièges de 2018 reparaissent sous d'autres noms
+[@shao2025spurious; @yue2025rlvr; @hochlehnert2025sober].
 
-*Survey, revisited* pose donc deux questions. La grille de 2018 a-t-elle changé les pratiques ?
-Et nos propres expériences survivent-elles aux règles que nous appliquons aux autres ?
+Ce survey est donc un survey de survey. Il ne recense pas la littérature du RL ; il reprend
+l'inventaire de failles de 2018 et mesure, pour chacune, ce qui a changé. Sa règle est celle que
+Pineau demandait : la grille s'applique d'abord à nos propres expériences.
+
+# L'inventaire de 2018
+
+Le tableau ci-dessous recense les failles que Pineau a montrées, dans l'ordre où elles apparaissent
+dans ses deux conférences, avec leur source (numéro de diapositive à ICLR, page du PDF de NeurIPS)
+et l'instrument qui la mesure ici. Les critères Q et X sont ceux de la grille v1, codés ; les
+critères Y ceux de la grille v2, préenregistrée le 9 novembre 2026 et pas encore codée
+(`study/PROTOCOL.md`, écart 11) ; E1 à E7 sont nos expériences.
+
+| # | Faille montrée en 2018 | Source | Mesure ici | Verdict au 9 novembre |
+|:--|:-----------------------------------------|:----------------|:----------------|:----------------------|
+| F1 | L'article sans le code n'est que la publicité | ICLR 6 ; NeurIPS 29 | Q5 | partiellement écoutée |
+| F2 | Pas de plan pour refaire (AlphaGo) : réglages, calcul | ICLR 9-12 | Q3, X7 | à moitié |
+| F3 | L'infrastructure fait partie du résultat | NeurIPS 34-35 | X7, Y10 | à moitié |
+| F4 | Hyperparamètres de la méthode incomplets | NeurIPS 29 | Q3 | ambigu |
+| F5 | Méthode de choix des hyperparamètres tue | NeurIPS 29 | Q6 | pas écoutée |
+| F6 | Réglages qui changent tout et interagissent | ICLR 24-26 | Y9 | à mesurer |
+| F7 | Références moins réglées que la méthode | ICLR 26 ; NeurIPS 29 | Q4, X4, E6 | reculé |
+| F8 | Mesure de performance non définie | ICLR 27 | Y1, Y2 | à mesurer |
+| F9 | Trop peu d'essais (3 ou 5, jamais 10) | ICLR 28 | X1, E5 | pas écoutée |
+| F10 | Les meilleurs essais sur N, seuls publiés | ICLR 29-30 | X3, E1, E4 | rare, effet mesuré |
+| F11 | Même code, autre graine : deux « algorithmes » | ICLR 31 ; NeurIPS 22 | E1 | nuancée |
+| F12 | Aucun test de significativité | NeurIPS 29 | Q8, X2 | pas écoutée |
+| F13 | Le meilleur algorithme change avec la tâche | ICLR 20-21 | E2, Y3, Y4 | en cours |
+| F14 | Implémentations du même algorithme divergentes | ICLR 22-23 | E3, Y5 | en cours |
+| F15 | Tester sur l'ensemble d'entraînement | NeurIPS 36-51 | Q7, E7, Y8 | écoutée |
+| F16 | Bancs d'essai trop simples, mémorisables | NeurIPS 43-50 | X6, Y7 | à mesurer |
+
+: Les seize failles de 2018 et leur instrument de mesure.
+
+Les quatre sections qui suivent regroupent ces failles en familles : le matériel (F1 à F3), le
+réglage (F4 à F7), les graines et la statistique (F8 à F12), la portée des conclusions (F13 à F16).
+Une cinquième traite des remèdes institutionnels.
 
 # Méthode
 
-## Le sondage, refait
+## Le sondage
 
 Population : les 1 252 articles de RL d'ICLR 2026, d'ICML 2026 et de NeurIPS 2025. Échantillon :
 50 articles tirés au hasard (27 sur le RL de grands modèles, 14 de RL classique, 9 de théorie dont
-5 sans expérience). Grille : celle de Pineau, complétée de quatre critères qu'elle ne chiffrait pas
-(incertitude rapportée, références réglées comme la méthode, calcul rapporté, sélection visible des
-meilleurs essais). Calibration : 12 articles de RL d'ICML et de NeurIPS 2018, même grille, mêmes
-lecteurs. Fidélité : deux lecteurs indépendants sur 10 articles s'accordent sur 127 décisions sur 130
-(98 %). Les parts sont calculées sur les articles expérimentaux, avec l'intervalle de Wilson à
-95 % [@wilson1927probable]. Protocole complet dans `study/PROTOCOL.md`.
+5 sans expérience). Calibration : 12 articles de RL d'ICML et de NeurIPS 2018, même grille, mêmes
+lecteurs ; on ne conclut à un changement que s'il tient à la fois contre les chiffres de Pineau et
+contre notre propre lecture de 2018. Fidélité : deux lecteurs indépendants sur 10 articles
+s'accordent sur 127 décisions sur 130 (98 %). Parts calculées sur les articles expérimentaux, avec
+l'intervalle de Wilson à 95 % [@wilson1927probable].
 
-## Les expériences, refaites
+## Les expériences
 
-Le protocole `sim/SIM_PROTOCOL.md` a été écrit le 8 novembre 2026, avant tout entraînement ; tout
-changement ultérieur est consigné dans sa section « Écarts » avant d'avoir vu les résultats qu'il
-touche, ou signalé comme postérieur. Outils figés : Gymnasium 1.1.1 [@towers2024gymnasium],
-MuJoCo, Stable-Baselines3 2.6.0 [@raffin2021sb3] et sa version JAX. Algorithmes : PPO
-[@schulman2017ppo] en deux implémentations, SAC [@haarnoja2018sac] et CrossQ [@bhatt2024crossq].
-Tâches : HalfCheetah, Hopper, Walker2d et Swimmer (`-v5`). Dix graines par couple (algorithme,
-tâche), trente pour E1, aucune retirée. Évaluation tenue à part : graines d'évaluation jamais vues à
-l'entraînement, plus des dynamiques modifiées (masses × 1,2, frottement × 0,8).
+Protocole `sim/SIM_PROTOCOL.md`, écrit le 8 novembre 2026 avant tout entraînement ; tout changement
+est consigné dans ses « Écarts », avec la mention de ce qui avait déjà été vu. Outils figés :
+Gymnasium 1.1.1 [@towers2024gymnasium], MuJoCo [@todorov2012mujoco], Stable-Baselines3 2.6.0
+[@raffin2021sb3] et sa version JAX. Algorithmes : PPO [@schulman2017ppo] en deux implémentations,
+SAC [@haarnoja2018sac], CrossQ [@bhatt2024crossq]. Tâches de Henderson et al. : HalfCheetah, Hopper,
+Walker2d, Swimmer (`-v5`). Dix graines par couple, trente pour E1, aucune retirée. Évaluation tenue à
+part, sur des graines jamais vues et sur des dynamiques modifiées (masses × 1,2, frottement × 0,8).
+Volet grands modèles : GRPO [@shao2024deepseekmath] écrit à la main sur Qwen2.5-0.5B-Instruct
+[@qwen2025qwen25] et Llama-3.2-1B-Instruct [@grattafiori2024llama3], vraie récompense contre
+récompense tirée au sort, à petite échelle annoncée d'avance (`sim/llm/LLM_PROTOCOL.md`).
 
-| Exp. | Question | État au 9 novembre |
-|:----|:----------------------------------------------|:-----------------------|
-| E1 | Deux groupes du même code ressemblent-ils à deux algorithmes ? | fini, analysé |
-| E2 | Le classement change-t-il d'une tâche à l'autre ? | en cours |
-| E3 | Deux implémentations du même algorithme diffèrent-elles ? | en cours |
-| E4 | Que font les trois meilleurs essais sur dix ? | après E2 |
-| E5 | Combien de graines pour retrouver le bon classement ? | après E2 |
-| E6 | Que vaut une référence mal réglée ? | premier passage fini, diagnostic en cours |
-| E7 | Que perd-on hors des dynamiques d'entraînement ? | après E2 |
-
-: Le programme expérimental et son état.
-
-## Le volet grands modèles
-
-GRPO [@shao2024deepseekmath] écrit à la main, sur un portable Apple, à petite échelle annoncée
-d'avance : Qwen2.5-0.5B-Instruct [@qwen2025qwen25] et Llama-3.2-1B-Instruct
-[@grattafiori2024llama3], produit de deux nombres de 12 à 99, vraie récompense contre récompense
-tirée au sort, comme Shao et al. [-@shao2025spurious]. Protocole : `sim/llm/LLM_PROTOCOL.md`.
-
-# Résultats
-
-## Le sondage : ce qui a bougé, ce qui n'a pas bougé
+# Le matériel : code, réglages, calcul (F1 à F3)
 
 ![La grille de 2018 réappliquée. Points : part des articles expérimentaux qui satisfont le critère, chez Pineau (2018) et dans notre échantillon (2026). Le test de significativité, absent de la figure, passe de 5 % à 4 %.](figures/remesure-dumbbell.svg){#fig:remesure width=100%}
 
-| Critère | Pineau 2018 | Nous, calibration 2018 | Nous, 2026 [IC 95 %] |
-|:------------------------------------|--------:|----------:|-------------:|
-| Hyperparamètres de la méthode, tous | 90 % | 6/10 | 67 % [52, 79] |
-| Hyperparamètres des références, tous | 60 % | 6/11 | **18 % [10, 32]** |
-| Code en lien | 55 % | 6/11 | 67 % [52, 79] |
-| Méthode de choix des hyperparamètres | 20 % | 2/10 | 27 % [16, 41] |
-| Évaluation tenue à part | 10 % | 4/10 | **70 % [56, 82]** |
-| Test de significativité | 5 % | 1/11 | 4 % [1, 15] |
-| Incertitude rapportée | n.d. | 8/11 | 47 % [33, 61] |
-| Références réglées comme la méthode | n.d. | 4/10 | 5 % [1, 15] |
-| Calcul rapporté | n.d. | 4/11 | 47 % [33, 61] |
+| Critère | Faille | Pineau 2018 | Nous, calibration 2018 | Nous, 2026 [IC 95 %] |
+|:------------------------------------|:----|--------:|----------:|-------------:|
+| Q5 Code en lien | F1 | 55 % | 6/11 | 67 % [52, 79] |
+| Q3 Hyperparamètres de la méthode, tous | F2, F4 | 90 % | 6/10 | 67 % [52, 79] |
+| X7 Calcul rapporté | F2, F3 | n.d. | 4/11 | 47 % [33, 61] |
+| Q6 Méthode de choix des hyperparamètres | F5 | 20 % | 2/10 | 27 % [16, 41] |
+| Q4 Hyperparamètres des références, tous | F7 | 60 % | 6/11 | **18 % [10, 32]** |
+| X4 Références réglées comme la méthode | F7 | n.d. | 4/10 | 5 % [1, 15] |
+| X2 Incertitude rapportée | F12 | n.d. | 8/11 | 47 % [33, 61] |
+| Q8 Test de significativité | F12 | 5 % | 1/11 | 4 % [1, 15] |
+| Q7 Évaluation tenue à part | F15 | 10 % | 4/10 | **70 % [56, 82]** |
 
-: La grille de Pineau réappliquée. Données : `study/results_final.json`.
+: La grille réappliquée, par faille. Données : `study/results_final.json`.
 
-Un seul progrès net : l'évaluation tenue à part, portée par le RL de grands modèles (26 articles sur
-27, contre 5 sur 13 en RL classique). Une régression nette : les hyperparamètres des références. Le
-reste n'a pas bougé, test de significativité compris. L'incertitude rapportée baisse, mais la baisse
-vient du RL de grands modèles (4 articles sur 27) ; le RL classique la rapporte toujours (14 sur 14).
+**F1, le code.** 67 % des articles de 2026 lient leur code, contre 55 % en 2018 ; l'intervalle
+[52, 79] ne permet pas de conclure à un changement sur notre seul échantillon. Le bilan du
+programme de NeurIPS 2019 va dans le même sens, de moins de 50 % à 74,4 % d'articles acceptés avec
+code [@pineau2021improving]. Écoutée, à moitié : un article sur trois reste une publicité sans le
+produit.
 
-![Les critères de 2026 avec leur intervalle. Avec 45 articles expérimentaux, un écart de moins de quinze points avec 2018 ne se distingue pas du bruit d'échantillonnage.](figures/remesure-ic.svg){#fig:remesure-ic width=100%}
+**F2, le plan pour refaire.** Pineau reprochait à AlphaGo de ne livrer ni les réglages, ni le
+calcul, ni le code. En 2026, les hyperparamètres de la méthode sont tous donnés dans 67 % des
+articles et le calcul chiffré dans 47 %. Le recul apparent des hyperparamètres (90 % chez Pineau)
+ne tient pas contre notre propre lecture de 2018 (6 sur 10) : notre grille est plus sévère que la
+sienne. Verdict ambigu.
 
-Graines : sur 41 articles de RL expérimentaux, 20 ne disent pas combien d'entraînements
-indépendants soutiennent leurs résultats, 4 n'en ont qu'un, et la médiane des autres est 5. En RL de
-grands modèles, 15 articles sur 27 n'essaient qu'une famille de modèles de base, alors que Shao et
-al. montrent qu'un effet peut ne valoir que pour une famille [-@shao2025spurious].
+**F3, l'infrastructure.** À NeurIPS, Pineau ajoutait l'infrastructure (processeurs, cartes
+graphiques, grappes) aux conditions de la reproductibilité. Moins d'un article sur deux la chiffre
+en 2026, alors que le RL de grands modèles a fait du calcul un poste de budget
+[@khatri2025art]. Les dépendances logicielles (Y10) restent à coder.
 
-## E1 : même code, autre graine
+# Le réglage : hyperparamètres et références (F4 à F7)
+
+**F4 et F5.** La méthode de choix des hyperparamètres n'est décrite que dans 27 % des articles,
+contre 20 % en 2018 : pas de changement.
+
+**F6, les réglages qui changent tout.** Pineau montrait que l'architecture, l'activation, l'échelle
+de la récompense et la normalisation par couche changent le résultat et interagissent. La
+littérature l'a confirmé à grande échelle [@engstrom2020implementation; @andrychowicz2021matters].
+Que les articles de 2026 montrent leur sensibilité aux réglages (Y9) reste à mesurer.
+
+**F7, les références moins réglées.** C'est la seule faille qui a reculé nettement. Les
+hyperparamètres des références ne sont tous donnés que dans 18 % des articles, contre 60 % chez
+Pineau et 6 sur 11 dans notre calibration ; et 5 % seulement disent avoir réglé leurs références
+avec le même soin que leur méthode. D'où vient le recul, notre échantillon ne permet pas de le dire.
+
+Notre propre expérience E6 devait illustrer cette faille : PPO sur Hopper avec les réglages par
+défaut de la bibliothèque contre les réglages publiés par RL Baselines3 Zoo [@raffin2020zoo]. Le
+premier passage donne au défaut une IQM de 2 877 [2 272, 3 346] et au Zoo 1 003 [859, 1 156], le
+Zoo plafonnant à 1 000 dès 50 000 pas. Le résultat était trop beau ; vérification faite, notre
+normalisation des observations gardait γ = 0,99 là où le Zoo prend celui de l'algorithme, 0,999.
+La référence mal réglée, c'était d'abord nous. Le premier passage est conservé, la recette corrigée
+relancée (Hopper-v5 et v4, défaut sur v4, dix graines chacun) ; ce diagnostic, ajouté après avoir vu
+le premier résultat, est déclaré comme tel, et ses deux dernières graines tournent.
+
+# Les graines et la statistique (F8 à F12)
+
+**F8, la mesure.** « Comment mesurer la performance de la politique apprise ? » demandait Pineau :
+retour final, moyenne sur l'entraînement, aire sous la courbe. La définition de la mesure (Y1) et
+celle des barres d'erreur (Y2) restent à coder.
+
+**F9, le nombre d'essais.** Sur 41 articles de RL expérimentaux, 20 ne disent pas combien
+d'entraînements indépendants soutiennent leurs résultats, 4 n'en ont qu'un, et la médiane des autres
+est 5 : celle que Pineau relevait en 2018. Pas écoutée. E5 dira combien il en faut.
+
+**F11, même code, autre graine.**
 
 ![Trente entraînements du même code, des mêmes hyperparamètres, sur la même tâche ; seule la graine change. Moyenne 1 688, écart type 568 (coefficient de variation 34 %), médiane 1 580.](figures/e1-seeds.svg){#fig:e1 width=100%}
 
-La distribution n'a rien de gaussien (Shapiro-Wilk, p = 4 × 10^−7^). Vingt-sept graines finissent
-entre 1 138 et 1 999 ; trois décollent au-delà de 3 000. Tirer cinq graines, c'est donc tirer ou non
-l'une de ces trois-là.
+La distribution n'a rien de gaussien (Shapiro-Wilk, p = 4 × 10^−7^) : vingt-sept graines finissent
+entre 1 138 et 1 999, trois décollent au-delà de 3 000.
 
 ![Part des 10 000 tirages où le test de Welch [@welch1947generalization] déclare différents deux groupes du même code. Au hasard, le test est même prudent (1,2 % à 1,7 % pour un seuil de 5 %) ; la coupe triée le trompe une fois sur trois.](figures/e1-false-positive.svg){#fig:e1-fp width=90%}
 
@@ -144,79 +200,147 @@ l'une de ces trois-là.
 
 : E1, 10 000 tirages par ligne. Écart apparent : |moyenne A − moyenne B| / min(moyennes). Données : `sim/analysis/e1.json`.
 
-Ce résultat corrige notre propre lecture de 2018. Deux paquets de cinq graines tirés au hasard ne
-trompent presque jamais un test ; ils trompent l'œil. Un écart de 17 % entre deux courbes est la
-norme sans aucune différence d'algorithme, et un écart de 47 % arrive une fois sur vingt. Ce qui
-trompe le test, c'est la coupe triée de la figure de 2018 : 31 % de faux positifs. La sélection
-trompe la moyenne : garder les trois meilleures graines sur dix la gonfle de 33 % (2 249 contre
-1 692). Henderson et al. rapportent t = −9,09 et p = 0,0016 entre deux groupes de cinq ; leur
-légende précise que ce p est la moyenne des tests faits le long de la courbe d'apprentissage, pas un
-test sur les scores finaux, et l'article ne dit pas comment les dix essais ont été coupés en deux
-[@henderson2018matters].
+E1 nuance la faille. Deux paquets de cinq graines tirés au hasard ne trompent presque jamais un
+test ; ils trompent l'œil, avec un écart de 17 % en médiane et de 47 % une fois sur vingt. Ce qui
+trompe le test, c'est la coupe triée : 31 % de faux positifs. Henderson et al. rapportent
+t = −9,09 et p = 0,0016 entre deux groupes de cinq ; leur légende précise que ce p est la moyenne
+des tests faits le long de la courbe d'apprentissage, et l'article ne dit pas comment les dix
+essais ont été coupés en deux [@henderson2018matters].
 
-## E6 : la référence mal réglée, c'était nous
+**F10, les meilleurs sur N.** Dans E1, garder les trois meilleures graines sur dix gonfle la moyenne
+de 33 % (2 249 contre 1 692). La pratique est devenue rare ou discrète : 2 articles sur 45 la
+laissent voir. E4 dira combien de comparaisons elle inverse.
 
-E6 compare PPO sur Hopper avec les réglages par défaut de la bibliothèque et avec les réglages
-publiés par RL Baselines3 Zoo [@raffin2020zoo]. Le premier passage donne au défaut une IQM de 2 877
-[2 272, 3 346] et au Zoo 1 003 [859, 1 156], le Zoo plafonnant à 1 000 dès 50 000 pas. Ce résultat
-surprenant a déclenché une vérification : notre normalisation des observations gardait γ = 0,99 là
-où le Zoo prend celui de l'algorithme, 0,999. La « référence mal réglée » était d'abord la nôtre. Le
-premier passage est conservé tel quel ; la recette corrigée a été relancée sur Hopper-v5 et v4 (la
-version des réglages publiés), avec le défaut sur v4, dix graines chacun. Ce diagnostic, ajouté après
-avoir vu le premier résultat, est déclaré comme tel ; ses deux dernières graines tournent.
+**F12, la statistique.** Le test de significativité reste à 4 % (5 % en 2018). L'incertitude est
+rapportée dans 47 % des articles, mais la moyenne cache deux mondes : le RL classique la rapporte
+toujours (14 sur 14), le RL de grands modèles presque jamais (4 sur 27), alors même que des écarts
+types de 5 à 15 points d'une graine à l'autre y ont été mesurés [@hochlehnert2025sober].
 
-## GRPO : ce que mesurait vraiment la vraie récompense
+![Les critères de 2026 avec leur intervalle. Avec 45 articles expérimentaux, un écart de moins de quinze points avec 2018 ne se distingue pas du bruit d'échantillonnage.](figures/remesure-ic.svg){#fig:remesure-ic width=100%}
 
-Le pilote du taux d'apprentissage a été arrêté au pas 10 (65 Go de mémoire, 29 Go de swap), sur une
-anomalie : 91 % de réponses justes à l'entraînement, contre 11 % en pass@1 au test. Nous avons rejoué
-sans entraînement le lot exact du pas 10 (48 × 49, 14 × 36, 21 × 50, 45 × 17) avec le modèle de base.
+# La portée des conclusions (F13 à F16)
 
-![Le modèle de base sur le lot du pas 10. La plupart des réponses atteignent la limite de 160 jetons avant de donner un résultat.](figures/grpo-truncation.svg){#fig:grpo width=80%}
+**F13, le classement qui change avec la tâche** et **F14, les implémentations qui divergent** :
+E2 (quatre algorithmes sur quatre tâches) et E3 (PPO en PyTorch contre PPO en JAX, mêmes graines)
+attendent la fin des simulations ; Y3 à Y5 diront si les articles de 2026 testent plusieurs tâches,
+montrent celles où ils perdent et identifient l'implémentation de leurs références.
 
-Le modèle de base n'y fait que 5 sur 32, comme au test : le lot n'est pas facile, et le décompte est
-juste. Mais 23 réponses sur 32 sont coupées à 160 jetons, et aucune n'est juste ; parmi les 9
-réponses complètes, 5 le sont. Le faible score de départ mesure donc surtout la longueur, et la vraie
-récompense apprend d'abord à finir avant la coupure. La récompense tirée au sort n'a pas ce levier.
-Toute comparaison entre les deux conditions doit séparer le gain de longueur du gain d'arithmétique :
-la part de réponses coupées est désormais mesurée à l'entraînement et au test. Une version réduite
-(100 pas, trois graines, un entraînement à la fois, mémoire plafonnée) est lancée.
+**F15, tester sur l'ensemble d'entraînement.** « Le RL est le seul cas de l'apprentissage
+automatique où il est acceptable de tester sur son ensemble d'entraînement » : mythe ou réalité,
+demandait Pineau, avant de proposer une feuille de route (graines séparées, tâches séparées, fonds
+naturels, simulateurs photoréalistes) [@zhang2018dissection; @zhang2018natural]. C'est la faille la
+mieux écoutée : 70 % des articles évaluent sur des conditions tenues à part, contre 10 % en 2018.
+Le progrès vient surtout du RL de grands modèles (26 articles sur 27), dont les bancs d'essai ont
+un jeu de test par construction ; le RL classique reste à 5 sur 13. E7 mesure, sur nos propres
+agents, ce que coûte un changement de dynamique.
+
+**F16, les bancs d'essai trop simples.** Pineau trouvait les bancs d'essai du RL « ridiculement
+simples » : peu d'états, peu d'actions, transitions déterministes, faciles à mémoriser
+[@zhang2018natural; @machado2018revisiting]. Le RL de grands modèles a changé d'échelle mais pas de
+risque : 15 articles sur 27 n'essaient qu'une famille de modèles de base, alors qu'une récompense
+tirée au sort peut « marcher » sur Qwen et pas sur Llama ou OLMo [@shao2025spurious]. Notre volet
+GRPO en donne une variante : avec le modèle de base, 23 réponses sur 32 atteignent la limite de 160
+jetons et aucune de ces réponses coupées n'est juste ; la vraie récompense apprend d'abord à finir
+avant la coupure, ce que la récompense tirée au sort ne peut pas faire. Une limite de longueur, un
+détail de banc d'essai, devient une part du « gain ».
+
+![Le modèle de base sur le lot du pas 10 du pilote GRPO. La plupart des réponses atteignent la limite de 160 jetons avant de donner un résultat.](figures/grpo-truncation.svg){#fig:grpo width=80%}
+
+# Les remèdes : liste de contrôle et défi de reproduction
+
+Pineau ne s'arrêtait pas au constat. Elle proposait une liste de contrôle (NeurIPS 31-33) : pour
+chaque algorithme, une description claire, une analyse de complexité, un lien vers le code et ses
+dépendances ; pour chaque résultat théorique, l'énoncé, les hypothèses et la preuve ; pour chaque
+figure, la collecte des données, la répartition entre entraînement, validation et test, les données
+exclues, la plage et la méthode de choix des hyperparamètres, le nombre exact d'essais, la
+définition des statistiques et des barres d'erreur, l'infrastructure. Elle présentait aussi le défi
+de reproduction de l'ICLR 2018 (ICLR 37-43) : 95 articles réclamés ; 54,5 % des participants en ont reproduit une partie, 32,7 %
+l'essentiel, et 61 % des auteurs se disaient prêts à corriger leur article.
+
+La liste de contrôle a gagné l'institution [@pineau2021improving]. Notre grille dit ce qu'elle a
+changé dans les articles : le code un peu, le jeu de test beaucoup, la statistique pas du tout, la
+description des références dans le mauvais sens. Une liste de contrôle fait cocher des cases ; elle
+ne fait pas lancer dix graines.
+
+# Travaux voisins
+
+À notre connaissance (recherche du 9 novembre 2026 sur arXiv, OpenReview et les actes), aucun
+travail ne réapplique la grille de Pineau à des articles de RL récents avec une calibration sur
+2018, et aucun ne refait le protocole de Henderson et al. avec les algorithmes de 2026 sous un
+protocole écrit d'avance. Les briques voisines existent.
+
+*Audits de la littérature.* Gundersen et Kjensmo codent 400 articles d'IJCAI et d'AAAI sur la
+documentation des méthodes, des données et des expériences [@gundersen2018state] ; Coakley et al.
+suivent 56 800 articles de cinq conférences d'IA de 2014 à 2024 : la part qui partage code et
+données passe de 11 % à 64 %, et la hausse précède les listes de contrôle
+[@coakley2026shift]. Magnusson et al. mesurent l'effet de la liste de contrôle des conférences de
+TAL [@magnusson2023nlpchecklist]. En RL, l'audit le plus proche est celui de Gorsane et al. : 75
+articles de RL multi-agent coopératif de 2016 à 2022, dont environ un tiers ne quantifie aucune
+incertitude [@gorsane2022marl]. Aucun ne porte sur le RL mono-agent, ni sur la grille de 2018.
+
+*Méthode statistique.* Colas et al. posent la question du nombre de graines par l'analyse de
+puissance [@colas2018seeds] ; Jordan et al. celle de la mesure [@jordan2020evaluating;
+@jordan2024position] ; Agarwal et al. apportent l'IQM et les intervalles bootstrap
+[@agarwal2021precipice] ; Patterson et al. en font un guide [@patterson2024empirical] ; Eimer et
+al. demandent le même budget de réglage pour les références que pour la méthode
+[@eimer2023hyperparameters]. Ces travaux disent quoi faire ; aucun ne mesure si la communauté le
+fait. C'est la place de notre sondage.
+
+*Expériences refaites.* Islam et al. précèdent Henderson et al. sur les mêmes tâches
+[@islam2017reproducibility] ; Lynnerup et al. refont des algorithmes sur un vrai bras robotique
+[@lynnerup2020survey] ; Bjorck et al. montrent qu'une part de la variance entre graines vient
+d'entraînements qui échouent complètement, et qu'on peut la réduire [@bjorck2022variance], ce qui
+rejoint nos trois graines isolées de E1.
+
+*RL de grands modèles.* Hochlehnert et al. réévaluent des modèles de raisonnement et trouvent des
+écarts types à deux chiffres d'une graine à l'autre [@hochlehnert2025sober] ; Chandak et al.
+relèvent, dans un billet non relu par des pairs, des références avant RL sous-évaluées dans sept
+articles [@chandak2025incorrect], l'équivalent moderne des références mal réglées de 2018 ;
+Shao et al. montrent la récompense tirée au sort qui « marche » [@shao2025spurious]. Notre volet
+GRPO est une illustration de ce dernier, pas une découverte.
+
+Notre contribution tient donc à la combinaison : une mesure avant-après sur la grille d'origine,
+calibrée par notre propre lecture de 2018 ; les expériences de 2018 refaites sur la pile de 2026,
+protocole écrit d'avance ; et un pont explicite vers le RL de grands modèles.
 
 # Discussion
 
-Huit ans après, la grille de Pineau a gagné une bataille, l'évaluation tenue à part, et en a perdu
-une, la description des références. Le progrès vient surtout du RL de grands modèles, dont les bancs
-d'essai ont un jeu de test par construction ; d'où vient la régression, notre échantillon ne permet
-pas de le dire. Le test de significativité, lui, n'a jamais pris.
+À la question du titre, la réponse est : en partie, et pas là où on l'attendait. La faille la mieux
+corrigée, l'évaluation tenue à part, l'a été moins par la liste de contrôle que par le changement de
+terrain du RL, dont les bancs d'essai ont désormais un jeu de test. Les failles qui demandaient un
+effort sans contrainte extérieure (dix graines, un test, des références réglées comme la méthode)
+n'ont pas bougé ou ont reculé.
 
-Nos expériences nuancent la figure la plus célèbre de 2018. Le hasard des graines ne fabrique pas de
-faux positifs au rythme qu'on croit ; il fabrique des écarts visibles, et ce sont nos choix (trier,
-garder les meilleurs) qui les transforment en faux positifs. La règle utile n'est donc pas seulement
-« plus de graines », mais « des graines qu'on ne trie pas, et un intervalle plutôt qu'une courbe ».
-E5 dira combien.
+Nos expériences, elles, nuancent la figure la plus célèbre de 2018. Le hasard des graines ne
+fabrique pas de faux positifs au rythme qu'on croit ; il fabrique des écarts visibles, et ce sont
+nos choix (trier, garder les meilleurs) qui les transforment en faux positifs. La règle utile n'est
+donc pas seulement « plus de graines », mais « des graines qu'on ne trie pas, et un intervalle
+plutôt qu'une courbe ».
 
-Enfin, E6 et le diagnostic GRPO rappellent que la grille s'applique d'abord à soi. Nous avons mal
-réglé la référence que nous voulions montrer mal réglée, et notre premier indicateur GRPO mesurait
-une limite de longueur. Les deux erreurs ont été trouvées parce que le protocole était écrit d'avance
-et que les résultats surprenants ont été vérifiés plutôt que publiés.
+Enfin, la grille s'applique d'abord à soi. Nous avons mal réglé la référence que nous voulions
+montrer mal réglée, et notre premier indicateur GRPO mesurait une limite de longueur. Les deux
+erreurs ont été trouvées parce que le protocole était écrit d'avance et que les résultats
+surprenants ont été vérifiés plutôt que publiés. C'était le conseil de Pineau : être aussi
+critique des bons résultats que des mauvais.
 
 # Limites
 
 Le sondage porte sur 50 articles : les intervalles sont larges, et seuls les écarts de plus de
-quinze points avec 2018 sont lisibles. Notre calibration 2018 est plus sévère que la lecture de
-Pineau pour les hyperparamètres de la méthode. E1 porte sur une seule tâche et un seul algorithme.
-Le volet GRPO est une illustration sur des modèles de 0,5 et 1 milliard de paramètres, pas une
-réplication de Shao et al.
+quinze points avec 2018 sont lisibles. Notre calibration de 2018 est plus sévère que la lecture de
+Pineau sur les hyperparamètres de la méthode. Six failles (F6, F8, F13, F14, F16 et une part de F3)
+ne sont pas encore mesurées dans les articles : la grille v2 est écrite, pas codée. E1 porte sur une
+seule tâche et un seul algorithme. Le volet GRPO est une illustration sur des modèles de 0,5 et
+1 milliard de paramètres, pas une réplication de Shao et al.
 
 # Ce qui reste à mesurer
 
-E2 à E5 et E7 attendent la fin des simulations (environ 89 entraînements, 12 à 15 heures) ; E6
-attend ses deux dernières graines ; GRPO réduit tourne. Chaque expérience aura son script et son
-fichier JSON dans `sim/analysis/`, et ce document sera mis à jour sans retirer ce qui nous a
-contredits.
+- Coder la grille v2 (Y1 à Y10) sur les 50 + 12 articles, mêmes règles, double lecture sur 10.
+- E2 à E5 et E7, à la fin des simulations (environ 89 entraînements) ; E6, deux graines.
+- GRPO réduit : 100 pas, trois graines, deux modèles, deux récompenses, part de réponses coupées
+  mesurée.
 
 # Reproductibilité
 
 Code, protocoles, journaux d'évaluation et scripts d'analyse : `study/`, `sim/`, `sim/llm/`. Figures :
 `docs/figures/build.py` les régénère toutes à partir des fichiers de résultats. Environnement figé :
 `sim/requirements.lock`.
-

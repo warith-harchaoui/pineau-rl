@@ -119,3 +119,17 @@ avant de calculer le moindre pourcentage.
    retirée ensuite, sans effet sur les données.
 10. Le scratchpad est partagé entre lecteurs ; des scripts de travail ont été écrasés en cours de
    route. Les codages, eux, sont dans des dossiers séparés et n'ont pas été touchés.
+11. **Grille v2, écrite le 9 novembre 2026 AVANT tout codage v2.** La grille v1 ne couvre qu'une partie des failles montrées par Pineau en 2018 (ICLR, NeurIPS, liste de contrôle v1.2, Henderson et al.). On ajoute, pour les mêmes 50 + 12 articles, mêmes règles (`yes` / `no` / `na`, citation obligatoire) :
+    - Y1 mesure de performance définie (retour final, moyenne sur l'entraînement, aire sous la courbe, pass@k…) et dite ; diapositive 27 de l'ICLR.
+    - Y2 barres d'erreur définies (ce que la bande ou l'intervalle représente) ; liste de contrôle v1.2.
+    - Y3 nombre de tâches ou d'environnements sur lesquels porte la conclusion principale (entier) ; ≥ 2 si la conclusion est générale ; Henderson tableau 3.
+    - Y4 classement ou gain discuté tâche par tâche (une tâche où la méthode perd est montrée ou dite) ; Henderson tableau 3.
+    - Y5 implémentation des références identifiée (dépôt, bibliothèque et version, ou réimplémentation dite) ; Henderson figure 6.
+    - Y6 essais ou données exclus dits (ou explicitement « aucun ») ; liste de contrôle v1.2.
+    - Y7 version de l'environnement ou du banc d'essai donnée (ex. `HalfCheetah-v4`, version de MATH-500 ou du jeu de test) ; liste de contrôle v1.2.
+    - Y8 test de généralisation au-delà des conditions d'entraînement (autres graines d'environnement, autres tâches, dynamiques modifiées, distribution de test distincte) ; feuille de route de NeurIPS, p. 37-51.
+    - Y9 sensibilité aux hyperparamètres montrée (balayage ou ablation d'au moins un hyperparamètre) ; ICLR 24-26.
+    - Y10 dépendances logicielles listées (versions ou fichier d'environnement) ; liste de contrôle v1.2.
+    - Y11 type d'incertitude nommé (écart type, erreur type, IC, intervalle interquartile) ; comparable à Gorsane et al. 2022.
+    - Y12 outils statistiques post-2018 employés (IQM, IC bootstrap, rliable, profils de performance, probabilité d'amélioration) ; mesure l'adoption d'Agarwal et al. 2021.
+    Analyse identique à la v1 (Wilson, calibration 2018 comme garde-fou). Statut : préenregistrée, codage non lancé. Y11 et Y12 ajoutés le même jour, après la recherche de travaux voisins, toujours avant tout codage.

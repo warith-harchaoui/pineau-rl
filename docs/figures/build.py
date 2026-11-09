@@ -64,13 +64,13 @@ write("grpo_truncation", ["quarter", "type", "share"],
 # rendered SVG for what the kinds expose no option for; the PDF is then drawn from that same SVG.
 FIGURES = [
     ("remesure-dumbbell", "dumbbell", "remesure_dumbbell", [
-        "--title", "La grille de 2018 sur 50 articles de 2025-2026",
+        "--title", "La grille de 2018 réappliquée, de 2018 à 2026",
         "--set", "subtitle_template=Part des articles expérimentaux : Pineau ({a}) contre nous ({b})",
         "--set", "axis_title=Part des articles (%, plus haut est mieux)",
         "--set", "group_a_label=2018", "--set", "group_b_label=2026",
         "--set", "value_prefix=", "--set", "value_suffix="]),
     ("remesure-ic", "errorbar", "remesure_ic", [
-        "--title", "Ce que les articles de 2025-2026 rapportent",
+        "--title", "Ce que les articles de 2026 rapportent",
         "--set", "subtitle=Part des articles expérimentaux, IC de Wilson à 95 %",
         "--set", "y_axis_title=Part des articles (%, plus haut est mieux)",
         "--set", "x_axis_title=Critère de la grille", "--set", "width=1040"]),
