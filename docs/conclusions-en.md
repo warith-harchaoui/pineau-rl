@@ -38,7 +38,7 @@ described with all their settings (35% then 29%), evaluation on held-out conditi
 the version of the benchmarks (23% then 26%). Our experiments sharpen the picture of the most famous flaw. Among our thirty runs, two
 groups of five drawn at random fool a statistical test in only 1.2% of cases. The test gets fooled
 when the runs are sorted (31%). Keeping the best runs inflates the score by 33%. The experiments
-also show why a result that looks too good deserves a check: our own baseline collapsed. An error in our code seemed to explain it. Fixing the error changed nothing, and the collection's official script plateaus the same way: the published recipe has aged with the libraries. The most striking figure of 2018 remains unexplained: neither our PPO runs nor our TRPO runs come near the t of 9 reported by Henderson and co-authors. Several experiments remain to be finished: this document says
+also show why a result that looks too good deserves a check: our own baseline collapsed. An error in our code seemed to explain it. Fixing the error changed nothing, and the collection's official script plateaus the same way: the published recipe has aged with the libraries. The most striking figure of 2018, a t of 9 between two groups of the same program, finds its explanation: the script Peter Henderson published measures the spread between episodes and ignores the spread between random seeds. Applied to our TRPO runs, it exceeds 9 in 38% of random draws. Several experiments remain to be finished: this document says
 which.
 
 # Two talks in 2018
@@ -309,7 +309,7 @@ instrument that measures each one in this document. The next section describes t
 | F8 | A performance measure never defined | slides 26 and 27 at ICLR | criteria Y1 and Y2 | no detectable change, measure usually defined |
 | F9 | Too few runs, three or five, never ten in her table | slide 28 at ICLR | criterion X1, experiment E5 | not heeded |
 | F10 | Only the best runs out of N published | slides 29 and 30 at ICLR | criterion X3, experiments E1 and E4 | rare in both years, effect measured |
-| F11 | Same code, another random seed: two "algorithms" | slide 31 at ICLR, page 22 at NeurIPS | experiment E1 | qualified by our measurements |
+| F11 | Same code, another random seed: two "algorithms" | slide 31 at ICLR, page 22 at NeurIPS | experiments E1 and B1 | qualified: the t of 9 comes from a test on episodes |
 | F12 | Comparisons with no statistical test | page 29 at NeurIPS | criteria Q8, X2, Y11 and Y12 | partly heeded: error bars, no test |
 | F13 | The best algorithm changes with the task | slides 20 and 21 at ICLR | criteria Y3 and Y4, experiment E2 | no detectable change, experiment under way |
 | F14 | Two implementations of the same algorithm that diverge | slides 22 and 23 at ICLR | criterion Y5, experiment E3 | no detectable change, experiment under way |
@@ -643,14 +643,31 @@ drawn at random, the average t exceeds 1.4 only one time in twenty, as with PPO;
 third reading stacks the hundred points of each group's five curves as if they were independent. It
 rises to 5.0 at random and 6.3 sorted. No draw, under any reading, reaches 9. This reading has a
 worse defect: it declares a difference in 53% of random draws, although both groups run the same
-code. Neither the spread of TRPO nor these ways of computing explain their figure. Our 2026 TRPO is
-not theirs, though, and their exact calculation remains unknown.
+code. Neither the spread of TRPO nor these three readings explain their figure.
+
+**The 2018 calculation, found.** Their own p gave their calculation away. A t of 9.09 with
+p = 0.0016 implies about 3.4 degrees of freedom. That pair rules out the stacked-points reading,
+which has close to 200 and would give a tiny p. In June 2017, Peter Henderson had in fact published a
+script with a telling name, "from the same distribution" [@henderson2017samedist]. It averages the
+curves of the five random seeds of each group. Then, at each iteration, it compares the two groups
+with a Welch test built on the spread between the episodes of a single iteration. The spread between
+random seeds, the very one the figure was meant to show, never enters the test. The script finally
+reports the mean of the t values and the mean of the p-values. Nothing proves that it produced their
+figure, but its name and its output make it likely. We applied it to our thirty runs, with a plan
+written before the calculation. With TRPO, the average t exceeds 9.09 in 38% of random draws, and
+the test declares a difference in 43% of them. One number gives the reason: for our TRPO, the
+standard deviation between the episodes of one agent is only 7% of the standard deviation between
+agents. With PPO, whose episodes vary more, the same calculation never reaches 9. Our evaluation
+episodes, played without randomness, differ from their training episodes: the order of magnitude
+carries over all the same. The t of 9 needed no sorting, then. It comes from a test that counts
+episodes instead of random seeds. The flaw runs deeper than the figure said: the luck of the random
+seeds fooled the very test that was meant to measure it.
 
 On our runs, then, the luck of the random seeds fools the eye far more often than it fools the test.
 The flaw stands in full for anyone who compares two curves without an interval, or treats the points
 of one curve as independent runs.
 
-![Our thirty runs of PPO (Proximal Policy Optimization) and our thirty runs of TRPO, compared with the figure published in 2018. For each way of splitting ten runs into two groups of five, at random or sorted by final score, the bar gives the absolute value of the t statistic averaged along the learning curve that is exceeded one time in twenty, over 10,000 draws. The stacked-points bar treats the hundred points of each group's curves as independent observations, with groups drawn at random. The bar for Henderson and co-authors is the value they published, on their own runs.](figures/e1-henderson-en.svg){width=85%}
+![Our thirty runs of PPO (Proximal Policy Optimization) and our thirty runs of TRPO, compared with the figure published in 2018. For each way of splitting ten runs into two groups of five, at random or sorted by final score, the bar gives the absolute value of the t statistic averaged along the learning curve that is exceeded one time in twenty, over 10,000 draws. The stacked-points bar treats the hundred points of each group's curves as independent observations, with groups drawn at random. The Henderson's-script bar applies his calculation, which tests the spread between episodes, to our TRPO runs, with groups drawn at random. The bar for Henderson and co-authors is the value they published, on their own runs.](figures/e1-henderson-en.svg){width=85%}
 
 **Best of N, rare in both years (F10).** In E1, keeping the three best runs out of ten inflates the
 mean by 33% (2,249 against 1,692). In papers, the practice rarely shows: 14% of classical RL papers
@@ -831,8 +848,10 @@ evaluation progressed elsewhere, in RL on large models, whose collections of pro
 test set by construction.
 
 **Chance fools the eye, our choices fool the test.** On our PPO runs, random seeds manufacture visible
-gaps. Our choices, sorting the runs and keeping the best, turn those gaps into false positives. We
-draw two rules from this. Never sort the random seeds. Show an interval next to every curve.
+gaps. Our choices, sorting the runs and keeping the best, turn those gaps into false positives. The
+t of 9 from 2018 comes from another choice: a test that counts episodes instead of random seeds. We
+draw three rules from this. Never sort the random seeds. Show an interval next to every curve. Test
+on the random seeds, not on the episodes.
 
 **The grid applies to oneself first.** In E6, we found an error in our own code, then saw that it
 explained nothing. Our first GRPO indicator was measuring a length limit. We found both traps because the protocol was

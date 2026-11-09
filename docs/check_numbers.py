@@ -312,6 +312,17 @@ assert half_up(tr["random_5v5"]["mean_t"]["abs_t_p95"], 1) == half_up(curve["ran
 assert all(r[m]["share_abs_t_ge_henderson"] == 0 for a in b1.values() if isinstance(a, dict) and "cv" in a
            for s in ("random_5v5", "sorted_5v5") for r in [a[s]] for m in r)  # "Aucun tirage, dans aucune lecture"
 
+# B1, Henderson's own script (b1_script.py).
+bs = J("sim/analysis/b1_script.json")
+st, sp = bs["trpo"]["n10"]["random_5v5"], bs["ppo_sb3"]
+add("B1 script", f"le t moyen dépasse 9,09 dans {pct(st['share_abs_t_ge_henderson'])} des tirages au hasard, et le test déclare une différence dans {pct(st['false_positive'])} d'entre eux",
+    f"the average t exceeds 9.09 in {pct(st['share_abs_t_ge_henderson'], lang='en')} of random draws, and the test declares a difference in {pct(st['false_positive'], lang='en')} of them")
+add("B1 script ratio", f"ne vaut que {pct(bs['trpo']['eval_std_over_between_seed_sd'])} de l'écart type entre agents",
+    f"is only {pct(bs['trpo']['eval_std_over_between_seed_sd'], lang='en')} of the standard deviation between agents")
+add("B1 script summary", f"il dépasse 9 dans {pct(st['share_abs_t_ge_henderson'])} des tirages au hasard",
+    f"it exceeds 9 in {pct(st['share_abs_t_ge_henderson'], lang='en')} of random draws")
+assert all(sp[n][s]["share_abs_t_ge_henderson"] == 0 for n in ("n10", "n5") for s in ("random_5v5", "sorted_5v5"))  # "n'atteint jamais 9"
+
 # E6, the official Zoo pipeline (e6_official.py).
 e6o = J("sim/analysis/e6_official.json")
 g = e6o["groups"]

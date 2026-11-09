@@ -88,6 +88,7 @@ MAIN = {"fr": {"Q5": "Code en lien (Q5)", "Y9": "Balayage montré (Y9)", "X7": "
                "Y5": "Baseline code (Y5)", "Q4": "Baseline settings (Q4)"}}
 curve = json.load(open(ROOT / "sim/analysis/e1_curve.json"))
 b1 = json.load(open(ROOT / "sim/analysis/b1_trpo.json"))["trpo"]
+b1s = json.load(open(ROOT / "sim/analysis/b1_script.json"))["trpo"]  # Henderson's from_same_dist.py, random groups
 for lang, names in NAMES.items():
     hu = lambda x: int(Decimal(str(x * 100)).quantize(Decimal("1"), ROUND_HALF_UP))
     pts = lambda t: (hu(t["diff"]), hu(t["lo"]), hu(t["hi"]))
@@ -104,6 +105,7 @@ for lang, names in NAMES.items():
         ("TRPO, au hasard" if lang == "fr" else "TRPO, random", round(b1["random_5v5"]["mean_t"]["abs_t_p95"], 1)),
         ("TRPO, triés" if lang == "fr" else "TRPO, sorted", round(b1["sorted_5v5"]["mean_t"]["abs_t_p95"], 1)),
         ("TRPO, points empilés" if lang == "fr" else "TRPO, stacked points", round(b1["random_5v5"]["pooled"]["abs_t_p95"], 1)),
+        ("TRPO, script Henderson" if lang == "fr" else "TRPO, Henderson's script", round(b1s["n10"]["random_5v5"]["abs_t_p95"], 1)),
         ("Henderson 2018" if lang == "fr" else "Henderson 2018", 9.1)])
 
 # Every figure in the academic theme (Okabe-Ito palette, serif text). FIXES are deterministic edits of the
@@ -143,7 +145,7 @@ T = {
             "--set", "y_axis_title=Écart en points (2026 moins 2018)",
             "--set", "x_axis_title=Critère de la grille"],
         "e1-henderson": [
-            "--title", "Ni PPO ni TRPO n'approchent la statistique de 2018",
+            "--title", "Seul le calcul de Henderson atteint la statistique de 2018",
             "--set", "subtitle=HalfCheetah-v5, deux groupes de 5 essais parmi 30. Nos barres : 95e centile sur 10 000 tirages",
             "--set", "x_label=Origine des essais",
             "--set", "y_label=Valeur absolue du t moyen le long de la courbe", "--set", "language=fr"],
@@ -182,7 +184,7 @@ T = {
             "--set", "y_axis_title=Gap in points (2026 minus 2018)",
             "--set", "x_axis_title=Reading criterion"],
         "e1-henderson": [
-            "--title", "Neither PPO nor TRPO comes near the 2018 statistic",
+            "--title", "Only Henderson's computation reaches the 2018 statistic",
             "--set", "subtitle=HalfCheetah-v5, two groups of 5 runs out of 30. Our bars: 95th percentile over 10,000 draws",
             "--set", "x_label=Where the runs come from",
             "--set", "y_label=Absolute mean t along the learning curve"],
@@ -223,7 +225,7 @@ KINDS = {"remesure-dumbbell": ("dumbbell", "remesure_dumbbell", [
          "grpo-truncation": ("stacked-bar", "grpo_truncation", []),
          "ecarts-pineau": ("errorbar", "ecarts_pineau", ["--set", "width=1040"]),
          "ecarts-classique": ("errorbar", "ecarts_classique", ["--set", "width=900", "--set", f"height={ROT_H}"]),
-         "e1-henderson": ("bar", "e1_henderson", ["--set", "width=900"])}
+         "e1-henderson": ("bar", "e1_henderson", ["--set", "width=1040"])}
 
 for lang in L:
     for name, (kind, data, common) in KINDS.items():

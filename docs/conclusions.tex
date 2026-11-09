@@ -94,10 +94,12 @@ de 33 \%. Elles montrent aussi pourquoi un résultat trop beau se vérifie
 : notre propre référence s'est effondrée, une erreur de notre code
 semblait l'expliquer. Sa correction n'a rien changé, et le script
 officiel du recueil plafonne de même : la recette publiée a vieilli avec
-les bibliothèques. Le chiffre le plus frappant de 2018 reste inexpliqué
-: ni nos essais de PPO ni ceux de TRPO n'approchent le t de 9 de
-Henderson et ses coauteurs. Plusieurs expériences restent à finir : ce
-document dit lesquelles.
+les bibliothèques. Le chiffre le plus frappant de 2018, un t de 9 entre
+deux groupes du même programme, trouve son explication : le script
+publié par Peter Henderson mesure la dispersion des épisodes et ignore
+celle des graines aléatoires. Appliqué à nos essais de TRPO, il dépasse
+9 dans 38 \% des tirages au hasard. Plusieurs expériences restent à
+finir : ce document dit lesquelles.
 
 \section{Deux conférences en 2018}\label{deux-confuxe9rences-en-2018}
 
@@ -533,8 +535,8 @@ F10 & Les meilleurs essais sur N, seuls publiés & diapositives 29 et 30
 à ICLR & critère X3, expériences E1 et E4 & rare les deux années, effet
 mesuré \\
 F11 & Même code, autre graine aléatoire : deux « algorithmes » &
-diapositive 31 à ICLR, page 22 à NeurIPS & expérience E1 & nuancée par
-nos mesures \\
+diapositive 31 à ICLR, page 22 à NeurIPS & expériences E1 et B1 &
+nuancée : le t de 9 vient d'un test sur les épisodes \\
 F12 & Aucun test statistique & page 29 à NeurIPS & critères Q8, X2, Y11
 et Y12 & écoutée en partie : des barres, pas de test \\
 F13 & Le meilleur algorithme qui change avec la tâche & diapositives 20
@@ -1143,8 +1145,32 @@ indépendants. Elle monte à 5,0 au hasard et à 6,3 triés. Aucun tirage,
 dans aucune lecture, n'atteint 9. Cette lecture a un défaut plus grave :
 elle déclare une différence dans 53 \% des tirages au hasard, alors que
 les deux groupes font tourner le même code. Ni la dispersion de TRPO ni
-ces façons de calculer n'expliquent donc leur chiffre. Notre TRPO de
-2026 n'est toutefois pas le leur, et leur calcul exact reste inconnu.
+ces trois lectures n'expliquent donc leur chiffre.
+
+\textbf{Le calcul de 2018, retrouvé.} Leur propre p trahissait leur
+calcul. Un t de 9,09 avec p = 0,0016 suppose environ 3,4 degrés de
+liberté. Ce couple exclut la lecture des points empilés, qui en compte
+près de 200 et donnerait un p minuscule. En juin 2017, Peter Henderson a
+d'ailleurs publié un script au nom parlant, « de la même distribution »
+\autocite{henderson2017samedist}. Il fait la moyenne des courbes des
+cinq graines de chaque groupe. Puis, à chaque itération, il compare les
+deux groupes par un test de Welch bâti sur la dispersion entre les
+épisodes d'une même itération. La dispersion entre graines, celle que la
+figure devait montrer, n'entre jamais dans le test. Le script rapporte
+enfin la moyenne des t et la moyenne des p.~Rien ne prouve qu'il a
+produit leur figure, mais son nom et sa sortie le rendent probable. Nous
+l'avons appliqué à nos trente essais, avec un plan écrit avant le
+calcul. Avec TRPO, le t moyen dépasse 9,09 dans 38 \% des tirages au
+hasard, et le test déclare une différence dans 43 \% d'entre eux. Un
+chiffre en donne la raison : chez notre TRPO, l'écart type entre les
+épisodes d'un même agent ne vaut que 7 \% de l'écart type entre agents.
+Avec PPO, dont les épisodes varient davantage, le même calcul n'atteint
+jamais 9. Nos épisodes d'évaluation, joués sans hasard, diffèrent de
+leurs épisodes d'entraînement : l'ordre de grandeur, lui, se retrouve.
+Le t de 9 n'a donc demandé aucun tri. Il vient d'un test qui compte les
+épisodes au lieu des graines. La faille est plus profonde que la figure
+ne le disait : le hasard des graines a trompé le test même qui devait le
+mesurer.
 
 Sur nos essais, le hasard des graines aléatoires trompe donc l'œil bien
 plus souvent que le test. La faille reste entière pour qui compare deux
@@ -1161,8 +1187,10 @@ la valeur absolue du t moyen le long de la courbe d'apprentissage
 dépassée une fois sur vingt, sur 10 000 tirages. La barre des points
 empilés traite les cent points des courbes de chaque groupe comme des
 observations indépendantes, avec des groupes tirés au hasard. La barre
-de Henderson et ses coauteurs est la valeur qu'ils publient, sur leurs
-propres essais.}
+du script de Henderson applique son calcul, qui teste la dispersion
+entre épisodes, à nos essais de TRPO, avec des groupes tirés au hasard.
+La barre de Henderson et ses coauteurs est la valeur qu'ils publient,
+sur leurs propres essais.}
 \end{figure}
 
 \textbf{Les meilleurs sur N, rares les deux années (F10).} Dans E1,
@@ -1454,8 +1482,10 @@ construction.
 \textbf{Le hasard trompe l'œil, nos choix trompent le test.} Sur nos
 essais de PPO, les graines aléatoires fabriquent des écarts visibles. Ce
 sont nos choix, trier et garder les meilleurs, qui changent ces écarts
-en faux positifs. Nous en tirons deux consignes : ne jamais trier les
-graines aléatoires, montrer un intervalle à côté de chaque courbe.
+en faux positifs. Le t de 9 de 2018 vient d'un autre choix : un test qui
+compte les épisodes au lieu des graines. Nous en tirons trois consignes
+: ne jamais trier les graines aléatoires, montrer un intervalle à côté
+de chaque courbe, tester sur les graines et non sur les épisodes.
 
 \textbf{La grille s'applique d'abord à soi.} Dans E6, nous avons trouvé
 une erreur dans notre propre code, puis constaté qu'elle n'expliquait
