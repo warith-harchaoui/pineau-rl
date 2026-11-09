@@ -323,6 +323,14 @@ add("B1 script summary", f"il dépasse 9 dans {pct(st['share_abs_t_ge_henderson'
     f"it exceeds 9 in {pct(st['share_abs_t_ge_henderson'], lang='en')} of random draws")
 assert all(sp[n][s]["share_abs_t_ge_henderson"] == 0 for n in ("n10", "n5") for s in ("random_5v5", "sorted_5v5"))  # "n'atteint jamais 9"
 
+# Écart 21, the thesis against blind ratings (robustness.py).
+rb = J("study/robustness.json")
+assert not any(rb["a"][k]["fragile"] for k in ("Q5", "Y9", "X7", "X2"))  # "Ces quatre hausses résistent à toutes les coupes"
+sg = lambda x, lang: ("+" if x >= 0 else "−") + (f"{abs(x):.2f}".replace(".", ",") if lang == "fr" else f"{abs(x):.2f}")
+add("thesis rho", f"vaut {sg(rb['b']['C']['rho'], 'fr')} pour le coût et {sg(rb['b']['R']['rho'], 'fr')} pour le risque",
+    f"is {sg(rb['b']['C']['rho'], 'en')} for cost and {sg(rb['b']['R']['rho'], 'en')} for risk")
+assert rb["b"]["C"]["p_two_sided"] > .2 and rb["b"]["R"]["p_two_sided"] > .2  # "rien qui se distingue du hasard"
+
 # E6, the official Zoo pipeline (e6_official.py).
 e6o = J("sim/analysis/e6_official.json")
 g = e6o["groups"]

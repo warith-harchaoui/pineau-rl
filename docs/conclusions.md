@@ -34,8 +34,8 @@ d'articles qui donnent tous les réglages de leur méthode, quand Pineau en comp
 jugeons donc chaque faille à grille égale, en comparant le RL classique de 2026 à notre propre
 lecture de 2018, avec les mêmes grilles et les mêmes lecteurs. Quatre pratiques ont changé. Le lien
 vers le code passe de 31 % à 74 % des articles, la sensibilité à un réglage montrée de 44 % à 80 %,
-le calcul chiffré de 27 % à 58 %, une incertitude rapportée de 63 % à 88 %. Toutes s'ajoutent à une expérience sans en changer la conclusion.
-Les pratiques qui obligent parfois à revoir une conclusion n'ont pas bougé de façon détectable : un
+le calcul chiffré de 27 % à 58 %, une incertitude rapportée de 63 % à 88 %. Ces quatre hausses
+résistent à toutes les coupes que nous avons tentées. D'autres pratiques n'ont pas bougé de façon détectable : un
 test statistique (6 % puis 12 %), des références décrites avec tous leurs réglages (35 % puis 29 %),
 une évaluation tenue à part (33 % puis 45 %), la version des bancs d'essai (23 % puis 26 %). Nos
 expériences précisent la faille la plus
@@ -821,11 +821,12 @@ participants, l'exercice a été très difficile. Enfin, 79 % des 28 auteurs int
 voir leur article de 2019 passer par le même examen.
 
 **Ce que la liste a changé.** La liste de contrôle a gagné l'institution : NeurIPS l'impose depuis
-2019 [@pineau2021improving]. Notre grille dit ce qu'elle a changé dans les articles de RL classique. Le
+2019 [@pineau2021improving]. Notre grille dit ce qui a changé depuis dans les articles de RL classique. Le
 lien vers le code, le calcul chiffré, le balayage d'un hyperparamètre et les barres d'incertitude
 ont progressé. Le test statistique, des références réglées et décrites avec soin, l'évaluation
-tenue à part et la version des bancs d'essai n'ont pas bougé de façon détectable. Une liste fait cocher des cases. Lancer dix graines aléatoires et
-régler ses références coûte du calcul. Aucune case ne le paie.
+tenue à part et la version des bancs d'essai n'ont pas bougé de façon détectable. Notre sondage ne
+dit pas si la liste en est la cause : un autre audit voit la part du code publié monter avant les
+listes de contrôle [@coakley2026shift].
 
 **Sept questions pour lire une annonce de RL.** La liste de contrôle s'adresse aux auteurs. Le
 lecteur d'un article, d'un communiqué ou d'une démonstration en tire sept questions, qui ne
@@ -895,13 +896,21 @@ complétée par une seconde grille et comparée à notre propre lecture de 2018 
 
 # Ce que nous en retenons
 
-**Écoutée sur ce qui coûte peu.** À grille égale, quatre pratiques ont changé dans le RL
+**Écoutée en partie, sans règle simple.** À grille égale, quatre pratiques ont changé dans le RL
 classique : le lien vers le code, le calcul chiffré, le balayage d'un hyperparamètre, les barres
-d'incertitude. Chacune demande peu d'effort à qui a déjà fait l'expérience. Les pratiques qui
-obligent parfois à revoir une conclusion n'ont pas bougé de façon détectable : un test
-statistique, des références réglées et décrites avec le même soin que la méthode, une évaluation
-tenue à part, des versions données. Nous en tirons une lecture, que notre sondage ne teste pas :
-Pineau a été écoutée là où l'écouter ne coûtait presque rien. L'évaluation tenue à part a
+d'incertitude. Ces hausses tiennent quand on sépare les articles selon leur provenance, selon la
+source de leur PDF ou selon leur conférence, et quand on retire tour à tour chacun des lecteurs. Le
+test statistique, des références réglées et décrites avec le même soin que la méthode, l'évaluation
+tenue à part et les versions données n'ont pas bougé de façon détectable.
+
+**Une lecture retirée.** Une version antérieure de ce document en tirait une lecture : Pineau
+aurait été écoutée là où l'écouter ne coûtait presque rien. Nous l'avons mise à l'épreuve, avec un
+plan écrit avant le calcul. Trois évaluateurs, qui ignoraient nos résultats, ont noté chaque
+pratique selon son coût pour l'auteur et selon le risque qu'elle fait courir à sa conclusion. Ils
+s'accordent entre eux, mais leurs notes ne prédisent pas les écarts : la corrélation de Spearman
+vaut +0,16 pour le coût et −0,04 pour le risque, rien qui se distingue du hasard. Le balayage d'un
+hyperparamètre, jugé coûteux, a progressé. Les versions des bancs d'essai et des dépendances,
+jugées presque gratuites, n'ont pas bougé. Nous retirons donc cette lecture. L'évaluation tenue à part a
 progressé ailleurs, dans le RL de grands modèles, dont les recueils de problèmes ont un jeu de test
 par construction.
 
@@ -943,6 +952,7 @@ ses bons résultats qu'envers ses mauvais.
   modèles de langue, une famille absente en 2018. Nos verdicts valent pour le RL classique.
 - Le filtre de titre (« reinforcement learning », « RL », « policy optimization »…) rate les
   articles de RL dont le titre ne le dit pas, en 2018 comme en 2026.
+- Les trois évaluateurs du coût et du risque de chaque pratique sont des agents de langage, de trois tailles différentes. Leur accord entre eux ne garantit pas qu'un chercheur noterait de même.
 - Le tirage de Pineau en 2018 reste inconnu. Nos comparaisons avec ses chiffres supposent
   un tirage comparable au nôtre.
 

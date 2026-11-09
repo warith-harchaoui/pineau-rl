@@ -32,8 +32,8 @@ all the settings of their method, where Pineau counted 90%. So we judge each fla
 grid on both sides, setting the classical RL of 2026 against our own reading of 2018, with the same
 grids and the same readers. Four practices changed. Linking the code went from 31% to 74% of
 papers, showing the sensitivity to a setting from 44% to 80%, quantifying the compute from 27% to
-58%, reporting an uncertainty from 63% to 88%. Each can be added to an experiment without changing its conclusion. The practices that sometimes force a
-conclusion to change show no detectable change: a statistical test (6% then 12%), baselines
+58%, reporting an uncertainty from 63% to 88%. These four rises withstand every cut we tried. Other
+practices show no detectable change: a statistical test (6% then 12%), baselines
 described with all their settings (35% then 29%), evaluation on held-out conditions (33% then 45%),
 the version of the benchmarks (23% then 26%). Our experiments sharpen the picture of the most famous flaw. Among our thirty runs, two
 groups of five drawn at random fool a statistical test in only 1.2% of cases. The test gets fooled
@@ -774,11 +774,11 @@ or individuals signed up and 95 papers were chosen. Among the participants who a
 Finally, 79% of the 28 authors surveyed wanted their 2019 paper to go through the same review.
 
 **What the checklist changed.** The checklist won over the institution: NeurIPS has required it since
-2019 [@pineau2021improving]. Our grid says what it changed in classical RL papers. Linked code,
+2019 [@pineau2021improving]. Our grid says what has changed since in classical RL papers. Linked code,
 quantified compute, hyperparameter sweeps and error bars progressed. The statistical test, baselines
 tuned and described with care, held-out evaluation and benchmark versions show no detectable change.
-A checklist gets boxes ticked. Launching ten random seeds and tuning
-one's baselines costs compute. The checklist pays for none of it.
+Our survey does not say whether the checklist caused it: another audit sees the share of released
+code rise before the checklists [@coakley2026shift].
 
 **Seven questions for reading an RL announcement.** The checklist is meant for authors. The reader of
 a paper, a press release or a demonstration draws seven questions from it, none of which require
@@ -838,12 +838,19 @@ models.
 
 # What we take from it
 
-**Heeded where it cost little.** With the same grid, four practices changed in classical RL: linking
-the code, quantifying the compute, sweeping a hyperparameter, drawing error bars. Each asks little
-effort of someone who has already run the experiment. The practices that sometimes force a
-conclusion to change show no detectable change: a statistical test, baselines tuned and described
-with the same care as the method, held-out evaluation, stated versions. We draw a reading from this
-that our survey does not test: Pineau was heeded where heeding her cost almost nothing. Held-out
+**Heeded in part, with no simple rule.** With the same grid, four practices changed in classical RL:
+linking the code, quantifying the compute, sweeping a hyperparameter, drawing error bars. These rises
+hold when the papers are split by provenance, by the source of their PDF or by conference, and when
+each reader is removed in turn. A statistical test, baselines tuned and described with the same care
+as the method, held-out evaluation and stated versions show no detectable change.
+
+**A reading withdrawn.** An earlier version of this document drew a reading from this: Pineau was
+heeded where heeding her cost almost nothing. We put it to the test, with a plan written before the
+calculation. Three raters, who did not know our results, scored each practice on its cost to the
+author and on the risk it poses to the conclusion. They agree with one another, but their scores do
+not predict the gaps: the Spearman correlation is +0.16 for cost and −0.04 for risk, nothing that
+stands out from chance. Sweeping a hyperparameter, rated costly, progressed. Benchmark and
+dependency versions, rated nearly free, did not move. So we withdraw this reading. Held-out
 evaluation progressed elsewhere, in RL on large models, whose collections of problems come with a
 test set by construction.
 
@@ -870,6 +877,7 @@ Pineau's advice in 2018: be as critical of your good results as of your bad ones
 - With 50 papers on each side, a change of ten points can still go unnoticed.
 - The population has changed: 27 of the 50 papers of the first 2026 draw deal with large language models, a family absent in 2018. Our verdicts hold for classical RL.
 - The title filter ("reinforcement learning", "RL", "policy optimization" and similar terms) misses RL papers whose title does not say so, in 2018 as in 2026.
+- The three raters of the cost and risk of each practice are language model agents, of three different sizes. Their agreement with one another does not guarantee that a researcher would score the same way.
 - Pineau's 2018 draw remains unknown. Our comparisons with her figures assume a draw comparable to ours.
 
 **Flaws still unmeasured.** The survey now covers all sixteen flaws. Experiments E2 to E5 and E7
