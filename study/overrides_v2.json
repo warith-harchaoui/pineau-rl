@@ -1,4 +1,204 @@
 {
- "_doc": "Harmonisation of the v2 reading (PROTOCOL.md, écarts 18 and following), applied from the quotes before any percentage. Keys: criterion -> paper id -> value.",
- "X5": {"K006": "classic"}
+ "_doc": "Harmonisation of the v2 reading (PROTOCOL.md, écarts 18 and 19), applied from the quotes, doubts and PDFs before any percentage. Keys: criterion -> paper id -> value; '_reasons' gives criterion -> paper id -> reason. Raw readings in codes_v2/ are unchanged.",
+ "X5": {
+  "K006": "classic"
+ },
+ "Y1": {
+  "LR02": "no",
+  "ML07": "no",
+  "ML08": "no",
+  "C117": "no",
+  "C32": "no",
+  "K067": "no",
+  "K068": "no",
+  "K075": "no",
+  "K077": "no",
+  "K078": "no",
+  "LR03": "yes",
+  "LR12": "yes",
+  "ML15": "yes",
+  "ML16": "yes",
+  "NER01": "yes",
+  "K036": "yes",
+  "K049": "yes",
+  "K058": "yes",
+  "K089": "yes",
+  "K090": "yes",
+  "K113": "yes"
+ },
+ "Y3": {
+  "K036": 1,
+  "K103": 1,
+  "K055": 1,
+  "C119": 1,
+  "LR15": 1
+ },
+ "Y4": {
+  "K036": "na",
+  "K103": "na",
+  "K055": "na",
+  "C119": "na",
+  "LR15": "na"
+ },
+ "Y5": {
+  "LR11": "no",
+  "NE04": "yes",
+  "NE08": "yes",
+  "C117": "yes",
+  "C217": "yes",
+  "C219": "yes",
+  "K044": "yes",
+  "K045": "no",
+  "K068": "yes",
+  "K069": "yes"
+ },
+ "Y6": {
+  "MLR07": "yes",
+  "NE02": "yes",
+  "NE04": "yes"
+ },
+ "Y7": {
+  "LR08": "no",
+  "K106": "no",
+  "K085": "no",
+  "C115": "yes",
+  "C211": "yes",
+  "C119": "yes",
+  "C13": "yes",
+  "C14": "yes",
+  "LR11": "yes",
+  "NE16": "yes",
+  "K003": "yes",
+  "K098": "yes",
+  "K084": "yes",
+  "K051": "yes",
+  "C26": "yes",
+  "NE15": "yes",
+  "K075": "yes",
+  "K077": "yes",
+  "MLR03": "yes"
+ },
+ "Y8": {
+  "C12": "no",
+  "K082": "no",
+  "K081": "no",
+  "K086": "no",
+  "C217": "no",
+  "MLR03": "no"
+ },
+ "Y9": {
+  "LR07": "no",
+  "K068": "no",
+  "C24": "no",
+  "C26": "no",
+  "K095": "no",
+  "C18": "no",
+  "NE02": "no",
+  "NE16": "no",
+  "C29": "no"
+ },
+ "Q5": {
+  "K090": "no",
+  "C19": "no"
+ },
+ "_reasons": {
+  "Y1": {
+   "LR02": "é17/é19: ASR and Benign Return are defined but the paper gives neither the checkpoint evaluated nor a training length, so no point of measurement.",
+   "ML07": "é17/é19: F1 on the held-out domain is named but neither the evaluated checkpoint nor a training length is stated.",
+   "ML08": "é17/é19: success rate over 50 evaluation episodes is defined, but neither the checkpoint (iteration) nor a training length is stated for the main table.",
+   "C117": "é17/é19: AR and EL per episode are defined, but no checkpoint and no training length are stated for the reported numbers.",
+   "C32": "é17/é19: top-1 generalization accuracy is defined, but no checkpoint and no training length are stated.",
+   "K067": "é17/é19: completion accuracy of a single completion is defined, but no checkpoint and no RL training length are stated.",
+   "K068": "é17/é19: pass@1 at non-zero temperature without the number of samples, and no checkpoint or training length stated.",
+   "K075": "é17/é19: the 'final' score is an aggregate over execution rounds; no checkpoint or training length of the trained model is stated.",
+   "K077": "é17/é19: ROUGE-L and the other metrics are defined, but no checkpoint or training length is stated for the reported numbers.",
+   "K078": "é17/é19: 'average episode return over 10 runs' gives no checkpoint and no training length (return sans plus).",
+   "LR03": "é19 (training length = final point): Normalized Score defined by formula and every method run for 1 million steps, one number per trained policy.",
+   "LR12": "é19 (training length = final point): normalized reward/cost returns defined (R_norm formula), training iterations given (4e5, Table 6), one number per trained policy over 10 evaluation episodes.",
+   "ML15": "é19 (training length = final point): D4RL normalized score, training epochs given (500 or 1000 epochs of 1000 steps, hyperparameter table), one number per trained policy.",
+   "ML16": "é19 (training length = final point): success rate after '500K steps training for all baselines', one number per trained policy.",
+   "NER01": "é19 (learning curve with stated points): avg@32 on AIME defined and Figure 1 plots it against gradient update steps, the headline result.",
+   "K036": "é19 (training length = final point): PLCC/SRCC defined and 'The model is trained for 10 epochs', one number per trained model.",
+   "K049": "é19 (training length = final point): total episode cost and violation defined (App. C) and 'We train for 30000 episodes', one point per trained policy in Fig. 3 and 6.",
+   "K058": "é19 (training length = final point): D4RL normalized score defined and training run for 1M gradient steps (learning curves), one number per trained policy.",
+   "K089": "é17/é19 (mean over training, AUC-type point): 'Results are averaged over 1M training steps in MuJoCo tasks'.",
+   "K090": "é19 (learning curve with stated points): expected average return plotted over the 1000 iterations of each run (20 seeds).",
+   "K113": "é19 (training length = final point): success rate on the BabyAI/ALFRED tasks after 'trained for 50 epochs' (20 for ALFRED), one number per trained policy."
+  },
+  "Y3": {
+   "K036": "é17/é19 (one training setting): one joint training run on one dataset optimising score regression and degradation perception together.",
+   "K103": "é17/é19 (main conclusion): main results come from training in the simulated GUI environment; the real-data continual training is a secondary add-on.",
+   "K055": "é19 (one meta-training = one task): OmniRL is meta-trained once on AnyMDP; Gymnasium, DarkRoom and Bandits are evaluation tasks absent from training.",
+   "C119": "é19 (appendix-only setting does not count): main text uses only the three-state domain; the 'more complex domain' is reported in App. G only.",
+   "LR15": "é19 (appendix-only setting does not count): the main text shows only Humanoid-v4; Reacher, Walker2d and Hopper appear only in Appendix H."
+  },
+  "Y4": {
+   "K036": "Scope rule (é14): Y3 harmonised to 1, so Y4 is na.",
+   "K103": "Scope rule (é14): Y3 harmonised to 1, so Y4 is na.",
+   "K055": "Scope rule (é14): Y3 harmonised to 1, so Y4 is na.",
+   "C119": "Scope rule (é14): Y3 harmonised to 1, so Y4 is na.",
+   "LR15": "Scope rule (é14): Y3 harmonised to 1, so Y4 is na."
+  },
+  "Y5": {
+   "LR11": "Y5 é19 (a reimplementation implied but never said does not count): the only basis is 'The implementation is written in Python 3.8+ using only NumPy and Matplotlib' (A.4); the paper never says the CVaR-Q baseline (Algorithm 2) was implemented by the authors or runs in their code.",
+   "NE04": "Y5 é19 (a named published model evaluated by the authors, or copied numbers with their source): '*Performance of the base model Qwen2.5-VL-7B and concurrent reasoning models are evaluated by us', and the other rows are 'the reported performance' of models each cited by reference (GPT-4o [29], Claude-3.5-Sonnet [2], Mulberry-7B [77]...).",
+   "NE08": "Y5 é19 (a named published model evaluated by the authors): 'We evaluated our model and other baselines on four representative multimodal benchmarks', where the baselines are named published models (GPT-4o, Gemini, Gemma3, SEAL...) and the ablation baselines are the authors' own variants trained with OpenRLHF.",
+   "C117": "Y5 é19 (a library named with or without its version counts, since the version belongs to Y10): 'We implement them by directly invoking the interface from OpenCV (MIL, KCF and Meanshift trackers) and Dlib (Correlation tracker)' covers every baseline tracker.",
+   "C217": "Y5 é19 (a named published system evaluated by the authors, version not required): E and Vampire are 'run in several ways on the Miz40 dataset' by the authors (Table 9), and the mlCoP baseline 'is based on a previous reimplementation [23] of leanCoP in OCaml'.",
+   "C219": "Y5 é19 (the authors' own framework, said to hold the compared algorithms): 'Code for meta RL algorithms available at: https://github.com/episodeyang/e-maml' gives one repository for the meta-RL algorithms compared (MAML, RL2 and their E- variants).",
+   "K044": "Y5 é19 (the authors' training framework, said to run the baselines): 'We adopt the OpenRLHF framework for efficient training', and the same paragraph (A.1) gives the SFT, GRPO and DPO runs, which are the baseline training methods; no version is required.",
+   "K045": "Y5 é19 'chaque' (one main baseline without an origin gives no): REM and DIAMOND are columns of the main Atari 100K table, but appendix E (Baselines) covers only DreamerV3, HarmonyDream, TD-MPC2 and Simulus, so it never says where the REM and DIAMOND numbers or code come from.",
+   "K068": "Y5 é19 (named published models, either copied with their source or evaluated by the authors, and both count): every baseline is a named proprietary or open-source agent, and 'All scores are sourced from their official release report or, if not provided, are obtained through independent testing using our browsing tools'.",
+   "K069": "Y5 é19 (the authors' training framework, said to run the baselines, plus a reimplementation that is said): 'All of our training experiments are performed using Tinker' covers the GRPO baselines, and 'we reimplement the algorithm based on details from the Feedback Descent paper' covers the other main baseline."
+  },
+  "Y6": {
+   "MLR07": "é19 Y6: a training-data filter stated with what it removes counts; the Earth-science QA training corpus discards pairs whose relevance score falls below τ and answers that contradict the retrieved evidence.",
+   "NE02": "é19 Y6: training-data filter stated with what it removes: \"we only filter out subjective open-ended questions whose answers are not unique\" before RL training.",
+   "NE04": "é19 Y6: training-data filter stated with what it removes: SFT data built from captions \"filtered by final-answer correctness\" and instances with no correct reasoning within k = 4 samplings filtered."
+  },
+  "Y7": {
+   "LR08": "é17/é19 Y7: DAPO-Eval is a split drawn by the authors and the paper says processed datasets \"will release ... upon deanonymization\", so it is not a published set.",
+   "K106": "é19 Y7: \"Minerva Math\" is a name the rule lists as not fixing a version or split, so not every main benchmark is versioned (\"chaque\").",
+   "K085": "é14 \"chaque\": the main benchmark is the full Atari-57, but only the ten Atari-10 games carry a -v5 suffix; no version is given for the 57.",
+   "C115": "é19 Y7: all three domains are fully specified in the paper and appendix C (modified puddle world, acrobot tasks with torques and initial states, water reservoirs with capacities, thresholds, demand and inflow noise).",
+   "C211": "é19 Y7: both systems (simple dynamical system and melanoma gene regulatory network) are models defined by equations in the paper, which counts as versioned.",
+   "C119": "é19 Y7: the main three-state domain (Fig. 4a) and the appendix domain are built and fully described by the authors, which counts as versioned.",
+   "C13": "é19 Y7: the grid-world distributions (Lava 11x11, Octogrid 13x13, Four Room) are built by the authors and specified in the text (size, lava states, rewards, slip), which counts as versioned.",
+   "C14": "é19 Y7: the two main domains are fully specified: random problems (uniform transition and value sampling) and inventory management with costs, price and demand distribution; Gym tasks appear only in appendix D.",
+   "LR11": "é19 Y7: both environments are fully specified in section 5 (decision tree with its reward distributions; 8x10 grid with 0.7 success probability and N(50,1)/N(-50,1) rewards).",
+   "NE16": "é19 Y7: the synthetic contextual-bandit and preference environments are fully specified (projected Gaussian contexts, |A| = 5, R = <x, φ(a)>, φ* sampled on a radius-5 sphere).",
+   "K003": "é19 Y7: both environments are fully specified in the paper (synthetic tabular MDP with uniform-simplex transitions, Unif[0,1] rewards, |S|, |A|, γ; Gridworld layouts with dynamics, start, goal and sparse reward).",
+   "K098": "é19 Y7: Boyan's chain MRPs are fully specified, with the generation algorithm given in the appendix (Algorithm 3).",
+   "K084": "é19 Y7: all domains (Gridworld, Mastermind variants, Hypercube) are fully described in appendix G (state spaces, actions, rewards, terminal states).",
+   "K051": "é19 Y7: the environment (monomial ideals of degree d, moves, reward) is defined mathematically in the paper, which counts as fully specified.",
+   "C26": "é19 Y7: the VRP instances are fully specified by their generating distribution (locations uniform on the unit square, demands uniform in {1..9}, capacities 20/30/40/50 by size).",
+   "NE15": "é19 Y7: the main benchmarks are named single published sets: Reward-Bench, AlpacaEval-2 and MT-Bench.",
+   "K075": "é19 Y7: the evaluation is on \"all 250 CUDA kernels of KernelBench\", a named benchmark whose set is fixed by the paper.",
+   "K077": "é19 Y7: the main evaluation is the RWKU benchmark, a single published set, used through its own benchmarking framework and splits.",
+   "MLR03": "é19 Y7: GSM8K, MATH500, Countdown and Sudoku are used \"with the same train and test splits\" as the published D1/WD1 setup, so each designates a single published set."
+  },
+  "Y8": {
+   "C12": "é17/é19 (Y8 vs Q7 conflict, passage re-read): the teleporter and reward reversal are introduced mid-training and the agent keeps learning on them ('After 400 000 steps of training ... we introduced a small change'), so they are not conditions held out from training.",
+   "K082": "é19 (different benchmark counts only if presented as generalisation): Retro*-190, ChEMBL-1000 and GDB17-1000 are presented only as 'three benchmarks of increasing difficulty', never as a shifted or held-out condition.",
+   "K081": "é19 (i.i.d. test split relates to Q7, not Y8): 'We separate all instances into a train, validation, and test dataset' is a held-out split of the same instance distribution, not new tasks or conditions.",
+   "K086": "é19 (i.i.d. split relates to Q7, not Y8): the validation environment is 'identical to the training environment with a different random seed' to build 'a held-out dataset of transitions following the same distribution', used for TD-error diagnostics, not a generalisation test.",
+   "C217": "é19 (i.i.d. test split relates to Q7, not Y8): the 'previously unseen data' are the test problems of the authors' random 90/10 split of Miz40, same distribution as training, not presented as a new domain.",
+   "MLR03": "é19 (llm: only a benchmark presented as generalisation to a domain or task absent from training counts): the 'length generalization' evaluates the same test sets at other decoding lengths (128 to 512 tokens), a decoding setting, not a new domain or task."
+  },
+  "Y9": {
+   "LR07": "é14/é19 (component ablation is not a sweep; result must be a performance measure): 'Adding uncertainty weighting (λ2 = 0.4)' is on versus off, and Table 3 reports only search statistics (depth, entropy, cost), not accuracy.",
+   "K068": "é19 (inference parameter counts only if presented as a hyperparameter): context length and number of tool calls are varied at inference under 'Context scaling', never called hyperparameters; no other sweep found.",
+   "C24": "é19 (inference parameter counts only if presented as a hyperparameter): increasing the test-time training steps U is presented as 'metatest-time generalization to longer training horizons' (supp. §E), not as a hyperparameter sweep.",
+   "C26": "é19 (inference parameter counts only if presented as a hyperparameter): beam width (greedy, BS(5), BS(10)) is a decoding method compared as such, not presented as a hyperparameter; no other sweep in paper or supplement.",
+   "K095": "é19 (an environment condition does not count): the attack budget B (and poisoning rate ε) varied in Figure 3 and Table 7 is the strength of the attacker, studied as transfer to stronger attacks, not a hyperparameter of AT-DPT.",
+   "C18": "é19 (result shown must be a performance measure): the only sweep, τ in Figure 3, shows the estimated value of a state, not the return; the other studies are component ablations.",
+   "NE02": "é19 (result shown must be a performance measure): the penalty-threshold θ sweep (Figure 8, App. C.4) reports only the proportion of image-resize requests, not accuracy.",
+   "NE16": "é19 (only a parameter the paper presents as a hyperparameter counts): the KL coefficient η varied in Figure 2(b) is part of the regularised objective whose sample complexity the paper analyses, a property of the problem, not a tuned hyperparameter.",
+   "C29": "é19 (environment condition / problem parameter does not count): the supplementary sweeps vary the graph topology, sample size M and the regularisation ρ of the MSPBE objective (problem definition), none presented as a hyperparameter of PD-DistIAG."
+  },
+  "Q5": {
+   "K090": "é6/é19: https://anonymous.4open.science/r/PePG-0C27/README.md visited 2026-11-09 (twice, plus API /api/repo/PePG-0C27/file/README.md): HTTP 410 {\"error\":\"repository_expired\"}, the anonymous mirror no longer answers, so the link does not lead to code.",
+   "C19": "Écart 6 et 19 : la page (sites.google.com/view/time-limits-in-rl, visitée le 2026-11-09) mène à la bibliothèque Tonic, publiée après l'article et sans ses scripts d'expérience : pas le code de l'article."
+  }
+ }
 }
