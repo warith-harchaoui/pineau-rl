@@ -1,0 +1,13 @@
+{"step": 0, "greedy": 0.07333333333333333, "pass1": 0.1, "pass8": 0.54, "truncated": 0.77}
+{"step": 10, "train_right": 0.40625, "truncated": 0.21875, "loss": -0.003634342923760414, "wall": 274.7}
+{"step": 20, "train_right": 0.28125, "truncated": 0.03125, "loss": -0.0014925720170140266, "wall": 537.8}
+{"step": 30, "train_right": 0.6875, "truncated": 0.09375, "loss": 0.0013280678540468216, "wall": 782.9}
+{"step": 40, "train_right": 0.40625, "truncated": 0.03125, "loss": -0.0007385481148958206, "wall": 1029.0}
+{"step": 50, "train_right": 0.875, "truncated": 0.0, "loss": -0.0005059279501438141, "wall": 1370.6}
+{"step": 50, "greedy": 0.6533333333333333, "pass1": 0.5875, "pass8": 0.66, "truncated": 0.0275}
+{"step": 60, "train_right": 0.46875, "truncated": 0.03125, "loss": 1.3433396816253662e-05, "wall": 1991.4}
+{"step": 70, "train_right": 0.875, "truncated": 0.125, "loss": -0.0002555474638938904, "wall": 2284.9}
+{"step": 80, "train_right": 0.0, "truncated": 0.0625, "loss": 0.0, "wall": 2564.4}
+{"step": 90, "train_right": 0.4375, "truncated": 0.21875, "loss": -0.0020644599571824074, "wall": 2823.7}
+{"step": 100, "train_right": 0.21875, "truncated": 0.09375, "loss": -6.848946213722229e-05, "wall": 3096.0}
+{"step": 100, "greedy": 0.36666666666666664, "pass1": 0.3575, "pass8": 0.52, "truncated": 0.29}

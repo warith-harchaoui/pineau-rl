@@ -2,3 +2,4 @@
   logger.deprecation(
 /Users/warithharchaoui/pineau-rl/sim/env/lib/python3.11/site-packages/gymnasium/envs/registration.py:519: DeprecationWarning: [33mWARN: The environment Hopper-v4 is out of date. You should consider upgrading to version `v5`.[0m
   logger.deprecation(
+{"algo": "ppo_sb3", "task": "Hopper-v4", "seed": 8, "final": 2131.808063254472, "perturbed": 352.5331731308369, "wall": 2062.8}

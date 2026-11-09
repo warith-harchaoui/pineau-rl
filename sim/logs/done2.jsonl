@@ -26,3 +26,6 @@
 {"algo": "ppo_sb3", "task": "Hopper-v4", "seed": 6, "final": 2931.7155158210785, "perturbed": 554.7219800599372, "wall": 3370.5}
 {"algo": "ppo_sb3", "task": "Hopper-v4", "seed": 5, "final": 2280.2094582009613, "perturbed": 492.77653972142787, "wall": 3408.9}
 {"algo": "ppo_sb3", "task": "Hopper-v4", "seed": 7, "final": 2466.6676165315084, "perturbed": 374.19303992678675, "wall": 3502.2}
+{"algo": "ppo_sb3", "task": "Hopper-v4", "seed": 8, "final": 2131.808063254472, "perturbed": 352.5331731308369, "wall": 2062.8}
+{"algo": "ppo_sb3", "task": "Hopper-v4", "seed": 9, "final": 1602.471761776427, "perturbed": 521.2690853077336, "wall": 2105.9}
+ALL_DONE

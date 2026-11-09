@@ -1,0 +1,7 @@
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+W1109 06:11:30.625000 24244 site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:  26%|██▌       | 75/290 [00:00<00:00, 682.18it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 1956.84it/s]
+/Users/warithharchaoui/pineau-rl/sim/llm/grpo.py:121: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:821.)
+  part.backward(); loss += float(part)
+{"model": "qwen05", "task": "mul2", "reward": "true", "seed": 0, "done": true, "wall": 3192.8}

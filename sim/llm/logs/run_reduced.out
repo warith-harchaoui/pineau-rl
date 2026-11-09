@@ -1,0 +1,13 @@
+2026-11-09 07:06:35 {"model": "qwen05", "task": "mul2", "reward": "true", "seed": 0, "done": true, "wall": 3192.8}
+2026-11-09 07:58:46 {"model": "qwen05", "task": "mul2", "reward": "random", "seed": 0, "done": true, "wall": 2857.7}
+2026-11-09 08:45:55 {"model": "qwen05", "task": "mul2", "reward": "true", "seed": 1, "done": true, "wall": 2684.9}
+2026-11-09 12:37:47 torch.AcceleratorError: probability tensor contains either `inf`, `nan` or element < 0
+2026-11-09 12:40:48 torch.AcceleratorError: probability tensor contains either `inf`, `nan` or element < 0
+2026-11-09 12:43:48 torch.AcceleratorError: probability tensor contains either `inf`, `nan` or element < 0
+2026-11-09 12:47:48 RuntimeError: MPS backend out of memory (MPS allocated: 26.59 GiB, other allocations: 122.00 MiB, max allowed: 27.22 GiB). Tried to allocate 640.00 MiB on shared pool. Use PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0 to disable upper limit for memory allocations (may cause system failure).
+2026-11-09 12:51:49 RuntimeError: MPS backend out of memory (MPS allocated: 26.52 GiB, other allocations: 122.00 MiB, max allowed: 27.22 GiB). Tried to allocate 640.00 MiB on shared pool. Use PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0 to disable upper limit for memory allocations (may cause system failure).
+2026-11-09 12:55:50 RuntimeError: MPS backend out of memory (MPS allocated: 26.52 GiB, other allocations: 122.00 MiB, max allowed: 27.22 GiB). Tried to allocate 640.00 MiB on shared pool. Use PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0 to disable upper limit for memory allocations (may cause system failure).
+2026-11-09 12:59:51 RuntimeError: MPS backend out of memory (MPS allocated: 26.54 GiB, other allocations: 122.00 MiB, max allowed: 27.22 GiB). Tried to allocate 640.00 MiB on shared pool. Use PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0 to disable upper limit for memory allocations (may cause system failure).
+2026-11-09 13:03:51 torch.AcceleratorError: MPS command buffer execution failed: Impacting Interactivity (0000000e:kIOGPUCommandBufferCallbackErrorImpactingInteractivity). This error may have been asynchronously reported, so the stack trace below might be incorrect.
+2026-11-09 13:08:52 torch.AcceleratorError: probability tensor contains either `inf`, `nan` or element < 0
+ALL_DONE
