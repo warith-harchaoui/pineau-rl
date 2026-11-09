@@ -22,26 +22,27 @@ situations qui avaient servi à les entraîner [@pineau2018iclr; @pineau2018neur
 
 Ce document reprend la liste entière, faille par faille. Il pose chaque fois la même question :
 huit ans plus tard, l'avons-nous écoutée ? Deux instruments répondent. Le premier est un sondage :
-nous relisons 50 articles de 2025 et 2026 tirés au sort, avec la grille de lecture de Pineau. Nous relisons aussi
-12 articles de 2018 pour vérifier que notre lecture retrouve ses chiffres. Le second rassemble des
-expériences : nous refaisons celles de 2018 avec les algorithmes de 2026, en écrivant le protocole
-avant le premier entraînement.
+nous relisons des articles avec la grille de lecture de Pineau, complétée par une seconde grille
+pour les failles qu'elle laissait sans mesure. Nous avons lu 50 articles de 2018 et un premier
+tirage de 50 articles de 2025 et 2026. Ce premier tirage compte 14 articles de RL classique
+(robotique, jeux, contrôle), trop peu pour détecter un changement : nous l'avons complété jusqu'à
+50. Le second instrument rassemble des expériences : nous refaisons celles de 2018 avec les
+algorithmes de 2026, en écrivant le protocole avant le premier entraînement.
 
-Sur seize failles, une seule a progressé nettement, pour une raison inattendue : 70 % des articles
-de 2026 évaluent leurs agents sur des situations tenues à part, contre 10 % en 2018. La hausse
-vient presque entière des articles sur les grands modèles de langue, dont les bancs d'essai
-séparent par construction l'entraînement et le test. Dans le RL classique, nous ne détectons aucun
-changement. Une faille a reculé : les réglages des méthodes concurrentes ne sont plus donnés que
-dans 18 % des articles, contre 60 % chez Pineau, un écart qui résiste à la correction pour
-comparaisons multiples. Pour trois autres, nous ne détectons aucun changement : le test
-statistique (4 % des articles), la description de la façon dont on règle une méthode (27 %) et le
-nombre d'essais, que la moitié des articles taisent. Nos expériences précisent la faille la plus
+Première surprise : notre lecture de 2018 s'écarte des chiffres de Pineau. Elle trouve 55 %
+d'articles qui donnent tous les réglages de leur méthode, quand Pineau en comptait 90 %. Nous
+jugeons donc chaque faille à grille égale, en comparant le RL classique de 2026 à notre propre
+lecture de 2018, avec les mêmes grilles et les mêmes lecteurs. Quatre pratiques ont changé. Le lien
+vers le code passe de 31 % à 74 % des articles, la sensibilité à un réglage montrée de 44 % à 80 %,
+le calcul chiffré de 27 % à 58 %, une incertitude rapportée de 63 % à 88 %. Toutes s'ajoutent à une expérience sans en changer la conclusion.
+Les pratiques qui obligent parfois à revoir une conclusion n'ont pas bougé de façon détectable : un
+test statistique (6 % puis 12 %), des références décrites avec tous leurs réglages (35 % puis 29 %),
+une évaluation tenue à part (33 % puis 45 %), la version des bancs d'essai (23 % puis 26 %). Nos
+expériences précisent la faille la plus
 célèbre. Sur nos trente essais, deux groupes de cinq tirés au hasard ne trompent un test
 statistique que dans 1,2 % des cas. Le test se laisse tromper quand on trie les essais (31 %). Garder
 les meilleurs gonfle le score de 33 %. Elles montrent aussi pourquoi un résultat trop beau se vérifie : notre
-propre référence s'est effondrée, une erreur de notre code semblait l'expliquer. Sa correction n'a
-rien changé. Six failles restent à mesurer :
-ce document dit comment.
+propre référence s'est effondrée, une erreur de notre code semblait l'expliquer. Sa correction n'a rien changé, et le script officiel du recueil plafonne de même : la recette publiée a vieilli avec les bibliothèques. Le chiffre le plus frappant de 2018 reste inexpliqué : ni nos essais de PPO ni ceux de TRPO n'approchent le t de 9 de Henderson et ses coauteurs. Plusieurs expériences restent à finir : ce document dit lesquelles.
 
 # Deux conférences en 2018
 
@@ -318,24 +319,24 @@ section suivante.
 
 | | La faille montrée en 2018 | Où Pineau la montre | Ce qui la mesure ici | Où nous en sommes le 9 novembre 2026 |
 |:----|:-----------------------------------------|:----------------|:----------------|:----------------------|
-| F1 | L'article publié sans son code | diapositive 6 à ICLR, page 29 à NeurIPS | critère Q5 | écoutée en partie |
-| F2 | Aucun plan pour refaire l'expérience, comme pour AlphaGo | diapositives 9 à 12 à ICLR | critères Q3 et X7 | écoutée en partie |
-| F3 | Le matériel et les logiciels, qui font partie du résultat | pages 34 et 35 à NeurIPS | critères X7 et Y10 | écoutée en partie, reste à mesurer |
-| F4 | Les hyperparamètres de la méthode, donnés en partie | page 29 à NeurIPS | critère Q3 | impossible à trancher |
-| F5 | La façon de choisir les hyperparamètres, tue | page 29 à NeurIPS | critère Q6 | pas écoutée |
-| F6 | Des réglages qui changent tout et qui interagissent | diapositives 24 et 25 à ICLR | critère Y9 | reste à mesurer |
-| F7 | Des références moins bien réglées que la méthode | diapositive 25 à ICLR, page 29 à NeurIPS | critères Q4 et X4, expérience E6 | en recul net contre les chiffres de Pineau |
-| F8 | Une mesure de performance jamais définie | diapositives 26 et 27 à ICLR | critères Y1 et Y2 | reste à mesurer |
+| F1 | L'article publié sans son code | diapositive 6 à ICLR, page 29 à NeurIPS | critère Q5 | écoutée |
+| F2 | Aucun plan pour refaire l'expérience, comme pour AlphaGo | diapositives 9 à 12 à ICLR | critères Q3 et X7 | écoutée en partie : le calcul se chiffre |
+| F3 | Le matériel et les logiciels, qui font partie du résultat | pages 34 et 35 à NeurIPS | critères X7 et Y10 | écoutée en partie : les versions des logiciels restent rares |
+| F4 | Les hyperparamètres de la méthode, donnés en partie | page 29 à NeurIPS | critère Q3 | aucun changement détectable |
+| F5 | La façon de choisir les hyperparamètres, tue | page 29 à NeurIPS | critère Q6 | aucun changement détectable après correction |
+| F6 | Des réglages qui changent tout et qui interagissent | diapositives 24 et 25 à ICLR | critère Y9 | écoutée |
+| F7 | Des références moins bien réglées que la méthode | diapositive 25 à ICLR, page 29 à NeurIPS | critères Q4 et X4, expérience E6 | aucun changement détectable, toujours rare |
+| F8 | Une mesure de performance jamais définie | diapositives 26 et 27 à ICLR | critères Y1 et Y2 | aucun changement détectable, mesure le plus souvent définie |
 | F9 | Trop peu d'essais, trois ou cinq, jamais dix dans son tableau | diapositive 28 à ICLR | critère X1, expérience E5 | pas écoutée |
-| F10 | Les meilleurs essais sur N, seuls publiés | diapositives 29 et 30 à ICLR | critère X3, expériences E1 et E4 | devenue rare, effet mesuré |
+| F10 | Les meilleurs essais sur N, seuls publiés | diapositives 29 et 30 à ICLR | critère X3, expériences E1 et E4 | rare les deux années, effet mesuré |
 | F11 | Même code, autre graine aléatoire : deux « algorithmes » | diapositive 31 à ICLR, page 22 à NeurIPS | expérience E1 | nuancée par nos mesures |
-| F12 | Aucun test statistique | page 29 à NeurIPS | critères Q8 et X2 | pas écoutée |
-| F13 | Le meilleur algorithme qui change avec la tâche | diapositives 20 et 21 à ICLR | expérience E2, critères Y3 et Y4 | mesure en cours |
-| F14 | Deux implémentations du même algorithme qui divergent | diapositives 22 et 23 à ICLR | expérience E3, critère Y5 | mesure en cours |
-| F15 | L'évaluation sur les conditions d'entraînement | pages 36 à 51 à NeurIPS | critère Q7, expérience E7, critère Y8 | en hausse par changement de population, aucun changement détectable dans le RL classique |
-| F16 | Des bancs d'essai trop simples, faciles à apprendre par cœur | pages 43 à 50 à NeurIPS | critères X6 et Y7 | reste à mesurer |
+| F12 | Aucun test statistique | page 29 à NeurIPS | critères Q8, X2, Y11 et Y12 | écoutée en partie : des barres, pas de test |
+| F13 | Le meilleur algorithme qui change avec la tâche | diapositives 20 et 21 à ICLR | critères Y3 et Y4, expérience E2 | aucun changement détectable, expérience en cours |
+| F14 | Deux implémentations du même algorithme qui divergent | diapositives 22 et 23 à ICLR | critère Y5, expérience E3 | aucun changement détectable, expérience en cours |
+| F15 | L'évaluation sur les conditions d'entraînement | pages 36 à 51 à NeurIPS | critères Q7 et Y8, expérience E7 | aucun changement détectable à grille égale |
+| F16 | Des bancs d'essai trop simples, faciles à apprendre par cœur | pages 43 à 50 à NeurIPS | critères X6 et Y7 | aucun changement détectable |
 
-: Les seize failles de 2018. Pour chacune : la diapositive de la conférence d'ICLR ou la page du document de NeurIPS qui la montre, le critère de lecture ou l'expérience qui la mesure dans ce document, puis le verdict à la date du 9 novembre 2026.
+: Les seize failles de 2018. Pour chacune : la diapositive de la conférence d'ICLR ou la page du document de NeurIPS qui la montre, le critère de lecture ou l'expérience qui la mesure dans ce document, puis le verdict à la date du 9 novembre 2026. Le verdict compare nos 50 articles de RL classique de 2026 à notre lecture de 50 articles de 2018, avec les mêmes grilles et les mêmes lecteurs.
 
 # Comment nous mesurons
 
@@ -350,46 +351,90 @@ de sa conférence d'ICLR : le nombre d'essais, l'incertitude rapportée, la sél
 essais, le réglage loyal des références, la famille de l'article, le nombre de familles de modèles
 essayées, le calcul rapporté.
 
-**Les articles.** Nous avons pris tous les articles d'ICLR 2026, d'ICML 2026 et de NeurIPS 2025
-dont le titre parle d'apprentissage par renforcement : 1 252 sur 17 836. Nous en avons tiré 50 au
-sort. Parmi eux, 27 appliquent le RL à de grands modèles de langue, 14 relèvent du RL classique
-(robotique, jeux, contrôle) et 9 sont théoriques, dont 5 sans aucune expérience. Les pourcentages
-de ce document se calculent sur les articles qui ont des expériences.
+**Une seconde grille.** Les quinze critères laissent des failles sans mesure. Une seconde grille
+de douze critères (Y1 à Y12) les complète : mesure définie, barres d'erreur définies, nombre de
+tâches, tâches où la méthode perd, implémentation des références, essais exclus, versions des bancs
+d'essai, test de généralisation, sensibilité aux réglages, dépendances logicielles, type
+d'incertitude, outils statistiques récents. Elle a été écrite et datée du 9 novembre 2026 dans
+`study/PROTOCOL.md`, avec ses règles de décision, avant toute lecture. Les agents l'ont ensuite
+appliquée à tous les articles, avec une citation pour chaque décision.
+
+**Les articles de 2026.** Nous avons pris tous les articles d'ICLR 2026, d'ICML 2026 et de NeurIPS
+2025 dont le titre parle d'apprentissage par renforcement : 1 252 sur 17 836. Un premier tirage au
+sort en a retenu 50. Parmi eux, 27 appliquent le RL à de grands modèles de langue, 14 relèvent du
+RL classique (robotique, jeux, contrôle) et 9 sont théoriques, dont 5 sans aucune expérience. Les
+pourcentages de ce document se calculent sur les articles qui ont des expériences.
+
+**Deux échantillons agrandis.** Avec 14 articles de RL classique et 12 articles de 2018, notre
+première version ne détectait pas un écart de 30 points. Avant de tirer ou de lire le moindre
+article de plus, nous avons écrit dans le protocole comment agrandir les deux échantillons.
+Notre lecture de 2018 passe à 50 articles : aux 12 du départ s'ajoutent 38 articles tirés au sort
+parmi les articles de RL d'ICML, de NeurIPS et d'ICLR 2018, les trois congrès que Pineau annonce.
+Parmi ces 50 articles, 48 ont des expériences. Le RL classique de 2026 passe lui aussi à 50
+articles : aux 14 du premier tirage s'ajoutent 36 articles pris dans une file, les autres articles
+de 2026 rangés dans un ordre tiré au sort. Un premier tri sur le titre saute les articles qui
+annoncent un modèle de langue (« LLM », « reasoning », « RLHF », « GRPO »…). Nous avons lu 70
+articles de cette file. Les 36 premiers articles de RL classique, dans l'ordre du tirage, forment
+l'échantillon. Les 18 articles sur les modèles de langue et les 3 articles théoriques lus avant le
+dernier d'entre eux restent à part : le tri sur le titre en avait écarté beaucoup d'autres, ils ne
+forment donc pas un échantillon.
 
 **Qui lit les articles.** La lecture est confiée à des agents de modèle de langue : des
 programmes qui lisent le PDF entier, annexes comprises, puis remplissent la grille. Pour qu'un agent
 n'invente rien, chaque décision s'accompagne d'une citation exacte de l'article et de sa page, que
-n'importe qui peut vérifier dans `study/codes/`. Dix articles tirés au sort ont été lus une seconde
-fois par un autre agent, qui ne voyait pas la première lecture. Les deux lectures s'accordent sur
-127 décisions sur 130 (98 %). Le kappa de Cohen, qui retire de cet accord la part due au hasard,
-vaut de 0,74 à 1 selon le critère. Un accord entre deux machines reste un accord entre machines :
-une relecture humaine à l'aveugle de dix articles est prévue. Ce document le signale tant
-qu'elle manque.
+n'importe qui peut vérifier dans `study/codes/` et `study/codes_v2/`. Dix articles du premier tirage
+ont été lus une seconde fois par un autre agent, qui ne voyait pas la première lecture. Avec la
+première grille, les deux lectures s'accordent sur 127 décisions sur 130 (98 %). Le kappa de Cohen,
+qui retire de cet accord la part due au hasard, vaut de 0,74 à 1 selon le critère. Avec la seconde
+grille, sur les mêmes dix articles, l'accord est complet sur neuf critères sur douze. Il tombe à
+90 % sur les essais exclus (Y6), à 80 % sur l'implémentation des références (Y5, kappa 0,52) et à
+60 % sur la mesure de performance (Y1, kappa 0,31). Dix autres articles, tirés au sort parmi les
+articles ajoutés, ont été lus deux fois avec les deux grilles : l'accord atteint au moins 80 % sur
+chacun des 23 critères. Il est complet sur dix-sept d'entre eux. Tous ces accords se calculent sur les
+lectures brutes, avant l'harmonisation décrite plus bas. Un accord entre deux machines reste un
+accord entre machines : une relecture humaine à l'aveugle de dix articles est prévue, son plan est
+écrit, elle n'a pas encore eu lieu. Ce document le signale tant qu'elle manque.
 
-**Vérifier notre lecture.** Le tirage de Pineau et sa façon de trancher les cas douteux restent
-inconnus. Pour savoir si notre lecture ressemble à la sienne, nous avons aussi lu 12 articles de
-2018, avec la même grille et les mêmes agents. Sur les hyperparamètres de la méthode, nous sommes
-plus sévères qu'elle (6 sur 10 contre 90 %). Sur l'évaluation tenue à part, plus indulgents
-(4 sur 11 contre 10 %).
+**L'harmonisation.** Deux agents lisent parfois la même règle de deux façons. Avant de calculer le
+moindre pourcentage, nous avons relu tous les codes, critère par critère, puis écrit les règles qui
+tranchent les cas ambigus. Chacune est datée dans la liste des écarts au protocole
+(`study/PROTOCOL.md`, écarts 17 à 19) : après une lecture pilote de trois articles, puis pour la
+famille de l'article avant de figer l'échantillon de RL classique, enfin pour toute la seconde
+grille. Cette dernière harmonisation change 80 codes, chacun avec sa raison dans
+`study/overrides_v2.json`. Elle vaut pour les deux années. Les pages de projet données comme lien
+vers le code ont été visitées le 9 novembre 2026 : deux ne mènent pas au code de l'article. Pour
+trois critères de la première grille (les meilleurs essais gardés, le réglage loyal des références,
+le calcul chiffré), nous n'avons ajouté aucune règle. Une règle nouvelle aurait touché les seuls
+articles ajoutés. Les deux années auraient alors été lues avec deux grilles différentes, une faute
+que nous avions déjà dû corriger une fois.
 
-**Comparer deux échantillons.** Les 50 articles de Pineau forment eux aussi un échantillon. Avec
-un autre tirage, son 55 % de code en lien serait sorti entre 41 % et 68 %. Traiter son chiffre
-comme exact gonflerait la sûreté de nos verdicts. Nous calculons donc l'écart entre les deux
-années avec son propre intervalle de confiance (l'intervalle de Newcombe) puis un test exact de
-Fisher. Quand on teste neuf critères à la fois, l'un d'eux finit par franchir le seuil par hasard :
-la correction de Holm relève le seuil en conséquence. Enfin, 2018 ne comptait aucun article sur
-les grands modèles de langue. Pour séparer un changement de pratique d'un changement de
-population, nous comparons aussi le seul RL classique de 2026 à notre lecture de 2018. Un critère
-« a changé » quand l'écart tient contre les chiffres de Pineau après correction. Le changement est
-« confirmé » quand il tient aussi contre notre propre lecture de 2018. Le script
-`study/audit_stats.py` fait tous ces calculs.
+**Comparer deux échantillons.** Les 50 articles de Pineau forment eux aussi un échantillon, comme
+chacun des nôtres. Avec un autre tirage, son 55 % de code en lien serait sorti entre 41 % et 68 %.
+Traiter un chiffre comme exact gonflerait la sûreté de nos verdicts. Nous calculons donc l'écart
+entre deux échantillons avec son propre intervalle de confiance (l'intervalle de Newcombe), puis
+un test exact de Fisher, qui donne la valeur p. Quand on teste onze critères à la fois, l'un
+d'eux finit par franchir le seuil par hasard : la correction de Holm relève le seuil en
+conséquence. Nous l'appliquons séparément aux onze critères de la première grille et aux douze de
+la seconde. Un critère « a changé » quand l'écart passe le seuil après cette correction. Le script
+`study/extension_stats.py`, écrit avant de rassembler la moindre lecture des articles ajoutés,
+fait tous ces calculs.
 
-**Une seconde grille, préparée.** Les quinze critères ne couvrent pas toutes les failles. Une
-seconde grille de douze critères (Y1 à Y12) les complète : mesure définie, barres d'erreur définies,
-nombre de tâches, tâches où la méthode perd, implémentation des références, essais exclus,
-versions des bancs d'essai, test de généralisation, sensibilité aux réglages, dépendances
-logicielles, type d'incertitude, outils statistiques récents. Elle est écrite et datée du
-9 novembre 2026 dans `study/PROTOCOL.md` avant toute lecture. Sa lecture n'a pas commencé.
+**Notre grille lit 2018 autrement que Pineau.** Le tirage de Pineau et sa façon de trancher les cas
+douteux restent inconnus. Nos 48 articles expérimentaux de 2018 montrent que notre lecture diffère
+de la sienne sur deux critères. Les hyperparamètres de la méthode sont tous donnés dans 55 % des
+articles chez nous, contre 90 % chez elle : un écart de −35 points, de −50 à −17 avec son
+intervalle, qui résiste à la correction (p = 0,001). L'évaluation tenue à part va dans l'autre
+sens : 33 % chez nous, contre 10 % chez elle, soit +23 points, de +7 à +39 (p = 0,03). Les
+références et le code penchent du côté des hyperparamètres, 35 % contre 60 % et 31 % contre 55 %,
+sans passer la correction (p = 0,06 chacun). Notre grille est donc plus sévère que la sienne sur
+ce que l'article donne, plus large sur ce qui compte comme tenu à part.
+
+**Un verdict à grille égale.** Comparer nos articles de 2026 aux chiffres de Pineau mêlerait deux
+changements : celui des pratiques et celui de la grille. Un verdict de ce document repose donc
+seulement sur la comparaison à grille égale : nos 50 articles de RL classique de 2026 contre notre
+lecture de 50 articles de 2018, avec les mêmes grilles et les mêmes lecteurs. Le protocole fixait
+cette comparaison avant toute lecture des articles ajoutés. Les chiffres de Pineau restent montrés
+comme contexte, avec cet avertissement.
 
 ## Les expériences : refaire 2018 avec les outils de 2026
 
@@ -425,73 +470,104 @@ fois : avec la vraie récompense, puis avec une récompense tirée à pile ou fa
 
 # Le matériel : code, réglages, calcul (F1 à F3)
 
-![La grille de Pineau, appliquée en 2018 et en 2026. Chaque ligne est un critère de lecture. Le point de 2018 donne la part des 50 articles lus par Pineau qui satisfont le critère. Le point de 2026 donne la part dans nos 45 articles expérimentaux tirés d'ICLR 2026, d'ICML 2026 et de NeurIPS 2025. Le test statistique, absent du dessin, passe de 5 % à 4 %.](figures/remesure-dumbbell.svg){width=100%}
+Le tableau suivant rassemble, faille par faille, les critères de lecture qui servent à un verdict.
+Les sections qui suivent le commentent.
 
-| Critère de lecture | Faille visée | Pineau, 2018 | Notre lecture de 12 articles de 2018 | Nos 45 articles de 2026, avec intervalle à 95 % |
-|:------------------------------------|:----|--------:|----------:|-------------:|
-| Q5, le code est en lien | F1 | 55 % | 6 sur 11 | 67 % [52, 79] |
-| Q3, tous les hyperparamètres de la méthode sont donnés | F2, F4 | 90 % | 6 sur 10 | 67 % [52, 79] |
-| X7, le calcul employé est chiffré | F2, F3 | non mesuré | 3 sur 11 | 47 % [33, 61] |
-| Q6, la façon de choisir les hyperparamètres est décrite | F5 | 20 % | 2 sur 10 | 27 % [16, 41] |
-| Q4, tous les hyperparamètres des références sont donnés | F7 | 60 % | 6 sur 11 | **18 % [10, 32]** |
-| X4, les références sont réglées avec le même soin | F7 | non mesuré | 1 sur 11 | 5 % [1, 15] |
-| X2, une incertitude est rapportée | F12 | non mesuré | 8 sur 11 | 47 % [33, 61] |
-| Q8, un test statistique est appliqué | F12 | 5 % | 1 sur 11 | 4 % [1, 15] |
-| Q7, l'évaluation se fait sur des conditions tenues à part | F15 | 10 % | 4 sur 11 | **70 % [56, 82]** |
+| Critère de lecture | Faille | Notre lecture de 2018 | RL classique de 2026 | Écart en points, avec intervalle à 95 % |
+|:--------------------------------|:------|---------------:|---------------:|-----------------:|
+| Q5, le code est en lien | F1 | 31 % (15 sur 48) | 74 % (37 sur 50) | **+43 [+23, +58]** |
+| Q3, tous les hyperparamètres de la méthode sont donnés | F2, F4 | 55 % (26 sur 47) | 72 % (36 sur 50) | +17 [−2, +34] |
+| X7, le calcul employé est chiffré | F2, F3 | 27 % (13 sur 48) | 58 % (29 sur 50) | **+31 [+11, +47]** |
+| Y10, les versions des bibliothèques sont données | F3 | 2 % (1 sur 48) | 8 % (4 sur 50) | +6 [−4, +17] |
+| Q6, la façon de choisir les hyperparamètres est décrite | F5 | 26 % (12 sur 47) | 48 % (24 sur 50) | +22 [+3, +39] |
+| Y9, la sensibilité à un hyperparamètre est montrée | F6 | 44 % (21 sur 48) | 80 % (40 sur 50) | **+36 [+17, +52]** |
+| Q4, tous les hyperparamètres des références sont donnés | F7 | 35 % (17 sur 48) | 29 % (14 sur 49) | −7 [−25, +11] |
+| X4, les références sont réglées avec le même soin | F7 | 13 % (6 sur 48) | 16 % (8 sur 49) | +4 [−11, +18] |
+| Y1, la mesure de performance est définie | F8 | 79 % (38 sur 48) | 78 % (39 sur 50) | −1 [−17, +15] |
+| X3, seuls les meilleurs essais sont gardés | F10 | 19 % (9 sur 48) | 14 % (7 sur 50) | −5 [−20, +10] |
+| X2, une incertitude est rapportée | F12 | 63 % (30 sur 48) | 88 % (44 sur 50) | **+26 [+8, +41]** |
+| Q8, un test statistique est appliqué | F12 | 6 % (3 sur 48) | 12 % (6 sur 50) | +6 [−7, +18] |
+| Y12, un outil statistique postérieur à 2018 est employé | F12 | 2 % (1 sur 48) | 14 % (7 sur 50) | +12 [+1, +24] |
+| Y5, l'origine du code des références est dite | F14 | 46 % (22 sur 48) | 41 % (20 sur 49) | −5 [−24, +14] |
+| Q7, l'évaluation se fait sur des conditions tenues à part | F15 | 33 % (16 sur 48) | 45 % (22 sur 49) | +12 [−8, +30] |
+| Y8, un test de généralisation est fait | F15 | 23 % (11 sur 48) | 34 % (17 sur 50) | +11 [−7, +28] |
+| Y7, la version des bancs d'essai est donnée | F16 | 23 % (11 sur 48) | 26 % (13 sur 50) | +3 [−14, +20] |
 
-: La grille de Pineau réappliquée, critère par critère. En gras, les deux écarts avec ses chiffres qui passent la correction de Holm et que notre grille n'explique pas. Le recul des hyperparamètres de la méthode la passe aussi, mais notre lecture de 2018 montre qu'il vient de notre grille, plus sévère que la sienne. « Non mesuré » : Pineau n'avait pas ce critère. Données : `study/results_final.json` et `study/audit_stats.json`.
+: La grille de lecture appliquée à grille égale. Pour chaque critère : la part des articles qui le satisfont dans notre lecture de 2018, puis dans nos 50 articles de RL classique de 2026. La dernière colonne donne l'écart entre ces deux colonnes, avec son intervalle de Newcombe à 95 %. En gras, les quatre écarts qui passent la correction de Holm. Pour X3, une part plus basse est meilleure. Les chiffres de Pineau, lus avec une autre grille, viennent plus bas comme contexte. Un dénominateur plus petit que 48 ou 50 signale des articles où le critère ne s'applique pas (sans référence comparée, par exemple). Données : `study/extension_stats.json`.
 
-**Les écarts, avec leur incertitude.** La figure suivante donne, pour chaque critère, l'écart
-entre 2026 et les chiffres de Pineau avec son intervalle. Un intervalle qui ne croise pas la ligne
-zéro signale un changement. Trois intervalles s'écartent nettement de zéro : les hyperparamètres
-de la méthode, ceux des références et l'évaluation tenue à part.
+**Quatre changements, à grille égale.** La figure suivante dessine la dernière colonne du tableau,
+du plus grand écart au plus petit. Un intervalle qui ne croise pas la ligne zéro signale un
+changement. Les quatre premiers passent aussi la correction de Holm : le lien vers le code, le
+balayage d'un hyperparamètre, le calcul chiffré et l'incertitude rapportée. Deux autres
+intervalles évitent zéro de justesse sans passer la correction : la façon de choisir les
+hyperparamètres (Q6) et les outils statistiques récents (Y12). Pour les onze autres critères, nous
+ne détectons aucun changement. Chaque intervalle s'étend sur vingt à quarante points : un
+changement de dix points pourrait encore passer inaperçu.
 
-![Écart entre la part des articles de 2026 et celle des 50 articles de 2018 lus par Pineau, critère par critère, en points de pourcentage. Le point est l'écart observé, la barre son intervalle de Newcombe à 95 %, qui tient compte de l'incertitude des deux échantillons. Au-dessus de zéro, la pratique est plus fréquente en 2026.](figures/ecarts-pineau.svg){width=100%}
+![Écart entre nos 50 articles de RL classique de 2026 et nos 50 articles de 2018, lus avec les mêmes grilles et les mêmes agents, en points de pourcentage, critère par critère. Le point est l'écart observé, la barre son intervalle de Newcombe à 95 %. Au-dessus de zéro, la pratique est plus fréquente en 2026. Les quatre critères de gauche passent la correction de Holm pour comparaisons multiples. Pour les meilleurs essais gardés (X3), un écart négatif est un progrès.](figures/ecarts-classique.svg){width=100%}
 
-**Le RL classique, comparé à lui-même.** La seconde figure retire les articles sur les grands
-modèles de langue et compare les 14 articles de RL classique de 2026 à notre propre lecture de
-2018. Un seul intervalle reste entièrement sous zéro, de justesse : celui des hyperparamètres des
-références, de −67 à −3 points. Il ne passe pas la correction de Holm. Avec si peu d'articles de chaque côté, l'absence de changement
-détectable ne prouve pas l'absence de changement. Elle interdit en tout cas d'annoncer un
-progrès du RL classique.
+**Les chiffres de Pineau, en contexte.** Les deux figures suivantes comparent les 45 articles
+expérimentaux de notre premier tirage de 2026, grands modèles de langue compris, aux chiffres de
+Pineau. Elles mêlent deux changements, celui des pratiques et celui de la grille. Trois
+intervalles s'écartent nettement de zéro : les hyperparamètres de la méthode et ceux des
+références, en baisse, l'évaluation tenue à part, en hausse. Les sections F2, F7 et F15 font la
+part de la grille dans chacun.
 
-![Écart entre les 14 articles de RL classique de 2026 et nos 12 articles de 2018, lus avec la même grille et les mêmes agents, en points de pourcentage. Le point est l'écart observé, la barre son intervalle de Newcombe à 95 %. Les intervalles sont larges parce que les deux échantillons sont petits.](figures/ecarts-classique.svg){width=100%}
+![La grille de Pineau, appliquée en 2018 et en 2026, à titre de contexte. Chaque ligne est un critère de lecture. Le point de 2018 donne la part des 50 articles lus par Pineau qui satisfont le critère. Le point de 2026 donne la part dans les 45 articles expérimentaux de notre premier tirage d'ICLR 2026, d'ICML 2026 et de NeurIPS 2025, grands modèles de langue compris. Les deux points ne viennent pas de la même grille : notre lecture de 2018 trouve par exemple 55 % pour les hyperparamètres de la méthode, là où Pineau trouvait 90 %. Le test statistique, absent du dessin, passe de 5 % à 4 %.](figures/remesure-dumbbell.svg){width=100%}
 
-**Le code, plus souvent en lien (F1).** En 2026, 67 % des articles donnent le lien vers leur code,
-contre 55 % chez Pineau. L'intervalle [52, 79] ne permet pas de conclure sur notre seul
-échantillon. Le bilan officiel du programme de reproductibilité de NeurIPS 2019 va dans le même
-sens : la part d'articles acceptés avec du code passe de moins de 50 % à 74,4 %
-[@pineau2021improving]. La faille est donc écoutée en partie. Un article sur trois reste une
-publicité sans le produit.
+![Écart entre la part des 45 articles expérimentaux de notre premier tirage de 2026 et celle des 50 articles de 2018 lus par Pineau, critère par critère, en points de pourcentage. Le point est l'écart observé, la barre son intervalle de Newcombe à 95 %, qui tient compte de l'incertitude des deux échantillons. Au-dessus de zéro, la pratique est plus fréquente en 2026. L'écart mêle le changement des pratiques et la différence entre notre grille et celle de Pineau : il sert de contexte, les verdicts viennent de la comparaison à grille égale.](figures/ecarts-pineau.svg){width=100%}
 
-**Le plan pour refaire, à moitié livré (F2).** Les hyperparamètres de la méthode sont tous donnés
-dans 67 % des articles de 2026 et le calcul est chiffré dans 47 %. La baisse apparente des
-hyperparamètres, de 90 % à 67 %, disparaît contre notre propre lecture de 2018 (6 sur 10). Notre
-grille est simplement plus sévère que celle de Pineau. Le verdict reste impossible à trancher.
+**Le code, en lien dans trois articles sur quatre (F1).** Dans le RL classique, le lien vers le
+code passe de 31 % des articles de 2018 à 74 % en 2026 : un écart de 43 points, de 23 à 58 avec
+son intervalle, qui résiste à la correction (p = 0,0004). La faille est écoutée. Le bilan officiel
+du programme de reproductibilité de NeurIPS 2019 va dans le même sens : la part d'articles
+acceptés avec du code passe de moins de 50 % à 74,4 % [@pineau2021improving]. Dans tout le premier
+tirage, grands modèles de langue compris, la part vaut 67 %. Un article de RL classique sur quatre
+reste une publicité sans le produit.
 
-**L'infrastructure, chiffrée une fois sur deux (F3).** Moins d'un article sur deux chiffre son
-calcul en 2026, alors que le RL de grands modèles a fait du calcul un poste de budget à part entière
-[@khatri2025art]. Une seule étude de 2025 sur la croissance du RL de ces modèles a consommé plus de
-400 000 heures de processeur graphique. Les versions des logiciels (critère Y10) attendent la seconde grille.
+**Le plan pour refaire, livré en partie (F2).** Le calcul employé est chiffré dans 58 % des
+articles de RL classique de 2026, contre 27 % en 2018 : +31 points, de +11 à +47, un écart qui
+résiste à la correction (p = 0,02). Les hyperparamètres de la méthode sont tous donnés dans 72 %
+des articles, contre 55 % en 2018 : nous ne détectons aucun changement (p = 0,58). La baisse
+apparente contre les 90 % de Pineau vient de notre grille, plus sévère que la sienne. La faille
+est écoutée en partie : le calcul se chiffre, le réglage complet manque encore à plus d'un
+article sur quatre.
+
+**L'infrastructure chiffrée, les versions tues (F3).** Le calcul chiffré compte aussi pour F3. Le
+RL de grands modèles a fait du calcul un poste de budget à part entière [@khatri2025art] : une
+seule étude de 2025 sur la croissance du RL de ces modèles a consommé plus de 400 000 heures de
+processeur graphique. Les versions des bibliothèques logicielles restent rares : 4 articles de RL
+classique sur 50 les donnent en 2026, contre 1 sur 48 en 2018 (critère Y10). Dans tout le premier
+tirage, un seul article sur 45 les donne. La faille est écoutée en partie.
 
 # Le réglage : hyperparamètres et références (F4 à F7)
 
-**La façon de régler, toujours tue (F4 et F5).** La façon de choisir les hyperparamètres est décrite
-dans 27 % des articles de 2026, contre 20 % en 2018. Nous ne détectons aucun changement : l'écart vaut
-+7 points, avec un intervalle de −10 à +23.
+**La façon de régler, toujours peu décrite (F4 et F5).** Dans le RL classique, les hyperparamètres
+de la méthode sont tous donnés dans 72 % des articles de 2026, contre 55 % en 2018, sans changement
+détectable. La façon de les choisir est décrite dans 48 % des articles de 2026, contre 26 % en
+2018 : un écart de 22 points, de 3 à 39 avec son intervalle. Pris seul, cet intervalle évite zéro.
+Nous testons pourtant onze critères à la fois : après la correction de Holm, l'écart ne passe
+plus le seuil (p = 0,24). Nous ne détectons donc aucun changement après correction, sans pouvoir
+en exclure un.
 
 **Les réglages qui changent tout (F6).** La littérature a confirmé à grande échelle l'observation
 de Henderson et ses coauteurs. En 2020, une équipe du MIT et de Two Sigma montre que des
 optimisations présentes seulement dans le code, ou décrites comme des détails, expliquent
 l'essentiel de l'avantage de PPO sur TRPO [@engstrom2020implementation]. En 2021, une équipe de
 Google entraîne plus de 250 000 agents pour mesurer l'effet de plus de cinquante choix
-[@andrychowicz2021matters]. Reste à savoir si les articles de 2026 montrent
-leur propre sensibilité aux réglages : le critère Y9 le dira.
+[@andrychowicz2021matters]. Les articles montrent-ils leur propre sensibilité aux réglages ? Le
+critère Y9 demande si au moins un hyperparamètre de la méthode est balayé, résultat à l'appui. Dans
+le RL classique, c'est le cas de 80 % des articles de 2026, contre 44 % en 2018 : un écart de 36
+points, de 17 à 52, qui résiste à la correction (p = 0,004). La faille est écoutée. Le premier
+tirage, grands modèles compris, donne un niveau voisin : 32 articles sur 45.
 
-**Les références, de moins en moins décrites (F7).** Cette faille a nettement reculé. Les
-hyperparamètres des références sont tous donnés dans 18 % des articles de 2026, contre 60 % chez
-Pineau et 6 sur 11 dans notre lecture de 2018. Seuls 5 % des articles disent avoir réglé leurs
-références avec le même soin que leur méthode. Notre échantillon ne dit pas d'où vient ce recul.
+**Les références, toujours peu décrites (F7).** Les hyperparamètres des références sont tous
+donnés dans 29 % des articles de RL classique de 2026, contre 35 % dans notre lecture de 2018. Les
+articles qui disent avoir réglé leurs références avec le même soin que leur méthode passent de
+13 % à 16 %. Nous ne détectons aucun changement : la pratique reste rare les deux années. Contre
+les 60 % de Pineau, la baisse paraissait nette. Elle vient pour une part de notre grille, qui
+trouve 35 % en 2018, pour l'autre des articles sur les grands modèles de langue, qui décrivent
+rarement leurs références : tout le premier tirage tombe à 18 %.
 
 **Une référence qui s'effondre (E6).** Notre expérience E6 voulait illustrer la faille. Elle oppose
 PPO sur Hopper avec les valeurs par défaut de la bibliothèque à PPO avec les réglages publiés par
@@ -512,16 +588,29 @@ valeurs par défaut obtiennent 2 423 [1 673, 3 067] sur la version 4. La probabi
 corrigé batte un essai avec l'erreur vaut 0,47, autant dire le hasard. Notre erreur
 était réelle, sans expliquer l'écart. Deux possibilités demeurent : la recette publiée fait
 vraiment moins bien que les valeurs par défaut avec les versions actuelles des bibliothèques, ou
-notre façon de l'appliquer diffère encore de celle du recueil. Pour trancher, nous entraînons
-dix agents avec le script officiel du recueil, puis nous les évaluons avec notre protocole. D'ici
-là, E6 n'illustre aucune faille. Elle montre seulement pourquoi un résultat trop beau se vérifie
-jusqu'au bout.
+notre façon de l'appliquer diffère encore de celle du recueil. Pour trancher, nous avons entraîné
+dix agents avec le script officiel du recueil, puis nous les avons évalués avec notre protocole,
+comme le protocole le prévoyait avant ces entraînements.
+
+**La recette publiée plafonne aussi avec le script officiel.** Les dix agents officiels obtiennent
+995 [819, 1 006], autant que notre recette corrigée (984 [772, 1 002]). Les valeurs par défaut
+obtiennent 2 423 [1 682, 3 059]. Un agent officiel ne bat un agent par défaut qu'avec une
+probabilité de 0,09, et l'écart résiste à la correction de Holm (p = 0,001). Notre façon
+d'appliquer la recette n'était donc pas en cause. Avec les versions actuelles des bibliothèques,
+la recette réglée du recueil fait moins bien que les valeurs par défaut sur Hopper. E6 ne montre
+donc pas une référence mal réglée par ses auteurs. Elle montre qu'un réglage publié vieillit avec
+les logiciels qui l'entourent, et qu'un résultat trop beau se vérifie jusqu'au bout.
 
 # Les graines aléatoires et la statistique (F8 à F12)
 
-**La mesure, à définir (F8).** Le critère Y1 dira si les articles de 2026 définissent leur mesure
-de performance, le critère Y2 s'ils disent ce que représentent leurs barres d'erreur. Le RL de
-grands modèles offre déjà un exemple de mesure qui renverse un classement. En 2025, Yang Yue et ses
+**La mesure, le plus souvent définie (F8).** Le critère Y1 demande si l'article dit ce que
+contient le chiffre rapporté : le score final, la moyenne des derniers épisodes, l'aire sous la
+courbe d'apprentissage. Dans le RL classique, 78 % des articles de 2026 le disent, contre 79 % en
+2018. Quand des barres d'erreur figurent, leur sens est défini dans 38 articles sur 44 en 2026,
+contre 25 sur 30 en 2018 (critère Y2). La mesure est donc le plus souvent définie, les deux
+années, sans changement détectable. Y1 reste notre critère le plus fragile : sur le premier
+tirage, deux agents ne s'accordaient que sur 60 % des articles, avant que ses règles soient
+précisées. Le RL de grands modèles offre un exemple de mesure qui renverse un classement. En 2025, Yang Yue et ses
 coauteurs, surtout de l'université Tsinghua, comparent des modèles avant et après un RL à
 récompense vérifiable. Leur mesure, le pass@k, donne la part des problèmes résolus en au plus k
 tentatives. Pour une seule tentative, le modèle entraîné l'emporte. Pour un grand nombre de
@@ -602,15 +691,27 @@ courbe comme des essais indépendants.
 
 ![Nos trente essais de PPO et nos trente essais de TRPO, comparés au chiffre publié en 2018. Pour chaque façon de répartir dix essais en deux groupes de cinq, au hasard ou triés par score final, la barre donne la valeur absolue du t moyen le long de la courbe d'apprentissage dépassée une fois sur vingt, sur 10 000 tirages. La barre des points empilés traite les cent points des courbes de chaque groupe comme des observations indépendantes, avec des groupes tirés au hasard. La barre de Henderson et ses coauteurs est la valeur qu'ils publient, sur leurs propres essais.](figures/e1-henderson.svg){width=85%}
 
-**Les meilleurs sur N, devenus rares (F10).** Dans E1, garder les trois meilleurs essais sur dix
-gonfle la moyenne de 33 % (2 249 contre 1 692). Dans les articles de 2026, la pratique est devenue
-rare ou discrète : 2 articles sur 45 la laissent voir. L'expérience E4 dira combien de comparaisons
-entre algorithmes elle inverse.
+**Les meilleurs sur N, rares les deux années (F10).** Dans E1, garder les trois meilleurs essais
+sur dix gonfle la moyenne de 33 % (2 249 contre 1 692). Dans les articles, la pratique se voit
+rarement : 14 % des articles de RL classique de 2026 la laissent voir, contre 19 % en 2018, sans
+changement détectable. Dans le premier tirage, 2 articles sur 45 la laissent voir. Un article qui
+garde ses meilleurs essais sans le dire échappe à notre lecture : ces parts sont des minimums.
+L'expérience E4 dira combien de comparaisons entre algorithmes la pratique inverse.
 
-**La statistique, toujours absente (F12).** Le test statistique reste à 4 % des articles, contre
-5 % en 2018. Une incertitude est rapportée dans 47 % des articles, mais cette moyenne mêle deux
-mondes. Le RL classique la rapporte toujours (14 articles sur 14). Le RL de grands modèles presque
-jamais (4 sur 27), alors qu'une équipe surtout basée à Tübingen y a mesuré, en 2025, des écarts types
+**Des barres, pas de test (F12).** La faille se coupe en deux. Rapporter une incertitude, barres
+d'erreur ou bande autour de la courbe, est devenu courant dans le RL classique : 88 % des articles
+de 2026 le font, contre 63 % en 2018, un écart de 26 points, de 8 à 41, qui résiste à la
+correction (p = 0,04). Le type d'incertitude (écart type, erreur type, intervalle de confiance)
+est nommé dans 41 des 44 articles de 2026 qui en rapportent une, contre 25 sur 30 en 2018 (critère
+Y11). Le test statistique, lui, n'a pas bougé de façon détectable : 12 % des articles de 2026,
+contre 6 % en 2018. Les outils statistiques apparus après 2018, comme la moyenne interquartile ou
+la bibliothèque rliable d'Agarwal et ses coauteurs, passent de 2 % à 14 % des articles. Leur
+intervalle évite zéro, de +1 à +24 points, sans passer la correction (p = 0,66). La faille est
+écoutée en partie : les articles tracent des barres, ils testent rarement.
+
+Le RL de grands modèles fait exception : dans le premier tirage, les articles sur les modèles de
+langue rapportent rarement une incertitude (4 sur 27), alors qu'une équipe surtout basée à
+Tübingen y a mesuré, en 2025, des écarts types
 de 5 à 15 points de pourcentage pour un même modèle évalué avec différentes graines aléatoires
 d'échantillonnage, sur de petits bancs d'essai comme AIME 2024 [@hochlehnert2025sober]. Sur les
 30 problèmes d'AIME 2024, une seule réponse juste de plus déplace le score de 3,3 points.
@@ -622,27 +723,40 @@ M-IQN, se disait meilleur qu'un autre, Rainbow, alors que leurs intervalles se c
 nettement. Leur article a reçu le prix de l'article remarquable de NeurIPS 2021
 [@agarwal2021precipice].
 
-![Part des articles de 2026 qui satisfont chaque critère, avec son intervalle de confiance de Wilson à 95 %. Les barres verticales montrent la plage compatible avec nos 45 articles expérimentaux. Avec un échantillon de cette taille, un écart de moins de quinze points avec 2018 se confond avec le hasard du tirage.](figures/remesure-ic.svg){width=100%}
+![Part des articles de 2026 qui satisfont chaque critère, avec son intervalle de confiance de Wilson à 95 %. Les barres verticales montrent la plage compatible avec les 45 articles expérimentaux de notre premier tirage, qui mêle RL classique et RL de grands modèles de langue. Avec un échantillon de cette taille, un écart de moins de quinze points avec 2018 se confond avec le hasard du tirage.](figures/remesure-ic.svg){width=100%}
 
 # La portée des conclusions (F13 à F16)
 
 **Le classement et les implémentations (F13 et F14).** L'expérience E2 classe quatre algorithmes
 sur quatre tâches. E3 compare PPO écrit en PyTorch et PPO écrit en JAX, avec les mêmes graines
-aléatoires. Les deux attendent la fin des simulations. Les critères Y3 à Y5 diront si les articles
-de 2026 testent plusieurs tâches, montrent celles où leur méthode perd et disent d'où vient le code
-de leurs références.
+aléatoires. Les deux attendent la fin des simulations. Les articles, eux, sont lus. Dans le RL
+classique, la conclusion principale repose sur plusieurs tâches dans 41 articles sur 50 en 2026,
+contre 43 sur 48 en 2018 (critère Y3). Parmi les articles à plusieurs tâches, 38 sur 41 montrent
+au moins une tâche où leur méthode ne gagne pas, contre 34 sur 43 en 2018 (critère Y4). L'origine
+du code des références est dite dans 41 % des articles de 2026, contre 46 % en 2018 (critère Y5).
+Nous ne détectons aucun changement sur ces trois critères. Les deux premières pratiques étaient
+déjà courantes en 2018, la troisième reste minoritaire. Le RL de grands modèles conclut plus
+souvent sur une seule tâche : dans le premier tirage, 25 articles sur 45 seulement en comptent
+plusieurs, parce que beaucoup s'entraînent sur un seul jeu de données.
 
-**L'évaluation tenue à part, en hausse par changement de terrain (F15).** 70 % des articles de 2026
-évaluent sur des conditions tenues à part, contre 10 % chez Pineau : un écart de 60 points, de 42
-à 73 avec son intervalle. La hausse vient presque entière du RL de grands modèles : 26 articles sur
-27. Leurs bancs d'essai, des recueils de problèmes de mathématiques, séparent par construction les
-problèmes d'entraînement et les problèmes de test. Le RL classique reste à 5 articles sur 13,
-contre 4 sur 11 dans notre lecture de 2018 : nous n'y détectons aucun changement. La faille a donc
-reculé parce que le RL a changé de terrain, bien plus que parce que le RL classique a changé de
-pratique. L'expérience E7 mesure, sur nos propres agents, ce que coûte une
-physique modifiée.
+**L'évaluation tenue à part, une hausse qui tient en partie à la grille (F15).** Dans le premier
+tirage de 2026, 70 % des articles évaluent sur des conditions tenues à part, contre 10 % chez
+Pineau : un écart de 60 points, de 42 à 73 avec son intervalle. Une partie de cet écart vient de
+la grille, puisque notre lecture de 2018 trouve déjà 33 %. Le reste vient presque entier du RL de
+grands modèles : 26 articles sur 27. Leurs bancs d'essai, des recueils de problèmes de
+mathématiques, séparent par construction les problèmes d'entraînement et les problèmes de test. À
+grille égale, le RL classique passe de 33 % à 45 %, sans changement détectable. Le test de
+généralisation (critère Y8), plus exigeant, évalue sur des tâches, des dynamiques ou des données
+absentes de l'entraînement. Il passe de 23 % à 34 % des articles, sans changement détectable non
+plus. La faille a donc reculé surtout parce que le RL a changé de terrain. Notre grille, plus large
+que celle de Pineau, explique une autre part de l'écart. Le RL classique n'a pas changé de pratique
+de façon détectable. L'expérience E7 mesure, sur nos propres agents, ce que coûte une physique
+modifiée.
 
-**Les bancs d'essai trop simples, sous une autre forme (F16).** Le RL de grands modèles a changé
+**Les bancs d'essai trop simples, sous une autre forme (F16).** Pineau réclamait la version de
+chaque banc d'essai, pour qu'un résultat se refasse dans le même monde. Dans le RL classique, 26 %
+des articles de 2026 la donnent pour tous leurs bancs d'essai, contre 23 % en 2018 (critère Y7) :
+aucun changement détectable. Le RL de grands modèles a changé
 d'échelle sans changer de risque. Seize articles sur 27 n'essaient qu'une seule famille de modèles
 de langue. Or une équipe de l'université de Washington a montré en 2025 qu'une récompense tirée au
 sort améliore les modèles Qwen en mathématiques, mais pas les modèles Llama ou OLMo
@@ -691,9 +805,10 @@ participants, l'exercice a été très difficile. Enfin, 79 % des 28 auteurs int
 voir leur article de 2019 passer par le même examen.
 
 **Ce que la liste a changé.** La liste de contrôle a gagné l'institution : NeurIPS l'impose depuis
-2019 [@pineau2021improving]. Notre grille dit ce qu'elle a changé dans les articles. Le code un
-peu, l'évaluation tenue à part beaucoup, la statistique pas du tout, la description des
-références dans le mauvais sens. Une liste fait cocher des cases. Lancer dix graines aléatoires et
+2019 [@pineau2021improving]. Notre grille dit ce qu'elle a changé dans les articles de RL classique. Le
+lien vers le code, le calcul chiffré, le balayage d'un hyperparamètre et les barres d'incertitude
+ont progressé. Le test statistique, des références réglées et décrites avec soin, l'évaluation
+tenue à part et la version des bancs d'essai n'ont pas bougé de façon détectable. Une liste fait cocher des cases. Lancer dix graines aléatoires et
 régler ses références coûte du calcul. Aucune case ne le paie.
 
 **Sept questions pour lire une annonce de RL.** La liste de contrôle s'adresse aux auteurs. Le
@@ -759,16 +874,20 @@ Shao et ses coauteurs montrent la récompense tirée au sort qui « marche » [@
 volet GRPO illustre ce dernier résultat sans prétendre le découvrir.
 
 **Notre apport.** Il vient de la combinaison : une mesure avant et après sur la grille d'origine,
-calibrée par notre propre lecture de 2018, les expériences de 2018 refaites avec les outils de
+complétée par une seconde grille et comparée à notre propre lecture de 2018 à grille égale, les expériences de 2018 refaites avec les outils de
 2026 sous un protocole écrit d'avance, enfin un pont vers le RL de grands modèles.
 
 # Ce que nous en retenons
 
-**Écoutée en partie, ailleurs qu'on l'attendait.** La seule faille en net progrès, l'évaluation
-tenue à part, doit sa hausse au changement de terrain du RL : les recueils de problèmes de
-mathématiques ont un jeu de test par construction. Les failles qui demandaient un effort sans
-contrainte extérieure n'ont pas changé de façon détectable, ou ont reculé : dix graines aléatoires, un test statistique, des
-références réglées comme la méthode.
+**Écoutée sur ce qui coûte peu.** À grille égale, quatre pratiques ont changé dans le RL
+classique : le lien vers le code, le calcul chiffré, le balayage d'un hyperparamètre, les barres
+d'incertitude. Chacune demande peu d'effort à qui a déjà fait l'expérience. Les pratiques qui
+obligent parfois à revoir une conclusion n'ont pas bougé de façon détectable : un test
+statistique, des références réglées et décrites avec le même soin que la méthode, une évaluation
+tenue à part, des versions données. Nous en tirons une lecture, que notre sondage ne teste pas :
+Pineau a été écoutée là où l'écouter ne coûtait presque rien. L'évaluation tenue à part a
+progressé ailleurs, dans le RL de grands modèles, dont les recueils de problèmes ont un jeu de test
+par construction.
 
 **Le hasard trompe l'œil, nos choix trompent le test.** Sur nos essais de PPO, les graines
 aléatoires fabriquent des écarts visibles. Ce sont nos choix, trier et
@@ -786,28 +905,40 @@ ses bons résultats qu'envers ses mauvais.
 
 **Ce qui affaiblit le sondage.** Nous les listons pour qu'aucun lecteur n'ait à les chercher.
 
-- Les articles sont lus par des agents de modèle de langue. Chaque décision cite l'article. Un
-  second agent s'accorde avec le premier sur 98 % des décisions, mais aucun humain n'a encore
-  relu à l'aveugle.
-- Notre lecture de 2018 compte 12 articles. Elle ne détecte qu'un écart très grand : le recul des
-  réglages des références (−36 points contre elle) ne passe pas la correction de Holm, alors
-  qu'il la passe contre les chiffres de Pineau.
-- La population a changé : 27 articles de 2026 sur 50 traitent de grands modèles de langue, une
-  famille absente en 2018. Les comparaisons sur le seul RL classique reposent sur 14 articles.
+- Les articles sont lus par des agents de modèle de langue. Chaque décision cite l'article. Deux
+  agents s'accordent sur au moins 80 % des articles pour chaque critère, à une exception près.
+  Aucun humain n'a encore relu à l'aveugle : la relecture prévue attend toujours.
+- L'exception est la mesure de performance (Y1), notre critère le plus fragile : 60 % d'accord sur
+  le premier tirage, avant que ses règles soient précisées. Le verdict de F8 se lit avec cette
+  réserve.
+- Notre grille lit 2018 autrement que Pineau. Nos comparaisons avec ses chiffres servent de
+  contexte, jamais de verdict.
+- L'échantillon de RL classique de 2026 passe par un tri sur le titre. Un article de RL classique
+  dont le titre contient « reasoning », « preference » ou « math » n'a pas pu y entrer. Les 9
+  articles d'ICLR 2026 en tête de la file, injoignables le 9 novembre 2026 sur le site des actes,
+  ont été sautés.
+- Pour trois critères de la première grille (X3, X4 et X7), nous n'avons ajouté aucune règle
+  d'harmonisation, afin de lire les deux années avec la même grille. Les cas limites relevés,
+  comme un calcul réduit au temps d'inférence ou des graines ratées écartées, restent codés comme
+  le lecteur les a lus.
+- Avec 50 articles de chaque côté, un changement de dix points peut encore passer inaperçu.
+- La population a changé : 27 articles du premier tirage de 2026 sur 50 traitent de grands
+  modèles de langue, une famille absente en 2018. Nos verdicts valent pour le RL classique.
 - Le filtre de titre (« reinforcement learning », « RL », « policy optimization »…) rate les
   articles de RL dont le titre ne le dit pas, en 2018 comme en 2026.
 - Le tirage de Pineau en 2018 reste inconnu. Nos comparaisons avec ses chiffres supposent
   un tirage comparable au nôtre.
 
-**Ce qui n'est pas encore mesuré.** Six failles (F6, F8, F13, F14, F16 et une part de F3) attendent
-la seconde grille ou la fin des simulations. E1 se limite à une tâche et un algorithme. Le volet
-GRPO reste une illustration sur des modèles de 0,5 et 1 milliard de paramètres, loin d'une
-réplication de Shao et ses coauteurs.
+**Ce qui n'est pas encore mesuré.** Le sondage couvre désormais les seize failles. Les expériences
+E2 à E5 et E7 attendent la fin des simulations : F13 et F14 n'ont pour l'instant que leur mesure
+dans les articles. E1 se limite à une tâche et un algorithme. Le volet GRPO reste une illustration
+sur des modèles de 0,5 et 1 milliard de paramètres, loin d'une réplication de Shao et ses
+coauteurs.
 
 # Ce qui reste à mesurer
 
-- La seconde grille (Y1 à Y12) sur les 50 articles de 2026 et les 12 de 2018, avec les mêmes règles et une double lecture de 10 articles. Le plan est écrit.
-- Les expériences E2 à E5 et E7, quand les 75 entraînements restants seront finis. Pour E6, les dix entraînements du script officiel du recueil Zoo, préenregistrés.
+- La relecture humaine à l'aveugle de dix articles de 2026, dont le plan est écrit dans le protocole.
+- Les expériences E2 à E5 et E7, quand les 75 entraînements restants seront finis.
 - Les neuf essais GRPO restants, relancés la nuit, avec la part de réponses coupées mesurée à chaque évaluation.
 
 # Reproductibilité

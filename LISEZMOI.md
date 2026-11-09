@@ -25,10 +25,13 @@ expériences restent à faire (voir « Ce qui reste à mesurer » dans le docume
 
 **Un sondage des articles** (`study/`).
 - Nous relisons 50 articles de RL tirés au sort parmi les 1 252 d'ICLR 2026, d'ICML 2026 et de
-  NeurIPS 2025, avec la grille de lecture de Pineau. Nous relisons aussi 12 articles de 2018 pour
-  calibrer notre lecture.
+  NeurIPS 2025, avec la grille de lecture de Pineau et une seconde grille (Y1 à Y12). Nous avons
+  complété les articles de RL classique jusqu'à 50, puis lu 50 articles de 2018 avec les mêmes grilles. Les
+  verdicts comparent le RL classique de 2026 à notre propre lecture de 2018, parce que notre
+  grille lit 2018 autrement que celle de Pineau.
 - La lecture est faite par des agents de modèle de langue. Chaque décision s'appuie sur une
-  citation exacte de l'article, avec sa page, et 10 articles ont été lus deux fois à l'aveugle.
+  citation exacte de l'article, avec sa page. Vingt articles ont été lus deux fois à l'aveugle.
+  La relecture humaine à l'aveugle attend encore.
 - Le protocole a été écrit avant toute lecture. Les écarts y sont consignés avec leur date.
 
 **Des expériences** (`sim/`). Nous refaisons les expériences de 2018 avec les algorithmes de 2026 :
@@ -48,7 +51,7 @@ restent dans les résultats, y compris les nôtres.
 | `study/PROTOCOL.md` | Le protocole du sondage : population, tirage, grille, règles de décision, écarts. |
 | `study/codes/<lecteur>/<article>.json` | Une décision par critère et par article, avec citation et page. |
 | `study/final_2026.json`, `study/calib_2018.json` | Les articles tirés, avec leurs adresses. |
-| `study/analyze.py`, `study/audit_stats.py` | Les pourcentages, puis l'audit des différences (Newcombe, Fisher, Holm). |
+| `study/analyze.py`, `study/audit_stats.py`, `study/extension_stats.py` | Les pourcentages, l'audit des différences (Newcombe, Fisher, Holm), puis le sondage élargi. |
 | `sim/SIM_PROTOCOL.md`, `sim/llm/LLM_PROTOCOL.md` | Les protocoles des expériences et leurs écarts. |
 | `sim/run.py` | Un entraînement : algorithme, tâche, graine aléatoire, nombre de pas. |
 | `sim/jobs.txt`, `sim/drive.sh` | La liste complète des entraînements et le lanceur. |
@@ -69,7 +72,7 @@ python3.11 -m venv sim/env-an  && sim/env-an/bin/pip install -r sim/requirements
 python3.11 -m venv sim/env-llm && sim/env-llm/bin/pip install -r sim/requirements-llm.lock
 
 # Le sondage : pourcentages et audit des différences (quelques secondes)
-cd study && ../sim/env-an/bin/python analyze.py && ../sim/env-an/bin/python audit_stats.py && cd ..
+cd study && ../sim/env-an/bin/python analyze.py && ../sim/env-an/bin/python audit_stats.py && ../sim/env-an/bin/python extension_stats.py && cd ..
 
 # Retélécharger les PDF des articles lus (non redistribués ici)
 cd study && python3 fetch.py final_2026.json pdf && cd ..

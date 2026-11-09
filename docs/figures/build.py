@@ -73,6 +73,19 @@ NAMES = {"fr": {"Q3": "Hyperparam. méthode", "Q4": "Hyperparam. réf.", "Q5": "
          "en": {"Q3": "Method params", "Q4": "Baseline params", "Q5": "Code", "Q6": "Tuning method",
                 "Q7": "Held-out", "Q8": "Signif. test", "X2": "Uncertainty", "X4": "Baselines tuned",
                 "X7": "Compute"}}
+ext = {r["k"]: r for r in json.load(open(ROOT / "study/extension_stats.json"))["rows"]}
+MAIN = {"fr": {"Q5": "Code en lien (Q5)", "Y9": "Balayage montré (Y9)", "X7": "Calcul chiffré (X7)",
+               "X2": "Incertitude (X2)", "Q6": "Choix des réglages (Q6)", "Q3": "Réglages de la méthode (Q3)",
+               "Y12": "Outils récents (Y12)", "Q7": "Évaluation à part (Q7)", "Y8": "Généralisation (Y8)",
+               "Q8": "Test statistique (Q8)", "Y10": "Dépendances (Y10)", "X4": "Références réglées (X4)",
+               "Y7": "Versions des bancs (Y7)", "Y1": "Mesure définie (Y1)", "X3": "Meilleurs sur N (X3)",
+               "Y5": "Code des références (Y5)", "Q4": "Réglages des références (Q4)"},
+        "en": {"Q5": "Code linked (Q5)", "Y9": "Sweep shown (Y9)", "X7": "Compute quantified (X7)",
+               "X2": "Uncertainty (X2)", "Q6": "Tuning method (Q6)", "Q3": "Method settings (Q3)",
+               "Y12": "Recent tools (Y12)", "Q7": "Held-out evaluation (Q7)", "Y8": "Generalisation (Y8)",
+               "Q8": "Statistical test (Q8)", "Y10": "Dependencies (Y10)", "X4": "Baselines tuned (X4)",
+               "Y7": "Benchmark versions (Y7)", "Y1": "Measure defined (Y1)", "X3": "Best of N (X3)",
+               "Y5": "Baseline code (Y5)", "Q4": "Baseline settings (Q4)"}}
 curve = json.load(open(ROOT / "sim/analysis/e1_curve.json"))
 b1 = json.load(open(ROOT / "sim/analysis/b1_trpo.json"))["trpo"]
 for lang, names in NAMES.items():
@@ -80,8 +93,11 @@ for lang, names in NAMES.items():
     pts = lambda t: (hu(t["diff"]), hu(t["lo"]), hu(t["hi"]))
     write(f"ecarts_pineau_{lang}", ["g", "mean", "lo", "hi"],
           [(names[k], *pts(audit[k]["vs_pineau"])) for k in ("Q3", "Q4", "Q5", "Q6", "Q7", "Q8")])
+    # The main comparison, fixed in advance (study/PROTOCOL.md, deviation 12): classic RL of 2026 (50 papers)
+    # against our own reading of 2018 (50 papers), same grids, same readers. Sorted from the largest gap down.
     write(f"ecarts_classique_{lang}", ["g", "mean", "lo", "hi"],
-          [(names[k], *pts(audit[k]["classic_vs_ours2018"])) for k in ("Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "X2", "X4", "X7")])
+          [(MAIN[lang][k], *pts(ext[k]["classic_vs_ours2018"]))
+           for k in sorted(MAIN[lang], key=lambda k: -ext[k]["classic_vs_ours2018"]["diff"])])
     write(f"e1_henderson_{lang}", ["region", "value"], [
         ("PPO, au hasard" if lang == "fr" else "PPO, random", round(curve["random_5v5"]["abs_mean_t_p95"], 1)),
         ("PPO, triés" if lang == "fr" else "PPO, sorted", round(curve["sorted_5v5"]["abs_mean_t_p95"], 1)),
@@ -122,8 +138,8 @@ T = {
             "--set", "y_axis_title=Écart en points (2026 moins 2018)",
             "--set", "x_axis_title=Critère de la grille"],
         "ecarts-classique": [
-            "--title", "Le RL classique seul, de 2018 à 2026",
-            "--set", "subtitle=14 articles de 2026 contre nos 12 de 2018, même grille, intervalle de Newcombe à 95 %",
+            "--title", "À grille égale, quatre pratiques ont changé",
+            "--set", "subtitle=RL classique : 50 articles de 2026 contre nos 50 de 2018, mêmes grilles, intervalle de Newcombe à 95 %",
             "--set", "y_axis_title=Écart en points (2026 moins 2018)",
             "--set", "x_axis_title=Critère de la grille"],
         "e1-henderson": [
@@ -161,10 +177,10 @@ T = {
             "--set", "y_axis_title=Gap in points (2026 minus 2018)",
             "--set", "x_axis_title=Checklist item"],
         "ecarts-classique": [
-            "--title", "Classic RL alone, from 2018 to 2026",
-            "--set", "subtitle=14 papers from 2026 against our 12 from 2018, same grid, 95% Newcombe interval",
+            "--title", "With the same grid, four practices changed",
+            "--set", "subtitle=Classical RL: 50 papers from 2026 against our 50 from 2018, same grids, 95% Newcombe interval",
             "--set", "y_axis_title=Gap in points (2026 minus 2018)",
-            "--set", "x_axis_title=Checklist item"],
+            "--set", "x_axis_title=Reading criterion"],
         "e1-henderson": [
             "--title", "Neither PPO nor TRPO comes near the 2018 statistic",
             "--set", "subtitle=HalfCheetah-v5, two groups of 5 runs out of 30. Our bars: 95th percentile over 10,000 draws",
@@ -172,6 +188,32 @@ T = {
             "--set", "y_label=Absolute mean t along the learning curve"],
     },
 }
+ROT_H, ROT_EXTRA, ROT_LEFT = 470, 150, 75  # ecarts-classique: canvas, room under it, room on the left
+
+
+def rotate_labels(text, labels, h=ROT_H, extra=ROT_EXTRA, left=ROT_LEFT):
+    """Seventeen category names do not fit side by side under an errorbar chart: tilt them by 40 degrees.
+
+    The kind exposes no option for it, so this edits the rendered SVG: each category label hangs from its
+    tick, the canvas grows downward and to the left to hold the tilted text, the axis title moves under it."""
+    import re
+    for lab in labels:
+        pat = re.compile(rf'<text x="([\d.]+)" y="{h - 40}\.0" font-size="13" fill="#1D1D1F" text-anchor="middle">{re.escape(lab)}</text>')
+        assert len(pat.findall(text)) == 1, lab
+        text = pat.sub(lambda m: f'<text x="{float(m[1]) + 4:.1f}" y="{h - 46}" font-size="15" fill="#1D1D1F" '
+                                 f'text-anchor="end" transform="rotate(-40 {float(m[1]) + 4:.1f} {h - 46})">{lab}</text>', text)
+    w = re.search(r'<svg[^>]* width="(\d+)"', text)[1]
+    head = f'width="{w}" height="{h}" viewBox="0 0 {w} {h}"'
+    assert text.count(head) == 1
+    text = text.replace(head, f'width="{int(w) + left}" height="{h + extra}" viewBox="-{left} 0 {int(w) + left} {h + extra}"')
+    rect = f'<rect width="{w}" height="{h}" fill="#FFFFFF"/>'
+    assert text.count(rect) == 1
+    text = text.replace(rect, f'<rect x="-{left}" width="{int(w) + left}" height="{h + extra}" fill="#FFFFFF"/>')
+    title = re.compile(rf'(<text x="[\d.]+" y="){h - 18}\.0(" font-size="13" fill="#1D1D1F" text-anchor="middle">)')
+    assert len(title.findall(text)) == 1
+    return title.sub(rf'\g<1>{h + extra - 14}\g<2>', text)
+
+
 KINDS = {"remesure-dumbbell": ("dumbbell", "remesure_dumbbell", [
              "--set", "group_a_label=2018", "--set", "group_b_label=2026",
              "--set", "value_prefix=", "--set", "value_suffix="]),
@@ -180,7 +222,7 @@ KINDS = {"remesure-dumbbell": ("dumbbell", "remesure_dumbbell", [
          "e1-false-positive": ("bar", "e1_false_positive", []),
          "grpo-truncation": ("stacked-bar", "grpo_truncation", []),
          "ecarts-pineau": ("errorbar", "ecarts_pineau", ["--set", "width=1040"]),
-         "ecarts-classique": ("errorbar", "ecarts_classique", ["--set", "width=1160"]),
+         "ecarts-classique": ("errorbar", "ecarts_classique", ["--set", "width=900", "--set", f"height={ROT_H}"]),
          "e1-henderson": ("bar", "e1_henderson", ["--set", "width=900"])}
 
 for lang in L:
@@ -196,6 +238,8 @@ for lang in L:
         for old, new in fixes.get(name, []):
             assert old in text, (name, old)
             text = text.replace(old, new)
+        if name == "ecarts-classique":
+            text = rotate_labels(text, MAIN[lang].values())
         svg.write_text(text)
         subprocess.run(["rsvg-convert", "-f", "pdf", "-o", str(HERE / f"{out}.pdf"), str(svg)], check=True)
         subprocess.run(["sprezzature-figures", "check", str(svg), "--expect-title", opts[1]])

@@ -24,9 +24,13 @@ experiments remain to be done (see "What remains to be measured" in the document
 
 **A survey of papers** (`study/`).
 - We read 50 RL papers drawn at random from the 1,252 RL papers of ICLR 2026, ICML 2026 and
-  NeurIPS 2025, with Pineau's grid. We also read 12 papers from 2018 to calibrate our reading.
+  NeurIPS 2025, with Pineau's grid and a second grid of our own (Y1 to Y12). We topped up the
+  classical RL papers to 50, and read 50 papers from 2018 with the same grids. Verdicts rest on
+  classical RL in 2026 against our own reading of 2018, since our grid reads 2018 differently
+  from Pineau's.
 - The reading is done by language-model agents. Every decision rests on an exact quote from the
-  paper, with its page, and 10 papers were read twice, blind.
+  paper, with its page. Twenty papers were read twice, blind. A blind human rereading is still
+  pending.
 - The protocol was written before any reading. Deviations are recorded in it, with their dates.
 
 **Experiments** (`sim/`). We rerun the 2018 experiments with the algorithms of 2026:
@@ -45,7 +49,7 @@ the results, our own included.
 | `study/PROTOCOL.md` | The survey protocol: population, draw, grid, decision rules, deviations. |
 | `study/codes/<reader>/<paper>.json` | One decision per criterion and per paper, with quote and page. |
 | `study/final_2026.json`, `study/calib_2018.json` | The papers drawn, with their addresses. |
-| `study/analyze.py`, `study/audit_stats.py` | The percentages, then the audit of the differences (Newcombe, Fisher, Holm). |
+| `study/analyze.py`, `study/audit_stats.py`, `study/extension_stats.py` | The percentages, the audit of the differences (Newcombe, Fisher, Holm), then the enlarged survey. |
 | `sim/SIM_PROTOCOL.md`, `sim/llm/LLM_PROTOCOL.md` | The experiment protocols and their deviations. |
 | `sim/run.py` | One training run: algorithm, task, random seed, number of steps. |
 | `sim/jobs.txt`, `sim/drive.sh` | The full list of training runs and the launcher. |
@@ -66,7 +70,7 @@ python3.11 -m venv sim/env-an  && sim/env-an/bin/pip install -r sim/requirements
 python3.11 -m venv sim/env-llm && sim/env-llm/bin/pip install -r sim/requirements-llm.lock
 
 # The survey: percentages and audit of the differences (a few seconds)
-cd study && ../sim/env-an/bin/python analyze.py && ../sim/env-an/bin/python audit_stats.py && cd ..
+cd study && ../sim/env-an/bin/python analyze.py && ../sim/env-an/bin/python audit_stats.py && ../sim/env-an/bin/python extension_stats.py && cd ..
 
 # Download again the PDFs of the papers we read (not redistributed here)
 cd study && python3 fetch.py final_2026.json pdf && cd ..

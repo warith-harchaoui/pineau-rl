@@ -20,23 +20,26 @@ statistical test. Agents were even evaluated in the very situations used to trai
 [@pineau2018iclr; @pineau2018neurips; @henderson2018matters].
 
 This document goes through the whole list, flaw by flaw. Each time it asks the same question: eight
-years on, did we listen to her? Two instruments answer. The first is a survey: we reread 50 randomly
-drawn papers from 2025 and 2026 with Pineau's reading grid. We also reread 12 papers from 2018 to
-check that our reading recovers her figures. The second gathers experiments: we rerun those of 2018 with the
-algorithms of 2026, writing the protocol before the first training run.
+years on, did we listen to her? Two instruments answer. The first is a survey: we reread papers with
+Pineau's reading grid, extended by a second grid for the flaws hers left unmeasured. We read 50
+papers from 2018 and a first random draw of 50 papers from 2025 and 2026. That first draw holds 14
+papers on classical RL (robotics, games, control), too few to detect a change, so we topped it up
+to 50. The second instrument gathers experiments: we rerun those of 2018 with the algorithms of
+2026, writing the protocol before the first training run.
 
-Of sixteen flaws, only one improved clearly, for an unexpected reason: 70% of 2026 papers evaluate
-their agents on held-out situations, against 10% in 2018. Nearly all of the rise comes from papers on
-large language models, whose benchmarks separate training from testing by construction. In classical
-RL, we detect no change. One flaw went backwards: the settings of competing methods now appear in
-only 18% of papers, against 60% for Pineau, a gap that survives the correction for multiple
-comparisons. For three others, we detect no change: the statistical test (4% of papers), the
-description of how a method gets tuned (27%) and the number of runs, which half of the papers leave
-unstated. Our experiments sharpen the picture of the most famous flaw. Among our thirty runs, two
+The first surprise: our reading of 2018 departs from Pineau's figures. It finds 55% of papers giving
+all the settings of their method, where Pineau counted 90%. So we judge each flaw with the same
+grid on both sides, setting the classical RL of 2026 against our own reading of 2018, with the same
+grids and the same readers. Four practices changed. Linking the code went from 31% to 74% of
+papers, showing the sensitivity to a setting from 44% to 80%, quantifying the compute from 27% to
+58%, reporting an uncertainty from 63% to 88%. Each can be added to an experiment without changing its conclusion. The practices that sometimes force a
+conclusion to change show no detectable change: a statistical test (6% then 12%), baselines
+described with all their settings (35% then 29%), evaluation on held-out conditions (33% then 45%),
+the version of the benchmarks (23% then 26%). Our experiments sharpen the picture of the most famous flaw. Among our thirty runs, two
 groups of five drawn at random fool a statistical test in only 1.2% of cases. The test gets fooled
 when the runs are sorted (31%). Keeping the best runs inflates the score by 33%. The experiments
-also show why a result that looks too good deserves a check: our own baseline collapsed. An error in our code seemed to explain it. Fixing the error changed nothing. Six flaws remain to be measured:
-this document says how.
+also show why a result that looks too good deserves a check: our own baseline collapsed. An error in our code seemed to explain it. Fixing the error changed nothing, and the collection's official script plateaus the same way: the published recipe has aged with the libraries. The most striking figure of 2018 remains unexplained: neither our PPO runs nor our TRPO runs come near the t of 9 reported by Henderson and co-authors. Several experiments remain to be finished: this document says
+which.
 
 # Two talks in 2018
 
@@ -296,24 +299,24 @@ instrument that measures each one in this document. The next section describes t
 
 | | The flaw shown in 2018 | Where Pineau shows it | What measures it here | Where we stand on 9 November 2026 |
 |:----|:-----------------------------------------|:----------------|:----------------|:----------------------|
-| F1 | The paper published without its code | slide 6 at ICLR, page 29 at NeurIPS | criterion Q5 | partly heeded |
-| F2 | A missing plan for rerunning the experiment, as with AlphaGo | slides 9 to 12 at ICLR | criteria Q3 and X7 | partly heeded |
-| F3 | Hardware and software, which belong to the result | pages 34 and 35 at NeurIPS | criteria X7 and Y10 | partly heeded, still to be measured |
-| F4 | The method's hyperparameters, given only in part | page 29 at NeurIPS | criterion Q3 | impossible to settle |
-| F5 | How the hyperparameters were chosen, left unsaid | page 29 at NeurIPS | criterion Q6 | not heeded |
-| F6 | Settings that change everything and interact | slides 24 and 25 at ICLR | criterion Y9 | still to be measured |
-| F7 | Baselines tuned less carefully than the method | slide 25 at ICLR, page 29 at NeurIPS | criteria Q4 and X4, experiment E6 | clearly worse against Pineau's figures |
-| F8 | A performance measure never defined | slides 26 and 27 at ICLR | criteria Y1 and Y2 | still to be measured |
+| F1 | The paper published without its code | slide 6 at ICLR, page 29 at NeurIPS | criterion Q5 | heeded |
+| F2 | A missing plan for rerunning the experiment, as with AlphaGo | slides 9 to 12 at ICLR | criteria Q3 and X7 | partly heeded: compute gets quantified |
+| F3 | Hardware and software, which belong to the result | pages 34 and 35 at NeurIPS | criteria X7 and Y10 | partly heeded: software versions remain rare |
+| F4 | The method's hyperparameters, given only in part | page 29 at NeurIPS | criterion Q3 | no detectable change |
+| F5 | How the hyperparameters were chosen, left unsaid | page 29 at NeurIPS | criterion Q6 | no detectable change after correction |
+| F6 | Settings that change everything and interact | slides 24 and 25 at ICLR | criterion Y9 | heeded |
+| F7 | Baselines tuned less carefully than the method | slide 25 at ICLR, page 29 at NeurIPS | criteria Q4 and X4, experiment E6 | no detectable change, still rare |
+| F8 | A performance measure never defined | slides 26 and 27 at ICLR | criteria Y1 and Y2 | no detectable change, measure usually defined |
 | F9 | Too few runs, three or five, never ten in her table | slide 28 at ICLR | criterion X1, experiment E5 | not heeded |
-| F10 | Only the best runs out of N published | slides 29 and 30 at ICLR | criterion X3, experiments E1 and E4 | now rare, effect measured |
+| F10 | Only the best runs out of N published | slides 29 and 30 at ICLR | criterion X3, experiments E1 and E4 | rare in both years, effect measured |
 | F11 | Same code, another random seed: two "algorithms" | slide 31 at ICLR, page 22 at NeurIPS | experiment E1 | qualified by our measurements |
-| F12 | Comparisons with no statistical test | page 29 at NeurIPS | criteria Q8 and X2 | not heeded |
-| F13 | The best algorithm changes with the task | slides 20 and 21 at ICLR | experiment E2, criteria Y3 and Y4 | measurement under way |
-| F14 | Two implementations of the same algorithm that diverge | slides 22 and 23 at ICLR | experiment E3, criterion Y5 | measurement under way |
-| F15 | Evaluation in the training conditions | pages 36 to 51 at NeurIPS | criterion Q7, experiment E7, criterion Y8 | up because the population changed, no detectable change in classical RL |
-| F16 | Benchmarks too simple, easy to learn by heart | pages 43 to 50 at NeurIPS | criteria X6 and Y7 | still to be measured |
+| F12 | Comparisons with no statistical test | page 29 at NeurIPS | criteria Q8, X2, Y11 and Y12 | partly heeded: error bars, no test |
+| F13 | The best algorithm changes with the task | slides 20 and 21 at ICLR | criteria Y3 and Y4, experiment E2 | no detectable change, experiment under way |
+| F14 | Two implementations of the same algorithm that diverge | slides 22 and 23 at ICLR | criterion Y5, experiment E3 | no detectable change, experiment under way |
+| F15 | Evaluation in the training conditions | pages 36 to 51 at NeurIPS | criteria Q7 and Y8, experiment E7 | no detectable change with the same grid |
+| F16 | Benchmarks too simple, easy to learn by heart | pages 43 to 50 at NeurIPS | criteria X6 and Y7 | no detectable change |
 
-: The sixteen flaws Joelle Pineau showed in 2018 in deep reinforcement learning (RL), labelled F1 to F16. For each one: the slide of her talk at ICLR (International Conference on Learning Representations) or the page of her NeurIPS (Neural Information Processing Systems) document that shows it, the reading criterion or the experiment that measures it in this document, then the verdict as of 9 November 2026.
+: The sixteen flaws Joelle Pineau showed in 2018 in deep reinforcement learning (RL), labelled F1 to F16. For each one: the slide of her talk at ICLR (International Conference on Learning Representations) or the page of her NeurIPS (Neural Information Processing Systems) document that shows it, the reading criterion or the experiment that measures it in this document, then the verdict as of 9 November 2026. The verdict sets our 50 classical RL papers from 2026 against our reading of 50 papers from 2018, with the same grids and the same readers.
 
 # How we measure
 
@@ -327,43 +330,86 @@ criteria Q1 to Q8. We add seven more, labelled X1 to X7, drawn from her ICLR tal
 the uncertainty reported, the selection of the best runs, the fair tuning of baselines, the paper's
 family, the number of model families tried, the compute reported.
 
-**The papers.** We took every paper from ICLR 2026, ICML 2026 and NeurIPS 2025 whose title mentions
-reinforcement learning: 1,252 out of 17,836. We drew 50 of them at random. Among these, 27 apply RL to
-large language models, 14 belong to classical RL (robotics, games, control) and 9 are theoretical,
-5 of them with no experiment at all. The percentages in this document are computed on the papers
-that have experiments.
+**A second grid.** The fifteen criteria leave some flaws unmeasured. A second grid of twelve
+criteria (Y1 to Y12) fills the gaps: measure defined, error bars defined, number of tasks, tasks
+where the method loses, implementation of the baselines, excluded runs, benchmark versions,
+generalisation test, sensitivity to settings, software dependencies, type of uncertainty, recent
+statistical tools. We wrote it with its decision rules, dated 9 November 2026, in
+`study/PROTOCOL.md`, before any reading. The agents then applied it to every paper, with a
+quotation for each decision.
+
+**The papers from 2026.** We took every paper from ICLR 2026, ICML 2026 and NeurIPS 2025 whose title
+mentions reinforcement learning: 1,252 out of 17,836. A first random draw kept 50 of them. Among
+these, 27 apply RL to large language models, 14 belong to classical RL (robotics, games, control)
+and 9 are theoretical, 5 of them with no experiment at all. The percentages in this document are
+computed on the papers that have experiments.
+
+**Two samples enlarged.** With 14 classical RL papers and 12 papers from 2018, our first version
+left a gap of 30 points undetectable. Before drawing or reading a single extra paper, we wrote into
+the protocol how to enlarge both samples. Our reading of 2018 grows to 50 papers: 38 papers drawn
+at random from the RL papers of ICML, NeurIPS and ICLR 2018, the three conferences Pineau names,
+join the original 12. Of these 50 papers, 48 have experiments. Classical RL in 2026 grows to 50
+papers as well: 36 papers taken from a queue, the other 2026 papers in a randomly drawn order, join
+the 14 of the first draw. A first screen on the title skips papers that announce a language model
+("LLM", "reasoning", "RLHF", "GRPO" and similar terms). We read 70 papers from this queue. The
+first 36 classical RL papers, in the order of the draw, form the sample. The 18 papers on language
+models and the 3 theoretical papers read before the last of them stay apart: the title screen had
+already filtered out many others like them, so they do not form a sample.
 
 **Who reads the papers.** Language model agents do the reading: programs that read the whole PDF,
 appendices included, then fill in the grid. To keep an agent from inventing anything, each decision
 comes with a verbatim quotation from the paper and its page number, which anyone checks in
-`study/codes/`. Ten papers drawn at random were read a second time by another agent, which did not
-see the first reading. The two readings agree on 127 decisions out of 130 (98%). Cohen's kappa, which
-removes the share of this agreement due to chance, ranges from 0.74 to 1 depending on the criterion.
-Agreement between two machines remains agreement between machines: a blind human rereading of ten
-papers is planned. This document flags the gap for as long as that rereading is missing.
+`study/codes/` and `study/codes_v2/`. Ten papers from the first draw were read a second time by
+another agent, which did not see the first reading. With the first grid, the two readings agree on
+127 decisions out of 130 (98%). Cohen's kappa, which removes the share of this agreement due to
+chance, ranges from 0.74 to 1 depending on the criterion. With the second grid, on the same ten
+papers, agreement is complete on nine criteria out of twelve. It drops to 90% on excluded runs
+(Y6), to 80% on the implementation of the baselines (Y5, kappa 0.52) and to 60% on the performance
+measure (Y1, kappa 0.31). Ten more papers, drawn at random from the added ones, were read twice
+with both grids: agreement reaches at least 80% on each of the 23 criteria. It is complete on seventeen
+of them. All these agreements are computed on the raw readings, before the harmonisation described
+below. Agreement between two machines remains agreement between machines: a blind human rereading
+of ten papers is planned and its plan is written, but it has not yet taken place. This document
+flags the gap for as long as that rereading is missing.
 
-**Checking our reading.** How Pineau drew her papers and how she settled the doubtful cases remain
-unknown. To find out whether our reading resembles hers, we also read 12 papers from 2018 with the
-same grid and the same agents. On the method's hyperparameters, we are stricter than she was (6 out
-of 10 against 90%). On held-out evaluation, we are more lenient (4 out of 11 against 10%).
+**Harmonisation.** Two agents sometimes read the same rule in two ways. Before computing a single
+percentage, we reread every code, criterion by criterion, then wrote the rules that settle the
+ambiguous cases. Each one is dated in the list of deviations from the protocol (`study/PROTOCOL.md`,
+deviations 17 to 19): after a pilot reading of three papers, then for the paper's family before
+freezing the classical RL sample, finally for the whole second grid. That last harmonisation
+changes 80 codes, each with its reason in `study/overrides_v2.json`. It applies to both years. The
+project pages given as links to code were visited on 9 November 2026: two of them do not lead to
+the paper's code. For three criteria of the first grid (keeping the best runs, fair tuning of the
+baselines, quantified compute), we added no rule. A new rule would have touched only the added
+papers. The two years would then have been read with two different grids, a fault we had already
+had to correct once.
 
-**Comparing two samples.** Pineau's 50 papers form a sample too. With another draw, her 55% of linked
-code would have come out between 41% and 68%. Treating her figure as exact would inflate the
-certainty of our verdicts. So we compute the gap between the two years with its own confidence
-interval (the Newcombe interval), then run Fisher's exact test. When nine criteria are tested
-together, one of them ends up crossing the threshold by chance: the Holm correction raises the
-threshold accordingly. Finally, 2018 had no papers on large language models. To separate a change in
-practice from a change in population, we also compare classical RL alone in 2026 with our reading of
-2018. A criterion "has changed" when the gap holds against Pineau's figures after correction. The
-change is "confirmed" when it also holds against our own reading of 2018. The script
-`study/audit_stats.py` runs all these calculations.
+**Comparing two samples.** Pineau's 50 papers form a sample too, like each of ours. With another
+draw, her 55% of linked code would have come out between 41% and 68%. Treating any figure as exact
+would inflate the certainty of our verdicts. So we compute the gap between two samples with its own
+confidence interval (the Newcombe interval), then run Fisher's exact test, which gives the p-value.
+When eleven criteria are tested together, one of them ends up crossing the threshold by chance: the
+Holm correction raises the threshold accordingly. We apply it separately to the eleven criteria of
+the first grid and to the twelve of the second. A criterion "has changed" when the gap clears the
+threshold after this correction. The script `study/extension_stats.py`, written before any reading
+of the added papers was pooled, runs all these calculations.
 
-**A second grid, written in advance.** The fifteen criteria leave some flaws uncovered. A second grid
-of twelve criteria (Y1 to Y12) fills the gaps: measure defined, error bars defined, number of tasks,
-tasks where the method loses, implementation of the baselines, excluded runs, benchmark versions,
-generalisation test, sensitivity to settings, software dependencies, type of uncertainty, recent
-statistical tools. We wrote it and dated it 9 November 2026 in `study/PROTOCOL.md`, before any
-reading. Reading with it has not started.
+**Our grid reads 2018 differently from Pineau.** How Pineau drew her papers and how she settled the
+doubtful cases remain unknown. Our 48 experimental papers from 2018 show that our reading departs
+from hers on two criteria. All of the method's hyperparameters are given in 55% of papers by our
+reading, against 90% by hers: a gap of −35 points, from −50 to −17 with its interval, which survives
+the correction (p = 0.001). Held-out evaluation goes the other way: 33% by our reading, against 10%
+by hers, a gap of +23 points, from +7 to +39 (p = 0.03). Baselines and code lean the same way as
+hyperparameters, 35% against 60% and 31% against 55%, without passing the correction (p = 0.06
+each). Our grid is therefore stricter than hers on what the paper gives. It is broader on what counts
+as held out.
+
+**A verdict with the same grid on both sides.** Comparing our 2026 papers with Pineau's figures
+would mix two changes: the change in practice and the change of grid. So a verdict in this document
+rests only on the comparison with the same grid: our 50 classical RL papers from 2026 against our
+reading of 50 papers from 2018, with the same grids and the same readers. The protocol fixed this
+comparison before any reading of the added papers. Pineau's figures are still shown, as context,
+with this warning.
 
 ## The experiments: redoing 2018 with the tools of 2026
 
@@ -397,71 +443,99 @@ by a coin toss. The protocol (`sim/llm/LLM_PROTOCOL.md`) announces this small sc
 
 # The materials: code, settings, compute (F1 to F3)
 
-![Joelle Pineau's grid for reading deep reinforcement learning papers, applied in 2018 and in 2026. Each row is a reading criterion. The 2018 dot gives the share of the 50 papers read by Pineau that meet the criterion. The 2026 dot gives the share among our 45 experimental papers drawn from three leading machine learning conferences (ICLR 2026, ICML 2026 and NeurIPS 2025). The statistical test, left out of the drawing, goes from 5% to 4%.](figures/remesure-dumbbell-en.svg){width=100%}
+The following table gathers, flaw by flaw, the reading criteria behind a verdict. The sections that
+follow discuss it.
 
-| Reading criterion | Flaw targeted | Pineau, 2018 | Our reading of 12 papers from 2018 | Our 45 papers from 2026, with 95% interval |
-|:------------------------------------|:----|--------:|----------:|-------------:|
-| Q5, the code is linked | F1 | 55% | 6 of 11 | 67% [52, 79] |
-| Q3, all of the method's hyperparameters are given | F2, F4 | 90% | 6 of 10 | 67% [52, 79] |
-| X7, the compute used is quantified | F2, F3 | not measured | 3 of 11 | 47% [33, 61] |
-| Q6, how the hyperparameters were chosen is described | F5 | 20% | 2 of 10 | 27% [16, 41] |
-| Q4, all of the baselines' hyperparameters are given | F7 | 60% | 6 of 11 | **18% [10, 32]** |
-| X4, the baselines are tuned with the same care | F7 | not measured | 1 of 11 | 5% [1, 15] |
-| X2, an uncertainty is reported | F12 | not measured | 8 of 11 | 47% [33, 61] |
-| Q8, a statistical test is applied | F12 | 5% | 1 of 11 | 4% [1, 15] |
-| Q7, evaluation uses held-out conditions | F15 | 10% | 4 of 11 | **70% [56, 82]** |
+| Reading criterion | Flaw | Our reading of 2018 | Classical RL in 2026 | Gap in points, with 95% interval |
+|:--------------------------------|:------|---------------:|---------------:|-----------------:|
+| Q5, the code is linked | F1 | 31% (15 of 48) | 74% (37 of 50) | **+43 [+23, +58]** |
+| Q3, all of the method's hyperparameters are given | F2, F4 | 55% (26 of 47) | 72% (36 of 50) | +17 [−2, +34] |
+| X7, the compute used is quantified | F2, F3 | 27% (13 of 48) | 58% (29 of 50) | **+31 [+11, +47]** |
+| Y10, library versions are given | F3 | 2% (1 of 48) | 8% (4 of 50) | +6 [−4, +17] |
+| Q6, how the hyperparameters were chosen is described | F5 | 26% (12 of 47) | 48% (24 of 50) | +22 [+3, +39] |
+| Y9, sensitivity to a hyperparameter is shown | F6 | 44% (21 of 48) | 80% (40 of 50) | **+36 [+17, +52]** |
+| Q4, all of the baselines' hyperparameters are given | F7 | 35% (17 of 48) | 29% (14 of 49) | −7 [−25, +11] |
+| X4, the baselines are tuned with the same care | F7 | 13% (6 of 48) | 16% (8 of 49) | +4 [−11, +18] |
+| Y1, the performance measure is defined | F8 | 79% (38 of 48) | 78% (39 of 50) | −1 [−17, +15] |
+| X3, only the best runs are kept | F10 | 19% (9 of 48) | 14% (7 of 50) | −5 [−20, +10] |
+| X2, an uncertainty is reported | F12 | 63% (30 of 48) | 88% (44 of 50) | **+26 [+8, +41]** |
+| Q8, a statistical test is applied | F12 | 6% (3 of 48) | 12% (6 of 50) | +6 [−7, +18] |
+| Y12, a statistical tool from after 2018 is used | F12 | 2% (1 of 48) | 14% (7 of 50) | +12 [+1, +24] |
+| Y5, the origin of the baselines' code is stated | F14 | 46% (22 of 48) | 41% (20 of 49) | −5 [−24, +14] |
+| Q7, evaluation uses held-out conditions | F15 | 33% (16 of 48) | 45% (22 of 49) | +12 [−8, +30] |
+| Y8, a generalisation test is run | F15 | 23% (11 of 48) | 34% (17 of 50) | +11 [−7, +28] |
+| Y7, benchmark versions are given | F16 | 23% (11 of 48) | 26% (13 of 50) | +3 [−14, +20] |
 
-: Joelle Pineau's grid for deep reinforcement learning papers, reapplied criterion by criterion. The 2026 column gives a share with its 95% Wilson confidence interval, in percent. In bold, the two gaps from her figures that pass the Holm correction for multiple comparisons and that our grid does not explain. The drop for the method's hyperparameters passes it too, yet our reading of 2018 shows that it comes from our grid, which is stricter than hers. "Not measured": Pineau did not have this criterion. Data: `study/results_final.json` and `study/audit_stats.json`.
+: The reading grid applied with the same grid on both sides. For each criterion: the share of papers that meet it in our reading of 2018, then in our 50 classical reinforcement learning papers from 2026. The last column gives the gap between these two columns, with its 95% Newcombe interval. In bold, the four gaps that pass the Holm correction for multiple comparisons. For X3, a lower share is better. Pineau's figures, read with another grid, come further down as context. A denominator below 48 or 50 marks papers where the criterion does not apply (no baseline compared, for instance). Data: `study/extension_stats.json`.
 
-**The gaps, with their uncertainty.** The next figure gives, for each criterion, the gap between 2026
-and Pineau's figures with its interval. An interval that stays clear of the zero line signals a
-change. Three intervals stand well away from zero: the method's hyperparameters, those of the
-baselines and held-out evaluation.
+**Four changes, with the same grid.** The next figure draws the last column of the table, from the
+largest gap to the smallest. An interval that stays clear of the zero line signals a change. The
+first four also pass the Holm correction: linking the code, sweeping a hyperparameter, quantifying
+the compute and reporting an uncertainty. Two more intervals narrowly avoid zero without passing
+the correction: how the hyperparameters were chosen (Q6) and recent statistical tools (Y12). For
+the eleven other criteria, we detect no change. Each interval spans twenty to forty points: a
+change of ten points could still go unnoticed.
 
-![Gap between the share of 2026 papers and that of the 50 papers from 2018 read by Joelle Pineau, criterion by criterion, in percentage points. The dot is the observed gap, the bar its 95% Newcombe interval, which accounts for the uncertainty of both samples. Above zero, the practice is more frequent in 2026.](figures/ecarts-pineau-en.svg){width=100%}
+![Gap between our 50 classical reinforcement learning papers from 2026 and our 50 papers from 2018, read with the same grids and the same agents, in percentage points, criterion by criterion. The dot is the observed gap, the bar its 95% Newcombe interval. Above zero, the practice is more frequent in 2026. The four criteria on the left pass the Holm correction for multiple comparisons. For keeping the best runs (X3), a negative gap is progress.](figures/ecarts-classique-en.svg){width=100%}
 
-**Classical RL, compared with itself.** The second figure removes the papers on large language
-models. It compares the 14 classical RL papers from 2026 with our own reading of 2018. A single
-interval stays entirely below zero, by a narrow margin: the one for the baselines' hyperparameters,
-from −67 to −3 points. It fails the Holm correction. With so few papers on each side, finding no
-detectable change proves no absence of change. It does rule out announcing any progress in
-classical RL.
+**Pineau's figures, as context.** The next two figures compare the 45 experimental papers of our
+first 2026 draw, large language models included, with Pineau's figures. They mix two changes, the
+change in practice and the change of grid. Three intervals stand well away from zero: the method's
+hyperparameters and those of the baselines, both down, then held-out evaluation, up. The sections
+on F2, F7 and F15 separate out the share of the grid in each.
 
-![Gap between the 14 classical reinforcement learning papers from 2026 and our 12 papers from 2018, read with the same grid and the same agents, in percentage points. The dot is the observed gap, the bar its 95% Newcombe interval. The intervals are wide because both samples are small.](figures/ecarts-classique-en.svg){width=100%}
+![Joelle Pineau's grid for reading deep reinforcement learning papers, applied in 2018 and in 2026, as context. Each row is a reading criterion. The 2018 dot gives the share of the 50 papers read by Pineau that meet the criterion. The 2026 dot gives the share among the 45 experimental papers of our first draw from three leading machine learning conferences (ICLR 2026, ICML 2026 and NeurIPS 2025), large language models included. The two dots do not come from the same grid: our reading of 2018 finds, for instance, 55% for the method's hyperparameters where Pineau found 90%. The statistical test, left out of the drawing, goes from 5% to 4%.](figures/remesure-dumbbell-en.svg){width=100%}
 
-**Code, linked more often (F1).** In 2026, 67% of papers link to their code, against 55% for
-Pineau. On our sample alone, the interval [52, 79] settles nothing. The official report on the
-NeurIPS 2019 reproducibility programme points the same way: the share of accepted papers with code
-rises from under 50% to 74.4% [@pineau2021improving]. So the flaw is partly heeded. One paper in
-three remains an advertisement without the product.
+![Gap between the share of the 45 experimental papers of our first 2026 draw and that of the 50 papers from 2018 read by Joelle Pineau, criterion by criterion, in percentage points. The dot is the observed gap, the bar its 95% Newcombe interval, which accounts for the uncertainty of both samples. Above zero, the practice is more frequent in 2026. The gap mixes the change in practice with the difference between our grid and Pineau's: it serves as context. The verdicts come from the comparison with the same grid.](figures/ecarts-pineau-en.svg){width=100%}
 
-**The plan for rerunning, half delivered (F2).** All of the method's hyperparameters appear in 67% of
-2026 papers. The compute is quantified in 47%. The apparent drop for hyperparameters, from 90% to
-67%, vanishes against our own reading of 2018 (6 of 10). Our grid is simply stricter than Pineau's.
-The verdict remains impossible to settle.
+**Code, linked in three papers out of four (F1).** In classical RL, linking the code rises from 31%
+of papers in 2018 to 74% in 2026: a gap of 43 points, from 23 to 58 with its interval, which
+survives the correction (p = 0.0004). The flaw is heeded. The official report on the NeurIPS 2019
+reproducibility programme points the same way: the share of accepted papers with code rises from
+under 50% to 74.4% [@pineau2021improving]. Across the whole first draw, large language models
+included, the share is 67%. One classical RL paper in four remains an advertisement without the
+product.
 
-**Infrastructure, quantified one time in two (F3).** Fewer than one paper in two quantifies its
-compute in 2026, even though RL on large models has turned compute into a budget line of its own
-[@khatri2025art]. A single 2025 study on scaling RL for these models used more than 400,000 GPU
-hours. Software versions (criterion Y10) await the second grid.
+**The plan for rerunning, partly delivered (F2).** The compute used is quantified in 58% of
+classical RL papers from 2026, against 27% in 2018: +31 points, from +11 to +47, a gap that survives
+the correction (p = 0.02). All of the method's hyperparameters are given in 72% of papers, against
+55% in 2018: we detect no change (p = 0.58). The apparent drop against Pineau's 90% comes from our
+grid, which is stricter than hers. The flaw is partly heeded: compute gets quantified, while more
+than one paper in four still lacks the complete settings.
+
+**Infrastructure quantified, versions left unsaid (F3).** Quantified compute counts for F3 too. RL on
+large models has turned compute into a budget line of its own [@khatri2025art]: a single 2025 study
+on scaling RL for these models used more than 400,000 GPU hours. Versions of software libraries
+remain rare: 4 classical RL papers out of 50 give them in 2026, against 1 out of 48 in 2018
+(criterion Y10). Across the whole first draw, a single paper out of 45 gives them. The flaw is
+partly heeded.
 
 # Tuning: hyperparameters and baselines (F4 to F7)
 
-**How to tune, still left unsaid (F4 and F5).** How the hyperparameters were chosen is described in
-27% of 2026 papers, against 20% in 2018. We detect no change: the gap is +7 points, with an interval
-from −10 to +23.
+**How to tune, still seldom described (F4 and F5).** In classical RL, all of the method's
+hyperparameters are given in 72% of 2026 papers, against 55% in 2018, with no detectable change. How
+they were chosen is described in 48% of 2026 papers, against 26% in 2018: a gap of 22 points, from
+3 to 39 with its interval. Taken alone, this interval avoids zero. Yet we test eleven criteria
+together: after the Holm correction, the gap no longer clears the threshold (p = 0.24). So we detect
+no change after correction, without being able to rule one out.
 
 **Settings that change everything (F6).** The literature has confirmed the observation of Henderson
 and co-authors at large scale. In 2020, a team from MIT (Massachusetts Institute of Technology) and
 Two Sigma shows that optimisations present only in the code, or described as details, explain most
 of the advantage of PPO over TRPO [@engstrom2020implementation]. In 2021, a Google team trains more
-than 250,000 agents to measure the effect of more than fifty choices [@andrychowicz2021matters].
-Whether 2026 papers show their own sensitivity to settings is still open: criterion Y9 will tell.
+than 250,000 agents to measure the effect of more than fifty choices [@andrychowicz2021matters]. Do
+papers show their own sensitivity to settings? Criterion Y9 asks whether at least one of the
+method's hyperparameters is swept, with the result shown. In classical RL, 80% of 2026 papers do
+so, against 44% in 2018: a gap of 36 points, from 17 to 52, which survives the correction
+(p = 0.004). The flaw is heeded. The first draw, large models included, gives a similar level:
+32 papers out of 45.
 
-**Baselines, described less and less (F7).** On this flaw, practice has clearly slipped back. All of
-the baselines' hyperparameters are given in 18% of 2026 papers, against 60% for Pineau and 6 of 11 in
-our reading of 2018. Only 5% of papers say they tuned their baselines with the same care as their
-method. Our sample says nothing about the cause of this decline.
+**Baselines, still seldom described (F7).** All of the baselines' hyperparameters are given in 29%
+of classical RL papers from 2026, against 35% in our reading of 2018. Papers that say they tuned
+their baselines with the same care as their method go from 13% to 16%. We detect no change: the
+practice stays rare in both years. Against Pineau's 60%, the drop looked sharp. Part of it comes
+from our grid, which finds 35% in 2018. The rest comes from papers on large language models, which
+rarely describe their baselines: the whole first draw falls to 18%.
 
 **A baseline that collapses (E6).** Our experiment E6 set out to illustrate the flaw. It pits PPO on
 Hopper with the library's default values against PPO with the settings published by the RL
@@ -481,15 +555,28 @@ The default values score 2,423 (interval 1,673 to 3,067) on version 4. The proba
 corrected run beats a run with the error is 0.47, as good as a coin toss. Our error was real, yet it
 does not explain the gap. Two possibilities remain. Either the published recipe really does worse
 than the default values with current library versions, or our way of applying it still differs from
-the collection's. To settle the question, we are training ten agents with the collection's official
-script, then evaluating them with our protocol. Until then, E6 illustrates no flaw. It only shows
-why a result that looks too good deserves checking all the way through.
+the collection's. To settle the question, we trained ten agents with
+the collection's official script, then evaluated them with our protocol, as the protocol set out
+before these runs.
+
+**The published recipe also plateaus with the official script.** The ten official agents score
+995 [819, 1,006], as much as our corrected recipe (984 [772, 1,002]). The default values score
+2,423 [1,682, 3,059]. An official agent beats a default agent with a probability of only 0.09,
+and the gap survives Holm's correction (p = 0.001). Our way of applying the recipe was therefore
+not the cause. With the current versions of the libraries, the collection's tuned recipe does worse
+than the default values on Hopper. So E6 does not show a baseline badly tuned by its authors. It
+shows that a published setting ages with the software around it, and that a result that looks too
+good deserves checking all the way through.
 
 # Random seeds and statistics (F8 to F12)
 
-**The measure, still to be defined (F8).** Criterion Y1 will tell whether 2026 papers define their
-performance measure, criterion Y2 whether they state what their error bars represent. RL on large
-models already offers an example of a measure that overturns a ranking. In 2025, Yang Yue and
+**The measure, usually defined (F8).** Criterion Y1 asks whether the paper says what the reported
+number contains: the final score, the average over the last episodes, the area under the learning
+curve. In classical RL, 78% of 2026 papers say so, against 79% in 2018. When error bars appear, their
+meaning is defined in 38 papers out of 44 in 2026, against 25 out of 30 in 2018 (criterion Y2). So
+the measure is usually defined in both years, with no detectable change. Y1 remains our most fragile
+criterion: on the first draw, two agents agreed on only 60% of papers, before its rules were made
+more precise. RL on large models offers an example of a measure that overturns a ranking. In 2025, Yang Yue and
 co-authors, mostly from Tsinghua University, compare models before and after RL with a verifiable
 reward. Their measure, pass@k, gives the share of problems solved in at most k attempts. With a
 single attempt, the trained model wins. With many attempts, the starting model scores higher. The
@@ -565,41 +652,67 @@ of one curve as independent runs.
 
 ![Our thirty runs of PPO (Proximal Policy Optimization) and our thirty runs of TRPO, compared with the figure published in 2018. For each way of splitting ten runs into two groups of five, at random or sorted by final score, the bar gives the absolute value of the t statistic averaged along the learning curve that is exceeded one time in twenty, over 10,000 draws. The stacked-points bar treats the hundred points of each group's curves as independent observations, with groups drawn at random. The bar for Henderson and co-authors is the value they published, on their own runs.](figures/e1-henderson-en.svg){width=85%}
 
-**Best of N, now rare (F10).** In E1, keeping the three best runs out of ten inflates the mean by 33%
-(2,249 against 1,692). In 2026 papers, the practice has become rare or hidden: 2 papers out of 45
-let it show. Experiment E4 will tell how many comparisons between algorithms it reverses.
+**Best of N, rare in both years (F10).** In E1, keeping the three best runs out of ten inflates the
+mean by 33% (2,249 against 1,692). In papers, the practice rarely shows: 14% of classical RL papers
+from 2026 let it show, against 19% in 2018, with no detectable change. In the first draw, 2 papers
+out of 45 let it show. A paper that keeps its best runs without saying so escapes our reading: these
+shares are minimums. Experiment E4 will tell how many comparisons between algorithms the practice
+reverses.
 
-**Statistics, still missing (F12).** The statistical test remains at 4% of papers, against 5% in
-2018. An uncertainty is reported in 47% of papers, though this average mixes two worlds. Classical RL
-always reports it (14 papers out of 14). RL on large models almost never does (4 out of 27), even
+**Error bars, no test (F12).** The flaw splits in two. Reporting an uncertainty, as error bars or as a
+band around the curve, has become common in classical RL: 88% of 2026 papers do it, against 63% in
+2018, a gap of 26 points, from 8 to 41, which survives the correction (p = 0.04). The type of
+uncertainty (standard deviation, standard error, confidence interval) is named in 41 of the 44
+papers from 2026 that report one, against 25 out of 30 in 2018 (criterion Y11). The statistical
+test, for its part, shows no detectable change: 12% of 2026 papers, against 6% in 2018. Statistical
+tools that appeared after 2018, such as the interquartile mean or the rliable library of Agarwal and
+co-authors, go from 2% to 14% of papers. Their interval avoids zero, from +1 to +24 points, without
+passing the correction (p = 0.66). The flaw is partly heeded: papers draw error bars and rarely run
+a test.
+
+RL on large models is the exception: in the first draw, papers on language models rarely report an
+uncertainty (4 out of 27), even
 though a team based mainly in Tübingen measured there, in 2025, standard deviations of 5 to 15
 percentage points for one model evaluated with different sampling random seeds, on small benchmarks
 such as AIME 2024 [@hochlehnert2025sober]. On the 30 problems of AIME 2024, a single extra correct
-answer moves the score by 3.3 points. Re-evaluated in a common framework, most RL methods in their
+answer moves the score by 3.3 points.
+Re-evaluated in a common framework, most RL methods in their
 study gain little, "far below prior claims". Classical RL went through the same reanalysis. In 2021,
 Agarwal and co-authors recomputed published results on Atari games with confidence intervals.
 Several announced improvements dissolve into the uncertainty: one algorithm, M-IQN, claimed to beat
 another, Rainbow, while their intervals overlap widely. Their paper received the NeurIPS 2021
 Outstanding Paper Award [@agarwal2021precipice].
 
-![Share of the 2026 deep reinforcement learning papers that meet each reading criterion, with its 95% Wilson confidence interval. The vertical bars show the range compatible with our 45 experimental papers. With a sample this size, a gap of under fifteen points from 2018 blends into the luck of the draw.](figures/remesure-ic-en.svg){width=100%}
+![Share of the 2026 deep reinforcement learning papers that meet each reading criterion, with its 95% Wilson confidence interval. The vertical bars show the range compatible with the 45 experimental papers of our first draw, which mixes classical RL and RL on large language models. With a sample this size, a gap of under fifteen points from 2018 blends into the luck of the draw.](figures/remesure-ic-en.svg){width=100%}
 
 # The reach of the conclusions (F13 to F16)
 
 **Rankings and implementations (F13 and F14).** Experiment E2 ranks four algorithms on four tasks. E3
 compares PPO written in PyTorch with PPO written in JAX, using the same random seeds. Both await the
-end of the simulations. Criteria Y3 to Y5 will tell whether 2026 papers test several tasks, show
-those where their method loses and say where the code of their baselines comes from.
+end of the simulations. The papers, for their part, have been read. In classical RL, the main
+conclusion rests on several tasks in 41 papers out of 50 in 2026, against 43 out of 48 in 2018
+(criterion Y3). Among the papers with several tasks, 38 out of 41 show at least one task where their
+method does not win, against 34 out of 43 in 2018 (criterion Y4). The origin of the baselines' code
+is stated in 41% of 2026 papers, against 46% in 2018 (criterion Y5). We detect no change on these
+three criteria. The first two practices were already common in 2018. The third remains a minority
+practice. RL on large models more often concludes from a single task: in the first draw, only 25
+papers out of 45 use several, because many train on a single dataset.
 
-**Held-out evaluation, up because the terrain changed (F15).** In 2026, 70% of papers evaluate on
-held-out conditions, against 10% for Pineau: a gap of 60 points, from 42 to 73 with its interval.
-Nearly all of the rise comes from RL on large models: 26 papers out of 27. Their benchmarks,
-collections of mathematics problems, separate training problems from test problems by construction.
-Classical RL stays at 5 papers out of 13, against 4 out of 11 in our reading of 2018: we detect no
-change there. So the flaw receded because RL changed terrain, far more than because classical RL
-changed its practice. Experiment E7 measures, on our own agents, what modified physics costs.
+**Held-out evaluation, a rise partly due to the grid (F15).** In the first 2026 draw, 70% of papers
+evaluate on held-out conditions, against 10% for Pineau: a gap of 60 points, from 42 to 73 with its
+interval. Part of this gap comes from the grid, since our reading of 2018 already finds 33%. Nearly
+all of the rest comes from RL on large models: 26 papers out of 27. Their benchmarks, collections of
+mathematics problems, separate training problems from test problems by construction. With the same
+grid, classical RL goes from 33% to 45%, with no detectable change. The generalisation test
+(criterion Y8), a stricter one, evaluates on tasks, dynamics or data absent from training. It goes
+from 23% to 34% of papers, again with no detectable change. So the flaw receded mostly because RL
+changed terrain. Our grid, broader than Pineau's, explains another part of the gap. Classical RL
+shows no detectable change of practice. Experiment E7 measures, on our own agents, what modified
+physics costs.
 
-**Benchmarks too simple, in another form (F16).** RL on large models has changed scale without
+**Benchmarks too simple, in another form (F16).** Pineau asked for the version of every benchmark, so
+that anyone redoing a result works in the same world. In classical RL, 26% of 2026 papers give it for all
+their benchmarks, against 23% in 2018 (criterion Y7): no detectable change. RL on large models has changed scale without
 changing risk. Sixteen papers out of 27 try a single family of language models. Yet a University of
 Washington team showed in 2025 that a reward drawn at random improves Qwen models in mathematics, but
 not Llama or OLMo models [@shao2025spurious]. On the Qwen2.5-Math-7B model and the MATH-500
@@ -644,9 +757,10 @@ or individuals signed up and 95 papers were chosen. Among the participants who a
 Finally, 79% of the 28 authors surveyed wanted their 2019 paper to go through the same review.
 
 **What the checklist changed.** The checklist won over the institution: NeurIPS has required it since
-2019 [@pineau2021improving]. Our grid says what it changed in the papers. Code sharing improved a
-little and held-out evaluation a lot. Statistics stayed where they were. The description of
-baselines moved the wrong way. A checklist gets boxes ticked. Launching ten random seeds and tuning
+2019 [@pineau2021improving]. Our grid says what it changed in classical RL papers. Linked code,
+quantified compute, hyperparameter sweeps and error bars progressed. The statistical test, baselines
+tuned and described with care, held-out evaluation and benchmark versions show no detectable change.
+A checklist gets boxes ticked. Launching ten random seeds and tuning
 one's baselines costs compute. The checklist pays for none of it.
 
 **Seven questions for reading an RL announcement.** The checklist is meant for authors. The reader of
@@ -701,16 +815,20 @@ co-authors show the random reward that "works" [@shao2025spurious]. Our GRPO str
 last result without claiming to discover it.
 
 **Our contribution.** It comes from combining three pieces. A before-and-after measurement uses the
-original grid, calibrated by our own reading of 2018. The experiments of 2018 are redone with the
+original grid, extended by a second grid and set against our own reading of 2018 with the same grid. The experiments of 2018 are redone with the
 tools of 2026 under a protocol written in advance. A bridge finally links this work to RL on large
 models.
 
 # What we take from it
 
-**Partly heeded, in an unexpected place.** The only flaw in clear progress, held-out evaluation, owes
-its rise to RL's change of terrain: collections of mathematics problems come with a test set by
-construction. The flaws that demanded effort with no outside constraint either show no detectable
-change or slipped back: ten random seeds, a statistical test, baselines tuned like the method.
+**Heeded where it cost little.** With the same grid, four practices changed in classical RL: linking
+the code, quantifying the compute, sweeping a hyperparameter, drawing error bars. Each asks little
+effort of someone who has already run the experiment. The practices that sometimes force a
+conclusion to change show no detectable change: a statistical test, baselines tuned and described
+with the same care as the method, held-out evaluation, stated versions. We draw a reading from this
+that our survey does not test: Pineau was heeded where heeding her cost almost nothing. Held-out
+evaluation progressed elsewhere, in RL on large models, whose collections of problems come with a
+test set by construction.
 
 **Chance fools the eye, our choices fool the test.** On our PPO runs, random seeds manufacture visible
 gaps. Our choices, sorting the runs and keeping the best, turn those gaps into false positives. We
@@ -725,21 +843,25 @@ Pineau's advice in 2018: be as critical of your good results as of your bad ones
 
 **What weakens the survey.** We list these weaknesses so that no reader has to hunt for them.
 
-- Language model agents read the papers. Each decision quotes the paper. A second agent agrees with the first on 98% of decisions, though no human has yet reread the papers blind.
-- Our reading of 2018 covers 12 papers. It detects only a very large gap: the decline in the baselines' settings (−36 points against that reading) fails the Holm correction, while it passes against Pineau's figures.
-- The population has changed: 27 of the 50 papers from 2026 deal with large language models, a family absent in 2018. The comparisons on classical RL alone rest on 14 papers.
+- Language model agents read the papers. Each decision quotes the paper. Two agents agree on at least 80% of papers for each criterion, with one exception. No human has yet reread the papers blind: the planned rereading is still pending.
+- The exception is the performance measure (Y1), our most fragile criterion: 60% agreement on the first draw, before its rules were made more precise. The verdict on F8 comes with this caveat.
+- Our grid reads 2018 differently from Pineau. Our comparisons with her figures serve as context, never as a verdict.
+- The classical RL sample from 2026 goes through a title screen. A classical RL paper whose title contains "reasoning", "preference" or "math" had no way in. The 9 ICLR 2026 papers at the head of the queue, unreachable on the proceedings site on 9 November 2026, were skipped.
+- For three criteria of the first grid (X3, X4 and X7), we added no harmonisation rule, so as to read both years with the same grid. The borderline cases found, such as compute reduced to inference time or failed seeds set aside, stay coded as the reader read them.
+- With 50 papers on each side, a change of ten points can still go unnoticed.
+- The population has changed: 27 of the 50 papers of the first 2026 draw deal with large language models, a family absent in 2018. Our verdicts hold for classical RL.
 - The title filter ("reinforcement learning", "RL", "policy optimization" and similar terms) misses RL papers whose title does not say so, in 2018 as in 2026.
 - Pineau's 2018 draw remains unknown. Our comparisons with her figures assume a draw comparable to ours.
 
-**Flaws still unmeasured.** Six flaws (F6, F8, F13, F14, F16 and part of F3) await the second grid or
-the end of the simulations. E1 is limited to one task and one algorithm. The GRPO strand remains an
-illustration on models of 0.5 and 1 billion parameters, far from a replication of Shao and
-co-authors.
+**Flaws still unmeasured.** The survey now covers all sixteen flaws. Experiments E2 to E5 and E7
+await the end of the simulations: for now, F13 and F14 have only their measurement in the papers. E1
+is limited to one task and one algorithm. The GRPO strand remains an illustration on models of 0.5
+and 1 billion parameters, far from a replication of Shao and co-authors.
 
 # What remains to be measured
 
-- The second grid (Y1 to Y12) goes to the 50 papers from 2026 and the 12 from 2018, with the same rules and a double reading of 10 papers. Its plan is written.
-- Experiments E2 to E5 and E7 follow once the 75 remaining training runs finish. For E6, the ten training runs with the Zoo collection's official script follow, as preregistered.
+- The blind human rereading of ten papers from 2026 takes place as planned in the protocol.
+- Experiments E2 to E5 and E7 follow once the 75 remaining training runs finish.
 - The nine remaining GRPO runs restart overnight, with the share of cut-off answers measured at every evaluation.
 
 # Reproducibility
