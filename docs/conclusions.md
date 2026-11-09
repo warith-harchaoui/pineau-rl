@@ -13,7 +13,7 @@ link-citations: true
 En 2018, la chercheuse Joelle Pineau a donné deux conférences devant les plus grands congrès de
 l'intelligence artificielle. Elle y a montré, chiffres à l'appui, pourquoi on avait du mal à croire
 les résultats d'un domaine alors en pleine gloire : l'apprentissage par renforcement profond, qui
-apprend à une machine à agir par essais et erreurs. Elle a recensé seize failles. Le code des
+apprend à une machine à agir par essais et erreurs. Nous y avons relevé seize failles. Le code des
 articles manquait. Les réglages restaient secrets. Les méthodes concurrentes étaient moins bien
 réglées que la méthode défendue. Les expériences reposaient sur trop peu d'essais, dont on gardait
 les meilleurs. Aucun test statistique ne venait trancher. On évaluait même les agents sur les
@@ -50,22 +50,25 @@ Facebook, monte sur la scène d'ICLR (*International Conference on Learning Repr
 conférence internationale sur l'apprentissage des représentations), à Vancouver. En décembre, elle
 reprend et augmente son propos à NeurIPS (*Neural Information Processing Systems*), à Montréal.
 ICLR, NeurIPS et ICML (*International Conference on Machine Learning*) forment le trio de tête des
-congrès où se publie la recherche en apprentissage automatique. Sa conférence s'intitule
+congrès où se publie la recherche en apprentissage automatique. Sa conférence d'ICLR s'intitule
 « Reproductibilité, réutilisabilité et robustesse en apprentissage par renforcement profond ».
+Celle de NeurIPS, donnée comme conférence Posner, s'intitule « Apprentissage par renforcement
+reproductible, réutilisable et robuste ».
 
 **Une question simple.** Si une équipe publie un résultat, une autre équipe qui suit la recette
 obtient-elle le même ? Pineau part d'un sondage de la revue *Nature* : sur 1 576 chercheurs de
 toutes disciplines, plus de 70 % disaient avoir déjà échoué à reproduire l'expérience d'un collègue
-[@baker2016reproducibility]. Elle cite ensuite une phrase de deux statisticiens de Stanford,
-Buckheit et Donoho, écrite en 1995 : un article scientifique sur le calcul est seulement la
-publicité de la recherche, la recherche elle-même étant le code et les données qui produisent les
-figures [@buckheit1995wavelab]. Puis elle montre, figure après figure, ce qui manque à son propre
+[@baker2016reproducibility]. Elle cite ensuite une phrase de deux chercheurs de Stanford,
+Buckheit et Donoho, écrite en 1995 pour condenser une idée de leur collègue Jon Claerbout : un
+article scientifique sur le calcul est seulement la publicité de la recherche. La recherche
+elle-même, c'est l'environnement logiciel complet et l'ensemble des instructions qui ont produit
+les figures [@buckheit1995wavelab]. Puis elle montre, figure après figure, ce qui manque à son propre
 domaine pour mériter la confiance. Les figures viennent pour la plupart d'un article de son
 équipe, signé Peter Henderson et ses coauteurs [@henderson2018matters].
 
 **Ce que nous faisons de cette conférence.** Huit ans ont passé. Le domaine a changé de taille et
-de terrain. Les conférences ont adopté la liste de contrôle que Pineau proposait
-[@pineau2021improving]. Nous voulons savoir ce qu'elle a changé dans les articles eux-mêmes. Nous
+de terrain. NeurIPS a adopté en 2019 la liste de contrôle que Pineau proposait
+[@pineau2021improving], et d'autres congrès ont suivi avec leurs propres listes. Nous voulons savoir ce qu'elle a changé dans les articles eux-mêmes. Nous
 prenons donc sa liste de failles comme une grille, nous l'appliquons aux articles d'aujourd'hui,
 puis à nos propres expériences. C'était la règle qu'elle demandait : la critique s'applique
 d'abord à soi.
@@ -123,21 +126,25 @@ d'équations et de prose. Le programme qui a produit les résultats compte des m
 pleines de choix que la prose ne mentionne pas. Sans ce programme, une autre équipe réécrit tout et
 retombe rarement sur les mêmes chiffres. Elle ignore alors si l'écart vient de la méthode ou de sa
 propre réécriture. Pineau reprend la formule de Buckheit et Donoho : l'article seul est la
-publicité, le code et les données sont le produit. Sur les 50 articles de RL de 2018 qu'elle a
+publicité, le code et les instructions qui produisent les figures sont le produit. Sur les 50 articles de RL de 2018 qu'elle a
 lus, 55 % donnent un lien vers leur code.
 
 **Aucun plan pour refaire l'expérience (F2).** Donner le code ne suffit pas toujours. Il faut aussi
 les réglages exacts et une idée du calcul nécessaire, sans quoi personne ne sait si l'expérience est
 à sa portée. L'exemple de Pineau est AlphaGo, le programme de DeepMind qui a battu en 2016 le
-champion de go Lee Sedol. L'article décrit la méthode, sans le code, sans tous les réglages, sans le
-volume de calcul. Une découverte qu'aucun laboratoire extérieur ne refait reste une affirmation.
+champion de go Lee Sedol. L'article de *Nature* est très détaillé, elle le reconnaît, avec une
+longue annexe. Sa diapositive pose pourtant la question : cela suffit-il ? Il faudrait aussi les
+données, les parties d'experts, le code, les hyperparamètres, les ordinateurs et le protocole
+d'évaluation. À l'oral, elle explique que les parties d'experts, le code, la recherche des
+réglages et le calcul restent hors de portée des autres équipes. Une découverte qu'aucun
+laboratoire extérieur n'a les moyens de refaire reste une affirmation.
 
 **Le matériel et les logiciels, qui font partie du résultat (F3).** Le même code, lancé sur deux
 machines, donne parfois deux résultats. Les cartes graphiques n'arrondissent pas les calculs de la
 même façon que les processeurs. Une nouvelle version d'une bibliothèque change un réglage par
-défaut. À NeurIPS, Pineau ajoute donc l'infrastructure à la liste de ce qu'un article a mandat de
-déclarer : le nombre de processeurs et de cartes graphiques, la durée de calcul, les versions des
-logiciels.
+défaut. À NeurIPS, Pineau montre donc des processeurs, des cartes graphiques et une salle de
+serveurs, puis inscrit deux points dans sa liste de contrôle : l'article déclare « l'infrastructure
+de calcul employée » et donne son code « avec toutes ses dépendances ».
 
 ## Le réglage : hyperparamètres et références
 
@@ -156,8 +163,10 @@ d'essais. Seuls 20 % des articles de 2018 le disent.
 
 **Des réglages qui changent tout et qui interagissent (F6).** Henderson et ses coauteurs changent un
 seul réglage à la fois et regardent le score bouger. La taille du réseau, la fonction d'activation
-(la petite formule appliquée par chaque neurone), l'échelle de la récompense, la normalisation des
-observations : chaque changement déplace le résultat, parfois du simple au double. Pire, les
+(la petite formule appliquée par chaque neurone), l'échelle de la récompense avec ou sans
+normalisation des couches du réseau : chaque changement déplace le résultat. Pour PPO sur
+HalfCheetah, passer d'un réseau de deux couches de 64 neurones à un réseau de 400 puis 300
+neurones fait tomber le score de 2 201 à −1 180. Pire, les
 réglages interagissent. Le meilleur réseau pour un algorithme cesse de l'être pour un autre. Une
 comparaison entre deux méthodes dépend alors des réglages choisis pour chacune.
 
@@ -178,20 +187,22 @@ laquelle il emploie, ni ce que représentent ses barres d'erreur, ne se compare 
 
 **Trop peu d'essais (F9).** D'une graine aléatoire à l'autre, le même programme donne des scores
 très différents, nous le verrons plus loin. Avec trois essais, une moyenne dépend beaucoup du hasard
-d'un seul essai. Les articles de 2018 lancent pourtant en général trois ou cinq graines aléatoires,
-rarement dix. Pineau le montre sur une diapositive qui recense le nombre d'essais des articles de
-l'époque.
+d'un seul essai. Pineau montre pourtant un tableau d'articles de 2015 à 2017 : ils lancent trois ou
+cinq graines aléatoires. Aucun n'atteint dix.
 
 **Les meilleurs essais sur N, seuls publiés (F10).** Une équipe lance dix essais, garde les cinq
 meilleurs et publie leur moyenne. Chaque chiffre est vrai, mais celui qu'on publie dépasse ce que la
-méthode donne en moyenne. Henderson et ses coauteurs montrent l'effet avec les mêmes dix essais : la
-courbe des cinq meilleurs semble venir d'une méthode bien supérieure à celle des cinq pires.
+méthode donne en moyenne. Pineau l'illustre par un exemple construit pour l'occasion : dix courbes,
+dont on ne garde que les trois meilleures. La moyenne monte. La dispersion paraît bien plus
+petite qu'elle n'est. Henderson et ses coauteurs signalent que des articles publiés procèdent
+ainsi.
 
 **Même code, autre graine aléatoire : deux « algorithmes » (F11).** C'est la figure la plus célèbre
 des deux conférences. Henderson et ses coauteurs entraînent dix fois le même programme sur
 HalfCheetah, en changeant seulement la graine aléatoire. Ils répartissent les dix essais en deux
 groupes de cinq et tracent les deux courbes moyennes : elles sont nettement séparées. Un test
-statistique les déclare différentes (t = −9,09, p = 0,0016). Un lecteur y verrait deux algorithmes,
+statistique les déclare différentes (t = −9,09, p = 0,0016). Pineau précise sur scène que les
+deux groupes ne sont pas triés : ce sont « juste cinq essais » de chaque côté. Un lecteur y verrait deux algorithmes,
 l'un meilleur que l'autre. Il s'agit d'un seul programme. Le hasard seul suffit donc à fabriquer
 une « amélioration » publiable.
 
@@ -210,10 +221,10 @@ meilleure » à partir d'une ou deux tâches tire une conclusion générale d'un
 que la conclusion tienne, il faut plusieurs tâches et l'aveu de celles où la méthode perd.
 
 **Deux implémentations du même algorithme qui divergent (F14).** TRPO, un algorithme de 2015, existe
-en plusieurs versions écrites par des équipes différentes. Henderson et ses coauteurs les comparent
-sur la même tâche : leurs scores n'ont rien à voir. Les détails de code que l'article d'origine ne
-mentionne pas (une normalisation, un découpage du gradient, une initialisation) font une part du
-score. Un article qui compare sa méthode à « TRPO » sans dire quelle implémentation il a prise
+en plusieurs versions écrites par des équipes différentes. Henderson et ses coauteurs en comparent
+trois sur HalfCheetah, avec le même réseau : elles finissent à 1 939, 834 et 205. Des choix de code
+que l'article d'origine ne détaille pas, comme l'optimiseur de la fonction de valeur, font une
+part du score. Un article qui compare sa méthode à « TRPO » sans dire quelle implémentation il a prise
 compare en fait sa méthode à un programme anonyme.
 
 **L'évaluation sur les conditions d'entraînement (F15).** En apprentissage automatique classique, on
@@ -227,9 +238,10 @@ aléatoires d'entraînement et de test, séparer les tâches, ajouter des fonds 
 passer à des simulateurs photoréalistes [@zhang2018dissection; @zhang2018natural]. Seuls 10 % des
 articles de 2018 évaluent sur des conditions tenues à part.
 
-**Des bancs d'essai trop simples, faciles à apprendre par cœur (F16).** Pineau juge les bancs
-d'essai du RL de 2018 « ridiculement simples » : peu d'états possibles, peu d'actions, un monde où
-la même action produit toujours le même effet. Un agent assez gros y retient la bonne suite
+**Des bancs d'essai trop simples, faciles à apprendre par cœur (F16).** Pineau juge « ridiculement
+simples » beaucoup de bancs d'essai du RL : des situations décrites par peu de nombres (MuJoCo),
+peu d'actions possibles (les jeux Atari), peu de situations de départ, des transitions et des
+récompenses déterministes, le tout pesant moins de 100 kilo-octets. Un agent assez gros y retient la bonne suite
 d'actions sans rien comprendre du monde, comme un élève récite une table sans savoir multiplier
 [@machado2018revisiting]. Un succès sur ces bancs d'essai dit alors peu de chose de la méthode.
 
@@ -244,10 +256,10 @@ section suivante.
 | F3 | Le matériel et les logiciels, qui font partie du résultat | pages 34 et 35 à NeurIPS | critères X7 et Y10 | écoutée en partie, reste à mesurer |
 | F4 | Les hyperparamètres de la méthode, donnés en partie | page 29 à NeurIPS | critère Q3 | impossible à trancher |
 | F5 | La façon de choisir les hyperparamètres, tue | page 29 à NeurIPS | critère Q6 | pas écoutée |
-| F6 | Des réglages qui changent tout et qui interagissent | diapositives 24 à 26 à ICLR | critère Y9 | reste à mesurer |
-| F7 | Des références moins bien réglées que la méthode | diapositive 26 à ICLR, page 29 à NeurIPS | critères Q4 et X4, expérience E6 | en recul net contre les chiffres de Pineau |
-| F8 | Une mesure de performance jamais définie | diapositive 27 à ICLR | critères Y1 et Y2 | reste à mesurer |
-| F9 | Trop peu d'essais, trois ou cinq, rarement dix | diapositive 28 à ICLR | critère X1, expérience E5 | pas écoutée |
+| F6 | Des réglages qui changent tout et qui interagissent | diapositives 24 et 25 à ICLR | critère Y9 | reste à mesurer |
+| F7 | Des références moins bien réglées que la méthode | diapositive 25 à ICLR, page 29 à NeurIPS | critères Q4 et X4, expérience E6 | en recul net contre les chiffres de Pineau |
+| F8 | Une mesure de performance jamais définie | diapositives 26 et 27 à ICLR | critères Y1 et Y2 | reste à mesurer |
+| F9 | Trop peu d'essais, trois ou cinq, jamais dix dans son tableau | diapositive 28 à ICLR | critère X1, expérience E5 | pas écoutée |
 | F10 | Les meilleurs essais sur N, seuls publiés | diapositives 29 et 30 à ICLR | critère X3, expériences E1 et E4 | devenue rare, effet mesuré |
 | F11 | Même code, autre graine aléatoire : deux « algorithmes » | diapositive 31 à ICLR, page 22 à NeurIPS | expérience E1 | nuancée par nos mesures |
 | F12 | Aucun test statistique | page 29 à NeurIPS | critères Q8 et X2 | pas écoutée |
@@ -337,10 +349,10 @@ réglée à une référence laissée à ses valeurs par défaut. E7 mesure ce qu
 
 **Le volet des grands modèles de langue.** Le RL sert aujourd'hui surtout à affiner des modèles de
 langue. On leur pose un problème de mathématiques, on vérifie la réponse et on récompense les
-bonnes. L'algorithme le plus répandu s'appelle GRPO (*Group Relative Policy Optimization*,
-optimisation de politique relative à un groupe) [@shao2024deepseekmath]. Nous l'avons écrit
+bonnes. Nous employons GRPO (*Group Relative Policy Optimization*,
+optimisation de politique relative à un groupe), l'un des plus répandus [@shao2024deepseekmath]. Nous l'avons écrit
 nous-mêmes, sur deux petits modèles ouverts, Qwen2.5 de 0,5 milliard de paramètres
-[@qwen2025qwen25] et Llama 3.2 de 1 milliard [@grattafiori2024llama3]. Chaque modèle s'entraîne deux
+[@qwen2025qwen25] et Llama 3.2 de 1 milliard [@meta2024llama32; @grattafiori2024llama3]. Chaque modèle s'entraîne deux
 fois : avec la vraie récompense, puis avec une récompense tirée à pile ou face. Le protocole
 (`sim/llm/LLM_PROTOCOL.md`) annonce d'avance cette petite échelle.
 
@@ -401,10 +413,11 @@ dans 27 % des articles de 2026, contre 20 % en 2018. Nous ne détectons aucun ch
 +7 points, avec un intervalle de −10 à +23.
 
 **Les réglages qui changent tout (F6).** La littérature a confirmé à grande échelle l'observation
-de Henderson et ses coauteurs. En 2020, une équipe du MIT montre que des détails de code absents
-des articles expliquent une bonne part de l'avantage attribué à PPO
-[@engstrom2020implementation]. En 2021, une équipe de Google entraîne 250 000 agents pour mesurer
-l'effet de chaque choix [@andrychowicz2021matters]. Reste à savoir si les articles de 2026 montrent
+de Henderson et ses coauteurs. En 2020, une équipe du MIT et de Two Sigma montre que des
+optimisations présentes seulement dans le code, ou décrites comme des détails, expliquent
+l'essentiel de l'avantage de PPO sur TRPO [@engstrom2020implementation]. En 2021, une équipe de
+Google entraîne plus de 250 000 agents pour mesurer l'effet de plus de cinquante choix
+[@andrychowicz2021matters]. Reste à savoir si les articles de 2026 montrent
 leur propre sensibilité aux réglages : le critère Y9 le dira.
 
 **Les références, de moins en moins décrites (F7).** Cette faille a nettement reculé. Les
@@ -434,7 +447,7 @@ de performance, le critère Y2 s'ils disent ce que représentent leurs barres d'
 
 **Toujours cinq essais (F9).** Sur 41 articles de RL expérimentaux de 2026, 20 ne disent pas
 combien d'entraînements indépendants soutiennent leurs résultats. Quatre n'en ont qu'un. La
-médiane des autres est cinq, le chiffre que Pineau relevait en 2018. La faille n'a pas été écoutée.
+médiane des autres est cinq, la valeur la plus fréquente dans le tableau que Pineau montrait. La faille n'a pas été écoutée.
 L'expérience E5 dira combien de graines aléatoires il faut vraiment.
 
 ## Même code, autre graine aléatoire (F11)
@@ -450,8 +463,8 @@ distribution s'éloigne beaucoup de la courbe en cloche : un test de Shapiro-Wil
 éloignement, donne p = 4 × 10^−7^. Trois essais sur trente décollent loin au-dessus des autres.
 
 **Combien de fois le hasard trompe-t-il le test ?** Nous avons ensuite tiré 10 000 fois deux groupes
-parmi les trente essais, puis appliqué à chaque paire le test de Welch, le test classique de
-comparaison de deux moyennes [@welch1947generalization]. Puisque les deux groupes sortent du même
+parmi les trente essais, puis appliqué à chaque paire le test de Welch, la version du test t de
+Student qui ne suppose pas les deux variances égales [@welch1947generalization]. Puisque les deux groupes sortent du même
 programme, chaque écart déclaré significatif est un faux positif.
 
 ![Part des 10 000 tirages où le test de Welch déclare différents deux groupes d'essais du même programme, au seuil de 5 %. Quand les groupes sont tirés au hasard, le test se trompe moins souvent que ce seuil. Quand on trie dix essais et qu'on oppose les cinq meilleurs aux cinq pires, il se trompe près d'une fois sur trois.](figures/e1-false-positive.svg){width=90%}
@@ -473,13 +486,14 @@ positifs.
 
 **La statistique de 2018, hors de portée de nos essais.** Henderson et ses coauteurs testaient
 autre chose que les scores finaux. Leur légende parle d'un test t moyen sur toute la courbe
-d'apprentissage. L'article ne dit pas comment les dix essais ont été répartis en deux groupes
-[@henderson2018matters]. Nous avons donc refait leur statistique sur nos trente courbes : un test
+d'apprentissage, et leur figure porte sur TRPO [@henderson2018matters]. Les groupes n'étaient pas
+triés, précise Pineau. Nous avons donc refait leur statistique sur nos trente courbes : un test
 de Welch à chacun des vingt points d'évaluation, puis la moyenne. Une fois sur vingt, la valeur
 absolue du t moyen dépasse 1,4 quand les groupes sont tirés au hasard, 2,5 quand on les trie.
-Aucun de nos 20 000 tirages n'atteint 9. Deux explications restent ouvertes : les algorithmes de
-2018 dispersaient beaucoup plus que PPO en 2026, ou leur calcul différait du nôtre. Une expérience
-avec leurs algorithmes tranchera. Cette analyse a été ajoutée après les premiers résultats de E1,
+Aucun de nos 20 000 tirages n'atteint 9. Avec des groupes tirés au hasard, comme les leurs, nos
+essais restent donc très loin de leur chiffre. Deux explications restent ouvertes : TRPO dispersait
+en 2018 beaucoup plus que PPO en 2026, ou leur calcul différait du nôtre. Une expérience avec TRPO
+tranchera. Cette analyse a été ajoutée après les premiers résultats de E1,
 ce que le protocole déclare. Sur nos essais, le hasard des graines aléatoires trompe donc l'œil
 bien plus souvent que le test. La faille reste entière pour qui compare deux courbes sans
 intervalle.
@@ -494,8 +508,9 @@ entre algorithmes elle inverse.
 **La statistique, toujours absente (F12).** Le test statistique reste à 4 % des articles, contre
 5 % en 2018. Une incertitude est rapportée dans 47 % des articles, mais cette moyenne mêle deux
 mondes. Le RL classique la rapporte toujours (14 articles sur 14). Le RL de grands modèles presque
-jamais (4 sur 27), alors qu'une équipe de Tübingen et de Cambridge y a mesuré, en 2025, des écarts
-types de 5 à 15 points de pourcentage d'une graine aléatoire à l'autre [@hochlehnert2025sober].
+jamais (4 sur 27), alors qu'une équipe surtout basée à Tübingen y a mesuré, en 2025, des écarts types
+de 5 à 15 points de pourcentage pour un même modèle évalué avec différentes graines aléatoires
+d'échantillonnage, sur de petits bancs d'essai comme AIME 2024 [@hochlehnert2025sober].
 
 ![Part des articles de 2026 qui satisfont chaque critère, avec son intervalle de confiance de Wilson à 95 %. Les barres verticales montrent la plage compatible avec nos 45 articles expérimentaux. Avec un échantillon de cette taille, un écart de moins de quinze points avec 2018 se confond avec le hasard du tirage.](figures/remesure-ic.svg){width=100%}
 
@@ -551,9 +566,10 @@ hyperparamètres, le nombre exact d'essais, la définition des statistiques et d
 le matériel employé.
 
 **Le défi de reproduction.** Elle présentait aussi le défi de reproduction d'ICLR 2018
-(diapositives 37 à 43 à ICLR) : des étudiants du monde entier tentaient de refaire des articles
-soumis. 95 articles ont été choisis par des participants. 54,5 % des participants en ont reproduit
-une partie, 32,7 % l'essentiel. 61 % des auteurs se disaient prêts à corriger leur article.
+(diapositives 37 à 43 à ICLR) : n'importe qui pouvait tenter de refaire un article soumis. D'après
+la conférence, 124 équipes ou personnes se sont inscrites et 95 articles ont été choisis. Parmi les
+participants qui ont répondu au sondage, 54,5 % en ont reproduit une partie, 32,7 % l'essentiel.
+Sur 26 auteurs qui ont répondu, 61 % comptaient mettre à jour leur soumission.
 
 **Ce que la liste a changé.** La liste de contrôle a gagné l'institution : NeurIPS l'impose depuis
 2019 [@pineau2021improving]. Notre grille dit ce qu'elle a changé dans les articles. Le code un
@@ -577,12 +593,13 @@ commence avant les listes de contrôle [@coakley2026shift]. Magnusson et ses coa
 l'effet de la liste de contrôle des congrès de traitement automatique des langues
 [@magnusson2023nlpchecklist]. En RL, l'audit le plus proche est celui de Gorsane et ses coauteurs :
 75 articles de RL coopératif à plusieurs agents, de 2016 à 2022, dont environ un tiers ne quantifie
-aucune incertitude [@gorsane2022marl]. Aucun de ces audits ne traite du RL à un seul agent, ni de la
+aucune incertitude [@gorsane2022marl]. Aucun de ces audits ne cible le RL à un seul agent, ni la
 grille de 2018.
 
 **La méthode statistique.** Colas et ses coauteurs calculent combien de graines aléatoires il faut
 pour détecter un écart donné [@colas2018seeds]. Jordan et ses coauteurs discutent la mesure
-elle-même [@jordan2020evaluating; @jordan2024position]. Agarwal et ses coauteurs apportent la
+elle-même [@jordan2020evaluating], puis le coût en calcul d'une comparaison rigoureuse
+[@jordan2024position]. Agarwal et ses coauteurs apportent la
 moyenne interquartile et des intervalles calculés par rééchantillonnage [@agarwal2021precipice].
 Patterson et ses coauteurs en font un guide [@patterson2024empirical]. Eimer et ses coauteurs
 réclament le même budget de réglage pour les références que pour la méthode
@@ -591,13 +608,14 @@ le fait.
 
 **Les expériences refaites.** Islam et ses coauteurs précèdent Henderson sur les mêmes tâches
 [@islam2017reproducibility]. Lynnerup et ses coauteurs refont des algorithmes sur un vrai bras
-robotique [@lynnerup2020survey]. Bjorck et ses coauteurs montrent qu'une part de la variance entre
-graines aléatoires vient d'entraînements qui échouent complètement. Ils la réduisent ensuite
-[@bjorck2022variance]. Nos trois essais isolés de E1 relèvent de ce phénomène, à l'envers : trois
-entraînements qui réussissent bien mieux que les autres.
+robotique [@lynnerup2020survey]. Bjorck et ses coauteurs montrent, pour le contrôle à partir d'images,
+qu'une part de la variance entre graines aléatoires vient d'essais qui échouent tôt par instabilité
+numérique. Une normalisation de l'avant-dernière couche du réseau la réduit
+[@bjorck2022variance].
 
 **Le RL de grands modèles.** Hochlehnert et ses coauteurs réévaluent des modèles de raisonnement et
-trouvent de forts écarts d'une graine aléatoire à l'autre [@hochlehnert2025sober]. Chandak et ses
+trouvent de forts écarts d'une graine aléatoire d'échantillonnage à l'autre
+[@hochlehnert2025sober]. Chandak et ses
 coauteurs relèvent, dans un billet non relu par des pairs, des modèles de départ sous-évalués dans
 sept articles [@chandak2025incorrect] : l'équivalent moderne des références mal réglées de 2018.
 Shao et ses coauteurs montrent la récompense tirée au sort qui « marche » [@shao2025spurious]. Notre
