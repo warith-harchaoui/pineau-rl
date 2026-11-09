@@ -63,10 +63,10 @@ in the very situations used to train them
 This document goes through the whole list, flaw by flaw. Each time it
 asks the same question: eight years on, did we listen to her? Two
 instruments answer. The first is a survey: we reread 50 randomly drawn
-papers from 2025 and 2026 with Pineau's reading grid, plus 12 papers
-from 2018 to check that our reading recovers her figures. The second
-gathers experiments: we rerun those of 2018 with the algorithms of 2026,
-writing the protocol before the first training run.
+papers from 2025 and 2026 with Pineau's reading grid. We also reread 12
+papers from 2018 to check that our reading recovers her figures. The
+second gathers experiments: we rerun those of 2018 with the algorithms
+of 2026, writing the protocol before the first training run.
 
 Of sixteen flaws, only one improved clearly, for an unexpected reason:
 70\% of 2026 papers evaluate their agents on held-out situations,
@@ -82,9 +82,10 @@ unstated. Our experiments sharpen the picture of the most famous flaw.
 Among our thirty runs, two groups of five drawn at random fool a
 statistical test in only 1.2\% of cases. The test gets fooled when the
 runs are sorted (31\%). Keeping the best runs inflates the score by
-33\%. The experiments also confirm the least visible flaw: the badly
-tuned baseline in our own experiment was us. Six flaws remain to be
-measured: this document says how.
+33\%. The experiments also show why a result that looks too good
+deserves a check: our own baseline collapsed. An error in our code
+seemed to explain it. Fixing the error changed nothing. Six flaws remain
+to be measured: this document says how.
 
 \section{Two talks in 2018}\label{two-talks-in-2018}
 
@@ -106,15 +107,19 @@ another team that follows the recipe get the same one? Pineau starts
 from a survey by the journal \emph{Nature}: of 1,576 researchers across
 all disciplines, more than 70\% said they had already failed to
 reproduce a colleague's experiment \autocite{baker2016reproducibility}.
-She then quotes a sentence that two Stanford researchers, Buckheit and
-Donoho, wrote in 1995 to condense an idea from their colleague Jon
-Claerbout: a scientific article about computation is only the
-advertising for the research. The research itself is the complete
-software environment and the full set of instructions that produced the
-figures \autocite{buckheit1995wavelab}. Then, figure after figure, she
-shows what her own field lacks to deserve trust. Most of the figures
-come from a paper by her team, signed by Peter Henderson and co-authors
-\autocite{henderson2018matters}.
+In the same survey, 52\% of researchers saw a ``significant''
+reproducibility crisis and 38\% a ``slight'' one. Pineau put the same
+question to twenty machine learning specialists at a workshop in
+December 2017: 80\% of them saw a crisis, slight or significant
+\autocite{pineau2018iclr}. She then quotes a sentence that two Stanford
+researchers, Buckheit and Donoho, wrote in 1995 to condense an idea from
+their colleague Jon Claerbout: a scientific article about computation is
+only the advertising for the research. The research itself is the
+complete software environment and the full set of instructions that
+produced the figures \autocite{buckheit1995wavelab}. Then, figure after
+figure, she shows what her own field lacks to deserve trust. Most of the
+figures come from a paper by her team, signed by Peter Henderson and
+co-authors \autocite{henderson2018matters}.
 
 \textbf{What we make of these talks.} Eight years have passed. The field
 has changed in size and in terrain. In 2019, NeurIPS adopted the
@@ -173,6 +178,88 @@ confidence interval gives a range of values compatible with the data:
 the wider it is, the less certain the measurement. We use the Wilson
 interval, suited to proportions computed on few papers
 \autocite{wilson1927probable}.
+
+\section{From backgammon to language
+models}\label{from-backgammon-to-language-models}
+
+\textbf{Twenty years with a single example.} In 1995, Gerald Tesauro, a
+researcher at IBM, describes TD-Gammon: a neural network that learns
+backgammon by playing against itself. Its version 2.1 reaches a master
+level ``extremely close'' to that of the best human players
+\autocite{tesauro1995tdgammon}. In Vancouver, Pineau recounts that RL
+researchers cited this result for nearly twenty years as the most
+remarkable in their field. AlphaGo, which beat Lee Sedol at Go in 2016,
+finally gave them another example
+\autocite{silver2016alphago,pineau2018iclr}.
+
+\textbf{A field that grew very fast.} Pineau started working on RL
+around 1999. Around 2000, thirty-five people filled the room at an RL
+workshop of the NIPS conference (the name of NeurIPS until 2018). In
+2016, she counts about thirteen thousand RL papers published in the
+year. With such a volume, she notes, a newcomer struggles to tell which
+ones really move the field forward \autocite{pineau2018iclr}.
+
+\textbf{Errors that start to cost.} At the end of her Vancouver talk,
+Pineau says why these questions matter so much to her. For a long time
+RL played backgammon and nothing else, so its imprecision cost nothing.
+Now, she says, it is approaching problems that matter: the design of
+medical treatments and the management of natural resources, energy grids
+and financial systems \autocite{pineau2018iclr}. Practitioners had
+doubts too. In February 2018, Alex Irpan, of the Google Brain research
+team, wrote in a blog post: ``Whenever someone asks me if reinforcement
+learning can solve their problem, I tell them it can't. I think this is
+right at least 70\% of the time.'' Pineau shows the link to this post on
+screen at NeurIPS \autocite{irpan2018rlhard,pineau2018neurips}.
+
+\textbf{RL learns to converse.} In 2022, OpenAI describes InstructGPT, a
+language model fine-tuned in two stages. Annotators first write examples
+of good answers, which the model learns to imitate. They then rank
+several of the model's answers from best to worst. Reinforcement
+learning from these human judgements (RLHF, \emph{reinforcement learning
+from human feedback}) does the rest. Evaluators prefer the answers of
+the 1.3-billion-parameter version of InstructGPT to those of GPT-3,
+which has 175 billion parameters, a hundred times more
+\autocite{ouyang2022instructgpt}. On 30 November 2022, OpenAI presents
+ChatGPT, trained ``using the same methods as InstructGPT''
+\autocite{openai2022chatgpt}.
+
+\textbf{A reward that a program checks.} In September 2025, the Chinese
+company DeepSeek publishes its R1 model in \emph{Nature}. Its first
+version, R1-Zero, learns to reason through RL alone, with no examples of
+reasoning written by humans. Rules compute the reward. For a mathematics
+problem, a program compares the final answer with the right one. For a
+programming problem, a compiler runs the code against tests fixed in
+advance. On AIME 2024 (\emph{American Invitational Mathematics
+Examination}, an American mathematics competition), the share of
+problems solved at the first attempt climbs from 15.6\% to 77.9\% over
+the course of training \autocite{deepseek2025r1}. The paper's appendices
+put a number on the compute: 147,000 GPU hours (GPU for graphics
+processing unit), or 294,000 dollars at a rental price of 2 dollars an
+hour. This count covers R1-Zero, data preparation and R1. It leaves out
+the training of the starting model, DeepSeek-V3. In March 2025, the
+Association for Computing Machinery (ACM), a learned society for
+computer science, gives its Turing Award to Andrew Barto and Richard
+Sutton for developing ``the conceptual and algorithmic foundations'' of
+RL \autocite{acm2025turing}.
+
+\textbf{What these successes share.} Each one has a world that restarts
+at no cost: a game board, a list of solved problems, programming tests.
+Each one also receives a reward that a program computes without error.
+The authors of DeepSeek-R1 say so themselves: the success of pure RL
+depends on a reliable reward. When another model assigns the reward in
+place of rules fixed in advance, the reward is easier to exploit
+\autocite{deepseek2025r1}. Even under these conditions, the signal stays
+thin. Andrej Karpathy, who took part in the early days of OpenAI, summed
+it up in October 2025: ``Reinforcement learning is terrible. It just so
+happens that everything that we had before is much worse.'' The model
+sometimes works for a whole minute to receive a single grade at the end,
+which is then applied to every one of its actions, good and bad alike:
+``you're sucking supervision through a straw''
+\autocite{patel2025karpathy}. Learning this noisy gives scores that
+change from one random seed to the next. Telling progress from chance
+then takes several runs of each experiment, with baselines tuned as well
+as the method. The sixteen flaws of 2018 describe what happens when that
+computation is missing.
 
 \section{The sixteen flaws of 2018}\label{the-sixteen-flaws-of-2018}
 
@@ -671,8 +758,9 @@ simply stricter than Pineau's. The verdict remains impossible to settle.
 \textbf{Infrastructure, quantified one time in two (F3).} Fewer than one
 paper in two quantifies its compute in 2026, even though RL on large
 models has turned compute into a budget line of its own
-\autocite{khatri2025art}. Software versions (criterion Y10) await the
-second grid.
+\autocite{khatri2025art}. A single 2025 study on scaling RL for these
+models used more than 400,000 GPU hours. Software versions (criterion
+Y10) await the second grid.
 
 \section{Tuning: hyperparameters and baselines (F4 to
 F7)}\label{tuning-hyperparameters-and-baselines-f4-to-f7}
@@ -699,36 +787,66 @@ reading of 2018. Only 5\% of papers say they tuned their baselines with
 the same care as their method. Our sample says nothing about the cause
 of this decline.
 
-\textbf{The badly tuned baseline was us.} Our experiment E6 set out to
+\textbf{A baseline that collapses (E6).} Our experiment E6 set out to
 illustrate the flaw. It pits PPO on Hopper with the library's default
 values against PPO with the settings published by the RL Baselines3 Zoo
 collection \autocite{raffin2020zoo}, the reference settings for this
 library. On the first pass, the default version reaches an interquartile
-mean of 2,877 (interval 2,272 to 3,346), the tuned version 1,003
-(interval 859 to 1,156). The interquartile mean (IQM) discards the
+mean of 2,877 (interval 2,268 to 3,365), the tuned version 1,003
+(interval 852 to 1,158). The interquartile mean (IQM) discards the
 lowest quarter and the highest quarter of the runs, then averages the
 rest \autocite{agarwal2021precipice}. Did the published settings really
-do three times worse than the defaults? The result made our point too
-neatly, in reverse. We checked. Our code normalised observations with a
-discount factor of 0.99, while the collection uses the algorithm's own
-factor, 0.999. The badly tuned baseline was us. The first pass is kept
-as it is in the results. We reran the corrected recipe with ten random
-seeds per condition, on Hopper in its versions 4 and 5. We decided on
-this diagnosis after seeing the first result, as the protocol declares.
-All thirty runs are finished. The analysis is still to do.
+do three times worse than the default values? The result looked too
+good. While checking it, we found an error on our side: our code
+normalised observations with a discount factor of 0.99, while the
+collection uses the algorithm's own factor, 0.999. We reran the
+corrected recipe with ten random seeds per condition, on Hopper in its
+versions 4 and 5. We decided on this diagnosis after seeing the first
+result, as the protocol declares.
+
+\textbf{Fixing the error changes nothing.} The corrected recipe scores
+1,012 (interval 902 to 1,138) on version 5 against 984 (interval 785 to
+1,003) on version 4, the one the collection was tuned for. The default
+values score 2,423 (interval 1,673 to 3,067) on version 4. The
+probability that a corrected run beats a run with the error is 0.47, as
+good as a coin toss. Our error was real, yet it does not explain the
+gap. Two possibilities remain. Either the published recipe really does
+worse than the default values with current library versions, or our way
+of applying it still differs from the collection's. To settle the
+question, we are training ten agents with the collection's official
+script, then evaluating them with our protocol. Until then, E6
+illustrates no flaw. It only shows why a result that looks too good
+deserves checking all the way through.
 
 \section{Random seeds and statistics (F8 to
 F12)}\label{random-seeds-and-statistics-f8-to-f12}
 
 \textbf{The measure, still to be defined (F8).} Criterion Y1 will tell
 whether 2026 papers define their performance measure, criterion Y2
-whether they state what their error bars represent.
+whether they state what their error bars represent. RL on large models
+already offers an example of a measure that overturns a ranking. In
+2025, Yang Yue and co-authors, mostly from Tsinghua University, compare
+models before and after RL with a verifiable reward. Their measure,
+pass@k, gives the share of problems solved in at most k attempts. With a
+single attempt, the trained model wins. With many attempts, the starting
+model scores higher. The authors conclude that the trained model's
+reasoning paths already existed in the starting model. Distillation,
+which trains a model to imitate a stronger one, brings in new paths
+instead \autocite{yue2025rlvr}. A paper that announces a gain without
+saying how many attempts it counts leaves the reader unable to tell
+which of the two models wins.
 
 \textbf{Still five runs (F9).} Of 41 experimental RL papers from 2026,
 20 leave unstated how many independent training runs support their
 results. Four have only one. The median among the others is five, the
 most frequent value in the table Pineau showed. The flaw was not heeded.
-Experiment E5 will tell how many random seeds it really takes.
+Cost explains part of this thrift. In 2021, Agarwal and co-authors note
+that three to ten runs per task remain the norm in deep RL: five runs on
+more than fifty Atari games already take more than a thousand days of
+graphics card compute. On Atari 100k, a benchmark with a small data
+budget, 50 to 100 runs are needed to estimate the median score with
+enough accuracy \autocite{agarwal2021precipice}. Experiment E5 will tell
+how many random seeds it really takes.
 
 \subsection{Same code, another random seed
 (F11)}\label{same-code-another-random-seed-f11}
@@ -862,8 +980,16 @@ always reports it (14 papers out of 14). RL on large models almost never
 does (4 out of 27), even though a team based mainly in Tübingen measured
 there, in 2025, standard deviations of 5 to 15 percentage points for one
 model evaluated with different sampling random seeds, on small
-benchmarks such as AIME 2024 (American Invitational Mathematics
-Examination) \autocite{hochlehnert2025sober}.
+benchmarks such as AIME 2024 \autocite{hochlehnert2025sober}. On the 30
+problems of AIME 2024, a single extra correct answer moves the score by
+3.3 points. Re-evaluated in a common framework, most RL methods in their
+study gain little, ``far below prior claims''. Classical RL went through
+the same reanalysis. In 2021, Agarwal and co-authors recomputed
+published results on Atari games with confidence intervals. Several
+announced improvements dissolve into the uncertainty: one algorithm,
+M-IQN, claimed to beat another, Rainbow, while their intervals overlap
+widely. Their paper received the NeurIPS 2021 Outstanding Paper Award
+\autocite{agarwal2021precipice}.
 
 \begin{figure}
 \centering
@@ -901,8 +1027,16 @@ models has changed scale without changing risk. Sixteen papers out of 27
 try a single family of language models. Yet a University of Washington
 team showed in 2025 that a reward drawn at random improves Qwen models
 in mathematics, but not Llama or OLMo models
-\autocite{shao2025spurious}. A result obtained on a single family
-informs about that family and proves nothing about the method.
+\autocite{shao2025spurious}. On the Qwen2.5-Math-7B model and the
+MATH-500 benchmark, the true reward brings a gain of 29.1 percentage
+points. A reward that praises a wrong answer fixed in advance brings
+24.1, a reward drawn at random 21.4. The authors trace this to a
+behaviour that training amplifies without creating it: the model writes
+its reasoning as code, without running it, in 65\% of answers before
+training and in more than 90\% after training with a misleading reward.
+They recommend validating an RL method on several model families. A
+result obtained on a single family informs about that family and proves
+nothing about the method.
 
 \textbf{A length limit that distorts the gain.} Our GRPO strand brought
 a benchmark trap to light. The model's answers are cut off at 160
@@ -947,11 +1081,15 @@ the statistics and error bars, the hardware used.
 
 \textbf{The reproducibility challenge.} She also presented the ICLR 2018
 reproducibility challenge (slides 37 to 43 at ICLR): anyone was free to
-try to redo a submitted paper. According to the talk, 124 teams or
-individuals signed up and 95 papers were chosen. Among the participants
-who answered the survey, 54.5\% reproduced part of a paper and 32.7\%
-reproduced most of it. Of the 26 authors who answered, 61\% planned to
-update their submission.
+try to redo a submitted paper. The challenge grew out of her course at
+McGill, where about 180 master's and doctoral students needed an
+end-of-semester project. According to the talk, 124 teams or individuals
+signed up and 95 papers were chosen. Among the participants who answered
+the survey, 54.5\% reproduced part of a paper and 32.7\% reproduced most
+of it. Of the 26 authors who answered, 61\% planned to update their
+submission. For 22\% of participants, the exercise was very hard.
+Finally, 79\% of the 28 authors surveyed wanted their 2019 paper to go
+through the same review.
 
 \textbf{What the checklist changed.} The checklist won over the
 institution: NeurIPS has required it since 2019
@@ -961,6 +1099,37 @@ Statistics stayed where they were. The description of baselines moved
 the wrong way. A checklist gets boxes ticked. Launching ten random seeds
 and tuning one's baselines costs compute. The checklist pays for none of
 it.
+
+\textbf{Seven questions for reading an RL announcement.} The checklist
+is meant for authors. The reader of a paper, a press release or a
+demonstration draws seven questions from it, none of which require
+knowing how to program. Each one points to the flaws it detects.
+
+\begin{itemize}
+\tightlist
+\item
+  How many random seeds? With fewer than five runs, or with ``the best
+  runs'', the result says little (F9 and F10).
+\item
+  What uncertainty? An average with no confidence interval and no band
+  around the curve gives no way to judge a gap (F11 and F12).
+\item
+  Which baseline, tuned how? If the method received a month of tuning
+  and the baseline its default values, the gap measures the month of
+  tuning (F7).
+\item
+  How many tasks, how many model families? A result obtained on a single
+  task with a single starting model holds for that pair (F13 and F16).
+\item
+  Evaluated where? An agent judged on the situations it trained on has
+  had the chance to learn them by heart (F15).
+\item
+  What code? Without published code, the reader does not know what the
+  paper really did (F1 and F14).
+\item
+  What compute? A result whose compute nobody else is able to pay for
+  goes unreproduced (F2 and F3).
+\end{itemize}
 
 \section{Related work}\label{related-work}
 
@@ -1039,12 +1208,12 @@ runs and keeping the best, turn those gaps into false positives. We draw
 two rules from this. Never sort the random seeds. Show an interval next
 to every curve.
 
-\textbf{The grid applies to oneself first.} We badly tuned the baseline
-we meant to show as badly tuned. Our first GRPO indicator was measuring
-a length limit. We found both errors because the protocol was written in
-advance and because we checked surprising results before publishing
-them. That was Pineau's advice in 2018: be as critical of your good
-results as of your bad ones.
+\textbf{The grid applies to oneself first.} In E6, we found an error in
+our own code, then saw that it explained nothing. Our first GRPO
+indicator was measuring a length limit. We found both traps because the
+protocol was written in advance and because we checked surprising
+results before publishing them. That was Pineau's advice in 2018: be as
+critical of your good results as of your bad ones.
 
 \section{Limitations}\label{limitations}
 
@@ -1091,7 +1260,8 @@ replication of Shao and co-authors.
   plan is written.
 \item
   Experiments E2 to E5 and E7 follow once the 75 remaining training runs
-  finish. The analysis of E6 comes next, since its runs are complete.
+  finish. For E6, the ten training runs with the Zoo collection's
+  official script follow, as preregistered.
 \item
   The nine remaining GRPO runs restart overnight, with the share of
   cut-off answers measured at every evaluation.
