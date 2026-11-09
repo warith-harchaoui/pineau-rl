@@ -1,5 +1,5 @@
 """Figures de l'article « Même code, autre graine » (deraison.ai, 8 novembre 2026).
-Rendu par sprezzature-figures. Données : runs.npy (simulation illustrative, graine numpy 8),
+Rendu par sprezzature-figures. Données : ../sim/analysis/e1.json (30 vraies graines de PPO, E1),
 Henderson et al. 2018 tableau 3 (classement), Shao et al. 2025 (récompenses).
 Usage : python3 build.py  -> svg + png dans ./out/
 """
@@ -23,9 +23,9 @@ def render(kind, data, maps, out, **opts):
 
 T = {
  "fr": dict(
-   s_title="Dix graines, une seule distribution",
-   s_sub="Retour final de dix exécutions du même programme · simulation illustrative",
-   s_groups=("Graines 1 à 5", "Graines 6 à 10", "Les dix"), s_y="Retour final (plus haut = mieux)", s_x="Exécutions regroupées par graine",
+   s_title="Trente graines, une seule distribution",
+   s_sub="PPO sur HalfCheetah, même code, seule la graine change · 10 graines tirées, triées, coupées en deux",
+   s_groups=("Les 5 pires des 10", "Les 5 meilleures des 10", "Les 30 graines"), s_y="Retour d'évaluation final (plus haut = mieux)", s_x="Ce que l'on compare",
    r_title="Le meilleur sur HalfCheetah finit dernier partout ailleurs",
    r_sub="Rang de quatre algorithmes sur quatre tâches MuJoCo · Henderson et al. (2018), tableau 3",
    r_x="Tâche MuJoCo", r_rank="Rang (1 en haut)",
@@ -42,9 +42,9 @@ T = {
    b_cats=("Vraie récompense", "Réponse fausse récompensée", "Récompense aléatoire"), b_x="Signal de récompense", b_y="Gain (points, plus haut = mieux)",
  ),
  "en": dict(
-   s_title="Ten seeds, one distribution",
-   s_sub="Final return of ten runs of the same program · illustrative simulation",
-   s_groups=("Seeds 1 to 5", "Seeds 6 to 10", "All ten"), s_y="Final return (higher is better)", s_x="Runs grouped by seed",
+   s_title="Thirty seeds, one distribution",
+   s_sub="PPO on HalfCheetah, same code, only the seed changes · 10 seeds drawn, sorted, split in two",
+   s_groups=("Worst 5 of the 10", "Best 5 of the 10", "All 30 seeds"), s_y="Final evaluation return (higher is better)", s_x="What gets compared",
    r_title="The best on HalfCheetah comes last everywhere else",
    r_sub="Rank of four algorithms on four MuJoCo tasks · Henderson et al. (2018), table 3",
    r_x="MuJoCo task", r_rank="Rank (1 at the top)",
@@ -62,8 +62,14 @@ T = {
  ),
 }
 
-runs = np.load(Path(__file__).parent / "runs.npy")
-final = runs[:, -1].round().astype(int)
+import json
+seeds30 = np.array(json.load(open(Path(__file__).parent.parent / "sim/analysis/e1.json"))["seeds_sorted"]).round().astype(int)
+# The sorted 5-vs-5 cut of E1, shown on a typical draw, not an extreme one: among 1 000 draws of 10 seeds,
+# the one whose gap (best 5 / worst 5 - 1) is closest to the median gap.
+_rng = np.random.default_rng(2018)
+_draws = [np.sort(_rng.choice(seeds30, 10, replace=False)) for _ in range(1000)]
+_gaps = np.array([d[5:].mean() / d[:5].mean() - 1 for d in _draws])
+ten = _draws[int(np.argmin(abs(_gaps - np.median(_gaps))))]
 # Henderson et al. 2018, Table 3 (bootstrap mean)
 henderson = {"HalfCheetah": {"DDPG": 5037, "ACKTR": 3888, "TRPO": 1254.5, "PPO": 3043},
              "Hopper": {"DDPG": 1632, "ACKTR": 2546, "TRPO": 2965, "PPO": 2715},
@@ -79,9 +85,9 @@ p_rl = [28, 34, 40, 45, 49, 52, 55, 57, 59]
 
 for lang, t in T.items():
     g1, g2, ga = t["s_groups"]
-    rows = [(g1, v) for v in final[:5]] + [(g2, v) for v in final[5:]] + [(ga, v) for v in final]
+    rows = [(g1, v) for v in ten[:5]] + [(g2, v) for v in ten[5:]] + [(ga, v) for v in seeds30]
     d = csvw(f"seeds-{lang}.csv", ["group", "value"], rows)
-    render("strip", d, {}, f"rl-dix-graines-{lang}.svg", title=t["s_title"], subtitle=t["s_sub"], y_axis_title=t["s_y"], x_axis_title=t["s_x"], width=760, height=500)
+    render("strip", d, {}, f"rl-trente-graines-{lang}.svg", title=t["s_title"], subtitle=t["s_sub"], y_axis_title=t["s_y"], x_axis_title=t["s_x"], width=760, height=500)
 
     rows = [(task, algo, v) for task, dd in henderson.items() for algo, v in dd.items()]
     d = csvw(f"rank-{lang}.csv", ["quarter", "product", "share"], rows)
@@ -100,7 +106,7 @@ for lang, t in T.items():
     rows = list(zip(t["b_cats"], (29.1, 24.1, 21.4)))
     d = csvw(f"spurious-{lang}.csv", ["region", "value"], rows)
     render("bar", d, {}, f"rl-recompense-aleatoire-{lang}.svg", title=t["b_title"], subtitle=t["b_sub"], x_label=t["b_x"], y_label=t["b_y"], language=lang, width=760, height=480)
-print("ok", final)
+print("ok", ten)
 
 # Grille de Pineau, NeurIPS 2018, diapositive 29 (50 articles de RL de 2018)
 GRID = [100, 90, 90, 60, 55, 20, 10, 5]
