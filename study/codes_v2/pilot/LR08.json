@@ -1,0 +1,20 @@
+{
+ "id": "LR08",
+ "coder": "P",
+ "title": "TROLL: Trust Regions Improve Reinforcement Learning for Large Language Models",
+ "criteria": {
+  "Y1": {"value": "yes", "quote": "computing the mean over 32 responses for the small but hard AMC, AIME2024, and AIME2025 datasets while only considering a single response for the other sets / For the evaluation, we compute the pass@1 scores for each of the four benchmarks and average the results", "page": 24},
+  "Y2": {"value": "na", "quote": "non applicable : aucune barre ni bande d'erreur, seulement des courbes lissées avec les valeurs brutes en fond", "page": null},
+  "Y3": {"value": 4, "quote": "Across mathematical reasoning and code generation tasks, model fam- ilies, as well as advantage-estimation methods, TROLL consistently outperforms PPO-like clipping", "page": 1},
+  "Y4": {"value": "yes", "quote": "TROLL significantly improves over Clip in most cases / FineMath-Llama-3B GSM8K 0.750 0.746", "page": 9},
+  "Y5": {"value": "yes", "quote": "We base our experiments on the verl repository / using default parameters and training recipes where applicable", "page": 8},
+  "Y6": {"value": "yes", "quote": "We omit evaluations for DAPO with models other than SmolLM3-3B, as none matched the performance of Qwen3-1.7B in preliminary Clip experiments.", "page": 8},
+  "Y7": {"value": "no", "quote": "use a benchmark suite, we refer to as Math- Eval, consisting of MATH500 (Hendrycks et al., 2021), AMC, AIME2024 (Li et al., 2024b), AIME 2025", "page": 24},
+  "Y8": {"value": "yes", "quote": "For broader out-of-distribution evaluation, we again follow Cui et al. (2025b) and use a benchmark suite", "page": 24},
+  "Y9": {"value": "yes", "quote": "We experiment with different KL bounds, testing ϵ=0.01 and ϵ=0.25 instead of the default ϵ=0.05.", "page": 32},
+  "Y10": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y11": {"value": "na", "quote": "non applicable : aucune incertitude rapportée", "page": null},
+  "Y12": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null}
+ },
+ "doubts": "Y1 : le taux de réussite est défini (récompense binaire par expression régulière, moyenne sur 32 réponses pour AMC et AIME, une seule pour les autres, pass@1 pour le code), mais « final » dans le tableau 1 ne dit pas s'il s'agit du dernier point brut ou lissé. Y2 et Y11 : codés na en supposant X2 v1 no (aucune graine ni bande), règle de portée que le pilote ne peut pas vérifier sans voir codes/. Y3 : la conclusion porte sur quatre jeux d'entraînement (DAPO-Math, GSM8K, Eurus-Math, Eurus-Code), mais on pourrait compter 2 (maths et code) ou une dizaine de bancs d'évaluation (les 7 de Math-Eval, DAPO-Eval, GSM8K, Eurus) ; choisi 4. Y4 : les pertes sont visibles dans les tableaux (FineMath-Llama-3B, Qwen2.5 PPO sur DAPO Train, MATH pour Qwen3-8B GRPO dans le tableau 4) sans être discutées dans le texte. Y5 : verl est nommé comme dépôt (avec URL) mais sans version ni commit, et BAPO et GPG n'ont pas de source dite ; codé yes car les références principales sont les variantes Clip de verl. Y6 : la seule exclusion dite porte sur des combinaisons modèle-jeu de données écartées, pas sur des essais ou graines ; codé yes, discutable. Y7 : MATH500, AIME2024 et AIME 2025 sont nommés et datés, mais AMC n'a pas d'année et DAPO-Eval est une séparation aléatoire de 1024 exemples non publiée ; codé no par la règle « chaque banc principal ». Y8 : Math-Eval est présenté explicitement comme hors distribution, donc yes."
+}

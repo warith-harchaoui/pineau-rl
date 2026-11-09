@@ -82,6 +82,15 @@ points qui piègent le plus souvent :
   présenté comme un test hors distribution.
 - Y9 : une ablation de composant n'est pas un balayage d'hyperparamètre.
 - Y11 : ajouter le champ `kind` (`std`, `se`, `ci`, `iqr`, `minmax`, `other`).
+- Lire aussi l'écart 17 (précisions après le pilote) : Y1 exige le point de mesure, Y3 compte
+  les cadres d'entraînement, Y5 accepte des chiffres recopiés avec leur source, Y7 reste strict.
+
+**Conseils pratiques** :
+- Pour un article déjà lu en v1, ta liste donne Q1, Q4 et X2 v1 : ils fixent les règles de portée.
+- Une citation sur deux pages : `"page": [6, 7]`.
+- PDF à deux colonnes : `pdftotext -layout` mélange les colonnes. Découpe une citation qui
+  chevauche des lignes en morceaux d'une ligne, joints par « [...] ».
+- Lance `python3 check_codes.py codes_v2/<lecteur>` depuis `study/` et corrige jusqu'à 0.
 
 ## Le format du fichier
 

@@ -1,0 +1,20 @@
+{
+ "id": "ML15",
+ "coder": "P",
+ "title": "Moment Matching Q-Learning",
+ "criteria": {
+  "Y1": {"value": "no", "quote": "We report normalized scores averaged across dataset variants (e.g., medium, / We report the normalized average scores over five random seeds with standard deviations reported.", "page": 7},
+  "Y2": {"value": "yes", "quote": "five random seeds with standard deviations reported. The best result for each task is highlighted in bold.", "page": 6},
+  "Y3": {"value": 8, "quote": "algorithms on three task suites (Gym, Adroit and Kitchen)", "page": 5},
+  "Y4": {"value": "yes", "quote": "tively. Although slightly trailing Diffusion-QL on Hopper", "page": 6},
+  "Y5": {"value": "yes", "quote": "For each method, We adopted the same results from the / previous works(Ding & Jin, 2024; Park et al., 2025).", "page": 5},
+  "Y6": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y7": {"value": "no", "quote": "in D4RL benchmarks (Fu et al., 2021). D4RL benchmarks", "page": 5},
+  "Y8": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y9": {"value": "yes", "quote": "remains stable and high for η ∈ [0.5, 1.0]. This indicates / Robustness analysis for η and N", "page": 7},
+  "Y10": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y11": {"value": "yes", "kind": "std", "quote": "five random seeds with standard deviations reported. The best result for each task is highlighted in bold.", "page": 6},
+  "Y12": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null}
+ },
+ "doubts": "Y1 : « normalized average scores » renvoie au score normalisé de D4RL, mais l'article ne dit ni à quel moment ni sur combien d'épisodes d'évaluation il est mesuré (seul le tableau 6 dit « final online score ») ; codé no. Y2/Y11 : le tableau 2 annonce des écarts types qu'il ne montre pas, et des écarts types de références recopiées voisinent avec des colonnes sans incertitude ; la définition est bien donnée, donc yes. Y3 : 24 jeux de données D4RL, 8 environnements (3 Gym, 4 Adroit, 1 Kitchen) ou 3 suites ; codé 8 en lisant les variantes medium, replay et expert comme des niveaux de difficulté d'un même jeu. Y5 : tous les résultats des références sont recopiés de travaux antérieurs, aucun code de référence n'est lancé ; codé yes par cohérence avec C218, la règle ne prévoit pas ce cas. Y7 : les tâches Adroit portent un suffixe -v1 mais pas Gym ni Kitchen, et la version de D4RL n'est pas donnée ; codé no. Y9 : η, N, a, b, pmean et pstd sont balayés avec résultats en figures (le texte de la figure 2 dit [0.5, 5.0] et le corps [0.5, 1.0]), donc yes."
+}
