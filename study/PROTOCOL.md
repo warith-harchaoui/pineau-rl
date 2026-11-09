@@ -141,3 +141,45 @@ avant de calculer le moindre pourcentage.
     - **Analyse**, fixée d'avance et identique à `audit_stats.py` (intervalle de Newcombe, test exact de Fisher, correction de Holm). Comparaison principale : RL classique de 2026 (50 articles) contre notre lecture de 2018 (50 articles). Comparaisons secondaires : 2026 (tous) contre Pineau, et notre lecture de 2018 contre Pineau, qui mesure à quel point notre grille diffère de la sienne.
     - **Harmonisation** : les règles des écarts 1, 2, 5 et 6 s'appliquent. Toute règle nouvelle s'écrit ici avant le premier pourcentage.
 13. **Relecture humaine à l'aveugle (A1), écrite le 9 novembre 2026 avant toute relecture.** Warith relit seul 10 articles de 2026, les 10 premiers articles expérimentaux hors double lecture dans l'ordre d'un mélange `random.Random(2027)` (NE16, LR16, LR05, MLR06, LR02, LR08, ML03, NER06, ML06, ML15), sur les critères Q4, Q5, Q6, Q7, Q8, X1 et X2, sans voir les lectures des agents. Fiche et règles : `relecture_humaine/`. Accord et kappa de Cohen calculés sur les lectures brutes des agents (`relecture_humaine/compare.py`). Les désaccords sont rapportés un par un, avec les deux citations ; aucun code d'agent n'est modifié après coup sur la foi de cette relecture sans un écart daté.
+14. **Règles de décision de la grille v2, écrites le 9 novembre 2026 AVANT tout codage v2** (complément de l'écart 11, qui définissait les critères sans leurs cas limites). Elles valent pour les 62 articles déjà lus comme pour ceux de l'écart 12. Fiche remise aux lecteurs : `GRILLE.md`. Contrôle mécanique de chaque fichier : `check_codes.py`.
+    - **Portée.** Si Q1 vaut `no` en v1 (pas d'expérience), Y1 à Y12 valent `na` (même règle que
+      l'écart 3). Pour un article `theory` à expériences jouets, on code normalement.
+    - **Y1, mesure définie.** `yes` si l'article dit ce que contient le nombre rapporté : retour
+      final, moyenne sur les N derniers épisodes, aire sous la courbe, pass@k avec k et le nombre
+      d'échantillons, taux de réussite et sur quoi. « Return » ou « accuracy » sans plus : `no`.
+    - **Y2, barres d'erreur définies.** `yes` si l'article dit ce que représentent la bande ou
+      l'intervalle (écart type, erreur type, IC à 95 %, min et max). `na` s'il n'y a aucune barre
+      ni bande (X2 v1 `no`). Des barres présentes mais non définies : `no`.
+    - **Y3, nombre de tâches.** Un entier : le nombre de tâches, d'environnements ou de bancs
+      d'essai distincts sur lesquels porte la conclusion principale. Deux niveaux de difficulté
+      d'un même jeu comptent pour un seul. Valeur dérivée pour l'analyse : `yes` si l'entier est
+      au moins 2.
+    - **Y4, pertes montrées.** `yes` si un résultat tâche par tâche est donné et qu'au moins une
+      tâche où la méthode ne gagne pas est montrée ou dite. `no` si l'article ne donne que des
+      moyennes, ou ne montre que des tâches où la méthode gagne. `na` si Y3 vaut 1.
+    - **Y5, implémentation des références.** `yes` si, pour chaque référence principale,
+      l'article dit d'où vient le code : dépôt, bibliothèque avec sa version, ou « réimplémenté
+      par nous ». `na` s'il n'y a pas de référence comparée (même règle que Q4).
+    - **Y6, exclusions.** `yes` si l'article dit quels essais, graines ou données ont été retirés,
+      ou dit explicitement qu'aucun ne l'a été. Le silence vaut `no`.
+    - **Y7, version.** `yes` si la version de chaque environnement ou banc d'essai principal est
+      donnée : suffixe Gym ou Gymnasium, version de la suite, ou nom exact et date de la séparation
+      de test pour les bancs `llm`. « MuJoCo » seul : `no`. « MATH-500 » compte `yes`, car c'est
+      une séparation fixe et nommée. « MATH » seul : `no`.
+    - **Y8, généralisation.** `yes` si au moins une évaluation porte sur des conditions absentes
+      de l'entraînement et du réglage : autres graines d'environnement annoncées comme telles,
+      tâches nouvelles, dynamiques modifiées, distribution de test distincte. C'est plus strict
+      que Q7 : un banc d'essai `llm` différent des données d'entraînement RL ne compte que si
+      l'article le présente comme un test hors distribution.
+    - **Y9, sensibilité.** `yes` si au moins un hyperparamètre de la méthode est balayé et que le
+      résultat est montré (figure, tableau ou phrase chiffrée). Une ablation de composant ne
+      compte pas : ce n'est pas un hyperparamètre.
+    - **Y10, dépendances.** `yes` si les versions des bibliothèques principales sont données dans
+      l'article, ou si un fichier d'environnement est cité dans le dépôt lié. Le dépôt n'est pas
+      visité, sauf si l'article renvoie explicitement au fichier.
+    - **Y11, type d'incertitude.** Valeur `yes` / `no` plus un champ `kind` (`std`, `se`, `ci`,
+      `iqr`, `minmax`, `other`). `na` si X2 v1 vaut `no`. Y11 est plus large que Y2 : il suffit
+      que le type soit nommé quelque part.
+    - **Y12, outils post-2018.** `yes` si l'article emploie au moins un de ces outils : IQM, IC
+      bootstrap stratifié, rliable, profils de performance, probabilité d'amélioration. Un simple
+      bootstrap sur une moyenne compte `yes` s'il produit un intervalle rapporté.
