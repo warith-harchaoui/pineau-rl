@@ -1,0 +1,144 @@
+{
+ "id": "C119",
+ "coder": "R2",
+ "title": "Efficient Bias-Span-Constrained Exploration-Exploitation in Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "In this section, we numerically validate our theoretical findings.",
+   "page": 7
+  },
+  "Q2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "SCAL is run with the reward augmented [...] but no perturbation of the transition matrix [...] we have set αp = αr = 0.05",
+   "page": 37
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "The code is available on GitHub (https://github.com/RonanFR/UCRL)",
+   "page": 37
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "Consider the simple but descriptive three-state domain [toy domains, rule of écart 4]",
+   "page": 7
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 20,
+   "quote": "Results are averaged over 20 runs and 95% confidence intervals are shown.",
+   "page": 8
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Results are averaged over 20 runs and 95% confidence intervals are shown.",
+   "page": 8
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "theory",
+   "quote": "Consider the simple but descriptive three-state domain",
+   "page": 7
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable : article theory",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "report the span of the optimistic bias (left) and the cumulative regret (right) as a function",
+   "page": 8
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "Results are averaged over 20 runs and 95% confidence intervals are shown.",
+   "page": 8
+  },
+  "Y3": {
+   "value": 2,
+   "quote": "In this section we provide clearer figures for the three-states domain and we present a more challenging domain: Knight [...] Quest.",
+   "page": 36
+  },
+  "Y4": {
+   "value": "no",
+   "quote": "Therefore, SCAL is always performing better than UCRL (Fig. 5(a))",
+   "page": 8
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "SCAL is always performing better than UCRL (Fig. 5(a)) and the smaller c, the better the regret.",
+   "page": 8
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "Results are averaged over 20 runs and 95% confidence intervals are shown.",
+   "page": 8,
+   "kind": "ci"
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X5 : domaine à trois états et Knight Quest (grille 4×4) jugés jouets, donc theory, et Q7 no par l'écart 4. Q3 : δ de confiance non donné, mais ηk, γk, αp, αr et les valeurs de c le sont, codé yes. Q4 : rien ne dit les réglages d'UCRL (αp, αr partagés ou non), codé no. X1 : 20 essais pour le domaine principal, 15 pour Knight Quest en annexe, retenu 20. Y3 : deux domaines (trois états, Knight Quest), les deux valeurs de δ comptées comme un seul domaine. Y5 : le dépôt s'appelle UCRL mais l'article ne dit pas qu'UCRL est réimplémenté, codé no. Y7 : environnements construits et entièrement décrits dans l'article, sans version publiée, codé no. Y9 : c est une contrainte d'entrée de l'algorithme, comptée comme hyperparamètre. Pages Q3, Q5, Y3 : numéros de page du PDF supplémentaire."
+}

@@ -1,0 +1,153 @@
+{
+ "id": "K083",
+ "coder": "R2",
+ "title": "Use the Online Network If You Can: Towards Fast and Stable Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We evaluate MINTO on a benchmark of 15 Atari games",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "All methods employ the standard CNN architecture introduced by Mnih et al. (2015)",
+   "page": 6
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Table 1: Hyperparameter settings for DQN, Maxmin DQN, and MINTO on Atari.",
+   "page": 20
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "Table 2: Hyperparameter settings for the four DQN variants evaluated on Atari, including DoubleDQN, FR-DQN, ScDQN, and MINTO.",
+   "page": 21
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "we publicly release our code at https://github.com/AhmedMagdyHendawy/MINTO",
+   "page": 10
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "All methods are run with their default hyperparameters, and the most important settings are reported in Table 4.",
+   "page": 22
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "We report the AUC metric using IQM and the confidence interval computed across 5 seeds. [intervals not said to be stratified bootstrap, no test]",
+   "page": 6
+  },
+  "X1": {
+   "value": 5,
+   "quote": "All results are reported using IQM and confidence interval on 5 seeds and over all games.",
+   "page": 5
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "All results are reported using IQM and confidence interval on 5 seeds and over all games.",
+   "page": 5
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "All algorithms share the same network architectures and training setups, differing only in the algorithmspecific modifications",
+   "page": 20
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We evaluate MINTO on a benchmark of 15 Atari games",
+   "page": 6
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable : article classic",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "To capture both aspects in a single measure, we report the Area Under the Curve (AUC) metric",
+   "page": 6
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "Reported metrics are interquartile mean (IQM) scores with 95% confidence intervals across 5 seeds per game.",
+   "page": 25
+  },
+  "Y3": {
+   "value": 41,
+   "quote": "We evaluate MINTO on a benchmark of 15 Atari games [...] The evaluation is conducted on 26 continuous control tasks",
+   "page": [
+    6,
+    9
+   ]
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "In contrast, performance on DMC-Hard is comparable to the [...] base algorithm (SimbaV1) or slightly lower (as with SimbaV2).",
+   "page": [
+    9,
+    10
+   ]
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "The implementations of DoubleDQN, FR-DQN, ScDQN, and MINTO share the same lightweight and reproducible framework for DQN variants written in JAX. [...] The implementation is based on the official SimbaV2 codebase3 (Lee et al., 2025)",
+   "page": [
+    20,
+    22
+   ]
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "We note that one game, Tutankham, is excluded from our evaluation since it is not available in the released dataset.",
+   "page": 8
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "our experiments follow the evaluation protocol of Machado et al. (2018) [Atari and DMC-Hard versions not given; only MuJoCo -v4 and HBench -v0 suffixes]",
+   "page": 6
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "Reported metrics are interquartile mean (IQM) scores with 95% confidence intervals across 5 seeds per game.",
+   "page": 25,
+   "kind": "ci"
+  },
+  "Y12": {
+   "value": "yes",
+   "quote": "Reported metrics are interquartile mean (IQM) scores with 95% confidence intervals across 5 seeds per game.",
+   "page": 25
+  }
+ },
+ "doubts": "Q8 : IQM avec intervalles de confiance, mais l'article ne dit pas qu'ils sont bootstrap stratifiés ni ne fait de test, codé no (Y12 yes par l'IQM). Q6 : hyperparamètres par défaut (Dopamine, SimbaV2), aucune méthode de choix, codé no. Y3 : 15 jeux Atari (les 14 jeux hors ligne sont les mêmes environnements) et 26 tâches continues, d'où 41. Y7 : MuJoCo -v4 et HBench -v0 versionnés, Atari et DMC-Hard non, codé no. X7 : grappes de calcul nommées dans les remerciements, aucune quantité."
+}

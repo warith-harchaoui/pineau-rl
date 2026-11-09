@@ -86,5 +86,159 @@
     "fragile": false
    }
   }
+ },
+ "R2": {
+  "papers": [
+   "C116",
+   "C117",
+   "C119",
+   "C17",
+   "C214",
+   "K015",
+   "K035",
+   "K045",
+   "K078",
+   "K083"
+  ],
+  "criteria": {
+   "Q2": {
+    "n": 10,
+    "agree": 1.0,
+    "kappa": 1.0,
+    "fragile": false
+   },
+   "Q3": {
+    "n": 10,
+    "agree": 0.9,
+    "kappa": 0.8,
+    "fragile": false
+   },
+   "Q4": {
+    "n": 10,
+    "agree": 1.0,
+    "kappa": 1.0,
+    "fragile": false
+   },
+   "Q5": {
+    "n": 10,
+    "agree": 1.0,
+    "kappa": 1.0,
+    "fragile": false
+   },
+   "Q6": {
+    "n": 10,
+    "agree": 0.9,
+    "kappa": 0.6153846153846153,
+    "fragile": false
+   },
+   "Q7": {
+    "n": 10,
+    "agree": 1.0,
+    "kappa": 1.0,
+    "fragile": false
+   },
+   "Q8": {
+    "n": 10,
+    "agree": 0.9,
+    "kappa": 0.6153846153846153,
+    "fragile": false
+   },
+   "X2": {
+    "n": 10,
+    "agree": 1.0,
+    "kappa": 1.0,
+    "fragile": false
+   },
+   "X3": {
+    "n": 10,
+    "agree": 1.0,
+    "kappa": null,
+    "fragile": false
+   },
+   "X4": {
+    "n": 10,
+    "agree": 1.0,
+    "kappa": null,
+    "fragile": false
+   },
+   "X7": {
+    "n": 10,
+    "agree": 1.0,
+    "kappa": 1.0,
+    "fragile": false
+   },
+   "Y1": {
+    "n": 10,
+    "agree": 1.0,
+    "kappa": 1.0,
+    "fragile": false
+   },
+   "Y2": {
+    "n": 9,
+    "agree": 1.0,
+    "kappa": 1.0,
+    "fragile": false
+   },
+   "Y3": {
+    "n": 10,
+    "agree": 1.0,
+    "kappa": null,
+    "fragile": false
+   },
+   "Y4": {
+    "n": 10,
+    "agree": 0.8,
+    "kappa": 0.523809523809524,
+    "fragile": false
+   },
+   "Y5": {
+    "n": 10,
+    "agree": 0.9,
+    "kappa": 0.782608695652174,
+    "fragile": false
+   },
+   "Y6": {
+    "n": 10,
+    "agree": 0.8,
+    "kappa": 0.41176470588235303,
+    "fragile": false
+   },
+   "Y7": {
+    "n": 10,
+    "agree": 1.0,
+    "kappa": 1.0,
+    "fragile": false
+   },
+   "Y8": {
+    "n": 10,
+    "agree": 1.0,
+    "kappa": 1.0,
+    "fragile": false
+   },
+   "Y9": {
+    "n": 10,
+    "agree": 1.0,
+    "kappa": 1.0,
+    "fragile": false
+   },
+   "Y10": {
+    "n": 10,
+    "agree": 1.0,
+    "kappa": 1.0,
+    "fragile": false
+   },
+   "Y11": {
+    "n": 9,
+    "agree": 1.0,
+    "kappa": 1.0,
+    "fragile": false
+   },
+   "Y12": {
+    "n": 10,
+    "agree": 1.0,
+    "kappa": 1.0,
+    "fragile": false
+   }
+  }
  }
 }

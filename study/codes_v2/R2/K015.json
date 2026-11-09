@@ -1,0 +1,143 @@
+{
+ "id": "K015",
+ "coder": "R2",
+ "title": "Tracking Drift: Variation-Aware Entropy Scheduling for Non-Stationary Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We evaluate AES on three task families: Toy (2D multi-goal), MuJoCo",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "This includes network widths and depths, optimizers, batch sizes, learning rates,",
+   "page": 42
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "Table 8 lists the AES hyperparameters used in our experiments. [carrier learning rates, batch sizes and networks not listed]",
+   "page": 43
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "The baseline versions of PPO, SQL, and MEow use the standard static entropy weights from the corresponding reference implementation.",
+   "page": 44
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Code and supplementary material are available at: https://github.com/WtxwNs/AES.",
+   "page": 1
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 5,
+   "quote": "All reported results are averaged over 5 random seeds, with seed values {1, 2, 3, 4, 5}.",
+   "page": 45
+  },
+  "X2": {
+   "value": "no",
+   "quote": "All results are averaged over multiple random seeds with appropriate dispersion. [no dispersion appears in any table or figure]",
+   "page": 7
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "Within each carrier, the baseline and AES variant share the same architecture, optimizer, learning rate, batch size",
+   "page": 44
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "MuJoCo (Todorov et al., 2012) (Hopper, HalfCheetah, Walker2d, Ant, Humanoid)",
+   "page": 6
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable : article classic",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "Experiments were run on NVIDIA A100 GPUs with 40GB memory.",
+   "page": 45
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "We compute the area under the return-versus-environment-steps curve and normalize it by",
+   "page": 45
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "non applicable : X2 vaut no",
+   "page": null
+  },
+  "Y3": {
+   "value": 12,
+   "quote": "Averaged over the 12 tasks, recovery time decreases from",
+   "page": 8
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "Under the Steady pattern, we do not observe systematic degradation; in most settings the normalized AUC is comparable or slightly improved.",
+   "page": 8
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "The baseline versions of PPO, SQL, and MEow use the standard static entropy weights from the corresponding reference implementation.",
+   "page": 44
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "MuJoCo (Todorov et al., 2012) (Hopper, HalfCheetah, Walker2d, Ant, Humanoid) [no version suffix]",
+   "page": 6
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "Each task is trained under five non-stationarity patterns [drifts occur during training, no held-out condition]",
+   "page": 7
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Table 5 varies the quantile level q used by the TD-error proxy.",
+   "page": 40
+  },
+  "Y10": {
+   "value": "yes",
+   "quote": "Training used Python 3.9, PyTorch 1.13, and CUDA 11.7.",
+   "page": 45
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "non applicable : X2 vaut no",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q3 : les hyperparamètres d'AES sont donnés (Table 8) mais pas ceux des algorithmes porteurs, codé no. X2 : le texte annonce une « appropriate dispersion » qu'aucun tableau ne montre, codé no. Y4 : table 3 tâche par tâche, AES gagne partout ; mais Table 2 (Toy = une seule tâche) montre une égalité PPO 0,89 contre 0,89 en Steady, et le texte dit « comparable », codé yes. Q7 et Y8 : les dérives font partie de l'entraînement, aucune condition tenue à part, codé no. Y5 : « reference implementation » sans dépôt ni version, codé no."
+}

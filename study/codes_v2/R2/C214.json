@@ -1,0 +1,143 @@
+{
+ "id": "C214",
+ "coder": "R2",
+ "title": "Post: Device Placement with Cross-Entropy Minimization and Proximal Policy Optimization",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We have conducted our experiments with 12 machines on the Google Cloud platform.",
+   "page": 6
+  },
+  "Q2": {
+   "value": "no",
+   "quote": "This work adopts a different approach, using the softmax distributions rather than an RNN as the policy representation.",
+   "page": 2
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Our detailed setting of the parameters in Algorithm 1 is as follows: the learning rate of SGA is 1; the ratio for choosing promising placements is 0.1",
+   "page": 6
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Errors of per-step times are within 2% around the average.",
+   "page": 7
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "integrates cross-entropy minimization and proximal policy optimization",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable : article classic",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "As the first step involves initial configuration, we use the average training time of the following 10 steps to measure the performance of this placement.",
+   "page": 6
+  },
+  "Y2": {
+   "value": "no",
+   "quote": "Errors of per-step times are within 2% around the average. [what the error represents is not said]",
+   "page": 7
+  },
+  "Y3": {
+   "value": 4,
+   "quote": "We have evaluated Post using four open-source benchmarks in TensorFlow",
+   "page": 6
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "for RNNLM and ResNet, Post is identical to the Single GPU baseline",
+   "page": 7
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "we have implemented and run the policy gradient method proposed in these papers in our hardware and software environments",
+   "page": 7
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "Due to different hardware (CPU and GPU) and TensorFlow benchmark versions [versions not given]",
+   "page": 7
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q2 : la politique est une loi softmax tabulaire, les réseaux neuronaux ne sont que les modèles à placer et la référence PG, codé no. X2 : « Errors of per-step times are within 2% » est une incertitude de mesure du temps, comptée comme incertitude rapportée, d'où Y2 no et Y11 no. X1 : aucun nombre d'exécutions indépendantes, null. X3 : Table 1 rapporte le meilleur placement trouvé, qui est l'objet même de l'optimisation, pas une sélection de graines, codé no. X7 : 12 machines nommées, aucune durée de l'apprentissage, codé no. Y3 : quatre modèles (RNNLM, ResNet, Inception-V3, NMT), les tailles et nombres de GPU non multipliés. Y5 : PG réimplémenté, PPO et CE sont des variantes internes, Metis sans source, codé yes."
+}

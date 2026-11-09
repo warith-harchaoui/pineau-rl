@@ -1,0 +1,144 @@
+{
+ "id": "K035",
+ "coder": "R2",
+ "title": "Learning Interactive World Model for Object-Centric Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "we evaluate our method on a range of simulated control, robotic manipulation, and embodied AI benchmarks",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "The MLP architecture consists of hidden sizes [256, 256] for Gym-Fetch",
+   "page": 34
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "For those using PPO, we set the learning rate to 3 × 10−4 with a clip ratio of 0.1. [...] Table A7: Hyperparameters used in learning observation functions.",
+   "page": 34
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "The code and data will be publicly available after acceptance.",
+   "page": 20
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "All generalization tasks are evaluated with zero-shot generalization",
+   "page": 35
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 5,
+   "quote": "All runs are with either 5 or 10 random seeds",
+   "page": 20
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Table 2: Policy learning (success rate) of world model in Gym Fetch, Franka Kitchen, i-Gibson, and Libero tasks. [each entry mean ± spread]",
+   "page": 9
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "On simulated robotic and embodied-AI benchmarks, FIOC-WM improves policy-learning sample efficiency",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable : article classic",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "For Fetch, we use 8 hours on 6x NVIDIA 4090;",
+   "page": 34
+  },
+  "Y1": {
+   "value": "no",
+   "quote": "For all tasks, we use the average success rate as the evaluation metric. [measurement point not stated]",
+   "page": 8
+  },
+  "Y2": {
+   "value": "no",
+   "quote": "All runs are with either 5 or 10 random seeds (with error bars shown in the learning curve figures). [bars of the main Table 2 and Fig. 6 not defined]",
+   "page": 20
+  },
+  "Y3": {
+   "value": 4,
+   "quote": "Table 2: Policy learning (success rate) of world model in Gym Fetch, Franka Kitchen, i-Gibson, and Libero tasks.",
+   "page": 9
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "our method achieves the best performance in 5 out of 8 tasks, second-best in 1 task",
+   "page": 31
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "we train models on domains with specific combinations of object attributes (e.g., [...] color, shape, or material) and test them on domains with unseen attribute combinations",
+   "page": 8
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "Values are mean ± standard deviation.",
+   "page": 33,
+   "kind": "std"
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q3 : nombreux hyperparamètres donnés, certains renvoyés à [52] et [53] et ceux du CEM absents, codé yes. Q5 : le lien sites.google.com/view/scar8297 de la page 2 est un débris d'un autre article (SCaR) incrusté dans le PDF, ignoré. Y1 : « average success rate » sans point de mesure (final ou meilleur), codé no. Y2 : la définition « mean ± standard deviation » n'apparaît qu'à la Table A4 (même valeurs FIOC que la Table 2), pas pour les résultats principaux, codé no ; Y11 yes car le type est nommé. Y3 : quatre environnements d'apprentissage de politique, Sprites-World (modèle du monde seulement) non compté."
+}

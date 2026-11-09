@@ -1,0 +1,144 @@
+{
+ "id": "K078",
+ "coder": "R2",
+ "title": "Diffusion Guided Adversarial State Perturbations in Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We evaluate SHIFT using four Atari environments [7], Doom game [52] and Airsim [43] autonomous driving simulator.",
+   "page": 8
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "The reverse process is another Markov chain, parameterized by a neural network",
+   "page": 3
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "We keep other hyperparameters the same as Alonso et al. [3] for training the EDM diffusion model. [autoencoder detector hyperparameters not given]",
+   "page": 31
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Our code can be found at this GitHub Repo. [hyperlink to github.com/SliencerX/Diffusion_Guided_Adversarial_State_Perturbations_in_Reinforcement_Learning]",
+   "page": 1
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 10,
+   "quote": "All results are reported with mean and std over 10 runs.",
+   "page": 8
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "All results are reported with mean and std over 10 runs.",
+   "page": 8
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We evaluate SHIFT using four Atari environments [7], Doom game [52] and Airsim [43] autonomous driving simulator.",
+   "page": 8
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable : article classic",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "We conduct all our experiments on a workstation equipped with an Intel I9-12900KF CPU, an RTX 3090 GPU, and 64GB system RAM.",
+   "page": 31
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "Reward (average episode return over 10 runs)",
+   "page": 9
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "All results are reported with mean and std over 10 runs.",
+   "page": 8
+  },
+  "Y3": {
+   "value": 6,
+   "quote": "We evaluate SHIFT using four Atari environments [7], Doom game [52] and Airsim [43] autonomous driving simulator.",
+   "page": 8
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "Lastly, our results in Table 2 support the presence of a fundamental trilemma: no attack dominates across all key metrics simultaneously. [also Table 5, Highway PPO: SHIFT-O-0.25 13.7 vs MAD 2.7]",
+   "page": 10
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "b) shows the l2 reconstruction error, deviation rate under different policy guidance strengths with SHIFT-O attack.",
+   "page": 10
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "All results are reported with mean and std over 10 runs.",
+   "page": 8,
+   "kind": "std"
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q5 : le texte dit seulement « this GitHub Repo », le lien vers le dépôt n'existe que comme hyperlien dans le PDF, codé yes. Q3 : hyperparamètres du modèle de diffusion renvoyés à Alonso et al., ceux de l'autoencodeur absents, codé no. Q7 : le modèle de diffusion est entraîné avec une politique de référence et attaque des victimes non vues, mais ce n'est pas présenté comme une évaluation tenue à part, codé no. X1 : « 10 runs » sont peut-être des épisodes d'évaluation plutôt que des entraînements indépendants, retenu 10. X7 : seul le matériel et 0,2 s par perturbation, aucun coût d'entraînement chiffré, codé no. Y4 : comparaisons aux références surtout sur Freeway ; perte visible en Highway PPO pour SHIFT-O-0.25 et sur la métrique de Wasserstein, codé yes. Y3 : 6 environnements (4 Atari, Doom, AirSim), Highway en annexe non compté."
+}

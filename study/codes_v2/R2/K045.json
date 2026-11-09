@@ -1,0 +1,150 @@
+{
+ "id": "K045",
+ "coder": "R2",
+ "title": "From Observations to Events: Event-Aware World Model for Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "Experiments on Atari 100K, Craftax 1M, and DeepMind Control 500K, DMC-GB2 500K demonstrate",
+   "page": 1
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "Table 8: Hyperparameters in our world model, EADream. [...] Number of MLP units",
+   "page": 22
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Table 8 shows the hyperparameters of EADream. These hyperparameters are fixed on both Atari 100K and DeepMind Control benchmarks. [...] For EASimulus, we only tune hyperparameters that our methods introduce, as listed in Table 11",
+   "page": [
+    22,
+    24
+   ]
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "We follow the official implementation of Simulus (Cohen et al., 2025) and reproduce the results based on the default hyperparameters.",
+   "page": 26
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Our code is released at https://github.com/MarquisDarwin/EAWM.",
+   "page": 1
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "tuning the additional hyperparameters required only a small number of validation runs on 6 Atari games that we used in our ablation studies",
+   "page": 27
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "Agents are trained in a fixed environment but evaluated across visually distinct test environments.",
+   "page": 8
+  },
+  "Q8": {
+   "value": "yes",
+   "quote": "Each row represents the probability of improvement (Agarwal et al., 2021) that our algorithm outperforms the corresponding baseline",
+   "page": 32
+  },
+  "X1": {
+   "value": 5,
+   "quote": "All results of our experiments are reported over 5 seeds.",
+   "page": 7
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Mean human-normalized scores and the 95% stratified bootstrap confidence intervals (Agarwal et al., 2021)",
+   "page": 3
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "For EASimulus, we only tune hyperparameters that our methods introduce",
+   "page": 24
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "Experiments on Atari 100K, Craftax 1M, and DeepMind Control 500K, DMC-GB2 500K demonstrate",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable : article classic",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Training on Atari 100K, with three tasks running on the same GPU in parallel, took about 1.2 days",
+   "page": 35
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "The scores for each task are computed by conducting 100 evaluation episodes at the end of training.",
+   "page": 8
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "Mean human-normalized scores and the 95% stratified bootstrap confidence intervals (Agarwal et al., 2021)",
+   "page": 3
+  },
+  "Y3": {
+   "value": 43,
+   "quote": "EAWM surpasses existing model-free and model-based RL across 55 test tasks [26 Atari + Craftax + 10 DMC + 6 DMC-GB2 training settings]",
+   "page": 3
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "EAWM achieves the highest scores on half of the tasks among the baselines",
+   "page": 29
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "The results on Atari 100k are based on the established re-implementation of the original version of DreamerV3 (Hafner et al., 2023) in PyTorch [...] We follow the official implementation of Simulus (Cohen et al., 2025)",
+   "page": [
+    7,
+    26
+   ]
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "Agents are trained in a fixed environment but evaluated across visually distinct test environments.",
+   "page": 8
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Table 14: Game scores and human normalized mean score for different values of CI on the 6 games",
+   "page": 27
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "Mean human-normalized scores and the 95% stratified bootstrap confidence intervals (Agarwal et al., 2021)",
+   "page": 3,
+   "kind": "ci"
+  },
+  "Y12": {
+   "value": "yes",
+   "quote": "with 95% stratified bootstrap confidence intervals on the Atari 100K benchmark",
+   "page": 32
+  }
+ },
+ "doubts": "Q6 : réglage décrit comme quelques essais de validation sur 6 jeux Atari puis transfert, sans grille ni critère précis, codé yes. Q8 : probabilité d'amélioration avec IC bootstrap stratifiés (rliable), comptée comme test. Y3 : 55 tâches de test annoncées, mais les 18 tests DMC-GB2 viennent de 6 cadres d'entraînement, d'où 43 ; les tâches DMC-GB2 recoupent peut-être les 10 DMC. Y5 : DreamerV3, Simulus, TD-MPC2 et HarmonyDream ont une source dite, mais pas REM, DIAMOND, CURL, DrQ-v2, SVEA, SADA (chiffres sans source explicite), codé yes sur les références principales. Y7 : aucune version d'Atari, DMC ou Craftax, codé no."
+}
