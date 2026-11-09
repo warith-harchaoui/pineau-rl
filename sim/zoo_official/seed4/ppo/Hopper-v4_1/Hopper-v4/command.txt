@@ -1,0 +1,1 @@
+env-zoo/bin/python -m rl_zoo3.train --algo ppo --env Hopper-v4 --seed 4 -f zoo_official/seed4 --num-threads 1 --device cpu --eval-freq -1
