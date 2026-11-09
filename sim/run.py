@@ -1,7 +1,7 @@
 """One training run: algorithm x task x seed, held-out evaluation every 50k steps.
 
 Usage: python run.py ALGO TASK SEED STEPS [--zoo]
-ALGO in {ppo_sb3, ppo_sbx, sac, crossq, td3}; writes results/<ALGO>/<TASK>/seed<SEED>.csv and the
+ALGO in {ppo_sb3, ppo_sbx, sac, crossq, td3, trpo}; writes results/<ALGO>/<TASK>/seed<SEED>.csv and the
 final policy to models/<ALGO>/<TASK>/seed<SEED>.zip. Evaluation seeds (10000+i) never train.
 """
 import os, sys, csv, time, json
@@ -37,6 +37,11 @@ def make_model():
             kw["policy_kwargs"] = dict(kw["policy_kwargs"], activation_fn=torch.nn.ReLU)
             env = VecNormalize(make_vec_env(TASK, n_envs=1, seed=SEED), gamma=kw["gamma"] if ZOOFIX else 0.99)
         return PPO("MlpPolicy", env, seed=SEED, verbose=0, device="cpu", **kw)
+    if ALGO == "trpo":  # experiment B1: Henderson et al.'s figure 5 algorithm, library defaults, no tuning
+        import torch
+        torch.set_num_threads(1)
+        from sb3_contrib import TRPO
+        return TRPO("MlpPolicy", TASK, seed=SEED, verbose=0, device="cpu")
     from sbx import PPO, SAC, CrossQ, TD3
     cls = dict(ppo_sbx=PPO, sac=SAC, crossq=CrossQ, td3=TD3)[ALGO]
     return cls("MlpPolicy", TASK, seed=SEED, verbose=0)

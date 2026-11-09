@@ -10,7 +10,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 MODEL, TAG, TASK, REWARD, SEED, STEPS, LR = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], int(sys.argv[5]), int(sys.argv[6]), float(sys.argv[7])
 PILOT = "--pilot" in sys.argv  # no training: base-model accuracy on non-test problems
 B, G, MAX_NEW, CLIP, EPOCHS, EVAL_EVERY = 4, 8, 160, 0.2, 2, int(os.environ.get("EVAL_EVERY", 50))
-MICRO = 8  # completions per backward pass: the full-vocabulary logits of 32 completions in fp32 took 65 GB
+MICRO = int(os.environ.get("MICRO", 8))  # completions per backward pass (same gradient): 32 at once took 65 GB; Llama 1B needs 2
 device = "mps" if torch.backends.mps.is_available() else "cpu"
 torch.manual_seed(SEED); random.seed(SEED)
 

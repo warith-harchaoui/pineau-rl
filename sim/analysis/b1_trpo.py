@@ -1,0 +1,58 @@
+"""Experiment B1 (SIM_PROTOCOL.md, Écart 4, written before any TRPO run): Henderson et al.'s statistic with
+their algorithm. Same draws as e1_curve.py, on 30 TRPO runs and, for comparison, on the 30 PPO runs of E1.
+
+Three readings of "the average 2-sample t-test across entire training distribution" (their figure 5):
+  - mean_t: Welch t at each of the 20 evaluation points, averaged, turned into a p with the mean df;
+  - mean_p: the 20 Welch p-values, averaged;
+  - pooled: the 5 runs x 20 points of each group stacked as 100 independent observations, one Welch test.
+Each reading: share of draws with p < 0.05, 95th percentile of |t|, share of draws with |t| >= 9.09, for
+groups drawn at random and for groups sorted by final score.
+Run from sim/: env-an/bin/python analysis/b1_trpo.py  -> analysis/b1_trpo.json
+"""
+import csv, glob, json
+import numpy as np
+from scipy import stats
+
+HENDERSON_T = 9.0916  # |t| of their figure 5 (arXiv 1709.06560v3)
+
+
+def curves(algo):
+    files = sorted(glob.glob(f"results/{algo}/HalfCheetah-v5/seed*.csv"),
+                   key=lambda f: int(f.split("seed")[-1].split(".")[0]))
+    C = np.array([[float(r["eval_mean"]) for r in csv.DictReader(open(f))] for f in files])
+    assert C.shape == (30, 20), (algo, C.shape)
+    return C
+
+
+def readings(a, b):
+    t = stats.ttest_ind(a, b, axis=0, equal_var=False)
+    va, vb = a.var(axis=0, ddof=1) / len(a), b.var(axis=0, ddof=1) / len(b)
+    df = (va + vb) ** 2 / (va ** 2 / (len(a) - 1) + vb ** 2 / (len(b) - 1))
+    mt = t.statistic.mean()
+    pooled = stats.ttest_ind(a.ravel(), b.ravel(), equal_var=False)
+    return dict(mean_t=(mt, 2 * stats.t.sf(abs(mt), df.mean())), mean_p=(mt, t.pvalue.mean()),
+                pooled=(pooled.statistic, pooled.pvalue))
+
+
+def run(C, sort, rng, N=10000):
+    out = {k: ([], []) for k in ("mean_t", "mean_p", "pooled")}
+    for _ in range(N):
+        idx = rng.choice(30, 10, replace=False)
+        idx = idx[np.argsort(C[idx, -1])] if sort else rng.permutation(idx)
+        for k, (tv, pv) in readings(C[idx[5:]], C[idx[:5]]).items():
+            out[k][0].append(abs(tv)); out[k][1].append(pv)
+    return {k: dict(false_positive=float((np.array(p) < .05).mean()),
+                    abs_t_p95=float(np.percentile(t, 95)),
+                    share_abs_t_ge_henderson=float((np.array(t) >= HENDERSON_T).mean()))
+            for k, (t, p) in out.items()}
+
+
+res = {}
+for algo in ("ppo_sb3", "trpo"):
+    C = curves(algo)
+    rng = np.random.default_rng(2018)
+    res[algo] = dict(final_mean=float(C[:, -1].mean()), final_sd=float(C[:, -1].std(ddof=1)),
+                     cv=float(C[:, -1].std(ddof=1) / C[:, -1].mean()),
+                     random_5v5=run(C, False, rng), sorted_5v5=run(C, True, rng))
+json.dump(res, open("analysis/b1_trpo.json", "w"), indent=1)
+print(json.dumps(res, indent=1))

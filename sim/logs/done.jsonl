@@ -116,3 +116,4 @@
 {"algo": "ppo_sbx", "task": "Swimmer-v5", "seed": 9, "final": 111.25008087920139, "perturbed": 118.76055773393391, "wall": 1339.5}
 {"algo": "sac", "task": "HalfCheetah-v5", "seed": 7, "final": 5011.484317737414, "perturbed": 4517.2596937992075, "wall": 2100.4}
 {"algo": "sac", "task": "HalfCheetah-v5", "seed": 6, "final": 1838.6409897596186, "perturbed": 1728.903110319085, "wall": 2342.9}
+{"algo": "sac", "task": "HalfCheetah-v5", "seed": 8, "final": 6413.990095836127, "perturbed": 5376.325140323022, "wall": 2522.1}
