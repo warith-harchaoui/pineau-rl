@@ -1,0 +1,75 @@
+{
+ "id": "NE15",
+ "coder": "E2",
+ "title": "Information-Theoretic Reward Decomposition for Generalizable RLHF",
+ "criteria": {
+  "Y1": {
+   "value": "yes",
+   "quote": "Additionally, we evaluate the final reward model using Reward-Bench [...] LCWR and WR denote Length-Control (LC) Win-Rate and Win-Rate, respectively.",
+   "page": [
+    7,
+    9
+   ]
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "We conduct the same experiments with 3 different random seeds and report the mean and std values of the results.",
+   "page": 24
+  },
+  "Y3": {
+   "value": 4,
+   "quote": "We construct a length-biased dataset Dbias [...] We construct an adversarial-prompt dataset Dadv [...] we use a randomly sampled subset of 300K examples from the RLHFlow preference dataset [...] We also conduct the same experiments on the SHP dataset",
+   "page": [
+    7,
+    8
+   ]
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "The performance of such rθ is closer to that trained on the original data.",
+   "page": 8
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "Our implementation is based on the OpenRLHF [...] framework, which uses Apache-2.0 license. [...] For the implementation of RRM, we reference its official code in RLHFlow",
+   "page": 26
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "Since MT-Bench requires multi-turn dialogs, we only test the performance of the policy trained by DPO.",
+   "page": 9
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "by testing its accuracy on well-organized but out-of-distribution queries.",
+   "page": 8
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "we conduct the same experiments on Reward-Bench in Section 4.2 with different EMA weights (α in Alg. 2) and clustering methods (Otsu, K-means).",
+   "page": 25
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "std",
+   "quote": "We conduct the same experiments with 3 different random seeds and report the mean and std values of the results.",
+   "page": 24
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y1: the measures (Reward-Bench accuracy of the final reward model, AlpacaEval-2 LC win rate, MT-Bench turn scores) are standard but only named, not spelled out. Y3: counted four training datasets (Dbias, Dadv, RLHFlow-300K, SHP); counting only the standard experiments would give 2. Y4: the only result where the method is behind is in Table 1(b), against the 'original' model trained on clean data, which is a reference rather than a baseline. Y7: the training datasets are on Hugging Face, but Reward-Bench and MT-Bench are named without a version, coded no under the strict rule. Y6: the omitted BoN/MT-Bench combination with its stated reason counted as a declared exclusion (écart 17)."
+}

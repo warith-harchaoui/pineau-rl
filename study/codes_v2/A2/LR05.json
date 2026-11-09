@@ -1,0 +1,71 @@
+{
+ "id": "LR05",
+ "coder": "A2",
+ "title": "SPIKE-RL: Video-LLMs Meet Bayesian Surprise",
+ "criteria": {
+  "Y1": {
+   "value": "yes",
+   "quote": "The accuracy metrics (Acc) measure whether the predicted surprise peak falls within 0.25 or 1.0 seconds of the ground truth peak surprise [...] and the reported metric is the mean of this indicator over the evaluation videos",
+   "page": [
+    6,
+    16
+   ]
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "non applicable : X2 v1 vaut no (aucune barre ni bande d’erreur)",
+   "page": null
+  },
+  "Y3": {
+   "value": 1,
+   "quote": "For training SPIKE-RL, we curated a video captioning dataset of 2,000 videos with 30% surprising and 70% unsurprising videos.",
+   "page": 5
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "non applicable : Y3 vaut 1",
+   "page": null
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "On Oops!, we compare against: (i) VideoSpeed (Epstein et al., 2020), the strongest reported baseline",
+   "page": 6
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "Scenes shorter than 12 seconds and longer than 60 seconds are filtered out",
+   "page": 17
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "The full list of clips, a link to their original source, along with video scenes which we use, will be provided with the code and data release.",
+   "page": 17
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "is out-of-distribution for SPIKE-RL",
+   "page": 6
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Table 7: Effect of window size W on the Oops! dataset.",
+   "page": 18
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "non applicable : X2 v1 vaut no (aucune barre ni bande d’erreur)",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y1 : les métriques sont définies précisément, mais le point de mesure (modèle final après une époque) n’est pas dit en toutes lettres. Y3 : un seul jeu d’entraînement RL (2 000 vidéos), les huit bancs d’évaluation ne multipliant pas les tâches selon l’écart 17. Y5 : les chiffres des références (VideoSpeed, TimeChat, UniVTG, LLaVA-NeXT-CR, VideoChat2…) semblent recopiés sans que l’origine soit dite pour chacun. Y6 : seuls les filtres de construction du banc Mr. Bean sont dits, ce qui est une exclusion de données plutôt que d’essais. Y7 : le banc Mr. Bean n’est pas publié (« will be provided »), d’où no."
+}

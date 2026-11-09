@@ -1,0 +1,20 @@
+{
+ "id": "ML16",
+ "coder": "G2",
+ "title": "Causal Flow Q-Learning for Robust Offline Reinforcement Learning",
+ "criteria": {
+  "Y1": {"value": "no", "quote": "We report aggregated mean success rate and mean deviation across different task groups.", "page": 6},
+  "Y2": {"value": "yes", "quote": "aging results over 4 seeds and present the results with mean [...] and standard deviations.", "page": 6},
+  "Y3": {"value": 25, "quote": "We use a total of 25 visual tasks across 5 environments for evaluation.", "page": 17},
+  "Y4": {"value": "yes", "quote": "CFQL is able to obtain the best or near-best [...] performance in 19 out of 25 tasks.", "page": 7},
+  "Y5": {"value": "yes", "quote": "We adopt the baseline implementation from FQL (Park et al., 2025b) and Value Flows (Dong et al., 2025).", "page": 17},
+  "Y6": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y7": {"value": "yes", "quote": "visual-cube-double-play-singletask-task1-v0", "page": 7},
+  "Y8": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y9": {"value": "yes", "quote": "Discriminator loss coefficient. We sweep the discrimi- [...] nator loss coefficient over {1, 5, 10, 15}.", "page": 8},
+  "Y10": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y11": {"value": "yes", "kind": "std", "quote": "aging results over 4 seeds and present the results with mean [...] and standard deviations.", "page": 6},
+  "Y12": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null}
+ },
+ "doubts": "Y1 : taux de succès moyen après 500K pas d'entraînement, mais le point d'évaluation (final, meilleur, moyenne des derniers) n'est jamais dit ; no par l'écart 17, à la limite. Y3 : 25 tâches « -singletask » (5 environnements × 5 tâches), chacune entraînée à part ; on pourrait aussi compter 5 environnements. Y5 : les implémentations des références viennent des dépôts FQL et Value Flows, avec des chiffres repris d'articles antérieurs « when available » ; yes. Y11 : le tableau 1 parle de « mean deviation » mais la section Évaluation dit écart type ; std."
+}

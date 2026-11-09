@@ -1,0 +1,68 @@
+{
+ "id": "LR13",
+ "coder": "B2",
+ "title": "MemAgent: Reshaping Long-Context LLM with Multi-Conv RL-based Memory Agent",
+ "criteria": {
+  "Y1": {
+   "value": "yes",
+   "quote": "We employ the sub em score for all benchmarks. This means that an answer is considered correct if it contains all the elements of the ground truth.",
+   "page": 18
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "non applicable : X2 v1 vaut no",
+   "page": null
+  },
+  "Y3": {
+   "value": 1,
+   "quote": "We employ a two-stage curriculum RL strategy",
+   "page": 6
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "non applicable : Y3 vaut 1",
+   "page": null
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "Baselines. We use DeepSeek-R1-Distill-Qwen (Guo et al., 2025), Qwen-2.5-Instruct-1M (Yang et al., 2025) , Qwen-2.5-Instruct (Yang et al., 2024)and QwenLong-L1 (Wan et al., 2025) as baselines.",
+   "page": 7
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "We thoroughly clean the dataset by filtering out questions where Qwen2.5-7B-Base or Qwen2.5-7B-Instruct achieves 100 % Best-Of-2 score without given any context.",
+   "page": 18
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "It also evaluates the model’s ability to generalize its memory capabilities to various materials, such as novels, news articles, and Wiki items.",
+   "page": 6
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "To investigate the effect of hyperparameter choices, we conduct an ablation study on memory length ranging from 256 to 4096.",
+   "page": 8
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "non applicable : X2 v1 vaut no",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y1 : le score sub_em est défini, mais le point de contrôle évalué n'est pas nommé (modèle final implicite), codé yes. Y3 : un seul entraînement RL (curriculum en deux étapes) évalué sur quatre bancs, compté 1 (écart 17). Y5 : les références sont des modèles publiés cités, avec leurs configurations de génération (tableau 6), codé yes. Y6 : l'exclusion porte sur les données d'entraînement (questions résolues sans contexte), codé yes. Y7 : RULER-HQA est construit par les auteurs et pas encore publié, LongBench sans version, codé no. Y8 : extrapolation à 3,5 M de jetons et LongBench présentés comme généralisation de la mémoire à d'autres matériaux, codé yes."
+}

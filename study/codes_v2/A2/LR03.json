@@ -1,0 +1,73 @@
+{
+ "id": "LR03",
+ "coder": "A2",
+ "title": "MOBODY: Model-Based Off-Dynamics Offline Reinforcement Learning",
+ "criteria": {
+  "Y1": {
+   "value": "no",
+   "quote": "We evaluate the performance with the Normalized Score, defined as",
+   "page": 6
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "We report normalized target-domain scores (mean ± std over three seeds).",
+   "page": 7
+  },
+  "Y3": {
+   "value": 6,
+   "quote": "four MuJoCo environments from the ODRL benchmark: HalfCheetah-v2, Ant-v2, Walker2d-v2, and Hopper-v2 and manipulation tasks in Adroit: Pen and Door",
+   "page": 6
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "In a few settings, MOBODY slightly underperforms SRPO or other baselines.",
+   "page": 7
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "In this section, we introduce the baselines in detail and the implementation follows the ODRL benchmark (Lyu et al., 2024b). [...] We follow the implementation in OfflineRL-kit. [...] We follow the description in REAG to implement the methods",
+   "page": [
+    17,
+    18,
+    19
+   ]
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "HalfCheetah-v2, Ant-v2, Walker2d-v2, and Hopper-v2 and manipulation tasks in Adroit: Pen and Door",
+   "page": 6
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "The target dataset is then collected through rollout trajectories until 5,000 target transitions are reached.",
+   "page": 6
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We conducted two hyperparameter analyses: the BC loss weight and uncertainty penalty of the model-based method in the policy learning part, as detailed in Table 9.",
+   "page": 21
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "std",
+   "quote": "We report normalized target-domain scores (mean ± std over three seeds).",
+   "page": 7
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y1 : le score normalisé est défini par formule, mais le point de l’entraînement où il est pris n’est pas dit (règle 17 : no). Y3 : 6 environnements (4 MuJoCo, 2 Adroit), les types et niveaux de décalage de dynamique étant traités comme des niveaux de difficulté d’un même environnement ; on pourrait aussi compter par type de décalage. Y7 : les versions MuJoCo (-v2) sont données mais pas celles d’Adroit Pen et Door, d’où no au sens strict. Y8 : l’évaluation se fait dans le domaine cible, dont 5 000 transitions servent à l’entraînement, donc pas de condition absente de l’entraînement."
+}

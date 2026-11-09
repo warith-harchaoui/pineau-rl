@@ -1,0 +1,143 @@
+{
+ "id": "K054",
+ "coder": "K3",
+ "title": "When Can You Poison Rewards? A Tight Characterization of Reward Poisoning in Linear MDPs",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "To verify our theory, we present a set of experiments in which we implement our white-box, black-box, and baseline (Xu & Singh, 2025) attack algorithms.",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "Both policies are parameterized as neural networks",
+   "page": 9
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "These details are highly dependent on the problem. Thus, we leave the hyperparameter choices in the README of our repository.",
+   "page": 38
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "We also publish our implementation1 . [...] https://github.com/aguilarjose11/IntrinsicRobustness_ICML26",
+   "page": 37
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "We run CTRL until we have enough environments for each trial, using early-stopping and manually-tuned hyperparameters2 to achieve this.",
+   "page": 38
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 20,
+   "quote": "We run up to T = 20, 000 episodes for 20 trials per characterization (“vulnerable” or “robust”).",
+   "page": 9
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We test our results on linear MDP representations of three continuous MDP problems from the MuJoCo library. We use “Mountain-Car”, “Half-Cheetah”, and “Pendulum”.",
+   "page": 8
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "The second metric (M2) looks more directly into the behaviour of the learned victim policy after T = 20, 000 timesteps.",
+   "page": 39
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y3": {
+   "value": 3,
+   "quote": "We test our results on linear MDP representations of three continuous MDP problems from the MuJoCo library.",
+   "page": 8
+  },
+  "Y4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "we implement our white-box, black-box, and baseline (Xu & Singh, 2025) attack algorithms",
+   "page": 7
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X5 : article d'abord théorique (caractérisation par programme quadratique convexe), mais la validation porte sur HalfCheetah, Pendulum, MountainCar et FrozenLake approchés par CTRL, avec 100 environnements et 20 000 épisodes ; codé classic plutôt que theory, à vérifier car ce choix décide de l'entrée dans l'échantillon. Q3 : les hyperparamètres sont renvoyés au README du dépôt, pas donnés dans l'article. Y4 : les tableaux 1, 2 et 6 donnent des taux par environnement sous 100 %, mais l'article n'identifie aucune tâche où la prédiction échoue ; codé no. Y9 : le bruit σ de l'annexe D.8 est une perturbation injectée, pas un hyperparamètre de la méthode."
+}

@@ -1,0 +1,144 @@
+{
+ "id": "K056",
+ "coder": "K3",
+ "title": "RAMAC: Multimodal Risk-Aware Offline Reinforcement Learning and the Role of Behavior Regularization",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "Table 1. Stochastic–D4RL results over 5 seeds. We report Mean and CVaR0.1",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "the score network is an MLP (hidden 256–256, SiLU) following (Wang et al., 2023).",
+   "page": 15
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "RAMAC’s specific hyperparameters (critic LR, IQN size, η, gradient–norm clipping, optional Q–target clipping, etc.) are listed in Table 7.",
+   "page": 16
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "ORAAC (Urpı́ et al., 2021): use the paper’s recommended configuration, including its distributional critic, risk level α = 0.1, and anchor/prior regularization setting.",
+   "page": 24
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "The code and experimental results are available on the project website. [hyperlink to https://kaifukazawa.github.io/ramac-project/]",
+   "page": 1
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "For RAFMAC, we swept η ∈ {1, 10, 50, 100, 300, 1000} and unified to η=1000 for all datasets",
+   "page": 16
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 3,
+   "quote": "Table 2. State-conditioned OOD action rate (%± std over 3 seeds)",
+   "page": 8
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Table 2. State-conditioned OOD action rate (%± std over 3 seeds)",
+   "page": 8
+  },
+  "X3": {
+   "value": "yes",
+   "quote": "This evaluation is complementary to the main-text comparison: it removes checkpoint-selection effects and therefore should not be interpreted as reproducing the exact ranking in Table 1.",
+   "page": 18
+  },
+  "X4": {
+   "value": "yes",
+   "quote": "FQL (Park et al., 2025): we sweep the policy weight α ∈ {1, 10, 30, 100, 1000} per task and report the best-performing setting (selection by CVaR0.1 unless noted).",
+   "page": 24
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We evaluate on H OPPER, WALKER 2 D, and H ALF C HEETAH using the M EDIUM –E XPERT (M-E) and M EDIUM –R EPLAY (M-R) datasets",
+   "page": 7
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "All methods use the same A6000 GPU, PyTorch/CUDA stack, and training budget.",
+   "page": 21
+  },
+  "Y1": {
+   "value": "no",
+   "quote": "We evaluate methods at fixed intervals of gradient steps and report (i) raw returns averaged over 5 seeds and (ii) episodic CVaR0.1 computed over 50 rollouts (10 evaluation episodes per seed) [checkpoint used for Table 1 not stated]",
+   "page": 8
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "Table 2. State-conditioned OOD action rate (%± std over 3 seeds)",
+   "page": 8
+  },
+  "Y3": {
+   "value": 3,
+   "quote": "We evaluate on H OPPER, WALKER 2 D, and H ALF C HEETAH using the M EDIUM –E XPERT (M-E) and M EDIUM –R EPLAY (M-R) datasets",
+   "page": 7
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "The fixed-checkpoint evaluation preserves several strengths of RADAC, particularly on H ALF C HEETAH-m-e and H OPPER-m-e, while also revealing settings in which FQL or RAFMAC achieves stronger mean or lower-tail performance.",
+   "page": 18
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "For each of baselines, we run all baselines ourselves and tune the following parameters or adopt authors’ recommended settings",
+   "page": 24
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "H ALF C HEETAH -M EDIUM -R EPLAY- V 2 and WALKER 2 D -M EDIUM -R EPLAY- V 2 [version given for some datasets only, in the appendix]",
+   "page": 20
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "For each environment, we train RADAC with α ∈ {0.05, 0.10, 0.20} using the same hyperparameters as in the main Stochastic-D4RL experiments",
+   "page": 22
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "std",
+   "quote": "Table 2. State-conditioned OOD action rate (%± std over 3 seeds)",
+   "page": 8
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X2 : le tableau 1 (Mean et CVaR0.1, résultat principal) n'a aucune incertitude ; seul le tableau 2 du texte principal (taux OOD) donne un écart type ; codé yes sur cette base. X1 : 5 graines pour le tableau 1, 3 pour le tableau 2 ; le plus petit est retenu. X3 : l'annexe E.2 dit que le tableau 1 comporte des « checkpoint-selection effects », et l'annexe E.6 prend le meilleur point de contrôle ; codé yes. Q5 : le code est annoncé sur une page de projet (hyperlien), pas sur un dépôt ; à vérifier selon l'écart 6. Y1 : le point de contrôle utilisé pour le tableau 1 n'est pas dit. Y5 : « we run all baselines ourselves » ne dit pas d'où vient le code de chaque référence. Y7 : le suffixe -v2 apparaît pour quelques jeux D4RL en annexe, pas pour les six ; l'enveloppe stochastique est construite par les auteurs. X7 : le tableau des temps d'entraînement de l'annexe E.4 n'est pas lisible dans le texte extrait ; seul le GPU est nommé. Q4 : FQL, ORAAC-Diff. et DiffusionQL ont des balayages dits, mais ORAAC, CODAC et CQL reprennent les réglages recommandés sans les lister."
+}

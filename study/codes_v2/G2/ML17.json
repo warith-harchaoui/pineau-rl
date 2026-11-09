@@ -1,0 +1,20 @@
+{
+ "id": "ML17",
+ "coder": "G2",
+ "title": "InfoPO: Information-Driven Policy Optimization for User-Centric Agents",
+ "criteria": {
+  "Y1": {"value": "yes", "quote": "We define final performance on benchmark b as the mean score at the final checkpoint", "page": 18},
+  "Y2": {"value": "yes", "quote": "Solid lines and shaded regions [...] represent mean ± std across three seeds.", "page": 7},
+  "Y3": {"value": 3, "quote": "We evaluate InfoPO on three [...] representative multi-turn, user-centric benchmarks", "page": 5},
+  "Y4": {"value": "yes", "quote": "InfoPO improves upon [...] the strongest baseline in 7 out of 8 sub-environments", "page": 6},
+  "Y5": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y6": {"value": "yes", "quote": "We do not include the Frontend Design setting because it requires vision-language modeling to compare rendered pages, which is beyond the scope of this paper.", "page": 17},
+  "Y7": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y8": {"value": "yes", "quote": "with IntentionGym, TelepathyGym, and SearchGym as held-out environments.", "page": 17},
+  "Y9": {"value": "yes", "quote": "Sensitivity analysis of the Info-Gain reward weight β demonstrates that InfoPO maintains high and stable performance across a relatively broad interval from 0.1 to 0.5.", "page": 22},
+  "Y10": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y11": {"value": "yes", "kind": "std", "quote": "Solid lines and shaded regions [...] represent mean ± std across three seeds.", "page": 7},
+  "Y12": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null}
+ },
+ "doubts": "Y1 : la définition « mean score at the final checkpoint » est donnée dans l'annexe des diagnostics d'ablation (Jf), et le texte dit que le tableau 1 donne la « final performance » ; j'ai lu les deux ensemble comme un point de mesure dit. Y3 : trois cadres d'entraînement (UserGym, ColBench, τ²-Bench) ; Sokoban et WebShop (généralisation, Qwen2.5-1.5B) non comptés. Y6 : seule l'omission du réglage Frontend Design de ColBench, avec sa raison, est dite ; comptée yes par l'écart 17. Y7 : « official train/test splits » sans version ni nom de séparation ; no."
+}

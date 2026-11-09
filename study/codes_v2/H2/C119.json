@@ -1,0 +1,144 @@
+{
+ "id": "C119",
+ "coder": "H2",
+ "title": "Efficient Bias-Span-Constrained Exploration-Exploitation in Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "In this section, we numerically validate our theoretical findings.",
+   "page": 7
+  },
+  "Q2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "In all the experiments, we noticed that perturbing the extended MDP was not necessary to ensure convergence of S C O PT and so we set ηk = 0. We also set γk = 0 to speed-up the execution of S C O PT",
+   "page": 7
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "The code is available on GitHub (https://github.com/RonanFR/UCRL).",
+   "page": 37
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 20,
+   "quote": "Results are averaged over 20 runs and 95% confidence intervals are shown.",
+   "page": 8
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Results are averaged over 20 runs and 95% confidence intervals are shown.",
+   "page": 8
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "theory",
+   "quote": "In this section, we numerically validate our theoretical findings.",
+   "page": 7
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable (famille theory)",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "Cumulative regret incurred by UCRL [...] after T = 2.5 · 107 steps as a function of the [...] report the span of the optimistic bias (left) and the cumulative regret (right) as a function",
+   "page": 8
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "Results are averaged over 20 runs and 95% confidence intervals are shown.",
+   "page": 8
+  },
+  "Y3": {
+   "value": 2,
+   "quote": "Consider the simple but descriptive three-state domain shown in Fig. 4(a) (results in a more complex domain are reported in App. G).",
+   "page": 7
+  },
+  "Y4": {
+   "value": "no",
+   "quote": "SCAL is always performing better than UCRL (Fig. 5(a))",
+   "page": 8
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "We have tested UCRL and SCAL with different constraints over an horizon T = 4 · 108 with Bernstein’s bound. The code is available on GitHub (https://github.com/RonanFR/UCRL).",
+   "page": 37
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "We have omitted UCRL since it is out-of-scale (see Fig. 5).",
+   "page": 36
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "and the smaller c, the better the regret.",
+   "page": 8
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "ci",
+   "quote": "Results are averaged over 20 runs and 95% confidence intervals are shown.",
+   "page": 8
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X5 : article théorique (bornes de regret) avec deux domaines jouets, codé theory, d'où Q7 no par l'écart 4. Q3 : c, ηk, γk et, pour Knight Quest, αp = αr = 0,05 sont donnés, mais pas le niveau de confiance δ des intervalles ni αp et αr pour le domaine à trois états. Y5 : le dépôt RonanFR/UCRL semble contenir UCRL et SCAL, mais l'article ne dit pas explicitement que UCRL est réimplémenté par les auteurs. Y6 : la seule omission dite est celle de UCRL sur la figure 10, hors échelle, ce qui est limite comme exclusion. Y7 : les environnements sont construits et entièrement décrits par les auteurs, sans version publiée ; codé no par la règle stricte. Y3 : δ = 0,005 et δ = 0 sont deux variantes du même domaine à trois états, comptées pour un. Pages de l'annexe : numérotation du fichier -supp.pdf."
+}

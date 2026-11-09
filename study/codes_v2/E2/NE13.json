@@ -1,0 +1,72 @@
+{
+ "id": "NE13",
+ "coder": "E2",
+ "title": "Planning and Learning in Average Risk-aware MDPs",
+ "criteria": {
+  "Y1": {
+   "value": "yes",
+   "quote": "We run the MLMC Q-learning algorithm 100 times independently with r = 0.49 and plot the mean value of f (Qn ) in Figure 5.1",
+   "page": 8
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "with the 95th and 5th percentiles as the confidence interval (CI).",
+   "page": 8
+  },
+  "Y3": {
+   "value": 4,
+   "quote": "We begin by validating the convergence of the risk-aware RVI Q-learning algorithm (4.1) using a randomly generated MDP with 10 states and 5 actions per state. [...] we tested them on three popular average-cost MDP problems: machine replacement (MR), water reservoir management (WR), and inventory management (IM)",
+   "page": [
+    8,
+    9
+   ]
+  },
+  "Y4": {
+   "value": "no",
+   "quote": "It can be observed that the policies produced by our algorithms successfully attain their respective optimal average risks under difference application settings.",
+   "page": 10
+  },
+  "Y5": {
+   "value": "na",
+   "quote": "non applicable : aucune référence comparée (Q4 na)",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "for different values of the geometric parameter r changing from 0.49 to 0.9",
+   "page": 33
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "All the experiments were carried out using Python 3.9 on a Linux server equipped with a 64-core AMD EPYC 7763 processor.",
+   "page": 33
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "other",
+   "quote": "with the 95th and 5th percentiles as the confidence interval (CI).",
+   "page": 8
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y3: counted the random MDP of the convergence study plus the three applications (4); if the main conclusion is only the convergence study, the value would be 1 and Y4 na. Y4: there are no baselines, only the authors' own algorithms, and every per-task result shows the method reaching its optimum, so no. Y10: only the Python version is given, no library versions, coded no. Y11: the band is a 5th–95th percentile band across runs, coded kind other."
+}

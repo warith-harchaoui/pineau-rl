@@ -1,0 +1,72 @@
+{
+ "id": "C12",
+ "coder": "F2",
+ "title": "Efficient Model–Based Deep Reinforcement Learning with Variational State Tabulation",
+ "criteria": {
+  "Y1": {
+   "value": "yes",
+   "quote": "The agents were evaluated over a 1000–step test epoch, with  = 0.05, every 25 000 steps.",
+   "page": 6
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "Average test reward ± SEM during training",
+   "page": 6
+  },
+  "Y3": {
+   "value": 3,
+   "quote": "VaST slightly [...] outperformed NEC on the first version of the task [...] we designed an experiment in a [...] We tested this in the maze shown in Figure 6A",
+   "page": [
+    6,
+    7
+   ]
+  },
+  "Y4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "we introduced a small change to the environment: running into the dead end would cause the agent to teleport",
+   "page": 6
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We examine the effect of d in Figure 4 and Supplementary Figure 1.",
+   "page": 6
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "Average test reward ± SEM during training",
+   "page": 6,
+   "kind": "se"
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y2 : les courbes principales (figure 3) montrent 5 essais individuels et leur moyenne, l'erreur type n'est définie que pour la figure 4. Y3 : labyrinthe complexe (avec et sans dangers, compté une fois), H-maze et labyrinthe à récompenses inversées ; Pong n'est pas comparé à une référence. Y4 : NEC paraît proche de VaST sur la figure 6A, mais aucune tâche n'est montrée ou dite perdue. Y5 : NEC et Prioritized D-DQN ont leurs hyperparamètres mais pas l'origine de leur code (seule la bibliothèque ANNoy est citée). Y8 : le téléporteur et l'inversion des récompenses changent la dynamique ou la récompense après l'entraînement, mais l'agent continue d'apprendre sur ces conditions."
+}

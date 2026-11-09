@@ -1,0 +1,150 @@
+{
+ "id": "C18",
+ "coder": "H2",
+ "title": "Addressing Function Approximation Error in Actor-Critic Methods",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We evaluate our algorithm on seven continuous control domains from OpenAI gym",
+   "page": 2
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "we use a two layer feedforward neural network of 400 and 300 hidden nodes respectively",
+   "page": 7
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "delayed policy updates consists of only updating the actor and target critic network every d iterations, with d = 2 [...] Both target networks are updated with τ = 0.005 [...] Both network parameters are updated using Adam (Kingma & Ba, 2014) with a learning rate of 10−3",
+   "page": 7
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "PPO (Schulman et al., 2017), ACKTR (Wu et al., 2017) and TRPO (Schulman et al., 2015), as implemented by OpenAI’s baselines repository (Dhariwal et al., 2017)",
+   "page": 8
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "open source both our code and learning curves (https://github.com/ sfujim/TD3)",
+   "page": 2
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "Our results are reported over 10 random seeds of the Gym simulator and the network initialization.",
+   "page": 8
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 10,
+   "quote": "Our results are reported over 10 random seeds of the Gym simulator and the network initialization.",
+   "page": 8
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "± corresponds to a single standard deviation over trials.",
+   "page": 7
+  },
+  "X3": {
+   "value": "yes",
+   "quote": "Table 1. Max Average Return over 10 trials of 1 million time steps.",
+   "page": 7
+  },
+  "X4": {
+   "value": "no",
+   "quote": "Additionally, we compare our method with our re-tuned version of DDPG, which includes all architecture and hyper-parameter modifications to DDPG without any of our proposed adjustments.",
+   "page": 8
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "To evaluate our algorithm, we measure its performance on the suite of MuJoCo continuous control tasks",
+   "page": 7
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable (famille classic)",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "Each task is run for 1 million time steps with evaluations every 5000 time steps, where each evaluation reports the average reward over 10 episodes with no exploration noise. [...] Table 1. Max Average Return over 10 trials of 1 million time steps.",
+   "page": [
+    7,
+    8
+   ]
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "The shaded region represents half a standard deviation of the average evaluation over 10 trials.",
+   "page": 7
+  },
+  "Y3": {
+   "value": 7,
+   "quote": "We evaluate our algorithm on seven continuous control domains from OpenAI gym",
+   "page": 2
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "InvDoublePendulum [...] 9337.47 ± 14.96 [...] 9355.52",
+   "page": 7
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "as implemented by OpenAI’s baselines repository (Dhariwal et al., 2017), and SAC (Haarnoja et al., 2018), as implemented by the author’s GitHub [...] For our implementation of DDPG (Lillicrap et al., 2015)",
+   "page": [
+    7,
+    8
+   ]
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "yes",
+   "quote": "(a) HalfCheetah-v1 [...] (b) Hopper-v1 [...] (e) Reacher-v1 [...] (d) Ant-v1 [...] (c) Walker2d-v1 [...] (f) InvertedPendulum-v1 [...] (g) InvertedDoublePendulum-v1",
+   "page": 7
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Figure 3. Average estimated value of a randomly selected state on Hopper-v1 without target networks, (τ = 1), and with slowupdating target networks, (τ = 0.1, 0.01), with a fixed and a learned policy.",
+   "page": 5
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "std",
+   "quote": "± corresponds to a single standard deviation over trials.",
+   "page": 7
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X3 : le tableau 1 rapporte le « Max Average Return », soit le meilleur point d'évaluation de la courbe, ce que je code comme meilleur point de contrôle choisi sur l'évaluation. Q4 : PPO, TRPO et ACKTR tournent avec les réglages du dépôt baselines sans les lister ni dater de version, et SAC avec « the hyper-parameters described by the paper ». Y9 : le balayage de τ (figure 3) montre la valeur estimée et pas le retour, mais je le compte comme sensibilité d'un hyperparamètre. X4 : le DDPG « re-tuned » reprend l'architecture et les hyperparamètres de TD3, sans réglage décrit pour lui. Y4 : la perte de TD3 est visible seulement sur InvertedDoublePendulum (DDPG 9355,52 contre 9337,47) et l'égalité sur InvertedPendulum."
+}

@@ -1,0 +1,69 @@
+{
+ "id": "ML13",
+ "coder": "C2",
+ "title": "GenCircuit-RL: Reinforcement Learning from Hierarchical Verification for Genetic Circuit Design",
+ "criteria": {
+  "Y1": {
+   "value": "yes",
+   "quote": "For TSR evaluation, we use greedy decoding (temperature = 0) to ensure deterministic outputs.",
+   "page": 6
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "We report mean ± standard deviation computed over 5 independent training seeds with different random initializations.",
+   "page": 6
+  },
+  "Y3": {
+   "value": 1,
+   "quote": "Experiments use the Qwen3-8B model (Yang et al., 2025) as the primary base architecture",
+   "page": 5
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "non applicable : Y3 = 1",
+   "page": null
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "the initialization for all RLVF experiments and serves as [...] a baseline measuring RL’s contribution beyond supervised",
+   "page": 6
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "Any duplicates within a split are removed by retaining only the first occurrence.",
+   "page": 33
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "data are made available through a request-based process",
+   "page": 10
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "To measure overfitting to procedural circuits, we compute ∆gen = TSRprocedural − TSRreal-world",
+   "page": 6
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Table 26 examines sensitivity to the TSR thresholds that trigger curriculum stage advancement.",
+   "page": 38
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "std",
+   "quote": "Results show mean ± std over 5 seeds.",
+   "page": 6
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "For pairwise method comparisons, we use a two-sided t-test and and consider p < 0.05 (post-correction) as statistically significant.",
+   "page": 6
+  }
+ },
+ "doubts": "Y3 : un seul corpus d'entraînement, évalué sur plusieurs séparations tenues à part, donc 1 cadre d'entraînement et Y4 na. Y5 : les références principales sont les propres variantes des auteurs (SFT, RLVF-Binary, RLVF-Hier) plus un modèle propriétaire interrogé par invite, origines dites. Y6 : dédoublonnage et jeux écartés avec leur raison comptés comme exclusions dites. Y7 : données diffusées sur demande, donc aucune version publiée. Y12 : t-test avec correction de Bonferroni, antérieur à 2018, donc no."
+}

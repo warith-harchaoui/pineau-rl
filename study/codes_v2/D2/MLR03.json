@@ -1,0 +1,20 @@
+{
+ "id": "MLR03",
+ "coder": "D2",
+ "title": "Stabilizing Reinforcement Learning for Diffusion Language Models",
+ "criteria": {
+  "Y1": {"value": "yes", "quote": "We report pass@1 accuracy under three decoding [...] budgets (N ∈ {128, 256, 512}) and the mean performance (Avg) for each dataset / linear decay [...] schedule over 2,000 steps", "page": [9, 25]},
+  "Y2": {"value": "na", "quote": "non applicable : X2 v1 vaut no", "page": null},
+  "Y3": {"value": 4, "quote": "benchmarks include GSM8K Cobbe [...] et al. (2021), MATH500 Lightman et al. (2023), Countdown Pan et al. (2025), and Sudoku Arel (2025), with the same [...] train and test splits, and evaluation procedure", "page": 9},
+  "Y4": {"value": "yes", "quote": "SPG w/ Mixture 78.5 86.1 84.5 83.0 33.4 40.0 41.8 38.4 68.8 70.7 70.3 69.9 82.9 94.0 93.1 90.0 / StableDRL (Ours) 80.2 86.2 86.3 84.2 36.2 45.2 44.0 41.8 81.3 84.4 84.8 83.5 91.9 92.4 90.1 91.5", "page": 9},
+  "Y5": {"value": "no", "quote": "We take ESPO Ou [...] et al. (2025a) as a representative for GRPO and follow its original training setting", "page": 8},
+  "Y6": {"value": "yes", "quote": "We exclude DiRL (Zhu et al., 2026) from our comparison, [...] as it utilizes a fundamentally different data regime and a complex two-stage training pipeline", "page": 10},
+  "Y7": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y8": {"value": "yes", "quote": "while our RL training is conducted at a sequence length of 256 tokens, the resulting model [...] achieves consistent, high performance across all evaluated generation lengths (128 to 512 tokens)", "page": 9},
+  "Y9": {"value": "yes", "quote": "Sensitivity to trust region tightness", "page": 11},
+  "Y10": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y11": {"value": "na", "quote": "non applicable : X2 v1 vaut no", "page": null},
+  "Y12": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null}
+ },
+ "doubts": "Y1 : pass@1 et budget de décodage définis, mais le checkpoint évalué n'est déduit que du nombre total de pas (2000). Y3 : quatre jeux d'entraînement pour LLaDA (protocole D1, un entraînement par tâche supposé d'après « same train and test splits »), le bloc SDAR (MATH) mis à part. Y4 : les moyennes par tâche sont toutes gagnées, les pertes ne sont visibles que dans certaines cases de longueur (Sudoku 256 et 512 contre SPG) ou contre Qwen3-8B sur GSM8K. Y6 : l'exclusion porte sur une référence (DiRL) avec sa raison, assimilée à une combinaison omise de l'écart 17. Y8 : la généralisation en longueur de génération (entraîné à 256, évalué à 128 et 512) est présentée comme telle, mais c'est une condition de décodage plutôt qu'une distribution de test distincte."
+}

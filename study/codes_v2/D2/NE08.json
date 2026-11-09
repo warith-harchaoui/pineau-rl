@@ -1,0 +1,68 @@
+{
+ "id": "NE08",
+ "coder": "D2",
+ "title": "Pixel Reasoner: Incentivizing Pixel-Space Reasoning with Curiosity-Driven Reinforcement Learning",
+ "criteria": {
+  "Y1": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens [Acc et ANLS en décodage glouton, sans checkpoint ni nombre de pas d'entraînement]",
+   "page": null
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "non applicable : X2 v1 vaut no",
+   "page": null
+  },
+  "Y3": {
+   "value": 1,
+   "quote": "During RL, we construct 15,000 queries from our SFT dataset, InfographicVQA",
+   "page": 6
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "non applicable : Y3 vaut 1",
+   "page": null
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "yes",
+   "quote": "V* Bench TallyQA-complex MVBench-test InfoVQA-test",
+   "page": 7
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "non applicable : X2 v1 vaut no",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y1 : Acc et ANLS en décodage glouton, mais aucun point de mesure (checkpoint ou nombre de pas) n'est donné, d'où no. Y3 : un seul mélange de 15K requêtes RL évalué sur quatre bancs, donc 1. Y5 : les chiffres des références (GPT-4o, Gemini, SEAL, VPD…) ne disent ni s'ils sont recopiés ni d'où vient leur code. Y7 : séparations nommées (TallyQA-complex, MVBench-test, InfoVQA-test, V* Bench), sans version ni date, codé yes comme pour NE02. Y9 : α, β, H et N sont fixés sans balayage ; seules des ablations de composants (curiosité, warm-start, correction) sont montrées."
+}

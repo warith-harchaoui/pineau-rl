@@ -1,0 +1,74 @@
+{
+ "id": "NER04",
+ "coder": "E2",
+ "title": "Asymmetric REINFORCE for off-Policy Reinforcement Learning: Balancing positive and negative rewards",
+ "criteria": {
+  "Y1": {
+   "value": "yes",
+   "quote": "The reward of a trajectory is 1 if the answer is correct, and −1 otherwise. [...] Inference parameters were set to temperature 1.0 (respectively 0.1) and top-p 1.0 (respectively 0.95) for the training (respectively for the evaluation).",
+   "page": [
+    8,
+    20
+   ]
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "non applicable : aucune incertitude rapportée (X2 no)",
+   "page": null
+  },
+  "Y3": {
+   "value": 3,
+   "quote": "We illustrate our findings in a simple bandit setting. [...] We train and test on the MATH dataset [...] as well as on a subset of size 142k of the NuminaMath dataset",
+   "page": [
+    6,
+    8
+   ]
+  },
+  "Y4": {
+   "value": "no",
+   "quote": "Asymmetric REINFORCE leads to faster convergence and better than GRPO.",
+   "page": 10
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "The train and test losses for various baselines V̂ + δV are shown in Figures 3 and 4",
+   "page": 8
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "non applicable : aucune incertitude rapportée (X2 no)",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y1: the measure is train/test accuracy on MATH plotted over steps with the evaluation sampling settings given, but it is never spelled out as pass@1; coded yes with hesitation. Y3: counted the bandit, MATH and NuminaMath (3). Y4: the only losses shown are the method's own δV ≥ 0 settings collapsing; against GRPO the method wins everywhere. Y9: δV is the method's main tuning parameter and is swept, counted as a hyperparameter."
+}

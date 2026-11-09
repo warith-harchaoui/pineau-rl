@@ -1,0 +1,72 @@
+{
+ "id": "LR09",
+ "coder": "A2",
+ "title": "Wavelet Predictive Representations for Non-Stationary Reinforcement Learning",
+ "criteria": {
+  "Y1": {
+   "value": "yes",
+   "quote": "Table 1: Converged average test success rate ± standard error (%) on Meta-World.",
+   "page": 8
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "Table 1: Converged average test success rate ± standard error (%) on Meta-World.",
+   "page": 8
+  },
+  "Y3": {
+   "value": 13,
+   "quote": "We selected 8 different types of tasks [...] We also adopted 4 classic MuJoCo control tasks for comparison.",
+   "page": [
+    19,
+    20
+   ]
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "WISDOM achieves the highest average success rate with minimal variance in most environments",
+   "page": 8
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "For fair comparison, WISDOM and all baseline models, except TRIO and RL2 which emphasize the use of a recurrent encoder, employed the same MLP network architecture for their context encoders.",
+   "page": 18
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "ML1 uses single Meta-World tasks, with the meta-training tasks corresponding to 50 random initial object and goal positions, and meta-testing conducted on 10 held-out positions.",
+   "page": 19
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Sensitivity to wavelet decomposition levels M (left) and TD loss coefficients αY (right).",
+   "page": 24
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "se",
+   "quote": "Table 1: Converged average test success rate ± standard error (%) on Meta-World.",
+   "page": 8
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y1 : « converged » tient lieu de point de mesure, sans dire sur combien d’épisodes ou de pas finaux ; les courbes des figures n’ont pas de définition. Y2 : seule l’erreur type du tableau 1 est définie, les bandes des figures ne le sont pas. Y3 : 13 = 8 tâches Meta-World + 4 MuJoCo + Type-1 Diabetes compté une fois (ses variantes adolescent/adulte et 1/2 repas traitées comme des niveaux) ; on pourrait compter les variantes de glucose à part. Y4 : WISDOM ne perd nettement nulle part dans le tableau 1, mais il est à égalité (100 %) avec COREP et SAC sur Door-Close et Handle-Press, et le texte dit « most environments ». Y7 : aucune version pour Meta-World, MuJoCo ni le simulateur Type-1 Diabetes."
+}

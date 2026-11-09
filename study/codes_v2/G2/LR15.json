@@ -1,0 +1,20 @@
+{
+ "id": "LR15",
+ "coder": "G2",
+ "title": "Asynchronous Policy Gradient Aggregation for Efficient Distributed Reinforcement Learning",
+ "criteria": {
+  "Y1": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y2": {"value": "yes", "quote": "We run every experiment with 5 seeds and report (20%, 80%) confidence intervals.", "page": 28},
+  "Y3": {"value": 4, "quote": "We also consider other environments in Figure 3: Reacher-v4 with horizon 1024, Walker2d-v4 with horizon 1024, and Hopper-v4 with horizon 1024.", "page": 29},
+  "Y4": {"value": "yes", "quote": "However, for Walker2d-v4 and Hopper-v4, the gap between the algorithms is less pronounced.", "page": 29},
+  "Y5": {"value": "no", "quote": "The code was written in Python 3 using PyTorch (Paszke et al., 2019).", "page": 28},
+  "Y6": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y7": {"value": "yes", "quote": "We also consider other environments in Figure 3: Reacher-v4 with horizon 1024, Walker2d-v4 with horizon 1024, and Hopper-v4 with horizon 1024.", "page": 29},
+  "Y8": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y9": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y10": {"value": "no", "quote": "The code was written in Python 3 using PyTorch (Paszke et al., 2019).", "page": 28},
+  "Y11": {"value": "yes", "kind": "ci", "quote": "We run every experiment with 5 seeds and report (20%, 80%) confidence intervals.", "page": 28},
+  "Y12": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null}
+ },
+ "doubts": "Y3 : la figure 1 du texte principal (« the main results ») ne porte que sur Humanoid-v4, mais l'article dit que la conclusion s'appuie aussi sur l'annexe H (Reacher, Walker2d, Hopper) ; j'ai compté 4. Y4 : sur Walker2d et Hopper l'écart est seulement « less pronounced », ce que je lis comme des tâches où la méthode ne gagne pas nettement ; yes discutable. Y11 : des « (20%, 80%) confidence intervals » sur 5 graines ressemblent plutôt à une bande de centiles (kind other), mais l'article les nomme intervalles de confiance, donc ci. Y1 : l'axe « Reward » n'est jamais défini (ni épisodes d'évaluation ni point de mesure), donc no."
+}

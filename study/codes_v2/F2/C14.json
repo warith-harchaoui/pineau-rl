@@ -1,0 +1,68 @@
+{
+ "id": "C14",
+ "coder": "F2",
+ "title": "Fast Bellman Updates for Robust MDPs",
+ "criteria": {
+  "Y1": {
+   "value": "yes",
+   "quote": "we evaluate the numerical performance of the proposed algorithms by measuring their times to compute a single Bellman update",
+   "page": 7
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "non applicable : X2 v1 vaut no",
+   "page": null
+  },
+  "Y3": {
+   "value": 2,
+   "quote": "Figure 4 shows the timing results for the two domains.",
+   "page": 7
+  },
+  "Y4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "We compare the proposed methods with Gurobi 7.5, a state-of-the-art commercial LP solver.",
+   "page": 7
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "A comparison with related algorithms, such as those in Petrik & Subramanian (2014) and Iyengar (2005), is omitted because they are special cases of the homotopy method",
+   "page": 7
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "yes",
+   "quote": "We compare the proposed methods with Gurobi 7.5, a state-of-the-art commercial LP solver.",
+   "page": 7
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "non applicable : X2 v1 vaut no",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y3 : deux domaines principaux (aléatoire, gestion de stock), trois bancs Gym de plus en annexe D. Y4 : la bisection est « about 10 times slower than the nominal solution », mais le nominal résout un autre problème (non robuste), donc pas compté comme une perte. Y6 : omission de références (Petrik & Subramanian, Iyengar) avec sa raison, comptée comme une exclusion dite au sens de l'écart 17. Y9 : κ varie (tableau 1 de l'annexe) mais c'est un paramètre du problème robuste, pas un hyperparamètre de l'algorithme. Y10 : seule dépendance nommée, Gurobi 7.5, qui sert de référence ; le code C++ propre n'a pas de dépendance listée. Y7 : l'annexe D emploie cart-pole, pendule et mountain car d'OpenAI Gym sans suffixe de version."
+}

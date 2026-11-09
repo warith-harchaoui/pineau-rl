@@ -1,0 +1,20 @@
+{
+ "id": "MLR03",
+ "coder": "G2",
+ "title": "Stabilizing Reinforcement Learning for Diffusion Language Models",
+ "criteria": {
+  "Y1": {"value": "no", "quote": "We report pass@1 accuracy under three decoding", "page": 9},
+  "Y2": {"value": "na", "quote": "non applicable : aucune barre ni bande d'incertitude sur les résultats principaux (X2 v1 = no)", "page": null},
+  "Y3": {"value": 4, "quote": "benchmarks include GSM8K Cobbe [...] et al. (2021), MATH500 Lightman et al. (2023), Countdown Pan et al. (2025), and Sudoku Arel (2025), with the same", "page": 9},
+  "Y4": {"value": "yes", "quote": "Qwen3-8B 78.4 92.8 10.0", "page": 10},
+  "Y5": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y6": {"value": "yes", "quote": "We exclude DiRL (Zhu et al., 2026) from our comparison,", "page": 10},
+  "Y7": {"value": "no", "quote": "train and test splits, and evaluation procedure.", "page": 9},
+  "Y8": {"value": "yes", "quote": "Notably, while our RL training is conducted at a sequence length of 256 tokens, the resulting model [...] achieves consistent, high performance across all evaluated generation lengths (128 to 512 tokens).", "page": 9},
+  "Y9": {"value": "yes", "quote": "Sensitivity to trust region tightness (ϵ). We further analyze the trade-off between stability and learning speed", "page": 11},
+  "Y10": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y11": {"value": "na", "quote": "non applicable : aucune incertitude rapportée sur les résultats principaux (X2 v1 = no)", "page": null},
+  "Y12": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null}
+ },
+ "doubts": "Y1 : pass@1 avec longueurs de génération et décodage dits, mais le point de contrôle évalué (final ou meilleur, ESPO et SPG pratiquant l'arrêt précoce) n'est pas dit ; no par l'écart 17. Y3 : 4 tâches du tableau 1 (protocole d1, un entraînement par tâche) ; l'expérience SDAR sur MATH n'est pas comptée en plus. Y4 : par tâche, StableDRL gagne en moyenne les quatre bancs du tableau 1 ; je code yes sur le tableau 2, où Qwen3-8B (92.8 sur GSM8K, 78.4 sur MATH500) passe devant StableDRL en échantillonnage dynamique, et le tableau 1 montre aussi des pertes à certaines longueurs (Sudoku 256/512, Countdown 128). Y6 : seule l'omission d'une référence (DiRL), avec sa raison, est dite ; comptée yes par l'écart 17. Y7 : MATH500 et AIME 24 sont des séparations nommées, mais GSM8K, Countdown et Sudoku renvoient seulement aux « same train and test splits » de d1 ; no. Y8 : généralisation de longueur (entraîné à 256 jetons, évalué de 128 à 512) présentée comme généralisation ; yes discutable, aucun banc n'est présenté comme hors distribution."
+}

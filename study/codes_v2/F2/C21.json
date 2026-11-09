@@ -1,0 +1,68 @@
+{
+ "id": "C21",
+ "coder": "F2",
+ "title": "Credit Assignment For Collective Multiagent RL With Global Rewards",
+ "criteria": {
+  "Y1": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y3": {
+   "value": 3,
+   "quote": "Empirically our new approaches provide significantly better solutions than previous methods in the presence of global rewards on two real world problems modeling taxi fleet optimization and multiagent patrolling, and a synthetic grid navigation domain.",
+   "page": 1
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "In these problems, CCAC performs much worse (even worse than AC)",
+   "page": 9
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "AC, AverageFlow are omitted as their high numbers distort the figure",
+   "page": 8
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Annexe : le texte renvoie à un appendice (simulateur, preuves, détails des domaines) que les actes ne publient pas ; codé sur l'article seul. Y1 : « objective value » et « Unsatisfied Percentage » sans point de mesure (dernière itération, meilleure ?). Y2 : X2 v1 vaut yes mais aucune barre ni bande n'est définie dans le texte. Y4 : la perte montrée est celle de CCAC, l'une des deux méthodes proposées, contre AC ; MCAC gagne partout. Y9 : le poids de pénalité w et la taille de population varient, mais ce sont des paramètres du problème, pas de la méthode."
+}

@@ -1,0 +1,143 @@
+{
+ "id": "K047",
+ "coder": "K3",
+ "title": "Adaptive Surrogate Gradients for Sequential Reinforcement Learning in Spiking Neural Networks",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We validate our approach on low-level quadrotor control, a challenging domain where (1) early crashes prevent long sequences needed for SNN warm-up",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "Our controller is a feedforward SNN with input size 18, two hidden layers and 4 output neurons.",
+   "page": 4
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Training Hyperparameters. Table 6 provides an overview of the hyperparameters used across all methods. Common parameters are listed first, followed by method-specific values.",
+   "page": 15
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "Table 6: Training hyperparameters for all methods.",
+   "page": 15
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "The implementation and experiment scripts used in this work are publicly available at github.com/korneelf1/SpikingCrazyflie.",
+   "page": 10
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "The controller is trained entirely in simulation and successfully transfers to the real-world platform, bridging the reality gap without the need for observation or action history augmentation.",
+   "page": 2
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 5,
+   "quote": "All experiments were run with 5 different seeds.",
+   "page": 8
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "412 ± 6.72 [shaded bands in Figure 4 and error bars in Figure 3, not defined]",
+   "page": 10
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "As a case study, we demonstrate the efficacy of our approach by training a low level spiking neural controller for the Crazyflie quadrotor [15].",
+   "page": 2
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Training completes in 6 hours on an M4 Pro MacBook (24GB RAM).",
+   "page": 6
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "Reported values show the average final reward and the number of environment steps required to reach a reward of 100.",
+   "page": 10
+  },
+  "Y2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y3": {
+   "value": 1,
+   "quote": "We validate our approach on low-level quadrotor control",
+   "page": 6
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "he Crazyflie 2.1 platform [...] provides 18-dimensional state vectors of position, velocity, orientation, and angular velocity. [hardware version only; simulator not versioned]",
+   "page": 6
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "The controller is trained entirely in simulation and successfully transfers to the real-world platform",
+   "page": 2
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "A critical hyperparameter in this process is the slope k of the surrogate function, which determines the sensitivity of the gradient near the spiking threshold.",
+   "page": 4
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X3 : la figure 3b rapporte la « Best Reward Achieved » sur l'entraînement (meilleur point par essai), mais la légende parle de performance finale et le texte de la figure n'est pas extractible ; codé no. X2 : bandes (figure 4) et barres (figure 3, tableau 4 « ± ») présentes mais jamais définies, d'où Y2 et Y11 no. Y1 : mesure définie pour le tableau 4 (récompense finale moyenne) et la figure 3, mais pas le point de mesure des « 400 points » de la figure 4. Y7 : environnement de simulation maison (dynamique d'Eschmann et al.), seule la version du drone est donnée. Q7/Y8 : le transfert simulation vers drone réel est compté comme dynamique modifiée."
+}

@@ -1,0 +1,20 @@
+{
+ "id": "NER04",
+ "coder": "G2",
+ "title": "Asymmetric REINFORCE for off-Policy Reinforcement Learning: Balancing positive and negative rewards",
+ "criteria": {
+  "Y1": {"value": "yes", "quote": "Inference parameters were set to temperature 1.0 (respectively 0.1) and top-p 1.0 (respectively 0.95) for the training (respectively for the evaluation).", "page": 20},
+  "Y2": {"value": "na", "quote": "non applicable : aucune barre ni bande d'incertitude sur les résultats principaux (X2 v1 = no)", "page": null},
+  "Y3": {"value": 3, "quote": "We train and test on the MATH dataset (Hendrycks et al. (2021), 12.5k high school-level problems), as well as on a subset of size 142k of the NuminaMath dataset", "page": 8},
+  "Y4": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y5": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y6": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y7": {"value": "no", "quote": "We train and test on the MATH dataset (Hendrycks et al. (2021), 12.5k high school-level problems), as well as on a subset of size 142k of the NuminaMath dataset", "page": 8},
+  "Y8": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y9": {"value": "yes", "quote": "Impact of the baseline δV The train and test losses for various baselines V̂ + δV are shown in Figures 3 and 4", "page": 8},
+  "Y10": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y11": {"value": "na", "quote": "non applicable : aucune incertitude rapportée sur les résultats principaux (X2 v1 = no)", "page": null},
+  "Y12": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null}
+ },
+ "doubts": "Y1 : exactitude de test sur MATH tracée à chaque pas d'entraînement (courbes, moyenne mobile de 3) avec les paramètres de décodage d'évaluation ; je compte la courbe comme un point de mesure dit, mais la taille et la nature du jeu de test ne sont pas précisées. Y3 : trois cadres d'entraînement (bandit à 100 bras, MATH, sous-ensemble de NuminaMath en annexe). Y4 : la comparaison à GRPO ne montre aucune tâche perdue et le reste porte sur le balayage de δV, pas sur un classement par tâche ; no. Y7 : « MATH » seul, et le sous-ensemble NuminaMath de 142k (test de 2k) est construit par les auteurs sans être publié ; no. Y9 : δV, baseline de l'objectif, est traité comme un paramètre réglable et balayé de −0.5 à 0.3 ; yes."
+}

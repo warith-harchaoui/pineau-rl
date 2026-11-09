@@ -1,0 +1,68 @@
+{
+ "id": "LR11",
+ "coder": "B2",
+ "title": "Predictive CVaR Q-Learning",
+ "criteria": {
+  "Y1": {
+   "value": "yes",
+   "quote": "Policies were evaluated every 100 iterations, with each point estimated from 100,000 sample runs.",
+   "page": 9
+  },
+  "Y2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y3": {
+   "value": 2,
+   "quote": "Each experiment for a given seed typically requires about 20 (tree) and 90 (grid-world) minutes to complete.",
+   "page": 13
+  },
+  "Y4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "The implementation is written in Python 3.8+ using only NumPy and Matplotlib, without relying on any external reinforcement learning libraries (such as Gym or Stable Baselines).",
+   "page": 13
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y1 : la CVaR à q = 0,1 et le point de mesure (politique finale, puis tous les 100 itérations sur 100 000 épisodes) sont dits, codé yes. Y2/Y11 : X2 v1 vaut yes mais le texte ne dit que « mean performance across 10 independent trials » sans définir de bande, codé no. Y5 : la référence CVaR-Q (algorithme 2) est implicitement réimplémentée (code NumPy sans bibliothèque RL), codé yes sur cette phrase. Y9 : l'annexe B compare des composants (exploration double, préentraînement), pas un balayage d'hyperparamètre, codé no. Y10 : « Python 3.8+ » donne la version du langage mais pas celle de NumPy, codé no."
+}

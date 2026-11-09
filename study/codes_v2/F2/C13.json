@@ -1,0 +1,69 @@
+{
+ "id": "C13",
+ "coder": "F2",
+ "title": "Policy and Value Transfer in Lifelong Reinforcement Learning",
+ "criteria": {
+  "Y1": {
+   "value": "yes",
+   "quote": "Plots show cumulative reward averaged over 500 (Lava and Octo) and 300 (Four Room) MDP samples from D.",
+   "page": 7
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "We provide 95% confidence intervals over the joint distribution-sampling and policy-execution process",
+   "page": 6
+  },
+  "Y3": {
+   "value": 2,
+   "quote": "Results for the initialization experiments are presented in Figure 3, with the Tight grid in the top row and Spread grid in the bottom.",
+   "page": 7
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "In Octogrid, both the average MDP and the action-prior MDP are worse than the uniform random policy after 60 steps.",
+   "page": 6
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "We excluded U O(M, Q ) for Q-learning as Q-learning agents tend to learn a Q-value close enough to Q within a given number of episodes.",
+   "page": 7
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We test with δ set to each of {.35, 0.13, .05}, resulting in k = {20, 40, 60}",
+   "page": 8
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "We provide 95% confidence intervals over the joint distribution-sampling and policy-execution process",
+   "page": 6,
+   "kind": "ci"
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y1 : la mesure est définie pour les politiques de démarrage (récompense cumulée par pas) ; pour MaxQInit, « Average Reward » par épisode n'est pas défini plus avant. Y3 : 2 distributions de grilles (Tight, Spread) pour la conclusion sur MaxQInit, 3 autres (Lava, Octogrid, Four Rooms) pour les politiques de démarrage. Y4 : la perte citée (Octogrid) concerne les politiques de démarrage ; pour MaxQInit le texte dit « outperformed or matched ». Y7 : grilles construites par les auteurs, décrites dans le texte et dans un dépôt lié, sans version. Y8 : chaque tâche est tirée de la distribution d'entraînement et l'agent y apprend, ce n'est pas une condition tenue à part."
+}

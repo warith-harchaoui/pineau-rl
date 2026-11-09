@@ -1,0 +1,71 @@
+{
+ "id": "NER01",
+ "coder": "E2",
+ "title": "DAPO: An Open-Source LLM Reinforcement Learning System at Scale",
+ "criteria": {
+  "Y1": {
+   "value": "no",
+   "quote": "For evaluation on AIME, we repeat the evaluation set for 32 times and report avg@32 for results stability. [checkpoint at which Table 1 values are taken is not stated]",
+   "page": 8
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "non applicable : aucune incertitude rapportée (X2 no)",
+   "page": null
+  },
+  "Y3": {
+   "value": 1,
+   "quote": "After selection and transformation, we obtained the DAPO-Math-17K dataset, which consists of 17K prompts, each paired with an integer as the answer.",
+   "page": 8
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "non applicable : une seule tâche (Y3 = 1)",
+   "page": null
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "We adopt the verl framework [...] for training. We use naive GRPO [...] as our baseline algorithm [...] outperforming previous state-of-the-art results achieved by DeepSeek-R1-Zero-Qwen-32B [...] (47 points)",
+   "page": [
+    2,
+    8
+   ]
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "yes",
+   "quote": "Experiments on AIME 2024 demonstrate that DAPO has successfully trained the Qwen-32B Base model into a powerful reasoning model",
+   "page": 8
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "non applicable : aucune incertitude rapportée (X2 no)",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y1: avg@32 is defined, but the paper never says which checkpoint Table 1 and the headline 50 points come from, so no under écart 17. Y5: GRPO is run in verl, which identifies the implementation, and the DeepSeek-R1-Zero figure is copied with its source, so yes; verl has no version. Y7: AIME 2024 counted as an exact, dated test set. Y9: the εhigh change (0.2 to 0.28) is presented as the Clip-Higher technique, i.e. a component, so it is not counted as a hyperparameter sweep."
+}

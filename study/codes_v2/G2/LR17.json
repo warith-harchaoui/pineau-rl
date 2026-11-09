@@ -1,0 +1,20 @@
+{
+ "id": "LR17",
+ "coder": "G2",
+ "title": "MedVR: Annotation-Free Medical Visual Reasoning via Agentic Reinforcement Learning",
+ "criteria": {
+  "Y1": {"value": "no", "quote": "For these benchmarks, we use accuracy as both the evaluation metric and the reinforcement learning reward signal.", "page": 24},
+  "Y2": {"value": "na", "quote": "non applicable : aucune barre ni bande d'incertitude sur les résultats principaux (X2 v1 = no)", "page": null},
+  "Y3": {"value": 2, "quote": "For the general-domain multiple-choice tasks, we employ OmniMedVQA for training and in-domain testing, strictly adhering to the official data splits from Med-R1 [...] For the modality-specific free-text tasks, the model is trained on a consolidated dataset of the VQA-RAD and SLAKE training splits", "page": 6},
+  "Y4": {"value": "yes", "quote": "achieving SOTA or highly competitive results on all designated OOD test sets", "page": 7},
+  "Y5": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y6": {"value": "yes", "quote": "Samples where the model exhibits high confidence, defined as an accuracy of ≥ 7/8, are subsequently excluded.", "page": 26},
+  "Y7": {"value": "no", "quote": "To assess out-of-domain (OOD) generalization, we conduct zero-shot evaluations on the test sets of PMC-VQA and MedXpertQA.", "page": 6},
+  "Y8": {"value": "yes", "quote": "To assess out-of-domain (OOD) generalization, we conduct zero-shot evaluations on the test sets of PMC-VQA and MedXpertQA.", "page": 6},
+  "Y9": {"value": "yes", "quote": "As depicted in Figure 3(a), we vary γ and evaluate performance on OmniMedVQA.", "page": 8},
+  "Y10": {"value": "no", "quote": "leveraging the vLLM inference engine for its high-throughput performance", "page": 25},
+  "Y11": {"value": "na", "quote": "non applicable : aucune incertitude rapportée sur les résultats principaux (X2 v1 = no)", "page": null},
+  "Y12": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null}
+ },
+ "doubts": "Y1 : exactitude sur les jeux de test, décodage glouton, juge Qwen3-235B pour le texte libre, mais aucun point de mesure (dernier point de contrôle ou autre) n'est dit ; no. Y4 : le tableau 1 montre Lingshu-7B (26.5) devant MedVR (26.4) sur MedXpertQA, et le texte parle de résultats « highly competitive » sur les jeux OOD ; yes. Y6 : seul le filtrage des données d'entraînement (exemples trop faciles, ≥ 7/8) est dit, pas d'exclusion d'essais ; je l'ai compté comme une exclusion de données dite. Y7 : jeux nommés (séparations officielles de Med-R1 pour OmniMedVQA) mais sans version ni séparation exacte pour PMC-VQA, MedXpertQA, PathVQA ; no. Y3 : deux cadres d'entraînement (OmniMedVQA ; VQA-RAD + SLAKE), les bancs OOD ne multiplient pas les tâches."
+}

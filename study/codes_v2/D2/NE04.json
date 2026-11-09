@@ -1,0 +1,20 @@
+{
+ "id": "NE04",
+ "coder": "D2",
+ "title": "OpenVLThinker: Complex Vision-Language Reasoning via Iterative SFT-RL Cycles",
+ "criteria": {
+  "Y1": {"value": "yes", "quote": "Our evaluation employs exact matching and a grader function from MathRuler / We take Qwen2.5-VL-7B [3] as the base model and perform three iterations of the SFT-RL", "page": [7, 8]},
+  "Y2": {"value": "na", "quote": "non applicable : X2 v1 vaut no", "page": null},
+  "Y3": {"value": 1, "quote": "We source our training data from the established [...] LLaVA-OneVision [34] and specifically consider the 14 data sources in overlap with MathV360K [58]", "page": 7},
+  "Y4": {"value": "na", "quote": "non applicable : Y3 vaut 1", "page": null},
+  "Y5": {"value": "no", "quote": "Additionally, we include the reported performance / *Performance of the base model Qwen2.5-VL-7B and concurrent reasoning models are evaluated by us", "page": [8, 9]},
+  "Y6": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y7": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y8": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y9": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y10": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y11": {"value": "na", "quote": "non applicable : X2 v1 vaut no", "page": null},
+  "Y12": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null}
+ },
+ "doubts": "Y1 : précision par correspondance exacte et correcteur MathRuler, modèle final après trois cycles SFT-RL, codé yes bien que le terme reste « accuracy ». Y3 : un seul jeu d'entraînement (12K issus de LLaVA-OneVision) évalué sur six bancs, donc 1. Y5 : les chiffres recopiés sont dits « reported » sans source par chiffre, et les modèles réévalués « by us » sans checkpoint ni dépôt nommés, d'où no. Y7 : bancs nommés sans séparation (MathVista sans testmini, MathVision parfois « Mini »), d'où no. Y9 : seuls des choix de données (difficulté des sources, filtrage, légendes) varient, aucun hyperparamètre présenté comme tel n'est balayé."
+}

@@ -1,0 +1,147 @@
+{
+ "id": "C212",
+ "coder": "H4",
+ "title": "Sample-Efficient Reinforcement Learning with Stochastic Ensemble Value Expansion",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We evaluated STEVE on a variety of continuous control tasks [3, 19]; we plot learning curves in Figure 3.",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "All models were feedforward neural networks with ReLU nonlinearities.",
+   "page": 13
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Our code is available open-source at: https://github.com/tensorflow/models/tree/master/ research/steve",
+   "page": 6
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 4,
+   "quote": "Each experiment was run four times.",
+   "page": 6
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "The shaded area shows one standard deviation of scores in the region as defined above.",
+   "page": 6
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We use DDPG [21] as our baseline model-free algorithm.",
+   "page": 5
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Both were trained on a P100 GPU and had 8 CPUs collecting data; STEVE-DPPG additionally used a second P100 to learn a model in parallel.",
+   "page": 7
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "Each run was evaluated after every 500 updates by computing the mean total episode reward (referred to as score) across many environment restarts.",
+   "page": 6
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "The shaded area shows one standard deviation of scores in the region as defined above.",
+   "page": 6
+  },
+  "Y3": {
+   "value": 8,
+   "quote": "Figure 6: Average model usage for STEVE on each environment.",
+   "page": 8
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "it achieves a higher reward than DDPG and MVE-DDPG on Humanoid-v1 and performs comparably to DDPG on RoboschoolHumanoidFlagrun-v1",
+   "page": 7
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "All baselines reported in this section were re-implementations of existing methods.",
+   "page": 6
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "yes",
+   "quote": "On the most challenging environments: Humanoid-v1, RoboschoolHumanoid- [...] v1, RoboschoolHumanoidFlagrun-v1, and BipedalWalkerHardcore-v2",
+   "page": [
+    6,
+    7
+   ]
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Additionally, we find that increasing the rollout horizon increases the sample efficiency of STEVE, even though the dynamics model for Humanoid-v1 has high error.",
+   "page": 7
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "All algorithms were implemented in Tensorflow [1].",
+   "page": 6
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "The shaded area shows one standard deviation of scores in the region as defined above.",
+   "page": 6,
+   "kind": "std"
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q3 : l'horizon H de STEVE et le facteur d'actualisation ne sont pas donnés dans le texte (peut-être dans les légendes de figures en image), codé no. X7 : un GPU P100 et une durée lue seulement sur l'axe « Hours » de la figure 5, codé yes. Y3 : 8 environnements comptés d'après la figure 6 (noms avec versions sur les panneaux de la figure). Y4 : « matching or out-performing » et la comparaison en temps réel (comparable à DDPG sur Flagrun) servent de tâche non gagnée, codé yes avec hésitation."
+}

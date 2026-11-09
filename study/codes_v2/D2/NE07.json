@@ -1,0 +1,68 @@
+{
+ "id": "NE07",
+ "coder": "D2",
+ "title": "Finite-Sample Analysis of Policy Evaluation for Robust Average Reward Reinforcement Learning",
+ "criteria": {
+  "Y1": {
+   "value": "na",
+   "quote": "non applicable : Q1 v1 vaut no (pas d'expérience)",
+   "page": null
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "non applicable : Q1 v1 vaut no (pas d'expérience)",
+   "page": null
+  },
+  "Y3": {
+   "value": null,
+   "quote": "non applicable : Q1 v1 vaut no (pas d'expérience)",
+   "page": null
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "non applicable : Q1 v1 vaut no (pas d'expérience)",
+   "page": null
+  },
+  "Y5": {
+   "value": "na",
+   "quote": "non applicable : Q1 v1 vaut no (pas d'expérience)",
+   "page": null
+  },
+  "Y6": {
+   "value": "na",
+   "quote": "non applicable : Q1 v1 vaut no (pas d'expérience)",
+   "page": null
+  },
+  "Y7": {
+   "value": "na",
+   "quote": "non applicable : Q1 v1 vaut no (pas d'expérience)",
+   "page": null
+  },
+  "Y8": {
+   "value": "na",
+   "quote": "non applicable : Q1 v1 vaut no (pas d'expérience)",
+   "page": null
+  },
+  "Y9": {
+   "value": "na",
+   "quote": "non applicable : Q1 v1 vaut no (pas d'expérience)",
+   "page": null
+  },
+  "Y10": {
+   "value": "na",
+   "quote": "non applicable : Q1 v1 vaut no (pas d'expérience)",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "non applicable : Q1 v1 vaut no (pas d'expérience)",
+   "page": null
+  },
+  "Y12": {
+   "value": "na",
+   "quote": "non applicable : Q1 v1 vaut no (pas d'expérience)",
+   "page": null
+  }
+ },
+ "doubts": "Portée : Q1 v1 vaut no, donc tout est na ; l'annexe ne contient que des vérifications numériques de la contraction de semi-norme, sans expérience d'apprentissage."
+}

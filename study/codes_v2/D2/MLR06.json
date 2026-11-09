@@ -1,0 +1,20 @@
+{
+ "id": "MLR06",
+ "coder": "D2",
+ "title": "Estimation of Treatment Effects Under Nonstationarity via the Truncated Policy Gradient Estimator",
+ "criteria": {
+  "Y1": {"value": "yes", "quote": "Table 1: Evaluation of τbk across truncation sizes k, averaged over varying uniform mixing bounds γ. Reported metrics are MAE (mean absolute error, in [...] %) and STD (standard deviation). Average true ATE", "page": 17},
+  "Y2": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens [les boîtes à moustaches des figures 4 et 6 ne sont pas définies ; seule la figure 3, secondaire, dit mean ± SE]", "page": null},
+  "Y3": {"value": 3, "quote": "These include: (i) a two-state nonstationary Markov decision process, (ii) a queueing simulator [...] a large-scale NYC ride-sharing simulator with real data adapted from Peng et al. (2025)", "page": 17},
+  "Y4": {"value": "yes", "quote": "The BC estimator with a 20-minute burn-in also / at the cost of slightly increased variance", "page": [19, 20]},
+  "Y5": {"value": "no", "quote": "We compare the TPG estimator with the stationary DQ and LSTD-OPE (Farias et al. 2022), and", "page": 18},
+  "Y6": {"value": "yes", "quote": "LSTD-OPE yields a mean of −2.39, outside the plotted range", "page": 18},
+  "Y7": {"value": "yes", "quote": "and experiment details are publicly available. / https://github.com/wenqian-xing/TPG-Estimator / NYC ride-sharing data from September 2024", "page": [17, 19]},
+  "Y8": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y9": {"value": "yes", "quote": "Table 3: Sensitivity of post-k selection to the hyperparameter α.", "page": 29},
+  "Y10": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y11": {"value": "yes", "kind": "std", "quote": "%) and STD (standard deviation). Average true ATE", "page": 17},
+  "Y12": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null}
+ },
+ "doubts": "Y1 : article d'estimation causale sans entraînement, la mesure (MAE et écart type sur 1 000 trajectoires par rapport au GATE exact) est définie mais la notion de point de mesure ne s'applique pas. Y2 : le tableau 1 donne un écart type nommé et la figure 3 dit mean ± SE, mais les boîtes à moustaches des résultats principaux (figures 4 et 6) ne sont pas définies, d'où no. Y4 : pas de perte franche, la méthode est seulement égalée par BC (burn-in 20 min) et paie une variance un peu plus forte dans le cas des VTC. Y6 : LSTD-OPE retiré de la figure 4 avec sa raison (hors échelle), assimilé à une omission dite. Y7 : simulateurs construits par les auteurs mais publiés dans le dépôt lié, données NYC datées (septembre 2024), codé yes par la règle des séparations publiées. Y8 : sans entraînement, aucune condition « tenue à part » n'existe, codé no."
+}

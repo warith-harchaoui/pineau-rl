@@ -1,0 +1,72 @@
+{
+ "id": "NE10",
+ "coder": "E2",
+ "title": "Towards Robust Zero-Shot Reinforcement Learning",
+ "criteria": {
+  "Y1": {
+   "value": "yes",
+   "quote": "we record the highest aggregated mean performance across random seeds in the offline pretrain stage.",
+   "page": 8
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "Table 1 reports this score across all tasks on each domain of ExORL, averaged on 5 random seeds, with standard deviations.",
+   "page": 8
+  },
+  "Y3": {
+   "value": 4,
+   "quote": "The overall setup involves 2 locomotion domains and 2 manipulation (goal-reaching) domains.",
+   "page": 8
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "Walker 382 ± 129 650 ± 19 611 ± 94 602 ± 112 715 ± 31 663 ± 19 [Table 1, PROTO: HILP beats BREEZE]",
+   "page": 7
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "we utilized the open-source implementation available at https://github.com/enjeeneer/zero-shot-rl. [...] we utilized the open-source implementation for state-based zero-shot RL setting, which is available at https://github.com/seohongpark/HILP.",
+   "page": [
+    18,
+    19
+   ]
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "We adopt two datasets: \"kitchen-partial-v0\" and \"kitchen-mixed-v0\". [no version given for the ExORL datasets]",
+   "page": 18
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "Does BREEZE possess zero-shot capability for novel tasks?",
+   "page": 8
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We ablate two key hyperparameters in our behavior-constrained algorithm: the expectile value τ and the temperature α.",
+   "page": 9
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "Our implementation uses PyTorch [...] with all experiments conducted on a single NVIDIA A6000 GPU.",
+   "page": 20
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "std",
+   "quote": "The solid lines represent the average return over 5 random seeds, while the shaded area denotes the standard deviation.",
+   "page": 9
+  },
+  "Y12": {
+   "value": "yes",
+   "quote": "We record the Interquartile Mean (IQM), a robust metric that reduces the influence of outliers.",
+   "page": 8
+  }
+ },
+ "doubts": "Y3: ExORL datasets (RND, APS, PROTO, DIAYN) treated as data variants of one environment, giving 4 domains; counting each domain-dataset pair would give 14. Y8: the downstream tasks are unseen during reward-free pretraining, but the paper does not say hyperparameters were tuned elsewhere than on those tasks. Y12: IQM is computed per domain and paired with a standard deviation, not with rliable's stratified bootstrap. Y7: Kitchen datasets are versioned (-v0) but ExORL datasets are not, so coded no under the strict rule."
+}

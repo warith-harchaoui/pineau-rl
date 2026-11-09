@@ -1,0 +1,69 @@
+{
+ "id": "NER06",
+ "coder": "E2",
+ "title": "FairDICE: Fairness-Driven Offline Multi-Objective Reinforcement Learning",
+ "criteria": {
+  "Y1": {
+   "value": "no",
+   "quote": "Each curve shows the average NSW over 5 seeds and 10 evaluation episodes per seed. [checkpoint of evaluation not stated]",
+   "page": 8
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "Results are averaged over 10 seeds and 10 episodes, with error bars denoting ±1 standard errors.",
+   "page": 26
+  },
+  "Y3": {
+   "value": 6,
+   "quote": "Our main experiments include five two-objective tasks (e.g., MO-Hopper, MO-Walker2d, MO-HalfCheetah, MO-Ant, MO-Swimmer) and one three-objective task (MO-Hopper-3obj).",
+   "page": 8
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "Figure 4 shows that FairDICE achieves competitive or superior NSW performance across all two-objective D4MORL tasks",
+   "page": 9
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "While the baseline includes approaches that do not concatenate the state and linear preference ratio, [...] we do not evaluate them as they generally underperform compared to their preference-conditioned",
+   "page": 8
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "MO-Swimmer-v2 [...] MO-Walker2d-v2 [...] MO-Hopper-v2 [no version for MO-Hopper-3obj or the D4MORL datasets]",
+   "page": 26
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Figure 8 reports Nash social welfare (NSW) performance for β ∈ {10.0, 1.0, 0.1, 0.01, 0.001, 0.0001, 0.00001}.",
+   "page": 26
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "ci",
+   "quote": "Results are averaged over 1000 seeds, and reported with 95 % confidence intervals.",
+   "page": 7
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y1: NSW is defined by a formula and averaged over seeds and episodes, but the checkpoint at which policies are evaluated is never stated, so no under écart 17. Y4: 'competitive or superior' with per-task curves (Figure 4) implies at least one task without a win, but the exact losses are only visible graphically. Y5: baselines are cited to D4MORL, but the code they come from is not stated. Y7: five environments carry -v2 suffixes (Table 4, appendix), but MO-Hopper-3obj and the D4MORL datasets have none, so no under the strict 'each' rule. Y11: both 95% CIs (finite domain) and ±1 standard errors (D4MORL β sweep) are named; kind set to ci."
+}

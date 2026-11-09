@@ -1,0 +1,143 @@
+{
+ "id": "K061",
+ "coder": "K4",
+ "title": "Enhancing Geometric Perception in VLMs via Translator-Guided Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We conduct experiments on Qwen2.5-VL (Bai et al., 2025), InternVL3 (Zhu et al., 2025), and LLaVA-Next (Li et al., 2024).",
+   "page": 8
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We conduct experiments on Qwen2.5-VL (Bai et al., 2025), InternVL3 (Zhu et al., 2025), and LLaVA-Next (Li et al., 2024).",
+   "page": 8
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "with sampling parameters set to Nsamples = 10 and δmin = 0.3, and preference pairs drawn from the Main-train split. All finetuning is performed with LoRA adapters (Hu et al., 2021) of rank 8, for one epoch with a batch size of 32, a learning rate of 2 × 10−5 [DPO β and sampling temperature not given]",
+   "page": 8
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "All finetuning is performed with LoRA adapters (Hu et al., 2021) of rank 8, for one epoch with a batch size of 32, a learning rate of 2 × 10−5 , and a cosine scheduler with linear warm-up over the first 10% of updates.",
+   "page": 8
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "All codes are released at https: //github.com/Longin-Yu/GeoPerceive to ensure reproducibility.",
+   "page": 1
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "To assess robustness under distribution shifts, we evaluate (i) perception using a hand-crafted GeoPerceive-OOD set consisting of 100 diagrams curated by 10 postgraduate annotators from public sources",
+   "page": 9
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "Using the generated preference pairs (Sw , Sl ) for each diagram D, we fine-tune the VLM with the DPO loss",
+   "page": 7
+  },
+  "X6": {
+   "value": 3,
+   "quote": "We conduct experiments on Qwen2.5-VL (Bai et al., 2025), InternVL3 (Zhu et al., 2025), and LLaVA-Next (Li et al., 2024).",
+   "page": 8
+  },
+  "X7": {
+   "value": "no",
+   "quote": "Unless otherwise specified, training is conducted on 4 H800 GPUs. [no duration]",
+   "page": 8
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "To provide a single scalar score for ranking systems, we compute a weighted average of the F1-scores",
+   "page": 5
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y3": {
+   "value": 1,
+   "quote": "In GeoDPO, the original model is regarded as the reference policy πref , with sampling parameters set to Nsamples = 10 and δmin = 0.3, and preference pairs drawn from the Main-train split.",
+   "page": 8
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "For each base model, we consider three settings: (i) the released model without additional supervision, (ii) a model finetuned directly on generated GeoDSL, and (iii) a model optimized using our GeoDPO method.",
+   "page": 8
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "If the solver fails to converge to a satisfactory solution under the given constraints, the corresponding GeoDSL instance is labeled as “unsolvable” and excluded from the dataset.",
+   "page": 6
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "To assess robustness under distribution shifts, we evaluate (i) perception using a hand-crafted GeoPerceive-OOD set",
+   "page": 9
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q3 : hyperparamètres d'entraînement donnés, mais pas le β de DPO ni la température d'échantillonnage, donc no. Q4 : la seule référence entraînée (SFT) partage le paragraphe « All finetuning is performed with LoRA... », compté yes ; la variante PPO de l'annexe n'a pas d'hyperparamètres. X1 : aucun nombre de graines ni d'entraînements, null. Y3 : un seul cadre d'entraînement (Main-train de GeoPerceive) ; OOD et MathVista sont des bancs d'évaluation du même modèle. Y5 : la SFT est implicitement faite par les auteurs et les modèles bruts sont les versions publiées ; compté yes, sans dépôt ni phrase « réimplémenté ». Y7 : GeoPerceive-OOD et le sous-ensemble MathVista (203 items, séparation non nommée) ne sont pas versionnés. Y9 : la qualité du traducteur (taille de ses données) est présentée comme une ablation, pas comme un hyperparamètre."
+}

@@ -1,0 +1,143 @@
+{
+ "id": "C219",
+ "coder": "H4",
+ "title": "Some Considerations on Learning to Explore via Meta-Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "Results are presented on a new environment we call 'Krazy World'",
+   "page": 1
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "RL2 optimizes (1) by feeding multiple rollouts from multiple different MDPs into an RNN.",
+   "page": 5
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Code for meta RL algorithms available at: https://github.com/episodeyang/e-maml",
+   "page": 1
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "Next, we initialize our chosen meta-RL algorithm by uniformly sampling hyper-parameters from predefined ranges.",
+   "page": 9
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "the Y axis is the reward obtained after training at test time on a set of 64 held-out test environments",
+   "page": 6
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 64,
+   "quote": "The entire process from the above paragraph is repeated from the beginning 64 times and the results are averaged to provide the final learning curves featured in this paper.",
+   "page": 9
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "For both algorithms, meta-updates are calculated with PPO [27].",
+   "page": 9
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "When plotting learning curves in Figure 3 and Figure 4, the Y axis is the reward obtained after training at test time on a set of 64 held-out test environments.",
+   "page": 6
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y3": {
+   "value": 2,
+   "quote": "We show E-MAML and E-RL2 deliver better performance than baseline algorithms on both tasks.",
+   "page": 1
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "RL2 and E-RL2 both perform better than MAML and E-MAML.",
+   "page": 6
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "Code for Krazy World available at: https://github.com/bstadie/krazyworld",
+   "page": 1
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "First, we initialize 32 training environments and 64 test environments. Every initialized environment has a different seed.",
+   "page": 9
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q3 : le tableau des hyperparamètres ne donne que des plages (« 40 ∼ 128 », gamma « 0∼1 »), codé no. X1 : 64 répétitions complètes de l'entraînement, lues comme des entraînements indépendants. X2 : la variance est commentée (« high variance ») mais aucune bande ni barre n'est décrite dans le texte, codé no. X4 : le tirage aléatoire des hyperparamètres semble commun à tous les algorithmes, sans réglage décrit pour les références, codé no. Y7 : Krazy World publié sur GitHub sans version ni commit, labyrinthes non publiés, codé no. Y9 : la figure sur le nombre de pas de gradient est un renvoi cassé (« figure ?? »), codé no."
+}

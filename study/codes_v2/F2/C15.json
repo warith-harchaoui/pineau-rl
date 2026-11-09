@@ -1,0 +1,69 @@
+{
+ "id": "C15",
+ "coder": "F2",
+ "title": "Can Deep Reinforcement Learning Solve Erdos-Selfridge-Spencer Games?",
+ "criteria": {
+  "Y1": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "algorithm is run with 3 random seeds, and in all plots we",
+   "page": 5
+  },
+  "Y3": {
+   "value": 1,
+   "quote": "We first introduce the family of Attacker-Defender Games",
+   "page": 2
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "non applicable : Y3 vaut 1",
+   "page": null
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "using the OpenAI Baselines implementations (Hesse et al., 2017)",
+   "page": 5
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "The DQN results were very poor, and so we show results for just PPO and A2C.",
+   "page": 6
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "In detail, we train RL agents for [...] the defender against an attacker playing optimally, and test [...] these agents for the defender on the disjoint support attacker.",
+   "page": 5
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We decided on these hyperparameters after some experimentation with different depths and widths",
+   "page": 1
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "algorithm is run with 3 random seeds, and in all plots we",
+   "page": 5,
+   "kind": "minmax"
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y1 : « Average Reward » sans définition du nombre d'épisodes ni du point de mesure. Y3 : un seul jeu (Attacker-Defender) ; K et le potentiel sont des niveaux de difficulté, et défenseur et attaquant sont deux rôles du même jeu. Y5 : PPO, A2C et DQN sont les algorithmes évalués eux-mêmes (pas de méthode nouvelle face à des références), leur code vient d'OpenAI Baselines. Y9 : profondeur du réseau (linéaire contre profond, figures 2 et 3) présentée comme hyperparamètre ; la page de la citation est celle de l'annexe."
+}

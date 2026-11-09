@@ -1,0 +1,68 @@
+{
+ "id": "ML01",
+ "coder": "B2",
+ "title": "dTRPO: Trajectory Reduction in Policy Optimization of Diffusion Large Language Models",
+ "criteria": {
+  "Y1": {
+   "value": "yes",
+   "quote": "All tasks are evaluated in a zero-shot setting, with the maximum generation length capped at 2048 tokens and the decoding temperature set to 0 to ensure deterministic output.",
+   "page": 21
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "non applicable : X2 v1 vaut no",
+   "page": null
+  },
+  "Y3": {
+   "value": 1,
+   "quote": "We simply mix SmolTalk2, math, and code preference data evenly.",
+   "page": 20
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "non applicable : Y3 vaut 1",
+   "page": null
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "To further validate our approach, we reproduce several training methodologies—including SFT, VRPO, and DPO with mean-field probability estimation—and adapt them for the block-wise dLLM framework.",
+   "page": 22
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We ablate the number of time steps per block by varying k. As shown in Figure 3(f), larger k implies fewer time steps per block and leads to worse performance.",
+   "page": 10
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "non applicable : X2 v1 vaut no",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y1 : précision en zéro-coup, décodage glouton (température 0), harnais nommés, modèle après une époque, codé yes. Y3 : un seul mélange de préférences (SmolTalk2 + maths + code) évalué sur neuf bancs, compté 1. Y5 : les dLLM de référence ont chacun un lien Hugging Face et les estimateurs concurrents sont dits reproduits, codé yes. Y6 : « Here we omit benchmarks evaluated via LLM-as-a-judge » (tableau 6) omet une combinaison sans en donner la raison, codé no. Y7 : LCBv6, Arena-Hard v2.0, GPQA diamond ont une version, mais « MATH » et GSM8K, IFEval, MT-Bench non, et « chaque » reste strict, codé no."
+}

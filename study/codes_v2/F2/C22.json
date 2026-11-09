@@ -1,0 +1,68 @@
+{
+ "id": "C22",
+ "coder": "F2",
+ "title": "Learning Temporal Point Processes via Reinforcement Learning",
+ "criteria": {
+  "Y1": {
+   "value": "yes",
+   "quote": "we generated samples from each learned point process models, transformed the time interval, and applied the KS test to compare with unit rate exponential distribution",
+   "page": 8
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "non applicable : X2 v1 vaut no",
+   "page": null
+  },
+  "Y3": {
+   "value": 8,
+   "quote": "Across our experiments over eight synthetic and real-world datasets, our proposed method performs consistently better than the MLE.",
+   "page": 9
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "achieves comparable and sometimes even better fitting against WGANTPP",
+   "page": 7
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "For WGANTPP and RMTPP, we are using the open source codes.",
+   "page": 7
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "non applicable : X2 v1 vaut no",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y1 : la comparaison principale (intensités empiriques) est visuelle ; seule la procédure KS et le QQ-plot définissent une quantité. Y5 : WGANTPP et RMTPP ont leur dépôt, LGCP passe par GPy ; les références paramétriques (IP, SE, SC) et Nonpar Hawkes n'ont pas d'origine dite. Y7 : MIMIC-III est nommé avec sa version, mais 911, MAS et NYSE sont des extractions des auteurs non publiées. Annexe : aucune annexe n'existe pour C22 dans pdf/."
+}

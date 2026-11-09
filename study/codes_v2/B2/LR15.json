@@ -1,0 +1,72 @@
+{
+ "id": "LR15",
+ "coder": "B2",
+ "title": "Asynchronous Policy Gradient Aggregation for Efficient Distributed Reinforcement Learning",
+ "criteria": {
+  "Y1": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "We run every experiment with 5 seeds and report (20%, 80%) confidence intervals.",
+   "page": 28
+  },
+  "Y3": {
+   "value": 4,
+   "quote": "We also consider other environments in Figure 3: Reacher-v4 with horizon 1024, Walker2d-v4 with horizon 1024, and Hopper-v4 with horizon 1024.",
+   "page": 29
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "However, for Walker2d-v4 and Hopper-v4, the gap between the algorithms is less pronounced.",
+   "page": 29
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "yes",
+   "quote": "We start with the experiment on Humanoid-v4 from the main part of the paper [...] We also consider other environments in Figure 3: Reacher-v4 with horizon 1024, Walker2d-v4 with horizon 1024, and Hopper-v4 with horizon 1024.",
+   "page": [
+    28,
+    29
+   ]
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "ci",
+   "quote": "We run every experiment with 5 seeds and report (20%, 80%) confidence intervals.",
+   "page": 28
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y1 : les courbes portent la « Reward » en fonction du temps sans dire quelle quantité (retour d'évaluation, d'entraînement) ni à quel point, codé no. Y3 : le texte principal ne montre que Humanoid-v4, l'annexe H ajoute trois environnements cités à l'appui de la conclusion, compté 4. Y11 : des « (20%, 80%) confidence intervals » ressemblent à une bande de centiles, mais les auteurs les nomment intervalles de confiance, kind ci retenu. Y5 : AFedPG et Synchronized NIGT sans origine du code dite (seulement « Python 3 using PyTorch »), codé no. Y9 : η et α sont réglés sur des grilles mais seul le choix est rapporté (« η = 0.1 is the best choice »), sans résultat chiffré du balayage, codé no."
+}

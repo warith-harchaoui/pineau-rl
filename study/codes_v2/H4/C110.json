@@ -1,0 +1,144 @@
+{
+ "id": "C110",
+ "coder": "H4",
+ "title": "GEP-PG: Decoupling Exploration and Exploitation in Deep Reinforcement Learning Algorithms",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "On these benchmarks, we study the learning performance of GEP, variants of DDPG, and of the sequential combination of both components.",
+   "page": 2
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "the actor and critic networks have two hidden layers of size (64, 64) and RELU activation functions",
+   "page": 5
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "The other meta-parameters of DDPG are as follows: the batch size is 64, the discount factor is 0.99, the actor and critic networks have two hidden layers of size (64, 64)",
+   "page": 5
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "For DDPG, we use the default set of parameters provided in Henderson's version mentioned above. The replay buffer is a sliding window of size 106 .",
+   "page": 5
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Our code-base is made available online1 . [...] https://github.com/flowersteam/geppg",
+   "page": 3
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "yes",
+   "quote": "we use the tests advised by (Henderson et al., 2017): a paired t-test and a bootstrap estimation of the 95% confidence interval of the means difference using 104 bootstraps",
+   "page": 4
+  },
+  "X1": {
+   "value": 20,
+   "quote": "we use 20 different seeds",
+   "page": 4
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "In all figures, we show the mean and standard error of the mean across 20 runs using different random seeds",
+   "page": 4
+  },
+  "X3": {
+   "value": "yes",
+   "quote": "we find it more appropriate and more informative to report the performance over 100 evaluation episodes of the best policy found over the whole training process (called absolute metric)",
+   "page": 5
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "we study the learning performance of these components and their combination on a low dimensional deceptive reward problem and on the larger HalfCheetah benchmark",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "a final metric of performance: the average over the last 100 evaluation episodes, 10 episodes for each of the last 10 controllers",
+   "page": 4
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "In all figures, we show the mean and standard error of the mean across 20 runs using different random seeds",
+   "page": 4
+  },
+  "Y3": {
+   "value": 2,
+   "quote": "For evaluation purposes, we use two benchmarks showing distinct properties",
+   "page": 2
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "We show that, though GEP alone performs better than GEP - PG on CMC, GEP - PG outperforms both GEP alone and the DDPG variants on HC",
+   "page": 5
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "we used the implementation of Henderson's fork of OpenAI Baselines (Dhariwal et al., 2017) for all the variants of DDPG",
+   "page": 4
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "For both setups, we use the implementations from OpenAI Gym (Brockman et al., 2016).",
+   "page": 4
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "GEP - PG is found to be robust to the number of GEP episodes used to fill the DDPG replay buffer. Performance is stable from about 100 to 600 GEP episodes (see Appendix G).",
+   "page": 7
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "In all figures, we show the mean and standard error of the mean across 20 runs using different random seeds",
+   "page": 4,
+   "kind": "se"
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Annexes A à G citées mais absentes du PDF (pas de -supp) : codé sur ce qui existe. X3 : la « métrique absolue » retient le meilleur contrôleur de l'entraînement, évalué ensuite sur 100 épisodes ; codé yes, mais la métrique finale est aussi rapportée. Y12 : bootstrap de l'IC de la différence des moyennes employé, mais aucun intervalle n'est rapporté dans le texte disponible (renvoi à l'annexe D absente), codé no. Q6 : paramètres par défaut de Henderson, un essai de taille de tampon, pas de méthode de choix, codé no."
+}

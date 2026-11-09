@@ -1,0 +1,20 @@
+{
+ "id": "ML16",
+ "coder": "C2",
+ "title": "Causal Flow Q-Learning for Robust Offline Reinforcement Learning",
+ "criteria": {
+  "Y1": {"value": "no", "quote": "For offline experiments, we run 500K steps training for all baselines and Causal-FQL proposed, averaging results over 4 seeds and present the results with mean and standard deviations.", "page": 6},
+  "Y2": {"value": "yes", "quote": "averaging results over 4 seeds and present the results with mean and standard deviations", "page": 6},
+  "Y3": {"value": 25, "quote": "We use a total of 25 visual tasks across 5 environments for evaluation.", "page": 17},
+  "Y4": {"value": "yes", "quote": "CFQL is able to obtain the best or near-best performance in 19 out of 25 tasks.", "page": 7},
+  "Y5": {"value": "yes", "quote": "We adopt the baseline implementation from FQL (Park et al., 2025b) and Value Flows (Dong et al., 2025).", "page": 17},
+  "Y6": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y7": {"value": "yes", "quote": "visual-cube-double-play-singletask-task2-v0", "page": 7},
+  "Y8": {"value": "no", "quote": "For offline-to-online experiments, we use the same setup during the offline stage and extend training to the online stage for an additional 500K steps.", "page": 6},
+  "Y9": {"value": "yes", "quote": "We sweep the discriminator loss coefficient over {1, 5, 10, 15}.", "page": 8},
+  "Y10": {"value": "no", "quote": "Causal-FQL is built upon the codebase of FQL (Park et al., 2025b) [dépôt lié sans fichier d'environnement cité]", "page": 16},
+  "Y11": {"value": "yes", "kind": "std", "quote": "averaging results over 4 seeds and present the results with mean and standard deviations", "page": 6},
+  "Y12": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null}
+ },
+ "doubts": "Y1 : taux de réussite moyen après 500K pas d'entraînement, sans que le point de mesure soit nommé (final, derniers épisodes…), donc no. Y3 : les 25 tâches à récompense unique sont bien 25 cadres d'entraînement distincts ; les 10 tâches de locomotion de l'annexe D ne sont pas comptées dans la conclusion principale. Y10 : le dépôt FQL est lié mais sans renvoi explicite à un fichier d'environnement, donc no."
+}

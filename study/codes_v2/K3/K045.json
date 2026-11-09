@@ -1,0 +1,144 @@
+{
+ "id": "K045",
+ "coder": "K3",
+ "title": "From Observations to Events: Event-Aware World Model for Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "Experiments on Atari 100K, Craftax 1M, and DeepMind Control 500K, DMC-GB2 500K demonstrate that EAWM consistently boosts the performance of strong MBRL baselines by 10%–45%",
+   "page": 1
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "where ht = h(st−1 , at−1 ) can be implemented as a recurrent neural network",
+   "page": 18
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Table 8 shows the hyperparameters of EADream. These hyperparameters are fixed on both Atari 100K and DeepMind Control benchmarks.",
+   "page": 22
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "We follow the official implementation of TDMPC2 (Hansen et al., 2024), use the default hyperparameters, and select the default 5M parameters for the single task.",
+   "page": 26
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Our code is released at https://github.com/MarquisDarwin/EAWM.",
+   "page": 1
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "In terms of practical effort, tuning the additional hyperparameters required only a small number of validation runs on 6 Atari games that we used in our ablation studies: Assault, Breakout, Gopher, Krull, Ms Pacman, and Up N Down.",
+   "page": 27
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "Agents are trained in a fixed environment but evaluated across visually distinct test environments.",
+   "page": 8
+  },
+  "Q8": {
+   "value": "yes",
+   "quote": "Each row represents the probability of improvement (Agarwal et al., 2021) that our algorithm outperforms the corresponding baseline in a randomly selected task from all tasks with 95% stratified bootstrap confidence intervals.",
+   "page": 32
+  },
+  "X1": {
+   "value": 5,
+   "quote": "All results of our experiments are reported over 5 seeds.",
+   "page": 7
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Mean human-normalized scores and the 95% stratified bootstrap confidence intervals (Agarwal et al., 2021) on the 26 tasks of Atari 100K.",
+   "page": 3
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "We used the default parameters and reproduced the results based on the implementation of DreamerV3 in PyTorch",
+   "page": 25
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "Experiments on Atari 100K, Craftax 1M, and DeepMind Control 500K, DMC-GB2 500K demonstrate that EAWM consistently boosts the performance of strong MBRL baselines",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Training on Atari 100K, with three tasks running on the same GPU in parallel, took about 1.2 days, resulting in an average of 0.4 days per environment",
+   "page": 35
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "The scores for each task are computed by conducting 100 evaluation episodes at the end of training. Standard measurement for a game is human-normalized score (HNS)",
+   "page": 8
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "Mean human-normalized scores and the 95% stratified bootstrap confidence intervals (Agarwal et al., 2021) on the 26 tasks of Atari 100K.",
+   "page": 3
+  },
+  "Y3": {
+   "value": 26,
+   "quote": "Atari 100K Benchmark is comprised of 26 different Atari video games",
+   "page": 8
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "Moreover, EAWM achieves the highest scores on half of the tasks among the baselines and performs consistently well.",
+   "page": 29
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "The results on Atari 100k are based on the established re-implementation of the original version of DreamerV3 (Hafner et al., 2023) in PyTorch using the default hyperparameters. We follow the official implementation of Simulus (Cohen et al., 2025) and reproduce the results based on the suggested hyperparameters.",
+   "page": 7
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "For a fair comparison (Zhang et al., 2024b; Cohen et al., 2025), here we exclude lookahead search methods.",
+   "page": 8
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "Agents are trained in a fixed environment but evaluated across visually distinct test environments.",
+   "page": 8
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "As shown in Tables 14 and 15, our EADream consistently outperforms DreamerV3 even if the hyperparameters introduced by our method change significantly.",
+   "page": 27
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "ci",
+   "quote": "with 95% stratified bootstrap confidence intervals on the Atari 100K",
+   "page": 32
+  },
+  "Y12": {
+   "value": "yes",
+   "quote": "Mean, median, and inter-quantile mean (IQM) human-normalized scores and the optimality gap (Agarwal et al., 2021) with 95% stratified bootstrap confidence intervals",
+   "page": 32
+  }
+ },
+ "doubts": "Q6 : le choix des hyperparamètres est dit fait sur 6 jeux Atari avec « un petit nombre » d'essais de validation, sans grille ni budget chiffré ; codé yes. Y3 : la conclusion couvre quatre bancs (26 Atari, Craftax, 10 DMC, 6 DMC-GB2) ; j'ai retenu les 26 jeux d'Atari 100K, le tableau principal. Y5 : DreamerV3, Simulus, TD-MPC2 et HarmonyDream sont identifiés, mais pas l'origine des chiffres de CURL, DrQ-v2, DIAMOND, REM, SVEA ni SADA ; codé yes pour les références principales. Y6 : l'exclusion des méthodes à recherche anticipée, avec sa raison, est comptée comme une combinaison omise (écart 17). X7 : durées en jours par environnement sur un GPU, sans total."
+}

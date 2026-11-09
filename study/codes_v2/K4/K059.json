@@ -1,0 +1,147 @@
+{
+ "id": "K059",
+ "coder": "K4",
+ "title": "ReTabSyn: Realistic Tabular Data Synthesis via Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We evaluate on 10 benchmark tabular classification datasets (Suh et al., 2023) with mixed numerical and categorical attributes",
+   "page": 5
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We adopt the GReAT framework (Borisov et al., 2023) with a GPT-2 backbone.",
+   "page": 5
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "For DPO training, we set β = 0.1 and use an initial learning rate of 1 × 10−4 over 3 training epochs. [learning rate and epochs of the SFT stage of the base generator not given]",
+   "page": 15
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "TabSyn (Zhang et al., 2024): We used the official GitHub implementation with default parameters.",
+   "page": 14
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "https://github.com/Bernardo1998/ReTabSyn",
+   "page": 2
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "which always draws fresh rows from the trained generator and tests them on the held-out real data",
+   "page": 5
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 10,
+   "quote": "We repeat all settings over 10 random seeds and sample 1024 synthetic rows per generator.",
+   "page": 5
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Table 2. PR-AUC at 1% prevalence (mean±SE over 10 seeds).",
+   "page": 7
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "Our RL fine-tuning experiments are conducted using the Hugging Face trl library with a pre-trained GPT-2 causal language model as the backbone.",
+   "page": 15
+  },
+  "X6": {
+   "value": 2,
+   "quote": "we re-run the small-data protocol of §4.2 on a stronger modern backbone, Qwen3.5-2B, on Wilt and Churn (10 seeds each)",
+   "page": 17
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Table 9. Run-time decomposition of generator operations (Train, Fine-tune, Sampling) on full Wilt dataset",
+   "page": 15
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "2018) on synthetic data and evaluating on the fixed real test set; we report mean AUROC (or PR-AUC for the 1% prevalence setting).",
+   "page": 6
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "Table 2. PR-AUC at 1% prevalence (mean±SE over 10 seeds).",
+   "page": 7
+  },
+  "Y3": {
+   "value": 10,
+   "quote": "We evaluate on 10 benchmark tabular classification datasets (Suh et al., 2023) with mixed numerical and categorical attributes",
+   "page": 5
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "ReTabSyn consistently outperforms its base model (GReaT) and the deep-learning baseline TabSyn, but clearly trails the interpolation-based SMOTE on regression.",
+   "page": 16
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "GReaT (Borisov et al., 2023): We used the official GitHub implementation. [...] TVAE (Xu et al., 2019): We used the official SDV library implementation.",
+   "page": [
+    13,
+    14
+   ]
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "datasets lacking such a column (e.g., HTRU2, Magic) cannot form a meaningful shift benchmark and are excluded (full audit in Appendix J).",
+   "page": 6
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "where models are trained on a majority subgroup and evaluated on a minority subgroup",
+   "page": 6
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Table 22 reports a sensitivity sweep over the DPO temperature β and the DPO-Positive regularization weight λ on Wilt",
+   "page": 18
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "se",
+   "quote": "Table 2. PR-AUC at 1% prevalence (mean±SE over 10 seeds).",
+   "page": 7
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X5 : DPO sur un générateur de tableaux à base de GPT-2 (et Qwen3.5-2B en annexe) ; codé llm car c'est de l'optimisation de préférences d'un modèle de langage, mais GPT-2 est petit et la tâche n'est pas du langage. X6 : 2 familles (GPT-2 principal, Qwen3.5 en validation annexe), GPT-5.4 seulement prompté. Q3 : hyperparamètres DPO donnés, mais pas le taux d'apprentissage ni le nombre d'époques de l'étape SFT. Q4 : TabSyn « default parameters » sans version, les autres références ont leurs réglages. Q6 : les grilles données concernent XGBoost et CatBoost (évaluation aval), pas la méthode. X1 : 10 graines supposées refaire l'entraînement (sous-échantillons tirés au hasard), le texte ne dit pas explicitement que le générateur est réentraîné. Y5 : TVAE vient de la bibliothèque SDV sans version ; compté yes car l'implémentation officielle est nommée pour chaque référence. Y7 : jeux UCI/Kaggle avec liens mais séparation 80/20 construite par les auteurs, non publiée."
+}

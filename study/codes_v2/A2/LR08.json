@@ -1,0 +1,71 @@
+{
+ "id": "LR08",
+ "coder": "A2",
+ "title": "TROLL: Trust Regions Improve Reinforcement Learning for Large Language Models",
+ "criteria": {
+  "Y1": {
+   "value": "yes",
+   "quote": "Table 1: Final train and evaluation success rates on DAPO [...] computing the mean over 32 responses for the small but hard AMC, AIME2024, and AIME2025 datasets while only considering a single response for the other sets",
+   "page": [
+    8,
+    24
+   ]
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "non applicable : X2 v1 vaut no (aucune barre ni bande d’erreur)",
+   "page": null
+  },
+  "Y3": {
+   "value": 4,
+   "quote": "Across mathematical reasoning and code generation tasks, model families",
+   "page": 1
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "TROLL significantly improves over Clip in most cases",
+   "page": 8
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "We base our experiments on the verl repository",
+   "page": 8
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "We omit evaluations for DAPO with models other than SmolLM3-3B, as none matched the performance of Qwen3-1.7B in preliminary Clip experiments.",
+   "page": 8
+  },
+  "Y7": {
+   "value": "yes",
+   "quote": "Project page, code, and datasets available at https://niklasfreymuth.github.io/troll/",
+   "page": 1
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "For broader out-of-distribution evaluation, we again follow Cui et al. (2025b) and use a benchmark suite",
+   "page": 24
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We experiment with different KL bounds, testing ϵ=0.01 and ϵ=0.25 instead of the default ϵ=0.05.",
+   "page": 32
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "non applicable : X2 v1 vaut no (aucune barre ni bande d’erreur)",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y1 : « final » est dit pour le tableau 1, mais les courbes sont lissées par fenêtre glissante et il n’est pas dit si le chiffre final est lissé. Y3 : 4 jeux d’entraînement (DAPO-Math, Eurus-Code, GSM8K, Eurus-Math), DAPO et Eurus-Code portant l’essentiel de la conclusion. Y4 : les pertes visibles sont des cellules isolées (PPO Qwen2.5 sur DAPO Train, FineMath-Llama-3B sur GSM8K) plutôt que des tâches entières. Y5 : les variantes Clip viennent du dépôt verl (lien, sans version) ; l’origine du code de BAPO et GPG n’est pas dite. Y7 : la séparation DAPO-Eval est construite par les auteurs ; elle est annoncée publiée sur la page du projet, mais le texte dit aussi « will release » après désanonymisation."
+}

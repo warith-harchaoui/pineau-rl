@@ -1,0 +1,68 @@
+{
+ "id": "LR17",
+ "coder": "B2",
+ "title": "MedVR: Annotation-Free Medical Visual Reasoning via Agentic Reinforcement Learning",
+ "criteria": {
+  "Y1": {
+   "value": "yes",
+   "quote": "For these benchmarks, we use accuracy as both the evaluation metric and the reinforcement learning reward signal.",
+   "page": 24
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "non applicable : X2 v1 vaut no",
+   "page": null
+  },
+  "Y3": {
+   "value": 2,
+   "quote": "For the modality-specific free-text tasks, the model is trained on a consolidated dataset of the VQA-RAD and SLAKE training splits, which constitute our in-domain benchmarks.",
+   "page": 6
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "Lingshu-7B (Xu et al., 2025) 84.2 54.3 26.5 55.0 67.9 83.1 61.9 70.3 [...] MedVR (Ours) 96.8 54.3 26.4 59.2 74.4 85.3 62.3 74.0",
+   "page": 7
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "To provide a clear benchmark for the efficacy of our interleaved visual-textual reasoning, we implemented a Textual RL baseline.",
+   "page": 28
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "Samples where the model exhibits high confidence, defined as an accuracy of ≥ 7/8, are subsequently excluded.",
+   "page": 26
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "To assess out-of-domain (OOD) generalization, we conduct zero-shot evaluations on the test sets of PMC-VQA and MedXpertQA.",
+   "page": 6
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We analyze the sensitivity of the EVR module to its entropy weight hyperparameter, γ, which governs the influence of predictive entropy on the tool-sampling process.",
+   "page": 8
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "non applicable : X2 v1 vaut no",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y1 : précision pour les QCM et correction jugée par Qwen3-235B pour le texte libre, décodage glouton, modèle après 64 itérations, codé yes. Y3 : deux cadres d'entraînement (OmniMedVQA en QCM ; VQA-RAD + SLAKE en texte libre), compté 2. Y5 : les modèles de référence sont des modèles publiés cités un par un (annexe G) et Textual RL est implémenté par les auteurs, codé yes avec hésitation sur l'origine des chiffres. Y7 : la séparation officielle de Med-R1 est citée pour OmniMedVQA, mais les autres bancs n'ont ni version ni séparation datée, codé no."
+}

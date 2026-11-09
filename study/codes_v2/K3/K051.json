@@ -1,0 +1,146 @@
+{
+ "id": "K051",
+ "coder": "K3",
+ "title": "Hierarchical Reinforcement Learning for Sparse-Reward Search in Commutative Algebra",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We evaluate our approach over a wide range of degrees and demonstrate that it consistently outperforms classical RL algorithms as well as greedy search.",
+   "page": 1
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We propose a constrained options-based HRL framework with an equivariant graph neural network policy",
+   "page": 1
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Table 2. Model Hyperparameters. [...] Table 3. Training Hyperparameters.",
+   "page": [
+    19,
+    20
+   ]
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "The repository containing additional materials is available at https://github.com/Math-AI-Caltech/alghirsch-hrl.",
+   "page": 2
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "As an illustrative example, we consider Kalai’s algebraic Hirsch conjecture and recast the construction of its counterexamples as a sparse-reward reinforcement learning problem on graphs.",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "The effective success rate is defined as a count of successful environment terminations over the number of environment interactions.",
+   "page": 4
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y3": {
+   "value": 1,
+   "quote": "Figure 6. Average episodic return over degrees d = 4 to d = 7.",
+   "page": 8
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "The inflection points of GAT for degrees d > 5 occur far beyond the number of steps displayed in the figures and are therefore omitted.",
+   "page": 8
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X5 : recherche combinatoire en mathématiques avec une politique GNN, ni LLM ni jouet ; codé classic. X1 : aucun nombre d'entraînements n'est donné pour le tableau 1 ni la figure 6 ; codé null. X2 : seules les barres de la figure 8 (heuristique de linéarisation, pas le résultat principal) portent une dispersion ; codé no. Y3 : les degrés d = 4 à 7 sont traités comme des niveaux de difficulté d'un même problème, donc une tâche. Y6 : l'omission des courbes GAT au-delà de la fenêtre, avec sa raison, est comptée comme exclusion dite."
+}

@@ -1,0 +1,144 @@
+{
+ "id": "K065",
+ "coder": "K4",
+ "title": "Reinforcement Learning for Tool-Calling Agents in Fast Healthcare Interoperability Resources (FHIR)",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "Empirically, our approach improves answer correctness from 50% (o4-mini) to 77% on FHIR-AgentBench using a smaller and cheaper Qwen3-8B model.",
+   "page": 1
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We use instruction-tuned Qwen3 models with native tool calling and reasoning.",
+   "page": 6
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "Qwen3-8B was trained with a fixed learning rate of 1×10−6 and a batch size of 8. [KL coefficient β not given]",
+   "page": 6
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "In our harness, o4-mini achieves a comparable 47%. We additionally include Gemini-3-Flash (52%) and GLM5 (59%, 744B parameters with 40B active) as API-based baselines. [no sampling settings for the API baselines]",
+   "page": 6
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "If not stated otherwise, results are reported on the 424 FHIRAGENTBENCH validation set questions.",
+   "page": 5
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 1,
+   "quote": "We ran three RL recipes:",
+   "page": 6
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Table 1. Answer correctness on FHIR-AgentBench (%). Mean ± SD computed over 5 rollouts for Qwen3 models.",
+   "page": 7
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "We implement a multi-turn CodeAct agent and post-train it with reinforcement learning using a custom harness and tools.",
+   "page": 1
+  },
+  "X6": {
+   "value": 1,
+   "quote": "We use instruction-tuned Qwen3 models with native tool calling and reasoning.",
+   "page": 6
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "Curves show the answer correctness on the FHIR-AgentBench (Lee et al., 2025) validation subset (n=424) with a 6 turn budget. [...] Dashed horizontal lines mark each run’s score at step 3000.",
+   "page": 7
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "Table 1. Answer correctness on FHIR-AgentBench (%). Mean ± SD computed over 5 rollouts for Qwen3 models.",
+   "page": 7
+  },
+  "Y3": {
+   "value": 1,
+   "quote": "We study this problem in the context of FHIRAgentBench, a benchmark for realistic question answering over real-world hospital data",
+   "page": 1
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "FHIR-AgentBench reports an answer correctness of 50% with o4-mini in a multi-turn CodeAct setting (Lee et al., 2025). In our harness, o4-mini achieves a comparable 47%.",
+   "page": 6
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "Categories with fewer than 15 validation samples (Location, Procedure, Patient, Condition) are omitted.",
+   "page": 8
+  },
+  "Y7": {
+   "value": "yes",
+   "quote": "If not stated otherwise, results are reported on the 424 FHIRAGENTBENCH validation set questions.",
+   "page": 5
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "std",
+   "quote": "Table 1. Answer correctness on FHIR-AgentBench (%). Mean ± SD computed over 5 rollouts for Qwen3 models.",
+   "page": 7
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q7 : les résultats sont rapportés sur la séparation de validation, qui sert aussi à choisir la meilleure des trois recettes, et les données d'entraînement RL ne sont jamais décrites ; codé no. X1 : une seule exécution par recette, codé 1 ; le ± porte sur 5 passes d'évaluation, pas sur des entraînements. X3 : le 77 % est la meilleure de trois recettes différentes jugée sur la séparation rapportée ; ce ne sont pas des entraînements identiques, donc no, mais c'est une sélection sur l'évaluation. Q3 : coefficient KL non donné. Q4 : aucun réglage d'échantillonnage pour les modèles API. Y2/Y11 : écart type entre 5 passes d'évaluation, pas entre graines. Y5 : les références API passent par le harnais des auteurs, et o4-mini est aussi recopié de Lee et al. ; compté yes. Y7 : la « validation set » de FHIR-AgentBench (424 questions) est comptée comme séparation nommée, sans date."
+}

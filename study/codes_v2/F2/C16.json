@@ -1,0 +1,69 @@
+{
+ "id": "C16",
+ "coder": "F2",
+ "title": "QMIX: Monotonic Value Function Factorisation for Deep Multi-Agent Reinforcement Learning",
+ "criteria": {
+  "Y1": {
+   "value": "yes",
+   "quote": "we pause training every 100 episodes and run 20 independent episodes with each agent performing greedy decentralised action selection",
+   "page": 7
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "plot the mean test win rate across 20 runs for each method on selected maps, together with 95% confidence intervals",
+   "page": 7
+  },
+  "Y3": {
+   "value": 6,
+   "quote": "Win rates for IQL, VDN, and QMIX on six different combat maps.",
+   "page": 7
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "On the 8m map, this simple strategy is sufficient for good performance, as evidenced by the extremely high win rate of the heuristic-based algorithm, and explains the performance parity with QMIX.",
+   "page": 7
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "plot the mean test win rate across 20 runs for each method on selected maps, together with 95% confidence intervals",
+   "page": 7,
+   "kind": "ci"
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y4 : parité de VDN avec QMIX sur 8m comptée comme une tâche où la méthode ne gagne pas, bien que le texte dise aussi « strongest performer on all of the maps ». Y7 : SC2LE est nommé sans version du jeu ni de l'environnement."
+}

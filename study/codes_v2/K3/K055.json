@@ -1,0 +1,144 @@
+{
+ "id": "K055",
+ "coder": "K3",
+ "title": "Towards Large-Scale In-Context Reinforcement Learning by Meta-Training in Randomized Worlds",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "Without any further parameter tuning, we evaluate our model, namely OmniRL, on both unseen AnyMDP tasks in Figure 5, Gymnasium tasks, and DarkRoom [13] in Figure 16, and those performances are shown in Table 1.",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "The sequence model has a hidden size of 512, inner hidden size of 1024, hidden ratio of 2, and block number of 18 for RWKV-7.",
+   "page": 28
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "We use a batch size of 5 per GPU, divided into segments (chunks) of 2K steps each. We optimize using the AdamW algorithm with a learning rate that decays from a peak value of 2 × 10−4 .",
+   "page": 7
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "https://github.com/airs-cuhk/airsoul/tree/main/projects/OmniRL",
+   "page": 1
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "Hyper-parameters of PPO and TQL-UCB were separately tuned by grid-search inside every task family to maximize final-episode performance.",
+   "page": 7
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "Gymnasium, DarkRoom, and Bandits tasks are entirely absent from OmniRL’s training regimen.",
+   "page": 7
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 3,
+   "quote": "results for Gymnasium tasks are averaged over 3 independent runs for each task.",
+   "page": 7
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Normalized episodic return of TQL-UCB, PPO and OmniRL on 64 AnyMDP evaluation tasks (mean ±95% CI).",
+   "page": 7
+  },
+  "X3": {
+   "value": "yes",
+   "quote": "Table 1: Comparison of best average episodic performance within 10,000 episodes for each learner.",
+   "page": 7
+  },
+  "X4": {
+   "value": "yes",
+   "quote": "Hyper-parameters of PPO and TQL-UCB were separately tuned by grid-search inside every task family to maximize final-episode performance.",
+   "page": 7
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "Our implementation, OmniRL, was trained exclusively on AnyMDP tasks using context sequences of up to 512K steps per sequence and 6 billion steps overall.",
+   "page": 2
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "The meta-training process is primarily conducted using 8 Nvidia Tesla A800 GPUs. [...] The average time cost per iteration is 8 seconds for trajectories with T = 12K",
+   "page": 7
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "Comparison of best average episodic performance within 10,000 episodes for each learner. The episode performances are normalized to a scale of 0% (uniform random policy) to 100% (oracle policy).",
+   "page": 7
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "By default, the normalized performance S eval is averaged across tasks with identical Nepisodes . The deviation is estimated using the 95% confidence interval of the mean.",
+   "page": 30
+  },
+  "Y3": {
+   "value": 8,
+   "quote": "Gymnasium, DarkRoom, and Bandits tasks are entirely absent from OmniRL’s training regimen.",
+   "page": 7
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "Garnet(16, 5, 2) 98.8%/241K/2.1K 97.1%/57K/0.5K 85.9%/8.2K/71",
+   "page": 7
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "For environments with continuous observation spaces, such as Pendulum-v1, we manually discretize the observation space into 60 discrete classes [versions given for Gymnasium tasks only, not DarkRoom or Switch2]",
+   "page": 8
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "Gymnasium, DarkRoom, and Bandits tasks are entirely absent from OmniRL’s training regimen.",
+   "page": 7
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "ci",
+   "quote": "(mean ±95% CI)",
+   "page": 7
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X5 : apprentissage par renforcement en contexte avec un modèle de séquence (RWKV-7, 43,6 M de paramètres) entraîné sur des MDP tabulaires, pas un modèle de langage ; codé classic (DeepSeek-R1 n'apparaît qu'en comparaison annexe). X1 : OmniRL semble méta-entraîné une seule fois ; les « 3 independent runs » des tâches Gymnasium sont des évaluations en contexte ; codé 3. X3 : le tableau 1 rapporte la « best average episodic performance within 10,000 episodes » pour chaque méthode, ce qui revient à prendre le meilleur point de la courbe d'évaluation ; codé yes. Q6 : la recherche en grille ne concerne que PPO et TQL-UCB, et rien n'est dit sur le choix des hyperparamètres d'OmniRL ; codé yes. Y3 : OmniRL n'est entraîné que sur AnyMDP, mais chaque tâche d'évaluation est un apprentissage en contexte comparé à PPO et TQL entraînés sur place ; j'ai compté 8 environnements distincts du tableau 1 (AnyMDP, bandits, Garnet, CliffWalking, FrozenLake, Pendulum, Switch2, DarkRoom), sinon 1 avec une lecture stricte de l'écart 17. Y9 : le nombre de tâches d'entraînement et l'architecture sont des ablations de données et de composant, pas des hyperparamètres."
+}

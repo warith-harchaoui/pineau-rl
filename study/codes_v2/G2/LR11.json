@@ -1,0 +1,20 @@
+{
+ "id": "LR11",
+ "coder": "G2",
+ "title": "Predictive CVaR Q-Learning",
+ "criteria": {
+  "Y1": {"value": "yes", "quote": "Each solid line represents the mean performance across 10 independent trials. Policies were evaluated every 100 iterations, with each point estimated from 100,000 sample runs.", "page": 9},
+  "Y2": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y3": {"value": 2, "quote": "(b) The stochastic grid-world environment. [...] (a) Sequential decision tree.", "page": 8},
+  "Y4": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y5": {"value": "yes", "quote": "The implementation is written in Python 3.8+ using only NumPy and Matplotlib, without relying on any external reinforcement learning libraries", "page": 13},
+  "Y6": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y7": {"value": "no", "quote": "All code and experimental results will be released as a ZIP file", "page": 13},
+  "Y8": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y9": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y10": {"value": "no", "quote": "The implementation is written in Python 3.8+ using only NumPy and Matplotlib", "page": 13},
+  "Y11": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y12": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null}
+ },
+ "doubts": "Y5 : les références (RN, CVaR-Q) ne sont pas dites « réimplémentées » mot pour mot, mais l'annexe A.4 dit que toute l'implémentation est en NumPy sans bibliothèque de RL externe, ce que je lis comme du code maison. Y7 : les deux environnements sont construits par les auteurs et décrits en entier dans le texte, mais non publiés (code « will be released »), donc no par l'écart 17. Y10 : Python 3.8+ est versionné mais pas NumPy ni Matplotlib, donc no. Y1 : la mesure est la CVaR au niveau q = 0.1 prise à chaque point d'évaluation de la courbe, ce que je compte comme un point de mesure dit."
+}

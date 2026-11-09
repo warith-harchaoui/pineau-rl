@@ -1,0 +1,143 @@
+{
+ "id": "K067",
+ "coder": "K4",
+ "title": "Reinforcement Learning Teachers of Test Time Scaling",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "Following prior work [6, 13, 12], our main evaluation considers three popular and challenging tasks from the literature",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "the RLTs we consider are orders-of-magnitude smaller models, all trained starting from the Qwen2.5-7B-Instruct LM [23]",
+   "page": 6
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Table 3: Hyperparameter listing for the RLT training optimization and reward.",
+   "page": 14
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "Table 7: Hyperparameter listing for the traditional RL on the Li et al. [31] dataset.",
+   "page": 19
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "https://github.com/SakanaAI/RLT",
+   "page": 2
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "Our choice was based on making each individual component of the RLT rewards have approximately the same expected magnitude over the model’s initial output completions.",
+   "page": 15
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "We train and test our models on distinct datasets of 16K and 1K automatically-generated question and solution pairs.",
+   "page": 8
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "For the same reason, we do not retune any hyperparameters for the distillation phase, training students following the same procedure as our baselines based on data size [12, 6].",
+   "page": 7
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "Training reasoning language models (LMs) with reinforcement learning (RL) for one-hot correctness inherently relies on the LM being able to explore and solve its task with some chance at initialization.",
+   "page": 1
+  },
+  "X6": {
+   "value": 1,
+   "quote": "the RLTs we consider are orders-of-magnitude smaller models, all trained starting from the Qwen2.5-7B-Instruct LM [23]",
+   "page": 6
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Table 4: Cost to train and generate datasets with RLT models as opposed to DeepSeek R1 [4].",
+   "page": 15
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "In all our results, we report the completion accuracy of each of our students for a single generated completion, as also reported in prior work [6, 12, 13].",
+   "page": 20
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y3": {
+   "value": 1,
+   "quote": "We train RLTs on the set of questions and solutions selected by Li et al. [12] based on their level of challenge.",
+   "page": 6
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "When available, we use baseline results reported in prior work, which we found close to our early reproduction attempts.",
+   "page": 7
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "While we removed all science questions from STILL-2 present in our original data, we find performance on GPQA does not decrease substantially",
+   "page": 23
+  },
+  "Y7": {
+   "value": "yes",
+   "quote": "AIME24 [25], the set of problems used for the American Invitational Mathematics Examination. MATH 500 [26], the set of problems selected by [27] from the canonical competition math benchmark. GPQA Diamond [28]",
+   "page": 7
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "Thus, in this subsection, we evaluate how well RLTs can be applied to construct datasets and distill new specialized students in out-of-distribution domains, without any expensive RL retraining.",
+   "page": 8
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X5 : RL (GRPO) sur Qwen2.5-7B pour en faire un enseignant, donc llm. Q6 : λ et α fixés par un critère dit (magnitudes égales des termes de récompense), sans balayage ; codé yes. X1 : aucune graine ni répétition, null. Y3 : un seul cadre d'entraînement principal (le corpus de Li et al.) ; le compte à rebours sert de test de transfert, et la taille 1K/17K n'est qu'un sous-échantillon. Y5 : chiffres des références recopiés de s1, Sky-T1 et Bespoke avec leur source, plus Bespoke-1K réentraîné par les auteurs. Y6 : retrait des questions de science de STILL-2 (expérience de l'annexe C.5) compté comme exclusion dite. Y7 : AIME24, MATH 500 et GPQA Diamond sont des séparations nommées et fixes. Y9 : λ = 0 et α = 0 sont présentés comme ablations de composants de la récompense, et le changement de taille de lot n'est pas chiffré, donc no."
+}

@@ -1,0 +1,143 @@
+{
+ "id": "K014",
+ "coder": "K1",
+ "title": "Principled RL for Flow Matching Emerges from the Chunk-level Policy Optimization",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "Table 3 presents results for preference alignment, and Table 2 details performance on the GenEval and DPG benchmarks.",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We adopt Dance-GRPO (Xue et al., 2025) and Flow-GRPO (Liu et al., 2026) as baselines, conducting experiments with FLUX.1 Dev (Labs, 2024) as our base model.",
+   "page": 6
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "The hyperparameters are summarized in Table 8, remaining the same for all baselines and our approach.",
+   "page": 13
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "The hyperparameters are summarized in Table 8, remaining the same for all baselines and our approach.",
+   "page": 13
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "The code is available on https://github.com/ xingzhejun/GCPO.",
+   "page": 2
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "we use HPSv3 (Ma et al., 2025) and ImageReward (Xu et al., 2023) as in-domain and out-ofdomain evaluation metrics, respectively, on the HPDv2.1 (Wu et al., 2023) test set.",
+   "page": 7
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "The hyperparameters are summarized in Table 8, remaining the same for all baselines and our approach.",
+   "page": 13
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "Recent Progress in post-training flow matching for text-to-image (T2I) generation with Group Relative Policy Optimization (GRPO) has demonstrated strong potential.",
+   "page": 1
+  },
+  "X6": {
+   "value": 1,
+   "quote": "conducting experiments with FLUX.1 Dev (Labs, 2024) as our base model.",
+   "page": 6
+  },
+  "X7": {
+   "value": "no",
+   "quote": "All experiments were conducted on 8 Nvidia GPUs.",
+   "page": 13
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "preference alignment, we use HPSv3 (Ma et al., 2025) and [...] ImageReward (Xu et al., 2023) as in-domain and out-of- [...] domain evaluation metrics, respectively, on the HPDv2.1 [...] (Wu et al., 2023) test set.",
+   "page": 7
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y3": {
+   "value": 2,
+   "quote": "HPSv3 (Ma et al., 2025) and CLIP (Radford et al., 2021) are used as the primary reward models for the preference alignment task and the standard T2I benchmarks, respectively.",
+   "page": 6
+  },
+  "Y4": {
+   "value": "no",
+   "quote": "GCPO consistently outperforms both the base model and the baselines.",
+   "page": 7
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "yes",
+   "quote": "domain evaluation metrics, respectively, on the HPDv2.1 [...] (Wu et al., 2023) test set. For the standard T2I benchmark, [...] we report results on GenEval (Ghosh et al., 2023) and DPG [...] (Hu et al., 2024).",
+   "page": 7
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Table 5. Ablation Results of Different Chunk Settings.",
+   "page": 8
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X5 : RL (GRPO) sur un modèle texte-image à flow matching (FLUX.1 Dev), ni LLM ni VLM au sens strict ; codé llm comme post-entraînement de grand modèle génératif par préférences, à défaut de mieux. Q3 : le tableau 8 ne donne pas le coefficient β du terme KL. Y3 : même jeu HPDv2.1 avec deux récompenses (HPSv3, CLIP) pour deux tâches dites, codé 2. Y4 : GCPO gagne les deux tâches en global ; les sous-catégories de GenEval où il perd (Single Obj., Position) sont montrées mais ne sont pas des tâches, d'où no. Y7 : HPDv2.1 test, GenEval et DPG comptés comme bancs fixes et nommés, sans version au sens strict. Y8 : ImageReward est appelé « out-of-domain » mais c'est une métrique, pas une distribution de test, d'où no. Y9 : la taille de bloc fixe est balayée (tableau 5), comptée comme hyperparamètre."
+}

@@ -1,0 +1,68 @@
+{
+ "id": "ML03",
+ "coder": "B2",
+ "title": "CoCoEdit: Content-Consistent Image Editing via Region Regularized Reinforcement Learning",
+ "criteria": {
+  "Y1": {
+   "value": "yes",
+   "quote": "Specifically, we compute PSNR and SSIM in non-edit regions to obtain the pixel-level similarity between input and edited images.",
+   "page": 7
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "non applicable : X2 v1 vaut no",
+   "page": null
+  },
+  "Y3": {
+   "value": 1,
+   "quote": "we first construct a dedicated training dataset of 40K samples, namely CoCoEdit-40K.",
+   "page": 2
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "non applicable : Y3 vaut 1",
+   "page": null
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "To ensure the rationality of mask generation, we exclude unsuitable editing types such as global editing (style, tone), location-agnostic editing (addition) and layout change (extract).",
+   "page": 6
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "Although CoCoEdit is trained on local editing samples, it does not compromise global editing capabilities.",
+   "page": 8
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We ablate the ratio of rewards and the contribution of region-based regularizer on GEdit-Bench in Figure 7.",
+   "page": 8
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "non applicable : X2 v1 vaut no",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y1 : PSNR/SSIM dans la région non éditée sont définis (annexe B.2) et le score MLLM suit le protocole des bancs, modèle après 1K itérations, codé yes. Y3 : un seul jeu d'entraînement (CoCoEdit-40K) appliqué à deux modèles de base, compté 1. Y5 : BAGEL, OmniGen2, Step1X-Edit sont des modèles publiés cités, mais l'origine des variantes « w/ Edit-R1 » et « w/ MotionNFT » (réentraînées ou publiées) n'est pas dite, codé no. Y7 : GEdit-Bench-EN et ImgEdit-Bench sont nommés, mais les masques ajoutés par les auteurs ne sont publiés que via un lien générique et sans version, codé no. Y8 : les types d'édition globale, absents de l'entraînement, sont évalués comme généralisation (tableau 3), codé yes."
+}

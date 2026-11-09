@@ -1,0 +1,144 @@
+{
+ "id": "C36",
+ "coder": "H4",
+ "title": "Temporal Difference Models: Model-Free Deep RL for Model-Based Control",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We perform the comparison on five simulated tasks",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "The policies and networks are parmaeterized with neural networks with ReLU hidden activation and two hidden layers of size 300 and 300.",
+   "page": 12
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "we performed a grid search over the reward scale in the range {0.01, 1, 100, 10000} and the number of updates per observations in the range {1, 5, 10}",
+   "page": 13
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 3,
+   "quote": "The bold line shows the mean across 3 random seeds, and the shaded region show one standard deviation.",
+   "page": 8
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "The bold line shows the mean across 3 random seeds, and the shaded region show one standard deviation.",
+   "page": 8
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "yes",
+   "quote": "For all the model-free algorithms (DDPG, DDPG-Sparse, HER, and TDMs), we performed a grid search over the reward scale in the range {0.01, 1, 100, 10000}",
+   "page": 13
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "In all our experiments, we used DDPG (Lillicrap et al., 2015) as the base off-policy model-free RL algorithm for learning the TDMs",
+   "page": 12
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "All plots show the final distance to the goal versus 1000 environment steps (not rollouts).",
+   "page": 8
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "The bold line shows the mean across 3 random seeds, and the shaded region show one standard deviation.",
+   "page": 8
+  },
+  "Y3": {
+   "value": 6,
+   "quote": "We perform the comparison on five simulated tasks",
+   "page": 7
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "TDMs learn as quickly or faster than the model-based method, but also always learn policies that are as good as if not better than the modelfree policies.",
+   "page": 7
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "The environment is the same as in Brockman et al. (2016), except that we lowered the gear ratio to 30 for all joints.",
+   "page": 14
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Figure 3b compares the learning speed for different horizon values τmax . Performance degrades when the horizon is too low, and learning becomes slower when the horizon is too high.",
+   "page": 8
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "The bold line shows the mean across 3 random seeds, and the shaded region show one standard deviation.",
+   "page": 8,
+   "kind": "std"
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q3 et Q4 : grilles de recherche données, mais pas les valeurs retenues (échelle de récompense, I, taux d'apprentissage) sauf τmax = 9 pour le guépard, codé no. X4 : même grille annoncée pour toutes les méthodes sans modèle, mais la référence à base de modèle n'est pas réglée, codé yes avec hésitation. Y3 : cinq tâches simulées plus le robot Sawyer réel (comparé seulement à DDPG), 6 ; les deux tâches Ant comptées séparément. Y4 : seules des égalités (« as quickly or faster », « as good as if not better ») sont dites, codé yes avec hésitation. Y5 : le montage des références est décrit en annexe, sans dire d'où vient le code de DDPG et HER, codé no."
+}

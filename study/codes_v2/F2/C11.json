@@ -1,0 +1,68 @@
+{
+ "id": "C11",
+ "coder": "F2",
+ "title": "RLlib: Abstractions for Distributed Reinforcement Learning",
+ "criteria": {
+  "Y1": {
+   "value": "yes",
+   "quote": "The time required to achieve a reward of 6000 on the Humanoid-v1 task",
+   "page": 8
+  },
+  "Y2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y3": {
+   "value": 2,
+   "quote": "For PPO we evaluate on the same Humanoid-v1 task [...] the PongDeterministic-v4 environment in 12 minutes",
+   "page": 8
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "which matches the performance of a well-tuned baseline (OpenAI, 2016)",
+   "page": 8
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "comparing against specialized systems [...] built specifically for those algorithms (OpenAI, 2017; Hesse",
+   "page": 8
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "yes",
+   "quote": "For PPO we evaluate on the same Humanoid-v1 task [...] the PongDeterministic-v4 environment in 12 minutes",
+   "page": 8
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y3 : j'ai compté Humanoid-v1 et PongDeterministic-v4, seuls environnements où RLlib est comparé à une référence nommée ; la figure 5 (Atari, A3C et Ape-X) ne nomme pas le jeu. Y4 : « matches the performance of a well-tuned baseline » (et « competitive with » pour le serveur de paramètres) lu comme une tâche où la méthode ne gagne pas. Y7 : yes car les tâches de la conclusion principale ont un suffixe Gym, mais la comparaison Atari de la figure 5 n'a ni jeu ni version. Y2 : X2 v1 vaut yes mais je n'ai trouvé aucune barre ni bande définie (« median time » seulement). Y9 : les balayages portent sur le nombre de workers ou de CPU et sur l'optimiseur de politique (paramètres système), pas sur un hyperparamètre de la méthode."
+}

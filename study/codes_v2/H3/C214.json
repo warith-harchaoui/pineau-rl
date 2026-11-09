@@ -1,0 +1,143 @@
+{
+ "id": "C214",
+ "coder": "H3",
+ "title": "Post: Device Placement with Cross-Entropy Minimization and Proximal Policy Optimization",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We have evaluated Post using four open-source benchmarks in TensorFlow",
+   "page": 6
+  },
+  "Q2": {
+   "value": "no",
+   "quote": "This work adopts a different approach, using the softmax distributions rather than an RNN as the policy representation.",
+   "page": 2
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Our detailed setting of the parameters in Algorithm 1 is as follows: the learning rate of SGA is 1; the ratio for choosing promising placements is 0.1 (6 best placements out of 60 samples over 5 iterations); the exploration factor  is 0.1, which is linearly reduced to zero during learning; the KL penalty coefficient β is initialized as 1 and adapted based on a target KL divergence of 0.03.",
+   "page": 6
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "we have implemented and run the policy gradient method proposed in these papers in our hardware and software environments, so that a fair comparison with our proposed algorithm can be made.",
+   "page": 7
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Errors of per-step times are within 2% around the average.",
+   "page": 7
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "Post, that integrates cross-entropy minimization and proximal policy optimization",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "We have conducted our experiments with 12 machines on the Google Cloud platform.",
+   "page": 6
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "As the first step involves initial configuration, we use the average training time of the following 10 steps to measure the performance of this placement.",
+   "page": 6
+  },
+  "Y2": {
+   "value": "no",
+   "quote": "Errors of per-step times are within 2% around the average.",
+   "page": 7
+  },
+  "Y3": {
+   "value": 4,
+   "quote": "We have evaluated Post using four open-source benchmarks in TensorFlow: Inception-V3 [12, 21], ResNet [13, 21], RNN Language Modeling (RNNLM) [14], and Neural Machine Translation (NMT)",
+   "page": 6
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "Best Performance. As shown in Table 1, for RNNLM and ResNet, Post is identical to the Single GPU baseline.",
+   "page": 7
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "we have implemented and run the policy gradient method proposed in these papers in our hardware and software environments, so that a fair comparison with our proposed algorithm can be made.",
+   "page": 7
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "no",
+   "quote": "Errors of per-step times are within 2% around the average.",
+   "page": 7
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q2 : la méthode n'a pas de réseau (politique softmax tabulaire) ; les réseaux ne sont que l'objet à placer, et la référence PG réimplémentée utilise un RNN, codé no. X1 : aucun nombre d'entraînements indépendants n'est donné, null. X2 : seule une phrase « Errors of per-step times are within 2% around the average » sous le tableau 1, comptée comme incertitude rapportée mais non définie (Y2 no, Y11 no). X3 : le tableau 1 donne la meilleure placement trouvée par la recherche, ce qui est la sortie normale d'un problème d'optimisation, codé no. X7 : 12 machines et des GPU K80 sont donnés, sans durée totale de calcul de la méthode, codé no. Y3 : quatre modèles de référence comptés (Inception-V3, ResNet, RNNLM, NMT), pas les 11 combinaisons modèle × nombre de GPU. Y5 : PG est réimplémenté et dit ; PPO et CE sont des variantes des auteurs sans phrase explicite, codé yes."
+}

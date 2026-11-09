@@ -1,0 +1,143 @@
+{
+ "id": "C215",
+ "coder": "H3",
+ "title": "Genetic-Gated Networks for Deep Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We have experimented the Atari environment and MuJoCo [18], a representative RL problems",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We introduce the Genetic-Gated Networks (G2Ns), simple neural networks",
+   "page": 1
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Table 2: PPO, PPO8 and G2PPO hyperparameters used for MuJoCo experiments.",
+   "page": 2
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "Table 2: PPO, PPO8 and G2PPO hyperparameters used for MuJoCo experiments.",
+   "page": 2
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "We do not aim to find the highest performance model by tuning the hyper-parameters of the genetic algorithm.",
+   "page": 9
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 3,
+   "quote": "Each curve averaged across three trials of different random seeds.",
+   "page": 8
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X3": {
+   "value": "no",
+   "quote": "Furthermore, the learning curves of G2AC and G2PPO in Fig. 5 are drawn based on the average scores of all perturbed agents, not the best ones.",
+   "page": 8
+  },
+  "X4": {
+   "value": "yes",
+   "quote": "we have been very careful on finding right parameters of horizon size to reproduce the reported performance of PPO using multiple actor threads.",
+   "page": 7
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We have experimented the Atari environment and MuJoCo [18], a representative RL problems",
+   "page": 6
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Time refers to the time spent in training, where DQN is measured with 1 GPU(K40), A3C with 16 core cpu, ES and Simpe GA with 720 CPUs, and G2AC with 1 GPU(Titan X).",
+   "page": 6
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "The seventh column shows the average return of 10 episodes evaluated after training 200M frames from the Atari 2600 environments with G2AC(with 30 random initial no-ops).",
+   "page": 6
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y3": {
+   "value": 58,
+   "quote": "We also have conducted experiments in 50 Atari games with the same settings as those of Table 1.",
+   "page": 6
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "has better results in 39 games, same results in three games, and worse results in the remaining eight games.",
+   "page": 6
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "PPO uses the same hyper parameters with its original paper while PPO8 and G2PPO use eight actors (in 8 threads) and 512 steps.",
+   "page": 7
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "The - marked data was not included because there was no evaluation result in the paper cited.",
+   "page": 3
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "In MuJoCo, as the mutation probability increases from 0.03 to 0.1 and 0.3, the performance decreases and becomes unstable.",
+   "page": 9
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q4 : PPO et PPO8 ont leurs hyperparamètres au tableau 2 de l'annexe ; les chiffres Atari des références sont recopiés des articles cités, et A2C reprend les réglages de [21], codé yes. X1 : trois graines pour les figures 5 et de sensibilité ; le nombre d'entraînements de la figure 4 (MuJoCo) et du tableau 1 (Atari) n'est pas dit, codé 3. X2 : aucune barre ni bande d'incertitude, codé no (donc Y2 et Y11 na). X3 : la courbe G2PPOtop montre le meilleur des huit acteurs, mais le résultat principal G2PPO est leur moyenne, codé no. X4 : réglage de l'horizon décrit pour la référence PPO8, que G2PPO reprend ensuite, codé yes. X7 : le tableau 1 donne « 200M, 4 H » pour G2AC sur 1 GPU Titan X, compté comme quantité. Y3 : 50 jeux Atari plus 8 environnements MuJoCo, soit 58 ; le tableau principal n'en montre que 11. Y5 : les chiffres Atari recopiés ont leur source, mais l'implémentation de PPO et PPO8, lancés par les auteurs, n'est pas identifiée, codé no. Y6 : codé yes sur les cases « - » laissées vides faute de résultat dans l'article cité (écart 17)."
+}

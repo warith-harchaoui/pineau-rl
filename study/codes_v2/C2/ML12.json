@@ -1,0 +1,20 @@
+{
+ "id": "ML12",
+ "coder": "C2",
+ "title": "VideoVeritas: AI-Generated Video Detection via Perception Pretext Reinforcement Learning",
+ "criteria": {
+  "Y1": {"value": "yes", "quote": "Accuracy is reported except for D3 (Zheng et al., 2025b), where ∗ means Average Precision (AP) is adopted following the official guideline. The final average performance is calculated by first averaging the results across ID (in-domain), OOD (out-of-domain) and OOD-MintVid, and then taking the average of the three values.", "page": 6},
+  "Y2": {"value": "na", "quote": "absent après lecture des sections expériences, annexes et liens [aucune barre d'erreur, X2 v1 = no]", "page": null},
+  "Y3": {"value": 1, "quote": "We implement the V IDEOV ERITAS with Qwen3-VL-8B (Bai et al., 2025a). [un seul modèle entraîné, évalué sur plusieurs bancs]", "page": 6},
+  "Y4": {"value": "na", "quote": "non applicable : Y3 = 1", "page": null},
+  "Y5": {"value": "no", "quote": "4 SoTA binary detectors are trained on our dataset using their original preprocessing. [origine du code des détecteurs, de BusterX++ et de Skyra-RL non dite]", "page": 6},
+  "Y6": {"value": "yes", "quote": "all data are sampled from OneThinker (Feng et al., 2025), with easy samples filtered out, retaining only small and short-duration targets for training.", "page": 5},
+  "Y7": {"value": "no", "quote": "Out-of-domain (OOD) testing involves existing benchmarks GenBuster++ (Wen et al., 2025b), LOKI (Ye et al., 2024) (using their video set), and [...] high-quality subsets (e.g., Gen-4) from VBench-2 [sous-ensembles non précisés, MintVid non dit publié]", "page": [5, 6]},
+  "Y8": {"value": "yes", "quote": "Out-of-domain (OOD) testing involves existing benchmarks GenBuster++ (Wen et al., 2025b), LOKI (Ye et al., 2024) (using their video set)", "page": 5},
+  "Y9": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens [seules la quantité de données de perception et la difficulté de la tâche SSL sont balayées, non présentées comme hyperparamètres]", "page": null},
+  "Y10": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens [ms-swift cité sans version]", "page": null},
+  "Y11": {"value": "na", "quote": "absent après lecture des sections expériences, annexes et liens [aucune barre d'erreur, X2 v1 = no]", "page": null},
+  "Y12": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null}
+ },
+ "doubts": "Y1 : exactitude sur les jeux de test sans dire quel point de contrôle est évalué, codé yes. Y3 : un seul cadre d'entraînement (un modèle évalué sur de nombreux bancs), donc 1 et Y4 na. Y6 : le filtrage des échantillons faciles et le filtrage manuel à la construction des données comptés comme exclusions dites. Y9 : balayages de la quantité de données de perception (figure 7) et de la difficulté SSL (tableau 4) non comptés, faute d'être présentés comme hyperparamètres."
+}

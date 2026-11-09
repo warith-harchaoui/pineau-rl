@@ -1,0 +1,72 @@
+{
+ "id": "NER02",
+ "coder": "E2",
+ "title": "Text-to-Decision Agent: Offline Meta-Reinforcement Learning from Natural Language Supervision",
+ "criteria": {
+  "Y1": {
+   "value": "yes",
+   "quote": "Zero-shot test returns of T2DA against baselines using Mixed datasets, i.e., numerical results of converged performance from Figure 3. [...] the final test returns after learning convergence from Figure 4.",
+   "page": [
+    7,
+    8
+   ]
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "The mean of received return is plotted as the bold line, with 95% bootstrapped confidence intervals of the mean indicated by the shaded region.",
+   "page": 7
+  },
+  "Y3": {
+   "value": 4,
+   "quote": "We evaluate T2DA on three benchmarks that are widely adopted to assess generalization capacities of RL algorithms: i) the 2D navigation Point-Robot; ii) the multi-task MuJoCo locomotion control, containing Cheetah-Vel and Ant-Dir; and iii) the Meta-World platform for robotic manipulation",
+   "page": 7
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "Ant-Dir 970.3±8.7 570.6±13.1 700.0±43.3 317.1±27.6 407.3±21.6 268.9±3.4 786.9±17.3 [Table 1: T2DA-D below BC-Z and BAKU]",
+   "page": 7
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "For each domain of Point-Robot, Cheetah-Vel, and Ant-Dir, we sample 50 tasks in total and split them into 45 training tasks and 5 test tasks. For Meta-World, we use 18 training tasks and 4 test tasks",
+   "page": 19
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "ci",
+   "quote": "with 95% bootstrapped confidence intervals of the mean indicated by the shaded region.",
+   "page": 7
+  },
+  "Y12": {
+   "value": "yes",
+   "quote": "with 95% bootstrapped confidence intervals of the mean indicated by the shaded region.",
+   "page": 7
+  }
+ },
+ "doubts": "Y2: the figure bands are defined as bootstrap CIs, but the ± values in the tables are never defined. Y4: one of the two method variants (T2DA-D) loses to BC-Z and BAKU on Ant-Dir, while T2DA-T wins every task. Y5: baselines are described and adapted ('we adjust BAKU'), but where their code comes from is never said; the two linked repositories are for the authors' own method. Y12: a plain bootstrap CI of the mean, counted yes under the écart 14 rule."
+}

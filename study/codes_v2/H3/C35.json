@@ -1,0 +1,144 @@
+{
+ "id": "C35",
+ "coder": "H3",
+ "title": "Policy Optimization by Genetic Distillation",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "In this section, we conduct experiments to measure the efficacy and robustness of the proposed GPO algorithm on a set of continuous control benchmarks.",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "All our control policies are Gaussian, with the mean parameterized by a neural network of two hidden layers (64 hidden units each)",
+   "page": 7
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "Other hyperparameters are in Appendix 6.3.",
+   "page": 7
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "PPO/A2C batch-size (Joint) = 16384",
+   "page": 15
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 8,
+   "quote": "For all methods, we replicate 8 runs with different seeds and show the mean and standard error.",
+   "page": 9
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "For all methods, we replicate 8 runs with different seeds and show the mean and standard error.",
+   "page": 9
+  },
+  "X3": {
+   "value": "yes",
+   "quote": "The first baseline algorithm, Single, trains 8 independent policies with policy gradient using 1 million timesteps each, and selects the policy with the maximum performance at the end of training.",
+   "page": 9
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We benchmark 9 continuous-control locomotion tasks based on the MuJoCo physics simulator",
+   "page": 7
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Table 3 shows the wall-clock time (in minutes), averaged over 3 runs, for GPO and the Joint baseline.",
+   "page": 16
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "Figure 4 plots the moving average of per-episode reward when training with PPO as the policy gradient method for all algorithms.",
+   "page": 9
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "For all methods, we replicate 8 runs with different seeds and show the mean and standard error.",
+   "page": 9
+  },
+  "Y3": {
+   "value": 9,
+   "quote": "We benchmark 9 continuous-control locomotion tasks based on the MuJoCo physics simulator",
+   "page": 7
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "A2C, GPO beats the baselines in all but one environments.",
+   "page": 9
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "In Figure 7, we experiment with varying the population size for GPO.",
+   "page": 10
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "se",
+   "quote": "Mean and standard-error for final performance of GPO and baselines using PPO.",
+   "page": 8
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q3 et Q4 : l'annexe 6.3 donne horizon, actualisation, époques PPO et tailles de lot, mais pas le taux d'apprentissage de PPO/A2C ni la cible KL, codé no. X3 : la référence Single est par construction la meilleure de 8 politiques indépendantes au terme de l'entraînement ; codé yes, bien que cette sélection avantage la référence et que la politique rapportée pour GPO ne soit pas précisée. X7 : temps d'horloge en minutes par environnement (tableau 3) sur une machine à 12 cœurs, compté comme quantité. Y1 : la figure 4 dit « moving average of per-episode reward » et le tableau 1 « final performance » ; codé yes, la fenêtre de la moyenne glissante n'étant pas donnée. Y5 : Single et Joint sont des variantes des auteurs, mais l'origine du code PPO/A2C n'est pas dite, codé no. Y9 : taille de population balayée (figures 7 et 10), comptée comme hyperparamètre."
+}

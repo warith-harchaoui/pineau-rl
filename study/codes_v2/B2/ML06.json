@@ -1,0 +1,69 @@
+{
+ "id": "ML06",
+ "coder": "B2",
+ "title": "MEAL: A Benchmark for Continual Multi-Agent Reinforcement Learning",
+ "criteria": {
+  "Y1": {
+   "value": "yes",
+   "quote": "As our core performance metric, we report the mean soup delivery across all tasks at the end of training",
+   "page": 4
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "Throughout the paper, error bars, shaded regions, and table ± ranges denote 95% confidence intervals computed across the five seeds.",
+   "page": 6
+  },
+  "Y3": {
+   "value": 1,
+   "quote": "we deliberately center this work on Overcooked to enable deeper, more focused analysis rather than spreading evaluation thinly across many disparate environments.",
+   "page": 3
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "non applicable : Y3 vaut 1",
+   "page": null
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "ci",
+   "quote": "Throughout the paper, error bars, shaded regions, and table ± ranges denote 95% confidence intervals computed across the five seeds.",
+   "page": 6
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y3 : la conclusion principale porte sur des suites de cuisines Overcooked à trois niveaux de difficulté (un seul jeu, écart 14), JAX NAV, SMAX et MPE n'étant en annexe O qu'une démonstration d'extension, compté 1. Y5 : EWC, MAS, AGEM, ER-ACE, PackNet sans origine du code dite (seuls les réglages IPPO de JaxMARL sont repris), codé no. Y7 : Overcooked « version JaxMARL » sans numéro de version, codé no. Y8 : les variations de dynamique, de partenaires et de cuisines sont toutes entraînées, rien n'est évalué hors entraînement comme test de généralisation, codé no. Y9 : nombre d'agents, longueur de séquence, encodeur et têtes multiples sont des réglages du banc ou des composants, pas un balayage d'hyperparamètre de méthode, codé no."
+}

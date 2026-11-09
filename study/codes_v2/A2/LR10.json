@@ -1,0 +1,68 @@
+{
+ "id": "LR10",
+ "coder": "A2",
+ "title": "Agnostics: Learning to Synthesize Code in Any Programming Language with a Universal Reinforcement Learning Environment",
+ "criteria": {
+  "Y1": {
+   "value": "yes",
+   "quote": "We measure pass@1 accuracy with reasoning disabled, 20 samples per prompt at temperature 0.2. [...] We trained the models for 1 epoch, unless specified otherwise.",
+   "page": 6
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "non applicable : X2 v1 vaut no (aucune barre ni bande d’erreur)",
+   "page": null
+  },
+  "Y3": {
+   "value": 5,
+   "quote": "tics, we train Qwen 3 4B and 8B on Ag-Codeforces-X spe- [...] cialized to Fortran, Julia, R, Lua, and OCaml.",
+   "page": 7
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "The table shows a small drop in R performance on Ag-LiveCodeBench-X",
+   "page": 8
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "Instruct (16B), and their performance comes close to or ex- [...] ceeds that of Qwen 3 32B and Llama 3.2 70B.",
+   "page": 7
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "Note that MultiPL-E does not support OCaml and Fortran.",
+   "page": 7
+  },
+  "Y7": {
+   "value": "yes",
+   "quote": "LiveCodeBench 5.0 has 880 problems [...] HumanEval (Chen et al., 2021) prompts and unit tests from Python to each target language",
+   "page": 7
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "Models trained with our approach generalize over the com",
+   "page": 7
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Table 6: Hyperparameter sweep, pass@1 score.",
+   "page": 22
+  },
+  "Y10": {
+   "value": "yes",
+   "quote": "ray v2.46.0, torch v2.6.0, transformers v4.54.1, vllm v0.8.5.post1",
+   "page": 25
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "non applicable : X2 v1 vaut no (aucune barre ni bande d’erreur)",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y3 : 5 cadres d’entraînement (Ag-Codeforces-X spécialisé à chacun des cinq langages, un modèle par langage) ; Ag-MBPP-X n’ajoute pas de langage. Y4 : la perte montrée (R sur Ag-LCB-X) concerne la variante entraînée sur MBPP ; Qwen 3 32B dépasse aussi le modèle 4B sur Julia et R dans le tableau 1. Y5 : les références sont des modèles publiés désignés par leur nom (Qwen 3 32B, Llama 3.3 70B, DeepSeek Coder v2 Lite, Sonnet 4) et évalués par les auteurs ; codé yes comme pour LR07, mais aucune source de checkpoint n’est donnée. Y7 : LiveCodeBench 5.0 est versionné et Ag-LCB-X publié, mais MultiPL-E n’a pas de numéro de version (seule sa construction depuis HumanEval est dite). Y8 : MultiPL-E est présenté comme un test de généralisation hors du format d’entraînement, pas explicitement comme « out-of-distribution »."
+}

@@ -1,0 +1,69 @@
+{
+ "id": "C24",
+ "coder": "F2",
+ "title": "Evolved Policy Gradients",
+ "criteria": {
+  "Y1": {
+   "value": "yes",
+   "quote": "The plots show the episodic return w.r.t. the number of environment steps taken so far.",
+   "page": 6
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "show the mean value of 20 test-time training curves as a solid line, while the shaded area represents the interquartile range",
+   "page": 5
+  },
+  "Y3": {
+   "value": 7,
+   "quote": "namely RandomHopper and RandomWalker (with randomized gravity, friction, body mass, and link thickness), RandomReacher (with randomized link lengths), DirectionalHopper and DirectionalHalfCheetah (with randomized forward/backward reward function), GoalAnt (reward function based on the randomized target location), and Fetch (randomized target location)",
+   "page": 5
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "it is able to significantly outperform both MAML and EPG",
+   "page": 6
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "During metatraining, goals are randomly sampled on the positive x-axis (ant walking to the right) and at test time, we sample goals from the negative x-axis (ant walking to the left).",
+   "page": 7
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We evaluate the effect of transferring to longer agent training periods at test time on the RandomHopper environment by increasing the test-time training steps U",
+   "page": 3
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "show the mean value of 20 test-time training curves as a solid line, while the shaded area represents the interquartile range",
+   "page": 5,
+   "kind": "iqr"
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y1 : « episodic return » le long de la courbe d'entraînement au test, sans dire sur combien d'épisodes chaque point est moyenné. Y5 : PPO « off-the-shelf » sans origine du code ; MAML est recopié de [6] (« data from [6] ») mais RL2 n'a pas d'origine dite. Y9 : l'horizon U est balayé au test seulement (annexe E), lu comme un hyperparamètre de l'algorithme 2 ; la page est celle de l'annexe."
+}

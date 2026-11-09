@@ -1,0 +1,72 @@
+{
+ "id": "NE16",
+ "coder": "E2",
+ "title": "Sharp Analysis for KL-Regularized Contextual Bandits and RLHF",
+ "criteria": {
+  "Y1": {
+   "value": "yes",
+   "quote": "In Figure 2(a), we compare the suboptimality gaps of mixed-policy sampling with m = n to those of offline sampling using π0 under the same sample sizes.",
+   "page": [
+    21,
+    22
+   ]
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "All the trials are repeated for 10 times and plotted with the standard variation.",
+   "page": 21
+  },
+  "Y3": {
+   "value": 2,
+   "quote": "We plot the experimental results for RL from preference feedback in Figure 2 and the results for KL-regularized contextual bandits in Figure 1.",
+   "page": 21
+  },
+  "Y4": {
+   "value": "no",
+   "quote": "The result indicates that the usage of mixed-policy sampling reduces the suboptimality gap by a large margin.",
+   "page": 22
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "In Figure 2(b), it is shown that the sample complexity is remarkably affected by the KL-regularization term",
+   "page": 22
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "std",
+   "quote": "All the trials are repeated for 10 times and plotted with the standard variation.",
+   "page": 21
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y1: the suboptimality gap is defined formally in the theory sections and plotted against sample size; taken as defined. Y3: the two synthetic settings (contextual bandit, preference feedback) counted as two tasks. Y5: the only baseline is offline sampling from π0, presumably the authors' own code, but the paper never says so. Y9: the KL coefficient η is swept, but the paper treats it as a property of the objective rather than a tuning hyperparameter. Y11: 'standard variation' read as standard deviation."
+}

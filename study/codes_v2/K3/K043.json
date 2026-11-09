@@ -1,0 +1,144 @@
+{
+ "id": "K043",
+ "coder": "K3",
+ "title": "Intrinsic Benefits of Categorical Distributional Loss: Uncertainty-aware Regularized Exploration in Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We comprehensively demonstrate our theoretical analysis using both Atari games and MuJoCo tasks.",
+   "page": 8
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "CDRL employs neural networks to learn the probabilities",
+   "page": 4
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "We adopt the same hyper-parameters, which are listed in Table 1 and network structure as in the original distributional SAC paper [34]. [Table 1 covers only the MuJoCo actor-critic runs; no hyperparameters for the Atari C51 / H(µ, qθ) runs]",
+   "page": 35
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "We are going to release our code once the paper is accepted to facilitate reproductivity.",
+   "page": 17
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 3,
+   "quote": "Results are averaged over three seeds, and the shade represents the standard deviation.",
+   "page": 8
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Results are averaged over three seeds, and the shade represents the standard deviation.",
+   "page": 8
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "Empirical evidence underscores the pivotal role of the uncertainty-aware entropy regularization in the empirical success of adopting categorical distributional loss in RL over classical RL on both Atari games and MuJoCo tasks.",
+   "page": 2
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "The experiments are conducted by using multiple RTX 3090 GPUs.",
+   "page": 18
+  },
+  "Y1": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "Results are averaged over three seeds, and the shade represents the standard deviation.",
+   "page": 8
+  },
+  "Y3": {
+   "value": 8,
+   "quote": "after applying the return distribution decomposition with different ε on eight Atari games",
+   "page": 8
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "For instance, AC+UE+VE outperforms both AC+VE (SAC) and AC+UE (DAC) on humanoidstandup, while suffering from performance degradation on Ant and Swimmer.",
+   "page": 9
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "Our implementation is adapted from the popular RLKit platform. [only for the actor-critic runs; DQN/C51 Atari implementations not identified]",
+   "page": 34
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "Walker2d-v2 [MuJoCo versions given in Table 1, Atari game versions not given]",
+   "page": 34
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "we conducted an additional ablation study by varying the number of bins/atoms (equivalent to adjusting the bin sizes) of both C51 and our decompose algorithm",
+   "page": 36
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "std",
+   "quote": "Results are averaged over three seeds, and the shade represents the standard deviation.",
+   "page": 8
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X5 : article surtout théorique, mais les expériences portent sur 8 jeux Atari et 7 à 8 tâches MuJoCo, pas des jouets, donc classic plutôt que theory. Y3 : la conclusion principale (section 6.1) porte sur 8 jeux Atari, les tâches MuJoCo de l'annexe n'ont pas été ajoutées. Y9 : epsilon est un hyperparamètre de la décomposition analysée, et le nombre d'atomes est aussi balayé ; codé yes. X1 : 3 graines pour Atari, 5 pour MuJoCo ; le plus petit est retenu."
+}

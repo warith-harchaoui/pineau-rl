@@ -1,0 +1,146 @@
+{
+ "id": "K032",
+ "coder": "K2",
+ "title": "Unbiased Dynamic Pruning for Efficient Group-Based Policy Optimization",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We conduct our main experiments on Qwen3-4B and Qwen3-8B",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We conduct our main experiments on Qwen3-4B and Qwen3-8B",
+   "page": 6
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "Unless otherwise specified, we adhere to the default hyperparameters from the verl, with the training epochs set to 15, learning rate to 1 × 10−6 .",
+   "page": 6
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "We compare DPPO against GRPO (Guo et al., 2025) and several heuristic pruning baselines: GRESO (Zheng et al., 2025b) and CPPO (Lin et al., 2025).",
+   "page": 6
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "To evaluate the generalization, we train models on the MATH dataset and evaluate them on other mathematical reasoning benchmarks",
+   "page": 6
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "Group Relative Policy Optimization (GRPO) effectively scales LLM reasoning but incurs prohibitive computational costs",
+   "page": 1
+  },
+  "X6": {
+   "value": 2,
+   "quote": "Qwen2.5-7B-Instruct, Llama3.2-3B-Instruct, Qwen3-32B, [...] and Qwen3-30B-A3B-Instruct (MoE) presented in the Ap",
+   "page": 6
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Speedup is computed w.r.t. GRPO time (1.00×). GPU-h denotes GPU hours.",
+   "page": 7
+  },
+  "Y1": {
+   "value": "no",
+   "quote": "for each prompt, we sample 4 completions with temperature 0.7 and maximum response length of 1024, consistent with training. We use Pass@1 accuracy as the evaluation metric.",
+   "page": [
+    12,
+    13
+   ]
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y3": {
+   "value": 2,
+   "quote": "For training data, we use two mathematical reasoning datasets: GSM8K (Cobbe et al., 2021), which comprises 8.5K grade-school problems, and MATH (Hendrycks et al., 2021)",
+   "page": 6
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "Notably, DPPO outperforms all baselines on 4 out of 6 benchmarks",
+   "page": 7
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "We compare DPPO against GRPO (Guo et al., 2025) and several heuristic pruning baselines: GRESO (Zheng et al., 2025b) and CPPO (Lin et al., 2025).",
+   "page": 6
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "Comparision between GRPO and DPPO on GSM8K and Math test subset for Qwen3-4B and Qwen3-8B",
+   "page": 7
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "These results confirm that DPPO not only accelerates training but also improves generalization to out-of-distribution mathematical reasoning tasks.",
+   "page": 7
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "with DPPO evaluated under varying prompt-level (rq ) and completion-level (ro ) pruning ratios",
+   "page": 7
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "We implement DPPO within the verl framework (Sheng et al., 2025), leveraging the vLLM library (Kwon et al., 2023) for efficient rollout generation.",
+   "page": 6
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q3 : valeurs par défaut de verl sans version, seuls epochs, taux d'apprentissage, température, taille de rollout et longueur listés, codé no. Y1 : Pass@1 sur 4 échantillons est défini, mais le point de mesure (dernier point de contrôle) n'est pas dit, codé no par l'écart 17. Y3 : deux jeux d'entraînement (GSM8K, MATH), les bancs hors distribution ne comptent pas, codé 2. Y7 : MATH500, AIME24/25 nommés, mais les résultats du tableau 1 portent sur un « Math test subset » non précisé, codé no. X3 : la configuration rq = ro = 0,9 retenue au tableau 2 est la meilleure de DPPO sur MATH pour Qwen3-4B mais pas pour Qwen3-8B, configurations différentes, codé no. X6 : Qwen2.5 et Qwen3 comptés comme une famille, plus Llama, codé 2."
+}

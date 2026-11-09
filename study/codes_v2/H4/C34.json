@@ -1,0 +1,143 @@
+{
+ "id": "C34",
+ "coder": "H4",
+ "title": "Leave No Trace: Learning to Reset for Safe and Autonomous Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "In this section, we use the five complex, continuous control environments shown above to answer questions about our approach.",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "Actor Network: Two fully connected layers of sizes 400 and 300, with tanh nonlinearities throughout.",
+   "page": 18
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "Videos of our experiments: https://sites.google.com/site/mlleavenotrace/",
+   "page": 1
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "We did not do hyperparameter optimization for our experiments, but did run with 5 random seeds.",
+   "page": 18
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 5,
+   "quote": "We did not do hyperparameter optimization for our experiments, but did run with 5 random seeds.",
+   "page": 18
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X3": {
+   "value": "yes",
+   "quote": "To aggregate results, we took the median number across all random seeds that solved the task.",
+   "page": 18
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We choose off-policy actor-critic as the base RL algorithm (Silver et al., 2014; Lillicrap et al., 2015)",
+   "page": 3
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "We evaluate the performance of a policy by creating a copy of the policy in a separate thread, running the forward policy for a fixed number of steps, and computing the average per-step reward.",
+   "page": 6
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y3": {
+   "value": 5,
+   "quote": "In this section, we use the five complex, continuous control environments shown above to answer questions about our approach.",
+   "page": 6
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "the conventional approach learns the pusher task somewhat faster than ours, but our approach eventually achieves the same reward with half the number of hard resets",
+   "page": 7
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "We thank Sergio Guadarrama, Oscar Ramirez, and Anoop Korattikara for implementing DDPG",
+   "page": 9
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "To aggregate results, we took the median number across all random seeds that solved the task. For most experiments, all random seeds solved the task.",
+   "page": 18
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "The pusher environment is a modified version of Pusher-v0 environment in Brockman et al. (2016).",
+   "page": 17
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Figure 7 shows the effect of three values for Qmin while learning the pusher and cliff cheetah.",
+   "page": 7
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q3 et Q4 : architectures, γ, taille d'ensemble, Qmin et nombre de tentatives donnés, mais ni taux d'apprentissage ni taille de lot de DDPG, codé no. X2 : courbes sans bande décrite, agrégation par médiane, codé no. X3 : médiane prise seulement sur les graines qui ont résolu la tâche, lu comme une sélection des essais réussis, codé yes avec hésitation. Y5 : seule indication, des collègues remerciés pour avoir implémenté DDPG, sur quoi reposent la méthode et le « status quo », codé yes avec hésitation. Y6 : l'exclusion des graines qui échouent est dite, codé yes."
+}

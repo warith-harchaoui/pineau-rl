@@ -1,0 +1,146 @@
+{
+ "id": "K004",
+ "coder": "K1",
+ "title": "Spotlight on Token Perception for Multimodal Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We conduct comprehensive evaluation on eight diverse multimodal reasoning benchmarks.",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "we apply VPPO to the Qwen2.5-VL-7B and Qwen2.5-VL-32B base models and train on the ViRL39K, a diverse collection of multimodal reasoning problems.",
+   "page": 6
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "All key hyperparameters for the optimizer, RL process, and evaluation are detailed in Table 9.",
+   "page": 17
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "To ensure training stability and enable a fair comparison, a small entropy penalty (coefficient 0.06) is applied to both VPPO and the baseline.",
+   "page": 6
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Our code is available at https://github.com/huaixuheqing/VPPO-RL.",
+   "page": 1
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "To counteract this and determine the optimal setting, we performed an ablation study on the entropy penalty coefficient.",
+   "page": 21
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "we evaluated its performance on two unseen, out-of-domain VQA benchmarks: A-OKVQAval (Schwenk et al., 2022) and SimpleVQA-EN",
+   "page": 10
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "yes",
+   "quote": "Table 10: Ablation study on the entropy penalty coefficient for the DAPO baseline. We compare the performance of the baseline under different entropy penalty settings.",
+   "page": 22
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "While Reinforcement Learning with Verifiable Rewards (RLVR) has advanced the reasoning capabilities of Large Vision-Language Models (LVLMs)",
+   "page": 1
+  },
+  "X6": {
+   "value": 1,
+   "quote": "The base models for our experiments are the open-source Qwen2.5-VL-7B and Qwen2.5-VL-32B.",
+   "page": 16
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "All models were trained on a cluster of 8 x NVIDIA H800 80GB GPUs. [...] approximately a 10% increase, from 15.5 to 17 hours on our 7B setup",
+   "page": [
+    17,
+    26
+   ]
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "We report average accuracy@8 at an inference temperature of 1.0, using a single, fixed evaluation pipeline for all models to ensure fair comparison.",
+   "page": 7
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y3": {
+   "value": 1,
+   "quote": "We train all models for two epochs on the ViRL39K dataset (Wang et al., 2025a).",
+   "page": 17
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "† Our reproduction uses official author-provided prompts.",
+   "page": 7
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "The benchmarks span mathematical, geometric, logical, and multi-discipline reasoning, including DynaMath (Zou et al., 2024), Geo3k (Lu et al., 2021), MathVerse (Zhang et al., 2024), MathVision (Wang et al., 2024a), MMK12 (Meng et al., 2025), We-Math (Qiao et al., 2024), LogicVista (Xiao et al., 2024), and MMMU-Pro",
+   "page": 7
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "we evaluated its performance on two unseen, out-of-domain VQA benchmarks: A-OKVQAval (Schwenk et al., 2022) and SimpleVQA-EN",
+   "page": 10
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Sensitivity to Gradient Filtering Ratio k. We investi- [...] gate how performance varies with the token filtering ra- [...] tio k in TGF. As shown in Figure 6, performance peaks [...] around k = 0.4.",
+   "page": 8
+  },
+  "Y10": {
+   "value": "yes",
+   "quote": "All experiments were conducted using PyTorch 2.6.0 with CUDA 12.4.",
+   "page": 16
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q4 : les références GRPO et DAPO entraînées par les auteurs partagent le tableau 9, mais les modèles publiés comparés (MM-Eureka, ThinkLite…) sont évalués sans leurs hyperparamètres d'entraînement ; codé yes. X4 : un réglage du coefficient d'entropie est décrit pour la référence DAPO seule (et un budget de temps égal), pas pour GRPO ni les modèles externes ; codé yes. Q6 : choix par balayage des valeurs (k, β, entropie, G), apparemment évalués sur les bancs de test eux-mêmes. Y3 : un seul jeu d'entraînement (ViRL39K), donc 1 et Y4 na, bien que le tableau 1 montre des bancs où VPPO perd (Geo3k, MMK12 en 32B). Y5 : les chiffres des modèles externes sont soit reproduits avec les prompts officiels soit recopiés (PAPO-D) sans source dite pour chacun. Y10 : seules les versions de PyTorch et CUDA sont données, pas celle d'EasyR1."
+}

@@ -1,0 +1,144 @@
+{
+ "id": "K049",
+ "coder": "K3",
+ "title": "Safe Continuous-time Multi-Agent Reinforcement Learning via Epigraph Form",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We evaluate our approach on continuous-time safe multi-particle environments (MPE) and safe multi-agent MuJoCo benchmarks.",
+   "page": 1
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "we replace them with neural networks that are jointly trained alongside the actor",
+   "page": 6
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Table 1 lists the defaults used in all experiments.",
+   "page": 27
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Code is available at this link. [hyperlink to https://github.com/Wangxuefeng1024/Safe-Continuous-time-Multi-Agent-Reinforcement-Learning-via-Epigraph-Form]",
+   "page": 1
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "where the weights (λres , λtgt , λvgi ) are selected to keep the losses on comparable scales and are determined via grid search.",
+   "page": 6
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "We report two primary metrics—one reward-style training score that aggregates task cost and constraint penalty, and one violation rate measured over held-out rollouts.",
+   "page": 19
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 8,
+   "quote": "reported results are averaged over seeds 113–120.",
+   "page": 27
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "In Fig. 3 and 6, each point corresponds to the average performance of one algorithm, with horizontal and vertical bars denoting standard deviations.",
+   "page": 9
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "Although these algorithms were originally developed in the discrete-time setting, we adapt them to continuous time by equipping their critics with the same PDE residual loss used in our method.",
+   "page": 8
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "Extensive experiments on adapted continuous-time safe MPE and multiagent MuJoCo benchmarks further demonstrate that our approach consistently outperforms current safe MARL methods.",
+   "page": 2
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "Experiments were conducted on hardware comprising an Intel(R) Xeon(R) Gold 6254 CPU @ 3.10GHz, four NVIDIA A5000 GPUs and eight NVIDIA A6000 GPUs.",
+   "page": 27
+  },
+  "Y1": {
+   "value": "no",
+   "quote": "For a trajectory τ with horizon T (τ ), we define the total episode cost as [no measurement point given for the reported points of Fig. 3 and 6]",
+   "page": 19
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "with horizontal and vertical bars denoting standard deviations",
+   "page": 9
+  },
+  "Y3": {
+   "value": 12,
+   "quote": "In MPE, we design several scenarios including Corridor, Formation, Line, Target, Simple Spread, and Cooperative Predator–Prey. [...] In MuJoCo, we adapt several scenarios such as Half Cheetah and Ant into continuous-time versions",
+   "page": 7
+  },
+  "Y4": {
+   "value": "no",
+   "quote": "Our method consistently outperforms all baselines across both adapted MPE and MuJoCo environments in Fig. 2 and Fig. 4.",
+   "page": 8
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "The grouped bars in Fig. 7 report the average distance to the target (lower is better) for three MPE tasks (Formation, Line, and Target) under different loss weightings.",
+   "page": 9
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "std",
+   "quote": "with horizontal and vertical bars denoting standard deviations",
+   "page": 9
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q7 : seul l'appui est « violation rate measured over held-out rollouts », sans dire en quoi ces épisodes diffèrent de l'entraînement ; codé yes pour Q7 mais no pour Y8, plus strict. Y1 : récompense cumulée et taux de violation définis, mais pas le point d'entraînement auquel les points des figures 3 et 6 sont pris. Y3 : 6 scénarios MPE et 6 variantes MuJoCo montrées en figure 4 ; les partitions d'agents (HalfCheetah-2x3, 3x2, 6x1) sont comptées comme cadres distincts. Y4 : « nearly the lowest » laisse entendre des pertes, mais aucune tâche perdue n'est dite. Y8 : le bruit stochastique et les pas de temps ∆t ne sont pas annoncés comme absents de l'entraînement. Q5 : le lien vers le code est un hyperlien sur « this link », vérifié dans le PDF."
+}

@@ -1,0 +1,20 @@
+{
+ "id": "MLR07",
+ "coder": "D2",
+ "title": "Text Before Vision: Staged Knowledge Injection Matters for Agentic RLVR in Ultra-High-Resolution Remote Sensing Understanding",
+ "criteria": {
+  "Y1": {"value": "yes", "quote": "for each problem xi in the evaluation [...] set D we draw n samples (n ≥ k) and count correct samples [...] where the k = 1 branch corresponds to macro-averaged / 1 SFT epoch with LLaMA-Factory, then 80 RLVR steps", "page": [3, 4]},
+  "Y2": {"value": "na", "quote": "non applicable : X2 v1 vaut no", "page": null},
+  "Y3": {"value": 1, "quote": "XLRS-Bench (Wang et al., 2025c) which is a widely used UHR RS benchmark / is used to compare SFT, RLVR, and Agentic RLVR under a", "page": [2, 3]},
+  "Y4": {"value": "na", "quote": "non applicable : Y3 vaut 1", "page": null},
+  "Y5": {"value": "yes", "quote": "Deepeyes (Zheng et al., 2025)—the zoom-in–enabled agentic RL framework—as our Agentic RL baseline / For closed-source models, we use their official APIs with default settings / For open-source models, we use their publicly released checkpoints", "page": [3, 8]},
+  "Y6": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y7": {"value": "yes", "quote": "XLRS-Bench (Wang et al., 2025c) which is a widely used UHR RS benchmark", "page": 2},
+  "Y8": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y9": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y10": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y11": {"value": "na", "quote": "non applicable : X2 v1 vaut no", "page": null},
+  "Y12": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null}
+ },
+ "doubts": "Y1 : pass@k défini par une formule, n non chiffré (non exigé par l'écart 17), point de mesure déduit du calendrier fixe (1 époque SFT puis 80 pas RLVR). Y3 : un seul cadre d'entraînement (mélange DeepEyes-47K, SuperRS-VQA et QA texte) évalué sur le seul XLRS-Bench. Y5 : la référence principale est le cadre DeepEyes, les modèles externes passent par leurs API ou checkpoints publics, mais sans dépôt ni version explicites, d'où un yes fragile. Y7 : XLRS-Bench est un banc publié et nommé sans version ni date de séparation, codé yes par analogie avec MATH-500. Y9 : la figure 6 fait varier le volume de données texte, présenté comme une mise à l'échelle et non comme un hyperparamètre, d'où no."
+}

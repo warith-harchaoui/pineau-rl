@@ -1,0 +1,144 @@
+{
+ "id": "C114",
+ "coder": "H3",
+ "title": "Policy Optimization as Wasserstein Gradient Flows",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We test the proposed WGF framework from two perspectives",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "For all methods, value function and policy are parameterized as two-layer (128-128 hidden units) neural networks with tanh as the activation function.",
+   "page": 8
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Hyperparameters Table 5 lists the common DP-WGF-V, DP-WGF, SAC and Soft-Q parameters used in the comparative evaluation in Figure 2",
+   "page": 4
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "We use OpenAI gym [...] baselines implementations for TRPO and DDPG. SAC†† and Soft-Q‡‡ implementation are [...] used, and we use recommended parameters.",
+   "page": 4
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "Demos of our framework on a set of RL tasks can be accessed online via: https://sites.google.com/view/wgf4rl/ .",
+   "page": 5
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "SVPG and IP-WGF shared the same hyperparameters, except the temperature, for which we performed a grid search over α ∈ {6, 7, 8, 9, 10, 11}.",
+   "page": 4
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "The datasets are randomly split into 90% training and 10% testing.",
+   "page": 3
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 5,
+   "quote": "Figure 2 plots the mean (dark curves) [...] and standard derivation (light areas) of rewards over 5 runs.",
+   "page": 7
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Figure 2 plots the mean (dark curves) [...] and standard derivation (light areas) of rewards over 5 runs.",
+   "page": 7
+  },
+  "X3": {
+   "value": "yes",
+   "quote": "WGF-DP-V, TRPO, SAC, and DDPG results showing the max average rewards attained and the episodes to cross specific reward thresholds.",
+   "page": 8
+  },
+  "X4": {
+   "value": "no",
+   "quote": "We use OpenAI gym [...] baselines implementations for TRPO and DDPG. SAC†† and Soft-Q‡‡ implementation are [...] used, and we use recommended parameters.",
+   "page": 4
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We compare our DP-WGF and DP-WGF-V frameworks with existing off-policy and on-policy deep RL algorithms on several tasks in MuJoCo",
+   "page": 8
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "All experiments are conducted on a single Tesla P100.",
+   "page": 7
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "WGF-DP-V, TRPO, SAC, and DDPG results showing the max average rewards attained and the episodes to cross specific reward thresholds.",
+   "page": 8
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "Figure 2 plots the mean (dark curves) [...] and standard derivation (light areas) of rewards over 5 runs.",
+   "page": 7
+  },
+  "Y3": {
+   "value": 7,
+   "quote": "considering three classical continuous-control tasks: Cartpole Swing-Up, Double Pendulum, and Cartpole.",
+   "page": 7
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "It is observed that DP-WGF-V consistently outperform TRPO-GAE and DDPG in terms of sample complexity, and often achieves higher rewards than TRPO-GAE.",
+   "page": 8
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "We use OpenAI gym [...] baselines implementations for TRPO and DDPG. SAC†† and Soft-Q‡‡ implementation are [...] used, and we use recommended parameters.",
+   "page": 4
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We further conduct experiments on Swimmer-v1 task to [...] analysis the influence of different Wasserstein-2 scale",
+   "page": 3
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "std",
+   "quote": "Figure 2 plots the mean (dark curves) [...] and standard derivation (light areas) of rewards over 5 runs.",
+   "page": 7
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q4 : les hyperparamètres de SAC et Soft-Q sont dans le tableau 5, mais ceux de TRPO et DDPG ne sont que « recommended parameters » des implémentations de référence, codé no. Q6 : la recherche en grille ne porte que sur la température de IP-WGF et SVPG ; rien pour la partie MuJoCo, codé yes car une méthode de choix est dite. Q7 : seule l'expérience de régression BNN (hors RL) évalue sur une séparation test tenue à part ; les résultats RL sont des courbes d'entraînement, codé yes avec réserve. X1 : 5 runs pour la figure de IP-WGF et la sensibilité ; le nombre de runs des courbes MuJoCo (figure 2, ligne directe) n'est pas dit, et YearPredict n'est répété qu'une fois dans le tableau 1 de régression, non compté comme résultat principal RL. X3 : le tableau 2 rapporte le maximum de la récompense moyenne atteinte au cours de l'entraînement, compté comme meilleur point choisi sur l'évaluation. X4 : la température est réglée en grille pour IP-WGF et SVPG, mais les références MuJoCo gardent les paramètres recommandés, codé no. Y3 : 7 environnements comptés (3 tâches rllab pour IP-WGF, 4 MuJoCo pour DP-WGF), la régression BNN exclue. Y5 : TRPO, DDPG, SAC et Soft-Q ont leur dépôt cité, mais pas SVPG, référence principale de la partie indirecte, codé no. Y7 : Hopper-v1, Walker2d-v1 et Swimmer-v1 versionnés, pas Humanoid ni les tâches rllab, codé no."
+}

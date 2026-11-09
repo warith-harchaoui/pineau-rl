@@ -1,0 +1,20 @@
+{
+ "id": "NE04",
+ "coder": "G2",
+ "title": "OpenVLThinker: Complex Vision-Language Reasoning via Iterative SFT-RL Cycles",
+ "criteria": {
+  "Y1": {"value": "no", "quote": "Our evaluation employs exact matching and a grader function from MathRuler", "page": 8},
+  "Y2": {"value": "na", "quote": "non applicable : aucune barre ni bande d'incertitude sur les résultats principaux (X2 v1 = no)", "page": null},
+  "Y3": {"value": 1, "quote": "summing up to 12K data in total for each iteration that trains from the base model.", "page": 7},
+  "Y4": {"value": "na", "quote": "non applicable : Y3 vaut 1", "page": null},
+  "Y5": {"value": "yes", "quote": "*Performance of the base model Qwen2.5-VL-7B and concurrent reasoning models are evaluated by us [...] We include the reported performance of proprietary models and open-source Vision-Language models as references.", "page": 9},
+  "Y6": {"value": "yes", "quote": "filtered by final-answer correctness.", "page": 22},
+  "Y7": {"value": "no", "quote": "We employ six established benchmarks to examine model’s ability thoroughly", "page": 8},
+  "Y8": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y9": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y10": {"value": "no", "quote": "Our training framework is based on LLaMA-Factory3 for SFT and EasyR14 for RL.", "page": 7},
+  "Y11": {"value": "na", "quote": "non applicable : aucune incertitude rapportée sur les résultats principaux (X2 v1 = no)", "page": null},
+  "Y12": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null}
+ },
+ "doubts": "Y1 : exactitude par correspondance exacte et grader MathRuler, hyperparamètres d'inférence donnés, mais le point de contrôle évalué n'est pas dit explicitement ; no par l'écart 17. Y3 : un seul cadre d'entraînement (12K exemples tirés de LLaVA-OneVision), les six bancs d'évaluation ne multiplient pas les tâches ; d'où Y4 na. Y5 : chiffres recopiés pour les modèles de référence (avec citation) et évalués par les auteurs pour les modèles concurrents ; yes, mais la provenance exacte de R1-VL et R1-Onevision (sans astérisque) reste floue. Y6 : seul le filtrage des données de SFT (rejet des traces fausses, troncature des réflexions) est dit ; compté comme exclusion de données dite. Y8 : aucun banc n'est présenté comme hors distribution, malgré une phrase sur la généralisation aux tâches non vues."
+}

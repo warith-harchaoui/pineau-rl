@@ -1,0 +1,144 @@
+{
+ "id": "K066",
+ "coder": "K4",
+ "title": "Bridging the Performance-Gap Between Target-Free and Target-Based Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We evaluate iS-QN in online, offline, continuous control, and language-based RL scenarios to demonstrate that it can enhance the learning speed of target-free methods.",
+   "page": 5
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "First, we evaluate iS-DQN on 15 Atari games (Bellemare et al., 2013) with the vanilla CNN architecture (Mnih et al., 2015) equipped with LayerNorm.",
+   "page": 6
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "The details of hyperparameters used for the experiments are provided in Table 1 (Atari), Table 2 (DMC Hard), and Table 3 (Wordle).",
+   "page": 23
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "Table 1: Summary of the shared hyperparameters used for the Atari experiments.",
+   "page": 23
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Code available at: https://github.com/theovincent/iS-DQN",
+   "page": 1
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "In each experiment, the same hyperparameters as those provided in the original target-based approaches are used without further tuning.",
+   "page": 23
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "We emphasize that the performances reported in this work correspond to those collected during training, not the ones obtained during a separate evaluation phase",
+   "page": 16
+  },
+  "Q8": {
+   "value": "yes",
+   "quote": "We use the Inter-Quantile Mean (IQM) and 95% stratified bootstrapped confidence intervals to allow for more robust statistics as advocated by Agarwal et al. (2021).",
+   "page": 6
+  },
+  "X1": {
+   "value": 5,
+   "quote": "The IQMs are computed over 5 seeds per Atari game, 10 seeds per DMC Hard tasks, and 5 seeds for Wordle.",
+   "page": 6
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We use the Inter-Quantile Mean (IQM) and 95% stratified bootstrapped confidence intervals to allow for more robust statistics as advocated by Agarwal et al. (2021).",
+   "page": 6
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "Importantly, all hyperparameters are kept untouched with respect to the standard values (Castro et al., 2018), only the architecture is modified",
+   "page": 6
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "First, we evaluate iS-DQN on 15 Atari games (Bellemare et al., 2013) with the vanilla CNN architecture (Mnih et al., 2015) equipped with LayerNorm.",
+   "page": 6
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "In Figure 11 (bottom), we report the training time in hours required by all algorithms.",
+   "page": 17
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "Then, we sum the human-normalized returns over the epochs and compute the IQM and 95% stratified bootstrap confidence intervals over the seeds and games.",
+   "page": 17
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "We use the Inter-Quantile Mean (IQM) and 95% stratified bootstrapped confidence intervals to allow for more robust statistics as advocated by Agarwal et al. (2021).",
+   "page": 6
+  },
+  "Y3": {
+   "value": 23,
+   "quote": "We evaluate iS-QN in online, offline, continuous control, and language-based RL scenarios to demonstrate that it can enhance the learning speed of target-free methods.",
+   "page": 5
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "Except on Asterix, iS-DQN outperforms or is on par with the target-free approach",
+   "page": 25
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "Our codebase is a fork of the repository shared by the authors (Snell et al., 2023), from which we implemented the target-free and the iterated Shared Features approaches.",
+   "page": 17
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "As the game Tutankham is not available in the released dataset, we replaced it with Qbert, indicated with an asterisk in Figure 10.",
+   "page": 16
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Figure 13: Ablation study on the target update period T for the game Tutankham.",
+   "page": 19
+  },
+  "Y10": {
+   "value": "yes",
+   "quote": "It contains the list of dependencies and their exact version that was used to generate the results.",
+   "page": 11
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "ci",
+   "quote": "We use the Inter-Quantile Mean (IQM) and 95% stratified bootstrapped confidence intervals to allow for more robust statistics as advocated by Agarwal et al. (2021).",
+   "page": 6
+  },
+  "Y12": {
+   "value": "yes",
+   "quote": "We use the Inter-Quantile Mean (IQM) and 95% stratified bootstrapped confidence intervals to allow for more robust statistics as advocated by Agarwal et al. (2021).",
+   "page": 6
+  }
+ },
+ "doubts": "Q6 : les hyperparamètres sont ceux des articles d'origine, « without further tuning » ; codé yes parce que la règle de choix est dite, mais aucune recherche n'est faite. Q8 : IQM avec IC bootstrap stratifiés (rliable) compté comme test appliqué aux comparaisons, selon la règle. X1 : 5 graines par jeu Atari pour le résultat principal (10 pour DMC). X4 : mêmes valeurs par défaut pour tous sans réglage décrit, donc no (écart 1). Y3 : 23 = 15 jeux Atari (qui couvrent Qbert et les jeux du streaming) + 7 tâches DMC Hard + Wordle ; Seaquest (MellowMax, annexe) non compté. Y6 : remplacement de Tutankham par Qbert et retrait de 5 jeux pour IMPALA, avec raison, comptés comme exclusions dites. Y7 : Atari selon Machado et al. et DMC sans numéro de version. Y10 : le dépôt est dit contenir la liste des dépendances avec versions exactes."
+}

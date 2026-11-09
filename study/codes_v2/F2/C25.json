@@ -1,0 +1,68 @@
+{
+ "id": "C25",
+ "coder": "F2",
+ "title": "Representation Balancing MDPs for Off-Policy Policy Evaluation",
+ "criteria": {
+  "Y1": {
+   "value": "yes",
+   "quote": "The reported results are square root of the average MSE over 100 runs.",
+   "page": 7
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "non applicable : X2 v1 vaut no",
+   "page": null
+  },
+  "Y3": {
+   "value": 3,
+   "quote": "show our method results in substantially smaller MSE estimates compared to state-of-the-art baselines in common benchmark control tasks and on a more challenging HIV simulator",
+   "page": 9
+  },
+  "Y4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "IS and DR methods reweight samples, so their estimates for single initial states are not applicable",
+   "page": 7
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We study the effect of the hyper-paramter ↵ in the IPM terms on the estimation results.",
+   "page": 18
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "non applicable : X2 v1 vaut no",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y3 : Cart Pole (horizons long et court comptés une fois), Mountain Car et HIV. Y4 : en Cart Pole court, DR(AM) (0.0235) bat le modèle RepBM seul (0.07836) en MSE moyenne, mais DR(RepBM) reste le meilleur ; pas compté comme une perte. Y7 : CartPole-v0 et MountainCar-v0 sont versionnés (annexe), le simulateur HIV ne l'est pas. Y9 : la page 18 est celle du PDF d'annexe."
+}

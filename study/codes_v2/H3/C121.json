@@ -1,0 +1,143 @@
+{
+ "id": "C121",
+ "coder": "H3",
+ "title": "Mix & Match – Agent Curricula for Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We now test and analyse our method on three sets of RL experiments.",
+   "page": 4
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We use a simple architecture of a convolutional network followed by an LSTM",
+   "page": 5
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "In all experiments PBT controls adaptation of three hyperparameters: α, learning rate and entropy cost regularisation. We use populations of size 10.",
+   "page": 1
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "Each curve shows the mean over 3 populations, each consisting of 10 agents each, with random seeds and hyperparameters as described in the appendix.",
+   "page": 6
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "In all experiments PBT controls adaptation of three hyperparameters: α, learning rate and entropy cost regularisation. We use populations of size 10.",
+   "page": 1
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "We use T-Test with p-value threshold of 5% to answer the question whether given performance is significantly better than the other, applied to averaged last 30 episodes returns.",
+   "page": 1
+  },
+  "X1": {
+   "value": 3,
+   "quote": "Full details of the experimental hyper-parameters can be found in the appendix, and on each figure we show the average over 3 runs for each result.",
+   "page": 5
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "yes",
+   "quote": "Each curve represents the average of 3 independent runs of 10 agents each (used for population based training). FF and LSTM represent the feedforward and LSTM baselines respectively",
+   "page": 7
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "using DeepMind Lab (Beattie et al., 2016) as an environment suite.",
+   "page": 4
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "We use 100 CPU actors per one learner. Each learner is trained with a single K80 GPU card.",
+   "page": 1
+  },
+  "Y1": {
+   "value": "no",
+   "quote": "Human normalised score through training in action spaces experiments. Averaged across levels (for per level curves see Fig. 3).",
+   "page": 6
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y3": {
+   "value": 5,
+   "quote": "We ran experiments on four problems in the DM Lab environment, focusing on various navigation tasks.",
+   "page": 6
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "the M&M agent learns to play well in both challenging laser tag environments, while slightly sacrificing performance in a single navigation task.",
+   "page": 8
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q4 et X4 : les légendes indiquent que toutes les courbes, références comprises, sont des populations PBT de 10 agents avec les mêmes distributions initiales d'hyperparamètres ; compté comme réglage égal, sans phrase qui le dise pour les références. Q8 : le test t sert à l'opérateur « exploit » de PBT, pas à comparer les résultats, codé no. X2 : aucune bande ni barre d'incertitude décrite, codé no (Y2 et Y11 na). X3 : les courbes sont des moyennes sur 3 populations de 10 agents ; il n'est pas dit si chaque population est représentée par son meilleur agent, codé no. Y1 : « Human normalised score through training » sans dire sur quels épisodes ni à quel point, codé no. Y3 : 5 niveaux DM Lab décrits en annexe ; le nombre de niveaux de la figure 3 (espaces d'actions) n'est pas dit dans le texte, codé 5. Y5 : les références sont des variantes d'agent dans le cadre IMPALA, sans dire d'où vient le code, codé no."
+}

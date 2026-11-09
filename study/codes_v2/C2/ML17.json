@@ -1,0 +1,20 @@
+{
+ "id": "ML17",
+ "coder": "C2",
+ "title": "InfoPO: Information-Driven Policy Optimization for User-Centric Agents",
+ "criteria": {
+  "Y1": {"value": "yes", "quote": "We define final performance on benchmark b as the mean score at the final checkpoint", "page": 17},
+  "Y2": {"value": "yes", "quote": "Solid lines and shaded regions represent mean ± std across three seeds.", "page": 7},
+  "Y3": {"value": 3, "quote": "Across three interactive benchmarks, InfoPO consistently improves performance, sample efficiency, and training stability over strong prompting and RL baselines", "page": 9},
+  "Y4": {"value": "yes", "quote": "In UserGym, InfoPO improves upon the strongest baseline in 7 out of 8 sub-environments", "page": 6},
+  "Y5": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens [origine du code de UserRL, RAGEN, Search-R1, ReAct et Reflexion non dite]", "page": null},
+  "Y6": {"value": "yes", "quote": "We do not include the Frontend Design setting because it requires vision-language modeling to compare rendered pages, which is beyond the scope of this paper.", "page": 17},
+  "Y7": {"value": "no", "quote": "We follow the official train/test splits provided by each benchmark for both training and evaluation. [aucune version de UserGym, ColBench ou τ 2 -Bench]", "page": 6},
+  "Y8": {"value": "yes", "quote": "We follow the standard protocol of training on five gyms and evaluating both indomain and generalization to held-out interaction purposes, with IntentionGym, TelepathyGym, and SearchGym as held-out environments.", "page": 17},
+  "Y9": {"value": "yes", "quote": "Sensitivity analysis of the Info-Gain reward weight β demonstrates that InfoPO maintains high and stable performance across a relatively broad interval from 0.1 to 0.5.", "page": 21},
+  "Y10": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y11": {"value": "yes", "kind": "std", "quote": "Solid lines and shaded regions represent mean ± std across three seeds.", "page": 7},
+  "Y12": {"value": "no", "quote": "We performed both parametric (t-test) and non-parametric (Mann-Whitney U test) comparisons between each alternative strategy and the default string placeholder. [aucun outil postérieur à 2018]", "page": 21}
+ },
+ "doubts": "Y3 : trois bancs entraînés séparément comptés comme 3 cadres ; Sokoban et WebShop (section généralisation, autre modèle de base) non comptés dans la conclusion principale. Y6 : l'omission du réglage Frontend Design avec sa raison comptée comme exclusion dite (écart 17). Y12 : t-test et Mann-Whitney employés mais antérieurs à 2018, donc no."
+}

@@ -1,0 +1,69 @@
+{
+ "id": "LR04",
+ "coder": "A2",
+ "title": "The Art of Scaling Reinforcement Learning Compute for LLMs",
+ "criteria": {
+  "Y1": {
+   "value": "yes",
+   "quote": "The scaling curves are fitted on the validation points, which measure the average pass rate every 100 training steps, with 16 generations per prompt on the 1, 000 held-out prompts.",
+   "page": 5
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "We found that the fit values of A varied by at most ±0.015, suggesting 0.02 as a reasonable error margin on the estimates of asymptotic performance.",
+   "page": 18
+  },
+  "Y3": {
+   "value": 1,
+   "quote": "For the RL stage, we use the Polaris-53K dataset (An et al., 2025) for most of our runs",
+   "page": 16
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "non applicable : Y3 vaut 1",
+   "page": null
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "This recipe mostly follows the DeepSeek Guo et al. (2025) work. [...] In our codebase, this was not efficent because for PPO-offpolicy algorithm",
+   "page": 25
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "Unless noted otherwise, all our scaling fits begin after ∼1.5k GPU hours.",
+   "page": 5
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "we hold out randomly selected 1, 000 prompts from the Polaris-53k dataset for validation",
+   "page": 5
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "Downstream evaluation on AIME24 shows a consistent scaling trend for S CALE RL, thus generalizing beyond the training data distribution.",
+   "page": 1
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "As ϵmax increases, the terminal reward A increases until an optimal range is reached, after which A decreases again.",
+   "page": 26
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "minmax",
+   "quote": "We found that the fit values of A varied by at most ±0.015, suggesting 0.02 as a reasonable error margin on the estimates of asymptotic performance.",
+   "page": 18
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y2 et Y11 : la seule incertitude est la marge d’erreur sur A tirée de trois entraînements (écart maximal ±0,015 arrondi à 0,02), codée minmax ; les courbes principales n’ont pas de bande. Y3 : la conclusion principale porte sur Polaris-53K (mathématiques) ; l’entraînement maths+code est une extension, d’où 1 plutôt que 2. Y5 : les recettes de référence (DeepSeek, DAPO, Magistral, MiniMax) sont réimplémentées dans le code des auteurs, ce qui se lit mais n’est pas dit en toutes lettres. Y6 : l’exclusion des points de faible calcul des ajustements est dite ; on peut discuter qu’il s’agisse d’essais exclus. Y7 : la validation principale est une séparation de 1 000 prompts tirée par les auteurs et non publiée."
+}

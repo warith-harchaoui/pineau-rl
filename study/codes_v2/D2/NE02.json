@@ -1,0 +1,20 @@
+{
+ "id": "NE02",
+ "coder": "D2",
+ "title": "VisionThink: Smart and Efficient Vision Language Model via Reinforcement Learning",
+ "criteria": {
+  "Y1": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens [scores des bancs via lmms-eval, POPE en F1, sans dire quel checkpoint ni combien de pas d'entraînement]", "page": null},
+  "Y2": {"value": "na", "quote": "non applicable : X2 v1 vaut no", "page": null},
+  "Y3": {"value": 1, "quote": "we selected 10K samples that require high-resolution images [...] and 10K samples that do not, to train our model", "page": 7},
+  "Y4": {"value": "na", "quote": "non applicable : Y3 vaut 1", "page": null},
+  "Y5": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y6": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y7": {"value": "yes", "quote": "ChartQA† OCRBench DocVQA MME MMVet RealWorldQA POPE MathVista MathVerse [...] test test val test test test test testmini testmini", "page": 9},
+  "Y8": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y9": {"value": "yes", "quote": "Ablation Study on Penalty Ratio Threshold. As the threshold increases, the model", "page": 29},
+  "Y10": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y11": {"value": "na", "quote": "non applicable : X2 v1 vaut no", "page": null},
+  "Y12": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null}
+ },
+ "doubts": "Y1 : la mesure suit les définitions par défaut de lmms-eval (POPE précisé en F1, ChartQA jugé par GPT-4o), mais aucun point de mesure (checkpoint, nombre de pas) n'est donné, d'où no. Y3 : un seul jeu d'entraînement (20K VQA) pour neuf bancs d'évaluation, donc 1 selon l'écart 17. Y7 : chaque banc a sa séparation nommée (val, test, testmini), sans version ni date, codé yes par analogie avec MATH-500. Y9 : le balayage du seuil de pénalité θ est montré seulement par le taux d'appel au redimensionnement, pas par la précision, mais c'est un hyperparamètre présenté comme tel."
+}

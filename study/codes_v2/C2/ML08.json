@@ -1,0 +1,20 @@
+{
+ "id": "ML08",
+ "coder": "C2",
+ "title": "Towards Practical World Model-based Reinforcement Learning for Vision-Language-Action Models",
+ "criteria": {
+  "Y1": {"value": "yes", "quote": "We measure performance by average success rate over 50 evaluation episodes per task across all 10 tasks in each suite.", "page": 7},
+  "Y2": {"value": "na", "quote": "absent après lecture des sections expériences, annexes et liens [aucune barre d'erreur, X2 v1 = no]", "page": null},
+  "Y3": {"value": 9, "quote": "a widely adopted benchmark consisting of four task suites: Spatial, Object, Goal, and Long [...] we design five real-world tasks across two robotic platforms.", "page": [7, 9]},
+  "Y4": {"value": "no", "quote": "VLA-MBPO achieves consistent and substantial performance gains over all baselines across every suite of the LIBERO benchmark.", "page": 7},
+  "Y5": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens [origine du code de πRL, IDQL, Ctrl-World et BC (WM) non dite]", "page": null},
+  "Y6": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y7": {"value": "no", "quote": "We evaluate VLA-MBPO on LIBERO (Liu et al., 2023), a widely adopted benchmark consisting of four task suites [LIBERO sans version ; tâches réelles non publiées]", "page": 7},
+  "Y8": {"value": "yes", "quote": "Evaluation is conducted on 50 trajectories per task: 30 seen and 20 unseen, where the latter include novel objects, backgrounds, and spatial configurations.", "page": 9},
+  "Y9": {"value": "yes", "quote": "Imagined Sample Size. We analyze the policy performance across different generated sample sizes per iteration as shown in Figure 6.", "page": 10},
+  "Y10": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y11": {"value": "na", "quote": "absent après lecture des sections expériences, annexes et liens [aucune barre d'erreur, X2 v1 = no]", "page": null},
+  "Y12": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null}
+ },
+ "doubts": "Y1 : taux de réussite sur 50 épisodes d'évaluation, sans dire quel point de contrôle est évalué, codé yes. Y3 : quatre suites LIBERO entraînées séparément plus cinq tâches réelles comptées comme 9 cadres d'entraînement. Y4 : la figure 5 (tâches réelles) n'est pas lisible dans le texte ; le texte annonce des gains partout, codé no. Y9 : la taille d'échantillon imaginé et la longueur de déroulement figurent dans le tableau d'hyperparamètres, comptées comme hyperparamètres balayés."
+}

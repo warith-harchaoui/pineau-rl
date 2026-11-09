@@ -1,0 +1,68 @@
+{
+ "id": "LR16",
+ "coder": "B2",
+ "title": "VeriRole: Verifiable Role-Awareness through Hint-Guided Reinforcement Learning",
+ "criteria": {
+  "Y1": {
+   "value": "yes",
+   "quote": "For assessment, we adopt LLM as judges for correctness evaluation, and select both Claude 3.5 and GPT-4O to double-check for more precise accuracy.",
+   "page": 7
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "non applicable : X2 v1 vaut no",
+   "page": null
+  },
+  "Y3": {
+   "value": 1,
+   "quote": "In addition to the RAIDEN data, we incorporate 737 samples from the Situational Puzzle Dataset.",
+   "page": 7
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "non applicable : Y3 vaut 1",
+   "page": null
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "We select Qwen2.5-14B-Instruct, Qwen2.5-32B-Instruct, Qwen3-32B and Qwen3-30B-A3B-Instruct as our experimental baselines.",
+   "page": 7
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "we first filter the selected data and preserve challenging samples that the baseline Qwen2.5-14B model fails to answer correctly",
+   "page": 4
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "For the hyperparameter β, the model achieves its best performance of 0.802 at β = 0.7",
+   "page": 10
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "non applicable : X2 v1 vaut no",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y1 : taux de réponses correctes jugé par Claude 3.5 et GPT-4o sur 483 échantillons RAIDEN tenus à part, modèle après 1 époque, codé yes ; CharacterEval reste non défini. Y3 : un seul mélange d'entraînement (RAIDEN + énigmes) appliqué à plusieurs modèles de base, compté 1. Y5 : les références sont des points de contrôle publiés nommés exactement (Peach-9B avec lien) et les SFT entraînés par les auteurs, codé yes avec hésitation faute de citation. Y7 : les 483 échantillons RAIDEN sont une sélection des auteurs dont la publication n'est pas dite pour le test, codé no. Y8 : l'évaluation RAIDEN tenue à part vient de la même distribution, et CharacterEval n'est pas présenté comme hors distribution, codé no."
+}

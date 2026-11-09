@@ -1,0 +1,20 @@
+{
+ "id": "ML15",
+ "coder": "C2",
+ "title": "Moment Matching Q-Learning",
+ "criteria": {
+  "Y1": {"value": "no", "quote": "We report the normalized average scores over five random seeds with standard deviations reported.", "page": 6},
+  "Y2": {"value": "yes", "quote": "We report normalized scores averaged across dataset variants (e.g., medium, medium-replay, medium-expert). We report the normalized average scores over five random seeds with standard deviations reported.", "page": 7},
+  "Y3": {"value": 8, "quote": "We evaluate MoMa QL on standard D4RL benchmarks across three task suites: Gym locomotion tasks, Adroit manipulation tasks, and Kitchen tasks.", "page": 6},
+  "Y4": {"value": "yes", "quote": "While Diffusion-QL holds a slight edge on hopper-me (111.1 vs. our 88.9 ± 9.6), MoMa QL consistently dominates on medium and medium-replay datasets.", "page": 17},
+  "Y5": {"value": "yes", "quote": "For each method, We adopted the same results from the previous works(Ding & Jin, 2024; Park et al., 2025). We do not use the same parameters for all the methods.", "page": 5},
+  "Y6": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y7": {"value": "no", "quote": "in D4RL benchmarks (Fu et al., 2021) [suites Gym nommées halfcheetah-m, hopper-mr… sans suffixe de version]", "page": 5},
+  "Y8": {"value": "no", "quote": "In this regime, we initialize the policy with the pre-trained offline model (trained for 100K steps) and then fine-tune it with online interactions for an additional 400K steps.", "page": 6},
+  "Y9": {"value": "yes", "quote": "We examine six parameters: η, N , a, b, pmean , and pstd .", "page": 6},
+  "Y10": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y11": {"value": "yes", "kind": "std", "quote": "We report the normalized average scores over five random seeds with standard deviations reported.", "page": 6},
+  "Y12": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null}
+ },
+ "doubts": "Y1 : score normalisé D4RL sans point de mesure dit pour les résultats hors ligne (le tableau 6 dit « final online score », mais pas la conclusion principale), donc no. Y3 : trois suites comptées comme 8 cadres (3 Gym + 4 Adroit + kitchen), les variantes de qualité de jeu comptant pour une. Y5 : chiffres recopiés de travaux cités, règle de l'écart 17. Y7 : quelques jeux Adroit portent un suffixe -v1 mais les tâches Gym n'en ont pas, « chaque » étant strict."
+}

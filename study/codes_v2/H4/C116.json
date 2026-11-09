@@ -1,0 +1,143 @@
+{
+ "id": "C116",
+ "coder": "H4",
+ "title": "Policy Optimization with Demonstrations",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "we conduct extensive experiments on eight widely used physical control tasks",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "we use a three-layer fully connected neural network with Tanh nonlinear activation functions as our policy network",
+   "page": 1
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 5,
+   "quote": "the method is run for 5 times with different random initialization",
+   "page": 7
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "9116.08 ± 1290.74",
+   "page": 8
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We evaluate our POfD on physical locomotion tasks based on Mujoco (Todorov et al., 2012) in sparse-reward environments.",
+   "page": 2
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "empirical returns in numerical values are calculated by averaging over 500 cumulated rewards for the learned policy",
+   "page": 7
+  },
+  "Y2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y3": {
+   "value": 8,
+   "quote": "we conduct extensive experiments on eight widely used physical control tasks",
+   "page": 6
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "Furthermore, GAIL succeeds in CartPole but converges to the imperfect demonstration data in MontainCar.",
+   "page": 7
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "We use the DQfD1 code for experiments on MountainCar and CartPole and implement DDPGfD based on the public DDPG code2 .",
+   "page": 1
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "yes",
+   "quote": "MountainCar-v1 [...] CartPole-v0 [...] HalfCheetah-v1 [...] Walker2d-v1 [...] DoublePendulum-v1 [...] Humanoid-v1 [...] Reacher-v1",
+   "page": 8
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "Our algorithm is implemented with Theano (Theano Development Team, 2016) based on the code provided in (Ho & Ermon, 2016).",
+   "page": 1
+  },
+  "Y11": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q3 : λ1, λ2, itérations, taille de lot et unités cachées donnés, mais taux d'apprentissage, discriminateur et pas de TRPO absents (« provided in supplement » renvoie à lui-même), codé no. Y1 : « the learned policy » lu comme la politique finale, codé yes avec hésitation. Y4 : CartPole à égalité avec l'expert (500 contre 500) et GAIL qui réussit sur CartPole, codé yes. Y5 : code d'origine dit pour DQfD et DDPGfD, pas pour TRPO ni GAIL, codé no. Y7 : versions Gym données pour chaque environnement, mais la sparsification est construite par les auteurs (évaluation en environnement dense standard), codé yes."
+}

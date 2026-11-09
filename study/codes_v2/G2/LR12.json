@@ -1,0 +1,20 @@
+{
+ "id": "LR12",
+ "coder": "G2",
+ "title": "GAS: Enhancing Reward-Cost Balance of Generative Model-assisted Offline Safe RL",
+ "criteria": {
+  "Y1": {"value": "no", "quote": "Each value represents the average performance over 10 evaluation episodes with 5 seeds and 3 thresholds.", "page": 8},
+  "Y2": {"value": "yes", "quote": "Values shown as “mean±std” represent the mean and standard deviation.", "page": 8},
+  "Y3": {"value": 12, "quote": "We consider 8 cases in Bullet-safety-gym and 4 cases in Safety-gamnasium", "page": 17},
+  "Y4": {"value": "yes", "quote": "CarCircle2 0.65±0.07 2.32±0.90 0.79±0.04 3.82±0.38 0.58±0.05 1.29±0.44 0.57±0.06 4.72±0.46 0.72±0.03 2.26±0.34 0.57±0.03 0.40±0.27 0.56±0.06 0.82±0.37 0.57±0.02 2.44±1.08 0.50±0.01 0.74±0.20", "page": 8},
+  "Y5": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y6": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y7": {"value": "no", "quote": "We evaluate GAS on the widely used Bullet-Safety-Gym (Gronauer, 2022) and SafetyGymnasium (Ji et al., 2023) benchmarks. For all tasks, we use the dataset provided in DSRL (Liu et al., 2023a) as our offline dataset", "page": 8},
+  "Y8": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y9": {"value": "yes", "quote": "In fig. 10, GAS is robust to the dataset reshape threshold when q% ≤ 40% and is sensitive when q% is extremely large", "page": 19},
+  "Y10": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y11": {"value": "yes", "kind": "std", "quote": "Values shown as “mean±std” represent the mean and standard deviation.", "page": 8},
+  "Y12": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null}
+ },
+ "doubts": "Y1 : score normalisé (retour / retour maximal du jeu) moyenné sur 10 épisodes d'évaluation, sans dire à quel point de l'entraînement il est pris, donc no par l'écart 17. Y4 : le texte dit que GAS gagne partout en contrainte serrée, mais la ligne CarCircle2 du tableau 1 montre FISOR (0.57, coût 0.40) et CAPS (0.56, coût 0.82) sûrs et au-dessus de GAS (0.50) ; je code yes sur le tableau. Y7 : les jeux DSRL sont publiés et nommés, mais aucune version des suites Bullet-Safety-Gym ni Safety-Gymnasium n'est donnée, donc no. Y8 : l'adaptation « zero-shot » à d'autres seuils de coût et à des cibles déséquilibrées porte sur le même environnement et les mêmes données ; je ne l'ai pas comptée comme une distribution de test distincte. Y3 : 12 tâches du tableau 1 ; les 5 tâches Velocity de l'annexe (tableau 5) ne sont pas comptées dans la conclusion principale."
+}

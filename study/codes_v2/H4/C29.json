@@ -1,0 +1,143 @@
+{
+ "id": "C29",
+ "coder": "H4",
+ "title": "Multi-Agent Reinforcement Learning via Double Averaging Primal-Dual Optimization",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "To verify the performance of our proposed method, we conduct an experiment on the mountaincar dataset",
+   "page": 9
+  },
+  "Q2": {
+   "value": "no",
+   "quote": "we focus on minimizing a Fenchel duality-based reformulation of the mean squared Bellman error in the model-free setting with infinite horizon, batch trajectory, and linear function approximation",
+   "page": 2
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "we simulate a communication network with N = 10 agents, connected on an Erdos-Renyi graph generated with connectivity of 0.2; for the step sizes, we set γ1 = 0.005/λmax (Â), γ2 = 5 × 10−3",
+   "page": 9
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "we generate the trajectories of actions and states according to the policy with M samples",
+   "page": 9
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "theory",
+   "quote": "We prove that the proposed algorithm converges to the optimal solution at a global geometric rate.",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "For PD-DistIAG, we compare its optimality gap in MSPBE as the average objective",
+   "page": 9
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y3": {
+   "value": 1,
+   "quote": "Figure 1: Experiment with mountaincar dataset. For this problem, we have d = 300, M = 5000 samples, and there are N = 10 agents.",
+   "page": 9
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Additional experiments are presented in the supplementary materials to compare the performance at different topology and regularization parameter.",
+   "page": 9
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q2 : réseau de neurones seulement évoqué comme source possible de caractéristiques, l'expérience utilise des caractéristiques linéaires (d = 300) issues de Sarsa. X1 : aucun nombre d'exécutions dit, une seule courbe par méthode, codé null. Y1 : l'écart d'optimalité du MSPBE est défini et suivi par époque, codé yes. Y9 : ρ est un paramètre de régularisation du problème plus qu'un hyperparamètre de méthode ; balayé (0, 0,01, 0,1) avec figures, codé yes."
+}

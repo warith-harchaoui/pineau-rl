@@ -1,0 +1,71 @@
+{
+ "id": "NE12",
+ "coder": "E2",
+ "title": "Rainbow Delay Compensation: A Multi-Agent Reinforcement Learning Framework for Mitigating Delayed Observation",
+ "criteria": {
+  "Y1": {
+   "value": "yes",
+   "quote": "While SMAC also provides specific reward values, the win rate is a more critical metric since the objective is to achieve victory. [...] After model training, we perform extensive testing under fixed and unfixed delay conditions, running 1,280 episodes for each setting.",
+   "page": 8
+  },
+  "Y2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y3": {
+   "value": 6,
+   "quote": "The training performances of FT-QMIX under delayed observation [...] reveal severe performance degradation across all six scenarios",
+   "page": 8
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "in the zero-delay setting, the Oracle performance surpasses that of the RDC-enhanced method, consistent with its role as the ideal upper bound.",
+   "page": 10
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "Consequently, we implement previous solutions within the RDC framework, such as the delay-reconciled critic and augmented observation input, to enable more equitable comparisons.",
+   "page": 8
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "Knowledge distillation using a low-delay teacher model proves effective, though we excluded Flash+DR from this approach due to its poor baseline performance. [...] For brevity, Table 4-9 omit the less competitive FT-VDN and GRU-based results.",
+   "page": [
+    9,
+    20
+   ]
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "We evaluate model performance under two unfixed delay conditions: [...] in-distribution (within trained delay ranges) and half-out-of-distribution (novel delay ranges).",
+   "page": 9
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Figure 12: Performance under different history lengths.",
+   "page": 10
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y1: the measure (test reward or win rate over 1,280 episodes after training) is given, but the number of training runs behind each value is never stated. Y2/Y11: every table reports ± values and the figures show bands, but nothing says what they represent. Y4: the RDC variants beat Base everywhere; the only loss shown is to the delay-free Oracle at zero delay. Y5: the delay baselines are said to be reimplemented in the RDC framework, but the source of the FT-QMIX/FT-VDN code is only implied by the RDC-pymarl repository. Y9: history_length is a training parameter in Table 2 and is swept in Figure 12, but the paper presents it as an input-design comparison rather than as a hyperparameter."
+}

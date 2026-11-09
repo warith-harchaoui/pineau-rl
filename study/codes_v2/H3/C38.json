@@ -1,0 +1,146 @@
+{
+ "id": "C38",
+ "coder": "H3",
+ "title": "Neural Map: Structured Memory for Deep Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "To demonstrate the effectiveness of the Neural Map, we run it on 2D and 3D maze-based environments where memory is crucial to optimal behaviour.",
+   "page": 5
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "The LSTM agent had a single 128-dimension LSTM layer on top of the state embedding.",
+   "page": 12
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "For optimization, all architectures used the Adam optimization algorithm with gradients thresholded to a norm of 40.",
+   "page": 13
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "The learning rate for LSTM models was 0.0005, while for other architectures it was set to 0.00075.",
+   "page": 13
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "The hyperparameters were obtained during a limited hyperparameter sweep on a simpler version of the Indicator Maze environment.",
+   "page": 13
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "A held-out set of 1000 random mazes is kept for testing. This test set therefore represents maze geometries that have never been seen during training",
+   "page": 5
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "yes",
+   "quote": "We obtained the hyperparameters during a limited hyperparameter sweep on a simpler version of the environment.",
+   "page": 12
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "we run a Neural Map agent on a set of challenging 3D maze environments based on the video game Doom.",
+   "page": 2
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Each update step took on the order of 1-3 minutes depending on the number of threads available, meaning each agent took on the order of a week to train.",
+   "page": 13
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "For each of the 50 total test mazes we ran 100 episodes with random goal locations and averaged the result.",
+   "page": 8
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y3": {
+   "value": 4,
+   "quote": "The “Goal-Search” environment is adapted from Oh et al. (2016). [...] we implemented three 3D maze environments using the ViZDoom (Kempka et al., 2016)",
+   "page": [
+    5,
+    7
+   ]
+  },
+  "Y4": {
+   "value": "no",
+   "quote": "The results are shown in Table 2. We can see that the Neural Map architectures work better than the baseline models",
+   "page": 8
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "This test set therefore represents maze geometries that have never been seen during training, and measure the agent’s ability to generalize to new environments.",
+   "page": 5
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "The Neural Map seems quite robust to this downsampling, with a downsampling of around 3 (6x6 v.s. 15x15) doing just a few percentage points worse, and still beating all baseline models.",
+   "page": 6
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q6 et X4 : « a limited hyperparameter sweep on a simpler version of the environment » est donné juste après les taux d'apprentissage de toutes les architectures, références comprises ; compté comme méthode de choix (Q6 yes) et réglage décrit pour les références (X4 yes), sans détail du balayage. X1 : le nombre d'entraînements indépendants n'est jamais dit, null ; aucune incertitude (X2 no, Y2 et Y11 na). X7 : « on the order of a week to train » par agent, compté comme quantité de calcul. Y3 : 4 tâches (Goal-Search 2D et trois labyrinthes Doom), les tailles de labyrinthe comptant comme niveaux d'une même tâche. Y4 : au niveau des tâches, une variante Neural Map gagne partout ; le Neural Map (15x15) simple est sous LSTM sur les petits labyrinthes de test (tableau 1) sans que ce soit dit, codé no. Y5 : LSTM, MQN et FRMQN sont décrits en détail mais l'origine du code n'est pas dite, codé no. Y9 : la taille de la carte (15x15, 8x8, 6x6) est présentée comme un sous-échantillonnage et non nommée hyperparamètre ; codé yes comme balayage chiffré."
+}

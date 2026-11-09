@@ -1,0 +1,20 @@
+{
+ "id": "NE06",
+ "coder": "D2",
+ "title": "SATURN: SAT-based Reinforcement Learning to Unleash Language Model Reasoning",
+ "criteria": {
+  "Y1": {"value": "yes", "quote": "For SAT problems, we evaluate pass@k ∈ {1, 3, 5, 7, 10} and sample 12 times per problem / and programming benchmarks, we use pass@1, following a context length of 32,768 and temperature / The total number of curriculum iterations [...] is set to 2", "page": 6},
+  "Y2": {"value": "na", "quote": "non applicable : X2 v1 vaut no", "page": null},
+  "Y3": {"value": 1, "quote": "SATURN-2.6k consists of 1,500 training instances and 160 test instances that share the", "page": 6},
+  "Y4": {"value": "na", "quote": "non applicable : Y3 vaut 1", "page": null},
+  "Y5": {"value": "no", "quote": "We compare SATURN against [...] several prior constructing RL task approaches, including Logic-RL [47], SPGA [7], and ScaleQuest / For larger closed-source models, we report the benchmark results from a public benchmark website", "page": [8, 27]},
+  "Y6": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y7": {"value": "yes", "quote": "we use AIME 24/25 [2], AMC [...] 22/23 [1], MATH-500 [19], GPQA Diamond [35], and LiveCodeBench v4_v5 subset [22]", "page": 6},
+  "Y8": {"value": "yes", "quote": "1,000 test instances from 10 harder unseen difficulty levels", "page": 3},
+  "Y9": {"value": "yes", "quote": "demonstrate the necessity of curriculum learning and the effectiveness of hyperparameters on SAT [...] difficulty, thresholds, step sizes, etc. / Table 16: Ablation Study with Different Sampling Strategies and Training Budgets", "page": [6, 30]},
+  "Y10": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y11": {"value": "na", "quote": "non applicable : X2 v1 vaut no", "page": null},
+  "Y12": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null}
+ },
+ "doubts": "Y1 : pass@k défini avec k et 12 échantillons, point de mesure = modèle après la 2e itération de curriculum. Y3 : un seul cadre d'entraînement (tâches SAT générées) malgré plusieurs modèles de base et bancs de transfert, donc 1. Y5 : seuls les chiffres des modèles fermés ont une source (site artificialanalysis) ; Logic-RL, SPGA et ScaleQuest n'ont ni code ni source de chiffres dits, d'où no. Y9 : les tableaux 15-16 font varier difficulté, budget et pas de curriculum, que l'article appelle hyperparamètres, mais qui ressemblent aussi à des choix de données."
+}

@@ -1,0 +1,143 @@
+{
+ "id": "K062",
+ "coder": "K4",
+ "title": "From Absolute to Relative: Rethinking Reward Shaping in Group-Based Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We conduct our experiments on DeepSeekR1-Distill-Qwen-1.5B and DeepSeek-R1-Distill-LlaMA8B (Guo et al., 2025).",
+   "page": 5
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We conduct our experiments on DeepSeekR1-Distill-Qwen-1.5B and DeepSeek-R1-Distill-LlaMA8B (Guo et al., 2025).",
+   "page": 5
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "Unless otherwise noted, hyperparameters are fixed as follows: λ = 2048, ξ + /ξ − = ±10−3 , τ = 0.1 , and sampling temperature T = 1.0 during data collection. [no learning rate, batch size, KL coefficient or number of steps]",
+   "page": 11
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "Our method and all baselines are implemented on top of the VeRL (Sheng et al., 2025) framework.",
+   "page": 11
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "For evaluation, we employ several challenging mathematical and logical reasoning benchmarks to assess our models’ performance.",
+   "page": 5
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "Reinforcement learning has become a cornerstone for enhancing the reasoning capabilities of Large Language Models",
+   "page": 1
+  },
+  "X6": {
+   "value": 2,
+   "quote": "We conduct our experiments on DeepSeekR1-Distill-Qwen-1.5B and DeepSeek-R1-Distill-LlaMA8B (Guo et al., 2025).",
+   "page": 5
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Table 9. Comparison of data efficiency and computational resource usage estimated over 100 training steps on A100 GPUs.",
+   "page": 15
+  },
+  "Y1": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y3": {
+   "value": 2,
+   "quote": "For RL training, we use approximately 16k mathematics and logic samples filtered by difficulty from the GURU dataset (Cheng et al., 2025) [...] we constructed the preference dataset by generating ranked responses for 10k Dolphin-R11 samples",
+   "page": 5
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "Moreover, when RLRR is paired with the fine-tuned Ranking RM, it achieves the best results in the majority of",
+   "page": 5
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "Our method and all baselines are implemented on top of the VeRL (Sheng et al., 2025) framework.",
+   "page": 11
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Hyperparameter Sensitivity. We examine the impact of τ and λ.",
+   "page": 8
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X6 : DeepSeek-R1-Distill-Qwen, DeepSeek-R1-Distill-Llama, Qwen3-1.7B et Qwen2.5-7B comptés comme deux familles de base (Qwen, Llama) ; on pourrait en compter trois en séparant DeepSeek. Y1 : Avg@k avec k donné, mais le point de contrôle mesuré (fin d'entraînement, nombre de pas) n'est jamais dit, donc no. Y3 : 2 cadres d'entraînement principaux (GURU maths/logique, Dolphin-R1 écriture) ; l'ajout d'Open-RS pour le 8B et les jeux d'ablation ne sont pas comptés. Y5 : « implemented on top of VeRL » lu comme une réimplémentation dite, sans version de VeRL ; doute. Y7 : MATH500 et AIME datés, mais Gaokao, Minerva, Olympiad Bench, AMC et les puzzles sans séparation nommée et datée, donc no (règle stricte). X1 : aucun nombre de graines ni d'entraînements répétés, null."
+}

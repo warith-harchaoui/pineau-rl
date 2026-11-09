@@ -1,0 +1,143 @@
+{
+ "id": "K064",
+ "coder": "K4",
+ "title": "Critique-Coder: Enhancing Coder Models by Critique Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We conducted experiments on two models, QWEN3-4B and QWEN3-8B (Yang et al., 2025), in thinking mode.",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We conducted experiments on two models, QWEN3-4B and QWEN3-8B (Yang et al., 2025), in thinking mode.",
+   "page": 6
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "The hyperparameters are set as follows: a batch size of 128, a learning rate of 1e-6, and 8 sampled outputs per prompt. [KL coefficient β and training sampling temperature not given]",
+   "page": 6
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "Under identical datasets and training configurations, replacing part of the RL data with CRL consistently yields superior results across all benchmarks.",
+   "page": 7
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "https://tiger-ai-lab.github.io/Critique-Coder",
+   "page": 1
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "To study the impact of the CRL data ratio, we conduct an ablation study by replacing different proportions of RL data with CRL data while keeping the total amount of training data and optimization settings fixed.",
+   "page": 9
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "To evaluate and compare our training results, we utilized four different benchmarks",
+   "page": 6
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X3": {
+   "value": "yes",
+   "quote": "We trained the model on the entire dataset for one epoch, and selected the best-performing checkpoint using the LiveCodeBench (v5) as the validation set.",
+   "page": 6
+  },
+  "X4": {
+   "value": "no",
+   "quote": "Under identical datasets and training configurations, replacing part of the RL data with CRL consistently yields superior results across all benchmarks.",
+   "page": 7
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "We conducted a series of experiments with the GRPO algorithm (Shao et al., 2024).",
+   "page": 2
+  },
+  "X6": {
+   "value": 1,
+   "quote": "We conducted experiments on two models, QWEN3-4B and QWEN3-8B (Yang et al., 2025), in thinking mode.",
+   "page": 6
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y3": {
+   "value": 1,
+   "quote": "The RL training was conducted on the filtered rStar-Coder seed dataset, and the CRL training was carried out by converting 20% of the data into CRL for fair comparison.",
+   "page": 7
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "and report results from their official publications or recommended evaluation settings",
+   "page": 6
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "we filter the data by discarding test cases longer than 200 tokens and randomly sampling 30 cases for each problem",
+   "page": 4
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "LiveCodeBench (v5, 2024.10–2025.02) (Jain et al., 2024) [no version for BigCodeBench-Instruct, Aider-Polyglot, EvalPlus]",
+   "page": 6
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "To examine whether the critique and reasoning abilities learned by CRITIQUE-CODER extend beyond coding tasks, we evaluate the model on the BIG-Bench Extra Hard (BBEH) logic reasoning benchmark",
+   "page": 8
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Table 5: Impact of different CRL data proportion.",
+   "page": 9
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X3 : le meilleur point de contrôle est choisi sur LiveCodeBench v5, qui est aussi un banc de test rapporté, d'où yes. Q5 : seul lien, une page de projet github.io ; codé yes en attendant la vérification de l'écart 6. Q3 : paragraphe d'hyperparamètres, mais pas le coefficient KL ni la température d'entraînement. Q6 : la proportion de 20 % de CRL est choisie par la grille {0, 20, 50, 100} % du tableau 5 ; codé yes, mais la grille est évaluée sur les bancs de test. Y9 : la proportion de données CRL est présentée comme « ablation » mais c'est un ratio continu balayé, pas un composant ; codé yes. Y1 : « accuracy » sans pass@k ni nombre d'échantillons, donc no. Y3 : un seul jeu d'entraînement (rStar-Coder filtré). Y5 : la référence RL est entraînée par les auteurs dans la même configuration, les modèles de pointe sont recopiés de leurs publications. Y7 : seul LiveCodeBench a une version datée. Y8 : BBEH présenté comme transfert hors du codage, compté comme test hors distribution."
+}

@@ -1,0 +1,20 @@
+{
+ "id": "ML11",
+ "coder": "C2",
+ "title": "Randomized Advantage Transformation (RAT): Computing Natural Policy Gradients via Direct Backpropagation",
+ "criteria": {
+  "Y1": {"value": "yes", "quote": "Final performance (mean ± stderr over 5 seeds) of different methods on continuous controls with shared actor-critic networks.", "page": 7},
+  "Y2": {"value": "yes", "quote": "The shaded region denotes the standard error over 5 random seeds.", "page": 7},
+  "Y3": {"value": 15, "quote": "We consider 8 representative environments, including BigFish, BossFight, CaveFlyer, Climber, Dodgeball, FruitBot, Heist, and StarPilot. [plus 7 tâches MuJoCo du tableau 1 : Swimmer, Hopper, HalfCheetah, Walker2d, Ant, Humanoid, HumanoidStandup]", "page": 8},
+  "Y4": {"value": "yes", "quote": "RAT achieves the best overall returns on most tasks, with substantial gains on Ant and Humanoid [Tableau 1 : Hopper, PPO 2346.8 contre RAT 2334.6]", "page": 8},
+  "Y5": {"value": "yes", "quote": "All methods are implemented within the same codebase, and baseline hyperparameters are tuned for best performance.", "page": 7},
+  "Y6": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y7": {"value": "no", "quote": "We consider Walker2d-v4 (A ∈ R6 ), HalfCheetah-v4 (A ∈ R6 ), Antv4 (A ∈ R8 ), and Humanoid-v4 (A ∈ R17 ) [Swimmer, Hopper, HumanoidStandup et Procgen sans version]", "page": 7},
+  "Y8": {"value": "no", "quote": "training follows the standard Procgen protocol for evaluating sample efficiency, i.e., training and testing on the same distribution of levels in each environment.", "page": 9},
+  "Y9": {"value": "yes", "quote": "We further study sensitivity of RAT to batch size, number of Kaczmarz iterations and damping coefficient λ. The results are presented in Figure 5(b), (c) and (d).", "page": 9},
+  "Y10": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens [PyTorch cité sans version]", "page": null},
+  "Y11": {"value": "yes", "kind": "se", "quote": "The shaded region denotes the standard error over 5 random seeds.", "page": 7},
+  "Y12": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null}
+ },
+ "doubts": "Y3 : union des tâches MuJoCo des deux réglages (7) et des 8 jeux Procgen, soit 15. Y5 : « implemented within the same codebase » lu comme une réimplémentation dite pour toutes les références. Y11 : la figure 7 emploie l'écart type, le reste l'erreur type ; kind = se retenu."
+}

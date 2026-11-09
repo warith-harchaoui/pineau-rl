@@ -1,0 +1,20 @@
+{
+ "id": "MLR02",
+ "coder": "D2",
+ "title": "REAL: Regression-Aware Reinforcement Learning for LLM-as-a-Judge",
+ "criteria": {
+  "Y1": {"value": "yes", "quote": "We report the Pearson correlation [...] coefficient r (Pearson, 1895), Spearman’s rank correlation [...] ρ (Spearman, 1961), and Kendall’s τ (Kendall, 1938) with [...] ground-truth scores / For 7B models, we run RL training for 200 steps, while for 32B models, we train for 500 steps", "page": [6, 15]},
+  "Y2": {"value": "na", "quote": "non applicable : X2 v1 vaut no", "page": null},
+  "Y3": {"value": 1, "quote": "We implement training on Feedback Collection (Kim et al., 2023)", "page": 6},
+  "Y4": {"value": "na", "quote": "non applicable : Y3 vaut 1", "page": null},
+  "Y5": {"value": "no", "quote": "All baseline reward model scores are taken from TRACT (Chiang et al., 2025) and Prometheus (Kim et al., 2023). Results for the Mistral and Qwen models are obtained from our own runs", "page": 7},
+  "Y6": {"value": "yes", "quote": "Due to computational constraints we run only RAFT and REAL for Qwen3-32B; we include all baselines for other models", "page": 7},
+  "Y7": {"value": "yes", "quote": "Feedback Bench, the official test set for Feedback Collection", "page": 6},
+  "Y8": {"value": "yes", "quote": "can be regarded as more of an in-domain test dataset, while [...] the other three are out-of-distribution", "page": 6},
+  "Y9": {"value": "yes", "quote": "Table 6. Ablation on log-likelihood weight λ", "page": 8},
+  "Y10": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y11": {"value": "na", "quote": "non applicable : X2 v1 vaut no", "page": null},
+  "Y12": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null}
+ },
+ "doubts": "Y1 : corrélations avec les scores de vérité terrain bien définies, le point de mesure n'est déduit que de la durée d'entraînement (200 ou 500 pas), pas d'un checkpoint nommé. Y5 : JEPO est dit réimplémenté et les références externes recopiées avec leur source, mais RAFT, TRACT et le RL standard sont « nos propres runs » sans dire d'où vient leur code, d'où no. Y7 : FB Bench, FLASK, Vicuna Bench et MT Bench sont des jeux de test fixes et nommés (tailles données) mais sans version ni lien, codé yes par analogie avec MATH-500. Y3 : un seul jeu d'entraînement (Feedback Collection) pour la conclusion principale, malgré trois modèles et quatre bancs."
+}

@@ -1,0 +1,144 @@
+{
+ "id": "K058",
+ "coder": "K4",
+ "title": "Adaptive Neighborhood-Constrained Q Learning for Offline Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We assess ANQ on two distinct task suites from D4RL [20]: the Gym-MuJoCo locomotion domains and the challenging AntMaze domains.",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "ANQ uses simple three-layer MLPs for policy and value networks (as in TD3 [22])",
+   "page": 24
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "A comprehensive list of hyperparameter settings for ANQ is provided in Table 3.",
+   "page": 22
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "The code is available at https://github.com/thu-rllab/ANQ.",
+   "page": 2
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "For the Lagrange multiplier, we tune λ within a small set of values {0.1, 5.0} for all tasks.",
+   "page": 22
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 5,
+   "quote": "performance is assessed by averaging returns over 10 evaluation trajectories and 5 random seeds",
+   "page": 22
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "The curves are averaged over 5 random seeds, with the shaded area representing the standard deviation across seeds.",
+   "page": 26
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We assess ANQ on two distinct task suites from D4RL [20]: the Gym-MuJoCo locomotion domains and the challenging AntMaze domains.",
+   "page": 7
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "ANQ completes the task in approximately two hours",
+   "page": 24
+  },
+  "Y1": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "The curves are averaged over 5 random seeds, with the shaded area representing the standard deviation across seeds.",
+   "page": 26
+  },
+  "Y3": {
+   "value": 6,
+   "quote": "We assess ANQ on two distinct task suites from D4RL [20]: the Gym-MuJoCo locomotion domains and the challenging AntMaze domains.",
+   "page": 7
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "On the Gym locomotion tasks, ANQ outperforms existing methods on most tasks and achieves the highest overall score.",
+   "page": 8
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "omitting CQL due to its consistently inferior performance on Antmaze tasks as reported in Table 2",
+   "page": 9
+  },
+  "Y7": {
+   "value": "yes",
+   "quote": "We assess the runtime of offline RL algorithms on the halfcheetah-medium-replay-v2 dataset",
+   "page": 24
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Figure 4: Performance and Q values of ANQ with varying inverse temperature α over five random seeds.",
+   "page": 10
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "std",
+   "quote": "The curves are averaged over 5 random seeds, with the shaded area representing the standard deviation across seeds.",
+   "page": 26
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q4 : aucun hyperparamètre ni source pour les références du tableau 2 ; seules CQL et SPOT ont un réglage décrit, dans les expériences secondaires. X4 : réglage décrit pour CQL et SPOT dans les jeux bruités et réduits (« report the best results obtained for each dataset »), mais rien pour le tableau 2 principal, donc no. Y1 : score normalisé D4RL défini, mais le point de mesure (fin d'entraînement) n'est pas dit explicitement. Y2 : les ± du tableau 2 ne sont pas définis, seule la bande des courbes (écart type) l'est. Y3 : 6 compte halfcheetah, hopper, walker2d et les trois labyrinthes AntMaze (umaze, medium, large), les variantes de qualité des jeux comptant pour une. Q7/Y8 : les jeux bruités ou réduits changent les données d'entraînement, pas les conditions d'évaluation, donc no."
+}

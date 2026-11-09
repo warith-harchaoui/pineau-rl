@@ -1,0 +1,72 @@
+{
+ "id": "LR02",
+ "coder": "A2",
+ "title": "Beware Untrusted Simulators – Reward-Free Backdoor Attacks in Reinforcement Learning",
+ "criteria": {
+  "Y1": {
+   "value": "yes",
+   "quote": "we perform our evaluation in terms of Attack Success Rate (ASR) and Benign Return (BR), representing our objectives of attack success and attack stealth, respectively, defined below",
+   "page": 7
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "Average scores and standard deviations are computed over 100 trajectories and 5 training seeds in simulation.",
+   "page": 8
+  },
+  "Y3": {
+   "value": 9,
+   "quote": "Table 1: Comparison of Daze against TrojDRL and SleeperNets against continuous action space, PPO agents [...] Table 2: Comparison of Daze against Q-Incept, TrojDRL, and SleeperNets against Discrete action space, PPO agents",
+   "page": [
+    8,
+    10
+   ]
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "In the case of “Intersection”, SleeperNets-C is able to achieve a higher ASR score than Daze",
+   "page": 9
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "We extend TrojDRL and SleeperNets to continuous action space domains by setting their reward poisoning constants",
+   "page": 8
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "yes",
+   "quote": "QbertNoFrameskip-v4 [...] HalfCheetah-v5 [...] fetch-v0 [...] traffic-stop-v0",
+   "page": 16
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "We then transfer our agents, poisoned by Daze, onto real robotic hardware with physical depth camera sensors.",
+   "page": 9
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Table 5: Ablation of β and k parameters in the Daze attack against Hopper in terms of ASR.",
+   "page": 15
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "std",
+   "quote": "Average scores and standard deviations are computed over 100 trajectories and 5 training seeds in simulation.",
+   "page": 8
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y1 : ASR et BR sont définis par formule sur la politique empoisonnée entraînée, mais le point de mesure (politique finale) n’est pas dit explicitement. Y5 : TrojDRL-C et SleeperNets-C sont dits étendus par les auteurs, mais l’origine du code de Q-Incept, TrojDRL et SleeperNets en discret n’est pas dite. Y7 : fetch-v0 et traffic-stop-v0 sont des environnements construits par les auteurs, avec un identifiant mais sans lien publié dans l’article. Y8 : le transfert sur robot réel est surtout qualitatif (histogrammes, vidéos)."
+}

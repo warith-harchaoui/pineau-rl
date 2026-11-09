@@ -1,0 +1,146 @@
+{
+ "id": "K044",
+ "coder": "K3",
+ "title": "From Verifiable Dot to Reward Chain: Harnessing Verifiable Reference-based Rewards for Reinforcement Learning of Open-ended Generation",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "Extensive experiments on more than 10 benchmarks with Qwen and Llama models confirm the advantages of our approach.",
+   "page": 1
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We conduct experiments using the Qwen2.5 (Qwen Team, 2024) and Llama3.1 (Dubey et al., 2024) model series",
+   "page": 4
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "During GRPO, we set the epoch to 1, the learning rate to 5e-7, the number of rollouts to 8, max prompt length and max generation length to 1024 tokens, and maintain the same global batch size of 128.",
+   "page": 15
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "During SFT, we train models for 3 epochs with a learning rate of 2e-5, a batch size of 128, a max sequence length of 2048, and a cosine learning rate schedule with 10% warmup steps. [...] During DPO, we train models for 1 epoch with a learning rate of 5e-7, a batch size of 128, a max sequence length of 2048, and a β of 1e-2.",
+   "page": 15
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "We release our code and data at https://github.com/YJiangcm/RLVRR.",
+   "page": 1
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "We assess our models using five of the most popular open-ended instruction-following benchmarks: AlpacaEval 2 (Li et al., 2023), Arena-Hard (Li et al., 2024), MT-Bench (Zheng et al., 2023), IFEval (Zhou et al., 2023), and FollowBench (Jiang et al., 2024).",
+   "page": 5
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 3,
+   "quote": "We report the average performance of three random runs.",
+   "page": 15
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "Finally, we randomly sample 10K data for RL training, where GRPO (Shao et al., 2024) is applied as the optimization algorithm",
+   "page": 5
+  },
+  "X6": {
+   "value": 2,
+   "quote": "We conduct experiments using the Qwen2.5 (Qwen Team, 2024) and Llama3.1 (Dubey et al., 2024) model series",
+   "page": 4
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "As shown in Table 11, we report the average runtime per training step on 8 NVIDIA A800 GPUs across various reward strategies.",
+   "page": 18
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "For AlpacaEval 2, we report the length-controlled win rate (LC), which ensures robustness against verbosity. For Arena-Hard, we report the win rate (WR) against the baseline model. For MT-Bench, we provide the average score, using GPT-4.1-mini as the evaluation judge. For IFEval and FollowBench, we report the prompt-level strict accuracy and the hard satisfaction rate, respectively.",
+   "page": 5
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y3": {
+   "value": 1,
+   "quote": "For training data, we adopt the dataset released by (Jiang et al., 2025), comprising 100K open-ended instruction-response pairs curated from diverse high-quality instruction-tuning datasets.",
+   "page": [
+    4,
+    5
+   ]
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "We adopt the OpenRLHF (Hu et al., 2024) framework for efficient training. [no version; baseline reward implementations not identified]",
+   "page": 15
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "we cross-validate the quality of the verifiable components using the reference, filtering out cases where both content and style rewards of the reference fall below 0.7.",
+   "page": 5
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "(3) Math: MATH (Hendrycks et al., 2021b); (4) Code: HumanEval (Chen et al., 2021).",
+   "page": 5
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "Generalization to diverse tasks: Beyond open-ended generation, RLVRR achieves state-of-the-art results on knowledge-intensive, reasoning, mathematical, and coding tasks, highlighting its superior generalization capability.",
+   "page": 5
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X1 : « three random runs » ne dit pas clairement s'il s'agit de trois entraînements RL indépendants ou de trois évaluations ; codé 3. Q3 : le paragraphe GRPO omet le coefficient KL et la température d'échantillonnage ; codé yes car un paragraphe donne les réglages principaux. X7 : durée par pas sur 8 A800 (tableau 11), sans durée totale ; codé yes. Y1 : les métriques sont définies, mais le point de mesure (modèle final après une époque) n'est qu'implicite. Y8 : MMLU, ARC, MATH et HumanEval sont présentés comme une généralisation à d'autres tâches, pas explicitement comme hors distribution. Y9 : I=1 contre I=3 références et 15 % contre 30 % de mots-clés TF-IDF sont présentés comme des ablations, pas des balayages d'hyperparamètre."
+}

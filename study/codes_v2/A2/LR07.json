@@ -1,0 +1,71 @@
+{
+ "id": "LR07",
+ "coder": "A2",
+ "title": "DeepSearch: Overcome the Bottleneck of Reinforcement Learning with Verifiable Rewards via Tree-Based Search",
+ "criteria": {
+  "Y1": {
+   "value": "yes",
+   "quote": "We report Pass1@1 accuracy estimated with n = 32 samples. [...] With only 50 additional training steps, DeepSearch reaches 62.95% accuracy",
+   "page": 8
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "non applicable : X2 v1 vaut no (aucune barre ni bande d’erreur)",
+   "page": null
+  },
+  "Y3": {
+   "value": 1,
+   "quote": "employ DeepMath-103K (He et al., 2025c) as the raw dataset",
+   "page": 7
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "non applicable : Y3 vaut 1",
+   "page": null
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "We compare against recent 1.5B models spanning different mechanisms [...] we additionally perform DAPO-based extended training using the Nemotron-Research-Reasoning-Qwen-1.5B-v2 initialization, with the same training configuration as DeepSearch.",
+   "page": [
+    7,
+    15
+   ]
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "Moreover, among the incorrect samples, we remove data containing garbled text or infinite repetitions.",
+   "page": 6
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "AIME 2024/2025, AMC2023, MATH500 (Hendrycks et al., 2021), Minerva (Lewkowycz et al., 2022), and Olympiad (He et al., 2024)",
+   "page": 7
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Adding uncertainty weighting (λ2 = 0.4) increases exploration diversity (entropy 1.23 → 1.31)",
+   "page": 9
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "We implement our DeepSearch system using the veRL framework (Sheng et al., 2024).",
+   "page": 15
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "non applicable : X2 v1 vaut no (aucune barre ni bande d’erreur)",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y1 : Pass1@1 sur 32 échantillons au point +50 pas, mais l’entraînement court sur 100 pas avec un point de contrôle tous les 5 pas et le choix du point retenu n’est pas expliqué. Y5 : les références sont des modèles publiés désignés par leur nom exact (sans lien), plus un entraînement DAPO prolongé fait par les auteurs ; codé yes car l’origine de chaque modèle est identifiable. Y6 : le retrait des échantillons illisibles ou répétitifs porte sur les données d’entraînement, pas sur des essais. Y7 : AIME 2024/2025 et MATH500 sont des séparations fixes, mais « Minerva » et « Olympiad » ne sont pas précisés (sous-ensemble, version), d’où no au sens strict. Y8 : les bancs de test diffèrent de DeepMath-103K mais ne sont pas présentés comme hors distribution. Y9 : le balayage de λ2 et de la fonction de bonus de profondeur ne montre que des métriques de recherche, pas l’exactitude finale."
+}

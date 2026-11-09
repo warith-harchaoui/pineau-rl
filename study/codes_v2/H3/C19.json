@@ -1,0 +1,144 @@
+{
+ "id": "C19",
+ "coder": "H3",
+ "title": "Time Limits in Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We evaluate the impact of these considerations on a range of novel and popular benchmark domains using tabular Qlearning and Proximal Policy Optimization (PPO)",
+   "page": 2
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "Proximal Policy Optimization (PPO), a modern deep reinforcement learning (Arulkumaran et al., 2017; Henderson et al., 2017) algorithm",
+   "page": 2
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "We use the OpenAI Baselines (Hesse et al., 2017) implementation of PPO with the hyperparameters reported by Schulman et al. (2017), unless stated otherwise.",
+   "page": 2
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "We use the OpenAI Baselines (Hesse et al., 2017) implementation of PPO with the hyperparameters reported by Schulman et al. (2017), unless stated otherwise.",
+   "page": 2
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "The source code and videos can be found at: sites.google.com/view/time-limits-in-rl.",
+   "page": 2
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "An entropy coefficient of 0.01 was used to encourage exploration. We found this value to yield best performance for both agents.",
+   "page": 7
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "During training, partial episodes were limited to 300 time steps, while during evaluation episodes were limited to 106 time steps to prevent infinitely long evaluation episodes.",
+   "page": 7
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 10,
+   "quote": "we used the same 10 seeds (0, 1000, ..., 9000) to initialize the pseudo-random number generators for the agents and environments.",
+   "page": 2
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "The averaged sum of rewards and standard errors are shown with respect to the number of training steps.",
+   "page": 5
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "We use the OpenAI Baselines (Hesse et al., 2017) implementation of PPO with the hyperparameters reported by Schulman et al. (2017), unless stated otherwise.",
+   "page": 2
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "Performance comparison of PPO with and without the remaining time in input on several continuous control tasks from the OpenAI’s MuJoCo Gym",
+   "page": 5
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "We also acknowledge computation resources provided by Microsoft via a Microsoft Azure award.",
+   "page": 8
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "For Hopper-v1 and Walker2d-v1, the evaluation episodes are limited to 106 time steps and the discounted sum of rewards is represented, while for InfiniteCubePusher-v0 the evaluations are limited to 1000 time steps and the number of targets reached per episode is represented.",
+   "page": 7
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "The averaged sum of rewards and standard errors are shown with respect to the number of training steps.",
+   "page": 5
+  },
+  "Y3": {
+   "value": 9,
+   "quote": "Performance comparison of PPO with and without the remaining time in input on several continuous control tasks from the OpenAI’s MuJoCo Gym (T = 1000 for all except T = 50 for Reacher-v1).",
+   "page": 5
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "On multiple tasks, the proposed time-aware PPO (TA-PPO) outperforms the standard PPO, especially for the case with a large discount factor.",
+   "page": 5
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "We use the OpenAI Baselines (Hesse et al., 2017) implementation of PPO",
+   "page": 2
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "During training, partial episodes were limited to 300 time steps, while during evaluation episodes were limited to 106 time steps to prevent infinitely long evaluation episodes.",
+   "page": 7
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "When timeout terminations are not properly considered, experience replay significantly hurts the performance, while by simply continuing to bootstrap whenever a timeout termination is encountered, the learning is much faster and varying the buffer size has almost no effect.",
+   "page": 8
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "se",
+   "quote": "The averaged sum of rewards and standard errors are shown with respect to the number of training steps.",
+   "page": 5
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q5 : le lien est une page Google Sites qui annonce « source code and videos », codé yes sous réserve de vérification que la page mène au code (écart 6). Q6 : le coefficient d'entropie est dit « found to yield best performance », sans méthode de recherche, codé no. Q7 et Y8 : l'évaluation sur des épisodes de 10^6 pas après un entraînement limité à 300 pas a été comptée comme condition tenue à part, ce qui se discute. X4 : le coefficient d'entropie est choisi « for both agents » sur une tâche, mais rien n'est dit pour les références des tâches MuJoCo, codé no. Y1 : la figure 3 dit seulement « averaged sum of rewards » ; codé yes sur la définition de la figure 6 (épisodes d'évaluation, somme actualisée). Y3 : le texte annonce « 19 continuous control tasks » mais la figure 3 en montre 9 ; codé 9. Y4 : pas de phrase qui nomme une tâche perdue ; codé yes sur « On multiple tasks » et les courbes par tâche, à vérifier sur la figure. Y7 : plusieurs environnements ont le suffixe -v1 (Hopper, Walker2d, Humanoid, InvertedPendulum, Reacher) mais pas Ant, HalfCheetah, Swimmer ni InvertedDoublePendulum, codé no par la règle stricte. Y9 : balayage de la taille du tampon de rejeu (figure 7) et du facteur d'actualisation (0,99 et 1), comptés comme hyperparamètres."
+}

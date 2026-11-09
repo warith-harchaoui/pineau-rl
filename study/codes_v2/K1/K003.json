@@ -1,0 +1,144 @@
+{
+ "id": "K003",
+ "coder": "K1",
+ "title": "Refined Analysis of Entropy-Regularized Actor-Critic",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We empirically confirm our findings on two environments, showing that the performance of the learned policy monotonically increases as the number of updates of the critic between consecutive actor updates increases.",
+   "page": 2
+  },
+  "Q2": {
+   "value": "no",
+   "quote": "Panels (a)–(d) show results for tabular Gridworld layouts of increasing scale, while panels (e)–(h) illustrate performance on synthetic MDPs with varying state space sizes |S| and fixed action space of size |A| = 4.",
+   "page": 8
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "we performed a grid search over actor and critic learning rates, ηa , ηc ∈ {0.003, 0.01, 0.03, 0.1}. The regularization parameter was fixed at λ = 0.05 for all experiments. [the selected learning rates are not reported]",
+   "page": 8
+  },
+  "Q4": {
+   "value": "na",
+   "quote": "In addition to evaluating Ent-AC, we include an ”ideal critic” baseline, where the critic is set to the exact regularized value, to characterize the performance upper bound",
+   "page": 8
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "The code is available [...] online at https://github.com/Labbi-Safwan/ [...] Actor-Critic. We describe below the two environ-",
+   "page": 8
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "To ensure a rigorous comparison across different values of H ∈ {8, 16, 32, 64}, we performed a grid search over actor and critic learning rates, ηa , ηc ∈ {0.003, 0.01, 0.03, 0.1}.",
+   "page": 8
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 50,
+   "quote": "Shaded regions denote one standard deviation across 50 independent random seeds.",
+   "page": 8
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Shaded regions denote one standard deviation across 50 independent random seeds.",
+   "page": 8
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "theory",
+   "quote": "We analyze AC with exact critic in Section 4, and with inexact critic in Section 5. Empirical study is in Section 6",
+   "page": 2
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "We report the mean objective value J˜λ (θk ) over 5000 actor iterations, with shaded regions representing one standard deviation over 50 independent runs.",
+   "page": 8
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "Shaded regions denote one standard deviation across 50 independent random seeds.",
+   "page": 8
+  },
+  "Y3": {
+   "value": 2,
+   "quote": "We describe below the two environments that we will use in the experiments.",
+   "page": 8
+  },
+  "Y4": {
+   "value": "no",
+   "quote": "In all scenarios in Figure 1, increasing H from 8 to 64 leads to faster convergence and higher objective values.",
+   "page": 9
+  },
+  "Y5": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "We evaluate our method on a suite of tabular Gridworld layouts (Domingues et al., 2021) with dimensions M × N ∈ {2 × 2, 3 × 3, 3 × 4, 4 × 4}.",
+   "page": 8
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We report the mean objective value J˜λ (θk ) as a function of actor iterations for varying critic update frequencies H ∈ {8, 16, 32, 64}.",
+   "page": 8
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "std",
+   "quote": "Shaded regions denote one standard deviation across 50 independent random seeds.",
+   "page": 8
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X5 : article de preuves avec expériences tabulaires jouets (grilles 2x2 à 4x4, MDP synthétiques), codé theory. Q4 : la seule comparaison est un « Exact Critic » oracle de la même méthode, traité comme pas de référence (na), d'où X4 et Y5 na. Q3 : les taux d'apprentissage retenus par la grille ne sont pas donnés. Y3 : deux familles d'environnements à quatre tailles chacune, les tailles comptées comme niveaux de difficulté (2 et non 8). Y4 : la comparaison porte sur des valeurs de H, et l'oracle domine partout par construction ; codé no faute de cas où la méthode perd."
+}

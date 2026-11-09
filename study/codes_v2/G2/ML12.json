@@ -1,0 +1,20 @@
+{
+ "id": "ML12",
+ "coder": "G2",
+ "title": "VideoVeritas: AI-Generated Video Detection via Perception Pretext Reinforcement Learning",
+ "criteria": {
+  "Y1": {"value": "no", "quote": "Accuracy is reported except for D3 (Zheng et al., 2025b), where ∗ means Average Precision (AP) is adopted following the official guideline.", "page": 6},
+  "Y2": {"value": "na", "quote": "non applicable : aucune barre ni bande d'incertitude sur les résultats principaux (X2 v1 = no)", "page": null},
+  "Y3": {"value": 1, "quote": "Specifically, we use 3K samples for general grounding, 2K samples for self-supervised object counting, and 10K samples (from database in Sec. 3.1) for AIGC detection.", "page": 5},
+  "Y4": {"value": "na", "quote": "non applicable : Y3 vaut 1", "page": null},
+  "Y5": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+  "Y6": {"value": "yes", "quote": "all data are sampled from OneThinker (Feng et al., [...] 2025), with easy samples filtered out, retaining only small", "page": 5},
+  "Y7": {"value": "no", "quote": "Evaluation Protocols. In-domain (ID) testing includes test [...] sets of GenBuster-200K (Wen et al., 2025a) and Talking", "page": 5},
+  "Y8": {"value": "yes", "quote": "MintVid is [...] adopted as a challenging OOD testing.", "page": [5, 6]},
+  "Y9": {"value": "no", "quote": "Ablations on PPRL: the quantity of perception data.", "page": 7},
+  "Y10": {"value": "no", "quote": "Our model is trained with 8 PPUE GPUs based on ms-swift (Zhao et al., 2024).", "page": 15},
+  "Y11": {"value": "na", "quote": "non applicable : aucune incertitude rapportée sur les résultats principaux (X2 v1 = no)", "page": null},
+  "Y12": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null}
+ },
+ "doubts": "Y1 : exactitude (AP pour D3) et règle de moyenne bien dites, mais ni le point de contrôle évalué ni le décodage à l'évaluation ne sont précisés ; no par l'écart 17, à la limite. Y3 : un seul cadre d'entraînement (la base de détection de la section 3.1), les nombreux bancs ID/OOD ne multiplient pas les tâches ; d'où Y4 na. Y6 : seuls des filtrages de données (exemples faciles retirés, filtrage manuel de MintVid) sont dits ; compté comme exclusion de données dite. Y9 : la quantité de données de perception (figure 7) et la difficulté de la tâche SSL (tableau 4) sont balayées, mais l'article les présente comme des ablations, pas comme des hyperparamètres ; no par l'écart 17. Y7 : bancs nommés sans version ni date de séparation, et MintVid n'est pas dit publié (seul un lien de projet), donc no."
+}

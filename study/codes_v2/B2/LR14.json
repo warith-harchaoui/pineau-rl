@@ -1,0 +1,68 @@
+{
+ "id": "LR14",
+ "coder": "B2",
+ "title": "TimeSearch-R: Adaptive Temporal Search for Long-Form Video Understanding via Self-Verification Reinforcement Learning",
+ "criteria": {
+  "Y1": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "non applicable : X2 v1 vaut no",
+   "page": null
+  },
+  "Y3": {
+   "value": 1,
+   "quote": "And we enhance dataset diversity through the incorporation of samples sourced from Haystack-Ego4D (Ye et al., 2025), VideoMarathon (Lin et al., 2025), and CinePile (Rawal et al., 2024).",
+   "page": 6
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "non applicable : Y3 vaut 1",
+   "page": null
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "Baseline results are directly cited from Ye et al. (2025).",
+   "page": 6
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "In the first stage, we remove samples that the policy model can solve correctly using only 4 uniformly sampled frames, thereby discouraging reliance on linguistic shortcuts.",
+   "page": 6
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "To evaluate the adaptability of TimeSearch-R, we conduct experiments on the video reasoning benchmark Video-Holmes",
+   "page": 8
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "At test time, we adjust both parameters to control the target average frame count.",
+   "page": 17
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "non applicable : X2 v1 vaut no",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y1 : les métriques principales sont « les métriques originales des bancs » (similarité temporelle et visuelle, précision) sans définition dans l'article, codé no. Y3 : un seul jeu d'entraînement RL mélangé, évalué sur six bancs, compté 1. Y5 : tableau 1 recopié de Ye et al. avec la source ; au tableau 2 chaque modèle publié est cité sans dire d'où viennent les chiffres, codé yes avec hésitation. Y7 : VideoMME, MLVU, LongVideoBench, Video-Holmes nommés sans version ni séparation datée (seul « test-tiny » est nommé pour Haystack-Ego4D), codé no. Y8 : Video-Holmes est présenté comme test d'adaptabilité à une autre tâche que l'entraînement (QA générale), codé yes de justesse. Y9 : le nombre de trames (hyperparamètre MAX_NUM_FRAMES_PER_TURN) varie à l'inférence (7,8 / 15,9 / 31,9) avec résultats au tableau 2, codé yes. Y10 : seule Flash Attention 2.0 a une version ; TRL, DeepSpeed, PyTorch sans version, codé no."
+}
