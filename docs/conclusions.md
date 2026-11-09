@@ -295,7 +295,7 @@ n'invente rien, chaque décision s'accompagne d'une citation exacte de l'article
 n'importe qui peut vérifier dans `study/codes/`. Dix articles tirés au sort ont été lus une seconde
 fois par un autre agent, qui ne voyait pas la première lecture. Les deux lectures s'accordent sur
 127 décisions sur 130 (98 %). Le kappa de Cohen, qui retire de cet accord la part due au hasard,
-vaut de 0,78 à 1 selon le critère. Un accord entre deux machines reste un accord entre machines :
+vaut de 0,74 à 1 selon le critère. Un accord entre deux machines reste un accord entre machines :
 une relecture humaine à l'aveugle de dix articles est prévue. Ce document le signale tant
 qu'elle manque.
 
@@ -533,7 +533,7 @@ pratique. L'expérience E7 mesure, sur nos propres agents, ce que coûte une
 physique modifiée.
 
 **Les bancs d'essai trop simples, sous une autre forme (F16).** Le RL de grands modèles a changé
-d'échelle sans changer de risque. Quinze articles sur 27 n'essaient qu'une seule famille de modèles
+d'échelle sans changer de risque. Seize articles sur 27 n'essaient qu'une seule famille de modèles
 de langue. Or une équipe de l'université de Washington a montré en 2025 qu'une récompense tirée au
 sort améliore les modèles Qwen en mathématiques, mais pas les modèles Llama ou OLMo
 [@shao2025spurious]. Un résultat obtenu sur une seule famille renseigne sur cette famille,

@@ -16,5 +16,6 @@ build() {  # build <source stem> <babel language> <pdf language> <bibliography t
   echo "Wrote $1.docx, $1-md2star.pdf, $1.tex, $1.pdf"
 }
 mkdir -p build
+python3 check_numbers.py  # every key number of both texts, recomputed from the result files
 build conclusions french fr "Références"
 [ -f conclusions-en.md ] && build conclusions-en british en-GB "References"

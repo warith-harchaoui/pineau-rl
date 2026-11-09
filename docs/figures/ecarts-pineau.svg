@@ -34,10 +34,10 @@
 <circle cx="458.2" cy="234.7" r="6" fill="#007AFF" stroke="#FFFFFF" stroke-width="1.5"/>
 </g>
 <g id="errbar-3" class="errbar hit" tabindex="0">
-<title>Choix hyperparam.: mean 7 (95% CI -10-24)</title>
-<line x1="615.8" y1="264.8" x2="615.8" y2="216.1" stroke="#1D1D1F" stroke-width="1.5"/>
+<title>Choix hyperparam.: mean 7 (95% CI -10-23)</title>
+<line x1="615.8" y1="264.8" x2="615.8" y2="217.5" stroke="#1D1D1F" stroke-width="1.5"/>
 <line x1="601.8" y1="264.8" x2="629.8" y2="264.8" stroke="#1D1D1F" stroke-width="1.5"/>
-<line x1="601.8" y1="216.1" x2="629.8" y2="216.1" stroke="#1D1D1F" stroke-width="1.5"/>
+<line x1="601.8" y1="217.5" x2="629.8" y2="217.5" stroke="#1D1D1F" stroke-width="1.5"/>
 <circle cx="615.8" cy="240.4" r="6" fill="#007AFF" stroke="#FFFFFF" stroke-width="1.5"/>
 </g>
 <g id="errbar-4" class="errbar hit" tabindex="0">
@@ -57,7 +57,7 @@
 <g id="errbartip-0" class="tip"><rect x="67.3" y="246.5" width="151" height="62.5" rx="9" fill="#FFFFFF" stroke="#E5E5EA" stroke-width="1.2"/><text x="76.3" y="268" font-size="12.5" font-weight="700" fill="#1D1D1F">Hyperparam. méthode</text><text x="76.3" y="284" font-size="12.5" font-weight="400" fill="#6E6E73">mean -23</text><text x="76.3" y="300" font-size="12.5" font-weight="400" fill="#6E6E73">95% CI -39--7</text></g>
 <g id="errbartip-1" class="tip"><rect x="235.5" y="268" width="130" height="62.5" rx="9" fill="#FFFFFF" stroke="#E5E5EA" stroke-width="1.2"/><text x="244.5" y="289.5" font-size="12.5" font-weight="700" fill="#1D1D1F">Hyperparam. réf.</text><text x="244.5" y="305.5" font-size="12.5" font-weight="400" fill="#6E6E73">mean -42</text><text x="244.5" y="321.5" font-size="12.5" font-weight="400" fill="#6E6E73">95% CI -57--22</text></g>
 <g id="errbartip-2" class="tip"><rect x="407.2" y="194.9" width="102" height="62.5" rx="9" fill="#FFFFFF" stroke="#E5E5EA" stroke-width="1.2"/><text x="416.2" y="216.4" font-size="12.5" font-weight="700" fill="#1D1D1F">Code</text><text x="416.2" y="232.4" font-size="12.5" font-weight="400" fill="#6E6E73">mean 11</text><text x="416.2" y="248.4" font-size="12.5" font-weight="400" fill="#6E6E73">95% CI -9-29</text></g>
-<g id="errbartip-3" class="tip"><rect x="547.3" y="202.1" width="137" height="62.5" rx="9" fill="#FFFFFF" stroke="#E5E5EA" stroke-width="1.2"/><text x="556.3" y="223.6" font-size="12.5" font-weight="700" fill="#1D1D1F">Choix hyperparam.</text><text x="556.3" y="239.6" font-size="12.5" font-weight="400" fill="#6E6E73">mean 7</text><text x="556.3" y="255.6" font-size="12.5" font-weight="400" fill="#6E6E73">95% CI -10-24</text></g>
+<g id="errbartip-3" class="tip"><rect x="547.3" y="203.5" width="137" height="62.5" rx="9" fill="#FFFFFF" stroke="#E5E5EA" stroke-width="1.2"/><text x="556.3" y="225" font-size="12.5" font-weight="700" fill="#1D1D1F">Choix hyperparam.</text><text x="556.3" y="241" font-size="12.5" font-weight="400" fill="#6E6E73">mean 7</text><text x="556.3" y="257" font-size="12.5" font-weight="400" fill="#6E6E73">95% CI -10-23</text></g>
 <g id="errbartip-4" class="tip"><rect x="722.5" y="131.9" width="102" height="62.5" rx="9" fill="#FFFFFF" stroke="#E5E5EA" stroke-width="1.2"/><text x="731.5" y="153.4" font-size="12.5" font-weight="700" fill="#1D1D1F">Tenue à part</text><text x="731.5" y="169.4" font-size="12.5" font-weight="400" fill="#6E6E73">mean 60</text><text x="731.5" y="185.4" font-size="12.5" font-weight="400" fill="#6E6E73">95% CI 42-73</text></g>
 <g id="errbartip-5" class="tip"><rect x="876.7" y="220.7" width="109" height="62.5" rx="9" fill="#FFFFFF" stroke="#E5E5EA" stroke-width="1.2"/><text x="885.7" y="242.2" font-size="12.5" font-weight="700" fill="#1D1D1F">Test signif.</text><text x="885.7" y="258.2" font-size="12.5" font-weight="400" fill="#6E6E73">mean 0</text><text x="885.7" y="274.2" font-size="12.5" font-weight="400" fill="#6E6E73">95% CI -10-11</text></g>
 <line x1="64.0" y1="360.0" x2="1010.0" y2="360.0" stroke="#1D1D1F" stroke-width="1.2"/>

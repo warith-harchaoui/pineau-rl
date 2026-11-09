@@ -5,6 +5,7 @@ Run with the LLM environment (it needs the Qwen tokenizer to count truncated com
 Writes data/*.csv, then <name>.svg (Markdown) and <name>.pdf (LaTeX) for each figure.
 """
 import collections, csv, json, os, subprocess
+from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -42,7 +43,7 @@ L = {
 DUMBBELL = [(60, 18), (90, 67), (20, 27), (55, 67), (10, 70)]
 IC = [(5, 1, 15), (4, 1, 15), (18, 10, 32), (27, 16, 41), (47, 33, 61), (47, 33, 61), (67, 52, 79), (70, 56, 82)]
 e1 = json.load(open(ROOT / "sim/analysis/e1.json"))
-FP = [round(100 * e1[k]["false_positive"], 1) for k in ("random_3v3", "random_5v5", "random_10v10", "extreme_5v5_of_10")]
+FP = [float(Decimal(str(e1[k]["false_positive"] * 100)).quantize(Decimal("0.1"), ROUND_HALF_UP)) for k in ("random_3v3", "random_5v5", "random_10v10", "extreme_5v5_of_10")]
 
 # GRPO diagnostic (sim/llm/diag/replay_batch.json): base model on the pilot's step-10 batch.
 from transformers import AutoTokenizer
@@ -74,7 +75,8 @@ NAMES = {"fr": {"Q3": "Hyperparam. méthode", "Q4": "Hyperparam. réf.", "Q5": "
                 "X7": "Compute"}}
 curve = json.load(open(ROOT / "sim/analysis/e1_curve.json"))
 for lang, names in NAMES.items():
-    pts = lambda t: (round(100 * t["diff"]), round(100 * t["lo"]), round(100 * t["hi"]))
+    hu = lambda x: int(Decimal(str(x * 100)).quantize(Decimal("1"), ROUND_HALF_UP))
+    pts = lambda t: (hu(t["diff"]), hu(t["lo"]), hu(t["hi"]))
     write(f"ecarts_pineau_{lang}", ["g", "mean", "lo", "hi"],
           [(names[k], *pts(audit[k]["vs_pineau"])) for k in ("Q3", "Q4", "Q5", "Q6", "Q7", "Q8")])
     write(f"ecarts_classique_{lang}", ["g", "mean", "lo", "hi"],

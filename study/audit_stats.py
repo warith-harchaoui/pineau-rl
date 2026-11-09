@@ -36,7 +36,7 @@ def compare(a, b):
     (ka, na), (kb, nb) = a, b
     lo, hi = confint_proportions_2indep(ka, na, kb, nb, method="newcomb", compare="diff")
     p = fisher_exact([[ka, na - ka], [kb, nb - kb]])[1]
-    return dict(diff=round(ka / na - kb / nb, 3), lo=round(lo, 3), hi=round(hi, 3), p=p)
+    return dict(diff=ka / na - kb / nb, lo=float(lo), hi=float(hi), p=p)  # full precision: round only when printing
 
 
 D26 = load("ABCDE")
@@ -49,7 +49,7 @@ rows, tests = [], {"vs_pineau": [], "vs_ours2018": [], "classic_vs_pineau": [], 
 for k in CRIT:
     a, c, l, o = count(D26, k), count(fam["classic"], k), count(fam["llm"], k), count(D18, k)
     r = dict(k=k, all2026=a, classic2026=c, llm2026=l, ours2018=o,
-             wilson2026=[round(x, 3) for x in proportion_confint(*a, method="wilson")])
+             wilson2026=[float(x) for x in proportion_confint(*a, method="wilson")])
     if k in PINEAU:
         pin = (round(PINEAU[k] * 50), 50)
         r["pineau2018"] = pin
@@ -66,11 +66,13 @@ for name, ts in tests.items():
     for (k, t), pa in zip(ts, adj):
         t["p_holm"] = round(float(pa), 4); t["p"] = round(float(t["p"]), 4)
 
-# Inter-reader agreement on the 10 double-read papers, criterion by criterion, with Cohen's kappa.
+# Inter-reader agreement on the 10 double-read papers, criterion by criterion, with Cohen's kappa, on the raw
+# reads: the harmonisation of overrides.json applies to both reads and would inflate agreement.
 G = load("G")
 agree = {}
 for k in ["Q1", "Q2"] + CRIT + ["X5"]:
-    pairs = [(val(D26[i], k), val(G[i], k)) for i in G if i in D26]
+    raw = lambda d: d["criteria"].get(k, {}).get("value")  # before harmonisation: overrides would equalise both reads
+    pairs = [(raw(D26[i]), raw(G[i])) for i in G if i in D26]
     same = sum(x == y for x, y in pairs)
     cats = sorted({x for p in pairs for x in p if x is not None}, key=str)
     n = len(pairs)

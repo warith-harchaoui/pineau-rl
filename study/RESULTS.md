@@ -24,4 +24,4 @@ Pourcentages sur les articles expérimentaux ; intervalle de Wilson à 95 %. Don
 
 Graines : sur 41 articles RL expérimentaux, 20 ne disent pas combien d'entraînements
 indépendants soutiennent leurs résultats ; 4 n'en ont qu'un ; médiane des autres : 5.
-RL sur LLM : 15 articles sur 27 n'essaient qu'une famille de modèles de base.
+RL sur LLM : 16 articles sur 27 n'essaient qu'une famille de modèles de base (corrigé le 9 novembre 2026 : 15 avant recomptage par `docs/check_numbers.py`).
