@@ -1,0 +1,7 @@
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+W1109 06:10:04.095000 22412 site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 47846.28it/s]
+train_right on this batch (base model): 0.15625
+48*49 2352 False '- For 48 and 49:\n     \\[\n     4 \\times 40 + 8 \\times 4 = 160 + 32 = 192\n     \\]\n\n3. Add both results together:\n   \\[\n   '
+48*49 2352 False '872 \n\\]\n\nNext, find the sum and difference of these numbers:\n- \\(48 + 49 = 97\\)\n- \\(49 - 48 = 1\\)\n\nNow multiply the sums'
+48*49 2352 False 'ntentionally.\n\n3. **Cross-Multiplying Simplification**:\n   \\[\n   48 \\times 49 = \\underbrace{48}_{a} \\times \\underbrace{4'

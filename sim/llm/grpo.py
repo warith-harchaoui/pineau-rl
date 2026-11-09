@@ -10,6 +10,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 MODEL, TAG, TASK, REWARD, SEED, STEPS, LR = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], int(sys.argv[5]), int(sys.argv[6]), float(sys.argv[7])
 PILOT = "--pilot" in sys.argv  # no training: base-model accuracy on non-test problems
 B, G, MAX_NEW, CLIP, EPOCHS, EVAL_EVERY = 4, 8, 160, 0.2, 2, int(os.environ.get("EVAL_EVERY", 50))
+MICRO = 8  # completions per backward pass: the full-vocabulary logits of 32 completions in fp32 took 65 GB
 device = "mps" if torch.backends.mps.is_available() else "cpu"
 torch.manual_seed(SEED); random.seed(SEED)
 
@@ -53,9 +54,14 @@ def generate(qs, n, sample):
     return enc["input_ids"].shape[1], out
 
 
+def truncated(seq, plen):
+    """True when the completion hit MAX_NEW tokens without an end-of-sequence token."""
+    return not bool((seq[plen:] == tok.pad_token_id).any() or (seq[plen:] == tok.eos_token_id).any())
+
+
 def evaluate():
     model.eval()
-    good, n_greedy, n_sampled = 0, 150, 50
+    good, n_greedy, n_sampled, cut = 0, 150, 50, 0
     for i in range(0, n_greedy, 32):
         chunk = TEST[i:min(i + 32, n_greedy)]
         plen, out = generate([q for q, _ in chunk], 1, False)
@@ -67,8 +73,9 @@ def evaluate():
         for j, (_, a) in enumerate(chunk):
             hits = [correct(tok.decode(s[plen:], skip_special_tokens=True), a) for s in out[j * 8:(j + 1) * 8]]
             p1 += sum(hits) / 8; p8 += any(hits)
+            cut += sum(truncated(s, plen) for s in out[j * 8:(j + 1) * 8])
     model.train()
-    return dict(greedy=good / n_greedy, pass1=p1 / n_sampled, pass8=p8 / n_sampled)
+    return dict(greedy=good / n_greedy, pass1=p1 / n_sampled, pass8=p8 / n_sampled, truncated=cut / (8 * n_sampled))
 
 
 def token_logps(seqs, plen):
@@ -100,19 +107,22 @@ for step in range(1, STEPS + 1):
     rewards = torch.tensor([float(x) if REWARD == "true" else float(rng.random() < 0.5) for x in right], device=device)
     groups = rewards.view(B, G)
     adv = ((groups - groups.mean(1, keepdim=True)) / (groups.std(1, keepdim=True) + 1e-4)).view(-1)
+    chunks = [slice(i, i + MICRO) for i in range(0, len(seqs), MICRO)]
     with torch.no_grad():
-        old_lp, mask = token_logps(seqs, plen)
+        old_lp = [token_logps(seqs[c], plen)[0] for c in chunks]
     for _ in range(EPOCHS):
-        lp, mask = token_logps(seqs, plen)
-        ratio = torch.exp(lp - old_lp)
-        a = adv.unsqueeze(1)
-        surr = torch.min(ratio * a, torch.clamp(ratio, 1 - CLIP, 1 + CLIP) * a)
-        loss = -((surr * mask).sum(1) / mask.sum(1).clamp(min=1)).mean()
-        opt.zero_grad(); loss.backward()
+        opt.zero_grad(); loss = 0.0
+        for c, olp in zip(chunks, old_lp):
+            lp, mask = token_logps(seqs[c], plen)
+            ratio = torch.exp(lp - olp)
+            a = adv[c].unsqueeze(1)
+            surr = torch.min(ratio * a, torch.clamp(ratio, 1 - CLIP, 1 + CLIP) * a)
+            part = -((surr * mask).sum(1) / mask.sum(1).clamp(min=1)).sum() / len(seqs)
+            part.backward(); loss += float(part)
         torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
         opt.step()
     if step % 10 == 0:
-        log.write(json.dumps(dict(step=step, train_right=sum(right) / len(right), loss=float(loss), wall=round(time.time() - t0, 1))) + "\n"); log.flush()
+        log.write(json.dumps(dict(step=step, train_right=sum(right) / len(right), truncated=sum(truncated(q, plen) for q in seqs) / len(seqs), loss=loss, wall=round(time.time() - t0, 1))) + "\n"); log.flush()
     if step % EVAL_EVERY == 0 or step == STEPS:
         log.write(json.dumps(dict(step=step, **evaluate())) + "\n"); log.flush()
 print(json.dumps(dict(model=TAG, task=TASK, reward=REWARD, seed=SEED, done=True, wall=round(time.time() - t0, 1))))

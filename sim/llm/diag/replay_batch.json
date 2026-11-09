@@ -1,0 +1,226 @@
+[
+ {
+  "q": "48*49",
+  "ans": 2352,
+  "right": false,
+  "last": "3",
+  "text": "To calculate \\( 48 \\times 49 \\), we can use the standard multiplication algorithm for four-digit numbers:\n\n1. Multiply the ones digit of the first number (4) by each digit in the second number (from right to left):\n   - For 4 and 49:\n     \\[\n     4 \\times 4 = 16\n     \\]\n   \n2. Multiply the tens digit of the first number (7) by each digit in the second number:\n   - For 48 and 49:\n     \\[\n     4 \\times 40 + 8 \\times 4 = 160 + 32 = 192\n     \\]\n\n3. Add both results together:\n   \\[\n   "
+ },
+ {
+  "q": "48*49",
+  "ans": 2352,
+  "right": false,
+  "last": "1",
+  "text": "To solve \\(48 \\times 49\\), we can use the difference of squares formula, which states that for any two numbers \\(a\\) and \\(b\\), the product \\(a^2 - b^2 = (a + b)(a - b)\\). In this case, we can rewrite \\(48 \\times 49\\) in the form of two perfect squares plus one more term.\n\nFirst, let's expand \\(48 \\times 49\\):\n\\[ \n48 \\times 49 = 1872 \n\\]\n\nNext, find the sum and difference of these numbers:\n- \\(48 + 49 = 97\\)\n- \\(49 - 48 = 1\\)\n\nNow multiply the sums"
+ },
+ {
+  "q": "48*49",
+  "ans": 2352,
+  "right": false,
+  "last": "4",
+  "text": "To solve \\( 48 \\times 49 \\), we can break it down into simpler steps using properties of multiplication:\n\n1. **Square Roots**: The square root of a number multiplied by its self gives a result which can be used in various calculations like simplifying certain expressions. Here, for example:\n   - If you multiply two numbers whose product results in a square number, their square roots add up to half the original number.\n   \n2. **Pairing Multiples**: Distribute each multiple separately and observe if possible to pair them without adding or subtracting signs unintentionally.\n\n3. **Cross-Multiplying Simplification**:\n   \\[\n   48 \\times 49 = \\underbrace{48}_{a} \\times \\underbrace{4"
+ },
+ {
+  "q": "48*49",
+  "ans": 2352,
+  "right": false,
+  "last": "4",
+  "text": "To solve \\( 48 \\times 49 \\):\n\n1. First, express each number as a product of its prime factors:\n   - \\( 48 = 2^4 \\times 3 \\)\n   - \\( 49 = 7^2 \\)\n\n2. Multiply these factorizations together:\n   \\[ 48 \\times 49 = (2^4 \\times 3) \\times (7^2) \\]\n\n3. Combine the like terms (the powers of the primes):\n   \\[ 48 \\times 49 = 2^4 \\times 3 \\times 7^2 \\]\n\n4. Each power that appears in the final expression corresponds to how many times it must be taken into account to get"
+ },
+ {
+  "q": "48*49",
+  "ans": 2352,
+  "right": false,
+  "last": "49",
+  "text": "To find \\(48 \\times 49\\), we can use the distributive property of multiplication over addition. Here's how we can do it:\n\nFirst, break down one factor into fits with 100.\n\n\\(48\\) and \\(100\\) multiply to give:\n\\[48 = 40 + 8\\]\n\\[49 = 40 + 9\\]\n\nSo,\n\\[\n(48 * 50) + (240)\n\\]\n\nNow multiply the first part:\n\\[\\left(\\frac{40}{10}\\right)\\:50 = 40*5 = 200\\]\nSince 200 starts from 40 within \\(48*49\\),\n\\"
+ },
+ {
+  "q": "48*49",
+  "ans": 2352,
+  "right": false,
+  "last": "10",
+  "text": "To find the product of \\(48 \\times 49\\), we can use the distributive property, which states that \\(a(b+c) = ab + ac\\). Let's rewrite this for our specific problem:\n\n\\[48 \\times 49 = (50 - 2)(50 + 2)\\]\n\nNow apply the difference of squares formula, which states \\(p^2 - q^2 = (p - q)(p + q)\\):\n\n\\[= 50^2 - 2^2 = 2500 - 4 = 2496\\]\n\nSo the product of \\(48\\) and \\(49\\) is \\(2496\\).\n\nIn general, if you multiply any number between \\(10"
+ },
+ {
+  "q": "48*49",
+  "ans": 2352,
+  "right": true,
+  "last": "2352",
+  "text": "To find the product of \\(48\\) and \\(49\\), you simply multiply them together. Let's do this calculation:\n\n1) Start with the number: \\(48\\).\n2) Multiply it by the next number: \\(48 \\times 49 = (50 - 2) \\times 49 = 50 \\times 49 - 2 \\times 49\\).\n3) Perform multiplication inside the parentheses:\n   - \\(50 \\times 49 = 2450\\)\n   - Then subtract: \\(2450 - 98 = 2352\\).\n\nSo, \\(48 \\times 49 = 2352\\)."
+ },
+ {
+  "q": "48*49",
+  "ans": 2352,
+  "right": false,
+  "last": "49",
+  "text": "To find the product of \\(48 \\times 49\\), we can use the distributive property of multiplication over addition or subtraction. Here's how it works:\n\nFirst, let's think about breaking down each number into its place value contributions:\n- The thousands digit of \\(48\\) is \\(4\\).\n- The hundreds digit of \\(48\\) is \\(4\\).\n\nNext, we group these numbers in pairs to make the computation easier:\n\\[ (40) + (40) = 80 \\]\n\nNow, multiply the grouped values together:\n\\[ 160 \\]\n\nSo, \\(48 \\times 49 = 160\\)\n\nThus, the result of multiplying \\(48\\) and \\(49\\) is:\n\\[\n"
+ },
+ {
+  "q": "14*36",
+  "ans": 504,
+  "right": false,
+  "last": "4,24",
+  "text": "To find the product of \\(14 \\times 36\\), you simply multiply 14 by 36:\n\n\\(14 \\times 36 = 4,24\\)"
+ },
+ {
+  "q": "14*36",
+  "ans": 504,
+  "right": false,
+  "last": "8",
+  "text": "To find the product of 14 and 36, you can follow these steps:\n\n1. **Place pointers on both numbers**: In this case (14 | 36), place one pointer at \"4\" and another at \"3\".\n2. **Multiply that number by all digits from right to left**: The rightmost digit of each number is already moved forward by covering each position twice on its respective side.\n   - First digit: \\( 4 \\times 9 = 36 \\)\n      This means moving 4 (from the lower frame) forward gives \\(4\\) moves of 9.\n    - Second digit: \\( 3 \\times 7 + 8\\).\n\nFirst, calculate the differences between positions:\n- Higher digits (LHS): \\("
+ },
+ {
+  "q": "14*36",
+  "ans": 504,
+  "right": false,
+  "last": "14",
+  "text": "Sure! Let's solve \\( 14 \\times 36 \\) step-by-step:\n\nFirst, recognize that multiplying by 14 can be thought of as multiplying by 2 (since \\( 14 = 2 \\times 7 \\)) because doubling and subtracting makes it simpler:\n\\[ 14 \\times 36 = (2 \\times 7) \\times 36 \\]\n\nNext, apply the associative property to group the numbers in pairs:\n\\[ 2 \\times 7 = 14 \\]\nSo,\n\\[ 14 \\times 36 = 14 \\times (4 \\times 9) \\]\nNow distribute the multiplication across the groups:\n\\[ 14 \\times 36 = (14 \\"
+ },
+ {
+  "q": "14*36",
+  "ans": 504,
+  "right": false,
+  "last": "60",
+  "text": "To find the product of 14 and 36, we can break it down into simpler steps:\n\nStep 1: Identify the numbers to be multiplied.\n- The first number is 14.\n- The second number is 36.\n\nStep 2: Multiply them together.\n\\[ 14 \\times 36 = (10 + 4) \\times (30 + 6) = (10 \\times 30) + (10 \\times 6) + (4 \\times 30) + (4 \\times 6) \\]\n\nStep 3: Perform each multiplication.\n\\[ 10 \\times 30 = 300 \\]\n\\[ 10 \\times 6 = 60 \\"
+ },
+ {
+  "q": "14*36",
+  "ans": 504,
+  "right": false,
+  "last": "1",
+  "text": "To solve \\(14 \\times 36\\), we can use the process of long multiplication or simply break it down into simpler steps for clarity.\n\n### Step-by-Step Solution:\n\n1. **Place the digits together:**\n   - First, write 1 and 4 in each place value (thousands, hundredths).\n     ```\n       14\n      *\n      36\n     ```\n\n2. **Multiply the ones place:** 4 multiplied by 6 equals 24.\n     ```\n     140\n     24\n     4800\n     9\n     4800\n     x\n         ```\n\n3. **Add the results from the hundreds places:**\n   - 1 in the tens"
+ },
+ {
+  "q": "14*36",
+  "ans": 504,
+  "right": true,
+  "last": "504",
+  "text": "To find the product of \\(14 \\times 36\\), I'll break it down into smaller steps:\n\n1. Start with the first number, which is 14.\n2. Multiply 14 by 3 (the number that follows after multiplying 4).\n   Calculation: \\(14 \\times 3 = 42\\)\n\nTherefore, \\(14 \\times 36\\) equals 42.\n\nIn a more standardized format:\n\\[ 14 \\times 36 = 504 \\]\n\nSo, the final answer is \\(504\\)."
+ },
+ {
+  "q": "14*36",
+  "ans": 504,
+  "right": true,
+  "last": "504",
+  "text": "Let's solve this problem step by step:\n\n1) First, we need to multiply them: \n   14 * 36 = 504\n\nSo, the multiplication of 14 and 36 results in 504."
+ },
+ {
+  "q": "14*36",
+  "ans": 504,
+  "right": false,
+  "last": "24",
+  "text": "To find the product of \\(14 \\times 36\\), you can use the distributive property or simply perform the multiplication directly.\n\nStarting with the number 36, we'll break down 14 into two multiples:\n\\[36 = 30 + 6 = 24 + 12\\]\n\nNow multiply these reduced numbers together:\n\\[24 \\times 12\\]\n\nTo multiply 24 by 12, you can express it in terms of their prime factors:\n\\[24 = 8 \\times 3 = 4 \\times 4 \\times 3\\]\nand\n\\[12 = 6 \\times 2 = 3 \\times 2 \\times 2\\]\n\nSo,\n\\[24 \\"
+ },
+ {
+  "q": "21*50",
+  "ans": 1050,
+  "right": false,
+  "last": "150",
+  "text": "To solve \\(21 \\times 50\\), you can use the basic operation of multiplying a whole number by another whole number.\n\nStep-by-step reasoning:\n\n\\[ 21 \\quad\\times50 = (20+1) \\times (50-0) = 2 \\times 50 + 1 \\times 50 = 100 + 50 = 150 \\]\n\nTherefore, \\(21 \\times 50 = 150\\)."
+ },
+ {
+  "q": "21*50",
+  "ans": 1050,
+  "right": false,
+  "last": "1",
+  "text": "To solve \\( 21 \\times 50 \\), you can start from multiplying the ones digits of each number:\n\n- The tens digit is 2 (from 21)\n- Adding the tens digit to get the ones place: \\( 2 + 0 = 2 \\)\n\nSo for the question, we have:\n\\[ 21 \\]\n```\n   |\nMultiplying the tens digit (2) with the current ones value (1):\n________________________________\n 2  \n| *\n(You don't multiply this further because it's already placed in both the rows yet).\n\nNow, consider how much more 3 goes into 21 to form 30 inclusive.\n\nAdding 2 (where we got after the multiplication risk when placing \\([...20+1]\\"
+ },
+ {
+  "q": "21*50",
+  "ans": 1050,
+  "right": false,
+  "last": "630",
+  "text": "To solve \\(21 \\times 50\\), you can break it down into simpler steps:\n\nFirstly, recognize that dividing 50 into two parts gives us \\(20 \\div 1\\) and \\(30 \\div 1\\):\n\\[ 50 = 20 + 30 \\]\n\nNow multiply these two results together:\n\\[ 21 \\times 50 = (20 + 30) \\times 21 = 20 \\times 21 + 30 \\times 21 \\]\n\nNext, calculate each part separately using the given numbers:\n\\[ 20 \\times 21 = 420 \\]\n\\[ 30 \\times 21 = 630 \\]\n\n"
+ },
+ {
+  "q": "21*50",
+  "ans": 1050,
+  "right": false,
+  "last": "5",
+  "text": "To solve the problem \\(21 \\times 50\\), we can use the method of multiplication down to the hundreds place.\n\n1. Multiply the first two digits: \\(21\\) multiplied by \\(50\\) gives us \\(1050\\).\n   \n   - First, consider how many complete pairs of two-digit factors fit into \\(1050\\):\n     \\[\n     1050 / 2 = 525, \\quad \\text{remainder} = 30\n     \\]\n     This tells us we need one more pair for the remainder.\n   \n   - Next, multiply \\(6\\) (the tens digit) by \\(5\\) (the pair's length plus a carry from the tenth tens place):\n     \\[\n     "
+ },
+ {
+  "q": "21*50",
+  "ans": 1050,
+  "right": false,
+  "last": "50",
+  "text": "To calculate \\( 21 \\times 50 \\), you can break it down as follows:\n\nFirst, recognize that both numbers have a common factor of 50. Notice there's a 50 in the second number and a 21, which doesn't match up directly.\n\nWe not only need to multiply their respective numerical values but also account for the multiplicative factors between them:\n- Any multiplication means keeping those multiples of B.\n- These will be multiplied by each corresponding coefficient from A.\n\nFor the calculation,\n\\( AB = 21 \\times B \\)\nHere,\n- \\( A = 21 \\) Multiples of 50 would mean checking units where 50 fits fully into any small multiple of 50 within the other formation (Portugal"
+ },
+ {
+  "q": "21*50",
+  "ans": 1050,
+  "right": false,
+  "last": "987",
+  "text": "To solve the problem of multiplying 21 by 50, we can use our knowledge of multiplication tables or simply add each number together:\n$$\n\\begin{align*}\n21 \\times 50 &= 21 \\times (50 - 3) \\\\\n&= 21 \\times 50 - 21 \\times 3 \\\\\n&= 1050 - 63 \\\\\n&= 987\n\\end{align*}\n$$\nTherefore, the answer is $\\boxed{987}$."
+ },
+ {
+  "q": "21*50",
+  "ans": 1050,
+  "right": false,
+  "last": "10",
+  "text": "To calculate \\( 21 \\times 50 \\), you can follow these steps:\n\nFirst, write down the numbers:\n\\[ 21 \\]\n\\[ \\times \\]\n\\[ 50 \\]\n\nNow, multiply them together:\n\\[\n21 \\times 50 = 21 \\times (5 \\cdot 10) = (21 \\times 5) \\times 10\n\\]\n\nNext, break it down for easier calculation:\n\\[\n21 \\times 5 = 105\n\\]\nSo,\n\\[\n(21 \\times 5) \\times 10 = 105 \\times 10\n\\]\n\nFinally, multiply 105 by 10:\n\\[\n10"
+ },
+ {
+  "q": "21*50",
+  "ans": 1050,
+  "right": true,
+  "last": "1050",
+  "text": "Certainly! Let's break down the problem:\n\nFirstly, multiply 21 and 50:\n\\[ 21 \\times 50 = (20 + 1) \\times 50 \\]\n\nUsing the distributive property of multiplication over addition:\n\\[ 21 \\times 50 = (20 \\times 50) + (1 \\times 50) \\]\n\\[ 21 \\times 50 = 1000 + 50 \\]\n\\[ 21 \\times 50 = 1050 \\]\n\nThe final answer is **1050**."
+ },
+ {
+  "q": "45*17",
+  "ans": 765,
+  "right": false,
+  "last": "5",
+  "text": "To solve \\( 45 \\times 17 \\), you can use the standard multiplication method or a calculator. Here's how it works:\n\nFirst, break down the numbers into their place values:\n- 40 is in the tens place.\n- 5 in the ones place.\n\nNow, multiply each part of these numbers by the single digits (1s):\n- \\( 45 \\) times 1 would be: \\( 4 \\times 1 = 4 \\); carried over two units from the previous step to the next number digit.\n\nFor 17 multiplied by 1:\n- \\( 6 \\) must move from the tens place to the ones place starting from this new unit.\n\nCombining all parts, we get:\n\\[ 40 + 5"
+ },
+ {
+  "q": "45*17",
+  "ans": 765,
+  "right": false,
+  "last": "2",
+  "text": "To solve the multiplication of \\(45 \\times 17\\), we can break it down into simpler steps using the standard algorithm for multiplying larger numbers:\n\n1. **Align the numbers by place value:**\n   \\[\n   \\begin{array}{c@{}c@{\\;} c}\n     & 1 & \\\n    6 & 5 & 0 \\\\\n   \\times & 7 & 3 & \\\\\n   \\hline\n   & & & 2 & 1 \\\\\n   & 0 & & 2 & 5 \\\\\n   -& 1 & & 9 & 2 \\\\\n   \\hline\n   & & 4 & 0 & 8 \\\\\n   &\n   \\end{array}\n   \\]\n\n2. **Start"
+ },
+ {
+  "q": "45*17",
+  "ans": 765,
+  "right": false,
+  "last": "1250",
+  "text": "Sure! Let's solve \\( 45 \\times 17 \\) step by step.\n\n1) **Understand Basic Multiplication**:\n   - Multiply 45 by 10 (since multiplying by 10 changes its value):\n     \\[\n     45 \\times 10 = 450\n     \\]\n\n2) **Subtract Multiply by One**:  \n   - We now need to subtract 450 from 1700 (to balance out the result):\n\n\\[\n1700 - 450 = 1250\n\\]\n\nSo, the final answer is:\n\n\\[\n45 \\times 17 = 1250\n\\]"
+ },
+ {
+  "q": "45*17",
+  "ans": 765,
+  "right": false,
+  "last": "120",
+  "text": "Sure! Let's break down the problem into smaller steps:\n\nWe need to calculate \\(45 \\times 17\\).\n\nStep-by-step calculation:\n- First, we can think of how to approach this multiplication:\n  - We can pair it up for ease.\n  - Multiply 45 and 10 (to make the second number easier to handle).\n  - Then add the result from the above to get the overarching product.\n\nNow let me demonstrate this with sums after particular steps (Pythagoras' theorem in its geometry form):\n\n \\( \n\\begin{align*}\n   \n            &45 +15 \\\\\n        x&120\\\\\n\n\\end{align*}\n\\]\n\n\\(x = 120 - http://www.oiti.cn/image/df"
+ },
+ {
+  "q": "45*17",
+  "ans": 765,
+  "right": false,
+  "last": "4",
+  "text": "To find the product of \\(45 \\times 17\\), we can use the standard multiplication steps:\n\n1. First, split the number into two parts: 40 and 5.\n2. Multiply 40 by 17:\n   \\[\n   40 \\times 17 = 40 \\times (10 + 7) = (40 \\times 10) + (40 \\times 7)\n   \\]\n3. Calculate each part separately:\n   \\[\n   40 \\times 10 = 400\n   \\]\n   \\[\n   40 \\times 7 = 280\n   \\]\n4. Add the results together:\n   \\[\n   4"
+ },
+ {
+  "q": "45*17",
+  "ans": 765,
+  "right": true,
+  "last": "765",
+  "text": "To solve \\( 45 \\times 17 \\), you simply multiply the two numbers together:\n\n\\[\n45 \\times 17 = (45 \\times 10) + (45 \\times 7)\n\\]\n\nFirst, calculate each multiplication separately:\n\n\\[\n45 \\times 10 = 450\n\\]\n\n\\[\n45 \\times 7 = 315\n\\]\n\nNow add these results together:\n\n\\[\n450 + 315 = 765\n\\]\n\nTherefore, the answer is **765**."
+ },
+ {
+  "q": "45*17",
+  "ans": 765,
+  "right": false,
+  "last": "1",
+  "text": "To solve \\( 45 \\times 17 \\), you can use the standard multiplication method.\n\nStarting with the rightmost digit (the units place):\n\\[ 17 \\times 7 = 119 \\]\n\nRecording the result for now:\n\\[ \\begin{array}{r}\n  35 \\quad ^\\circ{^^} \\\\\n   \\text{19} & \\Rightarrow ||\\\\[\n 17 \\\\\n \\end{array}\n\nNow, moving on to the next column to the left (the tens place):\n\nMultiplying the tens digits and keeping them in line:\n\\[ 7 \\times 2 = 14 \\]\nSo the 4 becomes \\( 35 \\) since we have a carryover of 1 from above ("
+ },
+ {
+  "q": "45*17",
+  "ans": 765,
+  "right": false,
+  "last": "450",
+  "text": "To find the product of \\(45 \\times 17\\), we can use the standard multiplication method or the distributive property for easier calculation. Here's how to do it:\n\n1. Break down the number 17 into pairs that add up to easy multiples:\n   - \\(17 = (10 + 7)\\)\n\n2. Rewrite the original numbers using these pairs:\n   - \\(45 \\times 17 = (45 + 7) \\times (45 + 10)\\)\n\n3. Multiply each pair separately:\n   - First part: \\(45 \\times 17 = (45 \\times 10) + (45 \\times 7)\\)\n     - This is equivalent to \\(450 +"
+ }
+]
