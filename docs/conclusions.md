@@ -852,6 +852,29 @@ l'écrivent dans leur propre justification : le code sera publié plus tard. Sur
 articles sur 21 répondent oui sans chiffrer de temps de calcul, que la question demande pourtant.
 Une case cochée ne garantit donc pas la pratique qu'elle nomme.
 
+**La trajectoire, année par année.** Un avant-après sur deux points ne dit pas quand le changement
+a eu lieu. Nous avons donc lu 20 articles de RL classique par année d'ICML et de NeurIPS en 2019,
+2020, 2022 et 2024, tirés au hasard et lus avec les deux grilles, annexes comprises, selon un plan
+écrit avant le tirage. ICLR manque à ces quatre années : son site refuse les téléchargements
+automatiques.
+
+| Pratique | 2018 | 2019 | 2020 | 2022 | 2024 | 2026 |
+|:---------------------------------|----:|----:|----:|----:|----:|----:|
+| Q5, le code est en lien | 31 % | 60 % | 50 % | 70 % | 75 % | 74 % |
+| Y9, la sensibilité à un hyperparamètre est montrée | 44 % | 35 % | 45 % | 60 % | 85 % | 80 % |
+| X7, le calcul est chiffré | 27 % | 30 % | 40 % | 40 % | 55 % | 58 % |
+| X2, une incertitude est rapportée | 63 % | 80 % | 85 % | 95 % | 100 % | 88 % |
+| Q8, un test statistique est appliqué | 6 % | 5 % | 10 % | 10 % | 25 % | 12 % |
+
+: Part des articles de RL classique qui remplissent chaque critère, par année. 2018 : notre lecture de 48 articles ; 2019 à 2024 : 20 articles d'ICML et de NeurIPS par année ; 2026 : nos 50 articles. Avec 20 articles, une part a une incertitude d'environ vingt points de part et d'autre. Données : `study/trajectory.json`.
+
+Les quatre pratiques montent de façon régulière : la tendance passe nettement la correction de Holm
+pour chacune. Aucun saut net n'apparaît juste après la liste de contrôle de 2019 : de 2018 à
+2019-2020, aucun écart ne passe la correction. Seul le balayage d'un hyperparamètre monte
+nettement plus tard, de 40 % en 2019-2020 à 73 % en 2022-2024. Le test statistique ne montre aucune
+tendance. Ces séries décrivent une hausse lente, commencée avant la liste ou avec elle ; elles ne
+disent pas ce qui l'a causée.
+
 **Sept questions pour lire une annonce de RL.** La liste de contrôle s'adresse aux auteurs. Le
 lecteur d'un article, d'un communiqué ou d'une démonstration en tire sept questions, qui ne
 demandent pas de savoir programmer. Chacune renvoie aux failles qu'elle détecte.

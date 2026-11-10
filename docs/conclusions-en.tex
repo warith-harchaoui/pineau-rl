@@ -1346,6 +1346,83 @@ will be released later. On compute, 6 papers out of 21 answer yes
 without stating any computing time, which the question does ask for. A
 ticked box therefore does not guarantee the practice it names.
 
+\textbf{The trajectory, year by year.} A before-and-after on two points
+does not say when the change happened. So we read 20 classical RL papers
+per year from ICML and NeurIPS in 2019, 2020, 2022 and 2024, drawn at
+random and read with both grids, appendices included, following a plan
+written before the draw. ICLR is missing from these four years: its site
+refuses automated downloads.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.5312}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0781}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0781}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0781}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0781}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0781}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0781}}@{}}
+\caption{Share of classical RL papers that meet each criterion, by year.
+2018: our reading of 48 papers; 2019 to 2024: 20 ICML and NeurIPS papers
+per year; 2026: our 50 papers. With 20 papers, a share carries an
+uncertainty of about twenty points either way. Data:
+\texttt{study/trajectory.json}.}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Practice
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+2018
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+2019
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+2020
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+2022
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+2024
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+2026
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Practice
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+2018
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+2019
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+2020
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+2022
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+2024
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+2026
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Q5, the code is linked & 31\% & 60\% & 50\% & 70\% & 75\% & 74\% \\
+Y9, sensitivity to a hyperparameter is shown & 44\% & 35\% & 45\% & 60\%
+& 85\% & 80\% \\
+X7, the compute is quantified & 27\% & 30\% & 40\% & 40\% & 55\% &
+58\% \\
+X2, an uncertainty is reported & 63\% & 80\% & 85\% & 95\% & 100\% &
+88\% \\
+Q8, a statistical test is applied & 6\% & 5\% & 10\% & 10\% & 25\% &
+12\% \\
+\end{longtable}
+
+The four practices rise steadily: the trend clears the Holm correction
+for each of them. No clear jump appears right after the 2019 checklist:
+from 2018 to 2019-2020, no gap clears the correction. Only sweeping a
+hyperparameter rises clearly later, from 40\% in 2019-2020 to 73\% in
+2022-2024. The statistical test shows no trend. These series describe a
+slow rise, begun before the checklist or with it; they do not say what
+caused it.
+
 \textbf{Seven questions for reading an RL announcement.} The checklist
 is meant for authors. The reader of a paper, a press release or a
 demonstration draws seven questions from it, none of which require

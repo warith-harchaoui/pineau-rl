@@ -801,6 +801,27 @@ in the proceedings version. Three say so in their own justification: the code wi
 later. On compute, 6 papers out of 21 answer yes without stating any computing time, which the
 question does ask for. A ticked box therefore does not guarantee the practice it names.
 
+**The trajectory, year by year.** A before-and-after on two points does not say when the change
+happened. So we read 20 classical RL papers per year from ICML and NeurIPS in 2019, 2020, 2022 and
+2024, drawn at random and read with both grids, appendices included, following a plan written before
+the draw. ICLR is missing from these four years: its site refuses automated downloads.
+
+| Practice | 2018 | 2019 | 2020 | 2022 | 2024 | 2026 |
+|:---------------------------------|----:|----:|----:|----:|----:|----:|
+| Q5, the code is linked | 31% | 60% | 50% | 70% | 75% | 74% |
+| Y9, sensitivity to a hyperparameter is shown | 44% | 35% | 45% | 60% | 85% | 80% |
+| X7, the compute is quantified | 27% | 30% | 40% | 40% | 55% | 58% |
+| X2, an uncertainty is reported | 63% | 80% | 85% | 95% | 100% | 88% |
+| Q8, a statistical test is applied | 6% | 5% | 10% | 10% | 25% | 12% |
+
+: Share of classical RL papers that meet each criterion, by year. 2018: our reading of 48 papers; 2019 to 2024: 20 ICML and NeurIPS papers per year; 2026: our 50 papers. With 20 papers, a share carries an uncertainty of about twenty points either way. Data: `study/trajectory.json`.
+
+The four practices rise steadily: the trend clears the Holm correction for each of them. No clear
+jump appears right after the 2019 checklist: from 2018 to 2019-2020, no gap clears the correction.
+Only sweeping a hyperparameter rises clearly later, from 40% in 2019-2020 to 73% in 2022-2024. The
+statistical test shows no trend. These series describe a slow rise, begun before the checklist or
+with it; they do not say what caused it.
+
 **Seven questions for reading an RL announcement.** The checklist is meant for authors. The reader of
 a paper, a press release or a demonstration draws seven questions from it, none of which require
 knowing how to program. Each one points to the flaws it detects.

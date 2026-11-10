@@ -367,6 +367,24 @@ add("A6 step 2", f"le code en lien dans {pct(sh(r['Q5']['hidden']))} d'entre eux
     f"code linked in {pct(sh(r['Q5']['hidden']), lang='en')} of them ({pct(sh(r['Q5']['all2026']), lang='en')} in the draw), an uncertainty in {pct(sh(r['X2']['hidden']), lang='en')} ({pct(sh(r['X2']['all2026']), lang='en')})")
 assert tc["families"] == {"llm": 13, "classic": 7, "theory": 0}
 
+# A4, the trajectory (trajectory.py).
+tj = J("study/trajectory.json")
+LAB = {"fr": {"Q5": "Q5, le code est en lien", "Y9": "Y9, la sensibilité à un hyperparamètre est montrée", "X7": "X7, le calcul est chiffré",
+              "X2": "X2, une incertitude est rapportée", "Q8": "Q8, un test statistique est appliqué"},
+       "en": {"Q5": "Q5, the code is linked", "Y9": "Y9, sensitivity to a hyperparameter is shown", "X7": "X7, the compute is quantified",
+              "X2": "X2, an uncertainty is reported", "Q8": "Q8, a statistical test is applied"}}
+for k in ("Q5", "Y9", "X7", "X2", "Q8"):
+    by = tj["rows"][k]["by_year"]
+    cells = {lang: " | ".join(pct(by[y]["k"] / by[y]["n"], lang=lang) for y in ("2018", "2019", "2020", "2022", "2024", "2026")) for lang in ("fr", "en")}
+    add(f"A4 {k}", f"| {LAB['fr'][k]} | {cells['fr']} |", f"| {LAB['en'][k]} | {cells['en']} |")
+R = tj["rows"]
+assert all(R[k]["trend"]["p_holm"] < .05 for k in ("Q5", "Y9", "X7", "X2")) and R["Q8"]["trend"]["p_holm"] > .05
+assert all(R[k]["immediate"]["p_holm"] > .05 for k in ("Q5", "Y9", "X7", "X2", "Q8"))
+assert [k for k in R if "later" in R[k] and R[k]["later"]["p_holm"] < .05] == ["Y9"]
+lat = R["Y9"]["later"]
+add("A4 Y9 later", f"de {pct(lat['b'][0] / lat['b'][1])} en 2019-2020 à {pct(lat['a'][0] / lat['a'][1])} en 2022-2024",
+    f"from {pct(lat['b'][0] / lat['b'][1], lang='en')} in 2019-2020 to {pct(lat['a'][0] / lat['a'][1], lang='en')} in 2022-2024")
+
 # E6, the official Zoo pipeline (e6_official.py).
 e6o = J("sim/analysis/e6_official.json")
 g = e6o["groups"]
