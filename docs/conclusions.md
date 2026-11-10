@@ -911,8 +911,8 @@ complétée par une seconde grille et comparée à notre propre lecture de 2018 
 
 **Écoutée en partie, sans règle simple.** À grille égale, quatre pratiques ont changé dans le RL
 classique : le lien vers le code, le calcul chiffré, le balayage d'un hyperparamètre, les barres
-d'incertitude. Ces hausses tiennent quand on sépare les articles selon leur provenance, selon la
-source de leur PDF ou selon leur conférence, et quand on retire tour à tour chacun des lecteurs. Le
+d'incertitude. Ces hausses tiennent quand on sépare les articles selon leur provenance ou selon
+leur conférence, et quand on retire tour à tour chacun des lecteurs. Le
 test statistique, des références réglées et décrites avec le même soin que la méthode, l'évaluation
 tenue à part et les versions données n'ont pas bougé de façon détectable.
 
@@ -966,6 +966,7 @@ ses bons résultats qu'envers ses mauvais.
 - Le filtre de titre (« reinforcement learning », « RL », « policy optimization »…) rate les
   articles de RL dont le titre ne le dit pas, en 2018 comme en 2026.
 - Les trois évaluateurs du coût et du risque de chaque pratique sont des agents de langage, de trois tailles différentes. Leur accord entre eux ne garantit pas qu'un chercheur noterait de même.
+- Les articles de 2026 ont été lus surtout dans leur version arXiv (45 articles de RL classique sur 50), ceux de 2018 dans les actes des conférences. Une version arXiv est parfois plus longue ou plus récente que celle des actes. Avec 5 articles seulement lus sur le site d'une conférence, nous ne pouvons pas mesurer l'effet de cette différence.
 - Le tirage de Pineau en 2018 reste inconnu. Nos comparaisons avec ses chiffres supposent
   un tirage comparable au nôtre.
 

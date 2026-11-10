@@ -1,3 +1,5 @@
+*English version: [RESULTS-en.md](RESULTS-en.md).*
+
 # Résultats : la grille de Pineau (2018) réappliquée à 50 articles de RL de 2025-2026
 
 Échantillon : 50 articles tirés au hasard parmi les 1 252 articles de RL d'ICLR 2026, ICML 2026

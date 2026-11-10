@@ -46,17 +46,19 @@ the results, our own included.
 
 | Folder or file | Contents |
 |---|---|
-| `study/PROTOCOL.md` | The survey protocol: population, draw, grid, decision rules, deviations. |
+| `study/PROTOCOL-en.md` (French original: `PROTOCOL.md`) | The survey protocol: population, draw, grid, decision rules, deviations. |
+| `study/GRILLE-en.md`, `study/RESULTS-en.md`, `study/harmonisation_audit.md` | The readers' sheet, the first results, the audit of the raw readings. |
 | `study/codes/<reader>/<paper>.json` | One decision per criterion and per paper, with quote and page. |
 | `study/final_2026.json`, `study/calib_2018.json` | The papers drawn, with their addresses. |
 | `study/analyze.py`, `study/audit_stats.py`, `study/extension_stats.py` | The percentages, the audit of the differences (Newcombe, Fisher, Holm), then the enlarged survey. |
-| `sim/SIM_PROTOCOL.md`, `sim/llm/LLM_PROTOCOL.md` | The experiment protocols and their deviations. |
+| `sim/SIM_PROTOCOL-en.md`, `sim/llm/LLM_PROTOCOL-en.md` (French originals without `-en`) | The experiment protocols and their deviations. |
 | `sim/run.py` | One training run: algorithm, task, random seed, number of steps. |
 | `sim/jobs.txt`, `sim/drive.sh` | The full list of training runs and the launcher. |
 | `sim/results/` | The evaluation curves of every run (CSV). |
 | `sim/models/` | The final policies, to re-evaluate without retraining. |
 | `sim/analysis/` | One script and one JSON file per experiment. |
 | `sim/llm/` | GRPO, the length diagnostic and the results. |
+| `slides-en.md` | Pineau's ICLR 2018 slides, described one by one. |
 | `docs/` | The document in two languages, the bibliography and the figures (`docs/figures/build.py`). |
 
 ## Reproducing the results

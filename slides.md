@@ -1,3 +1,5 @@
+*English version: [slides-en.md](slides-en.md).*
+
 # Les diapositives de la conférence de Joelle Pineau, ICLR 2018
 
 Conférence invitée, ICLR 2018, Vancouver, jeudi 3 mai 2018 :
@@ -13,7 +15,7 @@ scène 0,04), puis quelques images prises à la main dans les trous. Les images 
 `video/slide23-full.png`, `video/slide30-full.png`, `video/slide31-full.png`.
 
 Numéros 25 et 26 corrigés le 9 novembre 2026 d'après l'image à 25:30, où le numéro 26 se lit sur « How should we measure… ». Le numéro est celui imprimé en bas de la diapositive quand il est lisible ; sinon, il est
-déduit de l'ordre (marqué « ~ »). Les diapositives 1, 2, 7, 10, 11, 25, 27 et 32 n'apparaissent
+déduit de l'ordre (marqué « ~ »). Les diapositives 1, 2, 7, 10, 11, 27 et 32 n'apparaissent
 pas à l'écran de façon lisible (titre, transitions, ou diapositive passée trop vite).
 
 | N° | Horodatage | Image | Titre et contenu |

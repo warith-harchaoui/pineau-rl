@@ -1,3 +1,5 @@
+*English version: [LLM_PROTOCOL-en.md](LLM_PROTOCOL-en.md).*
+
 # GRPO avec les moyens du bord : vraie récompense contre récompense tirée au sort
 
 Écrit le 2026-11-08 AVANT le premier entraînement. Ce qui change ensuite est noté dans « Écarts ».

@@ -1,3 +1,5 @@
+*Version française : [harmonisation_audit-fr.md](harmonisation_audit-fr.md).*
+
 # Harmonisation audit of the raw v2 readings (before any percentage)
 
 Scope: every JSON in `codes_v2/{A2,B2,C2,D2,E2,F2,H1,H2,H3,H4,K1..K7}/` (170 files; G2, R2 and pilot skipped).
@@ -357,11 +359,14 @@ No violation. The only scope changes come from the proposed Y3 recodes: K036, K1
    - 9b. Must the result shown be the main performance measure, or does any metric count (LR07 entropy)?
 10. **Cross-round.** When a v2 code (Y8) contradicts the v1 code of the same paper (Q7) in a direction the rules forbid (Y8 yes, Q7 no: C12, ML07), which one is recoded? Écart 15 keeps raw readings for agreement, but nothing covers v1 and v2 inconsistency.
 
-## ML13, relu par le responsable (10 novembre 2026)
+## ML13, reread by the project lead (10 November 2026)
 
-Le lecteur C2 avait écrit ML13 après une interruption, sans relecture. Relu contre le PDF (`pdftotext`) : aucun
-code ne change. Y1 `yes` (TSR défini par l'équation 8, mesuré sur le modèle entraîné, règle de l'écart 19) ; Y3 = 1
-(un seul jeu d'entraînement procédural, T1 à T7 ; les bancs Cello et Literature-91 sont des évaluations, écart 17) ;
-Y5 `yes` (les références tournent dans le cadre des auteurs, modèles publiés nommés) ; Y7 `no` (données « sur
-demande », non publiées) ; Q5 `no` (aucun lien vers du code dans l'article). `check_codes.py` : aucune erreur.
-ML13 est un article `llm` : il ne compte pas dans la comparaison principale.
+Reader C2 had written ML13 after an interruption, without rereading it. Reread against the PDF (`pdftotext`): no
+code changes. Y1 `yes` (TSR defined by equation 8, measured on the trained model, the écart 19 rule); Y3 = 1
+(a single procedural training set, T1 to T7; the Cello and Literature-91 benchmarks are evaluations, écart 17);
+Y5 `yes` (the baselines run in the authors' framework, published models named); Y7 `no` (data "on
+request", not published); Q5 `no` (no link to code in the paper). `check_codes.py`: no errors.
+The Y1 section above proposed `yes -> no` for ML13 under é17. The écart 19 rule, written after this audit, settles it
+the other way: the paper gives the training length (3 epochs, 30,200 GRPO steps) and one TSR for the trained
+model, which counts as the final point. No override was written, so the reader's `yes` stands.
+ML13 is an `llm` paper: it does not count in the main comparison.

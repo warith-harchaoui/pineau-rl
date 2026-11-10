@@ -48,17 +48,19 @@ restent dans les résultats, y compris les nôtres.
 
 | Dossier ou fichier | Contenu |
 |---|---|
-| `study/PROTOCOL.md` | Le protocole du sondage : population, tirage, grille, règles de décision, écarts. |
+| `study/PROTOCOL.md` (anglais : `PROTOCOL-en.md`) | Le protocole du sondage : population, tirage, grille, règles de décision, écarts. |
+| `study/GRILLE.md`, `study/RESULTS.md`, `study/harmonisation_audit-fr.md` | La fiche des lecteurs, les premiers résultats, l'audit des lectures brutes. |
 | `study/codes/<lecteur>/<article>.json` | Une décision par critère et par article, avec citation et page. |
 | `study/final_2026.json`, `study/calib_2018.json` | Les articles tirés, avec leurs adresses. |
 | `study/analyze.py`, `study/audit_stats.py`, `study/extension_stats.py` | Les pourcentages, l'audit des différences (Newcombe, Fisher, Holm), puis le sondage élargi. |
-| `sim/SIM_PROTOCOL.md`, `sim/llm/LLM_PROTOCOL.md` | Les protocoles des expériences et leurs écarts. |
+| `sim/SIM_PROTOCOL.md`, `sim/llm/LLM_PROTOCOL.md` (anglais : suffixe `-en`) | Les protocoles des expériences et leurs écarts. |
 | `sim/run.py` | Un entraînement : algorithme, tâche, graine aléatoire, nombre de pas. |
 | `sim/jobs.txt`, `sim/drive.sh` | La liste complète des entraînements et le lanceur. |
 | `sim/results/` | Les courbes d'évaluation de chaque essai (CSV). |
 | `sim/models/` | Les politiques finales, pour réévaluer sans réentraîner. |
 | `sim/analysis/` | Un script et un fichier JSON par expérience. |
 | `sim/llm/` | GRPO, le diagnostic de longueur et les résultats. |
+| `slides.md` | Les diapositives de Pineau à ICLR 2018, décrites une à une. |
 | `docs/` | Le document en deux langues, la bibliographie et les figures (`docs/figures/build.py`). |
 
 ## Refaire les résultats

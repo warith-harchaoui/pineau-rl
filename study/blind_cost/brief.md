@@ -1,3 +1,5 @@
+*Version française : [brief-fr.md](brief-fr.md).*
+
 # Rating brief (identical for the three raters, PROTOCOL.md, écart 21 b)
 
 You are rating reporting and evaluation practices found in experimental deep reinforcement learning papers.

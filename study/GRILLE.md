@@ -1,3 +1,5 @@
+*English version: [GRILLE-en.md](GRILLE-en.md).*
+
 # Fiche du lecteur : grilles v1 et v2
 
 Cette fiche résume `PROTOCOL.md` pour qui lit un article. En cas de doute, le protocole fait foi

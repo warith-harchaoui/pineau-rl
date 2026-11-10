@@ -1,3 +1,5 @@
+*English version: [README.md](README.md).*
+
 # Relecture humaine à l'aveugle (expérience A1)
 
 Écart 13 de `study/PROTOCOL.md`. But : mesurer l'accord entre une lecture humaine et la lecture des

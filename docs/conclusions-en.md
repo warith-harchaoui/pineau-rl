@@ -851,8 +851,8 @@ models.
 
 **Heeded in part, with no simple rule.** With the same grid, four practices changed in classical RL:
 linking the code, quantifying the compute, sweeping a hyperparameter, drawing error bars. These rises
-hold when the papers are split by provenance, by the source of their PDF or by conference, and when
-each reader is removed in turn. A statistical test, baselines tuned and described with the same care
+hold when the papers are split by provenance or by conference, and when each reader is removed in
+turn. A statistical test, baselines tuned and described with the same care
 as the method, held-out evaluation and stated versions show no detectable change.
 
 **A reading withdrawn.** An earlier version of this document drew a reading from this: Pineau was
@@ -889,6 +889,7 @@ Pineau's advice in 2018: be as critical of your good results as of your bad ones
 - The population has changed: 27 of the 50 papers of the first 2026 draw deal with large language models, a family absent in 2018. Our verdicts hold for classical RL.
 - The title filter ("reinforcement learning", "RL", "policy optimization" and similar terms) misses RL papers whose title does not say so, in 2018 as in 2026.
 - The three raters of the cost and risk of each practice are language model agents, of three different sizes. Their agreement with one another does not guarantee that a researcher would score the same way.
+- The 2026 papers were mostly read in their arXiv version (45 classical RL papers out of 50), the 2018 papers in the conference proceedings. An arXiv version is sometimes longer or more recent than the proceedings one. With only 5 papers read on a conference site, we cannot measure the effect of this difference.
 - Pineau's 2018 draw remains unknown. Our comparisons with her figures assume a draw comparable to ours.
 
 **Flaws still unmeasured.** The survey now covers all sixteen flaws. Experiments E2, E4, E5 and E7
