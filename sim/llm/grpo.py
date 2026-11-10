@@ -15,7 +15,7 @@ MICRO = int(os.environ.get("MICRO", 8))  # completions per backward pass (same g
 # aborted computation can come back as NaN or as a finite but absurd gradient (LLM_PROTOCOL.md, écart 10). The same
 # update on CPU has a gradient norm of 14 before clipping: above GRAD_SANE, or non-finite, the update is recomputed.
 GRAD_SANE, RETRIES = 1e3, 5
-device = "mps" if torch.backends.mps.is_available() else "cpu"
+device = os.environ.get("DEVICE") or ("mps" if torch.backends.mps.is_available() else "cpu")  # DEVICE=cpu: écart 11
 torch.manual_seed(SEED); random.seed(SEED)
 
 

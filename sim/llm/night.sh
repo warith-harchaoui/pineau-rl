@@ -27,8 +27,7 @@ one() {  # one <model> <tag> <reward> <seed> <micro>
   log "$2 $3 $4: $(tail -1 "logs/$2-$3-$4.log" | cut -c1-160)"
 }
 all_runs() {  # returns 1 as soon as the night window closes
-  one Qwen/Qwen2.5-0.5B-Instruct qwen05 random 1 8 || return 1
-  for spec in "Qwen/Qwen2.5-0.5B-Instruct qwen05 8" "unsloth/Llama-3.2-1B-Instruct llama1 2"; do
+  for spec in "unsloth/Llama-3.2-1B-Instruct llama1 2"; do  # the Qwen runs go on CPU (cpu.sh, écart 11)
     set -- $spec
     for seed in 0 1 2; do for reward in true random; do one "$1" "$2" "$reward" "$seed" "$3" || return 1; done; done
   done
