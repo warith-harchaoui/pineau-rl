@@ -332,7 +332,7 @@ section suivante.
 | F11 | Même code, autre graine aléatoire : deux « algorithmes » | diapositive 31 à ICLR, page 22 à NeurIPS | expériences E1 et B1 | nuancée : le t de 9 vient d'un test sur les épisodes |
 | F12 | Aucun test statistique | page 29 à NeurIPS | critères Q8, X2, Y11 et Y12 | écoutée en partie : des barres, pas de test |
 | F13 | Le meilleur algorithme qui change avec la tâche | diapositives 20 et 21 à ICLR | critères Y3 et Y4, expérience E2 | aucun changement détectable, expérience en cours |
-| F14 | Deux implémentations du même algorithme qui divergent | diapositives 22 et 23 à ICLR | critère Y5, expérience E3 | aucun changement détectable, expérience en cours |
+| F14 | Deux implémentations du même algorithme qui divergent | diapositives 22 et 23 à ICLR | critère Y5, expérience E3 | aucun changement détectable ; deux PPO indiscernables à dix graines |
 | F15 | L'évaluation sur les conditions d'entraînement | pages 36 à 51 à NeurIPS | critères Q7 et Y8, expérience E7 | aucun changement détectable à grille égale |
 | F16 | Des bancs d'essai trop simples, faciles à apprendre par cœur | pages 43 à 50 à NeurIPS | critères X6 et Y7 | aucun changement détectable |
 
@@ -745,7 +745,12 @@ nettement. Leur article a reçu le prix de l'article remarquable de NeurIPS 2021
 
 **Le classement et les implémentations (F13 et F14).** L'expérience E2 classe quatre algorithmes
 sur quatre tâches. E3 compare PPO écrit en PyTorch et PPO écrit en JAX, avec les mêmes graines
-aléatoires. Les deux attendent la fin des simulations. Les articles, eux, sont lus. Dans le RL
+aléatoires. E2 attend la fin des simulations. E3 est fini : sur aucune des quatre tâches, l'une des
+deux versions ne l'emporte selon la règle du protocole. Les écarts apparents sont pourtant larges.
+Sur Walker2d, la moyenne interquartile vaut 2 158 avec PyTorch et 1 272 avec JAX, 41 % de moins, et
+les deux intervalles se chevauchent encore avec dix graines. Une méthode comparée à « PPO » sur
+cette tâche gagnerait ou perdrait donc selon la version choisie, sans que dix graines permettent de
+trancher. Les articles, eux, sont lus. Dans le RL
 classique, la conclusion principale repose sur plusieurs tâches dans 41 articles sur 50 en 2026,
 contre 43 sur 48 en 2018 (critère Y3). Parmi les articles à plusieurs tâches, 38 sur 41 montrent
 au moins une tâche où leur méthode ne gagne pas, contre 34 sur 43 en 2018 (critère Y4). L'origine
@@ -957,16 +962,16 @@ ses bons résultats qu'envers ses mauvais.
   un tirage comparable au nôtre.
 
 **Ce qui n'est pas encore mesuré.** Le sondage couvre désormais les seize failles. Les expériences
-E2 à E5 et E7 attendent la fin des simulations : F13 et F14 n'ont pour l'instant que leur mesure
-dans les articles. E1 se limite à une tâche et un algorithme. Le volet GRPO reste une illustration
+E2, E4, E5 et E7 attendent la fin des simulations : F13 n'a pour l'instant que sa mesure dans les
+articles. E1 se limite à une tâche et un algorithme. Le volet GRPO reste une illustration
 sur des modèles de 0,5 et 1 milliard de paramètres, loin d'une réplication de Shao et ses
 coauteurs.
 
 # Ce qui reste à mesurer
 
 - La relecture humaine à l'aveugle de dix articles de 2026, dont le plan est écrit dans le protocole.
-- Les expériences E2 à E5 et E7, quand les 75 entraînements restants seront finis.
-- Les neuf essais GRPO restants, relancés la nuit, avec la part de réponses coupées mesurée à chaque évaluation.
+- Les expériences E2, E4, E5 et E7, quand les 37 entraînements CrossQ restants seront finis.
+- Les neuf essais GRPO restants, relancés la nuit, avec la part de réponses coupées mesurée à chaque évaluation. Leurs plantages venaient d'un calcul GPU coupé par macOS quand la machine sert en même temps ; le code recalcule désormais toute mise à jour corrompue et compte ces recalculs.
 
 # Reproductibilité
 

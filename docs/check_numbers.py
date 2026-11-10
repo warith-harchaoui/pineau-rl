@@ -331,6 +331,14 @@ add("thesis rho", f"vaut {sg(rb['b']['C']['rho'], 'fr')} pour le coût et {sg(rb
     f"is {sg(rb['b']['C']['rho'], 'en')} for cost and {sg(rb['b']['R']['rho'], 'en')} for risk")
 assert rb["b"]["C"]["p_two_sided"] > .2 and rb["b"]["R"]["p_two_sided"] > .2  # "rien qui se distingue du hasard"
 
+# E3, two implementations of PPO (e3.py).
+e3 = J("sim/analysis/e3.json")
+assert all(r["winner"] is None for r in e3.values())  # "sur aucune des quatre tâches, l'une des deux versions ne l'emporte"
+w = e3["Walker2d-v5"]
+add("E3 walker", f"vaut {num(w['iqm']['sb3'], 'fr')} avec PyTorch et {num(w['iqm']['sbx'], 'fr')} avec JAX, {pct(1 - w['iqm_ratio_sbx_over_sb3'])} de moins",
+    f"is {num(w['iqm']['sb3'], 'en')} with PyTorch and {num(w['iqm']['sbx'], 'en')} with JAX, {pct(1 - w['iqm_ratio_sbx_over_sb3'], lang='en')} lower")
+assert w["intervals_overlap"]
+
 # E6, the official Zoo pipeline (e6_official.py).
 e6o = J("sim/analysis/e6_official.json")
 g = e6o["groups"]

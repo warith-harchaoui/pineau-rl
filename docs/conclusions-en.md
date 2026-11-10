@@ -312,7 +312,7 @@ instrument that measures each one in this document. The next section describes t
 | F11 | Same code, another random seed: two "algorithms" | slide 31 at ICLR, page 22 at NeurIPS | experiments E1 and B1 | qualified: the t of 9 comes from a test on episodes |
 | F12 | Comparisons with no statistical test | page 29 at NeurIPS | criteria Q8, X2, Y11 and Y12 | partly heeded: error bars, no test |
 | F13 | The best algorithm changes with the task | slides 20 and 21 at ICLR | criteria Y3 and Y4, experiment E2 | no detectable change, experiment under way |
-| F14 | Two implementations of the same algorithm that diverge | slides 22 and 23 at ICLR | criterion Y5, experiment E3 | no detectable change, experiment under way |
+| F14 | Two implementations of the same algorithm that diverge | slides 22 and 23 at ICLR | criterion Y5, experiment E3 | no detectable change; two PPOs indistinguishable at ten seeds |
 | F15 | Evaluation in the training conditions | pages 36 to 51 at NeurIPS | criteria Q7 and Y8, experiment E7 | no detectable change with the same grid |
 | F16 | Benchmarks too simple, easy to learn by heart | pages 43 to 50 at NeurIPS | criteria X6 and Y7 | no detectable change |
 
@@ -705,8 +705,12 @@ Outstanding Paper Award [@agarwal2021precipice].
 # The reach of the conclusions (F13 to F16)
 
 **Rankings and implementations (F13 and F14).** Experiment E2 ranks four algorithms on four tasks. E3
-compares PPO written in PyTorch with PPO written in JAX, using the same random seeds. Both await the
-end of the simulations. The papers, for their part, have been read. In classical RL, the main
+compares PPO written in PyTorch with PPO written in JAX, using the same random seeds. E2 awaits the
+end of the simulations. E3 is finished: on none of the four tasks does one version win under the
+protocol's rule. The apparent gaps are wide all the same. On Walker2d, the interquartile mean is
+2,158 with PyTorch and 1,272 with JAX, 41% lower, and the two intervals still overlap with ten
+random seeds. A method compared with "PPO" on this task would therefore win or lose depending on the
+version chosen, and ten random seeds would not settle it. The papers, for their part, have been read. In classical RL, the main
 conclusion rests on several tasks in 41 papers out of 50 in 2026, against 43 out of 48 in 2018
 (criterion Y3). Among the papers with several tasks, 38 out of 41 show at least one task where their
 method does not win, against 34 out of 43 in 2018 (criterion Y4). The origin of the baselines' code
@@ -880,16 +884,16 @@ Pineau's advice in 2018: be as critical of your good results as of your bad ones
 - The three raters of the cost and risk of each practice are language model agents, of three different sizes. Their agreement with one another does not guarantee that a researcher would score the same way.
 - Pineau's 2018 draw remains unknown. Our comparisons with her figures assume a draw comparable to ours.
 
-**Flaws still unmeasured.** The survey now covers all sixteen flaws. Experiments E2 to E5 and E7
-await the end of the simulations: for now, F13 and F14 have only their measurement in the papers. E1
+**Flaws still unmeasured.** The survey now covers all sixteen flaws. Experiments E2, E4, E5 and E7
+await the end of the simulations: for now, F13 has only its measurement in the papers. E1
 is limited to one task and one algorithm. The GRPO strand remains an illustration on models of 0.5
 and 1 billion parameters, far from a replication of Shao and co-authors.
 
 # What remains to be measured
 
 - The blind human rereading of ten papers from 2026 takes place as planned in the protocol.
-- Experiments E2 to E5 and E7 follow once the 75 remaining training runs finish.
-- The nine remaining GRPO runs restart overnight, with the share of cut-off answers measured at every evaluation.
+- Experiments E2, E4, E5 and E7 follow once the 37 remaining CrossQ training runs finish.
+- The nine remaining GRPO runs restart overnight, with the share of cut-off answers measured at every evaluation. Their crashes came from GPU work cut short by macOS while the machine was in use; the code now recomputes any corrupted update and counts these recomputations.
 
 # Reproducibility
 
