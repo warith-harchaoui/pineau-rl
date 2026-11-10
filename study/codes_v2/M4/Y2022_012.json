@@ -44,14 +44,14 @@
    "page": null
   },
   "X1": {
-   "value": null,
-   "quote": "absent après lecture des sections expériences, annexes et liens (no number of independent runs)",
-   "page": null
+   "value": 5,
+   "quote": "We randomly run 5 seeds for our method in experiments and report the error bar as below.",
+   "page": 17
   },
   "X2": {
-   "value": "no",
-   "quote": "We report the error bars in Appendix E. [the appendix is not in the PDF; Tables 1 and 2 carry no uncertainty]",
-   "page": 7
+   "value": "yes",
+   "quote": "Table 3: Error bar for our method in the comparisons of the average of perplexities and topic",
+   "page": 17
   },
   "X3": {
    "value": "no",
@@ -84,9 +84,9 @@
    "page": 8
   },
   "Y2": {
-   "value": "na",
-   "quote": "non applicable (X2 no)",
-   "page": null
+   "value": "no",
+   "quote": "We randomly run 5 seeds for our method in experiments and report the error bar as below. [the ± is never said to be a std, se or interval]",
+   "page": 17
   },
   "Y3": {
    "value": 4,
@@ -129,8 +129,8 @@
    "page": 7
   },
   "Y11": {
-   "value": "na",
-   "quote": "non applicable (X2 no)",
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (the type of the ± in supplement Tables 3-4 is never named)",
    "page": null
   },
   "Y12": {
@@ -139,5 +139,5 @@
    "page": null
   }
  },
- "doubts": "The PDF has no appendices (A to N are cited, including D for dataset statistics and E for the error bars); coded on what exists (écart 17). X2 no therefore drives Y2 and Y11 to na, although the paper claims error bars exist in the missing Appendix E. Q4 yes rests on the shared structure for all deep topic models plus the published defaults for the probabilistic ones; a stricter reading of 'defaults without listing' would give no. Y7 no: the four corpora are named and cited but the splits and preprocessing live in the missing appendix. X5 classic: RL trains a topic model, not a pretrained language model (écart 18)."
+ "doubts": "Supplement (Y2022_012-supp.pdf, extracted later) read in full; its page numbers are those of the supplement PDF. It changes X1 (5 seeds) and X2 (error bars for dc-ETM in supplement Tables 3-4, p. 17-18), so Y2 and Y11 leave na and are coded no: the ± is never defined. Error bars cover the method only, not the baselines. Y7 stays no: the supplement gives train/test splits for R8 and 20News but none for RCV1 or WebKB. Q4 yes rests on the shared structure for all deep topic models plus the published defaults for the probabilistic ones; a stricter reading of 'defaults without listing' would give no. X5 classic: RL trains a topic model, not a pretrained language model (écart 18)."
 }

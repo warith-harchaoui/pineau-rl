@@ -14,9 +14,9 @@
    "page": null
   },
   "Q3": {
-   "value": "no",
-   "quote": "absent après lecture des sections expériences, annexes et liens (réglages de la Figure 2 renvoyés à l'annexe C.4.2, absente du PDF)",
-   "page": null
+   "value": "yes",
+   "quote": "in §C.1.1. Here we choose r = 10−4 , α = 5 × 10−10 and α = 10−9 for one-point and two-point",
+   "page": 17
   },
   "Q4": {
    "value": "yes",
@@ -112,9 +112,12 @@
    "page": null
   },
   "Y7": {
-   "value": "no",
-   "quote": "absent après lecture des sections expériences, annexes et liens (Exemple 3.2 entièrement spécifié, mais le cas de la Figure 2 est défini dans l'annexe C.1.1, absente)",
-   "page": null
+   "value": "yes",
+   "quote": "Consider A = 2.7, B = −0.45, C = −0.15, Ru = 1, Rw = 2.0736, Q = 1. [...] Q = 1.0477 · I, R = 1.3724 · I, R = 1036.2265 · I.",
+   "page": [
+    5,
+    9
+   ]
   },
   "Y8": {
    "value": "no",
@@ -122,9 +125,9 @@
    "page": null
   },
   "Y9": {
-   "value": "no",
-   "quote": "absent après lecture des sections expériences, annexes et liens (« We have implemented the algorithm with different values of NL », résultats renvoyés à l'annexe C absente)",
-   "page": null
+   "value": "yes",
+   "quote": "The stepsizes are η = ηL = 0.001, and we choose NK = 1 and NL ranging from 500, 50, 1.",
+   "page": 11
   },
   "Y10": {
    "value": "no",
@@ -142,5 +145,5 @@
    "page": null
   }
  },
- "doubts": "Les simulations détaillées sont renvoyées à l'annexe C, absente du PDF : codé sur ce qui existe. Q4 : le RARL conventionnel est la référence, son seul hyperparamètre (pas de NPG) est donné ; yes avec hésitation. Y1 : distance au NE, quantité qui n'est pas un score de politique (écart 19). Y3 : deux systèmes LQ (Exemple 3.2 et cas C.1.1) ; Y7 no car le second n'est spécifié que dans l'annexe absente."
+ "doubts": "Passe supplément (Y2020_003-supp.pdf, citations avec la page du supplément) : Q3 passe à yes (pas et rayons de la Figure 2 en C.4.2), Y7 passe à yes (système C.1.1 donné par ses matrices), Y9 passe à yes (NL = 500, 50, 1, Figures 6 à 8, distance au NE). Q4 : le RARL conventionnel est la référence, son seul hyperparamètre (pas de NPG) est donné ; yes avec hésitation. Y1 : distance au NE, quantité qui n'est pas un score de politique (écart 19). Y3 : deux systèmes LQ du texte principal (Exemple 3.2 et cas C.1.1) ; les exemples aléatoires de l'annexe ne comptent pas (écart 19)."
 }

@@ -74,9 +74,9 @@
    "page": null
   },
   "X7": {
-   "value": "no",
-   "quote": "absent après lecture des sections expériences, annexes et liens",
-   "page": null
+   "value": "yes",
+   "quote": "Meta-training was only done on a single machine with 4 V100 GPU’s with synchronous updates. [...] Meta-training was done over the course of 2 days",
+   "page": 1
   },
   "Y1": {
    "value": "no",
@@ -140,5 +140,5 @@
    "page": null
   }
  },
- "doubts": "Pas d'annexe disponible (renvois à l'Appendix A pour le calcul et les réglages) : Q3, X7 codés sur ce qui existe. Q5 no : code dans le matériel supplémentaire, aucun lien. Y3 : 8 environnements Brax de la Fig. 6 ; avec Minatar on aurait 12. X4 no : PPO réglé (Minatar) mais sans procédure décrite."
+ "doubts": "Pas d'annexe disponible (renvois à l'Appendix A pour le calcul et les réglages) : Q3, X7 codés sur ce qui existe. Q5 no : code dans le matériel supplémentaire, aucun lien. Y3 : 8 environnements Brax de la Fig. 6 ; avec Minatar on aurait 12. X4 no : PPO réglé (Minatar) mais sans procédure décrite. Passe supplément (Y2022_015-supp.pdf, pages du supplément) : X7 passe à yes. Q3 reste no (Table 1 ne couvre que l'entraînement de LPO sur Ant ; ailleurs, réglages Brax par défaut non listés, sans version). Y9 reste no (annexe E : ablation des entrées du drift, un composant)."
 }

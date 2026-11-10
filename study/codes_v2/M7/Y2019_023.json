@@ -14,9 +14,12 @@
    "page": 8
   },
   "Q3": {
-   "value": "no",
-   "quote": "More details are provided in supplementary materials [supplement not available; main text gives only lambda1, lambda2, gamma-hat]",
-   "page": 8
+   "value": "yes",
+   "quote": "Hyperparameters of Off-PAC: [...] Additional Hyperparameters of Geoff-PAC:",
+   "page": [
+    16,
+    17
+   ]
   },
   "Q4": {
    "value": "no",
@@ -29,9 +32,9 @@
    "page": 8
   },
   "Q6": {
-   "value": "no",
-   "quote": "We first tuned hyperparameters for Off-PAC. [procedure not described]",
-   "page": 8
+   "value": "yes",
+   "quote": "We first select a reasonable γ̂ based on some preliminary experiments. Then λ1 and λ2 are tuned with a grid search.",
+   "page": 17
   },
   "Q7": {
    "value": "no",
@@ -59,9 +62,9 @@
    "page": null
   },
   "X4": {
-   "value": "no",
-   "quote": "We first tuned hyperparameters for Off-PAC. ACE and Geoff-PAC inherited common hyperparameters from Off-PAC.",
-   "page": 8
+   "value": "yes",
+   "quote": "λ1 : 0, tuned over {0, 0.1, 0.2, . . . , 0.9, 1} on HalfCheetah with a grid search",
+   "page": 16
   },
   "X5": {
    "value": "classic",
@@ -104,9 +107,9 @@
    "page": 8
   },
   "Y6": {
-   "value": "no",
-   "quote": "absent après lecture des sections expériences, annexes et liens",
-   "page": null
+   "value": "yes",
+   "quote": "The easy tasks (e.g., the pendulum tasks) and the hard tasks (e.g., the ant task and the humanoid tasks) are excluded.",
+   "page": 15
   },
   "Y7": {
    "value": "no",
@@ -119,9 +122,9 @@
    "page": null
   },
   "Y9": {
-   "value": "no",
-   "quote": "We first studied the influence of λ1 on ACE and the influence of λ1 , λ2 , γ̂ on Geoff-PAC in HalfCheetah. The results are reported in supplementary materials. [supplement not available; Figure 1c sweep shows the final policy, not a performance measure]",
-   "page": 8
+   "value": "yes",
+   "quote": "Figure 6: Hyper-parameter study on HalfCheetah (a) The influence of λ1 on ACE (b) The influence of γ̂ on Geoff-PAC",
+   "page": 18
   },
   "Y10": {
    "value": "no",
@@ -140,5 +143,5 @@
    "page": null
   }
  },
- "doubts": "Pas d'annexe disponible (renvois aux supplementary materials) : Q3, Y9 codés sur ce qui existe. Y1 : Jπ défini mais points d'évaluation « periodically » non chiffrés, codé no. Y5 : « all the implementations are publicly available » dans le dépôt DeepRL des auteurs, lu comme cadre d'entraînement des auteurs où tournent les références. Y9 : la Figure 1c balaie γ̂ et λ2 mais montre la probabilité de la politique finale, pas une performance."
+ "doubts": "Pas d'annexe disponible (renvois aux supplementary materials) : Q3, Y9 codés sur ce qui existe. Y1 : Jπ défini mais points d'évaluation « periodically » non chiffrés, codé no. Y5 : « all the implementations are publicly available » dans le dépôt DeepRL des auteurs, lu comme cadre d'entraînement des auteurs où tournent les références. Y9 : la Figure 1c balaie γ̂ et λ2 mais montre la probabilité de la politique finale, pas une performance. Passe supplément (Y2019_023-supp.pdf, pages du supplément) : Q3, Q6, X4, Y6, Y9 passent à yes. X4 : grille décrite pour λ1 d'ACE (même grille que Geoff-PAC), Off-PAC réglé « based on ... previous experiences », DDPG et TD3 non réglés : yes avec hésitation. Q4 reste no (DDPG/TD3 renvoyés aux articles d'origine). X7 reste no (« Nvidia DGX-1 » sans durée)."
 }

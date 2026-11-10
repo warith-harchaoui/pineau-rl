@@ -3,33 +3,144 @@
  "coder": "M6",
  "title": "Causality-driven Hierarchical Structure Discovery for Reinforcement Learning",
  "criteria": {
-  "Q1": {"value": "yes", "quote": "We compare the performance on Eden and 2D-Minecraft of CDHRL with other methods.", "page": 8},
-  "Q2": {"value": "yes", "quote": "We implement the agent based on multi-level DQN with HER", "page": 7},
-  "Q3": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens (hyperparamètres renvoyés à une annexe absente du PDF)", "page": null},
-  "Q4": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "Q5": {"value": "no", "quote": "We offer the code of our method in the supplemental material.", "page": 13},
-  "Q6": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "Q7": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "Q8": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "X1": {"value": 8, "quote": "Results are derived from average data in [...] 8 trials.", "page": 8},
-  "X2": {"value": "yes", "quote": "Did you report error bars (e.g., with respect to the random seed after running experi- [...] ments multiple times)? [Yes]", "page": 12},
-  "X3": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "X4": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "X5": {"value": "classic", "quote": "we propose CDHRL, a causality-driven hierarchical rein- [...] forcement learning framework", "page": 1},
-  "X6": {"value": null, "quote": "absent après lecture des sections expériences, annexes et liens (pas un article llm)", "page": null},
-  "X7": {"value": "no", "quote": "Did you include the total amount of compute and the type of resources used (e.g., type [...] of GPUs, internal cluster, or cloud provider)? [No]", "page": 12},
-  "Y1": {"value": "no", "quote": "(a) Agent’s survival time in Eden. (b) Success ratio in 2D-Minecraft.", "page": 8},
-  "Y2": {"value": "no", "quote": "Results are derived from average data in [...] 8 trials.", "page": 8},
-  "Y3": {"value": 2, "quote": "In two complicated environments with very [...] sparse rewards, 2d-Minecraft and Eden", "page": 9},
-  "Y4": {"value": "no", "quote": "CDHRL learns faster and achieves the best performance even though all the evaluated", "page": 8},
-  "Y5": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens (origine du code de LESSON et MEGA non dite)", "page": null},
-  "Y6": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "Y7": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens (aucune version de 2D-Minecraft ni d'Eden)", "page": null},
-  "Y8": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "Y9": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "Y10": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "Y11": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens (bandes non définies)", "page": null},
-  "Y12": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null}
+  "Q1": {
+   "value": "yes",
+   "quote": "We compare the performance on Eden and 2D-Minecraft of CDHRL with other methods.",
+   "page": 8
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We implement the agent based on multi-level DQN with HER",
+   "page": 7
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "B.4 Implementation Parameters [...] Function model: 3-layer MLP, hidden size = 128. [...] Causal threshold: φcausal = 0.8",
+   "page": [
+    6,
+    7
+   ]
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "We offer the code of our method in the supplemental material.",
+   "page": 13
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 8,
+   "quote": "Results are derived from average data in [...] 8 trials.",
+   "page": 8
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Did you report error bars (e.g., with respect to the random seed after running experi- [...] ments multiple times)? [Yes]",
+   "page": 12
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "we propose CDHRL, a causality-driven hierarchical rein- [...] forcement learning framework",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens (pas un article llm)",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "Did you include the total amount of compute and the type of resources used (e.g., type [...] of GPUs, internal cluster, or cloud provider)? [No]",
+   "page": 12
+  },
+  "Y1": {
+   "value": "no",
+   "quote": "(a) Agent’s survival time in Eden. (b) Success ratio in 2D-Minecraft.",
+   "page": 8
+  },
+  "Y2": {
+   "value": "no",
+   "quote": "Results are derived from average data in [...] 8 trials.",
+   "page": 8
+  },
+  "Y3": {
+   "value": 2,
+   "quote": "In two complicated environments with very [...] sparse rewards, 2d-Minecraft and Eden",
+   "page": 9
+  },
+  "Y4": {
+   "value": "no",
+   "quote": "CDHRL learns faster and achieves the best performance even though all the evaluated",
+   "page": 8
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (origine du code de LESSON et MEGA non dite)",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (aucune version de 2D-Minecraft ni d'Eden)",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (bandes non définies)",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
  },
- "doubts": "Les annexes A à C (hyperparamètres, environnements, algorithmes) sont citées mais absentes du PDF et aucun -supp n'existe. X2 yes : des bandes ombrées sont visibles sur les courbes de la figure 2 (vérifié sur l'image de la page 8) et la liste de contrôle les annonce, sans dire ce qu'elles représentent, d'où Y2 et Y11 no. Y1 no : points d'évaluation des courbes non dits."
+ "doubts": "Les annexes A à C (hyperparamètres, environnements, algorithmes) sont citées mais absentes du PDF et aucun -supp n'existe. X2 yes : des bandes ombrées sont visibles sur les courbes de la figure 2 (vérifié sur l'image de la page 8) et la liste de contrôle les annonce, sans dire ce qu'elles représentent, d'où Y2 et Y11 no. Y1 no : points d'évaluation des courbes non dits. Passe supplément : Q3 passe à yes sur les sections B.4 et B.5 de Y2022_006-supp.pdf (pages 6-7 du supplément), qui listent les hyperparamètres de la découverte causale et de l'entraînement des sous-buts ; la taille du réseau DQN et du tampon n'y sont pas, cas limite. L'analyse de sensibilité de l'annexe A.2 porte sur la part de variables d'environnement manquantes, une condition d'entrée et non un hyperparamètre : Y9 reste no."
 }

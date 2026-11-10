@@ -74,9 +74,9 @@
    "page": null
   },
   "X7": {
-   "value": "no",
-   "quote": "absent après lecture des sections expériences, annexes et liens",
-   "page": null
+   "value": "yes",
+   "quote": "which amounts to about 2 hours on one Nvidia Titan-Xp GPU",
+   "page": 3
   },
   "Y1": {
    "value": "no",
@@ -119,9 +119,9 @@
    "page": 8
   },
   "Y9": {
-   "value": "no",
-   "quote": "We also include ablation studies on sensitivity of the latent dimensions [...] in Appendix E. [Appendix E not in the available PDF]",
-   "page": 7
+   "value": "yes",
+   "quote": "We first investigate the sensitivity of different latent dimensions by running PEMIRL with latent dimension picked from {1, 3, 5} on Point-Maze-Shift",
+   "page": 2
   },
   "Y10": {
    "value": "no",
@@ -140,5 +140,5 @@
    "page": null
   }
  },
- "doubts": "Aucune annexe disponible (pas de -supp.pdf) alors que le texte renvoie aux annexes E et F : Q3, Q6, Y9, X7 codés sur ce qui existe. X1 : « 5 runs » lu comme 5 entraînements. Y5 : « we also designed the following variants » lu comme réimplémentation dite pour toutes les références, AIRL comprise."
+ "doubts": "Aucune annexe disponible (pas de -supp.pdf) alors que le texte renvoie aux annexes E et F : Q3, Q6, Y9, X7 codés sur ce qui existe. X1 : « 5 runs » lu comme 5 entraînements. Y5 : « we also designed the following variants » lu comme réimplémentation dite pour toutes les références, AIRL comprise. Passe supplément (Y2019_007-supp.pdf, pages du supplément) : X7 et Y9 passent à yes ; Q3 reste no (Adam « default hyperparameters » sans version, pas de taux ni de tailles de lot TRPO)."
 }

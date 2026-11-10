@@ -14,9 +14,9 @@
    "page": 5
   },
   "Q3": {
-   "value": "no",
-   "quote": "absent après lecture des sections expériences, annexes et liens (« the exact hyperparameters for each domain are provided in the appendix », annexe absente du PDF ; seuls taille de lot et nombre d'échantillons dans le texte)",
-   "page": null
+   "value": "yes",
+   "quote": "Table 4: AIQN Hyperparameters [...] we use a two layer fully connected [...] network with 400 and 300 neurons in each layer, respectively.",
+   "page": 3
   },
   "Q4": {
    "value": "no",
@@ -74,9 +74,9 @@
    "page": null
   },
   "X7": {
-   "value": "no",
-   "quote": "absent après lecture des sections expériences, annexes et liens (« high computational complexity », sans quantité)",
-   "page": null
+   "value": "yes",
+   "quote": "training the TD3 algorithm on the Hopper-v2 domain using two NVIDIA GTX [...] 1080-TI cards took around 3 hours, whereas our approach took 40 hours to train.",
+   "page": 5
   },
   "Y1": {
    "value": "yes",
@@ -139,5 +139,5 @@
    "page": null
   }
  },
- "doubts": "Le texte renvoie à un matériel supplémentaire (hyperparamètres, résultats numériques) absent du PDF : codé sur ce qui existe. X3 : le Tableau 2 rapporte le « meilleur » résultat GAC (parmi les variantes) contre la meilleure référence, sélection sur l'évaluation ; codé yes avec hésitation (variantes, pas entraînements identiques). Y9 : le nombre d'échantillons est un hyperparamètre, mais l'effet est seulement dit qualitativement."
+ "doubts": "Passe supplément (Y2019_019-supp.pdf, citations avec la page du supplément) : Q3 passe à yes (Tableau 4 par domaine + architecture ; γ, τ et bruit d'exploration non donnés, hésitation), X7 passe à yes (3 h et 40 h sur deux GTX 1080-TI). Le Tableau 3 du supplément (« maximal attained value across training ») conforte X3 yes ; ses ± restent non définis. X3 : le Tableau 2 rapporte le « meilleur » résultat GAC (parmi les variantes) contre la meilleure référence, sélection sur l'évaluation ; codé yes avec hésitation (variantes, pas entraînements identiques). Y9 : le nombre d'échantillons est un hyperparamètre, mais l'effet est seulement dit qualitativement."
 }

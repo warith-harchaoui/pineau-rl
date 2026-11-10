@@ -1,0 +1,144 @@
+{
+ "id": "Y2020_027",
+ "coder": "M7",
+ "title": "Maximum Entropy Gain Exploration for Long Horizon Multi-goal Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "Test success on the desired goal distribution, evaluated throughout training",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "each with 3 layers of 512 neurons with GeLU activations",
+   "page": 4
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Optimization We use Adam Optimizer (Kingma & Ba, 2014) with a learning rate of 1e-3 for both actor and critic, and",
+   "page": 3
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "inherit all of the Base Agent features and hyperparameters",
+   "page": 7
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Code available at https://github.com/spitis/mrl",
+   "page": 1
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "To finetune the base agent hyperparameters, we ran two random searches on PointMaze in order to tune a MEGA agent.",
+   "page": 6
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 3,
+   "quote": "for several behaviour goal selection methods (3",
+   "page": 7
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Figures display the average over a set of seeds, with shaded regions representing 1 standard deviation",
+   "page": 9
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "yes",
+   "quote": "Finally, to tune our goal discriminator baseline, we ran one seed of each of the following settings for minibatch size and",
+   "page": 7
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "control experiments all use the DDPG algorithm (Lillicrap",
+   "page": 2
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable: famille classic",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "Each individual seed was run on a node with 1 GPU and n CPUs [no duration]",
+   "page": 8
+  },
+  "Y1": {
+   "value": "no",
+   "quote": "Test success on the desired goal distribution, evaluated throughout training [evaluation points not stated]",
+   "page": 7
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "Figures display the average over a set of seeds, with shaded regions representing 1 standard deviation",
+   "page": 9
+  },
+  "Y3": {
+   "value": 4,
+   "quote": "agents on four challenging, long-horizon environments that",
+   "page": 6
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "(GoalDisc) is a good optimizer of the MEGA objective on",
+   "page": 7
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "For a fair comparison, all of our implemented baselines use",
+   "page": 6
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "The PointMaze environment is identical to that of Trott et al. (2019). [no version; FetchPickAndPlace-v1 modified]",
+   "page": 8
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "We found that performance is sensitive to the “optimize every” parameter [no result shown]",
+   "page": 7
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "The KDE approach fits the KDE density model from Scikit-learn [no version]",
+   "page": 4
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "with shaded regions representing 1 standard deviation",
+   "page": 9,
+   "kind": "std"
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X1 : la légende de la Fig. 3 dit 3 graines, l'annexe D.1 dit 5 pour les Fig. 3 et 5 ; codé 3. X4 yes : la référence GoalDisc a son propre réglage décrit et les autres héritent des réglages de l'agent de base, réglé pour MEGA ; cas limite. Q7 no : l'évaluation porte sur la distribution de buts désirée, connue à l'entraînement. Y4 : GoalDisc égale MEGA sur AntMaze."
+}

@@ -10,18 +10,22 @@
   },
   "Q2": {
    "value": "yes",
-   "quote": "1) Baseline Advantage Actor-critic(A2C) algorithm",
-   "page": 10
+   "quote": "We use a shared CNN network (3 Conv layers and one fully connected (FC)",
+   "page": 23
   },
   "Q3": {
-   "value": "no",
-   "quote": "absent après lecture des sections expériences, annexes et liens (réglages renvoyés aux annexes I.1 à I.3, absentes du PDF)",
-   "page": null
+   "value": "yes",
+   "quote": "Table 2: Hyper-parameter settings for Tabular MDP. [...] Table 3: Hyper-parameter settings for LOLA-DiCE. [...] Table 4: Hyper-parameter settings for MGRL.",
+   "page": [
+    21,
+    23,
+    24
+   ]
   },
   "Q4": {
-   "value": "no",
-   "quote": "absent après lecture des sections expériences, annexes et liens",
-   "page": null
+   "value": "yes",
+   "quote": "Table 4: Hyper-parameter settings for MGRL.",
+   "page": 24
   },
   "Q5": {
    "value": "yes",
@@ -105,9 +109,9 @@
    "page": 10
   },
   "Y5": {
-   "value": "no",
-   "quote": "absent après lecture des sections expériences, annexes et liens",
-   "page": null
+   "value": "yes",
+   "quote": "We reimplement the MGRL algorithm based on A2C baseline. [...] We adopt the codebase of A2C from",
+   "page": 23
   },
   "Y6": {
    "value": "no",
@@ -145,5 +149,5 @@
    "page": null
   }
  },
- "doubts": "Annexes (B, F, G, I) absentes du PDF : codé sur ce qui existe. X5 : article théorique, mais compare des estimateurs sur Atari, donc classic (écart 18). Q2 : réseaux non dits explicitement, déduits d'A2C sur Atari. X1 : 5 graines pour Atari (MGRL), 10 pour LOLA ; j'ai retenu Atari. Y1 : la corrélation au gradient exact (MDP tabulaire) est définie, mais les comparaisons de méthodes (LOLA, Atari) tracent un « Return » non défini ; no. Y3 : MDP tabulaire, IPD et 5 jeux Atari du texte principal. Y4 : dans Assault (Figure 4), A2C dépasse MGRL+LVC, et le texte le dit pour MGRL."
+ "doubts": "Passe supplément (Y2022_011-supp.pdf, citations avec la page du supplément) : Q3 yes (Tableaux 2 à 4), Q4 yes (la référence MGRL et A2C partagent les réglages du Tableau 4, hésitation), Y5 yes (MGRL réimplémenté, A2C pris d'un dépôt cité, LOLA adapté du code officiel). X7 reste no (2 A100 nommées, sans durée). Q2 : citation remplacée par l'architecture CNN du supplément. X5 : article théorique, mais compare des estimateurs sur Atari, donc classic (écart 18). X1 : 5 graines pour Atari (MGRL), 10 pour LOLA ; j'ai retenu Atari. Y3 : les 3 jeux Atari de plus n'apparaissent qu'en annexe et ne comptent pas. Y1 : la corrélation au gradient exact (MDP tabulaire) est définie, mais les comparaisons de méthodes (LOLA, Atari) tracent un « Return » non défini ; no. Y3 : MDP tabulaire, IPD et 5 jeux Atari du texte principal. Y4 : dans Assault (Figure 4), A2C dépasse MGRL+LVC, et le texte le dit pour MGRL."
 }

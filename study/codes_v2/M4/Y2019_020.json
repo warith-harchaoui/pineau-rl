@@ -3,33 +3,141 @@
  "coder": "M4",
  "title": "VIREL: A Variational Inference Framework for Reinforcement Learning",
  "criteria": {
-  "Q1": {"value": "yes", "quote": "We compare our methods to the state-of-the-art SAC2 and DDPG [38] algorithms on MuJoCo tasks in OpenAI gym [9] and in rllab [14].", "page": 8},
-  "Q2": {"value": "yes", "quote": "all algorithms use a value function network V (φ) as a baseline and a Gaussian policy", "page": 9},
-  "Q3": {"value": "no", "quote": "All experiments use 5 random initialisations and parameter values are given in Appendix I.1. [the appendix is not in the PDF we have]", "page": 9},
-  "Q4": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens (appendix I.1 not available; no baseline hyperparameters in the main text)", "page": null},
-  "Q5": {"value": "no", "quote": "We use implementations provided by the authors https://github.com/haarnoja/sac for v1 and https://github.com/vitchyr/rlkit for v2. [links to the SAC baseline only, no code for VIREL]", "page": 8},
-  "Q6": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "Q7": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "Q8": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "X1": {"value": 5, "quote": "All experiments use 5 random initialisations", "page": 9},
-  "X2": {"value": "yes", "quote": "Figure 3: Training curves on continuous control benchmarks gym-Mujoco-v2 : High-dimensional domains. [shaded bands visible on the curves]", "page": 9},
-  "X3": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "X4": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "X5": {"value": "classic", "quote": "Fig. 3 gives the training curves for the various algorithms on high-dimensional tasks for on gym-mujoco-v2.", "page": 9},
-  "X6": {"value": null, "quote": "non applicable (classic)", "page": null},
-  "X7": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "Y1": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens (axes say 'Average Return' against steps, never defined)", "page": null},
-  "Y2": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens (bands drawn but never defined)", "page": null},
-  "Y3": {"value": 5, "quote": "in Humanoid-v2 (action space dimensionality: 17, state space dimensional- [...] ity: 376) and Ant-v2 [...] humanoid-gym and -rllab", "page": 9},
-  "Y4": {"value": "yes", "quote": "perform on par with SAC in simple domains like Half-Cheetah and outperform it in challenging", "page": 9},
-  "Y5": {"value": "no", "quote": "We use implementations provided by the authors https://github.com/haarnoja/sac for v1 [origin given for SAC only, not for DDPG]", "page": 8},
-  "Y6": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "Y7": {"value": "no", "quote": "humanoid-gym and -rllab [the rllab task has no version]", "page": 9},
-  "Y8": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "Y9": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens ('We found performance is poor and unstable without λ' is not shown with numbers)", "page": null},
-  "Y10": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "Y11": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "Y12": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null}
+  "Q1": {
+   "value": "yes",
+   "quote": "We compare our methods to the state-of-the-art SAC2 and DDPG [38] algorithms on MuJoCo tasks in OpenAI gym [9] and in rllab [14].",
+   "page": 8
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "all algorithms use a value function network V (φ) as a baseline and a Gaussian policy",
+   "page": 9
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Table 1: Summary of Experimental Parameter Values",
+   "page": 24
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (supplement Table 1 gives VIREL values; v1 runs reuse 'Values as used by Haarnoja et al.' by reference, no DDPG or SAC values listed)",
+   "page": null
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "We use implementations provided by the authors https://github.com/haarnoja/sac for v1 and https://github.com/vitchyr/rlkit for v2. [links to the SAC baseline only, no code for VIREL]",
+   "page": 8
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 5,
+   "quote": "All experiments use 5 random initialisations",
+   "page": 9
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Figure 3: Training curves on continuous control benchmarks gym-Mujoco-v2 : High-dimensional domains. [shaded bands visible on the curves]",
+   "page": 9
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "Fig. 3 gives the training curves for the various algorithms on high-dimensional tasks for on gym-mujoco-v2.",
+   "page": 9
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable (classic)",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (axes say 'Average Return' against steps, never defined)",
+   "page": null
+  },
+  "Y2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (bands drawn but never defined)",
+   "page": null
+  },
+  "Y3": {
+   "value": 5,
+   "quote": "in Humanoid-v2 (action space dimensionality: 17, state space dimensional- [...] ity: 376) and Ant-v2 [...] humanoid-gym and -rllab",
+   "page": 9
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "perform on par with SAC in simple domains like Half-Cheetah and outperform it in challenging",
+   "page": 9
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "We use implementations provided by the authors https://github.com/haarnoja/sac for v1 [origin given for SAC only, not for DDPG]",
+   "page": 8
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "humanoid-gym and -rllab [the rllab task has no version]",
+   "page": 9
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens ('We found performance is poor and unstable without λ' is not shown with numbers)",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
  },
- "doubts": "The PDF has no appendix (Appendices A to I referred to, including I.1 with parameter values); coded on what exists (écart 17), which drives Q3, Q4, Y9. X2: shaded bands seen on the rendered Figure 3, never defined. Y3: Ant, Humanoid, HumanoidStandup, humanoid-rllab, HalfCheetah (Humanoid v1/v2 counted once). X5 classic: theory-heavy but compares on standard MuJoCo benchmarks (écart 18)."
+ "doubts": "Supplement (Y2019_020-supp.pdf, extracted later) read in full; its page numbers are those of the supplement PDF. It changes Q3 to yes: Table 1 (supplement p. 24) lists VIREL's values for the MuJoCo-v2 runs, while the v1 runs reuse 'Values as used by Haarnoja et al.' from the SAC repository by reference, a partial reliance. Nothing else changes: no code link for VIREL, no baseline hyperparameters (Q4 stays no), no definition of the bands (Y2, Y11 stay no), 'Steps per evaluation 1000' left too ambiguous to define the measure (Y1 stays no). X2: shaded bands seen on the rendered Figure 3. Y3: Ant, Humanoid, HumanoidStandup, humanoid-rllab, HalfCheetah (Humanoid v1/v2 counted once). X5 classic: theory-heavy but compares on standard MuJoCo benchmarks (écart 18)."
 }

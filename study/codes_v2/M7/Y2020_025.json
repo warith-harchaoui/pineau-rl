@@ -1,0 +1,144 @@
+{
+ "id": "Y2020_025",
+ "coder": "M7",
+ "title": "Dynamic allocation of limited memory resources in reinforcement learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We also compare DRA against a model that allocates resources equally to all memories",
+   "page": 6
+  },
+  "Q2": {
+   "value": "no",
+   "quote": "we define the agent’s memory in a tabular form [tabular q-value distributions, no neural network]",
+   "page": 3
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Table B.1: Parameters used for each task",
+   "page": 4
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "Results from CMA - ES provide us with a baseline for our gradient-based optimization [CMA-ES settings not given]",
+   "page": 4
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Code to run DRA and reproduce our results is available at https://github.com/nisheetpatel/",
+   "page": 2
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "We chose λ that we best captured the difficulties faced by [no procedure]",
+   "page": 4
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 5,
+   "quote": "Error bars represent SD across mean of 5 optimization runs.",
+   "page": 6
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Error bars represent SD across mean of 5 optimization runs.",
+   "page": 6
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "Next, we test DRA on the mountain car problem",
+   "page": 6
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable: famille classic",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "Maximum objective achieved by using the Advantage function",
+   "page": 7
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "Error bars represent SD across mean of 5 optimization runs.",
+   "page": 6
+  },
+  "Y3": {
+   "value": 3,
+   "quote": "which we apply to two standard tasks in reinforcement learning and a model-based",
+   "page": 1
+  },
+  "Y4": {
+   "value": "no",
+   "quote": "We find that DRA achieves 2× improvement in the objective (Eq. 1) over the",
+   "page": 6
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "Next, we test DRA on the mountain car problem [no version; grid-world and planning task are specified in figures]",
+   "page": 6
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "we remove the obstacle directly adjacent to the cheese and re-position [the agent keeps training in the changed environment]",
+   "page": 5
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We choose four different values of σ0 (see Fig. 1b legend)",
+   "page": 5
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "Error bars represent SD across mean of 5 optimization runs.",
+   "page": 6,
+   "kind": "std"
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X5 classic : l'article compare DRA à des références (précision égale, SARSA, CMA-ES) sur des tâches usuelles, dont mountain car, mais les tâches sont petites et tabulaires ; theory serait défendable. Q4 no à cause de CMA-ES ; les autres références sont des variantes de DRA aux mêmes réglages. Y4 no : DRA gagne en objectif partout, mais converge plus lentement que SARSA (1,5× et 1,3× plus d'épisodes). Y8 no : après le changement de l'environnement, l'agent continue d'apprendre."
+}

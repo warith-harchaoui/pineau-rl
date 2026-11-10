@@ -14,9 +14,9 @@
    "page": 2
   },
   "Q3": {
-   "value": "no",
-   "quote": "absent après lecture des sections expériences, annexes et liens (seul η est donné ; détails renvoyés à l'annexe A.4, absente du PDF)",
-   "page": null
+   "value": "yes",
+   "quote": "version of value propagation and choose k = 4. We choose γ = 0.95, λ = 0.01. The learning [...] rate of Adam is chosen as 5e-4 and β1 , β2 are default value in Adam optimizer.",
+   "page": 2
   },
   "Q4": {
    "value": "no",
@@ -145,5 +145,5 @@
    "page": null
   }
  },
- "doubts": "Annexe A.4 (détails d'implémentation) absente du PDF : codé sur ce qui existe. X5 : article à théorème, mais compare des méthodes sur un banc usuel (navigation coopérative, MPE modifié), donc classic (écart 18). Y1 : courbes de récompense cumulée moyennée sur les agents par épisode, lu comme courbe d'apprentissage aux points dits. Y3 : MDP aléatoire et navigation coopérative comptés comme deux cadres. Y7 : les deux environnements sont spécifiés dans l'article (paramètres donnés), lu comme versionné ; hésitation pour le MPE modifié. Y9 : η présenté comme paramètre de compromis biais-variance, balayé."
+ "doubts": "Passe supplément (Y2019_011-supp.pdf, citations avec la page du supplément) : Q3 passe à yes (A.4 donne réseaux, γ, λ, k, taux d'apprentissage ; taille de lot et capacité du tampon non données, hésitation). X5 : article à théorème, mais compare des méthodes sur un banc usuel (navigation coopérative, MPE modifié), donc classic (écart 18). Y1 : courbes de récompense cumulée moyennée sur les agents par épisode, lu comme courbe d'apprentissage aux points dits. Y3 : MDP aléatoire et navigation coopérative comptés comme deux cadres. Y7 : les deux environnements sont spécifiés dans l'article (paramètres donnés), lu comme versionné ; hésitation pour le MPE modifié. Y9 : η présenté comme paramètre de compromis biais-variance, balayé."
 }

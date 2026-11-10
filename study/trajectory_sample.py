@@ -14,7 +14,7 @@ RX = re.compile(r'reinforcement learning|\bRL\b|\bRLHF\b|\bRLVR\b|policy optimi[
 PRESCREEN = ['llm', 'language model', 'reasoning', 'rlhf', 'rlvr', 'grpo', 'preference',
              'alignment', 'reward model', 'chain-of-thought', 'math', 'agentic']  # as sample_v2.py
 YEARS = {2019: 97, 2020: 119, 2022: 162, 2024: 235}
-PER_YEAR, OUT = 24, "trajectory_queue.json"
+PER_YEAR, OUT = int(os.environ.get("A4_PER_YEAR", 24)), "trajectory_queue.json"  # more when a year lacks 20 classic papers
 clean = lambda s: " ".join(html.unescape(re.sub(r"<[^>]+>", " ", s)).split())
 
 

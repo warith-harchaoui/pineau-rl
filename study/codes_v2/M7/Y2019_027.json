@@ -1,0 +1,144 @@
+{
+ "id": "Y2019_027",
+ "coder": "M7",
+ "title": "A Family of Robust Stochastic Operators for Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We conduct various experiments across several well-known problems using the OpenAI Gym frame-",
+   "page": 6
+  },
+  "Q2": {
+   "value": "no",
+   "quote": "each dimension is [...] discretized into equally spaced bins [tabular Q-learning, no neural network]",
+   "page": 6
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "exactly as is with the default parameter settings [values not listed, no version]",
+   "page": 6
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "exactly as is with the default parameter settings",
+   "page": 6
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "The experiments for each problem from the OpenAI Gym were run using the existing code found at [links in references are third-party base code, only snippets of the authors' changes in Appendix C]",
+   "page": 6
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 50,
+   "quote": "We ran 50 experimental trials over many episodes",
+   "page": 7
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "the average score over the last 1000 episodes across the 50 trials together with the corresponding",
+   "page": 7
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "namely Acrobot, Mountain Car, Cart Pole and Lunar Lander.",
+   "page": 6
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable: famille classic",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "the average score over the last 1000 episodes across the 50 trials together with the corresponding",
+   "page": 7
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "95% confidence intervals.",
+   "page": 7
+  },
+  "Y3": {
+   "value": 4,
+   "quote": "namely Acrobot, Mountain Car, Cart Pole and Lunar Lander.",
+   "page": 6
+  },
+  "Y4": {
+   "value": "no",
+   "quote": "We again observe that the best average scores are obtained under many of the RSOs [an RSO instance is best on every task]",
+   "page": 7
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "exactly as is with the default parameter settings and the sole change consisting of the replacement",
+   "page": 6
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "namely Acrobot, Mountain Car, Cart Pole and Lunar Lander. [no Gym versions]",
+   "page": 6
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Table 1: Mean scores for solving each problem during training phase. Full set of experiments under",
+   "page": 16
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "95% confidence intervals.",
+   "page": 7,
+   "kind": "ci"
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X5 classic plutôt que theory : article théorique, mais il compare les opérateurs sur quatre problèmes Gym usuels (écart 18). Q5 no : les liens mènent au code tiers de départ, pas au code des auteurs (seulement des extraits en annexe C). Y9 yes : les distributions de βk (U[0,1), U[0,2), βk = 1, etc.) lues comme balayage d'un hyperparamètre de la méthode, résultats chiffrés au Tableau 1. Y4 no : certaines variantes de RSO perdent contre Bellman, mais la meilleure variante gagne sur chaque tâche."
+}

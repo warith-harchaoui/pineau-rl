@@ -3,33 +3,142 @@
  "coder": "M6",
  "title": "Efficient Communication in Multi-Agent Reinforcement Learning via Variance Based Control",
  "criteria": {
-  "Q1": {"value": "yes", "quote": "We evaluated the performance of VBC on the StarCraft Multi-Agent Challenge (SMAC)", "page": 6},
-  "Q2": {"value": "yes", "quote": "The local action generator [...] consists of a Gated Recurrent Unit (GRU) and a fully connected layer (FC).", "page": 4},
-  "Q3": {"value": "no", "quote": "For the detailed game settings, hyperparameters, and additional experiment evaluation over other test [...] environments, please refer to supplementary materials.", "page": 6},
-  "Q4": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens (hyperparamètres des références non donnés ; annexe absente)", "page": null},
-  "Q5": {"value": "yes", "quote": "code is available at https://github.com/saizhang0218/VBC.", "page": 2},
-  "Q6": {"value": "yes", "quote": "we first search for a coarse parameter range based on random trial, experience and message statistics. We [...] then perform a random search within a smaller hyperparameter space.", "page": 7},
-  "Q7": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens (épisodes de test sur les mêmes cartes)", "page": null},
-  "Q8": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "X1": {"value": 15, "quote": "Each algorithm is trained 15 times.", "page": 7},
-  "X2": {"value": "yes", "quote": "Figure 3 [...] shows the average winning rate and 95% confidence interval of each algorithm for all the six tasks.", "page": 7},
-  "X3": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "X4": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens (réglage décrit pour VBC seulement)", "page": null},
-  "X5": {"value": "classic", "quote": "we design a novel deep MARL architecture", "page": 2},
-  "X6": {"value": null, "quote": "absent après lecture des sections expériences, annexes et liens (pas un article llm)", "page": null},
-  "X7": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "Y1": {"value": "yes", "quote": "we stop the training process and save the [...] current model every 200 training episodes. We then run 20 test episodes and measure the winning [...] rates for these 20 episodes.", "page": 7},
-  "Y2": {"value": "yes", "quote": "Winning rates for the six tasks, the shaded regions represent the 95% confidence intervals.", "page": 7},
-  "Y3": {"value": 8, "quote": "we test VBC on several MARL benchmarks, including StarCraft Multi-Agent Chal- [...] lenge [...] Cooperative Navigation (CN) [...] and Predator-prey (PP)", "page": 2},
-  "Y4": {"value": "yes", "quote": "VBC achieves similar performance as FC and even outplays FC for some tasks", "page": 7},
-  "Y5": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens (origine du code de VDN, QMIX et SchedNet non dite)", "page": null},
-  "Y6": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "Y7": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens (version de SMAC ou de StarCraft II non donnée)", "page": null},
-  "Y8": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "Y9": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens (valeurs retenues de λ, δ1, δ2 seulement, aucun balayage montré)", "page": null},
-  "Y10": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "Y11": {"value": "yes", "kind": "ci", "quote": "the shaded regions represent the 95% confidence intervals", "page": 7},
-  "Y12": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null}
+  "Q1": {
+   "value": "yes",
+   "quote": "We evaluated the performance of VBC on the StarCraft Multi-Agent Challenge (SMAC)",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "The local action generator [...] consists of a Gated Recurrent Unit (GRU) and a fully connected layer (FC).",
+   "page": 4
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "We adopt a RMSprop optimizer [...] with a learning rate η = 5 × 10−4 and α = 0.99.",
+   "page": 3
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (hyperparamètres des références non donnés ; annexe absente)",
+   "page": null
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "code is available at https://github.com/saizhang0218/VBC.",
+   "page": 2
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "we first search for a coarse parameter range based on random trial, experience and message statistics. We [...] then perform a random search within a smaller hyperparameter space.",
+   "page": 7
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (épisodes de test sur les mêmes cartes)",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 15,
+   "quote": "Each algorithm is trained 15 times.",
+   "page": 7
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Figure 3 [...] shows the average winning rate and 95% confidence interval of each algorithm for all the six tasks.",
+   "page": 7
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (réglage décrit pour VBC seulement)",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "we design a novel deep MARL architecture",
+   "page": 2
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens (pas un article llm)",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "we stop the training process and save the [...] current model every 200 training episodes. We then run 20 test episodes and measure the winning [...] rates for these 20 episodes.",
+   "page": 7
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "Winning rates for the six tasks, the shaded regions represent the 95% confidence intervals.",
+   "page": 7
+  },
+  "Y3": {
+   "value": 8,
+   "quote": "we test VBC on several MARL benchmarks, including StarCraft Multi-Agent Chal- [...] lenge [...] Cooperative Navigation (CN) [...] and Predator-prey (PP)",
+   "page": 2
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "VBC achieves similar performance as FC and even outplays FC for some tasks",
+   "page": 7
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (origine du code de VDN, QMIX et SchedNet non dite)",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (version de SMAC ou de StarCraft II non donnée)",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (valeurs retenues de λ, δ1, δ2 seulement, aucun balayage montré)",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "ci",
+   "quote": "the shaded regions represent the 95% confidence intervals",
+   "page": 7
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
  },
- "doubts": "Le matériel supplémentaire (hyperparamètres, réglages) est cité mais absent du dossier : Q3 et Q4 codés no sur le texte principal. Y3 = 8 (six cartes SMAC plus CN et PP, tous en texte principal et dans la conclusion) ; 6 si l'on ne garde que SMAC."
+ "doubts": "Le matériel supplémentaire (hyperparamètres, réglages) est cité mais absent du dossier : Q3 et Q4 codés no sur le texte principal. Y3 = 8 (six cartes SMAC plus CN et PP, tous en texte principal et dans la conclusion) ; 6 si l'on ne garde que SMAC. Passe supplément : Q3 passe à yes sur la section 2.2 de Y2019_022-supp.pdf (page 3 du supplément), qui donne architecture, γ, ε, tampon, lots et optimiseur ; Q4 reste no (rien sur VDN, QMIX, SchedNet), Y7 reste no (seule la difficulté « Medium » est dite)."
 }

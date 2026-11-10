@@ -261,7 +261,9 @@
     "url": "http://proceedings.mlr.press/v97/chen19f/chen19f.pdf",
     "pdf_url": "http://proceedings.mlr.press/v97/chen19f/chen19f.pdf",
     "supp_url": "http://proceedings.mlr.press/v97/chen19f/chen19f-supp.pdf",
-    "id": "Y2019_025"
+    "id": "Y2019_025",
+    "pdf": "pdf/Y2019_025.pdf",
+    "supp": true
    },
    {
     "venue": "NeurIPS 2019",
@@ -269,7 +271,10 @@
     "url": "https://papers.nips.cc/paper_files/paper/2019/hash/e2ccf95a7f2e1878fcafc8376649b6e8-Abstract.html",
     "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/e2ccf95a7f2e1878fcafc8376649b6e8-Paper.pdf",
     "supp_url": "https://papers.nips.cc/paper_files/paper/2019/file/e2ccf95a7f2e1878fcafc8376649b6e8-Supplemental.pdf",
-    "id": "Y2019_026"
+    "id": "Y2019_026",
+    "pdf": "pdf/Y2019_026.pdf",
+    "supp": true,
+    "supp_from_zip": "IBAC-SNI_CRC_appendix.pdf"
    },
    {
     "venue": "NeurIPS 2019",
@@ -277,7 +282,10 @@
     "url": "https://papers.nips.cc/paper_files/paper/2019/hash/a44ba9086b2b83ccf2baf7c678723449-Abstract.html",
     "pdf_url": "https://papers.nips.cc/paper_files/paper/2019/file/a44ba9086b2b83ccf2baf7c678723449-Paper.pdf",
     "supp_url": "https://papers.nips.cc/paper_files/paper/2019/file/a44ba9086b2b83ccf2baf7c678723449-Supplemental.pdf",
-    "id": "Y2019_027"
+    "id": "Y2019_027",
+    "pdf": "pdf/Y2019_027.pdf",
+    "supp": true,
+    "supp_from_zip": "main_withAppendix.pdf"
    },
    {
     "venue": "NeurIPS 2019",
@@ -1389,7 +1397,9 @@
     "url": "https://papers.nips.cc/paper_files/paper/2020/hash/c4fac8fb3c9e17a2f4553a001f631975-Abstract.html",
     "pdf_url": "https://papers.nips.cc/paper_files/paper/2020/file/c4fac8fb3c9e17a2f4553a001f631975-Paper.pdf",
     "supp_url": "https://papers.nips.cc/paper_files/paper/2020/file/c4fac8fb3c9e17a2f4553a001f631975-Supplemental.pdf",
-    "id": "Y2020_025"
+    "id": "Y2020_025",
+    "pdf": "pdf/Y2020_025.pdf",
+    "supp": true
    },
    {
     "venue": "ICML 2020",
@@ -1397,7 +1407,9 @@
     "url": "http://proceedings.mlr.press/v119/ghosh20b/ghosh20b.pdf",
     "pdf_url": "http://proceedings.mlr.press/v119/ghosh20b/ghosh20b.pdf",
     "supp_url": "http://proceedings.mlr.press/v119/ghosh20b/ghosh20b-supp.pdf",
-    "id": "Y2020_026"
+    "id": "Y2020_026",
+    "pdf": "pdf/Y2020_026.pdf",
+    "supp": true
    },
    {
     "venue": "ICML 2020",
@@ -1405,7 +1417,9 @@
     "url": "http://proceedings.mlr.press/v119/pitis20a/pitis20a.pdf",
     "pdf_url": "http://proceedings.mlr.press/v119/pitis20a/pitis20a.pdf",
     "supp_url": "http://proceedings.mlr.press/v119/pitis20a/pitis20a-supp.pdf",
-    "id": "Y2020_027"
+    "id": "Y2020_027",
+    "pdf": "pdf/Y2020_027.pdf",
+    "supp": true
    },
    {
     "venue": "NeurIPS 2020",
@@ -3226,7 +3240,9 @@
     "url": "https://proceedings.mlr.press/v162/ni22a/ni22a.pdf",
     "pdf_url": "https://proceedings.mlr.press/v162/ni22a/ni22a.pdf",
     "supp_url": null,
-    "id": "Y2022_025"
+    "id": "Y2022_025",
+    "pdf": "pdf/Y2022_025.pdf",
+    "supp": false
    },
    {
     "venue": "ICML 2022",
@@ -3234,7 +3250,9 @@
     "url": "https://proceedings.mlr.press/v162/ni22b/ni22b.pdf",
     "pdf_url": "https://proceedings.mlr.press/v162/ni22b/ni22b.pdf",
     "supp_url": null,
-    "id": "Y2022_026"
+    "id": "Y2022_026",
+    "pdf": "pdf/Y2022_026.pdf",
+    "supp": false
    },
    {
     "venue": "ICML 2022",
@@ -3242,7 +3260,9 @@
     "url": "https://proceedings.mlr.press/v162/shi22c/shi22c.pdf",
     "pdf_url": "https://proceedings.mlr.press/v162/shi22c/shi22c.pdf",
     "supp_url": null,
-    "id": "Y2022_027"
+    "id": "Y2022_027",
+    "pdf": "pdf/Y2022_027.pdf",
+    "supp": false
    },
    {
     "venue": "NeurIPS 2022",
@@ -5687,7 +5707,9 @@
     "url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/cheng24j/cheng24j.pdf",
     "pdf_url": "https://raw.githubusercontent.com/mlresearch/v235/main/assets/cheng24j/cheng24j.pdf",
     "supp_url": null,
-    "id": "Y2024_025"
+    "id": "Y2024_025",
+    "pdf": "pdf/Y2024_025.pdf",
+    "supp": false
    },
    {
     "venue": "NeurIPS 2024",
@@ -5695,7 +5717,9 @@
     "url": "https://papers.nips.cc/paper_files/paper/2024/hash/6df3a719d99bd2479c04114d357003d0-Abstract-Conference.html",
     "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/6df3a719d99bd2479c04114d357003d0-Paper-Conference.pdf",
     "supp_url": "https://papers.nips.cc/paper_files/paper/2024/file/6df3a719d99bd2479c04114d357003d0-Supplemental-Conference.pdf",
-    "id": "Y2024_026"
+    "id": "Y2024_026",
+    "pdf": "pdf/Y2024_026.pdf",
+    "supp": false
    },
    {
     "venue": "NeurIPS 2024",
@@ -5703,7 +5727,9 @@
     "url": "https://papers.nips.cc/paper_files/paper/2024/hash/05b2ea5d57ed04c1dc105658e87b137e-Abstract-Conference.html",
     "pdf_url": "https://papers.nips.cc/paper_files/paper/2024/file/05b2ea5d57ed04c1dc105658e87b137e-Paper-Conference.pdf",
     "supp_url": "https://papers.nips.cc/paper_files/paper/2024/file/05b2ea5d57ed04c1dc105658e87b137e-Supplemental-Conference.pdf",
-    "id": "Y2024_027"
+    "id": "Y2024_027",
+    "pdf": "pdf/Y2024_027.pdf",
+    "supp": false
    },
    {
     "venue": "ICML 2024",

@@ -135,7 +135,7 @@ v1 = ["Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "X2", "X3", "X4", "X7"]
 assert len(v1) == 11 and all("p_holm" in main(k) for k in v1)  # "onze critères à la fois"
 assert vsP("Q4")["p_holm"] == vsP("Q5")["p_holm"]  # "p = 0,06 chacun"
 ov2 = {k: v for k, v in J("study/overrides_v2.json").items() if not k.startswith("_")}
-assert sum(len([i for i in v if not i.startswith("T")]) for k, v in ov2.items() if k != "X5") == 80  # écart 19: 80 changes (X5 belongs to écart 18; T* are A6, écart 24)
+assert sum(len([i for i in v if not i.startswith(("T", "Y20"))]) for k, v in ov2.items() if k != "X5") == 80  # écart 19: 80 changes (X5 belongs to écart 18; T* are A6, écart 24; Y20* are A4, écart 25)
 
 # Summary.
 add("ours 2018 Q3", f"Elle trouve {o('Q3')}", f"It finds {o('Q3', 'en')}")

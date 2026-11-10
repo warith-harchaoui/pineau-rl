@@ -201,6 +201,14 @@
    "K090": "é6/é19: https://anonymous.4open.science/r/PePG-0C27/README.md visited 2026-11-09 (twice, plus API /api/repo/PePG-0C27/file/README.md): HTTP 410 {\"error\":\"repository_expired\"}, the anonymous mirror no longer answers, so the link does not lead to code.",
    "C19": "Écart 6 et 19 : la page (sites.google.com/view/time-limits-in-rl, visitée le 2026-11-09) mène à la bibliothèque Tonic, publiée après l'article et sans ses scripts d'expérience : pas le code de l'article.",
    "T04": "é6: the project page given on page 1 (sullivan07043.github.io/SCOPE) leads to github.com/Sullivan07043/SCOPE, visited on 10 November 2026."
+  },
+  "Q3": {
+   "Y2019_011": "Q3 asks for all hyperparameters: the reader's own doubt notes that batch size and buffer capacity are missing (deviation 25, harmonised 10 November 2026).",
+   "Y2019_019": "Q3 asks for all hyperparameters: the reader's own doubt notes that gamma, tau and the exploration noise are missing (deviation 25, harmonised 10 November 2026)."
   }
+ },
+ "Q3": {
+  "Y2019_011": "no",
+  "Y2019_019": "no"
  }
 }

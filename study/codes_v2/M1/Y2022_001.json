@@ -14,9 +14,9 @@
    "page": 8
   },
   "Q3": {
-   "value": "no",
-   "quote": "see Appendix A.3 for implementation details",
-   "page": 9
+   "value": "yes",
+   "quote": "Table 2: Hyperparameters and network sizes for the continuous environments.",
+   "page": 16
   },
   "Q4": {
    "value": "no",
@@ -24,14 +24,14 @@
    "page": null
   },
   "Q5": {
-   "value": "no",
-   "quote": "absent après lecture des sections expériences, annexes et liens",
-   "page": null
+   "value": "yes",
+   "quote": "Our code, [...] along with the instructions to set up the environment and run it, is available at https://gitlab. [...] ethz.ch/lnicolas/ot-trpo.",
+   "page": 15
   },
   "Q6": {
    "value": "no",
-   "quote": "absent après lecture des sections expériences, annexes et liens",
-   "page": null
+   "quote": "To the best of our knowledge, we used the hyperparameters and network sizes with the best perfor-",
+   "page": 17
   },
   "Q7": {
    "value": "no",
@@ -74,9 +74,9 @@
    "page": null
   },
   "X7": {
-   "value": "no",
-   "quote": "absent après lecture des sections expériences, annexes et liens",
-   "page": null
+   "value": "yes",
+   "quote": "Table 5: Training time in seconds of the different algorithms in the Mujoco",
+   "page": 22
   },
   "Y1": {
    "value": "yes",
@@ -99,14 +99,14 @@
    "page": 10
   },
   "Y5": {
-   "value": "no",
-   "quote": "absent après lecture des sections expériences, annexes et liens",
-   "page": null
+   "value": "yes",
+   "quote": "can be found in stable baselines [...] For WNPG [...] we used the code and tuning publicly available at https://github.com/",
+   "page": 16
   },
   "Y6": {
-   "value": "no",
-   "quote": "absent après lecture des sections expériences, annexes et liens",
-   "page": null
+   "value": "yes",
+   "quote": "We refrained from reporting the results of the algorithms whenever they were not reproducible or not comparable to the others.",
+   "page": 17
   },
   "Y7": {
    "value": "yes",
@@ -119,14 +119,14 @@
    "page": null
   },
   "Y9": {
-   "value": "no",
-   "quote": "absent après lecture des sections expériences, annexes et liens",
-   "page": null
+   "value": "yes",
+   "quote": "We investigate how different (i) trust region radii ε and (ii) transportation costs, affect the learning",
+   "page": 17
   },
   "Y10": {
    "value": "no",
-   "quote": "absent après lecture des sections expériences, annexes et liens",
-   "page": null
+   "quote": "with our installation of TensorFlow 2.x",
+   "page": 17
   },
   "Y11": {
    "value": "yes",
@@ -140,5 +140,5 @@
    "page": null
   }
  },
- "doubts": "L'annexe (A.3 détails d'implémentation, A.4 ablation, A.5, A.6) n'est pas dans pdf/ : codé sur l'article seul, d'où Q3, Q4, Y5, Y9 no. X5 classic par l'écart 18 : résultats théoriques mais comparaison sur des bancs usuels (Gym, MuJoCo). Y1 yes avec hésitation : courbes de récompense cumulée, chaque évaluation moyennée sur 10 trajectoires, sans fréquence d'évaluation dite. Y4 yes : en continu, la méthode est seulement « alignée » sur la meilleure référence, ce qui reconnaît des tâches sans victoire."
+ "doubts": "Supplément lu (pdf/Y2022_001-supp.pdf, citations de Q3, Q5, Q6, X7, Y5, Y6, Y9, Y10 avec ses propres numéros de page) : Q3 yes (tableaux 1 et 2), Q5 yes (dépôt GitLab), X7 yes (temps d'entraînement en secondes, tableau 5, matériel seulement « similar »), Y5 yes (stable baselines, dépôts de WNPG et WPO, code privé des auteurs de BGPG), Y6 yes (résultats non reproductibles non rapportés), Y9 yes (rayon ε balayé sur Taxi-v3). Q4 reste no : les hyperparamètres des références renvoient à stable baselines et aux dépôts sans être listés ni versionnés. Q6 et X4 restent no : « meilleurs hyperparamètres à notre connaissance », sans méthode de réglage. X5 classic par l'écart 18 : résultats théoriques mais comparaison sur des bancs usuels (Gym, MuJoCo). Y1 yes avec hésitation : courbes de récompense cumulée, chaque évaluation moyennée sur 10 trajectoires, sans fréquence d'évaluation dite. Y4 yes : en continu, la méthode est seulement « alignée » sur la meilleure référence, ce qui reconnaît des tâches sans victoire."
 }

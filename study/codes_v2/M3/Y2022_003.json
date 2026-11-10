@@ -14,9 +14,12 @@
    "page": 6
   },
   "Q3": {
-   "value": "no",
-   "quote": "absent après lecture des sections expériences, annexes et liens (« Further details about the hyperparameters are in Appendix B », annexe absente du PDF)",
-   "page": null
+   "value": "yes",
+   "quote": "Table 4: Base hyperparameter configuration which is shared across all runs of RAMBO. [...] Table 5: Hyperparameters used by RAMBO and RAMBOOFF for each dataset.",
+   "page": [
+    3,
+    4
+   ]
   },
   "Q4": {
    "value": "no",
@@ -74,9 +77,9 @@
    "page": null
   },
   "X7": {
-   "value": "no",
-   "quote": "absent après lecture des sections expériences, annexes et liens (calcul renvoyé à l'annexe B.8, absente ; JADE2 nommé sans quantité)",
-   "page": null
+   "value": "yes",
+   "quote": "RAMBO takes 24-30 hours. [...] This required approximately 150 GPU-days of compute.",
+   "page": 5
   },
   "Y1": {
    "value": "yes",
@@ -99,14 +102,14 @@
    "page": 8
   },
   "Y5": {
-   "value": "no",
-   "quote": "absent après lecture des sections expériences, annexes et liens (origine des chiffres des références renvoyée à l'annexe B.7, absente)",
-   "page": null
+   "value": "yes",
+   "quote": "Because the original COMBO, MOPO, and CQL papers use the MuJoCo-v0 datasets we report the [...] and TD3+BC papers include evaluations on the MuJoCo-v2 datasets, so for these algorithms we",
+   "page": 5
   },
   "Y6": {
-   "value": "no",
-   "quote": "absent après lecture des sections expériences, annexes et liens",
-   "page": null
+   "value": "yes",
+   "quote": "indicates that the value function diverged.",
+   "page": 8
   },
   "Y7": {
    "value": "yes",
@@ -119,9 +122,9 @@
    "page": null
   },
   "Y9": {
-   "value": "no",
-   "quote": "absent après lecture des sections expériences, annexes et liens (scores par configuration renvoyés à l'annexe C.2 ; le Tableau 2 est présenté comme ablation du composant adversarial)",
-   "page": null
+   "value": "yes",
+   "quote": "Table 6: Performance of RAMBO across each of the three configurations of the rollout length, k, and",
+   "page": 8
   },
   "Y10": {
    "value": "no",
@@ -140,5 +143,5 @@
    "page": null
   }
  },
- "doubts": "Annexes B et C absentes du PDF (pas de -supp.pdf) : codé sur ce qui existe. Q8 : p-valeur d'une comparaison RAMBO contre COMBO, test non nommé ; yes. X3 : meilleure des trois configurations choisie sur l'évaluation (réglage en ligne dit), yes. Y3 : trois robots MuJoCo et trois labyrinthes AntMaze, variantes de jeux de données comptées une fois. Y9 : λ = 0 (Tableau 2) présenté comme ablation, donc no."
+ "doubts": "Passe supplément (Y2022_003-supp.pdf, citations avec la page du supplément) : Q3 yes (Tableaux 4 et 5), X7 yes (24-30 h par run, 150 GPU-jours), Y5 yes (chiffres recopiés avec leur source, B.7 ; colonne BC sans source, hésitation), Y6 yes (« − » = fonction de valeur divergée, Tableau 6), Y9 yes (Tableau 6 : trois configurations de k et λ). Q8 : p-valeur d'une comparaison RAMBO contre COMBO, test non nommé ; yes. X3 : meilleure des trois configurations choisie sur l'évaluation (réglage en ligne dit), yes. Y3 : trois robots MuJoCo et trois labyrinthes AntMaze, variantes de jeux de données comptées une fois. Q4 et X4 restent no : chiffres des références recopiés, réglage (balayage de β) décrit seulement pour COMBO sur l'exemple jouet."
 }

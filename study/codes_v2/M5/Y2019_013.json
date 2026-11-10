@@ -49,9 +49,9 @@
    "page": null
   },
   "X2": {
-   "value": "no",
-   "quote": "absent après lecture des sections expériences, annexes et liens",
-   "page": null
+   "value": "yes",
+   "quote": "Figure 4: Learning curves for all 55 games. [bandes ombrées autour des courbes de LogDQN et DQN, non définies]",
+   "page": 7
   },
   "X3": {
    "value": "no",
@@ -84,9 +84,9 @@
    "page": 9
   },
   "Y2": {
-   "value": "na",
-   "quote": "non applicable : aucune barre d'erreur (X2 no)",
-   "page": null
+   "value": "no",
+   "quote": "Figure 4: Learning curves for all 55 games. [bandes non définies]",
+   "page": 7
   },
   "Y3": {
    "value": 55,
@@ -129,8 +129,8 @@
    "page": null
   },
   "Y11": {
-   "value": "na",
-   "quote": "non applicable : aucune barre d'erreur (X2 no)",
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
    "page": null
   },
   "Y12": {
@@ -139,5 +139,5 @@
    "page": null
   }
  },
- "doubts": "Le supplément cité (détails d'implémentation, résultats du réglage) n'est pas dans pdf/ : codé sur le seul article. Y9 : la figure 8 balaie le facteur d'escompte, que l'article présente comme un hyperparamètre, sur la tâche en chaîne. Y3 : 55 jeux Atari pour la conclusion profonde, la tâche en chaîne non ajoutée. Q7 : les 49 jeux hors réglage restent des jeux d'entraînement, codé no."
+ "doubts": " Y9 : la figure 8 balaie le facteur d'escompte, que l'article présente comme un hyperparamètre, sur la tâche en chaîne. Y3 : 55 jeux Atari pour la conclusion profonde, la tâche en chaîne non ajoutée. Q7 : les 49 jeux hors réglage restent des jeux d'entraînement, codé no. Passe supplément (pdf/Y2019_013-supp.pdf, pages du supplément) : la figure 4 montre les courbes d'apprentissage des 55 jeux avec des bandes ombrées non définies, d'où X2 yes, Y2 no, Y11 no ; Dopamine « sans modification » de ses réglages, sans version ni liste, laisse Q3 et Q4 à no."
 }

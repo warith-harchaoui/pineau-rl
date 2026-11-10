@@ -14,14 +14,14 @@
    "page": 7
   },
   "Q3": {
-   "value": "no",
-   "quote": "Details on the hyperparameters and networks can be found in the supplementary material §4.",
-   "page": 8
+   "value": "yes",
+   "quote": "For LRM+DDQN and LRM+DQRM, the neural network used has 5 fully connected layers with 64 [...] buffer of size 100,000 using the Adam optimizer",
+   "page": 4
   },
   "Q4": {
    "value": "no",
-   "quote": "Details on the hyperparameters and networks can be found in the supplementary material §4.",
-   "page": 8
+   "quote": "Other parameters [...] were fixed to their default values.",
+   "page": 4
   },
   "Q5": {
    "value": "yes",
@@ -59,9 +59,9 @@
    "page": 8
   },
   "X4": {
-   "value": "no",
-   "quote": "absent après lecture des sections expériences, annexes et liens",
-   "page": null
+   "value": "yes",
+   "quote": "on every run, we randomly selected the number of [...] hidden neurons for the LSTM from {64, 128, 256, 512} and a learning rate from (1e-3, 1e-5).",
+   "page": 4
   },
   "X5": {
    "value": "classic",
@@ -140,5 +140,5 @@
    "page": null
   }
  },
- "doubts": "Le supplément (§1, §3, §4 : hyperparamètres et réseaux) n'est pas dans pdf/ : codé sur le seul article, d'où Q3 et Q4 no. X3 yes parce que les références (DDQN, A3C, ACER, PPO) sont montrées au maximum sur 5 ou 30 essais ; la méthode, elle, est en médiane : sélection qui favorise les références, pas la méthode. X7 yes sur la seule durée de la recherche Tabu (2,5 minutes, 62 workers), pas sur l'entraînement RL. Y7 no : les trois domaines en grille sont décrits en mots et en figure, sans tailles ni carte complète, je ne les tiens pas pour entièrement spécifiés."
+ "doubts": "Supplément lu (pdf/Y2019_001-supp.pdf, citations de Q3, Q4, X4 avec ses propres numéros de page) : Q3 passe à yes (réseau, Adam, lr, tampon) ; Q4 reste no, les autres paramètres des références restent aux valeurs par défaut des OpenAI baselines sans version ; X4 passe à yes, les références sont réglées par tirage aléatoire de la taille du LSTM et du taux d'apprentissage sur au moins 30 essais, alors que la méthode n'a aucun réglage décrit. Q6 reste no : la seule recherche décrite porte sur les références. X3 yes parce que les références (DDQN, A3C, ACER, PPO) sont montrées au maximum sur 5 ou 30 essais ; la méthode, elle, est en médiane : sélection qui favorise les références, pas la méthode. X7 yes sur la seule durée de la recherche Tabu (2,5 minutes, 62 workers), pas sur l'entraînement RL. Y7 no : les trois domaines en grille sont décrits en mots et en figure, sans tailles ni carte complète, je ne les tiens pas pour entièrement spécifiés."
 }

@@ -14,13 +14,13 @@
    "page": 4
   },
   "Q3": {
-   "value": "no",
-   "quote": "We use an actor-critic setup and a VTRACE loss with an RMSProp optimizer (see learning parameters in Appendix A.1 for more details).",
-   "page": 5
+   "value": "yes",
+   "quote": "We use an RMSProp optimizer with  = 0.01, momentum of 0, and decay of 0.99. The learning rate [...] is 2e − 4.",
+   "page": 11
   },
   "Q4": {
    "value": "no",
-   "quote": "absent après lecture des sections expériences, annexes et liens (annexe A.1 introuvable ; aucun hyperparamètre des références dans le texte)",
+   "quote": "absent après lecture des sections expériences, annexes et liens (aucun hyperparamètre des références, ni dans le texte ni dans le supplément)",
    "page": null
   },
   "Q5": {
@@ -29,9 +29,9 @@
    "page": 4
   },
   "Q6": {
-   "value": "no",
-   "quote": "absent après lecture des sections expériences, annexes et liens",
-   "page": null
+   "value": "yes",
+   "quote": "Parameters were chosen by performing a hyperparameter [...] sweep over 6 levels (battle zone, boxing, enduro, ms pacman, seaquest, star gunner) and choosing the [...] hyperparameter setting that performed the best on the most levels.",
+   "page": 11
   },
   "Q7": {
    "value": "yes",
@@ -79,9 +79,9 @@
    "page": null
   },
   "Y1": {
-   "value": "no",
-   "quote": "Table 1: Human normalized scores for experts on ATARI.",
-   "page": 5
+   "value": "yes",
+   "quote": "Table 1 shows the final [...] human-normalized score achieved on each game by each agent",
+   "page": 11
   },
   "Y2": {
    "value": "na",
@@ -104,9 +104,9 @@
    "page": 5
   },
   "Y6": {
-   "value": "no",
-   "quote": "absent après lecture des sections expériences, annexes et liens",
-   "page": null
+   "value": "yes",
+   "quote": "the curves for Freeway [...] and Venture are omitted since they are both constantly 0 for all agents",
+   "page": 11
   },
   "Y7": {
    "value": "no",
@@ -120,7 +120,7 @@
   },
   "Y9": {
    "value": "no",
-   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "quote": "absent après lecture des sections expériences, annexes et liens (le balayage de A.1 n'est pas montré ; le seuil t de A.6 est une modification à l'évaluation, pas un hyperparamètre de la méthode)",
    "page": null
   },
   "Y10": {
@@ -139,5 +139,5 @@
    "page": null
   }
  },
- "doubts": "Le PDF renvoie à une annexe (A.1 hyperparamètres, A.3 courbes et scores par jeu, A.4) qui n'est pas dans study/pdf : codé sur ce qui existe (Q3, Q4, Y9 probablement sous-estimés). La page de projet visitée ne contient que des vidéos : Q5 no. Q7 et Y8 yes reposent sur un test qualitatif (poisson injecté jamais vu à l'entraînement), pas sur un score. Y4 yes vient de l'ablation top-down (Seaquest), pas de la comparaison aux références, dont le détail par jeu est en annexe absente. Y1 : score normalisé sans point de mesure."
+ "doubts": "Supplément (Y2019_024-supp.pdf, extrait du zip NeurIPS) lu en entier ; les citations de Q3, Q6, Y1 et Y6 en viennent, avec ses propres numéros de page (11 à 16). Q6 : le réglage est fait sur 6 jeux d'entraînement, pour l'agent à attention seulement (X4 reste no). Y1 : score final normalisé humain (Table 3 du supplément). Y6 : Freeway et Venture omis des courbes avec leur raison. La page de projet visitée ne contient que des vidéos : Q5 no. Q7 et Y8 yes reposent sur un test qualitatif (poisson injecté jamais vu à l'entraînement), pas sur un score. Y4 yes : ablation top-down (Seaquest) et Table 3 du supplément (l'agent à attention perd par exemple sur battle_zone, kangaroo, tennis). X1 : nombre d'entraînements toujours non dit. X2 : seules les incertitudes de la Table 5 (test secondaire) existent ; résultats principaux sans incertitude."
 }

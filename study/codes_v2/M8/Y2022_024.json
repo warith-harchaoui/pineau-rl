@@ -3,33 +3,144 @@
  "coder": "M8",
  "title": "An Adaptive Deep RL Method for Non-Stationary Environments with Piecewise Stable Context",
  "criteria": {
-  "Q1": {"value": "yes", "quote": "We conduct the experiments on modified MuJoCo (Todorov et al., 2012) tasks.", "page": 7},
-  "Q2": {"value": "yes", "quote": "we use a GRU (Cho et al., 2014) parameterized by ϕ as the recurrent encoder qϕ", "page": 6},
-  "Q3": {"value": "no", "quote": "For more implementation details, please refer to the Appendix A.6.", "page": 7},
-  "Q4": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens (annexe absente du PDF ; aucun hyperparamètre de VariBAD, FANS-RL, PPO-RNN dans le texte)", "page": null},
-  "Q5": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens (aucun lien vers le code ; la liste de contrôle renvoie au matériel supplémentaire)", "page": null},
-  "Q6": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "Q7": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "Q8": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "X1": {"value": null, "quote": "absent après lecture des sections expériences, annexes et liens (nombre de graines non dit pour MuJoCo ; 3 pour la tâche de bande passante)", "page": null},
-  "X2": {"value": "yes", "quote": "All the methods are trained for 10 million steps and the shaded area is across 3 random seeds.", "page": 9},
-  "X3": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "X4": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "X5": {"value": "classic", "quote": "We build our RL algorithm on the top of PPO (Schulman et al., 2017b) to learn the policy", "page": 6},
-  "X6": {"value": null, "quote": "absent après lecture : article classic, pas de modèle de base", "page": null},
-  "X7": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "Y1": {"value": "no", "quote": "Figure 5: Performance curves on 5 MuJoCo environments with variations in contexts.", "page": 8},
-  "Y2": {"value": "no", "quote": "the shaded area is across 3 random seeds", "page": 9},
-  "Y3": {"value": 6, "quote": "Figure 5: Performance curves on 5 MuJoCo environments with variations in contexts. [...] we test SeCBAD on a real-world bandwidth control task for real-time", "page": [8, 9]},
-  "Y4": {"value": "yes", "quote": "they can perform relatively well on tasks where the contexts can be inferred from only one step transition (i.e., Cheetah Direction and Cheetah Velocity).", "page": 8},
-  "Y5": {"value": "no", "quote": "We use VariBAD (Zintgraf et al., 2020) to represent those methods assuming one context in", "page": 8},
-  "Y6": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "Y7": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens (MuJoCo modifié sans version)", "page": null},
-  "Y8": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "Y9": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "Y10": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
-  "Y11": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens (bandes présentes, type jamais nommé)", "page": null},
-  "Y12": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null}
+  "Q1": {
+   "value": "yes",
+   "quote": "We conduct the experiments on modified MuJoCo (Todorov et al., 2012) tasks.",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "we use a GRU (Cho et al., 2014) parameterized by ϕ as the recurrent encoder qϕ",
+   "page": 6
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "For more implementation details, please refer to the Appendix A.6.",
+   "page": 7
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (annexe absente du PDF ; aucun hyperparamètre de VariBAD, FANS-RL, PPO-RNN dans le texte)",
+   "page": null
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (aucun lien vers le code ; la liste de contrôle renvoie au matériel supplémentaire)",
+   "page": null
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens (nombre de graines non dit pour MuJoCo ; 3 pour la tâche de bande passante)",
+   "page": null
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "All the methods are trained for 10 million steps and the shaded area is across 3 random seeds.",
+   "page": 9
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We build our RL algorithm on the top of PPO (Schulman et al., 2017b) to learn the policy",
+   "page": 6
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture : article classic, pas de modèle de base",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "no",
+   "quote": "Figure 5: Performance curves on 5 MuJoCo environments with variations in contexts.",
+   "page": 8
+  },
+  "Y2": {
+   "value": "no",
+   "quote": "the shaded area is across 3 random seeds",
+   "page": 9
+  },
+  "Y3": {
+   "value": 6,
+   "quote": "Figure 5: Performance curves on 5 MuJoCo environments with variations in contexts. [...] we test SeCBAD on a real-world bandwidth control task for real-time",
+   "page": [
+    8,
+    9
+   ]
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "they can perform relatively well on tasks where the contexts can be inferred from only one step transition (i.e., Cheetah Direction and Cheetah Velocity).",
+   "page": 8
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "We use VariBAD (Zintgraf et al., 2020) to represent those methods assuming one context in",
+   "page": 8
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (MuJoCo modifié sans version)",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (bandes présentes, type jamais nommé)",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
  },
- "doubts": "Le PDF renvoie à une annexe (A.6 détails, A.7 ablations, A.8 bande passante) qui n'est pas dans study/pdf : codé sur ce qui existe (Q3, Q4, X1, X7, Y9 peut-être sous-estimés). X2 : bandes visibles en Figure 5 et dites pour la Figure 7, sans type. Y3 : 5 tâches MuJoCo plus la tâche de bande passante ; la grille (belief analytique, sans retour comparé) n'est pas comptée. Y4 : égalité de FANS-RL et PPO-RNN sur Cheetah Direction et Velocity, dite et visible."
+ "doubts": "Supplément (Y2022_024-supp.pdf, extrait du zip NeurIPS, qui reprend l'article puis l'annexe A, pages 14 à 26) lu en entier : aucune décision changée. Q3 reste no : l'annexe A.6 renvoie pour le détail à « the code repository that we will publish soon » (et Q5 reste no). X1 : nombre de graines toujours non dit pour MuJoCo ; X7 : aucun calcul chiffré. Y7 : les tâches MuJoCo modifiées sont décrites (récompenses, contextes) mais la version de MuJoCo n'est pas donnée : no. Y9 : les études de l'annexe A.7 portent sur le prior, le bruit et le nombre de segments (conditions ou composants, pas des hyperparamètres présentés comme tels) : no. X2 : bandes visibles en Figure 5 et dites pour la Figure 7, sans type. Y3 : 5 tâches MuJoCo plus la tâche de bande passante ; la grille (belief analytique, sans retour comparé) n'est pas comptée. Y4 : égalité de FANS-RL et PPO-RNN sur Cheetah Direction et Velocity, dite et visible."
 }
