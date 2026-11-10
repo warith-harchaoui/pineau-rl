@@ -1,0 +1,1228 @@
+{
+ "rows": [
+  {
+   "id": "NE02",
+   "title": "VisionThink: Smart and Efficient Vision Language Model via Reinforcement Learning",
+   "family": "llm",
+   "proceedings": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/88be023075a5a3ff3dc3b5d26623fa22-Abstract-Conference.html",
+   "declared": {
+    "code": {
+     "answer": "NO",
+     "justification": "We need to seek approval of the company for code and data release. We promise to open-source our code and data once approved."
+    },
+    "settings": {
+     "answer": "YES",
+     "justification": "We introduce all necessary training and testing details in the experiment section."
+    },
+    "significance": {
+     "answer": "NO",
+     "justification": "We cannot afford the expensive repeated experiments required for calculating the error bar. We follow previous evaluation conventions to report all the metrics."
+    },
+    "compute": {
+     "answer": "YES",
+     "justification": "We report the necessary compute resources needed for reproduction in the experiments section."
+    }
+   },
+   "code": {
+    "Q5": "yes"
+   },
+   "settings": {
+    "Q3": "yes"
+   },
+   "significance": {
+    "X2": "no",
+    "Q8": "no"
+   },
+   "compute": {
+    "X7": "no"
+   },
+   "proc_code_link": true
+  },
+  {
+   "id": "NE04",
+   "title": "OpenVLThinker: Complex Vision-Language Reasoning via Iterative SFT-RL Cycles",
+   "family": "llm",
+   "proceedings": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/b33286edd8602ead8cb966358b01d115-Abstract-Conference.html",
+   "declared": {
+    "code": {
+     "answer": "YES",
+     "justification": "The paper commits to providing open access to the code. We provided code in the anonymous GitHub link in page 1 footnote."
+    },
+    "settings": {
+     "answer": "YES",
+     "justification": "We detailed our experiment setting in Section 5 and our experiment hyperparameters and prompts in Appendix C"
+    },
+    "significance": {
+     "answer": "NO",
+     "justification": "Evaluations in this work are all deterministic. fully reproducible and do not incur error bars. The computational expense of fine-tuning large language models or generating 2M data multiple times is prohibitive, so we did not include error bars with 26 regard to training. We acknowledge this limitation and ensure that the reported results are consistent and reliable based on our experimental setup."
+    },
+    "compute": {
+     "answer": "YES",
+     "justification": "We detailed the compute we used in Appendix C."
+    }
+   },
+   "code": {
+    "Q5": "yes"
+   },
+   "settings": {
+    "Q3": "yes"
+   },
+   "significance": {
+    "X2": "no",
+    "Q8": "no"
+   },
+   "compute": {
+    "X7": "yes"
+   },
+   "proc_code_link": true
+  },
+  {
+   "id": "NE05",
+   "title": "Router-R1: Teaching LLMs Multi-Round Routing and Aggregation via Reinforcement Learning",
+   "family": "llm",
+   "proceedings": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/ceaa137fce916aba5c65fceb1309088b-Abstract-Conference.html",
+   "declared": {
+    "code": {
+     "answer": "YES",
+     "justification": "The datasets we use are publicly available, and the link to the released code is presented in the abstract."
+    },
+    "settings": {
+     "answer": "YES",
+     "justification": "We elaborate these details in Section 4."
+    },
+    "significance": {
+     "answer": "NO",
+     "justification": "We fix the seed for all our experiments, which ensures the reliability of our experiments."
+    },
+    "compute": {
+     "answer": "YES",
+     "justification": "We provide the information in Section 4."
+    }
+   },
+   "code": {
+    "Q5": "yes"
+   },
+   "settings": {
+    "Q3": "yes"
+   },
+   "significance": {
+    "X2": "no",
+    "Q8": "no"
+   },
+   "compute": {
+    "X7": "no"
+   },
+   "proc_code_link": true
+  },
+  {
+   "id": "NE06",
+   "title": "SATURN: SAT-based Reinforcement Learning to Unleash LLMs Reasoning",
+   "family": "llm",
+   "proceedings": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/281970ef377580ab9ec3c7d3781110d4-Abstract-Conference.html",
+   "declared": {
+    "code": {
+     "answer": "YES",
+     "justification": "We release all code, models, datasets, and experimental results, along with detailed information on the execution environment to ensure full reproducibility."
+    },
+    "settings": {
+     "answer": "NO",
+     "justification": "Following current evaluation practices in recent large model benchmarks, we report the unbiased estimator of the pass@k metric. This expectation-based metric is designed to reflect statistical significance across multiple samples and inherently captures sampling variability. Although we do not report explicit error bars, pass@k inherently reflects statistical reliability. Further details are provided in Appendix E."
+    },
+    "significance": {
+     "answer": "NO",
+     "justification": "Following current evaluation practices in recent large model benchmarks, we report the unbiased estimator of the pass@k metric. This expectation-based metric is designed to reflect statistical significance across multiple samples and inherently captures sampling variability. Although we do not report explicit error bars, pass@k inherently reflects statistical reliability. Further details are provided in Appendix E."
+    },
+    "compute": {
+     "answer": "YES",
+     "justification": "We provide details on the GPU resources used for experiments as well as information on all data storage."
+    }
+   },
+   "code": {
+    "Q5": "yes"
+   },
+   "settings": {
+    "Q3": "no"
+   },
+   "significance": {
+    "X2": "no",
+    "Q8": "no"
+   },
+   "compute": {
+    "X7": "no"
+   },
+   "proc_code_link": true
+  },
+  {
+   "id": "NE07",
+   "title": "Finite-Sample Analysis of Policy Evaluation for Robust Average Reward Reinforcement Learning",
+   "family": "theory",
+   "proceedings": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/df15617fd6d6f78fcd485401d0598761-Abstract-Conference.html",
+   "declared": {
+    "code": {
+     "answer": "NA",
+     "justification": "This is a theoretical paper and does not include experiments. The minor numerical examples added during the rebuttal will be released."
+    },
+    "settings": {
+     "answer": "NA",
+     "justification": "This is a theoretical paper and does not include experiments. The minor numerical examples added during the rebuttal will be released."
+    },
+    "significance": {
+     "answer": "NA",
+     "justification": "This is a theoretical paper and does not include experiments. The minor numerical examples added during the rebuttal will be released."
+    },
+    "compute": {
+     "answer": "NA",
+     "justification": "This is a theoretical paper and does not include experiments. The minor numerical examples added during the rebuttal will be released. The minor numerical examples added during the rebuttal will be released."
+    }
+   },
+   "code": {
+    "Q5": "na"
+   },
+   "settings": {
+    "Q3": "na"
+   },
+   "significance": {
+    "X2": "na",
+    "Q8": "na"
+   },
+   "compute": {
+    "X7": "na"
+   },
+   "proc_code_link": false
+  },
+  {
+   "id": "NE08",
+   "title": "Pixel Reasoner: Incentivizing Pixel Space Reasoning via Curiosity-Driven Reinforcement Learning",
+   "family": "llm",
+   "proceedings": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/0c38f54740062529aa4117a04b583f3c-Abstract-Conference.html",
+   "declared": {
+    "code": {
+     "answer": "YES",
+     "justification": "We will make code, data and models public."
+    },
+    "settings": {
+     "answer": "YES",
+     "justification": "We confirmed they are provided in experiment section and in the appendix."
+    },
+    "significance": {
+     "answer": "NO",
+     "justification": "Due to the high computational cost of our experiments, we did not perform multiple runs and thus did not report error bars. Nonetheless, we used fixed seeds and consistent settings across experiments to ensure stable and representative results."
+    },
+    "compute": {
+     "answer": "YES",
+     "justification": "We confirmed we include this information."
+    }
+   },
+   "code": {
+    "Q5": "no"
+   },
+   "settings": {
+    "Q3": "yes"
+   },
+   "significance": {
+    "X2": "no",
+    "Q8": "no"
+   },
+   "compute": {
+    "X7": "yes"
+   },
+   "proc_code_link": false
+  },
+  {
+   "id": "NE10",
+   "title": "Towards Robust Zero-Shot Reinforcement Learning",
+   "family": "classic",
+   "proceedings": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/bdff657cb9351656c025da8e1dc538a4-Abstract-Conference.html",
+   "declared": {
+    "code": {
+     "answer": "YES",
+     "justification": "Yes, the code will be made available after the open-source approval process is completed."
+    },
+    "settings": null,
+    "significance": null,
+    "compute": null
+   },
+   "code": {
+    "Q5": "yes"
+   },
+   "settings": {
+    "Q3": "yes"
+   },
+   "significance": {
+    "X2": "yes",
+    "Q8": "no"
+   },
+   "compute": {
+    "X7": "yes"
+   },
+   "proc_code_link": true
+  },
+  {
+   "id": "NE12",
+   "title": "Rainbow Delay Compensation: A Multi-Agent Reinforcement Learning Framework for Mitigating Observation Delays",
+   "family": "classic",
+   "proceedings": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/5991785875cf5eee9c29e2ed7d26d1c0-Abstract-Conference.html",
+   "declared": {
+    "code": {
+     "answer": "YES",
+     "justification": "We provide an anonymous link to our code in the abstract and have uploaded a compressed file as supplemental material."
+    },
+    "settings": {
+     "answer": "YES",
+     "justification": "In Section 5 and Appendix C, we provide detailed descriptions of the experimental setup and hyperparameter configurations."
+    },
+    "significance": {
+     "answer": "YES",
+     "justification": "All experimental results in this paper include error bars or 95% confidence intervals. To improve visual clarity and conciseness, we apply smoothing to some curves in the figures without compromising the accuracy of the results."
+    },
+    "compute": {
+     "answer": "YES",
+     "justification": "We provide information about the computational resources required for the experiments in Appendix D."
+    }
+   },
+   "code": {
+    "Q5": "yes"
+   },
+   "settings": {
+    "Q3": "yes"
+   },
+   "significance": {
+    "X2": "yes",
+    "Q8": "no"
+   },
+   "compute": {
+    "X7": "yes"
+   },
+   "proc_code_link": true
+  },
+  {
+   "id": "NE13",
+   "title": "Planning and Learning in Average Risk-aware MDPs",
+   "family": "theory",
+   "proceedings": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/cff98e0b76e05fd1df5c9256724b3af1-Abstract-Conference.html",
+   "declared": {
+    "code": {
+     "answer": "YES",
+     "justification": "The details are described in Section 5.1 and Appendix C.3."
+    },
+    "settings": {
+     "answer": "YES",
+     "justification": "The details are described in Section 5.1 and Appendix C.3."
+    },
+    "significance": {
+     "answer": "YES",
+     "justification": "We report standard errors for the experimental results in Appendices C.1 and C.2."
+    },
+    "compute": {
+     "answer": "YES",
+     "justification": "The information is provided in Appendix C."
+    }
+   },
+   "code": {
+    "Q5": "no"
+   },
+   "settings": {
+    "Q3": "yes"
+   },
+   "significance": {
+    "X2": "yes",
+    "Q8": "no"
+   },
+   "compute": {
+    "X7": "no"
+   },
+   "proc_code_link": false
+  },
+  {
+   "id": "NE14",
+   "title": "Beyond Scalar Rewards: An Axiomatic Framework for Lexicographic MDPs",
+   "family": "theory",
+   "proceedings": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/9dc3ba306fcad7d8ee00eb30a8156c02-Abstract-Conference.html",
+   "declared": {
+    "code": {
+     "answer": "NA",
+     "justification": "The paper does not include experiments."
+    },
+    "settings": {
+     "answer": "NA",
+     "justification": "The paper does not include experiments."
+    },
+    "significance": {
+     "answer": "NA",
+     "justification": "The paper does not include experiments."
+    },
+    "compute": {
+     "answer": "NA",
+     "justification": "The paper does not include experiments."
+    }
+   },
+   "code": {
+    "Q5": "na"
+   },
+   "settings": {
+    "Q3": "na"
+   },
+   "significance": {
+    "X2": "na",
+    "Q8": "na"
+   },
+   "compute": {
+    "X7": "na"
+   },
+   "proc_code_link": false
+  },
+  {
+   "id": "NE15",
+   "title": "Information-Theoretic Reward Decomposition for Generalizable RLHF",
+   "family": "llm",
+   "proceedings": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/ca70528fb11dc8086c6a623da9f3fee6-Abstract-Conference.html",
+   "declared": {
+    "code": {
+     "answer": "NO",
+     "justification": "Code will be released in the future."
+    },
+    "settings": {
+     "answer": "YES",
+     "justification": "Experimental settings are given in Section 4 and Appendix E.4. Details are given in Appendix E.4."
+    },
+    "significance": {
+     "answer": "YES",
+     "justification": "We use sufficient random seeds and provide standard deviation of the scores in Appendix E.1."
+    },
+    "compute": {
+     "answer": "YES",
+     "justification": "Details of computation resources are given in Appendix E.4."
+    }
+   },
+   "code": {
+    "Q5": "no"
+   },
+   "settings": {
+    "Q3": "no"
+   },
+   "significance": {
+    "X2": "yes",
+    "Q8": "no"
+   },
+   "compute": {
+    "X7": "yes"
+   },
+   "proc_code_link": true
+  },
+  {
+   "id": "NE16",
+   "title": "Sharp Analysis for KL-Regularized Contextual Bandits and RLHF",
+   "family": "theory",
+   "proceedings": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/9b04b2d8c488ed1e943401dcdd927216-Abstract-Conference.html",
+   "declared": {
+    "code": {
+     "answer": "NA",
+     "justification": "This paper is purely theoretical with only synthetic experiments."
+    },
+    "settings": {
+     "answer": "NA",
+     "justification": "This paper is purely theoretical with only synthetic experiments."
+    },
+    "significance": {
+     "answer": "NA",
+     "justification": "This paper is purely theoretical."
+    },
+    "compute": {
+     "answer": "NA",
+     "justification": "This paper is purely theoretical."
+    }
+   },
+   "code": {
+    "Q5": "no"
+   },
+   "settings": {
+    "Q3": "no"
+   },
+   "significance": {
+    "X2": "yes",
+    "Q8": "no"
+   },
+   "compute": {
+    "X7": "no"
+   },
+   "proc_code_link": false
+  },
+  {
+   "id": "NER01",
+   "title": "DAPO: An Open-Source LLM Reinforcement Learning System at Scale",
+   "family": "llm",
+   "proceedings": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/a4277440d50f1f15d2cb4c14f7e0c0d2-Abstract-Conference.html",
+   "declared": {
+    "code": {
+     "answer": "YES",
+     "justification": "The training code and dataset are fully open-sourced and attached in supplemental material."
+    },
+    "settings": {
+     "answer": "YES",
+     "justification": "Training details are listed in Section 4.1."
+    },
+    "significance": {
+     "answer": "YES",
+     "justification": "All validation accuracies are averaged over 32 trials (avg@32). We also provide pass@32 and cons@32 in Figure 1."
+    },
+    "compute": {
+     "answer": "NO",
+     "justification": "This paper did not provide information about the computer resources needed."
+    }
+   },
+   "code": {
+    "Q5": "yes"
+   },
+   "settings": {
+    "Q3": "yes"
+   },
+   "significance": {
+    "X2": "no",
+    "Q8": "no"
+   },
+   "compute": {
+    "X7": "no"
+   },
+   "proc_code_link": true
+  },
+  {
+   "id": "NER02",
+   "title": "Text-to-Decision Agent: Offline Meta-Reinforcement Learning from Natural Language Supervision",
+   "family": "classic",
+   "proceedings": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/719ae4f0533c93b6213a3ec120e14554-Abstract-Conference.html",
+   "declared": {
+    "code": {
+     "answer": "YES",
+     "justification": "Please refer to Appendix A, Appendix B and Appendix D for details of our method and dataset construction. We also provide our source code in the supplementary materials"
+    },
+    "settings": {
+     "answer": "YES",
+     "justification": "Please refer to Section 4: Experiments, Appendix B, Appendix D."
+    },
+    "significance": {
+     "answer": "YES",
+     "justification": "Please refer to Section 4: Experiments."
+    },
+    "compute": {
+     "answer": "YES",
+     "justification": "Please refer to Appendix D and Appendix E."
+    }
+   },
+   "code": {
+    "Q5": "yes"
+   },
+   "settings": {
+    "Q3": "yes"
+   },
+   "significance": {
+    "X2": "yes",
+    "Q8": "no"
+   },
+   "compute": {
+    "X7": "yes"
+   },
+   "proc_code_link": true
+  },
+  {
+   "id": "NER04",
+   "title": "Asymmetric REINFORCE for off-Policy Reinforcement Learning: Balancing positive and negative rewards",
+   "family": "llm",
+   "proceedings": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/0dedca10992d34035c9a9776254cfa8c-Abstract-Conference.html",
+   "declared": {
+    "code": null,
+    "settings": null,
+    "significance": null,
+    "compute": null
+   },
+   "code": {
+    "Q5": "no"
+   },
+   "settings": {
+    "Q3": "no"
+   },
+   "significance": {
+    "X2": "no",
+    "Q8": "no"
+   },
+   "compute": {
+    "X7": "no"
+   },
+   "proc_code_link": true
+  },
+  {
+   "id": "NER06",
+   "title": "FairDICE: Fairness-Driven Offline Multi-Objective Reinforcement Learning",
+   "family": "classic",
+   "proceedings": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/0b42dd45aa4c23d3a307980c87fd87f0-Abstract-Conference.html",
+   "declared": {
+    "code": {
+     "answer": "YES",
+     "justification": "Appendix D, Appendix E, Appendix F"
+    },
+    "settings": {
+     "answer": "YES",
+     "justification": "Appendix D, Appendix E, Appendix F"
+    },
+    "significance": {
+     "answer": "YES",
+     "justification": "Section 6, Appendix H, Appendix I"
+    },
+    "compute": {
+     "answer": "YES",
+     "justification": "Appendix G"
+    }
+   },
+   "code": {
+    "Q5": "yes"
+   },
+   "settings": {
+    "Q3": "yes"
+   },
+   "significance": {
+    "X2": "yes",
+    "Q8": "no"
+   },
+   "compute": {
+    "X7": "yes"
+   },
+   "proc_code_link": false
+  },
+  {
+   "id": "K012",
+   "title": "Deep RL Needs Deep Behavior Analysis: Exploring Implicit Planning by Model-Free Agents in Open-Ended Environments",
+   "family": "classic",
+   "proceedings": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/748ba247386936692f0f9a05565c926b-Abstract-Conference.html",
+   "declared": {
+    "code": null,
+    "settings": {
+     "answer": "YES",
+     "justification": "Yes, when needed to justify statistical claims, the authors use 95% CI as error bars unless otherwise specified. • The answer NA means that the paper does not include experiments. • The authors should answer \"Yes\" if the results are accompanied by error bars, confidence intervals, or statistical significance tests, at least for the experiments that support the main claims of the paper. • The factors of variability that the error bars are capturing should be clearly stated (for example, train/test split, initialization, random drawing of some parameter, or overall run with given experimental conditions). • The method for calculating the error bars should be explained (closed form formula, call to a library function, bootstrap, etc.) • The assumptions made should be given (e.g., Normally distributed errors). • It should be clear whether the error bar is the standard deviation or the standard error of the mean. • It is OK to report 1-sigma error bars, but one should state it. The authors should preferably report a 2-sigma error bar than state that they have a 96% CI, if the hypothesis of Normality of errors is not verified. • For asymmetric distributions, the authors should be careful not to show in tables or figures symmetric error bars that would yield results that are out of range (e.g. negative error rates). • If error bars are reported in tables or plots, The authors should explain in the text how they were calculated and reference the corresponding figures or tables in the text. 7. Experiments compute resources Question: For each experiment, does the paper provide sufficient information on the computer resources (type of compute workers, memory, time of execution) needed to reproduce the experiments? Answer: [Yes] . Justification: Yes, see the appendix."
+    },
+    "significance": {
+     "answer": "YES",
+     "justification": "Yes, when needed to justify statistical claims, the authors use 95% CI as error bars unless otherwise specified. • The answer NA means that the paper does not include experiments. • The authors should answer \"Yes\" if the results are accompanied by error bars, confidence intervals, or statistical significance tests, at least for the experiments that support the main claims of the paper. • The factors of variability that the error bars are capturing should be clearly stated (for example, train/test split, initialization, random drawing of some parameter, or overall run with given experimental conditions). • The method for calculating the error bars should be explained (closed form formula, call to a library function, bootstrap, etc.) • The assumptions made should be given (e.g., Normally distributed errors). • It should be clear whether the error bar is the standard deviation or the standard error of the mean. • It is OK to report 1-sigma error bars, but one should state it. The authors should preferably report a 2-sigma error bar than state that they have a 96% CI, if the hypothesis of Normality of errors is not verified. • For asymmetric distributions, the authors should be careful not to show in tables or figures symmetric error bars that would yield results that are out of range (e.g. negative error rates). • If error bars are reported in tables or plots, The authors should explain in the text how they were calculated and reference the corresponding figures or tables in the text. 7. Experiments compute resources Question: For each experiment, does the paper provide sufficient information on the computer resources (type of compute workers, memory, time of execution) needed to reproduce the experiments? Answer: [Yes] . Justification: Yes, see the appendix."
+    },
+    "compute": {
+     "answer": "YES",
+     "justification": "The authors have reviewed the code of ethics and believe our work is not in violation of any rules. • The answer NA means that the authors have not reviewed the NeurIPS Code of Ethics. • If the authors answer No, they should explain the special circumstances that require a deviation from the Code of Ethics. • The authors should make sure to preserve anonymity (e.g., if there is a special consideration due to laws or regulations in their jurisdiction). 9. Broader impacts Question: Does the paper discuss both potential positive societal impacts and negative societal impacts of the work performed? Answer: [Yes] Justification: Yes, see section 5. • The answer NA means that there is no societal impact of the work performed. • If the authors answer NA or No, they should explain why their work has no societal impact or why the paper does not address societal impact. • Examples of negative societal impacts include potential malicious or unintended uses (e.g., disinformation, generating fake profiles, surveillance), fairness considerations (e.g., deployment of technologies that could make decisions that unfairly impact specific groups), privacy considerations, and security considerations. • The conference expects that many papers will be foundational research and not tied to particular applications, let alone deployments. However, if there is a direct path to any negative applications, the authors should point it out. For example, it is legitimate to point out that an improvement in the quality of generative models could be used to generate deepfakes for disinformation. On the other hand, it is not needed to point out that a generic algorithm for optimizing neural networks could enable people to train models that generate Deepfakes faster. • The authors should consider possible harms that could arise when the technology is being used as intended and functioning correctly, harms that could arise when the technology is being used as intended but gives incorrect results, and harms following from (intentional or unintentional) misuse of the technology. • If there are negative societal impacts, the authors could also discuss possible mitigation strategies (e.g., gated release of models, providing defenses in addition to attacks, mechanisms for monitoring misuse, mechanisms to monitor how a system learns from feedback over time, improving the efficiency and accessibility of ML). 10. Safeguards Question: Does the paper describe safeguards that have been put in place for responsible release of data or models that have a high risk for misuse (e.g., pretrained language models, image generators, or scraped datasets)? Answer: [NA] . Justification: We did not scrape any data or release a model at significant risk of dual-use applications."
+    }
+   },
+   "code": {
+    "Q5": "yes"
+   },
+   "settings": {
+    "Q3": "yes"
+   },
+   "significance": {
+    "X2": "yes",
+    "Q8": "no"
+   },
+   "compute": {
+    "X7": "yes"
+   },
+   "proc_code_link": true
+  },
+  {
+   "id": "K030",
+   "title": "State Entropy Regularization for Robust Reinforcement Learning",
+   "family": "classic",
+   "proceedings": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/1e1ec890b48b96abffa63c0396058f4e-Abstract-Conference.html",
+   "declared": {
+    "code": {
+     "answer": "YES",
+     "justification": "We will share a link to a github with the code used to run the experiments in the supplementary material."
+    },
+    "settings": {
+     "answer": "YES",
+     "justification": "See section 5 and appendix B."
+    },
+    "significance": {
+     "answer": "YES",
+     "justification": "All plots include error bars indicating the confidence bounds."
+    },
+    "compute": {
+     "answer": "YES",
+     "justification": "See appendix B.6"
+    }
+   },
+   "code": {
+    "Q5": "yes"
+   },
+   "settings": {
+    "Q3": "no"
+   },
+   "significance": {
+    "X2": "yes",
+    "Q8": "no"
+   },
+   "compute": {
+    "X7": "yes"
+   },
+   "proc_code_link": false
+  },
+  {
+   "id": "K035",
+   "title": "Learning Interactive World Model for Object-Centric Reinforcement Learning",
+   "family": "classic",
+   "proceedings": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/8187faaf6759ef6d4e93293339bc656e-Abstract-Conference.html",
+   "declared": {
+    "code": {
+     "answer": "NO",
+     "justification": "The code and data will be publicly available after acceptance."
+    },
+    "settings": {
+     "answer": "YES",
+     "justification": "Yes, we provide all details in the appendix, including the simulation setup, hyperparameters, and architecture design."
+    },
+    "significance": {
+     "answer": "YES",
+     "justification": "All runs are with either 5 or 10 random seeds (with error bars shown in the learning curve figures)."
+    },
+    "compute": {
+     "answer": "YES",
+     "justification": "This research conducted in the paper conform, in every respect, with the NeurIPS Code of Ethics."
+    }
+   },
+   "code": {
+    "Q5": "no"
+   },
+   "settings": {
+    "Q3": "yes"
+   },
+   "significance": {
+    "X2": "yes",
+    "Q8": "no"
+   },
+   "compute": {
+    "X7": "yes"
+   },
+   "proc_code_link": false
+  },
+  {
+   "id": "K038",
+   "title": "1000 Layer Networks for Self-Supervised RL: Scaling Depth Can Enable New Goal-Reaching Capabilities",
+   "family": "classic",
+   "proceedings": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/e74ee34cc0f2d0780f34ee77d8fba25b-Abstract-Conference.html",
+   "declared": {
+    "code": {
+     "answer": "YES",
+     "justification": "See link to anonymous code in Abstract."
+    },
+    "settings": {
+     "answer": "YES",
+     "justification": "See Experiments section and Appendix on Experimental Details"
+    },
+    "significance": {
+     "answer": "YES",
+     "justification": "Error bars in figures depict one standard error across random seeds. We used 5 seeds in Figure 1. For other figures in the main text, we could only run 3 seeds because of computational constraints."
+    },
+    "compute": {
+     "answer": "YES",
+     "justification": "Compute resources are detailed in the appendix."
+    }
+   },
+   "code": {
+    "Q5": "yes"
+   },
+   "settings": {
+    "Q3": "yes"
+   },
+   "significance": {
+    "X2": "yes",
+    "Q8": "no"
+   },
+   "compute": {
+    "X7": "yes"
+   },
+   "proc_code_link": false
+  },
+  {
+   "id": "K043",
+   "title": "Intrinsic Benefits of Categorical Distributional Loss: Uncertainty-aware Regularized Exploration in Reinforcement Learning",
+   "family": "classic",
+   "proceedings": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/e6b2b48b5ed90d07c305932729927781-Abstract-Conference.html",
+   "declared": {
+    "code": {
+     "answer": "YES",
+     "justification": "We are going to release our code once the paper is accepted to facilitate reproductivity."
+    },
+    "settings": {
+     "answer": "YES",
+     "justification": "We have provided sufficient experimental details in Appendix L."
+    },
+    "significance": {
+     "answer": "YES",
+     "justification": "All learning curves are reported across a certain number of random seeds and the shade represents the standard deviation."
+    },
+    "compute": {
+     "answer": "YES",
+     "justification": "The experiments are conducted by using multiple RTX 3090 GPUs."
+    }
+   },
+   "code": {
+    "Q5": "no"
+   },
+   "settings": {
+    "Q3": "no"
+   },
+   "significance": {
+    "X2": "yes",
+    "Q8": "no"
+   },
+   "compute": {
+    "X7": "no"
+   },
+   "proc_code_link": false
+  },
+  {
+   "id": "K047",
+   "title": "Adaptive Surrogate Gradients for Sequential Reinforcement Learning in Spiking Neural Networks",
+   "family": "classic",
+   "proceedings": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/d94b46ec30adee2bbb134f813fc9dde0-Abstract-Conference.html",
+   "declared": {
+    "code": {
+     "answer": "YES",
+     "justification": "The repository containing the code is publically available, including a manual to reproduce results."
+    },
+    "settings": {
+     "answer": "YES",
+     "justification": "The required details to make sense of the results are part of the core paper. Additional details for reproducability will be included in the supplementary materials."
+    },
+    "significance": {
+     "answer": "YES",
+     "justification": "We believe that where relevant, the error bars are appropriately defined."
+    },
+    "compute": {
+     "answer": "YES",
+     "justification": "All experiments were ran on an Apple MacBook Pro M4Pro, with 24GB RAM."
+    }
+   },
+   "code": {
+    "Q5": "yes"
+   },
+   "settings": {
+    "Q3": "yes"
+   },
+   "significance": {
+    "X2": "yes",
+    "Q8": "no"
+   },
+   "compute": {
+    "X7": "yes"
+   },
+   "proc_code_link": true
+  },
+  {
+   "id": "K055",
+   "title": "Towards Large-Scale In-Context Reinforcement Learning by Meta-Training in Randomized Worlds",
+   "family": "classic",
+   "proceedings": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/fa9e9b2a5176c6f72e78269087b9fe60-Abstract-Conference.html",
+   "declared": {
+    "code": {
+     "answer": "YES",
+     "justification": "We attach the codes and data necessary to reproduce the results."
+    },
+    "settings": {
+     "answer": "YES",
+     "justification": "In Section 5 and appendices."
+    },
+    "significance": {
+     "answer": "YES",
+     "justification": "We report most results with error bars. For results that are too computationally costly and less noisy, we do not."
+    },
+    "compute": {
+     "answer": "YES",
+     "justification": "In Section 5 and appendices."
+    }
+   },
+   "code": {
+    "Q5": "yes"
+   },
+   "settings": {
+    "Q3": "yes"
+   },
+   "significance": {
+    "X2": "yes",
+    "Q8": "no"
+   },
+   "compute": {
+    "X7": "yes"
+   },
+   "proc_code_link": true
+  },
+  {
+   "id": "K058",
+   "title": "Adaptive Neighborhood-Constrained Q Learning for Offline Reinforcement Learning",
+   "family": "classic",
+   "proceedings": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/254009e8d528f98764a060e877a1b01c-Abstract-Conference.html",
+   "declared": {
+    "code": {
+     "answer": "YES",
+     "justification": "Please refer to the code in the supplemental material."
+    },
+    "settings": {
+     "answer": "YES",
+     "justification": "Please refer to Appendix C."
+    },
+    "significance": {
+     "answer": "YES",
+     "justification": "The results in the paper are accompanied by standard deviations across multiple seeds."
+    },
+    "compute": {
+     "answer": "YES",
+     "justification": "Please refer to Appendix D.1."
+    }
+   },
+   "code": {
+    "Q5": "yes"
+   },
+   "settings": {
+    "Q3": "yes"
+   },
+   "significance": {
+    "X2": "yes",
+    "Q8": "no"
+   },
+   "compute": {
+    "X7": "yes"
+   },
+   "proc_code_link": true
+  },
+  {
+   "id": "K072",
+   "title": "Continuous Q-Score Matching: Diffusion Guided Reinforcement Learning for Continuous-Time Control",
+   "family": "classic",
+   "proceedings": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/1286e85106eb9c52eb77f617596dd917-Abstract-Conference.html",
+   "declared": {
+    "code": {
+     "answer": "YES",
+     "justification": "For data, please see the section 5. The code will be released upon paper acceptance."
+    },
+    "settings": {
+     "answer": "YES",
+     "justification": "Experimental details are shown in the section 5."
+    },
+    "significance": {
+     "answer": "YES",
+     "justification": "Experiments were repeated 5 times, and the mean and variance of parameters and reward were plotted in section 5."
+    },
+    "compute": {
+     "answer": "YES",
+     "justification": "Compute resources are shown in the section 5."
+    }
+   },
+   "code": {
+    "Q5": "no"
+   },
+   "settings": {
+    "Q3": "no"
+   },
+   "significance": {
+    "X2": "yes",
+    "Q8": "no"
+   },
+   "compute": {
+    "X7": "yes"
+   },
+   "proc_code_link": false
+  },
+  {
+   "id": "K078",
+   "title": "Diffusion Guided Adversarial State Perturbations in Reinforcement Learning",
+   "family": "classic",
+   "proceedings": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/3e53d82a1113e3d240059a9195668edc-Abstract-Conference.html",
+   "declared": {
+    "code": {
+     "answer": "YES",
+     "justification": "We provide our code in the supplementary material"
+    },
+    "settings": {
+     "answer": "YES",
+     "justification": "They are stated in Appendix C"
+    },
+    "significance": {
+     "answer": "YES",
+     "justification": "We have reported mean and std of all our results."
+    },
+    "compute": {
+     "answer": "YES",
+     "justification": "We specify our testbench information in Appendix C"
+    }
+   },
+   "code": {
+    "Q5": "yes"
+   },
+   "settings": {
+    "Q3": "no"
+   },
+   "significance": {
+    "X2": "yes",
+    "Q8": "no"
+   },
+   "compute": {
+    "X7": "no"
+   },
+   "proc_code_link": false
+  },
+  {
+   "id": "K081",
+   "title": "Structured Reinforcement Learning for Combinatorial Decision-Making",
+   "family": "classic",
+   "proceedings": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/fe100e5e7bca984803f0e4c6e94a6a88-Abstract-Conference.html",
+   "declared": {
+    "code": {
+     "answer": "YES",
+     "justification": "We provide all data and code as a supplementary material. In addition, we publish the code to a Julia repository on Github. All other Julia packages we used are publicly available. Our code contains instructions to reproduce our experimental results, as well as comments to understand key concepts. Since the repository is not anonymized, we do not refer to it in the paper befor the camera ready version."
+    },
+    "settings": {
+     "answer": "YES",
+     "justification": "We provide a concise overview over our experiments in Section 3, containing the most important experiment specifications. We provide a comprehensive and detailed description of all relevant details required to understand our experiments in Appendix C. In adition, our code contains the specifications of all environments."
+    },
+    "significance": {
+     "answer": "YES",
+     "justification": "We present our main results in Section 3 and Appendix E as boxplots, naturally showing the distribution of the underlying data. In these boxplots, we exclude outliers beyond the whiskers, which extend 1.5× the interquartile range from the quartiles in either direction. Early investigations revealed that this excludes only a small fraction of the data, but improves clarity of the plots. All visualized results are means over ten training runs with random model initializations. In addition to that, we report the mean standard deviation across these ten runs in tables. Assumptions on the distribution of e.g., errors are not necessary in our experiments. Overall, these measures show the statistical significance of our results."
+    },
+    "compute": {
+     "answer": "YES",
+     "justification": "We outline the compute resources used to generate the results in this paper in Appendix C. As stated there, these are the same ressources we used for all algorithmic development."
+    }
+   },
+   "code": {
+    "Q5": "yes"
+   },
+   "settings": {
+    "Q3": "yes"
+   },
+   "significance": {
+    "X2": "yes",
+    "Q8": "no"
+   },
+   "compute": {
+    "X7": "yes"
+   },
+   "proc_code_link": true
+  },
+  {
+   "id": "K082",
+   "title": "Retrosynthesis Planning via Worst-path Policy Optimisation in Tree-structured MDPs",
+   "family": "classic",
+   "proceedings": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/bfe7998398779dde03cad7a73b1f81b6-Abstract-Conference.html",
+   "declared": {
+    "code": {
+     "answer": "YES",
+     "justification": "Code is provided and all datasets used (USPTO-50k, eMolecules, Retro*-190, ChEMBL-1000, GDB17-1000) are public."
+    },
+    "settings": null,
+    "significance": null,
+    "compute": null
+   },
+   "code": {
+    "Q5": "yes"
+   },
+   "settings": {
+    "Q3": "no"
+   },
+   "significance": {
+    "X2": "no",
+    "Q8": "no"
+   },
+   "compute": {
+    "X7": "yes"
+   },
+   "proc_code_link": true
+  },
+  {
+   "id": "K084",
+   "title": "Approximating Shapley Explanations in Reinforcement Learning",
+   "family": "classic",
+   "proceedings": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/204e1588746cd47df9f61f7acd14014c-Abstract-Conference.html",
+   "declared": {
+    "code": {
+     "answer": "YES",
+     "justification": "Code is publicly available on GitHub."
+    },
+    "settings": {
+     "answer": "YES",
+     "justification": "Provided in the appendices."
+    },
+    "significance": {
+     "answer": "YES",
+     "justification": "Where standard error is not reported or visible, it is because it was negligible. Full details on experiments are provided in the appendices."
+    },
+    "compute": {
+     "answer": "NO",
+     "justification": "This was not recorded when the experiments were run. The full research project required more compute than the experiments reported in the paper because of preliminary and failed experiments."
+    }
+   },
+   "code": {
+    "Q5": "yes"
+   },
+   "settings": {
+    "Q3": "no"
+   },
+   "significance": {
+    "X2": "yes",
+    "Q8": "no"
+   },
+   "compute": {
+    "X7": "no"
+   },
+   "proc_code_link": true
+  },
+  {
+   "id": "K086",
+   "title": "Compute-Optimal Scaling for Value-Based Deep RL",
+   "family": "classic",
+   "proceedings": "https://proceedings.neurips.cc/paper_files/paper/2025/hash/eaf550b6c727bc065244513f2260a30e-Abstract-Conference.html",
+   "declared": {
+    "code": {
+     "answer": "YES",
+     "justification": "in the supplement"
+    },
+    "settings": {
+     "answer": "NA",
+     "justification": "The paper represents theoretical work with only simulated results"
+    },
+    "significance": {
+     "answer": "NA",
+     "justification": "The paper represents theoretical work with only simulated results"
+    },
+    "compute": {
+     "answer": "NA",
+     "justification": "The paper represents theoretical work with only simulated results"
+    }
+   },
+   "code": {
+    "Q5": "no"
+   },
+   "settings": {
+    "Q3": "no"
+   },
+   "significance": {
+    "X2": "yes",
+    "Q8": "no"
+   },
+   "compute": {
+    "X7": "no"
+   },
+   "proc_code_link": true
+  }
+ ],
+ "summary": {
+  "code/Q5": {
+   "question": "Open access to data and code",
+   "criterion": "Q5",
+   "papers_with_answer": 26,
+   "declared_yes": 22,
+   "yes_but_our_no": 5,
+   "share": 0.22727272727272727,
+   "wilson": [
+    0.10122890794820358,
+    0.4344035606295935
+   ],
+   "ids": [
+    "NE08",
+    "NE13",
+    "K043",
+    "K072",
+    "K086"
+   ],
+   "yes_but_no_link_even_in_proceedings": [
+    "NE08",
+    "NE13",
+    "K043",
+    "K072"
+   ]
+  },
+  "settings/Q3": {
+   "question": "Experimental setting/details",
+   "criterion": "Q3",
+   "papers_with_answer": 25,
+   "declared_yes": 22,
+   "yes_but_our_no": 6,
+   "share": 0.2727272727272727,
+   "wilson": [
+    0.1315058201581444,
+    0.4815212369900198
+   ],
+   "ids": [
+    "NE15",
+    "K030",
+    "K043",
+    "K072",
+    "K078",
+    "K084"
+   ]
+  },
+  "significance/X2": {
+   "question": "Experiment statistical significance",
+   "criterion": "X2",
+   "papers_with_answer": 25,
+   "declared_yes": 18,
+   "yes_but_our_no": 1,
+   "share": 0.05555555555555555,
+   "wilson": [
+    0.009874935830924525,
+    0.2575779980200754
+   ],
+   "ids": [
+    "NER01"
+   ]
+  },
+  "significance/Q8": {
+   "question": "Experiment statistical significance",
+   "criterion": "Q8",
+   "papers_with_answer": 25,
+   "declared_yes": 18,
+   "yes_but_our_no": 18,
+   "share": 1.0,
+   "wilson": [
+    0.8241154494176252,
+    1.0
+   ],
+   "ids": [
+    "NE12",
+    "NE13",
+    "NE15",
+    "NER01",
+    "NER02",
+    "NER06",
+    "K012",
+    "K030",
+    "K035",
+    "K038",
+    "K043",
+    "K047",
+    "K055",
+    "K058",
+    "K072",
+    "K078",
+    "K081",
+    "K084"
+   ]
+  },
+  "compute/X7": {
+   "question": "Experiments compute resources",
+   "criterion": "X7",
+   "papers_with_answer": 25,
+   "declared_yes": 21,
+   "yes_but_our_no": 6,
+   "share": 0.2857142857142857,
+   "wilson": [
+    0.13813675745628204,
+    0.49956773822837586
+   ],
+   "ids": [
+    "NE02",
+    "NE05",
+    "NE06",
+    "NE13",
+    "K043",
+    "K078"
+   ]
+  }
+ },
+ "no_checklist": [
+  "NER04"
+ ]
+}

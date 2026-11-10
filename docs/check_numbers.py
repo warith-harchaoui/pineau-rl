@@ -346,6 +346,15 @@ assert all(v["verdict"] != "loss" for k, v in e7.items() if k.endswith("Swimmer-
 add("E7 hopper", f"PPO ne garde que {pct(e7['ppo_sb3/Hopper-v5']['iqm'])} de son score dans sa version PyTorch et {pct(e7['ppo_sbx/Hopper-v5']['iqm'])} dans sa version JAX, quand SAC en garde {pct(e7['sac/Hopper-v5']['iqm'])}",
     f"PPO keeps only {pct(e7['ppo_sb3/Hopper-v5']['iqm'], lang='en')} of its score in its PyTorch version and {pct(e7['ppo_sbx/Hopper-v5']['iqm'], lang='en')} in its JAX version, while SAC keeps {pct(e7['sac/Hopper-v5']['iqm'], lang='en')}")
 
+# A5, declared checklists against our reading (checklist.py).
+ck = J("study/checklist.json")["summary"]
+q8, q5, x7 = ck["significance/Q8"], ck["code/Q5"], ck["compute/X7"]
+assert q8["declared_yes"] == q8["yes_but_our_no"]  # "n'appliquent aucun test"
+add("A5 Q8", f"Les {q8['declared_yes']} articles qui y répondent oui", f"The {q8['declared_yes']} papers")
+add("A5 Q5", f"{q5['yes_but_our_no']} articles sur\n{q5['declared_yes']} répondent oui sans lien vers leur code, dont {len(q5['yes_but_no_link_even_in_proceedings'])} sans lien",
+    f"{q5['yes_but_our_no']} papers out of {q5['declared_yes']} answer yes without a link to their code, {len(q5['yes_but_no_link_even_in_proceedings'])} of them")
+add("A5 X7", f"{x7['yes_but_our_no']}\narticles sur {x7['declared_yes']} répondent oui", f"{x7['yes_but_our_no']} papers out of {x7['declared_yes']} answer yes")
+
 # E6, the official Zoo pipeline (e6_official.py).
 e6o = J("sim/analysis/e6_official.json")
 g = e6o["groups"]

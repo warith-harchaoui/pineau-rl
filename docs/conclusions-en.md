@@ -791,6 +791,16 @@ tuned and described with care, held-out evaluation and benchmark versions show n
 Our survey does not say whether the checklist caused it: another audit sees the share of released
 code rise before the checklists [@coakley2026shift].
 
+**What authors declare.** Every NeurIPS paper comes with the checklist its authors filled in. We
+recorded their answers to four questions in the proceedings version of the 30 NeurIPS 2025 papers we
+had read, then set them against our reading, with a plan written before the extraction. The question
+on statistical significance settles for error bars "or other appropriate information". The 18 papers
+that answer yes apply no test: the checklist does not ask for the test, and the papers do not run
+one. On code, 5 papers out of 22 answer yes without a link to their code, 4 of them with no link even
+in the proceedings version. Three say so in their own justification: the code will be released
+later. On compute, 6 papers out of 21 answer yes without stating any computing time, which the
+question does ask for. A ticked box therefore does not guarantee the practice it names.
+
 **Seven questions for reading an RL announcement.** The checklist is meant for authors. The reader of
 a paper, a press release or a demonstration draws seven questions from it, none of which require
 knowing how to program. Each one points to the flaws it detects.

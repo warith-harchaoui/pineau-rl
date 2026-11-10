@@ -841,6 +841,17 @@ tenue à part et la version des bancs d'essai n'ont pas bougé de façon détect
 dit pas si la liste en est la cause : un autre audit voit la part du code publié monter avant les
 listes de contrôle [@coakley2026shift].
 
+**Ce que les auteurs déclarent.** Chaque article de NeurIPS joint la liste remplie par ses auteurs.
+Nous avons relevé leurs réponses à quatre questions dans la version des actes des 30 articles de
+NeurIPS 2025 que nous avions lus, puis nous les avons confrontées à notre lecture, avec un plan écrit
+avant l'extraction. La question sur la signification statistique se contente de barres d'erreur
+« ou d'une autre information appropriée ». Les 18 articles qui y répondent oui n'appliquent aucun
+test : la liste ne demande pas le test, et les articles ne le font pas. Sur le code, 5 articles sur
+22 répondent oui sans lien vers leur code, dont 4 sans lien même dans la version des actes. Trois
+l'écrivent dans leur propre justification : le code sera publié plus tard. Sur le calcul, 6
+articles sur 21 répondent oui sans chiffrer de temps de calcul, que la question demande pourtant.
+Une case cochée ne garantit donc pas la pratique qu'elle nomme.
+
 **Sept questions pour lire une annonce de RL.** La liste de contrôle s'adresse aux auteurs. Le
 lecteur d'un article, d'un communiqué ou d'une démonstration en tire sept questions, qui ne
 demandent pas de savoir programmer. Chacune renvoie aux failles qu'elle détecte.
