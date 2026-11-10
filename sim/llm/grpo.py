@@ -3,7 +3,7 @@
 Usage: python grpo.py MODEL_ID TAG TASK REWARD SEED STEPS LR
 TASK in {add3, mul2}; REWARD in {true, random}. Writes results/<TAG>/<TASK>/<REWARD>/seed<SEED>.jsonl
 """
-import json, os, random, re, sys, time
+import json, math, os, random, re, sys, time
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
@@ -11,6 +11,10 @@ MODEL, TAG, TASK, REWARD, SEED, STEPS, LR = sys.argv[1], sys.argv[2], sys.argv[3
 PILOT = "--pilot" in sys.argv  # no training: base-model accuracy on non-test problems
 B, G, MAX_NEW, CLIP, EPOCHS, EVAL_EVERY = 4, 8, 160, 0.2, 2, int(os.environ.get("EVAL_EVERY", 50))
 MICRO = int(os.environ.get("MICRO", 8))  # completions per backward pass (same gradient): 32 at once took 65 GB; Llama 1B needs 2
+# macOS aborts GPU work that slows the desktop down (kIOGPUCommandBufferCallbackErrorImpactingInteractivity), and an
+# aborted computation can come back as NaN or as a finite but absurd gradient (LLM_PROTOCOL.md, écart 10). The same
+# update on CPU has a gradient norm of 14 before clipping: above GRAD_SANE, or non-finite, the update is recomputed.
+GRAD_SANE, RETRIES = 1e3, 5
 device = "mps" if torch.backends.mps.is_available() else "cpu"
 torch.manual_seed(SEED); random.seed(SEED)
 
@@ -46,12 +50,21 @@ def correct(text, ans):
     return bool(nums) and nums[-1].replace(",", "").lstrip("-").isdigit() and int(nums[-1].replace(",", "")) == ans
 
 
+retries = {"generate": 0, "update": 0}
+
+
 @torch.no_grad()
 def generate(qs, n, sample):
     enc = tok([prompt(q) for q in qs], return_tensors="pt", padding=True).to(device)
-    out = model.generate(**enc, max_new_tokens=MAX_NEW, do_sample=sample, temperature=1.0 if sample else None,
-                         top_p=None, top_k=None, num_return_sequences=n, pad_token_id=tok.pad_token_id)
-    return enc["input_ids"].shape[1], out
+    for attempt in range(RETRIES):
+        try:
+            out = model.generate(**enc, max_new_tokens=MAX_NEW, do_sample=sample, temperature=1.0 if sample else None,
+                                 top_p=None, top_k=None, num_return_sequences=n, pad_token_id=tok.pad_token_id)
+            out.tolist()  # forces the GPU work to finish here, so that an aborted command buffer raises now
+            return enc["input_ids"].shape[1], out
+        except torch.AcceleratorError:
+            retries["generate"] += 1
+    raise RuntimeError(f"generation failed {RETRIES} times in a row")
 
 
 def truncated(seq, plen):
@@ -110,19 +123,32 @@ for step in range(1, STEPS + 1):
     chunks = [slice(i, i + MICRO) for i in range(0, len(seqs), MICRO)]
     with torch.no_grad():
         old_lp = [token_logps(seqs[c], plen)[0] for c in chunks]
+    if not all(torch.isfinite(o).all() for o in old_lp):
+        raise RuntimeError("non-finite log-probabilities before the update: the weights are already corrupted")
     for _ in range(EPOCHS):
-        opt.zero_grad(); loss = 0.0
-        for c, olp in zip(chunks, old_lp):
-            lp, mask = token_logps(seqs[c], plen)
-            ratio = torch.exp(lp - olp)
-            a = adv[c].unsqueeze(1)
-            surr = torch.min(ratio * a, torch.clamp(ratio, 1 - CLIP, 1 + CLIP) * a)
-            part = -((surr * mask).sum(1) / mask.sum(1).clamp(min=1)).sum() / len(seqs)
-            part.backward(); loss += float(part)
-        torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+        for attempt in range(RETRIES):
+            opt.zero_grad(); loss = 0.0
+            try:
+                for c, olp in zip(chunks, old_lp):
+                    lp, mask = token_logps(seqs[c], plen)
+                    ratio = torch.exp(lp - olp)
+                    a = adv[c].unsqueeze(1)
+                    surr = torch.min(ratio * a, torch.clamp(ratio, 1 - CLIP, 1 + CLIP) * a)
+                    part = -((surr * mask).sum(1) / mask.sum(1).clamp(min=1)).sum() / len(seqs)
+                    part.backward(); loss += part.item()
+                norm = torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0).item()
+            except torch.AcceleratorError:
+                norm = float("nan")
+            if math.isfinite(norm) and norm < GRAD_SANE:
+                break
+            retries["update"] += 1
+        else:
+            raise RuntimeError(f"gradient non-finite or above {GRAD_SANE:g} {RETRIES} times in a row")
         opt.step()
+        if not all(torch.isfinite(q).all() for q in model.parameters()):
+            raise RuntimeError("non-finite weights after the update")
     if step % 10 == 0:
-        log.write(json.dumps(dict(step=step, train_right=sum(right) / len(right), truncated=sum(truncated(q, plen) for q in seqs) / len(seqs), loss=loss, wall=round(time.time() - t0, 1))) + "\n"); log.flush()
+        log.write(json.dumps(dict(step=step, train_right=sum(right) / len(right), truncated=sum(truncated(q, plen) for q in seqs) / len(seqs), loss=loss, grad_norm=norm, retries=dict(retries), wall=round(time.time() - t0, 1))) + "\n"); log.flush()
     if step % EVAL_EVERY == 0 or step == STEPS:
         log.write(json.dumps(dict(step=step, **evaluate())) + "\n"); log.flush()
-print(json.dumps(dict(model=TAG, task=TASK, reward=REWARD, seed=SEED, done=True, wall=round(time.time() - t0, 1))))
+print(json.dumps(dict(model=TAG, task=TASK, reward=REWARD, seed=SEED, done=True, retries=retries, wall=round(time.time() - t0, 1))))

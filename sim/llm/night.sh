@@ -1,8 +1,8 @@
 #!/bin/bash
 # GRPO at night only (LLM_PROTOCOL.md, Écart 8): 23:00 to 07:00, no run started after 06:00.
 # Keeps the 4-core budget: the main simulation queue's JAX run is paused (SIGSTOP) while GRPO runs, then resumed.
-# First run: the control (qwen05 random seed 1, the run that crashed) without OMP_NUM_THREADS. If it still hits NaN,
-# the night stops there: the cause is then looked for in grpo.py before anything else.
+# The NaN came from GPU work cut short by macOS (LLM_PROTOCOL.md, écart 10): grpo.py now recomputes a corrupted update.
+# A run that still fails is retried the next night; two failures of the same run are reported as a result.
 cd "$(dirname "$0")"
 export PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.35 PYTORCH_MPS_LOW_WATERMARK_RATIO=0.25 EVAL_EVERY=50 TOKENIZERS_PARALLELISM=false
 log() { echo "$(date '+%F %T') $*" >> logs/night.out; }
@@ -28,7 +28,6 @@ one() {  # one <model> <tag> <reward> <seed> <micro>
 }
 all_runs() {  # returns 1 as soon as the night window closes
   one Qwen/Qwen2.5-0.5B-Instruct qwen05 random 1 8 || return 1
-  done_run qwen05 random 1 || { log "control run failed again: NaN not explained by OMP_NUM_THREADS, stop"; exit 1; }
   for spec in "Qwen/Qwen2.5-0.5B-Instruct qwen05 8" "unsloth/Llama-3.2-1B-Instruct llama1 2"; do
     set -- $spec
     for seed in 0 1 2; do for reward in true random; do one "$1" "$2" "$reward" "$seed" "$3" || return 1; done; done

@@ -356,3 +356,12 @@ No violation. The only scope changes come from the proposed Y3 recodes: K036, K1
    - 9a. Do inference-time or test-time parameters (frames, context length, beam width, test-time steps) and environment conditions (attack budget) count as hyperparameters?
    - 9b. Must the result shown be the main performance measure, or does any metric count (LR07 entropy)?
 10. **Cross-round.** When a v2 code (Y8) contradicts the v1 code of the same paper (Q7) in a direction the rules forbid (Y8 yes, Q7 no: C12, ML07), which one is recoded? Écart 15 keeps raw readings for agreement, but nothing covers v1 and v2 inconsistency.
+
+## ML13, relu par le responsable (10 novembre 2026)
+
+Le lecteur C2 avait écrit ML13 après une interruption, sans relecture. Relu contre le PDF (`pdftotext`) : aucun
+code ne change. Y1 `yes` (TSR défini par l'équation 8, mesuré sur le modèle entraîné, règle de l'écart 19) ; Y3 = 1
+(un seul jeu d'entraînement procédural, T1 à T7 ; les bancs Cello et Literature-91 sont des évaluations, écart 17) ;
+Y5 `yes` (les références tournent dans le cadre des auteurs, modèles publiés nommés) ; Y7 `no` (données « sur
+demande », non publiées) ; Q5 `no` (aucun lien vers du code dans l'article). `check_codes.py` : aucune erreur.
+ML13 est un article `llm` : il ne compte pas dans la comparaison principale.
