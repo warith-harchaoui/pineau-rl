@@ -1,0 +1,146 @@
+{
+ "id": "T14",
+ "coder": "L2",
+ "title": "Time Series Reasoning via Process-Verifiable Thinking Data Synthesis and Scheduling for Tailored LLM Reasoning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We select two moderate-sized LLMs, Qwen2.5-3B-Instruct and Qwen3-4B-Instruct (Yang et al., 2025a), for training and validation of VeriTime.",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "we apply reinforcement learning using the GRPO algorithm (Shao et al., 2024) on the hard subset",
+   "page": 4
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "absent: Table 13 (p. 22) gives LoRA rank, learning rate, generations, batch size and epochs, but the KL coefficient beta, the clipping epsilon and the reward thresholds T1, T2, Lthr, Ltol are never given a value",
+   "page": null
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "For knowledge-based tasks, we also evaluate six representative traditional TS models. [no hyperparameters given for these trained baselines nor for the ChatTS SFT baseline]",
+   "page": 6
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "The code for VeriTime is available at https://anonymous.4open.science/r/VeriTime-E017. [anonymous mirror checked 2026-11-10: contains the VeriTime code]",
+   "page": 1
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "Performance generally increases with larger G [...] To balance performance and computational cost, we set G = 4 as the default in all main experiments.",
+   "page": 14
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "Additionally, we evaluate VeriTime on two other open-source benchmarks, Time-SeriesExam (Cai et al., 2024) and DROP (Dua et al., 2019).",
+   "page": 6
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent: number of independent RL runs never stated",
+   "page": null
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent: Tables 1-3 (main results) give single accuracies; the only standard deviations (Table 5) are across inference temperatures",
+   "page": null
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent: no tuning described for any baseline",
+   "page": null
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "we apply reinforcement learning using the GRPO algorithm (Shao et al., 2024) on the hard subset",
+   "page": 4
+  },
+  "X6": {
+   "value": 1,
+   "quote": "The base LLM for VeriTime training is Qwen2.5-3B-Instruct, and Qwen3-4B-Instruct",
+   "page": 22
+  },
+  "X7": {
+   "value": "no",
+   "quote": "All training and inference for VeriTime and baseline models are performed on 2×A100 80G GPUs. [no duration]",
+   "page": 22
+  },
+  "Y1": {
+   "value": "no",
+   "quote": "Table 1. Comparison of Accuracy (%) across three scenario-based reasoning tasks. [accuracy not further defined]",
+   "page": 6
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "absent: X2 is no",
+   "page": null
+  },
+  "Y3": {
+   "value": 2,
+   "quote": "TSRBench supports both training and evaluation of time series reasoning models, comprising two types of tasks: scenario-based reasoning",
+   "page": [
+    5,
+    6
+   ]
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "Time-MQA (Mistral-7B) 53.66 69.81 49.37 24.62 [...] ChatTS (SFT) 78.31 91.67 78.98 54.28 [...] VeriTime (SFT+RL) 82.86 90.56 83.52 68.57",
+   "page": 6
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "For knowledge-based tasks, we also evaluate six representative traditional TS models. [origin of the code of Autoformer, FEDformer, PatchTST, iTransformer, TimesNet, DLinear not given]",
+   "page": 6
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "TSRgen employs a rule-based extractor to filter original instances that satisfy predefined reasoning criteria (scenario-based and knowledge-based) to improve annotation quality.",
+   "page": 3
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent: the DROP split is not named and the TSRBench split is not said to be published",
+   "page": null
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "that VeriTime equips LLMs with the ability to reason about [...] TS patterns that can be extended to other time series tasks.",
+   "page": 7
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Table 7. Effect of generation number G on performance (Accuracy %) across scenario-based tasks.",
+   "page": 15
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "absent: X2 is no",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y3: TSRBench mixes seven sub-tasks; scenario-based and knowledge-based parts get different schedules (model-guided vs full RL), so I count 2 training frames; 1 or 7 are defensible. Q3: Table 13 is fairly complete but the KL coefficient, clip range and reward thresholds have no value. Q6: only G is chosen by a stated sweep (2-5) and criterion (performance vs cost), on test results; coded yes, other hyperparameters have no selection method. Y8: TimeSeriesExam presented as extension to other time series tasks, counted as generalization."
+}

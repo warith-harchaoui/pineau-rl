@@ -135,7 +135,7 @@ v1 = ["Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "X2", "X3", "X4", "X7"]
 assert len(v1) == 11 and all("p_holm" in main(k) for k in v1)  # "onze critères à la fois"
 assert vsP("Q4")["p_holm"] == vsP("Q5")["p_holm"]  # "p = 0,06 chacun"
 ov2 = {k: v for k, v in J("study/overrides_v2.json").items() if not k.startswith("_")}
-assert sum(len(v) for k, v in ov2.items() if k != "X5") == 80  # écart 19: 80 changes (X5 belongs to écart 18)
+assert sum(len([i for i in v if not i.startswith("T")]) for k, v in ov2.items() if k != "X5") == 80  # écart 19: 80 changes (X5 belongs to écart 18; T* are A6, écart 24)
 
 # Summary.
 add("ours 2018 Q3", f"Elle trouve {o('Q3')}", f"It finds {o('Q3', 'en')}")
@@ -354,6 +354,18 @@ add("A5 Q8", f"Les {q8['declared_yes']} articles qui y répondent oui", f"The {q
 add("A5 Q5", f"{q5['yes_but_our_no']} articles sur\n{q5['declared_yes']} répondent oui sans lien vers leur code, dont {len(q5['yes_but_no_link_even_in_proceedings'])} sans lien",
     f"{q5['yes_but_our_no']} papers out of {q5['declared_yes']} answer yes without a link to their code, {len(q5['yes_but_no_link_even_in_proceedings'])} of them")
 add("A5 X7", f"{x7['yes_but_our_no']}\narticles sur {x7['declared_yes']} répondent oui", f"{x7['yes_but_our_no']} papers out of {x7['declared_yes']} answer yes")
+
+# A6, the title filter (title_filter.py, title_filter_compare.py).
+tf, tc = J("study/title_filter.json")["result"], J("study/title_filter_compare.json")
+m = tf["missed_estimate"]
+add("A6 step 1", f"25 ont un résumé qui parle de\n  RL, soit environ {num(m[0], 'fr')} articles manqués (de {num(m[1], 'fr')} à {num(m[2], 'fr')}), {pct(tf['missed_fraction'][0])} de l'ensemble",
+    f"25 have an abstract that talks about RL, about {num(m[0], 'en')} missed papers (from {num(m[1], 'en')} to {num(m[2], 'en')}), {pct(tf['missed_fraction'][0], lang='en')} of the total")
+assert tf["hidden_rl"] == 25 and tf["abstracts_read"] == 400
+r = tc["rows"]
+sh = lambda x: x[0] / x[1]
+add("A6 step 2", f"le code en lien dans {pct(sh(r['Q5']['hidden']))} d'entre eux ({pct(sh(r['Q5']['all2026']))} dans le tirage), une\n  incertitude dans {pct(sh(r['X2']['hidden']))} ({pct(sh(r['X2']['all2026']))})",
+    f"code linked in {pct(sh(r['Q5']['hidden']), lang='en')} of them ({pct(sh(r['Q5']['all2026']), lang='en')} in the draw), an uncertainty in {pct(sh(r['X2']['hidden']), lang='en')} ({pct(sh(r['X2']['all2026']), lang='en')})")
+assert tc["families"] == {"llm": 13, "classic": 7, "theory": 0}
 
 # E6, the official Zoo pipeline (e6_official.py).
 e6o = J("sim/analysis/e6_official.json")

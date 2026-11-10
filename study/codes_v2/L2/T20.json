@@ -1,0 +1,143 @@
+{
+ "id": "T20",
+ "coder": "L2",
+ "title": "Long Grounded Thoughts: Synthesizing Visual Problems and Reasoning Chains at Scale",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We fine-tune Qwen2.5-VL-7B-Instruct (Bai et al., 2025) and evaluate on vision-centric tasks.",
+   "page": 5
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We fine-tune Qwen2.5-VL-7B-Instruct (Bai et al., 2025) and evaluate on vision-centric tasks.",
+   "page": 5
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "absent: SFT, DPO and GRPO batch sizes, learning rates, beta and KL coefficient are given (p. 6), but the GRPO group size (rollouts per prompt), sampling temperature and number of GRPO steps are not",
+   "page": null
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "Figure 2 illustrates SFT scal- [...] ing under identical training conditions. [LPT data trained with the same documented configuration; other baselines are published checkpoints]",
+   "page": 5
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "We will open source the full data generation pipeline with the exact prompt instruction.",
+   "page": 14
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "For Stage 2, we halve the learning rate and ap- [...] ply early stopping based on validation loss.",
+   "page": 6
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "In addition, we adopt vision-centric focused benchmarks V∗ Bench (Wu & Xie, 2024), CV-",
+   "page": 5
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent: number of independent training runs never stated",
+   "page": null
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent: Tables 2, 4, 5 and 11 give single numbers without any spread",
+   "page": null
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent: no top-k or best-of-N selection of runs for the main tables; only the qualitative example of Fig. 5 uses each model's best checkpoint",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent: no tuning described for baselines",
+   "page": null
+  },
+  "X5": {
+   "value": "llm",
+   "quote": "Online RL (GRPO). We perform GRPO on top of the fine-",
+   "page": 6
+  },
+  "X6": {
+   "value": 1,
+   "quote": "We use Qwen2.5-Omni-7B as baseline. [Qwen2.5-VL-7B-Instruct is the main model; both Qwen]",
+   "page": 7
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "For comparison vs existing models and published results we [...] used VLMEvalKit (Duan et al., 2024) with GPT-4o as a judge (Table 2). For ablations, we utilize the evaluation [...] protocol of (Liao et al., 2025a) which utilizes rule-based [...] matching instead of a judge.",
+   "page": 6
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "absent: X2 is no",
+   "page": null
+  },
+  "Y3": {
+   "value": 1,
+   "quote": "Stage 1 consists [...] of ∼750K datapoints, and Stage 2 adds ∼251K.",
+   "page": 6
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "absent: Y3 is 1",
+   "page": null
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "Closed source performance is shown for reference, taken from the authors technical reports. [open baselines are named published models evaluated by the authors]",
+   "page": 6
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "a semantic similarity filtering step is applied to discard redundant or overly similar questions",
+   "page": 13
+  },
+  "Y7": {
+   "value": "yes",
+   "quote": "xAI. Realworldqa. https://huggingface.co/ datasets/xai-org/RealworldQA, 2024. [V*Bench, CV-Bench, MMVP, MMStar-V are single named sets]",
+   "page": 11
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "Table 4. Out-of-domain evaluation. We assess cross-domain",
+   "page": 7
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent: RL data size is varied (Table 11) but not presented as a hyperparameter; tau_dup is said set after an ablation whose result is not shown",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent: llama-factory, VERL and VLMEvalKit named without versions",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "absent: X2 is no",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Mostly a data-synthesis paper with SFT, DPO and GRPO stages; coded llm since GRPO/DPO train the VLM. Q4: baselines are mostly published checkpoints; the LPT ablation uses identical documented conditions, coded yes. Q6: only early stopping on validation loss is described. X3: the GRPO data size reported in Table 2 seems to be the best of Table 11 on test averages, not coded as best-of-N runs. Y3=1: one synthesized training set."
+}

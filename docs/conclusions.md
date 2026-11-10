@@ -975,7 +975,14 @@ ses bons résultats qu'envers ses mauvais.
 - La population a changé : 27 articles du premier tirage de 2026 sur 50 traitent de grands
   modèles de langue, une famille absente en 2018. Nos verdicts valent pour le RL classique.
 - Le filtre de titre (« reinforcement learning », « RL », « policy optimization »…) rate les
-  articles de RL dont le titre ne le dit pas, en 2018 comme en 2026.
+  articles de RL dont le titre ne le dit pas, en 2018 comme en 2026. Nous l'avons mesuré pour 2026,
+  avec un plan écrit d'avance : sur 400 articles tirés hors du filtre, 25 ont un résumé qui parle de
+  RL, soit environ 1 037 articles manqués (de 708 à 1 503), 45 % de l'ensemble. C'est un majorant :
+  la règle, mécanique, compte aussi des faux positifs, comme un article où « RL » désigne
+  l'apprentissage de représentations. Lus avec les deux grilles, 20 de ces articles ressemblent au
+  premier tirage de 2026 : le code en lien dans 60 % d'entre eux (67 % dans le tirage), une
+  incertitude dans 50 % (47 %). 13 portent sur les grands modèles de langue ; les 7 de RL classique
+  sont trop peu nombreux pour éprouver nos verdicts.
 - Les trois évaluateurs du coût et du risque de chaque pratique sont des agents de langage, de trois tailles différentes. Leur accord entre eux ne garantit pas qu'un chercheur noterait de même.
 - Les articles de 2026 ont été lus surtout dans leur version arXiv (45 articles de RL classique sur 50), ceux de 2018 dans les actes des conférences. Une version arXiv est parfois plus longue ou plus récente que celle des actes. Avec 5 articles seulement lus sur le site d'une conférence, nous ne pouvons pas mesurer l'effet de cette différence.
 - Le tirage de Pineau en 2018 reste inconnu. Nos comparaisons avec ses chiffres supposent

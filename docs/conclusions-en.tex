@@ -1518,7 +1518,16 @@ reader has to hunt for them.
 \item
   The title filter (``reinforcement learning'', ``RL'', ``policy
   optimization'' and similar terms) misses RL papers whose title does
-  not say so, in 2018 as in 2026.
+  not say so, in 2018 as in 2026. We measured it for 2026, with a plan
+  written in advance: of 400 papers drawn outside the filter, 25 have an
+  abstract that talks about RL, about 1,037 missed papers (from 708 to
+  1,503), 45\% of the total. This is an upper bound: the rule is
+  mechanical and also counts false positives, such as a paper where
+  ``RL'' stands for representation learning. Read with both grids, 20 of
+  these papers look like the first 2026 draw: code linked in 60\% of
+  them (67\% in the draw), an uncertainty in 50\% (47\%). 13 deal with
+  large language models; the 7 on classical RL are too few to put our
+  verdicts to the test.
 \item
   The three raters of the cost and risk of each practice are language
   model agents, of three different sizes. Their agreement with one
