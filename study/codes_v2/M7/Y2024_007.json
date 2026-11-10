@@ -1,0 +1,144 @@
+{
+ "id": "Y2024_007",
+ "coder": "M7",
+ "title": "Towards an Information Theoretic Framework of Context-Based Offline Meta-Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We adopt MuJoCo and MetaWorld benchmarks to evaluate our methods",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "RL network width 256",
+   "page": 20
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Table 7 lists the necessary hyper-parameters that we used to produce the experimental results.",
+   "page": 20
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Source code: https://github.com/betray12138/UNICORN.git.",
+   "page": 1
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "The performance is measured by the average return across 20 testing tasks randomly sampled for each environment.",
+   "page": 7
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 6,
+   "quote": "Results are averaged by 6 random seeds.",
+   "page": 7
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "the shaded areas characterize the standard deviation of these trials",
+   "page": 8
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "Behavior regularized actor critic is employed to tackle the bootstrapping error",
+   "page": 7
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable: famille classic",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "the average training time for MACAW is about three times longer than the context-based methods [relative only]",
+   "page": 8
+  },
+  "Y1": {
+   "value": "no",
+   "quote": "The performance is measured by the average return across 20 testing tasks randomly sampled for each environment. [point of measurement for Table 2 not stated]",
+   "page": 7
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "the shaded areas characterize the standard deviation of these trials",
+   "page": 8
+  },
+  "Y3": {
+   "value": 6,
+   "quote": "which involve six robotic locomotion environments",
+   "page": 7
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "despite CSRO having better IID results than UNICORN on Ant-Dir under the mixed distribution",
+   "page": 9
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "We adopt MuJoCo and MetaWorld benchmarks to evaluate our methods [no versions]",
+   "page": 7
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "construct task-level OOD by taking 20 consecutive tasks in",
+   "page": 10
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Figure 8: Different hyper-parameter settings of",
+   "page": 20
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "the shaded areas characterize the standard deviation of these trials",
+   "page": 8,
+   "kind": "std"
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y2 yes : les bandes de la Fig. 4 sont définies (écart type), mais les ± du Tableau 2 ne le sont pas. Y1 no : on ne sait pas à quel point d'entraînement sont pris les chiffres du Tableau 2. X5 classic : les variantes DT sont entraînées de zéro."
+}

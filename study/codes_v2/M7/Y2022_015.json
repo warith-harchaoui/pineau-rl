@@ -1,0 +1,144 @@
+{
+ "id": "Y2022_015",
+ "coder": "M7",
+ "title": "Discovered Policy Optimisation",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We compare DPO to PPO and LPO on a variety of Brax environments in Figure 6.",
+   "page": 9
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "In this setting, fφ is a small neural network, with a single hidden layer with 128 neurons",
+   "page": 7
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "keeping the policy architecture and training hyperparameters unchanged [Brax PPO defaults, values and version not given; Appendix A not available]",
+   "page": 6
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "We use the PPO implementation provided by Brax [hyperparameter values not listed]",
+   "page": 9
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "They are attached in the supplementary material [no URL]",
+   "page": 14
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "We tuned the hyperparameters for PPO and re-used those tuned hyperparameters for DPO and LPO. [procedure not described]",
+   "page": 10
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "The results on Figure 6 show that LPO, trained only on Ant, outperforms PPO in unseen environments.",
+   "page": 7
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 10,
+   "quote": "The curves represent mean evaluation return across 10 random seeds, with error bars showing standard error of the mean.",
+   "page": 9
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "The curves represent mean evaluation return across 10 random seeds, with error bars showing standard error of the mean.",
+   "page": 9
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "We tuned the hyperparameters for PPO and re-used those tuned hyperparameters for DPO and LPO.",
+   "page": 10
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "Our experiments in Brax environments confirm state-of-the-art performance of LPO and DPO",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable: famille classic",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "no",
+   "quote": "The curves represent mean evaluation return across 10 random seeds [evaluation points not stated]",
+   "page": 9
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "with error bars showing standard error of the mean",
+   "page": 9
+  },
+  "Y3": {
+   "value": 8,
+   "quote": "Figure 6: Performance comparison between PPO (blue), LPO (orange), and DPO (green) in Brax environments.",
+   "page": 9
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "Both LPO and DPO beat PPO across most environments",
+   "page": 9
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "We use the PPO implementation provided by Brax",
+   "page": 9
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "We evaluate LPO and DPO in the Brax continuous control environments and Minatar environments [no versions]",
+   "page": 2
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "We further demonstrate on out-of-distribution performance by evaluating performance on the Minatar environments",
+   "page": 9
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "We perform ablations on different variants of the drift input in Appendix E. [component ablation; appendix not available]",
+   "page": 5
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "with error bars showing standard error of the mean",
+   "page": 9,
+   "kind": "se"
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Pas d'annexe disponible (renvois à l'Appendix A pour le calcul et les réglages) : Q3, X7 codés sur ce qui existe. Q5 no : code dans le matériel supplémentaire, aucun lien. Y3 : 8 environnements Brax de la Fig. 6 ; avec Minatar on aurait 12. X4 no : PPO réglé (Minatar) mais sans procédure décrite."
+}

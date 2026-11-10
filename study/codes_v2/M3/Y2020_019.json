@@ -1,0 +1,144 @@
+{
+ "id": "Y2020_019",
+ "coder": "M3",
+ "title": "Learning to Score Behaviors for Guided Policy Optimization",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "Here we seek to test whether our approach to RL translates",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "the mean velocity encoded by a neural network with two size 5",
+   "page": 6
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "Hyper-parameters such as number of time steps per update as well as implementation techniques such as state normalization are default in the original code",
+   "page": 3
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "Hyper-parameters such as number of time steps per update as well as implementation techniques such as state normalization are default in the original code",
+   "page": 3
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Available           at         https://github.com/ [...] behaviorguidedRL/BGRL",
+   "page": 1
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "For our experiments we did not perform any hyperparameter optimization.",
+   "page": 5
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 5,
+   "quote": "Plots show the mean ± std across 5 random seeds.",
+   "page": 8
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Plots show the mean ± std across 5 random seeds.",
+   "page": 8
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "The hyper-parameters were the same for all ES algorithms.",
+   "page": 5
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "of challenging problems from the DeepMind Control Suite",
+   "page": 7
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent : article classic",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Clock time (s) to achieve a normalized reward of 90% of [...] All experiments were run on the same CPU.",
+   "page": 8
+  },
+  "Y1": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (courbes « mean ± std » sans point de mesure ni définition de la récompense tracée)",
+   "page": null
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "Plots show the mean ± std across 5 random seeds.",
+   "page": 8
+  },
+  "Y3": {
+   "value": 8,
+   "quote": "with gains across all six environments [...] We consider two agents—a two-dimensional point and a",
+   "page": 8
+  },
+  "Y4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (« with gains across all six environments », « BGES is the only method that drives the agent to the goal »)",
+   "page": null
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (TRPO via Dhariwal et al., mais NSR-ES et NoisyNet-TRPO sans origine dite)",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "A sensitivity analysis investigating a) the impact of the embedding and b) the number of previous policies [...] using 2 appears to work best, but both 1 and 5 do learn the correct behavior.",
+   "page": 5
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (bibliothèque ray citée sans version)",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "Plots show the mean ± std across 5 random seeds.",
+   "page": 8,
+   "kind": "std"
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Pages citées pour Q2, Q3, Q4, Y9 : pages du supplément (Y2020_019-supp.pdf). Q5 : le dépôt est présenté comme une démo (« a demo to build intuition »), codé yes comme lien vers du code. Q6 : « we did not perform any hyperparameter optimization » lu comme absence de méthode de choix, no. X7 : temps d'horloge en secondes par méthode sur un CPU (Tableau 1), lu comme quantité de calcul ; hésitation. Y3 : six tâches BGPG et deux tâches trompeuses BGES. Y9 : nombre de politiques précédentes (1, 2, 5) lu comme hyperparamètre."
+}

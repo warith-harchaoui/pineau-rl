@@ -1,0 +1,143 @@
+{
+ "id": "Y2019_017",
+ "coder": "M1",
+ "title": "Modelling the Dynamics of Multiagent Q-Learning in Repeated Symmetric Games: a Mean Field Theoretic Approach",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We validate our model through comparisons with agent-based simulations on typical symmetric bimatrix games",
+   "page": 1
+  },
+  "Q2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "the learning rate η is set to 0.1 and the exploration temperature τ is set to 2",
+   "page": 7
+  },
+  "Q4": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 100,
+   "quote": "To smooth out the randomness, we run 100 simulations for each setting.",
+   "page": 7
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "theory",
+   "quote": "we compare the behaviours obtained by our mean field theoretic model with the behaviours obtained from agent-based simulations",
+   "page": 7
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "we compare the expected Q-values ErQt s and the expected policy Erxt s obtained",
+   "page": 8
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y3": {
+   "value": 4,
+   "quote": "we select four typical types of symmetric bimatrix games to experiment on",
+   "page": 8
+  },
+  "Y4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y5": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "yes",
+   "quote": "Table 2: The typical symmetric bimatrix games that we experiment on.",
+   "page": 8
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Article théorique (X5 theory) dont les expériences sont des simulations jouets sur jeux matriciels : Q7 no par l'écart 4. Q4 na : aucune méthode concurrente, la comparaison oppose le modèle aux simulations. Y4 no : le modèle colle aux simulations partout, aucun écart montré. Y7 yes : les jeux sont entièrement spécifiés par leurs matrices de gains (écart 19). Y9 no : on fait varier la distribution initiale des Q-valeurs et m, conditions de l'expérience plutôt qu'hyperparamètres."
+}

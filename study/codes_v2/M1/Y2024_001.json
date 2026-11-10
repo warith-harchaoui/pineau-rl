@@ -1,0 +1,144 @@
+{
+ "id": "Y2024_001",
+ "coder": "M1",
+ "title": "Optimistic Critic Reconstruction and Constrained Fine-Tuning for General Offline-to-Online RL",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "In this section, we perform experiments to validate the effectiveness of the proposed method on",
+   "page": 9
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "we adopt the same network architecture as offline phase but apply",
+   "page": 30
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "All hyper-parameters are the same as the paper.",
+   "page": 29
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "available at https://github.com/QinwenLuo/OCR-CFT.",
+   "page": 1
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "Without special hyper-parameter optimization, we just update the reference policy per",
+   "page": 19
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 5,
+   "quote": "We run all methods with five random seeds and report their averaging results.",
+   "page": 9
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Justification: We run our methods in 5 random seeds and report the results including the",
+   "page": 37
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "Compared with the baseline methods, our methods outperform much in D4RL Mujoco locomotion",
+   "page": 14
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "the time cost for different phases in Table 5, evaluated on an Nvidia 3070 GPU.",
+   "page": 21
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "Outside parenthesis: [...] scores at the end of 100k online steps.",
+   "page": 14
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "Justification: We run our methods in 5 random seeds and report the results including the [...] average and standard deviation.",
+   "page": 37
+  },
+  "Y3": {
+   "value": 3,
+   "quote": "MuJoCo and AntMaze tasks, including HalfCheetah, Hopper, Walker2d and AntMaze",
+   "page": 9
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "Although the ensemble method Off2On can achieve better final performance than our methods in",
+   "page": 9
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "reproduce the results by the code from CORL",
+   "page": 29
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "Since there is a lack of hyper-parameters for these tasks in many related work",
+   "page": 18
+  },
+  "Y7": {
+   "value": "yes",
+   "quote": "halfcheetah-medium-v2",
+   "page": 8
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "some experiments using a high UTD ratio of 10",
+   "page": 20
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "std",
+   "quote": "The solid lines and shaded regions represent mean and standard deviation.",
+   "page": 15
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q3 no : l'annexe H décrit seuils, β et choix d'implémentation en prose, sans taux d'apprentissage ni taille de lot pour la phase en ligne. X7 yes : tableau 5, phase hors ligne CQL 5,4 h pour 1M pas sur une RTX 3070 (une seule GPU) ; la liste de contrôle répond pourtant [No]. X3 no, mais à signaler : la politique de référence est « la meilleure politique historique pendant les évaluations en ligne », ce qui injecte de l'information de test dans la méthode (dit en C.3). Y3 = 3 : HalfCheetah, Hopper, Walker2d (variantes de jeux de données comptées une fois) ; AntMaze n'est qu'en annexe. Y5 yes : CORL et dépôts officiels pour chaque référence, PROTO réécrit par les auteurs. Y9 yes : rapport UTD 10 (figure 12) ; balayage aussi de l'intervalle de mise à jour de la référence."
+}

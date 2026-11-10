@@ -1,0 +1,144 @@
+{
+ "id": "Y2024_017",
+ "coder": "M1",
+ "title": "AMAGO-2: Breaking the Multi-Task Barrier in Meta-Reinforcement Learning with Transformers",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "Large-scale [...] comparisons in Meta-World ML45, Multi-Game Procgen, Multi-Task POPGym,",
+   "page": 1
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "All of our experiments use causal Transformers trained with the AdamW",
+   "page": 18
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Table 1 provides the list of hyperparameters used in",
+   "page": 18
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "Our experimental setup allows for a direct ablation where all other details can be held",
+   "page": 6
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Code for the agent and multi-task environments used in our experiments is available on GitHub at [...] UT-Austin-RPL/amago.",
+   "page": 18
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "and only tune the bin count B (Table 2).",
+   "page": 20
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "by randomly generating a train/test split over 68 of BabyAI’s task configurations as provided by",
+   "page": 10
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 3,
+   "quote": "All error bars indicate the maximum and minimum metric across three random trials.",
+   "page": 7
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "All error bars indicate the maximum and minimum metric across three random trials.",
+   "page": 7
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We build upon recent advancements in",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "All of the results in this paper were completed on NVIDIA A5000 GPUs.",
+   "page": 18
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "(Center) Average success rate over tasks,",
+   "page": 7
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "All error bars indicate the maximum and minimum metric across three random trials.",
+   "page": 7
+  },
+  "Y3": {
+   "value": 5,
+   "quote": "comparisons in Meta-World ML45, Multi-Game Procgen, Multi-Task POPGym,",
+   "page": 1
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "the default Q-dependent update performs",
+   "page": 9
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "PPO agent from the POPGym codebase",
+   "page": 7
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "The cutoff of dimension 30 is arbitrary but some limit is necessary",
+   "page": 20
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "We use [...] the standardized v5 variants of the Atari environments in Gymnasium",
+   "page": 21
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "Solid bars in Figure 6 show",
+   "page": 8
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Figure 13: Bin Counts in POPGym. We compare two label space sizes (B) with the same Rlow and",
+   "page": 20
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "minmax",
+   "quote": "All error bars indicate the maximum and minimum metric across three random trials.",
+   "page": 7
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X5 classic : un transformeur entraîné de zéro par RL (écart 18), même si l'introduction parle de modèles de langue. Q4 yes, avec hésitation : les références principales sont les variantes de mise à jour (Dep./Ind.), mêmes tableaux 1 et 2 ; PPO-GRU vient du code de POPGym sans hyperparamètres listés. X1 = 3 essais pour Meta-World et POPGym (4 pour Atari et BabyAI, 2 pour Procgen). Y3 = 5 domaines multitâches ; Procgen facile et mémoire-difficile comptent pour un. Y6 yes : tâches POPGym à espace d'action ou d'observation de dimension 30 ou plus exclues, raison donnée. Y7 no : Atari v5 seulement ; Procgen, POPGym, BabyAI et Meta-World sans version. Y9 yes : nombre de bins B présenté comme hyperparamètre, comparé sur deux tâches POPGym (figure 13)."
+}

@@ -1,0 +1,144 @@
+{
+ "id": "Y2020_014",
+ "coder": "M6",
+ "title": "Monte-Carlo tree search as regularized policy optimization",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "Finally, Section 5 shows that this modified [...] algorithm outperforms AlphaZero on Atari games and con- [...] tinuous control tasks.",
+   "page": 1
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "we assume that the policy πθ (a|x) is parameterized by a [...] neural network θ.",
+   "page": 1
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "Hyperparameters choice generally follows those of (Schrittwieser et al., 2019), with the exception that we use the Adam [...] optimizer with a constant learning rate of 0.001.",
+   "page": 2
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "We use the same set of hyper-parameters [...] for MuZero and A LL; these parameters were tuned on MuZero.",
+   "page": 4
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "The hyper-parameters of the algo- [...] rithms are tuned to achieve the maximum possible perfor- [...] mance for baseline MuZero on the Ms Pacman level of the",
+   "page": 6
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (évaluation sur les jeux d'entraînement)",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (« statistically significant » affirmé sans test décrit)",
+   "page": null
+  },
+  "X1": {
+   "value": 8,
+   "quote": "we compare the episodic return of A LL [...] vs. MuZero averaged over 8 seeds",
+   "page": 7
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "The [...] shaded areas correspond to the range of the best and worst seed.",
+   "page": 7
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "yes",
+   "quote": "The hyper-parameters of the algo- [...] rithms are tuned to achieve the maximum possible perfor- [...] mance for baseline MuZero on the Ms Pacman level of the",
+   "page": 6
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "we propose a variant [...] of AlphaZero which uses the exact solution to",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens (pas un article llm)",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Our experimental results have been obtained using either 4 or 8 Tesla v100 GPUs for learning",
+   "page": 1
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "The solid line corresponds to the average score (solid line) [...] and the 95% confidence interval (shaded area) over the 8 seeds, averaged for each seed over buckets of 2000 learner steps",
+   "page": 4
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "The [...] shaded areas correspond to the range of the best and worst seed.",
+   "page": 7
+  },
+  "Y3": {
+   "value": 6,
+   "quote": "We provide results on a subset of Atari games [...] in Figure 3, which show that the performance gains due to π̄",
+   "page": 7
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "WALKER -S TAND 937 357 959 951",
+   "page": 8
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "obtained with a scaled-down version of MuZero (Schrittwieser et al., 2019). In particular, our implementation uses smaller",
+   "page": 1
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (ni version de l'ALE ni de la DeepMind Control Suite)",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Comparison of the score (median score over 3 seeds) of [...] MuZero (red: using π̂) and A LL (blue: using π̄) after 100k learner [...] steps as a function of Nsim on Cheetah Run of the Control Suite.",
+   "page": 5
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "minmax",
+   "quote": "we represent [...] dispersion between seeds using the min-max interval over the 6 seeds (shaded area) instead of using the standard deviation",
+   "page": 4
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Les citations de Q3, Q4, X7, Y1, Y4, Y5 et Y11 viennent de Y2020_014-supp.pdf, avec la page du supplément. X1 = 8 (Ms Pacman, section 5.1) ; les autres figures ont 6 ou 3 graines. Q6 yes sur le critère dit (maximiser MuZero sur Ms Pacman), cas limite proche de « tuned ». X7 yes : 4 ou 8 GPU V100 avec « 500 learner steps (approximately 4 minutes of wall-clock time) » et 500k pas, durée totale déduite ; cas limite. Y5 yes : MuZero réimplémenté (« our implementation »), PPO depuis OpenAI baselines, D4PG recopié de Tassa et al. Y9 yes : balayage de Nsim (nombre de simulations), présenté comme budget de la méthode. Y11 kind minmax (figure 3 du texte principal) ; IC à 95 % en annexe."
+}

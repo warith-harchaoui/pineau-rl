@@ -1,0 +1,144 @@
+{
+ "id": "Y2024_008",
+ "coder": "M8",
+ "title": "Momentum for the Win: Collaborative Federated Reinforcement Learning across Heterogeneous Environments",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We first use tabular environments to verify our theories on",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "All policies are parameterized by the fully connected neural network which has two hidden layers",
+   "page": 8
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "We adopted a local step-size of 0.75 and a global step-size of 0.6.",
+   "page": 30
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "The baseline method is denoted by β = 1.",
+   "page": 8
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "The source code is provided in the supplementary materials.",
+   "page": 30
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 16000,
+   "quote": "Each setting was run with 16,000 random seeds.",
+   "page": 8
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "which uses second-order information, shows smaller vari- [...] ance than FEDSVRPG-M, as indicated by the narrower [...] color-shaded regions in the figure.",
+   "page": 9
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We then evaluate both F ED SVRPG-M and F ED HAPG-M’s performance on MuJoCo (Todorov",
+   "page": 7
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture : article classic, pas de modèle de base",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "It has a total of 125GB of RAMA and 4 NVIDIA GeForce RTX 2080 GPU",
+   "page": 30
+  },
+  "Y1": {
+   "value": "no",
+   "quote": "The performance is measured by the average performance function in Eq. (3).",
+   "page": 8
+  },
+  "Y2": {
+   "value": "no",
+   "quote": "Figure 1. Mean rewards over global iterations for the CartPole and HalfCheetah tasks",
+   "page": 8
+  },
+  "Y3": {
+   "value": 3,
+   "quote": "We evaluate the performance of our al- [...] gorithms across two benchmark RL tasks: CartPole and",
+   "page": 8
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "Figure 1. Mean rewards over global iterations for the CartPole and HalfCheetah tasks: (Top): F ED SVRPG-M; (Bottom): F ED HAPG-M.",
+   "page": 8
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "The baseline algo- [...] rithm is the PAVG algorithm (Jin et al., 2022).",
+   "page": 7
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (CartPole, HalfCheetah sans version)",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Table 2. Impact of environment heterogeneity κ and momentum coefficient β.",
+   "page": 8
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "compatible with CUDA Version 11.0",
+   "page": 30
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "other",
+   "quote": "The shaded areas represent the variance of rewards.",
+   "page": 30
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X1 : 16 000 graines pour le cas tabulaire (MDP aléatoires), nombre non dit pour le cas profond (Figure 1). Q3 : pas de taille de lot ni d'horizon ; pas de pas global pour le cas tabulaire. Y4 : lu sur la Figure 1 (FedSVRPG-M sur CartPole finit à égalité avec la référence) et la Table 3 (CartPole, écarts dans le bruit). X3 : le texte retient le meilleur β par tâche, mais toutes les valeurs de β sont montrées ; codé no. Y2 : ± de la Table 2 et bandes de la Figure 1 non définies ; seules la Figure 2 et la Table 3 (annexe) parlent de variance. Walker n'apparaît qu'en annexe : non compté dans Y3."
+}

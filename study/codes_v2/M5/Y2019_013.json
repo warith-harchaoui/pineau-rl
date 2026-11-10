@@ -1,0 +1,143 @@
+{
+ "id": "Y2019_013",
+ "coder": "M5",
+ "title": "Using a Logarithmic Mapping to Enable Lower Discount Factors in Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "Finally, we test our approach in a more complex setting by comparing the performance of DQN",
+   "page": 8
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "Our LogDQN implementation consists of a modification of the Dopamine’s DQN code.",
+   "page": 8
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "For the other hyper-parameters of LogDQN we used k = 100, c = 0.5, βlog = 0.0025, and βreg = 0.1. [les autres hyperparamètres de DQN relèvent de Dopamine sans version ; détails renvoyés à un supplément absent]",
+   "page": 8
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "This framework not only contains open-source code of several important deep RL methods, but also contains the results obtained with these methods [hyperparamètres des références non listés]",
+   "page": 8
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "The code for the experiments can be found at: https://github.com/microsoft/logrl",
+   "page": 8
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "We optimized hyper-parameters using a subset of 6 games. In particular, we performed a scan over the discount factor γ between γ = 0.84 and γ = 0.99.",
+   "page": 8
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens [évaluation sur les jeux d'entraînement, 6 d'entre eux servant aussi au réglage]",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "yes",
+   "quote": "For DQN, γ = 0.99 was optimal; for LogDQN, the best value in this range was γ = 0.96.",
+   "page": 8
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "comparing the performance of DQN [Mnih et al., 2015] with a variant of it that implements our method, which we will refer to as LogDQN",
+   "page": 8
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable : article classic",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "is computed by averaging over the last 10% of each learning curve (i.e., last 20 epochs).",
+   "page": 9
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "non applicable : aucune barre d'erreur (X2 no)",
+   "page": null
+  },
+  "Y3": {
+   "value": 55,
+   "quote": "mean (left) and median (right) [...] scores on 55 Atari games for",
+   "page": 9
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "Relative performance of LogDQN w.r.t. DQN (positive percentage means LogDQN outperforms DQN).",
+   "page": 9
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "This framework not only contains open-source code of several important deep RL methods, but also contains the results obtained with these methods for a set of 60 games",
+   "page": 8
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "While Dopamine provides baselines for 60 games in total, we only consider the subset of 55 games for which human scores have been published",
+   "page": 8
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "The published Dopamine baselines are obtained on a stochastic version of Atari using sticky actions [pas de version de l'ALE ni de Gym]",
+   "page": 8
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Figure 8: Early performance (top) and final performance (bottom) on the chain task.",
+   "page": 8
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "non applicable : aucune barre d'erreur (X2 no)",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Le supplément cité (détails d'implémentation, résultats du réglage) n'est pas dans pdf/ : codé sur le seul article. Y9 : la figure 8 balaie le facteur d'escompte, que l'article présente comme un hyperparamètre, sur la tâche en chaîne. Y3 : 55 jeux Atari pour la conclusion profonde, la tâche en chaîne non ajoutée. Q7 : les 49 jeux hors réglage restent des jeux d'entraînement, codé no."
+}

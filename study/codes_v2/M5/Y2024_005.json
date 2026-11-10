@@ -1,0 +1,144 @@
+{
+ "id": "Y2024_005",
+ "coder": "M5",
+ "title": "Is Value Learning Really the Main Bottleneck in Offline RL?",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "aggregated from a total of 15,488 runs (8 seeds for each cell",
+   "page": 4
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "Q̄ denotes the target Q network",
+   "page": 16
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Tables 2 and 3 list the common and environment-specific hyperparameters, respectively.",
+   "page": 18
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "Table 4 lists the hyperparameters that we use in our offline-to-online RL and test-time policy improvement experiments.",
+   "page": 18
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "Justification: See the supplementary materials. [pas de lien vers le code des auteurs ; le seul lien GitHub est la bibliothèque jaxrl_m citée]",
+   "page": 25
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "In Figures 1 and 7, we individually tune the policy extraction hyperparameter (α for AWR and DDPG+BC, and N for SfBC) for each cell, and report the performance with the best hyperparameter.",
+   "page": 17
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens [évaluation dans les environnements d'entraînement ; seule une séparation de validation des trajectoires pour les MSE]",
+   "page": null
+  },
+  "Q8": {
+   "value": "yes",
+   "quote": "We report 95% bootstrap confidence intervals or standard deviations for all of [...] the main claims of the paper.",
+   "page": 25
+  },
+  "X1": {
+   "value": 8,
+   "quote": "report the performance averaged over the last 3 evaluations and over 8 seeds",
+   "page": 17
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "numbers after “±” denote standard",
+   "page": 4
+  },
+  "X3": {
+   "value": "no",
+   "quote": "report the performance with the best hyperparameter",
+   "page": 17
+  },
+  "X4": {
+   "value": "yes",
+   "quote": "In each matrix, we individually tune the hyperparameter for policy extraction (α or N ) for each entry.",
+   "page": 5
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "we perform a systematic empirical study of (1) value learning, (2) policy extraction, and (3) policy generalization in offline RL problems",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable : article classic",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "We use an internal cluster consisting of A5000 GPUs to run our experiments. Each experiment in our work takes no more than 18 hours.",
+   "page": 18
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "We evaluate the performance of the agent every 100K steps with 50 rollouts, and report the performance averaged over the last 3 evaluations and over 8 seeds.",
+   "page": 17
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "8 seeds each, error bars denote 95% confidence intervals",
+   "page": 10
+  },
+  "Y3": {
+   "value": 8,
+   "quote": "we consider eight environments (Figure 10) across state- and pixel-based",
+   "page": 4
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "The table shows that DDPG+BC is better than or as good as AWR in 15 out of 16 settings.",
+   "page": 5
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "Our implementation is based on jaxrl_minimal [20] and the official implementation of HIQL [44] (for offline goal-conditioned RL).",
+   "page": 18
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "For the dataset for gc-antmaze-large in our datascaling analysis, we collect 10M transitions using a noisy expert policy [jeux construits par les auteurs et non publiés ; ExORL sans version]",
+   "page": 17
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens [les « états de test » sont ceux des mêmes environnements]",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "we draw data-scaling matrices with different values of α (in Equations (1) and (2)), a hyperparameter that interpolates between RL and BC.",
+   "page": 6
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "std",
+   "quote": "numbers after “±” denote standard",
+   "page": 4
+  },
+  "Y12": {
+   "value": "yes",
+   "quote": "We report 95% bootstrap confidence intervals or standard deviations for all of [...] the main claims of the paper.",
+   "page": 25
+  }
+ },
+ "doubts": "Article d'analyse : les « références » sont les méthodes d'extraction et d'apprentissage de valeur comparées, toutes réglées case par case (Q4, X4, Y5). X3 : meilleur hyperparamètre par case et meilleure des évaluations déterministe/stochastique choisis sur les résultats montrés ; sélection d'hyperparamètre, pas de graines, codé no. Q8 et Y12 : intervalles bootstrap à 95 % annoncés dans la liste de contrôle, les figures disant seulement « 95% confidence intervals ». Y11 : écarts types (tableau 1) et IC à 95 % (figures 6 et 8) ; kind std."
+}

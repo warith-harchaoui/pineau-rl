@@ -1,0 +1,147 @@
+{
+ "id": "Y2024_011",
+ "coder": "M3",
+ "title": "A Tractable Inference Perspective of Offline RL",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "This section takes gradual steps to study whether Trifle can mitigate",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "we train two auxiliary GPT models using the offline dataset",
+   "page": 18
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "we adopt the same model specification and training pipeline as TT or DT",
+   "page": 18
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "Results of the baselines are acquired from their original papers.",
+   "page": 6
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Our code is available at https://github.com/liebenxj/Trifle.git",
+   "page": 1
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "which is selected by running grid search on ϵ ∈ [0.1, 0.25]",
+   "page": 22
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 12,
+   "quote": "The results of Trifle are averaged over 12 random seeds",
+   "page": 6
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "seeds, with mean and standard deviations reported.",
+   "page": 9
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "The Gym-MuJoCo benchmark suite collects trajectories in 3 locomotion",
+   "page": 7
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent : article classic",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "It only takes 30-60 minutes ( 20s per epoch, 100-200 epochs) to train a PC on one GPU",
+   "page": 22
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "The results are normalized such that a well-trained SAC model hits 100 and a random policy has a 0 score.",
+   "page": 7
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "seeds, with mean and standard deviations reported.",
+   "page": 9
+  },
+  "Y3": {
+   "value": 5,
+   "quote": "constructs 3 datasets (Medium-Expert, Medium, Medium-Replay) for every environment [...] We evaluate the above algorithms on two stochastic Gym environments: Taxi and FrozenLake.",
+   "page": [
+    7,
+    8
+   ]
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "It also succeeds in achieving 7 state-of-the-art scores out of 9 benchmarks.",
+   "page": 7
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "Results of the baselines are acquired from their original papers.",
+   "page": 6
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "In the 3 unreported hopper environments, the modified DT fails to achieve the original DT scores.",
+   "page": 7
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We can see that Trifle is robust to the hyperparameter ϵ and consistently outperforms the base policy TT.",
+   "page": 22
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "seeds, with mean and standard deviations reported.",
+   "page": 9,
+   "kind": "std"
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X5 : GPT et transformeurs entraînés de zéro sur des trajectoires de RL, donc classic (écart 18). X3 : pour Taxi, le DT de référence est pris au meilleur des 6 RTG de conditionnement ; sélection en faveur d'une référence, pas du résultat principal, codé no. Y1 : modèle entraîné évalué une fois, score normalisé défini ; point de mesure non dit, codé yes par la règle « un seul chiffre pour le modèle entraîné » (écart 19), avec hésitation. Y3 : 3 environnements MuJoCo + Taxi + FrozenLake ; les variantes à actions contraintes réutilisent les mêmes modèles. Y5 : références du Tableau 1 recopiées avec leur source ; DoC (Taxi) sans origine, expérience secondaire. Q7/Y8 : contraintes d'action imposées à l'inférence, présentées comme application au RL sûr, pas comme test hors distribution."
+}

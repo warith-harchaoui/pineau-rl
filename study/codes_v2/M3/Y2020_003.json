@@ -1,0 +1,146 @@
+{
+ "id": "Y2020_003",
+ "coder": "M3",
+ "title": "On the Stability and Convergence of Robust Adversarial Reinforcement Learning: A Case Study on Linear Quadratic Systems",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We verify via simulations that this finite-difference method works well.",
+   "page": 9
+  },
+  "Q2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (politiques linéaires K, L dans un système LQ, aucun réseau)",
+   "page": null
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (réglages de la Figure 2 renvoyés à l'annexe C.4.2, absente du PDF)",
+   "page": null
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "The update of L follows NPG with stepsize η = 10−10 .",
+   "page": 5
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (exemples LQ jouets, article theory, écart 4)",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "theory",
+   "quote": "we reexamine the effectiveness of RARL under a fundamental robust control setting: the linear quadratic (LQ) case.",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent : article theory",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "(b) and (c) show the convergence of all proposed RARL schemes after the robustification. The iterations denote the ones for updating K.",
+   "page": 9
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "absent : X2 vaut no",
+   "page": null
+  },
+  "Y3": {
+   "value": 2,
+   "quote": "Consider A = 2.7, B = −0.45, C = −0.15, Ru = 1, Rw = 2.0736, Q = 1. [...] the two-point approach efficiently robustifies the non-convergent case in §C.1.1",
+   "page": [
+    5,
+    9
+   ]
+  },
+  "Y4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (implémentation du RARL conventionnel non dite ; Matlab seulement mentionné)",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (Exemple 3.2 entièrement spécifié, mais le cas de la Figure 2 est défini dans l'annexe C.1.1, absente)",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (« We have implemented the algorithm with different values of NL », résultats renvoyés à l'annexe C absente)",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (Matlab cité sans version)",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "absent : X2 vaut no",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Les simulations détaillées sont renvoyées à l'annexe C, absente du PDF : codé sur ce qui existe. Q4 : le RARL conventionnel est la référence, son seul hyperparamètre (pas de NPG) est donné ; yes avec hésitation. Y1 : distance au NE, quantité qui n'est pas un score de politique (écart 19). Y3 : deux systèmes LQ (Exemple 3.2 et cas C.1.1) ; Y7 no car le second n'est spécifié que dans l'annexe absente."
+}

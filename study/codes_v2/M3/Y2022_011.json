@@ -1,0 +1,149 @@
+{
+ "id": "Y2022_011",
+ "coder": "M3",
+ "title": "A Theoretical Understanding of Gradient Bias in Meta-Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We conduct experiment on eight environments of Atari games.",
+   "page": 10
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "1) Baseline Advantage Actor-critic(A2C) algorithm",
+   "page": 10
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (réglages renvoyés aux annexes I.1 à I.3, absentes du PDF)",
+   "page": null
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "We open source our code at https://github.com/Benjamin-eecs/Theoretical-GMRL.",
+   "page": 7
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 5,
+   "quote": "Experimental results on Atari game over 5 random seeds.",
+   "page": 10
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Experiment result of LOLA-DiCE over 10 seeds. [bandes ombrées visibles sur les Figures 3 et 4, non définies]",
+   "page": 9
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We study tabular MDPs empirically and offer quantitative evidence [...] We conduct experiment on eight environments of Atari games.",
+   "page": [
+    1,
+    10
+   ]
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent : article classic",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (calcul renvoyé à l'annexe I, absente)",
+   "page": null
+  },
+  "Y1": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (« Return » tracé sans point de mesure ni définition)",
+   "page": null
+  },
+  "Y2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (bandes des Figures 3 et 4 jamais définies)",
+   "page": null
+  },
+  "Y3": {
+   "value": 7,
+   "quote": "we conduct a tabular MDP experiment to show the existence of two biases [...] we consider a Iterated Prisoner Dilemma (IPD) problem [...] In Fig. (4), we show five environments comparing three variants of algorithm",
+   "page": [
+    7,
+    10
+   ]
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "Note that the fact that A2C algorithms can achieve better results compared with 3-step MGRL is consistent with the results",
+   "page": 10
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "the default batch size 128 fails while the batch size 1024 succeeds.",
+   "page": 9
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (type des bandes jamais nommé)",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Annexes (B, F, G, I) absentes du PDF : codé sur ce qui existe. X5 : article théorique, mais compare des estimateurs sur Atari, donc classic (écart 18). Q2 : réseaux non dits explicitement, déduits d'A2C sur Atari. X1 : 5 graines pour Atari (MGRL), 10 pour LOLA ; j'ai retenu Atari. Y1 : la corrélation au gradient exact (MDP tabulaire) est définie, mais les comparaisons de méthodes (LOLA, Atari) tracent un « Return » non défini ; no. Y3 : MDP tabulaire, IPD et 5 jeux Atari du texte principal. Y4 : dans Assault (Figure 4), A2C dépasse MGRL+LVC, et le texte le dit pour MGRL."
+}

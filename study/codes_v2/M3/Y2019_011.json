@@ -1,0 +1,149 @@
+{
+ "id": "Y2019_011",
+ "coder": "M3",
+ "title": "Value Propagation for Decentralized Networked Deep Multi-agent Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "we first do an ablation study on a simple random MDP problem, we then evaluate the performance on the cooperative navigation task",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We approximate the local policy, value function and dual function of each agent by deep neural networks",
+   "page": 2
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (seul η est donné ; détails renvoyés à l'annexe A.4, absente du PDF)",
+   "page": null
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "cumulative reward of value propagation (eta=0.01 and eta=0.1), MA-AC and PCL without communication [bandes ombrées visibles sur la Figure 3, non définies dans le texte]",
+   "page": 8
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We prove a non-asymptotic convergence rate of O(1/T ) with nonlinear function approximation. [...] we then evaluate the performance on the cooperative navigation task",
+   "page": [
+    1,
+    7
+   ]
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent : article classic",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "We see agents achieve lower cumulative reward (averaged over agents) and need more time to find a good policy.",
+   "page": 8
+  },
+  "Y2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (bandes visibles sur les Figures 2 et 3, jamais définies)",
+   "page": null
+  },
+  "Y3": {
+   "value": 2,
+   "quote": "we first do an ablation study on a simple random MDP problem, we then evaluate the performance on the cooperative navigation task",
+   "page": 7
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "although there is a gap between centralized and decentralized algorithm. The centralized PCL converges faster than value propagation",
+   "page": 7
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (MA-AC « adapted » sans dire l'implémentation ; Q-learning indépendant sans origine)",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "yes",
+   "quote": "A discrete MDP is randomly generated with |S| = 32 states. [...] we assume the environment is in a rectangular region with size 2 × 2",
+   "page": [
+    7,
+    8
+   ]
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "we pick η = 0, 0.01, 0.1, 1 in the experiment, where η = 0 corresponds to the pure primal formulation",
+   "page": 7
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (type des bandes jamais nommé)",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Annexe A.4 (détails d'implémentation) absente du PDF : codé sur ce qui existe. X5 : article à théorème, mais compare des méthodes sur un banc usuel (navigation coopérative, MPE modifié), donc classic (écart 18). Y1 : courbes de récompense cumulée moyennée sur les agents par épisode, lu comme courbe d'apprentissage aux points dits. Y3 : MDP aléatoire et navigation coopérative comptés comme deux cadres. Y7 : les deux environnements sont spécifiés dans l'article (paramètres donnés), lu comme versionné ; hésitation pour le MPE modifié. Y9 : η présenté comme paramètre de compromis biais-variance, balayé."
+}

@@ -1,0 +1,143 @@
+{
+ "id": "Y2024_014",
+ "coder": "M6",
+ "title": "Near-Optimal Distributionally Robust Reinforcement Learning with General Lp Norms",
+ "criteria": {
+  "Q1": {
+   "value": "no",
+   "quote": "Justification: Theoretical paper.",
+   "page": 57
+  },
+  "Q2": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens (article sans expérience, Q1 = no)",
+   "page": null
+  },
+  "Q3": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens (article sans expérience, Q1 = no)",
+   "page": null
+  },
+  "Q4": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens (article sans expérience, Q1 = no)",
+   "page": null
+  },
+  "Q5": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens (article sans expérience, Q1 = no)",
+   "page": null
+  },
+  "Q6": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens (article sans expérience, Q1 = no)",
+   "page": null
+  },
+  "Q7": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens (article sans expérience, Q1 = no)",
+   "page": null
+  },
+  "Q8": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens (article sans expérience, Q1 = no)",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens (article sans expérience)",
+   "page": null
+  },
+  "X2": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens (article sans expérience, Q1 = no)",
+   "page": null
+  },
+  "X3": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens (article sans expérience, Q1 = no)",
+   "page": null
+  },
+  "X4": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens (article sans expérience, Q1 = no)",
+   "page": null
+  },
+  "X5": {
+   "value": "theory",
+   "quote": "We provide a near-optimal [...] upper bound and a matching minimax lower bound for the sa-rectangular scenarios.",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens (pas un article llm)",
+   "page": null
+  },
+  "X7": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens (article sans expérience, Q1 = no)",
+   "page": null
+  },
+  "Y1": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens (article sans expérience, Q1 = no)",
+   "page": null
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens (article sans expérience, Q1 = no)",
+   "page": null
+  },
+  "Y3": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens (article sans expérience, Q1 = no)",
+   "page": null
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens (article sans expérience, Q1 = no)",
+   "page": null
+  },
+  "Y5": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens (article sans expérience, Q1 = no)",
+   "page": null
+  },
+  "Y6": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens (article sans expérience, Q1 = no)",
+   "page": null
+  },
+  "Y7": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens (article sans expérience, Q1 = no)",
+   "page": null
+  },
+  "Y8": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens (article sans expérience, Q1 = no)",
+   "page": null
+  },
+  "Y9": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens (article sans expérience, Q1 = no)",
+   "page": null
+  },
+  "Y10": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens (article sans expérience, Q1 = no)",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens (article sans expérience, Q1 = no)",
+   "page": null
+  },
+  "Y12": {
+   "value": "na",
+   "quote": "absent après lecture des sections expériences, annexes et liens (article sans expérience, Q1 = no)",
+   "page": null
+  }
+ },
+ "doubts": "Article purement théorique : les figures 1 et 2 comparent des bornes de complexité, sans expérience numérique ; la liste de contrôle répond [NA] « Theoretical paper » à toutes les questions d'expériences. Pages 14 à 56 (preuves) parcourues sans y trouver de simulation."
+}

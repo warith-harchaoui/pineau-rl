@@ -1,0 +1,144 @@
+{
+ "id": "Y2022_009",
+ "coder": "M1",
+ "title": "Optimizing Sequential Experimental Design with Deep Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "In this section we compare our approach to several base-",
+   "page": 5
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "The summary network Bψ consisted of 2 fully connected layers with 128 units and ReLU activation",
+   "page": 19
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Hyparparameter choices for the different SED problems are enumerated in the table below.",
+   "page": 19
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "We used the official DAD implementation published by Foster et al. (2021) and available at https://github.com/ae-",
+   "page": 19
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "See https://github.com/csiro-mlai/RL-BOED",
+   "page": 5
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "Values were chosen by linear search over each hyperparameter independently, with the following search spaces",
+   "page": 19
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 10,
+   "quote": "RL among 10 agents each trained with its own random seed.",
+   "page": 5
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Trendlines are the means and [...] shaded regions are the standard errors aggregated from 2000",
+   "page": 5
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "Hyperparameters were chosen based on the recommendations of Foster et al. (2020) where relevant.",
+   "page": 19
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We used the Randomized [...] ensembled double q-learning (REDQ)",
+   "page": 5
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "all experiments were run on a Slurm cluster node with a single Nvidia Tesla P100 GPU and 4 cores of an",
+   "page": 20
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "Table 1. Lower and upper bounds on EIG at t = 30 for the source [...] location problem, computed using SPCE and SNMC with L = 1e6",
+   "page": 5
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "Trendlines are means and shaded regions are",
+   "page": 6
+  },
+  "Y3": {
+   "value": 3,
+   "quote": "We consider a prey population problem",
+   "page": 7
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "It is noteworthy that the RL method does not outperform",
+   "page": 7
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "For SMC we used the implementation of Moffat et al. (2020)",
+   "page": 19
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "that the DAD and VPCE baselines are absent from the results, [...] as both of these methods do not function in the absence",
+   "page": 8
+  },
+  "Y7": {
+   "value": "yes",
+   "quote": "In this section we include the full description of all the experimental design problems considered in the paper.",
+   "page": 17
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "a myopic agent (derived by setting [...] γ = 0) and a non-myopic agent (γ = 1).",
+   "page": 20
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "All of our code was written in Python using the Pytorch framework for automatic differentiation.",
+   "page": 18
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "se",
+   "quote": "Means and standard errors from 2000 (RL and DAD)",
+   "page": 5
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q4 no : DAD tourne avec l'implémentation officielle sans que ses hyperparamètres soient listés (SMC renvoie à l'article d'origine, VPCE a un tableau). Q7 no : l'évaluation tire de nouveaux θ dans le même a priori, ce que l'article ne présente pas comme des conditions tenues à part. X7 no : matériel nommé, aucune durée d'entraînement ; seuls les temps de déploiement par design sont chiffrés. Y3 = 3 problèmes (localisation de sources, CES, population de proies) ; la version non différentiable de CES compte avec CES. Y5 no : DAD et SMC ont leur dépôt, mais l'origine du code de VPCE n'est pas dite. Y7 yes : les trois problèmes sont entièrement spécifiés par équations et paramètres en annexe B (écart 19). Y9 yes : γ = 0 contre γ = 1 en annexe E, sur une variante simplifiée de la localisation de sources."
+}

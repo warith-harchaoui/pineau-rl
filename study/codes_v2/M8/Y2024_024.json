@@ -1,0 +1,144 @@
+{
+ "id": "Y2024_024",
+ "coder": "M8",
+ "title": "Adaptive Q-Aid for Conditional Supervised Learning in Offline Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "Our primary focus was on the D4RL [...] MuJoCo, AntMaze, and Adroit domains.",
+   "page": 8
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "When K = 1, meaning only the current time step is considered to estimate the action, we use an MLP network.",
+   "page": 7
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "From Table 14 to 15, we provide detailed hyperparameter settings for actor training.",
+   "page": 25
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "The performance for these baselines was sourced from their respective original publications, with two exceptions.",
+   "page": 15
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "The project page is available at https://beanie00.com/publications/qcs.",
+   "page": 1
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "We adopted two sets of hyperparameters per domain to determine the gradient of the monotonic decreasing function w(R(τ )).",
+   "page": 8
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 5,
+   "quote": "We report the mean and standard deviations of the final scores across five random seeds.",
+   "page": 8
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We report the mean and standard deviations of the final scores across five random seeds.",
+   "page": 8
+  },
+  "X3": {
+   "value": "yes",
+   "quote": "We then report the best score achieved across the two target RTGs.",
+   "page": 25
+  },
+  "X4": {
+   "value": "no",
+   "quote": "The performance for these baselines was sourced from their respective original publications, with two exceptions.",
+   "page": 15
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "Offline reinforcement learning (RL) has progressed with return-conditioned su- [...] pervised learning (RCSL)",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture : article classic, pas de modèle de base",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "The training times for IQL, CQL, QDT, and QCS are as follows: IQL - 80 min, CQL - 220 min, QDT - 400 min, and QCS - 215 min.",
+   "page": 25
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "we assess the expert-normalized returns [...] of 10 episodes at each evaluation checkpoint (every 103 gradient steps). Subsequently, we compute the running average of these normalized returns over ten consecutive checkpoints.",
+   "page": 8
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "We report the mean and standard deviations of the final scores across five random seeds.",
+   "page": 8
+  },
+  "Y3": {
+   "value": 6,
+   "quote": "We conducted experiments in three environments: Halfcheetah, Hopper, and Walker2d [...] where umaze, medium, and large indicate map sizes",
+   "page": 8
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "halfcheetah-m-e      90.7     86.7 91.6 94.0        86.8 93.0    92.2       -      -   93.6    96.1   94.7          93.3 ± 1.8",
+   "page": 9
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "In addition, for antmaze-medium and antmaze-large, since there were no reported DT [...] and DC [...] scores, we conducted evaluations using the official codebase.",
+   "page": 15
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "Since there are no reported results for TD3+BC [...] in the Adroit domain, we [...] only compare with the value-based baselines",
+   "page": 20
+  },
+  "Y7": {
+   "value": "yes",
+   "quote": "utilizing three distinct [...] v2 datasets—medium, medium-replay, and medium-expert",
+   "page": 8
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Impact of the QCS weight λ. We examined the effect of λ by varying it from 0.2 to 1.5.",
+   "page": 10
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (requirements.txt présent dans le dépôt, mais l'article n'y renvoie pas)",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "std",
+   "quote": "We report the mean and standard deviations of the final scores across five random seeds.",
+   "page": 8
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q5 : la page de projet (application JavaScript) mène, par son bouton Code, à https://github.com/beanie00/QCS, dépôt visité le 10 novembre 2026 qui contient le code (main_qcs.py, requirements.txt). X3 : le meilleur des deux RTG cibles est rapporté, pour QCS comme pour DT et DC réentraînés, choisi sur l'évaluation. Y3 : 3 environnements MuJoCo et 3 cartes AntMaze (play et diverse comptés comme variantes de données) ; Adroit en annexe seulement, non compté. Y5 : chiffres recopiés avec leur source, DT et DC lancés avec le code officiel. Y6 : combinaisons omises avec raison (Adroit) ; les tirets de la Table 2 ne sont pas expliqués."
+}

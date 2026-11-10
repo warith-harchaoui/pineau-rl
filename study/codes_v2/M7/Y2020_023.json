@@ -1,0 +1,144 @@
+{
+ "id": "Y2020_023",
+ "coder": "M7",
+ "title": "Enhanced POET: Open-ended Reinforcement Learning through Unbounded Invention of Learning Challenges and their Solutions",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "Finally, Figure 5 compares the ANNECS metric of progress",
+   "page": 8
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "is a fully-connected neural network with with 2 hidden layers",
+   "page": 1
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Table 2. Hyperparameters for ES in POET experiments and controls.",
+   "page": 3
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "Table 4. Hyperparameters for PPO experiments.",
+   "page": 6
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "at https://github.com/uber-research/poet,",
+   "page": 6
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "Hyperparameters listed in Table 4 are chosen based on a grid",
+   "page": 5
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "yes",
+   "quote": "cantly underperform POET in solving middle and late stage",
+   "page": 7
+  },
+  "X1": {
+   "value": 5,
+   "quote": "denotes the median across 5 runs and shading denotes the 95%",
+   "page": 8
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "denotes the median across 5 runs and shading denotes the 95%",
+   "page": 8
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "yes",
+   "quote": "Hyperparameters listed in Table 4 are chosen based on a grid",
+   "page": 5
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "of the evolution strategies (ES) algorithm popularized by",
+   "page": 3
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable: famille classic",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "completes a 60,000-iteration POET run in about 12 days",
+   "page": 6
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "mulated number of novel environments created and solved",
+   "page": 6
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "denotes the median across 5 runs and shading denotes the 95%",
+   "page": 8
+  },
+  "Y3": {
+   "value": 1,
+   "quote": "the 2-D bipedal walking environment used in the origi-",
+   "page": 6
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "non applicable: Y3 vaut 1",
+   "page": null
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "We adopt the PPO2 implementation from OpenAI Baselines [the main baseline, original POET, has no stated code origin]",
+   "page": 5
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "Hardcore” environment of OpenAI Gym (Brockman et al., [no version]",
+   "page": 6
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "the NEAT-Python library (McIntyre et al.) is used to initialize [no version]",
+   "page": 1
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "denotes the median across 5 runs and shading denotes the 95%",
+   "page": 8,
+   "kind": "ci"
+  },
+  "Y12": {
+   "value": "yes",
+   "quote": "bootstrapped confidence intervals. Original POET runs gradually",
+   "page": 8
+  }
+ },
+ "doubts": "Q8 : test de Wilcoxon signé (p < 0,01) contre les contrôles. Q6 et X4 : seule la recherche en grille de PPO (référence) est décrite ; le réglage de POET lui-même ne l'est pas, codé yes pour les deux avec hésitation. Y3 : un seul domaine (marche bipède sur parcours générés), donc Y4 na. Y5 : POET original, référence principale de la Fig. 5, sans origine de code dite."
+}

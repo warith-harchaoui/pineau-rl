@@ -1,0 +1,144 @@
+{
+ "id": "Y2022_023",
+ "coder": "M7",
+ "title": "Plan To Predict: Learning an Uncertainty-Foreseeing Model for Model-Based Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "As shown in Figure 2, P2P-MPC significantly outperforms the baselines on several tasks",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "the reward Rm , which cannot be directly computed by definition, is approximated here using a neural network",
+   "page": 6
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "The algorithm for policy learning, the actor-critic network architecture, the boostrapped model ensemble technique and other details are all the same with those in MBPO. [MBPO values not listed]",
+   "page": 3
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Code available at https://github.com/ZifanWu/Plan-to-Predict.",
+   "page": 7
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 5,
+   "quote": "Solid curves represent the mean of runs over 5 different random seeds",
+   "page": 6
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "shaded regions correspond to standard deviation among these runs",
+   "page": 6
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "we first evaluate the empirical performance of P2P on a set of MuJoCo continuous control tasks",
+   "page": 6
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable: famille classic",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "no",
+   "quote": "Figure 2: Comparisons against baselines on MuJoCo. [curves of Average Return, measurement not defined]",
+   "page": 6
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "shaded regions correspond to standard deviation among these runs",
+   "page": 6
+  },
+  "Y3": {
+   "value": 6,
+   "quote": "InvertedDoublePendulum Hopper HalfCheetah",
+   "page": 6
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "In Walker2d, the best rollout length is one step in our implementation and MBPO, thus resulting in similar performance between these two methods.",
+   "page": 7
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "All the environments remain the same with the original version of the tasks [no version]",
+   "page": 3
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Figure 5: Results comparing performances induced by different planning horizons of the model in P2P-MPC.",
+   "page": 8
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "shaded regions correspond to standard deviation among these runs",
+   "page": 6,
+   "kind": "std"
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X7 no malgré la liste de contrôle (« See Appendix B ») : l'annexe B ne chiffre aucun calcul. Y3 : 6 tâches MuJoCo (les labyrinthes D4RL sont une expérience interprétative)."
+}

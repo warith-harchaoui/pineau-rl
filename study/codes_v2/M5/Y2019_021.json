@@ -1,0 +1,143 @@
+{
+ "id": "Y2019_021",
+ "coder": "M5",
+ "title": "Provably Efficient Q-learning with Function Approximation via Distribution Shift Error Checking Oracle",
+ "criteria": {
+  "Q1": {
+   "value": "no",
+   "quote": "Our main theoretical contribution is a provably efficient algorithm for Qlearning with linear function approximation in the episodic Markov decision process (MDP) setting.",
+   "page": 2
+  },
+  "Q2": {
+   "value": "na",
+   "quote": "non applicable : article sans expérience (Q1 no)",
+   "page": null
+  },
+  "Q3": {
+   "value": "na",
+   "quote": "non applicable : article sans expérience (Q1 no)",
+   "page": null
+  },
+  "Q4": {
+   "value": "na",
+   "quote": "non applicable : article sans expérience (Q1 no)",
+   "page": null
+  },
+  "Q5": {
+   "value": "na",
+   "quote": "non applicable : article sans expérience (Q1 no)",
+   "page": null
+  },
+  "Q6": {
+   "value": "na",
+   "quote": "non applicable : article sans expérience (Q1 no)",
+   "page": null
+  },
+  "Q7": {
+   "value": "na",
+   "quote": "non applicable : article sans expérience (Q1 no)",
+   "page": null
+  },
+  "Q8": {
+   "value": "na",
+   "quote": "non applicable : article sans expérience (Q1 no)",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "non applicable : article sans expérience (Q1 no)",
+   "page": null
+  },
+  "X2": {
+   "value": "na",
+   "quote": "non applicable : article sans expérience (Q1 no)",
+   "page": null
+  },
+  "X3": {
+   "value": "na",
+   "quote": "non applicable : article sans expérience (Q1 no)",
+   "page": null
+  },
+  "X4": {
+   "value": "na",
+   "quote": "non applicable : article sans expérience (Q1 no)",
+   "page": null
+  },
+  "X5": {
+   "value": "theory",
+   "quote": "All technical proofs are deferred to the supplementary material.",
+   "page": 2
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable : article theory",
+   "page": null
+  },
+  "X7": {
+   "value": "na",
+   "quote": "non applicable : article sans expérience (Q1 no)",
+   "page": null
+  },
+  "Y1": {
+   "value": "na",
+   "quote": "non applicable : article sans expérience (Q1 no)",
+   "page": null
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "non applicable : article sans expérience (Q1 no)",
+   "page": null
+  },
+  "Y3": {
+   "value": null,
+   "quote": "non applicable : article sans expérience (Q1 no)",
+   "page": null
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "non applicable : article sans expérience (Q1 no)",
+   "page": null
+  },
+  "Y5": {
+   "value": "na",
+   "quote": "non applicable : article sans expérience (Q1 no)",
+   "page": null
+  },
+  "Y6": {
+   "value": "na",
+   "quote": "non applicable : article sans expérience (Q1 no)",
+   "page": null
+  },
+  "Y7": {
+   "value": "na",
+   "quote": "non applicable : article sans expérience (Q1 no)",
+   "page": null
+  },
+  "Y8": {
+   "value": "na",
+   "quote": "non applicable : article sans expérience (Q1 no)",
+   "page": null
+  },
+  "Y9": {
+   "value": "na",
+   "quote": "non applicable : article sans expérience (Q1 no)",
+   "page": null
+  },
+  "Y10": {
+   "value": "na",
+   "quote": "non applicable : article sans expérience (Q1 no)",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "non applicable : article sans expérience (Q1 no)",
+   "page": null
+  },
+  "Y12": {
+   "value": "na",
+   "quote": "non applicable : article sans expérience (Q1 no)",
+   "page": null
+  }
+ },
+ "doubts": "Aucune expérience, aucune figure ni tableau de résultats ; supplément de preuves absent de pdf/, sans effet sur le codage."
+}

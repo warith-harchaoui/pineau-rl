@@ -1,0 +1,144 @@
+{
+ "id": "Y2022_001",
+ "coder": "M1",
+ "title": "Trust Region Policy Optimization with Optimal Transport Discrepancies: Duality and Algorithm for Continuous Actions",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "In this section, we evaluate the performance of OT-TRPO across a variety of environments",
+   "page": 9
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "using a neural network to approximate the value",
+   "page": 8
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "see Appendix A.3 for implementation details",
+   "page": 9
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 10,
+   "quote": "represents the mean ± the standard deviation across 10 independent runs",
+   "page": 9
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "The shaded area [...] represents the mean ± the standard deviation across 10 independent runs",
+   "page": 9
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "Finally, we [...] provide an experimental evaluation of our approach across various control tasks.",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "Figure 1: Cumulative rewards during the training process in different environments. [...] Every policy evaluation in [...] each run is averaged over 10 sampled trajectories.",
+   "page": 9
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "represents the mean ± the standard deviation across 10 independent runs",
+   "page": 9
+  },
+  "Y3": {
+   "value": 6,
+   "quote": "CliffWalking-v0                               Taxi-v3                           MountainCarContinuous-v0",
+   "page": 9
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "Fourth, in continuous settings, the per- [...] formance of OT-TRPO is aligned with the best-performing alternative approach.",
+   "page": 10
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "yes",
+   "quote": "Hopper-v3                               Swimmer-v3                                 HalfCheetah-v3",
+   "page": 9
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "std",
+   "quote": "represents the mean ± the standard deviation across 10 independent runs",
+   "page": 9
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "L'annexe (A.3 détails d'implémentation, A.4 ablation, A.5, A.6) n'est pas dans pdf/ : codé sur l'article seul, d'où Q3, Q4, Y5, Y9 no. X5 classic par l'écart 18 : résultats théoriques mais comparaison sur des bancs usuels (Gym, MuJoCo). Y1 yes avec hésitation : courbes de récompense cumulée, chaque évaluation moyennée sur 10 trajectoires, sans fréquence d'évaluation dite. Y4 yes : en continu, la méthode est seulement « alignée » sur la meilleure référence, ce qui reconnaît des tâches sans victoire."
+}

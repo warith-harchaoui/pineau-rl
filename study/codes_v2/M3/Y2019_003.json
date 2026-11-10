@@ -1,0 +1,150 @@
+{
+ "id": "Y2019_003",
+ "coder": "M3",
+ "title": "Interval timing in deep reinforcement learning agents",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "Here we studied interval timing abilities in deep reinforcement learning agents trained end-to-end",
+   "page": 1
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "It uses a deep residual network [...] The ResNet was followed by a 256-unit MLP.",
+   "page": 3
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "The learner was given trajectories of 100 frames, with a batch size of 32, and used 200 actors. Other parameters were a discount factor of 0.99, baseline cost of 0.5, and entropy cost of 0.01.",
+   "page": 3
+  },
+  "Q4": {
+   "value": "na",
+   "quote": "absent : aucune méthode de référence comparée, seulement des variantes d'architecture de l'agent (récurrent, feedforward)",
+   "page": null
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "We have open-sourced the task (along with other related timing tasks) for use in future work. [...] Available   at    https://github.com/deepmind/lab/tree/master/game_scripts/levels/",
+   "page": [
+    2,
+    8
+   ]
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "successfully interpolating and extrapolating to new sample intervals on which it was not trained",
+   "page": 3
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 15,
+   "quote": "Lines show mean ± s.d. over 15 seeds.",
+   "page": 4
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Lines show mean ± s.d. over 15 seeds.",
+   "page": 4
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "na",
+   "quote": "absent : aucune méthode de référence comparée",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We used an agent based on the A3C architecture",
+   "page": 3
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent : article classic",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (200 acteurs, aucune durée ni quantité de calcul)",
+   "page": null
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "Includes data from one actor in the final 60,000 trials only, thus excluding the initial training phase.",
+   "page": 4
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "Lines show mean ± s.d. over 15 seeds.",
+   "page": 4
+  },
+  "Y3": {
+   "value": 1,
+   "quote": "We designed a task based on a temporal reproduction behavioral paradigm in the neuroscience literature",
+   "page": 2
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "absent : Y3 vaut 1",
+   "page": null
+  },
+  "Y5": {
+   "value": "na",
+   "quote": "absent : aucune méthode de référence comparée (Q4 na)",
+   "page": null
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "Includes data from one actor in the final 60,000 trials only, thus excluding the initial training phase.",
+   "page": 4
+  },
+  "Y7": {
+   "value": "yes",
+   "quote": "In practice, we usually set α to 8 frames, β to zero, and γs evolved within an episode from 2.5 to [...] Available   at    https://github.com/deepmind/lab/tree/master/game_scripts/levels/",
+   "page": [
+    3,
+    8
+   ]
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "successfully interpolating and extrapolating to new sample intervals on which it was not trained",
+   "page": 3
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We first varied the number of hidden units (set at 128 throughout the study) [...] These alterations had minimal effect on the overall performance of the agents.",
+   "page": 7
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (Scipy cité sans version)",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "Lines show mean ± s.d. over 15 seeds.",
+   "page": 4,
+   "kind": "std"
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Le texte renvoie à une annexe A.1 absente du PDF (pas de -supp.pdf) : codé sur ce qui existe. Q5 : le lien mène au code de la tâche (environnement PsychLab), pas au code de l'agent ; codé yes car c'est un lien vers du code annoncé comme contribution. Y6 : la fenêtre « final 60,000 trials » est lue comme une exclusion de données dite. Y7 : tâche entièrement paramétrée dans l'article et publiée, mais version de DeepMind Lab non donnée. Y9 : nombre d'unités cachées lu comme hyperparamètre, résultat en Figure 7."
+}

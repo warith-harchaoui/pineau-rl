@@ -1,0 +1,144 @@
+{
+ "id": "Y2020_017",
+ "coder": "M1",
+ "title": "Multi-task Batch Reinforcement Learning with Metric Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We evaluate in five challenging task distributions from MuJoCo",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "MLP with 9 hidden layers, 1024 nodes each, ReLU activation",
+   "page": 3
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "we use the default hyper-parameters in the official implementation of BCQ, except for the learning",
+   "page": 3
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "We use the default hyper-parameters as provided in the official implementation of PEARL.",
+   "page": 4
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Website: https://sites.google.com/eng.ucsd.edu/multi-task-batch-reinforcement/home [la page mène à github.com/Ji4chenLi/Multi-Task-Batch-RL, dépôt vérifié le 10 novembre 2026]",
+   "page": 1
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "target smoothing rate is searched over {0.005, 0.01, 0.1, 0.5}.",
+   "page": 4
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "Note that the set of training tasks and the set of testing tasks do not overlap.",
+   "page": 10
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "y-axis is average episode returns. The shaded",
+   "page": 7
+  },
+  "X3": {
+   "value": "yes",
+   "quote": "we compute the performance comparisons using the best",
+   "page": 7
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We name our [...] method MBML (Multi-task Batch RL with Metric Learning)",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Our experiments are conducted on a machine with 2 GPUs and 8 CPUs. Table 10 provides the",
+   "page": 18
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "We measure performance by the average returns over unseen tasks, sampled from the same task",
+   "page": 7
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "areas denote one std.",
+   "page": 7
+  },
+  "Y3": {
+   "value": 6,
+   "quote": "We evaluate in five challenging task distributions from MuJoCo [...] and a modified task distribution",
+   "page": 6
+  },
+  "Y4": {
+   "value": "no",
+   "quote": "From Fig. 4, MBML outperforms the baselines by a healthy margin in",
+   "page": 7
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "We use the default hyper-parameters as provided in the official implementation of PEARL.",
+   "page": 4
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "We construct the task distribution UmazeGoal-M by modifying the maze-umaze-dense-v1 from",
+   "page": 10
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "Results on unseen",
+   "page": 7
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "we set m = 0.0, 2.0, 4.0, 8.0 and show the results on the five task",
+   "page": 13
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "std",
+   "quote": "The shaded areas denote one standard deviation.",
+   "page": 13
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q5 : seul lien, une page de projet ; visitée le 10 novembre 2026, elle renvoie au dépôt GitHub du code (écart 6). Q3 no : la première phase (BCQ par tâche) garde les valeurs par défaut de l'implémentation officielle de BCQ, sans version ni liste ; le reste est dans le tableau 2. Q6 yes, avec hésitation : le texte dit reprendre des valeurs de la littérature sans recherche étendue, et donne une grille pour le seul taux de lissage de SAC. X1 null : aucun nombre de graines dans l'article ni l'annexe. X3 yes : comparaison au meilleur point de l'entraînement, mesuré sur les tâches de test. Y3 = 6 distributions de tâches (cinq MuJoCo et UmazeGoal-M). Y7 no : seules UmazeGoal (v1) et Humanoid (v2) ont une version. Y8 yes, avec hésitation : tâches de test nouvelles mais tirées de la même distribution. Pages de Q2, Q3, Q4, Q6, Q7, X7, Y5, Y7, Y9, Y11 : numéros de page dans pdf/Y2020_017-supp.pdf."
+}

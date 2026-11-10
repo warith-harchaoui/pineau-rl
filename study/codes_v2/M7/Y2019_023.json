@@ -1,0 +1,144 @@
+{
+ "id": "Y2019_023",
+ "coder": "M7",
+ "title": "Generalized Off-Policy Actor-Critic",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We benchmarked Off-PAC, ACE, DDPG, TD3, and Geoff-PAC on five Mujoco robot simulation tasks from OpenAI gym",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "To our best knowledge, this is the first time that emphatic algorithms are evaluated in challenging robot simulation tasks with neural network function approximators.",
+   "page": 8
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "More details are provided in supplementary materials [supplement not available; main text gives only lambda1, lambda2, gamma-hat]",
+   "page": 8
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "For DDPG and TD3, we used the same architecture and hyperparameters as Lillicrap et al. (2015) and Fujimoto et al. (2018) respectively. [values not listed]",
+   "page": 8
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "https://github.com/ShangtongZhang/DeepRL",
+   "page": 8
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "We first tuned hyperparameters for Off-PAC. [procedure not described]",
+   "page": 8
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 10,
+   "quote": "All curves are averaged over 10 independent runs and shaded regions indicate standard errors.",
+   "page": 8
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "All curves are averaged over 10 independent runs and shaded regions indicate standard errors.",
+   "page": 8
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "We first tuned hyperparameters for Off-PAC. ACE and Geoff-PAC inherited common hyperparameters from Off-PAC.",
+   "page": 8
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We benchmarked Off-PAC, ACE, DDPG, TD3, and Geoff-PAC on five Mujoco robot simulation tasks from OpenAI gym",
+   "page": 7
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable: famille classic",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "no",
+   "quote": "We monitored Jπ periodically during training. To evaluate Jπ , states were sampled according to π, and vπ was approximated via Monte Carlo return. [evaluation points not given]",
+   "page": 8
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "All curves are averaged over 10 independent runs and shaded regions indicate standard errors.",
+   "page": 8
+  },
+  "Y3": {
+   "value": 5,
+   "quote": "We benchmarked Off-PAC, ACE, DDPG, TD3, and Geoff-PAC on five Mujoco robot simulation tasks from OpenAI gym",
+   "page": 7
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "Geoff-PAC significantly outperforms ACE and Off-PAC in 3 out of 5 tasks. The performance on Walker and Reacher is similar.",
+   "page": 8
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "More details are provided in supplementary materials and all the implementations are publicly available",
+   "page": 8
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "five Mujoco robot simulation tasks from OpenAI gym [no version]",
+   "page": 7
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "We first studied the influence of λ1 on ACE and the influence of λ1 , λ2 , γ̂ on Geoff-PAC in HalfCheetah. The results are reported in supplementary materials. [supplement not available; Figure 1c sweep shows the final policy, not a performance measure]",
+   "page": 8
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "shaded regions indicate standard errors",
+   "page": 8,
+   "kind": "se"
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Pas d'annexe disponible (renvois aux supplementary materials) : Q3, Y9 codés sur ce qui existe. Y1 : Jπ défini mais points d'évaluation « periodically » non chiffrés, codé no. Y5 : « all the implementations are publicly available » dans le dépôt DeepRL des auteurs, lu comme cadre d'entraînement des auteurs où tournent les références. Y9 : la Figure 1c balaie γ̂ et λ2 mais montre la probabilité de la politique finale, pas une performance."
+}

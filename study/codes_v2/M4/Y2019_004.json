@@ -1,0 +1,144 @@
+{
+ "id": "Y2019_004",
+ "coder": "M4",
+ "title": "Off-Policy Deep Reinforcement Learning without Exploration",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "To evaluate the effectiveness of Batch-Constrained deep Q-learning (BCQ) in a high-dimensional setting, we focus on MuJoCo environments in OpenAI gym",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "BCQ uses four main networks: a perturbation model",
+   "page": 11
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "For ξφ (s, a, Φ), the constraint Φ is implemented through a tanh activation multiplied by I · Φ following the final layer. [the value of Φ used in the main experiments is never given; Table 1 and n = 10, λ = 0.75 are given]",
+   "page": 11
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "Our DDPG implementation deviates from some of the default architecture and hyper-parameters to mimic the original implementation more closely",
+   "page": 12
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "our code is made [...] available (https://github.com/sfujim/BCQ)",
+   "page": 2
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (no tuning procedure; only 'we find that only a single choice of hyper-parameters is necessary')",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (evaluation episodes run in the same environments the batches come from; no held-out condition announced)",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 5,
+   "quote": "Our results are reported over 5 random seeds of the behavioral policy, OpenAI Gym simulator and network initialization.",
+   "page": 10
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "The shaded area represents half a standard deviation.",
+   "page": 7
+  },
+  "X3": {
+   "value": "no",
+   "quote": "In particular, we train DDPG across 15 seeds, and select the 5 top performing seeds as the expert policies. [selection of the data-collecting experts, not of the reported runs]",
+   "page": 10
+  },
+  "X4": {
+   "value": "no",
+   "quote": "Across all methods and experiments, for fair comparison, each network generally uses the same hyper-parameters and architecture",
+   "page": 10
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "on MuJoCo environments in OpenAI gym",
+   "page": 7
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable (classic)",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "with evaluations every 5000 time steps, where an evaluation measures the average reward from 10 episodes with no exploration noise",
+   "page": 10
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "The shaded area represents half a standard deviation.",
+   "page": 7
+  },
+  "Y3": {
+   "value": 3,
+   "quote": "HalfCheetah-v1 [...] Hopper-v1 [...] Walker2d-v1",
+   "page": 7
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "besides in the imitation learning task where behavioral cloning un- [...] surprisingly performs the best",
+   "page": 7
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "Our DDPG implementation deviates from some of the default architecture and hyper-parameters to mimic the original implementation more closely",
+   "page": 12
+  },
+  "Y6": {
+   "value": "yes",
+   "quote": "In particular, we train DDPG across 15 seeds, and select the 5 top performing seeds as the expert policies.",
+   "page": 10
+  },
+  "Y7": {
+   "value": "yes",
+   "quote": "HalfCheetah-v1 [...] Hopper-v1 [...] Walker2d-v1",
+   "page": 7
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "In Figure 4 we examine the performance and value estimates of BCQ when varying the hyper-parameter Φ",
+   "page": 7
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "std",
+   "quote": "The shaded area represents half a standard deviation.",
+   "page": 7
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Pages 10-12 and the Φ ablation (page 7) refer to the supplement PDF. Q3: Φ, the key constraint of the method, has no value anywhere. Y5: baselines are 'our DDPG implementation' / 'our DQN implementation', read as a stated reimplementation. Y6: 10 of 15 DDPG expert seeds are dropped and this is said; coded yes, though it concerns data generation rather than reported runs. Y3: the four batch settings are dataset variants of the same three environments, counted once each."
+}

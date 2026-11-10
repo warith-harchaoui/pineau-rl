@@ -1,0 +1,147 @@
+{
+ "id": "Y2024_019",
+ "coder": "M3",
+ "title": "Maximum Entropy Inverse Reinforcement Learning of Diffusion Models with Energy-Based Models",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We first present a 2D example, followed by image generation and anomaly detection experiments.",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "ResNet is used as our value function and is trained from scratch.",
+   "page": 8
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (réglages CIFAR-10, ImageNet et MVTec donnés, mais rien pour LSUN Bedroom ni la durée d'entraînement des images)",
+   "page": null
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "We provide our code at https://github.com/swyoon/ [...] Diffusion-by-MaxEntIRL",
+   "page": 22
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (« we often tune the coefficients of two running costs separately », méthode non dite)",
+   "page": null
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "Each category includes a set of defect-free training images and a test set with both defective and non-defective images.",
+   "page": 19
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "We did not do statistical significance testing.",
+   "page": 22
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens (nombre d'entraînements non dit ; « A single CIFAR-10 run »)",
+   "page": null
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "The standard deviation is computed from 5 independent samplings.",
+   "page": 6
+  },
+  "X3": {
+   "value": "yes",
+   "quote": "The checkpoint with the best FID score is selected as the final model.",
+   "page": 18
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We test DxMI on unconditional CIFAR-10",
+   "page": 8
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent : article classic",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "our CIFAR-10 experiment completes in under 24 hours on two A100 GPUs",
+   "page": 20
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "The checkpoint with the best FID score is selected as the final model.",
+   "page": 18
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "The standard deviation is computed from 5 independent samplings.",
+   "page": 6
+  },
+  "Y3": {
+   "value": 4,
+   "quote": "We test DxMI on unconditional CIFAR-10 [...] We demonstrate the ability of DxMI to train an accurate",
+   "page": [
+    8,
+    9
+   ]
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "Toothbrush 92.2±1.46 94.2±0.20",
+   "page": 20
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (seuls UniAD et DRAEM « adopted from » une source ; origine de SFT-PG, MPDR et des chiffres des Tableaux 2 à 4 non dite)",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "yes",
+   "quote": "CIFAR-10 is retrieved through torchvision API. ImageNet is downloaded from Kaggle and downsampled to 64 × 64 following https://github.com/openai/guided-diffusion",
+   "page": 18
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "First, we investigate the effect of maximum entropy regularization τ .",
+   "page": 7
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (torchvision et TensorFlow cités sans version)",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "The standard deviation is computed from 5 independent samplings.",
+   "page": 6,
+   "kind": "std"
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X5 : la politique est un modèle de diffusion d'images (CIFAR-10 non conditionnel, ImageNet conditionné par la classe), pas conditionné par le langage : classic (écart 18), avec hésitation. Q5 : lien seulement dans la liste de contrôle NeurIPS, qui fait partie du PDF. Q7 : jeu de test MVTec-AD tenu à part ; Y8 no car le test d'anomalies est le cadre standard de la tâche, pas présenté comme généralisation. X2/Y2 : écarts types en 2D (5 échantillonnages) et ± en MVTec ; aucun sur les résultats d'images. X3 : meilleur point de contrôle choisi au FID calculé contre les images d'entraînement, yes. Y3 : CIFAR-10, ImageNet 64, LSUN, MVTec (le 2D est une illustration). Y7 : jeux nommés à ensemble fixe."
+}

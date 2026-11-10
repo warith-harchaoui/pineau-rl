@@ -1,0 +1,144 @@
+{
+ "id": "Y2022_017",
+ "coder": "M1",
+ "title": "Towards Safe Reinforcement Learning with a Safety Editor Policy",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "On 12 Safety Gym tasks and 2 safe racing tasks, SEditor obtains much a higher",
+   "page": 1
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "Both UM and SE are stochastic policies modeled as neural networks",
+   "page": 1
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Table 6: Hyperparameters used in our experiments of Safety Gym for different approaches.",
+   "page": 8
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "In this section, we list the key hyperparameters used by the baselines and SEditor.",
+   "page": 8
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Code is available at https://github.com/hnyu/seditor.",
+   "page": 1
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 9,
+   "quote": "Each compared approach is trained with 9 random seeds.",
+   "page": 8
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "c = 5 × 10−4 . Shaded areas: 95% confidence interval (CI).",
+   "page": 7
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "yes",
+   "quote": "explored both 10−4 and 3 × 10−4 for PPO/FOCOPS, and the former was selected.",
+   "page": 8
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We present SEditor, a two-policy",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "of each compared method in Section 4 takes up to 6 hours training on any of the Safety Gym tasks",
+   "page": 8
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "and ConstraintViolationRate are averaged over the last 10     of the training steps to reduce variances.",
+   "page": 7
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "c = 5 × 10−4 . Shaded areas: 95% confidence interval (CI).",
+   "page": 7
+  },
+  "Y3": {
+   "value": 8,
+   "quote": "We use the P OINT and C AR robots in our experiments. [...] Either of them has three tasks: G OAL, B UTTON, and P USH.",
+   "page": 7
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "baselines on 7 of the 12 tasks, while being comparable on the rest.",
+   "page": 8
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "Our customized Safety Gym is available at https://github.com/hnyu/safety-gym.",
+   "page": 8
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "ci",
+   "quote": "Shaded areas: 95% confidence interval (CI).",
+   "page": 7
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y3 = 8 : les 12 tâches Safety Gym sont 6 cadres (2 robots × 3 tâches) à 2 niveaux, comptés une fois (écart 14), plus les 2 tâches de course. X4 yes, avec hésitation : un réglage du taux d'apprentissage est dit pour PPO-Lag et FOCOPS seulement ; SAC-actor2x-Lag partage la configuration de SEditor. Q6 no : la seule recherche décrite porte sur les références, pas sur SEditor. Y5 no : l'origine du code des références (PPO-Lag, FOCOPS, SAC) n'est pas dite. Y7 no : Safety Gym modifié est publié sur GitHub, mais la course sûre modifiée n'est pas dite publiée et aucune version n'est donnée. Q7/Y8 no : cartes tirées au hasard à chaque épisode, même distribution à l'entraînement et à l'évaluation. Pages de Q3, Q4, X4, X7 : numéros de page dans pdf/Y2022_017-supp.pdf."
+}

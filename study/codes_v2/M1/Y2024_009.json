@@ -1,0 +1,144 @@
+{
+ "id": "Y2024_009",
+ "coder": "M1",
+ "title": "ReLU to the Rescue: Improve Your On-Policy Actor-Critic with Positive Advantages",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We evaluate VSOP against on-policy RL methods across",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "We find that ReLU activation functions (Nair & Hinton,",
+   "page": 23
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "Table 3: Hyper-parameters for PPO, VSOP, RMPG, A3C, and VSPPO algorithms across Gymnasium MuJoCo environments",
+   "page": 24
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "We [...] use the CleanRL (Huang et al., 2022) implementation of",
+   "page": 6
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "make code available at https://github.com/anndvision/vsop.",
+   "page": 6
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "We optimize the hyper-parameters for each algorithm for each set of environments using a Bayesian optimization search",
+   "page": 24
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "for a given environment, models are trained on 200 levels",
+   "page": 8
+  },
+  "Q8": {
+   "value": "yes",
+   "quote": "We perform paired t-tests",
+   "page": 27
+  },
+  "X1": {
+   "value": 10,
+   "quote": "episodes over 10 random seeds",
+   "page": 7
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We report mean values and 95% confidence intervals over ten random seeds.",
+   "page": 23
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "yes",
+   "quote": "We tune RMPG and VSPPO using",
+   "page": 7
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "three changes to the Asynchronous Advantage",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "We use NVIDIA A100 GPUs.",
+   "page": 24
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "Metrics are com- [...] puted wrt to the average episodic return of the last 100",
+   "page": 6
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "We report mean values and 95% confidence intervals over ten random seeds.",
+   "page": 23
+  },
+  "Y3": {
+   "value": 26,
+   "quote": "ProcGen is a set of 16 environments where game levels are procedu-",
+   "page": 8
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "statistical equivalence on 5 environments, and VSOP trails PPO on just 3 environments.",
+   "page": 9
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "use the CleanRL (Huang et al., 2022) implementation of",
+   "page": 6
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "yes",
+   "quote": "we assess the capacity of VSOP to learn policies that generalize to unseen",
+   "page": 6
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "sweep the number of threads and",
+   "page": 7
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "kind": "ci",
+   "quote": "We report mean values and 95% confidence intervals over ten random seeds.",
+   "page": 23
+  },
+  "Y12": {
+   "value": "yes",
+   "quote": "We use the rliable package to evalu-",
+   "page": 6
+  }
+ },
+ "doubts": "Q4 no : SAC et TD3 tournent avec l'implémentation CleanRL sans hyperparamètres listés ni version (le tableau 3 couvre VSOP, VSPPO, RMPG, A3C, PPO). Q5 yes sur le lien GitHub du texte principal ; l'annexe D garde une phrase périmée (« will release a public github repo after the review process »). X1 = 10 graines pour la comparaison MuJoCo principale (5 pour ProcGen, 20 pour Gymnax). X4 yes : RMPG et VSPPO réglés par la même optimisation bayésienne, budget égal de 100 pas pour chaque algorithme sur Gymnax ; PPO, SAC, TD3 de CleanRL ne le sont pas dans l'expérience MuJoCo principale. Y3 = 26 : 10 environnements MuJoCo et 16 jeux ProcGen, la conclusion du résumé portant sur les deux. Y5 yes : CleanRL pour PPO, SAC, TD3 ; A3C avec les réglages de StableBaselines3 sans que l'origine de son code soit dite, j'ai hésité. Y7 no : seul Humanoid-v4 est versionné, une fois. Y9 yes : balayage threads/pas (figure 5)."
+}

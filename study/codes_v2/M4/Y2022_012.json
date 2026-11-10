@@ -1,0 +1,143 @@
+{
+ "id": "Y2022_012",
+ "coder": "M4",
+ "title": "Alleviating \"Posterior Collapse\" in Deep Topic Models via Policy Gradient",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "we make extensive experiments on both quantitative and qualitative aspects",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "we set the same network structure for all deep topic models as [256, 128, 64, 32, 16] from shallow to deep",
+   "page": 7
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "For NTMs, we set the size of their hidden layers as 256, the embedding size as 100 for them incorporating word embeddings, like ETM, SawETM and dc-ETMs, and the mini-batch size as 200. For optimization, we adopt the same Adam optimizer [43] with a learning rate of 1e-2.",
+   "page": 7
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "For PTMs, we use the default hyperparameter settings in their published papers and accelerate the Gibbs sampling with GPU.",
+   "page": 7
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "The implementation is available at https://github.com/yewen99/dc-ETM.",
+   "page": 7
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "yes",
+   "quote": "tations of the testing documents",
+   "page": 8
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens (no number of independent runs)",
+   "page": null
+  },
+  "X2": {
+   "value": "no",
+   "quote": "We report the error bars in Appendix E. [the appendix is not in the PDF; Tables 1 and 2 carry no uncertainty]",
+   "page": 7
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "To make a fair comparison, we set the same network structure for all deep topic models",
+   "page": 7
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "we design a PG-based training algorithm for dc-ETM to further alleviate the information reduction at higher layers",
+   "page": 10
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable (classic)",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "All experiments are performed with an Nvidia RTX 3090 GPU and implemented with PyTorch [44]. [hardware only, no duration]",
+   "page": 7
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "we use the average of heldout-word per- [...] plexities (the lower is the better) [...] ers to measure the document mod-",
+   "page": 8
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "non applicable (X2 no)",
+   "page": null
+  },
+  "Y3": {
+   "value": 4,
+   "quote": "Four widely used document benchmarks, specifically R8 [39], 20Newsgroups (20News) [40], Reuters Corpus Volume I (RCV1) [41] and World Wide Web Knowledge Base (WebKB) [42]",
+   "page": 7
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "although SawETM and WHAI achieve a comparable performance with dc-ETMs on the first hidden layer in Fig. 2(a)",
+   "page": 7
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "We compare the developed dc-ETMs with a series of topic models [no repository, library or reimplementation stated for the baselines]",
+   "page": 7
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "follow the procedure in [21] to preprocess these documents to obtain their BoW representations [no version or published split]",
+   "page": 7
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "implemented with PyTorch [44] [no version]",
+   "page": 7
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "non applicable (X2 no)",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "The PDF has no appendices (A to N are cited, including D for dataset statistics and E for the error bars); coded on what exists (écart 17). X2 no therefore drives Y2 and Y11 to na, although the paper claims error bars exist in the missing Appendix E. Q4 yes rests on the shared structure for all deep topic models plus the published defaults for the probabilistic ones; a stricter reading of 'defaults without listing' would give no. Y7 no: the four corpora are named and cited but the splits and preprocessing live in the missing appendix. X5 classic: RL trains a topic model, not a pretrained language model (écart 18)."
+}

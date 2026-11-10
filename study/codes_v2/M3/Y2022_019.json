@@ -1,0 +1,143 @@
+{
+ "id": "Y2022_019",
+ "coder": "M3",
+ "title": "Influence-Augmented Local Simulators: A Scalable Solution for Fast Deep RL in Large Networked Systems",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "The performance of the method is empirically evaluated",
+   "page": 6
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "Policies: We model policies by FNNs.",
+   "page": 20
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (hyperparamètres de PPO et de l'AIP non donnés)",
+   "page": null
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (évaluation sur le simulateur global, l'environnement cible ; aucune condition tenue à part)",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": 5,
+   "quote": "with periodic evaluations on the GS [...] aged over 5 runs with different random seeds.",
+   "page": 6
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Top: Learning curves of agents trained with the GS, the [bandes ombrées visibles, non définies]",
+   "page": 7
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "on two benchmark domains: traffic control and warehouse",
+   "page": 6
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent : article classic",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "The table below shows a breakdown of the runtime for the two environments and the three simulators. [...] on an Intel i7-8650U CPU with 8 cores.",
+   "page": 16
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "The dotted horizontal lines show the final performance of the agents after 2M timesteps of training.",
+   "page": 17
+  },
+  "Y2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (bandes des Figures 3 et 5 jamais définies)",
+   "page": null
+  },
+  "Y3": {
+   "value": 2,
+   "quote": "on two benchmark domains: traffic control and warehouse",
+   "page": 6
+  },
+  "Y4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "Agents are trained separately with PPO (Schulman et al., [...] 2017) on (1) the global simulator (GS), (2) the influence-",
+   "page": 6
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (Flow et SUMO cités sans version ; entrepôt décrit sans spécification complète)",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (Flow et SUMO cités sans version)",
+   "page": null
+  },
+  "Y11": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (type des bandes jamais nommé)",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q7/Y8 : les agents entraînés sur le simulateur local sont évalués sur le simulateur global ; lu comme l'environnement cible, pas comme des conditions tenues à part (même lecture que pour le RL hors ligne évalué dans le vrai environnement). Y4 : la thèse porte sur le temps d'entraînement, gagné dans les deux domaines ; la performance finale égale celle du GS sans la dépasser, codé no. Y5 : les références (agents GS, IALS non entraîné) tournent dans le cadre PPO des auteurs."
+}

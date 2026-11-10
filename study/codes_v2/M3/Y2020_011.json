@@ -1,0 +1,143 @@
+{
+ "id": "Y2020_011",
+ "coder": "M3",
+ "title": "Reinforcement Learning with Feedback Graphs",
+ "criteria": {
+  "Q1": {
+   "value": "no",
+   "quote": "This work is of theoretical nature and the presented insights are unlikely to have a direct impact on society at large.",
+   "page": 9
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent : Q1 vaut no, critère sans objet (écart 3)",
+   "page": null
+  },
+  "X5": {
+   "value": "theory",
+   "quote": "This work is of theoretical nature and the presented insights are unlikely to have a direct impact on society at large.",
+   "page": 9
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent : Q1 vaut no, critère sans objet (écart 3)",
+   "page": null
+  },
+  "Y3": {
+   "value": null,
+   "quote": "absent : Q1 vaut no, critère sans objet (écart 3)",
+   "page": null
+  },
+  "Q2": {
+   "value": "na",
+   "quote": "absent : Q1 vaut no, critère sans objet (écart 3)",
+   "page": null
+  },
+  "Q3": {
+   "value": "na",
+   "quote": "absent : Q1 vaut no, critère sans objet (écart 3)",
+   "page": null
+  },
+  "Q4": {
+   "value": "na",
+   "quote": "absent : Q1 vaut no, critère sans objet (écart 3)",
+   "page": null
+  },
+  "Q5": {
+   "value": "na",
+   "quote": "absent : Q1 vaut no, critère sans objet (écart 3)",
+   "page": null
+  },
+  "Q6": {
+   "value": "na",
+   "quote": "absent : Q1 vaut no, critère sans objet (écart 3)",
+   "page": null
+  },
+  "Q7": {
+   "value": "na",
+   "quote": "absent : Q1 vaut no, critère sans objet (écart 3)",
+   "page": null
+  },
+  "Q8": {
+   "value": "na",
+   "quote": "absent : Q1 vaut no, critère sans objet (écart 3)",
+   "page": null
+  },
+  "X2": {
+   "value": "na",
+   "quote": "absent : Q1 vaut no, critère sans objet (écart 3)",
+   "page": null
+  },
+  "X3": {
+   "value": "na",
+   "quote": "absent : Q1 vaut no, critère sans objet (écart 3)",
+   "page": null
+  },
+  "X4": {
+   "value": "na",
+   "quote": "absent : Q1 vaut no, critère sans objet (écart 3)",
+   "page": null
+  },
+  "X7": {
+   "value": "na",
+   "quote": "absent : Q1 vaut no, critère sans objet (écart 3)",
+   "page": null
+  },
+  "Y1": {
+   "value": "na",
+   "quote": "absent : Q1 vaut no, critère sans objet (écart 3)",
+   "page": null
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "absent : Q1 vaut no, critère sans objet (écart 3)",
+   "page": null
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "absent : Q1 vaut no, critère sans objet (écart 3)",
+   "page": null
+  },
+  "Y5": {
+   "value": "na",
+   "quote": "absent : Q1 vaut no, critère sans objet (écart 3)",
+   "page": null
+  },
+  "Y6": {
+   "value": "na",
+   "quote": "absent : Q1 vaut no, critère sans objet (écart 3)",
+   "page": null
+  },
+  "Y7": {
+   "value": "na",
+   "quote": "absent : Q1 vaut no, critère sans objet (écart 3)",
+   "page": null
+  },
+  "Y8": {
+   "value": "na",
+   "quote": "absent : Q1 vaut no, critère sans objet (écart 3)",
+   "page": null
+  },
+  "Y9": {
+   "value": "na",
+   "quote": "absent : Q1 vaut no, critère sans objet (écart 3)",
+   "page": null
+  },
+  "Y10": {
+   "value": "na",
+   "quote": "absent : Q1 vaut no, critère sans objet (écart 3)",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "absent : Q1 vaut no, critère sans objet (écart 3)",
+   "page": null
+  },
+  "Y12": {
+   "value": "na",
+   "quote": "absent : Q1 vaut no, critère sans objet (écart 3)",
+   "page": null
+  }
+ },
+ "doubts": "Article sans expérience (bornes de regret et de complexité d'échantillon, preuves en annexe) : Q1 no, tout le reste na (écart 3)."
+}

@@ -1,0 +1,143 @@
+{
+ "id": "Y2022_008",
+ "coder": "M8",
+ "title": "Near-Optimal Sample Complexity Bounds for Constrained MDPs",
+ "criteria": {
+  "Q1": {
+   "value": "no",
+   "quote": "absent après lecture du texte, de l'annexe et des liens : aucune expérience",
+   "page": null
+  },
+  "Q2": {
+   "value": "na",
+   "quote": "non applicable : Q1 vaut no (aucune expérience)",
+   "page": null
+  },
+  "Q3": {
+   "value": "na",
+   "quote": "non applicable : Q1 vaut no (aucune expérience)",
+   "page": null
+  },
+  "Q4": {
+   "value": "na",
+   "quote": "non applicable : Q1 vaut no (aucune expérience)",
+   "page": null
+  },
+  "Q5": {
+   "value": "na",
+   "quote": "non applicable : Q1 vaut no (aucune expérience)",
+   "page": null
+  },
+  "Q6": {
+   "value": "na",
+   "quote": "non applicable : Q1 vaut no (aucune expérience)",
+   "page": null
+  },
+  "Q7": {
+   "value": "na",
+   "quote": "non applicable : Q1 vaut no (aucune expérience)",
+   "page": null
+  },
+  "Q8": {
+   "value": "na",
+   "quote": "non applicable : Q1 vaut no (aucune expérience)",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "non applicable : Q1 vaut no (aucune expérience)",
+   "page": null
+  },
+  "X2": {
+   "value": "na",
+   "quote": "non applicable : Q1 vaut no (aucune expérience)",
+   "page": null
+  },
+  "X3": {
+   "value": "na",
+   "quote": "non applicable : Q1 vaut no (aucune expérience)",
+   "page": null
+  },
+  "X4": {
+   "value": "na",
+   "quote": "non applicable : Q1 vaut no (aucune expérience)",
+   "page": null
+  },
+  "X5": {
+   "value": "theory",
+   "quote": "(b) Did you specify all the training details (e.g., data splits, hyperparameters, how they were chosen)? [N/A]",
+   "page": 13
+  },
+  "X6": {
+   "value": null,
+   "quote": "non applicable : article theory",
+   "page": null
+  },
+  "X7": {
+   "value": "na",
+   "quote": "non applicable : Q1 vaut no (aucune expérience)",
+   "page": null
+  },
+  "Y1": {
+   "value": "na",
+   "quote": "non applicable : Q1 vaut no (aucune expérience)",
+   "page": null
+  },
+  "Y2": {
+   "value": "na",
+   "quote": "non applicable : Q1 vaut no (aucune expérience)",
+   "page": null
+  },
+  "Y3": {
+   "value": null,
+   "quote": "non applicable : Q1 vaut no (aucune expérience)",
+   "page": null
+  },
+  "Y4": {
+   "value": "na",
+   "quote": "non applicable : Q1 vaut no (aucune expérience)",
+   "page": null
+  },
+  "Y5": {
+   "value": "na",
+   "quote": "non applicable : Q1 vaut no (aucune expérience)",
+   "page": null
+  },
+  "Y6": {
+   "value": "na",
+   "quote": "non applicable : Q1 vaut no (aucune expérience)",
+   "page": null
+  },
+  "Y7": {
+   "value": "na",
+   "quote": "non applicable : Q1 vaut no (aucune expérience)",
+   "page": null
+  },
+  "Y8": {
+   "value": "na",
+   "quote": "non applicable : Q1 vaut no (aucune expérience)",
+   "page": null
+  },
+  "Y9": {
+   "value": "na",
+   "quote": "non applicable : Q1 vaut no (aucune expérience)",
+   "page": null
+  },
+  "Y10": {
+   "value": "na",
+   "quote": "non applicable : Q1 vaut no (aucune expérience)",
+   "page": null
+  },
+  "Y11": {
+   "value": "na",
+   "quote": "non applicable : Q1 vaut no (aucune expérience)",
+   "page": null
+  },
+  "Y12": {
+   "value": "na",
+   "quote": "non applicable : Q1 vaut no (aucune expérience)",
+   "page": null
+  }
+ },
+ "doubts": "Aucun : article de théorie (bornes de complexité d'échantillon) ; la liste de contrôle répond N/A à toutes les questions d'expérience ; le supplément ne contient que des preuves."
+}

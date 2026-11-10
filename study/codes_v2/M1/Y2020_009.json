@@ -1,0 +1,143 @@
+{
+ "id": "Y2020_009",
+ "coder": "M1",
+ "title": "Multi-Agent Determinantal Q-Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We consider four coopera-",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "Note that neural networks can be seamlessly applied to",
+   "page": 7
+  },
+  "Q3": {
+   "value": "yes",
+   "quote": "The hyper-parameters settings for Q-DPP are given in Table 1.",
+   "page": 4
+  },
+  "Q4": {
+   "value": "yes",
+   "quote": "The specialized parameter settings for each algorithm are provided in Table 2:",
+   "page": 4
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "Code is released in https://github. [...] com/QDPP-GitHub/QDPP.",
+   "page": 7
+  },
+  "Q6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X1": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Figure 4: (a)-(d):Performance over time on different [bandes ombrées visibles sur les courbes, non définies]",
+   "page": 8
+  },
+  "X3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X4": {
+   "value": "no",
+   "quote": "If not particularly indicated, all the baselines use common settings as listed in Section B.",
+   "page": 4
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We compare Q-DPP with state-of-the-art CTDE solvers for",
+   "page": 7
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y1": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y2": {
+   "value": "no",
+   "quote": "Figure 4: (a)-(d):Performance over time on different [bandes ombrées non définies]",
+   "page": 8
+  },
+  "Y3": {
+   "value": 4,
+   "quote": "We consider four coopera- [...] tive tasks in Fig. 3",
+   "page": 7
+  },
+  "Y4": {
+   "value": "no",
+   "quote": "Fig. 4d shows [...] Q-DPP’s superior performance than all other baselines.",
+   "page": 7
+  },
+  "Y5": {
+   "value": "yes",
+   "quote": "All baselines are imported from Py-",
+   "page": 7
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X2 yes : la figure 4 (rendue en image) montre des bandes autour des courbes, mais ni leur sens ni le nombre de graines n'est dit (X1 null, Y2 no, Y11 no). Y1 no : « Return » au fil des pas, sans point de mesure ni fréquence d'évaluation. Y4 no : la méthode gagne dans les quatre tâches du texte ; l'expérience SMAC où elle égale QMIX est en annexe (cadre d'annexe, non compté). Y7 no : jeux construits par les auteurs, décrits en mots sans spécification complète. Pages de Q3, Q4, X4 : numéros de page dans pdf/Y2020_009-supp.pdf."
+}

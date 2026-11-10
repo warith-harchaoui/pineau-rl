@@ -1,0 +1,144 @@
+{
+ "id": "Y2022_003",
+ "coder": "M3",
+ "title": "RAMBO-RL: Robust Adversarial Model-Based Offline Reinforcement Learning",
+ "criteria": {
+  "Q1": {
+   "value": "yes",
+   "quote": "We evaluate our approach on the following domains.",
+   "page": 7
+  },
+  "Q2": {
+   "value": "yes",
+   "quote": "Each neural network produces a Gaussian distribution over the next state and reward",
+   "page": 6
+  },
+  "Q3": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (« Further details about the hyperparameters are in Appendix B », annexe absente du PDF)",
+   "page": null
+  },
+  "Q4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q5": {
+   "value": "yes",
+   "quote": "The code for our experiments is available at github.com/marc-rigter/rambo.",
+   "page": 7
+  },
+  "Q6": {
+   "value": "yes",
+   "quote": "For each dataset, we choose the rollout length and the adversarial weighting from one of three possible configurations",
+   "page": 8
+  },
+  "Q7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Q8": {
+   "value": "yes",
+   "quote": "Table 3: Comparison between RAMBO [...] outperforms COMBO (p = 0.005).",
+   "page": 9
+  },
+  "X1": {
+   "value": 5,
+   "quote": "We report the normalised performance during the last 10 iterations of training averaged over 5 seeds.",
+   "page": 9
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "± captures the standard deviation over seeds.",
+   "page": 9
+  },
+  "X3": {
+   "value": "yes",
+   "quote": "we ran each of the three hyperparameter configurations for five seeds each, and report the best performance across the three configurations.",
+   "page": 8
+  },
+  "X4": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X5": {
+   "value": "classic",
+   "quote": "We evaluate our approach on widely studied offline RL benchmarks",
+   "page": 1
+  },
+  "X6": {
+   "value": null,
+   "quote": "absent : article classic",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (calcul renvoyé à l'annexe B.8, absente ; JADE2 nommé sans quantité)",
+   "page": null
+  },
+  "Y1": {
+   "value": "yes",
+   "quote": "We report the normalised performance during the last 10 iterations of training averaged over 5 seeds.",
+   "page": 9
+  },
+  "Y2": {
+   "value": "yes",
+   "quote": "± captures the standard deviation over seeds.",
+   "page": 9
+  },
+  "Y3": {
+   "value": 6,
+   "quote": "There are three different environments representing different robots (HalfCheetah, Hopper, [...] There are three different layouts of maze (Umaze, Medium, Large)",
+   "page": 7
+  },
+  "Y4": {
+   "value": "yes",
+   "quote": "For the Medium-Expert datasets, RAMBO is outperformed by most of the baseline algorithms",
+   "page": 8
+  },
+  "Y5": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (origine des chiffres des références renvoyée à l'annexe B.7, absente)",
+   "page": null
+  },
+  "Y6": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y7": {
+   "value": "yes",
+   "quote": "We provide results for all algorithms for the MuJoCo-v2 D4RL datasets and the AntMaze-v0 datasets",
+   "page": 8
+  },
+  "Y8": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens (scores par configuration renvoyés à l'annexe C.2 ; le Tableau 2 est présenté comme ablation du composant adversarial)",
+   "page": null
+  },
+  "Y10": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y11": {
+   "value": "yes",
+   "quote": "± captures the standard deviation over seeds.",
+   "page": 9,
+   "kind": "std"
+  },
+  "Y12": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Annexes B et C absentes du PDF (pas de -supp.pdf) : codé sur ce qui existe. Q8 : p-valeur d'une comparaison RAMBO contre COMBO, test non nommé ; yes. X3 : meilleure des trois configurations choisie sur l'évaluation (réglage en ligne dit), yes. Y3 : trois robots MuJoCo et trois labyrinthes AntMaze, variantes de jeux de données comptées une fois. Y9 : λ = 0 (Tableau 2) présenté comme ablation, donc no."
+}
