@@ -1237,8 +1237,18 @@ stricter one, evaluates on tasks, dynamics or data absent from training.
 It goes from 23\% to 34\% of papers, again with no detectable change. So
 the flaw receded mostly because RL changed terrain. Our grid, broader
 than Pineau's, explains another part of the gap. Classical RL shows no
-detectable change of practice. Experiment E7 measures, on our own
-agents, what modified physics costs.
+detectable change of practice.
+
+\textbf{What modified physics costs (E7).} Our agents were evaluated
+twice, on random seeds never seen in training: in the physics they
+trained in, then with masses made 20\% heavier and friction reduced by
+20\%. For three algorithms out of four, CrossQ still running, 9 pairs of
+algorithm and task out of 12 lose a detectable share of their score. The
+loss depends on the algorithm. On Hopper, PPO keeps only 22\% of its
+score in its PyTorch version and 18\% in its JAX version, while SAC
+keeps 64\%. On Swimmer, none loses. A ranking set in the training
+physics therefore says nothing about robustness: that is what Pineau
+asked to measure by separating training from testing.
 
 \textbf{Benchmarks too simple, in another form (F16).} Pineau asked for
 the version of every benchmark, so that anyone redoing a result works in
@@ -1519,8 +1529,8 @@ and co-authors.
   The blind human rereading of ten papers from 2026 takes place as
   planned in the protocol.
 \item
-  Experiments E2, E4, E5 and E7 follow once the 37 remaining CrossQ
-  training runs finish.
+  Experiments E2, E4 and E5, and E7 for CrossQ, follow once the 37
+  remaining CrossQ training runs finish.
 \item
   The nine remaining GRPO runs restart overnight, with the share of
   cut-off answers measured at every evaluation. Their crashes came from

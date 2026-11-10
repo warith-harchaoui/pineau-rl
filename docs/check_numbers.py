@@ -339,6 +339,13 @@ add("E3 walker", f"vaut {num(w['iqm']['sb3'], 'fr')} avec PyTorch et {num(w['iqm
     f"is {num(w['iqm']['sb3'], 'en')} with PyTorch and {num(w['iqm']['sbx'], 'en')} with JAX, {pct(1 - w['iqm_ratio_sbx_over_sb3'], lang='en')} lower")
 assert w["intervals_overlap"]
 
+# E7, held out (e7.py), three algorithms while CrossQ runs.
+e7 = {k: v for k, v in J("sim/analysis/e7.json").items() if v["done"]}
+assert len(e7) == 12 and sum(v["verdict"] == "loss" for v in e7.values()) == 9  # "9 couples ... sur 12"
+assert all(v["verdict"] != "loss" for k, v in e7.items() if k.endswith("Swimmer-v5"))  # "Sur Swimmer, aucun ne perd"
+add("E7 hopper", f"PPO ne garde que {pct(e7['ppo_sb3/Hopper-v5']['iqm'])} de son score dans sa version PyTorch et {pct(e7['ppo_sbx/Hopper-v5']['iqm'])} dans sa version JAX, quand SAC en garde {pct(e7['sac/Hopper-v5']['iqm'])}",
+    f"PPO keeps only {pct(e7['ppo_sb3/Hopper-v5']['iqm'], lang='en')} of its score in its PyTorch version and {pct(e7['ppo_sbx/Hopper-v5']['iqm'], lang='en')} in its JAX version, while SAC keeps {pct(e7['sac/Hopper-v5']['iqm'], lang='en')}")
+
 # E6, the official Zoo pipeline (e6_official.py).
 e6o = J("sim/analysis/e6_official.json")
 g = e6o["groups"]

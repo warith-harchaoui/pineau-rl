@@ -771,8 +771,16 @@ généralisation (critère Y8), plus exigeant, évalue sur des tâches, des dyna
 absentes de l'entraînement. Il passe de 23 % à 34 % des articles, sans changement détectable non
 plus. La faille a donc reculé surtout parce que le RL a changé de terrain. Notre grille, plus large
 que celle de Pineau, explique une autre part de l'écart. Le RL classique n'a pas changé de pratique
-de façon détectable. L'expérience E7 mesure, sur nos propres agents, ce que coûte une physique
-modifiée.
+de façon détectable.
+
+**Ce que coûte une physique modifiée (E7).** Nos agents ont été évalués deux fois, avec des graines
+aléatoires jamais vues : dans la physique de leur entraînement, puis avec des masses alourdies de 20 %
+et des frottements réduits de 20 %. Pour trois algorithmes sur quatre, CrossQ étant encore en
+cours, 9 couples d'algorithme et de tâche sur 12 perdent une part détectable de leur score. La perte
+dépend de l'algorithme. Sur Hopper, PPO ne garde que 22 % de son score dans sa version PyTorch et
+18 % dans sa version JAX, quand SAC en garde 64 %. Sur Swimmer, aucun ne perd. Un classement établi
+dans la physique d'entraînement ne dit donc rien de la robustesse : c'est ce que Pineau demandait de
+mesurer en séparant l'entraînement du test.
 
 **Les bancs d'essai trop simples, sous une autre forme (F16).** Pineau réclamait la version de
 chaque banc d'essai, pour qu'un résultat se refasse dans le même monde. Dans le RL classique, 26 %
@@ -970,7 +978,7 @@ coauteurs.
 # Ce qui reste à mesurer
 
 - La relecture humaine à l'aveugle de dix articles de 2026, dont le plan est écrit dans le protocole.
-- Les expériences E2, E4, E5 et E7, quand les 37 entraînements CrossQ restants seront finis.
+- Les expériences E2, E4 et E5, et E7 pour CrossQ, quand les 37 entraînements CrossQ restants seront finis.
 - Les neuf essais GRPO restants, relancés la nuit, avec la part de réponses coupées mesurée à chaque évaluation. Leurs plantages venaient d'un calcul GPU coupé par macOS quand la machine sert en même temps ; le code recalcule désormais toute mise à jour corrompue et compte ces recalculs.
 
 # Reproductibilité

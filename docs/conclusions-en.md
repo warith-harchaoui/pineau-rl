@@ -728,8 +728,15 @@ grid, classical RL goes from 33% to 45%, with no detectable change. The generali
 (criterion Y8), a stricter one, evaluates on tasks, dynamics or data absent from training. It goes
 from 23% to 34% of papers, again with no detectable change. So the flaw receded mostly because RL
 changed terrain. Our grid, broader than Pineau's, explains another part of the gap. Classical RL
-shows no detectable change of practice. Experiment E7 measures, on our own agents, what modified
-physics costs.
+shows no detectable change of practice.
+
+**What modified physics costs (E7).** Our agents were evaluated twice, on random seeds never seen in
+training: in the physics they trained in, then with masses made 20% heavier and friction reduced by
+20%. For three algorithms out of four, CrossQ still running, 9 pairs of algorithm and task out of 12
+lose a detectable share of their score. The loss depends on the algorithm. On Hopper, PPO keeps only
+22% of its score in its PyTorch version and 18% in its JAX version, while SAC keeps 64%. On Swimmer,
+none loses. A ranking set in the training physics therefore says nothing about robustness: that is
+what Pineau asked to measure by separating training from testing.
 
 **Benchmarks too simple, in another form (F16).** Pineau asked for the version of every benchmark, so
 that anyone redoing a result works in the same world. In classical RL, 26% of 2026 papers give it for all
@@ -892,7 +899,7 @@ and 1 billion parameters, far from a replication of Shao and co-authors.
 # What remains to be measured
 
 - The blind human rereading of ten papers from 2026 takes place as planned in the protocol.
-- Experiments E2, E4, E5 and E7 follow once the 37 remaining CrossQ training runs finish.
+- Experiments E2, E4 and E5, and E7 for CrossQ, follow once the 37 remaining CrossQ training runs finish.
 - The nine remaining GRPO runs restart overnight, with the share of cut-off answers measured at every evaluation. Their crashes came from GPU work cut short by macOS while the machine was in use; the code now recomputes any corrupted update and counts these recomputations.
 
 # Reproducibility
