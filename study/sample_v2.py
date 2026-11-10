@@ -5,6 +5,9 @@ Deterministic, standard library only (plus the poppler command-line tools `pdfin
 Resumable: a PDF already present and valid is not downloaded again.
 
 Sources
+- The saved listing pages (icml2018.html, neurips2018.html, iclr2018.html) stay out of the public
+  repository: they are copies of conference pages. Their parse is frozen in rl_population_2018.json
+  (and iclr2018.json), which the script reads when the pages are absent.
 - ICML 2018: icml2018.html (proceedings.mlr.press v80 listing, saved). PDF and -supp.pdf from PMLR.
 - NeurIPS 2018: neurips2018.html (papers.nips.cc listing, saved). PDF from papers.nips.cc;
   as papers.nips.cc and proceedings.neurips.cc timed out on 2026-11-09, the Internet Archive
@@ -321,8 +324,11 @@ def draw_a3():
 
 if __name__ == '__main__':
     os.makedirs(PDFDIR, exist_ok=True)
-    pop = pop_2018()
-    dump(pop, 'rl_population_2018.json')
+    if os.path.exists('icml2018.html'):
+        pop = pop_2018()
+        dump(pop, 'rl_population_2018.json')
+    else:  # the listings are kept locally only (copies of conference pages); their parse is frozen here
+        pop = json.load(open('rl_population_2018.json'))
     print('2018 population', len(pop), {v: sum(p['venue'] == v for p in pop) for v in ('ICML 2018', 'NeurIPS 2018', 'ICLR 2018')})
     if '--a3-only' not in sys.argv:
         draw_a2(pop)
