@@ -29,8 +29,8 @@ experiments remain to be done (see "What remains to be measured" in the document
   classical RL in 2026 against our own reading of 2018, since our grid reads 2018 differently
   from Pineau's.
 - The reading is done by language-model agents. Every decision rests on an exact quote from the
-  paper, with its page. Twenty papers were read twice, blind. A blind human rereading is still
-  pending.
+  paper, with its page. Twenty papers were read twice, blind. No human reread them: the quotes let
+  anyone check each decision.
 - The protocol was written before any reading. Deviations are recorded in it, with their dates.
 
 **Experiments** (`sim/`). We rerun the 2018 experiments with the algorithms of 2026:

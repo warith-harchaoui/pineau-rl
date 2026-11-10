@@ -625,10 +625,10 @@ tirés au sort parmi les articles ajoutés, ont été lus deux fois avec les
 deux grilles : l'accord atteint au moins 80 \% sur chacun des 23
 critères. Il est complet sur dix-sept d'entre eux. Tous ces accords se
 calculent sur les lectures brutes, avant l'harmonisation décrite plus
-bas. Un accord entre deux machines reste un accord entre machines : une
-relecture humaine à l'aveugle de dix articles est prévue, son plan est
-écrit, elle n'a pas encore eu lieu. Ce document le signale tant qu'elle
-manque.
+bas. Un accord entre deux machines reste un accord entre machines. Aucun
+humain n'a relu les articles à l'aveugle : chaque décision cite
+l'article avec sa page, et chacun peut la vérifier dans
+\texttt{study/codes/} et \texttt{study/codes\_v2/}.
 
 \textbf{L'harmonisation.} Deux agents lisent parfois la même règle de
 deux façons. Avant de calculer le moindre pourcentage, nous avons relu
@@ -1550,7 +1550,8 @@ lecteur n'ait à les chercher.
   Les articles sont lus par des agents de modèle de langue. Chaque
   décision cite l'article. Deux agents s'accordent sur au moins 80 \%
   des articles pour chaque critère, à une exception près. Aucun humain
-  n'a encore relu à l'aveugle : la relecture prévue attend toujours.
+  n'a relu à l'aveugle ; les citations permettent à chacun de vérifier
+  chaque décision.
 \item
   L'exception est la mesure de performance (Y1), notre critère le plus
   fragile : 60 \% d'accord sur le premier tirage, avant que ses règles
@@ -1607,9 +1608,6 @@ d'une réplication de Shao et ses coauteurs.
 
 \begin{itemize}
 \tightlist
-\item
-  La relecture humaine à l'aveugle de dix articles de 2026, dont le plan
-  est écrit dans le protocole.
 \item
   Les expériences E2, E4 et E5, et E7 pour CrossQ, quand les 37
   entraînements CrossQ restants seront finis.

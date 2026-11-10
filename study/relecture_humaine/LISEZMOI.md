@@ -2,6 +2,8 @@
 
 # Relecture humaine à l'aveugle (expérience A1)
 
+**Abandonnée le 10 novembre 2026 avant toute relecture (écart 23 de `study/PROTOCOL.md`).** Ce dossier garde le plan.
+
 Écart 13 de `study/PROTOCOL.md`. But : mesurer l'accord entre une lecture humaine et la lecture des
 agents, sur les critères qui fondent les verdicts du document. C'est la réponse à l'objection « des
 machines ont lu les articles ».

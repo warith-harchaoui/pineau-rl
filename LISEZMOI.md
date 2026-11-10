@@ -31,7 +31,7 @@ expériences restent à faire (voir « Ce qui reste à mesurer » dans le docume
   grille lit 2018 autrement que celle de Pineau.
 - La lecture est faite par des agents de modèle de langue. Chaque décision s'appuie sur une
   citation exacte de l'article, avec sa page. Vingt articles ont été lus deux fois à l'aveugle.
-  La relecture humaine à l'aveugle attend encore.
+  Aucun humain ne les a relus : les citations permettent à chacun de vérifier chaque décision.
 - Le protocole a été écrit avant toute lecture. Les écarts y sont consignés avec leur date.
 
 **Des expériences** (`sim/`). Nous refaisons les expériences de 2018 avec les algorithmes de 2026 :

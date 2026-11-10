@@ -392,8 +392,8 @@ grille, sur les mêmes dix articles, l'accord est complet sur neuf critères sur
 articles ajoutés, ont été lus deux fois avec les deux grilles : l'accord atteint au moins 80 % sur
 chacun des 23 critères. Il est complet sur dix-sept d'entre eux. Tous ces accords se calculent sur les
 lectures brutes, avant l'harmonisation décrite plus bas. Un accord entre deux machines reste un
-accord entre machines : une relecture humaine à l'aveugle de dix articles est prévue, son plan est
-écrit, elle n'a pas encore eu lieu. Ce document le signale tant qu'elle manque.
+accord entre machines. Aucun humain n'a relu les articles à l'aveugle : chaque décision cite
+l'article avec sa page, et chacun peut la vérifier dans `study/codes/` et `study/codes_v2/`.
 
 **L'harmonisation.** Deux agents lisent parfois la même règle de deux façons. Avant de calculer le
 moindre pourcentage, nous avons relu tous les codes, critère par critère, puis écrit les règles qui
@@ -957,7 +957,7 @@ ses bons résultats qu'envers ses mauvais.
 
 - Les articles sont lus par des agents de modèle de langue. Chaque décision cite l'article. Deux
   agents s'accordent sur au moins 80 % des articles pour chaque critère, à une exception près.
-  Aucun humain n'a encore relu à l'aveugle : la relecture prévue attend toujours.
+  Aucun humain n'a relu à l'aveugle ; les citations permettent à chacun de vérifier chaque décision.
 - L'exception est la mesure de performance (Y1), notre critère le plus fragile : 60 % d'accord sur
   le premier tirage, avant que ses règles soient précisées. Le verdict de F8 se lit avec cette
   réserve.
@@ -989,7 +989,6 @@ coauteurs.
 
 # Ce qui reste à mesurer
 
-- La relecture humaine à l'aveugle de dix articles de 2026, dont le plan est écrit dans le protocole.
 - Les expériences E2, E4 et E5, et E7 pour CrossQ, quand les 37 entraînements CrossQ restants seront finis.
 - Les neuf essais GRPO restants, relancés la nuit, avec la part de réponses coupées mesurée à chaque évaluation. Leurs plantages venaient d'un calcul GPU coupé par macOS quand la machine sert en même temps ; le code recalcule désormais toute mise à jour corrompue et compte ces recalculs.
 

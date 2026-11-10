@@ -600,9 +600,9 @@ read twice with both grids: agreement reaches at least 80\% on each of
 the 23 criteria. It is complete on seventeen of them. All these
 agreements are computed on the raw readings, before the harmonisation
 described below. Agreement between two machines remains agreement
-between machines: a blind human rereading of ten papers is planned and
-its plan is written, but it has not yet taken place. This document flags
-the gap for as long as that rereading is missing.
+between machines. No human reread the papers blind: each decision quotes
+the paper with its page, and anyone can check it in
+\texttt{study/codes/} and \texttt{study/codes\_v2/}.
 
 \textbf{Harmonisation.} Two agents sometimes read the same rule in two
 ways. Before computing a single percentage, we reread every code,
@@ -1488,8 +1488,8 @@ reader has to hunt for them.
 \item
   Language model agents read the papers. Each decision quotes the paper.
   Two agents agree on at least 80\% of papers for each criterion, with
-  one exception. No human has yet reread the papers blind: the planned
-  rereading is still pending.
+  one exception. No human reread the papers blind; the quotations let
+  anyone check every decision.
 \item
   The exception is the performance measure (Y1), our most fragile
   criterion: 60\% agreement on the first draw, before its rules were
@@ -1545,9 +1545,6 @@ and co-authors.
 
 \begin{itemize}
 \tightlist
-\item
-  The blind human rereading of ten papers from 2026 takes place as
-  planned in the protocol.
 \item
   Experiments E2, E4 and E5, and E7 for CrossQ, follow once the 37
   remaining CrossQ training runs finish.

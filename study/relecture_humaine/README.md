@@ -2,6 +2,8 @@
 
 # Blind human rereading (experiment A1)
 
+**Abandoned on 10 November 2026 before any review (deviation 23 of `study/PROTOCOL-en.md`).** This folder keeps the plan.
+
 Deviation 13 of `study/PROTOCOL.md`. Goal: measure the agreement between a human reading and the
 agents' reading, on the criteria behind the document's verdicts. This is the answer to the
 objection "machines read the papers".

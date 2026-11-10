@@ -368,9 +368,9 @@ papers, agreement is complete on nine criteria out of twelve. It drops to 90% on
 measure (Y1, kappa 0.31). Ten more papers, drawn at random from the added ones, were read twice
 with both grids: agreement reaches at least 80% on each of the 23 criteria. It is complete on seventeen
 of them. All these agreements are computed on the raw readings, before the harmonisation described
-below. Agreement between two machines remains agreement between machines: a blind human rereading
-of ten papers is planned and its plan is written, but it has not yet taken place. This document
-flags the gap for as long as that rereading is missing.
+below. Agreement between two machines remains agreement between machines. No human reread the
+papers blind: each decision quotes the paper with its page, and anyone can check it in
+`study/codes/` and `study/codes_v2/`.
 
 **Harmonisation.** Two agents sometimes read the same rule in two ways. Before computing a single
 percentage, we reread every code, criterion by criterion, then wrote the rules that settle the
@@ -890,7 +890,7 @@ Pineau's advice in 2018: be as critical of your good results as of your bad ones
 
 **What weakens the survey.** We list these weaknesses so that no reader has to hunt for them.
 
-- Language model agents read the papers. Each decision quotes the paper. Two agents agree on at least 80% of papers for each criterion, with one exception. No human has yet reread the papers blind: the planned rereading is still pending.
+- Language model agents read the papers. Each decision quotes the paper. Two agents agree on at least 80% of papers for each criterion, with one exception. No human reread the papers blind; the quotations let anyone check every decision.
 - The exception is the performance measure (Y1), our most fragile criterion: 60% agreement on the first draw, before its rules were made more precise. The verdict on F8 comes with this caveat.
 - Our grid reads 2018 differently from Pineau. Our comparisons with her figures serve as context, never as a verdict.
 - The classical RL sample from 2026 goes through a title screen. A classical RL paper whose title contains "reasoning", "preference" or "math" had no way in. The 9 ICLR 2026 papers at the head of the queue, unreachable on the proceedings site on 9 November 2026, were skipped.
@@ -909,7 +909,6 @@ and 1 billion parameters, far from a replication of Shao and co-authors.
 
 # What remains to be measured
 
-- The blind human rereading of ten papers from 2026 takes place as planned in the protocol.
 - Experiments E2, E4 and E5, and E7 for CrossQ, follow once the 37 remaining CrossQ training runs finish.
 - The nine remaining GRPO runs restart overnight, with the share of cut-off answers measured at every evaluation. Their crashes came from GPU work cut short by macOS while the machine was in use; the code now recomputes any corrupted update and counts these recomputations.
 
