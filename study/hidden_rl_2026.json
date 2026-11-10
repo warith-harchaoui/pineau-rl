@@ -1,0 +1,192 @@
+[
+ {
+  "id": "T01",
+  "venue": "ICML 2026",
+  "title": "Anchoring Self-Play for Code Repair",
+  "url": "https://icml.cc/virtual/2026/poster/62051",
+  "pdf": "pdf/T01.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2607.03523v1"
+ },
+ {
+  "id": "T02",
+  "venue": "ICLR 2026",
+  "title": "CoMAS: Co-Evolving Multi-Agent Systems via Interaction Rewards",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/372593bd318ad8b34b3a8da77e20272b-Abstract-Conference.html",
+  "pdf": "pdf/T02.pdf",
+  "pdf_src": "https://proceedings.iclr.cc/paper_files/paper/2026/file/372593bd318ad8b34b3a8da77e20272b-Paper-Conference.pdf"
+ },
+ {
+  "id": "T03",
+  "venue": "ICML 2026",
+  "title": "LECTOR: Joint Learning of Scientific Reasoning Graphs and Introduction Generation",
+  "url": "https://icml.cc/virtual/2026/poster/62710"
+ },
+ {
+  "id": "T04",
+  "venue": "ICML 2026",
+  "title": "Models Under SCOPE: Scalable and Controllable Routing via Pre-hoc Reasoning",
+  "url": "https://icml.cc/virtual/2026/poster/60595",
+  "pdf": "pdf/T04.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2601.22323v2"
+ },
+ {
+  "id": "T05",
+  "venue": "ICML 2026",
+  "title": "Optimizing Visual Generative Models via Distribution-wise Rewards",
+  "url": "https://icml.cc/virtual/2026/poster/62717",
+  "pdf": "pdf/T05.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2607.02291v1"
+ },
+ {
+  "id": "T06",
+  "venue": "ICLR 2026",
+  "title": "Reasoning or Retrieval? A Study of Answer Attribution on Large Reasoning Models",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/a7687987dcbbfe70ff5fb658346585df-Abstract-Conference.html",
+  "pdf": "pdf/T06.pdf",
+  "pdf_src": "https://proceedings.iclr.cc/paper_files/paper/2026/file/a7687987dcbbfe70ff5fb658346585df-Paper-Conference.pdf"
+ },
+ {
+  "id": "T07",
+  "venue": "ICML 2026",
+  "title": "Prioritized Model Experience Replay",
+  "url": "https://icml.cc/virtual/2026/poster/62693"
+ },
+ {
+  "id": "T08",
+  "venue": "NeurIPS 2025",
+  "title": "Model Selection for Off-policy Evaluation: New Algorithms and Experimental Protocol",
+  "url": "https://neurips.cc/virtual/2025/poster/116742",
+  "pdf": "pdf/T08.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2502.08021v3"
+ },
+ {
+  "id": "T09",
+  "venue": "NeurIPS 2025",
+  "title": "Fast-Slow Thinking GRPO for Large Vision-Language Model Reasoning",
+  "url": "https://neurips.cc/virtual/2025/poster/118482",
+  "pdf": "pdf/T09.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2504.18458v2"
+ },
+ {
+  "id": "T10",
+  "venue": "NeurIPS 2025",
+  "title": "WebDancer: Towards Autonomous Information Seeking Agency",
+  "url": "https://neurips.cc/virtual/2025/poster/115829",
+  "pdf": "pdf/T10.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2505.22648v3"
+ },
+ {
+  "id": "T11",
+  "venue": "ICLR 2026",
+  "title": "Physics-Informed Audio-Geometry-Grid Representation Learning for Universal Sound Source Localization",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/ee860a9fa65a55a335754c557a5211de-Abstract-Conference.html",
+  "pdf": "pdf/T11.pdf",
+  "pdf_src": "https://proceedings.iclr.cc/paper_files/paper/2026/file/ee860a9fa65a55a335754c557a5211de-Paper-Conference.pdf"
+ },
+ {
+  "id": "T12",
+  "venue": "ICML 2026",
+  "title": "ML-Agent: Reinforcing LLM Agents for Autonomous Machine Learning Engineering",
+  "url": "https://icml.cc/virtual/2026/poster/62020",
+  "pdf": "pdf/T12.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2505.23723v2"
+ },
+ {
+  "id": "T13",
+  "venue": "ICLR 2026",
+  "title": "Pragma-VL: Towards a Pragmatic Arbitration of Safety and Helpfulness in MLLMs",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/4054556fcaa934b0bf76da52cf4f92cb-Abstract-Conference.html",
+  "pdf": "pdf/T13.pdf",
+  "pdf_src": "https://proceedings.iclr.cc/paper_files/paper/2026/file/4054556fcaa934b0bf76da52cf4f92cb-Paper-Conference.pdf"
+ },
+ {
+  "id": "T14",
+  "venue": "ICML 2026",
+  "title": "Time Series Reasoning via Process-Verifiable Thinking Data Synthesis and Scheduling for Tailored LLM Reasoning",
+  "url": "https://icml.cc/virtual/2026/poster/64395",
+  "pdf": "pdf/T14.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2602.07830v2"
+ },
+ {
+  "id": "T15",
+  "venue": "ICML 2026",
+  "title": "D-CORE: Incentivizing Task Decomposition in Large Reasoning Models for Complex Tool Use",
+  "url": "https://icml.cc/virtual/2026/poster/61056",
+  "pdf": "pdf/T15.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2602.02160v1"
+ },
+ {
+  "id": "T16",
+  "venue": "NeurIPS 2025",
+  "title": "A Theory for Worst-Case vs. Average-Case Guarantees for LLMs",
+  "url": "https://neurips.cc/virtual/2025/poster/118494"
+ },
+ {
+  "id": "T17",
+  "venue": "ICLR 2026",
+  "title": "Regularized Latent Dynamics Prediction is a Strong Baseline For Behavioral Foundation Models",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/f8792f6177801b9df2a10478682e9017-Abstract-Conference.html",
+  "pdf": "pdf/T17.pdf",
+  "pdf_src": "https://proceedings.iclr.cc/paper_files/paper/2026/file/f8792f6177801b9df2a10478682e9017-Paper-Conference.pdf"
+ },
+ {
+  "id": "T18",
+  "venue": "ICML 2026",
+  "title": "NavOL: Navigation Policy with Online Imitation Learning",
+  "url": "https://icml.cc/virtual/2026/poster/63657"
+ },
+ {
+  "id": "T19",
+  "venue": "ICLR 2026",
+  "title": "Markovian Transformers for Informative Language Modeling",
+  "url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/1aa7204c266db52337fbeaea420cf4f0-Abstract-Conference.html",
+  "pdf": "pdf/T19.pdf",
+  "pdf_src": "https://proceedings.iclr.cc/paper_files/paper/2026/file/1aa7204c266db52337fbeaea420cf4f0-Paper-Conference.pdf"
+ },
+ {
+  "id": "T20",
+  "venue": "ICML 2026",
+  "title": "Long Grounded Thoughts: Synthesizing Visual Problems and Reasoning Chains at Scale",
+  "url": "https://icml.cc/virtual/2026/poster/63138",
+  "pdf": "pdf/T20.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2511.05705v2"
+ },
+ {
+  "id": "T21",
+  "venue": "NeurIPS 2025",
+  "title": "Reward Reasoning Models",
+  "url": "https://neurips.cc/virtual/2025/poster/117713",
+  "pdf": "pdf/T21.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2505.14674v1"
+ },
+ {
+  "id": "T22",
+  "venue": "ICML 2026",
+  "title": "PretrainZero: Reinforcement Active Learning on Pretraining Data",
+  "url": "https://icml.cc/virtual/2026/poster/64883"
+ },
+ {
+  "id": "T23",
+  "venue": "NeurIPS 2025",
+  "title": "A Markov Decision Process for Variable Selection in Branch & Bound",
+  "url": "https://neurips.cc/virtual/2025/poster/136223",
+  "pdf": "pdf/T23.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2510.19348v1"
+ },
+ {
+  "id": "T24",
+  "venue": "ICML 2026",
+  "title": "Behavioral Mode Discovery for Fine-tuning Multimodal Generative Policies",
+  "url": "https://icml.cc/virtual/2026/poster/61704",
+  "pdf": "pdf/T24.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2605.11387v1"
+ },
+ {
+  "id": "T25",
+  "venue": "NeurIPS 2025",
+  "title": "Learning in Stackelberg Mean Field Games: A Non-Asymptotic Analysis",
+  "url": "https://neurips.cc/virtual/2025/poster/117196",
+  "pdf": "pdf/T25.pdf",
+  "pdf_src": "http://arxiv.org/pdf/2509.15392v2"
+ }
+]
