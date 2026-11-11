@@ -807,11 +807,14 @@ de réponses coupées à chaque évaluation.
 
 ![Les réponses du modèle Qwen2.5 de 0,5 milliard de paramètres, avant tout entraînement, sur les quatre problèmes de multiplication du dixième pas de notre essai pilote. Huit réponses tirées par problème. La plupart atteignent la limite de 160 jetons avant de donner un résultat et sont comptées fausses.](figures/grpo-truncation.svg){width=80%}
 
-**Trois essais GRPO finis.** Sur les douze essais prévus, trois ont abouti, tous sur Qwen. Avec la
-vraie récompense, la réussite au premier essai passe de 10 % et 12 % à 36 % et 61 % en cent pas.
-Avec la récompense tirée au sort, elle tombe à 1 %. Les neuf autres essais ont échoué à la reprise
-du 9 novembre 2026, pour des raisons de calcul consignées dans le protocole. Une seule graine
-aléatoire par condition ne permet aucune conclusion.
+**Six essais GRPO finis sur Qwen.** Trois graines aléatoires par récompense, cent pas chacun. Avec la
+vraie récompense, la réussite au premier essai part d'environ 10 % et finit à 36 %, 61 % et 13 %
+selon la graine : le même programme donne trois résultats très différents, la faille F11 en petit.
+Avec la récompense tirée au sort, elle tombe à 1 % ou moins dans les trois essais, et la part de
+réponses coupées finit entre 59 % et 98 %, quand elle finit entre 0 % et 29 % avec la vraie récompense.
+Les plantages venaient d'un calcul GPU coupé par macOS : trois essais ont donc tourné sur CPU,
+dont celui qui finit à 13 %, et nous ne pouvons pas séparer l'effet de la graine de celui du
+matériel pour cet essai. Les six essais sur Llama ont manqué de mémoire et sont relancés.
 
 # Les remèdes : liste de contrôle et défi de reproduction
 
@@ -1020,7 +1023,7 @@ coauteurs.
 # Ce qui reste à mesurer
 
 - Les expériences E2, E4 et E5, et E7 pour CrossQ, quand les 37 entraînements CrossQ restants seront finis.
-- Les neuf essais GRPO restants, relancés la nuit, avec la part de réponses coupées mesurée à chaque évaluation. Leurs plantages venaient d'un calcul GPU coupé par macOS quand la machine sert en même temps ; le code recalcule désormais toute mise à jour corrompue et compte ces recalculs.
+- Les six essais GRPO sur Llama, relancés la nuit, avec la part de réponses coupées mesurée à chaque évaluation. Leurs plantages venaient d'un calcul GPU coupé par macOS quand la machine sert en même temps ; le code recalcule désormais toute mise à jour corrompue et compte ces recalculs.
 
 # Reproductibilité
 

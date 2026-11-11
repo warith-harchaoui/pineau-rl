@@ -1,0 +1,56 @@
+[
+ {
+  "model": "qwen05",
+  "reward": "random",
+  "seed": 0,
+  "device": "mps",
+  "pass1_0": 0.1,
+  "pass1_100": 0.0125,
+  "truncated_100": 0.59
+ },
+ {
+  "model": "qwen05",
+  "reward": "random",
+  "seed": 1,
+  "device": "cpu",
+  "pass1_0": 0.1175,
+  "pass1_100": 0.0025,
+  "truncated_100": 0.8775
+ },
+ {
+  "model": "qwen05",
+  "reward": "random",
+  "seed": 2,
+  "device": "cpu",
+  "pass1_0": 0.105,
+  "pass1_100": 0.0,
+  "truncated_100": 0.9775
+ },
+ {
+  "model": "qwen05",
+  "reward": "true",
+  "seed": 0,
+  "device": "mps",
+  "pass1_0": 0.1,
+  "pass1_100": 0.3575,
+  "truncated_100": 0.29
+ },
+ {
+  "model": "qwen05",
+  "reward": "true",
+  "seed": 1,
+  "device": "mps",
+  "pass1_0": 0.1025,
+  "pass1_100": 0.6125,
+  "truncated_100": 0.0025
+ },
+ {
+  "model": "qwen05",
+  "reward": "true",
+  "seed": 2,
+  "device": "cpu",
+  "pass1_0": 0.105,
+  "pass1_100": 0.125,
+  "truncated_100": 0.0
+ }
+]

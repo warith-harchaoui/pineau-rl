@@ -385,6 +385,19 @@ lat = R["Y9"]["later"]
 add("A4 Y9 later", f"de {pct(lat['b'][0] / lat['b'][1])} en 2019-2020 à {pct(lat['a'][0] / lat['a'][1])} en 2022-2024",
     f"from {pct(lat['b'][0] / lat['b'][1], lang='en')} in 2019-2020 to {pct(lat['a'][0] / lat['a'][1], lang='en')} in 2022-2024")
 
+# GRPO, the Qwen runs (sim/llm/summary.py).
+G = J("sim/llm/results/summary.json")
+tr = sorted((g for g in G if g["model"] == "qwen05" and g["reward"] == "true"), key=lambda g: g["seed"])
+rd = [g for g in G if g["model"] == "qwen05" and g["reward"] == "random"]
+assert len(tr) == 3 and len(rd) == 3
+add("GRPO true", f"finit à {pct(tr[0]['pass1_100'])}, {pct(tr[1]['pass1_100'])} et {pct(tr[2]['pass1_100'])}",
+    f"ends at {pct(tr[0]['pass1_100'], lang='en')}, {pct(tr[1]['pass1_100'], lang='en')} and {pct(tr[2]['pass1_100'], lang='en')}")
+assert all(g["pass1_100"] <= .0125 for g in rd) and all(abs(g["pass1_0"] - .1) < .02 for g in G if g["model"] == "qwen05")
+cut = sorted(g["truncated_100"] for g in rd); cutt = sorted(g["truncated_100"] for g in tr)
+add("GRPO cut", f"finit entre {pct(cut[0])} et {pct(cut[-1])}, quand elle finit entre {pct(cutt[0])} et {pct(cutt[-1])}",
+    f"between {pct(cut[0], lang='en')} and {pct(cut[-1], lang='en')}, while it ends between {pct(cutt[0], lang='en')} and {pct(cutt[-1], lang='en')}")
+assert tr[2]["device"] == "cpu"
+
 # E6, the official Zoo pipeline (e6_official.py).
 e6o = J("sim/analysis/e6_official.json")
 g = e6o["groups"]

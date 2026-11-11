@@ -760,11 +760,14 @@ the benchmark. We now measure the share of cut-off answers at every evaluation.
 
 ![Answers of the Qwen2.5 language model with 0.5 billion parameters, before any training, on the four multiplication problems of the tenth step of our pilot run. The model drew eight answers per problem. Most hit the 160-token length limit before giving a result and are scored as wrong.](figures/grpo-truncation-en.svg){width=80%}
 
-**Three GRPO runs finished.** Of the twelve planned runs, three completed, all on Qwen. With the true
-reward, first-attempt success rises from 10% and 12% to 36% and 61% in a hundred steps. With the
-random reward, success falls to 1%. The other nine runs failed when they were restarted on
-9 November 2026, for computing reasons recorded in the protocol. A single random seed per condition
-supports no conclusion.
+**Six GRPO runs finished on Qwen.** Three random seeds per reward, a hundred steps each. With the
+true reward, first-attempt success starts at about 10% and ends at 36%, 61% and 13% depending on the
+random seed: the same program gives three very different results, flaw F11 in miniature. With the
+random reward, it falls to 1% or less in all three runs, and the share of cut-off answers climbs to
+between 59% and 98%, while it ends between 0% and 29% with the true reward. The crashes came from GPU
+work cut short by macOS: three runs therefore ran on CPU, including the one that ends at 13%, and we
+cannot separate the effect of the random seed from that of the hardware for this run. The six Llama
+runs ran out of memory and are being relaunched.
 
 # The remedies: a checklist and a reproducibility challenge
 
@@ -931,7 +934,7 @@ and 1 billion parameters, far from a replication of Shao and co-authors.
 # What remains to be measured
 
 - Experiments E2, E4 and E5, and E7 for CrossQ, follow once the 37 remaining CrossQ training runs finish.
-- The nine remaining GRPO runs restart overnight, with the share of cut-off answers measured at every evaluation. Their crashes came from GPU work cut short by macOS while the machine was in use; the code now recomputes any corrupted update and counts these recomputations.
+- The six Llama GRPO runs restart overnight, with the share of cut-off answers measured at every evaluation. Their crashes came from GPU work cut short by macOS while the machine was in use; the code now recomputes any corrupted update and counts these recomputations.
 
 # Reproducibility
 
