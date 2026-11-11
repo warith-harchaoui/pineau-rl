@@ -1,0 +1,32 @@
+2026-11-09 23:02:32 night window open
+2026-11-09 23:02:32 paused main queue: 22879 
+2026-11-09 23:07:32 resumed main queue
+2026-11-09 23:07:32 qwen05 random 1: torch.AcceleratorError: probability tensor contains either `inf`, `nan` or element < 0
+2026-11-09 23:07:32 control run failed again: NaN not explained by OMP_NUM_THREADS, stop
+2026-11-09 23:07:33 resumed main queue
+2026-11-10 23:01:36 night window open
+2026-11-10 23:01:36 paused main queue: 38110 
+2026-11-10 23:45:39 resumed main queue
+2026-11-10 23:45:39 llama1 true 0: RuntimeError: MPS backend out of memory (MPS allocated: 26.47 GiB, other allocations: 79.30 MiB, max allowed: 27.22 GiB). Tried to allocate 1008.00 MiB on share
+2026-11-10 23:45:39 paused main queue: 38110 
+2026-11-11 00:05:40 resumed main queue
+2026-11-11 00:05:40 llama1 random 0: RuntimeError: MPS backend out of memory (MPS allocated: 26.91 GiB, other allocations: 80.12 MiB, max allowed: 27.22 GiB). Tried to allocate 1008.00 MiB on share
+2026-11-11 00:05:40 paused main queue: 38110 
+2026-11-11 00:53:43 resumed main queue
+2026-11-11 00:53:43 llama1 true 1: RuntimeError: MPS backend out of memory (MPS allocated: 26.17 GiB, other allocations: 81.42 MiB, max allowed: 27.22 GiB). Tried to allocate 1008.00 MiB on share
+2026-11-11 00:53:43 paused main queue: 38110 
+2026-11-11 01:31:45 resumed main queue
+2026-11-11 01:31:45 llama1 random 1: RuntimeError: MPS backend out of memory (MPS allocated: 26.24 GiB, other allocations: 79.92 MiB, max allowed: 27.22 GiB). Tried to allocate 1008.00 MiB on share
+2026-11-11 01:31:45 paused main queue: 38110 
+2026-11-11 01:59:46 resumed main queue
+2026-11-11 01:59:46 llama1 true 2: RuntimeError: MPS backend out of memory (MPS allocated: 26.36 GiB, other allocations: 80.95 MiB, max allowed: 27.22 GiB). Tried to allocate 1008.00 MiB on share
+2026-11-11 01:59:47 paused main queue: 38110 
+2026-11-11 02:18:48 resumed main queue
+2026-11-11 02:18:48 llama1 random 2: RuntimeError: MPS backend out of memory (MPS allocated: 26.30 GiB, other allocations: 80.08 MiB, max allowed: 27.22 GiB). Tried to allocate 1008.00 MiB on share
+2026-11-11 02:18:48 ALL_DONE
+2026-11-11 02:18:48 resumed main queue
+2026-11-11 05:41:37 night window open
+2026-11-11 05:41:37 paused main queue: 91205 
+2026-11-11 07:00:47 resumed main queue
+2026-11-11 07:00:47 llama1 true 0: {"model": "llama1", "task": "mul2", "reward": "true", "seed": 0, "done": true, "retries": {"generate": 0, "update": 0}, "wall": 4479.0}
+2026-11-11 07:00:47 night window closed

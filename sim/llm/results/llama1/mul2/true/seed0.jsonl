@@ -1,1 +1,13 @@
-{"step": 0, "greedy": 0.7333333333333333, "pass1": 0.2275, "pass8": 0.68, "truncated": 0.0225}
+{"step": 0, "greedy": 0.7266666666666667, "pass1": 0.245, "pass8": 0.76, "truncated": 0.02}
+{"step": 10, "train_right": 0.40625, "truncated": 0.0625, "loss": -0.012235773727297783, "grad_norm": 2.691840171813965, "retries": {"generate": 0, "update": 0}, "wall": 520.9}
+{"step": 20, "train_right": 0.40625, "truncated": 0.0, "loss": -0.0005237404257059097, "grad_norm": 1.1902129650115967, "retries": {"generate": 0, "update": 0}, "wall": 978.0}
+{"step": 30, "train_right": 0.3125, "truncated": 0.0, "loss": -0.0015094466507434845, "grad_norm": 15.960636138916016, "retries": {"generate": 0, "update": 0}, "wall": 1308.3}
+{"step": 40, "train_right": 0.375, "truncated": 0.03125, "loss": -0.0027226675301790237, "grad_norm": 2.513559579849243, "retries": {"generate": 0, "update": 0}, "wall": 1743.9}
+{"step": 50, "train_right": 0.25, "truncated": 0.0, "loss": 0.0, "grad_norm": 0.0, "retries": {"generate": 0, "update": 0}, "wall": 2094.8}
+{"step": 50, "greedy": 0.3333333333333333, "pass1": 0.345, "pass8": 0.42, "truncated": 0.0}
+{"step": 60, "train_right": 0.0, "truncated": 0.0, "loss": 0.0, "grad_norm": 0.0, "retries": {"generate": 0, "update": 0}, "wall": 2514.9}
+{"step": 70, "train_right": 0.71875, "truncated": 0.0, "loss": -0.0025964491069316864, "grad_norm": 0.4251447319984436, "retries": {"generate": 0, "update": 0}, "wall": 2912.5}
+{"step": 80, "train_right": 0.15625, "truncated": 0.0, "loss": -0.0035367514938116074, "grad_norm": 1.3203450441360474, "retries": {"generate": 0, "update": 0}, "wall": 3331.2}
+{"step": 90, "train_right": 0.28125, "truncated": 0.09375, "loss": 0.0004599429666996002, "grad_norm": 0.8377875685691833, "retries": {"generate": 0, "update": 0}, "wall": 3805.2}
+{"step": 100, "train_right": 0.0, "truncated": 0.0625, "loss": 0.0, "grad_norm": 0.0, "retries": {"generate": 0, "update": 0}, "wall": 4333.2}
+{"step": 100, "greedy": 0.16, "pass1": 0.2025, "pass8": 0.34, "truncated": 0.0875}

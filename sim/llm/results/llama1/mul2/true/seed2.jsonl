@@ -1,1 +1,4 @@
-{"step": 0, "greedy": 0.7333333333333333, "pass1": 0.2675, "pass8": 0.72, "truncated": 0.0175}
+{"step": 0, "greedy": 0.7266666666666667, "pass1": 0.2375, "pass8": 0.7, "truncated": 0.0075}
+{"step": 10, "train_right": 0.0625, "truncated": 0.0, "loss": -0.001247890293598175, "grad_norm": 0.7147659063339233, "retries": {"generate": 0, "update": 4}, "wall": 519.7}
+{"step": 20, "train_right": 0.46875, "truncated": 0.0, "loss": -0.003869110718369484, "grad_norm": 11.695308685302734, "retries": {"generate": 0, "update": 4}, "wall": 926.8}
+{"step": 30, "train_right": 0.53125, "truncated": 0.0, "loss": -0.0026831068098545074, "grad_norm": 1.4458515644073486, "retries": {"generate": 0, "update": 5}, "wall": 1352.1}

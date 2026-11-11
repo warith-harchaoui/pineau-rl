@@ -1,5 +1,14 @@
 [
  {
+  "model": "llama1",
+  "reward": "true",
+  "seed": 0,
+  "device": "mps",
+  "pass1_0": 0.245,
+  "pass1_100": 0.2025,
+  "truncated_100": 0.0875
+ },
+ {
   "model": "qwen05",
   "reward": "random",
   "seed": 0,
