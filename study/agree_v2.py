@@ -19,7 +19,7 @@ def cohen_kappa(a, b):
 
 
 CRIT = ["Q%d" % i for i in range(2, 9)] + ["X2", "X3", "X4", "X7"] + ["Y%d" % i for i in range(1, 13)]
-SECOND = ["G2", "R2"]
+SECOND = ["G2", "R2", "R3"]  # R3: A4 (deviation 26)
 
 
 def reads(d):
