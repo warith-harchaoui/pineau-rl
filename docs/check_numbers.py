@@ -398,6 +398,11 @@ add("GRPO cut", f"finit entre {pct(cut[0])} et {pct(cut[-1])}, quand elle finit 
     f"between {pct(cut[0], lang='en')} and {pct(cut[-1], lang='en')}, while it ends between {pct(cutt[0], lang='en')} and {pct(cutt[-1], lang='en')}")
 assert tr[2]["device"] == "cpu"
 
+# A4, second reading (agree_v2.py, R3).
+r3 = J("study/agree_v2.json")["R3"]["criteria"]
+assert len(r3) == 23 and min(c["agree"] for c in r3.values()) >= .8
+assert all(r3[k]["agree"] == 1 and r3[k]["n"] == 10 for k in ("Q5", "Y9", "X7", "X2", "Q8"))
+
 # E6, the official Zoo pipeline (e6_official.py).
 e6o = J("sim/analysis/e6_official.json")
 g = e6o["groups"]

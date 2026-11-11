@@ -859,7 +859,9 @@ Une case cochée ne garantit donc pas la pratique qu'elle nomme.
 a eu lieu. Nous avons donc lu 20 articles de RL classique par année d'ICML et de NeurIPS en 2019,
 2020, 2022 et 2024, tirés au hasard et lus avec les deux grilles, annexes comprises, selon un plan
 écrit avant le tirage. ICLR manque à ces quatre années : son site refuse les téléchargements
-automatiques.
+automatiques. Dix de ces articles, tirés au hasard, ont été relus à l'aveugle par un autre agent :
+les deux lectures concordent sur les dix articles pour les cinq critères du tableau, et à 80 % au
+moins sur chacun des 23 critères.
 
 | Pratique | 2018 | 2019 | 2020 | 2022 | 2024 | 2026 |
 |:---------------------------------|----:|----:|----:|----:|----:|----:|

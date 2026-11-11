@@ -807,7 +807,9 @@ question does ask for. A ticked box therefore does not guarantee the practice it
 **The trajectory, year by year.** A before-and-after on two points does not say when the change
 happened. So we read 20 classical RL papers per year from ICML and NeurIPS in 2019, 2020, 2022 and
 2024, drawn at random and read with both grids, appendices included, following a plan written before
-the draw. ICLR is missing from these four years: its site refuses automated downloads.
+the draw. ICLR is missing from these four years: its site refuses automated downloads. Ten of these papers, drawn at random, were reread blind by another agent: the
+two readings agree on all ten papers for the five criteria of the table, and on at least 80% of them
+for each of the 23 criteria.
 
 | Practice | 2018 | 2019 | 2020 | 2022 | 2024 | 2026 |
 |:---------------------------------|----:|----:|----:|----:|----:|----:|
