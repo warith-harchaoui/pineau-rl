@@ -1,1 +1,13 @@
-{"step": 0, "greedy": 0.07333333333333333, "pass1": 0.1175, "pass8": 0.54, "truncated": 0.7475}
+{"step": 0, "greedy": 0.07333333333333333, "pass1": 0.105, "pass8": 0.54, "truncated": 0.755}
+{"step": 10, "train_right": 0.0, "truncated": 1.0, "loss": -0.011883605271577835, "grad_norm": 3.7025063037872314, "retries": {"generate": 0, "update": 0}, "wall": 2333.8}
+{"step": 20, "train_right": 0.0625, "truncated": 0.9375, "loss": -0.012174449861049652, "grad_norm": 4.2678375244140625, "retries": {"generate": 0, "update": 0}, "wall": 4482.8}
+{"step": 30, "train_right": 0.0, "truncated": 0.90625, "loss": -0.00985679030418396, "grad_norm": 3.631072998046875, "retries": {"generate": 0, "update": 0}, "wall": 6806.0}
+{"step": 40, "train_right": 0.0, "truncated": 0.9375, "loss": -0.01181895099580288, "grad_norm": 4.12780237197876, "retries": {"generate": 0, "update": 0}, "wall": 8673.4}
+{"step": 50, "train_right": 0.03125, "truncated": 0.875, "loss": -0.011564978398382664, "grad_norm": 4.073780536651611, "retries": {"generate": 0, "update": 0}, "wall": 10369.9}
+{"step": 50, "greedy": 0.0, "pass1": 0.0025, "pass8": 0.02, "truncated": 0.9}
+{"step": 60, "train_right": 0.0, "truncated": 0.65625, "loss": -0.012180816382169724, "grad_norm": 4.659924030303955, "retries": {"generate": 0, "update": 0}, "wall": 12871.0}
+{"step": 70, "train_right": 0.0, "truncated": 0.96875, "loss": -0.013058517128229141, "grad_norm": 5.0970988273620605, "retries": {"generate": 0, "update": 0}, "wall": 14576.9}
+{"step": 80, "train_right": 0.0, "truncated": 0.96875, "loss": -0.015109259635210037, "grad_norm": 5.684396266937256, "retries": {"generate": 0, "update": 0}, "wall": 16314.9}
+{"step": 90, "train_right": 0.0, "truncated": 0.84375, "loss": -0.012010512873530388, "grad_norm": 6.203219413757324, "retries": {"generate": 0, "update": 0}, "wall": 17934.9}
+{"step": 100, "train_right": 0.0, "truncated": 1.0, "loss": -0.015789609402418137, "grad_norm": 5.91357946395874, "retries": {"generate": 0, "update": 0}, "wall": 19620.6}
+{"step": 100, "greedy": 0.0, "pass1": 0.0, "pass8": 0.0, "truncated": 0.9775}

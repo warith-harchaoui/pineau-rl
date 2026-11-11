@@ -4,7 +4,7 @@
 # The NaN came from GPU work cut short by macOS (LLM_PROTOCOL.md, écart 10): grpo.py now recomputes a corrupted update.
 # A run that still fails is retried the next night; two failures of the same run are reported as a result.
 cd "$(dirname "$0")"
-export PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.35 PYTORCH_MPS_LOW_WATERMARK_RATIO=0.25 EVAL_EVERY=50 TOKENIZERS_PARALLELISM=false
+export PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.45 PYTORCH_MPS_LOW_WATERMARK_RATIO=0.3 EVAL_EVERY=50 TOKENIZERS_PARALLELISM=false
 log() { echo "$(date '+%F %T') $*" >> logs/night.out; }
 hour() { date +%H | sed 's/^0//'; }
 night() { [ "$(hour)" -ge 23 ] || [ "$(hour)" -lt 6 ]; }

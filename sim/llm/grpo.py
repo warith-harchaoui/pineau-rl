@@ -147,6 +147,8 @@ for step in range(1, STEPS + 1):
         opt.step()
         if not all(torch.isfinite(q).all() for q in model.parameters()):
             raise RuntimeError("non-finite weights after the update")
+    if device == "mps":
+        torch.mps.empty_cache()  # the cache grew until Llama 1B ran out of memory after 10 to 60 steps (écart 12)
     if step % 10 == 0:
         log.write(json.dumps(dict(step=step, train_right=sum(right) / len(right), truncated=sum(truncated(q, plen) for q in seqs) / len(seqs), loss=loss, grad_norm=norm, retries=dict(retries), wall=round(time.time() - t0, 1))) + "\n"); log.flush()
     if step % EVAL_EVERY == 0 or step == STEPS:

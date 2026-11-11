@@ -1,0 +1,7 @@
+2026-11-10 09:31:27 qwen05 random 1: start (attempt 1)
+2026-11-10 15:41:22 qwen05 random 1: {"model": "qwen05", "task": "mul2", "reward": "random", "seed": 1, "done": true, "retries": {"generate": 0, "update": 0}, "wall": 21203.4}
+2026-11-10 15:41:22 qwen05 random 2: start (attempt 1)
+2026-11-10 21:38:00 qwen05 random 2: {"model": "qwen05", "task": "mul2", "reward": "random", "seed": 2, "done": true, "retries": {"generate": 0, "update": 0}, "wall": 20499.6}
+2026-11-10 21:38:00 qwen05 true 2: start (attempt 1)
+2026-11-11 02:37:19 qwen05 true 2: {"model": "qwen05", "task": "mul2", "reward": "true", "seed": 2, "done": true, "retries": {"generate": 0, "update": 0}, "wall": 16785.7}
+2026-11-11 02:37:19 ALL_DONE
