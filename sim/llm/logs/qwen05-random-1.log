@@ -1,23 +1,4 @@
 [transformers] `torch_dtype` is deprecated! Use `dtype` instead!
-W1109 12:34:57.665000 87556 site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
-Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   0%|          | 1/290 [00:18<1:26:55, 18.05s/it]Loading weights: 100%|██████████| 290/290 [00:18<00:00, 16.07it/s]
-/Users/warithharchaoui/pineau-rl/sim/llm/grpo.py:121: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
-Consider using tensor.detach() first. (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:821.)
-  part.backward(); loss += float(part)
-Traceback (most recent call last):
-  File "/Users/warithharchaoui/pineau-rl/sim/llm/grpo.py", line 106, in <module>
-    right = [correct(tok.decode(s[plen:], skip_special_tokens=True), a) for s, a in zip(seqs, answers)]
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/warithharchaoui/pineau-rl/sim/llm/grpo.py", line 106, in <listcomp>
-    right = [correct(tok.decode(s[plen:], skip_special_tokens=True), a) for s, a in zip(seqs, answers)]
-                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/warithharchaoui/pineau-rl/sim/env-llm/lib/python3.11/site-packages/transformers/tokenization_utils_base.py", line 2912, in decode
-    token_ids = to_py_obj(token_ids)
-                ^^^^^^^^^^^^^^^^^^^^
-  File "/Users/warithharchaoui/pineau-rl/sim/env-llm/lib/python3.11/site-packages/transformers/utils/generic.py", line 375, in to_py_obj
-    return framework_to_py_obj[framework](obj)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/warithharchaoui/pineau-rl/sim/env-llm/lib/python3.11/site-packages/transformers/utils/generic.py", line 367, in <lambda>
-    "pt": lambda obj: obj.tolist(),
-                      ^^^^^^^^^^^^
-torch.AcceleratorError: probability tensor contains either `inf`, `nan` or element < 0
+W1110 09:31:32.791000 33655 site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   0%|          | 1/290 [00:08<41:32,  8.62s/it]Loading weights:  24%|██▍       | 71/290 [00:08<00:19, 11.10it/s]Loading weights:  29%|██▉       | 84/290 [00:09<00:17, 11.54it/s]Loading weights:  32%|███▏      | 92/290 [00:10<00:18, 10.95it/s]Loading weights:  34%|███▍      | 99/290 [00:11<00:19,  9.99it/s]Loading weights:  39%|███▉      | 113/290 [00:12<00:13, 12.98it/s]Loading weights:  43%|████▎     | 124/290 [00:12<00:09, 16.80it/s]Loading weights:  45%|████▍     | 130/290 [00:13<00:12, 12.94it/s]Loading weights:  51%|█████     | 147/290 [00:14<00:10, 14.20it/s]Loading weights:  52%|█████▏    | 151/290 [00:15<00:12, 11.39it/s]Loading weights:  59%|█████▉    | 171/290 [00:15<00:06, 17.53it/s]Loading weights:  60%|██████    | 175/290 [00:16<00:08, 13.73it/s]Loading weights:  64%|██████▍   | 185/290 [00:16<00:06, 16.91it/s]Loading weights:  68%|██████▊   | 196/290 [00:18<00:07, 11.80it/s]Loading weights:  76%|███████▌  | 221/290 [00:18<00:03, 21.49it/s]Loading weights:  80%|███████▉  | 231/290 [00:18<00:02, 21.24it/s]Loading weights:  81%|████████  | 235/290 [00:19<00:02, 18.46it/s]Loading weights:  84%|████████▍ | 243/290 [00:19<00:02, 17.23it/s]Loading weights:  85%|████████▍ | 246/290 [00:21<00:04, 10.03it/s]Loading weights:  92%|█████████▏| 268/290 [00:21<00:01, 20.28it/s]Loading weights:  96%|█████████▌| 279/290 [00:21<00:00, 19.79it/s]Loading weights:  98%|█████████▊| 284/290 [00:22<00:00, 21.77it/s]Loading weights: 100%|██████████| 290/290 [00:22<00:00, 13.13it/s]
+{"model": "qwen05", "task": "mul2", "reward": "random", "seed": 1, "done": true, "retries": {"generate": 0, "update": 0}, "wall": 21203.4}

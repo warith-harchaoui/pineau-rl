@@ -760,14 +760,21 @@ the benchmark. We now measure the share of cut-off answers at every evaluation.
 
 ![Answers of the Qwen2.5 language model with 0.5 billion parameters, before any training, on the four multiplication problems of the tenth step of our pilot run. The model drew eight answers per problem. Most hit the 160-token length limit before giving a result and are scored as wrong.](figures/grpo-truncation-en.svg){width=80%}
 
-**Six GRPO runs finished on Qwen.** Three random seeds per reward, a hundred steps each. With the
-true reward, first-attempt success starts at about 10% and ends at 36%, 61% and 13% depending on the
-random seed: the same program gives three very different results, flaw F11 in miniature. With the
-random reward, it falls to 1% or less in all three runs, and the share of cut-off answers climbs to
-between 59% and 98%, while it ends between 0% and 29% with the true reward. The crashes came from GPU
-work cut short by macOS: three runs therefore ran on CPU, including the one that ends at 13%, and we
-cannot separate the effect of the random seed from that of the hardware for this run. The six Llama
-runs ran out of memory and are being relaunched.
+**Twelve GRPO runs finished.** Three random seeds per model and per reward, a hundred steps
+each. On Qwen, with the true reward, first-attempt success starts at about 10% and ends at 36%, 61%
+and 13% depending on the random seed: the same program gives three very different results, flaw F11
+in miniature. On Llama, it starts between 23% and 25% and ends at 20%, 48% and 25%. The protocol
+announced its measure in advance: the gain of each random seed, then their mean with a 95% bootstrap
+interval. The mean gain is +26 points on Qwen (from +2 to +51) and +7 points on Llama (from −4 to
++22). With three random seeds these intervals stay very rough, and the one for Llama contains zero:
+we cannot say that GRPO makes Llama better here. With the random reward, success falls to 1% or less
+in all six runs. On Qwen, the share of cut-off answers ends between 59% and 98%, while it ends
+between 0% and 29% with the true reward. On Llama, two runs end with 99% and 100% of answers cut
+off; the third cuts off only 2% and no longer gives a single correct answer. The crashes came from
+GPU work cut short by macOS: three Qwen runs therefore ran on CPU, including the one that ends at
+13%, and we cannot separate the effect of the random seed from that of the hardware for this run.
+The six Llama runs ran overnight on GPU, and the safeguards recomputed between 0 and 7 updates per
+run.
 
 # The remedies: a checklist and a reproducibility challenge
 
@@ -935,8 +942,7 @@ and 1 billion parameters, far from a replication of Shao and co-authors.
 
 # What remains to be measured
 
-- Experiments E2, E4 and E5, and E7 for CrossQ, follow once the 37 remaining CrossQ training runs finish.
-- The six Llama GRPO runs restart overnight, with the share of cut-off answers measured at every evaluation. Their crashes came from GPU work cut short by macOS while the machine was in use; the code now recomputes any corrupted update and counts these recomputations.
+- Experiments E2, E4 and E5, and E7 for CrossQ, follow once the forty CrossQ training runs finish.
 
 # Reproducibility
 

@@ -807,14 +807,21 @@ de réponses coupées à chaque évaluation.
 
 ![Les réponses du modèle Qwen2.5 de 0,5 milliard de paramètres, avant tout entraînement, sur les quatre problèmes de multiplication du dixième pas de notre essai pilote. Huit réponses tirées par problème. La plupart atteignent la limite de 160 jetons avant de donner un résultat et sont comptées fausses.](figures/grpo-truncation.svg){width=80%}
 
-**Six essais GRPO finis sur Qwen.** Trois graines aléatoires par récompense, cent pas chacun. Avec la
-vraie récompense, la réussite au premier essai part d'environ 10 % et finit à 36 %, 61 % et 13 %
-selon la graine : le même programme donne trois résultats très différents, la faille F11 en petit.
-Avec la récompense tirée au sort, elle tombe à 1 % ou moins dans les trois essais, et la part de
-réponses coupées finit entre 59 % et 98 %, quand elle finit entre 0 % et 29 % avec la vraie récompense.
-Les plantages venaient d'un calcul GPU coupé par macOS : trois essais ont donc tourné sur CPU,
-dont celui qui finit à 13 %, et nous ne pouvons pas séparer l'effet de la graine de celui du
-matériel pour cet essai. Les six essais sur Llama ont manqué de mémoire et sont relancés.
+**Douze essais GRPO finis.** Trois graines aléatoires par modèle et par récompense, cent pas
+chacun. Sur Qwen, avec la vraie récompense, la réussite au premier essai part d'environ 10 % et
+finit à 36 %, 61 % et 13 % selon la graine : le même programme donne trois résultats très
+différents, la faille F11 en petit. Sur Llama, elle part de 23 % à 25 % et finit à 20 %, 48 % et
+25 %. Le protocole annonçait d'avance sa mesure : le gain de chaque graine, puis leur moyenne avec
+un intervalle à 95 % par bootstrap. Le gain moyen vaut +26 points sur Qwen (de +2 à +51) et +7
+points sur Llama (de −4 à +22). Avec trois graines, ces intervalles restent très grossiers, et
+celui de Llama contient zéro : nous ne pouvons pas dire que GRPO fait progresser Llama ici. Avec la
+récompense tirée au sort, la réussite tombe à 1 % ou moins dans les six essais. Sur Qwen, la part
+de réponses coupées finit entre 59 % et 98 %, quand elle finit entre 0 % et 29 % avec la vraie
+récompense. Sur Llama, deux essais finissent avec 99 % et 100 % de réponses coupées ; le troisième
+n'en coupe que 2 % et ne donne plus aucune bonne réponse. Les plantages venaient d'un calcul GPU
+coupé par macOS : trois essais Qwen ont donc tourné sur CPU, dont celui qui finit à 13 %, et nous
+ne pouvons pas séparer l'effet de la graine de celui du matériel pour cet essai. Les six essais
+Llama ont tourné la nuit sur GPU, et les garde-fous ont recalculé de 0 à 7 mises à jour par essai.
 
 # Les remèdes : liste de contrôle et défi de reproduction
 
@@ -1024,8 +1031,7 @@ coauteurs.
 
 # Ce qui reste à mesurer
 
-- Les expériences E2, E4 et E5, et E7 pour CrossQ, quand les 37 entraînements CrossQ restants seront finis.
-- Les six essais GRPO sur Llama, relancés la nuit, avec la part de réponses coupées mesurée à chaque évaluation. Leurs plantages venaient d'un calcul GPU coupé par macOS quand la machine sert en même temps ; le code recalcule désormais toute mise à jour corrompue et compte ces recalculs.
+- Les expériences E2, E4 et E5, et E7 pour CrossQ, quand les quarante entraînements CrossQ seront finis.
 
 # Reproductibilité
 

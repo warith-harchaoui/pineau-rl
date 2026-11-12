@@ -398,6 +398,23 @@ add("GRPO cut", f"finit entre {pct(cut[0])} et {pct(cut[-1])}, quand elle finit 
     f"between {pct(cut[0], lang='en')} and {pct(cut[-1], lang='en')}, while it ends between {pct(cutt[0], lang='en')} and {pct(cutt[-1], lang='en')}")
 assert tr[2]["device"] == "cpu"
 
+# GRPO, the Llama runs and the preregistered gains (summary.py -> results/gains.json).
+lt = sorted((g for g in G if g["model"] == "llama1" and g["reward"] == "true"), key=lambda g: g["seed"])
+lr = sorted((g for g in G if g["model"] == "llama1" and g["reward"] == "random"), key=lambda g: g["seed"])
+assert len(lt) == 3 and len(lr) == 3 and all(g["pass1_100"] <= .0125 for g in lr)
+s0 = sorted(g["pass1_0"] for g in lt)
+add("GRPO llama", f"elle part de {pct(s0[0])} à {pct(s0[-1])} et finit à {pct(lt[0]['pass1_100'])}, {pct(lt[1]['pass1_100'])} et {pct(lt[2]['pass1_100'])}",
+    f"it starts between {pct(s0[0], lang='en')} and {pct(s0[-1], lang='en')} and ends at {pct(lt[0]['pass1_100'], lang='en')}, {pct(lt[1]['pass1_100'], lang='en')} and {pct(lt[2]['pass1_100'], lang='en')}")
+GN = J("sim/llm/results/gains.json")
+pts = lambda x: ("+" if x >= 0 else "−") + str(abs(half_up(Decimal(str(x)) * 100)))
+gq, gl = GN["qwen05 true"], GN["llama1 true"]
+add("GRPO gains", f"Le gain moyen vaut {pts(gq['mean'])} points sur Qwen (de {pts(gq['ci'][0])} à {pts(gq['ci'][1])}) et {pts(gl['mean'])} points sur Llama (de {pts(gl['ci'][0])} à {pts(gl['ci'][1])})",
+    f"The mean gain is {pts(gq['mean'])} points on Qwen (from {pts(gq['ci'][0])} to {pts(gq['ci'][1])}) and {pts(gl['mean'])} points on Llama (from {pts(gl['ci'][0])} to {pts(gl['ci'][1])})")
+assert gl["ci"][0] < 0 < gl["ci"][1] and gq["ci"][0] > 0
+cl = [pct(g["truncated_100"]) for g in lr]; cle = [pct(g["truncated_100"], lang="en") for g in lr]
+add("GRPO llama cut", f"deux essais finissent avec {cl[0]} et {cl[1]} de réponses coupées ; le troisième n'en coupe que {cl[2]}",
+    f"two runs end with {cle[0]} and {cle[1]} of answers cut off; the third cuts off only {cle[2]}")
+
 # A4, second reading (agree_v2.py, R3).
 r3 = J("study/agree_v2.json")["R3"]["criteria"]
 assert len(r3) == 23 and min(c["agree"] for c in r3.values()) >= .8

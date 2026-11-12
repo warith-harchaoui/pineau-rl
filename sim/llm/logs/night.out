@@ -30,3 +30,21 @@
 2026-11-11 07:00:47 resumed main queue
 2026-11-11 07:00:47 llama1 true 0: {"model": "llama1", "task": "mul2", "reward": "true", "seed": 0, "done": true, "retries": {"generate": 0, "update": 0}, "wall": 4479.0}
 2026-11-11 07:00:47 night window closed
+2026-11-11 23:00:59 night window open
+2026-11-11 23:01:00 paused main queue: 768 89146 
+2026-11-12 00:42:03 resumed main queue
+2026-11-12 00:42:03 llama1 random 0: {"model": "llama1", "task": "mul2", "reward": "random", "seed": 0, "done": true, "retries": {"generate": 0, "update": 5}, "wall": 5793.1}
+2026-11-12 00:42:03 paused main queue: 768 89146 
+2026-11-12 02:00:05 resumed main queue
+2026-11-12 02:00:05 llama1 true 1: {"model": "llama1", "task": "mul2", "reward": "true", "seed": 1, "done": true, "retries": {"generate": 0, "update": 2}, "wall": 4424.4}
+2026-11-12 02:00:05 paused main queue: 768 89146 
+2026-11-12 03:42:09 resumed main queue
+2026-11-12 03:42:09 llama1 random 1: {"model": "llama1", "task": "mul2", "reward": "random", "seed": 1, "done": true, "retries": {"generate": 0, "update": 4}, "wall": 5855.7}
+2026-11-12 03:42:09 paused main queue: 768 89146 
+2026-11-12 04:57:11 resumed main queue
+2026-11-12 04:57:11 llama1 true 2: {"model": "llama1", "task": "mul2", "reward": "true", "seed": 2, "done": true, "retries": {"generate": 0, "update": 7}, "wall": 4231.0}
+2026-11-12 04:57:11 paused main queue: 768 89146 
+2026-11-12 06:33:14 resumed main queue
+2026-11-12 06:33:14 llama1 random 2: {"model": "llama1", "task": "mul2", "reward": "random", "seed": 2, "done": true, "retries": {"generate": 0, "update": 3}, "wall": 5504.0}
+2026-11-12 06:33:14 ALL_DONE
+2026-11-12 06:33:14 resumed main queue

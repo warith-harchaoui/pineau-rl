@@ -1,2 +1,13 @@
-{"step": 0, "greedy": 0.7266666666666667, "pass1": 0.24, "pass8": 0.72, "truncated": 0.0075}
-{"step": 10, "train_right": 0.03125, "truncated": 0.0625, "loss": -0.01713310182094574, "grad_norm": 40.504581451416016, "retries": {"generate": 0, "update": 0}, "wall": 534.1}
+{"step": 0, "greedy": 0.7266666666666667, "pass1": 0.245, "pass8": 0.76, "truncated": 0.02}
+{"step": 10, "train_right": 0.21875, "truncated": 0.0, "loss": -0.003443516790866852, "grad_norm": 42.372257232666016, "retries": {"generate": 0, "update": 1}, "wall": 521.7}
+{"step": 20, "train_right": 0.0, "truncated": 0.03125, "loss": -0.0003874264657497406, "grad_norm": 18.390167236328125, "retries": {"generate": 0, "update": 1}, "wall": 983.7}
+{"step": 30, "train_right": 0.0, "truncated": 0.09375, "loss": -0.005348123610019684, "grad_norm": 45.25008010864258, "retries": {"generate": 0, "update": 2}, "wall": 1536.3}
+{"step": 40, "train_right": 0.0, "truncated": 0.125, "loss": -0.0006911642849445343, "grad_norm": 3.83249568939209, "retries": {"generate": 0, "update": 3}, "wall": 2127.2}
+{"step": 50, "train_right": 0.0, "truncated": 0.21875, "loss": -0.008106620982289314, "grad_norm": 65.70413208007812, "retries": {"generate": 0, "update": 3}, "wall": 2704.1}
+{"step": 50, "greedy": 0.0, "pass1": 0.01, "pass8": 0.04, "truncated": 0.3225}
+{"step": 60, "train_right": 0.0, "truncated": 0.875, "loss": 0.0014419406652450562, "grad_norm": 58.061832427978516, "retries": {"generate": 0, "update": 3}, "wall": 3380.2}
+{"step": 70, "train_right": 0.0, "truncated": 0.875, "loss": -0.021398678421974182, "grad_norm": 4.280580997467041, "retries": {"generate": 0, "update": 3}, "wall": 3913.7}
+{"step": 80, "train_right": 0.0, "truncated": 0.71875, "loss": -0.02136625349521637, "grad_norm": 5.220492362976074, "retries": {"generate": 0, "update": 4}, "wall": 4488.6}
+{"step": 90, "train_right": 0.0, "truncated": 1.0, "loss": -0.02453225664794445, "grad_norm": 4.2608747482299805, "retries": {"generate": 0, "update": 5}, "wall": 5075.2}
+{"step": 100, "train_right": 0.0, "truncated": 0.96875, "loss": -0.001720290631055832, "grad_norm": 25.12482261657715, "retries": {"generate": 0, "update": 5}, "wall": 5650.5}
+{"step": 100, "greedy": 0.0, "pass1": 0.0, "pass8": 0.0, "truncated": 0.99}
