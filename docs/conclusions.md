@@ -2,7 +2,7 @@
 title: "A-t-on écouté Joelle Pineau en 2018 ?"
 subtitle: "Un état de l'art revisité. Chaque faille qu'elle a montrée en 2018, mesurée dans les articles de 2018 à 2026 et dans nos propres expériences"
 author: "Warith Harchaoui"
-date: "9 novembre 2026, état intermédiaire"
+date: "12 novembre 2026, état intermédiaire"
 lang: fr
 bibliography: refs.bib
 link-citations: true
@@ -35,14 +35,16 @@ jugeons donc chaque faille à grille égale, en comparant le RL classique de 202
 lecture de 2018, avec les mêmes grilles et les mêmes lecteurs. Quatre pratiques ont changé. Le lien
 vers le code passe de 31 % à 74 % des articles, la sensibilité à un réglage montrée de 44 % à 80 %,
 le calcul chiffré de 27 % à 58 %, une incertitude rapportée de 63 % à 88 %. Ces quatre hausses
-résistent à toutes les coupes que nous avons tentées. D'autres pratiques n'ont pas bougé de façon détectable : un
+résistent à toutes les coupes que nous avons tentées. Lues sur 20 articles par année entre les deux
+dates, elles montent lentement, sans saut juste après la liste de contrôle que NeurIPS impose depuis
+2019. D'autres pratiques n'ont pas bougé de façon détectable : un
 test statistique (6 % puis 12 %), des références décrites avec tous leurs réglages (35 % puis 29 %),
 une évaluation tenue à part (33 % puis 45 %), la version des bancs d'essai (23 % puis 26 %). Nos
 expériences précisent la faille la plus
 célèbre. Sur nos trente essais, deux groupes de cinq tirés au hasard ne trompent un test
 statistique que dans 1,2 % des cas. Le test se laisse tromper quand on trie les essais (31 %). Garder
 les meilleurs gonfle le score de 33 %. Elles montrent aussi pourquoi un résultat trop beau se vérifie : notre
-propre référence s'est effondrée, une erreur de notre code semblait l'expliquer. Sa correction n'a rien changé, et le script officiel du recueil plafonne de même : la recette publiée a vieilli avec les bibliothèques. Le chiffre le plus frappant de 2018, un t de 9 entre deux groupes du même programme, trouve son explication : le script publié par Peter Henderson mesure la dispersion des épisodes et ignore celle des graines aléatoires. Appliqué à nos essais de TRPO, il dépasse 9 dans 38 % des tirages au hasard. Plusieurs expériences restent à finir : ce document dit lesquelles.
+propre référence s'est effondrée, une erreur de notre code semblait l'expliquer. Sa correction n'a rien changé. Le script officiel du recueil plafonne de même : la recette publiée a vieilli avec les bibliothèques. Le chiffre le plus frappant de 2018, un t de 9 entre deux groupes du même programme, trouve son explication : le script publié par Peter Henderson mesure la dispersion des épisodes et ignore celle des graines aléatoires. Appliqué à nos essais de TRPO, il dépasse 9 dans 38 % des tirages au hasard. Plusieurs expériences restent à finir : ce document dit lesquelles.
 
 # Deux conférences en 2018
 
@@ -107,7 +109,7 @@ reçu le même soin de réglage.
 
 **Le banc d'essai.** Un banc d'essai (*benchmark*) est un ensemble de tâches standard sur lesquelles
 tout le monde se compare. Pour le RL de 2018, les guépards, sauteurs et marcheurs du simulateur
-MuJoCo [@todorov2012mujoco] servaient de banc d'essai. Pour les modèles de langue de 2026, ce sont
+MuJoCo (*Multi-Joint dynamics with Contact*) [@todorov2012mujoco] servaient de banc d'essai. Pour les modèles de langue de 2026, ce sont
 des recueils de problèmes de mathématiques corrigés.
 
 **Le test statistique et l'intervalle de confiance.** Deux moyennes diffèrent toujours un peu. Un
@@ -288,7 +290,7 @@ cesse de l'être sur le sauteur ou sur le nageur. Un article qui conclut « notr
 meilleure » à partir d'une ou deux tâches tire une conclusion générale d'un cas particulier. Pour
 que la conclusion tienne, il faut plusieurs tâches et l'aveu de celles où la méthode perd.
 
-**Deux implémentations du même algorithme qui divergent (F14).** TRPO, un algorithme de 2015, existe
+**Deux implémentations du même algorithme qui divergent (F14).** TRPO (*Trust Region Policy Optimization*), un algorithme de 2015, existe
 en plusieurs versions écrites par des équipes différentes. Henderson et ses coauteurs en comparent
 trois sur HalfCheetah, avec le même réseau : elles finissent à 1 939, 834 et 205. Des choix de code
 que l'article d'origine ne détaille pas, comme l'optimiseur de la fonction de valeur, font une
@@ -317,7 +319,7 @@ d'actions sans rien comprendre du monde, comme un élève récite une table sans
 diapositives et l'instrument qui la mesure dans ce document. Les instruments sont décrits à la
 section suivante.
 
-| | La faille montrée en 2018 | Où Pineau la montre | Ce qui la mesure ici | Où nous en sommes le 9 novembre 2026 |
+| | La faille montrée en 2018 | Où Pineau la montre | Ce qui la mesure ici | Où nous en sommes le 12 novembre 2026 |
 |:----|:-----------------------------------------|:----------------|:----------------|:----------------------|
 | F1 | L'article publié sans son code | diapositive 6 à ICLR, page 29 à NeurIPS | critère Q5 | écoutée |
 | F2 | Aucun plan pour refaire l'expérience, comme pour AlphaGo | diapositives 9 à 12 à ICLR | critères Q3 et X7 | écoutée en partie : le calcul se chiffre |
@@ -326,7 +328,7 @@ section suivante.
 | F5 | La façon de choisir les hyperparamètres, tue | page 29 à NeurIPS | critère Q6 | aucun changement détectable après correction |
 | F6 | Des réglages qui changent tout et qui interagissent | diapositives 24 et 25 à ICLR | critère Y9 | écoutée |
 | F7 | Des références moins bien réglées que la méthode | diapositive 25 à ICLR, page 29 à NeurIPS | critères Q4 et X4, expérience E6 | aucun changement détectable, toujours rare |
-| F8 | Une mesure de performance jamais définie | diapositives 26 et 27 à ICLR | critères Y1 et Y2 | aucun changement détectable, mesure le plus souvent définie |
+| F8 | Une mesure de performance jamais définie | diapositives 26 et 27 à ICLR | critères Y1 et Y2, expérience B3 | aucun changement détectable, mesure le plus souvent définie |
 | F9 | Trop peu d'essais, trois ou cinq, jamais dix dans son tableau | diapositive 28 à ICLR | critère X1, expérience E5 | pas écoutée |
 | F10 | Les meilleurs essais sur N, seuls publiés | diapositives 29 et 30 à ICLR | critère X3, expériences E1 et E4 | rare les deux années, effet mesuré |
 | F11 | Même code, autre graine aléatoire : deux « algorithmes » | diapositive 31 à ICLR, page 22 à NeurIPS | expériences E1 et B1 | nuancée : le t de 9 vient d'un test sur les épisodes |
@@ -336,7 +338,7 @@ section suivante.
 | F15 | L'évaluation sur les conditions d'entraînement | pages 36 à 51 à NeurIPS | critères Q7 et Y8, expérience E7 | aucun changement détectable à grille égale |
 | F16 | Des bancs d'essai trop simples, faciles à apprendre par cœur | pages 43 à 50 à NeurIPS | critères X6 et Y7 | aucun changement détectable |
 
-: Les seize failles de 2018. Pour chacune : la diapositive de la conférence d'ICLR ou la page du document de NeurIPS qui la montre, le critère de lecture ou l'expérience qui la mesure dans ce document, puis le verdict à la date du 9 novembre 2026. Le verdict compare nos 50 articles de RL classique de 2026 à notre lecture de 50 articles de 2018, avec les mêmes grilles et les mêmes lecteurs.
+: Les seize failles que Joelle Pineau a montrées en 2018 dans l'apprentissage par renforcement profond (RL), numérotées F1 à F16. Pour chacune : la diapositive de sa conférence d'ICLR (*International Conference on Learning Representations*) ou la page de son document de NeurIPS (*Neural Information Processing Systems*) qui la montre, le critère de lecture ou l'expérience qui la mesure dans ce document, puis le verdict à la date du 12 novembre 2026. Le verdict compare nos 50 articles de RL classique de 2026 à notre lecture de 50 articles de 2018, avec les mêmes grilles et les mêmes lecteurs.
 
 # Comment nous mesurons
 
@@ -393,7 +395,7 @@ articles ajoutés, ont été lus deux fois avec les deux grilles : l'accord atte
 chacun des 23 critères. Il est complet sur dix-sept d'entre eux. Tous ces accords se calculent sur les
 lectures brutes, avant l'harmonisation décrite plus bas. Un accord entre deux machines reste un
 accord entre machines. Aucun humain n'a relu les articles à l'aveugle : chaque décision cite
-l'article avec sa page, et chacun peut la vérifier dans `study/codes/` et `study/codes_v2/`.
+l'article avec sa page, si bien que chacun peut la vérifier dans `study/codes/` et `study/codes_v2/`.
 
 **L'harmonisation.** Deux agents lisent parfois la même règle de deux façons. Avant de calculer le
 moindre pourcentage, nous avons relu tous les codes, critère par critère, puis écrit les règles qui
@@ -551,7 +553,7 @@ plus le seuil (p = 0,24). Nous ne détectons donc aucun changement après correc
 en exclure un.
 
 **Les réglages qui changent tout (F6).** La littérature a confirmé à grande échelle l'observation
-de Henderson et ses coauteurs. En 2020, une équipe du MIT et de Two Sigma montre que des
+de Henderson et ses coauteurs. En 2020, une équipe du MIT (*Massachusetts Institute of Technology*) et de Two Sigma montre que des
 optimisations présentes seulement dans le code, ou décrites comme des détails, expliquent
 l'essentiel de l'avantage de PPO sur TRPO [@engstrom2020implementation]. En 2021, une équipe de
 Google entraîne plus de 250 000 agents pour mesurer l'effet de plus de cinquante choix
@@ -595,11 +597,11 @@ comme le protocole le prévoyait avant ces entraînements.
 **La recette publiée plafonne aussi avec le script officiel.** Les dix agents officiels obtiennent
 995 [819, 1 006], autant que notre recette corrigée (984 [772, 1 002]). Les valeurs par défaut
 obtiennent 2 423 [1 682, 3 059]. Un agent officiel ne bat un agent par défaut qu'avec une
-probabilité de 0,09, et l'écart résiste à la correction de Holm (p = 0,001). Notre façon
+probabilité de 0,09. L'écart résiste à la correction de Holm (p = 0,001). Notre façon
 d'appliquer la recette n'était donc pas en cause. Avec les versions actuelles des bibliothèques,
 la recette réglée du recueil fait moins bien que les valeurs par défaut sur Hopper. E6 ne montre
 donc pas une référence mal réglée par ses auteurs. Elle montre qu'un réglage publié vieillit avec
-les logiciels qui l'entourent, et qu'un résultat trop beau se vérifie jusqu'au bout.
+les logiciels qui l'entourent et qu'un résultat trop beau se vérifie jusqu'au bout.
 
 # Les graines aléatoires et la statistique (F8 à F12)
 
@@ -618,7 +620,8 @@ tentatives, le modèle de départ obtient le meilleur score. Les auteurs en conc
 raisonnements du modèle entraîné existaient déjà dans le modèle de départ. La distillation, qui
 fait imiter un modèle plus fort, en apporte au contraire de nouveaux [@yue2025rlvr]. Un article
 qui annonce un gain sans dire combien de tentatives il compte laisse le lecteur ignorer lequel des
-deux modèles gagne.
+deux modèles gagne. L'expérience B3 dira si, sur nos propres courbes, le choix de la mesure change le
+classement de nos quatre algorithmes.
 
 **Toujours cinq essais (F9).** Sur 41 articles de RL expérimentaux de 2026, 20 ne disent pas
 combien d'entraînements indépendants soutiennent leurs résultats. Quatre n'en ont qu'un. La
@@ -636,7 +639,7 @@ Nous avons refait l'expérience la plus célèbre de 2018 à plus grande échell
 entraînements de PPO sur HalfCheetah, un million de pas chacun, avec le même code et les mêmes
 hyperparamètres. Seule la graine aléatoire change.
 
-![Trente entraînements du même programme sur la même tâche. Chaque point est un essai, placé à hauteur de son score d'évaluation final. Seule la graine aléatoire change d'un point à l'autre. Moyenne 1 688, écart type 568, médiane 1 580. Vingt-sept essais finissent entre 1 138 et 1 999. Trois décollent au-delà de 3 000.](figures/e1-seeds.svg){width=100%}
+![Trente entraînements du même programme sur la même tâche (l'algorithme PPO, *Proximal Policy Optimization*, sur HalfCheetah, le guépard simulé). Chaque point est un essai, placé à hauteur de son score d'évaluation final. Seule la graine aléatoire change d'un point à l'autre. Moyenne 1 688, écart type 568, médiane 1 580. Vingt-sept essais finissent entre 1 138 et 1 999. Trois décollent au-delà de 3 000.](figures/e1-seeds.svg){width=100%}
 
 **Une dispersion qui ne ressemble pas à une cloche.** L'écart type vaut 34 % de la moyenne. La
 distribution s'éloigne beaucoup de la courbe en cloche : un test de Shapiro-Wilk, qui mesure cet
@@ -656,7 +659,7 @@ programme, chaque écart déclaré significatif est un faux positif.
 | 10 essais contre 10, tirés au hasard | 1,7 % | 11 % | 33 % |
 | Les 5 meilleurs contre les 5 pires, sur 10 essais | 31,0 % | 42 % | non calculé |
 
-: Expérience E1, 10 000 tirages par ligne. L'écart apparent rapporte la différence des deux moyennes à la plus petite des deux. Données : `sim/analysis/e1.json`.
+: Expérience E1, 10 000 tirages par ligne, tous parmi trente essais d'un même programme (PPO sur HalfCheetah) qui diffèrent seulement par leur graine aléatoire. L'écart apparent rapporte la différence des deux moyennes à la plus petite des deux. Données : `sim/analysis/e1.json`.
 
 **Le hasard trompe l'œil, le tri trompe le test.** Deux groupes de cinq essais tirés au hasard ne
 trompent presque jamais le test (1,2 %). Ils trompent l'œil : leurs moyennes diffèrent de 17 % en
@@ -675,7 +678,7 @@ le protocole déclare.
 
 **Avec leur algorithme, toujours pas (B1).** Deux explications restaient ouvertes : TRPO disperse
 plus que PPO, ou leur calcul différait du nôtre. Nous avons écrit le plan avant tout entraînement :
-trente essais de TRPO, avec ses réglages par défaut, sur la même tâche, et trois lectures de leur
+trente essais de TRPO, avec ses réglages par défaut, sur la même tâche, puis trois lectures de leur
 légende. TRPO disperse bien davantage : son écart type vaut 48 % de sa moyenne, contre 34 % pour
 PPO. Pourtant, avec des groupes tirés au hasard, le t moyen ne dépasse 1,4 qu'une fois sur vingt,
 comme pour PPO ; triés, 1,9. La troisième lecture empile les cent points des cinq courbes de chaque
@@ -747,7 +750,7 @@ nettement. Leur article a reçu le prix de l'article remarquable de NeurIPS 2021
 sur quatre tâches. E3 compare PPO écrit en PyTorch et PPO écrit en JAX, avec les mêmes graines
 aléatoires. E2 attend la fin des simulations. E3 est fini : sur aucune des quatre tâches, l'une des
 deux versions ne l'emporte selon la règle du protocole. Les écarts apparents sont pourtant larges.
-Sur Walker2d, la moyenne interquartile vaut 2 158 avec PyTorch et 1 272 avec JAX, 41 % de moins, et
+Sur Walker2d, la moyenne interquartile vaut 2 158 avec PyTorch et 1 272 avec JAX, 41 % de moins, mais
 les deux intervalles se chevauchent encore avec dix graines. Une méthode comparée à « PPO » sur
 cette tâche gagnerait ou perdrait donc selon la version choisie, sans que dix graines permettent de
 trancher. Les articles, eux, sont lus. Dans le RL
@@ -779,7 +782,7 @@ et des frottements réduits de 20 %. Pour trois algorithmes sur quatre, CrossQ �
 cours, 9 couples d'algorithme et de tâche sur 12 perdent une part détectable de leur score. La perte
 dépend de l'algorithme. Sur Hopper, PPO ne garde que 22 % de son score dans sa version PyTorch et
 18 % dans sa version JAX, quand SAC en garde 64 %. Sur Swimmer, aucun ne perd. Un classement établi
-dans la physique d'entraînement ne dit donc rien de la robustesse : c'est ce que Pineau demandait de
+dans la physique d'entraînement dit donc peu de chose de la robustesse : c'est ce que Pineau demandait de
 mesurer en séparant l'entraînement du test.
 
 **Les bancs d'essai trop simples, sous une autre forme (F16).** Pineau réclamait la version de
@@ -856,7 +859,7 @@ Nous avons relevé leurs réponses à quatre questions dans la version des actes
 NeurIPS 2025 que nous avions lus, puis nous les avons confrontées à notre lecture, avec un plan écrit
 avant l'extraction. La question sur la signification statistique se contente de barres d'erreur
 « ou d'une autre information appropriée ». Les 18 articles qui y répondent oui n'appliquent aucun
-test : la liste ne demande pas le test, et les articles ne le font pas. Sur le code, 5 articles sur
+test : la liste ne demande pas le test et les articles ne le font pas. Sur le code, 5 articles sur
 22 répondent oui sans lien vers leur code, dont 4 sans lien même dans la version des actes. Trois
 l'écrivent dans leur propre justification : le code sera publié plus tard. Sur le calcul, 6
 articles sur 21 répondent oui sans chiffrer de temps de calcul, que la question demande pourtant.
@@ -867,8 +870,8 @@ a eu lieu. Nous avons donc lu 20 articles de RL classique par année d'ICML et d
 2020, 2022 et 2024, tirés au hasard et lus avec les deux grilles, annexes comprises, selon un plan
 écrit avant le tirage. ICLR manque à ces quatre années : son site refuse les téléchargements
 automatiques. Dix de ces articles, tirés au hasard, ont été relus à l'aveugle par un autre agent :
-les deux lectures concordent sur les dix articles pour les cinq critères du tableau, et à 80 % au
-moins sur chacun des 23 critères.
+les deux lectures concordent sur les dix articles pour les cinq critères du tableau. Sur chacun des 23
+critères, elles concordent à 80 % au moins.
 
 | Pratique | 2018 | 2019 | 2020 | 2022 | 2024 | 2026 |
 |:---------------------------------|----:|----:|----:|----:|----:|----:|
@@ -958,7 +961,7 @@ complétée par une seconde grille et comparée à notre propre lecture de 2018 
 **Écoutée en partie, sans règle simple.** À grille égale, quatre pratiques ont changé dans le RL
 classique : le lien vers le code, le calcul chiffré, le balayage d'un hyperparamètre, les barres
 d'incertitude. Ces hausses tiennent quand on sépare les articles selon leur provenance ou selon
-leur conférence, et quand on retire tour à tour chacun des lecteurs. Le
+leur conférence et quand on retire tour à tour chacun des lecteurs. Le
 test statistique, des références réglées et décrites avec le même soin que la méthode, l'évaluation
 tenue à part et les versions données n'ont pas bougé de façon détectable.
 
@@ -1016,22 +1019,24 @@ ses bons résultats qu'envers ses mauvais.
   la règle, mécanique, compte aussi des faux positifs, comme un article où « RL » désigne
   l'apprentissage de représentations. Lus avec les deux grilles, 20 de ces articles ressemblent au
   premier tirage de 2026 : le code en lien dans 60 % d'entre eux (67 % dans le tirage), une
-  incertitude dans 50 % (47 %). 13 portent sur les grands modèles de langue ; les 7 de RL classique
+  incertitude dans 50 % (47 %). 13 traitent des grands modèles de langue ; les 7 de RL classique
   sont trop peu nombreux pour éprouver nos verdicts.
-- Les trois évaluateurs du coût et du risque de chaque pratique sont des agents de langage, de trois tailles différentes. Leur accord entre eux ne garantit pas qu'un chercheur noterait de même.
+- Les trois évaluateurs du coût et du risque de chaque pratique sont des agents de modèle de langue, de trois tailles différentes. Leur accord entre eux ne garantit pas qu'un chercheur noterait de même.
 - Les articles de 2026 ont été lus surtout dans leur version arXiv (45 articles de RL classique sur 50), ceux de 2018 dans les actes des conférences. Une version arXiv est parfois plus longue ou plus récente que celle des actes. Avec 5 articles seulement lus sur le site d'une conférence, nous ne pouvons pas mesurer l'effet de cette différence.
 - Le tirage de Pineau en 2018 reste inconnu. Nos comparaisons avec ses chiffres supposent
   un tirage comparable au nôtre.
 
 **Ce qui n'est pas encore mesuré.** Le sondage couvre désormais les seize failles. Les expériences
-E2, E4, E5 et E7 attendent la fin des simulations : F13 n'a pour l'instant que sa mesure dans les
-articles. E1 se limite à une tâche et un algorithme. Le volet GRPO reste une illustration
+E2, E4, E5 et B3, ainsi que E7 pour CrossQ, attendent la fin des simulations : F13 n'a pour
+l'instant que sa mesure dans les articles. E1 et B1 se limitent à une seule tâche (HalfCheetah) et
+à deux algorithmes (PPO et TRPO). Le volet GRPO reste une illustration
 sur des modèles de 0,5 et 1 milliard de paramètres, loin d'une réplication de Shao et ses
 coauteurs.
 
 # Ce qui reste à mesurer
 
-- Les expériences E2, E4 et E5, et E7 pour CrossQ, quand les quarante entraînements CrossQ seront finis.
+- Les expériences E2, E4, E5 et B3, ainsi que E7 pour CrossQ, se calculeront dès que les quarante
+  entraînements CrossQ seront finis.
 
 # Reproductibilité
 

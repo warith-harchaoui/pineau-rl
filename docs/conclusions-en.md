@@ -2,7 +2,7 @@
 title: "Did we listen to Joelle Pineau in 2018?"
 subtitle: "A survey revisited. Every flaw she exposed in 2018, measured in the papers of 2018 to 2026 and in our own experiments"
 author: "Warith Harchaoui"
-date: "9 November 2026, interim state"
+date: "12 November 2026, interim state"
 lang: en-GB
 bibliography: refs.bib
 link-citations: true
@@ -32,13 +32,14 @@ all the settings of their method, where Pineau counted 90%. So we judge each fla
 grid on both sides, setting the classical RL of 2026 against our own reading of 2018, with the same
 grids and the same readers. Four practices changed. Linking the code went from 31% to 74% of
 papers, showing the sensitivity to a setting from 44% to 80%, quantifying the compute from 27% to
-58%, reporting an uncertainty from 63% to 88%. These four rises withstand every cut we tried. Other
+58%, reporting an uncertainty from 63% to 88%. These four rises withstand every cut we tried. Read on 20 papers a year between the two dates, they
+climb slowly, with no jump right after the checklist NeurIPS has required since 2019. Other
 practices show no detectable change: a statistical test (6% then 12%), baselines
 described with all their settings (35% then 29%), evaluation on held-out conditions (33% then 45%),
 the version of the benchmarks (23% then 26%). Our experiments sharpen the picture of the most famous flaw. Among our thirty runs, two
 groups of five drawn at random fool a statistical test in only 1.2% of cases. The test gets fooled
 when the runs are sorted (31%). Keeping the best runs inflates the score by 33%. The experiments
-also show why a result that looks too good deserves a check: our own baseline collapsed. An error in our code seemed to explain it. Fixing the error changed nothing, and the collection's official script plateaus the same way: the published recipe has aged with the libraries. The most striking figure of 2018, a t of 9 between two groups of the same program, finds its explanation: the script Peter Henderson published measures the spread between episodes and ignores the spread between random seeds. Applied to our TRPO runs, it exceeds 9 in 38% of random draws. Several experiments remain to be finished: this document says
+also show why a result that looks too good deserves a check: our own baseline collapsed. An error in our code seemed to explain it. Fixing the error changed nothing. The collection's official script plateaus the same way: the published recipe has aged with the libraries. The most striking figure of 2018, a t of 9 between two groups of the same program, finds its explanation: the script Peter Henderson published measures the spread between episodes and ignores the spread between random seeds. Applied to our TRPO runs, it exceeds 9 in 38% of random draws. Several experiments remain to be finished: this document says
 which.
 
 # Two talks in 2018
@@ -297,7 +298,7 @@ multiply [@machado2018revisiting]. A success on these benchmarks then says littl
 **The inventory.** The table below lists the sixteen flaws with their source in the slides and the
 instrument that measures each one in this document. The next section describes the instruments.
 
-| | The flaw shown in 2018 | Where Pineau shows it | What measures it here | Where we stand on 9 November 2026 |
+| | The flaw shown in 2018 | Where Pineau shows it | What measures it here | Where we stand on 12 November 2026 |
 |:----|:-----------------------------------------|:----------------|:----------------|:----------------------|
 | F1 | The paper published without its code | slide 6 at ICLR, page 29 at NeurIPS | criterion Q5 | heeded |
 | F2 | A missing plan for rerunning the experiment, as with AlphaGo | slides 9 to 12 at ICLR | criteria Q3 and X7 | partly heeded: compute gets quantified |
@@ -306,7 +307,7 @@ instrument that measures each one in this document. The next section describes t
 | F5 | How the hyperparameters were chosen, left unsaid | page 29 at NeurIPS | criterion Q6 | no detectable change after correction |
 | F6 | Settings that change everything and interact | slides 24 and 25 at ICLR | criterion Y9 | heeded |
 | F7 | Baselines tuned less carefully than the method | slide 25 at ICLR, page 29 at NeurIPS | criteria Q4 and X4, experiment E6 | no detectable change, still rare |
-| F8 | A performance measure never defined | slides 26 and 27 at ICLR | criteria Y1 and Y2 | no detectable change, measure usually defined |
+| F8 | A performance measure never defined | slides 26 and 27 at ICLR | criteria Y1 and Y2, experiment B3 | no detectable change, measure usually defined |
 | F9 | Too few runs, three or five, never ten in her table | slide 28 at ICLR | criterion X1, experiment E5 | not heeded |
 | F10 | Only the best runs out of N published | slides 29 and 30 at ICLR | criterion X3, experiments E1 and E4 | rare in both years, effect measured |
 | F11 | Same code, another random seed: two "algorithms" | slide 31 at ICLR, page 22 at NeurIPS | experiments E1 and B1 | qualified: the t of 9 comes from a test on episodes |
@@ -316,7 +317,7 @@ instrument that measures each one in this document. The next section describes t
 | F15 | Evaluation in the training conditions | pages 36 to 51 at NeurIPS | criteria Q7 and Y8, experiment E7 | no detectable change with the same grid |
 | F16 | Benchmarks too simple, easy to learn by heart | pages 43 to 50 at NeurIPS | criteria X6 and Y7 | no detectable change |
 
-: The sixteen flaws Joelle Pineau showed in 2018 in deep reinforcement learning (RL), labelled F1 to F16. For each one: the slide of her talk at ICLR (International Conference on Learning Representations) or the page of her NeurIPS (Neural Information Processing Systems) document that shows it, the reading criterion or the experiment that measures it in this document, then the verdict as of 9 November 2026. The verdict sets our 50 classical RL papers from 2026 against our reading of 50 papers from 2018, with the same grids and the same readers.
+: The sixteen flaws Joelle Pineau showed in 2018 in deep reinforcement learning (RL), labelled F1 to F16. For each one: the slide of her talk at ICLR (International Conference on Learning Representations) or the page of her NeurIPS (Neural Information Processing Systems) document that shows it, the reading criterion or the experiment that measures it in this document, then the verdict as of 12 November 2026. The verdict sets our 50 classical RL papers from 2026 against our reading of 50 papers from 2018, with the same grids and the same readers.
 
 # How we measure
 
@@ -369,7 +370,7 @@ measure (Y1, kappa 0.31). Ten more papers, drawn at random from the added ones, 
 with both grids: agreement reaches at least 80% on each of the 23 criteria. It is complete on seventeen
 of them. All these agreements are computed on the raw readings, before the harmonisation described
 below. Agreement between two machines remains agreement between machines. No human reread the
-papers blind: each decision quotes the paper with its page, and anyone can check it in
+papers blind: each decision quotes the paper with its page, so anyone can check it in
 `study/codes/` and `study/codes_v2/`.
 
 **Harmonisation.** Two agents sometimes read the same rule in two ways. Before computing a single
@@ -561,11 +562,11 @@ before these runs.
 
 **The published recipe also plateaus with the official script.** The ten official agents score
 995 [819, 1,006], as much as our corrected recipe (984 [772, 1,002]). The default values score
-2,423 [1,682, 3,059]. An official agent beats a default agent with a probability of only 0.09,
-and the gap survives Holm's correction (p = 0.001). Our way of applying the recipe was therefore
+2,423 [1,682, 3,059]. An official agent beats a default agent with a probability of only 0.09.
+The gap survives Holm's correction (p = 0.001). Our way of applying the recipe was therefore
 not the cause. With the current versions of the libraries, the collection's tuned recipe does worse
 than the default values on Hopper. So E6 does not show a baseline badly tuned by its authors. It
-shows that a published setting ages with the software around it, and that a result that looks too
+shows that a published setting ages with the software around it and that a result that looks too
 good deserves checking all the way through.
 
 # Random seeds and statistics (F8 to F12)
@@ -583,7 +584,8 @@ single attempt, the trained model wins. With many attempts, the starting model s
 authors conclude that the trained model's reasoning paths already existed in the starting model.
 Distillation, which trains a model to imitate a stronger one, brings in new paths instead
 [@yue2025rlvr]. A paper that announces a gain without saying how many attempts it counts leaves the
-reader unable to tell which of the two models wins.
+reader unable to tell which of the two models wins. Experiment B3 will tell whether, on our own
+curves, the choice of measure changes the ranking of our four algorithms.
 
 **Still five runs (F9).** Of 41 experimental RL papers from 2026, 20 leave unstated how many
 independent training runs support their results. Four have only one. The median among the others is
@@ -637,7 +639,7 @@ added this analysis after the first results of E1, as the protocol declares.
 
 **With their algorithm, still not (B1).** Two explanations remained open: TRPO spreads more than
 PPO, or their calculation differed from ours. We wrote the plan before any training: thirty TRPO
-runs with its default settings on the same task, and three readings of their caption. TRPO does
+runs with its default settings on the same task, then three readings of their caption. TRPO does
 spread far more: its standard deviation is 48% of its mean, against 34% for PPO. Yet with groups
 drawn at random, the average t exceeds 1.4 only one time in twenty, as with PPO; sorted, 1.9. The
 third reading stacks the hundred points of each group's five curves as if they were independent. It
@@ -658,8 +660,8 @@ written before the calculation. With TRPO, the average t exceeds 9.09 in 38% of 
 the test declares a difference in 43% of them. One number gives the reason: for our TRPO, the
 standard deviation between the episodes of one agent is only 7% of the standard deviation between
 agents. With PPO, whose episodes vary more, the same calculation never reaches 9. Our evaluation
-episodes, played without randomness, differ from their training episodes: the order of magnitude
-carries over all the same. The t of 9 needed no sorting, then. It comes from a test that counts
+episodes, played without randomness, differ from their training episodes: the order of magnitude,
+though, comes out the same. The t of 9 needed no sorting, then. It comes from a test that counts
 episodes instead of random seeds. The flaw runs deeper than the figure said: the luck of the random
 seeds fooled the very test that was meant to measure it.
 
@@ -708,9 +710,9 @@ Outstanding Paper Award [@agarwal2021precipice].
 compares PPO written in PyTorch with PPO written in JAX, using the same random seeds. E2 awaits the
 end of the simulations. E3 is finished: on none of the four tasks does one version win under the
 protocol's rule. The apparent gaps are wide all the same. On Walker2d, the interquartile mean is
-2,158 with PyTorch and 1,272 with JAX, 41% lower, and the two intervals still overlap with ten
+2,158 with PyTorch and 1,272 with JAX, 41% lower, yet the two intervals still overlap with ten
 random seeds. A method compared with "PPO" on this task would therefore win or lose depending on the
-version chosen, and ten random seeds would not settle it. The papers, for their part, have been read. In classical RL, the main
+version chosen, with no way for ten random seeds to settle it. The papers, for their part, have been read. In classical RL, the main
 conclusion rests on several tasks in 41 papers out of 50 in 2026, against 43 out of 48 in 2018
 (criterion Y3). Among the papers with several tasks, 38 out of 41 show at least one task where their
 method does not win, against 34 out of 43 in 2018 (criterion Y4). The origin of the baselines' code
@@ -735,7 +737,7 @@ training: in the physics they trained in, then with masses made 20% heavier and 
 20%. For three algorithms out of four, CrossQ still running, 9 pairs of algorithm and task out of 12
 lose a detectable share of their score. The loss depends on the algorithm. On Hopper, PPO keeps only
 22% of its score in its PyTorch version and 18% in its JAX version, while SAC keeps 64%. On Swimmer,
-none loses. A ranking set in the training physics therefore says nothing about robustness: that is
+none loses. A ranking set in the training physics therefore says little about robustness: that is
 what Pineau asked to measure by separating training from testing.
 
 **Benchmarks too simple, in another form (F16).** Pineau asked for the version of every benchmark, so
@@ -805,7 +807,7 @@ code rise before the checklists [@coakley2026shift].
 recorded their answers to four questions in the proceedings version of the 30 NeurIPS 2025 papers we
 had read, then set them against our reading, with a plan written before the extraction. The question
 on statistical significance settles for error bars "or other appropriate information". The 18 papers
-that answer yes apply no test: the checklist does not ask for the test, and the papers do not run
+that answer yes apply no test: the checklist does not ask for the test and the papers do not run
 one. On code, 5 papers out of 22 answer yes without a link to their code, 4 of them with no link even
 in the proceedings version. Three say so in their own justification: the code will be released
 later. On compute, 6 papers out of 21 answer yes without stating any computing time, which the
@@ -815,8 +817,8 @@ question does ask for. A ticked box therefore does not guarantee the practice it
 happened. So we read 20 classical RL papers per year from ICML and NeurIPS in 2019, 2020, 2022 and
 2024, drawn at random and read with both grids, appendices included, following a plan written before
 the draw. ICLR is missing from these four years: its site refuses automated downloads. Ten of these papers, drawn at random, were reread blind by another agent: the
-two readings agree on all ten papers for the five criteria of the table, and on at least 80% of them
-for each of the 23 criteria.
+two readings agree on all ten papers for the five criteria of the table. On each of the 23 criteria,
+they agree on at least 80% of the papers.
 
 | Practice | 2018 | 2019 | 2020 | 2022 | 2024 | 2026 |
 |:---------------------------------|----:|----:|----:|----:|----:|----:|
@@ -894,7 +896,7 @@ models.
 
 **Heeded in part, with no simple rule.** With the same grid, four practices changed in classical RL:
 linking the code, quantifying the compute, sweeping a hyperparameter, drawing error bars. These rises
-hold when the papers are split by provenance or by conference, and when each reader is removed in
+hold when the papers are split by provenance or by conference and when each reader is removed in
 turn. A statistical test, baselines tuned and described with the same care
 as the method, held-out evaluation and stated versions show no detectable change.
 
@@ -935,14 +937,16 @@ Pineau's advice in 2018: be as critical of your good results as of your bad ones
 - The 2026 papers were mostly read in their arXiv version (45 classical RL papers out of 50), the 2018 papers in the conference proceedings. An arXiv version is sometimes longer or more recent than the proceedings one. With only 5 papers read on a conference site, we cannot measure the effect of this difference.
 - Pineau's 2018 draw remains unknown. Our comparisons with her figures assume a draw comparable to ours.
 
-**Flaws still unmeasured.** The survey now covers all sixteen flaws. Experiments E2, E4, E5 and E7
-await the end of the simulations: for now, F13 has only its measurement in the papers. E1
-is limited to one task and one algorithm. The GRPO strand remains an illustration on models of 0.5
+**Flaws still unmeasured.** The survey now covers all sixteen flaws. Experiments E2, E4, E5 and B3,
+along with E7 for CrossQ, await the end of the simulations: for now, F13 has only its measurement
+in the papers. E1 and B1 are limited to a single task (HalfCheetah) and two algorithms (PPO and
+TRPO). The GRPO strand remains an illustration on models of 0.5
 and 1 billion parameters, far from a replication of Shao and co-authors.
 
 # What remains to be measured
 
-- Experiments E2, E4 and E5, and E7 for CrossQ, follow once the forty CrossQ training runs finish.
+- Experiments E2, E4, E5 and B3, along with E7 for CrossQ, will be computed once the forty CrossQ
+  training runs finish.
 
 # Reproducibility
 

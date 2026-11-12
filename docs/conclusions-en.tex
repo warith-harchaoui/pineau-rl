@@ -40,7 +40,7 @@ Harchaoui},pdflang={en-GB}}
 survey revisited. Every flaw she exposed in 2018, measured in the papers
 of 2018 to 2026 and in our own experiments}
 \author{Warith Harchaoui}
-\date{9 November 2026, interim state}
+\date{12 November 2026, interim state}
 
 \begin{document}
 \maketitle
@@ -79,7 +79,9 @@ with the same grids and the same readers. Four practices changed.
 Linking the code went from 31\% to 74\% of papers, showing the
 sensitivity to a setting from 44\% to 80\%, quantifying the compute from
 27\% to 58\%, reporting an uncertainty from 63\% to 88\%. These four
-rises withstand every cut we tried. Other practices show no detectable
+rises withstand every cut we tried. Read on 20 papers a year between the
+two dates, they climb slowly, with no jump right after the checklist
+NeurIPS has required since 2019. Other practices show no detectable
 change: a statistical test (6\% then 12\%), baselines described with all
 their settings (35\% then 29\%), evaluation on held-out conditions (33\%
 then 45\%), the version of the benchmarks (23\% then 26\%). Our
@@ -89,7 +91,7 @@ in only 1.2\% of cases. The test gets fooled when the runs are sorted
 (31\%). Keeping the best runs inflates the score by 33\%. The
 experiments also show why a result that looks too good deserves a check:
 our own baseline collapsed. An error in our code seemed to explain it.
-Fixing the error changed nothing, and the collection's official script
+Fixing the error changed nothing. The collection's official script
 plateaus the same way: the published recipe has aged with the libraries.
 The most striking figure of 2018, a t of 9 between two groups of the
 same program, finds its explanation: the script Peter Henderson
@@ -457,7 +459,7 @@ reinforcement learning (RL), labelled F1 to F16. For each one: the slide
 of her talk at ICLR (International Conference on Learning
 Representations) or the page of her NeurIPS (Neural Information
 Processing Systems) document that shows it, the reading criterion or the
-experiment that measures it in this document, then the verdict as of 9
+experiment that measures it in this document, then the verdict as of 12
 November 2026. The verdict sets our 50 classical RL papers from 2026
 against our reading of 50 papers from 2018, with the same grids and the
 same readers.}\tabularnewline
@@ -470,7 +472,7 @@ Where Pineau shows it
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 What measures it here
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Where we stand on 9 November 2026
+Where we stand on 12 November 2026
 \end{minipage} \\
 \midrule\noalign{}
 \endfirsthead
@@ -483,7 +485,7 @@ Where Pineau shows it
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 What measures it here
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Where we stand on 9 November 2026
+Where we stand on 12 November 2026
 \end{minipage} \\
 \midrule\noalign{}
 \endhead
@@ -507,7 +509,8 @@ F7 & Baselines tuned less carefully than the method & slide 25 at ICLR,
 page 29 at NeurIPS & criteria Q4 and X4, experiment E6 & no detectable
 change, still rare \\
 F8 & A performance measure never defined & slides 26 and 27 at ICLR &
-criteria Y1 and Y2 & no detectable change, measure usually defined \\
+criteria Y1 and Y2, experiment B3 & no detectable change, measure
+usually defined \\
 F9 & Too few runs, three or five, never ten in her table & slide 28 at
 ICLR & criterion X1, experiment E5 & not heeded \\
 F10 & Only the best runs out of N published & slides 29 and 30 at ICLR &
@@ -601,8 +604,8 @@ the 23 criteria. It is complete on seventeen of them. All these
 agreements are computed on the raw readings, before the harmonisation
 described below. Agreement between two machines remains agreement
 between machines. No human reread the papers blind: each decision quotes
-the paper with its page, and anyone can check it in
-\texttt{study/codes/} and \texttt{study/codes\_v2/}.
+the paper with its page, so anyone can check it in \texttt{study/codes/}
+and \texttt{study/codes\_v2/}.
 
 \textbf{Harmonisation.} Two agents sometimes read the same rule in two
 ways. Before computing a single percentage, we reread every code,
@@ -946,12 +949,12 @@ these runs.
 The ten official agents score 995 {[}819, 1,006{]}, as much as our
 corrected recipe (984 {[}772, 1,002{]}). The default values score 2,423
 {[}1,682, 3,059{]}. An official agent beats a default agent with a
-probability of only 0.09, and the gap survives Holm's correction (p =
+probability of only 0.09. The gap survives Holm's correction (p =
 0.001). Our way of applying the recipe was therefore not the cause. With
 the current versions of the libraries, the collection's tuned recipe
 does worse than the default values on Hopper. So E6 does not show a
 baseline badly tuned by its authors. It shows that a published setting
-ages with the software around it, and that a result that looks too good
+ages with the software around it and that a result that looks too good
 deserves checking all the way through.
 
 \section{Random seeds and statistics (F8 to
@@ -976,7 +979,8 @@ paths already existed in the starting model. Distillation, which trains
 a model to imitate a stronger one, brings in new paths instead
 \autocite{yue2025rlvr}. A paper that announces a gain without saying how
 many attempts it counts leaves the reader unable to tell which of the
-two models wins.
+two models wins. Experiment B3 will tell whether, on our own curves, the
+choice of measure changes the ranking of our four algorithms.
 
 \textbf{Still five runs (F9).} Of 41 experimental RL papers from 2026,
 20 leave unstated how many independent training runs support their
@@ -1094,7 +1098,7 @@ results of E1, as the protocol declares.
 \textbf{With their algorithm, still not (B1).} Two explanations remained
 open: TRPO spreads more than PPO, or their calculation differed from
 ours. We wrote the plan before any training: thirty TRPO runs with its
-default settings on the same task, and three readings of their caption.
+default settings on the same task, then three readings of their caption.
 TRPO does spread far more: its standard deviation is 48\% of its mean,
 against 34\% for PPO. Yet with groups drawn at random, the average t
 exceeds 1.4 only one time in twenty, as with PPO; sorted, 1.9. The third
@@ -1124,7 +1128,7 @@ gives the reason: for our TRPO, the standard deviation between the
 episodes of one agent is only 7\% of the standard deviation between
 agents. With PPO, whose episodes vary more, the same calculation never
 reaches 9. Our evaluation episodes, played without randomness, differ
-from their training episodes: the order of magnitude carries over all
+from their training episodes: the order of magnitude, though, comes out
 the same. The t of 9 needed no sorting, then. It comes from a test that
 counts episodes instead of random seeds. The flaw runs deeper than the
 figure said: the luck of the random seeds fooled the very test that was
@@ -1209,15 +1213,15 @@ PPO written in JAX, using the same random seeds. E2 awaits the end of
 the simulations. E3 is finished: on none of the four tasks does one
 version win under the protocol's rule. The apparent gaps are wide all
 the same. On Walker2d, the interquartile mean is 2,158 with PyTorch and
-1,272 with JAX, 41\% lower, and the two intervals still overlap with ten
+1,272 with JAX, 41\% lower, yet the two intervals still overlap with ten
 random seeds. A method compared with ``PPO'' on this task would
-therefore win or lose depending on the version chosen, and ten random
-seeds would not settle it. The papers, for their part, have been read.
-In classical RL, the main conclusion rests on several tasks in 41 papers
-out of 50 in 2026, against 43 out of 48 in 2018 (criterion Y3). Among
-the papers with several tasks, 38 out of 41 show at least one task where
-their method does not win, against 34 out of 43 in 2018 (criterion Y4).
-The origin of the baselines' code is stated in 41\% of 2026 papers,
+therefore win or lose depending on the version chosen, with no way for
+ten random seeds to settle it. The papers, for their part, have been
+read. In classical RL, the main conclusion rests on several tasks in 41
+papers out of 50 in 2026, against 43 out of 48 in 2018 (criterion Y3).
+Among the papers with several tasks, 38 out of 41 show at least one task
+where their method does not win, against 34 out of 43 in 2018 (criterion
+Y4). The origin of the baselines' code is stated in 41\% of 2026 papers,
 against 46\% in 2018 (criterion Y5). We detect no change on these three
 criteria. The first two practices were already common in 2018. The third
 remains a minority practice. RL on large models more often concludes
@@ -1247,7 +1251,7 @@ algorithm and task out of 12 lose a detectable share of their score. The
 loss depends on the algorithm. On Hopper, PPO keeps only 22\% of its
 score in its PyTorch version and 18\% in its JAX version, while SAC
 keeps 64\%. On Swimmer, none loses. A ranking set in the training
-physics therefore says nothing about robustness: that is what Pineau
+physics therefore says little about robustness: that is what Pineau
 asked to measure by separating training from testing.
 
 \textbf{Benchmarks too simple, in another form (F16).} Pineau asked for
@@ -1351,7 +1355,7 @@ questions in the proceedings version of the 30 NeurIPS 2025 papers we
 had read, then set them against our reading, with a plan written before
 the extraction. The question on statistical significance settles for
 error bars ``or other appropriate information''. The 18 papers that
-answer yes apply no test: the checklist does not ask for the test, and
+answer yes apply no test: the checklist does not ask for the test and
 the papers do not run one. On code, 5 papers out of 22 answer yes
 without a link to their code, 4 of them with no link even in the
 proceedings version. Three say so in their own justification: the code
@@ -1366,8 +1370,8 @@ random and read with both grids, appendices included, following a plan
 written before the draw. ICLR is missing from these four years: its site
 refuses automated downloads. Ten of these papers, drawn at random, were
 reread blind by another agent: the two readings agree on all ten papers
-for the five criteria of the table, and on at least 80\% of them for
-each of the 23 criteria.
+for the five criteria of the table. On each of the 23 criteria, they
+agree on at least 80\% of the papers.
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.5312}}
@@ -1538,7 +1542,7 @@ large models.
 \textbf{Heeded in part, with no simple rule.} With the same grid, four
 practices changed in classical RL: linking the code, quantifying the
 compute, sweeping a hyperparameter, drawing error bars. These rises hold
-when the papers are split by provenance or by conference, and when each
+when the papers are split by provenance or by conference and when each
 reader is removed in turn. A statistical test, baselines tuned and
 described with the same care as the method, held-out evaluation and
 stated versions show no detectable change.
@@ -1637,9 +1641,10 @@ reader has to hunt for them.
 \end{itemize}
 
 \textbf{Flaws still unmeasured.} The survey now covers all sixteen
-flaws. Experiments E2, E4, E5 and E7 await the end of the simulations:
-for now, F13 has only its measurement in the papers. E1 is limited to
-one task and one algorithm. The GRPO strand remains an illustration on
+flaws. Experiments E2, E4, E5 and B3, along with E7 for CrossQ, await
+the end of the simulations: for now, F13 has only its measurement in the
+papers. E1 and B1 are limited to a single task (HalfCheetah) and two
+algorithms (PPO and TRPO). The GRPO strand remains an illustration on
 models of 0.5 and 1 billion parameters, far from a replication of Shao
 and co-authors.
 
@@ -1648,8 +1653,8 @@ and co-authors.
 \begin{itemize}
 \tightlist
 \item
-  Experiments E2, E4 and E5, and E7 for CrossQ, follow once the forty
-  CrossQ training runs finish.
+  Experiments E2, E4, E5 and B3, along with E7 for CrossQ, will be
+  computed once the forty CrossQ training runs finish.
 \end{itemize}
 
 \section{Reproducibility}\label{reproducibility}
