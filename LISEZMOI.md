@@ -11,8 +11,8 @@ changé depuis.
 Il contient tout ce qu'il faut pour refaire chaque chiffre et chaque figure du document. C'est
 un argument de la thèse : un travail sur la reproductibilité se doit d'être reproductible.
 
-**État au 9 novembre 2026** : travail en cours. Les simulations tournent encore, et plusieurs
-expériences restent à faire (voir « Ce qui reste à mesurer » dans le document).
+**État au 13 novembre 2026** : toutes les expériences et les lectures annoncées sont faites. Les
+limites qui restent sont dites dans le document, dans sa section « Limites ».
 
 ## Le document
 

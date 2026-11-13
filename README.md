@@ -10,8 +10,8 @@ training conditions. This repository measures, flaw by flaw, what has changed si
 It contains everything needed to recompute every number and every figure in the document. That
 is part of the argument: work on reproducibility owes its readers a reproducible repository.
 
-**Status on 9 November 2026**: work in progress. Simulations are still running, and several
-experiments remain to be done (see "What remains to be measured" in the document).
+**Status on 13 November 2026**: every announced experiment and reading is done. The limits that
+remain are listed in the document, in its "Limitations" section.
 
 ## The document
 
