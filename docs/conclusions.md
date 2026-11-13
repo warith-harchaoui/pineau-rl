@@ -2,7 +2,7 @@
 title: "A-t-on écouté Joelle Pineau en 2018 ?"
 subtitle: "Un état de l'art revisité. Chaque faille qu'elle a montrée en 2018, mesurée dans les articles de 2018 à 2026 et dans nos propres expériences"
 author: "Warith Harchaoui"
-date: "12 novembre 2026, état intermédiaire"
+date: "13 novembre 2026"
 lang: fr
 bibliography: refs.bib
 link-citations: true
@@ -44,7 +44,7 @@ expériences précisent la faille la plus
 célèbre. Sur nos trente essais, deux groupes de cinq tirés au hasard ne trompent un test
 statistique que dans 1,2 % des cas. Le test se laisse tromper quand on trie les essais (31 %). Garder
 les meilleurs gonfle le score de 33 %. Elles montrent aussi pourquoi un résultat trop beau se vérifie : notre
-propre référence s'est effondrée, une erreur de notre code semblait l'expliquer. Sa correction n'a rien changé. Le script officiel du recueil plafonne de même : la recette publiée a vieilli avec les bibliothèques. Le chiffre le plus frappant de 2018, un t de 9 entre deux groupes du même programme, trouve son explication : le script publié par Peter Henderson mesure la dispersion des épisodes et ignore celle des graines aléatoires. Appliqué à nos essais de TRPO, il dépasse 9 dans 38 % des tirages au hasard. Plusieurs expériences restent à finir : ce document dit lesquelles.
+propre référence s'est effondrée, une erreur de notre code semblait l'expliquer. Sa correction n'a rien changé. Le script officiel du recueil plafonne de même : la recette publiée a vieilli avec les bibliothèques. Le chiffre le plus frappant de 2018, un t de 9 entre deux groupes du même programme, trouve son explication : le script publié par Peter Henderson mesure la dispersion des épisodes et ignore celle des graines aléatoires. Appliqué à nos essais de TRPO, il dépasse 9 dans 38 % des tirages au hasard. Sur nos quatre algorithmes, le meilleur change avec la tâche. Une physique modifiée de 20 % bouleverse le classement sur Hopper : le premier y finit dernier.
 
 # Deux conférences en 2018
 
@@ -319,7 +319,7 @@ d'actions sans rien comprendre du monde, comme un élève récite une table sans
 diapositives et l'instrument qui la mesure dans ce document. Les instruments sont décrits à la
 section suivante.
 
-| | La faille montrée en 2018 | Où Pineau la montre | Ce qui la mesure ici | Où nous en sommes le 12 novembre 2026 |
+| | La faille montrée en 2018 | Où Pineau la montre | Ce qui la mesure ici | Où nous en sommes le 13 novembre 2026 |
 |:----|:-----------------------------------------|:----------------|:----------------|:----------------------|
 | F1 | L'article publié sans son code | diapositive 6 à ICLR, page 29 à NeurIPS | critère Q5 | écoutée |
 | F2 | Aucun plan pour refaire l'expérience, comme pour AlphaGo | diapositives 9 à 12 à ICLR | critères Q3 et X7 | écoutée en partie : le calcul se chiffre |
@@ -328,17 +328,17 @@ section suivante.
 | F5 | La façon de choisir les hyperparamètres, tue | page 29 à NeurIPS | critère Q6 | aucun changement détectable après correction |
 | F6 | Des réglages qui changent tout et qui interagissent | diapositives 24 et 25 à ICLR | critère Y9 | écoutée |
 | F7 | Des références moins bien réglées que la méthode | diapositive 25 à ICLR, page 29 à NeurIPS | critères Q4 et X4, expérience E6 | aucun changement détectable, toujours rare |
-| F8 | Une mesure de performance jamais définie | diapositives 26 et 27 à ICLR | critères Y1 et Y2, expérience B3 | aucun changement détectable, mesure le plus souvent définie |
-| F9 | Trop peu d'essais, trois ou cinq, jamais dix dans son tableau | diapositive 28 à ICLR | critère X1, expérience E5 | pas écoutée |
-| F10 | Les meilleurs essais sur N, seuls publiés | diapositives 29 et 30 à ICLR | critère X3, expériences E1 et E4 | rare les deux années, effet mesuré |
+| F8 | Une mesure de performance jamais définie | diapositives 26 et 27 à ICLR | critères Y1 et Y2, expérience B3 | aucun changement détectable, mesure le plus souvent définie ; elle déplace le premier sur deux tâches sur quatre |
+| F9 | Trop peu d'essais, trois ou cinq, jamais dix dans son tableau | diapositive 28 à ICLR | critère X1, expérience E5 | pas écoutée ; cinq graines trompent près d'une fois sur trois entre algorithmes proches |
+| F10 | Les meilleurs essais sur N, seuls publiés | diapositives 29 et 30 à ICLR | critère X3, expériences E1 et E4 | rare les deux années ; la moyenne gonfle d'un tiers |
 | F11 | Même code, autre graine aléatoire : deux « algorithmes » | diapositive 31 à ICLR, page 22 à NeurIPS | expériences E1 et B1 | nuancée : le t de 9 vient d'un test sur les épisodes |
 | F12 | Aucun test statistique | page 29 à NeurIPS | critères Q8, X2, Y11 et Y12 | écoutée en partie : des barres, pas de test |
-| F13 | Le meilleur algorithme qui change avec la tâche | diapositives 20 et 21 à ICLR | critères Y3 et Y4, expérience E2 | aucun changement détectable, expérience en cours |
+| F13 | Le meilleur algorithme qui change avec la tâche | diapositives 20 et 21 à ICLR | critères Y3 et Y4, expérience E2 | aucun changement détectable ; le meilleur change avec la tâche |
 | F14 | Deux implémentations du même algorithme qui divergent | diapositives 22 et 23 à ICLR | critère Y5, expérience E3 | aucun changement détectable ; deux PPO indiscernables à dix graines |
-| F15 | L'évaluation sur les conditions d'entraînement | pages 36 à 51 à NeurIPS | critères Q7 et Y8, expérience E7 | aucun changement détectable à grille égale |
+| F15 | L'évaluation sur les conditions d'entraînement | pages 36 à 51 à NeurIPS | critères Q7 et Y8, expérience E7 | aucun changement détectable à grille égale ; la physique modifiée renverse le classement sur Hopper |
 | F16 | Des bancs d'essai trop simples, faciles à apprendre par cœur | pages 43 à 50 à NeurIPS | critères X6 et Y7 | aucun changement détectable |
 
-: Les seize failles que Joelle Pineau a montrées en 2018 dans l'apprentissage par renforcement profond (RL), numérotées F1 à F16. Pour chacune : la diapositive de sa conférence d'ICLR (*International Conference on Learning Representations*) ou la page de son document de NeurIPS (*Neural Information Processing Systems*) qui la montre, le critère de lecture ou l'expérience qui la mesure dans ce document, puis le verdict à la date du 12 novembre 2026. Le verdict compare nos 50 articles de RL classique de 2026 à notre lecture de 50 articles de 2018, avec les mêmes grilles et les mêmes lecteurs.
+: Les seize failles que Joelle Pineau a montrées en 2018 dans l'apprentissage par renforcement profond (RL), numérotées F1 à F16. Pour chacune : la diapositive de sa conférence d'ICLR (*International Conference on Learning Representations*) ou la page de son document de NeurIPS (*Neural Information Processing Systems*) qui la montre, le critère de lecture ou l'expérience qui la mesure dans ce document, puis le verdict à la date du 13 novembre 2026. Le verdict compare nos 50 articles de RL classique de 2026 à notre lecture de 50 articles de 2018, avec les mêmes grilles et les mêmes lecteurs.
 
 # Comment nous mesurons
 
@@ -620,8 +620,15 @@ tentatives, le modèle de départ obtient le meilleur score. Les auteurs en conc
 raisonnements du modèle entraîné existaient déjà dans le modèle de départ. La distillation, qui
 fait imiter un modèle plus fort, en apporte au contraire de nouveaux [@yue2025rlvr]. Un article
 qui annonce un gain sans dire combien de tentatives il compte laisse le lecteur ignorer lequel des
-deux modèles gagne. L'expérience B3 dira si, sur nos propres courbes, le choix de la mesure change le
-classement de nos quatre algorithmes.
+deux modèles gagne. Sur nos propres courbes, l'expérience B3 classe nos quatre algorithmes selon trois mesures : le
+score final, le meilleur score atteint en cours de route et la moyenne de la courbe. Huit paires
+d'algorithmes changent d'ordre d'une mesure à l'autre, et le premier change sur deux tâches sur
+quatre. Sur HalfCheetah, la moyenne de la courbe place CrossQ devant SAC. Sur Hopper, le meilleur
+score place PPO écrit en PyTorch devant PPO écrit en JAX. Aucun de ces renversements n'est établi
+selon la règle du protocole : ils opposent des algorithmes proches, que dix graines ne départagent
+pas. La moyenne de la courbe couvre en outre un million de pas pour PPO et 200 000 pour SAC et
+CrossQ. Entre deux algorithmes proches, un article qui ne définit pas sa mesure peut donc choisir
+son vainqueur.
 
 **Toujours cinq essais (F9).** Sur 41 articles de RL expérimentaux de 2026, 20 ne disent pas
 combien d'entraînements indépendants soutiennent leurs résultats. Quatre n'en ont qu'un. La
@@ -631,7 +638,14 @@ dix essais par tâche restent la norme du RL profond : cinq essais sur plus de c
 demandent déjà plus de mille jours de calcul sur carte graphique. Sur Atari 100k, un banc d'essai
 à petit budget de données, il faudrait plutôt de 50 à 100 essais pour estimer la médiane des
 scores avec assez de précision [@agarwal2021precipice].
-L'expérience E5 dira combien de graines aléatoires il faut vraiment.
+L'expérience E5 mesure sur nos essais combien de graines il faut. Pour chacune de nos 24
+comparaisons entre deux algorithmes sur une tâche, nous tirons au hasard n essais parmi les dix de
+chaque algorithme, 10 000 fois, et comptons la part des tirages qui retrouvent le bon ordre. La
+médiane vaut 94 % avec trois graines, 97 % avec cinq et 99 % avec dix. Ce chiffre rassurant tient
+aux écarts larges entre nos algorithmes. Pour les 7 comparaisons dont l'écart de moyennes reste
+sous 20 %, la médiane tombe à 65 % avec trois graines, 71 % avec cinq, 77 % avec dix et 85 % avec
+vingt. Avec cinq graines, un écart de cette taille se lit donc à l'envers près d'une fois sur
+trois.
 
 ## Même code, autre graine aléatoire (F11)
 
@@ -715,7 +729,10 @@ sur dix gonfle la moyenne de 33 % (2 249 contre 1 692). Dans les articles, la pr
 rarement : 14 % des articles de RL classique de 2026 la laissent voir, contre 19 % en 2018, sans
 changement détectable. Dans le premier tirage, 2 articles sur 45 la laissent voir. Un article qui
 garde ses meilleurs essais sans le dire échappe à notre lecture : ces parts sont des minimums.
-L'expérience E4 dira combien de comparaisons entre algorithmes la pratique inverse.
+L'expérience E4 applique la pratique à nos quatre algorithmes : chacun ne garde que ses trois
+meilleurs essais sur dix. La moyenne gonfle de 32 % en médiane, de 6 % à 84 % selon l'algorithme et
+la tâche. Sur 24 comparaisons, 3 changent de sens. Deux d'entre elles opposent les deux versions de
+PPO : quand l'écart est faible, garder ses meilleurs essais suffit à choisir le vainqueur.
 
 **Des barres, pas de test (F12).** La faille se coupe en deux. Rapporter une incertitude, barres
 d'erreur ou bande autour de la courbe, est devenu courant dans le RL classique : 88 % des articles
@@ -748,7 +765,12 @@ nettement. Leur article a reçu le prix de l'article remarquable de NeurIPS 2021
 
 **Le classement et les implémentations (F13 et F14).** L'expérience E2 classe quatre algorithmes
 sur quatre tâches. E3 compare PPO écrit en PyTorch et PPO écrit en JAX, avec les mêmes graines
-aléatoires. E2 attend la fin des simulations. E3 est fini : sur aucune des quatre tâches, l'une des
+aléatoires. E2 est fini : le meilleur algorithme change avec la tâche. SAC mène sur HalfCheetah, PPO écrit en
+JAX sur Hopper et Swimmer, CrossQ sur Walker2d. Le changement est établi selon la règle du
+protocole : SAC, en tête sur HalfCheetah, est nettement battu sur Hopper et sur Walker2d. Le premier
+ne bat pourtant nettement tous les autres que sur Walker2d ; sur les trois autres tâches, dix
+graines ne le séparent pas de son suivant. Les budgets diffèrent : un million de pas pour PPO,
+200 000 pour SAC et CrossQ. E3 est fini : sur aucune des quatre tâches, l'une des
 deux versions ne l'emporte selon la règle du protocole. Les écarts apparents sont pourtant larges.
 Sur Walker2d, la moyenne interquartile vaut 2 158 avec PyTorch et 1 272 avec JAX, 41 % de moins, mais
 les deux intervalles se chevauchent encore avec dix graines. Une méthode comparée à « PPO » sur
@@ -778,12 +800,36 @@ de façon détectable.
 
 **Ce que coûte une physique modifiée (E7).** Nos agents ont été évalués deux fois, avec des graines
 aléatoires jamais vues : dans la physique de leur entraînement, puis avec des masses alourdies de 20 %
-et des frottements réduits de 20 %. Pour trois algorithmes sur quatre, CrossQ étant encore en
-cours, 9 couples d'algorithme et de tâche sur 12 perdent une part détectable de leur score. La perte
+et des frottements réduits de 20 %. 12 couples d'algorithme et de tâche sur 16 perdent une part détectable de leur score. La perte
 dépend de l'algorithme. Sur Hopper, PPO ne garde que 22 % de son score dans sa version PyTorch et
-18 % dans sa version JAX, quand SAC en garde 64 %. Sur Swimmer, aucun ne perd. Un classement établi
+18 % dans sa version JAX, quand SAC en garde 64 % et CrossQ 65 %. Sur Swimmer, aucun ne perd ; SAC y gagne même 7 %. Le
+classement en est bouleversé. Sur Hopper, PPO écrit en JAX, premier dans la physique
+d'entraînement, finit dernier dans la physique modifiée, où CrossQ prend la tête. Sur Walker2d, SAC
+passe de la dernière place à la deuxième. Ces classements comparent des moyennes interquartiles,
+sans test. Un classement établi
 dans la physique d'entraînement dit donc peu de chose de la robustesse : c'est ce que Pineau demandait de
 mesurer en séparant l'entraînement du test.
+
+| Tâche | Rang | Physique d'entraînement | Physique modifiée |
+|---|---|---|---|
+| HalfCheetah | 1 | SAC, 5 191 | SAC, 4 628 |
+|  | 2 | CrossQ, 4 801 | CrossQ, 4 017 |
+|  | 3 | PPO (PyTorch), 1 407 | PPO (PyTorch), 1 201 |
+|  | 4 | PPO (JAX), 1 254 | PPO (JAX), 1 156 |
+| Hopper | 1 | PPO (JAX), 3 064 | CrossQ, 1 302 |
+|  | 2 | PPO (PyTorch), 2 877 | SAC, 751 |
+|  | 3 | CrossQ, 2 302 | PPO (PyTorch), 609 |
+|  | 4 | SAC, 1 308 | PPO (JAX), 525 |
+| Walker2d | 1 | CrossQ, 5 414 | CrossQ, 2 352 |
+|  | 2 | PPO (PyTorch), 2 158 | SAC, 922 |
+|  | 3 | PPO (JAX), 1 272 | PPO (PyTorch), 653 |
+|  | 4 | SAC, 1 236 | PPO (JAX), 581 |
+| Swimmer | 1 | PPO (JAX), 112 | PPO (JAX), 114 |
+|  | 2 | CrossQ, 110 | CrossQ, 111 |
+|  | 3 | PPO (PyTorch), 107 | PPO (PyTorch), 109 |
+|  | 4 | SAC, 47 | SAC, 50 |
+
+: Le classement de nos quatre algorithmes sur chaque tâche, dans la physique de leur entraînement puis avec des masses alourdies de 20 % et des frottements réduits de 20 %. Chaque nombre est la moyenne interquartile du score final de dix graines aléatoires, sans intervalle ni test. PPO s'entraîne un million de pas, SAC et CrossQ 200 000.
 
 **Les bancs d'essai trop simples, sous une autre forme (F16).** Pineau réclamait la version de
 chaque banc d'essai, pour qu'un résultat se refasse dans le même monde. Dans le RL classique, 26 %
@@ -1026,17 +1072,11 @@ ses bons résultats qu'envers ses mauvais.
 - Le tirage de Pineau en 2018 reste inconnu. Nos comparaisons avec ses chiffres supposent
   un tirage comparable au nôtre.
 
-**Ce qui n'est pas encore mesuré.** Le sondage couvre désormais les seize failles. Les expériences
-E2, E4, E5 et B3, ainsi que E7 pour CrossQ, attendent la fin des simulations : F13 n'a pour
-l'instant que sa mesure dans les articles. E1 et B1 se limitent à une seule tâche (HalfCheetah) et
+**Les limites des expériences.** Le sondage couvre les seize failles.
+Toutes les expériences annoncées sont faites. E1 et B1 se limitent à une seule tâche (HalfCheetah) et
 à deux algorithmes (PPO et TRPO). Le volet GRPO reste une illustration
 sur des modèles de 0,5 et 1 milliard de paramètres, loin d'une réplication de Shao et ses
 coauteurs.
-
-# Ce qui reste à mesurer
-
-- Les expériences E2, E4, E5 et B3, ainsi que E7 pour CrossQ, se calculeront dès que les quarante
-  entraînements CrossQ seront finis.
 
 # Reproductibilité
 

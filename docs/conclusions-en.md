@@ -2,7 +2,7 @@
 title: "Did we listen to Joelle Pineau in 2018?"
 subtitle: "A survey revisited. Every flaw she exposed in 2018, measured in the papers of 2018 to 2026 and in our own experiments"
 author: "Warith Harchaoui"
-date: "12 November 2026, interim state"
+date: "13 November 2026"
 lang: en-GB
 bibliography: refs.bib
 link-citations: true
@@ -39,8 +39,7 @@ described with all their settings (35% then 29%), evaluation on held-out conditi
 the version of the benchmarks (23% then 26%). Our experiments sharpen the picture of the most famous flaw. Among our thirty runs, two
 groups of five drawn at random fool a statistical test in only 1.2% of cases. The test gets fooled
 when the runs are sorted (31%). Keeping the best runs inflates the score by 33%. The experiments
-also show why a result that looks too good deserves a check: our own baseline collapsed. An error in our code seemed to explain it. Fixing the error changed nothing. The collection's official script plateaus the same way: the published recipe has aged with the libraries. The most striking figure of 2018, a t of 9 between two groups of the same program, finds its explanation: the script Peter Henderson published measures the spread between episodes and ignores the spread between random seeds. Applied to our TRPO runs, it exceeds 9 in 38% of random draws. Several experiments remain to be finished: this document says
-which.
+also show why a result that looks too good deserves a check: our own baseline collapsed. An error in our code seemed to explain it. Fixing the error changed nothing. The collection's official script plateaus the same way: the published recipe has aged with the libraries. The most striking figure of 2018, a t of 9 between two groups of the same program, finds its explanation: the script Peter Henderson published measures the spread between episodes and ignores the spread between random seeds. Applied to our TRPO runs, it exceeds 9 in 38% of random draws. On our four algorithms, the best one changes with the task. Physics modified by 20% upends the ranking on Hopper: the leader ends last there.
 
 # Two talks in 2018
 
@@ -298,7 +297,7 @@ multiply [@machado2018revisiting]. A success on these benchmarks then says littl
 **The inventory.** The table below lists the sixteen flaws with their source in the slides and the
 instrument that measures each one in this document. The next section describes the instruments.
 
-| | The flaw shown in 2018 | Where Pineau shows it | What measures it here | Where we stand on 12 November 2026 |
+| | The flaw shown in 2018 | Where Pineau shows it | What measures it here | Where we stand on 13 November 2026 |
 |:----|:-----------------------------------------|:----------------|:----------------|:----------------------|
 | F1 | The paper published without its code | slide 6 at ICLR, page 29 at NeurIPS | criterion Q5 | heeded |
 | F2 | A missing plan for rerunning the experiment, as with AlphaGo | slides 9 to 12 at ICLR | criteria Q3 and X7 | partly heeded: compute gets quantified |
@@ -307,17 +306,17 @@ instrument that measures each one in this document. The next section describes t
 | F5 | How the hyperparameters were chosen, left unsaid | page 29 at NeurIPS | criterion Q6 | no detectable change after correction |
 | F6 | Settings that change everything and interact | slides 24 and 25 at ICLR | criterion Y9 | heeded |
 | F7 | Baselines tuned less carefully than the method | slide 25 at ICLR, page 29 at NeurIPS | criteria Q4 and X4, experiment E6 | no detectable change, still rare |
-| F8 | A performance measure never defined | slides 26 and 27 at ICLR | criteria Y1 and Y2, experiment B3 | no detectable change, measure usually defined |
-| F9 | Too few runs, three or five, never ten in her table | slide 28 at ICLR | criterion X1, experiment E5 | not heeded |
-| F10 | Only the best runs out of N published | slides 29 and 30 at ICLR | criterion X3, experiments E1 and E4 | rare in both years, effect measured |
+| F8 | A performance measure never defined | slides 26 and 27 at ICLR | criteria Y1 and Y2, experiment B3 | no detectable change, measure usually defined; it moves the leader on two tasks out of four |
+| F9 | Too few runs, three or five, never ten in her table | slide 28 at ICLR | criterion X1, experiment E5 | not heeded; five random seeds mislead nearly one time in three between close algorithms |
+| F10 | Only the best runs out of N published | slides 29 and 30 at ICLR | criterion X3, experiments E1 and E4 | rare in both years; the mean inflates by a third |
 | F11 | Same code, another random seed: two "algorithms" | slide 31 at ICLR, page 22 at NeurIPS | experiments E1 and B1 | qualified: the t of 9 comes from a test on episodes |
 | F12 | Comparisons with no statistical test | page 29 at NeurIPS | criteria Q8, X2, Y11 and Y12 | partly heeded: error bars, no test |
-| F13 | The best algorithm changes with the task | slides 20 and 21 at ICLR | criteria Y3 and Y4, experiment E2 | no detectable change, experiment under way |
+| F13 | The best algorithm changes with the task | slides 20 and 21 at ICLR | criteria Y3 and Y4, experiment E2 | no detectable change; the best algorithm changes with the task |
 | F14 | Two implementations of the same algorithm that diverge | slides 22 and 23 at ICLR | criterion Y5, experiment E3 | no detectable change; two PPOs indistinguishable at ten seeds |
-| F15 | Evaluation in the training conditions | pages 36 to 51 at NeurIPS | criteria Q7 and Y8, experiment E7 | no detectable change with the same grid |
+| F15 | Evaluation in the training conditions | pages 36 to 51 at NeurIPS | criteria Q7 and Y8, experiment E7 | no detectable change with the same grid; modified physics reverses the ranking on Hopper |
 | F16 | Benchmarks too simple, easy to learn by heart | pages 43 to 50 at NeurIPS | criteria X6 and Y7 | no detectable change |
 
-: The sixteen flaws Joelle Pineau showed in 2018 in deep reinforcement learning (RL), labelled F1 to F16. For each one: the slide of her talk at ICLR (International Conference on Learning Representations) or the page of her NeurIPS (Neural Information Processing Systems) document that shows it, the reading criterion or the experiment that measures it in this document, then the verdict as of 12 November 2026. The verdict sets our 50 classical RL papers from 2026 against our reading of 50 papers from 2018, with the same grids and the same readers.
+: The sixteen flaws Joelle Pineau showed in 2018 in deep reinforcement learning (RL), labelled F1 to F16. For each one: the slide of her talk at ICLR (International Conference on Learning Representations) or the page of her NeurIPS (Neural Information Processing Systems) document that shows it, the reading criterion or the experiment that measures it in this document, then the verdict as of 13 November 2026. The verdict sets our 50 classical RL papers from 2026 against our reading of 50 papers from 2018, with the same grids and the same readers.
 
 # How we measure
 
@@ -584,8 +583,14 @@ single attempt, the trained model wins. With many attempts, the starting model s
 authors conclude that the trained model's reasoning paths already existed in the starting model.
 Distillation, which trains a model to imitate a stronger one, brings in new paths instead
 [@yue2025rlvr]. A paper that announces a gain without saying how many attempts it counts leaves the
-reader unable to tell which of the two models wins. Experiment B3 will tell whether, on our own
-curves, the choice of measure changes the ranking of our four algorithms.
+reader unable to tell which of the two models wins. On our own curves, experiment B3 ranks our four algorithms under three measures: the final score,
+the best score reached along the way and the mean of the curve. Eight pairs of algorithms change
+order from one measure to another, and the leader changes on two tasks out of four. On HalfCheetah,
+the mean of the curve puts CrossQ ahead of SAC. On Hopper, the best score puts PPO written in
+PyTorch ahead of PPO written in JAX. None of these reversals is settled under the protocol's rule:
+they pit close algorithms against each other, which ten random seeds do not separate. The mean of
+the curve also covers a million steps for PPO and 200,000 for SAC and CrossQ. Between two close
+algorithms, a paper that leaves its measure undefined can therefore pick its winner.
 
 **Still five runs (F9).** Of 41 experimental RL papers from 2026, 20 leave unstated how many
 independent training runs support their results. Four have only one. The median among the others is
@@ -594,7 +599,13 @@ Cost explains part of this thrift. In 2021, Agarwal and co-authors note that thr
 task remain the norm in deep RL: five runs on more than fifty Atari games already take more than a
 thousand days of graphics card compute. On Atari 100k, a benchmark with a small data budget, 50 to
 100 runs are needed to estimate the median score with enough accuracy [@agarwal2021precipice].
-Experiment E5 will tell how many random seeds it really takes.
+Experiment E5 measures on our runs how many random seeds it takes. For each of our 24 comparisons
+between two algorithms on one task, we draw n runs at random from each algorithm's ten, 10,000
+times, and count the share of draws that recover the right order. The median is 94% with three
+random seeds, 97% with five and 99% with ten. This reassuring figure comes from the wide gaps
+between our algorithms. For the 7 comparisons whose gap in means stays under 20%, the median falls
+to 65% with three random seeds, 71% with five, 77% with ten and 85% with twenty. With five random
+seeds, a gap of this size is therefore read backwards nearly one time in three.
 
 ## Same code, another random seed (F11)
 
@@ -675,8 +686,10 @@ of one curve as independent runs.
 mean by 33% (2,249 against 1,692). In papers, the practice rarely shows: 14% of classical RL papers
 from 2026 let it show, against 19% in 2018, with no detectable change. In the first draw, 2 papers
 out of 45 let it show. A paper that keeps its best runs without saying so escapes our reading: these
-shares are minimums. Experiment E4 will tell how many comparisons between algorithms the practice
-reverses.
+shares are minimums. Experiment E4 applies the practice to our four algorithms: each keeps only its three best runs out
+of ten. The mean inflates by 32% at the median, from 6% to 84% depending on the algorithm and the
+task. Of 24 comparisons, 3 change direction. Two of them pit the two versions of PPO against each
+other: when the gap is small, keeping one's best runs is enough to choose the winner.
 
 **Error bars, no test (F12).** The flaw splits in two. Reporting an uncertainty, as error bars or as a
 band around the curve, has become common in classical RL: 88% of 2026 papers do it, against 63% in
@@ -707,8 +720,11 @@ Outstanding Paper Award [@agarwal2021precipice].
 # The reach of the conclusions (F13 to F16)
 
 **Rankings and implementations (F13 and F14).** Experiment E2 ranks four algorithms on four tasks. E3
-compares PPO written in PyTorch with PPO written in JAX, using the same random seeds. E2 awaits the
-end of the simulations. E3 is finished: on none of the four tasks does one version win under the
+compares PPO written in PyTorch with PPO written in JAX, using the same random seeds. E2 is finished: the best algorithm changes with the task. SAC leads on HalfCheetah, PPO written in
+JAX on Hopper and Swimmer, CrossQ on Walker2d. The change is settled under the protocol's rule: SAC,
+ahead on HalfCheetah, is clearly beaten on Hopper and on Walker2d. Yet the leader clearly beats all
+the others only on Walker2d; on the other three tasks, ten random seeds do not separate it from the
+runner-up. The budgets differ: a million steps for PPO, 200,000 for SAC and CrossQ. E3 is finished: on none of the four tasks does one version win under the
 protocol's rule. The apparent gaps are wide all the same. On Walker2d, the interquartile mean is
 2,158 with PyTorch and 1,272 with JAX, 41% lower, yet the two intervals still overlap with ten
 random seeds. A method compared with "PPO" on this task would therefore win or lose depending on the
@@ -734,11 +750,33 @@ shows no detectable change of practice.
 
 **What modified physics costs (E7).** Our agents were evaluated twice, on random seeds never seen in
 training: in the physics they trained in, then with masses made 20% heavier and friction reduced by
-20%. For three algorithms out of four, CrossQ still running, 9 pairs of algorithm and task out of 12
-lose a detectable share of their score. The loss depends on the algorithm. On Hopper, PPO keeps only
-22% of its score in its PyTorch version and 18% in its JAX version, while SAC keeps 64%. On Swimmer,
-none loses. A ranking set in the training physics therefore says little about robustness: that is
+20%. 12 pairs of algorithm and task out of 16 lose a detectable share of their score. The loss depends on the algorithm. On Hopper, PPO keeps only
+22% of its score in its PyTorch version and 18% in its JAX version, while SAC keeps 64% and CrossQ 65%. On Swimmer, none loses; SAC even gains 7% there. The ranking
+is upended. On Hopper, PPO written in JAX, first in the training physics, ends last in the modified
+physics, where CrossQ takes the lead. On Walker2d, SAC moves from last place to second. These
+rankings compare interquartile means, with no test. A ranking set in the training physics therefore says little about robustness: that is
 what Pineau asked to measure by separating training from testing.
+
+| Task | Rank | Training physics | Modified physics |
+|---|---|---|---|
+| HalfCheetah | 1 | SAC, 5,191 | SAC, 4,628 |
+|  | 2 | CrossQ, 4,801 | CrossQ, 4,017 |
+|  | 3 | PPO (PyTorch), 1,407 | PPO (PyTorch), 1,201 |
+|  | 4 | PPO (JAX), 1,254 | PPO (JAX), 1,156 |
+| Hopper | 1 | PPO (JAX), 3,064 | CrossQ, 1,302 |
+|  | 2 | PPO (PyTorch), 2,877 | SAC, 751 |
+|  | 3 | CrossQ, 2,302 | PPO (PyTorch), 609 |
+|  | 4 | SAC, 1,308 | PPO (JAX), 525 |
+| Walker2d | 1 | CrossQ, 5,414 | CrossQ, 2,352 |
+|  | 2 | PPO (PyTorch), 2,158 | SAC, 922 |
+|  | 3 | PPO (JAX), 1,272 | PPO (PyTorch), 653 |
+|  | 4 | SAC, 1,236 | PPO (JAX), 581 |
+| Swimmer | 1 | PPO (JAX), 112 | PPO (JAX), 114 |
+|  | 2 | CrossQ, 110 | CrossQ, 111 |
+|  | 3 | PPO (PyTorch), 107 | PPO (PyTorch), 109 |
+|  | 4 | SAC, 47 | SAC, 50 |
+
+: The ranking of our four algorithms on each task, in the physics they trained in, then with masses made 20% heavier and friction reduced by 20%. Each number is the interquartile mean of the final score of ten random seeds, with no interval and no test. PPO trains for a million steps, SAC and CrossQ for 200,000.
 
 **Benchmarks too simple, in another form (F16).** Pineau asked for the version of every benchmark, so
 that anyone redoing a result works in the same world. In classical RL, 26% of 2026 papers give it for all
@@ -937,16 +975,9 @@ Pineau's advice in 2018: be as critical of your good results as of your bad ones
 - The 2026 papers were mostly read in their arXiv version (45 classical RL papers out of 50), the 2018 papers in the conference proceedings. An arXiv version is sometimes longer or more recent than the proceedings one. With only 5 papers read on a conference site, we cannot measure the effect of this difference.
 - Pineau's 2018 draw remains unknown. Our comparisons with her figures assume a draw comparable to ours.
 
-**Flaws still unmeasured.** The survey now covers all sixteen flaws. Experiments E2, E4, E5 and B3,
-along with E7 for CrossQ, await the end of the simulations: for now, F13 has only its measurement
-in the papers. E1 and B1 are limited to a single task (HalfCheetah) and two algorithms (PPO and
+**The limits of the experiments.** The survey covers all sixteen flaws. All the announced experiments are done. E1 and B1 are limited to a single task (HalfCheetah) and two algorithms (PPO and
 TRPO). The GRPO strand remains an illustration on models of 0.5
 and 1 billion parameters, far from a replication of Shao and co-authors.
-
-# What remains to be measured
-
-- Experiments E2, E4, E5 and B3, along with E7 for CrossQ, will be computed once the forty CrossQ
-  training runs finish.
 
 # Reproducibility
 

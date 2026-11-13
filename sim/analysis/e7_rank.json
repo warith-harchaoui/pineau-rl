@@ -1,0 +1,118 @@
+{
+ "HalfCheetah-v5": {
+  "iqm": {
+   "eval_mean": {
+    "ppo_sb3": 1407.0374587344722,
+    "ppo_sbx": 1253.788377675893,
+    "sac": 5190.7136349624025,
+    "crossq": 4800.892362546933
+   },
+   "perturbed_mean": {
+    "ppo_sb3": 1201.343815698461,
+    "ppo_sbx": 1156.1603965064098,
+    "sac": 4628.366050540741,
+    "crossq": 4017.304001593477
+   }
+  },
+  "training": [
+   "sac",
+   "crossq",
+   "ppo_sb3",
+   "ppo_sbx"
+  ],
+  "modified": [
+   "sac",
+   "crossq",
+   "ppo_sb3",
+   "ppo_sbx"
+  ],
+  "leader_changes": false
+ },
+ "Hopper-v5": {
+  "iqm": {
+   "eval_mean": {
+    "ppo_sb3": 2877.1125411585513,
+    "ppo_sbx": 3063.5846725092147,
+    "sac": 1308.05361557808,
+    "crossq": 2302.03697930147
+   },
+   "perturbed_mean": {
+    "ppo_sb3": 608.5511659672449,
+    "ppo_sbx": 524.8822087860925,
+    "sac": 751.4098122186798,
+    "crossq": 1301.9514054685224
+   }
+  },
+  "training": [
+   "ppo_sbx",
+   "ppo_sb3",
+   "crossq",
+   "sac"
+  ],
+  "modified": [
+   "crossq",
+   "sac",
+   "ppo_sb3",
+   "ppo_sbx"
+  ],
+  "leader_changes": true
+ },
+ "Walker2d-v5": {
+  "iqm": {
+   "eval_mean": {
+    "ppo_sb3": 2158.480048453968,
+    "ppo_sbx": 1272.1513575759082,
+    "sac": 1236.1565969018009,
+    "crossq": 5413.799471359025
+   },
+   "perturbed_mean": {
+    "ppo_sb3": 652.6549824809812,
+    "ppo_sbx": 581.0648845271422,
+    "sac": 922.1939776345926,
+    "crossq": 2351.968697609245
+   }
+  },
+  "training": [
+   "crossq",
+   "ppo_sb3",
+   "ppo_sbx",
+   "sac"
+  ],
+  "modified": [
+   "crossq",
+   "sac",
+   "ppo_sb3",
+   "ppo_sbx"
+  ],
+  "leader_changes": false
+ },
+ "Swimmer-v5": {
+  "iqm": {
+   "eval_mean": {
+    "ppo_sb3": 107.2275540022029,
+    "ppo_sbx": 111.62420578687856,
+    "sac": 47.22338333052661,
+    "crossq": 109.66698397966304
+   },
+   "perturbed_mean": {
+    "ppo_sb3": 108.75529577994847,
+    "ppo_sbx": 114.20591964506137,
+    "sac": 50.144079223922695,
+    "crossq": 111.24345507022122
+   }
+  },
+  "training": [
+   "ppo_sbx",
+   "crossq",
+   "ppo_sb3",
+   "sac"
+  ],
+  "modified": [
+   "ppo_sbx",
+   "crossq",
+   "ppo_sb3",
+   "sac"
+  ],
+  "leader_changes": false
+ }
+}

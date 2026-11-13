@@ -18,3 +18,6 @@ study/t2.pdf
 study/remesure-pineau-2026.zip
 # Copies of conference listing pages, kept locally only (removed from history on 2026-11-10); their parse is in study/*.json
 study/*.html
+# SAC and CrossQ weights (9 to 71 MB each), kept locally only; results/ and logs/ recompute every figure (SIM_PROTOCOL.md, deviation 11)
+sim/models/crossq/
+sim/models/sac/

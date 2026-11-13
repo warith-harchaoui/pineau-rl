@@ -339,9 +339,11 @@ add("E3 walker", f"vaut {num(w['iqm']['sb3'], 'fr')} avec PyTorch et {num(w['iqm
     f"is {num(w['iqm']['sb3'], 'en')} with PyTorch and {num(w['iqm']['sbx'], 'en')} with JAX, {pct(1 - w['iqm_ratio_sbx_over_sb3'], lang='en')} lower")
 assert w["intervals_overlap"]
 
-# E7, held out (e7.py), three algorithms while CrossQ runs.
+# E7, held out (e7.py), all four algorithms.
 e7 = {k: v for k, v in J("sim/analysis/e7.json").items() if v["done"]}
-assert len(e7) == 12 and sum(v["verdict"] == "loss" for v in e7.values()) == 9  # "9 couples ... sur 12"
+assert len(e7) == 16
+add("E7 count", f"{sum(v['verdict'] == 'loss' for v in e7.values())} couples d'algorithme et de tâche sur 16 perdent",
+    f"{sum(v['verdict'] == 'loss' for v in e7.values())} pairs of algorithm and task out of 16 lose")
 assert all(v["verdict"] != "loss" for k, v in e7.items() if k.endswith("Swimmer-v5"))  # "Sur Swimmer, aucun ne perd"
 add("E7 hopper", f"PPO ne garde que {pct(e7['ppo_sb3/Hopper-v5']['iqm'])} de son score dans sa version PyTorch et {pct(e7['ppo_sbx/Hopper-v5']['iqm'])} dans sa version JAX, quand SAC en garde {pct(e7['sac/Hopper-v5']['iqm'])}",
     f"PPO keeps only {pct(e7['ppo_sb3/Hopper-v5']['iqm'], lang='en')} of its score in its PyTorch version and {pct(e7['ppo_sbx/Hopper-v5']['iqm'], lang='en')} in its JAX version, while SAC keeps {pct(e7['sac/Hopper-v5']['iqm'], lang='en')}")
@@ -430,6 +432,31 @@ add("E6 official", f"Les dix agents officiels obtiennent {ci('official v4', 'fr'
 add("E6 default", f"obtiennent {ci('default v4', 'fr')}. Un agent officiel ne bat un agent par défaut qu'avec une probabilité de {str(half_up(cmp_def['p_improve'], 2)).replace('.', ',')}",
     f"score {ci('default v4', 'en')}. An official agent beats a default agent with a probability of only {half_up(cmp_def['p_improve'], 2)}")
 assert half_up(cmp_def["welch_p_holm"], 3) == half_up(0.001, 3)
+
+# E7 continued, E2, E4, E5 and B3 (sim/analysis/*.py), once the forty CrossQ runs were done.
+assert [k for k, v in e7.items() if v["verdict"] == "gain"] == ["sac/Swimmer-v5"]
+add("E7 crossq", f"SAC en garde {pct(e7['sac/Hopper-v5']['iqm'])} et CrossQ {pct(e7['crossq/Hopper-v5']['iqm'])}. Sur Swimmer, aucun ne perd ; SAC y gagne même {pct(e7['sac/Swimmer-v5']['iqm'] - 1)}",
+    f"SAC keeps {pct(e7['sac/Hopper-v5']['iqm'], lang='en')} and CrossQ {pct(e7['crossq/Hopper-v5']['iqm'], lang='en')}. On Swimmer, none loses; SAC even gains {pct(e7['sac/Swimmer-v5']['iqm'] - 1, lang='en')}")
+rk = J("sim/analysis/e7_rank.json")
+assert rk["Hopper-v5"]["training"][0] == "ppo_sbx" and rk["Hopper-v5"]["modified"][0] == "crossq" and rk["Hopper-v5"]["modified"][-1] == "ppo_sbx"
+assert rk["Walker2d-v5"]["training"][-1] == "sac" and rk["Walker2d-v5"]["modified"][1] == "sac"
+assert [t for t, v in rk.items() if v["leader_changes"]] == ["Hopper-v5"]
+e2 = J("sim/analysis/e2.json")
+assert e2["leaders"] == {"HalfCheetah-v5": "sac", "Hopper-v5": "ppo_sbx", "Walker2d-v5": "crossq", "Swimmer-v5": "ppo_sbx"} and e2["leader_changes"]
+assert any(c.startswith("sac leads HalfCheetah-v5 but loses to ppo_sbx on Hopper") for c in e2["settled_changes"])
+assert any(c.startswith("sac leads HalfCheetah-v5 but loses to crossq on Walker2d") for c in e2["settled_changes"])
+e4 = J("sim/analysis/e4.json")
+add("E4", f"La moyenne gonfle de {pct(e4['inflation_median'])} en médiane, de {pct(e4['inflation_range'][0])} à {pct(e4['inflation_range'][1])} selon l'algorithme et la tâche. Sur {e4['n_comparisons']} comparaisons, {e4['n_reversed']} changent de sens",
+    f"The mean inflates by {pct(e4['inflation_median'], lang='en')} at the median, from {pct(e4['inflation_range'][0], lang='en')} to {pct(e4['inflation_range'][1], lang='en')} depending on the algorithm and the task. Of {e4['n_comparisons']} comparisons, {e4['n_reversed']} change direction")
+assert sum(c["reversed"] and c["pair"] == "ppo_sb3 vs ppo_sbx" for c in e4["comparisons"]) == 2
+e5 = J("sim/analysis/e5.json")
+ma, mc = e5["median_all"], e5["median_close"]
+add("E5 all", f"La médiane vaut {pct(ma['3'])} avec trois graines, {pct(ma['5'])} avec cinq et {pct(ma['10'])} avec dix",
+    f"The median is {pct(ma['3'], lang='en')} with three random seeds, {pct(ma['5'], lang='en')} with five and {pct(ma['10'], lang='en')} with ten")
+add("E5 close", f"Pour les {e5['n_close']} comparaisons dont l'écart de moyennes reste sous 20 %, la médiane tombe à {pct(mc['3'])} avec trois graines, {pct(mc['5'])} avec cinq, {pct(mc['10'])} avec dix et {pct(mc['20'])} avec vingt",
+    f"For the {e5['n_close']} comparisons whose gap in means stays under 20%, the median falls to {pct(mc['3'], lang='en')} with three random seeds, {pct(mc['5'], lang='en')} with five, {pct(mc['10'], lang='en')} with ten and {pct(mc['20'], lang='en')} with twenty")
+b3 = J("sim/analysis/b3.json")
+assert b3["n_reversals"] == 8 and b3["n_settled"] == 0 and sorted(b3["leader_changes"]) == ["HalfCheetah-v5", "Hopper-v5"]
 
 norm = lambda s: re.sub(r"\s+", " ", s)
 bad = 0
