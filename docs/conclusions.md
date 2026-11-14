@@ -1,5 +1,5 @@
 ---
-title: "A-t-on écouté Joelle Pineau en 2018 ?"
+title: "Apprentissage par renforcement : A-t-on écouté Joelle Pineau en 2018 ?"
 subtitle: "Un état de l'art revisité. Chaque faille qu'elle a montrée en 2018, mesurée dans les articles de 2018 à 2026 et dans nos propres expériences"
 author: "Warith Harchaoui"
 date: "13 novembre 2026"

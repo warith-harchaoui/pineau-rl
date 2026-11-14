@@ -1,4 +1,4 @@
-# A-t-on écouté Joelle Pineau en 2018 ?
+# Apprentissage par renforcement : A-t-on écouté Joelle Pineau en 2018 ?
 
 *English version: [README.md](README.md)*
 
@@ -104,7 +104,7 @@ de bureau.
 
 ## Citer ce travail
 
-Warith Harchaoui, « A-t-on écouté Joelle Pineau en 2018 ? », 2026.
+Warith Harchaoui, « Apprentissage par renforcement : A-t-on écouté Joelle Pineau en 2018 ? », 2026.
 
 ## Licence
 

@@ -1,5 +1,5 @@
 ---
-title: "Did we listen to Joelle Pineau in 2018?"
+title: "Reinforcement Learning: Did we listen to Joelle Pineau in 2018?"
 subtitle: "A survey revisited. Every flaw she exposed in 2018, measured in the papers of 2018 to 2026 and in our own experiments"
 author: "Warith Harchaoui"
 date: "13 November 2026"

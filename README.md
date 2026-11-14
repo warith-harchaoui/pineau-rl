@@ -1,4 +1,4 @@
-# Did we listen to Joelle Pineau in 2018?
+# Reinforcement Learning: Did we listen to Joelle Pineau in 2018?
 
 *Version française : [LISEZMOI.md](LISEZMOI.md)*
 
@@ -101,7 +101,7 @@ retraining. The full path, training included, takes a few days on a desktop mach
 
 ## Citing this work
 
-Warith Harchaoui, "Did we listen to Joelle Pineau in 2018?", 2026.
+Warith Harchaoui, "Reinforcement Learning: Did we listen to Joelle Pineau in 2018?", 2026.
 
 ## License
 
