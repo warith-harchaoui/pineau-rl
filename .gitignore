@@ -24,3 +24,5 @@ sim/models/sac/
 .vscode/
 .pytest_cache/
 sim/MUJOCO_LOG.TXT
+sim/downloads/
+.claude/
