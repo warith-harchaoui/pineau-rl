@@ -33,10 +33,13 @@ def problems(task):
 ALL = problems(TASK)
 TEST, TRAIN = ALL[:300], ALL[300:]
 rng = random.Random(SEED)  # the reward coins and the problem draws depend on the run seed only
-tok = AutoTokenizer.from_pretrained(MODEL)
+# The exact model files every run used: the only revision in the cache, downloaded on 22 and 27 October 2026
+REVISION = {"Qwen/Qwen2.5-0.5B-Instruct": "7ae557604adf67be50417f59c2c2f167def9a775",
+            "unsloth/Llama-3.2-1B-Instruct": "5a8abab4a5d6f164389b1079fb721cfab8d7126c"}.get(MODEL)
+tok = AutoTokenizer.from_pretrained(MODEL, revision=REVISION)
 tok.pad_token = tok.pad_token or tok.eos_token
 tok.padding_side = "left"
-model = AutoModelForCausalLM.from_pretrained(MODEL, torch_dtype=torch.float32).to(device)
+model = AutoModelForCausalLM.from_pretrained(MODEL, revision=REVISION, torch_dtype=torch.float32).to(device)
 opt = torch.optim.Adam(model.parameters(), lr=LR)
 INSTR = " Think step by step, then finish with the final answer as an integer."
 

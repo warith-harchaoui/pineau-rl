@@ -32,10 +32,18 @@ all_runs() {  # returns 1 as soon as the night window closes
     for seed in ${SEEDS:-0 1 2}; do for reward in true random; do one "$1" "$2" "$reward" "$seed" "$3" || return 1; done; done
   done
 }
+all_done() {  # every run of this launcher reached step 100 (a crashed or stopped run returns from one() too)
+  for seed in ${SEEDS:-0 1 2}; do for reward in true random; do done_run llama1 "$reward" "$seed" || return 1; done; done
+}
+tries=0
 while true; do
   until night; do sleep 300; done
   log "night window open"
-  all_runs && { log ALL_DONE; exit 0; }
+  if all_runs; then
+    all_done && { log ALL_DONE; exit 0; }
+    tries=$((tries + 1)); log "pass finished with unfinished runs ($tries)"
+    [ "$tries" -ge 2 ] && { log "GAVE_UP: a run failed on two nights, reported as a result"; exit 1; }
+  fi
   log "night window closed"
   while night; do sleep 300; done
 done
