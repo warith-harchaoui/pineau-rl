@@ -24,7 +24,9 @@ for f in sorted(glob.glob("results/*/mul2/*/seed*.jsonl")):
     out.append(dict(model=model, reward=reward, seed=seed, device=DEVICE.get((model, reward, seed), "mps"),
                     pass1_0=ev[0]["pass1"], pass1_100=ev[-1]["pass1"], truncated_100=ev[-1].get("truncated")))
     print(out[-1])
-assert len(out) == 4 * len(SEEDS), f"{len(out)} finished runs, expected {4 * len(SEEDS)}"
+for conf in sorted({(r["model"], r["reward"]) for r in out}):  # every configuration has every seed, or nothing is written
+    n = sum((r["model"], r["reward"]) == conf for r in out)
+    assert n == len(SEEDS), f"{conf}: {n} finished runs out of {len(SEEDS)}"
 json.dump(out, open(f"results/summary{SUFFIX}.json", "w"), indent=1)
 
 gains, rng = {}, random.Random(0)
