@@ -11,41 +11,30 @@ comparison on cost C and risk to the conclusion R; median of three; Spearman wit
 reversed), p by permutation (10,000, seed 2026).
 Run from study/: ../sim/env-an/bin/python robustness.py  -> robustness.json
 """
-import glob, json, os
+import glob, json
 import numpy as np
-from scipy.stats import fisher_exact, spearmanr
+from scipy.stats import spearmanr
 from statsmodels.stats.contingency_tables import StratifiedTable
-from statsmodels.stats.proportion import confint_proportions_2indep
+from pineau_rl.grid import iter_reads, list_readers, load_overrides, tally, value
+from pineau_rl.stats import compare as newcombe_fisher, fisher
 from load import load
 
 TARGETS = ["Q5", "Y9", "X7", "X2", "Q6", "Y12"]
 MAIN17 = ["Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "X2", "X3", "X4", "X7", "Y1", "Y5", "Y7", "Y8", "Y9", "Y10", "Y12"]
 PRIMARY = ["A2", "B2", "C2", "D2", "E2", "F2", "H1", "H2", "H3", "H4"]
 
-ld = lambda f: {k: v for k, v in json.load(open(f)).items() if not k.startswith("_")}
-ov1, ov2 = ld("overrides.json"), ld("overrides_v2.json")
+ov1, ov2 = load_overrides("overrides.json"), load_overrides("overrides_v2.json")
 OLD, WHO = load("ABCDEF"), {}
-for d in "ABCDEF":
-    for f in sorted(glob.glob(f"codes/{d}/*.json")):
-        WHO[(json.load(open(f))["id"], "v1")] = d
+for d, r in iter_reads("codes", "ABCDEF"):
+    WHO[(r["id"], "v1")] = d
 V2READ = {}
-for d in PRIMARY + sorted(os.path.basename(x) for x in glob.glob("codes_v2/K*")):
-    for f in sorted(glob.glob(f"codes_v2/{d}/*.json")):
-        r = json.load(open(f))
-        V2READ[r["id"]] = r
-        WHO[(r["id"], "v2")] = d
+for d, r in iter_reads("codes_v2", PRIMARY + list_readers("codes_v2", "K*")):
+    V2READ[r["id"]] = r
+    WHO[(r["id"], "v2")] = d
 
 
 def val(pid, k):  # as in extension_stats.py
-    if pid in V2READ and k in V2READ[pid]["criteria"]:
-        v = ov2.get(k, {}).get(pid, V2READ[pid]["criteria"][k].get("value"))
-    elif pid in OLD:
-        v = ov1.get(k, {}).get(pid, OLD[pid]["criteria"].get(k, {}).get("value"))
-    else:
-        return None
-    if k == "Y3" and v is not None:
-        return "yes" if v >= 2 else "no"
-    return v
+    return value(pid, k, V2READ, OLD, ov2, ov1)
 
 
 def reader(pid, k):
@@ -53,16 +42,11 @@ def reader(pid, k):
 
 
 def count(ids, k):
-    vs = [val(p, k) for p in ids if val(p, "Q1") != "no"]
-    vs = [v for v in vs if v in ("yes", "no")]
-    return sum(v == "yes" for v in vs), len(vs)
+    return tally(val(p, k) for p in ids if val(p, "Q1") != "no")
 
 
 def compare(c, o):
-    (kc, nc), (ko, no) = c, o
-    lo, hi = confint_proportions_2indep(kc, nc, ko, no, method="newcomb", compare="diff")
-    return dict(classic2026=[kc, nc], ours2018=[ko, no], diff=kc / nc - ko / no, lo=float(lo), hi=float(hi),
-                p=float(fisher_exact([[kc, nc - kc], [ko, no - ko]])[1]))
+    return dict(classic2026=list(c), ours2018=list(o), **newcombe_fisher(c, o))
 
 
 ext = json.load(open("extension_stats.json"))
@@ -80,12 +64,12 @@ for k in TARGETS:
     r, fragile = {}, []
     # (a1) provenance
     f, q = count(first, k), count(a3, k)
-    r["a1_first_vs_a3"] = dict(first=f, a3=q, p=float(fisher_exact([[f[0], f[1] - f[0]], [q[0], q[1] - q[0]]])[1]))
+    r["a1_first_vs_a3"] = dict(first=f, a3=q, p=fisher(f[0], f[1], q[0], q[1]))
     for name, ids in (("first_only", first), ("a3_only", a3)):
         r[f"a1_{name}"] = compare(count(ids, k), count(ours18, k))
     # (a2) PDF source in 2026
     ax, nx = count([p for p in classic26 if arxiv(p)], k), count([p for p in classic26 if not arxiv(p)], k)
-    r["a2_arxiv_vs_site"] = dict(arxiv=ax, site=nx, p=float(fisher_exact([[ax[0], ax[1] - ax[0]], [nx[0], nx[1] - nx[0]]])[1]))
+    r["a2_arxiv_vs_site"] = dict(arxiv=ax, site=nx, p=fisher(ax[0], ax[1], nx[0], nx[1]))
     # (a3) Cochran-Mantel-Haenszel by conference
     tables = []
     for c in ("ICML", "NeurIPS", "ICLR"):

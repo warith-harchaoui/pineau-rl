@@ -4,10 +4,12 @@ For the 30 NeurIPS 2025 papers already read, finds the official proceedings vers
 listing of proceedings.neurips.cc, downloads it (pdf/<id>-proc.pdf), extracts the answer and the justification of
 four checklist questions, and sets them against our harmonised codes: code (Q5), settings (Q3), statistical
 significance (X2 for an uncertainty, Q8 for a test), compute (X7). For each disagreement on code, looks for a link to
-code in the proceedings version. Standard library plus the `pdftotext` command.
-Run from study/: python3 checklist.py  -> checklist.json
+code in the proceedings version. Standard library, pineau_rl and the `pdftotext` command.
+Run from study/: ../sim/env-an/bin/python checklist.py  -> checklist.json
 """
-import json, math, os, re, subprocess, time, urllib.request
+import json, os, re, subprocess, time, urllib.request
+from pineau_rl.grid import list_readers, load_overrides, load_reads, value
+from pineau_rl.stats import wilson as _wilson
 from load import load
 
 BASE = "https://proceedings.neurips.cc"
@@ -17,32 +19,21 @@ Q = {"code": ("Open access to data and code", ["Q5"]), "settings": ("Experimenta
      "compute": ("Experiments compute resources", ["X7"])}
 CODE_URL = re.compile(r"(github\.com|gitlab\.com|huggingface\.co|bitbucket\.org|codeocean|zenodo\.org|anonymous\.4open)", re.I)
 
-ld = lambda f: {k: v for k, v in json.load(open(f)).items() if not k.startswith("_")}
-ov1, ov2 = ld("overrides.json"), ld("overrides_v2.json")
+ov1, ov2 = load_overrides("overrides.json"), load_overrides("overrides_v2.json")
 OLD = load("ABCDE")
-V2 = {}
-for d in os.listdir("codes_v2"):
-    if d.startswith("K"):
-        for f in os.listdir(f"codes_v2/{d}"):
-            r = json.load(open(f"codes_v2/{d}/{f}")); V2[r["id"]] = r
+V2 = load_reads("codes_v2", list_readers("codes_v2", "K*"))
 
 
-def val(pid, k):  # as in extension_stats.py
-    if pid in V2 and k in V2[pid]["criteria"]:
-        return ov2.get(k, {}).get(pid, V2[pid]["criteria"][k].get("value"))
-    return ov1.get(k, {}).get(pid, OLD[pid]["criteria"].get(k, {}).get("value"))
+def val(pid, k):  # as in extension_stats.py, but Y3 kept as an integer and a paper in neither grid is an error
+    return value(pid, k, V2, OLD, ov2, ov1, y3=False, missing_ok=False)
 
 
 norm = lambda t: " ".join(re.sub(r"[^a-z0-9]+", " ", t.lower()).split())
 get = lambda u: urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0"}), timeout=120).read()
 
 
-def wilson(k, n, z=1.96):
-    if not n:
-        return None
-    p = k / n; d = 1 + z * z / n
-    c = (p + z * z / (2 * n)) / d; h = z * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / d
-    return [c - h, c + h]
+def wilson(k, n):
+    return list(_wilson(k, n)) if n else None
 
 
 meta = [x for x in json.load(open("final_2026.json")) if x["venue"] == "NeurIPS 2025"]

@@ -1,7 +1,6 @@
-import json,glob
+"""load("ABCDEF"): {paper id: v1 reading} of codes/<reader>/*.json, for the readers in that order (pineau_rl.grid)."""
+from pineau_rl.grid import load_reads
+
+
 def load(coders):
-    D={}
-    for c in coders:
-        for f in sorted(glob.glob(f'codes/{c}/*.json')):
-            d=json.load(open(f)); D[d['id']]=d
-    return D
+    return load_reads("codes", coders)

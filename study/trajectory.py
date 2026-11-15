@@ -8,42 +8,26 @@ Cochran-Armitage trend test over the six years (scores = the years), then Newcom
 five criteria within each family.
 Run from study/: ../sim/env-an/bin/python trajectory.py  -> trajectory.json
 """
-import glob, json, math, os
-from scipy.stats import fisher_exact, norm
-from statsmodels.stats.multitest import multipletests
-from statsmodels.stats.proportion import confint_proportions_2indep, proportion_confint
+import json, os
+from pineau_rl.grid import list_readers, load_overrides, load_reads, tally, value
+from pineau_rl.stats import cochran_armitage, compare as newcombe_fisher, holm, wilson_ci
 from load import load
 
 TESTED = ["Q5", "Y9", "X7", "X2", "Q8"]
 SHOWN = TESTED + ["Q3", "Q4", "Q6", "Q7", "X4", "Y7"]
 PER_YEAR = 20
-ld = lambda f: {k: v for k, v in json.load(open(f)).items() if not k.startswith("_")}
-ov1, ov2 = ld("overrides.json"), ld("overrides_v2.json")
+ov1, ov2 = load_overrides("overrides.json"), load_overrides("overrides_v2.json")
 OLD = load("ABCDEF")
-V2 = {}
-for d in sorted(os.path.basename(x) for x in glob.glob("codes_v2/*")):
-    if d in ("G2", "R2", "R3", "pilot"):
-        continue  # second readings and pilot, as extension_stats.py
-    for f in sorted(glob.glob(f"codes_v2/{d}/*.json")):
-        r = json.load(open(f)); V2[r["id"]] = r
+# second readings and pilot left out, as extension_stats.py
+V2 = load_reads("codes_v2", [d for d in list_readers("codes_v2") if d not in ("G2", "R2", "R3", "pilot")])
 
 
 def val(pid, k):  # as extension_stats.py
-    if pid in V2 and k in V2[pid]["criteria"]:
-        v = ov2.get(k, {}).get(pid, V2[pid]["criteria"][k].get("value"))
-    elif pid in OLD:
-        v = ov1.get(k, {}).get(pid, OLD[pid]["criteria"].get(k, {}).get("value"))
-    else:
-        return None
-    if k == "Y3" and v is not None:
-        return "yes" if v >= 2 else "no"
-    return v
+    return value(pid, k, V2, OLD, ov2, ov1)
 
 
-def count(ids, k):
-    vs = [val(p, k) for p in ids]
-    vs = [v for v in vs if v in ("yes", "no")]
-    return sum(v == "yes" for v in vs), len(vs)
+def count(ids, k):  # the samples are already experimental papers
+    return tally(val(p, k) for p in ids)
 
 
 EXCLUDE = set(os.environ.get("EXCLUDE", "").split(",")) - {""}  # deviation 29: papers left out, e.g. EXCLUDE=ML14,ML15
@@ -62,28 +46,15 @@ S = {y: [p for p in s if p not in EXCLUDE] for y, s in S.items()}
 YEARS = sorted(S)
 
 
-def cochran_armitage(k, n, x):
-    N, K = sum(n), sum(k)
-    p = K / N
-    xbar = sum(xi * ni for xi, ni in zip(x, n)) / N
-    t = sum(xi * (ki - ni * p) for xi, ki, ni in zip(x, k, n))
-    v = p * (1 - p) * sum(ni * (xi - xbar) ** 2 for xi, ni in zip(x, n))
-    z = t / math.sqrt(v) if v else 0.0
-    return z, 2 * norm.sf(abs(z))
-
-
 def compare(a, b):
-    (ka, na), (kb, nb) = a, b
-    lo, hi = confint_proportions_2indep(ka, na, kb, nb, method="newcomb", compare="diff")
-    return dict(a=[ka, na], b=[kb, nb], diff=ka / na - kb / nb, lo=float(lo), hi=float(hi),
-                p=float(fisher_exact([[ka, na - ka], [kb, nb - kb]])[1]))
+    return dict(a=list(a), b=list(b), **newcombe_fisher(a, b))
 
 
 pool = lambda *ys: sum((S[y] for y in ys), [])
 out = dict(sizes={y: len(S[y]) for y in YEARS}, rows={})
 for k in SHOWN:
     c = {y: count(S[y], k) for y in YEARS}
-    r = dict(by_year={y: dict(k=c[y][0], n=c[y][1], wilson=[float(x) for x in proportion_confint(*c[y], method="wilson")] if c[y][1] else None) for y in YEARS})
+    r = dict(by_year={y: dict(k=c[y][0], n=c[y][1], wilson=[float(x) for x in wilson_ci(*c[y])] if c[y][1] else None) for y in YEARS})
     if k in TESTED:
         z, p = cochran_armitage([c[y][0] for y in YEARS], [c[y][1] for y in YEARS], YEARS)
         r["trend"] = dict(z=z, p=p)
@@ -91,7 +62,7 @@ for k in SHOWN:
         r["later"] = compare(count(pool(2022, 2024), k), count(pool(2019, 2020), k))
     out["rows"][k] = r
 for fam in ("trend", "immediate", "later"):
-    for k, h in zip(TESTED, multipletests([out["rows"][k][fam]["p"] for k in TESTED], method="holm")[1]):
+    for k, h in zip(TESTED, holm([out["rows"][k][fam]["p"] for k in TESTED])):
         out["rows"][k][fam]["p_holm"] = float(h)
 print("sizes", out["sizes"])
 for k in SHOWN:

@@ -16,10 +16,9 @@ Secondary: all 2026 against Pineau, and ours 2018 against Pineau (how far our gr
 Q3 to Q8 within each.
 Run from study/: ../sim/env-an/bin/python extension_stats.py  -> extension_stats.json
 """
-import glob, json, os
-from scipy.stats import fisher_exact
-from statsmodels.stats.proportion import confint_proportions_2indep, proportion_confint
-from statsmodels.stats.multitest import multipletests
+import json, os
+from pineau_rl.grid import list_readers, load_overrides, load_reads, tally, value
+from pineau_rl.stats import compare as newcombe_fisher, holm, wilson_ci
 from load import load
 
 PINEAU = {"Q3": .90, "Q4": .60, "Q5": .55, "Q6": .20, "Q7": .10, "Q8": .05}
@@ -30,40 +29,21 @@ N_A3 = 36
 EXCLUDE = set(os.environ.get("EXCLUDE", "").split(",")) - {""}  # deviation 29: papers left out, e.g. EXCLUDE=ML14,ML15
 SUFFIX = os.environ.get("SUFFIX", "")  # deviation 29: the output becomes <name><SUFFIX>.json
 
-ld = lambda f: {k: v for k, v in json.load(open(f)).items() if not k.startswith("_")} if os.path.exists(f) else {}
-ov1, ov2 = ld("overrides.json"), ld("overrides_v2.json")
+ov1, ov2 = load_overrides("overrides.json", missing_ok=True), load_overrides("overrides_v2.json", missing_ok=True)
 OLD = load("ABCDEF")
-V2READ = {}
-for d in PRIMARY + sorted(os.path.basename(x) for x in glob.glob("codes_v2/K*")):
-    for f in sorted(glob.glob(f"codes_v2/{d}/*.json")):
-        r = json.load(open(f))
-        V2READ[r["id"]] = r
+V2READ = load_reads("codes_v2", PRIMARY + list_readers("codes_v2", "K*"))
 
 
-def val(pid, k):
-    if pid in V2READ and k in V2READ[pid]["criteria"]:
-        v = ov2.get(k, {}).get(pid, V2READ[pid]["criteria"][k].get("value"))
-    elif pid in OLD:
-        v = ov1.get(k, {}).get(pid, OLD[pid]["criteria"].get(k, {}).get("value"))
-    else:
-        return None
-    if k == "Y3" and v is not None:
-        return "yes" if v >= 2 else "no"
-    return v
+def val(pid, k):  # the v2 reading when it has k, else v1; harmonised; Y3 as yes/no; None for an unknown paper
+    return value(pid, k, V2READ, OLD, ov2, ov1)
 
 
 def count(ids, k):
-    vs = [val(p, k) for p in ids if val(p, "Q1") != "no"]
-    vs = [v for v in vs if v in ("yes", "no")]
-    return sum(v == "yes" for v in vs), len(vs)
+    return tally(val(p, k) for p in ids if val(p, "Q1") != "no")
 
 
-def compare(a, b):
-    (ka, na), (kb, nb) = a, b
-    if not na or not nb:
-        return None
-    lo, hi = confint_proportions_2indep(ka, na, kb, nb, method="newcomb", compare="diff")
-    return dict(diff=ka / na - kb / nb, lo=float(lo), hi=float(hi), p=fisher_exact([[ka, na - ka], [kb, nb - kb]])[1])
+def compare(a, b):  # {diff, lo, hi, p}: Newcombe's interval and Fisher's p; None when a side is empty
+    return newcombe_fisher(a, b) if a[1] and b[1] else None
 
 
 ours18 = sorted(p for p in OLD if p.startswith("C")) + [x["id"] for x in json.load(open("calib_2018_v2.json"))[12:]]
@@ -80,8 +60,8 @@ rows = []
 for k in V1 + V2:
     o, c, a = count(ours18, k), count(classic26, k), count(all26, k)
     r = dict(k=k, ours2018=o, classic2026=c, all2026=a,
-             wilson_classic2026=[float(x) for x in proportion_confint(*c, method="wilson")] if c[1] else None,
-             wilson_ours2018=[float(x) for x in proportion_confint(*o, method="wilson")] if o[1] else None,
+             wilson_classic2026=[float(x) for x in wilson_ci(*c)] if c[1] else None,
+             wilson_ours2018=[float(x) for x in wilson_ci(*o)] if o[1] else None,
              classic_vs_ours2018=compare(c, o))
     if k in PINEAU:
         pin = (round(PINEAU[k] * 50), 50)
@@ -92,7 +72,7 @@ for k in V1 + V2:
 for key, crit in (("classic_vs_ours2018", V1), ("classic_vs_ours2018", V2),
                   ("all2026_vs_pineau", list(PINEAU)), ("ours2018_vs_pineau", list(PINEAU))):
     sel = [r for r in rows if r["k"] in crit and r.get(key)]
-    for r, h in zip(sel, multipletests([r[key]["p"] for r in sel], method="holm")[1] if sel else []):
+    for r, h in zip(sel, holm([r[key]["p"] for r in sel])):
         r[key]["p_holm"] = float(h)
 
 out = dict(samples=dict(ours2018=len(ours18), classic2026=len(classic26), a3=a3, a3_read=len(read_a3),
