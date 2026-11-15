@@ -1,0 +1,352 @@
+[
+ {
+  "item": 196,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Phrase de discussion sur un modèle de référence, sans conditions tenues à part."
+ },
+ {
+  "item": 197,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« significant » au sens courant ou recommandation, sans test appliqué."
+ },
+ {
+  "item": 198,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« significantly » sans test statistique."
+ },
+ {
+  "item": 199,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Ablations de composants et choix d'encodeur de texte, pas un balayage d'hyperparamètre."
+ },
+ {
+  "item": 200,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« significant » au sens courant, sans test."
+ },
+ {
+  "item": 201,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Renvoie aux hyperparamètres de Schulman et al. sans les donner."
+ },
+ {
+  "item": 202,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Ablations de composants seulement."
+ },
+ {
+  "item": 203,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Phrase théorique sur la généralisation du modèle."
+ },
+ {
+  "item": 204,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« Généralisation » à d'autres tâches DMC, sans établir qu'elles sont tenues à part de l'entraînement."
+ },
+ {
+  "item": 205,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« significantly » sans test."
+ },
+ {
+  "item": 206,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Réduction de variance, pas une incertitude rapportée."
+ },
+ {
+  "item": 207,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« significantly » sans test."
+ },
+ {
+  "item": 208,
+  "turn": true,
+  "uncertain": false,
+  "excerpt": 0,
+  "reason": "Variation de Rmin et Rmax avec résultat montré en annexe C (robustesse aux hyperparamètres)."
+ },
+ {
+  "item": 209,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Code bâti sur rllab et MAML, sans lien vers le code de l'article."
+ },
+ {
+  "item": 210,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Intervalle de confiance théorique et définition de métrique (± 5°), pas une incertitude sur les résultats."
+ },
+ {
+  "item": 211,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« significantly » sans test."
+ },
+ {
+  "item": 212,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Aucune évaluation sur conditions tenues à part."
+ },
+ {
+  "item": 213,
+  "turn": false,
+  "uncertain": true,
+  "excerpt": 31,
+  "reason": "4 GPU pendant 13,5 h chiffrent l'entraînement du réseau placé (un résultat), pas clairement le calcul de la méthode."
+ },
+ {
+  "item": 214,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Ablation de composants."
+ },
+ {
+  "item": 215,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Bancs d'essai open source d'autres travaux, pas le code de l'article."
+ },
+ {
+  "item": 216,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Généralisation sur tâches paramétrées sans séparation établie."
+ },
+ {
+  "item": 217,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Travaux connexes."
+ },
+ {
+  "item": 218,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Mention générale du taux d'apprentissage, sans balayage."
+ },
+ {
+  "item": 219,
+  "turn": false,
+  "uncertain": true,
+  "excerpt": 1,
+  "reason": "Lien github haarnoja/sac dans une liste de mises en œuvre des références ; impossible d'établir qu'il s'agit du code de l'article."
+ },
+ {
+  "item": 220,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Remerciement pour du matériel, aucune quantité."
+ },
+ {
+  "item": 221,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Normalisation des récompenses, pas les hyperparamètres des références."
+ },
+ {
+  "item": 222,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Travaux connexes."
+ },
+ {
+  "item": 223,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Liens dans la bibliographie vers d'autres travaux."
+ },
+ {
+  "item": 224,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« compute » au sens mathématique."
+ },
+ {
+  "item": 225,
+  "turn": false,
+  "uncertain": true,
+  "excerpt": 1,
+  "reason": "Test de corrélation de Pearson avec p-valeur, mais sur une analyse de corrélation, pas une comparaison de méthodes."
+ },
+ {
+  "item": 226,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« transfer » au sens théorique, pas d'évaluation tenue à part."
+ },
+ {
+  "item": 227,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« compute » au sens algorithmique."
+ },
+ {
+  "item": 228,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« significantly » sans test."
+ },
+ {
+  "item": 229,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« significantly » sans test."
+ },
+ {
+  "item": 230,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« compute » au sens mathématique."
+ },
+ {
+  "item": 231,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Aucune quantité de calcul."
+ },
+ {
+  "item": 232,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« significantly » sans test."
+ },
+ {
+  "item": 233,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Travaux connexes et limitations."
+ },
+ {
+  "item": 234,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« significant » au sens courant."
+ },
+ {
+  "item": 235,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« significant » au sens courant."
+ },
+ {
+  "item": 236,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Transfert de connaissances, pas d'évaluation tenue à part."
+ },
+ {
+  "item": 237,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Réduction de variance (algorithmes), pas une incertitude rapportée."
+ },
+ {
+  "item": 238,
+  "turn": false,
+  "uncertain": true,
+  "excerpt": 0,
+  "reason": "Poids de pénalité QoS varié sur [0, 10], mais présenté comme réglage de la récompense, sans mesure visible."
+ },
+ {
+  "item": 239,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Grille pour une méthode, sans établir que toutes les références sont couvertes."
+ },
+ {
+  "item": 240,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« significantly » sans test."
+ },
+ {
+  "item": 241,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Hyperparamètres déclarés fixes mais non listés."
+ },
+ {
+  "item": 242,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Intervalles de confiance omis, et sur des temps de calcul."
+ },
+ {
+  "item": 243,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Actions hors distribution, pas une évaluation tenue à part."
+ },
+ {
+  "item": 244,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« significant » sans test."
+ },
+ {
+  "item": 245,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« significant » au sens courant."
+ }
+]

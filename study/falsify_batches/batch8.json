@@ -1,0 +1,557 @@
+[
+ {
+  "item": 246,
+  "criterion": "X7",
+  "rule": "X7 : le calcul employé est chiffré. `yes` exige au moins une quantité (heures, GPU-heures, FLOP, ou un nombre de GPU avec une durée). Le seul nom du matériel : `no`. Le nombre de pas d'environnement n'est pas une quantité de calcul.",
+  "excerpts": [
+   "bserved rewards. At each episode t and step h, after observing the current state sh,t , action ah,t , and feedback rh (sh,t , ah,t ), the adversary outputs a perturbed reward r̂h (sh,t , ah,t ) that is fed to the learner. The total attack cost is setting. 3. Problem Formulation We follow the finite-hor",
+   "e support of the policy. The linear constraints in the finite-horizon setting then generalize to integral constraints over continuous spaces, but the core attack-gap analysis remains fundamentally unchanged. ϵ∗ = s.t. max † H ϵ,{θh }h=1 ,π † ∈Π† ϵ Q{θ† } (s, π † (s)) ≥ ϵ + Q{θ† } (s, a), h h † ∀h, ∀s, ∀",
+   ",† + Qh+2,† Ph+1,† Ph,† =··· Thus each constraint in equation 1 is linear or convex quadratic in the decision variables, enabling standard solvers to compute ϵ∗ . 5. Black-box Attack Remark 4.4 (Relation to previous results). For H = 1 with reward poisoning, the attackability gap ϵ∗ in Theorem 4.2 recovers",
+   "tory. † 14: Estimate Qπ , construct gbh (s, a), and solve the Stage 2 penalty design equation 6–equation 9. If ϵ⋆2 ≤ 0, return N ON - ATTACKABLE. 15: Compute the finite Stage 1 target-side discrepancy and choose an admissible predictable compensation schedule. 16: for t = T1 + 1, . . . , T do 17: On target",
+   "oretical results make. Then, we introduce our empirical setup, shortly explaining how we implement our theory and Black-box vs White-box Attacks. The core difference between our white-box and black-box (see algorithm 1) at- 7 A Tight Characterization of Reward Poisoning in Linear MDPs MountainCar The re",
+   "nt incentivizes the agent to maintain a 90-degree angle to the right. In doing this, the adversarial policy is pressed to reach the right angle and output enough force to keep the pendulum stationary at 90 degrees. Baseline Attack. The AT attack (Xu & Singh, 2025) strategy computes a series of perturba",
+   "clusion MountainCar 92% 88% Pendulum 95% 93% We studied the intrinsic robustness of reinforcement learning under reward poisoning in linear MDPs. Our core result is a convex optimization characterization indicating when a target policy can be enforced with sublinear poisoning costs, thereby separating v",
+   "between the victim and adversary policies (||π † − π̃t ||2 ). Both policies are parameterized as neural networks, and we use their weight matrices to compute their similarity. We use figure 1 to test our first two claims. (claim 1) Cumulative Perturbation When characterized as “vulnerable” (ϵ∗ > 0), figure",
+   "osium on 2020. URL https://proceedings.mlr.press/ Security and Privacy (SP), pp. 2086–2104, Los v119/ayoub20a.html. Alamitos, CA, USA, May 2024. IEEE Computer Society. doi: 10.1109/SP54263.2024.00224. URL Balasubramanian, R., Li, J., Tadepalli, P., Wang, H., Wu, Q., https://doi.ieeecomputersociety.org/ and",
+   "g, H., Li, X., Chen, J., Dong, J., Zhang, Y., and Lin, C. One4All: Manipulate one agent to poison the cooperative multi-agent reinforcement learning. Computers & Security, 124:103005, 2023. ISSN 0167-4048. doi: 10.1016/j.cose.2022.103005. URL https://www.sciencedirect.com/ science/article/pii/S016740482200",
+   "s, a) ← τ =1 ϕh (sh , ah )ϕh (sh , ah ) , b0,h,t ← Λ0,h,t τ =1 ϕh (sh , ah ) v0,h+1 (sh+1 ), and r ϕh (s, a)⊤ (q0,h − b b0,h,t ). 7: end for \u0010 \u0011 P 8: Compute Γ1,t ← minh∈[H] Sϵ⋆0 − 2 H−1 U . 0,j,t j=h 9: if Γ1,t ≥ η1 and Stage 1 is not frozen then (1) 10: Set τfix ← t; for each h ∈ [H], freeze θb0,h ← q0,h",
+   " reward r̄h (s, a) ← rh (s, a) if a = π † (s), and r̄h (s, a) ← rh (s, a) − ⟨ϕh (s, a), uh ⟩ [0,1] otherwise. 27: for h = 1, . . . , H do \u0001 P (1) 28: Compute Dhtar ← reh (sth , ath ) − rh (sth , ath ) . t≤T1 : ath =π † (sth ) 29: end for P P PH t tar 30: Choose an admissible predictable compensation schedu",
+   "how accurate our CQP’s characterization is in predicting the outcome of a reward poisoning attack using two metrics. Obtaining Linear MDPs via CTRL A core challenge in implementing and testing our theoretical framework is how to obtain good linear MDP environments. It is well known that most interesting",
+   "terizing these mapping functions as neural networks, CTRL can capture complex behaviors while respecting assumptions. D.2. Black Box vs White Box The core difference between the black box and white box attack algorithms lies in the access given to the algorithm. The white box algorithm is given access t",
+   "dversarial target policies–a three-layer Deep Neural Network with a number of neurons. We simply concatenate all layers into a single vector and then compute the L2 norm. Victim Algorithms We test two different learning algorithms: the classical LSVI-UCB and CTRL-UCB. LSVI-UCB is implemented following the ",
+   "d speed of learning. 4 CTRL-UCB is also presented in the main CTRL paper (Zhang et al., 2022) 5 We assume similar NN weights correlate with similar output distributions. We avoid using KL-divergence as metric due to its computational expense. 3 38 A Tight Characterization of Reward Poisoning in Linear ",
+   "he cumulative perturbations follow a sublinear relationship. This is accomplished by finding the best-fit line g(t) = a · t + b using the cumulative scores \u0010P obtained for\u0011the first m = 500 T timesteps. For the next T − m timesteps, the metric follows the equation M1 = sign t=m g(t) − Ct to decide wheth",
+   "tor is wh = t −1 t⊤ t t t⊤ t t t π (Λh ) Xh yh with Λh = Xh Xh + λt Id . Using yh − Xh wh = g + η, where ηh,τ is the centred 1-sub-Gaussian noise, we compute ⟨ϕh (s, a), wht − whπ ⟩ = ϕh (s, a)⊤ (Λth )−1 Xht⊤ (g + η). Because Xht⊤ g = (Xht⊤ Xht )wh,g , this expression equals Ph g(s, a) − λt ϕh (s, a)⊤ (Λth"
+  ]
+ },
+ {
+  "item": 247,
+  "criterion": "Q4",
+  "rule": "Q4 : tous les hyperparamètres des références (baselines) sont donnés. `yes` si un tableau ou un paragraphe les donne pour toutes les méthodes principales comparées. « Valeurs par défaut de [bibliothèque] » sans les lister compte `yes` seulement si la version de la bibliothèque est donnée.",
+  "excerpts": [
+   "00 episodes. For the two complex tasks, Cartpole Swing-Up and Double Pendulum, all agents are trained up to 1000 episodes. SVPG and IP-WGF shared the same hyperparameters, except the temperature, for which we performed a grid search over α ∈ {6, 7, 8, 9, 10, 11}. E.3. Direct-Policy learning We use OpenAI gymk (Brockman"
+  ]
+ },
+ {
+  "item": 248,
+  "criterion": "Q7",
+  "rule": "Q7 : l'évaluation se fait sur des conditions tenues à part : tâches, environnements, graines aléatoires d'environnement ou jeux de données non vus à l'entraînement ni au réglage. Pour un article sur les grands modèles de langage, des bancs d'essai distincts des données d'entraînement RL comptent `yes`. Article théorique à expériences jouets : `no`.",
+  "excerpts": [
+   "onal molecular editing approaches fall into three main paradigms: (1) Rule-based methods apply predefined fragment transformations [5, 10], but their generalization is limited by manually designed rules. (2) Latent generative models[15, 31] optimize molecular properties in Figure 1: Performance, FCD, and par",
+   "modifications. Second, existing methods trained solely on fixed datasets lack mechanisms for actively exploring novel editing strategies, restricting generalization and adaptability to complex or underexplored regions of chemical space. Third, performing discrete edits directly on molecular graphs while pres",
+   "templates, inspired by Matched Molecular Pairs (MMP) [6, 5, 10]. While offering high chemical interpretability and precise local modifications, their generalizability is limited by the coverage and flexibility of manually or heuristically derived rules. (2) Latent Generative Graph Editing. Approaches such as",
+   "a domain-agnostic language model trained with chemical feedback to reduce invalid generations. (5) REINVENT 4 [24] integrates reinforcement learning, transfer learning, and curriculum learning for molecular design using RNN and Transformer backbones. 4.3 Evaluation Metrics To comprehensively assess molecula",
+   "↑, SA↓), and resolving conflicting goals (Haccept↑, MW↑, QED↓). MolEditRL consistently outperforms all baselines in these tasks, demonstrating strong generalization and effective handling of complex, multi-objective constraints. Generalization to unseen properties is discussed in Appendix E, and extended res",
+   "formance. GDPO improves stability by optimizing only the final output but requires training a separate model for each task, hindering scalability and generalization. Neither method enforces structural constraints to preserve molecular validity and similarity during fine-tuning. In contrast, MolEditRL introdu",
+   "perties, particularly on small to medium-sized molecules. While our current experiments focus on this regime, the underlying framework is designed to generalize and is expected to extend effectively to larger biomolecules, such as proteins or complex natural products, with minor adaptations. The reinforcemen",
+   " natural language instructions. This direction could support more intuitive and human-centric workflows for molecular design and lead optimization. E Generalization to Unseen Properties To evaluate the generalization capability of MolEditRL, we test it on three molecular properties—BBBP (blood-brain barrier ",
+   "ural similarity thresholds, while maintaining excellent chemical validity and the lowest FCD scores. These results demonstrate the model’s ability to generalize to novel property objectives with strong structure-preserving performance. This highlights one of the key advantages of MolEditRL: thanks to its str",
+   " of the key advantages of MolEditRL: thanks to its structure-aware pretraining and RL-based fine-tuning design, it can be extended to new, previously unseen properties by plugging in task-specific reward oracles—without retraining from scratch. 16 Table 5: Generalization to unseen properties. Results on e",
+   "y plugging in task-specific reward oracles—without retraining from scratch. 16 Table 5: Generalization to unseen properties. Results on editing three held-out molecular properties (BBBP, HIA, hERG) that are excluded from the pretraining dataset. Model BioT5 DrugAssist GeLLM3 O_M GeLLM3 O_L MolEditRL BioT5 D"
+  ]
+ },
+ {
+  "item": 249,
+  "criterion": "X7",
+  "rule": "X7 : le calcul employé est chiffré. `yes` exige au moins une quantité (heures, GPU-heures, FLOP, ou un nombre de GPU avec une durée). Le seul nom du matériel : `no`. Le nombre de pas d'environnement n'est pas une quantité de calcul.",
+  "excerpts": [
+   " → Rn constrained to respect the group symmetries of ME and an unconstrained predictor P̂N : S × A → Rn , where n is the dimension of the predictor output. Concretely, P̂E and P̂N are trained on transitions (s, a, r, s′ ) to approximate the one-step MDP components, i.e., the transition kernel and, when",
+   "r, s′ ) to approximate the one-step MDP components, i.e., the transition kernel and, when used, the reward function. We define a scalar disagreement score \u0001 d(s, a) = D P̂E (· | s, a), P̂N (· | s, a) , where D is a discrepancy measure (e.g., squared error between next-state predictions, total-variation ",
+   "ct detector of symmetry-breaking. We model symmetrybreaking transitions as belonging to the upper tail of the empirical distribution of disagreement scores d(s, a) and use these high-disagreement samples to define pseudo-labels y(s, a) ∈ {0, 1} for training λω with a binary cross-entropy loss: 5 Publish",
+   "ed policy from Eq. (7) 5: Store (st , at , rt , st+1 ) in D 6: Train predictors P̂E and P̂N to minimize the predictive loss Lpred ▷ see App. B.1 \u0001 7: Compute disagreement d(s, a) = D P̂E (· | s, a), P̂N (· | s, a) ▷ see Sec. 6.1, App. B.1 8: Update the running statistics (µ, σ) over the disagreement d(s, a",
+   ". Diffusion-edfs: Bi-equivariant denoising generative modeling on SE(3) for visual robotic manipulation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), pp. 18007–18018, 2024. Joohwan Seo, Nikhil Potu Surya Prakash, Alexander Rose, Jongeun Choi, and Roberto Horo",
+   " i ∈ {E, N }, implemented as a categorical distribution over the possible next states. In environments with continuous state spaces, the predictors output the increment to the next state, P̂i : (s, a) 7→ ∆ŝi (s, a), intended to approximate the transition dynamics of ME and MN , respectively. In the di",
+   "g using the binary cross-entropy loss (Eq. (5)) on minibatches from the replay buffer D. During each RL update of the value function and policy, we recompute and cache λω (s, a) on the sampled minibatch and obtain a stochastic hard gate by Bernoulli sampling: \u0001 p(s, a) := λω (s, a), λ̃(s, a) ∼ Bernoulli p(",
+   "n our setup, λω is trained using state–action pairs identified as outliers in the online disagreement distribution d(s, a), with κ controlling the z-score threshold for labeling symmetry-breaking samples. In Ant, performance remains stable and even improves as κ increases (κ > 0), suggesting that symmet",
+   " we use the default hyperparameters (Haarnoja et al., 2018), which are listed in Table 8, including those for PE-SAC. All the experiments were run on NVIDIA RTX 4090 GPUs. Table 1: Symmetries of environments used in the experiments. Env Implemented Symmetries C4 Z2 Z4 Z2 SO(3) SO(3) Grid-World Hopper Ant ",
+   "ctice, the DQN configuration closely follows the original design, while the SAC version applies learned per-channel scalars—initialized at 1—to the outputs of each equivariant linear layer. This constitutes a mechanism-level adaptation rather than a full reimplementation of their approach. Grid-World. "
+  ]
+ },
+ {
+  "item": 250,
+  "criterion": "Q4",
+  "rule": "Q4 : tous les hyperparamètres des références (baselines) sont donnés. `yes` si un tableau ou un paragraphe les donne pour toutes les méthodes principales comparées. « Valeurs par défaut de [bibliothèque] » sans les lister compte `yes` seulement si la version de la bibliothèque est donnée.",
+  "excerpts": [
+   "s. Further ablations on context length and teammateaction conditioning suggest that the gap is not merely an implementation detail or an easily tuned hyperparameter, but reflects a substantive limitation of the studied ICRL baselines when faced with realistic partner diversity and environment shifts. Algorithm Distillation (AD). AD trains a sequence model to autoregressively predi",
+   "ng XLA fusion and optimization while avoiding recompilation when hyperparameters remain constant. E.5. Hyperparameter Summary Table 22 summarizes the default hyperparameters used for both AD and DPT in our experiments. Table 22. Default Hyperparameters for AD and DPT. Both methods share most architectural and training hyp"
+  ]
+ },
+ {
+  "item": 251,
+  "criterion": "Y9",
+  "rule": "Y9 : la sensibilité à au moins un hyperparamètre est montrée (balayage ou variation d'au moins un hyperparamètre, avec une mesure de performance). Compte un hyperparamètre que l'article présente comme tel ; un paramètre réglé à l'inférence compte s'il est présenté comme un hyperparamètre. Une ablation de composant n'est pas un balayage d'hyperparamètre ; une variante présentée comme un composant reste une ablation ; une condition de l'environnement ne compte pas.",
+  "excerpts": [
+   "ses. 6 Experiments We evaluate our algorithm by comparing with state-of-the-arts on both synthetic and real datasets. Synthetic datasets. To show the robustness to model-misspecifications of our approach, we propose the following four different point processes as the ground-truth: (I) Inhomogeneous Poisson (IP) "
+  ]
+ },
+ {
+  "item": 252,
+  "criterion": "X7",
+  "rule": "X7 : le calcul employé est chiffré. `yes` exige au moins une quantité (heures, GPU-heures, FLOP, ou un nombre de GPU avec une durée). Le seul nom du matériel : `no`. Le nombre de pas d'environnement n'est pas une quantité de calcul.",
+  "excerpts": [
+   "g, albeit well-known to lead to unstable learning. In this work, we aim to obtain the best out of both worlds by introducing a novel update rule that computes the target using the MINimum estimate between the Target and Online network, giving rise to our method, MINTO. Through this simple, yet effective mo",
+   "troduce the concept of target networks to mitigate the negative impact of the deadly triad issue (Zhang et al., 2021), where the regression target is computed using a lagged copy of the online network to promote stability during training. This prevents the online network from directly chasing its own rapid",
+   "025; Gan et al., 2021). Building on these insights, we propose a complementary perspective: leveraging both the online and target networks jointly to compute the regression target, thereby aiming to combine the benefits of stability and fast learning. In deep RL, the problem of moving targets is especially",
+   "twork for target computation, hence faster, yet stable learning. Building on this motivation, we propose MINTO, a simple yet effective technique that computes regression targets by taking the MINimum estimated value between the Target and Online networks. By relying on the target network when the online es",
+   "argets, enabling faster learning while preserving stability. We introduce MINTO, a technique that is simple in design yet effective in practice, that computes regression targets as the minimum between online and target estimates, thereby mitigating the moving-target problem and reducing overestimation bias",
+   ") generated by any behavioral policy: Q(s, a) ← Q(s, a) + α(s, a)[y − Q(s, a)], (2) where y = r + γ maxa′ ∈A Q(s′ , a′ ) is the target value which is computed via bootstrapping with the current estimate, and α(s, a) is the step-size. In the target value, the maximum expected value of the next state is appr",
+   "tor to the estimated values of the Target and Online networks, giving rise to our method, MINTO. Following our method, the bootstrapped target can be computed as follows: \u0001 y = r + γ max min Qθ̄ (s′ , a′ ), Qθ (s′ , a′ ) . ′ a ∈A (3) Given the new regression target, we can compute the regression loss, simi",
+   "; Max, which selects the larger chitecture. We report the AUC metric using IQM of the two estimates; Mean, which averages and the confidence interval computed across 5 them; Random, which chooses between the on- seeds. Methods are trained for 50 million frames. line and target networks with equal probabili",
+   "tween the on- seeds. Methods are trained for 50 million frames. line and target networks with equal probability; and finally Min, the operator at the core of our proposed method, MINTO. 4 MINTO Area Under the Curve Performance Curve (CNN) DQN MINTO DQN 100 110 120 in % of DQN Performance Curve (IMPALA) ",
+   "ark of 15 Atari games (Bellemare et al., 2013) recommended by Graesser et al. (2022). These games are chosen for their diversity in human-normalized scores achieved by DQN after training. All methods employ the standard CNN architecture introduced by Mnih et al. (2015), and our experiments follow the ev",
+   " 15 games using the AUC the CNN architecture. We report the AUC metric metric. In Fig. 3, we observe that MINTO using IQM and the confidence interval computed consistently outperforms all baselines, includ- across 5 seeds. ing methods such as Double DQN and ScDQN that are specifically designed to mitigate ",
+   "benchmarking MINTO+IQN and IQN on 15 Atari games in the online RL setting with the CNN, and IMPALA with LayerNorm (LN) architectures. All metrics are computed over 5 seeds. Left: We report the AUC metric computed by the IQM and its confidence interval. Center: We demonstrate the performance learning curves",
+   "r, to mitigate overestimation bias that can arise from blindly incorporating online estimates. Simultaneously, MINTO avoids the additional memory and compute overhead required by Maxmin DQN. 5.2 D ISTRIBUTIONAL RL We also evaluate MINTO within the context of distributional RL (Bellemare et al., 2017), an a",
+   "ated baselines on 14 Atari games in the offline RL setting using the CNN architecture. We report the AUC metric using IQM and the confidence interval computed across 5 seeds. Building on our comparison in Fig. 3, we adapt the online RL baselines to the offline RL setting by using CQL as the underlying RL a",
+   "and DMC-Hard (right). We show the performance curves of all methods on each benchmark while reporting a normalized IQM return and confidence interval computed on 10 seeds. ever, unlike in the online setting, Maxmin CQL, which employs two estimators (N = 2), achieves notably higher performance than MINTO. W",
+   "057/1 ’Reasonable Artificial Intelligence’, Project No. 533677015). Calculations for this research were conducted on the Lichtenberg high-performance computer and the Intelligent Autonomous Systems (IAS) cluster at TU Darmstadt. Furthermore, the authors gratefully acknowledge the scientific support and HPC",
+   "):529–533, 2015. Michal Nauman, Mateusz Ostaszewski, Krzysztof Jankowski, Piotr Miłoś, and Marek Cygan. Bigger, regularized, optimistic: scaling for compute and sample efficient continuous control. Advances in neural information processing systems, 37:113038–113071, 2024. Daniel Palenicek, Florian Vogt, a",
+   "reward rt and next state st+1 7: Store transition (st , at , rt , st+1 ) in B 8: Sample a batch of B transitions (sb , ab , rb , s′b )B b=1 from B 9: Compute the TD-target yb = rb + γ maxa′ min(Qθ̄ (s′b , a′ ), Qθ (s′b , a′ )) 10: if s′b is terminal then yb ← rb \u00012 PB 1 11: Compute the loss L(θ) = 2B b=1 (",
+   "ate st+1 Store transition (st , at , rt , st+1 ) in B Sample minibatch (sb , ab , rb , s′b )B b=1 from B N ′ N′ Sample {τi }i=1 , {τj }j=1 ∼ U [0, 1] Compute target quantiles:\u0010 \u0011 PN PN 1 1 ′ ′ ′ ′ Z (s , a , τ ), Z (s , a , τ ) a∗ = arg max min i θ i θ̄ b b i=1 i=1 N N a′ \u0001 ′ ∗ ′ ′ ∗ ′ yj = rb + γ min Zθ̄ ",
+   "a , τ ) a∗ = arg max min i θ i θ̄ b b i=1 i=1 N N a′ \u0001 ′ ∗ ′ ′ ∗ ′ yj = rb + γ min Zθ̄ (sb , a , τj ), Zθ (sb , a , τj ) if s′b terminal then yj ← rb Compute quantile regression loss: B N N′ 1 X X X τi L(θ) = ρκ (⌈yj ⌉ − Zθ (sb , ab , τi )) N N ′B i=1 j=1 b=1 13: Perform gradient step on ∇θ L 14: Every T s",
+   "y replay buffer B, and ttotal = 0. 2: Load offline dataset D into B 3: repeat 4: Sample a batch of B transitions (sb , ab , rb , s′b )B b=1 from B 5: Compute target Q-values for next states: yb = rb + γ max min(Qθ̄ (s′b , a′ ), Qθ (s′b , a′ )) ′ a 6: 7: if s′b is terminal then yb ← rb Compute standard TD l",
+   "̄ (s′b , a′ ), Qθ (s′b , a′ )) ′ a 6: 7: if s′b is terminal then yb ← rb Compute standard TD loss: 1 LTD (θ) = 2B B X ⌈yb ⌉ − Qθ (sb , ab ) \u00012 b=1 8: Compute conservative regularizer: B i X 1 Xh log LCQL (θ) = α · exp(Qθ (sb , a)) − Qθ (sb , ab ) B a b=1 9: Total loss: L(θ) = LTD (θ) + LCQL (θ) 10: Update ",
+   "tion with CDQ, we considered two variants. In the first variant (as in SimbaV1 and SimbaV2), the online estimates from both critics are aggregated to compute a single shared target value, which is then used to update both networks. In the second variant (as in CrossQ+WN), each critic is updated using only ",
+   " 7: Store transition (st , at , rt , st+1 ) in B 8: Sample a batch of B transitions (sb , ab , rb , s′b )B b=1 from B 9: Sample a′b ∼ πϕ (·|s′b ) and compute log πϕ (a′b |s′b ) 10: Compute target: \u0003 \u0002 yb = rb + γ min (Qθ̄ (s′b , a′b ), Qθ (s′b , a′b )) − α log πϕ (a′b |s′b ) 11: 12: if s′b is terminal then",
+   " MINTO is implemented by modifying the target computation. Listing 1: JAX implementation of the MINTO TD target. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 def compute_minto_target( self, target_params, online_params, sample, ): q_online_next = self.network.apply(online_params, ,→ sample.next_state) q_online_next = ",
+   " Results of benchmarking MINTO and DQN on 15 Atari games using the IMPALA architecture with LayerNorm. Reported metrics are interquartile mean (IQM) scores with 95% confidence intervals across 5 seeds per game. 24 Published as a conference paper at ICLR 2026 IQM Return DQN VideoPinball 7.5 5.0 2.5 20 IQ",
+   "Individual Results of benchmarking MINTO and DQN on 15 Atari games using the CNN network architecture. Reported metrics are interquartile mean (IQM) scores with 95% confidence intervals across 5 seeds per game. 25 Published as a conference paper at ICLR 2026 IQM Return Double DQN FR-DQN VideoPinball 7.5",
+   "enchmarking Double DQN, FR-DQN, ScDQN, and MINTO on 15 Atari games using the CNN network architecture. Reported metrics are interquartile mean (IQM) scores with 95% confidence intervals across 5 seeds per game. 26 Published as a conference paper at ICLR 2026 D.2 M AXMIN DQN VS . MINTO VideoPinball 0 IQM",
+   "ual Results of benchmarking Maxmin DQN and MINTO on 15 Atari games using the CNN network architecture. Reported metrics are interquartile mean (IQM) scores with 95% confidence intervals across 5 seeds per game. 27 Published as a conference paper at ICLR 2026 D.3 D ISTRIBUTIONAL RL 20 IQM Return 50 IQM R",
+   "ults of benchmarking IQN and IQN+MINTO on 15 Atari games using the IMPALA architecture with LayerNorm. Reported metrics are interquartile mean (IQM) scores with 95% confidence intervals across 5 seeds per game. 28 Published as a conference paper at ICLR 2026 IQM Return IQN VideoPinball Boxing IQM Return",
+   "vidual Results of benchmarking IQN and IQN+MINTO on 15 Atari games using the CNN network architecture. Reported metrics are interquartile mean (IQM) scores with 95% confidence intervals across 5 seeds per game. 29 Published as a conference paper at ICLR 2026 D.4 O FFLINE RL CQL IQM Return VideoPinball 0",
+   "ults of benchmarking CQL and CQL+MINTO on 14 Atari games using the IMPALA architecture with LayerNorm. Reported metrics are interquartile mean (IQM) scores with 95% confidence intervals across 5 seeds per game. 30 Published as a conference paper at ICLR 2026 IQM Return CQL 0.5 DemonAttack 2 0 IQM Return",
+   "15: Individual Results of benchmarking CQL and CQL+MINTO on 14 Atari games using the CNN architecture. Reported metrics are interquartile mean (IQM) scores with 95% confidence intervals across 5 seeds per game. 31 Published as a conference paper at ICLR 2026 IQM Return IQM Return IQM Return IQM Return I",
+   "marking Double CQL, FR-CQL, ScCQL, and CQL+MINTO on 14 Atari games using the CNN network architecture. Reported metrics are interquartile mean (IQM) scores with 95% confidence intervals across 5 seeds per game. 32 Published as a conference paper at ICLR 2026 D.5 M AXMIN CQL VS . MINTO Maxmin CQL CQL+MIN",
+   "king Maxmin CQL, CQL+MINTO, and Maxmin CQL+MINTO on 14 Atari games using the CNN network architecture. Reported metrics are interquartile mean (IQM) scores with 95% confidence intervals across 5 seeds per game. 33 Published as a conference paper at ICLR 2026 O NLINE RL AND C ONTINUOUS C ONTROL D.6.1 S I",
+   " Figure 18: Individual Results of benchmarking SimbaV2 and SimbaV2+MINTO on the 5 MuJoCo environments. Reported metrics are interquartile mean (IQM) scores with 95% confidence intervals across 10 seeds per environment. The last plot (bottom right) shows the IQM of the normalized return over all 5 enviro",
+   " Figure 19: Individual Results of benchmarking SimbaV1 and SimbaV1+MINTO on the 5 MuJoCo environments. Reported metrics are interquartile mean (IQM) scores with 95% confidence intervals across 10 seeds per environment. The last plot (bottom right) shows the IQM of the normalized return over all 5 enviro",
+   "0: Individual Results of benchmarking SimbaV2 and SimbaV2+MINTO on the 14 Humanoid Bench environments. Reported metrics are interquartile mean (IQM) scores with 95% confidence intervals across 10 seeds per environment. The last plot (bottom right) shows the IQM of the normalized return over all 14 envir",
+   "1: Individual Results of benchmarking SimbaV1 and SimbaV1+MINTO on the 14 Humanoid Bench environments. Reported metrics are interquartile mean (IQM) scores with 95% confidence intervals across 10 seeds per environment. The last plot (bottom right) shows the IQM of the normalized return over all 14 envir",
+   "Figure 22: Individual Results of benchmarking SimbaV2 and SimbaV2+MINTO on the 7 DMCHard environments. Reported metrics are interquartile mean (IQM) scores with 95% confidence intervals across 10 seeds per environment. The last plot (bottom right) shows the IQM of the normalized return over all 7 enviro",
+   "Figure 23: Individual Results of benchmarking SimbaV1 and SimbaV1+MINTO on the 7 DMCHard environments. Reported metrics are interquartile mean (IQM) scores with 95% confidence intervals across 10 seeds per environment. The last plot (bottom right) shows the IQM of the normalized return over all 7 enviro",
+   "e 24: Individual Results of benchmarking CrossQ+WN and CrossQ+WN + MINTO on the 5 MuJoCo environments. Reported metrics are interquartile mean (IQM) scores with 95% confidence intervals across 10 seeds per environment. The last plot (bottom right) shows the IQM of the normalized return over all 5 enviro",
+   "25: Individual Results of benchmarking CrossQ+WN and CrossQ+WN + MINTO on the 7 DMC-Hard environments. Reported metrics are interquartile mean (IQM) scores with 95% confidence intervals across 10 seeds per environment. The last plot (bottom right) shows the IQM of the normalized return over all 7 enviro",
+   "ividual Results of benchmarking CrossQ+WN and CrossQ+WN + MINTO on the 14 Humanoid Bench environments. Reported metrics are interquartile mean (IQM) scores with 95% confidence intervals across 10 seeds per environment. The last plot (bottom right) shows the IQM of the normalized return over all 14 envir",
+   "gure 27: Individual Results of benchmarking FR-SimbaV2 and SimbaV2+MINTO on the 5 MuJoCo environments. Reported metrics are interquartile mean (IQM) scores with 95% confidence intervals across 10 seeds per environment. The last plot (bottom right) shows the IQM of the normalized return over all 5 enviro",
+   "gure 28: Individual Results of benchmarking FR-SimbaV1 and SimbaV1+MINTO on the 5 MuJoCo environments. Reported metrics are interquartile mean (IQM) scores with 95% confidence intervals across 10 seeds per environment. The last plot (bottom right) shows the IQM of the normalized return over all 5 enviro",
+   "Individual Results of benchmarking FR-SimbaV2 and SimbaV2+MINTO on the 14 Humanoid Bench environments. Reported metrics are interquartile mean (IQM) scores with 95% confidence intervals across 10 seeds per environment. The last plot (bottom right) shows the IQM of the normalized return over all 14 envir",
+   "Individual Results of benchmarking FR-SimbaV1 and SimbaV1+MINTO on the 14 Humanoid Bench environments. Reported metrics are interquartile mean (IQM) scores with 95% confidence intervals across 10 seeds per environment. The last plot (bottom right) shows the IQM of the normalized return over all 14 envir",
+   "ure 31: Individual Results of benchmarking FR-SimbaV2 and SimbaV2+MINTO on the 7 DMCHard environments. Reported metrics are interquartile mean (IQM) scores with 95% confidence intervals across 10 seeds per environment. The last plot (bottom right) shows the IQM of the normalized return over all 7 enviro",
+   "ure 32: Individual Results of benchmarking FR-SimbaV1 and SimbaV1+MINTO on the 7 DMCHard environments. Reported metrics are interquartile mean (IQM) scores with 95% confidence intervals across 10 seeds per environment. The last plot (bottom right) shows the IQM of the normalized return over all 7 enviro",
+   "imum operator of MINTO against other potential operators on 15 Atari games using the CNN architecture. Reported metrics are interquartile mean (IQM) scores with 95% confidence intervals across 5 seeds per game. 44 Published as a conference paper at ICLR 2026 Online Only Target Only Max Final Performance",
+   "mum operator of MINTO against other potential operators on 15 Atari games using the CNN architecture. Both figures show the interquartile mean (IQM) scores with 95% confidence intervals of the final performance of each operator. Left: The final performance of each operator in a bar chart. Right: The per",
+   "eturn, Value Estimation Error in Mean Squared Error (MSE), Averaged Empirical Bias, and Training Loss. Reported metrics are interquartile mean (IQM) scores with 95% confidence intervals across 100 seeds. In this section, we examine how several value-based RL algorithms perform on the Car-on-theHill cont",
+   "environment. For each grid point, both actions are considered, yielding 200 fixed test states. The corresponding ground-truth values Q⋆ (s, a) are precomputed once and loaded during training. E.2 A LGORITHMS AND H YPERPARAMETERS We compare four value-based deep RL methods: DQN (Mnih et al., 2013), Double D",
+   "nd kept fixed afterwards. All agents are trained for 3 000 episodes. After each episode, we evaluate the current Q-network on the fixed test grid and compute: (i) Value Estimation Error in Mean Squared Error (MSE) E[(Q̂(s, a) − Q⋆ (s, a))2 ], (ii) Averaged Empirical Bias E[Q̂(s, a) − 46 Published as a conf",
+   "howing the Average Return, Value Estimation Error in Mean Squared Error (MSE), Averaged Empirical Bias, and Training Loss. Reported metrics are mean scores with 95% confidence intervals across 100 seeds. Q⋆ (s, a)]. Policy performance is monitored by logging episodic Average Return during training and e"
+  ]
+ },
+ {
+  "item": 253,
+  "criterion": "Y9",
+  "rule": "Y9 : la sensibilité à au moins un hyperparamètre est montrée (balayage ou variation d'au moins un hyperparamètre, avec une mesure de performance). Compte un hyperparamètre que l'article présente comme tel ; un paramètre réglé à l'inférence compte s'il est présenté comme un hyperparamètre. Une ablation de composant n'est pas un balayage d'hyperparamètre ; une variante présentée comme un composant reste une ablation ; une condition de l'environnement ne compte pas.",
+  "excerpts": [
+   " non-monotonic switches in α. Online hyperparameter tuning Since α changes through time one cannot use typical hyperparameter tuning techniques (like grid search or simple Bayesian optimisation) as the space of possible values is exponential in number of timesteps (α = (α(1) , · · · , α(T ) ) ∈ 4TK−1 , where 4",
+   " performance over tasks of interest). It is, however no longer as fast as the FF counterpart. In order to investigate this phenomenon we ran multiple ablation experiments (Fig. 6). In the first one, denoted FF+LSTM we use a skip connection which simply adds the activations of the FF core and LSTM core befor"
+  ]
+ },
+ {
+  "item": 254,
+  "criterion": "Q8",
+  "rule": "Q8 : un test statistique (t, Welch, Mann-Whitney, bootstrap avec intervalle, IQM de rliable avec intervalles stratifiés) est appliqué à une comparaison de l'article. Des barres d'erreur seules : `no`. Le mot « significant » au sens courant, sans test : `no`.",
+  "excerpts": [
+   "s.LG] 29 Nov 2025 Yonatan Ashlag∗ Technion Esther Derman MILA Institute Uri Koren∗ Technion Mirco Mutti Technion Pierre-Luc Bacon MILA Institute Shie Mannor Technion, NVIDIA Research Abstract State entropy regularization has empirically shown better exploration and sample complexity in reinforcement lea",
+   " both—cannot solve any kernel robust RL problems. Building on this result, we demonstrate that in the risk-averse setting, entropy regularization can significantly degrade performance. Finally, we take a practical perspective and show that the robustness benefits of state entropy regularization are highly sen",
+   "py regularization depend on the number of rollouts used to estimate a policy’s state entropy. While using state entropy regularization does not incur significant computational overhead [50], we observe that the number of rollouts required to realize the robustness benefits is higher than what is typically suf",
+   "arby states and introduces a sharp structural change in the environment. As shown in Figure 4(b), the agent trained with state entropy regularization significantly outperforms both policy entropy and unregularized baselines. We note that we report results for all horizon lengths to avoid misleading conclusion",
+   "game: the agent selects actions while an adversary perturbs the actions. As shown in Figure 5(a), the agent trained with state entropy regularization significantly outperforms this baseline. While we do not expect state entropy to consistently outperform robust RL methods across all types of perturbations, th",
+   "g it difficult to detect this gap without explicitly evaluating under perturbations. These observations suggests that while state entropy can provide significant robustness benefits, realizing those benefits requires a sufficient amount of rollouts—underscoring a practical tradeoff between regularization and ",
+   "opy Figure 9: State and policy entropy -> only state entropy distillation Figure 9, the policy maintains both its return and state entropy, despite a significant drop in policy entropy. The resulting policy’s robust performance closely matches that of the state-and-policy entropy variant. We hypothesize that "
+  ]
+ },
+ {
+  "item": 255,
+  "criterion": "Q7",
+  "rule": "Q7 : l'évaluation se fait sur des conditions tenues à part : tâches, environnements, graines aléatoires d'environnement ou jeux de données non vus à l'entraînement ni au réglage. Pour un article sur les grands modèles de langage, des bancs d'essai distincts des données d'entraînement RL comptent `yes`. Article théorique à expériences jouets : `no`.",
+  "excerpts": [
+   "chowicz, K., Tanner, J., Vuong, Q., Walke, H., Walling, A., Wang, H., Yu, L., and Zhilinsky, U. π0.5 : a vision-language-action model with open-world generalization, 2025. URL https: //arxiv.org/abs/2504.16054. Janner, M., Li, Q., and Levine, S. Offline reinforcement learning as one big sequence modeling pro",
+   "ne, S. Offline reinforcement learning with implicit q-learning, 2021. Liu, X., Gong, C., and Liu, Q. Flow straight and fast: Learning to generate and transfer data with rectified flow. Kumar, A., Zhou, A., Tucker, G., and Levine, S. arXiv preprint arXiv:2209.03003, 2022. Conservative q-learning for offline ",
+   " https://arxiv.org/abs/2512.03973. Tong, A., FATRAS, K., Malkin, N., Huguet, G., Zhang, Y., Rector-Brooks, J., Wolf, G., and Bengio, Y. Improving and generalizing flow-based generative models with minibatch optimal transport. Transactions on Machine Learning Research, 2024. ISSN 2835-8856. URL https:// openr"
+  ]
+ },
+ {
+  "item": 256,
+  "criterion": "Q5",
+  "rule": "Q5 : le code est en lien. Un lien vers du code dans l'article. « Sur demande », « sera publié », « will be made public at <URL> » : `no`. Une page de projet compte `yes` seulement si elle mène à du code. Un lien vers le code d'un AUTRE travail (une bibliothèque, une référence) ne compte pas : il faut le code de l'article.",
+  "excerpts": [
+   "he action distribution of the chosen parent. πS is a binary policy which is trained using trajectories from the parents involved in the crossover. In our implementation, we reuse the trajectories from the parents’ previous mutation phase rather than generating new samples. The training objective for πS is weighted ma",
+   "Swimmer, Ant, HalfCheetah-Hilly, Walker2dHilly, Hopper-Hilly. The “Hilly” variants are more difficult versions of the original environments (https: //github.com/rll/rllab/pull/121). We set difficulty to 1.0 7 Published as a conference paper at ICLR 2018 (a) Average episode reward for the child policies af",
+   "ess bonuses. In Figure 9, we compare GPO and Joint baseline using PPO on three Gym environments, for two different time-horizon values (512, 1024). 2 github.com/rll/rllab/blob/master/rllab/envs/mujoco/walker2d_env.py github.com/openai/gym/blob/master/gym/envs/mujoco/walker2d.py 14 Published as a conferenc"
+  ]
+ },
+ {
+  "item": 257,
+  "criterion": "Q4",
+  "rule": "Q4 : tous les hyperparamètres des références (baselines) sont donnés. `yes` si un tableau ou un paragraphe les donne pour toutes les méthodes principales comparées. « Valeurs par défaut de [bibliothèque] » sans les lister compte `yes` seulement si la version de la bibliothèque est donnée.",
+  "excerpts": [
+   "gonal Fisher approximation (i.e., diag(λI + H ⊤ H)) according to Sophia (Liu et al., 2024). All methods are implemented within the same codebase, and baseline hyperparameters are tuned for best performance. 5.1. Illustration of Natural Gradients Estimation We begin with a low-dimensional example that admits an analytic fo"
+  ]
+ },
+ {
+  "item": 258,
+  "criterion": "Q7",
+  "rule": "Q7 : l'évaluation se fait sur des conditions tenues à part : tâches, environnements, graines aléatoires d'environnement ou jeux de données non vus à l'entraînement ni au réglage. Pour un article sur les grands modèles de langage, des bancs d'essai distincts des données d'entraînement RL comptent `yes`. Article théorique à expériences jouets : `no`.",
+  "excerpts": [
+   "ional challenge is that the bias in the learned Q-function is not uniform across states and actions [7]. In particular, 2 This formulation is a minor generalization of the original MVE objective in that we additionally model the reward function and termination function; Feinberg et al. [7] consider “fully ob",
+   " characteristics of each individual rollout, rather than being constant between examples and throughout training. Our approach can be thought of as a generalization of TD(λ), in that the two approaches are equivalent in the specific case where the overall uncertainty grows exponentially at rate λ at every ti"
+  ]
+ },
+ {
+  "item": 259,
+  "criterion": "Q8",
+  "rule": "Q8 : un test statistique (t, Welch, Mann-Whitney, bootstrap avec intervalle, IQM de rliable avec intervalles stratifiés) est appliqué à une comparaison de l'article. Des barres d'erreur seules : `no`. Le mot « significant » au sens courant, sans test : `no`.",
+  "excerpts": [
+   "mes expensive, it becomes increasingly important to scale training recipes not just to larger models and more data, but to do so in a compute-optimal manner that extracts maximal performance per unit of compute. While such scaling has been well studied for language modeling, reinforcement learning (RL) ",
+   "t of samples needed to attain performance 𝐽, and 𝒞𝐽 (𝜎, 𝑁 ) denotes the corresponding compute. Since batch size is typically parallelizable, does not significantly affect wall-clock time, and is typically much smaller than the replay buffer, we drop the dependency of compute on the batch size and aim to optim",
+   "𝜎. However, the fact that this fit is effective subsequently allows practitioners to instead run two 2-dimensional grid searches on 𝐵 × 𝜎 and 𝐵 × 𝑁 , significantly reducing the amount of compute needed to estimate this fit. 8 Compute-Optimal Scaling for Value-Based Deep RL ˜ ∼ (1, log 𝜎, log 𝑁 ). Evaluation. ",
+   "batch sizes within a interval around the best [2 𝐵 , 4 𝐵 ] 1.18 batch size 𝐵 * perform reasonably, and performance [4 𝐵 * , 8 𝐵 * ] 1.19 * * degrades significantly with larger intervals. Indeed, [8 𝐵 , 16 𝐵 ] 1.30 per this analysis, one cannot naïvely reuse the same batch size for small and large models: in F",
+   ", [8 𝐵 , 16 𝐵 ] 1.30 per this analysis, one cannot naïvely reuse the same batch size for small and large models: in Figure 5, we see a ≈ 40× range in bootstrap-optimal batch sizes across different model sizes at UTD 8. However, the sensitivity of performance to the precise value of batch size is relatively l",
+   "ki et al., 2024), with few exceptions targeting downstream metrics (Gadre et al., 2024). In contrast, off-policy RL involves distinct dynamics due to bootstrapping (Fujimoto et al., 2022; Kumar et al., 2022; Lyle et al., 2023; Hilton et al., 2023), making direct transfer of supervised scaling laws unreliable",
+   "tting, and UTD. 9. Discussion, Limitations, and Conclusion We have established scaling laws for value-based RL allowing compute scaling in an optimal manner. Specifically, we provide a way to scale batch size, UTD, model size, as well as data budget, and provide scaling laws that estimate tradeoffs betw",
+   "taintyadjusted optimal batch sizes, since the precision of the fit 𝐵 would otherwise be limited by the granularity of our grid search. We run 𝐾 = 100 bootstrap estimates by sampling 𝑛 random seeds with replacement out of the original 𝑛 random seeds, applying isotonic regression, and selecting the optimal bat",
+   "h size 𝐵𝑘 by data efficiency to threshold 𝐽max . Since these batch sizes can span multiple orders of magnitude (Table 4), we report the mean of these bootstrapped estimates in log space as the “best” batch size: )︃ (︃ 𝐾 1 ∑︁ (C.1) log 𝐵𝑘 . 𝐵bootstrap = exp 𝐾 𝑘=1 Additionally, considering the set of bootstrap",
+   "of the standard deviation of the data efficiency. Fitting procedure. Prior work fits the data using a brute force grid search followed by LBFG-S (Hoffmann et al., 2023; Rybkin et al., 2025). Empirically, we found that the quality of the resulting fit is highly dependent on the initial point found by bru",
+   " lr* ] [lr* , 1.5 lr* ] [1.5 lr* , 2 lr* ] [2 lr* , 4 lr* ] 1.39 1.35 1.04 1.03 1.18 1.27 30 Compute-Optimal Scaling for Value-Based Deep RL Table 7: Bootstrap-optimal vs. default learning rates over compute-optimal (𝜎, 𝑁, 𝐵). Environment Data efficiency ratio h1-crawl h1-pole h1-stand humanoid-stand 1.0118 ",
+   "itted batch ˜ * (𝒞0 ), 𝑁 * (𝒞0 )), we ran a sweep of learning rates over [1e-4, 2e-4, 3e-4, 4e-4, 5e-4]. Following size 𝐵(𝜎 Eq. (C.1), we compute the bootstrap-optimal learning rate for each setting, then round to the nearest of the five learning rates. In Table 7, we show that data efficiency is not improve",
+   "ptimal learning rate for each setting, then round to the nearest of the five learning rates. In Table 7, we show that data efficiency is not improved significantly when using the rounded bootstrap-optimal learning rate, compared to the “default” learning rate 3e-4. The table shows averages over compute budget",
+   "ong as the value of 𝜏 is reasonable. Following the same sensitivity analysis from Section 6, we find that varying 𝜏 by an order of magnitude from the bootstrapped optimal value of 𝜏 worsens the data efficiency by only 19%. For comparison, varying the batch size by an order of magnitude yields a data efficien",
+   "1). Throughout the remainder of our experiments, we use a “default” value of 𝜏 = 5e-3, which we find is within the “reasonable” interval and near the bootstrapped optimal value. 31 Compute-Optimal Scaling for Value-Based Deep RL Table 8: Correlation between target update rate 𝜏 Task Metric h1-crawl Critic lo"
+  ]
+ },
+ {
+  "item": 260,
+  "criterion": "Q4",
+  "rule": "Q4 : tous les hyperparamètres des références (baselines) sont donnés. `yes` si un tableau ou un paragraphe les donne pour toutes les méthodes principales comparées. « Valeurs par défaut de [bibliothèque] » sans les lister compte `yes` seulement si la version de la bibliothèque est donnée.",
+  "excerpts": [
+   "cating one standard deviation. Comprehensive details for all environments as well as additional results are presented in Appendix A.2, details on the baselines used and additional ablations in A.7, and hyperparameters in A.11. 3.1 S PARSE R EWARD TASKS We first evaluate our method on the MiniGrid suite of environments, which are challenging due to sparse rewards. ",
+   "0.5 PPO (C RAFTIUM ) For the more computationally demanding Craftium environment, we use PPO to leverage vectorized rollouts for faster training. The hyperparameters for the PPO agent, which were kept consistent for both the baseline and our method, are detailed in Table 6. A.11.3 R AINBOW (XL AND -M INI G RID ) For the experiments in XLand-MiniGrid, we use a Rainbow DQN agent. Th",
+   "nd our method, are detailed in Table 6. A.11.3 R AINBOW (XL AND -M INI G RID ) For the experiments in XLand-MiniGrid, we use a Rainbow DQN agent. The hyperparameters, consistent for both the baseline and our method, are detailed in Table 7. A.11.4 SAC (M ETA -W ORLD ) In Meta-World experiments we use SAC (Haarnoja et al., 2018) to train the sparse"
+  ]
+ },
+ {
+  "item": 261,
+  "criterion": "X7",
+  "rule": "X7 : le calcul employé est chiffré. `yes` exige au moins une quantité (heures, GPU-heures, FLOP, ou un nombre de GPU avec une durée). Le seul nom du matériel : `no`. Le nombre de pas d'environnement n'est pas une quantité de calcul.",
+  "excerpts": [
+   ", a practical new method for value-function-based transfer. We show that M AX QI NIT performs well in simple lifelong RL experiments. 1. Introduction computed policies from related tasks (Fernández & Veloso, 2006; Taylor & Stone, 2007a; Singh, 1992). While a great deal of research has been conducted on un",
+   "e S; and γ ∈ [0, 1) is a discount factor, expressing the agent’s preference for immediate over delayed rewards. † 1 Equal contribution. Department of Computer Science, Brown University, Providence, RI 02912. Correspondence to: David Abel <david abel@brown.edu>, Yuu Jinnai <yuu jinnai@brown.edu>. Proceeding",
+   "ethod for action-prior transfer in RL that can be incorporated into learning to bias exploration. Abel et al. (2015) propose goal-based action priors–computed given access to a training task distribution–which dynamically prune away actions on a complex target task, thereby narrowing the search for a good ",
+   "radeoff. In particular, we inject prior knowledge, such as the knowledge captured by a jumpstart policy, b max I NPUT: s0 , t, H, D, A , pbmin , Q O UTPUT: U (s, a) ln(δ) if t > ln(1−b pmin ) then b max ∀s,a : Qt (s, a) ← Q else ∀s,a : Qt (s, a) ← VM AX end if M ← sample(D) QA ,M ← A (M, s0 , H) ∀s,a :",
+   "the following event define a mistake: Q̂∗max (s, a) < max Q∗M (s, a). M (5) First, we suppose that for each of sampled MDP M , our learning algorithm computes a partial but nearly accurate Q-function. That is, for some small ε: ( Q∗M (s, a) ± ε c(s, a) ≥ m ∗ Q̂M (s, a) = (6) VM AX otherwise That is, lettin"
+  ]
+ },
+ {
+  "item": 262,
+  "criterion": "Q5",
+  "rule": "Q5 : le code est en lien. Un lien vers du code dans l'article. « Sur demande », « sera publié », « will be made public at <URL> » : `no`. Une page de projet compte `yes` seulement si elle mène à du code. Un lien vers le code d'un AUTRE travail (une bibliothèque, une référence) ne compte pas : il faut le code de l'article.",
+  "excerpts": [
+   "L on visual tasks. But we do observe consistent performance improvement in all visual tasks over FQL using the default FQL hyperparameters. 3 https://github.com/seohongpark/fql 16 Causal Flow Q-Learning F. Experiment Details Tasks and Environments. We use pixel based tasks from OGBench (Park et al., 2025a",
+   " 400K offline training steps, almost doubles the vanilla value flow’s performance, which only achieves 0.32 with 1M offline training steps. 4 https://github.com/chongyi-zheng/value-flows 17 Figure 7. Causal Value Flows outperform vanilla Value Flows. "
+  ]
+ },
+ {
+  "item": 263,
+  "criterion": "X2",
+  "rule": "X2 : une incertitude est rapportée sur les résultats principaux (barres d'erreur, écart type, intervalle, ± …). Des barres d'erreur seules suffisent. Une incertitude sur un résultat secondaire seulement : `no`.",
+  "excerpts": [
+   "ign an algorithm which verifies if there exists a cycle consisting of edges E1 ∪ {e} such that the corresponding relation (24) has coefficient r(e) = ±1 for the edge e. Without loss of generality, we focus on reducibility of edges in E2 , noting that the extension to higher levels El>2 is routine. Th"
+  ]
+ },
+ {
+  "item": 264,
+  "criterion": "Q8",
+  "rule": "Q8 : un test statistique (t, Welch, Mann-Whitney, bootstrap avec intervalle, IQM de rliable avec intervalles stratifiés) est appliqué à une comparaison de l'article. Des barres d'erreur seules : `no`. Le mot « significant » au sens courant, sans test : `no`.",
+  "excerpts": [
+   "s an input to the loss function, e.g., exploration signals, the current timestep number, etc, and we leave further such extensions as future work. To bootstrap the learning process, we add to Lφ a guidance policy gradient signal Lpg (in practice, we use the surrogate loss from PPO [26]), making the total los",
+   "n flag, which is why EPG takes the reward as input in the case where the state space is partiallyobserved. Similarly to the previous experiments, EPG significantly outperforms PPO on the task distribution it is metatrained on. SpecifFigure 6: GoalAnt (top) and ically, in Figure 8, we compare EPG with both MAM",
+   "eetah task almost instantly through system identification. By learning both the algorithm and the policy initialization simultaneously, it is able to significantly outperform both MAML and EPG. However, this comes at the cost of generalization power, as we will discuss in Section 4.3. 4.2 Learning exploratory"
+  ]
+ },
+ {
+  "item": 265,
+  "criterion": "Q7",
+  "rule": "Q7 : l'évaluation se fait sur des conditions tenues à part : tâches, environnements, graines aléatoires d'environnement ou jeux de données non vus à l'entraînement ni au réglage. Pour un article sur les grands modèles de langage, des bancs d'essai distincts des données d'entraînement RL comptent `yes`. Article théorique à expériences jouets : `no`.",
+  "excerpts": [
+   "periments 0.10 0.05 We evaluate our method across three distinct benchmark suites: the Atari 26 subset used by Schwarzer et al. (2021) for evaluating generalization in visually complex environments, and the MinAtar (Young & Tian, 2019) and the Octax (Radji et al., 2026) suites for lightweight validation. In ",
+   "plications worth highlighting. Barreto, A., Dabney, W., Munos, R., Hunt, J. J., Schaul, T., van Hasselt, H. P., and Silver, D. Successor Features for Transfer in Reinforcement Learning. In Guyon, I., Luxburg, U. V., Bengio, S., Wallach, H., Fergus, R., Vishwanathan, S., and Garnett, R. (eds.), Advances in N",
+   "ood, A. R. Elephant neural networks: Born to be a continual learner. arXiv preprint arXiv:2310.01365, 2023. Patterson, A., White, A., and White, M. A generalized projected bellman error for off-policy value estimation in reinforcement learning. Journal of Machine Learning Research, 23(145):1–61, 2022. Laskin"
+  ]
+ },
+ {
+  "item": 266,
+  "criterion": "Q8",
+  "rule": "Q8 : un test statistique (t, Welch, Mann-Whitney, bootstrap avec intervalle, IQM de rliable avec intervalles stratifiés) est appliqué à une comparaison de l'article. Des barres d'erreur seules : `no`. Le mot « significant » au sens courant, sans test : `no`.",
+  "excerpts": [
+   "al loss implicitly updates policies to align the learned policy with (estimated) environmental uncertainty. Finally, extensive experiments verify the significance of this uncertainty-aware regularization from distributional RL on the empirical benefits over classical RL. Our study offers an innovative explora",
+   "egorical distributional learning, particularly in RL. The perspective of uncertainty-aware regularized exploration that our study introduces provides significant insights into understanding the benefits of employing categorical distribution loss in the RL context. 2 Uncertainty-oriented Exploration. Uncertain",
+   "loration methods [20], which leverages uncertainty either in the (posterior) estimation of the value function, as seen in Bayesian framework [45, 4], Bootstrap [44], and Ensemble methods [30], or in the entire distribution of returns [58, 36, 9]. For example, Decaying Left Truncated Variance (DLTV) [36] and ",
+   " is the induced histogram density after applying the return density decomposition in Eq. 3. Since it is a prevalent notion that distributional RL can significantly reduce intrinsic uncertainty of the environment [36, 10], ′ ′ the derived distribution-matching regularization term αH(b µsi ,πZ (si ) , qθsi ,ai ",
+   "togram 𝜇 \",$ (𝑥) density function via the decomposition in 𝑞!\",$ (𝑥) Eq. 3, which excludes its expectation. Note that µst ,at can be approximated via bootstrap TD estimate µ bst+1 ,πZ (st+1 ) similar to Eq. 29. In this specific tabular setting re- Figure 2: q s,a is optimized to disperse (left) or concengard",
+   "of China (No. 12371292) equally. The authors express their gratitude for the insightful feedback provided by all reviewers and the area chairs, which significantly enhanced the initial version of this paper. A Related Work: More Discussions about Uncertainty-oriented Exploration in RL 23 B More Details about ",
+   "dvantage of the uncertainty in the (posterior) estimation of value functions. The typical exploration methods include Bayesian framework [45, 4, 38], Bootstrap [44], and Ensemble methods [30]. For instance, Bootstrapped DQN [44] maintains several independent Q-estimators and randomly samples one of them, ena",
+   "ted together, can also lead to performance degradation, as exhibited in the second row in Figure 7. For instance, on Swimmer and Reacher, AC+UE+VE is significantly inferior to AC+UE or AC+VE. These results about potential interference also serve as the emprical evidence to reveal distinct exploration directio",
+   " (50) lim F ( )= F −1 (τ )dτ = xdF (x) = E [X] , N →+∞ N N +1 0 −∞ i=1 where the first equation results from the relationship between the limit of Riemann Sum and its integral, and the second equation holds by changing the variable τ = F (x). Note that this asymptotic regime is similar to that in our hi"
+  ]
+ },
+ {
+  "item": 267,
+  "criterion": "X7",
+  "rule": "X7 : le calcul employé est chiffré. `yes` exige au moins une quantité (heures, GPU-heures, FLOP, ou un nombre de GPU avec une durée). Le seul nom du matériel : `no`. Le nombre de pas d'environnement n'est pas une quantité de calcul.",
+  "excerpts": [
+   "with three baselines, PSRL, concurrent UCRL and Thompson resampling. In PSRL, each agent k samples an MDP Mk,0 from the common prior at time tk,0 and computes the optimal policy πk,0 (·) with respect to Mk,0 , which does not change throughout the agent’s interaction with the environment. Therefore, the PSR",
+   "pson resampling and seed sampling, at each time tk,m , the agent k generates a new MDP Mk,m based on the data gathered by all agents up to that time, computes the optimal policy πk,m for Mk,m and takes an action ak,m = πk,m (sk,m−1 ) according to the new policy. Concurrent UCRL is a deterministic approach ",
+   " by a set of parameters Θk . Each θ ∈ Θk defines a state-action value function Q̃k,θ : S × A → <. The value Q̃k,θ (s, a) could be, for example, the output of a neural network with weights θ in response to an input (s, a). Initially, the agents may have prior beliefs over the parameter θ, such as the ex",
+   "gent k obtains parameters θk,m at time period tk,m . These parameters define a state-action value function Q̃k,θk,m (·, ·) based on which a policy is computed. Based on the obtained policy and its current state sk,m , the agent takes a greedy action ak,m , observes reward rk,m and transitions to state sk,m",
+   "1 1 2 Then, the solution to argminθ v j (yj + zj − fθ (xi )) + λ kθ − θ̂k2 is a sample from the posterior of θ∗ given (X, y) [14]. This sample can be computed for non-linear fθ as well, although it will not be from the exact posterior. In the concurrent setting, when each agent k draws initial parameter se",
+   "me regularization θ̂k throughout learning; this provides the requisite level of commitment. 3.2.1 Seed Least Squares Value Iteration (Seed LSVI) LSVI computes a sequence of value functions parameters reflecting optimal expected rewards over an expanding horizon based on observed data. In seed LSVI, each kt",
+   " learning to balance the pole remarkably quickly 1 . The average reward per agent increases as we increase the number K of parallel agents. To reduce compute time, we use seed ensemble with min(K, 30) models; this seems to not significantly degrade performance. 5 Closing Remarks We have extended the concep"
+  ]
+ },
+ {
+  "item": 268,
+  "criterion": "X7",
+  "rule": "X7 : le calcul employé est chiffré. `yes` exige au moins une quantité (heures, GPU-heures, FLOP, ou un nombre de GPU avec une durée). Le seul nom du matériel : `no`. Le nombre de pas d'environnement n'est pas une quantité de calcul.",
+  "excerpts": [
+   " environment; someone must program those rewards functions (even if the agent is interacting with the real world). Typically, though, 1 Department of Computer Science, University of Toronto, Toronto, Ontario, Canada 2 Vector Institute, Toronto, Ontario, Canada 3 Element AI, Toronto, Ontario, Canada. Corres",
+   "e to state within a reward machine (as determined by high-level events detected within the environment). After every transition, the reward machine outputs the reward function the agent should use at that time. For example, we might construct a reward machine for “delivering coffee to an office” using ",
+   "|s, a) r(s, a, s0 ) + γ max q (s , a ) 0 s0 ∈S a ∈A for every state s ∈ S and action a ∈ A. Note that, if q ∗ is known, then an optimal policy can be computed by always selecting the action a with the highest value of q ∗ (s, a) in every state s. In the next subsection, we explain how to use the agent’s ex",
+   " introduce a novel type of finite state machine, called a Reward Machine (RM). An RM takes abstracted descriptions of the environment as input, and outputs reward functions. The intuition is that the agent will be rewarded by different reward functions at different times, depending on the transitions m",
+   "if the agent is at a location marked as e, then the RM moves to the next state ut+1 = δu (ut , σt ) according to the state-transition function, and outputs a reward function rt = δr (ut , ut+1 ) (a) Patrol A, B, C, and D u2 h¬c, 0i hc, 0i u2 B htrue, 0i (a) The office gridworld h¬D, 0i start hD, 1i ho,",
+   "eans that the machine will transition from u1 to u3 if the proposition o becomes true (regardless of the truth assignment of the other symbols) and output a reward function equal to one. Intuitively, this machine outputs a reward of one if and only if the agent delivers coffee to the office while not b",
+   "ce (s, a, s0 ). Given that the labelling function can detect which propositions, or events, from P are true in s0 , we can use the reward machines to compute how much reward the agent would have received if the reward machine had been in any RM state. In particular, for any RM state uoj , the reward machin",
+   " s0 , the q-learning update is then necessarily over the experience (hs, uoj i, a, hs0 , uok i)) using the reward function δro (uoj , uok ) as uok is computed using δuo (uoj , L(s0 )). As q-learning converges to the optimal q-function, then the optimal q-value function for q̃jo is equivalent to the optimal"
+  ]
+ },
+ {
+  "item": 269,
+  "criterion": "X7",
+  "rule": "X7 : le calcul employé est chiffré. `yes` exige au moins une quantité (heures, GPU-heures, FLOP, ou un nombre de GPU avec une durée). Le seul nom du matériel : `no`. Le nombre de pas d'environnement n'est pas une quantité de calcul.",
+  "excerpts": [
+   " Science and Technology of China 4 Qwen Team, Alibaba Group 5 Shenzhen Institutes of Advanced Technology, Chinese Academy of Sciences 6 Department of Computer Science and Technology, Tsinghua University 7 School of Future Technology, University of Chinese Academy of Sciences 8 AiRiA. Correspondence to: Kai",
+   "s unseen teammates + Teammate policy ( ) ICRL Training & Online Evaluation ⑥ Online Evaluation episode / task lookup Recorder Test teammates sample output: teammate policy id ( Index metadata query Train teammates seeds learning histories learn acts from learning histories DPT Test: unseen layouts unse",
+   "s (e.g., checkpoints, seeds) for both training and testing splits. This ensures that the exact distribution of tasks is reproducible across different compute infrastructures. • AD is trained on learning histories generated by some source RL algorithms interacting with teammates. A training sample consists ",
+   "operty high-quality transitions across 80 unique teammates. • Efficiency: The data loader supports threaded prefetching and smart caching, maximizing GPU utilization during Transformer training by minimizing I/O bottlenecks. Value Original Transitions 1,196,032,000 Filtered Transitions 149,504,000 Hist",
+   "capable and requires minimal coordination. Statistical protocol: each teammate instance is evaluated over 100 episodes; a per-instance mean return is computed first, and tables report the mean ± standard deviation across 5 such instancelevel means. Shaded regions in adaptation curves denote the standard de",
+   "hich requires tight coupling between agents, AD and DPT frequently yield near-zero or negative returns. Notably, in the test wide layout with H1, AD scores −18.0 ± 2.0 and DPT scores −23.4 ± 2.5, performing significantly worse than random baseline (0.0 ± 0.0). This suggests that the ICRL agents not only",
+   "layout from Track 2 (Ltest × Πtest ). Adding teammate actions as autoregressive input (+TA) yields inconsistent improvements and fails to address the core limitations of ICRL methods. Heuristic Family AD (Track 1) test wide AD+TA DPT DPT+TA Rnd AD (Track 1) demo wide AD+TA DPT DPT+TA Rnd AD (Track 2) cr",
+   "ments. A.2. Implementation Details Our implementation is built entirely in JAX (Bradbury et al., 2018), enabling high-throughput parallel rollouts on GPU/TPU accelerators. We adapted the environment from the JaxMARL (Rutherford et al., 2024) codebase with several bug fixes and optimizations. Observatio",
+   "N processes the (5, 5, C) observation tensor, followed by a fully connected layer of dimension 128 and a GRU with hidden dimension 128. The network outputs both action logits and value estimates. Training Procedure. Training proceeds by collecting rollouts of length 256 from 256 parallel environments. ",
+   "ation difficulty spectrum. B.2.1. C OMMON I NFRASTRUCTURE All heuristic agents share foundational components: Pathfinding. Agents employ BFS-based precomputed distance matrices and next-action matrices at initialization. Given the static layout structure, these matrices enable O(1) path queries during exec",
+   ".2.2. H1: R ECIPE -AWARE AGENT The Recipe-Aware agent implements interpretable decision logic centered on recipe knowledge acquisition and adherence. Core Principle. This agent maintains an internal belief about the current recipe and uses the button-activated recipe indicator (‘L’) to query the recipe ",
+   " ERRITORY AGENT The Territory agent implements region-constrained behavior where each agent operates primarily within a designated spatial territory. Core Principle. The kitchen is partitioned into territories based on configurable split modes: vertical (left/right), horizontal (top/bottom), or function",
+   "d cooperative behavior mimicking factory workflow specialization. 23 Benchmarking the Limits of In-Context Reinforcement Learning for Ad-Hoc Teamwork Core Principle. Agents specialize in distinct workflow stages: ingredient running (fetching and adding ingredients to pots) or plating/delivery (fetching ",
+   "ENT The Utility Greedy agent implements a rational opportunist that selects actions by maximizing a weighted utility function over candidate intents. Core Principle. At each timestep, the agent enumerates a fixed set of 8 candidate intents, computes utility scores based on weighted value estimates and d",
+   "pe via button indicator. 24 Benchmarking the Limits of In-Context Reinforcement Learning for Ad-Hoc Teamwork Utility Scoring. Each intent receives a score computed as: score(i) = wi · vi − wdist · di + 1[i = iprev ] · winertia , (8) where wi is the intent weight, vi is a state-dependent value multiplier",
+   "meter sampling employs SHA256-based deterministic PRNG seeding from specification strings, ensuring reproducible teammate generation across different compute environments. 25 Benchmarking the Limits of In-Context Reinforcement Learning for Ad-Hoc Teamwork C. RL Source Algorithm Training This section detail",
+   "nsor of shape (5, 5, C) is processed by a convolutional neural network that extracts spatial features from the agent’s local field of view. Recurrent Core. A Gated Recurrent Unit (GRU) with hidden dimension 128 processes the encoded observations sequentially, enabling the agent to maintain memory of pas",
+   "s the encoded observations sequentially, enabling the agent to maintain memory of past interactions and infer teammate behavior patterns over time. Output Heads. The network produces both action logits (passed through a categorical distribution with invalid action masking) and value estimates for the c",
+   "int-based resume semantics. A task is considered complete if and only if valid history.npz, episodes.json, and metadata.json artifacts exist in the output directory. Complete tasks are automatically skipped on re-execution. Parallelization. Multiple tasks can execute concurrently using process-level pa",
+   "sks can execute concurrently using process-level parallelism. Lock files prevent duplicate execution when multiple workers process the same manifest. GPU resources are distributed across workers in round-robin fashion when multiple GPUs are available. Failure Handling. Failed tasks are logged to a stru",
+   ", 2018) and Flax (Heek et al., 2024), enabling seamless integration with the JAX-native OvercookedV2 environment (Gessler et al., 2025) and efficient GPU-accelerated training. E.1. Shared Architectural Components Both AD and DPT share a common observation encoder designed for the grid-based partial obs",
+   " and C varies by layout. The encoder consists of two stages: 1. Pointwise Feature Extraction: Three 1 × 1 convolutional layers with 128, 128, and 8 output channels respectively, each followed by ReLU activation. These layers perform channel-wise feature transformation without spatial mixing. 2. Spatial",
+   "orm channel-wise feature transformation without spatial mixing. 2. Spatial Feature Extraction: Three 3 × 3 convolutional layers with 16, 32, and 32 output channels respectively, each followed by ReLU activation. These layers capture local spatial patterns and object relationships. The resulting feature",
+   "inforcement Learning for Ad-Hoc Teamwork where M denotes the set of valid (non-padded) positions in the sequence, and πθ is the action distribution output by the model. Causal attention masking ensures that predictions at position t only attend to positions ≤ t. Online Inference Buffer. During evaluati",
+   " which we obtain by relabeling learning histories with actions from the final converged policy. Following the original DPT formulation with prior, we compute loss on all sequence positions: LDPT = − K 1 X log πθ (ai,∗ |x0:j ) K + 1 j=0 (17) where ai,∗ is the expert action for the query observation. This “w",
+   "mented via Optax (DeepMind et al., 2020). Weight decay is set to 0.0 by default but can be configured. Threaded Data Prefetching. To overlap I/O with GPU computation, we implement a background prefetching mechanism. A dedicated worker thread continuously samples batches from the HDF5 dataset and places",
+   " batches from the HDF5 dataset and places them in a bounded queue (default size 5). The training loop retrieves batches from this queue, ensuring the GPU is never starved for data. This optimization provides significant speedup, particularly for large sequence lengths where batch construction involves ",
+   "ng. The cache size can be adjusted based on available system memory. Asynchronous Device Transfer. We leverage JAX’s asynchronous dispatch to overlap CPU-to-GPU data transfer with computation. Batch data is placed on the GPU device immediately after construction, allowing the transfer to proceed concur",
+   "t dynamics. To address this, we implement a quality-based filtering procedure that selects the best environment streams based on a composite quality score. Specifically, for each environment stream with episode returns {R1 , R2 , . . . , RN }, we compute window-averaged returns at the beginning and end ",
+   "Let R̄start denote the mean return over the first w episodes and R̄end denote the mean over the final w episodes, where w = max(5, ⌊0.1N ⌋). Quality score for each stream is defined as: score = R̄end + (R̄end − R̄start ) (19) This score jointly rewards high final performance and substantial improvement ",
+   " jointly rewards high final performance and substantial improvement over the training horizon. We then rank all environment streams by their quality scores and retain only the top-k streams per task, where k is a configurable parameter. The default setting in our experiments is k = 128. Avg. Return Avg.",
+   "es during learning-history dataset construction. We compare raw trajectories (before filtering) with filtered trajectories selected based on quality scores that reward high final performance and large improvement. The filtered curves exhibit steeper improvement gradients and higher final performance, va",
+   "mily Diversity. We treat all RL-trained policies as a single family FRL (comprising 80 distinct policies from various algorithms and checkpoints) and compute pairwise Hamming distances among five families: FRL and the four heuristic families H1–H4 (each with 5 parameter configurations). For each pair of fa",
+   "FRL and the four heuristic families H1–H4 (each with 5 parameter configurations). For each pair of families FA and FB with policy sets ΠA and ΠB , we compute the average Hamming distance: d¯H (FA , FB ) = X 1 |ΠA ||ΠB | X dH (πa , πb ) (21) πa ∈ΠA πb ∈ΠB Coord Simple Coord Ring 0.70 0.69 0.72 0.62 Test Wid",
+   " do not resolve the layout generalization failure. F.4.4. W ITHIN -ROLLOUT A DAPTATION G AIN To directly quantify the degree of online adaptation, we compute the adaptation gain: the difference between the mean return over the last 20 episodes and the mean return over the first 20 episodes within the same ",
+   "ss of the main finding under reasonable variations. We identify three primary research directions to address this gap. Explicit Partner Modeling. The core limitation exposed by our experiments is the inability of standard Transformers to infer partner policies from interaction histories. We hypothesize "
+  ]
+ },
+ {
+  "item": 270,
+  "criterion": "X7",
+  "rule": "X7 : le calcul employé est chiffré. `yes` exige au moins une quantité (heures, GPU-heures, FLOP, ou un nombre de GPU avec une durée). Le seul nom du matériel : `no`. Le nombre de pas d'environnement n'est pas une quantité de calcul.",
+  "excerpts": [
+   "a number of impressive results have been demonstrated by training agents using RL: such agents have been trained * Equal contribution 1 Department of Computer Science, UC Berkeley 2 Department of Computer Science, CMU 3 International Computer Science Institute (ICSI). Correspondence to: Carlos Florensa <fl",
+   "based on whether they are at the appropriate level of difficulty for the current policy. Second, using these labeled goals, we train a generator to output new goals at the appropriate level of difficulty. Finally, we use these new goals to efficiently train the policy, improving its coverage objective.",
+   "with “negative examples” with a label yg = 0 which our generator should not generate. The generator is trained to “fool” the discriminator, i.e. to output goals that match the distribution of goals in pdata (g) for which yg = 1. 4.2. Adversarial Goal Generation 4.3. Policy Optimization In order to samp",
+   "ithm 1 Generative Goal Learning We use a “goal generator” neural network G(z) to generate goals g from a noise vector z. We train G(z) to uniformly output goals in GOIDi using a second “goal discriminator” network D(g). The latter is trained to distinguish goals that are in GOIDi from goals that are no",
+   "= Eg∼pdata (g) yg (D(g) − b)2 + D i (1 − yg )(D(g) − a)2 + Ez∼pz (z) [(D(G(z)) − a)2 ] minV (G) = Ez∼pz (z) [D(G(z)) − c)2 ] G (5) Input: Policy π0 Output: Policy πN (G, D) ← initialize GAN() goalsold ← ∅ for i ← 1 to N do z ← sample noise(pz (·)) goals ← G(z) ∪ sample(goalsold ) πi ← update policy(goa",
+   "n our goal generator and our goal discriminator (train GAN), as described in Section 4.2. The generated goals from the previous iteration are used to compute the Monte Carlo estimate of the expectations with respect to the distribution pdata (g) in Eq. (5). By training on goals within GOIDi produced by the",
+   "iangles). ing the GAN not only on the goals g ∈ GOIDi but rather on every goal attempted in the previous iteration. Given the noise injected at the output of the GAN this generates a gradually expanding set of goals - similar to any handdesigned curriculum. The oracle consists in sampling goals uniform",
+   "mising line of research is to build hierarchy on top of the multi-task policy that we obtain with our method by training a higher-level policy that outputs the goal for the lower level multi-task policy (Heess et al., 2016; Florensa et al., 2017a). The hierarchy could also be introduced by replacing ou",
+   "e that all of our initial goals g have R̄g (π0 ) < Rmin , leading to very slow training. To avoid this problem, we initialize our goal generator to output a set of goals that our initial policy is likely to be able to achieve with R̄g (πi ) ≥ Rmin . To accomplish this, we run our initial policy π0 (at ",
+   "hin the maze environment, which has dimensions of 6m x 6m. The full statespace has an area of size 10 m x 10 m, within which the maze is centered. To compute the coverage objective, goals are sampled from within the maze according to a uniform grid on the maze interior. The maximum time-steps given to reac",
+   " above. The inputs are sent to two hidden layers of size 32 with tanh nonlinearities. The final hidden layer is followed by a linear N -dimensional output, corresponding to accelerations in the N dimensions. For policy optimization, we use a discount factor of 0.998 and a GAE lambda of 0.995. The polic",
+   "es that are only slightly better than what our method does. Furthermore, no matter what labeling technique is used, the success rate of most goals is computed as an average of at most four attempts. Therefore, the statement Rmin ≤ R̄g (πi ) will be unchanged for any value of Rmin ∈ (0, 0.25). Same for R̄g ",
+   "he competence Γyg , we use the same formula as in their section 2.4.1 (use highest competence if reached close enough to the goal) and C(yg , yf ) is computed with their equation (7). The collect rollout function resets the state s0 = sreset and then applies actions following the goal-conditioned policy πθ",
+   "oals Nnew , maximum number of goals gmax , mode proportions (p1 , p2 , p3 ) Input: Policy πθ0 (sstart , yg ), goal bounds BY , reset position srest Output: \b Policy πθN (sstart , yg ) R ← (R0 , ΓR0 ) where R0 = Region(BY ), ΓR0 = 0 for i ← 1 to N do goals ← Self-generate Nnew goals: {yj }j=0...Nnew pat",
+   "e that all of our initial goals g have R̄g (π0 ) < Rmin , leading to very slow training. To avoid this problem, we initialize our goal generator to output a set of goals that our initial policy is likely to be able to achieve with R̄g (πi ) ≥ Rmin . To accomplish this, we run our initial policy π0 (at ",
+   "hin the maze environment, which has dimensions of 6m x 6m. The full statespace has an area of size 10 m x 10 m, within which the maze is centered. To compute the coverage objective, goals are sampled from within the maze according to a uniform grid on the maze interior. The maximum time-steps given to reac",
+   " above. The inputs are sent to two hidden layers of size 32 with tanh nonlinearities. The final hidden layer is followed by a linear N -dimensional output, corresponding to accelerations in the N dimensions. For policy optimization, we use a discount factor of 0.998 and a GAE lambda of 0.995. The polic",
+   "es that are only slightly better than what our method does. Furthermore, no matter what labeling technique is used, the success rate of most goals is computed as an average of at most four attempts. Therefore, the statement Rmin ≤ R̄g (πi ) will be unchanged for any value of Rmin ∈ (0, 0.25). Same for R̄g ",
+   "he competence Γyg , we use the same formula as in their section 2.4.1 (use highest competence if reached close enough to the goal) and C(yg , yf ) is computed with their equation (7). The collect rollout function resets the state s0 = sreset and then applies actions following the goal-conditioned policy πθ",
+   "oals Nnew , maximum number of goals gmax , mode proportions (p1 , p2 , p3 ) Input: Policy πθ0 (sstart , yg ), goal bounds BY , reset position srest Output: \b Policy πθN (sstart , yg ) R ← (R0 , ΓR0 ) where R0 = Region(BY ), ΓR0 = 0 for i ← 1 to N do goals ← Self-generate Nnew goals: {yj }j=0...Nnew pat"
+  ]
+ },
+ {
+  "item": 271,
+  "criterion": "X7",
+  "rule": "X7 : le calcul employé est chiffré. `yes` exige au moins une quantité (heures, GPU-heures, FLOP, ou un nombre de GPU avec une durée). Le seul nom du matériel : `no`. Le nombre de pas d'environnement n'est pas une quantité de calcul.",
+  "excerpts": [
+   "e VAE for multiple purposes during training time (middle): to sample goals to train the policy, to embed the observations into a latent space, and to compute distances in the latent space. During test time (right), we embed a specified goal observation og into a goal latent zg as input to the policy. Video",
+   "the latent space for goals and rewards. So rather than generating goals g, we generate latent goals zg by sampling from the VAE prior p(z). We then recompute rewards using Equation (3). By retroactively relabeling the goals and rewards, we obtain much more data to train our value function. This sampling pr",
+   "n strategy 5 Algorithm 1 RIG: Reinforcement learning with imagined goals Encode z = e(s), z ′ = e(s′ ). (Probability 0.5) replace zg with zg′ ∼ p(z). Compute new reward r = −||z ′ − zg ||. Minimize (1) using (z, a, z ′ , zg , r). end for for t = 0, ..., H − 1 steps do for i = 0, ..., k − 1 steps do Sample ",
+   "oal. We embed all states and goals using the model’s encoder. When we train our goal-conditioned value function, we resample goals from the prior and compute rewards in the latent space using Equation (3). Any RL algorithm that trains Q-functions could be used, and we use TD3 [13] in our implementation. 5 ",
+   " can handle variable numbers of objects at test time. Figure 6 shows that our method can learn to solve this task successfully, without decrease 3 To compute the pixel MSE for a sampled latent goal, we decode the goal latent using the VAE decoder, pψ , to generate the corresponding goal image. 8 Episode Re",
+   "t matching the state-based oracle method and far exceeding the baseline method on the reaching task. Our method needs just 10,000 samples or about an hour of real-world interaction time to solve visual reaching. Real-world pushing results are shown in Figure 8. To solve visual pusher, which is more visu",
+   "work was supported by the National Science Foundation IIS-1651843 and IIS-1614653, a Huawei Fellowship, Berkeley DeepDrive, Siemens, and support from NVIDIA. Supplementary Material 8 Complete Ablative Results 8.1 Relabeling strategy ablation In this experiment, we compare different goal resampling strateg",
+   "ation (3); Log Probability, which uses the Mahalanobis distance in Equation (3), where A is the precision matrix of the encoder; and Pixel MSE, which computes mean-squared error (MSE) between state and goal in pixel space. To compute the pixel MSE for a sampled latent goal, we decode the goal latent using ",
+   ", being able to reduce the required number of samples on hardware is one of the key bottlenecks. Increasing the number of gradient updates costs more compute but reduces the number of samples required to learn the tasks. 9 Hyperparameters Table 1 lists the hyperparameters used for the experiments. Hyperpar"
+  ]
+ },
+ {
+  "item": 272,
+  "criterion": "Q5",
+  "rule": "Q5 : le code est en lien. Un lien vers du code dans l'article. « Sur demande », « sera publié », « will be made public at <URL> » : `no`. Une page de projet compte `yes` seulement si elle mène à du code. Un lien vers le code d'un AUTRE travail (une bibliothèque, une référence) ne compte pas : il faut le code de l'article.",
+  "excerpts": [
+   "2 2 2 \u0012 Z \u0012 Z \u00132 \u00132 1 1 p−q 1 1 q−p = dx + dx 2 2 2 2 2 2 \u0012 Z \u00132 1 1 1 = |p − q|dx = DT2 V (p, q). 4 2 4 Rearranging, the result follows. 1 2 https://github.com/go2sea/DQfD/ https://github.com/shaneshixiang/rllabplusplus (1) Policy Optimization with Demonstrations 055 056 057 058 059 060 061 062 063 064 0"
+  ]
+ },
+ {
+  "item": 273,
+  "criterion": "Q8",
+  "rule": "Q8 : un test statistique (t, Welch, Mann-Whitney, bootstrap avec intervalle, IQM de rliable avec intervalles stratifiés) est appliqué à une comparaison de l'article. Des barres d'erreur seules : `no`. Le mot « significant » au sens courant, sans test : `no`.",
+  "excerpts": [
+   " demonstrated vMF policies could match or exceed Gaussian performance while providing theoretical advantages. However, vMF’s practical adoption faces significant hurdles (Banerjee et al., 2005): sampling requires rejection methods with acceptance rates as low as 0.1 for high concentrations, likelihood computa",
+   "P ERSPECTIVES IN RL Parallel to distributional innovations, a geometric perspective on RL has gained traction (Hu et al., 2022). Hyperbolic RL and Riemannian policy optimization extend learning to non-Euclidean manifolds (Nickel & Kiela, 2017; Wang et al., 2024; Müller & Montúfar, 2024), offering rich",
+   "ile maintaining effective exploration. On Ant-v4 (8D), GAC outperforms SAC by 37.6% (5633 ± 158 vs. 4094 ± 1039) and TD3 by 59.5% (3531 ± 1263), with significantly lower variance—highlighting GAC’s stability in multi-leg coordination. On HalfCheetah-v4 (6D), GAC achieves the highest return of 12750 ± 758, sli",
+   "International Conference on Machine Learning (ICML), pp. 1861–1870, 2018. Jiang Hu, Ruicheng Ao, Anthony Man-Cho So, Minghan Yang, and Zaiwen Wen. Riemannian natural gradient methods. arXiv preprint arXiv:2207.07287, 2022. Shengyi Huang, Rousslan Fernand Julien Dossa, Chang Ye, Jeff Braga, Dipam Chakrab",
+   "This analysis does not imply SAC is ineffective, as it remains highly successful in practice. Rather, it highlights a structural inefficiency in that significant computational effort is spent managing the mismatch between unbounded distributions and bounded spaces. GAC sidesteps this issue entirely by operati",
+   "tive r achieves the best final performance (5064 ± 156) but only marginally outperforms fixed r = 2.0 (4607) and r = 3.0 (4919), while r = 1.0 (3602) significantly underperforms due to insufficient action magnitude. (b) The learned mean scale r̄ converges to ≈ 1.7, between the r = 1.0 and r = 2.0 baselines. ("
+  ]
+ },
+ {
+  "item": 274,
+  "criterion": "Q7",
+  "rule": "Q7 : l'évaluation se fait sur des conditions tenues à part : tâches, environnements, graines aléatoires d'environnement ou jeux de données non vus à l'entraînement ni au réglage. Pour un article sur les grands modèles de langage, des bancs d'essai distincts des données d'entraînement RL comptent `yes`. Article théorique à expériences jouets : `no`.",
+  "excerpts": [
+   "izing its implicit preference weight for offline welfare optimization (Section 5.2). In the experiments, we use α-fairness to aggregate objectives, a generalized social welfare function that balances total return and fairness. The trade-off is controlled by the parameter α: as α → 0, it approximates Utilitar",
+   "α-fairness and the other between welfare and distributional shift. To empirically demonstrate how these trade-offs evolve with varying parameters and generalize across different MOMDP environments, we extend the Random MDP to a MORL setting, called Random MOMDP, following a similar approach used for the Four",
+   "icial Intelligence Graduate School Program (Korea University), and No. RS-2025-25410841, Beyond the Turing Test: Human-Level Game-Playing Agents with Generalization and Adaptation), the IITP (Institute of Information & Communications Technology Planning & Evaluation)-ITRC (Information Technology Research Cen"
+  ]
+ },
+ {
+  "item": 275,
+  "criterion": "Y9",
+  "rule": "Y9 : la sensibilité à au moins un hyperparamètre est montrée (balayage ou variation d'au moins un hyperparamètre, avec une mesure de performance). Compte un hyperparamètre que l'article présente comme tel ; un paramètre réglé à l'inférence compte s'il est présenté comme un hyperparamètre. Une ablation de composant n'est pas un balayage d'hyperparamètre ; une variante présentée comme un composant reste une ablation ; une condition de l'environnement ne compte pas.",
+  "excerpts": [
+   "within a given inference limit drop exponentially with each added open goal. The exact value of 0.95 has been determined experimentally using a small grid search. 3 We use the standard UCT formula [25] to select the next inferences (actions) in the playouts: r ln N wi + c · pi · ni ni where N stands for the to",
+   "tate s are computed as a softmax of their predictions. We use τ = 2.5 by default as the softmax temperature. This value has been optimized by a small grid search. The policy learning data can be extracted from all search nodes or only from some of them. By default, we only extract the training examples from th",
+   "ured by the number of inferences. This is computed as 0.99dproof (b) . The exact value of 0.99 has again been determined experimentally using a small grid search. For each bigstep node b the sparse vector of its proof state features fb is associated with the value vb . This constitutes the training data for va",
+   "on improves over mlCoP with 200000 inferences by 18.4% and the second iteration already outperforms the best policy-only result. We also evaluate the effect of joint reinforcement learning of policy and value. Replacing the final policy with the best one from the policy-only runs decreases the performance in"
+  ]
+ },
+ {
+  "item": 276,
+  "criterion": "Q8",
+  "rule": "Q8 : un test statistique (t, Welch, Mann-Whitney, bootstrap avec intervalle, IQM de rliable avec intervalles stratifiés) est appliqué à une comparaison de l'article. Des barres d'erreur seules : `no`. Le mot « significant » au sens courant, sans test : `no`.",
+  "excerpts": [
+   "equence and compared against tasks 6-10 from a 10-task sequence consisting exclusively of Level 2 tasks. The results in Table 8 show no statistically significant difference beTable 8. Curriculum vs. default training under an equal data budget. We report the Average Soup Delivery tween the two strategies on Le"
+  ]
+ },
+ {
+  "item": 277,
+  "criterion": "Q7",
+  "rule": "Q7 : l'évaluation se fait sur des conditions tenues à part : tâches, environnements, graines aléatoires d'environnement ou jeux de données non vus à l'entraînement ni au réglage. Pour un article sur les grands modèles de langage, des bancs d'essai distincts des données d'entraînement RL comptent `yes`. Article théorique à expériences jouets : `no`.",
+  "excerpts": [
+   ". 1). Consequently it can be seen as an ensemble or a mixture of experts agent, which is used solely for purpose of training. Additionally, knowledge transfer (i.e. distillation) is used such that we encourage the complex agents to match the simpler ones early on. The mixing coefficient is controlled such t",
+   "lum over the architecture, as a narrow architecture is first trained, then morphed into a wider one. Related to this idea is the concept of knowledge transfer or distillation (Hinton et al., 2015; Ba & Caruana, 2014) – a technique for transferring the functional behaviour of a network into a different model",
+   "oblem we consider is just a weighted sum of the original LRL loss (i.e. A3C (Mnih et al., 2016)), applied to the control policy πmm and the knowledge transfer loss: L(θ) = LRL (θ|πmm ) + λLmm (θ). We now describe in more detail each module required to implement Mix & Match, starting with policy mixing, know",
+   " L(θ) = LRL (θ|πmm ) + λLmm (θ). We now describe in more detail each module required to implement Mix & Match, starting with policy mixing, knowledge transfer and finally α adjustment. 3.1 Policy mixing There are two equivalent views of the proposed policy mixing element – one can either think about having ",
+   "te Carlo estimate of the mixed policy, thus for the sake of variance reduction we use explicit mixing in all experiments in this paper. 3.2 Knowledge transfer For simplicity we consider the case of K = 2, but all following methods have a natural extension to an arbitrary number of policies. Also, for notati",
+   "r tag environments, while slightly sacrificing performance in a single navigation task. One of the reasons of this success is the fact that knowledge transfer is done in policy space, which is invariant to reward scaling. While the agent can still focus purely on high reward environments once it has switche",
+   "acher is also regularised towards student (and thus does not diverge too quickly), which is similar to Distral work. While in principle we could also transfer knowledge between value functions, we did not find it especially helpful empirically, and since it introduces additional weight to be adjusted, we ha",
+   "rror even if trained with a simple gradient descent, thus the above proposition is not too restrictive for Deep RL. 7 On α based scaling of knowledge transfer loss Let as take a closer look at the proposed loss `mm (θ) = (1 − α)DKL (π1 (·|s)kπ2 (·|s)) = = (1 − α)H(π1 (·|s)kπ2 (·|s)) − (1 − α)H(π1 (·|s)) and",
+   "ween these costs though. In preliminary experiments we ran, the difference was hard to quantify – both methods behaved similarly well. 8 On knowledge transfer loss Through this paper we focused on using Kulback-Leibler Divergence for knowledge transfer DKL (pkq) = H(p, q) − H(p). For many distillation relat",
+   "ds has been used in this paper, however for much bigger models and more complex domains it might be the necesity as M&M depends on ability to rapidly transfer knowledge between agents. "
+  ]
+ },
+ {
+  "item": 278,
+  "criterion": "Q8",
+  "rule": "Q8 : un test statistique (t, Welch, Mann-Whitney, bootstrap avec intervalle, IQM de rliable avec intervalles stratifiés) est appliqué à une comparaison de l'article. Des barres d'erreur seules : `no`. Le mot « significant » au sens courant, sans test : `no`.",
+  "excerpts": [
+   "nly one feed-forward pass of the network will update the routes based on the new data. Our numerical experiments indicate that our framework performs significantly better than well-known classical heuristics designed for the VRP, and that it is robust in the sense that its worst results are still relatively c",
+   "proposed RL-based method can be applied to a more complicated stochastic version of the VRP. In summary, we expect that the proposed architecture has significant potential to be used in real-world problems with further improvements and extensions that incorporate other realistic constraints. Noting that the p",
+   "d show the winning percentage of the algorithms in rows in comparison to the ones in columns. We observe that the winning percentage of RL-SD methods significantly improves after allowing the split demands. For example in VRP50 and VRP100, RLSD-Greedy is providing competitive results with OR-Tools, or RL-SD-B",
+   "olutions found by our method using various decoders outperforms the heuristic algorithms and OR-Tools. We also see that using the beam search decoder significantly improves the solution while only adding a small computational cost in run-time. Also allowing split delivery enables our RL-based methods to impro",
+   "ining, we generate 106 problem instances, which is quite adequate to cover various realizations of the problem, and changing the random seed does not significantly change the training and testing instances. C.4 Sample VRP Solutions Figure 8 illustrates sample VRP20 and VRP50 instances decoded by the trained m",
+   " 1 → 10 → 2 → 3 → 8 → 9 → 10 → 0 → 4 → 5 → 6 → 7 → 10 Table 4: Solutions found for a sample VRP10 instance where by splitting the demands, our method significantly improves upon the “optimal” (of which no split demand is allowed). Sample instance for VRP10: Customer locations: [[0.253, 0.720], [0.289, 0.725],"
+  ]
+ },
+ {
+  "item": 279,
+  "criterion": "Q7",
+  "rule": "Q7 : l'évaluation se fait sur des conditions tenues à part : tâches, environnements, graines aléatoires d'environnement ou jeux de données non vus à l'entraînement ni au réglage. Pour un article sur les grands modèles de langage, des bancs d'essai distincts des données d'entraînement RL comptent `yes`. Article théorique à expériences jouets : `no`.",
+  "excerpts": [
+   "ed on seed sampling. Though this represents a conceptual advance, the methods do not scale to meet the needs of practical applications, which require generalization to address intractable state spaces. In this paper, we develop scalable reinforcement learning algorithms that aim to efficiently coordinate exp",
+   "s extend to a more realistic problem involving swinging up and balancing a pole. Subsequent sections extend the seed sampling concept to operate with generalizing randomized value functions [14], leading to new algorithms such as seed temporal-difference learning (seed TD) and seed least-squares value iterat",
+   "mpson resampling (no commitment) does not improve at all or improves in a much slower rate as the number of parallel agents increases. 3 Seeding with Generalizing Representations As we demonstrated in Section 2, seed sampling can offer great advantage over other exploration schemes. However, our examples inv",
+   "lems that typically pose enormous state spaces. In this section, we propose an algorithmic framework that extends the seeding concept from tabular to generalizing representations. This framework supports scalable reinforcement learning algorithms with the degrees of adaptivity, commitment, and intent require",
+   "be important in reinforcement learning settings where delayed consequences are present. At time tk,m , before taking the mth action, agent k fits its generalized representation model on the history (or a subset thereof) of observations (sj , aj , rj , s0j ) perturbed by the noise seeds zk,j , j = 1, . . . , ",
+   "while coordinating the exploratory effort of the group of agents is achieved through the way that the seeding mechanism controls the fitting of these generalized representations. As the number of parallel agents increases, this framework enables the agents to learn to operate and achieve high rewards in comp",
+   "ction 4.1, we present results that serve as a sanity check for our approach. We show that in the tabular toy problems considered in [1], seeding with generalized representations performs equivalently with the seed sampling algorithm proposed in [1], which is particularly designed for tabular settings and can",
+   "r Thompson resampling or concurrent UCRL. We compare the performance of seed LSVI (Section 3.2.1) and seed TD (Section 3.2.2), which are designed for generalized representations, with seed sampling, Thompson resampling and concurrent UCRL which are designed for tabular representations. The first toy problem ",
+   "to not significantly degrade performance. 5 Closing Remarks We have extended the concept of seeding from the non-practical tabular representations to generalized representations and we have proposed an approach for designing scalable concurrent reinforcement learning algorithms that can intelligently coordin",
+   "vations via value function learning, (2) to diversify their experience collection via an intrinsic random seed that uniquely initializes each agent’s generalized representation and uniquely interprets the common history of observations, (3) to commit to sequences of actions revealing useful information by ma"
+  ]
+ },
+ {
+  "item": 280,
+  "criterion": "Q4",
+  "rule": "Q4 : tous les hyperparamètres des références (baselines) sont donnés. `yes` si un tableau ou un paragraphe les donne pour toutes les méthodes principales comparées. « Valeurs par défaut de [bibliothèque] » sans les lister compte `yes` seulement si la version de la bibliothèque est donnée.",
+  "excerpts": [
+   " control variate baseline (Hammersley, 2013; Fishman, 2013; Evans & Swartz, 2000). We use a moving average of the cumulative discounted reward as the baseline. We tune the weight of this moving average as a hyperparameter. Note that in our experiments we found that using a learned baseline performed similarly, but we finally settled for cumulative discounted reward as ",
+   "use a 3 layer LSTM with hidden size of 400. The hidden layer size of MLP (weights W1 and W2 ) is set to 400. We use Adam (Kingma & Ba, 2014) with the default parameters in REINFORCE for the update. In our experiments, we tune our model over two hyper parameters, viz., β which is the entropy regularization constant an"
+  ]
+ },
+ {
+  "item": 281,
+  "criterion": "X2",
+  "rule": "X2 : une incertitude est rapportée sur les résultats principaux (barres d'erreur, écart type, intervalle, ± …). Des barres d'erreur seules suffisent. Une incertitude sur un résultat secondaire seulement : `no`.",
+  "excerpts": [
+   "pdate direction is defined by ∇π log π(at |st )Gt with Gt = P∞direction k γ R being the future cumulated reward for a particular episode rollout. The variance of t+k k=0 this update is typically high but can be reduced by using a “baseline” bt (st ), which is a function of the current state. Therefore the b",
+   " provides an estimate of the agent’s current position. To model this noise, we add a zero-mean gaussian random variable to the oracle position with a variance that depends on the current time-step. In more detail, the noise-corrupted positions (x̂, ŷ) in an W × W size map provided to the Neural Map are: (x",
+   "y c, W − 1}, 0}), \u000fx , \u000fy ∼ N (0, σ 2 t) This simulates the effect of an odometry algorithm which has independent zero-mean gaussian error with equal variance. This error compounds over time causing the variance to grow with the time step. We evaluate the Neural Map with noise σ = 1/100 on smaller versions "
+  ]
+ },
+ {
+  "item": 282,
+  "criterion": "Q7",
+  "rule": "Q7 : l'évaluation se fait sur des conditions tenues à part : tâches, environnements, graines aléatoires d'environnement ou jeux de données non vus à l'entraînement ni au réglage. Pour un article sur les grands modèles de langage, des bancs d'essai distincts des données d'entraînement RL comptent `yes`. Article théorique à expériences jouets : `no`.",
+  "excerpts": [
+   "sue is important because a meaningful sample complexity of an algorithm should inform us on the number of samples required to solve a new, previously unseen task. In light of these issues and of our empirical results, we make several suggestions for future work: • Simple baselines should be established be",
+   "sue is important because a meaningful sample complexity of an algorithm should inform us on the number of samples required to solve a new, previously unseen task. In light of these issues and of our empirical results, we make several suggestions for future work: • Simple baselines should be established be"
+  ]
+ },
+ {
+  "item": 283,
+  "criterion": "Q5",
+  "rule": "Q5 : le code est en lien. Un lien vers du code dans l'article. « Sur demande », « sera publié », « will be made public at <URL> » : `no`. Une page de projet compte `yes` seulement si elle mène à du code. Un lien vers le code d'un AUTRE travail (une bibliothèque, une référence) ne compte pas : il faut le code de l'article.",
+  "excerpts": [
+   "l., 2024) to generate all LARM components for all tasks, with the exception of the 1,000 LARMs for XLand-MiniGrid. These were generated using various open-source FMs of different scales for our ablation study. (a) MiniGrid (b) Craftium (c) Meta-World (d) XLand-MiniGrid Figure 5: Evaluation environments. (a) Mi",
+   "uate the FM’s generation capabilities, we sampled 1,000 diverse tasks from the XLand-MiniGrid environment (Nikulin et al., 2024) and prompted various open-source models to generate the corresponding reward machines, Python labeling functions, and natural language instructions. We compare models of different sc",
+   "oor, and reach the final goal. (a) DoorKey A.2.2 (b) BlockedUnlockPickup (c) UnlockToUnlock (d) KeyCorridor C RAFTIUM Craftium is a high-performance, open-source 3D voxel platform designed for reinforcement learning research. Inspired by Minecraft, Craftium offers rich, procedurally generated open worlds and f"
+  ]
+ }
+]

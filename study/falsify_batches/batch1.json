@@ -1,0 +1,606 @@
+[
+ {
+  "item": 1,
+  "criterion": "X2",
+  "rule": "X2 : une incertitude est rapportée sur les résultats principaux (barres d'erreur, écart type, intervalle, ± …). Des barres d'erreur seules suffisent. Une incertitude sur un résultat secondaire seulement : `no`.",
+  "excerpts": [
+   "ribution. For decision making with respect to the posterior distribution, Gaussian process regression over the parameter space based on the means and variances of the expected returns obtained in the offline process is used for prediction of the expected returns at the MCMC sample points. The proposed frame",
+   " = a) ≈ Qπθ θ (s, a) + ∆Qπθ θ , (4) where Qπθ θ (s, a) is a Gaussian process [21] over the space S×A and ∆Qπθ θ is a zero-mean Gaussian residual with variance σq2 . A zero-mean Gaussian process is usually considered as a prior: Qπθ θ (s, a) = GP (0, kθ ((s, a), (s0 , a0 ))) , (5) where kθ (·, ·) is a real-v",
+   " (sk , a), . . . , Qθprior (sk , a)]T and vsak = [covθprior((sk , a), (sk , a)), . . ., 1 1 N prior covθprior ((sk , a), (sk , a))]T be the means and variances of the predicted expected returns comN prior puted based on the results of offline GP-SARSAs at current state sk for a given action a ∈ A. This info",
+   "ion ak−1 , record the new state sk . 6: Given s0:k , a0:k−1 , run MCMC and collect Θpost . k 7: 8: for a ∈ {a1 , . . . , aM } do Record the means and variances of offline GPs at (sk , a): fsak = [Qθ1 (sk , a), . . . , Qθprior (sk , a)]T , N prior vsak = [covθ1 ((sk , a), (sk , a)), . . . , covθprior ((sk , ",
+   "specially in regions of the state space between 0.5 to 1. The Bayesian approximation of the Q-function is represented by two surfaces that define 95%-confidence intervals for the expected return. The average reward per step over 100 independent runs starting from different initial states are plotted in Figure 2(c). As",
+   "ly. The average reward per step over 100 independent runs for all methods is displayed in Figure 4. Uniform and Gaussian distributions with different variances are used as prior distributions in order to investigate the effect of prior peakedness. As expected, the highest average reward is obtained for GP-S"
+  ]
+ },
+ {
+  "item": 2,
+  "criterion": "Q5",
+  "rule": "Q5 : le code est en lien. Un lien vers du code dans l'article. « Sur demande », « sera publié », « will be made public at <URL> » : `no`. Une page de projet compte `yes` seulement si elle mène à du code. Un lien vers le code d'un AUTRE travail (une bibliothèque, une référence) ne compte pas : il faut le code de l'article.",
+  "excerpts": [
+   "orithms were chosen for their simplicity and reasonable wallclock speeds, but TreeQN can also be used in other algorithms, as described in Section 3. Our implementations are based on OpenAI Baselines (Hesse et al., 2017). Q zt In tree-search on-line planning, a look-ahead tree of possible future states is constructed",
+   "ent of the auxiliary loss. bad configurations. However, the level generation process for Sokoban is challenging to reproduce exactly and has not been open-sourced. More details of the environment and rewards are given in Appendix A.1. Atari. To demonstrate the general applicability of TreeQN and ATreeC to comp",
+   "stems, pp. 2944–2952, 2015. Christopher Hesse, Matthias Plappert, Alec Radford, John Schulman, Szymon Sidor, and Yuhuai Wu. Openai baselines. https://github.com/openai/baselines, 2017. Donald E Knuth and Ronald W Moore. An analysis of alpha-beta pruning. Artificial intelligence, 6 (4):293–326, 1975. Leven"
+  ]
+ },
+ {
+  "item": 3,
+  "criterion": "X7",
+  "rule": "X7 : le calcul employé est chiffré. `yes` exige au moins une quantité (heures, GPU-heures, FLOP, ou un nombre de GPU avec une durée). Le seul nom du matériel : `no`. Le nombre de pas d'environnement n'est pas une quantité de calcul.",
+  "excerpts": [
+   " generates actions through direct geometric operations on the unit sphere. GAC represents policies through two components: a direction network that outputs unit vectors indicating preferred action orientations, and a concentration network that controls exploration by interpolating between deterministic",
+   "nd Trust Region Policy Optimization (TRPO) (Schulman et al., 2015) inherit this choice, implementing Gaussian policies through neural networks that output mean and variance parameters. While this approach has driven impressive empirical success, practitioners have long recognized its limitations in bou",
+   " offering a structurally simpler alternative that aligns policy support with environmental constraints by design. 4 3.2 G EOMETRIC ACTION G ENERATION Core Insight. GAC replaces traditional action sampling with a geometric pipeline consisting of direction mapping, concentration control, and spherical mix",
+   "his normalization ensures µ(s) ∈ Sd−1 , the unit sphere in d dimensions. Concentration Control. A separate network fκ : S → R predicts concentration scores, which modulate the trade-off between deterministic direction and stochastic noise. These scores are transformed via a sigmoid function w(κ) = σ(κ) ",
+   "r values lead to more deterministic actions. This removes the need for temperature tuning in SAC. Unlike traditional entropy-based methods, GAC never computes probability densities. Instead, exploration emerges directly from geometric structure. This design is theoretically justified by directional statist",
+   "a contraction (see Appendix A.5 for formal analysis). 3.5 P RACTICAL C ONSIDERATIONS Parameter Efficiency. The fixed-radius GAC requires only d + 1 outputs (direction vector plus scalar concentration), compared to 2d for diagonal Gaussian policies (a 50% reduction in action head parameters). The adapti",
+   "ation), compared to 2d for diagonal Gaussian policies (a 50% reduction in action head parameters). The adaptive scaling variant (Eq. 6) uses 2d + 1 outputs, comparable to Gaussian policies but with explicit geometric structure that decouples direction, exploration, and magnitude. Computational Efficien",
+   "ltiplication. The vector r is produced by a small network head with a softplus activation to ensure positivity. This adaptive scaling preserves GAC’s core geometric structure while enabling a degree of fine-grained control that exceeds the capabilities of traditional Gaussian policies, which rely solely",
+   "gher-dimensional action spaces than standard MuJoCo tasks. To accommodate these challenges, we adopt the GACScale variant (Eq. 6), which augments the core geometric structure of GAC with learnable perdimension magnitude control. All experiments follow the same protocol as described earlier. As shown in ",
+   "72 ± 1235 -4.1% -43.0% Slightly over-scaled actions Severely limited action range Component ablation: w/o κ controller w/o normalization Raw action output 11370 ± 643 Diverged Collapsed -10.8% N/A N/A No adaptive exploration Gradient explosion at 5k steps Unbounded actions, NaN loss 4.3 A BLATION S TUD",
+   "ly simplifies the optimization pipeline by eliminating entropy terms, but also improves interpretability, as κ(s) can be viewed as a soft confidence score indicating how deterministic the policy should be at a given state. As a result, exploration becomes structure-aware and implicitly guided by the tas",
+   "ometric structure ensures stability. As shown in Table 3, removing normalization leads to divergence within 5k steps due to unbounded gradients, as output norms grow without spherical projection and trigger explosion. Likewise, using raw unbounded outputs collapses immediately (NaN losses) as actions e",
+   "er. von mises–fisher loss: An exploration of embedding geometries for supervised learning. In Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV), pp. 10592–10602, 2021. doi: 10.1109/ICCV48922. 2021.01044. Younggyo Seo, Jafar Uruç, and Stephen James. Continuous control with coar",
+   "s, Jingwan Lu, Jimei Yang, and Hao Li. On the continuity of rotation representations in neural networks. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), pp. 5738–5746, 2019. Yuanyang Zhu, Zhi Wang, Yuanheng Zhu, Chunlin Chen, and Dongbin Zhao. Discretizing conti",
+   "gate. Key distinction: While this mathematical relationship exists, GAC fundamentally differs from entropy-regularized methods: 16 • Traditional SAC: Computes H[π] = −E[log π(a|s)] requiring explicit densities • GAC: Uses −κ as exploration signal without any distributional computation This allows GAC to ac",
+   "putational complexity per action sample. GAC achieves efficiency comparable to deterministic methods while maintaining structured exploration. Method Core Operations Cost per Sample TD3 SAC GAC Forward pass + Gaussian noise Sampling + tanh + log-det Jacobian Normalization + spherical interpolation O(d) ",
+   "ations (no logarithms or special functions). TD3: Baseline deterministic policy [O(d)] plus Gaussian noise [O(d)]. Total: 2 × O(d). Empirical Timing (NVIDIA RTX 3090): • SAC: 1.0× (baseline) • GAC: 0.78× (22% faster than SAC) • TD3: 0.65× (35% faster than SAC) GAC achieves near-TD3 efficiency while mainta",
+   "enefits of stochastic policies, eliminating the computational overhead of entropy regularization that SAC requires. Parameter Efficiency: • SAC: 2d outputs (mean µ, log-std log σ) • GAC (fixed r): d + 1 outputs (direction µ, concentration κ) ≈ 50% reduction • GAC-Scale: 2d + 1 outputs (direction µ, con"
+  ]
+ },
+ {
+  "item": 4,
+  "criterion": "Y9",
+  "rule": "Y9 : la sensibilité à au moins un hyperparamètre est montrée (balayage ou variation d'au moins un hyperparamètre, avec une mesure de performance). Compte un hyperparamètre que l'article présente comme tel ; un paramètre réglé à l'inférence compte s'il est présenté comme un hyperparamètre. Une ablation de composant n'est pas un balayage d'hyperparamètre ; une variante présentée comme un composant reste une ablation ; une condition de l'environnement ne compte pas.",
+  "excerpts": [
+   "n benchmarking IQN on the Atari suite. Comprehensive implementation details and hyperparameter settings are reported in Appendix C.2. We evaluate the effect of integrating MINTO into IQN by modifying its target computation according to our proposed technique. Appendix B provides further details, including ps",
+   "thods, depending in particular on the number of critic networks employed. We defer a discussion of these design choices to Appendix B. To examine the effect of incorporating up-to-date estimates in the actor–critic setting, we adopt two recent architectures that are used in combination with Soft Actor-Critic",
+   " . . . . . . . . . . . . . . . . . . . . . . . . . 33 D.6 Online RL and Continuous Control . . . . . . . . . . . . . . . . . . . . . . . . . . 34 D.7 Ablation on Target Operators . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 44 E Analysis of Value Estimation Error and Bias 46 E.1 Experimental Se",
+   "wed by decrease for the discussed methods, and notably the pattern persists for MINTO but at a lower amplitude. On the other hand, we demonstrate the effect of relying solely on online estimates when computing the regression target. Fig. 36 highlights the severe overestimation bias that arises from this appr"
+  ]
+ },
+ {
+  "item": 5,
+  "criterion": "Q7",
+  "rule": "Q7 : l'évaluation se fait sur des conditions tenues à part : tâches, environnements, graines aléatoires d'environnement ou jeux de données non vus à l'entraînement ni au réglage. Pour un article sur les grands modèles de langage, des bancs d'essai distincts des données d'entraînement RL comptent `yes`. Article théorique à expériences jouets : `no`.",
+  "excerpts": [
+   "ng with batch and weight normalization. In Advances in Neural Information Processing Systems, 2025. Andrew Patterson, Adam White, and Martha White. A generalized projected bellman error for off-policy value estimation in reinforcement learning. Journal of Machine Learning Research, 2022. Rodrigo Pérez-Dattar"
+  ]
+ },
+ {
+  "item": 6,
+  "criterion": "Q8",
+  "rule": "Q8 : un test statistique (t, Welch, Mann-Whitney, bootstrap avec intervalle, IQM de rliable avec intervalles stratifiés) est appliqué à une comparaison de l'article. Des barres d'erreur seules : `no`. Le mot « significant » au sens courant, sans test : `no`.",
+  "excerpts": [
+   " RL papers in recent years have relied on shallow architectures (around 2 – 5 layers), we demonstrate that increasing the depth up to 1024 layers can significantly boost performance. Our experiments are conducted in an unsupervised goal-conditioned setting, where no demonstrations or rewards are provided, so ",
+   "show that a method that integrates these building blocks into a single RL approach exhibits strong scalability: • Empirical Scalability: We observe a significant performance increase, more than 20× in half of the environments and outperforming other standard goal-conditioned baselines. These performance gains",
+   "efforts to scale RL models are largely restricted to specific problem domains, such as imitation learning (Tuyls et al., 2024), multi-agent games (Neumann and Gros, 2022), language-guided RL (Driess et al., 2023; Ahn et al., 2022), and discrete action spaces (Obando-Ceron et al., 2024; Schwarzer et al.,",
+   " contrastive RL. Our focus is on online RL, where a replay buffer stores the most recent trajectories, and the critic is trained in a self-supervised manner. Goal-Conditioned Reinforcement Learning We define a goal-conditioned MDP as tuple Mg = (S, A, p0 , p, pg , rg , γ), where the agent interacts with",
+   " it as our baseline. In contrast, we will study networks of depth 8, 16, 32, and 64. The results in Figure 1 demonstrate that deeper networks achieve significant performance improvements across a diverse range of locomotion, navigation, and manipulation tasks. Compared to the 4-layer models typical in prior w",
+   "esentations, enabling deeper networks to better capture environment topology and achieve more comprehensive state-space coverage in a self-supervised manner. Depth Enhances Exploration and Expressivity in a Synergized Way Our earlier results suggested that deeper networks achieve greater state-action co",
+   " SAC, SAC+HER, TD3+HER, GCSL, and GCBC in 8 out 10 environments. In Figure 1, we demonstrated that increasing the depth of the CRL algorithm leads to significant performance improvements over the original CRL (see also Table 1). Here, we show that these gains translate to state-of-the-art results in online go",
+   "tion experiments to validate the architectural choices of layer norm and swish activation. Figure 16 shows that removing layer normalization performs significantly worse. Additionally, scaling with ReLU significantly hampers scalability. These results, along with Figure 5 show that all of our architectural co",
+   "wo different python environments: MJX=3.2.3, Brax=0.10.5 and MJX=3.2.6, Brax=0.10.1 (ours) version of JaxGCRL. Scaling depth improves the performance significantly for both versions. In the environment we used, training requires fewer environment steps to reach a marginally better performance than in other Py",
+   " and make sense of them. • The full details can be provided either with the code, in appendix, or as supplemental material. 7. Experiment statistical significance Question: Does the paper report error bars suitably and correctly defined or other appropriate information about the statistical significance of th",
+   "er does not include experiments. • The authors should answer \"Yes\" if the results are accompanied by error bars, confidence intervals, or statistical significance tests, at least for the experiments that support the main claims of the paper. 24 • The factors of variability that the error bars are capturing sh",
+   "ith given experimental conditions). • The method for calculating the error bars should be explained (closed form formula, call to a library function, bootstrap, etc.) • The assumptions made should be given (e.g., Normally distributed errors). • It should be clear whether the error bar is the standard deviati",
+   " subjects research. If you obtained IRB approval, you should clearly state this in the paper. 27 • We recognize that the procedures for this may vary significantly between institutions and locations, and we expect authors to adhere to the NeurIPS Code of Ethics and the guidelines for their institution. • For "
+  ]
+ },
+ {
+  "item": 7,
+  "criterion": "X7",
+  "rule": "X7 : le calcul employé est chiffré. `yes` exige au moins une quantité (heures, GPU-heures, FLOP, ou un nombre de GPU avec une durée). Le seul nom du matériel : `no`. Le nombre de pas d'environnement n'est pas une quantité de calcul.",
+  "excerpts": [
+   "straints. Specifically, we improve epigraph-based training by integrating the inner and outer optimization into a unified scheme. At each rollout, we compute the optimal auxiliary state z ∗ and uses it directly for training, while keeping all networks z-independent. This design avoids the noise of random z",
+   " we develop an actor-critic learning architecture that aligns with the epigraph inner-outer optimization scheme. Specifically, the outer optimization computes the optimal auxiliary state z ∗ along the rollout, ensuring that the critic captures the tightest feasible trade-off between return and safety. Base",
+   "ne begins with data collection, where individual agent rollouts are aggregated into a centralized rollout XR for the training; the outer optimization computes optimal z ∗ to balance discounted cumulative cost and safety constraints; the inner optimization corresponds to critic learning, where return networ",
+   " al., 2025; Zhang et al., 2025b), the outer problem is solved during the execution phase: z is sampled along the rollouts during training, and z ∗ is computed at execution time via root-finding (Stoer et al., 1980). This design has two drawbacks in CT-MARL: (1) the random sampling of z introduces nonstatio",
+   "int value networks as functions of the states x solely. We then integrate the outer optimization into actor-critic training: for each episode, z ∗ is computed using the current learned value Ṽ along the predicted rollout. The actor is then trained against a z-independent critic, yielding a z-independent p",
+   "The inner optimization is responsible for updating the PINN-based critic networks. Given a taskdependent range [zmin , zmax ], the outer optimization computes z ∗ , which is then clipped to this range (i.e., z ∗ ← min{max{z ∗ , zmin }, zmax }) before being used to train the critic module. The critic consis",
+   "tic module. The critic consists of two value networks: a return value network Vψret (x), and a constraint value network Vϕcons (x). Together with the computed z ∗ from Eq. 8, these define the composite epigraph-based n o value function: Ṽ (x, z ∗ ) = max Vϕcons (x), Vψret (x) − z ∗ . (9) To ensure stable ",
+   "ne Learning Research, 23(154):1–55, 2022b. Yi Jiang, Weinan Gao, Jin Wu, Tianyou Chai, and Frank L Lewis. Reinforcement learning and cooperative H∞ output regulation of linear continuous-time multi-agent systems. Automatica, 148:110768, 2023. B Ravi Kiran, Ibrahim Sobh, Victor Talpaert, Patrick Mannion",
+   "4. Josef Stoer, Roland Bulirsch, R Bartels, Walter Gautschi, and Christoph Witzgall. Introduction to numerical analysis, volume 1993. Springer, 1980. Corentin Tallec, Léonard Blier, and Yann Ollivier. Making deep q-learning methods robust to time discretization. In International Conference on Machine L",
+   "10 in Evans (2022). 17 A.4 A DVANTAGE F UNCTION We define the Q(xt , zt , ut ) = max{c(xt ), rh V (xt+h , zt+h } over a short time interval h > 0 and compute Q(xt , zt , ut ) − V (xt , zt ) = max{c(xt ), rh V (xt+h , zt+h )} − V (xt , zt ) = max{c(xt ) − V (xt , zt ), (1 + ln γh)(V (xt , zt ) + ∇xt V · f (",
+   "ax{c(xt ) − V (xt , zt ), (∇xt V · f (xt , ut ) − ∂zt V · l(xt , ut ) + ln γ · V )h} We divide h on both sides of the above equation and let h → 0 to compute the advantage function as Q(xt , zt , ut ) − V (xt , zt ) h = max{c(xt ) − V (xt , zt ), ∇xt V · f (xt , ut ) − ∂zt V · l(xt , ut ) + ln γ · V } A(xt",
+   "e ψ, ϕ by losses Lcons , Lret , LHJB and LVGI as per the Eq. 11, Eq. 10 and Eq. 12. 21: ▷ Actor update for each agent 22: for i = 1, . . . , N do 23: compute A(x, u, z ∗ ) for all (x, u, z ∗ ) ∈ XR and update the θ as the Eq. 18. 24: end for 25: end for C E NVIRONMENTAL S ETTINGS We provide detailed descri",
+   "cles, the safety constraints imposed, and the specific task objective with metrics. Metrics. We report two primary metrics—one reward-style training score that aggregates task cost and constraint penalty, and one violation rate measured over held-out rollouts. (1) Cumulative penalty / reward-style train",
+   " aggregates task cost and constraint penalty, and one violation rate measured over held-out rollouts. (1) Cumulative penalty / reward-style training score. In many standard environments (e.g., MPE and multi-agent MuJoCo), the task reward often consists of two independent components: (i) a task term such",
+   "ng safety by avoiding collisions with these obstacles. The reward is set same as the Half Cheetah Safety shaping. Identical piecewise-slant corridor: compute yoff from (x, y) and define cobj t = 1{|yoff | < 1.8}. 21 C.3 C ONSTRAINED C OUPLED O SCILLATOR E NVIRONMENT We consider a two–agent coupled spring–d",
+   "umulative reward, and exhibits substan-\u0001 tially larger variance across seeds. In contrast, EPI learns z-independent critics V cons (x), V ret (x) and computes z ∗ via a one-dimensional search during training, while the actor depends only on the physical state x. This removes the nonstationary noise introdu",
+   "0 1000 113-120 26 E H YPERPARAMETERS AND N EURAL N ETWORK S TRUCTURES Experiments were conducted on hardware comprising an Intel(R) Xeon(R) Gold 6254 CPU @ 3.10GHz, four NVIDIA A5000 GPUs and eight NVIDIA A6000 GPUs. This setup ensures the computational efficiency and precision required for the demandi",
+   "hidden layers of width 128 and ReLU or Tanh activations. The dynamics and reward models take the concatenated state–action input (x, u) ∈ Rd+na and output, respectively, a d-dimensional state derivative/increment and a scalar reward; both use two 128-width hidden layers with ReLU. The policy network co",
+   "e dimension, o = observation dimension, a = per-agent action dimension, n = number of agents, so the joint action has dimension na. The value heads output scalars; the dynamics head outputs Rd ; the policy head outputs Ra . Action squashing or clipping to environment bounds (if used) is applied after t"
+  ]
+ },
+ {
+  "item": 8,
+  "criterion": "Q8",
+  "rule": "Q8 : un test statistique (t, Welch, Mann-Whitney, bootstrap avec intervalle, IQM de rliable avec intervalles stratifiés) est appliqué à une comparaison de l'article. Des barres d'erreur seules : `no`. Le mot « significant » au sens courant, sans test : `no`.",
+  "excerpts": [
+   "s can improperly allocate resources, causing algorithms to run inefficiently or fail. Fault tolerance and straggler mitigation: Failure events become significant at scale (Barroso et al., 2013). RLlib leverages Ray’s built-in fault tolerance mechanisms (Moritz et al., 2017), reducing costs with preemptible cl",
+   "nce mechanisms (Moritz et al., 2017), reducing costs with preemptible cloud compute instances (Amazon, 2011; Google, 2015). Similarly, stragglers can significantly impact the performance of distributed algorithms at scale (Dean & Barroso, 2013). RLlib supports straggler mitigation in a generic way via the ray"
+  ]
+ },
+ {
+  "item": 9,
+  "criterion": "Q8",
+  "rule": "Q8 : un test statistique (t, Welch, Mann-Whitney, bootstrap avec intervalle, IQM de rliable avec intervalles stratifiés) est appliqué à une comparaison de l'article. Des barres d'erreur seules : `no`. Le mot « significant » au sens courant, sans test : `no`.",
+  "excerpts": [
+   "and history-aligned to avoid detection. Evaluations show that our attack effectively breaks existing defenses, including the most sophisticated ones, significantly outperforming existing attacks while being more perceptually stealthy. The results highlight the vulnerability of RL agents to semantics-aware adv",
+   "ing the importance of developing more robust policies. Our code can be found at this GitHub Repo. 1 Introduction Reinforcement learning (RL) has seen significant advancements in recent years, becoming a key area of machine learning. RL’s ability to enable agents to learn optimal decision-making policies throu",
+   "us opponent behaving unexpectedly [17]. In particular, a malicious agent can subtly manipulate the observations of a trained RL agent, resulting in a significant drop in performance and cumulative reward [60, 47]. Such attacks exploit vulnerabilities in the agent’s perception systems, including sensors and co",
+   "L. However, the high-sensitivity direction attacks proposed in Korkmaz [31] adopt simple image transformations that mainly target changes in visually significant but not domain-specific semantics. Consequently, the perturbed states either can be denoised by diffusion-based defenses or are nonstealthy from hum",
+   "fective attacks by generating semantics-changing state perturbations (e.g., Figure 2) to mislead the victim to choose a suboptimal action, leading to significant performance loss. To generate realistic perturbed states that are semantically different from original states, we introduce the following definition",
+   "ns capture the quality of individual states, they ignore the dynamic nature of sequential decision-making in RL and may lead to perturbed states that significantly deviate from history. Thus, we look for perturbed states that not only change the semantic meaning but also align with a given history, formally d",
+   "ions that are perfectly aligned with history are hard to detect without access to true states. On the other hand, a history-aligned state may deviate significantly from the true state, as shown in Figure 2e, and it is not stealthy when the agent does have some knowledge about the true state. To capture the la",
+   "ate st and its reconstruction, which is L(st , AE(st )) = ∥st − AE(st )∥2 . Since the autoencoder AE(·) is trained solely on clean states, it assigns significantly higher errors to anomalous or unrealistic inputs, providing an effective signal to assess the realism of generated states. Thus, we can use the pr",
+   "illusory attack was recently proposed in [16]; however, it does not scale to image input. Further, such attacks can lead to trajectories that deviate significantly from the true ones, as shown in Figure 2, and are therefore detectable when the agent has access to even a single true state before the attack suc",
+   "arly, high-sensitivity direction attacks from Korkmaz [31] maintain these two properties by applying simple image transformations that alter visually significant but not domain-specific semantics. Their lack of semantic-altering capability causes them to be ineffective against diffusion-based defenses. Our fr",
+   "rts metrics from four perspectives, comparing baseline attacks and our SHIFT variants against the DP-DQN defense. Our results show that both variants significantly degrade the return of the vanilla DQN agent and that under regularization-based defenses, even under low attack frequency. Although diffusionbased",
+   "ith and without the realism enhancement component. The figure demonstrates that, by incorporating realism enhancement, the l2 reconstruction error is significantly reduced. This reduction indicates that realism enhancement effectively contributes to the generation of perturbed states that are more stealthy an",
+   "n models, policy guidance, and realism enhancement techniques, we generate highly effective, semantically distinct, and stealthy attacks that cause a significant reduction in cumulative rewards across multiple environments. Our results underscore the urgent need for more sophisticated defense mechanisms to ef",
+   "image input as we consider in this paper. A.2 Attacks and Defenses Beyond State Perturbations As demonstrated by [25], altering the reward signal can significantly disrupt the training process of Q-learning, causing the agent to adopt a policy that aligns with the attacker’s objectives. Additionally, [63] int",
+   "on, which connects the generative models and optimization methods. A.4 Diffusion Models in Adversarial Examples Diffusion models have recently gained significant attention in generating adversarial examples due to their superb performance. They can generate high-quality adversarial examples that deceive targe",
+   "beling them as normal states. We conjecture that SHIFT’s policy guidance method pushes generated states away from the diffusion model’s manifold in a manner that increases reconstruction error, thereby imitating the high-error signature of real images and evading DIRE’s decision rule. D.4 Ablation on At",
+   "e 4 illustrates the performance of our attack across different attack frequencies ξ. The results show that even at low attack frequencies, our method significantly reduces the agent’s cumulative reward. Moreover, the reduction becomes more pronounced as the attack frequency increases. D.5 Ablation on DDPM and",
+   "erms of attack efficiency and computational cost in Table 11. The results show that EDM and DDPM exhibit similar attack performance. However, DDPM is significantly slower than EDM in terms of sampling time (the average time needed to generate a single perturbed state during testing), making DDPM incapable of ",
+   "tion and image transform. These attack methods reveal the brittleness of robust RL methods such as SA-DQN, but they mainly target changes in visually significant but not domain-specific semantics. For example, the relative distance between the pong ball and the pad will remain the same after brightness and co"
+  ]
+ },
+ {
+  "item": 10,
+  "criterion": "X7",
+  "rule": "X7 : le calcul employé est chiffré. `yes` exige au moins une quantité (heures, GPU-heures, FLOP, ou un nombre de GPU avec une durée). Le seul nom du matériel : `no`. Le nombre de pas d'environnement n'est pas une quantité de calcul.",
+  "excerpts": [
+   "learn to a task is important for scaling up RL experiments outside simulation, allowing researchers to run longer experiments on more agents for more hours. We propose to address these challenges by forcing our agent to “leave no trace.” The goal is to learn not only how to do the task at hand, but also ",
+   "itching to the real world is automatically identifying when the agent has reset. In simulation we can access the state of the environment directly to compute the distance between the current state and initial state. In the real world, we must infer states from noisy sensor observations to deduce if they ar"
+  ]
+ },
+ {
+  "item": 11,
+  "criterion": "Q5",
+  "rule": "Q5 : le code est en lien. Un lien vers du code dans l'article. « Sur demande », « sera publié », « will be made public at <URL> » : `no`. Une page de projet compte `yes` seulement si elle mène à du code. Un lien vers le code d'un AUTRE travail (une bibliothèque, une référence) ne compte pas : il faut le code de l'article.",
+  "excerpts": [
+   "d the RandomizedSearchCV method of Scikit-learn [35]. We use L2-regularized L2-loss support vector regression and \u000f = 0.0001 for LIBLINEAR. 5 https://github.com/JUrban/deepmath 6 Intel(R) Xeon(R) CPU E5-2698 v3 @ 2.30GHz with 256G RAM. 4 5 Raising the inference limit helps only a little: mlCoP solves 1003"
+  ]
+ },
+ {
+  "item": 12,
+  "criterion": "Q7",
+  "rule": "Q7 : l'évaluation se fait sur des conditions tenues à part : tâches, environnements, graines aléatoires d'environnement ou jeux de données non vus à l'entraînement ni au réglage. Pour un article sur les grands modèles de langage, des bancs d'essai distincts des données d'entraînement RL comptent `yes`. Article théorique à expériences jouets : `no`.",
+  "excerpts": [
+   " in the asynchronous setup. All our new methods work without assuming these. Moreover, Theorem 4.3 illustrates how our time complexity results can be generalized to arbitrary computation patterns. 3 N EW M ETHODS : Rennala NIGT AND Malenia NIGT In this section, we present our new algorithm, Rennala NIGT (Alg",
+   "with the complexity Õ maxi∈[n] ḣi A + B/n , where all agents synchronize after each has computed one stochastic gradient. Notice that we can easily generalize our result when the times are non-static. Theorem 4.3. Consider the results and assumptions of Theorem 4.1. Additionally, consider that computing a ",
+   "n, we further focus on Assumption 2.5 and assume that the bounds on computation times are {hi }. 4.1 T IME COMPLEXITY WITH COMMUNICATION TIMES We now generalize Theorem 4.2 by taking into account the communication time κ: Theorem 4.4. Consider the results and assumptions of Theorem 4.1. Additionally, con\b\u0006 2",
+   "or machine learning. Springer, 2020. Guanghui Lan. Policy mirror descent for reinforcement learning: Linear convergence, new sampling complexity, and generalized problem classes. Mathematical programming, 198(1):1059–1106, 2023. Sergey Levine, Chelsea Finn, Trevor Darrell, and Pieter Abbeel. End-to-end train"
+  ]
+ },
+ {
+  "item": 13,
+  "criterion": "Q7",
+  "rule": "Q7 : l'évaluation se fait sur des conditions tenues à part : tâches, environnements, graines aléatoires d'environnement ou jeux de données non vus à l'entraînement ni au réglage. Pour un article sur les grands modèles de langage, des bancs d'essai distincts des données d'entraînement RL comptent `yes`. Article théorique à expériences jouets : `no`.",
+  "excerpts": [
+   " setting [2]. In our work, we focus on the collective Dec-POMDP model (CDec-POMDP) that formalizes such collective multiagent planning [25], and also generalizes “anonymity planning” models [42]. The CDec-POMDP model is based on the idea of partial exchangeability [13, 27], and collective graphical models [3",
+   "of multiagent decision making to real world applications. Statistic for Planning: We now describe the statistic T which increases scalability and the generalization ability of solution approaches. For a given joint (st , at ), we define P state-action m T (st , at ) = (nt (i, j)∀i ∈ S, j ∈ A) where each entr",
+   "table still remains fixed, only the counts of agents in different buckets (e.g. n(i), n(i, j)) changes. Such count-based formulations also extend the generalization ability of RL approaches as multiple joint state-actions (st , at , dt ) can give rise to the same statistic n. Our goal is to compute the optim"
+  ]
+ },
+ {
+  "item": 14,
+  "criterion": "X2",
+  "rule": "X2 : une incertitude est rapportée sur les résultats principaux (barres d'erreur, écart type, intervalle, ± …). Des barres d'erreur seules suffisent. Une incertitude sur un résultat secondaire seulement : `no`.",
+  "excerpts": [
+   "s meta-learning curves. Figure 3: Meta learning curves on Krazy World. We see that E-RL2 achieves the best final results, but has the highest initial variance. Crucially, EMAML converges faster than MAML, although both algorithms do manage to converge. RL2 has relatively poor performance and high variance. ",
+   "a learning curves on mazes. Figure 5 has comparatively poor performance on this task shows each curve in isolation, making it easier to and very high variance. When we manually discern their individual characteristics. E-MAML examined the RL2 trajectories to figure out why, and E-RL2 perform better than the"
+  ]
+ },
+ {
+  "item": 15,
+  "criterion": "X2",
+  "rule": "X2 : une incertitude est rapportée sur les résultats principaux (barres d'erreur, écart type, intervalle, ± …). Des barres d'erreur seules suffisent. Une incertitude sur un résultat secondaire seulement : `no`.",
+  "excerpts": [
+   "only because the environment drifts, but also because the learning interface itself becomes unstable. Qiao et al. (2026a) identify harmful TD cross-covariance induced by standard squared-error TD objectives and mitigate it through clustered replay and corrective gradient penalties. Qiao et al. (2026b) analy",
+   "on. B.4.2. S ENSITIVITY TO S MOOTHING S TRENGTH Table 6 studies the exponential moving average used to smooth the raw proxy. Weak smoothing increases variance in the scheduled entropy weight. Very strong smoothing delays the response to abrupt changes. Intermediate values provide the best balance between st"
+  ]
+ },
+ {
+  "item": 16,
+  "criterion": "Q7",
+  "rule": "Q7 : l'évaluation se fait sur des conditions tenues à part : tâches, environnements, graines aléatoires d'environnement ou jeux de données non vus à l'entraînement ni au réglage. Pour un article sur les grands modèles de langage, des bancs d'essai distincts des données d'entraînement RL comptent `yes`. Article théorique à expériences jouets : `no`.",
+  "excerpts": [
+   " N reset episodes. N 13: if Sreset ∩ Sreset = ∅ then 14: s ← ENVIRONMENT. RESET() . Early Abort . Detect Failed Reset (Eq. 4) . Hard Reset previously-unseen states. To address this, we train Q-functions for both the forward and reset policies that provide uncertainty estimates. Several prior works have ex",
+   " Systems Conference, 2017. John Schulman, Philipp Moritz, Sergey Levine, Michael Jordan, and Pieter Abbeel. High-dimensional continuous control using generalized advantage estimation. arXiv preprint arXiv:1506.02438, 2015. John Schulman, Jonathan Ho, Cameron Lee, and Pieter Abbeel. Learning from demonstratio",
+   "tate ss , so the agent mistakenly thinks that safe state ss is unsafe. For continuous tasks, once the agent learns to reset from a nearby safe state, generalization of the Q-function across states will lead the reset policy to assume that it can also reset from the state ss . For discrete state tasks where t",
+   " across states will lead the reset policy to assume that it can also reset from the state ss . For discrete state tasks where the Q-function does not generalize across states, we act optimistically in the face of uncertainty by acting based on the largest predicted Q-value from our ensemble, helping to avoid"
+  ]
+ },
+ {
+  "item": 17,
+  "criterion": "Q8",
+  "rule": "Q8 : un test statistique (t, Welch, Mann-Whitney, bootstrap avec intervalle, IQM de rliable avec intervalles stratifiés) est appliqué à une comparaison de l'article. Des barres d'erreur seules : `no`. Le mot « significant » au sens courant, sans test : `no`.",
+  "excerpts": [
+   "etworks. 1 I NTRODUCTION While carefully hand-designed deep convolutional networks continue to increase in size and in performance, they also require significant power, memory and computational resources, often to the point of prohibiting their deployment on smaller devices. As a result, researchers have deve",
+   "ethod to effectively search the state space. If the actions are selected to be very incremental, a long sequence of actions would be needed to make a significant change to the network architecture, making credit assignment difficult. To address this issue, we propose a two stage reinforcement learning procedu",
+   ", xt ). The parameterization of xt is similar to layer removal except that the previous action is appended to the representation in an autoregressive manner (See Figure 2b). The action space for layer shrinkage is defined as at ∈ [0.1, 0.2, . . . , 1] (each action corresponds to how much to shrink a lay"
+  ]
+ },
+ {
+  "item": 18,
+  "criterion": "Q5",
+  "rule": "Q5 : le code est en lien. Un lien vers du code dans l'article. « Sur demande », « sera publié », « will be made public at <URL> » : `no`. Une page de projet compte `yes` seulement si elle mène à du code. Un lien vers le code d'un AUTRE travail (une bibliothèque, une référence) ne compte pas : il faut le code de l'article.",
+  "excerpts": [
+   "mpact of large experience replay buffers shown by Zhang & Sutton (2017) can often be vastly reduced if timeout terminations are properly handled. The source code and videos can be found at: sites.google.com/view/time-limits-in-rl. While the importance of time-awareness for optimizing a time-limited objective ("
+  ]
+ },
+ {
+  "item": 19,
+  "criterion": "Q4",
+  "rule": "Q4 : tous les hyperparamètres des références (baselines) sont donnés. `yes` si un tableau ou un paragraphe les donne pour toutes les méthodes principales comparées. « Valeurs par défaut de [bibliothèque] » sans les lister compte `yes` seulement si la version de la bibliothèque est donnée.",
+  "excerpts": [
+   "atasets. In addition, we clip the exponentiated advantage weight in Eq. (13) to [0.1, 100] for Hopper and Walker2d, and to [0.1, 30] for Halfcheetah. Hyperparameters of baseline methods. The hyperparameter configurations for the baseline methods are as follows. For CQL, we tune its regularization coefficient within the set {5",
+   "he default benchmark datasets, as detailed in Table 3, except that the Lagrange multiplier λ is set to 2 to enable a sufficiently large neighborhood. Hyperparameters of baseline methods. The hyperparameter configurations for the baseline methods are as follows. For CQL, we tune its regularization coefficient within the set {5"
+  ]
+ },
+ {
+  "item": 20,
+  "criterion": "Q8",
+  "rule": "Q8 : un test statistique (t, Welch, Mann-Whitney, bootstrap avec intervalle, IQM de rliable avec intervalles stratifiés) est appliqué à une comparaison de l'article. Des barres d'erreur seules : `no`. Le mot « significant » au sens courant, sans test : `no`.",
+  "excerpts": [
+   "els, interaction modeling and using the pre-trained policies in offline learning are the most critical components, as their removals lead to the most significant drop in policy learning performance. For policy learning, the hierarchical policy plays the most essential role. Other components, such as state fac"
+  ]
+ },
+ {
+  "item": 21,
+  "criterion": "X7",
+  "rule": "X7 : le calcul employé est chiffré. `yes` exige au moins une quantité (heures, GPU-heures, FLOP, ou un nombre de GPU avec une durée). Le seul nom du matériel : `no`. Le nombre de pas d'environnement n'est pas une quantité de calcul.",
+  "excerpts": [
+   "et VIS (µ̂) be the IS estimator using this estimated µ̂(a|s) and VIS (µ) be the IS estimator with true behavior policy. Both of the IS estimators are computed using n trajectories that are independent from the data used to estimate µ b(a|s). If the relative error of µ b(a|s) is bounded by : µ b(a|s) µ(a|s)",
+   "n module, a reward module, and a transition module. The representation module is a one layer feed-forward network that takes the state as input and outputs a 32-dimension representation. The reward module takes the representation as input and outputs A = 2 predictions, corresponding to 2 different acti",
+   "rforming planning at training time is very computationally-intensive, it is difficult to get ⇡ the function VM c,H t 1 (s). It is also challenging to compute the the derivative of this with respect to s. If we assume the resulting value is L-Lipschitz, then this loss can be bounded by L(s0 s0t )2 . This is",
+   "th double Q learning for DQN: doing value iteration to generate a target ⇡ 0 0 value vector VM c,H t 1 (s ), and view this as constant vector when we compute derivative with s . ⇡ 0 Then this loss becomes a weighted MSE loss. We can update the target value vector VM c,H t 1 (s ) every several episodes. Met",
+   "for model learning in DR. The third way is that all methods should have the same amount of data. The DR method reuses the data to learn the model and compute IS weights. This helps DR methods to achieve best empirical performance in Thomas and Brunskill [22]. There is not necessarily a \"correct\" answer to ",
+   "it the data into a training set (90%) and a validation set (10%) and use the validation set to tune the model structure and optimization settings. To compute the MSE of an individual value, we record the initial state of the 1024 trajectories and roll-out from true environment to get the true policy over t"
+  ]
+ },
+ {
+  "item": 22,
+  "criterion": "Q8",
+  "rule": "Q8 : un test statistique (t, Welch, Mann-Whitney, bootstrap avec intervalle, IQM de rliable avec intervalles stratifiés) est appliqué à une comparaison de l'article. Des barres d'erreur seules : `no`. Le mot « significant » au sens courant, sans test : `no`.",
+  "excerpts": [
+   "cases where model fidelity is less important, e.g., for improving exploration (Chiappa et al., 2017; Oh et al., 2015). However, this objective causes significant model capacity to be devoted to predicting irrelevant aspects of the environment dynamics, such as noisy backgrounds, at the expense of value-critic",
+   "ol. Value prediction networks (VPNs, Oh et al., 2017) take a similar approach but use the model to construct a look-ahead tree only when constructing bootstrap targets and selecting actions, similarly to TD-search (Silver et al., 2012). Crucially, the model is not embedded in a planning algorithm during opti",
+   "6) with synchronous environment threads. In particular, starting at a timestep t, we roll forward nenv = 16 threads for n = 5 timesteps each. We then bootstrap off the final states only and gather all nenv × n = 80 transitions in a single batch for 2 Published as a conference paper at ICLR 2018 the backward ",
+   "Q st+n , a , θ − Q (st+n−j , at+n−j , θ) . 0 envs j=1 k=1 a (1) If the episode terminates, we use the remaining episode return as the target, without bootstrapping. This algorithm’s actor-critic counterpart is A2C, a synchronous variant of A3C (Mnih et al., 2016) in which a policy π and state-value function ",
+   "t ) l =d−1 Q(zl|t , ai ) = r(zl|t , ai ) + (5) ai γ maxaj Q(zl+1|t , aj ) l < d − 1. We note that even for a tree depth of only one, TreeQN imposes a significant structure on the value function by decomposing it as a sum of action-conditional reward and next-state value, and using a shared value function to e",
+   " to ground the transition and reward functions to the environment. It could also encourage TreeQN to perform model-based planning in an interpretable manner. In principle, such objectives could give rise to a spectrum of methods from model-free to fully model-based. At one extreme, TreeQN without auxili",
+   "our architecture regularises the model, encouraging appropriate state representations to be learned quickly. Even a depth-1 tree improves performance significantly, as disentangling the estimation of rewards and next-state values makes them easier to learn. This is further facilitated by the sharing of value-",
+   "he best five seeds of an unspecified number of trials. TreeQN. In all environments except Frostbite, TreeQN outperforms DQN on average, with the most significant gains in Alien, CrazyClimber, Enduro, Krull, and Seaquest. Many of these environments seem well suited to short horizon look-ahead planning, with si",
+   "per to collect more points or to surface for oxygen. However, even in a game with mostly reactive decisions like the racing game Enduro, TreeQN shows significant benefits. TreeQN also outperforms the additional baselines of DQN-Wide and DQN-Deep, indicating that the additional structure and grounding of our a",
+   "016, New York City, NY, USA, June 19-24, 2016, pp. 1928–1937, 2016. Vinod Nair and Geoffrey E. Hinton. Rectified linear units improve restricted boltzmann machines. In Proceedings of the 27th International Conference on Machine Learning (ICML-10), June 21-24, 2010, Haifa, Israel, pp. 807–814, 2010. Junh"
+  ]
+ },
+ {
+  "item": 23,
+  "criterion": "Q8",
+  "rule": "Q8 : un test statistique (t, Welch, Mann-Whitney, bootstrap avec intervalle, IQM de rliable avec intervalles stratifiés) est appliqué à une comparaison de l'article. Des barres d'erreur seules : `no`. Le mot « significant » au sens courant, sans test : `no`.",
+  "excerpts": [
+   " total reward. A similar idea has been applied for learning deterministic policies, termed deterministic policy gradient (DPG) (Silver et al., 2014). Significant progress has been made on advancing policy learning since introduction of deep learning techniques. As examples, the deep deterministic policy gradi",
+   "o the space of probability measures, denoted P(Ω) with Ω ⊂ Rd , we arrive at Wasserstein gradient flows. For a formal definition, we first endow a Riemannian geometry on P(Ω). The geometry is characterized by the length between two elements (two distributions), defined by the 2nd-order Wasserstein dista",
+   "eneral energy-based policies (Haarnoja et al., 2017), and transform it into the WGF framework. Specifically, in the WGF framework, policies form a Riemannian manifold on the space of probability measures. The manifold structure is determined by the expected total reward (10), and the geodesic length bet",
+   "ur WGF-based methods converge faster and better than their counterparts due to the introduction of WGFs. Furthermore, by variance reduction, DP-WGF-V significantly outperforms DP-WGF on all tasks. Comparisons with popular baselines Finally we compare DP-WGF-V with TRPO-GAE (Schulman et al., 2016) and DDPG (Li"
+  ]
+ },
+ {
+  "item": 24,
+  "criterion": "Q7",
+  "rule": "Q7 : l'évaluation se fait sur des conditions tenues à part : tâches, environnements, graines aléatoires d'environnement ou jeux de données non vus à l'entraînement ni au réglage. Pour un article sur les grands modèles de langage, des bancs d'essai distincts des données d'entraînement RL comptent `yes`. Article théorique à expériences jouets : `no`.",
+  "excerpts": [
+   "niversity myx21@mails.tsinghua.edu.cn, xyji@tsinghua.edu.cn Abstract Offline reinforcement learning (RL) suffers from extrapolation errors induced by out-of-distribution (OOD) actions. To address this, offline RL algorithms typically impose constraints on action selection, which can be systematically categorized into ",
+   " of existing large-scale datasets [33, 52, 63] and reduces the dangers of unsafe exploration. However, it also introduces a key challenge: evaluating out-of-distribution (OOD) actions leads to extrapolation errors [23], which further causes value overestimation and significant performance degradation [44]. To address ",
+   "ll quality of behavior policy Sample Restrict action selection to dataset actions IQL[40], XQL[25], SQL[88] Avoid extrapolation error but lack action generalization beyond the dataset Support Restrict action selection to behavior policy’s support BCQ[23], BEAR[41], SPOT [82] Least restrictive but require acc",
+   "e methods are easy to implement and effectively avoid extrapolation errors [40]. However, their performance is inherently limited by a lack of action generalization beyond the offline dataset, often resulting in overly conservative policies when near-optimal actions are rare in the dataset. This work aims to",
+   "d Qθ′ (s, a) represents a target Q function with parameters updated using Polyak averaging [58]. A central challenge in offline RL is the presence of out-of-distribution (OOD) actions that fall outside the support of the behavior policy. These OOD actions often lead to inaccurate Q value estimates due to extrapolation",
+   "ent, easy to implement, and effective in avoiding extrapolation errors [40]. However, their performance is inherently constrained by the inability to generalize beyond the offline dataset. This over-conservatism becomes especially problematic when the dataset lacks coverage of near-optimal actions, a common ",
+   "a finite constant. Lemma 2 is a direct corollary of Theorem 1 in [45], specialized to the case of action extrapolation. It demonstrates that, for any unseen action ã, its Q value Qθ (s, ã) can be effectively controlled by a dataset action’s Q value Qθ (s, a) and the distance ∥ã − a∥. Specifically, a sm",
+   "verly conservative because of reduced coverage of near-optimal actions. In contrast, ANQ bypasses the need to model the behavior policy and leverages generalization to attain superior performance beyond the offline dataset. Furthermore, we evaluate ANQ on reduced datasets with varying Lagrange multiplier λ, ",
+   "sion within the SARSA update, enabling multi-step dynamic programming. In contrast to strict in-sample learning, some methods propose to exploit mild generalization beyond the dataset to further boost performance [56, 49]. Orthogonal to the above, another influential branch of work formulates offline RL as c",
+   "hile not applicable to some practically advanced architectures [95], NTK remains one of the most influential theoretical frameworks for analyzing the generalization of deep neural networks. Assumption 2 is common in previous analyses on the generalization of deep neural networks [30, 4] and the convergence o",
+   "e constraint 24 methods risk being overly conservative due to limited coverage of near-optimal actions. ANQ avoids both issues by enabling controlled generalization without explicit behavior policy modeling. Table 4: Averaged normalized scores on Gym locomotion and Antmaze tasks over five random seeds. m = m"
+  ]
+ },
+ {
+  "item": 25,
+  "criterion": "Q4",
+  "rule": "Q4 : tous les hyperparamètres des références (baselines) sont donnés. `yes` si un tableau ou un paragraphe les donne pour toutes les méthodes principales comparées. « Valeurs par défaut de [bibliothèque] » sans les lister compte `yes` seulement si la version de la bibliothèque est donnée.",
+  "excerpts": [
+   ", against various baseline algorithms in the behavior cloning (BC) setting. Table 1 summarizes the performance comparisons on the D4RL Gym tasks. The hyperparameters for training can be found in Appendix C.1. 5.1.2. BASELINE M ETHODS The quantitative results indicate that our method, MoMa QL, achieves the highest overall average score of 89.8, surpassing all baseline meth",
+   "y with the pre-trained offline model (trained for 100K steps) and then fine-tune it with online interactions for an additional 400K steps. We use the same hyperparameters as in the offline setting, which are detailed in Appendix C.1. Gym Locomotion Tasks. In the standard D4RL Gym locomotion suite, MoMa QL achieves a do"
+  ]
+ },
+ {
+  "item": 26,
+  "criterion": "X7",
+  "rule": "X7 : le calcul employé est chiffré. `yes` exige au moins une quantité (heures, GPU-heures, FLOP, ou un nombre de GPU avec une durée). Le seul nom du matériel : `no`. Le nombre de pas d'environnement n'est pas une quantité de calcul.",
+  "excerpts": [
+   "cy of the Q-functions at the current offline samples can be improved or the Q-functions at new offline samples from the posterior distribution can be computed. 2 Background A Markov decision process (MDP) is formally defined by a 5-tuple hS, A, T, R, γi, where S is the state space, A is the action space, T",
+   "or an MDP with known dynamics and finite state and action spaces, planning algorithms such as Value Iteration or Policy Iteration [20] can be used to compute the optimal policy offline. Several approximate dynamic programming (ADP) methods have been developed for approximating the optimal stationary policy",
+   "the expected reward functions. 3.2 Online Planner Let Q̂θ (s, a) be the Gaussian process approximating the optimal Q-function for any s ∈ S and a ∈ A computed by a GP-SARSA algorithm associated with parameter θ ∈ Θprior . One can approximate (2) as: h h ii \u0003 \u0002 ak ≈ argmax Eθ|s0:k ,a0:k−1 E Q̂θ (sk , a) = a",
+   "r distribution is available, the expectation in (11) is over the posterior distribution. Rather than restricting ourselves to parametric families, we compute the expectation in (11) by a Markov Chain Monte-Carlo (MCMC) algorithm for generating i.i.d. sample values from the posterior distribution. For simpl",
+   " the predicted expected return Qθ (., .) at values of the MCMC sample Θpost . We take advantage of the Bayesian representation of the expected return computed by the offline GP-SARSAs for this, as described next. Let fsak = [Qθprior (sk , a), . . . , Qθprior (sk , a)]T and vsak = [covθprior((sk , a), (sk ,",
+   "tructed for any given a ∈ A. For a large or continuous action space, one needs to draw a finite set of actions {a1 , . . . , aM } from the space, and compute Qθ (sk , a) for a ∈ {a1 , . . . , aM } and θ ∈ Θpost . It should be noted that the uncertainty in the expected return of the offline sample points is",
+   " (sk , a)), . . . , covθprior ((sk , a), (sk , a))]T. N prior 9: 10: 11: 12: Construct a GP using fsak , vsak over Θprior . Use the constructed GP to compute Qθ (sk , a), for θ ∈ Θpost . end for Action selection: X 1 ak = arg max Qθ (sk , a). post N a∈{a1 ,...,aM } post θ∈Θ 13: end for Simple Continuous St",
+   "uch that ak−1 (i) = 1 flips the state of the ith gene, f is the Boolean function displayed in Table 1, in which the ith binary string specifies the output value for the given input genes, “⊕” indicates component-wise modulo-2 addition and nk ∈ {0, 1}7 is Boolean transition noise, such that P (nk (i) = ",
+   " (nk (i) = 1) = p, for i = 1, . . . , 7. Figure 3: Melanoma regulatory network Table 1: Boolean functions for the melanoma GRN. Genes Input Gene(s) Output WNT5A pirin S100P RET1 MART1 HADHB STC2 HADHB prin, RET1,HADHB S100P,RET1,STC2 RET1,HADHB,STC2 pirin,MART1,STC2 pirin,S100P,RET1 pirin,STC2 10 00010"
+  ]
+ },
+ {
+  "item": 27,
+  "criterion": "Q8",
+  "rule": "Q8 : un test statistique (t, Welch, Mann-Whitney, bootstrap avec intervalle, IQM de rliable avec intervalles stratifiés) est appliqué à une comparaison de l'article. Des barres d'erreur seules : `no`. Le mot « significant » au sens courant, sans test : `no`.",
+  "excerpts": [
+   ".LG] 20 Oct 2025 12331005@mail.sustech.edu.cn, jwgu.hku@outlook.com, tangys2022@mail.sustech.edu.cn Abstract Reinforcement learning (RL) has achieved significant success across a wide range of domains, however, most existing methods are formulated in discrete time. In this work, we introduce a novel RL method",
+   "1 action at as t → ∞ for any fixed x ∈ Rn , denoted π(a|x): π(a|x) ∼ e λ Q(x,a) . That is, the stationary 1 action distribution corresponds to a Boltzmann distribution over actions: π(a|x) = Z1 e λ Q(x,a) , where R 1 Z = Rd e λ Q(s,a) da. This gives rise to a soft optimal policy, where the action distri",
+   "earce, Tabish Rashid, Anssi Kanervisto, Dave Bignell, Mingfei Sun, Raluca Georgescu, Sergio Valcarcel Macua, Shan Zheng Tan, Ida Momennejad, Katja Hofmann, et al. Imitating human behaviour with diffusion models. arXiv preprint arXiv:2301.10677, 2023. [35] Michael Psenka, Alejandro Escontrela, Pieter Abb"
+  ]
+ },
+ {
+  "item": 28,
+  "criterion": "Q7",
+  "rule": "Q7 : l'évaluation se fait sur des conditions tenues à part : tâches, environnements, graines aléatoires d'environnement ou jeux de données non vus à l'entraînement ni au réglage. Pour un article sur les grands modèles de langage, des bancs d'essai distincts des données d'entraînement RL comptent `yes`. Article théorique à expériences jouets : `no`.",
+  "excerpts": [
+   "017), Quality-Diversity (Pugh et al., 2015; Cully & Demiris, 2017) and Curiosity-Driven Learning (Baranes & Oudeyer, 2013; Forestier & Oudeyer, 2016) generalize the idea of covering well the state-action space. Indeed, instead of trying to cover the state-action space of a predefined RL problem, they try to ",
+   "capabilities to a variety of goals. As it stores a population of policies rather than trying to learn a single large goalparameterized policy, and as generalization can be made on-the-fly through various forms of regression (Forestier & Oudeyer, 2016), this can be viewed as a form of lazy learning (Aha, 1997",
+   "de does not always last 103 steps in CMC. In GEP - PG performance curves, performance drops when switching from GEP to DDPG because the policy is not transfered from one algorithm to the other (only samples gathered by GEP are transmitted to the replay buffer of DDPG). In the case where GEP is using a DDPG-",
+   "thm to the other (only samples gathered by GEP are transmitted to the replay buffer of DDPG). In the case where GEP is using a DDPG-like policy, such transfer would be possible, but this is left for future work. As in Section 4.1, the learning performance depicted in Figure 3(a) does reflect the ratio of tr"
+  ]
+ },
+ {
+  "item": 29,
+  "criterion": "Y9",
+  "rule": "Y9 : la sensibilité à au moins un hyperparamètre est montrée (balayage ou variation d'au moins un hyperparamètre, avec une mesure de performance). Compte un hyperparamètre que l'article présente comme tel ; un paramètre réglé à l'inférence compte s'il est présenté comme un hyperparamètre. Une ablation de composant n'est pas un balayage d'hyperparamètre ; une variante présentée comme un composant reste une ablation ; une condition de l'environnement ne compte pas.",
+  "excerpts": [
+   "ute performance and learning speed. In particular, our method shows considerable performance gains on a task with heterogeneous agents. Moreover, our ablations show both the necessity of conditioning on the state information and the non-linear mixing of agent Q-values in order to achieve consistent performa",
+   "eward of 8. 6. Experimental Setup In this section, we describe the decentralised StarCraft II micromanagement problems to which we apply QMIX and the ablations we consider. 6.1. Decentralised StarCraft II Micromanagement Real-time strategy (RTS) games have recently emerged as challenging benchmarks for the ",
+   "ievable in an episode is 20. The full details of the environmental setup, architecture and training are available in the supplementary material. 6.2. Ablations We perform ablation experiments in order to investigate the influence of the inclusion of extra state information and the necessity of non-linear tr",
+   " QMIX: Monotonic Value Function Factorisation for Deep Multi-Agent Reinforcement Learning (a) 3m (b) 2s 3z (c) 3s 5z Figure 4. Win rates for QMIX and ablations on 3m, 2s 3z and 3s 5z maps. 3s 5z and 1c 3s 5z maps, where VDN is unable to reach the performance of the simple heuristic. The superior representat",
+   "rior representational capacity of QMIX combined with the state information presents a clear benefit over a more restricted linear decomposition. 7.2. Ablation Results Our additional ablation experiments reveal that QMIX outperforms, or is competitive with, all of its ablations discussed in Section 6.2. Figu",
+   "ce of the heuristic-based algorithm is shown as a dashed line. (a) 3m (b) 5m (c) 8m (d) 2s 3z (e) 3s 5z (f) 1c 3s 5z Figure 7. Win rates for QMIX and ablations on six different combat maps. The performance of the heuristic-based algorithm is shown as a dashed line. "
+  ]
+ },
+ {
+  "item": 30,
+  "criterion": "X7",
+  "rule": "X7 : le calcul employé est chiffré. `yes` exige au moins une quantité (heures, GPU-heures, FLOP, ou un nombre de GPU avec une durée). Le seul nom du matériel : `no`. Le nombre de pas d'environnement n'est pas une quantité de calcul.",
+  "excerpts": [
+   "X defined over a set of n features F = {1, . . . , n}. To quantify how features contribute to the prediction f (x), we can consider how the model’s output changes when some features are unknown. A characteristic function fx (C) [28] represents the model’s expected prediction when only the features in s",
+   "on of expected return changes when only the features in C are observed. By evaluating how these measurements change across subsets of features, SVERL computes Shapley values to attribute each explanatory element to individual features. We now describe each characteristic function and explanation, beginning",
+   "ady-state distribution: the probability that an agent following policy π is in state s, given that it 3 observes sC . Shapley values (Equation 3) are computed over the behaviour characteristic function to attribute the change in action probability when all features are known versus none, π̃sa (F) − π̃sa (∅",
+   "sing the behaviour characteristic function π̃sa (C) when features are unknown in state s, and follows the original policy π elsewhere. Shapley values computed over the outcome characteristic function attribute the change in expected return across all features, ṽsπ (F) − ṽsπ (∅), to the individual feature",
+   "d return from state s when only the features in C are known: X \u0002 \u0003 v̂sπ (C) := E v̂ π (S) | S C = sC = pπ (s | sC ) v̂ π (s). (9) s∈S+ Shapley values computed over this function attribute the change in predicted expected return across all features, v̂sπ (F) − v̂sπ (∅), to the individual features of state s",
+   "ntributions over randomly selected subsets C ⊆ F [28, 15]. However, such sampling estimates would not generalise across states and would need to be recomputed from scratch whenever the agent’s policy changes. As a result, this approach would be inefficient for repeated explanations of evolving policies. We",
+   ") − ϕ̂j (s, a; θ) . (11) ϕi (π̃sa ) ≈ ϕ̂i (s, a; θ) + |F| j∈F In Section A, we prove that with a sufficiently expressive model class, the corrected output of the global optimum ϕ̂(s, a; θ∗ ) recovers exact and unbiased Shapley values for all state-action pairs (s, a) such that pπ (s) > 0 and a ∈ A. By ",
+   "in reinforcement learning SVERL explanations rely on a characteristic function defined as an expectation over the state space, which is infeasible to compute exactly in high-dimensional domains. We begin by considering how to approximate these functions for explaining behaviour and prediction, which share ",
+   "models from earlier plots. For on-policy learning, we minimise the difference between the current state-value estimate V (s | se , C; β) and a target computed from the bootstrapped return: L(β) = 2 E (s,r,s′ ,se ,C)∼B r + γV ′ (s′ | se , C; β − ) − V (s | se , C; β) , (14) where B contains transitions samp",
+   "ained to minimise the following loss: X 2 L(θ) = πE ϕ̂i (s, a; θ) . (19) E E π̃sa (C) − π̃sa (∅) − p (s) Unif(a) p(C) i∈C After training, the model output is corrected to enforce the efficiency constraint:   X 1 π(s, a) − π̃sa (∅) − ϕi (π̃sa ) ≈ ϕ̂i (s, a; θ) + ϕ̂j (s, a; θ) . |F| (20) j∈F With a s",
+   "a (∅) − ϕi (π̃sa ) ≈ ϕ̂i (s, a; θ) + ϕ̂j (s, a; θ) . |F| (20) j∈F With a sufficiently expressive model class and exact optimisation, the corrected output of the global optimum ϕ̂(s, a; θ∗ ) recovers exact Shapley values for all state-action pairs (s, a) such that pπ (s) > 0 and a ∈ A. Outcome. We trai",
+   "e model is trained to minimise the following loss: X 2 L(θ) = πE E ṽsπ (C) − ṽsπ (∅) − ϕ̂i (s; θ) . (21) p (s) p(C) i∈C After training, the model output is corrected to enforce the efficiency constraint:   X 1  π ϕi (ṽsπ ) ≈ ϕ̂i (s; θ) + v (s) − ṽsπ (∅) − ϕ̂j (s; θ) . |F| (22) j∈F With a suffic",
+   "aint:   X 1  π ϕi (ṽsπ ) ≈ ϕ̂i (s; θ) + v (s) − ṽsπ (∅) − ϕ̂j (s; θ) . |F| (22) j∈F With a sufficiently expressive model class, the corrected output of the global optimum ϕ̂(s; θ∗ ) recovers exact Shapley values for all states s such that pπ (s) > 0. Prediction. We train a parametric model ϕ̂(s; ",
+   "e model is trained to minimise the following loss: X 2 L(θ) = πE E v̂sπ (C) − v̂sπ (∅) − ϕ̂i (s; θ) . (23) p (s) p(C) i∈C After training, the model output is corrected to enforce the efficiency constraint:   X 1 v̂ π (s) − v̂sπ (∅) − ϕ̂j (s; θ) . ϕi (v̂sπ ) ≈ ϕ̂i (s; θ) + |F| (24) j∈F With a suffic",
+   "aint:   X 1 v̂ π (s) − v̂sπ (∅) − ϕ̂j (s; θ) . ϕi (v̂sπ ) ≈ ϕ̂i (s; θ) + |F| (24) j∈F With a sufficiently expressive model class, the corrected output of the global optimum ϕ̂(s; θ∗ ) recovers exact Shapley values for all states s such that pπ (s) > 0. Convergence proof. We now prove that the learn",
+   " unique global minimiser given by the Shapley values ϕ(π̃sa ) [5]. This constraint can be satisfied by applying an additive correction to the model output:   X 1  ϕi (π̃sa ) := ϕ̂i (s, a; θ) + π(s, a) − π̃sa (∅) − ϕ̂j (s, a; θ) , |F| (27) j∈F which adjusts the model output by a constant shift that ",
+   ") where C and a are fixed. Because the model receives masked inputs in which features outside C are replaced by a fixed value, it produces the same output for all states s that share the same values sC on C. As a result, the loss decomposes into disjoint terms over equivalence classes of sC : h i X 2 p",
+   " ) denotes the marginal distribution over observed feature subsets under pπ (s). Each term is a squared-error regression problem in which the model output is constant across the equivalence class. Therefore, the unique minimiser of each such term is the conditional expectation: \u0002 \u0003 π̂(s, a | C; β ∗ ) =",
+   "te upstream models from earlier plots (e.g. the behaviour characteristic). Empty slots correspond to the outcome explanations that cannot feasibly be computed exactly in Mastermind-333. 25 104 Dimension = 5 104 100 104 Dimension = 4 102 100 104 Dimension = 3 Length = 2 Length = 3 Length = 4 Length = 5 Leng",
+   "pplying it to prediction explanations in the Hypercube domain. Outcome explanations were not included because exact Shapley values were infeasible to compute for the larger cubes. Variability across runs is limited to randomness in training, with all experimental conditions fixed and the entire process ful",
+   "g loss: 2 L(θ) = πE E E E p (s) Unif(a) p(C) s′ ∼pπ (·|sC ) ′ π(s , a) − π̃sa (∅) − X i ϕ̂ (s, a; θ) . (38) i∈C After training, the Shapley model’s output is corrected to satisfy the efficiency constraint:   X 1 π(s, a) − π̃sa (∅) − ϕi (π̃sa ) ≈ ϕ̂i (s, a; θ) + ϕ̂j (s, a; θ) . |F| (39) j∈F With a s",
+   "a (∅) − ϕi (π̃sa ) ≈ ϕ̂i (s, a; θ) + ϕ̂j (s, a; θ) . |F| (39) j∈F With a sufficiently expressive model class and exact optimisation, the corrected output of the global optimum ϕ̂(s, a; θ∗ ) recovers exact Shapley values for all state-action pairs (s, a) such that pπ (s) > 0 and a ∈ A. In practice, we ",
+   " Monte Carlo sampling from the steadystate distribution: π̃sa (∅) = Eπ [π(s, a)] . (40) s∼p (s) This estimate is computationally efficient: it can be computed once by passing the entire replay buffer through the policy network in parallel and averaging the results, then reused across all loss evaluations. ",
+   "minimise the following loss: 2 X π ′ π i L(θ) = πE E E v̂ (s ) − v̂s (∅) − ϕ̂ (s; θ) . (41) p (s) p(C) s′ ∼pπ (·|sC ) i∈C After training, the model output is corrected to satisfy the efficiency constraint:   X 1 v̂ π (s) − v̂sπ (∅) − ϕi (v̂sπ ) ≈ ϕ̂i (s; θ) + ϕ̂j (s; θ) . |F| (42) j∈F With a suffic",
+   " − v̂sπ (∅) − ϕi (v̂sπ ) ≈ ϕ̂i (s; θ) + ϕ̂j (s; θ) . |F| (42) j∈F With a sufficiently expressive model class and exact optimisation, the corrected output of the global optimum ϕ̂(s; θ∗ ) recovers the exact Shapley values for all (s, C) such that pπ (s) > 0 and p(C) > 0. Behaviour convergence proof. We",
+   "stermind-222 (left), Mastermind-333 (middle), and Gridworld (right). The empty slot corresponds to the outcome characteristic that cannot feasibly be computed exactly in Mastermind-333. Each line represents the mean squared error (MSE) between predicted and exact values, averaged over all states and featur",
+   "s that are both correct and in the correct position. • Misplaced clue: the number of correct letters that are in the wrong position. These values are computed sequentially: letters that are correct and in the correct position contribute to the position clue and are excluded when computing the misplaced clu",
+   "ent correctly identifies the hidden code. Episodes terminate when the correct code is guessed or the guess limit is reached. H Experimental setup and compute resources All experimental configurations, including hyperparameters, training settings, and environment details, are included in the project code’s ",
+   "appendix sections. All experiments were conducted on a local workstation equipped with the following specifications: • Processor: Intel i9-14900K (24 cores, up to 6.0GHz) • GPU: NVIDIA RTX 4090 (24GB VRAM) • Memory: 96GB DDR5 RAM • Storage: 2x1TB NVMe (Samsung 990 EVO) and 4TB SSD (Samsung 870 QVO) The ",
+   ") • Memory: 96GB DDR5 RAM • Storage: 2x1TB NVMe (Samsung 990 EVO) and 4TB SSD (Samsung 870 QVO) The full research project required substantially more compute than the experiments reported here, including preliminary testing and exploratory experiments not included in the final results. 3 FastSVERL code is "
+  ]
+ },
+ {
+  "item": 31,
+  "criterion": "X7",
+  "rule": "X7 : le calcul employé est chiffré. `yes` exige au moins une quantité (heures, GPU-heures, FLOP, ou un nombre de GPU avec une durée). Le seul nom du matériel : `no`. Le nombre de pas d'environnement n'est pas une quantité de calcul.",
+  "excerpts": [
+   "version of the Hirsch conjecture is well known to be tractable with computational tools. In fact, one of the first counterexamples was produced via a computer search, generating a polytope with 36,442 vertices (Santos, 2012). Recent approaches, such as (Swirszcz et al., 2025), have successfully utilized ma",
+   "ed definition of El . 4 HRL for Sparse-Reward Search in Commutative Algebra the policy and the Q-function with a GNN which has a single-dimensional output for each node. For the policy, these output features are converted to softmax probabilities, while for the Q-function, they provide a direct estimat",
+   "s & and | on pairs of nodes, we create a messagepassing layer, which we call Syzygy-aware message-passing (SConv), which leverages cross-attention to compute the aggregation function. In particular, we compute the cross attention for an edge connecting a source node with a target node with binary sequence ",
+   "g a trajectory sampled via π, : \u0014 \u0012 \u0013\u0015 fπ (n) = Eτ ∼π 1 min b1 (st ) = n . t≥0 2. HuRL (Cheng et al., 2021): Since a heuristic (3) can be efficiently computed, we may use it for shaping the reward function r(s, a) = −1 in real time. There are two major approaches for potential-based shaping: a PBRS shaping",
+   "n the heuristic) and, if successful, storing the improved state back to the buffer. If the heuristic provides useful intermediate goals, the average score of the buffer increases. For non-Hirsch ideals, we define priority function P (I) as a combination of the number h(I) of irreducible ideals defined i",
+   "= 5 non-Hirsch ideals accessible by RL, it struggles to scale to larger degrees. In particular, we observe in Fig. 5 that while the average priority score is initially monotonically increasing, it stops once the buffer consists of graphs which satisfy the diameter constraint but have a single irreducibl",
+   "combinatorial scaling (2) of the number of actions A. Since this is unavoidable, we address this by parallelizing the membership checks over multiple cores. 10 Soft Constraints (Ray et al., 2019): An alternative approach is to add a adaptive penalty to the agent for violating the constraints. However, w",
+   " computing the reduced Gröbner basis of the first syzygy module Syz1 (I), defined as ker ϕ0 . While generally this can be accomplished using standard computer algebra frameworks, such as Macaulay2 (Grayson & Stillman), we observe that these methods are typically infeasible for ideals generated by a large n",
+   " environment, we propose an alternative parallelized algorithm which allows us to utilize the computational advantages offered by modern CUDA-enabled GPUs. Let I = (fi )gi=1 where each fi is a monomial in variables {x1 , . . . , xn }, such that no two generators are the same and deg fi = d. Note that t",
+   "ative Algebra Algorithm 1 Edge Reduction Algorithm 1: Input: edge e = (v, v ′ ) ∈ E2 . // Or any El>1 2: Input: first-level graph G1 = (V, E1 ). 3: Output: True if e is reducible. False otherwise. 4: 5: Define: mww′ := w′ & ¬w for all w, w ′ ∈ V . 6: Define: Nv (G1 ) := 1-hop neighborhood of v ∈ V in G",
+   "ich might be useful for the agent to identify useful moves and measure how far ideal I is from being linearly presented. 2. Parallelization: Design a GPU-accelerated algorithm which efficiently checks if a given ideal I is linearly presented. Inspired by the results of (Dao & Eisenbud, 2022), we design",
+   "s to checking the properties of the graphs Gl>1 . In particular, we define: 13 n HRL for Sparse-Reward Search in Commutative Algebra CUDA / M2 CUDA / CPU CUDA CUDA CUDA CUDA 12 120 CUDA CUDA CUDA CUDA 11 140 CUDA CUDA CUDA CUDA 12 10 CUDA CUDA CUDA CUDA 11 8 100 CUDA CUDA CUDA 10 80 CUDA CUDA CUDA 9 60",
+   "A 12 10 CUDA CUDA CUDA CUDA 11 8 100 CUDA CUDA CUDA 10 80 CUDA CUDA CUDA 9 60 CUDA CUDA 8 40 7 CUDA CUDA 4 5 6 7 8 9 10 CUDA CUDA CUDA 10 6 CUDA CUDA CPU 9 4 8 CUDA CPU 7 CPU CPU 4 5 2 6 7 8 9 10 d Figure 10. End-to-end timing benchmarks of linear presentation tests across different platforms. Definiti",
+   "n to higher levels El>2 is routine. The algorithm is shown in Alg. 1. Theorem A.7. An edge e ∈ El>1 is reducible iff the Edge Reduction Algorithm 1 outputs True. Proof. The algorithm 1 is a BFS search of a cycle consisting of edges E1 ∪ {e} containing e which produces a relation (24) such that r(e) = 1",
+   " Require: Weights WQ , WK , WV ∈ Rde ×H×df . Require: k-layer MLP: fMLP : Rn×H×df → Rdf . 1: for each edge e = (i, j) ∈ E1 (Gmax (d, n)) ∪ Eirr do 2: Compute key and value: Kj = x̃j WK , Vj = x̃j WV ∈ Rn×H×df 3: Compute query: Qi = x̃i WQ 4: ∈ Rn×H×df Compute cross-attention: mij = Attention(Qi , Kj , Vj )"
+  ]
+ },
+ {
+  "item": 32,
+  "criterion": "Y9",
+  "rule": "Y9 : la sensibilité à au moins un hyperparamètre est montrée (balayage ou variation d'au moins un hyperparamètre, avec une mesure de performance). Compte un hyperparamètre que l'article présente comme tel ; un paramètre réglé à l'inférence compte s'il est présenté comme un hyperparamètre. Une ablation de composant n'est pas un balayage d'hyperparamètre ; une variante présentée comme un composant reste une ablation ; une condition de l'environnement ne compte pas.",
+  "excerpts": [
+   "ent concerns in reproducibility (Henderson et al., 2017), we run our experiments across a large number of seeds with fair evaluation metrics, perform ablation studies across each contribution, and open source both our code and learning curves (https://github.com/ sfujim/TD3). 2. Related Work Function approx",
+   " and learning curves in Figure 5. TD3 matches or outperforms all other algorithms in both final performance and learning speed across all tasks. 6.2. Ablation Studies We perform ablation studies to understand the contribution of each individual component: Clipped Double Q-learning (Section 4.2), delayed pol",
+   "he discrepancy in the reported results of SAC. Table 2. Average return over the last 10 evaluations over 10 trials of 1 million time steps, comparing ablation over delayed policy updates (DP), target policy smoothing (TPS), Clipped Double Q-learning (CDQ) and our architecture, hyper-parameters and explorati",
+   "6) 1.0 0 0 0.0 (b) Hopper-v1 0.2 0.4 0.6 0.8 Time steps (1e6) 1.0 −1000 0.0 0.2 (c) Walker2d-v1 0.4 0.6 0.8 Time steps (1e6) 1.0 (d) Ant-v1 Figure 1. Ablation over the varying modifications to our DDPG (AHE), comparing the subtraction of delayed policy updates (TD3 - DP), target policy smoothing (TD3 - TPS)",
+   "6) 1.0 0 0 0.0 (b) Hopper-v1 0.2 0.4 0.6 0.8 Time steps (1e6) 1.0 −1000 0.0 0.2 (c) Walker2d-v1 0.4 0.6 0.8 Time steps (1e6) 1.0 (d) Ant-v1 Figure 2. Ablation over the varying modifications to our DDPG (AHE), comparing the addition of delayed policy updates (AHE + DP), target policy smoothing (AHE + TPS) an"
+  ]
+ },
+ {
+  "item": 33,
+  "criterion": "Q8",
+  "rule": "Q8 : un test statistique (t, Welch, Mann-Whitney, bootstrap avec intervalle, IQM de rliable avec intervalles stratifiés) est appliqué à une comparaison de l'article. Des barres d'erreur seules : `no`. Le mot « significant » au sens courant, sans test : `no`.",
+  "excerpts": [
+   "of GAS, demonstrating superior performance in balancing reward maximization and constraint satisfaction compared to existing methods. 1 I NTRODUCTION Significant progress has been achieved in Reinforcement Learning (RL) that learns policies to maximize rewards through constant interactions with the environmen",
+   " These methods naturally avoid the OOD problem since the return-conditioned generation problem does not need the Bellman backup procedure. However, a significant limitation of these methods is their limited stitching ability, which refers to the ability to find better policies beyond the dataset trajectories,",
+   " a more focused approach: stitching transitions in the dataset under the guidance of reward maximization and constraint satisfaction in a conditional manner. To achieve this goal, we propose Goal-Assisted Stitching (GAS), a novel algorithm that offers a more flexible balance between Rt and Ct and stitch",
+   "nt satisfaction in multiple scenarios where GAS succeeds. FISOR maintains safety in most tasks but at a substantial cost to performance, with rewards significantly lower than GAS. In such tight constraint settings, the superiority of GAS over CDT on constraint satisfaction comes from the stitching ability, wh",
+   "rliac, Allen Nie, and Emma Brunskill. Waypoint transformer: Reinforcement learning via supervised learning with intermediate targets. In A. Oh, T. Naumann, A. Globerson, K. Saenko, M. Hardt, and S. Levine (eds.), Advances in Neural Information Processing Systems, volume 36, pp. 78006–78027. Curran Assoc",
+   ", Zhijun Li, and changjun jiang. Voce: Variational optimization with conservative estimation for offline safe reinforcement learning. In A. Oh, T. Naumann, A. Globerson, K. Saenko, M. Hardt, and S. Levine (eds.), Advances in Neural Information Processing Systems, volume 36, pp. 33758–33780. Curran Assoc"
+  ]
+ },
+ {
+  "item": 34,
+  "criterion": "Q7",
+  "rule": "Q7 : l'évaluation se fait sur des conditions tenues à part : tâches, environnements, graines aléatoires d'environnement ou jeux de données non vus à l'entraînement ni au réglage. Pour un article sur les grands modèles de langage, des bancs d'essai distincts des données d'entraînement RL comptent `yes`. Article théorique à expériences jouets : `no`.",
+  "excerpts": [
+   ". We recall that when Tc is globally feasible at v, then Nc v = Tc v and Gc v = δv+ . We first slightly relax Asm. 9 (Asm. 17 below) and then prove a generalisation of Thm. 10 (Thm. 18 below). Assumption 17. Operator Tc is globally feasible at h+ , i.e., the decision rule d+ = Gc h+ is such that Tc h+ = Ld+ "
+  ]
+ },
+ {
+  "item": 35,
+  "criterion": "Q4",
+  "rule": "Q4 : tous les hyperparamètres des références (baselines) sont donnés. `yes` si un tableau ou un paragraphe les donne pour toutes les méthodes principales comparées. « Valeurs par défaut de [bibliothèque] » sans les lister compte `yes` seulement si la version de la bibliothèque est donnée.",
+  "excerpts": [
+   "0, 8 (Gym-Fetch); 16, 12 (others) Table A7: Hyperparameters used in learning observation functions. Offline RL For offline RL experiments, we use the same hyper-parameters as the online ones. Same as DINO-WM [27], we do not use expert demonstrations and inverse dynamics models to learn the mapping p(at |st , st+1 ). Oth"
+  ]
+ },
+ {
+  "item": 36,
+  "criterion": "X7",
+  "rule": "X7 : le calcul employé est chiffré. `yes` exige au moins une quantité (heures, GPU-heures, FLOP, ou un nombre de GPU avec une durée). Le seul nom du matériel : `no`. Le nombre de pas d'environnement n'est pas une quantité de calcul.",
+  "excerpts": [
+   "Policy Optimization as Wasserstein Gradient Flows Ruiyi Zhang 1 Changyou Chen 2 Chunyuan Li 1 Lawrence Carin 1 Abstract Policy optimization is a core component of reinforcement learning (RL), and most existing RL methods directly optimize parameters of a policy based on maximizing the expected tota",
+   " rewrite π as πφ to explicitly indicate the dependence of π on φ ): \u0011 W 2 (πφ , πφ ) \u0010 2 k , Jπφ . (15) πφk+1 = arg min KL πφ kps,π + 2h πφ (i) The outputs of f φ ({ξi }; st ) are particles (at )M i=1 . Using chain rule we calculate the gradient of φ as \" # (i) ∂Jπφ ∂Jπφ ∂ at = E{ξi } . (i) ∂φ ∂φ ∂ at ",
+   "on is not parameter sensitive. E. Implementation Details E.1. Smoothing previous policy Towards Wasserstein-2 distance, we need to use consecutive to compute policies W22 (πφ (·| st ), πφ (·| st )). For the previous policy πφ (·| st ), there are two strategy to get it. i) policy of last iteration, i.e. φ =",
+   "t ) Sample next state from the environment: st+1 ∼ ps (st+1 | st , at ) Save experience in to FIFO replay pool R: for each particles θ (i) ∈ Θ do (i) Compute W22 (Θ , Θ (i) ) Compute empirical gradient ∇θ(i) J(πθ(i) ) (i) Save current particles θ ← θ (i) Update policy particle θ (i) end for end for end for",
+   "ry: D ← D ∪ {st , at , r(st , at ), st+1 } % Sample from the replay memory (i) (i) (i) (i) {(st , at , rt , st+1 )}N i=0 ∼ D. % Update Q function (i) Compute empirical values V̂ θ (st+1 ) ˆ θ JQ (θ) Compute empirical gradient ∇ Update θ according to it using ADAM % Update policy Compute W22 (πφ (·| st ), π",
+   "t+1 ) ˆ θ JQ (θ) Compute empirical gradient ∇ Update θ according to it using ADAM % Update policy Compute W22 (πφ (·| st ), πφ (·| st )), ˆ φ Jπ (φ ) Compute empirical gradient ∇ Update prior policy parameters: φ ← φ Update θ according to it using ADAM % Update target Update target Q function parameters: θ",
+   " D ∪ {st , at , r(st , at ), st+1 } % Sample from the replay memory (i) (i) (i) (i) {(st , at , rt , st+1 )}N i=0 ∼ D. % Update Q function ˆ θ JQ (θ) Compute empirical gradient ∇ Update θ according to it using ADAM % Update value function ˆ ψ JV (ψ ) Compute empirical gradient ∇ Update ψ according to it us",
+   "ate θ according to it using ADAM % Update value function ˆ ψ JV (ψ ) Compute empirical gradient ∇ Update ψ according to it using ADAM % Update policy Compute W22 (πφ (·| st ), πφ (·| st )), ˆ φ Jπφ Compute empirical gradient ∇ Update prior policy parameters: φ ← φ Update φ according to it using ADAM % Upda"
+  ]
+ },
+ {
+  "item": 37,
+  "criterion": "Q7",
+  "rule": "Q7 : l'évaluation se fait sur des conditions tenues à part : tâches, environnements, graines aléatoires d'environnement ou jeux de données non vus à l'entraînement ni au réglage. Pour un article sur les grands modèles de langage, des bancs d'essai distincts des données d'entraînement RL comptent `yes`. Article théorique à expériences jouets : `no`.",
+  "excerpts": [
+   "high-throughput simulation and training, making 100-task sequences feasible on a single GPU within a few hours. MEAL enables the study of forgetting, transfer, network plasticity, curriculum learning, and partner adaptation in cooperative multi-agent settings. 1. Introduction The contributions of our work a",
+   "ts underlying framework. Continual MARL. Lifelong Hanabi (Nekoei et al., 2021) introduces a testbed for evaluating whether agents can coordinate with unseen teammates. MACPro (Yuan et al., 2024) uses learned task contextualization and progressive multihead expansion to handle evolving tasks. RPG (Yao et a",
+   " sequences (Hernandez-Leal et al., 2019). Prior work has shown that agents often overfit to spurious correlations in fixed layouts, resulting in poor generalization under minor changes (Knott et al., 2021). This makes Overcooked particularly well-suited for CL, as even small layout variations can induce subs",
+   "ieves higher soup deliveries during training than IPPO trained from scratch on each task. Green shading between the curves indicates positive forward transfer, red indicates negative. later ones. For each task i < N , let τi = i · ∆ denote the timestep at which training on task i ends, and let s⋆i = si (τi ",
+   "ts training window for both the continual learner and the baseline: Z Z 1 ∆ b 1 i∆ AUCi = si (t) dt, AUCbi = s (t) dt. ∆ (i−1)∆ ∆ 0 i (4) The forward transfer score is then defined as the normalized difference between these AUCs, where positive values indicate accelerated learning due to prior experience: i",
+   "coordination underneath it shifts. In Appendix L, we devise complementary settings and metrics to study coordination and role specialization. Forward Transfer Forward transfer measures how prior experience affects the speed at which new tasks are learned. We compare training performance against a single-tas",
+   "ce intervals. PackNet attains the highest average score S at every level while keeping forgetting F near zero, whereas AGEM achieves the best forward transfer FT at the cost of high forgetting. Best value per column is depicted in bold. Level 1 Method FT EWC MAS Online EWC Online MAS AGEM ER-ACE PackNet Lev",
+   "sses. For exact hyperparameters and setup details, see Appendix C.2. AGEM 0.4 ER-ACE 0.2 0.0 EWC MAS 0.6 Online Online EWCMAS PackNet 0.4 0.2 Forward Transfer 0.0 Figure 4. Forward transfer and forgetting on Level 1 reveal a clear stability–plasticity trade-off. Regularization-based methods (EWC, MAS, and t",
+   "lity–plasticity trade-off. Regularization-based methods (EWC, MAS, and their online variants) minimize forgetting but at the cost of negative forward transfer. AGEM and FT sit at the opposite extreme, exhibiting high forgetting, but remaining plastic. PackNet strikes the best balance, combining low forgetti",
+   "pposite extreme, exhibiting high forgetting, but remaining plastic. PackNet strikes the best balance, combining low forgetting with near-zero forward transfer. 5.1. Baseline Comparison We evaluate MEAL against a set of widely used CL baselines. Fine-Tuning (FT) is a naive baseline where the policy is traine",
+   "ct metrics for all levels. Fine-Tuning (FT) has no CL mechanism and immediately forgets a task once it is left behind. AGEM achieves the best forward transfer, the only positive or near-zero values in the table, but pays for it with high forgetting. Regularization-based methods sit at the opposite end, reta",
+   " for it with high forgetting. Regularization-based methods sit at the opposite end, retaining past tasks well while showing strongly negative forward transfer. PackNet offers the best overall balance. It attains the highest average score at every difficulty level and keeps forgetting 6 MEAL: A Benchmark for",
+   "uggle to extract meaningful features and add unnecessary parameter overhead, making simple MLPs a better fit in this setting. near zero, with forward transfer closer to zero than the regularization methods. ER-ACE falls between these groups, forgetting less than FT and AGEM, while retaining more plasticity ",
+   "mmates update at once, and muddies credit assignment under the shared reward. These pressures are sharpest in the continual setting, as retention and transfer become harder. Without explicit communication or role allocation, IPPO cannot learn and retain coordination as the team grows. We conclude that CL be",
+   "e to the use of multiple output heads that isolate taskspecific outputs, mitigate gradient interference, and enable the shared backbone to learn more transferable features. ification and difficulty scaling of this window are detailed in Appendix D. We run 20-task sequences with Online EWC under partial obse",
+   "es every object family in I. R10 Handoff counter – if one agent cannot reach all families, a wall tile adjacent to both regions exists, enabling item transfer. 16 MEAL: A Benchmark for Continual MARL Rules R5–R10 rely on two depth-first searches (DFS) from the agent positions. The DFS explores floor and age",
+   "s the agent to retain and execute longer action sequences to successfully complete a recipe. Higher-level layouts also add demands for plasticity and transfer. The larger layout space introduces greater variability between tasks, making it harder to reuse learned behavior. These factors collectively lead to",
+   "Benchmark for Continual MARL Methods 0.125 EWC Online EWC Forgetting 0.100 0.075 Levels Level 1 Level 2 Level 3 0.050 0.025 0.000 0.6 0.4 0.2 Forward Transfer 0.0 Figure 14. Comparison of EWC and Online EWC across all difficulty levels on 20-task sequences, evaluated in terms of forward transfer and forgett",
+   "erms of forward transfer and forgetting. Each marker denotes a method’s performance at a given level. Online EWC consistently achieves higher forward transfer than EWC across all levels. Forgetting for Online EWC grows with difficulty, while for EWC it decreases. I.1. EWC vs. Online EWC: A Case Study EWC ac",
+   "ticity trade-off is favorable because plasticity demands are modest. This trade-off is visualized in Figure 14, where Online EWC shows higher forward transfer at every level, indicating it adapts to new layouts more readily. Notably, Online EWC’s forgetting rises with difficulty, while EWC’s decreases. The ",
+   "sts: in many layouts, loading the pot with 3 onions takes more steps than a single plate-and-deliver trip, making the chef the throughput bottleneck. Generalization also suffers as agents struggle to transfer knowledge when their roles change across tasks, since skills learned in one role do not apply to the",
+   " their roles change across tasks, since skills learned in one role do not apply to the other. This role-switching dynamic further exacerbates forward transfer challenges in continual learning. L.3. Coordination and Role Specialization The CL metrics in Section 5.1 track soup delivery, but in a cooperative s",
+   "rves Average Soup Delivery This section presents additional training and evaluation curves, providing a more detailed view of per-task evaluation and transfer. Figure 25 depicts the per-task evaluation curves of Level 1. Figure 26 illustrates forward transfer. 1.5 Task 1 Task 2 Task 3 Task 4 Task 5 Task 6 T",
+   "rmalized Soup ER-ACE 2.0 1.5 1.0 0.5 0.0 Normalized Soup PackNet 2.0 1.5 1.0 0.5 0.0 0.0 0.2 0.4 Environment steps 0.6 0.8 1.0 1e9 Figure 26. Forward transfer on Level 2. The green shaded areas depict positive transfer compared to the IPPO baseline, and the red shaded areas show negative transfer. 36 "
+  ]
+ },
+ {
+  "item": 38,
+  "criterion": "Q8",
+  "rule": "Q8 : un test statistique (t, Welch, Mann-Whitney, bootstrap avec intervalle, IQM de rliable avec intervalles stratifiés) est appliqué à une comparaison de l'article. Des barres d'erreur seules : `no`. Le mot « significant » au sens courant, sans test : `no`.",
+  "excerpts": [
+   "in tasks ranging from image generation to reinforcement learning. Nevertheless, these models suffer from prolonged inference latency, which imposes a significant computational bottleneck in RL with iterative sampling. To overcome this limitation, we propose a new framework named Moment Matching Q-Learning (Mo",
+   " al., 2012). Circumventing risky, costly, and inefficient online interactions, offline RL enables models to fully exploit prior data, and thus gained significant traction in safety-critical 1 School of Data and Information Science, University of North Carolina at Chapel Hill, Chapel Hill, USA. Correspondence ",
+   " our proposed framework. Overall Performance. Across all benchmarks, MoMa QL demonstrates consistent state-of-the-art or competitive performance. The significant improvements in Gym tasks (1.09× over Diffusion-QL) and robust results in Adroit and Kitchen domains validate the effectiveness of our MMDbased mome",
+   "stribution matching with reward maximization. Table 3 highlights the performance improvement of MoMa QL after online fine-tuning. Our method achieves significant gains, particularly on the challenging medium-replay datasets, where the offline initialization provides a strong starting point for further effecti",
+   "s (a, b) and noise parameters (pmean , pstd ). ing cost (≈ 21 − 23 seconds per 1k steps) regardless of task dimensionality, whereas baselines exhibit significant slowdowns on high-dimensional tasks. Figure 5. Training time (seconds per 1,000 steps) with respect to the sampling steps for MoMa QL. We report ave",
+   "xactly the same as the consistency training loss in the form of LCT = Ext ,x,t ∥fθ (xt , t) − fθ− (xr , r)∥ . From a moment-matching perspective, LCT significantly deviates from a proper divergence between distributions, as (i) LCT only conduct multi-particle estimation, which may pause mode collapse and trai",
+   "sks, demonstrating superior final performance. • On Medium-Replay datasets, our method excels, achieving 113.5 on Hopper-mr and 117.9 on Walker2d-mr, significantly outperforming Diffusion-QL (68.4 and 95.7, respectively). • On Medium-Expert datasets, MoMa QL remains competitive, with particularly strong resul",
+   "tains a consistent training cost (≈ 21 − 23s per 1k steps) across all tasks, demonstrating superior scalability compared to baselines which slow down significantly on higher-dimensional tasks (Adroit, Kitchen). All methods use comparable batch sizes and hardware configurations. C.5.2. I MPACT OF S AMPLING S T"
+  ]
+ },
+ {
+  "item": 39,
+  "criterion": "Y9",
+  "rule": "Y9 : la sensibilité à au moins un hyperparamètre est montrée (balayage ou variation d'au moins un hyperparamètre, avec une mesure de performance). Compte un hyperparamètre que l'article présente comme tel ; un paramètre réglé à l'inférence compte s'il est présenté comme un hyperparamètre. Une ablation de composant n'est pas un balayage d'hyperparamètre ; une variante présentée comme un composant reste une ablation ; une condition de l'environnement ne compte pas.",
+  "excerpts": [
+   "on quality with comparable computation time (after training). We demonstrate how our approach can handle problems with split delivery and explore the effect of such deliveries on the solution quality. Our proposed framework can be applied to other variants of the VRP such as the stochastic VRP, and has the p",
+   "f a given solution, then one can provide the signal required for solving the problem using our method. Unlike most classical heuristic methods, it is robust to problem changes, e.g., when a customer changes its demand value or relocates to a different position, it can automatically adapt the solution. Using ",
+   ".1 Results In this section, we compare the solutions found using our framework with those obtained from the Clarke-Wright savings heuristic (CW), the Sweep heuristic (SW), and Google’s optimization tools (OR-Tools). We run our tests on problems with 10, 20, 50 and 100 customer nodes and corresponding veh",
+   "e solution quality; for ClarkeWright, the numbers inside the parentheses are the randomization depth and randomization iterations parameters; and for Sweep, it is the number of random initial angles for grouping the nodes. Finally, we use Google’s OR-Tools [16], which is a more competitive baseline. See ",
+   " customer nodes. We observe that this ratio stays almost the same for RL with different decoders. In contrast, the run time for the Clarke-Wright and Sweep heuristics increases faster than linearly with the number of nodes. This observation is one motivation for applying our framework to more general com",
+   "ng our framework to more general combinatorial problems, since it suggests that our method scales well. Even though the greedy Clark-Wright and basic Sweep heuristics are fast for small instances, they do not provide competitive solutions. Moreover, for larger problems, our framework is faster than the r",
+   " by replacing (i, 0) and (0, j) with (i, j) 8: until no feasible merger is left 9: end for 10: end for 11: Return: route with the shortest length B.2 Sweep Heuristic The sweep heuristic [38] solves the VRP by breaking it into multiple TSPs. By rotating an arc emanating from the depot, it groups the nodes",
+   "or combinatorial optimization problems. OR-Tools contains one of the best available VRP solvers, which has implemented many 13 Algorithm 2 Randomized Sweep Algorithm 1: for each i ∈ N , compute angle αi , respective to depot location 2: l ← vehicle capacity 3: for r = 1, · · · , R do 4: select a random a",
+   " merge TSP tours to produce a VRP route 18: end for 19: Return: route with the shortest length heuristics (e.g., Clarke-Wright savings heuristic [9], Sweep heuristic [38], Christofides’ heuristic [8] and a few others) for finding an initial solution and metaheuristics (e.g. Guided Local Search [36], Tabu"
+  ]
+ },
+ {
+  "item": 40,
+  "criterion": "Q8",
+  "rule": "Q8 : un test statistique (t, Welch, Mann-Whitney, bootstrap avec intervalle, IQM de rliable avec intervalles stratifiés) est appliqué à une comparaison de l'article. Des barres d'erreur seules : `no`. Le mot « significant » au sens courant, sans test : `no`.",
+  "excerpts": [
+   " information is salient enough to store in memory, the memory network introduces two main disadvantages. The first disadvantage is that a potentially significant amount of redundant information could be stored. The second disadvantage is that a domain expert must choose what to store in the memory, e.g. for t",
+   "can access an external memory resource by executing differentiable read and write operations. This allows the DNC to act and memorize in a structured manner resembling a computer processor, where read and write operations are sequential and data is store distinctly from computation. The DNC has been use",
+   ". Wayne, M. Reynolds, T. Harley, I. Danihelka, A. Grabska-Barwiska, S. G. Colmenarejo, E. Grefenstette, T. Ramalho, J. Agapiou, A. P. Badia, K. M. Hermann, Y. Zwols, G. Ostrovski, A. Cain, H. King, C. Summerfield, P. Blunsom, K. Kavukcuoglu, and D. Hassabis. Hybrid computing using a neural network with "
+  ]
+ },
+ {
+  "item": 41,
+  "criterion": "Q8",
+  "rule": "Q8 : un test statistique (t, Welch, Mann-Whitney, bootstrap avec intervalle, IQM de rliable avec intervalles stratifiés) est appliqué à une comparaison de l'article. Des barres d'erreur seules : `no`. Le mot « significant » au sens courant, sans test : `no`.",
+  "excerpts": [
+   "heng Li1†, Ahmed H. Qureshi1† Purdue University 1 arXiv:2602.17078v1 [cs.MA] 19 Feb 2026 A BSTRACT Multi-agent reinforcement learning (MARL) has made significant progress in recent years, but most algorithms still rely on a discrete-time Markov Decision Process (MDP) with fixed decision intervals. This formul",
+   "TH S AFETY C ONCERNS Multi-agent scenarios often raise critical safety concerns, and directly learning under combined reward and safety signals poses significant challenges. A number of studies have explored safe MARL frameworks to address these issues (Gu et al., 2023b; ElSayed-Aly et al., 2021; Gu et al., 2",
+   "ontinuous-time multi-agent systems (e.g., Tayal et al. (2025)), but they assume fully known system 2 dynamics and rely on optimal control algorithms, significantly restricting applicability. In more realistic scenarios, where dynamics are only partially known or highly complex, such methods fail to provide pr",
+   "ance of our full method compared with its ablation variants across representative continuous-time MPE tasks. Removing the target loss or the VGI loss significantly degrades performance, whereas EPI High Residual Loss Weight 3.5 removing the residual loss has only a miHigh Target Loss Weight High VGI Loss Weig",
+   "larger costs. SpecifCost Cost ically, a smaller z (e.g., z ∗ − 0.5 zmax z ∗ − 0.2 zmax z∗ z ∗ + 0.2 zmax z ∗ + 0.5 zmax z ∗ −0.2zmax , z ∗ −0.5zmax ) significantly increases the Figure 9: Sensitivity test of different z choices. violation rate while only slightly reducing cost. Getting back to the epigraph fo",
+   "∞ output regulation of linear continuous-time multi-agent systems. Automatica, 148:110768, 2023. B Ravi Kiran, Ibrahim Sobh, Victor Talpaert, Patrick Mannion, Ahmad A Al Sallab, Senthil Yogamani, and Patrick Pérez. Deep reinforcement learning for autonomous driving: A survey. IEEE transactions on intel",
+   " Noise and High Noise introduce much larger deviations in the state propagation. These disturbances accumulate over time, causing the PINN to receive significantly deviated training signals. Since our method does not incorporate explicit uncertainty modeling or stochastic HJB formulations, the serious noise d"
+  ]
+ },
+ {
+  "item": 42,
+  "criterion": "Q7",
+  "rule": "Q7 : l'évaluation se fait sur des conditions tenues à part : tâches, environnements, graines aléatoires d'environnement ou jeux de données non vus à l'entraînement ni au réglage. Pour un article sur les grands modèles de langage, des bancs d'essai distincts des données d'entraînement RL comptent `yes`. Article théorique à expériences jouets : `no`.",
+  "excerpts": [
+   " given in Appendix I. The realizable assumption that {Zθ : θ ∈ Θ} is sufficiently large such that it contains {Yik }ni=1 implies good in-distribution generalization performance in each phase of Neural FZI, which is also adopted in [67]. This connection is also consistent with the mean-preserving property of ",
+   "(x ∈ ∆E )/∆, hθ (x)) = δE[Z target (s,a)] , where δE[Z target (s,a)] is a Dirac Delta function centered at E [Z target (s, a)] and can be viewed as a generalized probability density function. That being said, the limiting probability density function (pdf) converges to a Dirac delta function at E [Z target ("
+  ]
+ },
+ {
+  "item": 43,
+  "criterion": "Q8",
+  "rule": "Q8 : un test statistique (t, Welch, Mann-Whitney, bootstrap avec intervalle, IQM de rliable avec intervalles stratifiés) est appliqué à une comparaison de l'article. Des barres d'erreur seules : `no`. Le mot « significant » au sens courant, sans test : `no`.",
+  "excerpts": [
+   "on of high-reward states in the target domain that do not fall within these regions. Consequently, such methods often fail when the dynamics shift is significant or the optimal trajectories lie outside the low-shift regions. To overcome this limitation, we propose MOBODY, a Model-Based Off-Dynamics Offline RL",
+   "While RL has led to impressive successes in many domains, such as autonomous driving (Kiran et al., 2021) and healthcare (Lee et al., 2023), it faces significant constraints on interaction with the environment due to safety or cost concerns. One solution is to learn a policy from a pre-collected offline datas",
+   "hat do not fall within these regions. Consequently, such 1 Published as a conference paper at ICLR 2026 methods often fail when the dynamics shift is significant or the optimal/high-reward trajectories lie outside the low-shift regions. So we wonder, can we directly optimize the policy with the target transit",
+   "th a combined source transitions. As shown in Figure 1, MOPO that di- and target dataset. rectly learns dynamics with combined source and target data significantly underperforms MOBODY, which is specifically optimized to learn the target dynamics. We further propose a practical and useful target Q-weighted be",
+   "ns/trajectories collected by some unknown behavior policy. Note that in the off-dynamics setting, the number of transitions from the target domain is significantly smaller than the source, i.e., src | |Dtrg | ≪ |Dsrc |, and normally the ratio |D |Dtrg | can vary from 10 to 200. In our paper, we follow the ODR",
+   "], (6) where λrep is a scalar controlling the weight of the representation learning term and set to be 1 in the experiments, as we notice there is no significant performance difference with different λrep . src And the representation loss is summing the source and target loss: Lcycle = Lsrc cycle + Lcycle , a",
+   "ft is larger. Additionally, in larger shift scenarios, such as HalfCheetah-Friction-0.1, Ant-Friction-5.0, and Walker2d-Friction-5.0, MOBODY achieves significant improvement over baseline methods, which receive very low rewards in the target domain. We also summarize the performance comparison under different",
+   " C.3, showing that our method performs the best in 29 out of 40 tasks and achieves an overall 25% improvement in all tasks. DARA and BOSA do not have significant improvements compared with IQL. The DARA reward augmentation term, based on a KL divergence between source and target dynamics, can become ill-defin",
+   "rd (c) Manipulation Task Figure 3: Aggregation experimental results on MuJoco kinematic and morphology shift task, and Manipulation tasks. Our method significantly outperforms the baselines besides Manipulation medium task. Detailed results of each environment, shift type, and shift level are referred to Tabl",
+   "namics model trained on target data only, while the policy learning follows the same method as in MOBODY. Table 2 demonstrates that the A1 variant is significantly degraded compared with our proposed MOBODY algorithm in Walker2d. This indicates that only using the existing dynamics models trained on the targe",
+   "nent in isolation, and each component is important. As further supported by Section 4.3.1, where removing the BC weight for the MOBODY will lead to a significant drop. 4.3.4 E MPIRICAL VALIDATION OF THE TARGET-Q WEIGHTED BC LOSS In Figure 4, comparing (B2) and (B4), which differ only in the BC weighting, show",
+   ". Experimental results on MuJoCo and Adroit benchmarks demonstrate that MOBODY consistently outperforms prior methods, particularly in scenarios with significant dynamic mismatches, highlighting its robustness and generalization capabilities. Our method shows the potential of data augmentation in policy learn",
+   "atures for transfer in reinforcement learning. In Advances in Neural Information Processing Systems, volume 30, pp. 4055–4065, 2017. Nicolò Botteghi, Mannes Poel, and Christoph Brune. Unsupervised representation learning in deep reinforcement learning: A review. IEEE Control Systems, 45(2):26–68, 2025. ",
+   "21810–21823, 2020. Diederik P Kingma, Max Welling, et al. Auto-encoding variational bayes, 2013. B Ravi Kiran, Ibrahim Sobh, Victor Talpaert, Patrick Mannion, Ahmad A Al Sallab, Senthil Yogamani, and Patrick Pérez. Deep reinforcement learning for autonomous driving: A survey. IEEE transactions on intell",
+   "Contrastive representation for data filtering in cross-domain offline reinforcement learning. arXiv preprint arXiv:2405.06192, 2024. Huan Xu and Shie Mannor. The robustness-performance tradeoff in markov decision processes. Advances in Neural Information Processing Systems, 19, 2006. Kang Xu, Chenjia Ba",
+   "licies against worst-case transition dynamics within a predefined uncertainty set (Nilim & Ghaoui, 2003; El Ghaoui & Nilim, 2005; Iyengar, 2005; Xu & Mannor, 2006; Zhou et al., 2021; Liu & Xu, 2024a; Lu et al., 2024; Liu & Xu, 2024b; Zhang et al., 2024; Clavier et al., 2024; Liu et al., 2024b; He et al.",
+   "1,000, 2,000, and 5,000 transitions. We observe performance degradation in MOBODY as the target dataset size decreases. But this decrease is not that significant, showing our method also works well when the target data size is small. C.5 H YPERPARAMETERS A NALYSIS AND C OMPUTATIONAL C OST Hyperparameter Analy",
+   "es that we have a similar computational cost and running time compared to the existing model-based method, as the additional loss calculation doesn’t significantly increase the computation time. 22 Published as a conference paper at ICLR 2026 Table 10: Running time comparison on A5000, AMD Ryzen Threadripper ",
+   " matches recent ODRL baselines across almost all benchmark settings. In particular, in large-shift cases where existing methods fail, MOBODY performs significantly better than the baselines. This suggests that our shared-mapping assumption is not overly restrictive and remains applicable in many off-dynamics "
+  ]
+ }
+]

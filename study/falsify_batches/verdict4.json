@@ -1,0 +1,233 @@
+[
+ {
+  "item": 108,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Aucun extrait n'établit une évaluation sur conditions tenues à part ; il s'agit d'attaques et de travaux connexes."
+ },
+ {
+  "item": 109,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« generalization » et « out-of-distribution » employés au sens de capacité ou de régularisation, sans conditions tenues à part."
+ },
+ {
+  "item": 110,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Extrait sur la normalisation de l'avantage, sans rapport avec Q7."
+ },
+ {
+  "item": 111,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« significant » au sens courant (coût de communication), aucun test."
+ },
+ {
+  "item": 112,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« significantly outperforms » sans test statistique ; « bootstrapping » dans un autre sens."
+ },
+ {
+  "item": 113,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "La généralisation porte sur d'autres algorithmes, pas sur des conditions d'évaluation tenues à part."
+ },
+ {
+  "item": 114,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« significantly » au sens courant, aucun test nommé."
+ },
+ {
+  "item": 115,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« unseen states » et « generalization » dans un sens général, sans évaluation tenue à part."
+ },
+ {
+  "item": 116,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« not significant » affirmé sans test statistique."
+ },
+ {
+  "item": 117,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« significant » au sens courant partout, aucun test."
+ },
+ {
+  "item": 118,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Nombre d'acteurs CPU et un GPU K80 par learner, sans durée : pas une quantité de calcul."
+ },
+ {
+  "item": 119,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Les ± décrivent les plages des jeux de données, pas une incertitude sur les résultats."
+ },
+ {
+  "item": 120,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« significant » au sens courant, aucun test."
+ },
+ {
+  "item": 121,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "La variation de longueur de chemin est une condition des données, pas un hyperparamètre ; le reste est une ablation."
+ },
+ {
+  "item": 122,
+  "turn": false,
+  "uncertain": true,
+  "excerpt": 57,
+  "reason": "Hopper et Cube sont présentés comme hors du jeu principal, mais l'entraînement s'y fait aussi ; on ne sait pas s'ils sont tenus à part au sens de la règle."
+ },
+ {
+  "item": 123,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« significantly » et « bootstrap » au sens courant, aucun test."
+ },
+ {
+  "item": 124,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Aucune quantité de calcul chiffrée."
+ },
+ {
+  "item": 125,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Seuls « significantly » au sens courant et un écart type : pas de test."
+ },
+ {
+  "item": 126,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« significantly » sans test nommé."
+ },
+ {
+  "item": 127,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Le bruit ajouté aux observations fait partie de la méthode, ce n'est pas une incertitude sur les résultats."
+ },
+ {
+  "item": 128,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Remarque théorique, sans évaluation."
+ },
+ {
+  "item": 129,
+  "turn": false,
+  "uncertain": true,
+  "excerpt": 2,
+  "reason": "Seuils de significativité sur les prédicteurs d'une régression comportementale, pas sur une comparaison de méthodes ; le reste est la checklist NeurIPS."
+ },
+ {
+  "item": 130,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« generalize » au sens mathématique (normes), sans évaluation tenue à part."
+ },
+ {
+  "item": 131,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« significant » au sens courant ; trois exécutions sans test."
+ },
+ {
+  "item": 132,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« generalize well to challenging tasks » sans conditions tenues à part."
+ },
+ {
+  "item": 133,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« generalization » au sens d'une fonction de valeur, sans rapport avec Q7."
+ },
+ {
+  "item": 134,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« significant » au sens courant."
+ },
+ {
+  "item": 135,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Ablation de composants et réglages de récompense (condition de l'environnement), pas de balayage d'hyperparamètre."
+ },
+ {
+  "item": 136,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Il s'agit de transfert de l'offline vers l'online et de généralisation à d'autres références, pas de conditions tenues à part."
+ },
+ {
+  "item": 137,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« significantly » sans test ; cartes générées aléatoirement sans test statistique."
+ },
+ {
+  "item": 138,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« Generalization » au sens d'initialisation, pas d'évaluation tenue à part."
+ },
+ {
+  "item": 139,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "Hyperparamètres de la méthode proposée seulement, pas de ceux des références."
+ },
+ {
+  "item": 140,
+  "turn": false,
+  "uncertain": false,
+  "excerpt": null,
+  "reason": "« compute » au sens de calculer une politique, pas de quantité de calcul."
+ }
+]

@@ -32,6 +32,8 @@ SUFFIX = os.environ.get("SUFFIX", "")  # deviation 29: the output becomes <name>
 
 ld = lambda f: {k: v for k, v in json.load(open(f)).items() if not k.startswith("_")} if os.path.exists(f) else {}
 ov1, ov2 = ld("overrides.json"), ld("overrides_v2.json")
+for k, d in ld(os.environ.get("OVERRIDES_EXTRA", "")).items():  # deviation 27: decisions turned by the arbiter, on top
+    ov1.setdefault(k, {}).update(d); ov2.setdefault(k, {}).update(d)
 OLD = load("ABCDEF")
 V2READ = {}
 for d in PRIMARY + sorted(os.path.basename(x) for x in glob.glob("codes_v2/K*")):
