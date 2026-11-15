@@ -16,6 +16,17 @@ GRPO au lieu de trois. Les deux extensions sont inscrites dans les protocoles av
 (écart 12 de `sim/SIM_PROTOCOL.md`, écart 14 de `sim/llm/LLM_PROTOCOL.md`). Les chiffres ci-dessous
 viennent du document daté du 13 novembre 2026.
 
+**Ce qu'un lecteur peut vérifier, et ce qui repose sur notre parole.** Les protocoles disent, pour chaque
+règle, si elle a été écrite avant ou après les résultats ; une relecture critique de ce dépôt a trouvé
+plusieurs de ces affirmations fausses dans leurs détails, et les corrections sont datées (écart 14 de
+`sim/SIM_PROTOCOL.md`, écart 15 de `sim/llm/LLM_PROTOCOL.md`). Le dépôt est devenu public le 15 novembre
+2026, et son premier commit (9 novembre) contient déjà des résultats à côté des protocoles : pour tout ce
+qui précède cette date, l'ordre d'écriture repose sur notre parole et sur les dates des commits, que leur
+auteur aurait pu falsifier. Chaque tentative d'entraînement, y compris celles arrêtées puis relancées, est
+listée dans `sim/logs/attempts_reconstructed.csv` (jusqu'au 15 novembre) et `sim/logs/attempts.jsonl`
+(depuis). Ce que chacun peut vérifier sans nous croire : chaque nombre, recalculé à partir des résultats
+commités, et chaque décision du sondage, face à la citation et à la page sur lesquelles elle repose.
+
 ## Ce que nous avons trouvé
 
 - **Quatre pratiques ont changé.** Face à notre propre lecture de 2018, les articles de RL classique
@@ -33,7 +44,8 @@ viennent du document daté du 13 novembre 2026.
   l'écart entre graines aléatoires. Appliqué à nos essais de TRPO, il dépasse 9 dans 38 % des tirages
   au hasard.
 - **La robustesse.** Sur quatre algorithmes, le meilleur change avec la tâche. Une physique modifiée
-  de 20 % bouleverse le classement sur Hopper : le premier y finit dernier.
+  de 20 % bouleverse le classement sur Hopper : le premier y finit dernier (une description choisie
+  après avoir vu les résultats, sans test : écart 11).
 - **Les modèles de langue.** Dans notre GRPO écrit à la main, une part du gain mesuré vient des
   réponses coupées à 160 jetons, une leçon que la récompense au hasard n'enseigne jamais.
 

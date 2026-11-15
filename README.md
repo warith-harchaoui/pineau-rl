@@ -16,6 +16,16 @@ Both extensions were written into the protocols before any new run (deviation 12
 `sim/SIM_PROTOCOL-en.md`, deviation 14 of `sim/llm/LLM_PROTOCOL-en.md`). The figures below come from
 the document dated 13 November 2026.
 
+**What a reader can check, and what rests on our word.** The protocols say, for each rule, whether it was
+written before or after the results; a critical review of this repository found several of those statements
+wrong in their details, and the corrections are dated (deviation 14 of `sim/SIM_PROTOCOL-en.md`, deviation 15
+of `sim/llm/LLM_PROTOCOL-en.md`). The repository became public on 15 November 2026, and its first commit
+(9 November) already holds results next to the protocols: for everything before that date, the order of
+writing rests on our word and on the commit dates, which their author could have forged. Every training
+attempt, including those stopped and relaunched, is listed in `sim/logs/attempts_reconstructed.csv` (until
+15 November) and `sim/logs/attempts.jsonl` (since). What anyone can check without trusting us: every number
+recomputed from the committed results, and every survey decision against the quote and page it rests on.
+
 ## What we found
 
 - **Four practices changed.** Against our own reading of 2018, classical RL papers of 2026 link their
@@ -30,7 +40,8 @@ the document dated 13 November 2026.
   published script measures the spread between episodes and ignores the spread between random seeds.
   Applied to our TRPO runs, it exceeds 9 in 38% of random draws.
 - **Robustness.** On four algorithms, the best one changes with the task. Physics modified by 20%
-  upends the ranking on Hopper: the leader ends last.
+  upends the ranking on Hopper: the leader ends last (a description chosen after seeing the results,
+  with no test: deviation 11).
 - **Language models.** In our hand-written GRPO, part of the measured gain comes from answers cut off
   at 160 tokens, a lesson the random reward never teaches.
 
