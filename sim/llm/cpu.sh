@@ -5,7 +5,8 @@ cd "$(dirname "$0")"
 export DEVICE=cpu OMP_NUM_THREADS=2 EVAL_EVERY=50 TOKENIZERS_PARALLELISM=false MICRO=8
 log() { echo "$(date '+%F %T') $*" >> logs/cpu.out; }
 done_run() { grep -q '"step": 100,.*pass1' "results/$1/mul2/$2/seed$3.jsonl" 2>/dev/null; }
-for spec in "random 1" "random 2" "true 2"; do
+IFS=, read -r -a SPEC_LIST <<< "${SPECS:-random 1,random 2,true 2}"  # deviation 14: SPECS="true 3,random 3,..."
+for spec in "${SPEC_LIST[@]}"; do
   set -- $spec
   done_run qwen05 "$1" "$2" && continue
   for attempt in 1 2; do

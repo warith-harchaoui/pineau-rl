@@ -8,7 +8,7 @@ export PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.45 PYTORCH_MPS_LOW_WATERMARK_RATIO=0.3
 log() { echo "$(date '+%F %T') $*" >> logs/night.out; }
 hour() { date +%H | sed 's/^0//'; }
 night() { [ "$(hour)" -ge 23 ] || [ "$(hour)" -lt 6 ]; }
-main_pids() { pgrep -f "env/bin/python run.py (sac|crossq|ppo_sbx)"; }
+main_pids() { pgrep -f "env/bin/python (run|dose).py"; }  # every simulation job (deviation 12)
 pause_main() { for p in $(main_pids); do kill -STOP "$p"; done; log "paused main queue: $(main_pids | tr '\n' ' ')"; }
 resume_main() { for p in $(main_pids); do kill -CONT "$p"; done; log "resumed main queue"; }
 trap resume_main EXIT
@@ -29,7 +29,7 @@ one() {  # one <model> <tag> <reward> <seed> <micro>
 all_runs() {  # returns 1 as soon as the night window closes
   for spec in "unsloth/Llama-3.2-1B-Instruct llama1 2"; do  # the Qwen runs go on CPU (cpu.sh, écart 11)
     set -- $spec
-    for seed in 0 1 2; do for reward in true random; do one "$1" "$2" "$reward" "$seed" "$3" || return 1; done; done
+    for seed in ${SEEDS:-0 1 2}; do for reward in true random; do one "$1" "$2" "$reward" "$seed" "$3" || return 1; done; done
   done
 }
 while true; do
