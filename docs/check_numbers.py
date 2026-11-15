@@ -25,8 +25,10 @@ b1 = J("sim/analysis/b1_trpo.json")
 import os
 os.chdir(ROOT / "study")
 from load import load
-ov = {k: v for k, v in json.load(open("overrides.json")).items() if not k.startswith("_")}
-val = lambda d, k: ov.get(k, {}).get(d["id"], d["criteria"].get(k, {}).get("value"))
+from pineau_rl.fmt import ci, half_up, num, pct, pts  # half-up rounding, French and English styles
+from pineau_rl.grid import load_overrides, value_v1
+ov = load_overrides("overrides.json")
+val = lambda d, k: value_v1(d, k, ov)  # v1 only: this reading and overrides.json, as analyze_final.py
 D = load("ABCDE")
 exp = [d for d in D.values() if val(d, "Q1") != "no"]
 rl = [d for d in exp if val(d, "X5") != "theory"]
@@ -35,33 +37,6 @@ llm = [d for d in exp if val(d, "X5") == "llm"]
 classic = [d for d in exp if val(d, "X5") == "classic"]
 yes = lambda ds, k: sum(val(d, k) == "yes" for d in ds)
 applicable = lambda ds, k: sum(val(d, k) in ("yes", "no") for d in ds)
-
-
-def half_up(x, nd=0):
-    """Round half away from zero, as a reader does: 1.15 -> 1.2, -66.5 -> -67 (Python's round is to even)."""
-    q = Decimal(1).scaleb(-nd)
-    return Decimal(str(x)).quantize(q, rounding=ROUND_HALF_UP)
-
-
-def pct(x, nd=0, lang="fr"):
-    s = str(half_up(Decimal(str(x)) * 100, nd))
-    return (s.replace(".", ",") + " %") if lang == "fr" else s + "%"
-
-
-def num(x, lang="fr"):
-    s = f"{int(half_up(x)):,}"
-    return s.replace(",", " ") if lang == "fr" else s
-
-
-def ci(lo, hi, lang="fr"):
-    return f"[{int(half_up(Decimal(str(lo)) * 100))}, {int(half_up(Decimal(str(hi)) * 100))}]"
-
-
-def pts(t, lang="fr"):
-    lo, hi = int(half_up(Decimal(str(t["lo"])) * 100)), int(half_up(Decimal(str(t["hi"])) * 100))
-    m = "−" if lang == "fr" else "−"
-    f = lambda v: f"{m}{abs(v)}" if v < 0 else (f"+{v}" if lang == "fr" else f"+{v}")
-    return f(lo), f(hi)
 
 
 # (description, French string, English string). Each string is built from the data, never typed by hand.
