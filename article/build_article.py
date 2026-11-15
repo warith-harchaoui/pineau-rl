@@ -26,7 +26,7 @@ Light markup, one line per block (paragraphs separated by a blank line):
   BIBLIO titre | phrase d'introduction
   REF n | notice (HTML) | note
 Dans le texte : [[n]] appel de note, *italique*, **gras**, [texte](url) lien externe,
-{{/chemin}} lien interne au site (url()). REPO_URL est l'adresse du dépôt, à remplacer à la publication.
+{{/chemin}} lien interne au site (url()). Les liens vers le dépôt (https://github.com/warith-harchaoui/pineau-rl) s'ouvrent dans un nouvel onglet.
 En français, les espaces avant : ; ? ! % » et après « deviennent insécables, comme l'espace des milliers.
 """
 import argparse
@@ -48,7 +48,7 @@ def inline(s: str, lang: str) -> str:
     s = re.sub(r"\[\[(\d+)\]\]", r'<sup class="drz-ref"><a class="drz-text" href="#ref-\1">\1</a></sup>', s)
     s = re.sub(r"\*\*(.+?)\*\*", r'<strong class="drz-text">\1</strong>', s)
     s = re.sub(r"(?<![*\w])\*(?!\s)(.+?)(?<!\s)\*(?!\w)", r'<em class="drz-text">\1</em>', s)
-    s = re.sub(r"\[([^\]]+)\]\((REPO_URL[^)\s]*)\)", r'<a class="drz-text" href="\2" target="_blank" rel="noopener">\1</a>', s)
+    s = re.sub(r"\[([^\]]+)\]\((https://github\.com/warith-harchaoui/pineau-rl[^)\s]*)\)", r'<a class="drz-text" href="\2" target="_blank" rel="noopener">\1</a>', s)
     s = re.sub(r"\[([^\]]+)\]\((https?://[^)\s]+)\)", r'<a class="drz-text" href="\2" target="_blank" rel="noopener">\1</a>', s)
     s = re.sub(r"\[([^\]]+)\]\{\{([^}]+)\}\}", r'<a class="drz-text" href="<?= url(\'\2\') ?>">\1</a>', s)
     s = re.sub(r"\[([^\]]+)\]\((#[^)]+)\)", r'<a class="drz-text" href="\2">\1</a>', s)

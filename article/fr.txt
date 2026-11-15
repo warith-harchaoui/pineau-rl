@@ -165,7 +165,7 @@ La liste de contrôle s'adresse aux auteurs. Le lecteur d'un article, d'un commu
 - **Quel calcul ?** Un résultat dont personne d'autre ne paie le calcul ne se reproduit pas.
 
 ## le-document-complet | Le document complet et le code
-Cet article résume un document bien plus long, qui reprend les seize failles une à une, avec tous les chiffres, leurs intervalles et leurs limites : [le document complet](REPO_URL/blob/main/docs/conclusions.md). Le code, les protocoles écrits d'avance, les journaux d'entraînement, les lectures d'articles avec leurs citations et les scripts qui régénèrent chaque figure se trouvent dans [le dépôt du projet](REPO_URL)[[12]].
+Cet article résume un document bien plus long, qui reprend les seize failles une à une, avec tous les chiffres, leurs intervalles et leurs limites : [le document complet](https://github.com/warith-harchaoui/pineau-rl/blob/main/docs/conclusions.md). Le code, les protocoles écrits d'avance, les journaux d'entraînement, les lectures d'articles avec leurs citations et les scripts qui régénèrent chaque figure se trouvent dans [le dépôt du projet](https://github.com/warith-harchaoui/pineau-rl)[[12]].
 
 Nos verdicts valent pour le RL classique, lu par des agents de modèle de langue sur cinquante articles de chaque côté. Un changement de dix points y passe encore inaperçu. Joelle Pineau demandait que la critique s'applique d'abord à soi : la nôtre est en ligne, chiffre par chiffre, pour qui voudra la refaire.
 
@@ -181,4 +181,4 @@ REF 8 | Agarwal, R., Schwarzer, M., Castro, P. S., Courville, A. et Bellemare, M
 REF 9 | Raffin, A. (2020). *RL Baselines3 Zoo*. [github.com](https://github.com/DLR-RM/rl-baselines3-zoo) | Le recueil de réglages publiés dont la recette a vieilli avec les bibliothèques.
 REF 10 | Shao, R., Li, S. S., Xin, R. et al. (2025). *Spurious Rewards: Rethinking Training Signals in RLVR*. [arxiv.org](https://arxiv.org/abs/2506.10947) | La récompense tirée au sort qui améliore Qwen, mais pas Llama ni OLMo.
 REF 11 | Shao, Z., Wang, P., Zhu, Q. et al. (2024). *DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models*. [arxiv.org](https://arxiv.org/abs/2402.03300) | L'algorithme GRPO, que nous avons écrit nous-mêmes pour le volet des modèles de langue.
-REF 12 | Harchaoui, W. (2026). *Apprentissage par renforcement : A-t-on écouté Joelle Pineau en 2018 ?* Document complet, protocoles, données et code. [Dépôt du projet](REPO_URL) | Le document dont cet article est tiré, avec chaque chiffre et ses sources.
+REF 12 | Harchaoui, W. (2026). *Apprentissage par renforcement : A-t-on écouté Joelle Pineau en 2018 ?* Document complet, protocoles, données et code. [Dépôt du projet](https://github.com/warith-harchaoui/pineau-rl) | Le document dont cet article est tiré, avec chaque chiffre et ses sources.

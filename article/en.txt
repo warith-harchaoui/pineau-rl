@@ -165,7 +165,7 @@ The checklist is addressed to authors. The reader of a paper, a press release or
 - **What compute?** A result whose compute nobody else pays for is not reproduced.
 
 ## the-full-document | The full document and the code
-This article summarises a much longer document, which goes through the sixteen flaws one by one, with every number, its interval and its limits: [the full document](REPO_URL/blob/main/docs/conclusions-en.md). The code, the protocols written in advance, the training logs, the paper readings with their quotations and the scripts that regenerate every figure are in [the project repository](REPO_URL)[[12]].
+This article summarises a much longer document, which goes through the sixteen flaws one by one, with every number, its interval and its limits: [the full document](https://github.com/warith-harchaoui/pineau-rl/blob/main/docs/conclusions-en.md). The code, the protocols written in advance, the training logs, the paper readings with their quotations and the scripts that regenerate every figure are in [the project repository](https://github.com/warith-harchaoui/pineau-rl)[[12]].
 
 Our verdicts hold for classical RL, read by language model agents on fifty papers on each side. A change of ten points still slips by unnoticed there. Joelle Pineau asked for criticism to apply to oneself first: ours is online, number by number, for anyone who wants to redo it.
 
@@ -181,4 +181,4 @@ REF 8 | Agarwal, R., Schwarzer, M., Castro, P. S., Courville, A. and Bellemare, 
 REF 9 | Raffin, A. (2020). *RL Baselines3 Zoo*. [github.com](https://github.com/DLR-RM/rl-baselines3-zoo) | The collection of published settings whose recipe has aged with the libraries.
 REF 10 | Shao, R., Li, S. S., Xin, R. et al. (2025). *Spurious Rewards: Rethinking Training Signals in RLVR*. [arxiv.org](https://arxiv.org/abs/2506.10947) | The reward drawn by chance that improves Qwen, but neither Llama nor OLMo.
 REF 11 | Shao, Z., Wang, P., Zhu, Q. et al. (2024). *DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models*. [arxiv.org](https://arxiv.org/abs/2402.03300) | The GRPO algorithm, which we wrote ourselves for the language model part.
-REF 12 | Harchaoui, W. (2026). *Reinforcement Learning: Did we listen to Joelle Pineau in 2018?* Full document, protocols, data and code. [Project repository](REPO_URL) | The document this article is drawn from, with every number and its sources.
+REF 12 | Harchaoui, W. (2026). *Reinforcement Learning: Did we listen to Joelle Pineau in 2018?* Full document, protocols, data and code. [Project repository](https://github.com/warith-harchaoui/pineau-rl) | The document this article is drawn from, with every number and its sources.
