@@ -9,28 +9,24 @@ Each reading: share of draws with p < 0.05, 95th percentile of |t|, share of dra
 groups drawn at random and for groups sorted by final score.
 Run from sim/: env-an/bin/python analysis/b1_trpo.py  -> analysis/b1_trpo.json
 """
-import csv, json
+import json
 import numpy as np
-from scipy import stats
+from pineau_rl.runs import read_run, run_path
+from pineau_rl.stats import welch_curve, welch_pooled
 
 HENDERSON_T = 9.0916  # |t| of their figure 5 (arXiv 1709.06560v3)
 
 
 def curves(algo):
-    files = [f"results/{algo}/HalfCheetah-v5/seed{s}.csv" for s in range(30)]  # explicit seeds 0 to 29
-    C = np.array([[float(r["eval_mean"]) for r in csv.DictReader(open(f))] for f in files])
+    runs = [read_run(run_path("results", algo, "HalfCheetah-v5", s)) for s in range(30)]  # explicit seeds 0 to 29
+    C = np.array([[float(r["eval_mean"]) for r in rows] for rows in runs])
     assert C.shape == (30, 20), (algo, C.shape)
     return C
 
 
 def readings(a, b):
-    t = stats.ttest_ind(a, b, axis=0, equal_var=False)
-    va, vb = a.var(axis=0, ddof=1) / len(a), b.var(axis=0, ddof=1) / len(b)
-    df = (va + vb) ** 2 / (va ** 2 / (len(a) - 1) + vb ** 2 / (len(b) - 1))
-    mt = t.statistic.mean()
-    pooled = stats.ttest_ind(a.ravel(), b.ravel(), equal_var=False)
-    return dict(mean_t=(mt, 2 * stats.t.sf(abs(mt), df.mean())), mean_p=(mt, t.pvalue.mean()),
-                pooled=(pooled.statistic, pooled.pvalue))
+    w = welch_curve(a, b)
+    return dict(mean_t=(w["mean_t"], w["p_mean_t"]), mean_p=(w["mean_t"], w["mean_p"]), pooled=welch_pooled(a, b))
 
 
 def run(C, sort, rng, N=10000):

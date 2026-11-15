@@ -1,10 +1,10 @@
 """E1, as pre-registered in SIM_PROTOCOL.md: same code, 30 seeds of PPO-SB3 on HalfCheetah-v5."""
-import csv, json
+import json
 import numpy as np
 from scipy import stats
-F = np.array([float(list(csv.DictReader(open(f)))[-1]['eval_mean']) for f in sorted(f'results/ppo_sb3/HalfCheetah-v5/seed{s}.csv' for s in range(30))])  # explicit seeds 0 to 29, string order
+from pineau_rl.runs import finals
+F = finals('results', 'ppo_sb3', 'HalfCheetah-v5', sorted(range(30), key=str), 1_000_000, strict=True)  # explicit seeds 0 to 29, string order of the files; every run at 1M steps
 assert len(F) == 30
-assert all(int(list(csv.DictReader(open(f'results/ppo_sb3/HalfCheetah-v5/seed{s}.csv')))[-1]['step']) == 1_000_000 for s in range(30))
 rng = np.random.default_rng(2018)
 res = dict(n=30, mean=F.mean(), sd=F.std(ddof=1), min=F.min(), max=F.max(), median=np.median(F), cv=F.std(ddof=1)/F.mean(), shapiro_p=stats.shapiro(F).pvalue)
 def draws(k, N=10000):

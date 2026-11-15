@@ -36,31 +36,27 @@ def evaluate_official():
 
 
 def stats_official():
-    from rliable import metrics
-    from rliable.library import get_interval_estimates
+    from pineau_rl.bootstrap import iqm_interval, probability_of_improvement_bootstrap
     np.random.seed(2026)  # rliable draws from the global generator and ignores random_state (SIM_PROTOCOL.md, deviation 13)
     RS = np.random.RandomState(2026)
     from scipy import stats
-    from statsmodels.stats.multitest import multipletests
+    from pineau_rl.stats import holm
     off = np.array(list(json.load(open("analysis/e6_official_eval.json")).values()))
     finals = lambda tag: np.array([float(list(csv.DictReader(open(f)))[-1]["eval_mean"])
                                    for f in sorted(glob.glob(f"results/{tag}/Hopper-v4/seed*.csv"))])
     G = {"official v4": off, "zoofix v4": finals("ppo_sb3_zoofix"), "default v4": finals("ppo_sb3")}
     assert all(len(v) == 10 for v in G.values()), {k: len(v) for k, v in G.items()}
-    pe, ci = get_interval_estimates({k: v[:, None] for k, v in G.items()},
-                                    lambda x: np.array([metrics.aggregate_iqm(x)]), reps=5000, random_state=RS)
+    est = iqm_interval(G, reps=5000, random_state=RS)
     rng = np.random.default_rng(2018)
-    pi = lambda a, b: (a[:, None] > b[None, :]).mean() + 0.5 * (a[:, None] == b[None, :]).mean()
     comps = []
     for a, b in (("official v4", "zoofix v4"), ("official v4", "default v4")):
         x, y = G[a], G[b]
-        boots = [pi(rng.choice(x, 10), rng.choice(y, 10)) for _ in range(5000)]
-        comps.append(dict(a=a, b=b, p_improve=float(pi(x, y)),
-                          p_improve_ci=[float(np.percentile(boots, 2.5)), float(np.percentile(boots, 97.5))],
+        p, pci = probability_of_improvement_bootstrap(x, y, rng, reps=5000)  # 10 runs on each side
+        comps.append(dict(a=a, b=b, p_improve=p, p_improve_ci=pci,
                           welch_p=float(stats.ttest_ind(x, y, equal_var=False).pvalue)))
-    for c, h in zip(comps, multipletests([c["welch_p"] for c in comps], method="holm")[1]):
+    for c, h in zip(comps, holm([c["welch_p"] for c in comps])):
         c["welch_p_holm"] = float(h)
-    res = dict(groups={k: dict(runs=v.tolist(), iqm=float(pe[k][0]), iqm_ci=[float(ci[k][0][0]), float(ci[k][1][0])])
+    res = dict(groups={k: dict(runs=v.tolist(), iqm=est[k][0], iqm_ci=list(est[k][1:]))
                        for k, v in G.items()}, comparisons=comps)
     json.dump(res, open("analysis/e6_official.json", "w"), indent=1)
     print(json.dumps(res, indent=1))
