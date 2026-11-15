@@ -1,10 +1,7 @@
-"""The number formatters of docs/check_numbers.py: every figure of the two texts goes through them."""
+"""The number formatters of docs/check_numbers.py (pineau_rl.fmt): every figure of the two texts goes through them."""
 from decimal import Decimal
 
-from conftest import extract
-
-F = extract("docs/check_numbers.py", ["half_up", "pct", "num", "ci", "pts"])
-half_up, pct, num, ci, pts = (F[k] for k in ("half_up", "pct", "num", "ci", "pts"))
+from pineau_rl.fmt import ci, half_up, num, pct, pts
 
 
 def test_half_up_rounds_half_away_from_zero():
