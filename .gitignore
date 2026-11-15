@@ -21,3 +21,4 @@ study/*.html
 # SAC and CrossQ weights (9 to 71 MB each), kept locally only; results/ and logs/ recompute every figure (SIM_PROTOCOL.md, deviation 11)
 sim/models/crossq/
 sim/models/sac/
+.vscode/

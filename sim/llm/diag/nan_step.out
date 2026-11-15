@@ -1,0 +1,18 @@
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+device mps
+step 1: seqs (32, 214), finished 10/32, adv max |1.2|
+  NON-FINITE gradients ep0: 290 tensors, first ['model.embed_tokens.weight', 'model.layers.0.self_attn.q_proj.weight', 'model.layers.0.self_attn.q_proj.bias']
+  ep0 grad norm nan
+  NON-FINITE weights after ep0: 290 tensors, first ['model.embed_tokens.weight', 'model.layers.0.self_attn.q_proj.weight', 'model.layers.0.self_attn.q_proj.bias']
+  NON-FINITE lp ep1 chunk 0: 1280 of 1280
+  NON-FINITE loss ep1 chunk 0: 1 of 1
+  NON-FINITE lp ep1 chunk 1: 1280 of 1280
+  NON-FINITE loss ep1 chunk 1: 1 of 1
+  NON-FINITE lp ep1 chunk 2: 1280 of 1280
+  NON-FINITE loss ep1 chunk 2: 1 of 1
+  NON-FINITE lp ep1 chunk 3: 1280 of 1280
+  NON-FINITE loss ep1 chunk 3: 1 of 1
+  NON-FINITE gradients ep1: 290 tensors, first ['model.embed_tokens.weight', 'model.layers.0.self_attn.q_proj.weight', 'model.layers.0.self_attn.q_proj.bias']
+  ep1 grad norm nan
+  NON-FINITE weights after ep1: 290 tensors, first ['model.embed_tokens.weight', 'model.layers.0.self_attn.q_proj.weight', 'model.layers.0.self_attn.q_proj.bias']
+stop: first non-finite value found
