@@ -7,6 +7,8 @@ sim/env-llm/
 study/pdf/
 __pycache__/
 *.pyc
+*.egg-info/
+build/
 .DS_Store
 docs/build/
 # Copyrighted or redundant material, kept locally only (removed from history on 2026-11-09)

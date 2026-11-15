@@ -1,0 +1,56 @@
+# The reusable pieces of the analysis, as an installable package: src/pineau_rl/.
+#   pip install --no-deps -e .     (in an environment installed from envs/analysis.lock: make install)
+# The scripts of study/ and sim/analysis/ import it; the Makefile also puts src/ on PYTHONPATH, so they run without it.
+[build-system]
+requires = ["setuptools>=77"]  # 77: the SPDX licence expression below
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pineau-rl"
+version = "1.0.0"
+description = "Statistics, run format and reading grid of the survey 'Reinforcement Learning: Did we listen to Joelle Pineau in 2018?'"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "BSD-3-Clause"
+license-files = ["LICENSE"]
+authors = [{ name = "Warith Harchaoui", email = "warithmetics@deraison.ai" }]
+keywords = ["reinforcement learning", "reproducibility", "statistics", "bootstrap", "survey"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Typing :: Typed",
+]
+dependencies = ["numpy", "scipy", "statsmodels", "rliable"]  # the versions of envs/analysis.lock reproduce the results
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[project.urls]
+Repository = "https://github.com/warith-harchaoui/pineau-rl"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+pineau_rl = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+src = ["src"]
+include = ["src/**/*.py", "tests/**/*.py"]  # the analysis scripts keep their dense style; the package and tests are linted
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E731"]  # a one-line lambda is the repository's style
+
+[tool.ruff.lint.isort]
+known-first-party = ["pineau_rl"]
+
+[tool.mypy]
+files = ["src/pineau_rl"]
+python_version = "3.11"
+ignore_missing_imports = true
