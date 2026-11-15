@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this survey, its reading grid or its analysis scripts, please cite it as below."
+title: "Reinforcement Learning: Did we listen to Joelle Pineau in 2018?"
+abstract: >-
+  A survey of papers and a set of experiments that measure, flaw by flaw, what has changed in deep
+  reinforcement learning since Joelle Pineau's 2018 talks on reproducibility. French title: « Apprentissage
+  par renforcement : A-t-on écouté Joelle Pineau en 2018 ? ». The repository recomputes every number and
+  every figure of the document from the committed results.
+type: software
+authors:
+  - family-names: Harchaoui
+    given-names: Warith
+    email: warithmetics@deraison.ai
+license: BSD-3-Clause
+keywords:
+  - reinforcement learning
+  - reproducibility
+  - statistics
+  - meta-research
+  - MuJoCo
+  - GRPO

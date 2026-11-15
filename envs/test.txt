@@ -1,0 +1,5 @@
+# Tests: pytest on top of envs/analysis.txt (make test). Recorded on 2026-11-15.
+iniconfig==2.3.1
+pluggy==1.7.0
+Pygments==2.21.0
+pytest==9.2.0

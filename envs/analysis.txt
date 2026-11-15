@@ -1,0 +1,29 @@
+# Analysis: rliable, SciPy, statsmodels (study/*.py, sim/analysis/*.py, docs/check_numbers.py, CI)
+# Environment sim/env-an, recorded on 2026-11-15 with: sim/env-an/bin/python -m pip freeze
+# Python 3.11.18 (conda), macOS 27.2 on Apple M2 Max (arm64); pip 26.2.2, setuptools 84.2.1, wheel 0.48.0.
+# Recreate: python3.11 -m venv sim/env-an && sim/env-an/bin/pip install -r envs/analysis.txt (see envs/README.md)
+absl-py==2.5.1
+arch==7.2.0
+contourpy==1.3.3
+cycler==0.12.1
+fonttools==4.68.0
+formulaic==1.2.2
+interface_meta==2.0.1
+kiwisolver==1.5.1
+matplotlib==3.11.2
+narwhals==2.28.0
+numpy==2.4.6
+packaging==26.3
+pandas==2.3.3
+patsy==1.0.3
+pillow==13.0.0
+pyparsing==3.3.3
+python-dateutil==4.0.0
+pytz==2026.6
+rliable==1.2.0
+scipy==1.17.1
+seaborn==0.13.2
+statsmodels==0.15.0
+typing_extensions==4.16.0
+tzdata==2026.6
+wrapt==2.5.2
