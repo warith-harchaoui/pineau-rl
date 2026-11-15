@@ -30,7 +30,8 @@ recomputed from the committed results, and every survey decision against the quo
 
 - **Four practices changed.** Against our own reading of 2018, classical RL papers of 2026 link their
   code more often (31% then 74%), show the sensitivity to a setting (44% then 80%), quantify their
-  compute (27% then 58%) and report an uncertainty (63% then 88%). Read on 20 papers a year in between,
+  compute (27% then 58%) and report an uncertainty (63% then 88%). The last one is fragile: without the
+  thirteen papers read partly by another model, it no longer passes Holm's correction. Read on 20 papers a year in between,
   these four climb slowly, with no jump after the checklist NeurIPS has required since 2019.
 - **Others did not move detectably**: a statistical test (6% then 12%), baselines described with all
   their settings (35% then 29%), evaluation on held-out conditions (33% then 45%).

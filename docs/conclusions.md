@@ -34,8 +34,7 @@ d'articles qui donnent tous les réglages de leur méthode, quand Pineau en comp
 jugeons donc chaque faille à grille égale, en comparant le RL classique de 2026 à notre propre
 lecture de 2018, avec les mêmes grilles et les mêmes lecteurs. Quatre pratiques ont changé. Le lien
 vers le code passe de 31 % à 74 % des articles, la sensibilité à un réglage montrée de 44 % à 80 %,
-le calcul chiffré de 27 % à 58 %, une incertitude rapportée de 63 % à 88 %. Ces quatre hausses
-résistent à toutes les coupes que nous avons tentées. Lues sur 20 articles par année entre les deux
+le calcul chiffré de 27 % à 58 %, une incertitude rapportée de 63 % à 88 %. Trois de ces hausses, le code, la sensibilité et le calcul, résistent à toutes les coupes que nous avons tentées. La quatrième, l'incertitude, est fragile : elle ne passe plus la correction de Holm quand on retire les treize articles lus en partie par un autre modèle (p = 0,07). Lues sur 20 articles par année entre les deux
 dates, elles montent lentement, sans saut juste après la liste de contrôle que NeurIPS impose depuis
 2019. D'autres pratiques n'ont pas bougé de façon détectable : un
 test statistique (6 % puis 12 %), des références décrites avec tous leurs réglages (35 % puis 29 %),
@@ -736,8 +735,7 @@ PPO : quand l'écart est faible, garder ses meilleurs essais suffit à choisir l
 
 **Des barres, pas de test (F12).** La faille se coupe en deux. Rapporter une incertitude, barres
 d'erreur ou bande autour de la courbe, est devenu courant dans le RL classique : 88 % des articles
-de 2026 le font, contre 63 % en 2018, un écart de 26 points, de 8 à 41, qui résiste à la
-correction (p = 0,04). Le type d'incertitude (écart type, erreur type, intervalle de confiance)
+de 2026 le font, contre 63 % en 2018, un écart de 26 points, de 8 à 41, qui résiste à la correction (p = 0,04), mais de peu : sans les treize articles lus en partie par un autre modèle, il ne la passe plus (p = 0,07), et il en va de même si l'on retourne les décisions jugées douteuses par la recherche contre les « non » (p = 0,07 ; voir les limites). Le type d'incertitude (écart type, erreur type, intervalle de confiance)
 est nommé dans 41 des 44 articles de 2026 qui en rapportent une, contre 25 sur 30 en 2018 (critère
 Y11). Le test statistique, lui, n'a pas bougé de façon détectable : 12 % des articles de 2026,
 contre 6 % en 2018. Les outils statistiques apparus après 2018, comme la moyenne interquartile ou
@@ -1042,6 +1040,18 @@ ses bons résultats qu'envers ses mauvais.
 - Les articles sont lus par des agents de modèle de langue. Chaque décision cite l'article. Deux
   agents s'accordent sur au moins 80 % des articles pour chaque critère, à une exception près.
   Aucun humain n'a relu à l'aveugle ; les citations permettent à chacun de vérifier chaque décision.
+- Tous les lecteurs sont des copies du même modèle (`claude-opus-5-5`) ; deux ont fini sur un
+  modèle voisin (`claude-opus-5`) pour treize articles. L'accord des doubles lectures mesure donc
+  la stabilité de ce modèle, non l'accord de deux lecteurs indépendants. La consigne exacte, le
+  modèle et les dates de chaque lecteur sont publiés (`study/readers/`). Sans les treize articles,
+  les verdicts tiennent, sauf l'incertitude rapportée (X2), qui ne passe plus la correction de
+  Holm (p = 0,07).
+- Un « oui » s'appuie sur une citation, un « non » sur rien. Nous avons donc confronté chaque
+  « non » des critères des verdicts au texte de l'article, avec des mots-clés fixés d'avance, puis
+  fait juger chaque extrait trouvé par un arbitre qui ne voyait ni l'article ni l'année. Sur 377
+  décisions « non », 10 passent à « oui » (2 en 2018, 8 en 2026) et aucun verdict ne change. Si
+  l'on retourne aussi les 24 décisions jugées douteuses, l'incertitude (X2) et la sensibilité (Y9)
+  passent juste au-dessus du seuil (p = 0,07 et p = 0,05). Données : `study/falsify_no.json`.
 - L'exception est la mesure de performance (Y1), notre critère le plus fragile : 60 % d'accord sur
   le premier tirage, avant que ses règles soient précisées. Le verdict de F8 se lit avec cette
   réserve.

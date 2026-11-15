@@ -31,8 +31,8 @@ commités, et chaque décision du sondage, face à la citation et à la page sur
 
 - **Quatre pratiques ont changé.** Face à notre propre lecture de 2018, les articles de RL classique
   de 2026 donnent plus souvent un lien vers leur code (31 % puis 74 %), montrent la sensibilité à un
-  réglage (44 % puis 80 %), chiffrent leur calcul (27 % puis 58 %) et rapportent une incertitude
-  (63 % puis 88 %). Lues sur 20 articles par an entre les deux dates, ces quatre pratiques montent
+  réglage (44 % puis 80 %), chiffrent leur calcul (27 % puis 58 %) et rapportent une incertitude (63 % puis 88 %). Cette dernière hausse est fragile : sans les treize articles
+  lus en partie par un autre modèle, elle ne passe plus la correction de Holm. Lues sur 20 articles par an entre les deux dates, ces quatre pratiques montent
   lentement, sans saut après la liste de contrôle que NeurIPS impose depuis 2019.
 - **D'autres n'ont pas bougé de façon détectable** : le test statistique (6 % puis 12 %), les
   références décrites avec tous leurs réglages (35 % puis 29 %), l'évaluation sur des conditions

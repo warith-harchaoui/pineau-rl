@@ -32,7 +32,7 @@ all the settings of their method, where Pineau counted 90%. So we judge each fla
 grid on both sides, setting the classical RL of 2026 against our own reading of 2018, with the same
 grids and the same readers. Four practices changed. Linking the code went from 31% to 74% of
 papers, showing the sensitivity to a setting from 44% to 80%, quantifying the compute from 27% to
-58%, reporting an uncertainty from 63% to 88%. These four rises withstand every cut we tried. Read on 20 papers a year between the two dates, they
+58%, reporting an uncertainty from 63% to 88%. Three of these rises, code, sensitivity and compute, withstand every cut we tried. The fourth, uncertainty, is fragile: it no longer passes Holm's correction when the thirteen papers read partly by another model are removed (p = 0.07). Read on 20 papers a year between the two dates, they
 climb slowly, with no jump right after the checklist NeurIPS has required since 2019. Other
 practices show no detectable change: a statistical test (6% then 12%), baselines
 described with all their settings (35% then 29%), evaluation on held-out conditions (33% then 45%),
@@ -693,7 +693,7 @@ other: when the gap is small, keeping one's best runs is enough to choose the wi
 
 **Error bars, no test (F12).** The flaw splits in two. Reporting an uncertainty, as error bars or as a
 band around the curve, has become common in classical RL: 88% of 2026 papers do it, against 63% in
-2018, a gap of 26 points, from 8 to 41, which survives the correction (p = 0.04). The type of
+2018, a gap of 26 points, from 8 to 41, which survives the correction (p = 0.04), but narrowly: without the thirteen papers read partly by another model, it no longer passes it (p = 0.07), and the same holds if the decisions found doubtful by the search against the "no" decisions are turned (p = 0.07; see the limitations). The type of
 uncertainty (standard deviation, standard error, confidence interval) is named in 41 of the 44
 papers from 2026 that report one, against 25 out of 30 in 2018 (criterion Y11). The statistical
 test, for its part, shows no detectable change: 12% of 2026 papers, against 6% in 2018. Statistical
@@ -964,6 +964,17 @@ Pineau's advice in 2018: be as critical of your good results as of your bad ones
 **What weakens the survey.** We list these weaknesses so that no reader has to hunt for them.
 
 - Language model agents read the papers. Each decision quotes the paper. Two agents agree on at least 80% of papers for each criterion, with one exception. No human reread the papers blind; the quotations let anyone check every decision.
+- All readers are copies of the same model (`claude-opus-5-5`); two finished on a neighbouring model
+  (`claude-opus-5`) for thirteen papers. The agreement of the double readings therefore measures this
+  model's stability, not the agreement of two independent readers. The exact instructions, model and
+  dates of each reader are published (`study/readers/`). Without the thirteen papers, the verdicts
+  hold, except reported uncertainty (X2), which no longer passes Holm's correction (p = 0.07).
+- A "yes" rests on a quotation, a "no" on nothing. So we set every "no" on the verdict criteria
+  against the text of the paper, with keywords fixed in advance, then had each excerpt found judged
+  by an arbiter who saw neither the paper nor the year. Of 377 "no" decisions, 10 turn into "yes"
+  (2 in 2018, 8 in 2026) and no verdict changes. If the 24 decisions found doubtful are turned as
+  well, uncertainty (X2) and sensitivity (Y9) end just above the threshold (p = 0.07 and p = 0.05).
+  Data: `study/falsify_no.json`.
 - The exception is the performance measure (Y1), our most fragile criterion: 60% agreement on the first draw, before its rules were made more precise. The verdict on F8 comes with this caveat.
 - Our grid reads 2018 differently from Pineau. Our comparisons with her figures serve as context, never as a verdict.
 - The classical RL sample from 2026 goes through a title screen. A classical RL paper whose title contains "reasoning", "preference" or "math" had no way in. The 9 ICLR 2026 papers at the head of the queue, unreachable on the proceedings site on 9 November 2026, were skipped.

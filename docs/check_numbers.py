@@ -459,11 +459,29 @@ add("E5 close", f"Pour les {e5['n_close']} comparaisons dont l'écart de moyenne
 b3 = J("sim/analysis/b3.json")
 assert b3["n_reversals"] == 8 and b3["n_settled"] == 0 and sorted(b3["leader_changes"]) == ["HalfCheetah-v5", "Hopper-v5"]
 
+# Deviations 27 and 29 of the survey protocol: the search against the "no" decisions, the change of reader model
+so5 = {r["k"]: r for r in J("study/extension_stats_sans_opus5.json")["rows"]}
+fal = J("study/falsify_no.json")
+p_so5 = so5["X2"]["classic_vs_ours2018"]["p_holm"]
+assert p_so5 >= .05 and all(so5[k]["classic_vs_ours2018"]["p_holm"] < .05 for k in ("Q5", "X7", "Y9"))
+add("X2 without claude-opus-5", f"(p = {pv(p_so5)})", f"(p = {pv(p_so5, 'en')})")
+n_no = sum(c["no"] for c in fal["counts"].values())
+turned = {y: sum(len(c["turned"]) for k, c in fal["counts"].items() if k.startswith(y)) for y in ("2018", "2026")}
+n_unc = sum(len(c["uncertain"]) for c in fal["counts"].values())
+assert fal["verdict_changes"]["turned"] == [] and fal["verdict_changes"]["bound"] == ["X2", "Y9"]
+add("falsify turned", f"Sur {n_no} décisions « non », {turned['2018'] + turned['2026']} passent à « oui » ({turned['2018']} en 2018, {turned['2026']} en 2026)",
+    f"Of {n_no} \"no\" decisions, {turned['2018'] + turned['2026']} turn into \"yes\" ({turned['2018']} in 2018, {turned['2026']} in 2026)")
+bx, by = (fal["comparison"][k]["bound"]["p_holm"] for k in ("X2", "Y9"))
+add("falsify bound", f"les {n_unc} décisions jugées douteuses, l'incertitude (X2) et la sensibilité (Y9) passent juste au-dessus du seuil (p = {pv(bx)} et p = {pv(by)})",
+    f"the {n_unc} decisions found doubtful are turned as well, uncertainty (X2) and sensitivity (Y9) end just above the threshold (p = {pv(bx, 'en')} and p = {pv(by, 'en')})")
+
 norm = lambda s: re.sub(r"\s+", " ", s)
 bad = 0
 for name, lang in (("conclusions.md", 0), ("conclusions-en.md", 1)):
     p = ROOT / "docs" / name
     if not p.exists():
+        print(f"{name}: missing document")
+        bad += 1
         continue
     text = norm(p.read_text())
     for c in C:
