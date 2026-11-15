@@ -1,0 +1,714 @@
+[
+ {
+  "file": "codes/A/LR02.json",
+  "id": "LR02",
+  "k": "Q4",
+  "value": "no",
+  "page": 17,
+  "quote": "TrojDRL - Reward Poisoning Constant c = 5, Strong Action Manipulation = True / SleeperNets - Reward Poisoning Constant c = 5, Dynamic Reward Poisoning Factor α = 1 (paramètres d'entraînement : défauts de cleanrl sans version)"
+ },
+ {
+  "file": "codes/A/LR03.json",
+  "id": "LR03",
+  "k": "Q4",
+  "value": "no",
+  "page": 6,
+  "quote": "Table 11 donne BOSA, IQL, TD3_BC, MOPO, DARA mais pas SRPO ni REAG, deux des références principales du Tableau 1 (« We further include representative off-dynamics offline RL methods DARA (Liu et al., 2022), BOSA (Liu et al., 2024a), and SRPO (Xue et al., 2023) and REAG (Wang et al., 2026). »)"
+ },
+ {
+  "file": "codes/A/LR04.json",
+  "id": "LR04",
+  "k": "Q3",
+  "value": "no",
+  "page": 16,
+  "quote": "We use a constant learning rate of 5 × 10−7 , AdamW optimizer (Loshchilov & Hutter, 2019) with ϵ = 10−15 , weight decay of 0.01 [...] — mais le seuil de troncature ϵmax de CISPO retenu pour S CALE RL n'est jamais donné (« We ablate the higher clipping ratio for CISPO [...] we find little difference »), ni le modèle de base 8B"
+ },
+ {
+  "file": "codes/A/LR04.json",
+  "id": "LR04",
+  "k": "X1",
+  "value": 1,
+  "page": 18,
+  "quote": "To estimate the error margin of our fits, we trained three independent S CALE RL runs [...] (les autres configurations, y compris les références de la Figure 2 et la course de 100k GPU-heures, sont des entraînements uniques)"
+ },
+ {
+  "file": "codes/A/LR07.json",
+  "id": "LR07",
+  "k": "Q3",
+  "value": "yes",
+  "page": 15,
+  "quote": "The actor model is optimized using AdamW with a conservative learning rate of 1 × 10−6 and 10 warmup steps, along with weight decay of 0.1 and gradient clipping at 1.0 [...] (A.1-A.5 : lot, longueurs, MCTS λ=2.0, profondeur 64, 256 jetons, 8 enfants, λ3=0.01, température 1.0, 100 pas)"
+ },
+ {
+  "file": "codes/A/LR10.json",
+  "id": "LR10",
+  "k": "Q2",
+  "value": "yes",
+  "page": 7,
+  "quote": "Using Agnostics, we train Qwen 3 4B and 8B on Ag-Codeforces-X specialized to Fortran, Julia, R, Lua, and OCaml."
+ },
+ {
+  "file": "codes/B/LR11.json",
+  "id": "LR11",
+  "k": "X2",
+  "value": "yes",
+  "page": 9,
+  "quote": "Figure 2b / 3b : courbes moyennes avec bandes ombrées (« Each solid line represents the mean performance across 10 independent trials »)"
+ },
+ {
+  "file": "codes/B/ML03.json",
+  "id": "ML03",
+  "k": "Q1",
+  "value": "yes",
+  "page": 6,
+  "quote": "4. Experiments 4.1. Experimental Settings"
+ },
+ {
+  "file": "codes/B/ML03.json",
+  "id": "ML03",
+  "k": "Q2",
+  "value": "yes",
+  "page": 6,
+  "quote": "We train our CoCoEdit models by finetuning FLUX.1 Kontext [Dev] (Labs et al., 2025) and Qwen-Image-Edit [2509] (Wu et al., 2025a) using LoRA (Hu et al., 2022) with rank of 32."
+ },
+ {
+  "file": "codes/B/ML03.json",
+  "id": "ML03",
+  "k": "Q7",
+  "value": "yes",
+  "page": 7,
+  "quote": "We evaluate the compared methods on ImgEdit (Ye et al., 2025) and GEdit-Bench (Liu et al., 2025b) with mask annotations."
+ },
+ {
+  "file": "codes/B/ML06.json",
+  "id": "ML06",
+  "k": "X1",
+  "value": 5,
+  "page": 6,
+  "quote": "error bars, shaded regions, and table ± ranges denote 95% confidence intervals computed across the five seeds."
+ },
+ {
+  "file": "codes/C/ML12.json",
+  "id": "ML12",
+  "k": "Q2",
+  "value": "yes",
+  "page": 6,
+  "quote": "We implement the VIDEOVERITAS with Qwen3-VL-8B"
+ },
+ {
+  "file": "codes/C/ML12.json",
+  "id": "ML12",
+  "k": "Q7",
+  "value": "yes",
+  "page": 5,
+  "quote": "Out-of-domain (OOD) testing involves existing benchmarks GenBuster++ (Wen et al., 2025b), LOKI (Ye et al., 2024) ... MintVid is adopted as a challenging OOD testing."
+ },
+ {
+  "file": "codes/C/ML13.json",
+  "id": "ML13",
+  "k": "Q4",
+  "value": "yes",
+  "page": 6,
+  "quote": "RLVF-Binary uses GRPO training with binary rewards ... SFT provides the initialization for all RLVF experiments"
+ },
+ {
+  "file": "codes/C/ML15.json",
+  "id": "ML15",
+  "k": "Q6",
+  "value": "no",
+  "page": 7,
+  "quote": "This overall robustness ensures that MoMa QL is easy to deploy without complex hyperparameter search."
+ },
+ {
+  "file": "codes/D/MLR06.json",
+  "id": "MLR06",
+  "k": "Q4",
+  "value": "no",
+  "page": 18,
+  "quote": "We compare the TPG estimator with the stationary DQ and LSTD-OPE (Farias et al. 2022), and with the bias-corrected (BC) estimator (with burn-in) under the Bernoulli switchback design (Hu and Wager 2022). — réglages de DQ/LSTD-OPE absents après lecture de l'annexe I"
+ },
+ {
+  "file": "codes/D/MLR06.json",
+  "id": "MLR06",
+  "k": "Q5",
+  "value": "yes",
+  "page": 17,
+  "quote": "All code and experiment details are publicly available. https://github.com/wenqian-xing/TPG-Estimator"
+ },
+ {
+  "file": "codes/D/NE04.json",
+  "id": "NE04",
+  "k": "Q4",
+  "value": "no",
+  "page": 22,
+  "quote": "RL-only: Qwen2.5-VL trained exclusively with GRPO on the full 12K dataset. — hyperparamètres des références absents après lecture des sections expériences et annexes"
+ },
+ {
+  "file": "codes/D/NE05.json",
+  "id": "NE05",
+  "k": "Q4",
+  "value": "no",
+  "page": 7,
+  "quote": "All baseline models are trained (if needed) and evaluated under the consistent dataset and settings to ensure fair comparison. — hyperparamètres des références (SFT, Search-R1, routeurs) absents après lecture des annexes"
+ },
+ {
+  "file": "codes/D/NE06.json",
+  "id": "NE06",
+  "k": "Q4",
+  "value": "no",
+  "page": 6,
+  "quote": "In addition, we include a supervised fine-tuning (SFT)-only baseline trained on the Math training dataset [19] ... for one epoch of SFT — hyperparamètres de la SFT et de Logic-RL absents après lecture des annexes"
+ },
+ {
+  "file": "codes/D/NE07.json",
+  "id": "NE07",
+  "k": "Q1",
+  "value": "no",
+  "page": 37,
+  "quote": "In this section, we provide numerical examples that directly verify the one-step strict contraction across the settings studied. — seule partie numérique : vérification de lemmes sur des matrices 5×5 à 8×8, l'algorithme proposé n'est jamais exécuté"
+ },
+ {
+  "file": "codes/E/NE13.json",
+  "id": "NE13",
+  "k": "Q3",
+  "value": "yes",
+  "page": 8,
+  "quote": "We choose γ(n) := (1/(n + 1))^{2/3} [...] the expectile with τ = 0.75 and OCE with loss function ℓ(x) := γ1 x+ − γ2 x− where γ1 = 2 and γ2 = 0.5. We run the MLMC Q-learning algorithm 100 times independently with r = 0.49"
+ },
+ {
+  "file": "codes/F/C11.json",
+  "id": "C11",
+  "k": "Q3",
+  "value": "yes",
+  "page": 1,
+  "quote": "A.1 Hyperparameters for Evolution Strategies ... A.2 Hyperparameters for Proximal Policy Optimization (tables: Noise standard deviation 0.02, Adam stepsize 0.01 ... Timesteps per batch 320000, SGD minibatch size 32768 ...)"
+ },
+ {
+  "file": "codes/F/C11.json",
+  "id": "C11",
+  "k": "Q7",
+  "value": "no",
+  "page": 8,
+  "quote": "The time required to achieve a reward of 6000 on the Humanoid-v1 task. (évaluation = temps pour atteindre un seuil sur l'environnement d'entraînement)"
+ },
+ {
+  "file": "codes/F/C11.json",
+  "id": "C11",
+  "k": "X1",
+  "value": null,
+  "page": 8,
+  "quote": "With 8192 cores, we achieve a reward of 6000 in a median time of 3.7 minutes (médiane sur un nombre d'essais non dit)"
+ },
+ {
+  "file": "codes/F/C11.json",
+  "id": "C11",
+  "k": "X2",
+  "value": "yes",
+  "page": 8,
+  "quote": "Figure 8. The time required to achieve a reward of 6000 on the Humanoid-v1 task. (barres d'erreur visibles sur les histogrammes de la figure 8, non définies)"
+ },
+ {
+  "file": "codes/F/C12.json",
+  "id": "C12",
+  "k": "Q7",
+  "value": "no",
+  "page": 6,
+  "quote": "The agents were evaluated over a 1000–step test epoch, with ε = 0.05, every 25 000 steps. (test sur le même labyrinthe que l'entraînement)"
+ },
+ {
+  "file": "codes/F/C13.json",
+  "id": "C13",
+  "k": "Q2",
+  "value": "no",
+  "page": 7,
+  "quote": "For Q-Learning, we used ε-greedy action selection with ε = 0.1, and set learning rate α = 0.1. (méthodes tabulaires, aucun réseau de neurones après lecture complète)"
+ },
+ {
+  "file": "codes/F/C13.json",
+  "id": "C13",
+  "k": "Q3",
+  "value": "no",
+  "page": 8,
+  "quote": "We test with δ set to each of {.35, 0.13, .05}, resulting in k = {20, 40, 60} (δ / nombre de tâches préalables de MaxQInit donnés pour la figure 4 seulement, pas pour l'expérience principale de la figure 3)"
+ },
+ {
+  "file": "codes/F/C13.json",
+  "id": "C13",
+  "k": "Q5",
+  "value": "yes",
+  "page": 6,
+  "quote": "Our code is freely available for reproducibility and extension.1 https://github.com/david-abel/transfer_rl_icml_2018."
+ },
+ {
+  "file": "codes/F/C13.json",
+  "id": "C13",
+  "k": "Q7",
+  "value": "yes",
+  "page": 7,
+  "quote": "In all experiments, the agent samples a goal uniformly at random, interacts with the resulting MDP for 100 episodes ... Plots show reward averaged over 100 MDP samples from D. (évaluation sur des MDP nouvellement tirés de la distribution, non vus lors de la constitution de l'initialisation)"
+ },
+ {
+  "file": "codes/F/C13.json",
+  "id": "C13",
+  "k": "X4",
+  "value": "yes",
+  "page": 7,
+  "quote": "We evaluate each algorithms with four initializations of Q (les références V MAX, Q*avg partagent le même apprenant et ses hyperparamètres)"
+ },
+ {
+  "file": "codes/F/C14.json",
+  "id": "C14",
+  "k": "Q2",
+  "value": "no",
+  "page": 7,
+  "quote": "All algorithms were implemented in C++ (algorithmes exacts de type homotopie et bissection, aucun réseau de neurones)"
+ },
+ {
+  "file": "codes/F/C14.json",
+  "id": "C14",
+  "k": "Q3",
+  "value": "na",
+  "page": 7,
+  "quote": "Note that since the methods are exact, they have no effect on the number of iterations taken by the (approximate) policy or value iteration method. (méthodes exactes sans hyperparamètre ; les paramètres de problème κ, S sont donnés)"
+ },
+ {
+  "file": "codes/F/C14.json",
+  "id": "C14",
+  "k": "Q6",
+  "value": "na",
+  "page": 7,
+  "quote": "Instead of using a specific value of κ, we examine the runtime of all methods on a range of possible κ values. (aucun hyperparamètre à choisir)"
+ },
+ {
+  "file": "codes/F/C14.json",
+  "id": "C14",
+  "k": "Q7",
+  "value": "na",
+  "page": 7,
+  "quote": "The first set of problems are generated randomly. (rien n'est appris ni réglé : mesure de temps de calcul d'une mise à jour exacte)"
+ },
+ {
+  "file": "codes/F/C14.json",
+  "id": "C14",
+  "k": "X4",
+  "value": "na",
+  "page": 7,
+  "quote": "We compare the proposed methods with Gurobi 7.5 (ni la méthode ni la référence ne sont réglées)"
+ },
+ {
+  "file": "codes/F/C15.json",
+  "id": "C15",
+  "k": "Q3",
+  "value": "no",
+  "page": 1,
+  "quote": "To train our defender agent, we use a fully connected deep neural network with 2 hidden layers of width 300 to represent our policy. We decided on these hyperparameters after some experimentation with different depths and widths (seule l'architecture est donnée ; taux d'apprentissage, taille de lot, etc. absents ; 'OpenAI Baselines implementations' sans version)"
+ },
+ {
+  "file": "codes/F/C15.json",
+  "id": "C15",
+  "k": "Q4",
+  "value": "no",
+  "page": 5,
+  "quote": "We evaluate Proximal Policy Optimization (PPO) (Schulman et al., 2017), Advantage Actor Critic (A2C) (Mnih et al., 2016), and Deep Q-Networks (DQN) (Mnih et al., 2015), using the OpenAI Baselines implementations (Hesse et al., 2017). (aucun hyperparamètre listé, ni version de la bibliothèque ; idem pour l'agent supervisé comparé)"
+ },
+ {
+  "file": "codes/F/C15.json",
+  "id": "C15",
+  "k": "Q7",
+  "value": "yes",
+  "page": 5,
+  "quote": "we train RL agents for the defender against an attacker playing optimally, and test these agents for the defender on the disjoint support attacker."
+ },
+ {
+  "file": "codes/F/C15.json",
+  "id": "C15",
+  "k": "X1",
+  "value": 3,
+  "page": 5,
+  "quote": "Each algorithm is run with 3 random seeds, and in all plots we show minimum, mean, and maximum performance."
+ },
+ {
+  "file": "codes/F/C15.json",
+  "id": "C15",
+  "k": "X2",
+  "value": "yes",
+  "page": 5,
+  "quote": "Each algorithm is run with 3 random seeds, and in all plots we show minimum, mean, and maximum performance."
+ },
+ {
+  "file": "codes/F/C16.json",
+  "id": "C16",
+  "k": "Q7",
+  "value": "no",
+  "page": 7,
+  "quote": "for each run of a method, we pause training every 100 episodes and run 20 independent episodes with each agent performing greedy decentralised action selection. (test sur les mêmes cartes que l'entraînement ; seule la position initiale des unités varie)"
+ },
+ {
+  "file": "codes/F/C16.json",
+  "id": "C16",
+  "k": "X4",
+  "value": "yes",
+  "page": 3,
+  "quote": "The architecture of all agent networks is a DRQN ... All neural networks are trained using RMSprop with learning rate 5 × 10−4. (mêmes hyperparamètres pour IQL, VDN, QMIX et ablations ; pas de réglage décrit pour aucune)"
+ },
+ {
+  "file": "codes/F/C21.json",
+  "id": "C21",
+  "k": "Q7",
+  "value": "no",
+  "page": 9,
+  "quote": "We have access to real world data about all incidents for 31 days in 24 zones. (aucune séparation entraînement / test des données décrite)"
+ },
+ {
+  "file": "codes/F/C21.json",
+  "id": "C21",
+  "k": "X2",
+  "value": "yes",
+  "page": 9,
+  "quote": "Figure 3: (a)-(c) Police patrolling problem; (d)-(h) synthetic grid patrolling with varying population M, grids (barres d'erreur sur les fig. 2-3 et bandes sur les courbes 3d-h, non définies dans le texte)"
+ },
+ {
+  "file": "codes/F/C22.json",
+  "id": "C22",
+  "k": "Q6",
+  "value": "no",
+  "page": 7,
+  "quote": "The kernel bandwidth σ is estimated using the “median trick” based on the observations [13]. (seul σ a une règle de choix ; taux d'apprentissage, taille de lot, taille de LSTM sans méthode)"
+ },
+ {
+  "file": "codes/F/C22.json",
+  "id": "C22",
+  "k": "X4",
+  "value": "no",
+  "page": 7,
+  "quote": "For WGANTPP, we have used the exact experimental setup as [27] (réglages repris de l'article d'origine, pas de réglage commun décrit)"
+ },
+ {
+  "file": "codes/F/C24.json",
+  "id": "C24",
+  "k": "Q2",
+  "value": "yes",
+  "page": 3,
+  "quote": "The agent's MLP policy has 2 hidden layers of 64 units with tanh activation."
+ },
+ {
+  "file": "codes/F/C24.json",
+  "id": "C24",
+  "k": "Q3",
+  "value": "yes",
+  "page": 3,
+  "quote": "We use W = 256 inner-loop workers in Algorithm 1, combined with V = 64 ES noise vectors. The loss function is evolved over 5000 epochs ... We tabulate the hyperparameters for each randomized environment in Table 1 in Section G. ... The inner loop step size is fixed to 10−3, while the outer loop step size is annealed linearly from 10−2 to 10−3 over the first 2000 epochs."
+ },
+ {
+  "file": "codes/F/C24.json",
+  "id": "C24",
+  "k": "Q4",
+  "value": "no",
+  "page": 3,
+  "quote": "The off-the-shelf PG algorithm (PPO) was moderately tuned to perform well on these tasks (hyperparamètres de PPO non listés ; MAML repris de [6] ('data from [6]'), RL2 sans hyperparamètres)"
+ },
+ {
+  "file": "codes/F/C24.json",
+  "id": "C24",
+  "k": "Q6",
+  "value": "no",
+  "page": 3,
+  "quote": "The off-the-shelf PG algorithm (PPO) was moderately tuned to perform well on these tasks (aucune méthode de choix dite, ni pour PPO ni pour les valeurs EPG par environnement)"
+ },
+ {
+  "file": "codes/F/C24.json",
+  "id": "C24",
+  "k": "X4",
+  "value": "no",
+  "page": 3,
+  "quote": "The off-the-shelf PG algorithm (PPO) was moderately tuned to perform well on these tasks"
+ },
+ {
+  "file": "codes/F/C24.json",
+  "id": "C24",
+  "k": "X7",
+  "value": "no",
+  "page": 7,
+  "quote": "each inner-loop worker takes approximately 196 million steps to evolve the loss function used in the RandomReacher experiments (pas encore du calcul au sens GPU / heures / FLOP)"
+ },
+ {
+  "file": "codes/F/C25.json",
+  "id": "C25",
+  "k": "Q2",
+  "value": "yes",
+  "page": 16,
+  "quote": "The representation module is a one layer feed-forward network that takes the state as input and outputs a 32-dimension representation."
+ },
+ {
+  "file": "codes/F/C25.json",
+  "id": "C25",
+  "k": "Q3",
+  "value": "no",
+  "page": 16,
+  "quote": "We optimize the model using Adam. ... use the validation set to tune the model structure and optimization settings (architecture et α = 0.01 donnés, mais taux d'apprentissage, nombre d'itérations, taille de lot et valeurs retenues absents ; rien pour le domaine HIV)"
+ },
+ {
+  "file": "codes/F/C25.json",
+  "id": "C25",
+  "k": "Q6",
+  "value": "yes",
+  "page": 18,
+  "quote": "For our method and AM method, we split the data into a training set (90%) and a validation set (10%) and use the validation set to tune the model structure and optimization settings."
+ },
+ {
+  "file": "codes/F/C25.json",
+  "id": "C25",
+  "k": "Q7",
+  "value": "no",
+  "page": 18,
+  "quote": "To compute the MSE of an individual value, we record the initial state of the 1024 trajectories and roll-out from true environment to get the true policy over those initial states as ground truth. (évaluation sur les états initiaux des trajectoires d'entraînement, pas de jeu de test séparé)"
+ },
+ {
+  "file": "codes/F/C25.json",
+  "id": "C25",
+  "k": "X2",
+  "value": "no",
+  "page": 8,
+  "quote": "Table 1: Root MSE for Cart Pole (tableaux 1-3 : moyennes seules, sans écart type ni intervalle)"
+ },
+ {
+  "file": "codes/F/C25.json",
+  "id": "C25",
+  "k": "X4",
+  "value": "no",
+  "page": 18,
+  "quote": "For our method and AM method, we split the data into a training set (90%) and a validation set (10%) and use the validation set to tune the model structure and optimization settings. (réglage décrit pour AM seulement, pas pour MRDR / DR / IS)"
+ },
+ {
+  "file": "codes/F/C26.json",
+  "id": "C26",
+  "k": "Q3",
+  "value": "yes",
+  "page": 4,
+  "quote": "For training both networks, we use the REINFORCE Algorithm and Adam optimizer [20] with learning rate 10−4. The batch size N is 128, and we clip the gradients when their norm is greater than 2. We use dropout with probability 0.1 in the decoder LSTM."
+ },
+ {
+  "file": "codes/F/C26.json",
+  "id": "C26",
+  "k": "Q4",
+  "value": "no",
+  "page": 7,
+  "quote": "Finally, we use Google's OR-Tools [16], which is a more competitive baseline. (OR-Tools : seul le nombre de véhicules (10) et la mise à l'échelle sont donnés ; ni version, ni métaheuristique retenue, ni limite de temps ; les paramètres de randomisation de CW et Sweep sont donnés)"
+ },
+ {
+  "file": "codes/F/C26.json",
+  "id": "C26",
+  "k": "Q5",
+  "value": "yes",
+  "page": 4,
+  "quote": "The TensorFlow implementation of our code is available at https://github.com/OptMLGroup/VRP-RL."
+ },
+ {
+  "file": "codes/F/C26.json",
+  "id": "C26",
+  "k": "X1",
+  "value": null,
+  "page": 5,
+  "quote": "It is worthwhile to mention that, unlike other RL areas, our findings are not affected by the training seed. (nombre de graines non dit)"
+ },
+ {
+  "file": "codes/F/C26.json",
+  "id": "C26",
+  "k": "X2",
+  "value": "yes",
+  "page": 4,
+  "quote": "Table 2 provides the average and the standard deviation of tour lengths for different VRPs."
+ },
+ {
+  "file": "codes/F/C26.json",
+  "id": "C26",
+  "k": "X7",
+  "value": "yes",
+  "page": 4,
+  "quote": "On a single GPU K80, every 100 training steps of the VRP with 20 customer nodes takes approximately 35 seconds. Training for 20 epochs requires about 13.5 hours."
+ },
+ {
+  "file": "codes/G/LR11.json",
+  "id": "LR11",
+  "k": "X2",
+  "value": "yes",
+  "page": 9,
+  "quote": "Each solid line represents the mean performance across 10 independent trials. (bandes ombrées visibles sur les Figures 2b et 3b)"
+ },
+ {
+  "file": "codes/G/LR12.json",
+  "id": "LR12",
+  "k": "Q4",
+  "value": "no",
+  "page": 20,
+  "quote": "For most baselines, we follow the same iteration times. As for WSAC and VOCE, we follow the training standard of the original paper (aucun tableau d'hyperparamètres des références)"
+ },
+ {
+  "file": "codes/G/LR15.json",
+  "id": "LR15",
+  "k": "Q3",
+  "value": "no",
+  "page": 28,
+  "quote": "in the following experiments, we tune α ∈ {2−10 , 2−9 , . . . , 2−1 } for every plot and algorithm (les grilles sont données, les valeurs retenues de α et de M ne le sont pas)"
+ },
+ {
+  "file": "codes/G/LR15.json",
+  "id": "LR15",
+  "k": "Q5",
+  "value": "no",
+  "page": 28,
+  "quote": "The code was written in Python 3 using PyTorch (Paszke et al., 2019). (aucun lien vers le code après lecture des sections expériences, annexes et liens)"
+ },
+ {
+  "file": "codes/G/LR17.json",
+  "id": "LR17",
+  "k": "Q3",
+  "value": "no",
+  "page": 6,
+  "quote": "Key hyperparameters are set as follows: Pbase = 0.5, γ = 0.5 for EVR, and η = 0.5 for CCA. (taux d'apprentissage, coefficient de clip et autres réglages GRPO absents)"
+ },
+ {
+  "file": "codes/G/LR17.json",
+  "id": "LR17",
+  "k": "Q6",
+  "value": "no",
+  "page": 8,
+  "quote": "As depicted in Figure 3(a), we vary γ and evaluate performance on OmniMedVQA. ... This analysis validates our hyperparameter choice (pas de méthode de choix énoncée)"
+ },
+ {
+  "file": "codes/G/LR17.json",
+  "id": "LR17",
+  "k": "X4",
+  "value": "no",
+  "page": 29,
+  "quote": "RL baseline was trained using the same optimization algorithm (GRPO), training dataset, and key hyperparameters (e.g., batch size) as MedVR. (aucun réglage des références décrit ; les autres références sont des modèles publiés évalués tels quels)"
+ },
+ {
+  "file": "codes/G/ML12.json",
+  "id": "ML12",
+  "k": "Q1",
+  "value": "yes",
+  "page": 5,
+  "quote": "4. Experiments 4.1. Experimental Setup Evaluation Protocols. In-domain (ID) testing includes test sets of GenBuster-200K (Wen et al., 2025a) and Talking- headBench (Xiong et al., 2025)."
+ },
+ {
+  "file": "codes/G/ML12.json",
+  "id": "ML12",
+  "k": "Q4",
+  "value": "no",
+  "page": 6,
+  "quote": "4 SoTA binary detectors are trained on our dataset using their original preprocessing. (hyperparamètres des références non donnés)"
+ },
+ {
+  "file": "codes/G/ML16.json",
+  "id": "ML16",
+  "k": "Q3",
+  "value": "no",
+  "page": 16,
+  "quote": "Detailed hyperparameters are presented in Sec. F. (la section F ne liste que les références) ... we do observe consistent performance improvement in all visual tasks over FQL using the default FQL hyperparameters."
+ },
+ {
+  "file": "codes/G/ML16.json",
+  "id": "ML16",
+  "k": "Q5",
+  "value": "no",
+  "page": 16,
+  "quote": "Causal-FQL is built upon the codebase of FQL (Park et al., 2025b)3 ... https://github.com/seohongpark/fql (lien vers le code de FQL, pas vers celui de la méthode proposée)"
+ },
+ {
+  "file": "codes/G/ML16.json",
+  "id": "ML16",
+  "k": "Q7",
+  "value": "yes",
+  "page": 8,
+  "quote": "We mainly tuned the hyperparameters in task 1 of visual-cube-double for its moderate difficulty. For each task group, we further tune the initial discriminator loss coefficient for task 1. (évaluation sur 25 tâches dont les tâches 2 à 5 de chaque groupe n'ont pas servi au réglage)"
+ },
+ {
+  "file": "codes/G/ML17.json",
+  "id": "ML17",
+  "k": "Q6",
+  "value": "no",
+  "page": 19,
+  "quote": "As shown in our sensitivity analysis in Appendix B.3, a range of 0.1 to 0.5 provides a stable training signal ... The choice of T in the variance-gating function ... is based on the typical magnitude of the external reward variance (σgext ) observed during the initial training phase. (pas de méthode d'ensemble ; taux d'apprentissage et autres valeurs sans justification)"
+ },
+ {
+  "file": "codes/G/MLR03.json",
+  "id": "MLR03",
+  "k": "Q4",
+  "value": "no",
+  "page": 9,
+  "quote": "We follow the experimental protocol of ESPO (Ou et al., 2025a) and SPG (Wang et al., 2025a) ... (aucun hyperparamètre listé pour D1, WD1, UniGRPO, ESPO, SPG, Trado)"
+ },
+ {
+  "file": "codes/G/MLR03.json",
+  "id": "MLR03",
+  "k": "Q6",
+  "value": "no",
+  "page": 9,
+  "quote": "We set ϵ = 5 for the best performance. (pas de méthode de choix dite)"
+ },
+ {
+  "file": "codes/G/NE04.json",
+  "id": "NE04",
+  "k": "Q3",
+  "value": "no",
+  "page": 25,
+  "quote": "Table 14: GRPO hyperparameters. Rollout batch size 512 Global batch size 128 Max grad norm 1.0 ... Learning rate 1e-6 ... Rollout temperature 1.0 (nombre de réponses par prompt, coefficient KL β et borne de clipping ϵ non donnés ; EasyR1 sans version)"
+ },
+ {
+  "file": "codes/G/NE04.json",
+  "id": "NE04",
+  "k": "Q4",
+  "value": "no",
+  "page": 22,
+  "quote": "Both baselines were trained to full convergence, and checkpoints were selected based on validation performance. (hyperparamètres des références RL-only et SFT-only non listés ; les autres références sont des modèles publiés)"
+ },
+ {
+  "file": "codes/G/NE04.json",
+  "id": "NE04",
+  "k": "Q7",
+  "value": "yes",
+  "page": 7,
+  "quote": "We source our training data from the established LLaVA-OneVision [34] and specifically consider the 14 data sources in overlap with MathV360K [58] ... (évaluation sur MathVista, MathVerse, MathVision, MMMU-Pro, EMMA, HallusionBench)"
+ },
+ {
+  "file": "codes/G/NE04.json",
+  "id": "NE04",
+  "k": "X6",
+  "value": 1,
+  "page": 8,
+  "quote": "we compare the performance of our 3B model against current representative models at the same scale, including our base model, Qwen2.5-VL-3B (7B et 3B : même famille Qwen2.5-VL)"
+ },
+ {
+  "file": "codes/G/NER04.json",
+  "id": "NER04",
+  "k": "Q3",
+  "value": "no",
+  "page": 20,
+  "quote": "We trained Llama-3.1-8B-Instruct with the AdamW optimizer Loshchilov and Hutter (2017) with a learning rate of 6 × 10−8 . (taux d'apprentissage et réglages non donnés pour Qwen 3B et Llama 3B)"
+ },
+ {
+  "file": "codes/G/NER04.json",
+  "id": "NER04",
+  "k": "Q7",
+  "value": "yes",
+  "page": 8,
+  "quote": "We train and test on the MATH dataset (Hendrycks et al. (2021), 12.5k high school-level problems), as well as on a subset of size 142k of the NuminaMath dataset ... (courbes « Test accuracy on MATH » sur le découpage test)"
+ },
+ {
+  "file": "codes/G/NER04.json",
+  "id": "NER04",
+  "k": "X2",
+  "value": "no",
+  "page": 9,
+  "quote": "results are averaged over 3 seeds (moyennes sans bande ni écart type sur les Figures 3 et 4 ; seule la Figure 5 gauche trace 7 essais individuels)"
+ },
+ {
+  "file": "codes/G/NER04.json",
+  "id": "NER04",
+  "k": "X7",
+  "value": "no",
+  "page": 20,
+  "quote": "The GPUs were split into two categories: workers that generated the responses ... and trainers (ni type, ni nombre, ni heures)"
+ }
+]
