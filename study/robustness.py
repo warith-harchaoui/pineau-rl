@@ -26,11 +26,11 @@ ld = lambda f: {k: v for k, v in json.load(open(f)).items() if not k.startswith(
 ov1, ov2 = ld("overrides.json"), ld("overrides_v2.json")
 OLD, WHO = load("ABCDEF"), {}
 for d in "ABCDEF":
-    for f in glob.glob(f"codes/{d}/*.json"):
+    for f in sorted(glob.glob(f"codes/{d}/*.json")):
         WHO[(json.load(open(f))["id"], "v1")] = d
 V2READ = {}
 for d in PRIMARY + sorted(os.path.basename(x) for x in glob.glob("codes_v2/K*")):
-    for f in glob.glob(f"codes_v2/{d}/*.json"):
+    for f in sorted(glob.glob(f"codes_v2/{d}/*.json")):
         r = json.load(open(f))
         V2READ[r["id"]] = r
         WHO[(r["id"], "v2")] = d

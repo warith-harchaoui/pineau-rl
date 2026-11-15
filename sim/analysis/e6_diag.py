@@ -8,7 +8,7 @@ Per group: IQM with a 95% bootstrap interval (rliable). Per comparison: Welch's 
 probability of improvement P(X > Y) with a 95% bootstrap interval.
 Run from sim/: env-an/bin/python analysis/e6_diag.py  -> analysis/e6_diag.json
 """
-import csv, glob, json
+import csv, json
 import numpy as np
 from rliable import metrics
 from rliable.library import get_interval_estimates
@@ -20,7 +20,7 @@ from statsmodels.stats.multitest import multipletests
 
 def finals(tag, task):
     out = []
-    for f in sorted(glob.glob(f"results/{tag}/{task}/seed*.csv")):
+    for f in sorted(f"results/{tag}/{task}/seed{s}.csv" for s in range(10)):  # explicit seeds 0 to 9, string order
         r = list(csv.DictReader(open(f)))
         assert int(r[-1]["step"]) == 1_000_000, f
         out.append(float(r[-1]["eval_mean"]))

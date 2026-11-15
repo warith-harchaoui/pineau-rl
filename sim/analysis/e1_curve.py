@@ -10,11 +10,11 @@ of 5 (at random, or sorted by final score), runs a Welch test at each of the 20 
 Added on 9 November 2026 after e1.py's results were known (SIM_PROTOCOL.md, Écarts).
 Run from sim/: env-an/bin/python analysis/e1_curve.py  -> analysis/e1_curve.json
 """
-import csv, glob, json
+import csv, json
 import numpy as np
 from scipy import stats
 
-files = sorted(glob.glob("results/ppo_sb3/HalfCheetah-v5/seed*.csv"))
+files = sorted(f"results/ppo_sb3/HalfCheetah-v5/seed{s}.csv" for s in range(30))  # explicit seeds 0 to 29, string order
 C = np.array([[float(r["eval_mean"]) for r in csv.DictReader(open(f))] for f in files])  # 30 x 20
 assert C.shape == (30, 20), C.shape
 rng = np.random.default_rng(2018)

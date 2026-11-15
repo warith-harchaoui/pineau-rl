@@ -9,7 +9,7 @@ Each reading: share of draws with p < 0.05, 95th percentile of |t|, share of dra
 groups drawn at random and for groups sorted by final score.
 Run from sim/: env-an/bin/python analysis/b1_trpo.py  -> analysis/b1_trpo.json
 """
-import csv, glob, json
+import csv, json
 import numpy as np
 from scipy import stats
 
@@ -17,8 +17,7 @@ HENDERSON_T = 9.0916  # |t| of their figure 5 (arXiv 1709.06560v3)
 
 
 def curves(algo):
-    files = sorted(glob.glob(f"results/{algo}/HalfCheetah-v5/seed*.csv"),
-                   key=lambda f: int(f.split("seed")[-1].split(".")[0]))
+    files = [f"results/{algo}/HalfCheetah-v5/seed{s}.csv" for s in range(30)]  # explicit seeds 0 to 29
     C = np.array([[float(r["eval_mean"]) for r in csv.DictReader(open(f))] for f in files])
     assert C.shape == (30, 20), (algo, C.shape)
     return C

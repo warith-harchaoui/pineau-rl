@@ -9,7 +9,7 @@ never enters the test. We apply this computation to our evaluations: mean of the
 Same draws as b1_trpo.py: generator seed 2018, 10,000 draws of 10 runs cut into 5 against 5, at random, then sorted.
 Run from sim/: env-an/bin/python analysis/b1_script.py  -> analysis/b1_script.json
 """
-import csv, glob, json
+import csv, json
 import numpy as np
 from scipy import stats
 
@@ -17,8 +17,7 @@ HENDERSON_T = 9.0916
 
 
 def curves(algo):
-    files = sorted(glob.glob(f"results/{algo}/HalfCheetah-v5/seed*.csv"),
-                   key=lambda f: int(f.split("seed")[-1].split(".")[0]))
+    files = [f"results/{algo}/HalfCheetah-v5/seed{s}.csv" for s in range(30)]  # explicit seeds 0 to 29
     rows = [list(csv.DictReader(open(f))) for f in files]
     M = np.array([[float(r["eval_mean"]) for r in rs] for rs in rows])
     S = np.array([[float(r["eval_std"]) for r in rs] for rs in rows])

@@ -24,7 +24,7 @@ SECOND = ["G2", "R2", "R3"]  # R3: A4 (deviation 26)
 
 def reads(d):
     out = {}
-    for f in glob.glob(f"codes_v2/{d}/*.json"):
+    for f in sorted(glob.glob(f"codes_v2/{d}/*.json")):
         r = json.load(open(f))
         out[r["id"]] = r["criteria"]
     return out

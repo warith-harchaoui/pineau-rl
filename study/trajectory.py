@@ -24,7 +24,7 @@ V2 = {}
 for d in sorted(os.path.basename(x) for x in glob.glob("codes_v2/*")):
     if d in ("G2", "R2", "R3", "pilot"):
         continue  # second readings and pilot, as extension_stats.py
-    for f in glob.glob(f"codes_v2/{d}/*.json"):
+    for f in sorted(glob.glob(f"codes_v2/{d}/*.json")):
         r = json.load(open(f)); V2[r["id"]] = r
 
 

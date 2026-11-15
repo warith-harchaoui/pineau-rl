@@ -1,5 +1,5 @@
 """E6, as pre-registered: PPO-SB3 on Hopper-v5, library defaults against the published RL Zoo settings, 10 seeds each."""
-import glob, csv, json
+import csv, json
 import numpy as np
 from rliable import metrics
 from rliable.library import get_interval_estimates
@@ -8,12 +8,13 @@ RS = np.random.RandomState(2026)
 from scipy import stats
 def finals(tag, col='eval_mean'):
     out = []
-    for f in sorted(glob.glob(f'results/{tag}/Hopper-v5/seed*.csv')):
+    for f in sorted(f'results/{tag}/Hopper-v5/seed{s}.csv' for s in range(10)):  # explicit seeds 0 to 9, string order
         r = list(csv.DictReader(open(f)))
         if int(r[-1]['step']) == 1000000: out.append(float(r[-1][col]))
     return np.array(out)
 d, z = finals('ppo_sb3'), finals('ppo_sb3_zoo')
 print('n', len(d), len(z))
+assert len(d) == len(z) == 10, (len(d), len(z))
 print('default', np.round(np.sort(d)), 'mean', d.mean().round(), 'sd', d.std(ddof=1).round())
 print('zoo    ', np.round(np.sort(z)), 'mean', z.mean().round(), 'sd', z.std(ddof=1).round())
 scores = {'default': d[:, None], 'zoo': z[:, None]}
