@@ -1,7 +1,8 @@
 # Recompute every number of the document from the results committed in this repository.
 #
 #   make analysis   rerun every analysis script of study/, sim/analysis/ and sim/llm/summary.py (rewrites their JSON)
-#   make check      docs/check_numbers.py: every key number of both texts against those JSON files
+#   make check      docs/check_numbers.py and article/check_article.py: every key number of both documents and of
+#                   the blog article against those JSON files
 #   make test       the unit tests (tests/)
 #   make verify     analysis + check + test, then git diff: the JSON files must come back byte for byte
 #   make verify-head  the same in a fresh export of the last commit (safe while training runs write to sim/;
@@ -45,6 +46,7 @@ analysis-llm:
 
 check:
 	cd docs && $(PY) check_numbers.py
+	cd article && $(PY) check_article.py
 
 test:
 	$(PY) -m pytest -q -p no:cacheprovider tests

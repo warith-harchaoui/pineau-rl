@@ -1,7 +1,6 @@
-# Recomputes every number of the document from the committed results, with no training and no LaTeX.
-# Linux: the analysis, check_numbers.py and the unit tests must pass; the byte-for-byte comparison of the JSON files is
-# shown but does not fail the job (another processor and BLAS change the last digits of a bootstrap).
-# macOS arm64, the machine family the results come from: the comparison must hold byte for byte.
+# Recomputes every number of the document and of the article from the committed results, with no training and no LaTeX,
+# on Linux and on macOS, then compares every result file with the committed one, value by value
+# (tools/compare_results.py). The environment is installed from envs/analysis.lock, every package checked by SHA-256.
 name: verify
 
 on:
@@ -9,40 +8,43 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
-  linux:
-    runs-on: ubuntu-latest
-    timeout-minutes: 60
+  verify:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, macos-15]  # x86-64 Linux, and arm64 macOS, the machine family the results come from
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 90
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-python@v6
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0  # v7.1.0
         with:
-          python-version: "3.11"
+          python-version: "3.11.18"
           cache: pip
-          cache-dependency-path: envs/*.txt
-      - name: Install the analysis environment
-        run: python -m pip install -r envs/analysis.txt -r envs/test.txt
+          cache-dependency-path: envs/analysis.lock
+      - name: Install the analysis environment, every file checked by SHA-256
+        run: python -m pip install --require-hashes -r envs/analysis.lock
       - name: Unit tests
         run: make test PY=python
       - name: Rerun every analysis from the committed results
-        run: make analysis PY=python
-      - name: Every key number of both texts
+        run: make analysis PY=python NICE=
+      - name: Every key number of both documents and of the article
         run: make check PY=python
-      - name: Byte-for-byte comparison (informational on Linux)
-        continue-on-error: true
-        run: git diff --stat --exit-code -- study/*.json sim/analysis/*.json sim/llm/results/*.json
+      - name: Every result value against the commit
+        run: |
+          git diff --stat -- study/*.json sim/analysis/*.json sim/llm/results/*.json
+          python tools/compare_results.py
 
-  macos:
-    runs-on: macos-latest
-    timeout-minutes: 60
+  docker:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-python@v6
-        with:
-          python-version: "3.11"
-          cache: pip
-          cache-dependency-path: envs/*.txt
-      - name: Install the analysis environment
-        run: python -m pip install -r envs/analysis.txt -r envs/test.txt
-      - name: Analysis, check, tests, then the JSON files must come back byte for byte
-        run: make verify PY=python
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+      - name: Build the image of the Dockerfile
+        run: docker build -t pineau-rl .
+      - name: Tests and number checks inside it
+        run: docker run --rm -v "$PWD":/repo pineau-rl make test check
