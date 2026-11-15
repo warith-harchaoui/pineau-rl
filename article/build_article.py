@@ -1,33 +1,54 @@
-"""Construit pages/{fr,en}/blog/meme-code-autre-graine.php depuis fr.txt / en.txt.
+"""Builds the blog article « A-t-on écouté Joelle Pineau en 2018 ? » for deraison.ai, from fr.txt and en.txt.
 
-Balisage léger, une ligne par bloc (les paragraphes sont séparés par une ligne vide) :
+Writes, under an output directory that mirrors the site's tree:
+  pages/fr/blog/apprentissage-par-renforcement-a-t-on-ecoute-joelle-pineau.php
+  pages/en/blog/reinforcement-learning-did-we-listen-to-joelle-pineau.php
+  assets/images/blog/rl-pineau-<figure>-<lang>.svg      (copied from figures/, built by figures/build.py)
+  assets/images/blog/rl-pineau-<figure>-mobile-<lang>.svg  (its narrow twin, served under 640 px by <picture>)
+  assets/css/article-<slug>.css                         (the page's scoped rules, to paste into base.css)
+  assets/images/og/blog-<slug>.png                      (with --og: the Open Graph card, 1200 x 630)
+  preview/<lang>.html                                   (with --preview: a standalone page to look at)
+
+The output directory comes from --out DIR, else the DERAISON_OUT environment variable. There is no default:
+the site (~/web/deraison) is written only when it is named explicitly.
+
+    python3 build_article.py --out /tmp/staging --preview --og
+    DERAISON_OUT=~/web/deraison python3 build_article.py fr en
+
+Light markup, one line per block (paragraphs separated by a blank line):
   META chip | date-iso | date lisible | titre | chapeau
   BRIEF titre-encadré | titre-sommaire          (puis les paragraphes de l'encadré, jusqu'à ENDBRIEF)
   ## ancre | Titre de section
   ### Sous-titre
-  FIG wide|std | src (relatif à assets/images/blog) | alt | légende (HTML permis)
+  FIG wide|std|portrait | src (relatif à assets/images/blog) | alt | légende (HTML permis)
   - élément de liste (lignes consécutives)
   <...>  ligne HTML passée telle quelle
   BIBLIO titre | phrase d'introduction
   REF n | notice (HTML) | note
 Dans le texte : [[n]] appel de note, *italique*, **gras**, [texte](url) lien externe,
-{{/chemin}} lien interne au site (url()).
-En français, les espaces avant : ; ? ! % » et après « deviennent insécables.
+{{/chemin}} lien interne au site (url()). REPO_URL est l'adresse du dépôt, à remplacer à la publication.
+En français, les espaces avant : ; ? ! % » et après « deviennent insécables, comme l'espace des milliers.
 """
+import argparse
 import html
+import os
 import re
+import shutil
 import sys
 from pathlib import Path
 
 ICI = Path(__file__).parent
-SITE = Path("/Users/warithharchaoui/web/deraison")
-SLUG = "meme-code-autre-graine"
+SITE = Path("/Users/warithharchaoui/web/deraison")  # read-only here: CSS, fonts and photos for the preview
+SLUGS = {"fr": "apprentissage-par-renforcement-a-t-on-ecoute-joelle-pineau",
+         "en": "reinforcement-learning-did-we-listen-to-joelle-pineau"}
+FIG_PREFIX = "rl-pineau-"
 
 
 def inline(s: str, lang: str) -> str:
     s = re.sub(r"\[\[(\d+)\]\]", r'<sup class="drz-ref"><a class="drz-text" href="#ref-\1">\1</a></sup>', s)
     s = re.sub(r"\*\*(.+?)\*\*", r'<strong class="drz-text">\1</strong>', s)
     s = re.sub(r"(?<![*\w])\*(?!\s)(.+?)(?<!\s)\*(?!\w)", r'<em class="drz-text">\1</em>', s)
+    s = re.sub(r"\[([^\]]+)\]\((REPO_URL[^)\s]*)\)", r'<a class="drz-text" href="\2" target="_blank" rel="noopener">\1</a>', s)
     s = re.sub(r"\[([^\]]+)\]\((https?://[^)\s]+)\)", r'<a class="drz-text" href="\2" target="_blank" rel="noopener">\1</a>', s)
     s = re.sub(r"\[([^\]]+)\]\{\{([^}]+)\}\}", r'<a class="drz-text" href="<?= url(\'\2\') ?>">\1</a>', s)
     s = re.sub(r"\[([^\]]+)\]\((#[^)]+)\)", r'<a class="drz-text" href="\2">\1</a>', s)
@@ -47,6 +68,7 @@ def nbsp(s: str) -> str:
             continue
         p = re.sub(r" ([:;?!%»])", r"&nbsp;\1", p)
         p = re.sub(r"« ", "«&nbsp;", p)
+        p = re.sub(r"(?<=\d) (?=\d{3}\b)", "&nbsp;", p)
         out.append(p)
     return "".join(out)
 
@@ -142,10 +164,13 @@ def build(lang: str) -> str:
                 flush()
                 kind, src, alt, cap = [x.strip() for x in ln[4:].split("|", 3)]
                 cls = {"wide": "drz-art-fig drz-art-fig--wide", "portrait": "drz-art-fig drz-art-fig--portrait"}.get(kind, "drz-art-fig")
+                mob = mobile_name(src)
+                source = (f'<source media="(max-width: 640px)" srcset="<?= ASSETS ?>/images/blog/{mob}">'
+                          if mob else "")
                 out.append(
-                    f'            <div class="{cls}"><img src="<?= ASSETS ?>/images/blog/{src}"\n'
+                    f'            <div class="{cls}"><picture>{source}<img src="<?= ASSETS ?>/images/blog/{src}"\n'
                     f'                    alt="{html.escape(alt, quote=True)}"\n'
-                    f'                    loading="lazy">\n'
+                    f'                    loading="lazy"></picture>\n'
                     f'                <p class="drz-text drz-art-figcap">{inline(cap, lang)}</p>\n'
                     f'            </div>')
             elif ln.startswith("- "):
@@ -271,8 +296,96 @@ def build(lang: str) -> str:
     return page
 
 
+def mobile_name(src: str):
+    """rl-pineau-<name>-<lang>.svg has a narrow twin rl-pineau-<name>-mobile-<lang>.svg for phones."""
+    m = re.fullmatch(re.escape(FIG_PREFIX) + r"(.+)-(fr|en)\.svg", src)
+    if m and (ICI / "figures" / f"{m[1]}-mobile-{m[2]}.svg").exists():
+        return f"{FIG_PREFIX}{m[1]}-mobile-{m[2]}.svg"
+    return None
+
+
+def figures_used(lang: str) -> list[str]:
+    raw = (ICI / f"{lang}.txt").read_text(encoding="utf-8")
+    return re.findall(r"^FIG \w+ \| (\S+)", raw, flags=re.M)
+
+
+def copy_assets(out: Path, lang: str) -> None:
+    """Our figures go next to the page; the site's own photos are copied only into a staging folder."""
+    dst = out / "assets" / "images" / "blog"
+    dst.mkdir(parents=True, exist_ok=True)
+    for src in figures_used(lang):
+        if src.startswith(FIG_PREFIX) and (ICI / "figures" / src[len(FIG_PREFIX):]).exists():
+            shutil.copy(ICI / "figures" / src[len(FIG_PREFIX):], dst / src)
+            if mobile_name(src):
+                shutil.copy(ICI / "figures" / mobile_name(src)[len(FIG_PREFIX):], dst / mobile_name(src))
+        elif out.resolve() != SITE.resolve():
+            shutil.copy(SITE / "assets" / "images" / "blog" / src, dst / src)
+    css = out / "assets" / "css" / f"article-{SLUGS[lang]}.css"
+    css.parent.mkdir(parents=True, exist_ok=True)
+    css.write_text((ICI / "site" / "article.css.tmpl").read_text().replace("SLUG", SLUGS[lang]))
+
+
+def preview(out: Path, lang: str, page: str) -> Path:
+    """A standalone HTML page: the site's stylesheets, the page's scoped rules, the PHP calls resolved."""
+    body = page.split("?>", 1)[1]
+    body = body.replace("<?= ASSETS ?>", "../assets").replace("<?= url('/blog') ?>", "#")
+    body = re.sub(r"<\?= url\('([^']*)'\) \?>", r"\1", body)
+    links = "".join(f'<link rel="stylesheet" href="{SITE.as_uri()}/assets/css/{c}">' for c in ("fonts.css", "site.css", "base.css"))
+    doc = (f'<!doctype html><html class="drz-p-blog__{SLUGS[lang]}" lang="{lang}"><head><meta charset="utf-8">'
+           f'<meta name="viewport" content="width=device-width">{links}'
+           f'<link rel="stylesheet" href="../assets/css/article-{SLUGS[lang]}.css"></head><body>{body}</body></html>')
+    dst = out / "preview" / f"{lang}.html"
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    dst.write_text(doc, encoding="utf-8")
+    return dst
+
+
+def og_card(out: Path, lang: str) -> Path:
+    """The Open Graph card, 1200 x 630, in the layout of the site's other blog cards: logo, figure, title."""
+    from playwright.sync_api import sync_playwright
+    title = re.search(r"^META [^|]*\|[^|]*\|[^|]*\| ([^|]+?) \|", (ICI / f"{lang}.txt").read_text(), flags=re.M)[1]
+    svg = (ICI / "figures" / f"e1-graines-{lang}.svg").read_text()
+    svg = re.sub(r'viewBox="0 0 (\d+) (\d+)"', lambda m: f'viewBox="0 112 {m[1]} {int(m[2]) - 112}"', svg, count=1)
+    svg = re.sub(r'(<svg[^>]*?) width="\d+" height="\d+"', r'\1 width="900" height="300"', svg, count=1)
+    page = (f'<html><head><meta charset="utf-8"><link rel="stylesheet" href="{SITE.as_uri()}/assets/css/fonts.css"></head>'
+            '<body style="margin:0;width:1200px;height:630px;background:#f8f8f8;font-family:Inter,sans-serif;position:relative">'
+            f'<div style="position:absolute;left:50px;top:30px;display:flex;align-items:center;gap:14px;font-size:26px;color:#111">'
+            f'<img src="{SITE.as_uri()}/favicon.svg" style="width:30px;height:30px">deraison.ai</div>'
+            f'<div style="position:absolute;left:150px;top:100px;background:#fff;padding:10px 0">{svg}</div>'
+            f'<div style="position:absolute;left:64px;right:64px;bottom:44px;font-size:44px;line-height:1.15;color:#111;'
+            f'letter-spacing:-0.02em">{html.escape(title)}</div></body></html>')
+    tmp = out / "preview" / f"og-{lang}.html"
+    tmp.parent.mkdir(parents=True, exist_ok=True)
+    tmp.write_text(page, encoding="utf-8")
+    dst = out / "assets" / "images" / "og" / f"blog-{SLUGS[lang]}.png"
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    with sync_playwright() as p:
+        b = p.chromium.launch()
+        pg = b.new_page(viewport={"width": 1200, "height": 630})
+        pg.goto(tmp.as_uri(), wait_until="networkidle")
+        pg.screenshot(path=str(dst))
+        b.close()
+    return dst
+
+
 if __name__ == "__main__":
-    for lang in sys.argv[1:] or ["fr", "en"]:
-        dst = SITE / "pages" / lang / "blog" / f"{SLUG}.php"
-        dst.write_text(build(lang), encoding="utf-8")
+    ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
+    ap.add_argument("langs", nargs="*", default=["fr", "en"])
+    ap.add_argument("--out", default=os.environ.get("DERAISON_OUT"), help="output directory (or DERAISON_OUT)")
+    ap.add_argument("--preview", action="store_true", help="also write preview/<lang>.html")
+    ap.add_argument("--og", action="store_true", help="also render the Open Graph card")
+    a = ap.parse_args()
+    if not a.out:
+        sys.exit("no output directory: pass --out DIR or set DERAISON_OUT")
+    out = Path(a.out).expanduser()
+    for lang in a.langs:
+        page = build(lang)
+        dst = out / "pages" / lang / "blog" / f"{SLUGS[lang]}.php"
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        dst.write_text(page, encoding="utf-8")
+        copy_assets(out, lang)
         print("écrit", dst)
+        if a.preview:
+            print("aperçu", preview(out, lang, page))
+        if a.og:
+            print("carte", og_card(out, lang))

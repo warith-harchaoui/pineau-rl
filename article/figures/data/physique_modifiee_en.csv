@@ -1,0 +1,9 @@
+quarter,product,share
+Training physics,SAC,1308
+Modified physics,SAC,751
+Training physics,CrossQ,2302
+Modified physics,CrossQ,1302
+Training physics,PPO (PyTorch),2877
+Modified physics,PPO (PyTorch),609
+Training physics,PPO (JAX),3064
+Modified physics,PPO (JAX),525

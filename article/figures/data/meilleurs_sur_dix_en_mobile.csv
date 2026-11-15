@@ -1,0 +1,17 @@
+period,region,v
+Cheetah,SAC,19
+Cheetah,CrossQ,74
+Cheetah,PPO (PyTorch),35
+Cheetah,PPO (JAX),47
+Hopper,SAC,78
+Hopper,CrossQ,49
+Hopper,PPO (PyTorch),29
+Hopper,PPO (JAX),20
+Walker2d,SAC,63
+Walker2d,CrossQ,9
+Walker2d,PPO (PyTorch),58
+Walker2d,PPO (JAX),84
+Swimmer,SAC,8
+Swimmer,CrossQ,8
+Swimmer,PPO (PyTorch),18
+Swimmer,PPO (JAX),6
