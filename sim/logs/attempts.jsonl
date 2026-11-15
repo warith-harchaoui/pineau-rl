@@ -1,0 +1,5 @@
+{"job": "dose-ppo_sb3-HalfCheetah-v5-1", "end": "2026-11-15 06:13:47", "stopped_by": "watchdog", "free_gb": 8, "swap_growth_mb": 7432, "note": "recorded after the fact; free disk below MIN_FREE_GB=10, then the Mac crashed; lock removed by hand at 08:34"}
+{"job": "grpo-qwen05-true-3", "end": "2026-11-15 06:13:47", "stopped_by": "watchdog or crash", "note": "recorded after the fact; cpu.sh stopped by the watchdog, grpo.py lost in the Mac crash before 08:26; relaunched at 08:34 from step 0"}
+{"job": "grpo-llama1-true-3", "end": "2026-11-15 05:54:16", "stopped_by": "hand", "note": "recorded after the fact; started by the night-window rule at 05:53:44, stopped 30 s later during weight loading, results file removed; no evaluation existed"}
+{"job": "dose-ppo_sb3-Swimmer-v5-4", "end": "2026-11-15 09:54:14", "stopped_by": "watchdog", "free_gb": 36, "swap_growth_mb": 11634, "note": "recorded after the fact; lock removed by hand at 10:10"}
+{"job": "cpu.sh", "end": "2026-11-15 09:54:14", "stopped_by": "watchdog", "note": "recorded after the fact; the GRPO run in progress (qwen05 true 3) was not matched by the watchdog and went on alone"}
