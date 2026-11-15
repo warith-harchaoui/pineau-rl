@@ -8,7 +8,8 @@ falsify_verdicts.json by falsify_stats.py.
 
 Needs the PDFs (fetch_pdfs.py) and pdftotext (poppler). Run from study/: python3 falsify_no.py -> falsify_candidates.json
 """
-import glob, json, os, re, subprocess
+import json, os, re, subprocess
+from pineau_rl.grid import list_readers, load_overrides, load_reads, value
 from load import load
 
 CRIT = ["Q4", "Q5", "Q7", "Q8", "X2", "X7", "Y9"]
@@ -26,22 +27,13 @@ CONTEXT = 150  # characters on each side: 300 in all
 # The samples and the final values, as extension_stats.py
 N_A3 = 36
 PRIMARY = ["A2", "B2", "C2", "D2", "E2", "F2", "H1", "H2", "H3", "H4"]
-ld = lambda f: {k: v for k, v in json.load(open(f)).items() if not k.startswith("_")} if os.path.exists(f) else {}
-ov1, ov2 = ld("overrides.json"), ld("overrides_v2.json")
+ov1, ov2 = load_overrides("overrides.json", missing_ok=True), load_overrides("overrides_v2.json", missing_ok=True)
 OLD = load("ABCDEF")
-V2READ = {}
-for d in PRIMARY + sorted(os.path.basename(x) for x in glob.glob("codes_v2/K*")):
-    for f in sorted(glob.glob(f"codes_v2/{d}/*.json")):
-        r = json.load(open(f))
-        V2READ[r["id"]] = r
+V2READ = load_reads("codes_v2", PRIMARY + list_readers("codes_v2", "K*"))
 
 
-def val(pid, k):
-    if pid in V2READ and k in V2READ[pid]["criteria"]:
-        return ov2.get(k, {}).get(pid, V2READ[pid]["criteria"][k].get("value"))
-    if pid in OLD:
-        return ov1.get(k, {}).get(pid, OLD[pid]["criteria"].get(k, {}).get("value"))
-    return None
+def val(pid, k):  # as extension_stats.py, but Y3 kept as an integer (it is not one of CRIT)
+    return value(pid, k, V2READ, OLD, ov2, ov1, y3=False)
 
 
 ours18 = sorted(p for p in OLD if p.startswith("C")) + [x["id"] for x in json.load(open("calib_2018_v2.json"))[12:]]
