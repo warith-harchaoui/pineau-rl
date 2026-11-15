@@ -46,6 +46,8 @@ def count(ids, k):
     return sum(v == "yes" for v in vs), len(vs)
 
 
+EXCLUDE = set(os.environ.get("EXCLUDE", "").split(",")) - {""}  # deviation 29: papers left out, e.g. EXCLUDE=ML14,ML15
+SUFFIX = os.environ.get("SUFFIX", "")  # deviation 29: the output becomes <name><SUFFIX>.json
 ext = json.load(open("extension_stats.json"))["samples"]
 ours18 = sorted(p for p in OLD if p.startswith("C")) + [x["id"] for x in json.load(open("calib_2018_v2.json"))[12:]]
 ours18 = [p for p in ours18 if val(p, "Q1") != "no"]
@@ -56,6 +58,7 @@ for y, d in queue.items():
     coded = [p["id"] for p in d["queue"] if p["id"] in V2]
     S[int(y)] = [p for p in coded if val(p, "X5") == "classic" and val(p, "Q1") != "no"][:PER_YEAR]
 S[2026] = classic26
+S = {y: [p for p in s if p not in EXCLUDE] for y, s in S.items()}
 YEARS = sorted(S)
 
 
@@ -99,4 +102,4 @@ for k in SHOWN:
                  f" | 19-20 vs 18 {r['immediate']['diff']:+.0%} Holm p {r['immediate']['p_holm']:.3g}"
                  f" | 22-24 vs 19-20 {r['later']['diff']:+.0%} Holm p {r['later']['p_holm']:.3g}")
     print(k, line)
-json.dump(out, open("trajectory.json", "w"), indent=1)
+json.dump(out, open(f"trajectory{SUFFIX}.json", "w"), indent=1)

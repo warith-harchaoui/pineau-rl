@@ -27,6 +27,8 @@ V1 = ["Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "X2", "X3", "X4", "X7"]
 V2 = ["Y%d" % i for i in range(1, 13)]
 PRIMARY = ["A2", "B2", "C2", "D2", "E2", "F2", "H1", "H2", "H3", "H4"]  # K* added below; G2, R2, pilot excluded
 N_A3 = 36
+EXCLUDE = set(os.environ.get("EXCLUDE", "").split(",")) - {""}  # deviation 29: papers left out, e.g. EXCLUDE=ML14,ML15
+SUFFIX = os.environ.get("SUFFIX", "")  # deviation 29: the output becomes <name><SUFFIX>.json
 
 ld = lambda f: {k: v for k, v in json.load(open(f)).items() if not k.startswith("_")} if os.path.exists(f) else {}
 ov1, ov2 = ld("overrides.json"), ld("overrides_v2.json")
@@ -71,6 +73,7 @@ read_a3 = [p for p in queue if p in V2READ]
 a3 = [p for p in read_a3 if val(p, "X5") == "classic"][:N_A3]
 apart = {f: [p for p in read_a3[:read_a3.index(a3[-1]) + 1] if val(p, "X5") == f] for f in ("llm", "theory")} if a3 else {}
 classic26 = sorted(p for p in all26 if val(p, "X5") == "classic") + a3
+ours18, classic26, all26 = ([p for p in s if p not in EXCLUDE] for s in (ours18, classic26, all26))
 missing = [p for p in ours18 + classic26 if val(p, "Q1") is None]
 
 rows = []
@@ -94,7 +97,7 @@ for key, crit in (("classic_vs_ours2018", V1), ("classic_vs_ours2018", V2),
 
 out = dict(samples=dict(ours2018=len(ours18), classic2026=len(classic26), a3=a3, a3_read=len(read_a3),
                         a3_apart={f: len(v) for f, v in apart.items()}, missing=missing), rows=rows)
-json.dump(out, open("extension_stats.json", "w"), indent=1)
+json.dump(out, open(f"extension_stats{SUFFIX}.json", "w"), indent=1)
 print(f"ours 2018: {len(ours18)}  classic 2026: {len(classic26)} ({len(a3)} from A3, {len(read_a3)} read)  "
       f"apart: {out['samples']['a3_apart']}  missing: {missing}")
 for r in rows:
