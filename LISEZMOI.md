@@ -86,6 +86,7 @@ résultats, nos propres erreurs comprises.
 | `sim/analysis/` | Un script et un fichier JSON par expérience (E1 à E7, B1, B3). |
 | `sim/llm/` | GRPO en un seul fichier (`grpo.py`), ses diagnostics, ses résultats et `summary.py`. |
 | `envs/` | Les environnements figés, la plateforme et la chaîne du document ([`envs/LISEZMOI.md`](envs/LISEZMOI.md)). |
+| `src/pineau_rl/`, `pyproject.toml` | Les morceaux réutilisables en paquet Python : statistiques, format des essais, grille de lecture (voir plus bas). |
 | `Makefile`, `tests/`, `.github/workflows/verify.yml` | Le recalcul en une commande, les tests unitaires, l'intégration continue. |
 | `slides.md` | Les diapositives de Pineau à ICLR 2018, décrites une à une. |
 
@@ -149,21 +150,72 @@ courbes : un réentraînement complet éprouve les statistiques.
 
 ## Réutiliser les pièces
 
+Les statistiques, le format des essais et la grille de lecture forment un paquet Python, `pineau_rl`
+(`src/`), qui ne dépend que de NumPy, SciPy, statsmodels et rliable. Chaque script d'analyse l'importe.
+
+```bash
+pip install -e .        # n'importe où ; dans l'environnement d'envs/analysis.lock : make install (rien n'est téléchargé)
+```
+
+| Module | Contenu |
+|---|---|
+| `pineau_rl.stats` | Wilson, différence de Newcombe, Fisher, Holm, Cochran-Armitage, kappa de Cohen, probabilité d'amélioration, statistique de Henderson |
+| `pineau_rl.bootstrap` | IQM et probabilité d'amélioration avec les intervalles bootstrap stratifiés de rliable |
+| `pineau_rl.runs` | Le format des essais (un CSV par algorithme, tâche et graine aléatoire), son lecteur contrôlé, les scores finaux, une grille |
+| `pineau_rl.grid` | Les fichiers de lecture, l'harmonisation, la valeur finale d'un critère, le contrôle d'un fichier de lecture |
+
+Comparer des parts entre deux échantillons, critère par critère, comme le sondage :
+
+```python
+from pineau_rl.stats import compare, holm, wilson_ci
+
+wilson_ci(17, 48)                         # intervalle de Wilson à 95 % de 17/48
+tests = {k: compare(a, b) for k, (a, b) in {"code": ((31, 48), (19, 50)), "seeds": ((12, 48), (9, 50))}.items()}
+holm([t["p"] for t in tests.values()])    # chaque t : {"diff", "lo", "hi", "p"}, Newcombe et Fisher
+```
+
+Classer vos propres algorithmes à partir d'essais dans notre format, écrits par n'importe quelle bibliothèque :
+
+```python
+import numpy as np
+from pineau_rl.bootstrap import iqm_interval
+from pineau_rl.runs import load_grid
+
+np.random.seed(2026)  # rliable tire dans le générateur global de NumPy : le fixer une fois, en tête
+G, missing = load_grid("results", ["ppo", "sac"], ["Hopper-v5"], range(10), {"ppo": 1_000_000, "sac": 200_000})
+iqm_interval(G["Hopper-v5"])              # {algo: (IQM, bas, haut)}, bootstrap stratifié
+```
+
+Lire un échantillon d'articles avec notre grille :
+
+```python
+from pineau_rl.grid import load_overrides, load_reads, tally, validate, value_v1
+
+reads = load_reads("codes", ["A", "B"])  # codes/<lecteur>/<id de l'article>.json, triés
+ov = load_overrides("overrides.json")    # {critère : {id : valeur}}, l'harmonisation
+v = lambda r, k: value_v1(r, k, ov)
+problems = {i: validate(r, q1=v(r, "Q1"), x2=v(r, "X2"), q4=v(r, "Q4")) for i, r in reads.items()}
+tally(v(r, "Q5") for r in reads.values() if v(r, "Q1") != "no")  # (oui, oui ou non) : code en lien
+```
+
+Les scripts eux-mêmes se lancent toujours depuis leur dossier (`cd study && python extension_stats.py`) ;
+`make` trouve le paquet sans l'installer.
+
 - **La grille de lecture.** `study/GRILLE.md` traduit la liste de Pineau et nos douze critères
   supplémentaires en règles de décision, chaque réponse appuyée sur une citation et une page. Pour
   lire votre propre échantillon, reprenez le format JSON de `study/codes_v2/`, contrôlez vos fichiers
   avec `study/check_codes.py` (schéma, règles de portée, chaque citation confrontée au texte du
-  PDF), puis calculez parts et intervalles avec `study/analyze_final.py` ou
-  `study/extension_stats.py`.
+  PDF ; `pineau_rl.grid.validate` sans le PDF), puis calculez parts et intervalles avec
+  `study/analyze_final.py` ou `study/extension_stats.py`.
 - **Les scripts d'analyse sur vos propres essais.** Chaque script d'expérience lit
   `sim/results/<algo>/<tâche>/seed<k>.csv`, une évaluation par ligne, avec les colonnes
   `step,eval_mean,eval_std,perturbed_mean,wall`. Écrivez vos essais dans ce format, depuis n'importe
   quelle bibliothèque, ajoutez l'algorithme et son nombre de pas à `ALGOS` et `FINAL` en tête de
   `sim/analysis/runs.py` : E2 (classement avec intervalles), E4 (gonflement par sélection des
-  meilleurs) et E5 (combien de graines aléatoires retrouvent un classement) les lisent ; E7 (perte
-  sous physique modifiée) garde les deux mêmes listes dans `e7.py`.
-- **La statistique de Henderson.** `sim/analysis/b1_script.py` refait le calcul de
-  `from_same_dist.py` (Henderson et al., 2018) ; `tests/test_henderson.py` montre sur six graines aléatoires
+  meilleurs), E5 (combien de graines aléatoires retrouvent un classement) et E7 (perte sous physique
+  modifiée) les lisent.
+- **La statistique de Henderson.** `pineau_rl.stats.henderson_script` refait le calcul de
+  `from_same_dist.py` (Henderson et al., 2018), qu'utilise `sim/analysis/b1_script.py` ; `tests/test_henderson.py` montre sur six graines aléatoires
   inventées pourquoi il atteint un t de 9 là où un test sur les graines aléatoires ne voit rien.
 - **GRPO en un seul fichier.** `sim/llm/grpo.py` entraîne un modèle de langue par GRPO en
   156 lignes, avec la vraie récompense ou une récompense à pile ou face ; il note la part de réponses

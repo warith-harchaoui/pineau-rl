@@ -4,6 +4,7 @@
 #   docker build -t pineau-rl .
 #   docker run --rm -v "$PWD":/repo pineau-rl              # make verify: analyses, number checks, tests, byte-for-byte diff
 #   docker run --rm -v "$PWD":/repo pineau-rl make check   # any other target of the Makefile
+#   docker run --rm -v "$PWD":/repo -w /repo/study pineau-rl python extension_stats.py   # one script (pineau_rl on PYTHONPATH)
 #
 # The base image is pinned by digest (python:3.11-slim, Debian bookworm, Python 3.11.18, amd64 and arm64).
 FROM python:3.11-slim@sha256:07d4824036af339fa1b6ef769cc99d9c10a141769538b52b3b597c84f7a7b535
@@ -15,5 +16,6 @@ RUN pip install --no-cache-dir --require-hashes -r /tmp/analysis.lock && rm /tmp
 # The repository is mounted at run time, not copied, so the image serves any commit.
 WORKDIR /repo
 RUN git config --global --add safe.directory /repo
-ENV PY=python NICE= PYTHONDONTWRITEBYTECODE=1
+# The package src/pineau_rl is found on PYTHONPATH, from the mounted repository: nothing is installed or written in it.
+ENV PY=python NICE= PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=/repo/src
 CMD ["make", "verify"]
