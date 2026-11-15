@@ -81,6 +81,7 @@ stays in the results, our own mistakes included.
 | `sim/analysis/` | One script and one JSON file per experiment (E1 to E7, B1, B3). |
 | `sim/llm/` | GRPO in one file (`grpo.py`), its diagnostics, results and `summary.py`. |
 | `envs/` | The pinned environments, the platform and the document toolchain ([`envs/README.md`](envs/README.md)). |
+| `src/pineau_rl/`, `pyproject.toml` | The reusable pieces as a Python package: statistics, run format, reading grid (see below). |
 | `Makefile`, `tests/`, `.github/workflows/verify.yml` | One-command recomputation, unit tests, continuous integration. |
 | `slides-en.md` | Pineau's ICLR 2018 slides, described one by one. |
 
@@ -143,19 +144,70 @@ processor gives other curves for the same random seed; what a full rerun tests i
 
 ## Reusing the pieces
 
+The statistics, the run format and the reading grid form a Python package, `pineau_rl` (`src/`), whose
+only dependencies are NumPy, SciPy, statsmodels and rliable. Every analysis script imports it.
+
+```bash
+pip install -e .        # anywhere; in the environment of envs/analysis.lock: make install (nothing downloaded)
+```
+
+| Module | Contents |
+|---|---|
+| `pineau_rl.stats` | Wilson, Newcombe difference, Fisher, Holm, Cochran-Armitage, Cohen's kappa, probability of improvement, Henderson's statistic |
+| `pineau_rl.bootstrap` | IQM and probability of improvement with rliable's stratified bootstrap intervals |
+| `pineau_rl.runs` | The run format (one CSV per algorithm, task and random seed), its checked reader, final scores, a grid |
+| `pineau_rl.grid` | Reading files, harmonisation, final value of a criterion, validator of a reading file |
+
+Compare shares between two samples, criterion by criterion, as the survey does:
+
+```python
+from pineau_rl.stats import compare, holm, wilson_ci
+
+wilson_ci(17, 48)                         # 95% Wilson interval of 17/48
+tests = {k: compare(a, b) for k, (a, b) in {"code": ((31, 48), (19, 50)), "seeds": ((12, 48), (9, 50))}.items()}
+holm([t["p"] for t in tests.values()])    # each t: {"diff", "lo", "hi", "p"}, Newcombe and Fisher
+```
+
+Rank your own algorithms from runs in our format, written by any library:
+
+```python
+import numpy as np
+from pineau_rl.bootstrap import iqm_interval
+from pineau_rl.runs import load_grid
+
+np.random.seed(2026)  # rliable draws from NumPy's global generator: seed it once, at the top
+G, missing = load_grid("results", ["ppo", "sac"], ["Hopper-v5"], range(10), {"ppo": 1_000_000, "sac": 200_000})
+iqm_interval(G["Hopper-v5"])              # {algo: (IQM, low, high)}, stratified bootstrap
+```
+
+Read a sample of papers with our grid:
+
+```python
+from pineau_rl.grid import load_overrides, load_reads, tally, validate, value_v1
+
+reads = load_reads("codes", ["A", "B"])  # codes/<reader>/<paper id>.json, sorted
+ov = load_overrides("overrides.json")    # {criterion: {paper id: value}}, the harmonisation
+v = lambda r, k: value_v1(r, k, ov)
+problems = {i: validate(r, q1=v(r, "Q1"), x2=v(r, "X2"), q4=v(r, "Q4")) for i, r in reads.items()}
+tally(v(r, "Q5") for r in reads.values() if v(r, "Q1") != "no")  # (yes, yes or no): code linked
+```
+
+The scripts themselves still run from their folders (`cd study && python extension_stats.py`); `make`
+finds the package without installing it.
+
 - **The reading grid.** `study/GRILLE-en.md` turns Pineau's checklist and our twelve extra criteria
   into decision rules, each answer backed by a quote and a page. To read your own sample, copy the
   JSON format of `study/codes_v2/`, check your files with `study/check_codes.py` (schema, scope rules,
-  every quote against the text of the PDF), then compute shares and intervals with
-  `study/analyze_final.py` or `study/extension_stats.py`.
+  every quote against the text of the PDF; `pineau_rl.grid.validate` without the PDF), then compute
+  shares and intervals with `study/analyze_final.py` or `study/extension_stats.py`.
 - **The analysis scripts on your own runs.** Every experiment script reads
   `sim/results/<algo>/<task>/seed<k>.csv`, one evaluation per line, with the columns
   `step,eval_mean,eval_std,perturbed_mean,wall`. Write your runs in that format, from any library, add
   the algorithm and its number of steps to `ALGOS` and `FINAL` at the top of `sim/analysis/runs.py`:
-  E2 (ranking with intervals), E4 (best-of inflation) and E5 (how many random seeds recover a
-  ranking) read them; E7 (loss under modified physics) keeps the same two lists in `e7.py`.
-- **Henderson's statistic.** `sim/analysis/b1_script.py` reproduces the computation of
-  `from_same_dist.py` (Henderson et al., 2018); `tests/test_henderson.py` shows on six made-up random
+  E2 (ranking with intervals), E4 (best-of inflation), E5 (how many random seeds recover a
+  ranking) and E7 (loss under modified physics) read them.
+- **Henderson's statistic.** `pineau_rl.stats.henderson_script` reproduces the computation of
+  `from_same_dist.py` (Henderson et al., 2018), used by `sim/analysis/b1_script.py`; `tests/test_henderson.py` shows on six made-up random
   seeds why it reaches a t of 9 where a test on the random seeds sees nothing.
 - **GRPO in one file.** `sim/llm/grpo.py` trains a language model with GRPO in 156 lines, with
   the true reward or a coin-flip one; it logs the share of cut-off answers at every evaluation.

@@ -10,14 +10,10 @@ Run from study/: python3 check_codes.py [codes_v2/<reader> ...]
 """
 import difflib, glob, json, re, subprocess, sys, unicodedata
 from pathlib import Path
+from pineau_rl.grid import load_overrides, segments, validate
 from load import load
 
-V1 = ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "X1", "X2", "X3", "X4", "X5", "X6", "X7"]
-V2 = ["Y%d" % i for i in range(1, 13)]
-INT = {"X1", "X6", "Y3"}
-YNA = {"yes", "no", "na"}
-KINDS = {"std", "se", "ci", "iqr", "minmax", "other"}
-ov = {k: v for k, v in json.load(open("overrides.json")).items() if not k.startswith("_")}
+ov = load_overrides("overrides.json")
 OLD = load("ABCDEF")
 _text = {}
 
@@ -39,20 +35,6 @@ def text(pid):
 
 
 ALNUM = lambda s: re.sub(r"[^a-z0-9]", "", norm(s))
-NOTE = re.compile(r"\[(?!\.\.\.\])[^\]]*\]")  # a reader's note in brackets, e.g. [no std in Table 3]
-
-
-def segments(quote):
-    """The parts of a quote that must appear in the paper: the reader's bracketed notes are removed, and a
-    quote stitched with [...] or " / " is split into its pieces. Pieces under 12 letters are too short to test."""
-    q = NOTE.sub(" ", quote)
-    parts = re.split(r"\[\.\.\.\]|\.\.\.|…|\s/\s", q)
-    return [p for p in parts if len(ALNUM(p)) >= 12]
-
-
-def is_note(quote):
-    q = quote.strip().lower()
-    return q.startswith(("absent", "non applicable", "sans objet", "n/a", "na ", "aucun", "pas d'", "pas de ")) or not segments(quote)
 
 
 def found(quote, pid, threshold=0.9):
@@ -81,7 +63,7 @@ def found(quote, pid, threshold=0.9):
     return True
 
 
-def v1value(pid, rec, k):
+def v1value(pid, rec, k):  # this file's raw value if it has k, else the v1 reading with overrides.json
     if k in rec["criteria"]:
         return rec["criteria"][k].get("value")
     if pid in OLD:
@@ -90,44 +72,11 @@ def v1value(pid, rec, k):
 
 
 def check(path):
+    """Schema and scope rules (pineau_rl.grid.validate), every quote looked for in the PDF's text."""
     rec = json.load(open(path))
-    pid, C, errs = rec["id"], rec["criteria"], []
-    need = V2 + ([] if pid in OLD else V1)
-    for k in need:
-        if k not in C:
-            errs.append(f"{k} missing")
-            continue
-        c, v = C[k], C[k].get("value")
-        if k in INT:
-            if v is not None and not (isinstance(v, int) and v >= 0):
-                errs.append(f"{k} must be an integer or null, got {v!r}")
-        elif k == "X5":
-            if v not in ("llm", "classic", "theory"):
-                errs.append(f"X5 must be llm/classic/theory, got {v!r}")
-        elif v not in YNA:
-            errs.append(f"{k} must be yes/no/na, got {v!r}")
-        if k == "Y11" and v == "yes" and c.get("kind") not in KINDS:
-            errs.append(f"Y11 yes needs kind in {sorted(KINDS)}")
-        q = c.get("quote") or ""
-        if not q:
-            errs.append(f"{k} has no quote")
-        elif not is_note(q) and not found(q, pid):
-            errs.append(f"{k} quote not found in the PDF: {q[:80]!r}")
-    q1, x2, q4 = v1value(pid, rec, "Q1"), v1value(pid, rec, "X2"), v1value(pid, rec, "Q4")
-    val = lambda k: C.get(k, {}).get("value")
-    if q1 == "no":
-        bad = [k for k in V2 + [x for x in V1 if x not in ("Q1", "X5")] if k in C and val(k) not in ("na", None)]
-        if bad:
-            errs.append(f"Q1 is no, so these must be na: {bad}")
-    else:
-        for k in ("Y2", "Y11"):
-            if (val(k) == "na") != (x2 == "no"):
-                errs.append(f"{k} is na iff X2 is no (X2={x2}, {k}={val(k)})")
-        if val("Y3") == 1 and val("Y4") != "na":
-            errs.append("Y3 is 1, so Y4 must be na")
-        if (val("Y5") == "na") != (q4 == "na"):
-            errs.append(f"Y5 is na iff Q4 is na (Q4={q4}, Y5={val('Y5')})")
-    return errs
+    pid = rec["id"]
+    return validate(rec, need_v1=pid not in OLD, q1=v1value(pid, rec, "Q1"), x2=v1value(pid, rec, "X2"),
+                    q4=v1value(pid, rec, "Q4"), found=found)
 
 
 dirs = sys.argv[1:] or sorted(glob.glob("codes_v2/*"))

@@ -9,26 +9,20 @@ never enters the test. We apply this computation to our evaluations: mean of the
 Same draws as b1_trpo.py: generator seed 2018, 10,000 draws of 10 runs cut into 5 against 5, at random, then sorted.
 Run from sim/: env-an/bin/python analysis/b1_script.py  -> analysis/b1_script.json
 """
-import csv, json
+import json
 import numpy as np
-from scipy import stats
+from pineau_rl.runs import read_run, run_path
+from pineau_rl.stats import henderson_script as script  # from_same_dist.py on the averaged progress of groups a and b
 
 HENDERSON_T = 9.0916
 
 
 def curves(algo):
-    files = [f"results/{algo}/HalfCheetah-v5/seed{s}.csv" for s in range(30)]  # explicit seeds 0 to 29
-    rows = [list(csv.DictReader(open(f))) for f in files]
+    rows = [read_run(run_path("results", algo, "HalfCheetah-v5", s)) for s in range(30)]  # explicit seeds 0 to 29
     M = np.array([[float(r["eval_mean"]) for r in rs] for rs in rows])
     S = np.array([[float(r["eval_std"]) for r in rs] for rs in rows])
     assert M.shape == S.shape == (30, 20), (algo, M.shape)
     return M, S
-
-
-def script(M, S, a, b, n):
-    """from_same_dist.py on the averaged progress of groups a and b."""
-    t, p = stats.ttest_ind_from_stats(M[a].mean(0), S[a].mean(0), n, M[b].mean(0), S[b].mean(0), n, equal_var=False)
-    return t.mean(), p.mean()
 
 
 def run(M, S, sort, rng, n, N=10000):

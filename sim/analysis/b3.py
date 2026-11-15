@@ -4,10 +4,9 @@ measure and ranking of the algorithms; pairs whose order reverses between two me
 when, under each measure, the interval of the probability of improvement excludes 0.5 in opposite directions.
 Run from sim/: env-an/bin/python analysis/b3.py  -> analysis/b3.json
 """
-import csv, itertools, json, sys
+import itertools, json, sys
 import numpy as np
-from rliable import metrics
-from rliable.library import get_interval_estimates
+from pineau_rl.bootstrap import iqm_interval, improvement_interval
 np.random.seed(2026)  # rliable draws from the global generator and ignores random_state (SIM_PROTOCOL.md, deviation 13)
 RS = np.random.RandomState(2026)
 sys.path.insert(0, "analysis")
@@ -26,7 +25,6 @@ def curves(algo, task):
     return out
 
 
-iqm = lambda x: np.array([metrics.aggregate_iqm(x)])
 res, missing = dict(tasks={}), []
 for task in TASKS:
     C = {}
@@ -39,12 +37,11 @@ for task in TASKS:
     S = {m: {a: np.array([f(c) for c in C[a]]) for a in C} for m, f in MEASURES.items()}
     I, P = {}, {}
     for m in MEASURES:
-        pe, _ = get_interval_estimates({a: x[:, None] for a, x in S[m].items()}, iqm, reps=2000, random_state=RS)
-        I[m] = {a: float(pe[a][0]) for a in C}
+        est = iqm_interval(S[m], reps=2000, random_state=RS)
+        I[m] = {a: est[a][0] for a in C}
         P[m] = {}
         for a, b in itertools.combinations(sorted(C), 2):
-            ppe, pci = get_interval_estimates({"p": (S[m][a][:, None], S[m][b][:, None])}, metrics.probability_of_improvement, reps=2000, random_state=RS)
-            P[m][f"{a}>{b}"] = [float(x) for x in np.ravel(pci["p"])]
+            P[m][f"{a}>{b}"] = list(improvement_interval(S[m][a], S[m][b], reps=2000, random_state=RS)[1:])
     order = {m: sorted(C, key=lambda a: -I[m][a]) for m in MEASURES}
     rev = []
     for m1, m2 in itertools.combinations(MEASURES, 2):

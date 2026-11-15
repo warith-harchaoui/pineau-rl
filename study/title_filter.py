@@ -4,10 +4,11 @@ Population: the papers of the three 2026 listings whose title does not match RX 
 Draw: 400 with random.Random(2029). For each, the abstract from the official page; "hidden RL" if the abstract
 matches RX. Share with its Wilson interval, estimated number of RL papers missed, and their fraction of the total.
 The listing pages are copies of conference pages, kept locally only; the drawn papers and their abstracts are
-saved in title_filter.json, so the counts can be redone without them. Standard library only.
-Run from study/: python3 title_filter.py  -> title_filter.json
+saved in title_filter.json, so the counts can be redone without them. Standard library and pineau_rl.stats.
+Run from study/: ../sim/env-an/bin/python title_filter.py  -> title_filter.json
 """
-import html, json, math, os, random, re, time, urllib.request
+import html, json, os, random, re, time, urllib.request
+from pineau_rl.stats import wilson
 
 RX = re.compile(r'reinforcement learning|\bRL\b|\bRLHF\b|\bRLVR\b|policy optimi[sz]ation|'
                 r'policy gradient|q-learning|actor-critic|\bMDPs?\b', re.I)  # as sample_v2.py
@@ -33,12 +34,6 @@ def abstract(url):
     t = get(url)
     m = (re.search(r'class="paper-abstract">(.*?)</section>', t, re.S) or re.search(r'id="abstractText"[^>]*>(.*?)</div>', t, re.S))
     return clean(m.group(1)) if m else None
-
-
-def wilson(k, n, z=1.96):
-    p = k / n; d = 1 + z * z / n
-    c = (p + z * z / (2 * n)) / d; h = z * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / d
-    return [c - h, c + h]
 
 
 if os.path.exists(OUT):

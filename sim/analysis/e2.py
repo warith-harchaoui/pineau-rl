@@ -6,28 +6,25 @@ Run from sim/: env-an/bin/python analysis/e2.py  -> analysis/e2.json
 """
 import itertools, json, sys
 import numpy as np
-from rliable import metrics
-from rliable.library import get_interval_estimates
+from pineau_rl.bootstrap import iqm_interval, improvement_interval
 np.random.seed(2026)  # rliable draws from the global generator and ignores random_state (SIM_PROTOCOL.md, deviation 13)
 RS = np.random.RandomState(2026)
 sys.path.insert(0, "analysis")
 from runs import grid, out_json
 
 G, missing = grid()
-iqm = lambda x: np.array([metrics.aggregate_iqm(x)])
 res = dict(missing=missing, tasks={})
 for task, S in G.items():
-    pe, ci = get_interval_estimates({a: x[:, None] for a, x in S.items()}, iqm, reps=2000, random_state=RS)
-    I = {a: float(pe[a][0]) for a in S}
+    est = iqm_interval(S, reps=2000, random_state=RS)
+    I = {a: est[a][0] for a in S}
     order = sorted(S, key=lambda a: -I[a])
     pairs = {}
     for a, b in itertools.combinations(order, 2):
-        ppe, pci = get_interval_estimates({"p": (S[a][:, None], S[b][:, None])}, metrics.probability_of_improvement, reps=2000, random_state=RS)
-        lo, hi = [float(x) for x in np.ravel(pci["p"])]
-        pairs[f"{a}>{b}"] = dict(p=float(ppe["p"]), ci=[lo, hi], settled=not (lo <= .5 <= hi))
+        p, lo, hi = improvement_interval(S[a], S[b], reps=2000, random_state=RS)
+        pairs[f"{a}>{b}"] = dict(p=p, ci=[lo, hi], settled=not (lo <= .5 <= hi))
     best = max(I.values())
     taus = np.linspace(0, 1.2, 25)
-    res["tasks"][task] = dict(iqm=I, iqm_ci={a: [float(ci[a][0][0]), float(ci[a][1][0])] for a in S}, order=order,
+    res["tasks"][task] = dict(iqm=I, iqm_ci={a: list(est[a][1:]) for a in S}, order=order,
                               pairs=pairs, profile=dict(tau=taus.tolist(),
                                                         **{a: [float((S[a] / best > t).mean()) for t in taus] for a in S}))
     print(task, " > ".join(f"{a} {I[a]:.0f}" for a in order), " settled:", [k for k, v in pairs.items() if v["settled"]])

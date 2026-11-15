@@ -9,34 +9,26 @@ that exists only through the llm papers is a change of population, not of practi
 Run with the analysis environment: ../sim/env-an/bin/python audit_stats.py  -> audit_stats.json
 """
 import json
-from scipy.stats import fisher_exact
-from statsmodels.stats.proportion import confint_proportions_2indep, proportion_confint
-from statsmodels.stats.multitest import multipletests
+from pineau_rl.grid import load_overrides, tally, value_v1
+from pineau_rl.stats import cohen_kappa, compare, holm, wilson_ci
 from load import load
 
 PINEAU = {"Q3": .90, "Q4": .60, "Q5": .55, "Q6": .20, "Q7": .10, "Q8": .05}  # 50 papers, all experimental
 CRIT = ["Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "X2", "X3", "X4", "X7"]
-ov = {k: v for k, v in json.load(open("overrides.json")).items() if not k.startswith("_")}
+ov = load_overrides("overrides.json")
 
 
-def val(d, k):
-    v = d["criteria"].get(k, {}).get("value")
-    return ov.get(k, {}).get(d["id"], v)
+def val(d, k):  # v1 only: this reading and overrides.json
+    return value_v1(d, k, ov)
 
 
 def count(D, k):
     """yes / applicable among experimental papers (Q1 yes), as in analyze.py."""
-    vs = [val(d, k) for d in D.values() if val(d, "Q1") != "no"]
-    vs = [v for v in vs if v in ("yes", "no")]
-    return sum(v == "yes" for v in vs), len(vs)
+    return tally(val(d, k) for d in D.values() if val(d, "Q1") != "no")
 
 
-def compare(a, b):
-    """a, b = (k, n). Difference a - b with Newcombe's interval and Fisher's exact p."""
-    (ka, na), (kb, nb) = a, b
-    lo, hi = confint_proportions_2indep(ka, na, kb, nb, method="newcomb", compare="diff")
-    p = fisher_exact([[ka, na - ka], [kb, nb - kb]])[1]
-    return dict(diff=ka / na - kb / nb, lo=float(lo), hi=float(hi), p=p)  # full precision: round only when printing
+# compare(a, b) of pineau_rl.stats, a, b = (k, n): difference a - b with Newcombe's interval and Fisher's exact p,
+# at full precision (round only when printing)
 
 
 D26 = load("ABCDE")
@@ -49,7 +41,7 @@ rows, tests = [], {"vs_pineau": [], "vs_ours2018": [], "classic_vs_pineau": [], 
 for k in CRIT:
     a, c, l, o = count(D26, k), count(fam["classic"], k), count(fam["llm"], k), count(D18, k)
     r = dict(k=k, all2026=a, classic2026=c, llm2026=l, ours2018=o,
-             wilson2026=[float(x) for x in proportion_confint(*a, method="wilson")])
+             wilson2026=[float(x) for x in wilson_ci(*a)])
     if k in PINEAU:
         pin = (round(PINEAU[k] * 50), 50)
         r["pineau2018"] = pin
@@ -62,7 +54,7 @@ for k in CRIT:
 
 # Holm within each family of comparisons.
 for name, ts in tests.items():
-    adj = multipletests([t["p"] for _, t in ts], method="holm")[1]
+    adj = holm([t["p"] for _, t in ts])
     for (k, t), pa in zip(ts, adj):
         t["p_holm"] = round(float(pa), 4); t["p"] = round(float(t["p"]), 4)
 
@@ -74,11 +66,9 @@ for k in ["Q1", "Q2"] + CRIT + ["X5"]:
     raw = lambda d: d["criteria"].get(k, {}).get("value")  # before harmonisation: overrides would equalise both reads
     pairs = [(raw(D26[i]), raw(G[i])) for i in G if i in D26]
     same = sum(x == y for x, y in pairs)
-    cats = sorted({x for p in pairs for x in p if x is not None}, key=str)
-    n = len(pairs)
-    po = same / n
-    pe = sum((sum(x == c for x, _ in pairs) / n) * (sum(y == c for _, y in pairs) / n) for c in cats)
-    agree[k] = dict(same=same, n=n, kappa=None if pe == 1 else round((po - pe) / (1 - pe), 2))
+    cats = sorted({x for p in pairs for x in p if x is not None}, key=str)  # chance agreement summed without None
+    kappa = cohen_kappa([x for x, _ in pairs], [y for _, y in pairs], categories=cats)
+    agree[k] = dict(same=same, n=len(pairs), kappa=None if kappa is None else round(kappa, 2))
 
 json.dump(dict(rows=rows, agreement=agree), open("audit_stats.json", "w"), indent=1, ensure_ascii=False)
 for r in rows:

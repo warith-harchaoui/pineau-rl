@@ -7,20 +7,15 @@ its stratified bootstrap 95% interval (rliable, 2,000 resamples); a loss is decl
 Control: the score at x 1.0 must equal run.py's final eval_mean (reported as the largest relative gap).
 Run from sim/: env-an/bin/python analysis/dose.py  -> analysis/dose.json  (SEEDS=0:20 for twenty random seeds)
 """
-import csv, json, os, sys
+import json, os, sys
 import numpy as np
-from rliable import metrics
-from rliable.library import get_interval_estimates
+from pineau_rl.bootstrap import iqm, iqm_interval
 np.random.seed(2026)  # rliable draws from the global generator and ignores random_state (SIM_PROTOCOL.md, deviation 13)
 RS = np.random.RandomState(2026)
-
-ALGOS = ["ppo_sb3", "ppo_sbx", "sac", "crossq"]
-TASKS = ["HalfCheetah-v5", "Hopper-v5", "Walker2d-v5", "Swimmer-v5"]
-FINAL = {"ppo_sb3": 1_000_000, "ppo_sbx": 1_000_000, "sac": 200_000, "crossq": 200_000}  # écart 1
+from pineau_rl.runs import read_run, run_path
 sys.path.insert(0, "analysis")
-from runs import SEEDS, out_json
+from runs import ALGOS, FINAL, ROOT, SEEDS, TASKS, out_json
 
-iqm = lambda x: np.array([metrics.aggregate_iqm(x)])
 res, ranks, gaps, missing = {}, {}, [], {}
 for task in TASKS:
     scores = {}  # algo -> {(quantity, strength): array over seeds}
@@ -32,8 +27,9 @@ for task in TASKS:
             continue
         d = [json.load(open(f)) for f in runs]
         for s, x in zip(SEEDS, d):  # the control
-            last = list(csv.DictReader(open(f"results/{algo}/{task}/seed{s}.csv")))[-1]
-            assert int(last["step"]) == FINAL[algo], (algo, task, s)
+            r = read_run(run_path(ROOT, algo, task, s), FINAL[algo])
+            assert r is not None, (algo, task, s)
+            last = r[-1]
             gaps.append(abs(x["mass"]["1.0"] / float(last["eval_mean"]) - 1))
         base = np.array([x["mass"]["1.0"] for x in d])
         scores[algo] = {(q, k): np.array([x[q][k] for x in d]) for q in ("mass", "friction") for k in d[0][q]}
@@ -41,13 +37,12 @@ for task in TASKS:
             if k == "1.0":
                 continue
             r = v / base
-            pe, ci = get_interval_estimates({"r": r[:, None]}, iqm, reps=2000, random_state=RS)
-            lo, hi = float(ci["r"][0][0]), float(ci["r"][1][0])
-            res[f"{algo}/{task}/{q}/{k}"] = dict(iqm=float(pe["r"][0]), ci=[lo, hi], ratios=r.tolist(),
+            m, lo, hi = iqm_interval({"r": r}, reps=2000, random_state=RS)["r"]
+            res[f"{algo}/{task}/{q}/{k}"] = dict(iqm=m, ci=[lo, hi], ratios=r.tolist(),
                                                 verdict="loss" if hi < 1 else "gain" if lo > 1 else "no detectable change")
     if len(scores) == len(ALGOS):
         for key in scores[ALGOS[0]]:
-            iq = {a: float(metrics.aggregate_iqm(scores[a][key])) for a in ALGOS}
+            iq = {a: float(iqm(scores[a][key])) for a in ALGOS}
             ranks[f"{task}/{key[0]}/{key[1]}"] = dict(iqm=iq, ranking=sorted(ALGOS, key=lambda a: -iq[a]))
 
 for k, v in res.items():

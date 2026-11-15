@@ -7,38 +7,27 @@ papers where both readers gave yes/no (Y3 turned into yes when at least 2), and 
 readers vary. A criterion under 70% agreement is flagged as fragile.
 Run from study/: ../sim/env-an/bin/python agree_v2.py  -> agree_v2.json
 """
-import glob, json, os
-
-
-def cohen_kappa(a, b):
-    """Cohen's kappa for two raters on the same items, as in audit_stats.py."""
-    n, cats = len(a), set(a) | set(b)
-    po = sum(x == y for x, y in zip(a, b)) / n
-    pe = sum((a.count(c) / n) * (b.count(c) / n) for c in cats)
-    return None if pe == 1 else (po - pe) / (1 - pe)
-
+import json
+from pineau_rl.grid import list_readers, load_reads, y3_yes_no
+from pineau_rl.stats import cohen_kappa
 
 CRIT = ["Q%d" % i for i in range(2, 9)] + ["X2", "X3", "X4", "X7"] + ["Y%d" % i for i in range(1, 13)]
 SECOND = ["G2", "R2", "R3"]  # R3: A4 (deviation 26)
 
 
 def reads(d):
-    out = {}
-    for f in sorted(glob.glob(f"codes_v2/{d}/*.json")):
-        r = json.load(open(f))
-        out[r["id"]] = r["criteria"]
-    return out
+    return {i: r["criteria"] for i, r in load_reads("codes_v2", [d]).items()}
 
 
-def yn(c, k):
+def yn(c, k):  # raw read, no harmonisation
     v = c.get(k, {}).get("value")
     if k == "Y3" and v is not None:
-        return "yes" if v >= 2 else "no"
+        return y3_yes_no(v)
     return v if v in ("yes", "no") else None
 
 
 primary = {}
-for d in sorted(os.path.basename(x) for x in glob.glob("codes_v2/*")):
+for d in list_readers("codes_v2"):
     if d not in SECOND and d != "pilot":
         primary.update(reads(d))
 out = {}

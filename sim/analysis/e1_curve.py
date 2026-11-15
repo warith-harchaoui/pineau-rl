@@ -10,23 +10,16 @@ of 5 (at random, or sorted by final score), runs a Welch test at each of the 20 
 Added on 9 November 2026 after e1.py's results were known (SIM_PROTOCOL.md, Écarts).
 Run from sim/: env-an/bin/python analysis/e1_curve.py  -> analysis/e1_curve.json
 """
-import csv, json
+import json
 import numpy as np
-from scipy import stats
+from pineau_rl.runs import read_run, run_path
+from pineau_rl.stats import welch_curve as curve_test
 
-files = sorted(f"results/ppo_sb3/HalfCheetah-v5/seed{s}.csv" for s in range(30))  # explicit seeds 0 to 29, string order
-C = np.array([[float(r["eval_mean"]) for r in csv.DictReader(open(f))] for f in files])  # 30 x 20
+seeds = sorted(range(30), key=str)  # explicit seeds 0 to 29, in the string order of their file names
+C = np.array([[float(r["eval_mean"]) for r in read_run(run_path("results", "ppo_sb3", "HalfCheetah-v5", s))]
+              for s in seeds])  # 30 x 20
 assert C.shape == (30, 20), C.shape
 rng = np.random.default_rng(2018)
-
-
-def curve_test(a, b):
-    t = stats.ttest_ind(a, b, axis=0, equal_var=False)
-    va, vb = a.var(axis=0, ddof=1) / len(a), b.var(axis=0, ddof=1) / len(b)
-    df = (va + vb) ** 2 / (va ** 2 / (len(a) - 1) + vb ** 2 / (len(b) - 1))
-    mean_t = t.statistic.mean()
-    return dict(mean_t=mean_t, p_mean_t=2 * stats.t.sf(abs(mean_t), df.mean()), mean_p=t.pvalue.mean(),
-                final_p=t.pvalue[-1])
 
 
 def run(sort, N=10000):
