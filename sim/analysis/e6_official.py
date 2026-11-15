@@ -38,6 +38,8 @@ def evaluate_official():
 def stats_official():
     from rliable import metrics
     from rliable.library import get_interval_estimates
+    np.random.seed(2026)  # rliable draws from the global generator and ignores random_state (SIM_PROTOCOL.md, deviation 13)
+    RS = np.random.RandomState(2026)
     from scipy import stats
     from statsmodels.stats.multitest import multipletests
     off = np.array(list(json.load(open("analysis/e6_official_eval.json")).values()))
@@ -46,7 +48,7 @@ def stats_official():
     G = {"official v4": off, "zoofix v4": finals("ppo_sb3_zoofix"), "default v4": finals("ppo_sb3")}
     assert all(len(v) == 10 for v in G.values()), {k: len(v) for k, v in G.items()}
     pe, ci = get_interval_estimates({k: v[:, None] for k, v in G.items()},
-                                    lambda x: np.array([metrics.aggregate_iqm(x)]), reps=5000)
+                                    lambda x: np.array([metrics.aggregate_iqm(x)]), reps=5000, random_state=RS)
     rng = np.random.default_rng(2018)
     pi = lambda a, b: (a[:, None] > b[None, :]).mean() + 0.5 * (a[:, None] == b[None, :]).mean()
     comps = []

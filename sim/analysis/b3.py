@@ -8,20 +8,19 @@ import csv, itertools, json, sys
 import numpy as np
 from rliable import metrics
 from rliable.library import get_interval_estimates
+np.random.seed(2026)  # rliable draws from the global generator and ignores random_state (SIM_PROTOCOL.md, deviation 13)
+RS = np.random.RandomState(2026)
 sys.path.insert(0, "analysis")
-from runs import ALGOS, TASKS, FINAL
+from runs import ALGOS, TASKS, SEEDS, out_json, read
 
 MEASURES = {"final": lambda c: c[-1], "best": lambda c: c.max(), "mean": lambda c: c.mean()}
 
 
 def curves(algo, task):
     out = []
-    for s in range(10):
-        try:
-            r = list(csv.DictReader(open(f"results/{algo}/{task}/seed{s}.csv")))
-        except FileNotFoundError:
-            return None
-        if int(r[-1]["step"]) != FINAL[algo]:
+    for s in SEEDS:
+        r = read(algo, task, s)
+        if r is None:
             return None
         out.append(np.array([float(x["eval_mean"]) for x in r]))
     return out
@@ -40,11 +39,11 @@ for task in TASKS:
     S = {m: {a: np.array([f(c) for c in C[a]]) for a in C} for m, f in MEASURES.items()}
     I, P = {}, {}
     for m in MEASURES:
-        pe, _ = get_interval_estimates({a: x[:, None] for a, x in S[m].items()}, iqm, reps=2000)
+        pe, _ = get_interval_estimates({a: x[:, None] for a, x in S[m].items()}, iqm, reps=2000, random_state=RS)
         I[m] = {a: float(pe[a][0]) for a in C}
         P[m] = {}
         for a, b in itertools.combinations(sorted(C), 2):
-            ppe, pci = get_interval_estimates({"p": (S[m][a][:, None], S[m][b][:, None])}, metrics.probability_of_improvement, reps=2000)
+            ppe, pci = get_interval_estimates({"p": (S[m][a][:, None], S[m][b][:, None])}, metrics.probability_of_improvement, reps=2000, random_state=RS)
             P[m][f"{a}>{b}"] = [float(x) for x in np.ravel(pci["p"])]
     order = {m: sorted(C, key=lambda a: -I[m][a]) for m in MEASURES}
     rev = []
@@ -61,4 +60,4 @@ res["n_reversals"] = sum(len(t["reversals"]) for t in res["tasks"].values())
 res["n_settled"] = sum(r["settled"] for t in res["tasks"].values() for r in t["reversals"])
 res["leader_changes"] = [t for t, r in res["tasks"].items() if len({o[0] for o in r["order"].values()}) > 1]
 print("reversals", res["n_reversals"], "settled", res["n_settled"], "tasks whose leader depends on the measure", res["leader_changes"], "missing", missing)
-json.dump(res, open("analysis/b3.json", "w"), indent=1)
+json.dump(res, open(out_json("b3"), "w"), indent=1)

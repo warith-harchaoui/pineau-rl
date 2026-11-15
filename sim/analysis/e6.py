@@ -3,6 +3,8 @@ import glob, csv, json
 import numpy as np
 from rliable import metrics
 from rliable.library import get_interval_estimates
+np.random.seed(2026)  # rliable draws from the global generator and ignores random_state (SIM_PROTOCOL.md, deviation 13)
+RS = np.random.RandomState(2026)
 from scipy import stats
 def finals(tag, col='eval_mean'):
     out = []
@@ -16,7 +18,7 @@ print('default', np.round(np.sort(d)), 'mean', d.mean().round(), 'sd', d.std(ddo
 print('zoo    ', np.round(np.sort(z)), 'mean', z.mean().round(), 'sd', z.std(ddof=1).round())
 scores = {'default': d[:, None], 'zoo': z[:, None]}
 iqm = lambda x: np.array([metrics.aggregate_iqm(x)])
-pe, ci = get_interval_estimates(scores, iqm, reps=2000)
+pe, ci = get_interval_estimates(scores, iqm, reps=2000, random_state=RS)
 print({k: (round(float(pe[k][0])), [round(float(ci[k][0][0])), round(float(ci[k][1][0]))]) for k in pe})
 print('Welch', stats.ttest_ind(z, d, equal_var=False))
 print('P(zoo>default)', np.mean([a > b for a in z for b in d]))

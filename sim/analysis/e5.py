@@ -7,10 +7,11 @@ Run from sim/: env-an/bin/python analysis/e5.py  -> analysis/e5.json
 import itertools, json, sys
 import numpy as np
 sys.path.insert(0, "analysis")
-from runs import finals, grid
+from runs import DEFAULT, finals, grid, out_json
 
 G, missing = grid()
-G["HalfCheetah-v5"]["ppo_sb3"] = finals("ppo_sb3", "HalfCheetah-v5", range(30))
+if DEFAULT:  # the preregistered analysis uses E1's 30 runs; deviation 12 draws from the chosen seeds only
+    G["HalfCheetah-v5"]["ppo_sb3"] = finals("ppo_sb3", "HalfCheetah-v5", range(30))
 rng = np.random.default_rng(2026)
 NS, N = (3, 5, 10, 20), 10000
 comps = []
@@ -27,4 +28,4 @@ res = dict(missing=missing, comparisons=comps,
            n_close=len(close), median_close={n: float(np.median([c["recovered"][n] for c in close])) for n in NS} if close else None)
 print("median over", len(comps), "comparisons:", res["median_all"])
 print("gaps under 20%:", len(close), res["median_close"], "\nmissing", missing)
-json.dump(res, open("analysis/e5.json", "w"), indent=1)
+json.dump(res, open(out_json("e5"), "w"), indent=1)

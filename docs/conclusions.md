@@ -574,8 +574,8 @@ rarement leurs références : tout le premier tirage tombe à 18 %.
 **Une référence qui s'effondre (E6).** Notre expérience E6 voulait illustrer la faille. Elle oppose
 PPO sur Hopper avec les valeurs par défaut de la bibliothèque à PPO avec les réglages publiés par
 le recueil RL Baselines3 Zoo [@raffin2020zoo], qui font foi pour cette bibliothèque. Premier
-passage : la version par défaut atteint une moyenne interquartile de 2 877 [2 268, 3 365], la
-version réglée 1 003 [852, 1 158]. La moyenne interquartile (*interquartile mean*, IQM) écarte le
+passage : la version par défaut atteint une moyenne interquartile de 2 877 [2 268, 3 369], la
+version réglée 1 003 [856, 1 146]. La moyenne interquartile (*interquartile mean*, IQM) écarte le
 quart le plus bas et le quart le plus haut des essais, puis fait la moyenne du reste
 [@agarwal2021precipice]. Les réglages publiés feraient trois fois moins bien que les valeurs par
 défaut ? Le résultat était trop beau. En vérifiant, nous avons trouvé une erreur de notre côté :
@@ -584,9 +584,9 @@ recueil emploie celui de l'algorithme, 0,999. Nous avons relancé la recette cor
 aléatoires par condition, sur Hopper dans ses versions 4 et 5. Ce diagnostic a été décidé après
 avoir vu le premier résultat, ce que le protocole déclare.
 
-**L'erreur corrigée ne change rien.** La recette corrigée obtient 1 012 [902, 1 138] sur la
-version 5 contre 984 [785, 1 003] sur la version 4, celle pour laquelle le recueil a été réglé. Les
-valeurs par défaut obtiennent 2 423 [1 673, 3 067] sur la version 4. La probabilité qu'un essai
+**L'erreur corrigée ne change rien.** La recette corrigée obtient 1 012 [902, 1 135] sur la
+version 5 contre 984 [773, 1 002] sur la version 4, celle pour laquelle le recueil a été réglé. Les
+valeurs par défaut obtiennent 2 423 [1 657, 3 058] sur la version 4. La probabilité qu'un essai
 corrigé batte un essai avec l'erreur vaut 0,47, autant dire le hasard. Notre erreur
 était réelle, sans expliquer l'écart. Deux possibilités demeurent : la recette publiée fait
 vraiment moins bien que les valeurs par défaut avec les versions actuelles des bibliothèques, ou
@@ -595,8 +595,8 @@ dix agents avec le script officiel du recueil, puis nous les avons évalués ave
 comme le protocole le prévoyait avant ces entraînements.
 
 **La recette publiée plafonne aussi avec le script officiel.** Les dix agents officiels obtiennent
-995 [819, 1 006], autant que notre recette corrigée (984 [772, 1 002]). Les valeurs par défaut
-obtiennent 2 423 [1 682, 3 059]. Un agent officiel ne bat un agent par défaut qu'avec une
+995 [821, 1 006], autant que notre recette corrigée (984 [777, 1 002]). Les valeurs par défaut
+obtiennent 2 423 [1 687, 3 058]. Un agent officiel ne bat un agent par défaut qu'avec une
 probabilité de 0,09. L'écart résiste à la correction de Holm (p = 0,001). Notre façon
 d'appliquer la recette n'était donc pas en cause. Avec les versions actuelles des bibliothèques,
 la recette réglée du recueil fait moins bien que les valeurs par défaut sur Hopper. E6 ne montre

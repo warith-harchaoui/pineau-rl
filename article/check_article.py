@@ -10,6 +10,7 @@ The spirit of docs/check_numbers.py, turned into a coverage check:
 Exit code 1 on any failure.  Run: python3 article/check_article.py
 """
 import csv, json, re, sys
+Q = "'"  # an apostrophe for f-string expressions (Python 3.11 allows no backslash there)
 from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
 
@@ -94,7 +95,7 @@ claim("Y9 later", f"de {pct(y9(['2019', '2020']), 'fr')} sur 2019 et 2020 à {pc
 e1 = J("sim/analysis/e1.json")
 s = e1["seeds_sorted"]
 inner = [v for v in s if v < 3000]
-claim("E1 mean, sd, cv", *both(lambda l: f"{num(e1['mean'], l)}, {'l\'écart type' if l == 'fr' else 'the standard deviation'} {num(e1['sd'], l)}, {'soit' if l == 'fr' else 'or'} {pct(e1['cv'], l)}"))
+claim("E1 mean, sd, cv", *both(lambda l: f"{num(e1['mean'], l)}, {('l' + Q + 'écart type') if l == 'fr' else 'the standard deviation'} {num(e1['sd'], l)}, {'soit' if l == 'fr' else 'or'} {pct(e1['cv'], l)}"))
 claim("E1 mean, median", *both(lambda l: f"{'Moyenne' if l == 'fr' else 'Mean'} {num(e1['mean'], l)}, {'médiane' if l == 'fr' else 'median'} {num(e1['median'], l)}"))
 claim("E1 27 runs range", *both(lambda l: de_a(num(min(s), l), num(max(inner), l), l).replace("de ", "entre ").replace(" à ", " et ").replace("from ", "between ").replace(" to ", " and ")))
 assert len(inner) == 27 and len(s) - len(inner) == 3 and min(v for v in s if v >= 3000) > 3000
@@ -118,14 +119,14 @@ assert cu["random_5v5"]["share_abs_mean_t_ge_9"] == cu["sorted_5v5"]["share_abs_
 claim("E1 curve none of 20000 reaches 9", "Aucun de nos 20 000 tirages n'atteint 9", "None of our 20,000 draws reaches 9")
 tr = b1["trpo"]
 claim("B1 TRPO cv", *both(lambda l: f"{pct(tr['cv'], l)} {'de sa moyenne' if l == 'fr' else 'of its mean'}"))
-claim("B1 mean t", *both(lambda l: f"{num(tr['random_5v5']['mean_t']['abs_t_p95'], l, 1)} {'qu\'une fois sur vingt au hasard,' if l == 'fr' else 'only one time in twenty at random,'} {num(tr['sorted_5v5']['mean_t']['abs_t_p95'], l, 1)}"))
+claim("B1 mean t", *both(lambda l: f"{num(tr['random_5v5']['mean_t']['abs_t_p95'], l, 1)} {('qu' + Q + 'une fois sur vingt au hasard,') if l == 'fr' else 'only one time in twenty at random,'} {num(tr['sorted_5v5']['mean_t']['abs_t_p95'], l, 1)}"))
 claim("B1 pooled", *both(lambda l: f"{num(tr['random_5v5']['pooled']['abs_t_p95'], l, 1)} {'au hasard et à' if l == 'fr' else 'at random and'} {num(tr['sorted_5v5']['pooled']['abs_t_p95'], l, 1)}"))
 claim("B1 pooled false positives", *both(lambda l: f"{pct(tr['random_5v5']['pooled']['false_positive'], l)} {'des tirages au hasard' if l == 'fr' else 'of the random draws'}"))
 assert all(tr[g][m]["share_abs_t_ge_henderson"] == 0 for g in ("random_5v5", "sorted_5v5") for m in ("mean_t", "pooled"))
 hs = b1s["trpo"]["n10"]["random_5v5"]
 claim("Henderson script share >= 9.09", *both(lambda l: f"{'dépasse' if l == 'fr' else 'exceeds'} {num(9.09, l, 2)} {'dans' if l == 'fr' else 'in'} {pct(hs['share_abs_t_ge_henderson'], l)}"))
 claim("Henderson script false positives", *both(lambda l: f"{pct(hs['false_positive'], l)} {'des cas' if l == 'fr' else 'of the cases'}"))
-claim("TRPO episode/agent sd", *both(lambda l: f"{pct(b1s['trpo']['eval_std_over_between_seed_sd'], l)} {'de l\'écart type entre agents' if l == 'fr' else 'of the standard deviation between agents'}"))
+claim("TRPO episode/agent sd", *both(lambda l: f"{pct(b1s['trpo']['eval_std_over_between_seed_sd'], l)} {('de l' + Q + 'écart type entre agents') if l == 'fr' else 'of the standard deviation between agents'}"))
 assert b1s["ppo_sb3"]["n10"]["random_5v5"]["share_abs_t_ge_henderson"] == 0
 claim("PPO with the script never reaches 9", "le même calcul n'atteint jamais 9", "the same computation never reaches 9")
 claim("B1 no reading reaches 9", "Aucune lecture n'atteint 9", "No reading reaches 9")
@@ -187,7 +188,7 @@ claim("GRPO Llama true", *both(lambda l: ("finit à {}, {} et {}" if l == "fr" e
 claim("GRPO alt", *both(lambda l: (("Qwen avec la vraie récompense : {}, {} et {} selon la graine aléatoire. Qwen à pile ou face : {}, {}, {}. Llama avec la vraie récompense : {}, {}, {}. Llama à pile ou face : {}, {}, {}") if l == "fr" else
                                    ("Qwen with the true reward: {}, {} and {} depending on the random seed. Qwen with a coin flip: {}, {}, {}. Llama with the true reward: {}, {}, {}. Llama with a coin flip: {}, {}, {}")).format(
     *fin("qwen05", "true", l), *fin("qwen05", "random", l), *fin("llama1", "true", l), *fin("llama1", "random", l))))
-claim("GRPO 13% run on CPU", *both(lambda l: f"{'L\'essai à' if l == 'fr' else 'The run at'} {pct(hu(run('qwen05', 'true')[2]['pass1_100'], 2), l)}"))
+claim("GRPO 13% run on CPU", *both(lambda l: f"{('L' + Q + 'essai à') if l == 'fr' else 'The run at'} {pct(hu(run('qwen05', 'true')[2]['pass1_100'], 2), l)}"))
 assert run("qwen05", "true")[2]["device"] == "cpu"
 q0 = sorted({int(hu(x["pass1_0"] * 100)) for x in sm if x["model"] == "qwen05"})
 l0 = sorted({int(hu(x["pass1_0"] * 100)) for x in sm if x["model"] == "llama1"})

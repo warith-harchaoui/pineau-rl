@@ -12,6 +12,8 @@ import csv, glob, json
 import numpy as np
 from rliable import metrics
 from rliable.library import get_interval_estimates
+np.random.seed(2026)  # rliable draws from the global generator and ignores random_state (SIM_PROTOCOL.md, deviation 13)
+RS = np.random.RandomState(2026)
 from scipy import stats
 from statsmodels.stats.multitest import multipletests
 
@@ -30,7 +32,7 @@ G = {"default v5": finals("ppo_sb3", "Hopper-v5"), "zoo v5 (bug)": finals("ppo_s
      "zoofix v5": finals("ppo_sb3_zoofix", "Hopper-v5"), "default v4": finals("ppo_sb3", "Hopper-v4"),
      "zoofix v4": finals("ppo_sb3_zoofix", "Hopper-v4")}
 iqm = lambda x: np.array([metrics.aggregate_iqm(x)])
-pe, ci = get_interval_estimates({k: v[:, None] for k, v in G.items()}, iqm, reps=5000)
+pe, ci = get_interval_estimates({k: v[:, None] for k, v in G.items()}, iqm, reps=5000, random_state=RS)
 groups = {k: dict(runs=v.tolist(), mean=float(v.mean()), sd=float(v.std(ddof=1)), iqm=float(pe[k][0]),
                   iqm_ci=[float(ci[k][0][0]), float(ci[k][1][0])]) for k, v in G.items()}
 

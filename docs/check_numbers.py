@@ -271,7 +271,8 @@ add("limits llm", f"{len(llm)} articles du premier tirage de 2026 sur 50", f"{le
 e6 = J("sim/analysis/e6_diag.json")
 iv = lambda g, lang="fr": f"{num(g['iqm'], lang)} [{num(g['iqm_ci'][0], lang)}, {num(g['iqm_ci'][1], lang)}]"
 for k in ("default v5", "zoo v5 (bug)", "zoofix v5", "zoofix v4", "default v4"):
-    add(f"E6 {k}", iv(e6["groups"][k]), "")
+    g = e6["groups"][k]  # the English text gives the same interval in words
+    add(f"E6 {k}", iv(g), f"{num(g['iqm'], 'en')} (interval {num(g['iqm_ci'][0], 'en')} to {num(g['iqm_ci'][1], 'en')})")
 pb = next(c for c in e6["comparisons"] if c["b"] == "zoo v5 (bug)")
 add("E6 bug vs fix", f"vaut {pb['p_improve']:.2f}".replace(".", ","), "")
 # E1, final scores.

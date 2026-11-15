@@ -6,7 +6,7 @@ Run from sim/: env-an/bin/python analysis/e4.py  -> analysis/e4.json
 import itertools, json, sys
 import numpy as np
 sys.path.insert(0, "analysis")
-from runs import grid
+from runs import grid, out_json
 
 G, missing = grid()
 cells, comps = {}, []
@@ -25,4 +25,4 @@ res = dict(missing=missing, cells=cells, comparisons=comps, n_comparisons=len(co
            sd_shrink_median=float(np.median([c["sd3"] / c["sd10"] for c in cells.values()])))
 print(f"{res['n_reversed']} of {res['n_comparisons']} comparisons reverse; mean inflated by {res['inflation_median']:.0%} "
       f"(median, range {min(inf):.0%} to {max(inf):.0%}); sd shrinks to {res['sd_shrink_median']:.0%}; missing {missing}")
-json.dump(res, open("analysis/e4.json", "w"), indent=1)
+json.dump(res, open(out_json("e4"), "w"), indent=1)

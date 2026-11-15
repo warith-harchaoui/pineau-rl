@@ -8,19 +8,21 @@ import itertools, json, sys
 import numpy as np
 from rliable import metrics
 from rliable.library import get_interval_estimates
+np.random.seed(2026)  # rliable draws from the global generator and ignores random_state (SIM_PROTOCOL.md, deviation 13)
+RS = np.random.RandomState(2026)
 sys.path.insert(0, "analysis")
-from runs import grid
+from runs import grid, out_json
 
 G, missing = grid()
 iqm = lambda x: np.array([metrics.aggregate_iqm(x)])
 res = dict(missing=missing, tasks={})
 for task, S in G.items():
-    pe, ci = get_interval_estimates({a: x[:, None] for a, x in S.items()}, iqm, reps=2000)
+    pe, ci = get_interval_estimates({a: x[:, None] for a, x in S.items()}, iqm, reps=2000, random_state=RS)
     I = {a: float(pe[a][0]) for a in S}
     order = sorted(S, key=lambda a: -I[a])
     pairs = {}
     for a, b in itertools.combinations(order, 2):
-        ppe, pci = get_interval_estimates({"p": (S[a][:, None], S[b][:, None])}, metrics.probability_of_improvement, reps=2000)
+        ppe, pci = get_interval_estimates({"p": (S[a][:, None], S[b][:, None])}, metrics.probability_of_improvement, reps=2000, random_state=RS)
         lo, hi = [float(x) for x in np.ravel(pci["p"])]
         pairs[f"{a}>{b}"] = dict(p=float(ppe["p"]), ci=[lo, hi], settled=not (lo <= .5 <= hi))
     best = max(I.values())
@@ -37,4 +39,4 @@ res["settled_changes"] = [f"{leaders[t]} leads {t} but loses to {k.split('>')[0]
                           for t in leaders for u, r in res["tasks"].items() if u != t
                           for k, v in r["pairs"].items() if v["settled"] and k.split(">")[1] == leaders[t]]
 print("leaders", leaders, "\nsettled changes", len(res["settled_changes"]), "\nmissing", missing)
-json.dump(res, open("analysis/e2.json", "w"), indent=1)
+json.dump(res, open(out_json("e2"), "w"), indent=1)

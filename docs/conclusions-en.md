@@ -540,8 +540,8 @@ rarely describe their baselines: the whole first draw falls to 18%.
 **A baseline that collapses (E6).** Our experiment E6 set out to illustrate the flaw. It pits PPO on
 Hopper with the library's default values against PPO with the settings published by the RL
 Baselines3 Zoo collection [@raffin2020zoo], the reference settings for this library. On the first
-pass, the default version reaches an interquartile mean of 2,877 (interval 2,268 to 3,365), the
-tuned version 1,003 (interval 852 to 1,158). The interquartile mean (IQM) discards the lowest
+pass, the default version reaches an interquartile mean of 2,877 (interval 2,268 to 3,369), the
+tuned version 1,003 (interval 856 to 1,146). The interquartile mean (IQM) discards the lowest
 quarter and the highest quarter of the runs, then averages the rest [@agarwal2021precipice]. Did the
 published settings really do three times worse than the default values? The result looked too good.
 While checking it, we found an error on our side: our code normalised observations with a discount
@@ -549,9 +549,9 @@ factor of 0.99, while the collection uses the algorithm's own factor, 0.999. We 
 recipe with ten random seeds per condition, on Hopper in its versions 4 and 5. We decided on this
 diagnosis after seeing the first result, as the protocol declares.
 
-**Fixing the error changes nothing.** The corrected recipe scores 1,012 (interval 902 to 1,138) on
-version 5 against 984 (interval 785 to 1,003) on version 4, the one the collection was tuned for.
-The default values score 2,423 (interval 1,673 to 3,067) on version 4. The probability that a
+**Fixing the error changes nothing.** The corrected recipe scores 1,012 (interval 902 to 1,135) on
+version 5 against 984 (interval 773 to 1,002) on version 4, the one the collection was tuned for.
+The default values score 2,423 (interval 1,657 to 3,058) on version 4. The probability that a
 corrected run beats a run with the error is 0.47, as good as a coin toss. Our error was real, yet it
 does not explain the gap. Two possibilities remain. Either the published recipe really does worse
 than the default values with current library versions, or our way of applying it still differs from
@@ -560,8 +560,8 @@ the collection's official script, then evaluated them with our protocol, as the 
 before these runs.
 
 **The published recipe also plateaus with the official script.** The ten official agents score
-995 [819, 1,006], as much as our corrected recipe (984 [772, 1,002]). The default values score
-2,423 [1,682, 3,059]. An official agent beats a default agent with a probability of only 0.09.
+995 [821, 1,006], as much as our corrected recipe (984 [777, 1,002]). The default values score
+2,423 [1,687, 3,058]. An official agent beats a default agent with a probability of only 0.09.
 The gap survives Holm's correction (p = 0.001). Our way of applying the recipe was therefore
 not the cause. With the current versions of the libraries, the collection's tuned recipe does worse
 than the default values on Hopper. So E6 does not show a baseline badly tuned by its authors. It
