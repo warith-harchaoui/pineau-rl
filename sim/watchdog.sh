@@ -6,7 +6,7 @@ swap_mb() { sysctl -n vm.swapusage | sed -E 's/.*used = ([0-9.]+)M.*/\1/' | cut 
 free_gb() { df -g / | awk 'NR==2{print $4}'; }
 base=$(swap_mb)
 echo "$(date '+%F %T') start swap_base=${base}M free=$(free_gb)G"
-while pgrep -f "(drive2?|queue)\.sh" > /dev/null; do
+while pgrep -f "(drive2?|queue|worker)\.sh" > /dev/null; do
   f=$(free_gb); s=$(( $(swap_mb) - base ))
   echo "$(date '+%F %T') free=${f}G swap_growth=${s}M"
   if [ "$f" -lt "${MIN_FREE_GB:-10}" ] || [ "$s" -gt 8192 ]; then
