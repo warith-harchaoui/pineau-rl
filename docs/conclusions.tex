@@ -82,31 +82,31 @@ propre lecture de 2018, avec les mêmes grilles et les mêmes lecteurs.
 Quatre pratiques ont changé. Le lien vers le code passe de 31 \% à 74 \%
 des articles, la sensibilité à un réglage montrée de 44 \% à 80 \%, le
 calcul chiffré de 27 \% à 58 \%, une incertitude rapportée de 63 \% à 88
-\%. Trois de ces hausses, le code, la sensibilité et le calcul,
-résistent à toutes les coupes que nous avons tentées. La quatrième,
-l'incertitude, est fragile : elle ne passe plus la correction de Holm
-quand on retire les treize articles lus en partie par un autre modèle (p
-= 0,07). Lues sur 20 articles par année entre les deux dates, elles
-montent lentement, sans saut juste après la liste de contrôle que
-NeurIPS impose depuis 2019. D'autres pratiques n'ont pas bougé de façon
-détectable : un test statistique (6 \% puis 12 \%), des références
-décrites avec tous leurs réglages (35 \% puis 29 \%), une évaluation
-tenue à part (33 \% puis 45 \%), la version des bancs d'essai (23 \%
-puis 26 \%). Nos expériences précisent la faille la plus célèbre. Sur
-nos trente essais, deux groupes de cinq tirés au hasard ne trompent un
-test statistique que dans 1,2 \% des cas. Le test se laisse tromper
-quand on trie les essais (31 \%). Garder les meilleurs gonfle le score
-de 33 \%. Elles montrent aussi pourquoi un résultat trop beau se vérifie
-: notre propre référence s'est effondrée, une erreur de notre code
-semblait l'expliquer. Sa correction n'a rien changé. Le script officiel
-du recueil plafonne de même : la recette publiée a vieilli avec les
-bibliothèques. Le chiffre le plus frappant de 2018, un t de 9 entre deux
-groupes du même programme, trouve son explication : le script publié par
-Peter Henderson mesure la dispersion des épisodes et ignore celle des
-graines aléatoires. Appliqué à nos essais de TRPO, il dépasse 9 dans 38
-\% des tirages au hasard. Sur nos quatre algorithmes, le meilleur change
-avec la tâche. Une physique modifiée de 20 \% bouleverse le classement
-sur Hopper : le premier y finit dernier.
+\%. Le code et le calcul résistent à toutes les coupes que nous avons
+tentées, la sensibilité à presque toutes. La quatrième, l'incertitude,
+est fragile : elle ne passe plus la correction de Holm quand on retire
+les treize articles lus en partie par un autre modèle (p = 0,07). Lues
+sur 20 articles par année entre les deux dates, elles montent lentement,
+sans saut juste après la liste de contrôle que NeurIPS impose depuis
+2019. D'autres pratiques n'ont pas bougé de façon détectable : un test
+statistique (6 \% puis 12 \%), des références décrites avec tous leurs
+réglages (35 \% puis 29 \%), une évaluation tenue à part (33 \% puis 45
+\%), la version des bancs d'essai (23 \% puis 26 \%). Nos expériences
+précisent la faille la plus célèbre. Sur nos trente essais, deux groupes
+de cinq tirés au hasard ne trompent un test statistique que dans 1,2 \%
+des cas. Le test se laisse tromper quand on trie les essais (31 \%).
+Garder les meilleurs gonfle le score de 33 \%. Elles montrent aussi
+pourquoi un résultat trop beau se vérifie : notre propre référence s'est
+effondrée, une erreur de notre code semblait l'expliquer. Sa correction
+n'a rien changé. Le script officiel du recueil plafonne de même : la
+recette publiée a vieilli avec les bibliothèques. Le chiffre le plus
+frappant de 2018, un t de 9 entre deux groupes du même programme, trouve
+son explication : le script publié par Peter Henderson mesure la
+dispersion des épisodes et ignore celle des graines aléatoires. Appliqué
+à nos essais de TRPO, il dépasse 9 dans 38 \% des tirages au hasard. Sur
+nos quatre algorithmes, le meilleur change avec la tâche. Une physique
+modifiée de 20 \% bouleverse le classement sur Hopper : le premier y
+finit dernier.
 
 \section{Deux conférences en 2018}\label{deux-confuxe9rences-en-2018}
 
@@ -1300,23 +1300,26 @@ PyTorch et PPO écrit en JAX, avec les mêmes graines aléatoires. E2 est
 fini : le meilleur algorithme change avec la tâche. SAC mène sur
 HalfCheetah, PPO écrit en JAX sur Hopper et Swimmer, CrossQ sur
 Walker2d. Le changement est établi selon la règle du protocole : SAC, en
-tête sur HalfCheetah, est nettement battu sur Hopper et sur Walker2d. Le
-premier ne bat pourtant nettement tous les autres que sur Walker2d ; sur
-les trois autres tâches, dix graines ne le séparent pas de son suivant.
-Les budgets diffèrent : un million de pas pour PPO, 200 000 pour SAC et
-CrossQ. E3 est fini : sur aucune des quatre tâches, l'une des deux
-versions ne l'emporte selon la règle du protocole. Les écarts apparents
-sont pourtant larges. Sur Walker2d, la moyenne interquartile vaut 2 158
-avec PyTorch et 1 272 avec JAX, 41 \% de moins, mais les deux
-intervalles se chevauchent encore avec dix graines. Une méthode comparée
-à « PPO » sur cette tâche gagnerait ou perdrait donc selon la version
-choisie, sans que dix graines permettent de trancher. Les articles, eux,
-sont lus. Dans le RL classique, la conclusion principale repose sur
-plusieurs tâches dans 41 articles sur 50 en 2026, contre 43 sur 48 en
-2018 (critère Y3). Parmi les articles à plusieurs tâches, 38 sur 41
-montrent au moins une tâche où leur méthode ne gagne pas, contre 34 sur
-43 en 2018 (critère Y4). L'origine du code des références est dite dans
-41 \% des articles de 2026, contre 46 \% en 2018 (critère Y5). Nous ne
+tête sur HalfCheetah, est nettement battu sur Hopper et sur Walker2d. Ce
+verdict résiste à la correction pour comparaisons multiples : avec les
+24 intervalles rendus simultanés (Bonferroni, écart 18), 12 changements
+de premier restent établis, au lieu de 14. Le premier ne bat pourtant
+nettement tous les autres que sur Walker2d ; sur les trois autres
+tâches, dix graines ne le séparent pas de son suivant. Les budgets
+diffèrent : un million de pas pour PPO, 200 000 pour SAC et CrossQ. E3
+est fini : sur aucune des quatre tâches, l'une des deux versions ne
+l'emporte selon la règle du protocole. Les écarts apparents sont
+pourtant larges. Sur Walker2d, la moyenne interquartile vaut 2 158 avec
+PyTorch et 1 272 avec JAX, 41 \% de moins, mais les deux intervalles se
+chevauchent encore avec dix graines. Une méthode comparée à « PPO » sur
+cette tâche gagnerait ou perdrait donc selon la version choisie, sans
+que dix graines permettent de trancher. Les articles, eux, sont lus.
+Dans le RL classique, la conclusion principale repose sur plusieurs
+tâches dans 41 articles sur 50 en 2026, contre 43 sur 48 en 2018
+(critère Y3). Parmi les articles à plusieurs tâches, 38 sur 41 montrent
+au moins une tâche où leur méthode ne gagne pas, contre 34 sur 43 en
+2018 (critère Y4). L'origine du code des références est dite dans 41 \%
+des articles de 2026, contre 46 \% en 2018 (critère Y5). Nous ne
 détectons aucun changement sur ces trois critères. Les deux premières
 pratiques étaient déjà courantes en 2018, la troisième reste
 minoritaire. Le RL de grands modèles conclut plus souvent sur une seule

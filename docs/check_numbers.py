@@ -463,6 +463,11 @@ assert hop["Hopper-v5/mass/1.0"] == "ppo_sbx"
 moved = sum(r != "ppo_sbx" for k, r in hop.items() if not k.endswith("/1.0"))
 add("dose Hopper leader", f"n'est plus premier à {moved} intensités sur {len(hop) - 1}", f"longer first at {moved} strengths out of {len(hop) - 1}")
 
+e2b, e2m = J("sim/analysis/e2_bonferroni.json"), J("sim/analysis/e2.json")
+assert e2b["n_comparisons"] == 24
+add("E2 Bonferroni", f"{len(e2b['settled_changes'])} changements de premier restent établis, au lieu de {len(e2m['settled_changes'])}",
+    f"{len(e2b['settled_changes'])} changes of leader stay settled, instead of {len(e2m['settled_changes'])}")
+
 norm = lambda s: re.sub(r"\s+", " ", s)
 bad = 0
 for name, lang in (("conclusions.md", 0), ("conclusions-en.md", 1)):
