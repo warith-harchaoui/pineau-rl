@@ -24,7 +24,7 @@ export PYTHONPATH := $(CURDIR)/src$(if $(PYTHONPATH),:$(PYTHONPATH))
 
 # In dependency order: extension_stats.json feeds robustness, title_filter_compare and trajectory.
 STUDY := analyze analyze_final audit_stats agree_v2 extension_stats robustness title_filter title_filter_compare trajectory
-SIM   := e1 e1_curve b1_trpo b1_script e2 e3 e4 e5 e6 e6_diag e7 e7_rank b3 dose
+SIM   := e1 e1_curve b1_trpo b1_script e2 e3 e4 e5 e6 e6_diag e7 e7_rank b3 dose e2_bonferroni
 
 # Every JSON file the analysis rewrites. e6_official_eval.json needs the trained policies and env-zoo: not rewritten.
 OUTPUTS := study/results_2026.json study/results_final.json study/audit_stats.json study/agree_v2.json \
