@@ -450,6 +450,19 @@ bx, by = (fal["comparison"][k]["bound"]["p_holm"] for k in ("X2", "Y9"))
 add("falsify bound", f"les {n_unc} décisions jugées douteuses, l'incertitude (X2) et la sensibilité (Y9) passent juste au-dessus du seuil (p = {pv(bx)} et p = {pv(by)})",
     f"the {n_unc} decisions found doubtful are turned as well, uncertainty (X2) and sensitivity (Y9) end just above the threshold (p = {pv(bx, 'en')} and p = {pv(by, 'en')})")
 
+# Deviation 12 (ii) of SIM_PROTOCOL.md: E7 at several strengths (sim/analysis/dose.json, seeds 0 to 9)
+dose = J("sim/analysis/dose.json")
+assert dose["control_max_rel_gap"] == 0 and not dose["missing"]
+loss = lambda q, s_: sum(v["verdict"] == "loss" for k, v in dose["ratio"].items() if k.endswith(f"/{q}/{s_}"))
+L = {s_: loss("mass", s_) for s_ in ("0.9", "1.1", "1.2", "1.3")}
+add("dose mass", f"Sur les 16 couples, {L['0.9']} perdent une part détectable de leur score avec des masses à 0,9 fois, {L['1.1']} à 1,1 fois, {L['1.2']} à 1,2 fois et {L['1.3']} à 1,3 fois",
+    f"Of the 16 pairs, {L['0.9']} lose a detectable share of their score with masses at 0.9 times, {L['1.1']} at 1.1 times, {L['1.2']} at 1.2 times and {L['1.3']} at 1.3 times")
+add("dose friction", f"sauf à 1,2 fois ({loss('friction', '1.2')} couples)", f"except at 1.2 times ({loss('friction', '1.2')} pairs)")
+hop = {k: v["ranking"][0] for k, v in dose["ranking"].items() if k.startswith("Hopper-v5/")}
+assert hop["Hopper-v5/mass/1.0"] == "ppo_sbx"
+moved = sum(r != "ppo_sbx" for k, r in hop.items() if not k.endswith("/1.0"))
+add("dose Hopper leader", f"n'est plus premier à {moved} intensités sur {len(hop) - 1}", f"longer first at {moved} strengths out of {len(hop) - 1}")
+
 norm = lambda s: re.sub(r"\s+", " ", s)
 bad = 0
 for name, lang in (("conclusions.md", 0), ("conclusions-en.md", 1)):

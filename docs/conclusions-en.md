@@ -778,6 +778,15 @@ what Pineau asked to measure by separating training from testing.
 
 : The ranking of our four algorithms on each task, in the physics they trained in, then with masses made 20% heavier and friction reduced by 20%. Each number is the interquartile mean of the final score of ten random seeds, with no interval and no test. PPO trains for a million steps, SAC and CrossQ for 200,000.
 
+**Physics modified by degrees.** Does this upheaval hinge on a single strength? To find out, each
+final policy was re-evaluated with one quantity changed at a time: masses from 0.7 to 1.3 times,
+friction from 0.6 to 1.2 times, following a rule written before any computation (deviation 12 of the
+protocol). The loss grows with the change. Of the 16 pairs, 3 lose a detectable share of their score
+with masses at 0.9 times, 9 at 1.1 times, 12 at 1.2 times and 11 at 1.3 times. Friction matters less,
+except at 1.2 times (9 pairs). On Hopper, PPO written in JAX, first in the original physics, is no
+longer first at 10 strengths out of 12. These rankings still carry no test, but they no longer hinge
+on a single chosen strength. Data: `sim/analysis/dose.json`.
+
 **Benchmarks too simple, in another form (F16).** Pineau asked for the version of every benchmark, so
 that anyone redoing a result works in the same world. In classical RL, 26% of 2026 papers give it for all
 their benchmarks, against 23% in 2018 (criterion Y7): no detectable change. RL on large models has changed scale without

@@ -829,6 +829,15 @@ mesurer en séparant l'entraînement du test.
 
 : Le classement de nos quatre algorithmes sur chaque tâche, dans la physique de leur entraînement puis avec des masses alourdies de 20 % et des frottements réduits de 20 %. Chaque nombre est la moyenne interquartile du score final de dix graines aléatoires, sans intervalle ni test. PPO s'entraîne un million de pas, SAC et CrossQ 200 000.
 
+**Une physique modifiée par degrés.** Ce bouleversement tient-il à une seule intensité ? Pour le
+savoir, chaque politique finale a été réévaluée en ne changeant qu'une grandeur à la fois : les
+masses de 0,7 à 1,3 fois, les frottements de 0,6 à 1,2 fois, selon une règle écrite avant tout
+calcul (écart 12 du protocole). La perte croît avec l'écart. Sur les 16 couples, 3 perdent une part
+détectable de leur score avec des masses à 0,9 fois, 9 à 1,1 fois, 12 à 1,2 fois et 11 à 1,3 fois.
+Les frottements comptent moins, sauf à 1,2 fois (9 couples). Sur Hopper, PPO écrit en JAX, premier
+dans la physique d'origine, n'est plus premier à 10 intensités sur 12. Ces classements restent sans
+test, mais ils ne tiennent plus à une seule intensité choisie. Données : `sim/analysis/dose.json`.
+
 **Les bancs d'essai trop simples, sous une autre forme (F16).** Pineau réclamait la version de
 chaque banc d'essai, pour qu'un résultat se refasse dans le même monde. Dans le RL classique, 26 %
 des articles de 2026 la donnent pour tous leurs bancs d'essai, contre 23 % en 2018 (critère Y7) :
