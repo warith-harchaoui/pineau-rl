@@ -13,8 +13,10 @@ pause_main() { for p in $(main_pids); do kill -STOP "$p"; done; log "paused main
 resume_main() { for p in $(main_pids); do kill -CONT "$p"; done; log "resumed main queue"; }
 trap resume_main EXIT
 done_run() { grep -q '"step": 100,.*pass1' "results/$1/mul2/$2/seed$3.jsonl" 2>/dev/null; }
+batt() { pmset -g batt | grep -o '[0-9]*%' | head -1 | tr -d %; }
 one() {  # one <model> <tag> <reward> <seed> <micro>
   night || return 1
+  [ "$(batt)" -ge "${MIN_BATT:-55}" ] || { log "battery $(batt)% below ${MIN_BATT:-55}%: no GPU run tonight"; return 1; }
   done_run "$2" "$3" "$4" && return 0
   pause_main
   MICRO=$5 nice -n 19 ../env-llm/bin/python grpo.py "$1" "$2" mul2 "$3" "$4" 100 3e-6 > "logs/$2-$3-$4.log" 2>&1 &
@@ -35,7 +37,7 @@ all_runs() {  # returns 1 as soon as the night window closes
 all_done() {  # every run of this launcher reached step 100 (a crashed or stopped run returns from one() too)
   for seed in ${SEEDS:-0 1 2}; do for reward in true random; do done_run llama1 "$reward" "$seed" || return 1; done; done
 }
-tries=0
+tries=${TRIES:-0}  # nights already failed by an unfinished run (a relaunch passes TRIES=1)
 while true; do
   until night; do sleep 300; done
   log "night window open"

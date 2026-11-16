@@ -11,7 +11,7 @@ while pgrep -f "(drive2?|queue|worker)\.sh" > /dev/null; do
   echo "$(date '+%F %T') free=${f}G swap_growth=${s}M"
   if [ "$f" -lt "${MIN_FREE_GB:-10}" ] || [ "$s" -gt 8192 ]; then
     echo "$(date '+%F %T') STOP free=${f}G swap_growth=${s}M"
-    pkill -f "(drive2?|queue|cpu)\.sh"; pkill -f "xargs -P"; pkill -f "env/bin/python (run|dose).py"; pkill -f "grpo.py"
+    pkill -f "(drive2?|queue|worker|cpu)\.sh"; pkill -f "xargs -P"; pkill -f "env/bin/python (run|dose).py"; pkill -f "grpo.py"
     for l in locks/*; do  # deviation 14: every job stopped here goes to the ledger, and its lock is freed for a restart
       [ -d "$l" ] || continue; j=${l#locks/}
       case "$j" in dose-*) o="results/dose/$(echo "$j" | cut -d- -f2)/$(echo "$j" | cut -d- -f3-4)/seed${j##*-}.json";;
