@@ -78,6 +78,38 @@ n18 = X["Q5"]["ours2018"][1]
 claim("2018 sample: 48 experimental papers", *both(lambda l: f"{n18} {'articles de 2018' if l == 'fr' else 'papers from 2018'}"))
 claim("2026 classical sample", *both(lambda l: f"{X['Q5']['classic2026'][1]} {'articles de RL classique de 2026' if l == 'fr' else 'classical RL papers from 2026'}"))
 
+# How far to trust the survey: the readers' models (study/readers/readers.csv), the search against the "no"
+# decisions (study/falsify_no.json) and the cut without the papers read by the neighbouring model
+# (study/extension_stats_sans_opus5.json).
+RD = list(csv.DictReader(open(ROOT / "study/readers/readers.csv")))
+other = set()
+for r_ in RD:
+    if r_["model_id"] != "claude-opus-5-5":
+        assert "claude-opus-5 (" in r_["model_id"]
+        other |= set(re.search(r"last writer of ([^)]*)\)", r_["model_id"])[1].split())
+assert len(other) == 13 and sum(r_["model_id"] != "claude-opus-5-5" for r_ in RD) == 2
+claim("thirteen papers on the neighbouring model", "pour treize articles", "for thirteen papers")
+claim("thirteen papers (cut)", "Sans les treize articles lus en partie par le modèle voisin", "Without the thirteen papers read in part by the neighbouring model")
+FN = J("study/falsify_no.json")
+cnt = FN["counts"]
+n_no = sum(v["no"] for v in cnt.values())
+turned = {y: sum(len(v["turned"]) for k, v in cnt.items() if k.startswith(y)) for y in ("2018", "2026")}
+doubt = sum(len(v["uncertain"]) for v in cnt.values())
+assert len({k.split()[1] for k in cnt}) == 7 and FN["verdict_changes"]["turned"] == []
+claim("seven of eight practices", "sur sept des huit pratiques comparées", "on seven of the eight practices compared")
+claim("falsify no", *both(lambda l: (f"Sur {n_no} décisions « non », {sum(turned.values())} passent à « oui », {turned['2018']} en 2018 et {turned['2026']} en 2026" if l == "fr" else
+                                    f"Of {n_no} \"no\" decisions, {sum(turned.values())} turn into \"yes\", {turned['2018']} in 2018 and {turned['2026']} in 2026")))
+claim("falsify doubtful", *both(lambda l: f"{'juge' if l == 'fr' else 'finds'} {doubt} {'autres décisions douteuses' if l == 'fr' else 'other decisions doubtful'}"))
+SO = {r_["k"]: r_["classic_vs_ours2018"]["p_holm"] for r_ in J("study/extension_stats_sans_opus5.json")["rows"]}
+BD = FN["comparison"]
+assert SO["X2"] > 0.05 and all(SO[k] < 0.05 for k in ("Q5", "Y9", "X7"))           # without the thirteen papers
+assert BD["X2"]["bound"]["p_holm"] > 0.05 and BD["Y9"]["bound"]["p_holm"] > 0.05      # doubtful decisions turned
+assert all(BD[k]["bound"]["p_holm"] < 0.05 for k in ("Q5", "X7")) and FN["verdict_changes"]["bound"] == ["X2", "Y9"]
+assert all(X[k]["classic_vs_ours2018"]["p_holm"] < 0.05 for k in ("Q5", "Y9", "X7", "X2"))
+claim("X2 without the thirteen", *both(lambda l: f"{'ne passe plus la correction' if l == 'fr' else 'no longer passes the correction'} (p = {num(SO['X2'], l, 2)})"))
+claim("X2 doubtful turned", *both(lambda l: (f"les {doubt} décisions douteuses passent à « oui » (p = {num(BD['X2']['bound']['p_holm'], l, 2)})" if l == "fr" else
+                                             f"the {doubt} doubtful decisions turn into \"yes\" (p = {num(BD['X2']['bound']['p_holm'], l, 2)})")))
+
 # Trajectory (study/trajectory.json).
 T = J("study/trajectory.json")
 ty = lambda k, y: Decimal(T["rows"][k]["by_year"][y]["k"]) / Decimal(T["rows"][k]["by_year"][y]["n"])
@@ -170,6 +202,52 @@ pm = lambda a: num(hp["iqm"]["perturbed_mean"][a], "x")
 claim("E7 alt", *both(lambda l: (f"CrossQ premier avec {num(hp['iqm']['perturbed_mean']['crossq'], l)}, SAC deuxième avec {num(hp['iqm']['perturbed_mean']['sac'], l)}, PPO PyTorch troisième avec {num(hp['iqm']['perturbed_mean']['ppo_sb3'], l)}, PPO JAX dernier avec {num(hp['iqm']['perturbed_mean']['ppo_sbx'], l)}" if l == "fr" else
                                   f"CrossQ first with {num(hp['iqm']['perturbed_mean']['crossq'], l)}, SAC second with {num(hp['iqm']['perturbed_mean']['sac'], l)}, PPO PyTorch third with {num(hp['iqm']['perturbed_mean']['ppo_sb3'], l)}, PPO JAX last with {num(hp['iqm']['perturbed_mean']['ppo_sbx'], l)}")))
 assert hp["training"] == ["ppo_sbx", "ppo_sb3", "crossq", "sac"] and hp["modified"] == ["crossq", "sac", "ppo_sb3", "ppo_sbx"]
+
+# E7 at several strengths, one quantity at a time (sim/analysis/dose.json, SIM deviation 12 (ii)).
+ds = J("sim/analysis/dose.json")
+assert ds["missing"] == {} and ds["control_max_rel_gap"] == 0 and ds["seeds"] == [0, 10]
+dl = {}
+for k, v in ds["ratio"].items():
+    a, t, qn, st = k.split("/")
+    assert (v["verdict"] == "loss") == (v["ci"][1] < 1)  # a loss is an interval that stays below 1
+    dl.setdefault((qn, st), []).append(v["verdict"] == "loss")
+assert all(len(v) == 16 for v in dl.values())
+nl = lambda qn, st: sum(dl[(qn, st)])
+chg = lambda st: int(hu((Decimal(st) - 1) * 100))              # 1.2 -> 20, 0.7 -> -30
+STR = {qn: sorted((st for (q2, st) in dl if q2 == qn), key=Decimal) for qn in ("mass", "friction")}
+claim("dose range", *both(lambda l: (f"les masses de {pct(-chg(STR['mass'][0]) / 100, l)} plus légères à {pct(chg(STR['mass'][-1]) / 100, l)} plus lourdes, les frottements de {pct(-chg(STR['friction'][0]) / 100, l)} plus faibles à {pct(chg(STR['friction'][-1]) / 100, l)} plus forts" if l == "fr" else
+                                 f"masses from {pct(-chg(STR['mass'][0]) / 100, l)} lighter to {pct(chg(STR['mass'][-1]) / 100, l)} heavier, friction from {pct(-chg(STR['friction'][0]) / 100, l)} lower to {pct(chg(STR['friction'][-1]) / 100, l)} higher")))
+claim("dose loss rule", "l'intervalle à 95 % de son score rapporté à celui de la physique d'entraînement reste sous 1",
+      "the 95% interval of its score relative to the training physics stays below 1", "doc")
+claim("dose lighter masses", *both(lambda l: (f"Des masses allégées de {pct(0.1, l)} coûtent une part détectable de leur score à {nl('mass', '0.9')} couples sur 16, allégées de {pct(0.3, l)}, à {nl('mass', '0.7')}" if l == "fr" else
+                                          f"Masses {pct(0.1, l)} lighter cost {nl('mass', '0.9')} pairs out of 16 a detectable share of their score, {pct(0.3, l)} lighter cost {nl('mass', '0.7')}")))
+claim("dose heavier masses", *both(lambda l: (f"Alourdies de {pct(0.1, l)}, elles en font perdre {nl('mass', '1.1')} ; alourdies de {pct(0.2, l)}, {nl('mass', '1.2')}" if l == "fr" else
+                                          f"Masses {pct(0.1, l)} heavier cost {nl('mass', '1.1')} pairs; {pct(0.2, l)} heavier, {nl('mass', '1.2')}")))
+assert nl("friction", "1.2") == max(nl("friction", s) for s in STR["friction"])  # "friction matters less, except +20%"
+assert all(nl("friction", s) <= nl("mass", s) for s in STR["friction"] if s in STR["mass"] and s != "1.2")
+claim("dose friction +20%", *both(lambda l: (f"sauf augmentés de {pct(0.2, l)} : {nl('friction', '1.2')} couples y perdent" if l == "fr" else
+                                         f"except {pct(0.2, l)} higher: {nl('friction', '1.2')} pairs lose there")))
+hk = {k.split("/", 1)[1]: v["ranking"] for k, v in ds["ranking"].items() if k.startswith("Hopper-v5/")}
+assert hk["mass/1.0"][0] == "ppo_sbx"  # the leader in the training physics
+hs_ = [k for k in hk if not k.endswith("/1.0")]
+claim("dose Hopper leader", *both(lambda l: (f"n'est plus premier à {sum(hk[k][0] != 'ppo_sbx' for k in hs_)} intensités sur {len(hs_)}" if l == "fr" else
+                                         f"no longer first at {sum(hk[k][0] != 'ppo_sbx' for k in hs_)} strengths out of {len(hs_)}")))
+claim("dose reference at 0%", *both(lambda l: f"{'À' if l == 'fr' else 'At'} {pct(chg('1.0'), l)}{', la physique d' + Q + 'entraînement sert de référence' if l == 'fr' else ', the training physics serves as the reference'}"))
+claim("dose 16 pairs", "soit 16 couples d'algorithme et de tâche", "or 16 pairs of algorithm and task")
+assert len(ALG) * len(TK) == 16
+
+
+def dose_alt(l):
+    sgp = lambda x: (f"+{x}" if x > 0 else (f"−{-x}" if x < 0 else "0")) + (" %" if l == "fr" else "%")
+    out = []
+    for qn, name in (("mass", "Masses"), ("friction", "Frottements" if l == "fr" else "Friction")):
+        pts = sorted([(chg(s), nl(qn, s)) for s in STR[qn]] + [(0, 0)])
+        verb = {"fr": "couples perdent à", "en": "pairs lose at"}[l] if qn == "mass" else ("à" if l == "fr" else "at")
+        out.append(f"{name}{' :' if l == 'fr' else ':'} " + ", ".join(f"{n} {verb if i == 0 else ('à' if l == 'fr' else 'at')} {sgp(x)}" for i, (x, n) in enumerate(pts)))
+    return ". ".join(out)
+
+
+claim("dose alt", dose_alt("fr"), dose_alt("en"))
 
 # E6 (sim/analysis/e6.json, e6_official.json, e6_diag.json).
 e6, e6o, e6d = J("sim/analysis/e6.json"), J("sim/analysis/e6_official.json"), J("sim/analysis/e6_diag.json")

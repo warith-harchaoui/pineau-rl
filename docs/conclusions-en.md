@@ -32,7 +32,7 @@ all the settings of their method, where Pineau counted 90%. So we judge each fla
 grid on both sides, setting the classical RL of 2026 against our own reading of 2018, with the same
 grids and the same readers. Four practices changed. Linking the code went from 31% to 74% of
 papers, showing the sensitivity to a setting from 44% to 80%, quantifying the compute from 27% to
-58%, reporting an uncertainty from 63% to 88%. Three of these rises, code, sensitivity and compute, withstand every cut we tried. The fourth, uncertainty, is fragile: it no longer passes Holm's correction when the thirteen papers read partly by another model are removed (p = 0.07). Read on 20 papers a year between the two dates, they
+58%, reporting an uncertainty from 63% to 88%. Code and compute withstand every cut we tried, sensitivity nearly all. The fourth, uncertainty, is fragile: it no longer passes Holm's correction when the thirteen papers read partly by another model are removed (p = 0.07). Read on 20 papers a year between the two dates, they
 climb slowly, with no jump right after the checklist NeurIPS has required since 2019. Other
 practices show no detectable change: a statistical test (6% then 12%), baselines
 described with all their settings (35% then 29%), evaluation on held-out conditions (33% then 45%),
@@ -722,7 +722,7 @@ Outstanding Paper Award [@agarwal2021precipice].
 **Rankings and implementations (F13 and F14).** Experiment E2 ranks four algorithms on four tasks. E3
 compares PPO written in PyTorch with PPO written in JAX, using the same random seeds. E2 is finished: the best algorithm changes with the task. SAC leads on HalfCheetah, PPO written in
 JAX on Hopper and Swimmer, CrossQ on Walker2d. The change is settled under the protocol's rule: SAC,
-ahead on HalfCheetah, is clearly beaten on Hopper and on Walker2d. Yet the leader clearly beats all
+ahead on HalfCheetah, is clearly beaten on Hopper and on Walker2d. This verdict withstands the correction for multiple comparisons: with the 24 intervals made simultaneous (Bonferroni, deviation 18), 12 changes of leader stay settled, instead of 14. Yet the leader clearly beats all
 the others only on Walker2d; on the other three tasks, ten random seeds do not separate it from the
 runner-up. The budgets differ: a million steps for PPO, 200,000 for SAC and CrossQ. E3 is finished: on none of the four tasks does one version win under the
 protocol's rule. The apparent gaps are wide all the same. On Walker2d, the interquartile mean is

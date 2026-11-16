@@ -3,6 +3,7 @@
 Every number drawn here is read from a result file of the project, never typed by hand:
     sim/analysis/e1.json, e1_curve.json, b1_trpo.json, b1_script.json   (E1, B1: thirty runs, the t of 9)
     sim/analysis/e2.json, e4.json, e7_rank.json                          (E2, E4, E7: four algorithms, four tasks)
+    sim/analysis/dose.json                                               (E7 at several strengths, one quantity at a time)
     study/extension_stats.json, study/trajectory.json                   (the survey, same grid, year by year)
     sim/llm/results/summary.json                                         (GRPO, true and coin-flip reward)
     docs/figures/data/grpo_truncation_{fr,en}.csv                        (counted by docs/figures/build.py from
@@ -238,6 +239,36 @@ for lang in LANGS:
                "--set", "y_axis_title=Share of the 8 answers", "--set", "x_axis_title=Problem asked",
                "--set", "width=700", "--set", "height=440"]}[lang])
 
+# 11. E7 at several strengths (sim/analysis/dose.json): how many of the 16 algorithm-task pairs lose a detectable
+# share of their score when one quantity of the physics changes. x is the change in %, 0 being the training physics,
+# where every ratio equals 1 by construction and no loss is possible.
+dose = J("sim/analysis/dose.json")
+assert dose["missing"] == {} and dose["control_max_rel_gap"] == 0
+DOSE_Q = {"fr": {"mass": "Masses", "friction": "Frottements"}, "en": {"mass": "Masses", "friction": "Friction"}}
+dose_loss = {}
+for k, v in dose["ratio"].items():
+    a, t, q, s = k.split("/")
+    dose_loss.setdefault((q, s), []).append(v["verdict"] == "loss")
+assert all(len(v) == len(ALGOS) * len(TASKS) for v in dose_loss.values())
+for lang in LANGS:
+    rows = []
+    for q in ("mass", "friction"):
+        pts = sorted((r((float(s) - 1) * 100), sum(v)) for (qq, s), v in dose_loss.items() if qq == q)
+        pts = sorted(pts + [(0, 0)])  # the training physics itself: the reference, no loss by construction
+        rows += [(x, DOSE_Q[lang][q], n) for x, n in pts]
+    csvp = write(f"intensites_{lang}", ["hour", "platform", "sessions"], rows)
+    axis = ["--set", "y_domain=0,16", "--set", "y_tick_step=4", "--set", "x_tick_step=10",
+            "--set", "width=760", "--set", "height=460", "--set", "right_margin=40"]
+    FIGS.setdefault("intensites", {})[lang] = ("line-multi", csvp, {
+        "fr": ["--title", "Plus la physique s'écarte, plus les agents perdent",
+               "--set", "subtitle=Sur 16 couples d'algorithme et de tâche, combien perdent une part détectable de leur score",
+               "--set", "y_label=Couples qui perdent (sur 16, plus bas est mieux)",
+               "--set", "x_label=Écart à la physique d'entraînement (%)", *axis],
+        "en": ["--title", "The further the physics moves, the more agents lose",
+               "--set", "subtitle=Out of 16 pairs of algorithm and task, how many lose a detectable share of their score",
+               "--set", "y_label=Pairs that lose (out of 16, lower is better)",
+               "--set", "x_label=Change from the training physics (%)", *axis]}[lang])
+
 # Deterministic touch-ups for what a kind exposes no option for. bar-grouped writes demo axis titles
 # ("Region", "Units", "Quarter") with no option to change them: they are replaced here, and the check forbids them.
 CHROME = {"fr": ("Région", "Unités", "Trimestre"), "en": ("Region", "Units", "Quarter")}
@@ -373,6 +404,11 @@ MOB = {  # name -> lang -> (title, subtitle, width, height, relabel, extra optio
         "en": ("Answers cut short", "Qwen2.5 with 0.5 billion, 8 answers per problem", 400, 500,
                {"Complete and right": "Right", "Complete and wrong": "Wrong", "Cut at 160 tokens": "Cut"},
                ["--set", "x_axis_title=Problem"])},
+    "intensites": {
+        "fr": ("Plus d'écart, plus de pertes", "Couples qui perdent, sur 16, une grandeur à la fois", 400, 480, {},
+               ["--set", "x_tick_step=20", "--set", "x_label=Écart à l'entraînement (%)", "--set", "y_label=Couples qui perdent"]),
+        "en": ("More change, more loss", "Pairs that lose, out of 16, one quantity at a time", 400, 480, {},
+               ["--set", "x_tick_step=20", "--set", "x_label=Change from training (%)", "--set", "y_label=Pairs that lose"])},
 }
 
 

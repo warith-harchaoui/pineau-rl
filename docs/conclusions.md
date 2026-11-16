@@ -34,7 +34,7 @@ d'articles qui donnent tous les réglages de leur méthode, quand Pineau en comp
 jugeons donc chaque faille à grille égale, en comparant le RL classique de 2026 à notre propre
 lecture de 2018, avec les mêmes grilles et les mêmes lecteurs. Quatre pratiques ont changé. Le lien
 vers le code passe de 31 % à 74 % des articles, la sensibilité à un réglage montrée de 44 % à 80 %,
-le calcul chiffré de 27 % à 58 %, une incertitude rapportée de 63 % à 88 %. Trois de ces hausses, le code, la sensibilité et le calcul, résistent à toutes les coupes que nous avons tentées. La quatrième, l'incertitude, est fragile : elle ne passe plus la correction de Holm quand on retire les treize articles lus en partie par un autre modèle (p = 0,07). Lues sur 20 articles par année entre les deux
+le calcul chiffré de 27 % à 58 %, une incertitude rapportée de 63 % à 88 %. Le code et le calcul résistent à toutes les coupes que nous avons tentées, la sensibilité à presque toutes. La quatrième, l'incertitude, est fragile : elle ne passe plus la correction de Holm quand on retire les treize articles lus en partie par un autre modèle (p = 0,07). Lues sur 20 articles par année entre les deux
 dates, elles montent lentement, sans saut juste après la liste de contrôle que NeurIPS impose depuis
 2019. D'autres pratiques n'ont pas bougé de façon détectable : un
 test statistique (6 % puis 12 %), des références décrites avec tous leurs réglages (35 % puis 29 %),
@@ -765,7 +765,7 @@ nettement. Leur article a reçu le prix de l'article remarquable de NeurIPS 2021
 sur quatre tâches. E3 compare PPO écrit en PyTorch et PPO écrit en JAX, avec les mêmes graines
 aléatoires. E2 est fini : le meilleur algorithme change avec la tâche. SAC mène sur HalfCheetah, PPO écrit en
 JAX sur Hopper et Swimmer, CrossQ sur Walker2d. Le changement est établi selon la règle du
-protocole : SAC, en tête sur HalfCheetah, est nettement battu sur Hopper et sur Walker2d. Le premier
+protocole : SAC, en tête sur HalfCheetah, est nettement battu sur Hopper et sur Walker2d. Ce verdict résiste à la correction pour comparaisons multiples : avec les 24 intervalles rendus simultanés (Bonferroni, écart 18), 12 changements de premier restent établis, au lieu de 14. Le premier
 ne bat pourtant nettement tous les autres que sur Walker2d ; sur les trois autres tâches, dix
 graines ne le séparent pas de son suivant. Les budgets diffèrent : un million de pas pour PPO,
 200 000 pour SAC et CrossQ. E3 est fini : sur aucune des quatre tâches, l'une des
