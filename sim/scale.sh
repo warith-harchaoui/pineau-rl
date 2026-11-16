@@ -4,25 +4,16 @@
 # the GRPO run on CPU (cpu.sh) takes two. Above the current number of workers, new workers (worker.sh) start; below it,
 # nothing is stopped: workers.max is lowered and each worker leaves after its current job (worker.sh reads it).
 # Free cores = cores - CPU of the other processes (ps %cpu, summed) - a margin of one core. Decisions: logs/scale.log.
-# Battery first (deviation 16): below MIN_BATT % (55), the Mac draws more than its charger gives (it shut down on
-# 14 November): every job of this project is suspended (SIGSTOP, nothing lost) and nothing starts; above, they resume.
+# The battery condition of deviation 16 was lifted on 16 November (deviation 17); jobs it suspended are resumed.
 cd "$(dirname "$0")"
 MAX_CORES=${MAX_CORES:-8}
 NCPU=$(sysctl -n hw.ncpu)
-MIN_BATT=${MIN_BATT:-55}
 log() { echo "$(date '+%F %T') $*" >> logs/scale.log; }
 jobs_pids() { pgrep -f "env/bin/python (run|dose).py|grpo.py|/bin/bash ./(queue|worker).sh"; }
 while true; do
-  batt=$(pmset -g batt | grep -o '[0-9]*%' | head -1 | tr -d %)
-  if [ -n "$batt" ] && [ "$batt" -lt "$MIN_BATT" ]; then
-    jobs_pids >> suspended.pids; sort -u suspended.pids -o suspended.pids  # resumed later by this script only
-    for p in $(cat suspended.pids); do kill -STOP "$p" 2>/dev/null; done
-    log "battery=$batt% < $MIN_BATT%: jobs suspended ($(tr '\n' ' ' < suspended.pids))"
-    sleep 3600; continue
-  fi
   if [ -f suspended.pids ]; then  # only what this script suspended: night.sh suspends the queue on its own
     for p in $(cat suspended.pids); do kill -CONT "$p" 2>/dev/null; done
-    log "battery=$batt%: jobs resumed ($(tr '\n' ' ' < suspended.pids))"; rm suspended.pids
+    log "jobs resumed ($(tr '\n' ' ' < suspended.pids))"; rm suspended.pids
   fi
   ours=$(pgrep -f "env/bin/python (run|dose).py|grpo.py|queue.sh|worker.sh|cpu.sh|scale.sh|watchdog.sh" | tr '\n' ',' | sed 's/,$//')
   other=$(ps -axo pid=,pcpu= | awk -v ours=",$ours," 'index(ours, "," $1 ",") == 0 { s += $2 } END { printf "%d", s / 100 }')
@@ -37,6 +28,6 @@ while true; do
     nohup ./worker.sh >> logs/worker.nohup 2>&1 &
     workers=$((workers + 1)); started=$((started + 1)); sleep 2
   done
-  log "battery=$batt% cores=$NCPU other=$other free=$free grpo=$grpo budget=$budget workers.max=$target started=$started"
+  log "cores=$NCPU other=$other free=$free grpo=$grpo budget=$budget workers.max=$target started=$started"
   sleep 3600
 done
