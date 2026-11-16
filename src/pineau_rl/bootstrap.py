@@ -41,11 +41,11 @@ def iqm_interval(scores: Mapping[str, np.ndarray], reps: int = 2000,
 
 
 def improvement_interval(x: np.ndarray, y: np.ndarray, reps: int = 2000,
-                         random_state: Any = None) -> tuple[float, float, float]:
-    """(P(X > Y), low, high): rliable's probability of improvement of the runs x over the runs y with its 95%
-    stratified bootstrap interval. Draws from NumPy's global generator (see the module)."""
+                         random_state: Any = None, confidence: float = 0.95) -> tuple[float, float, float]:
+    """(P(X > Y), low, high): rliable's probability of improvement of the runs x over the runs y with its stratified
+    bootstrap interval at `confidence` (95% by default). Draws from NumPy's global generator (see the module)."""
     ppe, pci = get_interval_estimates({"p": (x[:, None], y[:, None])}, metrics.probability_of_improvement, reps=reps,
-                                      random_state=random_state)
+                                      confidence_interval_size=confidence, random_state=random_state)
     lo, hi = (float(v) for v in np.ravel(pci["p"]))
     return float(ppe["p"]), lo, hi
 
