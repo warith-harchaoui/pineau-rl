@@ -30,7 +30,8 @@ SIM   := e1 e1_curve b1_trpo b1_script e2 e3 e4 e5 e6 e6_diag e7 e7_rank b3 dose
 OUTPUTS := study/results_2026.json study/results_final.json study/audit_stats.json study/agree_v2.json \
            study/extension_stats.json study/robustness.json study/title_filter.json study/title_filter_compare.json \
            study/trajectory.json $(SIM:%=sim/analysis/%.json) sim/analysis/e6_official.json \
-           sim/llm/results/summary.json sim/llm/results/gains.json
+           sim/llm/results/summary.json sim/llm/results/gains.json sim/llm/results/extra.json \
+           sim/llm/results/summary_5.json sim/llm/results/gains_5.json sim/llm/results/extra_5.json
 
 .PHONY: all install analysis analysis-study analysis-sim analysis-llm check test lint verify verify-head figures docs clean
 
@@ -51,6 +52,7 @@ analysis-sim:
 # summary.py reads every finished run under sim/llm/results/, so a run finished after the last commit enters it.
 analysis-llm:
 	@echo "sim/llm/summary.py"; cd sim/llm && $(NICE) $(PY) summary.py > /dev/null
+	@echo "sim/llm/summary.py, five seeds (deviations 14 and 16)"; cd sim/llm && SEEDS=0:5 SUFFIX=_5 $(NICE) $(PY) summary.py > /dev/null
 
 check:
 	cd docs && $(PY) check_numbers.py
