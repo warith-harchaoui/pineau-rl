@@ -803,8 +803,8 @@ family and proves nothing about the method.
 **A length limit that distorts the gain.** Our GRPO strand brought a benchmark trap to light. The
 model's answers are cut off at 160 tokens, the word pieces the model produces one by one. With the
 starting model, 23 answers out of 32 hit this limit before giving a result. Every one of these
-cut-off answers is wrong. With the true reward, the model first learns to finish before the cut, a
-lesson the random reward never teaches. Part of the measured "gain" therefore comes from a detail of
+cut-off answers is wrong. With the true reward, the model learns to finish before the cut, in all ten
+runs. The random reward leaves more than half of the answers cut off in six runs out of nine. Part of the measured "gain" therefore comes from a detail of
 the benchmark. We now measure the share of cut-off answers at every evaluation.
 
 ![Answers of the Qwen2.5 language model with 0.5 billion parameters, before any training, on the four multiplication problems of the tenth step of our pilot run. The model drew eight answers per problem. Most hit the 160-token length limit before giving a result and are scored as wrong.](figures/grpo-truncation-en.svg){width=80%}

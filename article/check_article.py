@@ -300,8 +300,12 @@ assert sum(x["reward"] == "random" for x in sm5) == 9 and max(x["pass1_100"] for
 assert ex5["failed"] == [{"model": "llama1", "reward": "random", "seed": 4}]
 claim("GRPO coin flip <= 1%", *both(lambda l: f"{pct(0.01, l)} {'ou moins' if l == 'fr' else 'or less'}"))
 cut = lambda m, r: [x["truncated_100"] for x in sm if x["model"] == m and x["reward"] == r]
-claim("GRPO cut shares", *both(lambda l: (f"entre {pct(min(cut('qwen05', 'random')), l)} et {pct(max(cut('qwen05', 'random')), l)} à pile ou face, entre {pct(min(cut('qwen05', 'true')), l)} et {pct(max(cut('qwen05', 'true')), l)}" if l == "fr" else
-                                          f"between {pct(min(cut('qwen05', 'random')), l)} and {pct(max(cut('qwen05', 'random')), l)} with a coin flip, between {pct(min(cut('qwen05', 'true')), l)} and {pct(max(cut('qwen05', 'true')), l)}")))
+# Cut-off answers over the five random seeds (summary_5.json): the ten true-reward runs, the nine finished coin-flip runs.
+ct = [x["truncated_100"] for x in sm5 if x["reward"] == "true"]
+cr = sorted(x["truncated_100"] for x in sm5 if x["reward"] == "random")
+assert len(ct) == 10 and len(cr) == 9 and sum(c > 0.5 for c in cr) == 6
+claim("GRPO cut shares", *both(lambda l: (f"sur les dix essais, la part de réponses coupées finit entre {pct(hu(min(ct), 2), l)} et {pct(hu(max(ct), 2), l)}. À pile ou face, elle finit au-dessus de la moitié dans six essais sur neuf, entre {pct(hu(cr[0], 2), l)} et {pct(hu(cr[2], 2), l)} dans les trois autres" if l == "fr" else
+                                          f"over the ten runs, the share of cut answers ends between {pct(hu(min(ct), 2), l)} and {pct(hu(max(ct), 2), l)}. With a coin flip, it ends above half in six runs out of nine, between {pct(hu(cr[0], 2), l)} and {pct(hu(cr[2], 2), l)} in the other three")))
 TRC = {l: list(csv.DictReader(open(ROOT / f"docs/figures/data/grpo_truncation_{l}.csv"))) for l in ("fr", "en")}
 cutn = sum(int(x["share"]) for x in TRC["fr"] if x["type"].startswith("Coupée"))
 tot = sum(int(x["share"]) for x in TRC["fr"])

@@ -150,7 +150,7 @@ This part brought a benchmark trap to light. The model's answers are cut at 160 
 
 FIG std | rl-pineau-grpo-coupure-en.svg | Stacked bar chart, four multiplication problems, eight answers each. 48 × 49: 1 right, 7 cut. 14 × 36: 2 right, 1 wrong, 5 cut. 21 × 50: 1 right, 2 wrong, 5 cut. 45 × 17: 1 right, 1 wrong, 6 cut. | The answers of the Qwen2.5 model with 0.5 billion parameters before any training, eight per problem. Most hit the 160-token limit before giving a result and count as wrong.
 
-With the true reward, the model first learns to finish before the cutoff, which the reward drawn by chance does not teach. On Qwen's first three random seeds, the share of cut answers ends between 59% and 98% with a coin flip, between 0% and 29% with the true reward. Part of the measured "gain" comes from a detail of the benchmark. We now measure the share of cut answers at every evaluation.
+With the true reward, the model learns to finish before the cutoff: over the ten runs, the share of cut answers ends between 0% and 29%. With a coin flip, it ends above half in six runs out of nine, between 2% and 16% in the other three. Part of the measured "gain" comes from a detail of the benchmark. We now measure the share of cut answers at every evaluation.
 
 ## what-we-keep | Listened to in part
 Joelle Pineau was listened to in part. With the same grid, four practices progressed in classical RL: linking the code, quantifying the compute, showing the effect of a setting and, narrowly, uncertainty bars. The statistical test, baselines tuned and described with the same care as the method, held-out evaluation and stated versions show no detectable change.

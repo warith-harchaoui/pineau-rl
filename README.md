@@ -73,7 +73,7 @@ stays in the results, our own mistakes included.
 
 | Path | Contents |
 |---|---|
-| `docs/` | The document in two languages, its bibliography, its figures (`docs/figures/build.py`) and `check_numbers.py`, which recomputes 145 key numbers of both texts from the result files. |
+| `docs/` | The document in two languages, its bibliography, its figures (`docs/figures/build.py`) and `check_numbers.py`, which recomputes 163 key numbers of both texts from the result files. |
 | `study/PROTOCOL-en.md`, `study/GRILLE-en.md` | The survey protocol; the readers' sheet with both grids (French originals without `-en`). |
 | `study/codes/`, `study/codes_v2/` | One JSON file per paper and per reader: one decision per criterion, with quote and page. |
 | `study/*.py`, `study/*.json` | The draws, the analyses (Wilson intervals, Newcombe differences, Fisher, Holm, Cochran-Armitage) and their results. |
@@ -102,7 +102,7 @@ make verify
 ```
 
 `make verify` reruns the nine survey analyses, the fourteen experiment analyses and the GRPO summary,
-checks the 145 numbers of both texts (`make check`), runs the unit tests (`make test`), then asks git
+checks the 163 numbers of both texts (`make check`), runs the unit tests (`make test`), then asks git
 whether every JSON file came back byte for byte. On the M2 Max, saturated by training runs at the
 same time, the whole sequence took about 45 minutes; E1, B1, B3 and E2, with their tens of thousands of
 random draws, take most of it. `make verify-head` does the same in a fresh export of the last
@@ -139,7 +139,7 @@ cd sim && P=4 ./drive.sh                 # every line of jobs.txt, four at a tim
 ```
 
 The 250 committed training runs add up to about 260 core-hours, so a little under three days on
-four cores. The twelve GRPO runs add about 27 hours; the official RL Baselines3 Zoo pipeline of
+four cores. The twelve GRPO runs add about 27 hours, the eight added for five random seeds about 33 more; the official RL Baselines3 Zoo pipeline of
 E6 (`sim/zoo_official.sh`), ten runs more. The consolidation under way (`sim/jobs_seeds20.txt`,
 `sim/jobs_consolidation.txt`) adds 160 training runs (about 200 core-hours) then 320 re-evaluations
 of saved policies under several physics changes (`sim/dose.py`). Retraining on another

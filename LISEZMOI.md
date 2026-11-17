@@ -79,7 +79,7 @@ résultats, nos propres erreurs comprises.
 
 | Chemin | Contenu |
 |---|---|
-| `docs/` | Le document en deux langues, sa bibliographie, ses figures (`docs/figures/build.py`) et `check_numbers.py`, qui recalcule 145 chiffres clés des deux textes à partir des fichiers de résultats. |
+| `docs/` | Le document en deux langues, sa bibliographie, ses figures (`docs/figures/build.py`) et `check_numbers.py`, qui recalcule 163 chiffres clés des deux textes à partir des fichiers de résultats. |
 | `study/PROTOCOL.md`, `study/GRILLE.md` | Le protocole du sondage et la fiche des lecteurs avec les deux grilles (traductions anglaises : suffixe `-en`). |
 | `study/codes/`, `study/codes_v2/` | Un fichier JSON par article et par lecteur : une décision par critère, avec citation et page. |
 | `study/*.py`, `study/*.json` | Les tirages, les analyses (intervalles de Wilson, différences de Newcombe, Fisher, Holm, Cochran-Armitage) et leurs résultats. |
@@ -108,7 +108,7 @@ make verify
 ```
 
 `make verify` relance les neuf analyses du sondage, les quatorze analyses des expériences et le
-bilan de GRPO, vérifie les 145 chiffres des deux textes (`make check`), passe les tests unitaires
+bilan de GRPO, vérifie les 163 chiffres des deux textes (`make check`), passe les tests unitaires
 (`make test`), puis demande à git si chaque fichier JSON est revenu octet pour octet. Sur le M2 Max,
 saturé en même temps par des entraînements, la séquence entière a pris environ 45 minutes ; E1,
 B1, B3 et E2, avec leurs dizaines de milliers de tirages, en prennent l'essentiel.
@@ -145,7 +145,7 @@ cd sim && P=4 ./drive.sh                 # chaque ligne de jobs.txt, quatre à l
 ```
 
 Les 250 entraînements du dépôt totalisent environ 260 heures-cœur, soit un peu moins de trois jours
-sur quatre cœurs. Les douze essais de GRPO ajoutent environ 27 heures ; la chaîne officielle de
+sur quatre cœurs. Les douze essais de GRPO ajoutent environ 27 heures, les huit ajoutés pour cinq graines aléatoires environ 33 de plus ; la chaîne officielle de
 RL Baselines3 Zoo pour E6 (`sim/zoo_official.sh`), dix essais de plus. La consolidation en cours
 (`sim/jobs_seeds20.txt`, `sim/jobs_consolidation.txt`) ajoute 160 entraînements, environ
 200 heures-cœur, puis 320 réévaluations de politiques sauvegardées sous plusieurs modifications de

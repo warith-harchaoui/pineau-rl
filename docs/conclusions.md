@@ -857,7 +857,8 @@ sans rien prouver de la méthode.
 d'essai. Les réponses du modèle sont coupées à 160 jetons, les morceaux de mots qu'il produit un à
 un. Avec le modèle de départ, 23 réponses sur 32 atteignent cette limite avant de donner un
 résultat. Aucune de ces réponses coupées n'est juste. Avec la vraie récompense, le modèle
-apprend d'abord à finir avant la coupure, ce que la récompense tirée au sort n'enseigne pas. Une
+apprend à finir avant la coupure, dans les dix essais. La récompense tirée au sort laisse plus de
+la moitié des réponses coupées dans six essais sur neuf. Une
 part du « gain » mesuré vient donc d'un détail du banc d'essai. Nous mesurons désormais la part
 de réponses coupées à chaque évaluation.
 

@@ -374,6 +374,12 @@ assert all(g["pass1_100"] <= .0125 for g in rd) and all(abs(g["pass1_0"] - .1) <
 cut = sorted(g["truncated_100"] for g in rd); cutt = sorted(g["truncated_100"] for g in tr)
 add("GRPO cut", f"finit entre {pct(cut[0])} et {pct(cut[-1])}, quand elle finit entre {pct(cutt[0])} et {pct(cutt[-1])}",
     f"between {pct(cut[0], lang='en')} and {pct(cut[-1], lang='en')}, while it ends between {pct(cutt[0], lang='en')} and {pct(cutt[-1], lang='en')}")
+# Cut-off answers over the five random seeds (summary_5.json): all ten true-reward runs learn to finish; six of the
+# nine finished coin-flip runs end with more than half of the answers cut off.
+S5 = json.load(open("../sim/llm/results/summary_5.json"))
+c5r = [g["truncated_100"] for g in S5 if g["reward"] == "random"]
+assert len(c5r) == 9 and sum(c > 0.5 for c in c5r) == 6 and max(g["truncated_100"] for g in S5 if g["reward"] == "true") <= 0.29
+add("GRPO cut 5", "la moitié des réponses coupées dans six essais sur neuf", "half of the answers cut off in six runs out of nine")
 assert tr[2]["device"] == "cpu"
 
 # GRPO, the Llama runs and the preregistered gains (summary.py -> results/gains.json).
