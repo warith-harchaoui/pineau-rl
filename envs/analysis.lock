@@ -1,4 +1,5 @@
-# Hash-locked twin of envs/analysis.txt + envs/test.txt, same versions, generated on 2026-11-15 with:
+# Hash-locked twin of envs/analysis.txt + envs/test.txt, same versions, generated on 2026-11-15 (setuptools added
+# on 2026-11-17, by the same command) with:
 #   uv pip compile <the .txt without comments> --generate-hashes --python-version 3.11 --universal
 # Install: pip install --require-hashes -r envs/analysis.lock   (pip refuses any file whose SHA-256 differs)
 absl-py==2.5.1 \
@@ -784,6 +785,10 @@ seaborn==0.13.2 \
     # via
     #   -r envs/analysis.txt
     #   rliable
+setuptools==84.2.1 \
+    --hash=sha256:3ff8b3b5492a0aa66960f4419365a86b84e013070d4313e4d4a6894f5d64d6bc \
+    --hash=sha256:ca140b45d5325a9478f880e351484f62fef15f336462e449ca0c03c873d589c2
+    # via -r envs/test.txt
 statsmodels==0.15.0 \
     --hash=sha256:04e65ee05475aeceb9cb954cf96c0f9361b9cdfd497b8aae47afbab0c7c786dd \
     --hash=sha256:081adf7e5f2da63f63cbd90491447de5d4c4c2921f19814f235bcf3e736edd3c \

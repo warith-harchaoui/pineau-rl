@@ -1,5 +1,8 @@
 # Tests: pytest on top of envs/analysis.txt (make test). Recorded on 2026-11-15.
+# setuptools builds the package for make install (pip install --no-build-isolation): added on 2026-11-17, the CI
+# runner's own was too old for the SPDX licence of pyproject.toml.
 iniconfig==2.3.1
 pluggy==1.7.0
 Pygments==2.21.0
 pytest==9.2.0
+setuptools==84.2.1
