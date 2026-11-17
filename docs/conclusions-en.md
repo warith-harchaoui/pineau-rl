@@ -825,6 +825,28 @@ GPU work cut short by macOS: three Qwen runs therefore ran on CPU, including the
 The six Llama runs ran overnight on GPU, and the safeguards recomputed between 0 and 7 updates per
 run.
 
+**Twenty GRPO runs, five random seeds.** Deviation 14 of the protocol, written before any new run,
+added random seeds 3 and 4 for both models and both rewards: eight runs more, with the same code and
+a hundred steps each. Seven reach step 100. The eighth, Llama with the random reward and random seed
+4, stops two nights in a row at its first update, on the safeguard against a non-finite gradient.
+Deviation 16 counts this second failure as a result: the Llama configuration with the random reward
+is summarised over its four finished runs. On Qwen, with the true reward, the two new runs end at
+13% and 0%. The mean gain over five random seeds falls to +14 points, from −3 to +34: the interval
+now contains zero. The gain we read on Qwen with three random seeds no longer holds. On Llama, the
+two new runs end at 27% and 33%. The mean gain is +6 points, from −0.4 to +15: zero stays inside.
+With the random reward, the gain is −10 points on Qwen (from −11 to −9) and −24 points on Llama (from
+−24 to −23). Replacing the missing Llama gain by the smallest gain of the nineteen finished runs
+changes little (−24, from −24 to −23). Replacing it by the largest, +51, lifts the mean to −9, with
+an interval from −24 to +21.
+
+**Hardware and random seed, mixed up on Qwen.** The Qwen gain with the true reward comes from the two
+runs made on GPU, random seeds 0 and 1: +26 and +51 points. The three runs with the true reward that
+ran on CPU (random seeds 2 to 4) have a mean gain of −2 points, from −11 to +4. The four CPU runs
+with the random reward (random seeds 1 to 4) have a mean gain of −11 points, from −11 to −10. On CPU
+alone, the true reward brings Qwen no detectable gain. Two GPU runs against three CPU runs do not
+separate the two causes, because the hardware changed with the random seed. Data:
+`sim/llm/results/gains_5.json` and `extra_5.json`.
+
 # The remedies: a checklist and a reproducibility challenge
 
 **The checklist.** Pineau went beyond the diagnosis. She proposed a reproducibility checklist (pages

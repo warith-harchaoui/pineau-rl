@@ -879,6 +879,30 @@ coupé par macOS : trois essais Qwen ont donc tourné sur CPU, dont celui qui fi
 ne pouvons pas séparer l'effet de la graine de celui du matériel pour cet essai. Les six essais
 Llama ont tourné la nuit sur GPU, et les garde-fous ont recalculé de 0 à 7 mises à jour par essai.
 
+**Vingt essais GRPO, cinq graines aléatoires.** L'écart 14 du protocole, écrit avant tout nouvel
+essai, ajoute les graines aléatoires 3 et 4 pour les deux modèles et les deux récompenses : huit
+essais de plus, avec le même code et cent pas chacun. Sept atteignent le pas 100. Le huitième, Llama
+avec la récompense tirée au sort et la graine aléatoire 4, s'arrête deux nuits de suite dès sa
+première mise à jour, sur le garde-fou contre un gradient non fini. L'écart 16 compte ce second
+échec comme un résultat : la configuration Llama à récompense tirée au sort se résume sur ses quatre
+essais finis. Sur Qwen, avec la vraie récompense, les deux nouveaux essais finissent à 13 % et 0 %.
+Le gain moyen sur cinq graines aléatoires tombe à +14 points, de −3 à +34 : l'intervalle contient
+désormais zéro. Le gain que nous lisions sur Qwen avec trois graines aléatoires ne tient plus. Sur
+Llama, les deux nouveaux essais finissent à 27 % et 33 %. Le gain moyen vaut +6 points, de −0,4 à
++15 : zéro reste dedans. Avec la récompense tirée au sort, le gain vaut −10 points sur Qwen (de −11
+à −9) et −24 points sur Llama (de −24 à −23). Remplacer le gain manquant de Llama par le plus petit
+gain des dix-neuf essais finis change peu (−24, de −24 à −23). Le remplacer par le plus grand, +51,
+relève la moyenne à −9, avec un intervalle de −24 à +21.
+
+**Le matériel et la graine aléatoire, mêlés sur Qwen.** Le gain de Qwen avec la vraie récompense
+vient des deux essais faits sur GPU, graines aléatoires 0 et 1 : +26 et +51 points. Les trois essais
+avec la vraie récompense qui ont tourné sur CPU (graines aléatoires 2 à 4) ont un gain moyen de −2
+points, de −11 à +4. Les quatre essais sur CPU avec la récompense tirée au sort (graines aléatoires 1
+à 4) ont un gain moyen de −11 points, de −11 à −10. Sur CPU seul, la vraie récompense n'apporte à
+Qwen aucun gain détectable. Deux essais sur GPU contre trois sur CPU ne séparent pas les deux causes,
+parce que le matériel a changé avec la graine aléatoire. Données : `sim/llm/results/gains_5.json` et
+`extra_5.json`.
+
 # Les remèdes : liste de contrôle et défi de reproduction
 
 **La liste de contrôle.** Pineau ne s'arrêtait pas au constat. Elle proposait une liste de contrôle

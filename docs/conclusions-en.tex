@@ -78,8 +78,8 @@ sides, setting the classical RL of 2026 against our own reading of 2018,
 with the same grids and the same readers. Four practices changed.
 Linking the code went from 31\% to 74\% of papers, showing the
 sensitivity to a setting from 44\% to 80\%, quantifying the compute from
-27\% to 58\%, reporting an uncertainty from 63\% to 88\%. Three of these
-rises, code, sensitivity and compute, withstand every cut we tried. The
+27\% to 58\%, reporting an uncertainty from 63\% to 88\%. Code and
+compute withstand every cut we tried, sensitivity nearly all. The
 fourth, uncertainty, is fragile: it no longer passes Holm's correction
 when the thirteen papers read partly by another model are removed (p =
 0.07). Read on 20 papers a year between the two dates, they climb
@@ -1244,26 +1244,29 @@ PPO written in JAX, using the same random seeds. E2 is finished: the
 best algorithm changes with the task. SAC leads on HalfCheetah, PPO
 written in JAX on Hopper and Swimmer, CrossQ on Walker2d. The change is
 settled under the protocol's rule: SAC, ahead on HalfCheetah, is clearly
-beaten on Hopper and on Walker2d. Yet the leader clearly beats all the
-others only on Walker2d; on the other three tasks, ten random seeds do
-not separate it from the runner-up. The budgets differ: a million steps
-for PPO, 200,000 for SAC and CrossQ. E3 is finished: on none of the four
-tasks does one version win under the protocol's rule. The apparent gaps
-are wide all the same. On Walker2d, the interquartile mean is 2,158 with
-PyTorch and 1,272 with JAX, 41\% lower, yet the two intervals still
-overlap with ten random seeds. A method compared with ``PPO'' on this
-task would therefore win or lose depending on the version chosen, with
-no way for ten random seeds to settle it. The papers, for their part,
-have been read. In classical RL, the main conclusion rests on several
-tasks in 41 papers out of 50 in 2026, against 43 out of 48 in 2018
-(criterion Y3). Among the papers with several tasks, 38 out of 41 show
-at least one task where their method does not win, against 34 out of 43
-in 2018 (criterion Y4). The origin of the baselines' code is stated in
-41\% of 2026 papers, against 46\% in 2018 (criterion Y5). We detect no
-change on these three criteria. The first two practices were already
-common in 2018. The third remains a minority practice. RL on large
-models more often concludes from a single task: in the first draw, only
-25 papers out of 45 use several, because many train on a single dataset.
+beaten on Hopper and on Walker2d. This verdict withstands the correction
+for multiple comparisons: with the 24 intervals made simultaneous
+(Bonferroni, deviation 18), 12 changes of leader stay settled, instead
+of 14. Yet the leader clearly beats all the others only on Walker2d; on
+the other three tasks, ten random seeds do not separate it from the
+runner-up. The budgets differ: a million steps for PPO, 200,000 for SAC
+and CrossQ. E3 is finished: on none of the four tasks does one version
+win under the protocol's rule. The apparent gaps are wide all the same.
+On Walker2d, the interquartile mean is 2,158 with PyTorch and 1,272 with
+JAX, 41\% lower, yet the two intervals still overlap with ten random
+seeds. A method compared with ``PPO'' on this task would therefore win
+or lose depending on the version chosen, with no way for ten random
+seeds to settle it. The papers, for their part, have been read. In
+classical RL, the main conclusion rests on several tasks in 41 papers
+out of 50 in 2026, against 43 out of 48 in 2018 (criterion Y3). Among
+the papers with several tasks, 38 out of 41 show at least one task where
+their method does not win, against 34 out of 43 in 2018 (criterion Y4).
+The origin of the baselines' code is stated in 41\% of 2026 papers,
+against 46\% in 2018 (criterion Y5). We detect no change on these three
+criteria. The first two practices were already common in 2018. The third
+remains a minority practice. RL on large models more often concludes
+from a single task: in the first draw, only 25 papers out of 45 use
+several, because many train on a single dataset.
 
 \textbf{Held-out evaluation, a rise partly due to the grid (F15).} In
 the first 2026 draw, 70\% of papers evaluate on held-out conditions,
@@ -1400,6 +1403,36 @@ short by macOS: three Qwen runs therefore ran on CPU, including the one
 that ends at 13\%, and we cannot separate the effect of the random seed
 from that of the hardware for this run. The six Llama runs ran overnight
 on GPU, and the safeguards recomputed between 0 and 7 updates per run.
+
+\textbf{Twenty GRPO runs, five random seeds.} Deviation 14 of the
+protocol, written before any new run, added random seeds 3 and 4 for
+both models and both rewards: eight runs more, with the same code and a
+hundred steps each. Seven reach step 100. The eighth, Llama with the
+random reward and random seed 4, stops two nights in a row at its first
+update, on the safeguard against a non-finite gradient. Deviation 16
+counts this second failure as a result: the Llama configuration with the
+random reward is summarised over its four finished runs. On Qwen, with
+the true reward, the two new runs end at 13\% and 0\%. The mean gain
+over five random seeds falls to +14 points, from −3 to +34: the interval
+now contains zero. The gain we read on Qwen with three random seeds no
+longer holds. On Llama, the two new runs end at 27\% and 33\%. The mean
+gain is +6 points, from −0.4 to +15: zero stays inside. With the random
+reward, the gain is −10 points on Qwen (from −11 to −9) and −24 points
+on Llama (from −24 to −23). Replacing the missing Llama gain by the
+smallest gain of the nineteen finished runs changes little (−24, from
+−24 to −23). Replacing it by the largest, +51, lifts the mean to −9,
+with an interval from −24 to +21.
+
+\textbf{Hardware and random seed, mixed up on Qwen.} The Qwen gain with
+the true reward comes from the two runs made on GPU, random seeds 0 and
+1: +26 and +51 points. The three runs with the true reward that ran on
+CPU (random seeds 2 to 4) have a mean gain of −2 points, from −11 to +4.
+The four CPU runs with the random reward (random seeds 1 to 4) have a
+mean gain of −11 points, from −11 to −10. On CPU alone, the true reward
+brings Qwen no detectable gain. Two GPU runs against three CPU runs do
+not separate the two causes, because the hardware changed with the
+random seed. Data: \texttt{sim/llm/results/gains\_5.json} and
+\texttt{extra\_5.json}.
 
 \section{The remedies: a checklist and a reproducibility
 challenge}\label{the-remedies-a-checklist-and-a-reproducibility-challenge}

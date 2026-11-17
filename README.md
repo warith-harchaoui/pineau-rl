@@ -10,11 +10,12 @@ repository measures, flaw by flaw, what has changed since. It holds itself to th
 every number of the document comes back with one command, each piece serves again on other papers
 or other runs, tests guard the computations.
 
-**Status on 15 November 2026.** The experiments are being consolidated: twenty random seeds per
+**Status on 17 November 2026.** The experiments are being consolidated: twenty random seeds per
 algorithm and task instead of ten, five random seeds per GRPO configuration instead of three.
 Both extensions were written into the protocols before any new run (deviation 12 of
-`sim/SIM_PROTOCOL-en.md`, deviation 14 of `sim/llm/LLM_PROTOCOL-en.md`). The figures below come from
-the document dated 13 November 2026.
+`sim/SIM_PROTOCOL-en.md`, deviation 14 of `sim/llm/LLM_PROTOCOL-en.md`). The GRPO part is finished (deviation 16 of the same
+protocol): its five-seed result appears below. The other figures below come from the document
+dated 13 November 2026.
 
 **What a reader can check, and what rests on our word.** The protocols say, for each rule, whether it was
 written before or after the results; a critical review of this repository found several of those statements
@@ -44,7 +45,9 @@ recomputed from the committed results, and every survey decision against the quo
   upends the ranking on Hopper: the leader ends last (a description chosen after seeing the results,
   with no test: deviation 11).
 - **Language models.** In our hand-written GRPO, part of the measured gain comes from answers cut off
-  at 160 tokens, a lesson the random reward never teaches.
+  at 160 tokens, a lesson the random reward never teaches. With five random seeds, the interval of
+  Qwen's mean gain with the true reward contains zero (+14 points, from −3 to +34): the gain rests on
+  the two runs made on the GPU. Hardware and random seed changed together.
 
 The full argument, with every source: [`docs/conclusions-en.md`](docs/conclusions-en.md)
 ([PDF](docs/conclusions-en.pdf)); in French, [`docs/conclusions.md`](docs/conclusions.md)

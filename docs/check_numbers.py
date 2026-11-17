@@ -393,6 +393,49 @@ cl = [pct(g["truncated_100"]) for g in lr]; cle = [pct(g["truncated_100"], lang=
 add("GRPO llama cut", f"deux essais finissent avec {cl[0]} et {cl[1]} de réponses coupées ; le troisième n'en coupe que {cl[2]}",
     f"two runs end with {cle[0]} and {cle[1]} of answers cut off; the third cuts off only {cle[2]}")
 
+# GRPO at five random seeds (LLM_PROTOCOL deviations 14 and 16; summary.py -> gains_5.json, extra_5.json).
+G5, GN5, EX5 = J("sim/llm/results/summary_5.json"), J("sim/llm/results/gains_5.json"), J("sim/llm/results/extra_5.json")
+run5 = lambda m, r: sorted((g for g in G5 if g["model"] == m and g["reward"] == r), key=lambda g: g["seed"])
+assert len(G5) == 19 and EX5["failed"] == [{"model": "llama1", "reward": "random", "seed": 4}]
+assert [g["seed"] for g in run5("llama1", "random")] == [0, 1, 2, 3] and all(len(run5(m, r)) == 5 for m, r in
+       (("qwen05", "true"), ("qwen05", "random"), ("llama1", "true")))
+assert all(g["pass1_100"] <= .0125 for g in G5 if g["reward"] == "random")
+p1 = lambda x, lang="fr": ("+" if x >= 0 else "−") + (lambda s: s.replace(".", ",") if lang == "fr" else s)(str(abs(half_up(Decimal(str(x)) * 100, 1))))
+q5, l5 = run5("qwen05", "true"), run5("llama1", "true")
+add("GRPO5 new Qwen runs", f"les deux nouveaux essais finissent à {pct(q5[3]['pass1_100'])} et {pct(q5[4]['pass1_100'])}",
+    f"the two new runs end at {pct(q5[3]['pass1_100'], lang='en')} and {pct(q5[4]['pass1_100'], lang='en')}")
+add("GRPO5 new Llama runs", f"les deux nouveaux essais finissent à {pct(l5[3]['pass1_100'])} et {pct(l5[4]['pass1_100'])}",
+    f"two new runs end at {pct(l5[3]['pass1_100'], lang='en')} and {pct(l5[4]['pass1_100'], lang='en')}")
+gq5, gl5 = GN5["qwen05 true"], GN5["llama1 true"]
+assert gq5["ci"][0] < 0 < gq5["ci"][1] and gl5["ci"][0] < 0 < gl5["ci"][1] and len(gq5["gains"]) == 5
+add("GRPO5 Qwen gain", f"tombe à {pts(gq5['mean'])} points, de {pts(gq5['ci'][0])} à {pts(gq5['ci'][1])} : l'intervalle contient",
+    f"falls to {pts(gq5['mean'])} points, from {pts(gq5['ci'][0])} to {pts(gq5['ci'][1])}: the interval")
+add("GRPO5 Llama gain", f"Le gain moyen vaut {pts(gl5['mean'])} points, de {p1(gl5['ci'][0])} à {pts(gl5['ci'][1])} : zéro reste dedans",
+    f"The mean gain is {pts(gl5['mean'])} points, from {p1(gl5['ci'][0], 'en')} to {pts(gl5['ci'][1])}: zero stays inside")
+rq5, rl5 = GN5["qwen05 random"], GN5["llama1 random"]
+assert len(rl5["gains"]) == 4
+add("GRPO5 random gains", f"le gain vaut {pts(rq5['mean'])} points sur Qwen (de {pts(rq5['ci'][0])} à {pts(rq5['ci'][1])}) et {pts(rl5['mean'])} points sur Llama (de {pts(rl5['ci'][0])} à {pts(rl5['ci'][1])})",
+    f"the gain is {pts(rq5['mean'])} points on Qwen (from {pts(rq5['ci'][0])} to {pts(rq5['ci'][1])}) and {pts(rl5['mean'])} points on Llama (from {pts(rl5['ci'][0])} to {pts(rl5['ci'][1])})")
+lo, hi = EX5["missing"]
+assert lo["filled_with"] == "smallest" and hi["filled_with"] == "largest"
+fin5 = [x for k, v in GN5.items() for x in v["gains"]]
+assert len(fin5) == 19 and lo["value"] == min(fin5) and hi["value"] == max(fin5)
+add("GRPO5 missing, smallest", f"dix-neuf essais finis change peu ({pts(lo['mean'])}, de {pts(lo['ci'][0])} à {pts(lo['ci'][1])})",
+    f"nineteen finished runs changes little ({pts(lo['mean'])}, from {pts(lo['ci'][0])} to {pts(lo['ci'][1])})")
+add("GRPO5 missing, largest", f"le plus grand, {pts(hi['value'])}, relève la moyenne à {pts(hi['mean'])}, avec un intervalle de {pts(hi['ci'][0])} à {pts(hi['ci'][1])}",
+    f"the largest, {pts(hi['value'])}, lifts the mean to {pts(hi['mean'])}, with an interval from {pts(hi['ci'][0])} to {pts(hi['ci'][1])}")
+cq, cr = EX5["cpu"]["qwen05 true"], EX5["cpu"]["qwen05 random"]
+assert [g["seed"] for g in q5 if g["device"] != "cpu"] == [0, 1] and cq["seeds"] == [g["seed"] for g in q5 if g["device"] == "cpu"]
+assert cr["seeds"] == [g["seed"] for g in run5("qwen05", "random") if g["device"] == "cpu"]
+gpu = [gq5["gains"][s] for s in (0, 1)]
+add("GRPO5 GPU runs", f"graines aléatoires 0 et 1 : {pts(gpu[0])} et {pts(gpu[1])} points",
+    f"random seeds 0 and 1: {pts(gpu[0])} and {pts(gpu[1])} points")
+add("GRPO5 CPU true", f"(graines aléatoires 2 à 4) ont un gain moyen de {pts(cq['mean'])}\npoints, de {pts(cq['ci'][0])} à {pts(cq['ci'][1])}",
+    f"(random seeds 2 to 4) have a mean gain of {pts(cq['mean'])} points, from {pts(cq['ci'][0])} to {pts(cq['ci'][1])}")
+add("GRPO5 CPU random", f"ont un gain moyen de {pts(cr['mean'])} points, de {pts(cr['ci'][0])} à {pts(cr['ci'][1])}. Sur CPU seul",
+    f"have a mean gain of {pts(cr['mean'])} points, from {pts(cr['ci'][0])} to {pts(cr['ci'][1])}. On CPU")
+assert cq["ci"][0] < 0 < cq["ci"][1]
+
 # A4, second reading (agree_v2.py, R3).
 r3 = J("study/agree_v2.json")["R3"]["criteria"]
 assert len(r3) == 23 and min(c["agree"] for c in r3.values()) >= .8

@@ -266,7 +266,6 @@ claim("GRPO Llama true", *both(lambda l: ("finit à {}, {} et {}" if l == "fr" e
 claim("GRPO alt", *both(lambda l: (("Qwen avec la vraie récompense : {}, {} et {} selon la graine aléatoire. Qwen à pile ou face : {}, {}, {}. Llama avec la vraie récompense : {}, {}, {}. Llama à pile ou face : {}, {}, {}") if l == "fr" else
                                    ("Qwen with the true reward: {}, {} and {} depending on the random seed. Qwen with a coin flip: {}, {}, {}. Llama with the true reward: {}, {}, {}. Llama with a coin flip: {}, {}, {}")).format(
     *fin("qwen05", "true", l), *fin("qwen05", "random", l), *fin("llama1", "true", l), *fin("llama1", "random", l))))
-claim("GRPO 13% run on CPU", *both(lambda l: f"{('L' + Q + 'essai à') if l == 'fr' else 'The run at'} {pct(hu(run('qwen05', 'true')[2]['pass1_100'], 2), l)}"))
 assert run("qwen05", "true")[2]["device"] == "cpu"
 q0 = sorted({int(hu(x["pass1_0"] * 100)) for x in sm if x["model"] == "qwen05"})
 l0 = sorted({int(hu(x["pass1_0"] * 100)) for x in sm if x["model"] == "llama1"})
@@ -277,6 +276,28 @@ claim("GRPO gains", *both(lambda l: ("{} points sur Qwen, avec un intervalle de 
                                      "{} points on Qwen, with an interval from {} to {}, against {} points on Llama, from {} to {}").format(*g("qwen05 true"), *g("llama1 true"))))
 assert gn["llama1 true"]["ci"][0] < 0 < gn["llama1 true"]["ci"][1]
 assert max(x["pass1_100"] for x in sm if x["reward"] == "random") <= 0.0125
+# Five random seeds (LLM_PROTOCOL deviations 14 and 16: summary_5.json, gains_5.json, extra_5.json).
+sm5, gn5, ex5 = J("sim/llm/results/summary_5.json"), J("sim/llm/results/gains_5.json"), J("sim/llm/results/extra_5.json")
+run5 = lambda m, r: [x for x in sorted(sm5, key=lambda x: x["seed"]) if x["model"] == m and x["reward"] == r]
+q5 = run5("qwen05", "true")
+claim("GRPO5 new Qwen runs", *both(lambda l: ("Les deux nouveaux essais de Qwen finissent à {} et {}" if l == "fr" else "The two new Qwen runs end at {} and {}").format(
+    *[pct(hu(x["pass1_100"], 2), l) for x in q5[3:]])))
+g5 = lambda k: (sg(gn5[k]["mean"] * 100), sg(gn5[k]["ci"][0] * 100), sg(gn5[k]["ci"][1] * 100))
+assert gn5["qwen05 true"]["ci"][0] < 0 < gn5["qwen05 true"]["ci"][1] and len(gn5["qwen05 true"]["gains"]) == 5
+claim("GRPO5 Qwen gain", *both(lambda l: ("le gain moyen de Qwen tombe à {} points, avec un intervalle de {} à {} : il contient zéro" if l == "fr" else
+                                          "Qwen's mean gain falls to {} points, with an interval from {} to {}: it now contains zero").format(*g5("qwen05 true"))))
+assert [x["device"] for x in q5] == ["mps", "mps", "cpu", "cpu", "cpu"]
+claim("GRPO5 GPU runs", *both(lambda l: ("{} et {} points" if l == "fr" else "{} and {} points").format(*[sg(x * 100) for x in gn5["qwen05 true"]["gains"][:2]])))
+cpu = ex5["cpu"]["qwen05 true"]
+assert cpu["seeds"] == [2, 3, 4]
+claim("GRPO5 CPU true", *both(lambda l: f"{'ont un gain moyen de' if l == 'fr' else 'have a mean gain of'} {sg(cpu['mean'] * 100)} points"))
+gl5 = gn5["llama1 true"]
+assert -0.01 < gl5["ci"][0] < 0  # "just below zero"
+claim("GRPO5 Llama gain", *both(lambda l: ("le gain moyen vaut {} points, de juste sous zéro à {}" if l == "fr" else "the mean gain is {} points, from just below zero to {}").format(
+    sg(gl5["mean"] * 100), sg(gl5["ci"][1] * 100))))
+# "nine finished runs" with the coin flip, all at 1% or less; the tenth failed (ex5["failed"]).
+assert sum(x["reward"] == "random" for x in sm5) == 9 and max(x["pass1_100"] for x in sm5 if x["reward"] == "random") <= 0.0125
+assert ex5["failed"] == [{"model": "llama1", "reward": "random", "seed": 4}]
 claim("GRPO coin flip <= 1%", *both(lambda l: f"{pct(0.01, l)} {'ou moins' if l == 'fr' else 'or less'}"))
 cut = lambda m, r: [x["truncated_100"] for x in sm if x["model"] == m and x["reward"] == r]
 claim("GRPO cut shares", *both(lambda l: (f"entre {pct(min(cut('qwen05', 'random')), l)} et {pct(max(cut('qwen05', 'random')), l)} à pile ou face, entre {pct(min(cut('qwen05', 'true')), l)} et {pct(max(cut('qwen05', 'true')), l)}" if l == "fr" else
