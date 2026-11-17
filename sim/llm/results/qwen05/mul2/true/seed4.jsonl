@@ -1,0 +1,13 @@
+{"step": 0, "greedy": 0.07333333333333333, "pass1": 0.1125, "pass8": 0.56, "truncated": 0.73}
+{"step": 10, "train_right": 0.25, "truncated": 0.0, "loss": -0.008213326334953308, "grad_norm": 3.6767094135284424, "retries": {"generate": 0, "update": 0}, "wall": 2506.3}
+{"step": 20, "train_right": 0.71875, "truncated": 0.0, "loss": -0.004800822585821152, "grad_norm": 3.195343017578125, "retries": {"generate": 0, "update": 0}, "wall": 4908.3}
+{"step": 30, "train_right": 0.03125, "truncated": 0.0, "loss": -0.0024161068722605705, "grad_norm": 1.7823336124420166, "retries": {"generate": 0, "update": 0}, "wall": 6960.1}
+{"step": 40, "train_right": 1.0, "truncated": 0.0, "loss": 0.0, "grad_norm": 0.0, "retries": {"generate": 0, "update": 0}, "wall": 8331.6}
+{"step": 50, "train_right": 0.0, "truncated": 0.0, "loss": 0.0, "grad_norm": 0.0, "retries": {"generate": 0, "update": 0}, "wall": 9531.5}
+{"step": 50, "greedy": 0.0, "pass1": 0.0025, "pass8": 0.02, "truncated": 0.0}
+{"step": 60, "train_right": 0.0, "truncated": 0.0, "loss": 0.0, "grad_norm": 0.0, "retries": {"generate": 0, "update": 0}, "wall": 11251.0}
+{"step": 70, "train_right": 0.0, "truncated": 0.0, "loss": 0.0, "grad_norm": 0.0, "retries": {"generate": 0, "update": 0}, "wall": 12391.9}
+{"step": 80, "train_right": 0.0, "truncated": 0.0, "loss": 0.0, "grad_norm": 0.0, "retries": {"generate": 0, "update": 0}, "wall": 13455.2}
+{"step": 90, "train_right": 0.0, "truncated": 0.0, "loss": 0.0, "grad_norm": 0.0, "retries": {"generate": 0, "update": 0}, "wall": 14370.6}
+{"step": 100, "train_right": 0.0, "truncated": 0.0, "loss": 0.0, "grad_norm": 0.0, "retries": {"generate": 0, "update": 0}, "wall": 15568.3}
+{"step": 100, "greedy": 0.0, "pass1": 0.0, "pass8": 0.0, "truncated": 0.0025}

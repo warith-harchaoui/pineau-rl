@@ -48,3 +48,38 @@
 2026-11-12 06:33:14 llama1 random 2: {"model": "llama1", "task": "mul2", "reward": "random", "seed": 2, "done": true, "retries": {"generate": 0, "update": 3}, "wall": 5504.0}
 2026-11-12 06:33:14 ALL_DONE
 2026-11-12 06:33:14 resumed main queue
+2026-11-15 05:53:44 night window open
+2026-11-15 05:53:44 paused main queue: 45599 
+2026-11-15 05:54:16 resumed main queue
+2026-11-15 23:04:36 night window open
+2026-11-15 23:04:36 paused main queue: 56168 62208 
+2026-11-15 23:17:38 resumed main queue
+2026-11-15 23:17:38 llama1 true 3:   warnings.warn('resource_tracker: There appear to be %d '
+2026-11-15 23:17:39 paused main queue: 75514 
+2026-11-16 01:55:55 resumed main queue
+2026-11-16 01:55:55 llama1 random 3: {"model": "llama1", "task": "mul2", "reward": "random", "seed": 3, "done": true, "retries": {"generate": 0, "update": 7}, "wall": 9126.9}
+2026-11-16 01:55:55 paused main queue: 75514 
+2026-11-16 03:20:03 resumed main queue
+2026-11-16 03:20:03 llama1 true 4: {"model": "llama1", "task": "mul2", "reward": "true", "seed": 4, "done": true, "retries": {"generate": 0, "update": 2}, "wall": 4686.3}
+2026-11-16 03:20:03 paused main queue: 75514 
+2026-11-16 04:50:13 resumed main queue
+2026-11-16 04:50:14 llama1 random 4: RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-16 04:50:14 pass finished with unfinished runs (1)
+2026-11-16 04:50:14 night window closed
+2026-11-16 04:56:53 resumed main queue
+2026-11-16 04:58:02 night window open
+2026-11-16 04:58:03 battery 7% below 55%: no GPU run tonight
+2026-11-16 04:58:03 night window closed
+2026-11-16 05:18:14 resumed main queue
+2026-11-16 05:18:20 night window open
+2026-11-16 05:18:20 paused main queue: 75514 
+2026-11-16 06:45:41 resumed main queue
+2026-11-16 06:45:41 llama1 true 3: {"model": "llama1", "task": "mul2", "reward": "true", "seed": 3, "done": true, "retries": {"generate": 0, "update": 24}, "wall": 4932.7}
+2026-11-16 06:45:41 night window closed
+2026-11-16 23:01:01 night window open
+2026-11-16 23:01:01 paused main queue: 74255 95068 95789 
+2026-11-16 23:08:02 resumed main queue
+2026-11-16 23:08:02 llama1 random 4: RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-16 23:08:02 pass finished with unfinished runs (2)
+2026-11-16 23:08:03 GAVE_UP: a run failed on two nights, reported as a result
+2026-11-16 23:08:03 resumed main queue

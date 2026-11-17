@@ -1,0 +1,1 @@
+/Users/warithharchaoui/pineau-rl/sim/llm/night.sh: line 16: 66228 Terminated: 15          MICRO=$5 nice -n 19 ../env-llm/bin/python grpo.py "$1" "$2" mul2 "$3" "$4" 100 3e-6 > "logs/$2-$3-$4.log" 2>&1
