@@ -1368,9 +1368,10 @@ a benchmark trap to light. The model's answers are cut off at 160
 tokens, the word pieces the model produces one by one. With the starting
 model, 23 answers out of 32 hit this limit before giving a result. Every
 one of these cut-off answers is wrong. With the true reward, the model
-first learns to finish before the cut, a lesson the random reward never
-teaches. Part of the measured ``gain'' therefore comes from a detail of
-the benchmark. We now measure the share of cut-off answers at every
+learns to finish before the cut, in all ten runs. The random reward
+leaves more than half of the answers cut off in six runs out of nine.
+Part of the measured ``gain'' therefore comes from a detail of the
+benchmark. We now measure the share of cut-off answers at every
 evaluation.
 
 \begin{figure}
