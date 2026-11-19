@@ -1,12 +1,12 @@
 #!/bin/bash
 # Every hour (SIM_PROTOCOL.md, deviation 15): how many cores the other programs of the machine leave free, and how many
-# of them this project may use, up to MAX_CORES (8). One training run (run.py, dose.py) is single-threaded: one core;
+# of them this project may use, up to MAX_CORES (8, then 2 since deviation 19). One training run (run.py, dose.py) is single-threaded: one core;
 # the GRPO run on CPU (cpu.sh) takes two. Above the current number of workers, new workers (worker.sh) start; below it,
 # nothing is stopped: workers.max is lowered and each worker leaves after its current job (worker.sh reads it).
 # Free cores = cores - CPU of the other processes (ps %cpu, summed) - a margin of one core. Decisions: logs/scale.log.
 # The battery condition of deviation 16 was lifted on 16 November (deviation 17); jobs it suspended are resumed.
 cd "$(dirname "$0")"
-MAX_CORES=${MAX_CORES:-8}
+MAX_CORES=${MAX_CORES:-2}  # deviation 19: 2 cores for the whole project, GRPO included
 NCPU=$(sysctl -n hw.ncpu)
 log() { echo "$(date '+%F %T') $*" >> logs/scale.log; }
 jobs_pids() { pgrep -f "env/bin/python (run|dose).py|grpo.py|/bin/bash ./(queue|worker).sh"; }
@@ -20,7 +20,7 @@ while true; do
   grpo=$(pgrep -f "grpo.py" > /dev/null && echo 2 || echo 0)
   free=$(( NCPU - other - 1 ))
   budget=$(( free < MAX_CORES ? free : MAX_CORES ))
-  target=$(( budget - grpo )); [ "$target" -lt 1 ] && target=1
+  target=$(( budget - grpo )); [ "$target" -lt 0 ] && target=0
   workers=$(pgrep -f "/bin/bash ./(queue|worker).sh" | wc -l | tr -d ' ')
   echo "$target" > workers.max
   started=0
