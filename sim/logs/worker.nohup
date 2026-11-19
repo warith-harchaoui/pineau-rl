@@ -1,0 +1,1 @@
+./worker.sh: line 25: 62208 Terminated: 15          nice ./env/bin/python run.py "$algo" "$task" "$seed" "$steps" > "logs/$job.attempt$n.log" 2>&1
