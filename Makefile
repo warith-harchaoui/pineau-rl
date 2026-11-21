@@ -37,7 +37,8 @@ OUTPUTS := study/results_2026.json study/results_final.json study/audit_stats.js
            study/extension_stats.json study/robustness.json study/title_filter.json study/title_filter_compare.json \
            study/trajectory.json $(SIM:%=sim/analysis/%.json) $(SIM12:%=sim/analysis/%.json) sim/analysis/e6_official.json \
            sim/llm/results/summary.json sim/llm/results/gains.json sim/llm/results/extra.json \
-           sim/llm/results/summary_5.json sim/llm/results/gains_5.json sim/llm/results/extra_5.json
+           sim/llm/results/summary_5.json sim/llm/results/gains_5.json sim/llm/results/extra_5.json \
+           sim/llm/results/logs_stats_5.json
 
 .PHONY: all install analysis analysis-study analysis-sim analysis-llm check test lint verify verify-head figures docs report clean
 
@@ -63,6 +64,7 @@ analysis-sim:
 analysis-llm:
 	@echo "sim/llm/summary.py"; cd sim/llm && $(NICE) $(PY) summary.py > /dev/null
 	@echo "sim/llm/summary.py, five seeds (deviations 14 and 16)"; cd sim/llm && SEEDS=0:5 SUFFIX=_5 $(NICE) $(PY) summary.py > /dev/null
+	@echo "sim/llm/logs_stats.py (deviation 19)"; cd sim/llm && $(NICE) $(PY) logs_stats.py > /dev/null
 
 check:
 	cd docs && $(PY) check_numbers.py
