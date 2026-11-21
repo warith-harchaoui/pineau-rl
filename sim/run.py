@@ -1,8 +1,9 @@
 """One training run: algorithm x task x seed, held-out evaluation every 50k steps.
 
 Usage: python run.py ALGO TASK SEED STEPS [--zoo]
-ALGO in {ppo_sb3, ppo_sbx, sac, crossq, td3, trpo}; writes results/<ALGO>/<TASK>/seed<SEED>.csv and the
-final policy to models/<ALGO>/<TASK>/seed<SEED>.zip. Evaluation seeds (10000+i) never train.
+ALGO in {ppo_sb3, ppo_sbx, sac, crossq, td3, trpo} or a variant name of VARIANTS; writes
+results/<ALGO>/<TASK>/seed<SEED>.csv and the final policy to models/<ALGO>/<TASK>/seed<SEED>.zip.
+Evaluation seeds (10000+i) never train.
 """
 import os, sys, csv, time, json
 os.environ.setdefault("XLA_FLAGS", "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1")
@@ -11,9 +12,17 @@ import numpy as np
 import gymnasium as gym
 
 ALGO, TASK, SEED, STEPS = sys.argv[1], sys.argv[2], int(sys.argv[3]), int(sys.argv[4])
-ZOOFIX = "--zoofix" in sys.argv
+# Variants (SIM_PROTOCOL.md, deviations 32 to 34): a name for the results and models, the program it runs, and the only
+# settings it changes. sac_rerun and crossq_rerun change nothing (determinism check, deviation 32).
+VARIANTS = {"sac_rerun": ("sac", {}), "crossq_rerun": ("crossq", {}),
+            "ppo_sbx_ortho": ("ppo_sbx", dict(policy_kwargs=dict(ortho_init=True))),     # deviation 34 (b)
+            "ppo_sb3_noortho": ("ppo_sb3", dict(policy_kwargs=dict(ortho_init=False))),  # deviation 34 (b)
+            "ppo_sb3_zoog99": ("ppo_sb3", dict(gamma=0.99))}  # deviation 33 (c): the corrected Zoo recipe, gamma 0.99
+VARIANT = ALGO if ALGO in VARIANTS else None
+ALGO, EXTRA = VARIANTS[ALGO] if VARIANT else (ALGO, {})
+ZOOFIX = "--zoofix" in sys.argv or VARIANT == "ppo_sb3_zoog99"
 ZOO = "--zoo" in sys.argv or ZOOFIX
-TAG = ALGO + ("_zoofix" if ZOOFIX else "_zoo" if ZOO else "")
+TAG = VARIANT or ALGO + ("_zoofix" if ZOOFIX else "_zoo" if ZOO else "")
 EVAL_EVERY, EVAL_EPISODES = int(os.environ.get("EVAL_EVERY", 50_000)), 10
 
 # Published RL Baselines3 Zoo hyperparameters for PPO on Hopper-v4 (hyperparams/ppo.yml), used for E6.
@@ -33,9 +42,11 @@ def make_model():
         if ZOO:  # RL Zoo also sets normalize: true (VecNormalize on observations and rewards)
             from stable_baselines3.common.env_util import make_vec_env
             from stable_baselines3.common.vec_env import VecNormalize
-            kw = dict(ZOO_PPO_HOPPER)
+            kw = dict(ZOO_PPO_HOPPER, **EXTRA)
             kw["policy_kwargs"] = dict(kw["policy_kwargs"], activation_fn=torch.nn.ReLU)
             env = VecNormalize(make_vec_env(TASK, n_envs=1, seed=SEED), gamma=kw["gamma"] if ZOOFIX else 0.99)
+        else:
+            kw = dict(EXTRA)
         return PPO("MlpPolicy", env, seed=SEED, verbose=0, device="cpu", **kw)
     if ALGO == "trpo":  # experiment B1: Henderson et al.'s figure 5 algorithm, library defaults, no tuning
         import torch
@@ -44,7 +55,7 @@ def make_model():
         return TRPO("MlpPolicy", TASK, seed=SEED, verbose=0, device="cpu")
     from sbx import PPO, SAC, CrossQ, TD3
     cls = dict(ppo_sbx=PPO, sac=SAC, crossq=CrossQ, td3=TD3)[ALGO]
-    return cls("MlpPolicy", TASK, seed=SEED, verbose=0)
+    return cls("MlpPolicy", TASK, seed=SEED, verbose=0, **EXTRA)
 
 
 def evaluate(model, perturbed=False):

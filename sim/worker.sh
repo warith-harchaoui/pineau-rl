@@ -2,6 +2,7 @@
 # Deviation 15 (SIM_PROTOCOL.md): queue.sh plus a ceiling. Up to workers.max copies run (scale.sh sets it every hour);
 # each job is claimed with an atomic mkdir lock, and finished jobs (output present) are skipped. queue.sh is left as it
 # was, since a worker started before deviation 15 is still reading it.
+# Deviation 34: the queue is the file $JOBS (default jobs_consolidation.txt).
 # Lines: "dose ALGO TASK SEED" (dose.py) or "train ALGO TASK SEED" (run.py, 1M steps for PPO, 200k otherwise).
 # Deviation 14: every attempt keeps its own log (logs/<job>.attempt<N>.log, never overwritten) and adds one line to the
 # append-only ledger logs/attempts.jsonl: job, attempt, start, end, exit code, SHA-256 of the output if there is one.
@@ -38,5 +39,5 @@ while read -r kind algo task seed; do
   done
   [ -f "$out" ] || rmdir "locks/$job"
   echo "$(date '+%F %T') $kind $algo $task $seed $([ -f "$out" ] && echo done || echo FAILED)" >> logs/queue.out
-done < jobs_consolidation.txt
+done < "${JOBS:-jobs_consolidation.txt}"
 echo "$(date '+%F %T') pass finished" >> logs/queue.out
