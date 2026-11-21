@@ -1,0 +1,224 @@
+{
+ "tasks": {
+  "HalfCheetah-v5": {
+   "iqm": {
+    "final": {
+     "ppo_sb3": 1514.8093049668394,
+     "ppo_sbx": 1341.3452484245895,
+     "sac": 4213.947928529145,
+     "crossq": 4693.719786794391
+    },
+    "best": {
+     "ppo_sb3": 1574.5446942449253,
+     "ppo_sbx": 1378.6922998459972,
+     "sac": 4213.947928529145,
+     "crossq": 4704.663672958356
+    },
+    "mean": {
+     "ppo_sb3": 1111.232453320625,
+     "ppo_sbx": 948.5824817189841,
+     "sac": 3097.143586475876,
+     "crossq": 4233.091225629549
+    }
+   },
+   "order": {
+    "final": [
+     "crossq",
+     "sac",
+     "ppo_sb3",
+     "ppo_sbx"
+    ],
+    "best": [
+     "crossq",
+     "sac",
+     "ppo_sb3",
+     "ppo_sbx"
+    ],
+    "mean": [
+     "crossq",
+     "sac",
+     "ppo_sb3",
+     "ppo_sbx"
+    ]
+   },
+   "reversals": []
+  },
+  "Hopper-v5": {
+   "iqm": {
+    "final": {
+     "ppo_sb3": 2667.8117856196695,
+     "ppo_sbx": 2864.389888533451,
+     "sac": 1338.144885238618,
+     "crossq": 2792.0987166949903
+    },
+    "best": {
+     "ppo_sb3": 3535.2608649536423,
+     "ppo_sbx": 3512.97213160767,
+     "sac": 1475.2968668893911,
+     "crossq": 3269.7360781244925
+    },
+    "mean": {
+     "ppo_sb3": 2253.53205728833,
+     "ppo_sbx": 2181.619526766361,
+     "sac": 860.0404600454298,
+     "crossq": 2357.303231056565
+    }
+   },
+   "order": {
+    "final": [
+     "ppo_sbx",
+     "crossq",
+     "ppo_sb3",
+     "sac"
+    ],
+    "best": [
+     "ppo_sb3",
+     "ppo_sbx",
+     "crossq",
+     "sac"
+    ],
+    "mean": [
+     "crossq",
+     "ppo_sb3",
+     "ppo_sbx",
+     "sac"
+    ]
+   },
+   "reversals": [
+    {
+     "measures": "final/best",
+     "pair": "crossq vs ppo_sb3",
+     "settled": false
+    },
+    {
+     "measures": "final/best",
+     "pair": "ppo_sb3 vs ppo_sbx",
+     "settled": false
+    },
+    {
+     "measures": "final/mean",
+     "pair": "crossq vs ppo_sbx",
+     "settled": false
+    },
+    {
+     "measures": "final/mean",
+     "pair": "ppo_sb3 vs ppo_sbx",
+     "settled": false
+    },
+    {
+     "measures": "best/mean",
+     "pair": "crossq vs ppo_sb3",
+     "settled": false
+    },
+    {
+     "measures": "best/mean",
+     "pair": "crossq vs ppo_sbx",
+     "settled": false
+    }
+   ]
+  },
+  "Walker2d-v5": {
+   "iqm": {
+    "final": {
+     "ppo_sb3": 2204.3912978178205,
+     "ppo_sbx": 1435.004841708674,
+     "sac": 1165.4386035458563,
+     "crossq": 5155.555807293975
+    },
+    "best": {
+     "ppo_sb3": 2672.142088013446,
+     "ppo_sbx": 1963.7333855915429,
+     "sac": 1232.438060983238,
+     "crossq": 5275.648739428655
+    },
+    "mean": {
+     "ppo_sb3": 1254.9683424006148,
+     "ppo_sbx": 1047.9681134345808,
+     "sac": 866.4109610882515,
+     "crossq": 3847.3084441998085
+    }
+   },
+   "order": {
+    "final": [
+     "crossq",
+     "ppo_sb3",
+     "ppo_sbx",
+     "sac"
+    ],
+    "best": [
+     "crossq",
+     "ppo_sb3",
+     "ppo_sbx",
+     "sac"
+    ],
+    "mean": [
+     "crossq",
+     "ppo_sb3",
+     "ppo_sbx",
+     "sac"
+    ]
+   },
+   "reversals": []
+  },
+  "Swimmer-v5": {
+   "iqm": {
+    "final": {
+     "ppo_sb3": 107.16550594984979,
+     "ppo_sbx": 114.94775120812128,
+     "sac": 48.316599487012255,
+     "crossq": 107.7227351037603
+    },
+    "best": {
+     "ppo_sb3": 109.03564020050806,
+     "ppo_sbx": 119.5962868226242,
+     "sac": 50.60698704163936,
+     "crossq": 107.98309719494588
+    },
+    "mean": {
+     "ppo_sb3": 86.46695439532206,
+     "ppo_sbx": 99.1824001887521,
+     "sac": 43.680966607201,
+     "crossq": 68.5117414668247
+    }
+   },
+   "order": {
+    "final": [
+     "ppo_sbx",
+     "crossq",
+     "ppo_sb3",
+     "sac"
+    ],
+    "best": [
+     "ppo_sbx",
+     "ppo_sb3",
+     "crossq",
+     "sac"
+    ],
+    "mean": [
+     "ppo_sbx",
+     "ppo_sb3",
+     "crossq",
+     "sac"
+    ]
+   },
+   "reversals": [
+    {
+     "measures": "final/best",
+     "pair": "crossq vs ppo_sb3",
+     "settled": false
+    },
+    {
+     "measures": "final/mean",
+     "pair": "crossq vs ppo_sb3",
+     "settled": false
+    }
+   ]
+  }
+ },
+ "missing": [],
+ "n_reversals": 8,
+ "n_settled": 0,
+ "leader_changes": [
+  "Hopper-v5"
+ ]
+}

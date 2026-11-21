@@ -1,0 +1,252 @@
+{
+ "n_comparisons": 24,
+ "level": 0.9979166666666667,
+ "tasks": {
+  "HalfCheetah-v5": {
+   "order": [
+    "crossq",
+    "sac",
+    "ppo_sb3",
+    "ppo_sbx"
+   ],
+   "pairs": {
+    "crossq>sac": {
+     "p": 0.675,
+     "ci": [
+      0.32,
+      0.9022942708333335
+     ],
+     "settled": false
+    },
+    "crossq>ppo_sb3": {
+     "p": 0.95,
+     "ci": [
+      0.79,
+      1.0
+     ],
+     "settled": true
+    },
+    "crossq>ppo_sbx": {
+     "p": 0.9,
+     "ci": [
+      0.6977057291666666,
+      1.0
+     ],
+     "settled": true
+    },
+    "sac>ppo_sb3": {
+     "p": 0.805,
+     "ci": [
+      0.5443515624999998,
+      0.9797942708333335
+     ],
+     "settled": true
+    },
+    "sac>ppo_sbx": {
+     "p": 0.865,
+     "ci": [
+      0.6377057291666666,
+      0.9875
+     ],
+     "settled": true
+    },
+    "ppo_sb3>ppo_sbx": {
+     "p": 0.625,
+     "ci": [
+      0.32582291666666663,
+      0.875
+     ],
+     "settled": false
+    }
+   }
+  },
+  "Hopper-v5": {
+   "order": [
+    "ppo_sbx",
+    "crossq",
+    "ppo_sb3",
+    "sac"
+   ],
+   "pairs": {
+    "ppo_sbx>crossq": {
+     "p": 0.56,
+     "ci": [
+      0.2604114583333333,
+      0.8237656250000008
+     ],
+     "settled": false
+    },
+    "ppo_sbx>ppo_sb3": {
+     "p": 0.5175,
+     "ci": [
+      0.22644010416666654,
+      0.7843828125000005
+     ],
+     "settled": false
+    },
+    "ppo_sbx>sac": {
+     "p": 0.84,
+     "ci": [
+      0.6177057291666667,
+      0.98
+     ],
+     "settled": true
+    },
+    "crossq>ppo_sb3": {
+     "p": 0.4475,
+     "ci": [
+      0.2,
+      0.7408541666666679
+     ],
+     "settled": false
+    },
+    "crossq>sac": {
+     "p": 0.8075,
+     "ci": [
+      0.5706171874999999,
+      0.9722942708333335
+     ],
+     "settled": true
+    },
+    "ppo_sb3>sac": {
+     "p": 0.8225,
+     "ci": [
+      0.56,
+      0.969588541666667
+     ],
+     "settled": true
+    }
+   }
+  },
+  "Walker2d-v5": {
+   "order": [
+    "crossq",
+    "ppo_sb3",
+    "ppo_sbx",
+    "sac"
+   ],
+   "pairs": {
+    "crossq>ppo_sb3": {
+     "p": 0.94,
+     "ci": [
+      0.7308229166666665,
+      1.0
+     ],
+     "settled": true
+    },
+    "crossq>ppo_sbx": {
+     "p": 0.96,
+     "ci": [
+      0.8077057291666666,
+      1.0
+     ],
+     "settled": true
+    },
+    "crossq>sac": {
+     "p": 0.9575,
+     "ci": [
+      0.7875,
+      1.0
+     ],
+     "settled": true
+    },
+    "ppo_sb3>ppo_sbx": {
+     "p": 0.7025,
+     "ci": [
+      0.4108229166666666,
+      0.9297942708333335
+     ],
+     "settled": false
+    },
+    "ppo_sb3>sac": {
+     "p": 0.825,
+     "ci": [
+      0.5879114583333334,
+      0.99
+     ],
+     "settled": true
+    },
+    "ppo_sbx>sac": {
+     "p": 0.5525,
+     "ci": [
+      0.285,
+      0.849588541666667
+     ],
+     "settled": false
+    }
+   }
+  },
+  "Swimmer-v5": {
+   "order": [
+    "ppo_sbx",
+    "crossq",
+    "ppo_sb3",
+    "sac"
+   ],
+   "pairs": {
+    "ppo_sbx>crossq": {
+     "p": 0.7125,
+     "ci": [
+      0.42791145833333327,
+      0.9264713541666674
+     ],
+     "settled": false
+    },
+    "ppo_sbx>ppo_sb3": {
+     "p": 0.785,
+     "ci": [
+      0.5356171875,
+      0.977088541666667
+     ],
+     "settled": true
+    },
+    "ppo_sbx>sac": {
+     "p": 1.0,
+     "ci": [
+      1.0,
+      1.0
+     ],
+     "settled": true
+    },
+    "crossq>ppo_sb3": {
+     "p": 0.5275,
+     "ci": [
+      0.2554114583333333,
+      0.797088541666667
+     ],
+     "settled": false
+    },
+    "crossq>sac": {
+     "p": 0.8575,
+     "ci": [
+      0.6377057291666666,
+      1.0
+     ],
+     "settled": true
+    },
+    "ppo_sb3>sac": {
+     "p": 0.8725,
+     "ci": [
+      0.6131171875,
+      1.0
+     ],
+     "settled": true
+    }
+   }
+  }
+ },
+ "leaders": {
+  "HalfCheetah-v5": "crossq",
+  "Hopper-v5": "ppo_sbx",
+  "Walker2d-v5": "crossq",
+  "Swimmer-v5": "ppo_sbx"
+ },
+ "settled_changes": [
+  "ppo_sbx leads Hopper-v5 but loses to crossq on HalfCheetah-v5",
+  "ppo_sbx leads Hopper-v5 but loses to sac on HalfCheetah-v5",
+  "ppo_sbx leads Hopper-v5 but loses to crossq on Walker2d-v5",
+  "ppo_sbx leads Swimmer-v5 but loses to crossq on HalfCheetah-v5",
+  "ppo_sbx leads Swimmer-v5 but loses to sac on HalfCheetah-v5",
+  "ppo_sbx leads Swimmer-v5 but loses to crossq on Walker2d-v5"
+ ]
+}
