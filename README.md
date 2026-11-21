@@ -10,12 +10,13 @@ repository measures, flaw by flaw, what has changed since. It holds itself to th
 every number of the document comes back with one command, each piece serves again on other papers
 or other runs, tests guard the computations.
 
-**Status on 17 November 2026.** The experiments are being consolidated: twenty random seeds per
-algorithm and task instead of ten, five random seeds per GRPO configuration instead of three.
+**Status on 21 November 2026.** The experiments are finished, consolidation included: twenty random
+seeds per algorithm and task instead of ten, five random seeds per GRPO configuration instead of three.
 Both extensions were written into the protocols before any new run (deviation 12 of
-`sim/SIM_PROTOCOL-en.md`, deviation 14 of `sim/llm/LLM_PROTOCOL-en.md`). The GRPO part is finished (deviation 16 of the same
-protocol): its five-seed result appears below. The other figures below come from the document
-dated 13 November 2026.
+`sim/SIM_PROTOCOL-en.md`, computed under its deviation 20; deviation 14 of `sim/llm/LLM_PROTOCOL-en.md`,
+closed by its deviation 16). As the protocol set in advance, the ten-seed results stay the main ones.
+The document gives the twenty-seed results next to them and states every divergence. The figures below
+come from the document.
 
 **What a reader can check, and what rests on our word.** The protocols say, for each rule, whether it was
 written before or after the results; a critical review of this repository found several of those statements
@@ -41,7 +42,9 @@ recomputed from the committed results, and every survey decision against the quo
   score by 33%. The t of 9 that made the 2018 talks famous has an explanation: Peter Henderson's
   published script measures the spread between episodes and ignores the spread between random seeds.
   Applied to our TRPO runs, it exceeds 9 in 38% of random draws.
-- **Robustness.** On four algorithms, the best one changes with the task. Physics modified by 20%
+- **Robustness.** On four algorithms, the best one changes with the task. But PPO trains five times
+  longer than SAC and CrossQ: at equal budget and with twenty random seeds, CrossQ leads on all four
+  tasks. Physics modified by 20%
   upends the ranking on Hopper: the leader ends last (a description chosen after seeing the results,
   with no test: deviation 11).
 - **Language models.** In our hand-written GRPO, part of the measured gain comes from answers cut off
@@ -73,7 +76,7 @@ stays in the results, our own mistakes included.
 
 | Path | Contents |
 |---|---|
-| `docs/` | The document in two languages, its bibliography, its figures (`docs/figures/build.py`) and `check_numbers.py`, which recomputes 163 key numbers of both texts from the result files. |
+| `docs/` | The document in two languages, its bibliography, its figures (`docs/figures/build.py`) and `check_numbers.py`, which recomputes 188 key numbers of both texts from the result files. |
 | `study/PROTOCOL-en.md`, `study/GRILLE-en.md` | The survey protocol; the readers' sheet with both grids (French originals without `-en`). |
 | `study/codes/`, `study/codes_v2/` | One JSON file per paper and per reader: one decision per criterion, with quote and page. |
 | `study/*.py`, `study/*.json` | The draws, the analyses (Wilson intervals, Newcombe differences, Fisher, Holm, Cochran-Armitage) and their results. |
@@ -101,8 +104,9 @@ sim/env-an/bin/pip install -r envs/analysis.txt -r envs/test.txt
 make verify
 ```
 
-`make verify` reruns the nine survey analyses, the fourteen experiment analyses and the GRPO summary,
-checks the 163 numbers of both texts (`make check`), runs the unit tests (`make test`), then asks git
+`make verify` reruns the nine survey analyses, the experiment analyses (sixteen at ten random seeds,
+thirteen more for deviation 12) and the GRPO summary, checks the 188 numbers of both texts and the 156
+claims of the blog article (`make check`), runs the unit tests (`make test`), then asks git
 whether every JSON file came back byte for byte. On the M2 Max, saturated by training runs at the
 same time, the whole sequence took about 45 minutes; E1, B1, B3 and E2, with their tens of thousands of
 random draws, take most of it. `make verify-head` does the same in a fresh export of the last
@@ -138,10 +142,11 @@ Llama 3.2 1B, five to six hours on two CPU threads for Qwen.
 cd sim && P=4 ./drive.sh                 # every line of jobs.txt, four at a time
 ```
 
-The 250 committed training runs add up to about 260 core-hours, so a little under three days on
+The 250 training runs of the first phase add up to about 260 core-hours, so a little under three days on
 four cores. The twelve GRPO runs add about 27 hours, the eight added for five random seeds about 33 more; the official RL Baselines3 Zoo pipeline of
-E6 (`sim/zoo_official.sh`), ten runs more. The consolidation under way (`sim/jobs_seeds20.txt`,
-`sim/jobs_consolidation.txt`) adds 160 training runs (about 200 core-hours) then 320 re-evaluations
+E6 (`sim/zoo_official.sh`), ten runs more. The consolidation, finished on 21 November 2026 (`sim/jobs_seeds20.txt`,
+`sim/jobs_consolidation.txt`), adds 160 training runs (about 200 core-hours estimated; ten of them,
+PPO-SB3 on HalfCheetah, already existed for E1) then 320 re-evaluations
 of saved policies under several physics changes (`sim/dose.py`). Retraining on another
 processor gives other curves for the same random seed; what a full rerun tests is the statistics.
 

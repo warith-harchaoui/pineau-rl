@@ -39,7 +39,7 @@ described with all their settings (35% then 29%), evaluation on held-out conditi
 the version of the benchmarks (23% then 26%). Our experiments sharpen the picture of the most famous flaw. Among our thirty runs, two
 groups of five drawn at random fool a statistical test in only 1.2% of cases. The test gets fooled
 when the runs are sorted (31%). Keeping the best runs inflates the score by 33%. The experiments
-also show why a result that looks too good deserves a check: our own baseline collapsed. An error in our code seemed to explain it. Fixing the error changed nothing. The collection's official script plateaus the same way: the published recipe has aged with the libraries. The most striking figure of 2018, a t of 9 between two groups of the same program, finds its explanation: the script Peter Henderson published measures the spread between episodes and ignores the spread between random seeds. Applied to our TRPO runs, it exceeds 9 in 38% of random draws. On our four algorithms, the best one changes with the task. Physics modified by 20% upends the ranking on Hopper: the leader ends last there.
+also show why a result that looks too good deserves a check: our own baseline collapsed. An error in our code seemed to explain it. Fixing the error changed nothing. The collection's official script plateaus the same way: the published recipe has aged with the libraries. The most striking figure of 2018, a t of 9 between two groups of the same program, finds its explanation: the script Peter Henderson published measures the spread between episodes and ignores the spread between random seeds. Applied to our TRPO runs, it exceeds 9 in 38% of random draws. On our four algorithms, the best one changes with the task, but PPO gets five times more steps than SAC and CrossQ: at equal budget and with twenty random seeds, CrossQ leads on all four tasks. Physics modified by 20% upends the ranking on Hopper: the leader ends last there.
 
 # Two talks in 2018
 
@@ -306,13 +306,13 @@ instrument that measures each one in this document. The next section describes t
 | F5 | How the hyperparameters were chosen, left unsaid | page 29 at NeurIPS | criterion Q6 | no detectable change after correction |
 | F6 | Settings that change everything and interact | slides 24 and 25 at ICLR | criterion Y9 | heeded |
 | F7 | Baselines tuned less carefully than the method | slide 25 at ICLR, page 29 at NeurIPS | criteria Q4 and X4, experiment E6 | no detectable change, still rare |
-| F8 | A performance measure never defined | slides 26 and 27 at ICLR | criteria Y1 and Y2, experiment B3 | no detectable change, measure usually defined; it moves the leader on two tasks out of four |
+| F8 | A performance measure never defined | slides 26 and 27 at ICLR | criteria Y1 and Y2, experiment B3 | no detectable change, measure usually defined; it moves the leader on two tasks out of four, on one at twenty seeds |
 | F9 | Too few runs, three or five, never ten in her table | slide 28 at ICLR | criterion X1, experiment E5 | not heeded; five random seeds mislead nearly one time in three between close algorithms |
 | F10 | Only the best runs out of N published | slides 29 and 30 at ICLR | criterion X3, experiments E1 and E4 | rare in both years; the mean inflates by a third |
 | F11 | Same code, another random seed: two "algorithms" | slide 31 at ICLR, page 22 at NeurIPS | experiments E1 and B1 | qualified: the t of 9 comes from a test on episodes |
 | F12 | Comparisons with no statistical test | page 29 at NeurIPS | criteria Q8, X2, Y11 and Y12 | partly heeded: error bars, no test |
-| F13 | The best algorithm changes with the task | slides 20 and 21 at ICLR | criteria Y3 and Y4, experiment E2 | no detectable change; the best algorithm changes with the task |
-| F14 | Two implementations of the same algorithm that diverge | slides 22 and 23 at ICLR | criterion Y5, experiment E3 | no detectable change; two PPOs indistinguishable at ten seeds |
+| F13 | The best algorithm changes with the task | slides 20 and 21 at ICLR | criteria Y3 and Y4, experiment E2 | no detectable change; the best algorithm changes with the task, except at equal budget with twenty seeds |
+| F14 | Two implementations of the same algorithm that diverge | slides 22 and 23 at ICLR | criterion Y5, experiment E3 | no detectable change; two PPOs indistinguishable at ten seeds, distinct on two tasks at twenty |
 | F15 | Evaluation in the training conditions | pages 36 to 51 at NeurIPS | criteria Q7 and Y8, experiment E7 | no detectable change with the same grid; modified physics reverses the ranking on Hopper |
 | F16 | Benchmarks too simple, easy to learn by heart | pages 43 to 50 at NeurIPS | criteria X6 and Y7 | no detectable change |
 
@@ -424,7 +424,8 @@ simulator and the Gymnasium 1.1.1 library [@towers2024gymnasium]. Four algorithm
 (*Proximal Policy Optimization*) [@schulman2017ppo] appears in two libraries, Stable-Baselines3 in
 PyTorch [@raffin2021sb3] and its rewrite in JAX. SAC (*Soft Actor-Critic*) [@haarnoja2018sac] and
 CrossQ, a descendant of SAC published in 2024 [@bhatt2024crossq], complete the set. Each pair of
-algorithm and task gets ten random seeds. Experiment E1 gets thirty. Evaluation runs on random seeds
+algorithm and task gets ten random seeds, then twenty to consolidate (deviation 12). Experiment E1
+gets thirty. Evaluation runs on random seeds
 never seen in training, then on modified physics (masses multiplied by 1.2, friction by 0.8).
 
 **Seven experiments.** E1 trains PPO thirty times on HalfCheetah to study the spread due to random
@@ -724,7 +725,8 @@ compares PPO written in PyTorch with PPO written in JAX, using the same random s
 JAX on Hopper and Swimmer, CrossQ on Walker2d. The change is settled under the protocol's rule: SAC,
 ahead on HalfCheetah, is clearly beaten on Hopper and on Walker2d. This verdict withstands the correction for multiple comparisons: with the 24 intervals made simultaneous (Bonferroni, deviation 18), 12 changes of leader stay settled, instead of 14. Yet the leader clearly beats all
 the others only on Walker2d; on the other three tasks, ten random seeds do not separate it from the
-runner-up. The budgets differ: a million steps for PPO, 200,000 for SAC and CrossQ. E3 is finished: on none of the four tasks does one version win under the
+runner-up. The budgets differ: a million steps for PPO, 200,000 for SAC and CrossQ. At equal budget, PPO leads on no task; with twenty seeds, CrossQ then
+leads on all four (see "Twenty random seeds instead of ten", below). E3 is finished: on none of the four tasks does one version win under the
 protocol's rule. The apparent gaps are wide all the same. On Walker2d, the interquartile mean is
 2,158 with PyTorch and 1,272 with JAX, 41% lower, yet the two intervals still overlap with ten
 random seeds. A method compared with "PPO" on this task would therefore win or lose depending on the
@@ -786,6 +788,68 @@ with masses at 0.9 times, 9 at 1.1 times, 12 at 1.2 times and 11 at 1.3 times. F
 except at 1.2 times (9 pairs). On Hopper, PPO written in JAX, first in the original physics, is no
 longer first at 10 strengths out of 12. These rankings still carry no test, but they no longer hinge
 on a single chosen strength. Data: `sim/analysis/dose.json`.
+
+**Twenty random seeds instead of ten.** Deviation 12 of the protocol, written on 15 November 2026
+before any new training run, adds random seeds 10 to 19 to our four algorithms on the four tasks,
+with the same code and the same settings. The first ten seeds remain the main result, as announced:
+the figures above are theirs. The twenty seeds confirm or qualify them, and we state every
+divergence. The table sets them side by side.
+
+| Experiment | Ten seeds (0 to 9) | Twenty seeds (0 to 19) |
+|:-------------------------------------|:-----------------|:-----------------|
+| E2: leader on HalfCheetah, Hopper, Walker2d, Swimmer | SAC, PPO (JAX), CrossQ, PPO (JAX) | CrossQ, PPO (JAX), CrossQ, PPO (JAX) |
+| E2: settled changes of leader (with Bonferroni) | 14 (12) | 10 (6) |
+| E2 at equal budget: leader on the four tasks | SAC, CrossQ, CrossQ, CrossQ | CrossQ, CrossQ, CrossQ, CrossQ |
+| E2 at equal budget: settled changes of leader | 3 | 0 |
+| E3: tasks where one version of PPO wins | 0 | 2 |
+| E4: median inflation, comparisons reversed | 32%, 3 out of 24 | seeds 10 to 19: 43%, 3 out of 24 |
+| E5: close comparisons, right order with five seeds | 7, 71% | 8, 62% |
+| E7: pairs that lose, that gain | 12 and 1 out of 16 | 11 and 2 out of 16 |
+| B3: reversals between measures (settled) | 8 (0) | 8 (0) |
+| B3 at equal budget: reversals (settled) | 4 (0) | 6 (1) |
+| Physics by degrees: pairs that lose, masses at 0.9, 1.1, 1.2, 1.3 times | 3, 9, 12, 11 | 4, 11, 12, 12 |
+
+: Our experiments at ten random seeds, the main result, then at twenty (deviations 12 and 20 of the protocol). E4 is redone separately, on seeds 10 to 19. At equal budget, PPO is read at 200,000 steps, like SAC and CrossQ. A change of leader is settled when the 95% interval of the probability of improvement excludes 0.5; a reversal in B3, when this holds for each of the two measures, in opposite directions. A comparison is close when its two means differ by less than 20%. Data: the `_s20`, `_r10`, `_equal` and `_equal_s20` files of `sim/analysis/`.
+
+**What holds.** With twenty random seeds, the leader still changes with the task: CrossQ leads on
+HalfCheetah and Walker2d, PPO written in JAX on Hopper and Swimmer. 10 changes of leader stay
+settled, 6 with the Bonferroni correction. On HalfCheetah, SAC yields the lead to CrossQ: its
+interquartile mean goes from 5,191 to 4,214. The gap between the two is settled neither at ten nor
+at twenty seeds. On Hopper, CrossQ climbs from third to second place (2,302 then 2,792), so the lead
+of PPO written in JAX over it is no longer settled. The leader now clearly beats all the others on
+two tasks, Walker2d and Swimmer. Redone on seeds 10 to 19, keeping the three best runs out of ten
+inflates the mean by 43% at the median, from 7% to 85%, and reverses 3 comparisons out of 24, as
+many as on the first ten (E4). Modified physics still upends the ranking on Hopper, the only task
+where the leader changes, and the verdicts of E7 stay the same for 14 pairs out of 16. Two change:
+SAC on Walker2d no longer loses detectably (0.91, from 0.79 to 1.01), CrossQ on Swimmer gains a
+little (1.03, from 1.01 to 1.04). By degrees, the V keeps its shape: with masses at 0.9, 1.1, 1.2 and
+1.3 times, 4, 11, 12 and 12 pairs lose; with friction at 1.2 times, 10. On Hopper, PPO written in
+JAX still loses first place at 10 strengths out of 12. At 1.0 times, the re-evaluations of the 320
+policies recover their final score exactly.
+
+**What changes.** Two results move. The two versions of PPO separate (E3): PyTorch wins on Walker2d
+(2,204 against 1,435; probability that JAX does better 0.30, from 0.15 to 0.48) and JAX on Swimmer
+(115 against 107; 0.79, from 0.63 to 0.91). The gaps resemble those at ten seeds; the added seeds
+narrow the intervals. Next, close comparisons are harder than ten seeds suggested (E5). The right
+order is now that of the means of twenty runs, and the draws come from the twenty. Over the 24
+comparisons, the median barely moves (93% with three random seeds, 97% with five). For the 8 close
+comparisons, it falls to 59%, 62%, 67% and 74% with three, five, ten and twenty random seeds,
+against 65%, 71%, 77% and 85% at ten seeds. With five random seeds, a gap of this size is read
+backwards more than one time in three.
+
+**Equal budget, the nuance that weighs.** PPO trains for a million steps, five times more than SAC
+and CrossQ. Deviation 12 therefore reads PPO at 200,000 steps, on its evaluation curves, scores no
+one had looked at before writing the rule. At ten random seeds, the leader still changes: SAC leads
+on HalfCheetah, CrossQ on the three other tasks, and 3 changes stay settled. At twenty seeds, CrossQ
+leads on all four tasks and no change is settled; on HalfCheetah, it does not even beat SAC in a
+settled way. The verdict of E2, as announced, holds. But, with twenty seeds, the change of leader from
+one task to the next rests on the five times larger budget of PPO: at equal budget, the ranking no
+longer changes with the task. B3 moves little. With unequal budgets, 8 pairs change order
+from one measure to another, at ten as at twenty random seeds, with no settled reversal; with twenty
+seeds, the leader changes from one measure to another only on Hopper. At equal budget, 4 reversals
+at ten random seeds, 6 at twenty, of which 1 is settled: on Swimmer, PPO written in PyTorch and SAC
+change order between the best score reached and the mean of the curve. With twenty seeds and at
+equal budget, the leader changes from one measure to another on no task.
 
 **Benchmarks too simple, in another form (F16).** Pineau asked for the version of every benchmark, so
 that anyone redoing a result works in the same world. In classical RL, 26% of 2026 papers give it for all
@@ -1017,7 +1081,7 @@ Pineau's advice in 2018: be as critical of your good results as of your bad ones
 - The 2026 papers were mostly read in their arXiv version (45 classical RL papers out of 50), the 2018 papers in the conference proceedings. An arXiv version is sometimes longer or more recent than the proceedings one. With only 5 papers read on a conference site, we cannot measure the effect of this difference.
 - Pineau's 2018 draw remains unknown. Our comparisons with her figures assume a draw comparable to ours.
 
-**The limits of the experiments.** The survey covers all sixteen flaws. All the announced experiments are done. E1 and B1 are limited to a single task (HalfCheetah) and two algorithms (PPO and
+**The limits of the experiments.** The survey covers all sixteen flaws. All the announced experiments are done, the consolidation at twenty random seeds included. E1 and B1 are limited to a single task (HalfCheetah) and two algorithms (PPO and
 TRPO). The GRPO strand remains an illustration on models of 0.5
 and 1 billion parameters, far from a replication of Shao and co-authors.
 

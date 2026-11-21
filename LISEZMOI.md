@@ -10,12 +10,13 @@ reproductible, réutilisable et robuste. Ce dépôt mesure, faille par faille, c
 Il s'applique les trois mêmes mots : chaque chiffre du document revient d'une seule commande, chaque
 pièce resservira sur d'autres articles ou d'autres essais, des tests gardent les calculs.
 
-**État au 17 novembre 2026.** Les expériences sont en cours de consolidation : vingt graines
+**État au 21 novembre 2026.** Les expériences sont finies, consolidation comprise : vingt graines
 aléatoires par algorithme et par tâche au lieu de dix, cinq graines aléatoires par configuration de
 GRPO au lieu de trois. Les deux extensions sont inscrites dans les protocoles avant tout nouvel essai
-(écart 12 de `sim/SIM_PROTOCOL.md`, écart 14 de `sim/llm/LLM_PROTOCOL.md`). Le volet GRPO est fini (écart 16
-du même protocole) : son résultat à cinq graines aléatoires figure ci-dessous. Les autres chiffres
-ci-dessous viennent du document daté du 13 novembre 2026.
+(écart 12 de `sim/SIM_PROTOCOL.md`, calculé selon son écart 20 ; écart 14 de `sim/llm/LLM_PROTOCOL.md`,
+clos par son écart 16). Comme le protocole l'a fixé d'avance, les résultats à dix graines restent les
+résultats principaux. Le document donne à côté ceux de vingt graines et dit chaque divergence. Les
+chiffres ci-dessous viennent du document.
 
 **Ce qu'un lecteur peut vérifier, et ce qui repose sur notre parole.** Les protocoles disent, pour chaque
 règle, si elle a été écrite avant ou après les résultats ; une relecture critique de ce dépôt a trouvé
@@ -44,7 +45,9 @@ commités, et chaque décision du sondage, face à la citation et à la page sur
   son explication : le script publié par Peter Henderson mesure l'écart entre épisodes et ignore
   l'écart entre graines aléatoires. Appliqué à nos essais de TRPO, il dépasse 9 dans 38 % des tirages
   au hasard.
-- **La robustesse.** Sur quatre algorithmes, le meilleur change avec la tâche. Une physique modifiée
+- **La robustesse.** Sur quatre algorithmes, le meilleur change avec la tâche. Mais PPO s'entraîne
+  cinq fois plus longtemps que SAC et CrossQ : à budget égal et avec vingt graines aléatoires, CrossQ
+  mène sur les quatre tâches. Une physique modifiée
   de 20 % bouleverse le classement sur Hopper : le premier y finit dernier (une description choisie
   après avoir vu les résultats, sans test : écart 11).
 - **Les modèles de langue.** Dans notre GRPO écrit à la main, une part du gain mesuré vient des
@@ -79,7 +82,7 @@ résultats, nos propres erreurs comprises.
 
 | Chemin | Contenu |
 |---|---|
-| `docs/` | Le document en deux langues, sa bibliographie, ses figures (`docs/figures/build.py`) et `check_numbers.py`, qui recalcule 163 chiffres clés des deux textes à partir des fichiers de résultats. |
+| `docs/` | Le document en deux langues, sa bibliographie, ses figures (`docs/figures/build.py`) et `check_numbers.py`, qui recalcule 188 chiffres clés des deux textes à partir des fichiers de résultats. |
 | `study/PROTOCOL.md`, `study/GRILLE.md` | Le protocole du sondage et la fiche des lecteurs avec les deux grilles (traductions anglaises : suffixe `-en`). |
 | `study/codes/`, `study/codes_v2/` | Un fichier JSON par article et par lecteur : une décision par critère, avec citation et page. |
 | `study/*.py`, `study/*.json` | Les tirages, les analyses (intervalles de Wilson, différences de Newcombe, Fisher, Holm, Cochran-Armitage) et leurs résultats. |
@@ -107,8 +110,9 @@ sim/env-an/bin/pip install -r envs/analysis.txt -r envs/test.txt
 make verify
 ```
 
-`make verify` relance les neuf analyses du sondage, les quatorze analyses des expériences et le
-bilan de GRPO, vérifie les 163 chiffres des deux textes (`make check`), passe les tests unitaires
+`make verify` relance les neuf analyses du sondage, les analyses des expériences (seize à dix
+graines aléatoires, treize de plus pour l'écart 12) et le bilan de GRPO, vérifie les 188 chiffres
+des deux textes et les 156 affirmations de l'article de blog (`make check`), passe les tests unitaires
 (`make test`), puis demande à git si chaque fichier JSON est revenu octet pour octet. Sur le M2 Max,
 saturé en même temps par des entraînements, la séquence entière a pris environ 45 minutes ; E1,
 B1, B3 et E2, avec leurs dizaines de milliers de tirages, en prennent l'essentiel.
@@ -144,11 +148,12 @@ de 70 à 100 minutes pour Llama 3.2 1B, de cinq à six heures sur deux fils de p
 cd sim && P=4 ./drive.sh                 # chaque ligne de jobs.txt, quatre à la fois
 ```
 
-Les 250 entraînements du dépôt totalisent environ 260 heures-cœur, soit un peu moins de trois jours
+Les 250 entraînements de la première phase totalisent environ 260 heures-cœur, soit un peu moins de trois jours
 sur quatre cœurs. Les douze essais de GRPO ajoutent environ 27 heures, les huit ajoutés pour cinq graines aléatoires environ 33 de plus ; la chaîne officielle de
-RL Baselines3 Zoo pour E6 (`sim/zoo_official.sh`), dix essais de plus. La consolidation en cours
-(`sim/jobs_seeds20.txt`, `sim/jobs_consolidation.txt`) ajoute 160 entraînements, environ
-200 heures-cœur, puis 320 réévaluations de politiques sauvegardées sous plusieurs modifications de
+RL Baselines3 Zoo pour E6 (`sim/zoo_official.sh`), dix essais de plus. La consolidation, finie le
+21 novembre 2026 (`sim/jobs_seeds20.txt`, `sim/jobs_consolidation.txt`), ajoute 160 entraînements,
+environ 200 heures-cœur estimées (dix d'entre eux, PPO-SB3 sur HalfCheetah, existaient déjà pour
+E1), puis 320 réévaluations de politiques sauvegardées sous plusieurs modifications de
 la physique (`sim/dose.py`). Sur un autre processeur, la même graine aléatoire donne d'autres
 courbes : un réentraînement complet éprouve les statistiques.
 

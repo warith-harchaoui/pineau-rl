@@ -249,6 +249,38 @@ def dose_alt(l):
 
 claim("dose alt", dose_alt("fr"), dose_alt("en"))
 
+# Twenty random seeds and equal budget (SIM deviations 12 and 20): e4_r10, e5_s20, e2_s20, e2_equal(_s20), e3_s20,
+# dose_s20. The ten-seed files above stay the main results.
+e4r, e5s = J("sim/analysis/e4_r10.json"), J("sim/analysis/e5_s20.json")
+claim("E4 seeds 10 to 19", *both(lambda l: (f"gonfle la moyenne de {pct(e4r['inflation_median'], l)} en médiane et renverse encore {e4r['n_reversed']} comparaisons sur {e4r['n_comparisons']}" if l == "fr" else
+                                            f"inflates the mean by {pct(e4r['inflation_median'], l)} at the median and again reverses {e4r['n_reversed']} comparisons out of {e4r['n_comparisons']}")))
+claim("E5 close, twenty seeds", *both(lambda l: f"{'ce chiffre tombe à' if l == 'fr' else 'this figure falls to'} {int(hu(e5s['median_close']['5'] * 100))} {'fois sur cent' if l == 'fr' else 'times out of a hundred'}"))
+e2s, e2q, e2qs = (J(f"sim/analysis/{f}.json") for f in ("e2_s20", "e2_equal", "e2_equal_s20"))
+assert e2s["leader_changes"] and [e2s["leaders"][t] for t in TK] == ["crossq", "ppo_sbx", "crossq", "ppo_sbx"]
+assert not e2s["tasks"]["HalfCheetah-v5"]["pairs"]["crossq>sac"]["settled"]  # "sans que l'écart soit établi"
+assert [e2q["leaders"][t] for t in TK] == ["sac", "crossq", "crossq", "crossq"]  # "PPO ne mène plus ; SAC garde le guépard"
+assert set(e2qs["leaders"].values()) == {"crossq"} and not e2qs["leader_changes"] and not e2qs["settled_changes"]
+claim("equal budget, 200,000 steps", "relu à 200 000 pas", "read it at 200,000 steps", "doc")
+e3s = J("sim/analysis/e3_s20.json")
+assert e3s["Walker2d-v5"]["winner"] == "sb3" and e3s["Swimmer-v5"]["winner"] == "sbx" and sum(v["winner"] is not None for v in e3s.values()) == 2
+claim("E3 twenty seeds", *both(lambda l: f"{'avec' if l == 'fr' else 'with'} {num(e3s['Walker2d-v5']['iqm']['sb3'], l)} {'contre' if l == 'fr' else 'against'} {num(e3s['Walker2d-v5']['iqm']['sbx'], l)}"))
+dss = J("sim/analysis/dose_s20.json")
+assert dss["missing"] == {} and dss["control_max_rel_gap"] == 0 and dss["seeds"] == [0, 20]
+hks = {k.split("/", 1)[1]: v["ranking"] for k, v in dss["ranking"].items() if k.startswith("Hopper-v5/")}
+assert hks["mass/1.0"][0] == "ppo_sbx"
+hss = [k for k in hks if not k.endswith("/1.0")]
+claim("dose Hopper leader, twenty seeds", *both(lambda l: (f"perd toujours la première place du sauteur à {sum(hks[k][0] != 'ppo_sbx' for k in hss)} intensités sur {len(hss)}" if l == "fr" else
+                                                       f"still loses first place on the hopper at {sum(hks[k][0] != 'ppo_sbx' for k in hss)} strengths out of {len(hss)}")))
+dls = {}
+for k, v in dss["ratio"].items():
+    a, t, qn, st = k.split("/")
+    dls.setdefault((qn, st), []).append(v["verdict"] == "loss")
+# "le V garde sa forme": fewest losses next to 1.0, more on both sides, heaviest masses and +20% friction worst
+for qn in ("mass", "friction"):
+    s_ = sorted(STR[qn], key=Decimal)
+    lo, hi = [sum(dls[(qn, x)]) for x in s_ if Decimal(x) < 1], [sum(dls[(qn, x)]) for x in s_ if Decimal(x) > 1]
+    assert lo == sorted(lo, reverse=True) and hi == sorted(hi), (qn, lo, hi)
+
 # E6 (sim/analysis/e6.json, e6_official.json, e6_diag.json).
 e6, e6o, e6d = J("sim/analysis/e6.json"), J("sim/analysis/e6_official.json"), J("sim/analysis/e6_diag.json")
 claim("E6 first pass", *both(lambda l: f"{num(e6['iqm']['default'], l)} {'pour les valeurs par défaut,' if l == 'fr' else 'for the default values,'} {num(e6['iqm']['zoo'], l)}"))

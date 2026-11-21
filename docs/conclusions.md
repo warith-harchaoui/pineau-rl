@@ -43,7 +43,7 @@ expériences précisent la faille la plus
 célèbre. Sur nos trente essais, deux groupes de cinq tirés au hasard ne trompent un test
 statistique que dans 1,2 % des cas. Le test se laisse tromper quand on trie les essais (31 %). Garder
 les meilleurs gonfle le score de 33 %. Elles montrent aussi pourquoi un résultat trop beau se vérifie : notre
-propre référence s'est effondrée, une erreur de notre code semblait l'expliquer. Sa correction n'a rien changé. Le script officiel du recueil plafonne de même : la recette publiée a vieilli avec les bibliothèques. Le chiffre le plus frappant de 2018, un t de 9 entre deux groupes du même programme, trouve son explication : le script publié par Peter Henderson mesure la dispersion des épisodes et ignore celle des graines aléatoires. Appliqué à nos essais de TRPO, il dépasse 9 dans 38 % des tirages au hasard. Sur nos quatre algorithmes, le meilleur change avec la tâche. Une physique modifiée de 20 % bouleverse le classement sur Hopper : le premier y finit dernier.
+propre référence s'est effondrée, une erreur de notre code semblait l'expliquer. Sa correction n'a rien changé. Le script officiel du recueil plafonne de même : la recette publiée a vieilli avec les bibliothèques. Le chiffre le plus frappant de 2018, un t de 9 entre deux groupes du même programme, trouve son explication : le script publié par Peter Henderson mesure la dispersion des épisodes et ignore celle des graines aléatoires. Appliqué à nos essais de TRPO, il dépasse 9 dans 38 % des tirages au hasard. Sur nos quatre algorithmes, le meilleur change avec la tâche, mais PPO y dispose de cinq fois plus de pas que SAC et CrossQ : à budget égal et avec vingt graines aléatoires, CrossQ mène sur les quatre tâches. Une physique modifiée de 20 % bouleverse le classement sur Hopper : le premier y finit dernier.
 
 # Deux conférences en 2018
 
@@ -327,13 +327,13 @@ section suivante.
 | F5 | La façon de choisir les hyperparamètres, tue | page 29 à NeurIPS | critère Q6 | aucun changement détectable après correction |
 | F6 | Des réglages qui changent tout et qui interagissent | diapositives 24 et 25 à ICLR | critère Y9 | écoutée |
 | F7 | Des références moins bien réglées que la méthode | diapositive 25 à ICLR, page 29 à NeurIPS | critères Q4 et X4, expérience E6 | aucun changement détectable, toujours rare |
-| F8 | Une mesure de performance jamais définie | diapositives 26 et 27 à ICLR | critères Y1 et Y2, expérience B3 | aucun changement détectable, mesure le plus souvent définie ; elle déplace le premier sur deux tâches sur quatre |
+| F8 | Une mesure de performance jamais définie | diapositives 26 et 27 à ICLR | critères Y1 et Y2, expérience B3 | aucun changement détectable, mesure le plus souvent définie ; elle déplace le premier sur deux tâches sur quatre, sur une à vingt graines |
 | F9 | Trop peu d'essais, trois ou cinq, jamais dix dans son tableau | diapositive 28 à ICLR | critère X1, expérience E5 | pas écoutée ; cinq graines trompent près d'une fois sur trois entre algorithmes proches |
 | F10 | Les meilleurs essais sur N, seuls publiés | diapositives 29 et 30 à ICLR | critère X3, expériences E1 et E4 | rare les deux années ; la moyenne gonfle d'un tiers |
 | F11 | Même code, autre graine aléatoire : deux « algorithmes » | diapositive 31 à ICLR, page 22 à NeurIPS | expériences E1 et B1 | nuancée : le t de 9 vient d'un test sur les épisodes |
 | F12 | Aucun test statistique | page 29 à NeurIPS | critères Q8, X2, Y11 et Y12 | écoutée en partie : des barres, pas de test |
-| F13 | Le meilleur algorithme qui change avec la tâche | diapositives 20 et 21 à ICLR | critères Y3 et Y4, expérience E2 | aucun changement détectable ; le meilleur change avec la tâche |
-| F14 | Deux implémentations du même algorithme qui divergent | diapositives 22 et 23 à ICLR | critère Y5, expérience E3 | aucun changement détectable ; deux PPO indiscernables à dix graines |
+| F13 | Le meilleur algorithme qui change avec la tâche | diapositives 20 et 21 à ICLR | critères Y3 et Y4, expérience E2 | aucun changement détectable ; le meilleur change avec la tâche, sauf à budget égal avec vingt graines |
+| F14 | Deux implémentations du même algorithme qui divergent | diapositives 22 et 23 à ICLR | critère Y5, expérience E3 | aucun changement détectable ; deux PPO indiscernables à dix graines, distincts sur deux tâches à vingt |
 | F15 | L'évaluation sur les conditions d'entraînement | pages 36 à 51 à NeurIPS | critères Q7 et Y8, expérience E7 | aucun changement détectable à grille égale ; la physique modifiée renverse le classement sur Hopper |
 | F16 | Des bancs d'essai trop simples, faciles à apprendre par cœur | pages 43 à 50 à NeurIPS | critères X6 et Y7 | aucun changement détectable |
 
@@ -450,7 +450,8 @@ le simulateur MuJoCo et la bibliothèque Gymnasium 1.1.1 [@towers2024gymnasium].
 PPO (*Proximal Policy Optimization*) [@schulman2017ppo], écrit dans deux bibliothèques,
 Stable-Baselines3 en PyTorch [@raffin2021sb3] et sa réécriture en JAX, puis SAC (*Soft Actor-Critic*)
 [@haarnoja2018sac] et CrossQ, un descendant de SAC paru en 2024 [@bhatt2024crossq]. Dix graines
-aléatoires par couple d'algorithme et de tâche, trente pour l'expérience E1. L'évaluation se fait
+aléatoires par couple d'algorithme et de tâche, puis vingt pour consolider (écart 12), trente pour
+l'expérience E1. L'évaluation se fait
 sur des graines aléatoires jamais vues à l'entraînement, puis sur une physique modifiée (masses
 multipliées par 1,2, frottement par 0,8).
 
@@ -768,7 +769,8 @@ JAX sur Hopper et Swimmer, CrossQ sur Walker2d. Le changement est établi selon 
 protocole : SAC, en tête sur HalfCheetah, est nettement battu sur Hopper et sur Walker2d. Ce verdict résiste à la correction pour comparaisons multiples : avec les 24 intervalles rendus simultanés (Bonferroni, écart 18), 12 changements de premier restent établis, au lieu de 14. Le premier
 ne bat pourtant nettement tous les autres que sur Walker2d ; sur les trois autres tâches, dix
 graines ne le séparent pas de son suivant. Les budgets diffèrent : un million de pas pour PPO,
-200 000 pour SAC et CrossQ. E3 est fini : sur aucune des quatre tâches, l'une des
+200 000 pour SAC et CrossQ. À budget égal, PPO ne mène plus sur aucune tâche ; avec vingt graines,
+CrossQ mène alors sur les quatre (voir « Vingt graines aléatoires au lieu de dix », plus bas). E3 est fini : sur aucune des quatre tâches, l'une des
 deux versions ne l'emporte selon la règle du protocole. Les écarts apparents sont pourtant larges.
 Sur Walker2d, la moyenne interquartile vaut 2 158 avec PyTorch et 1 272 avec JAX, 41 % de moins, mais
 les deux intervalles se chevauchent encore avec dix graines. Une méthode comparée à « PPO » sur
@@ -837,6 +839,70 @@ détectable de leur score avec des masses à 0,9 fois, 9 à 1,1 fois, 12 à 1,2 
 Les frottements comptent moins, sauf à 1,2 fois (9 couples). Sur Hopper, PPO écrit en JAX, premier
 dans la physique d'origine, n'est plus premier à 10 intensités sur 12. Ces classements restent sans
 test, mais ils ne tiennent plus à une seule intensité choisie. Données : `sim/analysis/dose.json`.
+
+**Vingt graines aléatoires au lieu de dix.** L'écart 12 du protocole, écrit le 15 novembre 2026
+avant tout nouvel entraînement, ajoute les graines aléatoires 10 à 19 à nos quatre algorithmes sur
+les quatre tâches, avec le même code et les mêmes réglages. Les dix premières graines restent le
+résultat principal, comme annoncé : les chiffres qui précèdent sont les leurs. Les vingt graines
+les confirment ou les nuancent, et nous disons chaque divergence. Le tableau les met côte à côte.
+
+| Expérience | Dix graines (0 à 9) | Vingt graines (0 à 19) |
+|:-------------------------------------|:-----------------|:-----------------|
+| E2 : premier sur HalfCheetah, Hopper, Walker2d, Swimmer | SAC, PPO (JAX), CrossQ, PPO (JAX) | CrossQ, PPO (JAX), CrossQ, PPO (JAX) |
+| E2 : changements de premier établis (avec Bonferroni) | 14 (12) | 10 (6) |
+| E2 au budget égal : premier sur les quatre tâches | SAC, CrossQ, CrossQ, CrossQ | CrossQ, CrossQ, CrossQ, CrossQ |
+| E2 au budget égal : changements de premier établis | 3 | 0 |
+| E3 : tâches où une version de PPO l'emporte | 0 | 2 |
+| E4 : gonflement médian, comparaisons renversées | 32 %, 3 sur 24 | graines 10 à 19 : 43 %, 3 sur 24 |
+| E5 : comparaisons proches, bon ordre avec cinq graines | 7, 71 % | 8, 62 % |
+| E7 : couples qui perdent, qui gagnent | 12 et 1 sur 16 | 11 et 2 sur 16 |
+| B3 : renversements entre mesures (établis) | 8 (0) | 8 (0) |
+| B3 au budget égal : renversements (établis) | 4 (0) | 6 (1) |
+| Physique par degrés : couples qui perdent, masses à 0,9, 1,1, 1,2, 1,3 fois | 3, 9, 12, 11 | 4, 11, 12, 12 |
+
+: Nos expériences à dix graines aléatoires, le résultat principal, puis à vingt (écarts 12 et 20 du protocole). E4 se refait à part, sur les graines 10 à 19. Au budget égal, PPO est lu à 200 000 pas, comme SAC et CrossQ. Un changement de premier est établi quand l'intervalle à 95 % de la probabilité d'amélioration exclut 0,5 ; un renversement de B3, quand cela vaut pour chacune des deux mesures, en sens contraires. Une comparaison est proche quand ses deux moyennes diffèrent de moins de 20 %. Données : fichiers `_s20`, `_r10`, `_equal` et `_equal_s20` de `sim/analysis/`.
+
+**Ce qui tient.** Avec vingt graines, le premier change toujours avec la tâche : CrossQ mène sur
+HalfCheetah et Walker2d, PPO écrit en JAX sur Hopper et Swimmer. 10 changements de premier restent
+établis, 6 avec la correction de Bonferroni. Sur HalfCheetah, SAC cède la tête à CrossQ : sa
+moyenne interquartile passe de 5 191 à 4 214. L'écart entre les deux n'est établi ni à dix ni à
+vingt graines. Sur Hopper, CrossQ monte de la troisième à la deuxième place (2 302 puis 2 792), si
+bien que l'avance de PPO écrit en JAX sur lui n'est plus établie. Le premier bat désormais
+nettement tous les autres sur deux tâches, Walker2d et Swimmer. Refaite sur les graines 10 à 19,
+la sélection des trois meilleurs essais sur dix gonfle la moyenne de 43 % en médiane, de 7 % à
+85 %, et renverse 3 comparaisons sur 24, autant que sur les dix premières (E4). La physique modifiée
+renverse toujours le classement sur Hopper, seule tâche où le premier change, et les verdicts de E7
+restent les mêmes pour 14 couples sur 16. Deux changent : SAC sur Walker2d ne perd plus de façon
+détectable (0,91, de 0,79 à 1,01), CrossQ sur Swimmer gagne un peu (1,03, de 1,01 à 1,04). Par
+degrés, le V garde sa forme : avec des masses à 0,9, 1,1, 1,2 et 1,3 fois, 4, 11, 12 et 12 couples
+perdent ; avec des frottements à 1,2 fois, 10. Sur Hopper, PPO écrit en JAX perd toujours la
+première place à 10 intensités sur 12. À 1,0 fois, les réévaluations des 320 politiques retrouvent
+exactement leur score final.
+
+**Ce qui change.** Deux résultats bougent. Les deux versions de PPO se séparent (E3) :
+PyTorch l'emporte sur Walker2d (2 204 contre 1 435 ; probabilité que JAX fasse mieux 0,30, de 0,15
+à 0,48) et JAX sur Swimmer (115 contre 107 ; 0,79, de 0,63 à 0,91). Les écarts ressemblent à ceux de
+dix graines ; les graines ajoutées resserrent les intervalles. Ensuite, les comparaisons serrées
+sont plus difficiles que dix graines ne le laissaient voir (E5). Le bon ordre est désormais celui
+des moyennes de vingt essais, et les tirages se font parmi les vingt. Sur les 24 comparaisons, la
+médiane ne bouge presque pas (93 % avec trois graines, 97 % avec cinq). Pour les 8 comparaisons
+proches, elle tombe à 59 %, 62 %, 67 % et 74 % avec trois, cinq, dix et vingt graines, contre 65 %,
+71 %, 77 % et 85 % à dix graines. Avec cinq graines, un écart de cette taille se lit à l'envers plus
+d'une fois sur trois.
+
+**Le budget égal, la nuance qui pèse.** PPO s'entraîne un million de pas, cinq fois plus que SAC et
+CrossQ. L'écart 12 relit donc PPO à 200 000 pas, sur ses courbes d'évaluation, des scores que
+personne n'avait regardés avant d'écrire la règle. À dix graines, le premier change encore : SAC
+mène sur HalfCheetah, CrossQ sur les trois autres tâches, et 3 changements restent établis. À vingt
+graines, CrossQ mène sur les quatre tâches et aucun changement n'est établi ; sur HalfCheetah, il ne
+devance même pas SAC de façon établie. Le verdict de E2, tel qu'annoncé, tient. Mais, avec vingt graines,
+le changement de premier d'une tâche à l'autre tient au budget cinq fois plus grand de PPO : à
+budget égal, le classement ne change plus avec la tâche. B3 bouge peu. À budgets inégaux, 8
+paires changent d'ordre d'une mesure à l'autre, à dix comme à vingt graines, sans renversement
+établi ; avec vingt graines, le premier ne change plus de mesure en mesure que sur Hopper. À budget
+égal, 4 renversements à dix graines, 6 à vingt, dont 1 établi : sur Swimmer, PPO écrit en PyTorch
+et SAC changent d'ordre entre le meilleur score atteint et la moyenne de la courbe. Avec vingt
+graines et à budget égal, le premier ne change de mesure en mesure sur aucune tâche.
 
 **Les bancs d'essai trop simples, sous une autre forme (F16).** Pineau réclamait la version de
 chaque banc d'essai, pour qu'un résultat se refasse dans le même monde. Dans le RL classique, 26 %
@@ -1117,7 +1183,8 @@ ses bons résultats qu'envers ses mauvais.
   un tirage comparable au nôtre.
 
 **Les limites des expériences.** Le sondage couvre les seize failles.
-Toutes les expériences annoncées sont faites. E1 et B1 se limitent à une seule tâche (HalfCheetah) et
+Toutes les expériences annoncées sont faites, la consolidation à vingt graines aléatoires
+comprise. E1 et B1 se limitent à une seule tâche (HalfCheetah) et
 à deux algorithmes (PPO et TRPO). Le volet GRPO reste une illustration
 sur des modèles de 0,5 et 1 milliard de paramètres, loin d'une réplication de Shao et ses
 coauteurs.

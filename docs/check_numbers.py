@@ -517,6 +517,108 @@ assert e2b["n_comparisons"] == 24
 add("E2 Bonferroni", f"{len(e2b['settled_changes'])} changements de premier restent établis, au lieu de {len(e2m['settled_changes'])}",
     f"{len(e2b['settled_changes'])} changes of leader stay settled, instead of {len(e2m['settled_changes'])}")
 
+# Deviations 12 and 20 of SIM_PROTOCOL.md: twenty random seeds (_s20), E4 on seeds 10 to 19 (_r10), PPO read at
+# 200,000 steps like SAC and CrossQ (_equal, _equal_s20). The ten-seed files stay the main results.
+A = lambda f: J(f"sim/analysis/{f}.json")
+e2s, e2q, e2qs, e2bs = A("e2_s20"), A("e2_equal"), A("e2_equal_s20"), A("e2_bonferroni_s20")
+e3s, e4r, e5s, e7s, rks = A("e3_s20"), A("e4_r10"), A("e5_s20"), A("e7_s20"), A("e7_rank_s20")
+b3s, b3q, b3qs, doses = A("b3_s20"), A("b3_equal"), A("b3_equal_s20"), A("dose_s20")
+TK4 = ["HalfCheetah-v5", "Hopper-v5", "Walker2d-v5", "Swimmer-v5"]
+NAME = {"sac": "SAC", "crossq": "CrossQ", "ppo_sb3": "PPO (PyTorch)", "ppo_sbx": "PPO (JAX)"}
+leaders = lambda e: ", ".join(NAME[e["leaders"][t]] for t in TK4)
+nset = lambda e: len(e["settled_changes"])
+assert e2s["leader_changes"] and not e2qs["leader_changes"] and e2q["leader_changes"]
+assert set(e2qs["leaders"].values()) == {"crossq"} and not e2qs["tasks"]["HalfCheetah-v5"]["pairs"]["crossq>sac"]["settled"]
+assert not e2s["tasks"]["Hopper-v5"]["pairs"]["ppo_sbx>crossq"]["settled"] and e2["tasks"]["Hopper-v5"]["pairs"]["ppo_sbx>crossq"]["settled"]
+# "Le premier bat désormais nettement tous les autres sur Walker2d et Swimmer"
+beats_all = [t for t in TK4 if sum(p.startswith(e2s["leaders"][t] + ">") and v["settled"] for p, v in e2s["tasks"][t]["pairs"].items()) == 3]
+assert beats_all == ["Walker2d-v5", "Swimmer-v5"], beats_all
+add("S20 table E2 leaders", f"| E2 : premier sur HalfCheetah, Hopper, Walker2d, Swimmer | {leaders(e2)} | {leaders(e2s)} |",
+    f"| E2: leader on HalfCheetah, Hopper, Walker2d, Swimmer | {leaders(e2)} | {leaders(e2s)} |")
+add("S20 table E2 settled", f"| E2 : changements de premier établis (avec Bonferroni) | {nset(e2)} ({nset(e2b)}) | {nset(e2s)} ({nset(e2bs)}) |",
+    f"| E2: settled changes of leader (with Bonferroni) | {nset(e2)} ({nset(e2b)}) | {nset(e2s)} ({nset(e2bs)}) |")
+add("S20 table E2 equal leaders", f"| E2 au budget égal : premier sur les quatre tâches | {leaders(e2q)} | {leaders(e2qs)} |",
+    f"| E2 at equal budget: leader on the four tasks | {leaders(e2q)} | {leaders(e2qs)} |")
+add("S20 table E2 equal settled", f"| E2 au budget égal : changements de premier établis | {nset(e2q)} | {nset(e2qs)} |",
+    f"| E2 at equal budget: settled changes of leader | {nset(e2q)} | {nset(e2qs)} |")
+win = lambda e: sum(v["winner"] is not None for v in e.values())
+add("S20 table E3", f"| E3 : tâches où une version de PPO l'emporte | {win(e3)} | {win(e3s)} |",
+    f"| E3: tasks where one version of PPO wins | {win(e3)} | {win(e3s)} |")
+add("S20 table E4", f"| E4 : gonflement médian, comparaisons renversées | {pct(e4['inflation_median'])}, {e4['n_reversed']} sur {e4['n_comparisons']} | graines 10 à 19 : {pct(e4r['inflation_median'])}, {e4r['n_reversed']} sur {e4r['n_comparisons']} |",
+    f"| E4: median inflation, comparisons reversed | {pct(e4['inflation_median'], lang='en')}, {e4['n_reversed']} out of {e4['n_comparisons']} | seeds 10 to 19: {pct(e4r['inflation_median'], lang='en')}, {e4r['n_reversed']} out of {e4r['n_comparisons']} |")
+add("S20 table E5", f"| E5 : comparaisons proches, bon ordre avec cinq graines | {e5['n_close']}, {pct(e5['median_close']['5'])} | {e5s['n_close']}, {pct(e5s['median_close']['5'])} |",
+    f"| E5: close comparisons, right order with five seeds | {e5['n_close']}, {pct(e5['median_close']['5'], lang='en')} | {e5s['n_close']}, {pct(e5s['median_close']['5'], lang='en')} |")
+vc = lambda e, v: sum(x["verdict"] == v for x in e.values())
+assert len(e7s) == 16 and all(v["done"] for v in e7s.values())
+add("S20 table E7", f"| E7 : couples qui perdent, qui gagnent | {vc(e7, 'loss')} et {vc(e7, 'gain')} sur 16 | {vc(e7s, 'loss')} et {vc(e7s, 'gain')} sur 16 |",
+    f"| E7: pairs that lose, that gain | {vc(e7, 'loss')} and {vc(e7, 'gain')} out of 16 | {vc(e7s, 'loss')} and {vc(e7s, 'gain')} out of 16 |")
+rv = lambda b: f"{b['n_reversals']} ({b['n_settled']})"
+add("S20 table B3", f"| B3 : renversements entre mesures (établis) | {rv(b3)} | {rv(b3s)} |",
+    f"| B3: reversals between measures (settled) | {rv(b3)} | {rv(b3s)} |")
+add("S20 table B3 equal", f"| B3 au budget égal : renversements (établis) | {rv(b3q)} | {rv(b3qs)} |",
+    f"| B3 at equal budget: reversals (settled) | {rv(b3q)} | {rv(b3qs)} |")
+assert doses["control_max_rel_gap"] == 0 and not doses["missing"] and doses["seeds"] == [0, 20]
+loss_s = lambda q, s_: sum(v["verdict"] == "loss" for k, v in doses["ratio"].items() if k.endswith(f"/{q}/{s_}"))
+Ls = {s_: loss_s("mass", s_) for s_ in ("0.9", "1.1", "1.2", "1.3")}
+MS = ("0.9", "1.1", "1.2", "1.3")
+add("S20 table dose", f"| Physique par degrés : couples qui perdent, masses à 0,9, 1,1, 1,2, 1,3 fois | {', '.join(str(L[s_]) for s_ in MS)} | {', '.join(str(Ls[s_]) for s_ in MS)} |",
+    f"| Physics by degrees: pairs that lose, masses at 0.9, 1.1, 1.2, 1.3 times | {', '.join(str(L[s_]) for s_ in MS)} | {', '.join(str(Ls[s_]) for s_ in MS)} |")
+# What holds.
+iq = lambda e, t, a: e["tasks"][t]["iqm"][a]
+add("S20 E2 text", f"Avec vingt graines, le premier change toujours avec la tâche : CrossQ mène sur HalfCheetah et Walker2d, PPO écrit en JAX sur Hopper et Swimmer. {nset(e2s)} changements de premier restent établis, {nset(e2bs)} avec la correction de Bonferroni",
+    f"With twenty random seeds, the leader still changes with the task: CrossQ leads on HalfCheetah and Walker2d, PPO written in JAX on Hopper and Swimmer. {nset(e2s)} changes of leader stay settled, {nset(e2bs)} with the Bonferroni correction")
+add("S20 SAC HalfCheetah", f"sa moyenne interquartile passe de {num(iq(e2, 'HalfCheetah-v5', 'sac'), 'fr')} à {num(iq(e2s, 'HalfCheetah-v5', 'sac'), 'fr')}",
+    f"its interquartile mean goes from {num(iq(e2, 'HalfCheetah-v5', 'sac'), 'en')} to {num(iq(e2s, 'HalfCheetah-v5', 'sac'), 'en')}")
+assert not e2["tasks"]["HalfCheetah-v5"]["pairs"]["sac>crossq"]["settled"] and not e2s["tasks"]["HalfCheetah-v5"]["pairs"]["crossq>sac"]["settled"]
+assert e2s["tasks"]["Hopper-v5"]["order"][:2] == ["ppo_sbx", "crossq"] and e2["tasks"]["Hopper-v5"]["order"][2] == "crossq"
+add("S20 CrossQ Hopper", f"CrossQ monte de la troisième à la deuxième place ({num(iq(e2, 'Hopper-v5', 'crossq'), 'fr')} puis {num(iq(e2s, 'Hopper-v5', 'crossq'), 'fr')})",
+    f"CrossQ climbs from third to second place ({num(iq(e2, 'Hopper-v5', 'crossq'), 'en')} then {num(iq(e2s, 'Hopper-v5', 'crossq'), 'en')})")
+add("S20 E4 text", f"gonfle la moyenne de {pct(e4r['inflation_median'])} en médiane, de {pct(e4r['inflation_range'][0])} à {pct(e4r['inflation_range'][1])}, et renverse {e4r['n_reversed']} comparaisons sur {e4r['n_comparisons']}",
+    f"inflates the mean by {pct(e4r['inflation_median'], lang='en')} at the median, from {pct(e4r['inflation_range'][0], lang='en')} to {pct(e4r['inflation_range'][1], lang='en')}, and reverses {e4r['n_reversed']} comparisons out of {e4r['n_comparisons']}")
+assert [t for t, v in rks.items() if v["leader_changes"]] == ["Hopper-v5"]
+same_v = sum(e7[k]["verdict"] == e7s[k]["verdict"] for k in e7)
+assert [k for k in e7 if e7[k]["verdict"] != e7s[k]["verdict"]] == ["sac/Walker2d-v5", "crossq/Swimmer-v5"]
+f2 = lambda x, lang: str(half_up(x, 2)).replace(".", ",") if lang == "fr" else str(half_up(x, 2))
+r7 = lambda k, lang: (f"{f2(e7s[k]['iqm'], lang)}, de {f2(e7s[k]['ci'][0], lang)} à {f2(e7s[k]['ci'][1], lang)}" if lang == "fr" else
+                      f"{f2(e7s[k]['iqm'], lang)}, from {f2(e7s[k]['ci'][0], lang)} to {f2(e7s[k]['ci'][1], lang)}")
+assert e7s["sac/Walker2d-v5"]["verdict"] == "no detectable change" and e7s["crossq/Swimmer-v5"]["verdict"] == "gain"
+add("S20 E7 text", f"les verdicts de E7 restent les mêmes pour {same_v} couples sur 16. Deux changent : SAC sur Walker2d ne perd plus de façon détectable ({r7('sac/Walker2d-v5', 'fr')}), CrossQ sur Swimmer gagne un peu ({r7('crossq/Swimmer-v5', 'fr')})",
+    f"the verdicts of E7 stay the same for {same_v} pairs out of 16. Two change: SAC on Walker2d no longer loses detectably ({r7('sac/Walker2d-v5', 'en')}), CrossQ on Swimmer gains a little ({r7('crossq/Swimmer-v5', 'en')})")
+add("S20 dose text", f"avec des masses à 0,9, 1,1, 1,2 et 1,3 fois, {Ls['0.9']}, {Ls['1.1']}, {Ls['1.2']} et {Ls['1.3']} couples perdent ; avec des frottements à 1,2 fois, {loss_s('friction', '1.2')}",
+    f"with masses at 0.9, 1.1, 1.2 and 1.3 times, {Ls['0.9']}, {Ls['1.1']}, {Ls['1.2']} and {Ls['1.3']} pairs lose; with friction at 1.2 times, {loss_s('friction', '1.2')}")
+hop_s = {k: v["ranking"][0] for k, v in doses["ranking"].items() if k.startswith("Hopper-v5/")}
+assert hop_s["Hopper-v5/mass/1.0"] == "ppo_sbx"
+moved_s = sum(r != "ppo_sbx" for k, r in hop_s.items() if not k.endswith("/1.0"))
+add("S20 dose Hopper", f"PPO écrit en JAX perd toujours la première place à {moved_s} intensités sur {len(hop_s) - 1}",
+    f"PPO written in JAX still loses first place at {moved_s} strengths out of {len(hop_s) - 1}")
+n_pol = sum(len(v["ratios"]) for k, v in doses["ratio"].items() if k.endswith("/mass/1.1"))
+add("S20 dose control", f"les réévaluations des {n_pol} politiques retrouvent exactement leur score final",
+    f"the re-evaluations of the {n_pol} policies recover their final score exactly")
+# What separates.
+pi = lambda t, lang: (f"{f2(e3s[t]['p_improve'], lang)}, de {f2(e3s[t]['p_improve_ci'][0], lang)} à {f2(e3s[t]['p_improve_ci'][1], lang)}" if lang == "fr" else
+                      f"{f2(e3s[t]['p_improve'], lang)}, from {f2(e3s[t]['p_improve_ci'][0], lang)} to {f2(e3s[t]['p_improve_ci'][1], lang)}")
+assert e3s["Walker2d-v5"]["winner"] == "sb3" and e3s["Swimmer-v5"]["winner"] == "sbx" and win(e3s) == 2
+e3n = lambda t, k, lang: num(e3s[t]["iqm"][k], lang)
+add("S20 E3 text", f"PyTorch l'emporte sur Walker2d ({e3n('Walker2d-v5', 'sb3', 'fr')} contre {e3n('Walker2d-v5', 'sbx', 'fr')} ; probabilité que JAX fasse mieux {pi('Walker2d-v5', 'fr')}) et JAX sur Swimmer ({e3n('Swimmer-v5', 'sbx', 'fr')} contre {e3n('Swimmer-v5', 'sb3', 'fr')} ; {pi('Swimmer-v5', 'fr')})",
+    f"PyTorch wins on Walker2d ({e3n('Walker2d-v5', 'sb3', 'en')} against {e3n('Walker2d-v5', 'sbx', 'en')}; probability that JAX does better {pi('Walker2d-v5', 'en')}) and JAX on Swimmer ({e3n('Swimmer-v5', 'sbx', 'en')} against {e3n('Swimmer-v5', 'sb3', 'en')}; {pi('Swimmer-v5', 'en')})")
+mas, mcs = e5s["median_all"], e5s["median_close"]
+add("S20 E5 all", f"la médiane ne bouge presque pas ({pct(mas['3'])} avec trois graines, {pct(mas['5'])} avec cinq)",
+    f"the median barely moves ({pct(mas['3'], lang='en')} with three random seeds, {pct(mas['5'], lang='en')} with five)")
+add("S20 E5 close", f"Pour les {e5s['n_close']} comparaisons proches, elle tombe à {pct(mcs['3'])}, {pct(mcs['5'])}, {pct(mcs['10'])} et {pct(mcs['20'])} avec trois, cinq, dix et vingt graines, contre {pct(mc['3'])}, {pct(mc['5'])}, {pct(mc['10'])} et {pct(mc['20'])}",
+    f"For the {e5s['n_close']} close comparisons, it falls to {pct(mcs['3'], lang='en')}, {pct(mcs['5'], lang='en')}, {pct(mcs['10'], lang='en')} and {pct(mcs['20'], lang='en')} with three, five, ten and twenty random seeds, against {pct(mc['3'], lang='en')}, {pct(mc['5'], lang='en')}, {pct(mc['10'], lang='en')} and {pct(mc['20'], lang='en')}")
+assert 1 - mcs["5"] > 1 / 3  # "plus d'une fois sur trois"
+# Equal budget.
+add("S20 equal ten", f"À dix graines, le premier change encore : SAC mène sur HalfCheetah, CrossQ sur les trois autres tâches, et {nset(e2q)} changements restent établis",
+    f"At ten random seeds, the leader still changes: SAC leads on HalfCheetah, CrossQ on the three other tasks, and {nset(e2q)} changes stay settled")
+assert [e2q["leaders"][t] for t in TK4] == ["sac", "crossq", "crossq", "crossq"]
+assert not b3s["n_settled"] and b3s["leader_changes"] == ["Hopper-v5"] and b3qs["leader_changes"] == []
+add("S20 B3 text", f"À budgets inégaux, {b3s['n_reversals']} paires changent d'ordre d'une mesure à l'autre, à dix comme à vingt graines",
+    f"With unequal budgets, {b3s['n_reversals']} pairs change order from one measure to another, at ten as at twenty random seeds")
+sett = [(t, r) for t, v in b3qs["tasks"].items() for r in v["reversals"] if r["settled"]]
+assert sett == [("Swimmer-v5", {"measures": "best/mean", "pair": "ppo_sb3 vs sac", "settled": True})]
+add("S20 B3 equal text", f"À budget égal, {b3q['n_reversals']} renversements à dix graines, {b3qs['n_reversals']} à vingt, dont {b3qs['n_settled']} établi",
+    f"At equal budget, {b3q['n_reversals']} reversals at ten random seeds, {b3qs['n_reversals']} at twenty, of which {b3qs['n_settled']} is settled")
+
 norm = lambda s: re.sub(r"\s+", " ", s)
 bad = 0
 for name, lang in (("conclusions.md", 0), ("conclusions-en.md", 1)):
