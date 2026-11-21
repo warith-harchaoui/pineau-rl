@@ -7,7 +7,7 @@ made once from the variable fonts of sprezzature-figures with fontTools; the dra
 Each figure exists in two widths: 760 px for a desktop column, 400 px for a phone. The same input always gives the
 same bytes.
 """
-import base64, json, math
+import base64, re, json, math
 from pathlib import Path
 from xml.sax.saxutils import escape
 
@@ -42,9 +42,16 @@ def width(text, face, size):
     return sum(w.get(ch, w.get("n", 500)) for ch in text) * size / m["upm"]
 
 
+def _GLUE(text):
+    """French typography: no line break before : ; ? ! % » or after «, so a sign never starts a line."""
+    text = re.sub(r" ([:;?!%»])", "\u00a0\\1", text)
+    return text.replace("« ", "«\u00a0")
+
+
 def wrap(text, face, size, maxw):
     """Lines of at most maxw pixels. A '|' in the text marks the only places a line may break (sense groups);
     without one, any space may break."""
+    text = _GLUE(text)
     if "|" in text:
         chunks = [c.strip() for c in text.split("|")]
         lines, cur = [], ""
