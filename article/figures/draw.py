@@ -538,7 +538,7 @@ def grille_egale(rows, lang, mob, title, sub, T):
 
 
 def lines(f, series, lang, xlo, xhi, xstep, ylo, yhi, ystep, yfmt, colours, H, right, xlabel=None, hot=(),
-          xfmt=None, end_values=True):
+          xfmt=None, end_values=True, end_fmt=None):
     """Line chart with direct labels at the right end of each series."""
     s, L, W = f.s, f.L, f.W
     x0, x1 = L + 30, W - L - right
@@ -558,10 +558,16 @@ def lines(f, series, lang, xlo, xhi, xstep, ylo, yhi, ystep, yfmt, colours, H, r
         s.path(d, col, w)
         for x, y in pts:
             s.circle(X(x), Y(y), 3.6, col, f' stroke="{PAPER}" stroke-width="1.5"')
-        ends.append((name, Y(pts[-1][1]), col, pts[-1][1]))
+        ends.append((name, Y(pts[-1][1]), col, pts[-1][1], pts[0][1]))
     ly = spread([e[1] for e in ends], 17, top, top + H)
-    for (name, yy, col, val), y2 in zip(ends, ly):
-        s.text(x1 + 10, y2 + 4.5, f"{name} {yfmt(val)}" if f.m is False and end_values else name, "sans7", 12.5, col)
+    for (name, yy, col, val, v0), y2 in zip(ends, ly):
+        if f.m:
+            lab = name
+        elif end_fmt:
+            lab = end_fmt(name, v0, val)
+        else:
+            lab = f"{name} {yfmt(val)}" if end_values else name
+        s.text(x1 + 10, y2 + 4.5, lab, "sans7", 12.5, col)
     if xlabel:
         s.text((x0 + x1) / 2, top + H + 38, xlabel, "sans", 12, INK2, "middle")
     return top, top + H + (44 if xlabel else 24), X, Y
@@ -576,10 +582,11 @@ def trajectoire(rows, lang, mob, title, sub, T):
     pal = ["#2F6FD6", "#109C86", "#EE8320", "#7B4FC9", "#9097A1"]
     colours = {n: pal[i] for i, n in enumerate(series)}
     colours[T["grey"]] = "#9097A1"
-    right = max(width(f"{n} 100 %", "sans7", 12.5) for n in series) + 18 if not mob else \
+    ef = lambda n, a, b: (f"{n}, de {num(a, lang)} à {pct(b, lang)}" if lang == "fr" else f"{n}, from {num(a, lang)} to {pct(b, lang)}")
+    right = max(width(ef(n, p[0][1], p[-1][1]), "sans7", 12.5) for n, p in series.items()) + 18 if not mob else \
         max(width(n, "sans7", 12.5) for n in series) + 16
     top, bottom, X, Y = lines(f, series, lang, 2018, 2026, 4 if mob else 2, 0, 100, 25,
-                              lambda u: pct(u, lang), colours, 220 if mob else 260, right, T["axis"])
+                              lambda u: pct(u, lang), colours, 220 if mob else 260, right, T["axis"], end_fmt=ef)
     s = f.s
     xn = X(2019)
     s.line(xn, top - 6, xn, top + (220 if mob else 260), INK2, 1, ' stroke-dasharray="3 3"')
