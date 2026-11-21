@@ -263,7 +263,7 @@ def build(lang: str) -> str:
             <div class="drz-article-title" data-drz-box="RichTextContainer" style="transform:none">
                 <h1 dir="auto"
                     style="--ui-font-size:clamp(32px, 6vw, 56px);--ui-letter-spacing:-0.04em;--ui-line-height:1.05em;--ui-text-color:#111111"
-                    class="drz-text">{inline(title, lang)}</h1>
+                    class="drz-text">{inline(title, lang).replace("A-t-on", '<span style="white-space:nowrap">A-t-on</span>')}</h1>
             </div>
             <div class="drz-article-lede" data-drz-box="RichTextContainer" style="transform:none">
                 <p dir="auto"

@@ -865,3 +865,10 @@
    vertical-align: -0.2em;
    object-fit: contain
 }
+
+/* Figure captions: their links wrap like the text around them (the site sets links to nowrap) */
+:where(.drz-p-blog__SLUG) .drz-art-figcap a,
+:where(.drz-p-blog__SLUG) .drz-art-figcap a.drz-text{
+   white-space: normal !important;
+   overflow-wrap: anywhere
+}
