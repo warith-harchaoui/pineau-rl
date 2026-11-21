@@ -362,7 +362,7 @@ appliquée à tous les articles, avec une citation pour chaque décision.
 
 **Les articles de 2026.** Nous avons pris tous les articles d'ICLR 2026, d'ICML 2026 et de NeurIPS
 2025 dont le titre parle d'apprentissage par renforcement : 1 252 sur 17 836. Un premier tirage au
-sort en a retenu 50. Parmi eux, 27 appliquent le RL à de grands modèles de langue, 14 relèvent du
+sort en a retenu 50. Parmi eux, 27 appliquent ce qu'ils appellent RL à de grands modèles de langue (nous les rangeons, par commodité, sous « RL de grands modèles »), 14 relèvent du
 RL classique (robotique, jeux, contrôle) et 9 sont théoriques, dont 5 sans aucune expérience. Les
 pourcentages de ce document se calculent sur les articles qui ont des expériences.
 
@@ -461,8 +461,7 @@ implémentations de PPO. E4 mesure l'effet de garder les trois meilleurs essais 
 le nombre de graines aléatoires nécessaire pour retrouver le bon classement. E6 compare une référence
 réglée à une référence laissée à ses valeurs par défaut. E7 mesure ce que coûte la physique modifiée.
 
-**Le volet des grands modèles de langue.** Le RL sert aujourd'hui surtout à affiner des modèles de
-langue. On leur pose un problème de mathématiques, on vérifie la réponse et on récompense les
+**Le volet des grands modèles de langue.** Le vocabulaire du RL a aussi gagné les modèles d'IA générative qui écrivent du texte : on emprunte au RL certains de ses algorithmes (avec une ressemblance vague) pour affiner leurs réponses, sans agent qui agit dans un monde. On leur pose un problème de mathématiques, on vérifie la réponse et on récompense les
 bonnes. Nous employons GRPO (*Group Relative Policy Optimization*,
 optimisation de politique relative à un groupe), l'un des plus répandus [@shao2024deepseekmath]. Nous l'avons écrit
 nous-mêmes, sur deux petits modèles ouverts, Qwen2.5 de 0,5 milliard de paramètres

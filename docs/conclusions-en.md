@@ -340,7 +340,7 @@ quotation for each decision.
 
 **The papers from 2026.** We took every paper from ICLR 2026, ICML 2026 and NeurIPS 2025 whose title
 mentions reinforcement learning: 1,252 out of 17,836. A first random draw kept 50 of them. Among
-these, 27 apply RL to large language models, 14 belong to classical RL (robotics, games, control)
+these, 27 apply what they call RL to large language models (for convenience, we file them under "RL on large models"), 14 belong to classical RL (robotics, games, control)
 and 9 are theoretical, 5 of them with no experiment at all. The percentages in this document are
 computed on the papers that have experiments.
 
@@ -434,7 +434,7 @@ measures the effect of keeping the three best runs out of ten. E5 puts a number 
 seeds it takes to recover the right ranking. E6 compares a tuned baseline with a baseline left at its
 default values. E7 measures what the modified physics costs.
 
-**The large language model strand.** Today RL serves mostly to fine-tune language models. The model
+**The large language model strand.** RL's vocabulary has also reached the generative AI models that write text: some of RL's algorithms are borrowed (with a vague resemblance) to fine-tune their answers, with no agent acting in a world. The model
 receives a mathematics problem, its answer gets checked and the correct answers get rewarded. We use
 GRPO (*Group Relative Policy Optimization*), one of the most widespread algorithms
 [@shao2024deepseekmath]. We wrote it ourselves and ran it on two small open models, Qwen2.5 with
