@@ -32,6 +32,7 @@ Dans le texte : [[n]] appel de note, *italique*, **gras**, [texte](url) lien ext
 En français, les espaces avant : ; ? ! % » et après « deviennent insécables, comme l'espace des milliers.
 """
 import argparse
+import hashlib
 import html
 import os
 import re
@@ -58,9 +59,16 @@ def inline(s: str, lang: str) -> str:
     s = re.sub(r"\[([^\]]+)\]\{\{([^}]+)\}\}", r'<a class="drz-text" href="<?= url(\'\2\') ?>">\1</a>', s)
     s = re.sub(r"\[([^\]]+)\]\((#[^)]+)\)", r'<a class="drz-text" href="\2">\1</a>', s)
     s = re.sub(r"\[([^\]]+)\]\(/assets/([^)\s]+)\)", r'<a class="drz-text" href="<?= ASSETS ?>/\2">\1</a>', s)
+    # the full document carries a fingerprint of its content, so a cache never serves an older version
+    s = re.sub(r'(/pdf/([\w.-]+\.pdf))"', lambda m: f'{m[1]}?v={pdf_version(m[2])}"', s)
     if lang == "fr":
         s = nbsp(s)
     return s
+
+
+def pdf_version(name: str) -> str:
+    src = {site: ICI.parent / "docs" / doc for doc, site in PDFS.values()}[name]
+    return hashlib.sha256(src.read_bytes()).hexdigest()[:10]
 
 
 def nbsp(s: str) -> str:
