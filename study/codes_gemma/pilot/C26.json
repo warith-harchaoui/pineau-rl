@@ -1,0 +1,50 @@
+{
+ "id": "C26",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 73171,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "We consider a parameterized stochastic policy, and by applying a policy gradient algorithm to optimize its parameters, the trained model produces the solution as a sequence of consecutive actions in real time",
+   "page": 1,
+   "invalid": false
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  }
+ },
+ "retried": false,
+ "seconds": 203.0,
+ "raw": [
+  "{\n  \"Q5\": {\n    \"value\": \"yes\",\n    \"quote\": \"We consider a parameterized stochastic policy, and by applying a policy gradient algorithm to optimize its parameters, the trained model produces the solution as a sequence of consecutive actions in real time\",\n    \"page\": 1\n  },\n  \"X2\": {\n    \"value\": \"no\",\n    \"quote\": \"absent\",\n    \"page\": null\n  },\n  \"X7\": {\n    \"value\": \"no\",\n    \"quote\": \"absent\",\n    \"page\": null\n  },\n  \"Y9\": {\n    \"value\": \"no\",\n    \"quote\": \"absent\",\n    \"page\": null\n  }\n}"
+ ],
+ "ollama": [
+  {
+   "prompt_eval_count": 22526,
+   "eval_count": 169,
+   "total_duration": 202072223125
+  }
+ ]
+}

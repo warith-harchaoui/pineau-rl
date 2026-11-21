@@ -1,0 +1,84 @@
+{
+ "id": "C26",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 73171,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "Our TensorFlow implementation of our code is available at https://github.com/OptMLGroup/VRP-RL.",
+   "page": 17,
+   "invalid": false
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "We demonstrate how our approach can handle problems with split delivery and explore the effect of such deliveries on the solution quality.",
+   "page": 2,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We use dropout with probability 0.1 in the decoder LSTM.",
+   "page": 6,
+   "invalid": false
+  }
+ },
+ "retried": false,
+ "seconds": 198.0,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"Our TensorFlow implementation of our code is available at https://github.com/OptMLGroup/VRP-RL.\", \"page\": 17}"
+  ],
+  "X2": [
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We demonstrate how our approach can handle problems with split delivery and explore the effect of such deliveries on the solution quality.\",\n  \"page\": 2\n}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"We use dropout with probability 0.1 in the decoder LSTM.\", \"page\": 6}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 22297,
+    "eval_count": 42,
+    "total_duration": 182750313666
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 22268,
+    "eval_count": 27,
+    "total_duration": 3680505459
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 22259,
+    "eval_count": 48,
+    "total_duration": 6019106125
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 22304,
+    "eval_count": 31,
+    "total_duration": 4743959375
+   }
+  ]
+ }
+}

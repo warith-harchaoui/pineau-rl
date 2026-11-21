@@ -1,0 +1,50 @@
+{
+ "id": "K006",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 84323,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "Code: https://github.com/ByteDance-Seed/DATAMASK",
+   "page": 1,
+   "invalid": false
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  }
+ },
+ "retried": false,
+ "seconds": 211.8,
+ "raw": [
+  "{\"Q5\": {\"value\": \"yes\", \"quote\": \"Code: https://github.com/ByteDance-Seed/DATAMASK\", \"page\": 1}, \"X2\": {\"value\": \"no\", \"quote\": \"absent\", \"page\": null}, \"X7\": {\"value\": \"no\", \"quote\": \"absent\", \"page\": null}, \"Y9\": {\"value\": \"no\", \"quote\": \"absent\", \"page\": null}}"
+ ],
+ "ollama": [
+  {
+   "prompt_eval_count": 23897,
+   "eval_count": 104,
+   "total_duration": 210553549500
+  }
+ ]
+}

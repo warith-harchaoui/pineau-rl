@@ -1,0 +1,50 @@
+{
+ "id": "C214",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 36150,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "no",
+   "quote": "With an increasing demand of computing resources to train today’s deep neural networks (DNNs), it becomes typical to leverage a heterogeneous mix of both CPU and GPU devices [1, 2].",
+   "page": 1,
+   "invalid": false
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  }
+ },
+ "retried": false,
+ "seconds": 86.8,
+ "raw": [
+  "{\"Q5\": {\"value\": \"no\", \"quote\": \"absent\", \"page\": null}, \"X2\": {\"value\": \"no\", \"quote\": \"With an increasing demand of computing resources to train today’s deep neural networks (DNNs), it becomes typical to leverage a heterogeneous mix of both CPU and GPU devices [1, 2].\", \"page\": 1}, \"X7\": {\"value\": \"no\", \"quote\": \"absent\", \"page\": null}, \"Y9\": {\"value\": \"no\", \"quote\": \"absent\", \"page\": null}}"
+ ],
+ "ollama": [
+  {
+   "prompt_eval_count": 9809,
+   "eval_count": 127,
+   "total_duration": 86820854250
+  }
+ ]
+}
