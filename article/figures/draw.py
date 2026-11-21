@@ -68,10 +68,10 @@ def wrap(text, face, size, maxw):
 
 
 def num(x, lang, nd=0, sign=False):
-    """A number as the reader's language writes it: thin space for thousands in French, comma in English,
+    """A number as the reader's language writes it: no-break space for thousands in French (Roboto has no thin no-break space), comma in English,
     a true minus sign."""
     s = f"{abs(x):,.{nd}f}"
-    s = s.replace(",", " ").replace(".", ",") if lang == "fr" else s
+    s = s.replace(",", " ").replace(".", ",") if lang == "fr" else s
     if x < 0:
         s = "−" + s
     elif sign and x > 0:
@@ -80,7 +80,7 @@ def num(x, lang, nd=0, sign=False):
 
 
 def pct(x, lang, nd=0, sign=False):
-    return num(x, lang, nd, sign) + (" %" if lang == "fr" else "%")
+    return num(x, lang, nd, sign) + (" %" if lang == "fr" else "%")
 
 
 class Svg:
