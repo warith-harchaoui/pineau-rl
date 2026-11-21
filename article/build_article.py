@@ -179,10 +179,11 @@ def build(lang: str) -> str:
                 vid, vtitle, cap = [x.strip() for x in ln[6:].split("|", 2)]
                 out.append(
                     f'            <div class="drz-art-fig drz-art-fig--wide"><div style="position:relative;width:100%;aspect-ratio:16/9">'
-                    f'<iframe src="https://www.youtube-nocookie.com/embed/{vid}" title="{html.escape(vtitle, quote=True)}"\n'
-                    f'                    style="position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:8px"\n'
-                    f'                    loading="lazy" referrerpolicy="strict-origin-when-cross-origin"\n'
-                    f'                    allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>\n'
+                    # YouTube's own embed code, as its Share > Embed button gives it, made fluid
+                    f'<iframe width="560" height="315" src="https://www.youtube.com/embed/{vid}" title="{html.escape(vtitle, quote=True)}"\n'
+                    f'                    frameborder="0" style="position:absolute;inset:0;width:100%;height:100%;border-radius:8px"\n'
+                    f'                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"\n'
+                    f'                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>\n'
                     f'                <p class="drz-text drz-art-figcap">{inline(cap, lang)}</p>\n'
                     f'            </div>')
             elif ln.startswith("- "):
