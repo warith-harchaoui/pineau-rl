@@ -169,6 +169,13 @@ claim("Henderson script share >= 9.09", *both(lambda l: f"{'dépasse' if l == 'f
 claim("Henderson script false positives", *both(lambda l: f"{pct(hs['false_positive'], l)} {'des cas' if l == 'fr' else 'of the cases'}"))
 claim("TRPO episode/agent sd", *both(lambda l: f"{pct(b1s['trpo']['eval_std_over_between_seed_sd'], l)} {('de l' + Q + 'écart type entre agents') if l == 'fr' else 'of the standard deviation between agents'}"))
 assert b1s["ppo_sb3"]["n10"]["random_5v5"]["share_abs_t_ge_henderson"] == 0
+# Welch-Satterthwaite degrees of freedom for two groups of 5: the minimum over every ratio of variances is n - 1.
+_n = 5
+_df = lambda r: (r / _n + 1 / _n) ** 2 / ((r / _n) ** 2 / (_n - 1) + (1 / _n) ** 2 / (_n - 1))
+_dfmin = min(_df(10 ** (k / 100)) for k in range(-600, 601))
+assert abs(_dfmin - (_n - 1)) < 1e-3 and _n - 1 > 3.4
+claim("Welch df floor", *both(lambda l: (f"donne toujours au moins {_n - 1} degrés de liberté. Avec {num(3.4, l, 1)}" if l == "fr" else
+                                         f"always gives at least {_n - 1} degrees of freedom. At {num(3.4, l, 1)}")))
 claim("PPO with the script never reaches 9", "le même calcul n'atteint jamais 9", "the same computation never reaches 9")
 claim("B1 no reading reaches 9", "Aucun de ces calculs n'atteint 9", "None of these computations reaches 9")
 claim("t-de-neuf alt", *both(lambda l: f"{'TRPO avec le script de 2017, en rouge :' if l == 'fr' else 'TRPO with the 2017 script, in red:'} {pct(hs['share_abs_t_ge_henderson'], l)} {'des tirages atteignent' if l == 'fr' else 'of draws reach'} {num(9.09, l, 2)}"))
