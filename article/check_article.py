@@ -20,7 +20,7 @@ J = lambda p: json.load(open(ROOT / p))
 NB = str.maketrans({" ": " ", " ": " "})
 norm = lambda t: re.sub(r"\s+", " ", t.translate(NB))
 
-TEXT = {l: norm("\n".join(x for x in (HERE / f"{l}.txt").read_text().splitlines() if not x.startswith("<?")))  # PHP lines are code
+TEXT = {l: norm("\n".join(x for x in (HERE / f"{l}.txt").read_text().splitlines() if not x.startswith("<")))  # PHP and HTML lines are code
         for l in ("fr", "en")}
 DOC = {"fr": norm((ROOT / "docs/conclusions.md").read_text()), "en": norm((ROOT / "docs/conclusions-en.md").read_text())}
 BIB = norm((ROOT / "docs/refs.bib").read_text())
@@ -138,7 +138,8 @@ assert len(inner) == 27 and len(s) - len(inner) == 3 and min(v for v in s if v >
 claim("E1 beyond 3000", *both(lambda l: f"{'au-delà de' if l == 'fr' else 'beyond'} {num(3000, l)}"))
 claim("E1 alt", *both(lambda l: (f"Trois contre trois au hasard : {pct(e1['random_3v3']['false_positive'], l, 1)}. Cinq contre cinq au hasard : {pct(e1['random_5v5']['false_positive'], l, 1)}. Dix contre dix au hasard : {pct(e1['random_10v10']['false_positive'], l, 1)}. Cinq meilleurs contre cinq pires sur dix essais, en rouge : {pct(e1['extreme_5v5_of_10']['false_positive'], l)}" if l == "fr" else
                                   f"Three against three at random: {pct(e1['random_3v3']['false_positive'], l, 1)}. Five against five at random: {pct(e1['random_5v5']['false_positive'], l, 1)}. Ten against ten at random: {pct(e1['random_10v10']['false_positive'], l, 1)}. Five best against five worst out of ten runs, in red: {pct(e1['extreme_5v5_of_10']['false_positive'], l)}")))
-claim("E1 alt threshold line", "une ligne en pointillé à 5 %", "a dotted line at 5%", "doc")
+claim("waffle grids", "grilles de 100 cases", "grids of 100 squares")  # a figure's form: a hundred squares, one per percent
+claim("E1 alt threshold squares", "figurent le seuil de 5 %", "stand for the 5% threshold", "doc")
 claim("E2 alt badge", "porte « 1er »", "reads \"1st\"")
 claim("GRPO5 alt after 100 steps", "à la réussite après 100 pas", "to success after 100 steps")
 claim("E1 alt max", *both(lambda l: f"{'jusqu' + Q + 'à' if l == 'fr' else 'up to'} {num(max(s), l)}"))
@@ -179,7 +180,8 @@ claim("Welch df floor", *both(lambda l: (f"donne toujours au moins {_n - 1} degr
 claim("PPO with the script never reaches 9", "le même calcul n'atteint jamais 9", "the same computation never reaches 9")
 claim("B1 no reading reaches 9", "Aucun de ces calculs n'atteint 9", "None of these computations reaches 9")
 claim("t-de-neuf alt", *both(lambda l: f"{'TRPO avec le script de 2017, en rouge :' if l == 'fr' else 'TRPO with the 2017 script, in red:'} {pct(hs['share_abs_t_ge_henderson'], l)} {'des tirages atteignent' if l == 'fr' else 'of draws reach'} {num(9.09, l, 2)}"))
-claim("t-de-neuf alt zeros", *both(lambda l: "script de 2017 : 0 %" if l == "fr" else "2017 script: 0%"))
+assert all(b1s[a]["n10"]["random_5v5"]["share_abs_t_ge_henderson"] == 0 for a in ("ppo_sb3",))  # the empty grids
+claim("t-de-neuf alt zeros", *both(lambda l: "script de 2017 : aucun tirage" if l == "fr" else "2017 script: no draw"))
 
 # E4, E5 (sim/analysis/e4.json, e5.json).
 e4 = J("sim/analysis/e4.json")
