@@ -1,0 +1,193 @@
+{
+ "ci95": {
+  "source": "analysis/e2.json",
+  "n_reversing_pairs": 3,
+  "reversing_pairs": [
+   {
+    "pair": "ppo_sb3/sac",
+    "a_wins": [
+     {
+      "task": "Hopper-v5",
+      "p": 0.89,
+      "ci": [
+       0.72,
+       1.0
+      ]
+     },
+     {
+      "task": "Walker2d-v5",
+      "p": 0.79,
+      "ci": [
+       0.56,
+       0.97
+      ]
+     },
+     {
+      "task": "Swimmer-v5",
+      "p": 0.91,
+      "ci": [
+       0.7,
+       1.0
+      ]
+     }
+    ],
+    "b_wins": [
+     {
+      "task": "HalfCheetah-v5",
+      "p": 0.99,
+      "ci": [
+       0.94,
+       1.0
+      ]
+     }
+    ]
+   },
+   {
+    "pair": "ppo_sbx/sac",
+    "a_wins": [
+     {
+      "task": "Hopper-v5",
+      "p": 0.89,
+      "ci": [
+       0.71,
+       1.0
+      ]
+     },
+     {
+      "task": "Swimmer-v5",
+      "p": 1.0,
+      "ci": [
+       1.0,
+       1.0
+      ]
+     }
+    ],
+    "b_wins": [
+     {
+      "task": "HalfCheetah-v5",
+      "p": 0.98,
+      "ci": [
+       0.91,
+       1.0
+      ]
+     }
+    ]
+   },
+   {
+    "pair": "ppo_sbx/crossq",
+    "a_wins": [
+     {
+      "task": "Hopper-v5",
+      "p": 0.77,
+      "ci": [
+       0.52,
+       0.94
+      ]
+     }
+    ],
+    "b_wins": [
+     {
+      "task": "HalfCheetah-v5",
+      "p": 0.95,
+      "ci": [
+       0.82,
+       1.0
+      ]
+     },
+     {
+      "task": "Walker2d-v5",
+      "p": 1.0,
+      "ci": [
+       1.0,
+       1.0
+      ]
+     }
+    ]
+   }
+  ],
+  "leaders": {
+   "HalfCheetah-v5": "sac",
+   "Hopper-v5": "ppo_sbx",
+   "Walker2d-v5": "crossq",
+   "Swimmer-v5": "ppo_sbx"
+  },
+  "leader_changes": true,
+  "n_settled_changes_preregistered": 14
+ },
+ "bonferroni": {
+  "source": "analysis/e2_bonferroni.json",
+  "n_reversing_pairs": 2,
+  "reversing_pairs": [
+   {
+    "pair": "ppo_sb3/sac",
+    "a_wins": [
+     {
+      "task": "Hopper-v5",
+      "p": 0.89,
+      "ci": [
+       0.5916458333333332,
+       1.0
+      ]
+     },
+     {
+      "task": "Swimmer-v5",
+      "p": 0.91,
+      "ci": [
+       0.6,
+       1.0
+      ]
+     }
+    ],
+    "b_wins": [
+     {
+      "task": "HalfCheetah-v5",
+      "p": 0.99,
+      "ci": [
+       0.8824687499999998,
+       1.0
+      ]
+     }
+    ]
+   },
+   {
+    "pair": "ppo_sbx/sac",
+    "a_wins": [
+     {
+      "task": "Hopper-v5",
+      "p": 0.89,
+      "ci": [
+       0.57,
+       1.0
+      ]
+     },
+     {
+      "task": "Swimmer-v5",
+      "p": 1.0,
+      "ci": [
+       1.0,
+       1.0
+      ]
+     }
+    ],
+    "b_wins": [
+     {
+      "task": "HalfCheetah-v5",
+      "p": 0.98,
+      "ci": [
+       0.8216458333333332,
+       1.0
+      ]
+     }
+    ]
+   }
+  ],
+  "leaders": {
+   "HalfCheetah-v5": "sac",
+   "Hopper-v5": "ppo_sbx",
+   "Walker2d-v5": "crossq",
+   "Swimmer-v5": "ppo_sbx"
+  },
+  "leader_changes": true,
+  "n_settled_changes_preregistered": 12
+ }
+}

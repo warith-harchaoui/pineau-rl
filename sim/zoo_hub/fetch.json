@@ -1,0 +1,32 @@
+{
+ "repo": "sb3/ppo-Hopper-v3",
+ "files": [
+  ".gitattributes",
+  "README.md",
+  "args.yml",
+  "config.yml",
+  "env_kwargs.yml",
+  "ppo-Hopper-v3.zip",
+  "ppo-Hopper-v3/_stable_baselines3_version",
+  "ppo-Hopper-v3/data",
+  "ppo-Hopper-v3/policy.optimizer.pth",
+  "ppo-Hopper-v3/policy.pth",
+  "ppo-Hopper-v3/pytorch_variables.pth",
+  "ppo-Hopper-v3/system_info.txt",
+  "replay.mp4",
+  "results.json",
+  "train_eval_metrics.zip",
+  "vec_normalize.pkl"
+ ],
+ "downloaded": [
+  "README.md",
+  "args.yml",
+  "config.yml",
+  "env_kwargs.yml",
+  "ppo-Hopper-v3.zip",
+  "results.json",
+  "train_eval_metrics.zip",
+  "vec_normalize.pkl"
+ ],
+ "revision": "b29cb577cb3a22dd876300081851d47806b24cfa"
+}

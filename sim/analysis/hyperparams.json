@@ -1,0 +1,416 @@
+{
+ "task": "Hopper-v5",
+ "programs": {
+  "ppo_sb3": {
+   "learning_rate": 0.0003,
+   "n_steps": 2048,
+   "batch_size": 64,
+   "n_epochs": 10,
+   "gamma": 0.99,
+   "gae_lambda": 0.95,
+   "clip_range": "FloatSchedule(ConstantSchedule(val=0.2))",
+   "clip_range_vf": null,
+   "normalize_advantage": true,
+   "ent_coef": 0.0,
+   "vf_coef": 0.5,
+   "max_grad_norm": 0.5,
+   "target_kl": null,
+   "use_sde": false,
+   "n_envs": 1,
+   "ent_coef_init": null,
+   "policy_class": "ActorCriticPolicy",
+   "policy": {
+    "net_arch": {
+     "pi": [
+      64,
+      64
+     ],
+     "vf": [
+      64,
+      64
+     ]
+    },
+    "activation_fn": "Tanh",
+    "ortho_init": true,
+    "log_std_init": 0.0,
+    "share_features_extractor": true,
+    "squash_output": false,
+    "optimizer_class": "Adam",
+    "optimizer_kwargs": {
+     "eps": 1e-05
+    }
+   },
+   "optimizer": {
+    "cls": "Adam",
+    "betas": [
+     0.9,
+     0.999
+    ],
+    "eps": 1e-05
+   },
+   "saved_model": "models/ppo_sb3/Hopper-v5/seed0.zip",
+   "saved_model_data": {
+    "policy_kwargs": {},
+    "num_timesteps": 1024000,
+    "learning_rate": 0.0003,
+    "use_sde": false,
+    "n_envs": 1,
+    "n_steps": 2048,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "ent_coef": 0.0,
+    "vf_coef": 0.5,
+    "max_grad_norm": 0.5,
+    "batch_size": 64,
+    "n_epochs": 10,
+    "clip_range": {
+     ":type:": "<class 'stable_baselines3.common.utils.FloatSchedule'>",
+     "value_schedule": "ConstantSchedule(val=0.2)"
+    },
+    "clip_range_vf": null,
+    "normalize_advantage": true,
+    "target_kl": null
+   }
+  },
+  "ppo_sbx": {
+   "learning_rate": 0.0003,
+   "n_steps": 2048,
+   "batch_size": 64,
+   "n_epochs": 10,
+   "gamma": 0.99,
+   "gae_lambda": 0.95,
+   "clip_range": 0.2,
+   "clip_range_vf": null,
+   "normalize_advantage": true,
+   "ent_coef": 0.0,
+   "vf_coef": 0.5,
+   "max_grad_norm": 0.5,
+   "target_kl": null,
+   "use_sde": false,
+   "n_envs": 1,
+   "ent_coef_init": null,
+   "policy_class": "PPOPolicy",
+   "policy": {
+    "activation_fn": "tanh",
+    "ortho_init": false,
+    "log_std_init": 0.0,
+    "squash_output": false,
+    "optimizer_class": "adam",
+    "optimizer_kwargs": {
+     "eps": 1e-05
+    },
+    "actor": {
+     "action_dim": 3,
+     "net_arch": [
+      64,
+      64
+     ],
+     "log_std_init": 0.0,
+     "activation_fn": "tanh",
+     "num_discrete_choices": null,
+     "max_num_choices": 0,
+     "split_indices": "array([], dtype=float64)",
+     "ortho_init": false,
+     "features_extractor": null,
+     "features_dim": 512
+    }
+   },
+   "optimizer_source": [
+    "optimizer_class = optax.inject_hyperparams(self.optimizer_class)(learning_rate=lr_schedule(1), **self.optimizer_kwargs)",
+    "tx=optax.chain(",
+    "optax.clip_by_global_norm(max_grad_norm),",
+    "optimizer_class,",
+    "tx=optax.chain(",
+    "optax.clip_by_global_norm(max_grad_norm),",
+    "optimizer_class,"
+   ],
+   "saved_model": "models/ppo_sbx/Hopper-v5/seed0.zip",
+   "saved_model_data": {
+    "policy_kwargs": {},
+    "num_timesteps": 1024000,
+    "learning_rate": 0.0003,
+    "use_sde": false,
+    "n_envs": 1,
+    "n_steps": 2048,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "ent_coef": 0.0,
+    "vf_coef": 0.5,
+    "max_grad_norm": 0.5,
+    "batch_size": 64,
+    "n_epochs": 10,
+    "clip_range": 0.2,
+    "clip_range_vf": null,
+    "normalize_advantage": true,
+    "target_kl": null
+   }
+  },
+  "sac": {
+   "learning_rate": 0.0003,
+   "n_steps": 1,
+   "batch_size": 256,
+   "gamma": 0.99,
+   "ent_coef": "EntropyCoef(\n    # attributes\n    ent_coef_init = 1.0\n)",
+   "use_sde": false,
+   "buffer_size": 1000000,
+   "learning_starts": 100,
+   "tau": 0.005,
+   "train_freq": [
+    1,
+    "<TrainFrequencyUnit.STEP: 'step'>"
+   ],
+   "gradient_steps": 1,
+   "policy_delay": 1,
+   "target_entropy": -3.0,
+   "qf_learning_rate": 0.0003,
+   "n_envs": 1,
+   "ent_coef_init": "auto",
+   "policy_class": "SACPolicy",
+   "policy": {
+    "activation_fn": "relu",
+    "squash_output": true,
+    "n_critics": 2,
+    "layer_norm": false,
+    "dropout_rate": 0.0,
+    "optimizer_class": "adam",
+    "optimizer_kwargs": {},
+    "actor": {
+     "net_arch": [
+      256,
+      256
+     ],
+     "action_dim": 3,
+     "log_std_min": -20,
+     "log_std_max": 2,
+     "activation_fn": "relu"
+    },
+    "qf": {
+     "net_arch": [
+      256,
+      256
+     ],
+     "use_layer_norm": false,
+     "dropout_rate": 0.0,
+     "n_critics": 2,
+     "activation_fn": "relu",
+     "output_dim": 1
+    }
+   },
+   "optimizer_source": [
+    "optimizer_class = optax.inject_hyperparams(self.optimizer_class)(learning_rate=lr_schedule(1), **self.optimizer_kwargs)",
+    "tx=optimizer_class,",
+    "optimizer_class_qf = optax.inject_hyperparams(self.optimizer_class)(",
+    "learning_rate=qf_learning_rate, **self.optimizer_kwargs",
+    "tx=optimizer_class_qf,"
+   ],
+   "saved_model": "models/sac/Hopper-v5/seed0.zip",
+   "saved_model_data": {
+    "policy_kwargs": {
+     "use_sde": false
+    },
+    "num_timesteps": 200000,
+    "learning_rate": 0.0003,
+    "use_sde": false,
+    "n_envs": 1,
+    "buffer_size": 1000000,
+    "batch_size": 256,
+    "learning_starts": 100,
+    "tau": 0.005,
+    "gamma": 0.99,
+    "gradient_steps": 1,
+    "n_steps": 1,
+    "train_freq": {
+     ":type:": "<class 'stable_baselines3.common.type_aliases.TrainFreq'>"
+    },
+    "policy_delay": 1,
+    "target_entropy": {
+     ":type:": "<class 'numpy.float32'>"
+    },
+    "qf_learning_rate": 0.0003,
+    "ent_coef": {
+     ":type:": "<class 'sbx.sac.sac.EntropyCoef'>",
+     "ent_coef_init": 1.0,
+     "_parent_ref": null,
+     "name": null,
+     "_id": "FlaxId(27)",
+     "_state": "_ModuleInternalState(in_compact_method=False, in_setup=False, setup_called=<SetupState.NEW: 0>, is_initialized=False, autoname_cursor={}, children={})"
+    }
+   }
+  },
+  "crossq": {
+   "learning_rate": 0.001,
+   "n_steps": 1,
+   "batch_size": 256,
+   "gamma": 0.99,
+   "ent_coef": "EntropyCoef(\n    # attributes\n    ent_coef_init = 1.0\n)",
+   "use_sde": false,
+   "buffer_size": 1000000,
+   "learning_starts": 100,
+   "tau": 0.005,
+   "train_freq": [
+    1,
+    "<TrainFrequencyUnit.STEP: 'step'>"
+   ],
+   "gradient_steps": 1,
+   "policy_delay": 3,
+   "target_entropy": -3.0,
+   "qf_learning_rate": 0.001,
+   "n_envs": 1,
+   "ent_coef_init": "auto",
+   "policy_class": "CrossQPolicy",
+   "policy": {
+    "activation_fn": "relu",
+    "squash_output": true,
+    "n_critics": 2,
+    "layer_norm": false,
+    "dropout_rate": 0.0,
+    "batch_norm": true,
+    "batch_norm_momentum": 0.99,
+    "renorm_warmup_steps": 100000,
+    "batch_norm_actor": true,
+    "optimizer_class": "adam",
+    "optimizer_kwargs": {
+     "b1": 0.5
+    },
+    "actor": {
+     "net_arch": [
+      256,
+      256
+     ],
+     "action_dim": 3,
+     "log_std_min": -20,
+     "log_std_max": 2,
+     "use_batch_norm": true,
+     "batch_norm_momentum": 0.99,
+     "renorm_warmup_steps": 100000,
+     "activation_fn": "relu"
+    },
+    "qf": {
+     "net_arch": [
+      1024,
+      1024
+     ],
+     "use_layer_norm": false,
+     "use_batch_norm": true,
+     "batch_norm_momentum": 0.99,
+     "renorm_warmup_steps": 100000,
+     "dropout_rate": 0.0,
+     "n_critics": 2,
+     "activation_fn": "relu"
+    }
+   },
+   "optimizer_source": [
+    "tx=self.optimizer_class(",
+    "**self.optimizer_kwargs,",
+    "tx=self.optimizer_class(",
+    "**self.optimizer_kwargs,"
+   ],
+   "saved_model": "models/crossq/Hopper-v5/seed0.zip",
+   "saved_model_data": {
+    "policy_kwargs": {
+     "use_sde": false
+    },
+    "num_timesteps": 200000,
+    "learning_rate": 0.001,
+    "use_sde": false,
+    "n_envs": 1,
+    "buffer_size": 1000000,
+    "batch_size": 256,
+    "learning_starts": 100,
+    "tau": 0.005,
+    "gamma": 0.99,
+    "gradient_steps": 1,
+    "n_steps": 1,
+    "train_freq": {
+     ":type:": "<class 'stable_baselines3.common.type_aliases.TrainFreq'>"
+    },
+    "policy_delay": 3,
+    "target_entropy": {
+     ":type:": "<class 'numpy.float32'>"
+    },
+    "qf_learning_rate": 0.001,
+    "ent_coef": {
+     ":type:": "<class 'sbx.crossq.crossq.EntropyCoef'>",
+     "ent_coef_init": 1.0,
+     "_parent_ref": null,
+     "name": null,
+     "_id": "FlaxId(54)",
+     "_state": "_ModuleInternalState(in_compact_method=False, in_setup=False, setup_called=<SetupState.NEW: 0>, is_initialized=False, autoname_cursor={}, children={})"
+    }
+   }
+  },
+  "trpo": {
+   "learning_rate": 0.001,
+   "n_steps": 2048,
+   "batch_size": 128,
+   "gamma": 0.99,
+   "gae_lambda": 0.95,
+   "normalize_advantage": true,
+   "ent_coef": 0.0,
+   "vf_coef": 0.0,
+   "max_grad_norm": 0.0,
+   "target_kl": 0.01,
+   "use_sde": false,
+   "cg_max_steps": 15,
+   "cg_damping": 0.1,
+   "line_search_shrinking_factor": 0.8,
+   "line_search_max_iter": 10,
+   "n_critic_updates": 10,
+   "n_envs": 1,
+   "ent_coef_init": null,
+   "policy_class": "ActorCriticPolicy",
+   "policy": {
+    "net_arch": {
+     "pi": [
+      64,
+      64
+     ],
+     "vf": [
+      64,
+      64
+     ]
+    },
+    "activation_fn": "Tanh",
+    "ortho_init": true,
+    "log_std_init": 0.0,
+    "share_features_extractor": true,
+    "squash_output": false,
+    "optimizer_class": "Adam",
+    "optimizer_kwargs": {
+     "eps": 1e-05
+    }
+   },
+   "optimizer": {
+    "cls": "Adam",
+    "betas": [
+     0.9,
+     0.999
+    ],
+    "eps": 1e-05
+   },
+   "saved_model": "models/trpo/HalfCheetah-v5/seed0.zip",
+   "saved_model_data": {
+    "policy_kwargs": {},
+    "num_timesteps": 1024000,
+    "learning_rate": 0.001,
+    "use_sde": false,
+    "n_envs": 1,
+    "n_steps": 2048,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "ent_coef": 0.0,
+    "vf_coef": 0.0,
+    "max_grad_norm": 0.0,
+    "normalize_advantage": true,
+    "batch_size": 128,
+    "cg_max_steps": 15,
+    "cg_damping": 0.1,
+    "line_search_shrinking_factor": 0.8,
+    "line_search_max_iter": 10,
+    "target_kl": 0.01,
+    "n_critic_updates": 10
+   }
+  }
+ },
+ "e6_recipe_note": "run.py ZOO_PPO_HOPPER (rl_zoo3 2.9.2 hyperparams/ppo.yml, Hopper-v4), VecNormalize obs+reward"
+}

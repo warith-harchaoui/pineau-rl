@@ -1,0 +1,245 @@
+{
+ "n_comparisons": 24,
+ "level": 0.9979166666666667,
+ "tasks": {
+  "HalfCheetah-v5": {
+   "order": [
+    "crossq",
+    "sac",
+    "ppo_sb3",
+    "ppo_sbx"
+   ],
+   "pairs": {
+    "crossq>sac": {
+     "p": 0.675,
+     "ci": [
+      0.32,
+      0.9022942708333335
+     ],
+     "settled": false
+    },
+    "crossq>ppo_sb3": {
+     "p": 1.0,
+     "ci": [
+      1.0,
+      1.0
+     ],
+     "settled": true
+    },
+    "crossq>ppo_sbx": {
+     "p": 1.0,
+     "ci": [
+      1.0,
+      1.0
+     ],
+     "settled": true
+    },
+    "sac>ppo_sb3": {
+     "p": 1.0,
+     "ci": [
+      1.0,
+      1.0
+     ],
+     "settled": true
+    },
+    "sac>ppo_sbx": {
+     "p": 1.0,
+     "ci": [
+      1.0,
+      1.0
+     ],
+     "settled": true
+    },
+    "ppo_sb3>ppo_sbx": {
+     "p": 0.7175,
+     "ci": [
+      0.4483229166666666,
+      0.9375
+     ],
+     "settled": false
+    }
+   }
+  },
+  "Hopper-v5": {
+   "order": [
+    "crossq",
+    "ppo_sbx",
+    "ppo_sb3",
+    "sac"
+   ],
+   "pairs": {
+    "crossq>ppo_sbx": {
+     "p": 0.755,
+     "ci": [
+      0.48061718749999993,
+      0.9422942708333335
+     ],
+     "settled": false
+    },
+    "crossq>ppo_sb3": {
+     "p": 0.8075,
+     "ci": [
+      0.5827057291666666,
+      0.962088541666667
+     ],
+     "settled": true
+    },
+    "crossq>sac": {
+     "p": 0.8075,
+     "ci": [
+      0.5360286458333333,
+      0.9847942708333335
+     ],
+     "settled": true
+    },
+    "ppo_sbx>ppo_sb3": {
+     "p": 0.55,
+     "ci": [
+      0.2831171874999999,
+      0.8239713541666673
+     ],
+     "settled": false
+    },
+    "ppo_sbx>sac": {
+     "p": 0.565,
+     "ci": [
+      0.2652057291666667,
+      0.8268828125000005
+     ],
+     "settled": false
+    },
+    "ppo_sb3>sac": {
+     "p": 0.545,
+     "ci": [
+      0.27602864583333325,
+      0.8047942708333335
+     ],
+     "settled": false
+    }
+   }
+  },
+  "Walker2d-v5": {
+   "order": [
+    "crossq",
+    "sac",
+    "ppo_sb3",
+    "ppo_sbx"
+   ],
+   "pairs": {
+    "crossq>sac": {
+     "p": 0.9575,
+     "ci": [
+      0.7625,
+      1.0
+     ],
+     "settled": true
+    },
+    "crossq>ppo_sb3": {
+     "p": 1.0,
+     "ci": [
+      1.0,
+      1.0
+     ],
+     "settled": true
+    },
+    "crossq>ppo_sbx": {
+     "p": 0.9975,
+     "ci": [
+      0.97,
+      1.0
+     ],
+     "settled": true
+    },
+    "sac>ppo_sb3": {
+     "p": 0.995,
+     "ci": [
+      0.955,
+      1.0
+     ],
+     "settled": true
+    },
+    "sac>ppo_sbx": {
+     "p": 0.9925,
+     "ci": [
+      0.9331171875,
+      1.0
+     ],
+     "settled": true
+    },
+    "ppo_sb3>ppo_sbx": {
+     "p": 0.65,
+     "ci": [
+      0.37561718749999995,
+      0.9022942708333335
+     ],
+     "settled": false
+    }
+   }
+  },
+  "Swimmer-v5": {
+   "order": [
+    "crossq",
+    "ppo_sbx",
+    "ppo_sb3",
+    "sac"
+   ],
+   "pairs": {
+    "crossq>ppo_sbx": {
+     "p": 0.75,
+     "ci": [
+      0.4475,
+      0.9912656250000009
+     ],
+     "settled": false
+    },
+    "crossq>ppo_sb3": {
+     "p": 0.845,
+     "ci": [
+      0.5704114583333333,
+      1.0
+     ],
+     "settled": true
+    },
+    "crossq>sac": {
+     "p": 0.8575,
+     "ci": [
+      0.6354114583333333,
+      1.0
+     ],
+     "settled": true
+    },
+    "ppo_sbx>ppo_sb3": {
+     "p": 0.9,
+     "ci": [
+      0.6925,
+      1.0
+     ],
+     "settled": true
+    },
+    "ppo_sbx>sac": {
+     "p": 0.91,
+     "ci": [
+      0.7287343749999999,
+      1.0
+     ],
+     "settled": true
+    },
+    "ppo_sb3>sac": {
+     "p": 0.54,
+     "ci": [
+      0.24894010416666654,
+      0.8162656250000009
+     ],
+     "settled": false
+    }
+   }
+  }
+ },
+ "leaders": {
+  "HalfCheetah-v5": "crossq",
+  "Hopper-v5": "crossq",
+  "Walker2d-v5": "crossq",
+  "Swimmer-v5": "crossq"
+ },
+ "settled_changes": []
+}

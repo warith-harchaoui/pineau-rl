@@ -1,0 +1,34 @@
+/Users/warithharchaoui/pineau-rl/sim/env-zoo/lib/python3.11/site-packages/gymnasium/envs/registration.py:519: DeprecationWarning: [33mWARN: The environment Hopper-v4 is out of date. You should consider upgrading to version `v5`.[0m
+  logger.deprecation(
+official 0 return 16.4 control True speed -0.446 m/s full 0%
+official 1 return 955.2 control True speed 0.013 m/s full 90%
+official 2 return 978.1 control True speed -0.021 m/s full 100%
+official 3 return 1009.9 control True speed 0.010 m/s full 100%
+official 4 return 997.9 control True speed -0.001 m/s full 100%
+official 5 return 1027.3 control True speed 0.028 m/s full 100%
+official 6 return 997.3 control True speed -0.001 m/s full 100%
+official 7 return 996.7 control True speed -0.003 m/s full 100%
+official 8 return 1007.7 control True speed 0.008 m/s full 100%
+official 9 return 991.0 control True speed -0.009 m/s full 100%
+zoofix 0 return 14.8 control True speed -0.469 m/s full 0%
+zoofix 1 return 1023.1 control True speed 0.023 m/s full 100%
+zoofix 2 return 978.2 control True speed -0.021 m/s full 100%
+zoofix 3 return 816.4 control True speed -0.012 m/s full 80%
+zoofix 4 return 998.1 control True speed -0.001 m/s full 100%
+zoofix 5 return 943.8 control True speed 0.028 m/s full 90%
+zoofix 6 return 996.8 control True speed -0.002 m/s full 100%
+zoofix 7 return 996.6 control True speed -0.003 m/s full 100%
+zoofix 8 return 1008.5 control True speed 0.009 m/s full 100%
+zoofix 9 return 991.1 control True speed -0.008 m/s full 100%
+default 0 return 1163.5 control True speed 2.501 m/s full 0%
+default 1 return 3124.2 control True speed 2.601 m/s full 70%
+default 2 return 3501.6 control True speed 2.503 m/s full 100%
+default 3 return 947.6 control True speed 2.661 m/s full 0%
+default 4 return 3448.0 control True speed 2.449 m/s full 100%
+default 5 return 2280.2 control True speed 2.799 m/s full 0%
+default 6 return 2931.7 control True speed 2.524 m/s full 40%
+default 7 return 2466.7 control True speed 2.631 m/s full 50%
+default 8 return 2131.8 control True speed 2.603 m/s full 10%
+default 9 return 1602.5 control True speed 2.890 m/s full 0%
+video results/e6_video/official_seed7.mp4 {'ret': 996.9233737237798, 'length': 1000, 'terminated': False, 'mean_x_velocity': -0.0025526251502459834, 'displacement': -0.020421001201967874, 'mean_ctrl_cost': 0.0005240011259738821, 'return_per_step': 0.9969233737237798}
+video results/e6_video/default_seed5.mp4 {'ret': 3260.851801027406, 'length': 862, 'terminated': True, 'mean_x_velocity': 2.7842613826948295, 'displacement': 19.20026649506354, 'mean_ctrl_cost': 0.0013706622454046611, 'return_per_step': 3.782890720449427}

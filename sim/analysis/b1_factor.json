@@ -1,0 +1,40 @@
+{
+ "ppo_sb3": {
+  "rho_30_runs": 0.3011143400416399,
+  "n10": {
+   "median_ratio": 3.9997254055179456,
+   "median_predicted_sqrt_n5_over_rho": 3.9997254055179465,
+   "median_1_over_rho": 2.8282329571258535,
+   "max_abs_gap_ratio_vs_prediction": 6.661338147750939e-16,
+   "predicted_from_rho_30": 4.696599843692364,
+   "one_over_rho_30": 3.320997597994549
+  },
+  "n5": {
+   "median_ratio": 2.828232957125853,
+   "median_predicted_sqrt_n5_over_rho": 2.8282329571258535,
+   "median_1_over_rho": 2.8282329571258535,
+   "max_abs_gap_ratio_vs_prediction": 6.661338147750939e-16,
+   "predicted_from_rho_30": 3.320997597994549,
+   "one_over_rho_30": 3.320997597994549
+  }
+ },
+ "trpo": {
+  "rho_30_runs": 0.07280346031210899,
+  "n10": {
+   "median_ratio": 18.061464203595232,
+   "median_predicted_sqrt_n5_over_rho": 18.061464203595236,
+   "median_1_over_rho": 12.771383816520274,
+   "max_abs_gap_ratio_vs_prediction": 6.661338147750939e-16,
+   "predicted_from_rho_30": 19.425087163581935,
+   "one_over_rho_30": 13.735610858508542
+  },
+  "n5": {
+   "median_ratio": 12.771383816520274,
+   "median_predicted_sqrt_n5_over_rho": 12.771383816520274,
+   "median_1_over_rho": 12.771383816520274,
+   "max_abs_gap_ratio_vs_prediction": 5.551115123125783e-16,
+   "predicted_from_rho_30": 13.735610858508542,
+   "one_over_rho_30": 13.735610858508542
+  }
+ }
+}

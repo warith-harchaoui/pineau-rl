@@ -1,0 +1,102 @@
+{
+ "seeds": {
+  "0": {
+   "episodes": 1685,
+   "share_full_length": 0.635,
+   "return_per_step_full_median": 0.993337156,
+   "return_per_step_full_min": 0.986012943,
+   "return_per_step_full_max": 1.077992696,
+   "speed_lower_bound_median": -0.006662843999999946,
+   "median_length_other": 55.0
+  },
+  "1": {
+   "episodes": 1491,
+   "share_full_length": 0.915,
+   "return_per_step_full_median": 1.0022231369999999,
+   "return_per_step_full_min": 0.981165894,
+   "return_per_step_full_max": 1.018558656,
+   "speed_lower_bound_median": 0.002223136999999875,
+   "median_length_other": 193.0
+  },
+  "2": {
+   "episodes": 1836,
+   "share_full_length": 0.81,
+   "return_per_step_full_median": 0.9775857960000001,
+   "return_per_step_full_min": 0.9757682919999999,
+   "return_per_step_full_max": 0.979951365,
+   "speed_lower_bound_median": -0.022414203999999938,
+   "median_length_other": 72.0
+  },
+  "3": {
+   "episodes": 4371,
+   "share_full_length": 0.28,
+   "return_per_step_full_median": 1.0129392899999998,
+   "return_per_step_full_min": 1.009286777,
+   "return_per_step_full_max": 1.0163624039999999,
+   "speed_lower_bound_median": 0.012939289999999826,
+   "median_length_other": 49.0
+  },
+  "4": {
+   "episodes": 1464,
+   "share_full_length": 0.675,
+   "return_per_step_full_median": 1.001559193,
+   "return_per_step_full_min": 0.993352301,
+   "return_per_step_full_max": 1.072999842,
+   "speed_lower_bound_median": 0.0015591930000000698,
+   "median_length_other": 160.0
+  },
+  "5": {
+   "episodes": 1541,
+   "share_full_length": 0.795,
+   "return_per_step_full_median": 1.010497588,
+   "return_per_step_full_min": 1.000406167,
+   "return_per_step_full_max": 1.074751816,
+   "speed_lower_bound_median": 0.010497588000000002,
+   "median_length_other": 198.0
+  },
+  "6": {
+   "episodes": 1243,
+   "share_full_length": 1.0,
+   "return_per_step_full_median": 1.0022384705,
+   "return_per_step_full_min": 0.996272344,
+   "return_per_step_full_max": 1.005174402,
+   "speed_lower_bound_median": 0.0022384705000000338,
+   "median_length_other": null
+  },
+  "7": {
+   "episodes": 1422,
+   "share_full_length": 0.98,
+   "return_per_step_full_median": 0.9969055695,
+   "return_per_step_full_min": 0.994385896,
+   "return_per_step_full_max": 0.998467048,
+   "speed_lower_bound_median": -0.0030944305000000227,
+   "median_length_other": 577.0
+  },
+  "8": {
+   "episodes": 3239,
+   "share_full_length": 0.45,
+   "return_per_step_full_median": 1.008135011,
+   "return_per_step_full_min": 1.00315778,
+   "return_per_step_full_max": 1.033675058,
+   "speed_lower_bound_median": 0.008135011000000025,
+   "median_length_other": 223.0
+  },
+  "9": {
+   "episodes": 1383,
+   "share_full_length": 0.975,
+   "return_per_step_full_median": 0.989643283,
+   "return_per_step_full_min": 0.9748746079999999,
+   "return_per_step_full_max": 1.006558723,
+   "speed_lower_bound_median": -0.01035671699999996,
+   "median_length_other": 121.0
+  }
+ },
+ "summary": {
+  "seeds_with_full_episodes": 10,
+  "return_per_step_median_of_seeds": 1.001891165,
+  "range": [
+   0.9775857960000001,
+   1.0129392899999998
+  ]
+ }
+}

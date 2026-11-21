@@ -1,0 +1,138 @@
+{
+ "ci95": {
+  "source": "analysis/e2_equal.json",
+  "n_reversing_pairs": 2,
+  "reversing_pairs": [
+   {
+    "pair": "ppo_sb3/ppo_sbx",
+    "a_wins": [
+     {
+      "task": "HalfCheetah-v5",
+      "p": 0.92,
+      "ci": [
+       0.7597500000000005,
+       1.0
+      ]
+     }
+    ],
+    "b_wins": [
+     {
+      "task": "Swimmer-v5",
+      "p": 0.9,
+      "ci": [
+       0.69,
+       1.0
+      ]
+     }
+    ]
+   },
+   {
+    "pair": "ppo_sbx/sac",
+    "a_wins": [
+     {
+      "task": "Swimmer-v5",
+      "p": 0.92,
+      "ci": [
+       0.73,
+       1.0
+      ]
+     }
+    ],
+    "b_wins": [
+     {
+      "task": "HalfCheetah-v5",
+      "p": 1.0,
+      "ci": [
+       1.0,
+       1.0
+      ]
+     },
+     {
+      "task": "Walker2d-v5",
+      "p": 1.0,
+      "ci": [
+       1.0,
+       1.0
+      ]
+     }
+    ]
+   }
+  ],
+  "leaders": {
+   "HalfCheetah-v5": "sac",
+   "Hopper-v5": "crossq",
+   "Walker2d-v5": "crossq",
+   "Swimmer-v5": "crossq"
+  },
+  "leader_changes": true,
+  "n_settled_changes_preregistered": 3
+ },
+ "bonferroni": {
+  "source": "analysis/e2_bonferroni_equal.json",
+  "n_reversing_pairs": 2,
+  "reversing_pairs": [
+   {
+    "pair": "ppo_sb3/ppo_sbx",
+    "a_wins": [
+     {
+      "task": "HalfCheetah-v5",
+      "p": 0.92,
+      "ci": [
+       0.6032916666666663,
+       1.0
+      ]
+     }
+    ],
+    "b_wins": [
+     {
+      "task": "Swimmer-v5",
+      "p": 0.9,
+      "ci": [
+       0.5308229166666666,
+       1.0
+      ]
+     }
+    ]
+   },
+   {
+    "pair": "ppo_sbx/sac",
+    "a_wins": [
+     {
+      "task": "Swimmer-v5",
+      "p": 0.92,
+      "ci": [
+       0.64,
+       1.0
+      ]
+     }
+    ],
+    "b_wins": [
+     {
+      "task": "HalfCheetah-v5",
+      "p": 1.0,
+      "ci": [
+       1.0,
+       1.0
+      ]
+     },
+     {
+      "task": "Walker2d-v5",
+      "p": 1.0,
+      "ci": [
+       1.0,
+       1.0
+      ]
+     }
+    ]
+   }
+  ],
+  "leaders": {
+   "HalfCheetah-v5": "sac",
+   "Hopper-v5": "crossq",
+   "Walker2d-v5": "crossq",
+   "Swimmer-v5": "crossq"
+  },
+  "leader_changes": true,
+  "n_settled_changes_preregistered": 3
+ }
+}
