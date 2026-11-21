@@ -1,0 +1,13 @@
+{
+ "id": "K058",
+ "coder": "S1",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "unstated",
+   "quote": "Table 2: Averaged normalized scores on Gym locomotion and Antmaze tasks over five random seeds.",
+   "page": 8
+  }
+ },
+ "doubts": "The ± in the main Table 2 is never defined (seed count only); the appendix learning curves (Fig 6, 7) do state std across seeds, which suggests the table ± is also over seeds, but this is not said for the main table."
+}

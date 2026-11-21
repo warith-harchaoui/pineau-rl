@@ -1,0 +1,13 @@
+{
+ "id": "ML15",
+ "coder": "S3",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "We report the normalized average scores over five random seeds with standard deviations reported.",
+   "page": 6
+  }
+ },
+ "doubts": "The caption does not literally say the standard deviation is across seeds, but 'average scores over five random seeds with standard deviations' makes it the natural reading."
+}

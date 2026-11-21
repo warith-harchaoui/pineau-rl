@@ -1,0 +1,13 @@
+{
+ "id": "C115",
+ "coder": "S8",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "All results are averaged over 20 runs and are reported with 95% confidence intervals.",
+   "page": 7
+  }
+ },
+ "doubts": "Runs are independent learning runs (appendix C.1 says 20 independent runs), taken as seeds; Figure 2 and 3 state the 20 runs without restating the intervals."
+}

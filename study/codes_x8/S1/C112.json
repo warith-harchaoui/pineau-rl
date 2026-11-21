@@ -1,0 +1,13 @@
+{
+ "id": "C112",
+ "coder": "S1",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "Figure 3 shows the mean and standard deviation of the reward across 5 runs with different random seeds obtained by SOM.",
+   "page": 5
+  }
+ },
+ "doubts": "Only the Coin figure is explicitly tied to seeds; the Recipe and Door figures (Fig 5, Fig 6) say mean and standard deviation without restating the source, read as the same 5 seeds stated in the setup."
+}

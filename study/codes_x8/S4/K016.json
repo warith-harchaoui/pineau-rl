@@ -1,0 +1,13 @@
+{
+ "id": "K016",
+ "coder": "S4",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "unstated",
+   "quote": "The Safety Generalization Gap (Unshielded Baselines). Performance comparison between the Training Patient",
+   "page": 6
+  }
+ },
+ "doubts": "The ± in the main Tables 1, 3 and 4 is never defined; the appendix says results are averaged over three random seeds and only the compliance stress-test tables say mean ± standard deviation across three seeds."
+}

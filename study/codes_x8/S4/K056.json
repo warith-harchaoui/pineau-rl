@@ -1,0 +1,13 @@
+{
+ "id": "K056",
+ "coder": "S4",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "Mean and CVaR0.1± s.e. over 5 seeds.",
+   "page": 21
+  }
+ },
+ "doubts": "Main Table 1 reports no uncertainty; the ± s.e. over 5 seeds is in appendix Table 3 (fixed-checkpoint version of the main results), and CVaR itself pools 10 episodes per seed."
+}

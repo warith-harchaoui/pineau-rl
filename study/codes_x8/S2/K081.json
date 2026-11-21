@@ -1,0 +1,13 @@
+{
+ "id": "K081",
+ "coder": "S2",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "items",
+   "quote": "using these mean per-instance rewards in the results",
+   "page": 18
+  }
+ },
+ "doubts": "Main results are boxplots over test instances of seed-averaged rewards; Table 1 reports a mean std across 10 runs as a stability metric, not as the uncertainty of the main result."
+}

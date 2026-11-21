@@ -1,0 +1,13 @@
+{
+ "id": "C26",
+ "coder": "S6",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "items",
+   "quote": "Table 2: Average tour length, standard deviations of the tours and the average solution time (in [...] seconds) using different baselines over a test set of size 1000.",
+   "page": 6
+  }
+ },
+ "doubts": "Quote is from the supplementary PDF (page 6 of C26-supp); Figure 3 of the main paper also shows distributions over test instances, and the appendix states results are not affected by the training seed."
+}

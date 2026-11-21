@@ -1,0 +1,13 @@
+{
+ "id": "C113",
+ "coder": "S7",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "Each experiment is [...] run 10 times with a random policy initialization and seed, [...] We provide [...] average performance with 90% bootstrap confidence intervals.",
+   "page": 7
+  }
+ },
+ "doubts": "The text does not say explicitly that the bootstrap resamples the 10 runs rather than the test trajectories; I read it as over the runs because they are described just before."
+}

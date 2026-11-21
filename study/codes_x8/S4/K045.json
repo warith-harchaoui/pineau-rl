@@ -1,0 +1,13 @@
+{
+ "id": "K045",
+ "coder": "S4",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "human-normalized scores and the 95% stratified bootstrap confidence intervals (Agarwal et al., 2021)",
+   "page": 3
+  }
+ },
+ "doubts": "The intervals are stratified bootstrap CIs (Agarwal et al.), a method that resamples runs within tasks, with results over 5 seeds; the paper does not spell out that the resampling is over seeds; Table 1 and DMC Table 2 carry no ±."
+}

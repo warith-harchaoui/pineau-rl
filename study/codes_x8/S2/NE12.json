@@ -1,0 +1,13 @@
+{
+ "id": "NE12",
+ "coder": "S2",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "unstated",
+   "quote": "Figure 6: Training performance on MPE.",
+   "page": 7
+  }
+ },
+ "doubts": "Curves have shaded bands and tables have ±, but no seed count or definition of the spread is given; tests use 1,280 episodes per setting, so the spread may be over episodes."
+}

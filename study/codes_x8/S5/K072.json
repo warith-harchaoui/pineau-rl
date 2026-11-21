@@ -1,0 +1,13 @@
+{
+ "id": "K072",
+ "coder": "S5",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "represent the standard deviation across the runs.",
+   "page": 9
+  }
+ },
+ "doubts": "Runs are tied to seeds by the text ('Each experiment is repeated ten times with different random seeds'), seeds described as for sample generation of the online learning trajectory."
+}

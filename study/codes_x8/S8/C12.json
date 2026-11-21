@@ -1,0 +1,13 @@
+{
+ "id": "C12",
+ "coder": "S8",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "Performance comparison between models for 5 individual runs with different random seeds (mean in bold).",
+   "page": 5
+  }
+ },
+ "doubts": "The main figure shows the five seed curves individually rather than a computed band; I take the displayed spread over seeds as the reported uncertainty, while the ± SEM of the ablation Figure 4 has no stated source."
+}

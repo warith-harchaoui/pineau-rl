@@ -1,0 +1,13 @@
+{
+ "id": "K079",
+ "coder": "S2",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "pooled",
+   "quote": "Each result is averaged over the final 4 evaluations and 5 random seeds ± standard",
+   "page": 7
+  }
+ },
+ "doubts": "The ± std follows an average over 4 evaluation points and 5 seeds, read as one spread over both; it could be across seeds only."
+}

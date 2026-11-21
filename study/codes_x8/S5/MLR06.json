@@ -1,0 +1,13 @@
+{
+ "id": "MLR06",
+ "coder": "S5",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "other",
+   "quote": "For each of the 20 values of γ, we simulate 1,000 independent experimental trajectories with a horizon of T = 5000, holding the kernel sequence fixed across trials.",
+   "page": 17
+  }
+ },
+ "doubts": "STD in Table 1 is over 1,000 Monte Carlo replications of a simulated experiment on which a statistical estimator is computed; there is no RL training, so 'other' (simulation replications) rather than seeds."
+}

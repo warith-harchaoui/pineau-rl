@@ -1,0 +1,13 @@
+{
+ "id": "C35",
+ "coder": "S6",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "For all methods, we replicate 8 runs [...] with different seeds and show the mean and standard error.",
+   "page": 9
+  }
+ },
+ "doubts": ""
+}

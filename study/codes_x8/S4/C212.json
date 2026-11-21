@@ -1,0 +1,13 @@
+{
+ "id": "C212",
+ "coder": "S4",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "pooled",
+   "quote": "The shaded area shows one standard deviation of scores in the region as defined above.",
+   "page": 6
+  }
+ },
+ "doubts": "The std is taken over all evaluation scores falling in a time window across the four runs, i.e. runs and evaluation checkpoints pooled in one spread; coded pooled, could also be read as other."
+}

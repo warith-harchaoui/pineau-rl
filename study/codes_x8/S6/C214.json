@@ -1,0 +1,13 @@
+{
+ "id": "C214",
+ "coder": "S6",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "other",
+   "quote": "Errors [...] of per-step times are within 2% around the average.",
+   "page": 7
+  }
+ },
+ "doubts": "The only stated spread concerns repeated per-step timing measurements of a placement (source other); the training curves of Figure 2 show no band and no number of independent runs is given."
+}

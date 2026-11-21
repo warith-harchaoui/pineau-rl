@@ -1,0 +1,13 @@
+{
+ "id": "K047",
+ "coder": "S1",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "unstated",
+   "quote": "Figure 4: Comparison of training approaches under a reward curriculum. All experiments were run with 5 different seeds. As the curriculum increases difficulty of the task, we find that only TD3BC+JSRL is able to adapt to the changing curriculum. During testing, we average the results from 20 runs.",
+   "page": 8
+  }
+ },
+ "doubts": "The shaded bands of the main Figure 4 are never defined; 5 seeds and 20 test runs are both mentioned, so the band could be over seeds or over test runs; Table 4 ± is also undefined."
+}

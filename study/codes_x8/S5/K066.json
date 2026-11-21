@@ -1,0 +1,13 @@
+{
+ "id": "K066",
+ "coder": "S5",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "Mean (IQM) and 95% stratified bootstrapped confidence intervals to allow for more robust statistics",
+   "page": 6
+  }
+ },
+ "doubts": "Stratified bootstrap over seeds and games together (aggregate across tasks), but resampling units are the seeds."
+}

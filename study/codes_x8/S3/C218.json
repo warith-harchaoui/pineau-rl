@@ -1,0 +1,13 @@
+{
+ "id": "C218",
+ "coder": "S3",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "An evaluation of ARS over 100 random seeds on the MuJoCo locomotion tasks. The dotted lines represent median rewards and the shaded regions represent percentiles.",
+   "page": 7
+  }
+ },
+ "doubts": "Table 1 (sample efficiency, 3 seeds) carries no spread; the only reported uncertainty on the main results is the percentile band of Figure 1 over 100 seeds."
+}

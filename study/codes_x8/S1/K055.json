@@ -1,0 +1,13 @@
+{
+ "id": "K055",
+ "coder": "S1",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "items",
+   "quote": "Normalized episodic return of TQL-UCB, PPO and OmniRL on 64 AnyMDP evaluation tasks (mean ±95% CI).",
+   "page": 7
+  }
+ },
+ "doubts": "The CI is across 64 evaluation tasks of one meta-trained OmniRL model (appendix C.3: averaged over 64 unseen tasks, 95% CI of the mean); Table 1 has no uncertainty."
+}

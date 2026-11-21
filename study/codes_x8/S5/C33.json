@@ -1,0 +1,13 @@
+{
+ "id": "C33",
+ "coder": "S5",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "Table 2: Performance on three tasks of COUNTRIES dataset with AUC-PR metric. MINERVA significantly outperforms all other methods on the hardest task (S3). Also variance across runs for MINERVA",
+   "page": 5
+  }
+ },
+ "doubts": "Only Table 2 (COUNTRIES) carries ± among the main tables (Tables 3-4 have none), and 'runs' is read as independent training runs on the basis of Table 7's 'three independent runs'; the number of runs for Table 2 is not stated."
+}

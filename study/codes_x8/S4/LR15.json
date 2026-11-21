@@ -1,0 +1,13 @@
+{
+ "id": "LR15",
+ "coder": "S4",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "We run every experiment with 5 seeds and report (20%, 80%) confidence intervals.",
+   "page": 28
+  }
+ },
+ "doubts": "The (20%, 80%) interval is presumably a quantile band across the 5 seeds; the tie to seeds is through the same sentence only."
+}

@@ -1,0 +1,13 @@
+{
+ "id": "K035",
+ "coder": "S3",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "unstated",
+   "quote": "Table 2: Policy learning (success rate) of world model in Gym Fetch, Franka Kitchen, i-Gibson, and Libero tasks.",
+   "page": 9
+  }
+ },
+ "doubts": "The ± in Table 2 is never defined; only the checklist says 'All runs are with either 5 or 10 random seeds (with error bars shown in the learning curve figures)', a seed count that does not define the ± of the main table."
+}

@@ -1,0 +1,13 @@
+{
+ "id": "C110",
+ "coder": "S1",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "In all figures, we show the mean and standard error of the mean across 20 runs using different random seeds while the x-axis is the number of time steps.",
+   "page": 4
+  }
+ },
+ "doubts": "Table 1 reports mean (std) of final/absolute performance whose std is also across the 20 seeds per the histogram text, but the main conclusion is carried by the learning-curve figures defined here."
+}

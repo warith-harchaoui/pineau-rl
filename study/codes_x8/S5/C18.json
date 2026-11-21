@@ -1,0 +1,13 @@
+{
+ "id": "C18",
+ "coder": "S5",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "Table 1. Max Average Return over 10 trials of 1 million time steps. Maximum value for each task is bolded. ± corresponds to a single [...] standard deviation over trials.",
+   "page": 7
+  }
+ },
+ "doubts": "Trials are equated with seeds only by context (\"Our results are reported over 10 random seeds of the Gym simulator and the network initialization\"); Figure 5 bands are likewise half a std over 10 trials."
+}

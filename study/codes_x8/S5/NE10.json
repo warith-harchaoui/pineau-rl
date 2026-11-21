@@ -1,0 +1,13 @@
+{
+ "id": "NE10",
+ "coder": "S5",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "Table 1 reports this score across all tasks on each domain of ExORL, averaged on 5 random seeds, with standard deviations.",
+   "page": 8
+  }
+ },
+ "doubts": "Table 1 caption says 'averaged over 10 rollouts on 5 random seeds' so the std could in principle pool rollouts, but the text attaches the std to the 5 seeds; Figure 5 bands are std over 5 seeds."
+}

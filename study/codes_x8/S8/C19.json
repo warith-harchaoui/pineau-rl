@@ -1,0 +1,13 @@
+{
+ "id": "C19",
+ "coder": "S8",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "unstated",
+   "quote": "The averaged sum of rewards and standard errors are shown with respect to the number of training steps.",
+   "page": 5
+  }
+ },
+ "doubts": "Section 1 says 10 seeds were used for every PPO task, so the standard errors are very likely over seeds, but no caption or sentence ties them to the seeds."
+}

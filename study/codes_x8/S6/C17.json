@@ -1,0 +1,13 @@
+{
+ "id": "C17",
+ "coder": "S6",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "is independently tested over several runs. We report the [...] median performance and percentile 25 to 75 over the runs.",
+   "page": 6
+  }
+ },
+ "doubts": "The number of runs is given per domain (30 independent trials, 10 maps x 3 trials); the band is an interquartile range over runs, which I counted as seeds."
+}

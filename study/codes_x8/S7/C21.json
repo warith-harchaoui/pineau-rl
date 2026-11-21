@@ -1,0 +1,13 @@
+{
+ "id": "C21",
+ "coder": "S7",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "unstated",
+   "quote": "Figure 2: Different metrics on the taxi problem with different penalty weights w.",
+   "page": 8
+  }
+ },
+ "doubts": "Figures 2 and 3 show error bars and shaded bands, but the paper never says what they are or how many runs they come from."
+}

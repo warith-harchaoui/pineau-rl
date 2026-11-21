@@ -1,0 +1,13 @@
+{
+ "id": "C114",
+ "coder": "S6",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "unstated",
+   "quote": "Figure 2. Average return in MuJoCo tasks by Soft-Q, SAC and DP-WGF-V (first row), and by DDPG, TRPO-GAE and DP-WGF-V",
+   "page": 8
+  }
+ },
+ "doubts": "The sentence 'Figure 2 plots the mean (dark curves) and standard derivation (light areas) of rewards over 5 runs' sits in Section 6.2 on the Cartpole experiments and seems to describe Figure 1, so I took the bands of the main MuJoCo Figure 2 as undefined; read literally it would give yes/seeds."
+}

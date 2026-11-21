@@ -1,0 +1,13 @@
+{
+ "id": "K021",
+ "coder": "S1",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "We use 5 random seeds {0, 10, 42, 77, 123} and report mean episodic returns ± standard deviation.",
+   "page": 7
+  }
+ },
+ "doubts": "The sentence pairs the 5 seeds with the ± but does not literally say 'across seeds'; 'mean episodic returns' could hint at episodes, but the natural reading is std over the 5 seeds."
+}

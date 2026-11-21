@@ -1,0 +1,13 @@
+{
+ "id": "K084",
+ "coder": "S4",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "regions, which are negligible, indicate standard error over 20 runs.",
+   "page": 6
+  }
+ },
+ "doubts": "Runs are independently seeded trainings of the explanation (Shapley/characteristic) models with a single fixed agent, not independent RL agent trainings."
+}

@@ -1,0 +1,13 @@
+{
+ "id": "C216",
+ "coder": "S3",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "In all our simulation results, each plot shows a 95% confidence interval of the mean across 5 seeds.",
+   "page": 7
+  }
+ },
+ "doubts": "The real-world results (Figure 8) report mean and standard deviation over 15 test rollouts; I took the simulation results (Figure 3) as carrying the main conclusion."
+}

@@ -1,0 +1,13 @@
+{
+ "id": "C119",
+ "coder": "S2",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "Results are averaged over 20 runs and 95% confidence intervals are shown.",
+   "page": 8
+  }
+ },
+ "doubts": "Runs are independent runs of an online regret-minimizing algorithm (no network training), counted as seeds."
+}

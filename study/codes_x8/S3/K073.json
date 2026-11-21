@@ -1,0 +1,13 @@
+{
+ "id": "K073",
+ "coder": "S3",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "unstated",
+   "quote": "Plot shows offline-to-online transfer results for SMAC and baselines when fine-tuned with SAC.",
+   "page": 5
+  }
+ },
+ "doubts": "The bands of the main curves (Figure 6) are not defined and Table 1 has no spread; the appendix per-environment regret tables do state 'mean ± std over seeds' (while the text says standard error), which would give yes if those were taken as the main result."
+}

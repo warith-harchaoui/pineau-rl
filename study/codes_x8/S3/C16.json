@@ -1,0 +1,13 @@
+{
+ "id": "C16",
+ "coder": "S3",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "Figures 3 and 4 plot the mean test win rate across 20 runs [...] for each method on selected maps, together with 95% confidence intervals.",
+   "page": 7
+  }
+ },
+ "doubts": "The main text says '20 runs' without calling them independent trainings; the supplement's Figure 5 uses 'independent runs', so I read runs as seeds."
+}

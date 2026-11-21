@@ -1,0 +1,13 @@
+{
+ "id": "C213",
+ "coder": "S2",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "unstated",
+   "quote": "The whiskers [...] denote std. error.",
+   "page": 7
+  }
+ },
+ "doubts": "Results are averaged over 20 trials with random task orderings, but the standard error is not said to be across trials rather than across the 100 tasks."
+}

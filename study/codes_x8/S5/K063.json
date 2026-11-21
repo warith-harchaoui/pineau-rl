@@ -1,0 +1,13 @@
+{
+ "id": "K063",
+ "coder": "S5",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "items",
+   "quote": "a per-instance mean return is computed first, and tables [...] report the mean ± standard deviation across 5 such",
+   "page": 7
+  }
+ },
+ "doubts": "The spread is across 5 test teammate instances (evaluation partners), not across independent trainings of the evaluated agent; coded 'items' though 'other' is defensible."
+}

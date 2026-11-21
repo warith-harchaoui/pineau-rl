@@ -1,0 +1,13 @@
+{
+ "id": "C116",
+ "coder": "S2",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "unstated",
+   "quote": "Table 1. Environment specifications and results. All results are measured in the corresponding dense environment expect for Reacher",
+   "page": 8
+  }
+ },
+ "doubts": "The ± in Table 1 is not defined; the text says returns are averaged over 500 cumulated rewards of the learned policy, so it is likely over episodes; learning curves (5 runs) have no defined band either."
+}

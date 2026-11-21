@@ -1,0 +1,13 @@
+{
+ "id": "C15",
+ "coder": "S7",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "Each [...] algorithm is run with 3 random seeds, and in all plots we [...] show minimum, mean, and maximum performance.",
+   "page": 5
+  }
+ },
+ "doubts": "The band is the min-max range across 3 seeds, not a std or CI."
+}

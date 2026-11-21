@@ -1,0 +1,13 @@
+{
+ "id": "LR15",
+ "coder": "S7",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "We run every experiment with 5 seeds and report (20%, 80%) confidence intervals.",
+   "page": 28
+  }
+ },
+ "doubts": "This sentence is in the appendix (Section H) and applies to Figure 1 of the main text; the 20-80% interval is unusual but tied to the 5 seeds."
+}

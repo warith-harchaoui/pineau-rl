@@ -1,0 +1,13 @@
+{
+ "id": "C12",
+ "coder": "S1",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "[B] Performance comparison between models for 5 individual runs with different random seeds (mean in bold).",
+   "page": 5
+  }
+ },
+ "doubts": "The main figure shows the 5 individual seed curves around the mean rather than a computed band; I count this displayed spread across seeds as seed-based uncertainty; Figure 4 uses ± SEM with no stated source."
+}

@@ -1,0 +1,13 @@
+{
+ "id": "LR12",
+ "coder": "S1",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "unstated",
+   "quote": "Values shown as “mean±std” represent the mean and standard deviation. Each value represents the average performance over 10 evaluation episodes with 5 seeds and 3 thresholds.",
+   "page": 8
+  }
+ },
+ "doubts": "The std is not said to be over seeds: it could be over the 5 seeds, over the 15 seed-threshold combinations, or pooled with episodes; I code unstated, pooled is possible."
+}

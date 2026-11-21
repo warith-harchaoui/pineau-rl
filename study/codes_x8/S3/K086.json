@@ -1,0 +1,13 @@
+{
+ "id": "K086",
+ "coder": "S3",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "other",
+   "quote": "estimate robustness of perfomance to allocation as the variance of this trend.",
+   "page": 12
+  }
+ },
+ "doubts": "Source is the confidence band of a regression fit across performance thresholds (Figure 8), not across training seeds; seeds enter only through bootstrap estimates in the appendix."
+}

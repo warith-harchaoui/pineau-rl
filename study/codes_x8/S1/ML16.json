@@ -1,0 +1,13 @@
+{
+ "id": "ML16",
+ "coder": "S1",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "averaging results over 4 seeds and present the results with mean and standard deviations.",
+   "page": 6
+  }
+ },
+ "doubts": "The main Table 1 reports an aggregated 'mean deviation across different task groups', i.e. a mean of per-task deviations, which I read as derived from the per-task std over the 4 seeds stated in the Evaluation paragraph."
+}

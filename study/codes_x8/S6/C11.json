@@ -1,0 +1,13 @@
+{
+ "id": "C11",
+ "coder": "S6",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "unstated",
+   "quote": "Figure 8. The time required to achieve a reward of 6000 on the [...] Humanoid-v1 task. RLlib implementations of ES and PPO outperform highly optimized reference optimizations.",
+   "page": 8
+  }
+ },
+ "doubts": "Figure 8 (main ES/PPO comparison) shows error bars never defined anywhere, and the text speaks of a median time; Figures 5 and 7 are throughput results with no definition of spread either."
+}

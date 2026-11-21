@@ -1,0 +1,13 @@
+{
+ "id": "LR09",
+ "coder": "S6",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "unstated",
+   "quote": "Table 1: Converged average test success rate ± standard error (%) on Meta-World.",
+   "page": 8
+  }
+ },
+ "doubts": "The average is said elsewhere to be over six random seeds, so the standard error is probably across seeds, but no sentence says what it is computed over; a lenient reading would give yes/seeds."
+}

@@ -1,0 +1,13 @@
+{
+ "id": "LR02",
+ "coder": "S3",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "pooled",
+   "quote": "Average scores and standard deviations are computed over 100 trajectories and 5 training seeds in simulation.",
+   "page": 8
+  }
+ },
+ "doubts": "The wording suggests one standard deviation over all 500 trajectories (pooled), but it could be read as a std of seed means; I coded pooled."
+}

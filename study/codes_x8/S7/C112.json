@@ -1,0 +1,13 @@
+{
+ "id": "C112",
+ "coder": "S7",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "Figure 3 shows the mean and standard deviation of the [...] reward across 5 runs with different random seeds obtained",
+   "page": 5
+  }
+ },
+ "doubts": "The sentence names SOM's curve; I assume the other methods' bands in Figure 3 are computed the same way."
+}

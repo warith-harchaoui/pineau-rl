@@ -1,0 +1,13 @@
+{
+ "id": "K049",
+ "coder": "S6",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "unstated",
+   "quote": "Figure 2: Overall results for adapted MPE environments.",
+   "page": 7
+  }
+ },
+ "doubts": "Results are averaged over seeds 113-120 (appendix) but the bands of Figures 2 and 4 and the standard-deviation bars of Figures 3 and 6 are never tied to seeds."
+}

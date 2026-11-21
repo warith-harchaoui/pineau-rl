@@ -1,0 +1,13 @@
+{
+ "id": "C24",
+ "coder": "S1",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "The plots in this section show the mean value of 20 test-time training curves as a solid line, while the shaded area represents the interquartile range.",
+   "page": 5
+  }
+ },
+ "doubts": "The spread is over 20 independent test-time trainings (each on a freshly sampled randomized environment) of a single meta-learned loss; the outer-loop meta-training itself is not repeated, so the band mixes training seeds and task variation."
+}

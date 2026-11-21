@@ -1,0 +1,13 @@
+{
+ "id": "K052",
+ "coder": "S5",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "unstated",
+   "quote": "Table 1. Performance comparison against SPH baselines on five datasets. Bold and underline are used to indicate the best and second-best",
+   "page": 7
+  }
+ },
+ "doubts": "The ± in Table 1 is never defined; given 100 test instances and deterministic SCIP baselines it is probably over test instances, but the paper does not say."
+}

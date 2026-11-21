@@ -1,0 +1,13 @@
+{
+ "id": "K089",
+ "coder": "S4",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "We evaluate the average performance over 100K steps with five random seeds. Shaded regions denote [...] standard error.",
+   "page": 9
+  }
+ },
+ "doubts": "The caption names five seeds and standard error side by side without explicitly saying the SE is across seeds; read as unambiguous."
+}

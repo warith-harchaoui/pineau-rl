@@ -1,0 +1,13 @@
+{
+ "id": "C115",
+ "coder": "S1",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "All results are averaged over 20 runs and are reported with 95% confidence intervals.",
+   "page": 7
+  }
+ },
+ "doubts": "The paper says runs, not seeds; I read each run as an independent repetition of the whole learning process (appendix: 20 independent runs), hence seeds."
+}

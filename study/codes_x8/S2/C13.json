@@ -1,0 +1,13 @@
+{
+ "id": "C13",
+ "coder": "S2",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "other",
+   "quote": "joint distribution-sampling and policy-execution process",
+   "page": 6
+  }
+ },
+ "doubts": "The 95% CIs are over sampled MDPs from the task distribution and policy executions (task samples), not over independent training runs."
+}

@@ -1,0 +1,13 @@
+{
+ "id": "K085",
+ "coder": "S4",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "unstated",
+   "quote": "these results with IQM HNS ± 95% confidence intervals.",
+   "page": 7
+  }
+ },
+ "doubts": "The CI method is not stated; per-environment IQM from 3 seeds x 100 episodes suggests episodes pooled across seeds."
+}

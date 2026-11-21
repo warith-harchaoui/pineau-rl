@@ -1,0 +1,13 @@
+{
+ "id": "K017",
+ "coder": "S2",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "unstated",
+   "quote": "results use 6 seeds, each evaluated at the final step with 20 episodes.",
+   "page": 8
+  }
+ },
+ "doubts": "Caption gives ±std and says 6 seeds × 20 episodes, but does not say whether the std is across seeds or pooled over the 120 episodes; likely across seeds."
+}

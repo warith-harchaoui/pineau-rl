@@ -1,0 +1,13 @@
+{
+ "id": "ML15",
+ "coder": "S8",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "We report the normalized average scores over five random seeds with standard deviations reported.",
+   "page": 6
+  }
+ },
+ "doubts": "The standard deviations are tied to the seeds only by being in the same sentence; the aggregated offline RL Table 2 carries no ±, so I decide on Table 1 and the appendix Table 5 which use the same wording."
+}

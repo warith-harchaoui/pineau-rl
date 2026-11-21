@@ -1,0 +1,13 @@
+{
+ "id": "C19",
+ "coder": "S3",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "unstated",
+   "quote": "The averaged sum of rewards and standard errors are shown",
+   "page": 5
+  }
+ },
+ "doubts": "Section 3 says the same 10 seeds are used for every PPO task, so the standard errors are very likely across seeds, but no caption or sentence ties the standard errors to the seeds."
+}

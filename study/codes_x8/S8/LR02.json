@@ -1,0 +1,13 @@
+{
+ "id": "LR02",
+ "coder": "S8",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "pooled",
+   "quote": "Average scores and standard deviations are computed over 100 trajectories and 5 training seeds in simulation.",
+   "page": 8
+  }
+ },
+ "doubts": "The wording suggests one standard deviation over trajectories and seeds together, but it could also be over per-seed means; the real-world columns are not explained further."
+}

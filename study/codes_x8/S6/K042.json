@@ -1,0 +1,13 @@
+{
+ "id": "K042",
+ "coder": "S6",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "other",
+   "quote": "The aggregate return metrics with standard deviations, [...] computed over all environments on Atari, MinAtar and Octax.",
+   "page": 7
+  }
+ },
+ "doubts": "Table 1 (main) gives standard deviations across environments (five seeds per run, but the spread is said to come from the range of returns across environments), so source other; the appendix Figure 5 gives IQM 95% CIs over environment and seed runs, and the curves of Figure 3 have undefined bands."
+}

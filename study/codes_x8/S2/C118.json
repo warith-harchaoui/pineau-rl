@@ -1,0 +1,13 @@
+{
+ "id": "C118",
+ "coder": "S2",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "pooled",
+   "quote": "consists of the mean of N × T immediate rewards,",
+   "page": 7
+  }
+ },
+ "doubts": "The 95% CI pools N repetitions and T steps in one spread; the text also says all learners employ the same random seed."
+}

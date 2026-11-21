@@ -1,0 +1,13 @@
+{
+ "id": "K043",
+ "coder": "S1",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "Results are averaged over three seeds, and the shade represents the standard deviation.",
+   "page": 8
+  }
+ },
+ "doubts": "Figure 4 (MuJoCo, five seeds) does not define its shade in the caption, though the checklist says all curves show standard deviation across random seeds."
+}

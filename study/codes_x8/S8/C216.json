@@ -1,0 +1,13 @@
+{
+ "id": "C216",
+ "coder": "S8",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "In all our simulation results, each plot shows a 95% confidence interval of the mean across 5 seeds.",
+   "page": 7
+  }
+ },
+ "doubts": "The real-robot table (Figure 8) reports mean and standard deviation over 15 test rollouts, but the main conclusion rests on the simulation curves."
+}

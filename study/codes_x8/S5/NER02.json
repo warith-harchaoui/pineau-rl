@@ -1,0 +1,13 @@
+{
+ "id": "NER02",
+ "coder": "S5",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "For evaluation, all experiments are conducted using five different random seeds. The mean of received return is plotted as the bold line, with 95% bootstrapped confidence intervals of the mean indicated by the shaded region.",
+   "page": 7
+  }
+ },
+ "doubts": "Table 1 ± (converged values of Figure 3) is not defined separately."
+}

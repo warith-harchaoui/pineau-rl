@@ -1,0 +1,13 @@
+{
+ "id": "C111",
+ "coder": "S2",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "unstated",
+   "quote": "Figure 2. The globally averaged returns for Cooperative Navigation, when neural networks are used for function approximation.",
+   "page": 8
+  }
+ },
+ "doubts": "The appendix says Figure 2 reports returns from 10 test runs, but never says what the shaded band is computed over."
+}

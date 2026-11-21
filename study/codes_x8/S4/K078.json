@@ -1,0 +1,13 @@
+{
+ "id": "K078",
+ "coder": "S4",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "episodes",
+   "quote": "All results are reported with mean and std over 10 runs.",
+   "page": 8
+  }
+ },
+ "doubts": "\"Runs\" is ambiguous, but the reward metric is defined as average episode return over 10 runs against fixed pretrained victims, so the runs are evaluation episodes, not trainings."
+}

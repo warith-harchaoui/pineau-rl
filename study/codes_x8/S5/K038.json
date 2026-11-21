@@ -1,0 +1,13 @@
+{
+ "id": "K038",
+ "coder": "S5",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "Justification: Error bars in figures depict one standard error across random seeds. We used 5",
+   "page": 24
+  }
+ },
+ "doubts": "Definition is only in the NeurIPS checklist; Table 1 ± (numerical version of Figure 1) is not defined in its caption."
+}

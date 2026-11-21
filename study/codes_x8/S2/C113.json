@@ -1,0 +1,13 @@
+{
+ "id": "C113",
+ "coder": "S2",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "average performance with 90% bootstrap confidence intervals.",
+   "page": 7
+  }
+ },
+ "doubts": "The bootstrap intervals are not explicitly tied to the 10 seeded runs, but the preceding sentence ('Each experiment is run 10 times with a random policy initialization and seed') makes the runs the evident unit."
+}

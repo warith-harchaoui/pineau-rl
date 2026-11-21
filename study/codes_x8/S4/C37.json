@@ -1,0 +1,13 @@
+{
+ "id": "C37",
+ "coder": "S4",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "All the results are averaged over 1000 runs.",
+   "page": 7
+  }
+ },
+ "doubts": "The 95% confidence interval (about ±6 on the relative pseudo-regret) is not explicitly said to be computed across the 1000 runs, though each run is an independent learning run and the interval is on their average; Q*bert result is a single run."
+}

@@ -1,0 +1,13 @@
+{
+ "id": "K083",
+ "coder": "S7",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "All results are reported using IQM and confidence interval on 5 seeds and over all games.",
+   "page": 5
+  }
+ },
+ "doubts": "The IQM interval is aggregated over seeds and games together (stratified bootstrap style), which I still count as seeds."
+}

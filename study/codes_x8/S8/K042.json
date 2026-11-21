@@ -1,0 +1,13 @@
+{
+ "id": "K042",
+ "coder": "S8",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "other",
+   "quote": "The aggregate return metrics with standard deviations, computed over all environments on Atari, MinAtar and Octax.",
+   "page": 7
+  }
+ },
+ "doubts": "The standard deviations of the main Table 1 are over environments (with five seeds per experiment), and the IQM intervals of Figure 5 are computed over all environment and seed runs pooled."
+}

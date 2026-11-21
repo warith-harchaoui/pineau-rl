@@ -1,0 +1,13 @@
+{
+ "id": "C21",
+ "coder": "S6",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "unstated",
+   "quote": "Figure 2: Different [...] metrics on the taxi problem [...] with different penalty weights [...] w.",
+   "page": 8
+  }
+ },
+ "doubts": "Error bars in Figure 2 and bands in Figure 3 are never defined, and no number of runs or seeds is given."
+}

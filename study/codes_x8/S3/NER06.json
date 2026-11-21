@@ -1,0 +1,13 @@
+{
+ "id": "NER06",
+ "coder": "S3",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "unstated",
+   "quote": "Each curve shows the average NSW over 5 seeds and 10 evaluation episodes per seed.",
+   "page": 8
+  }
+ },
+ "doubts": "Figure 4 (main D4MORL result) shows error bars that are never defined; the tabular Random MOMDP Figure 2 gives 95% CIs over 1000 seeds and appendix Figure 8 gives standard errors over 10 seeds and 10 episodes, neither carrying the main conclusion."
+}

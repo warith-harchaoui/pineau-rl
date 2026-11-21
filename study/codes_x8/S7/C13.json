@@ -1,0 +1,13 @@
+{
+ "id": "C13",
+ "coder": "S7",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "other",
+   "quote": "We provide 95% confidence intervals over the [...] joint distribution-sampling and policy-execution process",
+   "page": 6
+  }
+ },
+ "doubts": "The intervals are over sampled tasks (MDPs drawn from the distribution) and policy execution, not over independent training seeds; I put source other rather than episodes."
+}

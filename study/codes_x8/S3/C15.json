@@ -1,0 +1,13 @@
+{
+ "id": "C15",
+ "coder": "S3",
+ "criteria": {
+  "X8": {
+   "value": "yes",
+   "source": "seeds",
+   "quote": "algorithm is run with 3 random seeds, and in all plots we [...] show minimum, mean, and maximum performance.",
+   "page": 5
+  }
+ },
+ "doubts": "The band is min-max over the 3 seeds rather than a std or interval, but it is a spread across seeds; figure captions themselves do not define it."
+}

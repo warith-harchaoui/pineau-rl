@@ -1,0 +1,13 @@
+{
+ "id": "K012",
+ "coder": "S5",
+ "criteria": {
+  "X8": {
+   "value": "no",
+   "source": "unstated",
+   "quote": "use average displacement per timestep as a chance baseline. Error bars reflect 95% CI.",
+   "page": 9
+  }
+ },
+ "doubts": "The main conclusion (planning-like behaviour, Figs 3-5) has 95% CIs with no stated source (Fig 3 GLM pools 7978 decisions of five agents); Figure 2 performance curves are over 5 seeds with one std, which would give yes if taken as the main result."
+}
