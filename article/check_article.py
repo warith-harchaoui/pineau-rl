@@ -175,6 +175,10 @@ _n = 5
 _df = lambda r: (r / _n + 1 / _n) ** 2 / ((r / _n) ** 2 / (_n - 1) + (1 / _n) ** 2 / (_n - 1))
 _dfmin = min(_df(10 ** (k / 100)) for k in range(-600, 601))
 assert abs(_dfmin - (_n - 1)) < 1e-3 and _n - 1 > 3.4
+from scipy.stats import t as _student
+_crit = [_student.ppf(0.975, d) for d in range(4, 9)]  # two groups of five: between 4 and 8 degrees of freedom
+assert all(2 < c < 3 for c in _crit)                     # so a t of three always clears the 5% threshold
+claim("t of three clears the threshold", "un t de trois suffit déjà à franchir ce seuil", "a t of three already clears that threshold")
 claim("Welch df floor", *both(lambda l: (f"donne toujours au moins {_n - 1} degrés de liberté. Avec {num(3.4, l, 1)}" if l == "fr" else
                                          f"always gives at least {_n - 1} degrees of freedom. At {num(3.4, l, 1)}")))
 claim("PPO with the script never reaches 9", "le même calcul n'atteint jamais 9", "the same computation never reaches 9")
