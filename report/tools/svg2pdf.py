@@ -33,7 +33,9 @@ def main(args):
             w, h = size(svg)
             css = (f"@page{{size:{w}px {h}px;margin:0}}"
                    f"html,body{{margin:0;padding:0;width:{w}px;height:{h}px;overflow:hidden;background:#fff}}"
-                   "svg{display:block}")
+                   "svg{display:block}"
+                   # no ligatures: Ghostscript (build.sh) drops their ToUnicode entry, « chiffré » would read « chiré »
+                   "text{font-variant-ligatures:none}")
             page.set_content(f'<!doctype html><html><head><meta charset="utf-8"><style>{css}</style></head>'
                              f"<body>{svg}</body></html>")
             page.evaluate("document.fonts.ready.then(() => true)")

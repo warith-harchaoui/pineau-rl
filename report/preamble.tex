@@ -1,12 +1,16 @@
 % Shared preamble of the technical report, French (rapport.tex) and English (report-en.tex).
 % The main file sets \reportlang to fr or en before \input{preamble}.
-% LuaLaTeX + biber. Fonts: the house family of the figures, Roboto Serif for the text, Roboto for
-% headings and captions, Roboto Mono for code and numbers set as code.
+% LuaLaTeX + biber. Fonts: Latin Modern for text, headings and code, Latin Modern Math for formulas;
+% the figures are drawn in the same Latin Modern.
 \documentclass[11pt,a4paper,oneside]{report}
 \usepackage[a4paper,top=2.6cm,bottom=2.8cm,inner=2.7cm,outer=2.7cm,headheight=14pt]{geometry}
 
 % The LaTeX fonts throughout: Latin Modern for text, headings and code, Latin Modern Math for formulas
 \usepackage{fontspec}
+% The ffi and ffl ligatures are set as ff + i and ff + l: Ghostscript (build.sh) loses their ToUnicode entry,
+% and pdftotext, search and copy-paste then read « ofÏciel ». The ff, fi and fl ligatures survive it.
+\directlua{fonts.handlers.otf.addfeature{name="noffi",type="multiple",data={["f_f_i"]={"f_f","i"},["f_f_l"]={"f_f","l"}}}}
+\defaultfontfeatures{RawFeature=+noffi}
 \setmainfont{Latin Modern Roman}
 \setsansfont{Latin Modern Sans}
 \setmonofont{Latin Modern Mono}
@@ -81,7 +85,7 @@
 \newtcolorbox{notebox}[1][]{enhanced,colback=white,colframe=rulec,boxrule=0.6pt,arc=2pt,
   left=8pt,right=8pt,top=5pt,bottom=5pt,fontupper=\small,#1}
 
-% Headings in Roboto
+% Headings
 \usepackage{titlesec}
 \titleformat{\chapter}[display]{\headfont\color{ink}}
   {\color{accent}\rule{2.2em}{3pt}\\[6pt]\normalsize\MakeUppercase{\chaptertitlename}~\thechapter}{4pt}{\huge\bfseries}
