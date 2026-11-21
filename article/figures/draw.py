@@ -305,22 +305,80 @@ def hbars(f, items, lang, vmax, step, fmt, label_w, bar_h=22, gap=14, ref=None):
     return bottom + 24, X, ys
 
 
+def waffle(s, x, y, cell, gap, value, col, empty=GRID, outline=None):
+    """100 squares, 10 by 10, filled row by row from the top left; a fractional value fills part of the last
+    square. outline (a number of squares) draws a dashed frame around the first `outline` squares."""
+    full, frac = int(value), value - int(value)
+    for k in range(100):
+        cx, cy = x + (k % 10) * (cell + gap), y + (k // 10) * (cell + gap)
+        if k < full:
+            s.rect(cx, cy, cell, cell, col, rx=1.5)
+        else:
+            s.rect(cx, cy, cell, cell, empty, rx=1.5)
+            if k == full and frac > 0.05:
+                s.rect(cx, cy, cell * frac, cell, col, rx=1.5)
+    if outline:
+        # the first `outline` squares sit on the first row: frame them
+        w = outline * (cell + gap) - gap
+        s.rect(x - 2.5, y - 2.5, w + 5, cell + 5, "none", rx=3,
+               extra=f' stroke="{INK}" stroke-width="1.3" stroke-dasharray="3 2.5"')
+    return 10 * (cell + gap) - gap
+
+
+def waffles(f, items, lang, label_size, ref=None, note=None):
+    """A row of 100-square waffles, one per item (label, value in %, colour, bold). Under each: its value, big,
+    then its label. Returns the y below the row."""
+    s, L, W, mob = f.s, f.L, f.W, f.m
+    n = len(items)
+    gapx = 10 if mob else 22
+    side = (W - 2 * L - (n - 1) * gapx) / n
+    gap = 1.5 if mob else 2.5
+    cell = (side - 9 * gap) / 10
+    y = f.top + (22 if ref else 8)
+    big, small = (22, 15) if mob else (30, 19)
+    yv = y + side + big + 12  # one baseline for every value, big or small
+    yl = yv + 22
+    nl = max(len(wrap(lab, "sans7" if bold else "sans", label_size, side + gapx - 6)) for lab, _, _, bold in items)
+    for i, (lab, val, col, bold) in enumerate(items):
+        x = L + i * (side + gapx)
+        waffle(s, x, y, cell, gap, val, col, outline=ref)
+        if val == 0:
+            txt, face, size = ("aucun tirage" if lang == "fr" else "no draw"), "sans5", small - 3
+        else:
+            txt, face, size = pct(val, lang, 1 if val != int(val) else 0), "sans7", big if bold else small
+        s.text(x + side / 2, yv, txt, face, size, col if bold else INK2, "middle")
+        for j, ln in enumerate(wrap(lab, "sans7" if bold else "sans", label_size, side + gapx - 6)):
+            s.text(x + side / 2, yl + j * (label_size + 3), ln, "sans7" if bold else "sans",
+                   label_size, INK if bold else INK2, "middle")
+    yb = yl + (nl - 1) * (label_size + 3) + 14
+    if ref:
+        s.rect(L, f.top - 6, 14, 10, "none", rx=2, extra=f' stroke="{INK}" stroke-width="1.3" stroke-dasharray="3 2.5"')
+        s.text(L + 20, f.top + 3, ref_label(lang, ref), "sans5", 12, INK2)
+    if note:
+        for j, ln in enumerate(wrap(note, "sans5", 12.5, W - 2 * L)):
+            s.text(L, yb + 4 + j * 17, ln, "sans5", 12.5, INK2)
+        yb += 6 + 17 * len(wrap(note, "sans5", 12.5, W - 2 * L))
+    return yb
+
+
+def ref_label(lang, ref):
+    return (f"les {ref} premières cases : le seuil de {ref} % que le test accepte" if lang == "fr"
+            else f"the first {ref} squares: the {ref}% threshold the test accepts")
+
+
 def e1_faux_positifs(rows, lang, mob, title, sub, T):
     f = Fig(mob, title, sub, RED)
     f.desc = T["desc"]
-    f.top += 18 if mob else 22
-    items = [(r[0], float(r[1]), RED if i == len(rows) - 1 else GREY, i == len(rows) - 1) for i, r in enumerate(rows)]
-    y, X, ys = hbars(f, items, lang, 35, 10, lambda u: pct(u, lang, 1 if u and u < 10 else 0), 210,
-                     ref=(5, T["ref"]))
+    items = [(r[0], float(r[1]), RED if i == len(rows) - 1 else "#7D8694", i == len(rows) - 1) for i, r in enumerate(rows)]
+    y = waffles(f, items, lang, 11.5 if mob else 12.5, ref=5)
     return f.finish(y, T["source"])
 
 
 def t_de_neuf(rows, lang, mob, title, sub, T):
     f = Fig(mob, title, sub, RED)
     f.desc = T["desc"]
-    items = [(r[0], float(r[1]), RED if float(r[1]) > 0 else GREY, float(r[1]) > 0) for r in rows]
-    y, X, ys = hbars(f, items, lang, 40, 10, lambda u: pct(u, lang), 210)
-    i = max(range(len(rows)), key=lambda i: float(rows[i][1]))
+    items = [(r[0], float(r[1]), RED if float(r[1]) > 0 else "#7D8694", float(r[1]) > 0) for r in rows]
+    y = waffles(f, items, lang, 11 if mob else 12.5, note=T.get("note"))
     return f.finish(y, T["source"])
 
 
@@ -359,39 +417,55 @@ def classement_taches(rows, lang, mob, title, sub, T):
 
 
 def meilleurs_sur_dix(rows, lang, mob, title, sub, T):
+    """One row per task, one dot per algorithm at its inflation; the median as a bold dashed line; the two
+    extremes named. Every dot sits right of zero: the sorting always pays."""
     f = Fig(mob, title, sub, RED)
     f.desc = T["desc"]
     tasks = list(dict.fromkeys(r[0] for r in rows))
     algos = list(dict.fromkeys(r[1] for r in rows))
     V = {(r[0], r[1]): float(r[2]) for r in rows}
     s, L, W = f.s, f.L, f.W
-    lab_w = 84 if mob else 112
-    x0, x1 = L + lab_w, W - L - 40
+    f.top = f.legend([(a, ALGO_C[a]) for a in algos]) + 14
+    lab_w = 86 if mob else 112
+    x0, x1 = L + lab_w, W - L - 14
     vmax = 90
     X = lambda u: x0 + u / vmax * (x1 - x0)
-    f.top = f.legend([(a, ALGO_C[a]) for a in algos]) + 4
-    bh, bg, tg = (9, 3, 16) if mob else (10, 3, 18)
-    gh = len(algos) * (bh + bg) - bg
-    y = f.top + 6
-    top = y
-    for t in tasks:
-        s.text(x0 - 10, y + gh / 2 + 4.5, t, "sans7", 13, INK, "end")
-        for a in algos:
-            u = V[(t, a)]
-            s.rect(x0, y, X(u) - x0, bh, ALGO_C[a], rx=2)
-            s.text(X(u) + 5, y + bh - 1, pct(u, lang, sign=True), "sans5", 10.5, INK2)
-            y += bh + bg
-        y += tg - bg
-    bottom = y - tg + 6
-    grid = []
+    rh = 58 if mob else 64
+    r = 7.5 if mob else 9
+    top = f.top + 18
+    bottom = top + rh * len(tasks)
+    for i in range(len(tasks)):  # zebra panels first, then the grid on top of them
+        yc = top + i * rh + rh / 2
+        if i % 2 == 0:
+            s.rect(L - 4, yc - rh / 2 + 4, W - 2 * L + 8, rh - 8, PANEL, rx=6)
     for t in ticks(0, vmax, 20 if mob else 10):
-        grid.append(f'<line x1="{X(t):.1f}" y1="{top - 4:.1f}" x2="{X(t):.1f}" y2="{bottom:.1f}" stroke="{GRID if t else RULE}" stroke-width="1"/>')
+        s.line(X(t), top - 6, X(t), bottom, RULE if t == 0 else GRID, 1.4 if t == 0 else 1)
         s.text(X(t), bottom + 16, pct(t, lang, sign=True) if t else "0", "mono", 11, MUTED, "middle")
-    s.parts[:0] = grid
     med = T["median_value"]
-    s.line(X(med), top - 10, X(med), bottom, INK, 1.4, ' stroke-dasharray="4 3"')
-    s.text(X(med) + 6, top - 12, f"{T['median']} {pct(med, lang, sign=True)}", "sans7", 12, INK)
-    return f.finish(bottom + 24, T["source"])
+    lo = min(V.values()); hi = max(V.values())
+    for i, t in enumerate(tasks):
+        yc = top + i * rh + rh / 2
+        bg = PANEL if i % 2 == 0 else PAPER
+        s.text(x0 - 14, yc + 5, t, "sans7", 13.5 if not mob else 12.5, INK, "end", halo=bg)
+        vals = sorted(((V[(t, a)], a) for a in algos))
+        s.line(X(vals[0][0]), yc, X(vals[-1][0]), yc, RULE, 2)
+        placed = []  # (x, dy): each dot takes the free offset nearest the row's line, like a beeswarm
+        for v, a in vals:
+            x = X(v)
+            for k in range(8):
+                dy = 0 if k == 0 else (k + 1) // 2 * (r + 1.5) * (1 if k % 2 else -1)
+                if all((x - px) ** 2 + (dy - pdy) ** 2 >= (2 * r + 1) ** 2 for px, pdy in placed):
+                    break
+            placed.append((x, dy))
+            s.circle(x, yc + dy, r, ALGO_C[a], f' stroke="{PAPER}" stroke-width="2"')
+        up = min(d for _, d in placed)
+        down = max(d for _, d in placed)
+        for (v, a), (x, dy) in zip(vals, placed):
+            if v == hi:
+                s.text(x + r, yc + up - r - 8, f"{a} {pct(v, lang, sign=True)}", "sans7", 12, ALGO_C[a], "end", halo=bg)
+    s.line(X(med), top - 14, X(med), bottom, INK, 1.6, ' stroke-dasharray="5 4"')
+    s.text(X(med) + 7, top - 16, f"{T['median']} {pct(med, lang, sign=True)}", "sans7", 13, INK)
+    return f.finish(bottom + 26, T["source"])
 
 
 def physique_modifiee(rows, lang, mob, title, sub, T):
@@ -464,7 +538,7 @@ def grille_egale(rows, lang, mob, title, sub, T):
 
 
 def lines(f, series, lang, xlo, xhi, xstep, ylo, yhi, ystep, yfmt, colours, H, right, xlabel=None, hot=(),
-          xfmt=None):
+          xfmt=None, end_values=True):
     """Line chart with direct labels at the right end of each series."""
     s, L, W = f.s, f.L, f.W
     x0, x1 = L + 30, W - L - right
@@ -487,7 +561,7 @@ def lines(f, series, lang, xlo, xhi, xstep, ylo, yhi, ystep, yfmt, colours, H, r
         ends.append((name, Y(pts[-1][1]), col, pts[-1][1]))
     ly = spread([e[1] for e in ends], 17, top, top + H)
     for (name, yy, col, val), y2 in zip(ends, ly):
-        s.text(x1 + 10, y2 + 4.5, f"{name} {yfmt(val)}" if f.m is False else name, "sans7", 12.5, col)
+        s.text(x1 + 10, y2 + 4.5, f"{name} {yfmt(val)}" if f.m is False and end_values else name, "sans7", 12.5, col)
     if xlabel:
         s.text((x0 + x1) / 2, top + H + 38, xlabel, "sans", 12, INK2, "middle")
     return top, top + H + (44 if xlabel else 24), X, Y
@@ -542,14 +616,15 @@ def grpo_graines(rows, lang, mob, title, sub, T):
                        INK2, 2)
                 continue
             a, b = Y(float(v0)), Y(float(v100))
-            s.line(x, a, x, b, tint(col, 0.4), 2.4)
             dirn = -1 if b < a else 1
-            if abs(b - a) > 6:
-                s.path(f"M{x - 4.5:.1f},{b - dirn * 6.5:.1f} L{x:.1f},{b:.1f} L{x + 4.5:.1f},{b - dirn * 6.5:.1f}", col, 2.2)
+            if abs(b - a) < 12:  # a short move: push the head clear of the marker so it stays visible
+                b = a + dirn * 12
+            s.line(x, a, x, b, tint(col, 0.4), 2.4)
             if dev == "GPU":
                 s.circle(x, a, 4.6, INK2, f' stroke="{PAPER}" stroke-width="1.2"')
             else:
                 s.rect(x - 4, a - 4, 8, 8, PAPER, 1, f' stroke="{INK2}" stroke-width="1.6"')
+            s.path(f"M{x - 4.5:.1f},{b - dirn * 6.5:.1f} L{x:.1f},{b:.1f} L{x + 4.5:.1f},{b - dirn * 6.5:.1f}", col, 2.4)
             if dirn < 0:
                 s.text(x, b - 9, num(float(v100), lang), "sans7", 10.5 if mob else 11, col, "middle")
             elif gi % 2 == 0 and float(v100) >= 3:
@@ -600,6 +675,21 @@ def grpo_coupure(rows, lang, mob, title, sub, T):
                 s.rect(x, y, sz, sz, cols[k], rx=4)
                 x += sz + gp
         y += sz + (12 if mob else 14)
+    cut = sum(int(r[2]) for r in rows if r[1] == kinds[2])
+    total = sum(int(r[2]) for r in rows)
+    big = T["count"](cut, total)
+    if mob:
+        s.text(L, y + 30, big, "serif", 30, RED)
+        for j, ln in enumerate(wrap(T["count_note"], "sans5", 13, W - 2 * L)):
+            s.text(L, y + 52 + j * 17, ln, "sans5", 13, INK2)
+        y += 52 + 17 * len(wrap(T["count_note"], "sans5", 13, W - 2 * L))
+    else:
+        xb = L + lab_w + 8 * (sz + gp) + 26
+        yb = f.top + sz * 1.6
+        bs = min(44, 44 * (W - L - xb) / width(big, "serif", 44))
+        s.text(xb, yb, big, "serif", bs, RED)
+        for j, ln in enumerate(wrap(T["count_note"], "sans5", 14, W - L - xb)):
+            s.text(xb, yb + 30 + j * 19, ln, "sans5", 14, INK2)
     return f.finish(y - 4, T["source"])
 
 
@@ -614,8 +704,12 @@ def intensites(rows, lang, mob, title, sub, T):
     right = max(width(n, "sans7", 12.5) for n in names) + 18
     H = 220 if mob else 260
     top, bottom, X, Y = lines(f, series, lang, -40, 30, 20 if mob else 10, 0, 16, 4, lambda u: num(u, lang),
-                              colours, H, right, T["axis"], xfmt=lambda u: pct(u, lang, sign=True) if u else "0")
+                              colours, H, right, T["axis"], xfmt=lambda u: pct(u, lang, sign=True) if u else "0",
+                              end_values=False)
     s = f.s
+    pts = series[names[0]]
+    area = f"M{X(pts[0][0]):.1f},{Y(0):.1f} " + " ".join(f"L{X(x):.1f},{Y(v):.1f}" for x, v in pts) + f" L{X(pts[-1][0]):.1f},{Y(0):.1f} Z"
+    s.parts.insert(0, f'<path d="{area}" fill="{tint(colours[names[0]], 0.9)}"/>')
     zl = wrap(T["zero"], "sans5", 11.5, 110 if mob else 150)
     for i, ln in enumerate(zl):
         s.text(X(0), top + 12 + i * 14, ln, "sans5", 11.5, INK2, "middle")

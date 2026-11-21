@@ -424,8 +424,8 @@ def text(name, lang):
                  "CrossQ on Walker2d."),
         "meilleurs-sur-dix": dict(
             median="médiane" if fr else "median", median_value=E4MED,
-            source="Données : dix entraînements par algorithme et par tâche ; hausse de la moyenne des trois meilleurs sur celle des dix" if fr
-            else "Data: ten trainings per algorithm and task; rise of the mean of the best three over the mean of all ten",
+            source="Données : dix entraînements par algorithme et par tâche" if fr
+            else "Data: ten trainings per algorithm and task",
             desc=f"Seize barres, quatre par tâche : la moyenne gonfle de {P(6)} à {P(84)}, {P(E4MED)} en médiane." if fr
             else f"Sixteen bars, four per task: the mean inflates by {P(6)} to {P(84)}, {P(E4MED)} at the median."),
         "physique-modifiee": dict(
@@ -473,6 +473,9 @@ def text(name, lang):
                  "Nineteen arrows from the start to step 100, a cross for the stopped run. True reward: Qwen ends between "
                  "0 and 61%, Llama between 20 and 48%. Coin flip: 1% or less in all nine finished runs."),
         "grpo-coupure": dict(
+            count=lambda c, t: (f"{c} sur {t}" if fr else f"{c} of {t}"),
+            count_note=("réponses coupées | avant de donner un résultat, | toutes comptées fausses" if fr
+                        else "answers cut | before giving a result, | all counted wrong"),
             source="Données : le lot du pas 10 du pilote, réponses du modèle de départ, coupées à 160 jetons" if fr
             else "Data: the step-10 batch of the pilot, answers of the base model, cut at 160 tokens",
             desc="Quatre rangées de huit carrés, un par réponse : la plupart sont coupées avant la fin." if fr
