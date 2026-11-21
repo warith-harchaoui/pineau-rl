@@ -146,13 +146,13 @@ for lang in LANGS:
     csvp = write(f"physique_modifiee_{lang}", ["quarter", "product", "share"], rows)
     FIGS.setdefault("physique-modifiee", {})[lang] = ("bump", csvp, {
         "fr": ["--title", "Sur Hopper, le premier finit dernier",
-               "--set", "subtitle=Rang de quatre algorithmes, score de dix graines aléatoires en bout de ligne",
+               "--set", "subtitle=Rang de quatre programmes et leur score sur dix graines aléatoires",
                "--set", "rank_note=Physique modifiée : masses alourdies de 20 %, frottements réduits de 20 %",
                "--set", "finding=PPO (JAX), premier à l'entraînement, finit dernier ; CrossQ prend la tête.",
                "--set", "rank_label=Rang (1 en haut)", "--set", "x_label=",
                "--set", "tie_within=0", "--set", "width=760", "--set", "height=400"],
         "en": ["--title", "On Hopper, the leader ends last",
-               "--set", "subtitle=Rank of four algorithms, score over ten random seeds at each end of the line",
+               "--set", "subtitle=Rank of four programs and their score over ten random seeds",
                "--set", "rank_note=Modified physics: masses 20% heavier, friction 20% lower",
                "--set", "finding=PPO (JAX), first in training, ends last; CrossQ takes the lead.",
                "--set", "rank_label=Rank (1 at the top)", "--set", "x_label=",
@@ -268,11 +268,11 @@ for lang in LANGS:
             "--set", "width=760", "--set", "height=460", "--set", "right_margin=40"]
     FIGS.setdefault("intensites", {})[lang] = ("line-multi", csvp, {
         "fr": ["--title", "Plus la physique s'écarte, plus les agents perdent",
-               "--set", "subtitle=Sur 16 couples d'algorithme et de tâche, combien perdent une part détectable de leur score",
+               "--set", "subtitle=Sur 16 couples de programme et de tâche, combien perdent une part détectable de leur score",
                "--set", "y_label=Couples qui perdent (sur 16, plus bas est mieux)",
                "--set", "x_label=Écart à la physique d'entraînement (%)", *axis],
         "en": ["--title", "The further the physics moves, the more agents lose",
-               "--set", "subtitle=Out of 16 pairs of algorithm and task, how many lose a detectable share of their score",
+               "--set", "subtitle=Out of 16 pairs of program and task, how many lose a detectable share of their score",
                "--set", "y_label=Pairs that lose (out of 16, lower is better)",
                "--set", "x_label=Change from the training physics (%)", *axis]}[lang])
 
@@ -414,16 +414,16 @@ def text(name, lang):
             else "Five horizontal bars: four ways of computing give 0%; the 2017 script on TRPO, 38%."),
         "classement-taches": dict(
             first="1er" if fr else "1st",
-            source="Données : moyenne interquartile de dix graines aléatoires, par algorithme et par tâche" if fr
-            else "Data: interquartile mean over ten random seeds, per algorithm and task",
+            source="Données : moyenne interquartile de dix graines aléatoires, par programme et par tâche" if fr
+            else "Data: interquartile mean over ten random seeds, per program and task",
             desc="Quatre panneaux, un par tâche, barres classées : SAC en tête sur HalfCheetah, PPO (JAX) sur Hopper "
                  "et Swimmer, CrossQ sur Walker2d." if fr else
                  "Four panels, one per task, sorted bars: SAC leads on HalfCheetah, PPO (JAX) on Hopper and Swimmer, "
                  "CrossQ on Walker2d."),
         "meilleurs-sur-dix": dict(
             median="médiane" if fr else "median", median_value=E4MED,
-            source="Données : dix entraînements par algorithme et par tâche" if fr
-            else "Data: ten trainings per algorithm and task",
+            source="Données : dix entraînements par programme et par tâche" if fr
+            else "Data: ten trainings per program and task",
             desc=f"Seize barres, quatre par tâche : la moyenne gonfle de {P(6)} à {P(84)}, {P(E4MED)} en médiane." if fr
             else f"Sixteen bars, four per task: the mean inflates by {P(6)} to {P(84)}, {P(E4MED)} at the median."),
         "physique-modifiee": dict(
@@ -483,8 +483,8 @@ def text(name, lang):
             peak=lambda p: (f"{p[1]} sur 16 à {P(p[0], sign=True)}" if fr else f"{p[1]} of 16 at {P(p[0], sign=True)}"),
             yaxis="Couples qui perdent, sur 16 (plus bas est mieux)" if fr else "Pairs that lose, out of 16 (lower is better)",
             axis="Écart à la physique d'entraînement" if fr else "Change from the training physics",
-            source="Données : 16 couples d'algorithme et de tâche, dix graines aléatoires, une grandeur changée à la fois" if fr
-            else "Data: 16 pairs of algorithm and task, ten random seeds, one quantity changed at a time",
+            source="Données : 16 couples de programme et de tâche, dix graines aléatoires, une grandeur changée à la fois" if fr
+            else "Data: 16 pairs of program and task, ten random seeds, one quantity changed at a time",
             desc="Deux lignes en V : nulle perte à la physique d'entraînement, de plus en plus de couples perdent quand "
                  "masses ou frottements s'en écartent." if fr else
                  "Two V-shaped lines: no loss at the training physics, more and more pairs lose as masses or friction "

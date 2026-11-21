@@ -191,7 +191,7 @@ claim("t-de-neuf alt zeros", *both(lambda l: "script de 2017 : aucun tirage" if 
 # E4, E5 (sim/analysis/e4.json, e5.json).
 e4 = J("sim/analysis/e4.json")
 claim("E4 median range", *both(lambda l: f"{pct(e4['inflation_median'], l)} {'en médiane, de' if l == 'fr' else 'at the median, from'} {pct(e4['inflation_range'][0], l)} {'à' if l == 'fr' else 'to'} {pct(e4['inflation_range'][1], l)}"))
-claim("E4 reversals", *both(lambda l: f"{'Sur' if l == 'fr' else 'Of'} {e4['n_comparisons']} {'comparaisons entre deux algorithmes,' if l == 'fr' else 'comparisons between two algorithms,'} {e4['n_reversed']}"))
+claim("E4 reversals", *both(lambda l: f"{'Sur' if l == 'fr' else 'Of'} {e4['n_comparisons']} {'comparaisons entre deux programmes,' if l == 'fr' else 'comparisons between two programs,'} {e4['n_reversed']}"))
 ALG = ["sac", "crossq", "ppo_sb3", "ppo_sbx"]
 TK = ["HalfCheetah-v5", "Hopper-v5", "Walker2d-v5", "Swimmer-v5"]
 inf = lambda a, t: int(hu(e4["cells"][f"{a}/{t}"]["inflation"] * 100))
@@ -260,7 +260,7 @@ hs_ = [k for k in hk if not k.endswith("/1.0")]
 claim_("dose Hopper leader", *both(lambda l: (f"n'est plus premier à {sum(hk[k][0] != 'ppo_sbx' for k in hs_)} intensités sur {len(hs_)}" if l == "fr" else
                                          f"no longer first at {sum(hk[k][0] != 'ppo_sbx' for k in hs_)} strengths out of {len(hs_)}")))
 claim("dose reference at 0%", *both(lambda l: f"{'À' if l == 'fr' else 'At'} {pct(chg('1.0'), l)}{', la physique d' + Q + 'entraînement sert de référence' if l == 'fr' else ', the training physics serves as the reference'}"))
-claim("dose 16 pairs", "soit 16 couples d'algorithme et de tâche", "or 16 pairs of algorithm and task")
+claim("dose 16 pairs", "soit 16 couples de programme et de tâche", "or 16 pairs of program and task")
 assert len(ALG) * len(TK) == 16
 
 
@@ -297,8 +297,8 @@ hks = {k.split("/", 1)[1]: v["ranking"] for k, v in dss["ranking"].items() if k.
 assert hks["mass/1.0"][0] == "ppo_sbx"
 hss = [k for k in hks if not k.endswith("/1.0")]
 assert sum(hks[k][0] != "ppo_sbx" for k in hss) == sum(hk[k][0] != "ppo_sbx" for k in hs_)  # "with ten random seeds as with twenty"
-claim("dose Hopper leader, ten and twenty seeds", *both(lambda l: (f"n'est plus premier à {sum(hks[k][0] != 'ppo_sbx' for k in hss)} intensités sur {len(hss)}, avec dix graines aléatoires comme avec vingt" if l == "fr" else
-                                                       f"is no longer first at {sum(hks[k][0] != 'ppo_sbx' for k in hss)} strengths out of {len(hss)}, with ten random seeds as with twenty")))
+claim("dose Hopper leader, ten and twenty seeds", *both(lambda l: (f"n'est plus premier dans {sum(hks[k][0] != 'ppo_sbx' for k in hss)} physiques modifiées sur {len(hss)}, avec dix graines aléatoires comme avec vingt" if l == "fr" else
+                                                       f"is no longer first in {sum(hks[k][0] != 'ppo_sbx' for k in hss)} modified physics out of {len(hss)}, with ten random seeds as with twenty")))
 dls = {}
 for k, v in dss["ratio"].items():
     a, t, qn, st = k.split("/")
