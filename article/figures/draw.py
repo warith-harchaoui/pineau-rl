@@ -83,6 +83,11 @@ def pct(x, lang, nd=0, sign=False):
     return num(x, lang, nd, sign) + (" %" if lang == "fr" else "%")
 
 
+# The machine-readable mark of sprezzature (exports/provenance.py), copied verbatim so the drawing stays
+# standard-library only: IPTC DigitalSourceType trainedAlgorithmicMedia in XMP, for article 50 of the
+# European AI regulation. Nothing visible on the figure.
+AI_MARK = '<x:xmpmeta xmlns:x="adobe:ns:meta/"><rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"><rdf:Description rdf:about="" xmlns:Iptc4xmpExt="http://iptc.org/std/Iptc4xmpExt/2008-02-29/" xmlns:xmp="http://ns.adobe.com/xap/1.0/" xmlns:dc="http://purl.org/dc/elements/1.1/" Iptc4xmpExt:DigitalSourceType="http://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMedia" xmp:CreatorTool="sprezzature by Deraison"><dc:description><rdf:Alt><rdf:li xml:lang="fr">généré avec l\'aide de l\'IA de sprezzature par deraison.ai</rdf:li><rdf:li xml:lang="en">generated with the help of sprezzature AI by deraison.ai</rdf:li><rdf:li xml:lang="x-default">généré avec l\'aide de l\'IA de sprezzature par deraison.ai / generated with the help of sprezzature AI by deraison.ai</rdf:li></rdf:Alt></dc:description></rdf:Description></rdf:RDF></x:xmpmeta>'
+
 class Svg:
     def __init__(self, w):
         self.w, self.parts, self.used = w, [], set()
@@ -120,7 +125,8 @@ class Svg:
             f"{base64.b64encode((FONTS / (FACE[f][0] + '.woff2')).read_bytes()).decode()}) format('woff2')}}"
             for f in sorted(self.used))
         return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{self.w}" height="{h:.0f}" '
-                f'viewBox="0 0 {self.w} {h:.0f}" role="img" aria-labelledby="t d">'
+                f'viewBox="0 0 {self.w} {h:.0f}" role="img" aria-labelledby="t d" data-ai-assisted="true">'
+                f'<metadata id="sprezzature-ai-disclosure">{AI_MARK}</metadata>'
                 f'<title id="t">{escape(title)}</title><desc id="d">{escape(desc)}</desc>'
                 f'<defs><style>{css}text{{font-variant-numeric:tabular-nums}}</style></defs>'
                 f'<rect width="{self.w}" height="{h:.0f}" fill="{PAPER}"/>' + "".join(self.parts) + "</svg>\n")
