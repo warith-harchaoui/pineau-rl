@@ -1,0 +1,39 @@
+Latin Modern, copyright 2003--2021 by B. Jackowski and J.M. Nowacki (GUST e-foundry), on behalf of TeX Users
+Groups. https://www.gust.org.pl/projects/e-foundry/latin-modern
+
+The files lm-*.woff2 of this directory are subsets of the Latin Modern OpenType fonts of TeX Live
+(lmroman10-regular, lmromandemi10-regular, lmroman10-bold, lmroman12-bold, lmmono10-regular), made by
+build_latex.py: the characters of the house figures only, ligatures and kerning kept, outlines unchanged.
+As the clause below requests of derived works, the files carry new names; the fonts are declared in the
+figures under the CSS families "Latin Modern Roman" (10 pt designs), "Latin Modern Roman Large" (lmroman12-bold, for titles) and "Latin Modern Mono".
+They are distributed under the GUST Font License, reproduced below.
+
+-----------------------------------------------------------
+% This is version 1.0, dated 22 June 2009, of the GUST Font License.
+% (GUST is the Polish TeX Users Group, http://www.gust.org.pl)
+%
+% For the most recent version of this license see
+% http://www.gust.org.pl/fonts/licenses/GUST-FONT-LICENSE.txt
+% or
+% http://tug.org/fonts/licenses/GUST-FONT-LICENSE.txt
+%
+% This work may be distributed and/or modified under the conditions
+% of the LaTeX Project Public License, either version 1.3c of this
+% license or (at your option) any later version.
+%
+% Please also observe the following clause:
+% 1) it is requested, but not legally required, that derived works be
+%    distributed only after changing the names of the fonts comprising this
+%    work and given in an accompanying "manifest", and that the
+%    files comprising the Work, as listed in the manifest, also be given
+%    new names. Any exceptions to this request are also given in the
+%    manifest.
+%
+%    We recommend the manifest be given in a separate file named
+%    MANIFEST-<fontid>.txt, where <fontid> is some unique identification
+%    of the font family. If a separate "readme" file accompanies the Work,
+%    we recommend a name of the form README-<fontid>.txt.
+%
+% The latest version of the LaTeX Project Public License is in
+% http://www.latex-project.org/lppl.txt and version 1.3c or later
+% is part of all distributions of LaTeX version 2006/05/20 or later.

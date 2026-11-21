@@ -48,6 +48,9 @@ def pts(v, lang, sign=True):
 def interval_rows(f, items, lang, lo, hi, step, label_w, unit, zero=True, head=None, legend=None):
     """items: (label, value, low, high, colour, strong). Returns the y below the axis."""
     s, L, W = f.s, f.L, f.W
+    # the label column holds the widest label, measured in the face it is drawn in, inside the row's band
+    need = max(D.width(glue(lab).replace("|", ""), "sans7" if strong else "sans", 13) for lab, _, _, _, _, strong in items) + 14 + 2
+    label_w = max(label_w, need)
     x0, x1 = L + label_w, W - L - 40
     X = lambda u: x0 + (u - lo) / (hi - lo) * (x1 - x0)
     y = f.top + 4
@@ -82,7 +85,7 @@ def interval_rows(f, items, lang, lo, hi, step, label_w, unit, zero=True, head=N
         grid.append(f'<line x1="{X(t):.1f}" y1="{top:.1f}" x2="{X(t):.1f}" y2="{bottom:.1f}" '
                     f'stroke="{RULE if (zero and t == 0) else GRID}" stroke-width="{1.4 if (zero and t == 0) else 1}"/>')
         lab = (pts(t, lang, True) if zero else D.num(t, lang)) + ("" if zero else unit)
-        tx(s, X(t), bottom + 17, lab, "mono", 13, SOFT, "middle")
+        tx(s, X(t), bottom + 17, lab, "tick", 13, SOFT, "middle")
     s.parts[under:under] = grid
     return bottom + 22, X
 
@@ -263,7 +266,7 @@ def remesure_dumbbell(lang):
     for t in D.ticks(0, 100, 25):
         grid.append(f'<line x1="{X(t):.1f}" y1="{top:.1f}" x2="{X(t):.1f}" y2="{bottom:.1f}" stroke="{GRID}" '
                     f'stroke-width="1"/>')
-        tx(s, X(t), bottom + 17, D.num(t, lang) + unit, "mono", 13, SOFT, "middle")
+        tx(s, X(t), bottom + 17, D.num(t, lang) + unit, "tick", 13, SOFT, "middle")
     s.parts[under:under] = grid
     return G.finish(f, bottom + 22, "Données : study/RESULTS.md ; "
                                  "Pineau, NeurIPS 2018, diapositives 29 et 30" if fr else
@@ -308,7 +311,7 @@ def e1_henderson(lang):
     bottom = top + len(bars) * (bh + gap) - gap
     for t_ in D.ticks(0, 25, 5):
         s.line(X(t_), top - 4, X(t_), bottom + 4, RULE if t_ == 0 else GRID)
-        tx(s, X(t_), bottom + 20, D.num(t_, lang), "mono", 13, SOFT, "middle")
+        tx(s, X(t_), bottom + 20, D.num(t_, lang), "tick", 13, SOFT, "middle")
     for i, (lab, v) in enumerate(bars):
         yy = top + i * (bh + gap)
         hit = (lab, v) == script
@@ -365,7 +368,7 @@ def grpo_truncation(lang):
                 s.rect(L + lw + k * (cell + gap), yy, cell, cell, col, rx=4)
                 k += 1
         nc = cnt[p, kinds[2]]
-        tx(s, L + lw + 8 * (cell + gap) + 6, yy + cell / 2 + 5, f"{nc}/8", "mono", 13, REDT)
+        tx(s, L + lw + 8 * (cell + gap) + 6, yy + cell / 2 + 5, f"{nc}/8", "tick", 13, REDT)
     bx = L + lw + 8 * (cell + gap) + 64
     base = lambda i: top + i * (cell + gap) + cell / 2 + 5    # the baseline of row i's "n/8"
     yb = base(2)

@@ -5,11 +5,12 @@
 \documentclass[11pt,a4paper,oneside]{report}
 \usepackage[a4paper,top=2.6cm,bottom=2.8cm,inner=2.7cm,outer=2.7cm,headheight=14pt]{geometry}
 
+% The LaTeX fonts throughout: Latin Modern for text, headings and code, Latin Modern Math for formulas
 \usepackage{fontspec}
-\setmainfont{Roboto Serif}[Scale=0.94]
-\setsansfont{Roboto}
-\setmonofont{Roboto Mono}[Scale=MatchLowercase]
-\newfontfamily\headfont{Roboto}[UprightFont=*-Medium,BoldFont=*-Bold]
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+\setmonofont{Latin Modern Mono}
+\newcommand{\headfont}{\rmfamily}
 
 \def\langfr{fr}
 \newcommand{\iffr}[2]{\ifx\reportlang\langfr #1\else #2\fi}
@@ -17,6 +18,8 @@
 \usepackage{csquotes}
 \usepackage{microtype}
 \usepackage{amsmath,amssymb}
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
 \usepackage{siunitx}
 \ifx\reportlang\langfr \sisetup{locale=FR,group-minimum-digits=4,mode=text}\else \sisetup{locale=UK,group-separator={,},group-minimum-digits=4,mode=text}\fi
 
@@ -40,7 +43,7 @@
 \usepackage{booktabs,longtable,array,tabularx,multirow,threeparttable}
 \usepackage{makecell}
 \renewcommand{\arraystretch}{1.15}
-\usepackage[font={small,sf},labelfont={bf,sf},labelsep=period,justification=raggedright,singlelinecheck=false]{caption}
+\usepackage[font={small},labelfont={bf},labelsep=period,justification=raggedright,singlelinecheck=false]{caption}
 % Captions above tables (the generated tables put them first), below figures
 \captionsetup[table]{position=top,skip=6pt}
 \captionsetup[figure]{position=bottom,skip=8pt}
@@ -105,12 +108,12 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\sffamily\footnotesize\color{muted}\nouppercase{\leftmark}}
-\fancyhead[R]{\sffamily\footnotesize\color{muted}\iffr{Rapport technique}{Technical report}}
+\fancyhead[L]{\footnotesize\color{muted}\nouppercase{\leftmark}}
+\fancyhead[R]{\footnotesize\color{muted}\iffr{Rapport technique}{Technical report}}
 \fancyfoot[L]{\raisebox{-0.25\height}{\includegraphics[height=9pt]{logo-deraison}}\hspace{4pt}{\headfont\bfseries\footnotesize\color{ink}Deraison.ai}}
-\fancyfoot[R]{\sffamily\footnotesize\color{ink2}\thepage}
+\fancyfoot[R]{\footnotesize\color{ink2}\thepage}
 \renewcommand{\headrulewidth}{0pt}
-\fancypagestyle{plain}{\fancyhf{}\fancyfoot[L]{\raisebox{-0.25\height}{\includegraphics[height=9pt]{logo-deraison}}\hspace{4pt}{\headfont\bfseries\footnotesize\color{ink}Deraison.ai}}\fancyfoot[R]{\sffamily\footnotesize\color{ink2}\thepage}}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[L]{\raisebox{-0.25\height}{\includegraphics[height=9pt]{logo-deraison}}\hspace{4pt}{\headfont\bfseries\footnotesize\color{ink}Deraison.ai}}\fancyfoot[R]{\footnotesize\color{ink2}\thepage}}
 
 \setlength{\parskip}{0.45em}
 \setlength{\parindent}{0pt}

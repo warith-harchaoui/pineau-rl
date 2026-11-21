@@ -10,7 +10,8 @@ The survey flow and the repository each take two figures (flux-sondage and flux-
 architecture-2), so that every text prints at 13 px or more on a page no taller than 1.35 times its width.
 
 Hand-written SVG, Python standard library only, drawn with the article's toolkit (article/figures/draw.py, imported
-by path and left untouched): Roboto faces embedded as subsets, the house header and footer. Every text goes
+by path): its faces embedded as subsets (Latin Modern when tools/figures.py runs this with DRAW_FONTS=latex,
+Roboto otherwise), the house header and footer. Every text goes
 through `tx`, which refuses a character missing from the subset of its face. The same input gives the same bytes.
 """
 import datetime
@@ -57,8 +58,7 @@ def glue(t):
 def tx(s, x, y, t, face="sans", size=12, fill=INK, anchor="start", bg=PAPER, extra=""):
     """A text, after checking that every character exists in the subset of its face."""
     t = glue(t).replace("|", "")
-    glyphs = D.METRICS[D.FACE[face][0]]["w"]
-    bad = sorted({c for c in t if c not in glyphs})
+    bad = D.missing(t, face)
     if bad:
         raise ValueError(f"glyphs missing from {face}: {bad!r} in {t!r}")
     s.text(x, y, t, face, size, fill, anchor, extra, halo=bg)
@@ -127,7 +127,7 @@ def block(s, x, y, w, items, bg=PAPER):
             if len(ls) == 1:
                 if s:
                     tx(s, x + nw + 7, y + base, ls[0], "sans5", lsize, INK, bg=bg)
-                cy = base + 8
+                cy = math.ceil((base + 8) / 17.5) * 17.5  # on the line grid of the text, as in a card beside
             else:
                 ls = lines(label, "sans5", lsize, w)
                 cy = base + 4
@@ -154,7 +154,7 @@ def block(s, x, y, w, items, bg=PAPER):
             for a, b in rows:
                 cy += 20
                 if s:
-                    tx(s, x, y + cy - 5, a, "mono", 13, SOFT, bg=bg)
+                    tx(s, x, y + cy - 5, a, "tick", 13, SOFT, bg=bg)  # a year: a number, not code
                     tx(s, x + 50, y + cy - 5, b, "sans7", 15, col, bg=bg)
             cy += 3
     return cy

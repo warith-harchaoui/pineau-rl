@@ -6,19 +6,47 @@ titles, Roboto for text, Roboto Mono for numbers. fonts/ holds the subsets and t
 made once from the variable fonts of sprezzature-figures with fontTools; the drawing itself needs neither.
 Each figure exists in two widths: 760 px for a desktop column, 400 px for a phone. The same input always gives the
 same bytes.
+
+Two font sets, chosen by the environment variable DRAW_FONTS. The default, roboto, is the one above: the blog's.
+DRAW_FONTS=latex draws the same figures in Latin Modern, the fonts of the technical report (report/tools/figures.py
+sets it): Latin Modern Roman 12 bold for titles, Latin Modern Roman 10 for text (demibold where the Roboto set uses
+medium, bold where it uses bold) and for axis ticks, Latin Modern Mono for code. Its subsets and their widths
+(fonts/lm-*.woff2, fonts/metrics-latex.json) come from TeX Live through fonts/build_latex.py. Latin Modern looks
+smaller than Roboto at the same size, so the latex set never prints a text under 13 px: width() and Svg.text() apply
+that floor alike, and every wrap is computed with the size actually printed. The site's name stays in Satoshi
+bold, the brand's face, in both sets.
 """
-import base64, re, json, math
+import base64, re, json, math, os
 from pathlib import Path
 from xml.sax.saxutils import escape
 
 HERE = Path(__file__).resolve().parent
 FONTS = HERE / "fonts"
 METRICS = json.load(open(FONTS / "metrics.json", encoding="utf-8"))
+FONT_SET = os.environ.get("DRAW_FONTS", "roboto")
+if FONT_SET not in ("roboto", "latex"):
+    raise SystemExit(f"draw.py: DRAW_FONTS={FONT_SET!r}, expected 'roboto' (the default) or 'latex'")
+LATEX = FONT_SET == "latex"
 
-# Faces: (file, CSS family, weight)
-FACE = {"sans": ("roboto-400", "Roboto", 400), "sans5": ("roboto-500", "Roboto", 500),
-        "sans7": ("roboto-700", "Roboto", 700), "serif": ("roboto-serif-600", "Roboto Serif", 600),
-        "mono": ("roboto-mono-400", "Roboto Mono", 400), "brand": ("satoshi-700", "Satoshi", 700)}
+# Faces: (file, CSS family, weight). "tick" is the face of axis graduations: Roboto Mono in the Roboto set (an alias
+# of "mono", so the blog's SVGs keep their bytes), Latin Modern Roman in the latex set, where "mono" is for code.
+if LATEX:
+    METRICS.update(json.load(open(FONTS / "metrics-latex.json", encoding="utf-8")))
+    FACE = {"sans": ("lm-roman10-400", "Latin Modern Roman", 400), "sans5": ("lm-romandemi10-600", "Latin Modern Roman", 600),
+            "sans7": ("lm-roman10-700", "Latin Modern Roman", 700), "serif": ("lm-roman12-700", "Latin Modern Roman Large", 700),
+            "mono": ("lm-mono10-400", "Latin Modern Mono", 400), "tick": ("lm-roman10-400", "Latin Modern Roman", 400),
+            "brand": ("satoshi-700", "Satoshi", 700)}
+    ALIAS, MIN_SIZE = {}, 13
+else:
+    FACE = {"sans": ("roboto-400", "Roboto", 400), "sans5": ("roboto-500", "Roboto", 500),
+            "sans7": ("roboto-700", "Roboto", 700), "serif": ("roboto-serif-600", "Roboto Serif", 600),
+            "mono": ("roboto-mono-400", "Roboto Mono", 400), "brand": ("satoshi-700", "Satoshi", 700)}
+    ALIAS, MIN_SIZE = {"tick": "mono"}, 0
+
+
+def size_of(size):
+    """The size a text is printed at: the latex set raises anything under 13 px to 13 px; the Roboto set keeps it."""
+    return size if size >= MIN_SIZE else MIN_SIZE
 # The site's mark (fonts/logo-deraison.svg, the favicon of deraison.ai), drawn before its name in each footer.
 _LOGO = (FONTS / "logo-deraison.svg").read_text(encoding="utf-8")
 LOGO_VB = tuple(float(v) for v in _LOGO.split('viewBox="', 1)[1].split('"', 1)[0].split())
@@ -36,10 +64,32 @@ def tint(hex_, k):
     return "#%02X%02X%02X" % tuple(round(c + (255 - c) * k) for c in (r, g, b))
 
 
+def spaces(text, face):
+    """The latex set's no-break spaces, as LaTeX sets French: a thin space (U+202F, added to the Latin Modern subsets)
+    between the digits of 1 580, in 5 %, before ; ! ? » and after «, a word space elsewhere (before a colon, in
+    50 articles, in "as a % of").
+    Latin Modern's own U+00A0 is as wide as a figure. The line is already broken: a plain space no longer can.
+    The Roboto set keeps its text as it is."""
+    if not LATEX or "\u00a0" not in text:
+        return text
+    thin = "\u202f" if "\u202f" in METRICS[FACE[ALIAS.get(face, face)][0]]["w"] else " "
+    text = re.sub("(?<=\\d)\u00a0(?=\\d)", thin, text)
+    text = re.sub("(?<=\\d)\u00a0(?=%)", thin, text)
+    text = re.sub("\u00a0(?=[;!?»])", thin, text).replace("«\u00a0", "«" + thin)
+    return text.replace("\u00a0", " ")
+
+
 def width(text, face, size):
-    m = METRICS[FACE[face][0]]
+    m = METRICS[FACE[ALIAS.get(face, face)][0]]
     w = m["w"]
-    return sum(w.get(ch, w.get("n", 500)) for ch in text) * size / m["upm"]
+    text = spaces(text, face)
+    return sum(w.get(ch, w.get("n", 500)) for ch in text) * size_of(size) / m["upm"]
+
+
+def missing(text, face):
+    """The characters of text that the subset of face lacks (they would print in a fallback font)."""
+    w = METRICS[FACE[ALIAS.get(face, face)][0]]["w"]
+    return "".join(sorted({ch for ch in text if ch not in w}))
 
 
 def _GLUE(text):
@@ -103,6 +153,10 @@ class Svg:
         self.parts.append(s)
 
     def text(self, x, y, s, face="sans", size=13, fill=INK, anchor="start", extra="", halo=PAPER):
+        face, size = ALIAS.get(face, face), size_of(size)
+        s = spaces(s, face)
+        if missing(s, face):
+            raise ValueError(f"draw.py: {missing(s, face)!r} not in the {FACE[face][0]} subset, in {s!r}")
         self.used.add(face)
         fam, wt = FACE[face][1], FACE[face][2]
         a = "" if anchor == "start" else f' text-anchor="{anchor}"'
@@ -126,11 +180,12 @@ class Svg:
                  f'stroke-linecap="round"{extra}/>')
 
     def render(self, h, title, desc):
+        faces = list(dict.fromkeys(FACE[f] for f in sorted(self.used)))  # one rule per font file
         css = "".join(
-            f"@font-face{{font-family:'{FACE[f][1]}';font-weight:{FACE[f][2]};font-style:normal;"
+            f"@font-face{{font-family:'{fam}';font-weight:{wt};font-style:normal;"
             f"src:url(data:font/woff2;base64,"
-            f"{base64.b64encode((FONTS / (FACE[f][0] + '.woff2')).read_bytes()).decode()}) format('woff2')}}"
-            for f in sorted(self.used))
+            f"{base64.b64encode((FONTS / (file + '.woff2')).read_bytes()).decode()}) format('woff2')}}"
+            for file, fam, wt in faces)
         return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{self.w}" height="{h:.0f}" '
                 f'viewBox="0 0 {self.w} {h:.0f}" role="img" aria-labelledby="t d" data-ai-assisted="true">'
                 f'<metadata id="sprezzature-ai-disclosure">{AI_MARK}</metadata>'
@@ -259,16 +314,19 @@ def e1_graines(rows, lang, mob, title, sub, T):
     s.line(x0, ax, x1, ax, RULE)
     for t in ticks(lo, hi, 1000 if mob else 500):
         s.line(X(t), ax, X(t), ax + 4, RULE)
-        s.text(X(t), ax + 18, num(t, lang), "mono", 11.5, MUTED, "middle")
+        s.text(X(t), ax + 18, num(t, lang), "tick", 11.5, MUTED, "middle")
     s.text((x0 + x1) / 2, ax + 38, T["axis"], "sans", 12.5, INK2, "middle")
     med = (v[14] + v[15]) / 2
-    s.line(X(med), cy - (44 if mob else 54), X(med), ax, INK2, 1, ' stroke-dasharray="3 3"')
-    s.text(X(med), cy - (49 if mob else 60), f"{T['median']} {num(med, lang)}", "sans5", 12, INK2, "middle")
     # the three runs above the cut, a bracket and a note
     hiv = [u for u in v if u >= cut]
     bx0, bx1, by = X(min(hiv)) - r - 2, X(max(hiv)) + r + 2, cy - (22 if mob else 28)
-    s.path(f"M{bx0:.1f},{by + 6:.1f} V{by:.1f} H{bx1:.1f} V{by + 6:.1f}", RED, 1.5)
     note = wrap(T["note"], "sans5", 12 if mob else 13, (bx1 - bx0) + (60 if mob else 120))
+    my = cy - (49 if mob else 60)
+    if LATEX:  # the median's label on the baseline of the note's first line, across the figure
+        my = by - 8 - (len(note) - 1) * 16
+    s.line(X(med), my + 6 if LATEX else cy - (44 if mob else 54), X(med), ax, INK2, 1, ' stroke-dasharray="3 3"')
+    s.text(X(med), my, f"{T['median']} {num(med, lang)}", "sans5", 12, INK2, "middle")
+    s.path(f"M{bx0:.1f},{by + 6:.1f} V{by:.1f} H{bx1:.1f} V{by + 6:.1f}", RED, 1.5)
     for i, ln in enumerate(note):
         s.text(bx1, by - 8 - (len(note) - 1 - i) * 16, ln, "sans5", 12 if mob else 13, RED, "end")
     s.text(X(v[0]), ax - 8, num(v[0], lang), "sans5", 11, INK2, "middle")
@@ -310,7 +368,7 @@ def hbars(f, items, lang, vmax, step, fmt, label_w, bar_h=22, gap=14, ref=None):
     del s.parts[-len(grid):]
     s.parts[:0] = grid
     for t in ticks(0, vmax, step):
-        s.text(X(t), bottom + 16, fmt(t), "mono", 11, MUTED, "middle")
+        s.text(X(t), bottom + 16, fmt(t), "tick", 11, MUTED, "middle")
     if ref:
         val, lab = ref
         s.line(X(val), top - 4, X(val), bottom, INK2, 1.2, ' stroke-dasharray="4 3"')
@@ -453,7 +511,7 @@ def meilleurs_sur_dix(rows, lang, mob, title, sub, T):
             s.rect(L - 4, yc - rh / 2 + 4, W - 2 * L + 8, rh - 8, PANEL, rx=6)
     for t in ticks(0, vmax, 20 if mob else 10):
         s.line(X(t), top - 6, X(t), bottom, RULE if t == 0 else GRID, 1.4 if t == 0 else 1)
-        s.text(X(t), bottom + 16, pct(t, lang, sign=True) if t else "0", "mono", 11, MUTED, "middle")
+        s.text(X(t), bottom + 16, pct(t, lang, sign=True) if t else "0", "tick", 11, MUTED, "middle")
     med = T["median_value"]
     lo = min(V.values()); hi = max(V.values())
     for i, t in enumerate(tasks):
@@ -497,8 +555,9 @@ def physique_modifiee(rows, lang, mob, title, sub, T):
     s.line(xa, top - 2, xa, top + H, RULE)
     s.line(xb, top - 2, xb, top + H, RULE)
     rank = {p: sorted(algos, key=lambda a: -V[(p, a)]) for p in phases}
-    la = spread([Y(V[(phases[0], a)]) for a in algos], 30 if mob else 32, lo=top + 14)
-    lb = spread([Y(V[(phases[1], a)]) for a in algos], 30 if mob else 32, lo=top + 14)
+    bump = size_of(11) - 11  # the latex set prints the 11 px values at 13 px: two more pixels per line
+    la = spread([Y(V[(phases[0], a)]) for a in algos], (30 if mob else 32) + 2 * bump, lo=top + 14)
+    lb = spread([Y(V[(phases[1], a)]) for a in algos], (30 if mob else 32) + 2 * bump, lo=top + 14)
     for i, a in enumerate(algos):
         col = ALGO_C[a]
         hot = a in T["hot"]
@@ -509,7 +568,7 @@ def physique_modifiee(rows, lang, mob, title, sub, T):
         for x, yy, p, anchor, dx in ((xa, la[i], phases[0], "end", -12), (xb, lb[i], phases[1], "start", 12)):
             rk = rank[p].index(a) + 1
             s.text(x + dx, yy - 2, a, "sans7" if hot else "sans5", 12.5 if mob else 13, col, anchor)
-            s.text(x + dx, yy + 13, f"{num(V[(p, a)], lang)} · {T['rank'](rk)}", "sans5", 11, INK2, anchor)
+            s.text(x + dx, yy + 13 + bump, f"{num(V[(p, a)], lang)} · {T['rank'](rk)}", "sans5", 11, INK2, anchor)
     y = top + H + 26
     for ln in wrap(T["note"], "sans", 12, W - 2 * L):
         s.text(L, y, ln, "sans", 12, INK2)
@@ -532,7 +591,7 @@ def grille_egale(rows, lang, mob, title, sub, T):
     bottom = top + len(rows) * rh
     for t in ticks(lo, hi, 30 if mob else 15):
         s.line(X(t), top - 2, X(t), bottom, RULE if t == 0 else GRID, 1.4 if t == 0 else 1)
-        s.text(X(t), bottom + 16, num(t, lang, sign=True), "mono", 11, MUTED, "middle")
+        s.text(X(t), bottom + 16, num(t, lang, sign=True), "tick", 11, MUTED, "middle")
     for i, (g, mean, a, b) in enumerate(rows):
         mean, a, b = float(mean), float(a), float(b)
         y = top + i * rh + rh / 2
@@ -560,9 +619,9 @@ def lines(f, series, lang, xlo, xhi, xstep, ylo, yhi, ystep, yfmt, colours, H, r
     Y = lambda u: top + H - (u - ylo) / (yhi - ylo) * H
     for t in ticks(ylo, yhi, ystep):
         s.line(x0, Y(t), x1, Y(t), RULE if t == ylo else GRID)
-        s.text(x0 - 8, Y(t) + 4, yfmt(t), "mono", 11, MUTED, "end")
+        s.text(x0 - 8, Y(t) + 4, yfmt(t), "tick", 11, MUTED, "end")
     for t in ticks(xlo, xhi, xstep):
-        s.text(X(t), top + H + 18, (xfmt or str)(t), "mono", 11, MUTED, "middle")
+        s.text(X(t), top + H + 18, (xfmt or str)(t), "tick", 11, MUTED, "middle")
     ends = []
     for name, pts in series.items():
         col = colours[name]
@@ -602,6 +661,10 @@ def trajectoire(rows, lang, mob, title, sub, T):
                               lambda u: pct(u, lang), colours, 220 if mob else 260, right, T["axis"], end_fmt=ef)
     s = f.s
     xn = X(2019)
+    if LATEX and not mob:  # one line above the plot: two lines of Latin Modern at 13 px would cross the top series
+        s.line(xn, top - 24, xn, top + 260, INK2, 1, ' stroke-dasharray="3 3"')
+        s.text(xn + 6, top - 14, T["neurips"], "sans5", 11.5, INK2)
+        return f.finish(bottom, T["source"])
     s.line(xn, top - 6, xn, top + (220 if mob else 260), INK2, 1, ' stroke-dasharray="3 3"')
     for i, ln in enumerate(wrap(T["neurips"], "sans5", 11.5, 130 if mob else 170)):
         s.text(xn + 6, top + 4 + i * 15, ln, "sans5", 11.5, INK2)
@@ -621,7 +684,7 @@ def grpo_graines(rows, lang, mob, title, sub, T):
     Y = lambda u: top + H - u / 70 * H
     for t in ticks(0, 70, 10 if not mob else 20):
         s.line(x0, Y(t), x1, Y(t), RULE if t == 0 else GRID)
-        s.text(x0 - 8, Y(t) + 4, pct(t, lang), "mono", 11, MUTED, "end")
+        s.text(x0 - 8, Y(t) + 4, pct(t, lang), "tick", 11, MUTED, "end")
     gw = (x1 - x0) / len(groups)
     lsize = 11.5 if mob else 12.5
     for gi, g in enumerate(groups):

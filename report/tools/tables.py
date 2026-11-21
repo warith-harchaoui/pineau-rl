@@ -677,8 +677,8 @@ def t_e2():
     F = {k: J(f"sim/analysis/e2{k}.json") for k in ("", "_s20", "_equal", "_equal_s20")}
     B = {k: J(f"sim/analysis/e2_bonferroni{k}.json") for k in ("", "_s20")}
     for lang in LANGS:
-        head = [L(lang, r"Tâche, programme & 10 graines & 20 graines & Budget égal, 10 & Budget égal, 20",
-                  r"Task, program & 10 seeds & 20 seeds & Equal budget, 10 & Equal budget, 20")]
+        head = [L(lang, r"Tâche, programme & 10 graines & 20 graines & \makecell[r]{Budget égal\\10 graines} & \makecell[r]{Budget égal\\20 graines}",
+                  r"Task, program & 10 seeds & 20 seeds & \makecell[r]{Equal budget\\10 seeds} & \makecell[r]{Equal budget\\20 seeds}")]
         rows = []
         for t in TASKS:
             rows.append(rf"\multicolumn{{5}}{{@{{}}l}}{{\emph{{{T(t)}}}}}")
@@ -687,7 +687,9 @@ def t_e2():
                 for k, d in F.items():
                     r = d["tasks"][t]
                     nd = 0
-                    cells.append(bold(iqm_cell(r["iqm"][a], r["iqm_ci"][a], lang, nd, small=True), d["leaders"][t] == a))
+                    ci = r["iqm_ci"][a]  # interval under its IQM: four interval columns side by side overflow the text width
+                    cell = rf"\makecell[r]{{{num(r['iqm'][a], lang, nd)}\\{{\scriptsize {iv(num(ci[0], lang, nd), num(ci[1], lang, nd), lang)}}}}}"
+                    cells.append(bold(cell, d["leaders"][t] == a))
                 rows.append(" & ".join(cells))
             rows.append("MID")
         rows.append(L(lang, r"Changements de chef tranchés & ", r"Settled changes of leader & ")
@@ -705,7 +707,7 @@ def t_e2():
                 r"\textbf{In bold}, the leader of each task (highest IQM, no test). Last row: settled changes of leader, when the leader of one task is beaten by another program on another task with a probability-of-improvement interval that excludes 0.5; in parentheses, with the 24 intervals made simultaneous by Bonferroni (deviation 18, Table~\ref{tab:e2-bonferroni}). "
                 r"Sources: \file{sim/analysis/e2.json}, \file{e2\_s20.json}, \file{e2\_equal.json}, \file{e2\_equal\_s20.json}, \file{e2\_bonferroni.json}, \file{e2\_bonferroni\_s20.json}.")
         floattable("e2", lang, cap, L(lang, "E2 : IQM par programme et par tâche", "E2: IQM per program and task"),
-                   r"@{}lrrrr@{}", head, rows, tabcolsep="3.4pt")
+                   r"@{}lrrrr@{}", head, rows, tabcolsep="4pt")
 
 
 def pair_label(key, sep=" > "):

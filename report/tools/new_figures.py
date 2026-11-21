@@ -11,8 +11,8 @@ Eight figures, French and English, each read from the project's result files and
                                                                          b1_script.py, recomputed, checked against
                                                                          sim/analysis/b1_trpo.json, b1_script.json)
     grpo-courbes            sim/llm/results/<model>/mul2/<reward>/seed<k>.jsonl
-Writes report/figures/src/<name>-<lang>.svg, then report/figures/<name>-<lang>.pdf (rsvg-convert), and runs
-`sprezzature-figures check` on each SVG. Standard library and numpy only; the same input gives the same bytes.
+Writes report/figures/src/<name>-<lang>.svg and runs `sprezzature-figures check` on each; tools/figures.py, which
+runs this script with DRAW_FONTS=latex (the report's Latin Modern), converts them to PDF. Standard library and numpy only; the same input gives the same bytes.
 Run from anywhere:  python3 report/tools/new_figures.py [name ...]
 """
 import csv, json, math, re, subprocess, sys
@@ -191,13 +191,13 @@ def courbes_apprentissage(lang):
                 tk = ymax * q / 4
                 s.line(x0, Y(tk), x1, Y(tk), RULE if q == 0 else (PAPER if lead[t] == a else GRID), 1)
                 if q in (2, 4):  # no zero label: every baseline is zero, said in the note
-                    s.text(x0 - 5, Y(tk) + 4.5, num(tk, lang), "mono", T, MUTED, "end")
+                    s.text(x0 - 5, Y(tk) + 4.5, num(tk, lang), "tick", T, MUTED, "end")
             for frac in (0.5, 1):
                 xv = X(FINAL[a] * frac)
                 s.line(xv, y0 + ph, xv, y0 + ph + 3, RULE, 1)
                 if i in (1, 3) and frac == 1 and j == 0:  # one budget label per pair of rows
                     lab = num(FINAL[a] * frac / 1e6, lang, 1 if FINAL[a] * frac < 1e6 else 0) + " M"
-                    s.text(xv, y0 + ph + 18, lab, "mono", T, MUTED, "end" if frac == 1 else "middle")
+                    s.text(xv, y0 + ph + 18, lab, "tick", T, MUTED, "end" if frac == 1 else "middle")
             st = d["steps"]
             band = (" ".join(f"{'M' if k == 0 else 'L'}{X(u):.1f},{Y(v):.1f}" for k, (u, v) in enumerate(zip(st, d["hi"])))
                     + " " + " ".join(f"L{X(u):.1f},{Y(v):.1f}" for u, v in reversed(list(zip(st, d["lo"])))) + " Z")
@@ -300,10 +300,11 @@ def forest_criteres(lang):
             s.rect(L - 6, top + i * rh + 1, W - 2 * L + 12, rh - 2, tint(GREEN, 0.86), rx=4)
     for tk in ticks(0, 1, 0.25):
         s.line(XA(tk), top - 4, XA(tk), bottom, RULE if tk == 0 else GRID)
-        s.text(XA(tk), bottom + 15, pct(tk * 100, lang), "mono", 10.5, MUTED, "middle")
-    for tk in ticks(dlo, dhi, 15):
+        s.text(XA(tk), bottom + 15, pct(tk * 100, lang), "tick", 10.5, MUTED, "middle")
+    for tk in ticks(dlo, dhi, 15):  # a grid line every 15 points, a number every 30: room for 13 px numbers
         s.line(XB(tk / 100), top - 4, XB(tk / 100), bottom, INK2 if tk == 0 else GRID, 1.3 if tk == 0 else 1)
-        s.text(XB(tk / 100), bottom + 15, num(tk, lang, sign=True) if tk else "0", "mono", 10.5, MUTED, "middle")
+        if tk % 30 == 0:
+            s.text(XB(tk / 100), bottom + 15, num(tk, lang, sign=True) if tk else "0", "tick", 10.5, MUTED, "middle")
     for i, r in enumerate(rows):
         k, c = r["k"], r["classic_vs_ours2018"]
         y = top + i * rh + rh / 2
@@ -439,23 +440,28 @@ def e5_graines(lang):
              "program. One line per pair and task (24). In red, the pairs whose relative gap is under 20%."), RED)
     s, L, W = f.s, f.L, f.W
     NS = ["3", "5", "10", "20"]
-    gx = 58
-    pw = (W - 2 * L - 36 - gx - 2 * 92) / 2
+    # columns measured in the faces drawn: ticks | panel | direct labels | gap, ticks | panel | direct labels
+    lab = lambda d: ["médiane, toutes" if fr else "median, all",
+                     f"médiane, {d['n_close']} proches" if fr else f"median, {d['n_close']} close"]
+    tw = width(pct(100, lang), "tick", 10.5) + 9
+    lw = max(width(t, "sans7", 11.5) for d in data for t in lab(d)) + 13
+    gx = 18
+    pw = (W - 2 * L - 2 * tw - 2 * lw - gx) / 2
     H = 290
     top = f.top + 32
     for p, ((key, head), d) in enumerate(zip(sets, data)):
-        x0 = L + 36 + p * (pw + 92 + gx)
+        x0 = L + tw + p * (pw + lw + gx + tw)
         x1 = x0 + pw
         X = lambda n: x0 + (math.log(int(n)) - math.log(3)) / (math.log(20) - math.log(3)) * (x1 - x0)
         Y = lambda v: top + H - (v - 0.4) / 0.6 * H
         s.text(x0, top - 22, head, "sans7", 13, INK)
         for tk in ticks(0.4, 1, 0.1):
             s.line(x0, Y(tk), x1, Y(tk), RULE if tk == 0.4 else GRID)
-            s.text(x0 - 7, Y(tk) + 4, pct(tk * 100, lang), "mono", 10.5, MUTED, "end")
+            s.text(x0 - 7, Y(tk) + 4, pct(tk * 100, lang), "tick", 10.5, MUTED, "end")
         s.line(x0, Y(0.5), x1, Y(0.5), INK2, 1.2, ' stroke-dasharray="4 3"')
         s.text(x1 + 9, Y(0.5) + 4, "pile ou face" if fr else "coin flip", "sans5", 11.5, INK2)
         for n in NS:
-            s.text(X(n), top + H + 16, n, "mono", 11, MUTED, "middle")
+            s.text(X(n), top + H + 16, n, "tick", 11, MUTED, "middle")
         s.text((x0 + x1) / 2, top + H + 34, "graines par programme" if fr else "seeds per program", "sans", 11.5, INK2,
                "middle")
         comps = d["comparisons"]
@@ -474,10 +480,9 @@ def e5_graines(lang):
             s.circle(X(n), Y(mcl[n]), 4, RED, f' stroke="{PAPER}" stroke-width="1.3"')
         # direct labels at the right end
         ys = spread([Y(ma["20"]), Y(mcl["20"])], 34, top, top + H)
-        s.text(x1 + 9, ys[0] - 1, ("médiane, toutes" if fr else "median, all"), "sans7", 11.5, INK)
+        s.text(x1 + 9, ys[0] - 1, lab(d)[0], "sans7", 11.5, INK)
         s.text(x1 + 9, ys[0] + 13, pct(ma["20"] * 100, lang), "sans7", 12.5, INK)
-        s.text(x1 + 9, ys[1] - 1, (f"médiane, {d['n_close']} proches" if fr else f"median, {d['n_close']} close"),
-               "sans7", 11.5, RED)
+        s.text(x1 + 9, ys[1] - 1, lab(d)[1], "sans7", 11.5, RED)
         s.text(x1 + 9, ys[1] + 13, pct(rnd(mcl["20"] * 100), lang), "sans7", 12.5, RED)
     y = top + H + 62
     note = ("Pour chaque nombre de graines, 10 000 tirages avec remise parmi les essais de chaque programme. "
@@ -542,7 +547,9 @@ def e7_carte(lang):
             ci = (f"[{num(rnd(r['ci'][0] * 100), lang)} ; {num(rnd(r['ci'][1] * 100), lang)}]" if fr else
                   f"[{rnd(r['ci'][0] * 100)}, {rnd(r['ci'][1] * 100)}]")
             s.text(x + 14, y + 51, ci, "sans5", 11.5, INK, halo=bg)
-            s.text(x + 14, y + 68, vtxt, "sans7", 11.5, INK, halo=bg)
+            # demibold: "no detectable change" in Latin Modern bold is wider than the cell
+            assert x + 14 + width(vtxt, "sans5", 11.5) <= x + cw - 6, vtxt
+            s.text(x + 14, y + 68, vtxt, "sans5", 11.5, INK, halo=bg)
             # gauge: 0 to 115%, the IQM as a bar, its interval as a whisker, 100% as a tick
             gx0, gx1, gy = x + 14, x + cw - 16, y + ch - 22
             G = lambda u: gx0 + min(u, 1.15) / 1.15 * (gx1 - gx0)
@@ -616,7 +623,8 @@ def dose_carte(lang):
     f.src_size = 13
     s, L, W = f.s, f.L, f.W
     T = 13  # the smallest text: 13 px prints at 7.5 pt at text width
-    lab_w = 184
+    # the task's name, a gap, then the program's name, measured in their faces, then the cells
+    lab_w = max(184, max(width(TASK(t), "sans7", T) for t in TASKS) + 14 + max(width(NAME[a], "sans5", T) for a in ALGOS) + 8)
     cgap = 10
     cw = (W - 2 * L - lab_w - cgap) / 12
     rh, tg = 14.5, 6
@@ -634,7 +642,7 @@ def dose_carte(lang):
             s.text(gx0 + 3 * cw, y + 4, lab, "sans5", T, INK2, "middle")
             s.line(gx0 + 2, y + 10, gx0 + 6 * cw - 2, y + 10, RULE)
         for c, (qn, k) in enumerate(Q):
-            s.text(CX(c) + cw / 2, y + 28, num(float(k) * 100, lang), "mono", T, MUTED, "middle")
+            s.text(CX(c) + cw / 2, y + 28, num(float(k) * 100, lang), "tick", T, MUTED, "middle")
         top = y + 38
         Yr = lambda i: top + i * rh + (i // 4) * tg
         for i, (t, a) in enumerate(rows):
@@ -738,9 +746,15 @@ def b1_distribution(lang):
               "Grey: Welch t between seeds, averaged over the curve. Red: the computation of Henderson et al.'s "
               "script, which uses only the spread between episodes."), RED)
     s, L, W = f.s, f.L, f.W
-    lab_w = 74
-    x0, x1 = L + lab_w, W - L - 6
+    lab_w = max(74, width("HalfCheetah", "sans", 11.5) + 14)  # the row's label, then the axis
     lo, hi = math.log10(0.01), math.log10(100)
+    # right of Henderson's line, the shares beyond it, at their widest ("100,0 %"), stop at the right margin
+    wide = max(width(f"au-delà : {pct(100, lang, 1)} du script" if fr else f"beyond: {pct(100, lang, 1)} of the script",
+                     "sans7", 11.5),
+               width(f"et {pct(100, lang)} entre graines" if fr else f"and {pct(100, lang)} between seeds", "sans7", 11.5))
+    fh = (math.log10(HENDERSON_T) - lo) / (hi - lo)
+    x0 = L + lab_w
+    x1 = min(W - L - 6, x0 + (W - L - 7 - wide - x0) / fh)
     X = lambda v: x0 + (math.log10(max(v, 10 ** lo)) - lo) / (hi - lo) * (x1 - x0)
     edges = np.linspace(lo, hi, 61)
     H, room = 140, 40  # room: the top of each row, kept for the labels
@@ -799,7 +813,7 @@ def b1_distribution(lang):
             lab = num(v, lang, 2 if v < 0.1 else 1 if v < 1 else 0)
             if v == 0.01:
                 lab = ("0,01 ou moins" if fr else "0.01 or less")
-            s.text(X(v), yb + 16, lab, "mono", 10.5, MUTED, "start" if v == 0.01 else "end" if v == 100 else "middle")
+            s.text(X(v), yb + 16, lab, "tick", 10.5, MUTED, "start" if v == 0.01 else "end" if v == 100 else "middle")
     y = top + 2 * H + gap + 40
     s.text((x0 + x1) / 2, y, "|t| moyen sur la courbe, échelle logarithmique" if fr else
            "|t| averaged over the curve, logarithmic scale", "sans", 12, INK2, "middle")
@@ -871,9 +885,9 @@ def grpo_courbes(lang):
             for tk in ticks(0, 1, 0.25):
                 s.line(x0, Y(tk), x1, Y(tk), RULE if tk == 0 else GRID)
                 if j == 0:  # the two columns share their scale
-                    s.text(x0 - 6, Y(tk) + 4, pct(tk * 100, lang), "mono", 13, MUTED, "end")
+                    s.text(x0 - 6, Y(tk) + 4, pct(tk * 100, lang), "tick", 13, MUTED, "end")
             for tk in (0, 50, 100):
-                s.text(X(tk), y0 + ph + 18, str(tk), "mono", 13, MUTED, "start" if tk == 0 else "end" if tk == 100 else "middle")
+                s.text(X(tk), y0 + ph + 18, str(tk), "tick", 13, MUTED, "start" if tk == 0 else "end" if tk == 100 else "middle")
             if i == 1:
                 s.text((x0 + x1) / 2, y0 + ph + 38, "pas d'entraînement" if fr else "training steps", "sans", 13, INK2,
                        "middle")
@@ -940,12 +954,12 @@ def main(names):
     for name in names:
         for lang in ("fr", "en"):
             svg = FIGS[name](lang)
-            assert " " not in svg and "—" not in svg and "–" not in svg, name
+            # no dash; no narrow no-break space typed in a text (the latex set draws its own, see draw.spaces)
+            assert ("\u202f" not in svg or draw.LATEX) and "—" not in svg and "–" not in svg, name
             p = SRC / f"{name}-{lang}.svg"
             p.write_text(svg, encoding="utf-8")
-            subprocess.run(["rsvg-convert", "-f", "pdf", "-o", str(OUT / f"{name}-{lang}.pdf"), str(p)], check=True)
             # the title's first drawn line: a wrapped title is no single text element, so the whole of it is not found
-            title = re.search(r'font-family="Roboto Serif"[^>]*>([^<]*)</text>', svg).group(1)
+            title = re.search(f'font-family="{draw.FACE["serif"][1]}"[^>]*>([^<]*)</text>', svg).group(1)
             r = subprocess.run(["sprezzature-figures", "check", str(p), "--expect-title",
                                 title.replace("&amp;", "&").replace("&#x27;", "'")], capture_output=True, text=True)
             msg = (r.stdout + r.stderr).strip()

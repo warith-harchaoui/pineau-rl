@@ -8,10 +8,14 @@ Every number drawn here is read from a result file of the project, never typed b
     sim/llm/results/summary.json                                         (GRPO, true and coin-flip reward)
     docs/figures/data/grpo_truncation_{fr,en}.csv                        (counted by docs/figures/build.py from
                                                                           sim/llm/diag/replay_batch.json)
-Run from anywhere, CPU-light:  nice python3 article/figures/build.py
+Run from anywhere, CPU-light:  nice python3 article/figures/build.py [name ...]
 Writes data/<name>_<lang>.csv, then <name>-fr.svg and <name>-en.svg, and runs `sprezzature-figures check` on each.
+The technical report draws the same figures in its own fonts, into its own directory, desktop width only:
+    DRAW_FONTS=latex python3 article/figures/build.py --out DIR --data DIR2
+(--out: where the SVGs go, phone versions skipped; --data: where the CSVs go, default data/ here). Without these
+options nothing changes: the blog's figures, in Roboto, next to this file.
 """
-import csv, json, re, subprocess, sys
+import argparse, csv, json, re, subprocess, sys
 
 import draw
 from decimal import Decimal, ROUND_HALF_UP
@@ -19,8 +23,15 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
-DATA = HERE / "data"
-DATA.mkdir(exist_ok=True)
+_ap = argparse.ArgumentParser(description="Blog figures of the article (and the report's, with --out).")
+_ap.add_argument("names", nargs="*", help="figures to draw (default: all)")
+_ap.add_argument("--out", type=Path, help="write the SVGs here, desktop versions only (default: here, both widths)")
+_ap.add_argument("--data", type=Path, help="write the CSVs here (default: data/ here)")
+ARGS = _ap.parse_args() if __name__ == "__main__" else _ap.parse_args([])
+OUT = (ARGS.out or HERE).resolve()
+DATA = (ARGS.data or HERE / "data").resolve()
+DATA.mkdir(parents=True, exist_ok=True)
+OUT.mkdir(parents=True, exist_ok=True)
 J = lambda p: json.load(open(ROOT / p))
 
 
@@ -506,14 +517,14 @@ def render(only=None):
         if only and name not in only:
             continue
         for lang, (kind, csvp, opts) in per.items():
-            for mob in (False, True):
+            for mob in (False,) if ARGS.out else (False, True):
                 if mob:
                     _, src, _ = mobile_spec(name, lang, kind, csvp, opts)
                     title, sub = MOB[name][lang][:2]
                 else:
                     src, title, sub = csvp, opt(opts, "title"), opt(opts, "subtitle")
                 rows = list(csv.reader(open(src)))[1:]
-                svg = HERE / f"{name}{'-mobile' if mob else ''}-{lang}.svg"
+                svg = OUT / f"{name}{'-mobile' if mob else ''}-{lang}.svg"
                 svg.write_text(draw.DRAW[name](rows, lang, mob, title, sub, text(name, lang)), encoding="utf-8")
                 res = subprocess.run(["sprezzature-figures", "check", str(svg), "--expect-title", title],
                                      capture_output=True, text=True)
@@ -525,4 +536,4 @@ def render(only=None):
 
 
 if __name__ == "__main__":
-    sys.exit(1 if render(set(sys.argv[1:]) or None) else 0)
+    sys.exit(1 if render(set(ARGS.names) or None) else 0)

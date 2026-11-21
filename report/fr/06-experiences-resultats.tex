@@ -10,7 +10,7 @@ Les résultats principaux sont ceux à dix graines aléatoires (0 à 9), annonc�
 résultats à vingt graines aléatoires (0 à 19) et à budget égal viennent ensuite. Chaque divergence est dite. Un score
 est le retour moyen des dix épisodes d'évaluation finaux d'un essai (\cref{sec:evaluation}). Un score de
 programme est une moyenne interquartile (IQM) de ces scores sur les graines aléatoires. Un intervalle écrit
-entre crochets, comme $[\num{2268}, \num{3369}]$, est un intervalle bootstrap à 95~\%. Un écart est
+entre crochets, comme $[\num{2268}\,;\,\num{3369}]$, est un intervalle bootstrap à 95~\%. Un écart est
 \emph{établi} quand il satisfait la règle du vainqueur établi (\cref{sec:regle}) : intervalles des IQM
 disjoints, ou intervalle de la probabilité d'amélioration qui exclut 0,5. Les tableaux sont produits par le
 script \file{report/tools/tables.py} à partir des fichiers JSON de \file{sim/analysis/}. Les nombres du texte
@@ -206,12 +206,12 @@ quatre tâches, dix graines aléatoires chacun, au budget de chaque programme : 
 Le \cref{tab:e2} donne l'IQM de chaque programme sur chaque tâche avec son intervalle. La
 \cref{fig:classement-taches} rapporte chaque IQM à la meilleure de sa tâche.
 \begin{itemize}
-  \item \task{HalfCheetah} : SAC mène avec \num{5191} $[\num{4431}, \num{5601}]$, devant CrossQ, \num{4801}
-    $[\num{2427}, \num{7815}]$. Les deux PPO suivent loin derrière, \num{1407} pour PPO PyTorch et \num{1254}
+  \item \task{HalfCheetah} : SAC mène avec \num{5191} $[\num{4431}\,;\,\num{5601}]$, devant CrossQ, \num{4801}
+    $[\num{2427}\,;\,\num{7815}]$. Les deux PPO suivent loin derrière, \num{1407} pour PPO PyTorch et \num{1254}
     pour PPO JAX.
   \item \task{Hopper} : PPO JAX mène avec \num{3064}, devant PPO PyTorch (\num{2877}), CrossQ (\num{2302}) et
     SAC (\num{1308}).
-  \item \task{Walker2d} : CrossQ mène avec \num{5414} $[\num{4994}, \num{5627}]$, loin devant PPO PyTorch
+  \item \task{Walker2d} : CrossQ mène avec \num{5414} $[\num{4994}\,;\,\num{5627}]$, loin devant PPO PyTorch
     (\num{2158}), PPO JAX (\num{1272}) et SAC (\num{1236}).
   \item \task{Swimmer} : PPO JAX mène avec 112, devant CrossQ (110) et PPO PyTorch (107). SAC reste à 47.
 \end{itemize}
@@ -416,8 +416,8 @@ Stable-Baselines3 à dix essais avec les réglages publiés par RL Baselines3 Zo
 bibliothèque (\cref{sec:plan-e6}). Le \cref{tab:e6} rassemble tous les groupes.
 
 \paragraph{Premier résultat : les réglages publiés feraient trois fois moins bien}
-La version par défaut atteint une IQM de \num{2877} $[\num{2268}, \num{3369}]$. La version réglée atteint
-\num{1003} $[856, \num{1146}]$. En moyenne, \num{2776} contre 994, avec un plafond près de \num{1000} atteint
+La version par défaut atteint une IQM de \num{2877} $[\num{2268}\,;\,\num{3369}]$. La version réglée atteint
+\num{1003} $[856\,;\,\num{1146}]$. En moyenne, \num{2776} contre 994, avec un plafond près de \num{1000} atteint
 dès \num{50000}~pas. Les réglages publiés feraient près de trois fois moins bien que les valeurs par défaut.
 
 \paragraph{Une erreur de notre côté, qui n'explique rien}
@@ -427,9 +427,9 @@ passage lui laissait la valeur par défaut, 0,99 (écart~2). Le diagnostic, déc
 relance la recette corrigée sur \task{Hopper-v5} et sur \task{Hopper-v4}, plus les valeurs par défaut sur v4,
 dix graines aléatoires chacun.
 \begin{itemize}
-  \item La recette corrigée obtient \num{1012} $[902, \num{1135}]$ sur v5, \num{984} $[773, \num{1002}]$ sur
+  \item La recette corrigée obtient \num{1012} $[902\,;\,\num{1135}]$ sur v5, \num{984} $[773\,;\,\num{1002}]$ sur
     v4, la version pour laquelle le recueil a été réglé.
-  \item Les valeurs par défaut obtiennent \num{2423} $[\num{1657}, \num{3058}]$ sur v4.
+  \item Les valeurs par défaut obtiennent \num{2423} $[\num{1657}\,;\,\num{3058}]$ sur v4.
   \item La probabilité qu'un essai corrigé batte un essai avec l'erreur vaut 0,47, de 0,21 à 0,73 :
     l'erreur ne change rien de détectable.
   \item Sur v4, un essai du Zoo corrigé ne bat un essai par défaut qu'avec une probabilité de 0,07, de 0 à
@@ -443,9 +443,9 @@ Deux explications restaient possibles : la recette publiée fait vraiment moins 
 avec les bibliothèques actuelles, ou notre façon de l'appliquer diffère encore de celle du recueil. L'écart~5,
 écrit avant tout entraînement officiel, tranche par le script du recueil lui-même. Les dix politiques
 entraînées par \texttt{rl\_zoo3.train} sur \task{Hopper-v4}, évaluées avec notre protocole, obtiennent
-\num{995} $[821, \num{1006}]$. C'est autant que notre recette corrigée, \num{984} $[777, \num{1002}]$ dans
+\num{995} $[821\,;\,\num{1006}]$. C'est autant que notre recette corrigée, \num{984} $[777\,;\,\num{1002}]$ dans
 cette analyse : la probabilité qu'une politique officielle batte la nôtre vaut 0,58, de 0,32 à 0,82. Les
-valeurs par défaut obtiennent \num{2423} $[\num{1687}, \num{3058}]$. Une politique officielle ne bat une
+valeurs par défaut obtiennent \num{2423} $[\num{1687}\,;\,\num{3058}]$. Une politique officielle ne bat une
 politique par défaut qu'avec une probabilité de 0,09, de 0 à 0,30. L'écart résiste à la correction de Holm
 ($p=0{,}001$). Les intervalles de \num{984} et de \num{2423} diffèrent de quelques points entre les deux
 analyses, parce que chacune tire ses propres rééchantillons.
@@ -479,7 +479,7 @@ d'entraînement, puis son IQM sur les dix graines aléatoires avec son intervall
 \paragraph{Douze couples sur seize perdent}
 Le \cref{tab:e7} et la \cref{fig:e7-carte} donnent la part gardée pour chaque couple. Douze couples sur seize
 perdent une part établie de leur score, c'est-à-dire avec un intervalle qui reste sous 1. Trois ne changent pas
-de façon détectable. Un gagne : SAC sur \task{Swimmer}, à 1,07 $[1{,}02, 1{,}12]$. La perte dépend du
+de façon détectable. Un gagne : SAC sur \task{Swimmer}, à 1,07 $[1{,}02\,;\,1{,}12]$. La perte dépend du
 programme et de la tâche.
 \begin{itemize}
   \item Sur \task{Hopper}, PPO ne garde que 22~\% de son score dans sa version PyTorch et 18~\% dans sa
