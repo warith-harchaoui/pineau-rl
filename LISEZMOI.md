@@ -2,6 +2,10 @@
 
 *English version: [README.md](README.md)*
 
+**L'article de blog**, le même travail raconté pour tous les lecteurs :
+[deraison.ai/blog/ecouter-joelle-pineau](https://deraison.ai/blog/ecouter-joelle-pineau)
+(en anglais : [deraison.ai/en/blog/listen-to-joelle-pineau](https://deraison.ai/en/blog/listen-to-joelle-pineau)).
+
 En 2018, Joelle Pineau a montré, à ICLR puis à NeurIPS, seize failles qui rendaient peu crédibles
 les résultats de l'apprentissage par renforcement profond (RL). Parmi elles : du code absent, des
 réglages tus, des méthodes concurrentes mal réglées, trop peu d'essais, aucun test statistique,
@@ -10,7 +14,7 @@ reproductible, réutilisable et robuste. Ce dépôt mesure, faille par faille, c
 Il s'applique les trois mêmes mots : chaque chiffre du document revient d'une seule commande, chaque
 pièce resservira sur d'autres articles ou d'autres essais, des tests gardent les calculs.
 
-**État au 24 novembre 2026.** Les expériences sont finies, consolidation comprise : vingt graines
+**État au 21 novembre 2026.** Les expériences sont finies, consolidation comprise : vingt graines
 aléatoires par algorithme et par tâche au lieu de dix, cinq graines aléatoires par configuration de
 GRPO au lieu de trois. Les deux extensions sont inscrites dans les protocoles avant tout nouvel essai
 (écart 12 de `sim/SIM_PROTOCOL.md`, calculé selon son écart 20 ; écart 14 de `sim/llm/LLM_PROTOCOL.md`,
@@ -89,12 +93,13 @@ résultats, nos propres erreurs comprises.
 | `sim/SIM_PROTOCOL.md`, `sim/llm/LLM_PROTOCOL.md` | Les protocoles des expériences et leurs écarts. |
 | `sim/run.py`, `sim/jobs*.txt`, `sim/drive.sh`, `sim/queue.sh` | Un entraînement ; les listes d'essais et leurs lanceurs. |
 | `sim/results/`, `sim/logs/` | La courbe d'évaluation de chaque essai (CSV) et les journaux d'entraînement. |
-| `sim/models/` | Les politiques finales, pour réévaluer sans réentraîner (les poids de SAC et de CrossQ restent en local). |
+| `sim/models/` | Les politiques finales, pour réévaluer sans réentraîner. Les poids de SAC et de CrossQ, trop lourds pour git, sont dans la release GitHub `policies-v1` : `cd sim && python3 fetch_models.py` les télécharge et vérifie chaque fichier contre `sim/models/MANIFEST.sha256`. |
 | `sim/analysis/` | Un script et un fichier JSON par expérience (E1 à E7, B1, B3). |
 | `sim/llm/` | GRPO en un seul fichier (`grpo.py`), ses diagnostics, ses résultats et `summary.py`. |
 | `envs/` | Les environnements figés, la plateforme et la chaîne du document ([`envs/LISEZMOI.md`](envs/LISEZMOI.md)). |
 | `src/pineau_rl/`, `pyproject.toml` | Les morceaux réutilisables en paquet Python : statistiques, format des essais, grille de lecture (voir plus bas). |
 | `Makefile`, `tests/`, `.github/workflows/verify.yml` | Le recalcul en une commande, les tests unitaires, l'intégration continue. |
+| `article/` | L'article de blog en deux langues (`fr.txt`, `en.txt`), ses figures (`article/figures/`), son générateur de page et `check_article.py`, qui vérifie chaque nombre de l'article contre les fichiers de résultats. |
 | `slides.md` | Les diapositives de Pineau à ICLR 2018, décrites une à une. |
 
 ## Refaire les résultats, à trois niveaux
@@ -112,7 +117,7 @@ make verify
 
 `make verify` relance les neuf analyses du sondage, les analyses des expériences (seize à dix
 graines aléatoires, treize de plus pour l'écart 12) et le bilan de GRPO, vérifie les 188 chiffres
-des deux textes et les 156 affirmations de l'article de blog (`make check`), passe les tests unitaires
+des deux textes et chaque nombre de l'article de blog (`make check`), passe les tests unitaires
 (`make test`), puis demande à git si chaque fichier JSON est revenu octet pour octet. Sur le M2 Max,
 saturé en même temps par des entraînements, la séquence entière a pris environ 45 minutes ; E1,
 B1, B3 et E2, avec leurs dizaines de milliers de tirages, en prennent l'essentiel.
@@ -227,7 +232,7 @@ Les scripts eux-mêmes se lancent toujours depuis leur dossier (`cd study && pyt
   `from_same_dist.py` (Henderson et al., 2018), qu'utilise `sim/analysis/b1_script.py` ; `tests/test_henderson.py` montre sur six graines aléatoires
   inventées pourquoi il atteint un t de 9 là où un test sur les graines aléatoires ne voit rien.
 - **GRPO en un seul fichier.** `sim/llm/grpo.py` entraîne un modèle de langue par GRPO en
-  156 lignes, avec la vraie récompense ou une récompense à pile ou face ; il note la part de réponses
+  159 lignes, avec la vraie récompense ou une récompense à pile ou face ; il note la part de réponses
   coupées à chaque évaluation.
 
 ## Ce qui n'est pas dans ce dépôt

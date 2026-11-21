@@ -58,7 +58,7 @@ Hors des environnements Python, la fabrication des PDF et des figures a employé
 | pandoc | 3.6.1 | `docs/build.sh` |
 | md2star | 3.13.5 (PyPI) | `docs/build.sh` (le DOCX et un premier PDF) |
 | TeX Live 2026 : LuaHBTeX 1.24.0, latexmk 4.88 | | `docs/build.sh` (le PDF final) |
-| sprezzature-figures | 2.14.1 (2.14.0 sur PyPI) | `docs/figures/build.py`, `figures/build.py` |
+| sprezzature-figures | 2.14.1 (2.14.0 sur PyPI) | `docs/figures/build.py`, `article/figures/build.py` |
 | rsvg-convert (librsvg) | 2.61.3 | du SVG au PDF et au PNG |
 | git | 2.50.0 | `make verify` |
 

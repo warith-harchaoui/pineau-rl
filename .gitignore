@@ -30,3 +30,6 @@ sim/downloads/
 .claude/
 workers.max
 suspended.pids
+
+# Output of the queue launchers (nohup)
+sim/logs-drive*.out

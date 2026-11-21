@@ -1,4 +1,4 @@
-"""pineau_rl: the reusable pieces of "Reinforcement Learning: Did we listen to Joelle Pineau in 2018?".
+"""pineau_rl: the reusable pieces of "Reinforcement Learning: Did We Listen to Joelle Pineau in 2018?".
 
     pineau_rl.stats      Wilson, Newcombe, Fisher, Holm, Cochran-Armitage, Cohen's kappa, Henderson's statistic
     pineau_rl.bootstrap  IQM and probability of improvement with rliable's stratified bootstrap intervals

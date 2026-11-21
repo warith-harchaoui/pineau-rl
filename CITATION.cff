@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this survey, its reading grid or its analysis scripts, please cite it as below."
-title: "Reinforcement Learning: Did we listen to Joelle Pineau in 2018?"
+title: "Reinforcement Learning: Did We Listen to Joelle Pineau in 2018?"
 abstract: >-
   A survey of papers and a set of experiments that measure, flaw by flaw, what has changed in deep
   reinforcement learning since Joelle Pineau's 2018 talks on reproducibility. French title: « Apprentissage
@@ -13,7 +13,7 @@ authors:
     email: warithmetics@deraison.ai
 license: BSD-3-Clause
 repository-code: "https://github.com/warith-harchaoui/pineau-rl"
-url: "https://github.com/warith-harchaoui/pineau-rl"
+url: "https://deraison.ai/en/blog/listen-to-joelle-pineau"
 keywords:
   - reinforcement learning
   - reproducibility

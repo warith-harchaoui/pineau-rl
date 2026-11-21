@@ -1,6 +1,10 @@
-# Reinforcement Learning: Did we listen to Joelle Pineau in 2018?
+# Reinforcement Learning: Did We Listen to Joelle Pineau in 2018?
 
 *Version française : [LISEZMOI.md](LISEZMOI.md)*
+
+**The blog article**, the same work told for every reader:
+[deraison.ai/en/blog/listen-to-joelle-pineau](https://deraison.ai/en/blog/listen-to-joelle-pineau)
+(in French: [deraison.ai/blog/ecouter-joelle-pineau](https://deraison.ai/blog/ecouter-joelle-pineau)).
 
 In 2018, at ICLR and then at NeurIPS, Joelle Pineau showed sixteen flaws that made results in deep
 reinforcement learning (RL) hard to believe. Among them: missing code, unreported settings,
@@ -10,7 +14,7 @@ repository measures, flaw by flaw, what has changed since. It holds itself to th
 every number of the document comes back with one command, each piece serves again on other papers
 or other runs, tests guard the computations.
 
-**Status on 24 November 2026.** The experiments are finished, consolidation included: twenty random
+**Status on 21 November 2026.** The experiments are finished, consolidation included: twenty random
 seeds per algorithm and task instead of ten, five random seeds per GRPO configuration instead of three.
 Both extensions were written into the protocols before any new run (deviation 12 of
 `sim/SIM_PROTOCOL-en.md`, computed under its deviation 20; deviation 14 of `sim/llm/LLM_PROTOCOL-en.md`,
@@ -83,12 +87,13 @@ stays in the results, our own mistakes included.
 | `sim/SIM_PROTOCOL-en.md`, `sim/llm/LLM_PROTOCOL-en.md` | The experiment protocols and their deviations. |
 | `sim/run.py`, `sim/jobs*.txt`, `sim/drive.sh`, `sim/queue.sh` | One training run; the lists of runs and their launchers. |
 | `sim/results/`, `sim/logs/` | The evaluation curve of every run (CSV) and the training logs. |
-| `sim/models/` | Final policies, to re-evaluate without retraining (SAC and CrossQ weights are kept locally only). |
+| `sim/models/` | Final policies, to re-evaluate without retraining. The SAC and CrossQ weights, too large for git, are in the GitHub release `policies-v1`: `cd sim && python3 fetch_models.py` downloads them and checks each file against `sim/models/MANIFEST.sha256`. |
 | `sim/analysis/` | One script and one JSON file per experiment (E1 to E7, B1, B3). |
 | `sim/llm/` | GRPO in one file (`grpo.py`), its diagnostics, results and `summary.py`. |
 | `envs/` | The pinned environments, the platform and the document toolchain ([`envs/README.md`](envs/README.md)). |
 | `src/pineau_rl/`, `pyproject.toml` | The reusable pieces as a Python package: statistics, run format, reading grid (see below). |
 | `Makefile`, `tests/`, `.github/workflows/verify.yml` | One-command recomputation, unit tests, continuous integration. |
+| `article/` | The blog article in two languages (`fr.txt`, `en.txt`), its figures (`article/figures/`), its page builder and `check_article.py`, which checks every number of the article against the result files. |
 | `slides-en.md` | Pineau's ICLR 2018 slides, described one by one. |
 
 ## Reproducing the results, at three levels
@@ -105,8 +110,8 @@ make verify
 ```
 
 `make verify` reruns the nine survey analyses, the experiment analyses (sixteen at ten random seeds,
-thirteen more for deviation 12) and the GRPO summary, checks the 188 numbers of both texts and the 156
-claims of the blog article (`make check`), runs the unit tests (`make test`), then asks git
+thirteen more for deviation 12) and the GRPO summary, checks the 188 numbers of both texts and every
+number of the blog article (`make check`), runs the unit tests (`make test`), then asks git
 whether every JSON file came back byte for byte. On the M2 Max, saturated by training runs at the
 same time, the whole sequence took about 45 minutes; E1, B1, B3 and E2, with their tens of thousands of
 random draws, take most of it. `make verify-head` does the same in a fresh export of the last
@@ -217,7 +222,7 @@ finds the package without installing it.
 - **Henderson's statistic.** `pineau_rl.stats.henderson_script` reproduces the computation of
   `from_same_dist.py` (Henderson et al., 2018), used by `sim/analysis/b1_script.py`; `tests/test_henderson.py` shows on six made-up random
   seeds why it reaches a t of 9 where a test on the random seeds sees nothing.
-- **GRPO in one file.** `sim/llm/grpo.py` trains a language model with GRPO in 156 lines, with
+- **GRPO in one file.** `sim/llm/grpo.py` trains a language model with GRPO in 159 lines, with
   the true reward or a coin-flip one; it logs the share of cut-off answers at every evaluation.
 
 ## What is not in this repository
@@ -228,13 +233,13 @@ finds the package without installing it.
 
 ## Citing this work
 
-Warith Harchaoui, "Reinforcement Learning: Did we listen to Joelle Pineau in 2018?", 2026.
+Warith Harchaoui, "Reinforcement Learning: Did We Listen to Joelle Pineau in 2018?", 2026.
 GitHub reads [`CITATION.cff`](CITATION.cff) and offers the reference in APA and BibTeX.
 
 ```bibtex
 @misc{harchaoui2026pineau,
   author = {Harchaoui, Warith},
-  title  = {Reinforcement Learning: Did we listen to Joelle Pineau in 2018?},
+  title  = {Reinforcement Learning: Did We Listen to Joelle Pineau in 2018?},
   year   = {2026}
 }
 ```
