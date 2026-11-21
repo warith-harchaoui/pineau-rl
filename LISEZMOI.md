@@ -10,7 +10,7 @@ reproductible, réutilisable et robuste. Ce dépôt mesure, faille par faille, c
 Il s'applique les trois mêmes mots : chaque chiffre du document revient d'une seule commande, chaque
 pièce resservira sur d'autres articles ou d'autres essais, des tests gardent les calculs.
 
-**État au 21 novembre 2026.** Les expériences sont finies, consolidation comprise : vingt graines
+**État au 24 novembre 2026.** Les expériences sont finies, consolidation comprise : vingt graines
 aléatoires par algorithme et par tâche au lieu de dix, cinq graines aléatoires par configuration de
 GRPO au lieu de trois. Les deux extensions sont inscrites dans les protocoles avant tout nouvel essai
 (écart 12 de `sim/SIM_PROTOCOL.md`, calculé selon son écart 20 ; écart 14 de `sim/llm/LLM_PROTOCOL.md`,

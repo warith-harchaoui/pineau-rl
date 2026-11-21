@@ -10,7 +10,7 @@ repository measures, flaw by flaw, what has changed since. It holds itself to th
 every number of the document comes back with one command, each piece serves again on other papers
 or other runs, tests guard the computations.
 
-**Status on 21 November 2026.** The experiments are finished, consolidation included: twenty random
+**Status on 24 November 2026.** The experiments are finished, consolidation included: twenty random
 seeds per algorithm and task instead of ten, five random seeds per GRPO configuration instead of three.
 Both extensions were written into the protocols before any new run (deviation 12 of
 `sim/SIM_PROTOCOL-en.md`, computed under its deviation 20; deviation 14 of `sim/llm/LLM_PROTOCOL-en.md`,

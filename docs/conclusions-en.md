@@ -2,7 +2,7 @@
 title: "Reinforcement Learning: Did we listen to Joelle Pineau in 2018?"
 subtitle: "A survey revisited. Every flaw she exposed in 2018, measured in the papers of 2018 to 2026 and in our own experiments"
 author: "Warith Harchaoui"
-date: "13 November 2026"
+date: "24 November 2026"
 lang: en-GB
 bibliography: refs.bib
 link-citations: true
@@ -297,7 +297,7 @@ multiply [@machado2018revisiting]. A success on these benchmarks then says littl
 **The inventory.** The table below lists the sixteen flaws with their source in the slides and the
 instrument that measures each one in this document. The next section describes the instruments.
 
-| | The flaw shown in 2018 | Where Pineau shows it | What measures it here | Where we stand on 13 November 2026 |
+| | The flaw shown in 2018 | Where Pineau shows it | What measures it here | Where we stand on 24 November 2026 |
 |:----|:-----------------------------------------|:----------------|:----------------|:----------------------|
 | F1 | The paper published without its code | slide 6 at ICLR, page 29 at NeurIPS | criterion Q5 | heeded |
 | F2 | A missing plan for rerunning the experiment, as with AlphaGo | slides 9 to 12 at ICLR | criteria Q3 and X7 | partly heeded: compute gets quantified |
@@ -316,7 +316,7 @@ instrument that measures each one in this document. The next section describes t
 | F15 | Evaluation in the training conditions | pages 36 to 51 at NeurIPS | criteria Q7 and Y8, experiment E7 | no detectable change with the same grid; modified physics reverses the ranking on Hopper |
 | F16 | Benchmarks too simple, easy to learn by heart | pages 43 to 50 at NeurIPS | criteria X6 and Y7 | no detectable change |
 
-: The sixteen flaws Joelle Pineau showed in 2018 in deep reinforcement learning (RL), labelled F1 to F16. For each one: the slide of her talk at ICLR (International Conference on Learning Representations) or the page of her NeurIPS (Neural Information Processing Systems) document that shows it, the reading criterion or the experiment that measures it in this document, then the verdict as of 13 November 2026. The verdict sets our 50 classical RL papers from 2026 against our reading of 50 papers from 2018, with the same grids and the same readers.
+: The sixteen flaws Joelle Pineau showed in 2018 in deep reinforcement learning (RL), labelled F1 to F16. For each one: the slide of her talk at ICLR (International Conference on Learning Representations) or the page of her NeurIPS (Neural Information Processing Systems) document that shows it, the reading criterion or the experiment that measures it in this document, then the verdict as of 24 November 2026. The verdict sets our 50 classical RL papers from 2026 against our reading of 50 papers from 2018, with the same grids and the same readers.
 
 # How we measure
 

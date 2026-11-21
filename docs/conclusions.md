@@ -2,7 +2,7 @@
 title: "Apprentissage par renforcement : A-t-on écouté Joelle Pineau en 2018 ?"
 subtitle: "Un état de l'art revisité. Chaque faille qu'elle a montrée en 2018, mesurée dans les articles de 2018 à 2026 et dans nos propres expériences"
 author: "Warith Harchaoui"
-date: "13 novembre 2026"
+date: "24 novembre 2026"
 lang: fr
 bibliography: refs.bib
 link-citations: true
@@ -318,7 +318,7 @@ d'actions sans rien comprendre du monde, comme un élève récite une table sans
 diapositives et l'instrument qui la mesure dans ce document. Les instruments sont décrits à la
 section suivante.
 
-| | La faille montrée en 2018 | Où Pineau la montre | Ce qui la mesure ici | Où nous en sommes le 13 novembre 2026 |
+| | La faille montrée en 2018 | Où Pineau la montre | Ce qui la mesure ici | Où nous en sommes le 24 novembre 2026 |
 |:----|:-----------------------------------------|:----------------|:----------------|:----------------------|
 | F1 | L'article publié sans son code | diapositive 6 à ICLR, page 29 à NeurIPS | critère Q5 | écoutée |
 | F2 | Aucun plan pour refaire l'expérience, comme pour AlphaGo | diapositives 9 à 12 à ICLR | critères Q3 et X7 | écoutée en partie : le calcul se chiffre |
@@ -337,7 +337,7 @@ section suivante.
 | F15 | L'évaluation sur les conditions d'entraînement | pages 36 à 51 à NeurIPS | critères Q7 et Y8, expérience E7 | aucun changement détectable à grille égale ; la physique modifiée renverse le classement sur Hopper |
 | F16 | Des bancs d'essai trop simples, faciles à apprendre par cœur | pages 43 à 50 à NeurIPS | critères X6 et Y7 | aucun changement détectable |
 
-: Les seize failles que Joelle Pineau a montrées en 2018 dans l'apprentissage par renforcement profond (RL), numérotées F1 à F16. Pour chacune : la diapositive de sa conférence d'ICLR (*International Conference on Learning Representations*) ou la page de son document de NeurIPS (*Neural Information Processing Systems*) qui la montre, le critère de lecture ou l'expérience qui la mesure dans ce document, puis le verdict à la date du 13 novembre 2026. Le verdict compare nos 50 articles de RL classique de 2026 à notre lecture de 50 articles de 2018, avec les mêmes grilles et les mêmes lecteurs.
+: Les seize failles que Joelle Pineau a montrées en 2018 dans l'apprentissage par renforcement profond (RL), numérotées F1 à F16. Pour chacune : la diapositive de sa conférence d'ICLR (*International Conference on Learning Representations*) ou la page de son document de NeurIPS (*Neural Information Processing Systems*) qui la montre, le critère de lecture ou l'expérience qui la mesure dans ce document, puis le verdict à la date du 24 novembre 2026. Le verdict compare nos 50 articles de RL classique de 2026 à notre lecture de 50 articles de 2018, avec les mêmes grilles et les mêmes lecteurs.
 
 # Comment nous mesurons
 
