@@ -79,15 +79,16 @@ def check(path):
                     q4=v1value(pid, rec, "Q4"), found=found)
 
 
-dirs = sys.argv[1:] or sorted(glob.glob("codes_v2/*"))
-bad = 0
-for d in dirs:
-    for f in sorted(glob.glob(f"{d}/*.json")):
-        errs = check(f)
-        if errs:
-            bad += 1
-            print(f"{f}:")
-            for e in errs:
-                print("   ", e)
-print(f"{bad} file(s) to send back")
-sys.exit(1 if bad else 0)
+if __name__ == "__main__":
+    dirs = sys.argv[1:] or sorted(glob.glob("codes_v2/*"))
+    bad = 0
+    for d in dirs:
+        for f in sorted(glob.glob(f"{d}/*.json")):
+            errs = check(f)
+            if errs:
+                bad += 1
+                print(f"{f}:")
+                for e in errs:
+                    print("   ", e)
+    print(f"{bad} file(s) to send back")
+    sys.exit(1 if bad else 0)
