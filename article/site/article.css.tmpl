@@ -886,7 +886,7 @@
    box-sizing: border-box
 }
 :where(.drz-p-blog__SLUG) .drz-photo-hero img{
-   width: min(100%, 560px);
+   width: min(100%, 440px);
    height: auto;
    border-radius: 16px;
    display: block
@@ -895,10 +895,15 @@
    font-size: 13px;
    color: #777;
    text-align: center;
-   max-width: 560px;
+   max-width: 440px;
    margin: 0
 }
-:where(.drz-p-blog__SLUG) .drz-hero-credit a,
-:where(.drz-p-blog__SLUG) .drz-hero-credit a.drz-text{
+p.drz-hero-credit.drz-text a,
+p.drz-hero-credit.drz-text a.drz-text{
+   font-size: inherit !important;
+   color: inherit !important;
+   text-decoration: underline;
+   text-decoration-color: #bbb;
+   text-underline-offset: 2px;
    white-space: normal !important
 }

@@ -103,7 +103,7 @@ def build(lang: str) -> str:
     if mh:
         raw = raw[:mh.start()] + raw[mh.end():]
         src, alt, credit = mh.group(1).strip(), mh.group(2).strip(), mh.group(3).strip()
-        hero_html = (f'        <div class="drz-logo-hero drz-photo-hero">\n'
+        hero_html = (f'        <div class="drz-photo-hero">\n'
                      f'            <img src="<?= ASSETS ?>/images/{src if "/" in src else "blog/" + src}" alt="{html.escape(alt, quote=True)}" loading="eager">\n'
                      f'            <p class="drz-text drz-hero-credit">{inline(credit, lang)}</p>\n'
                      f'        </div>')
