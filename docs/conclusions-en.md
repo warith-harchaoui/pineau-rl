@@ -843,7 +843,7 @@ one had looked at before writing the rule. At ten random seeds, the leader still
 on HalfCheetah, CrossQ on the three other tasks, and 3 changes stay settled. At twenty seeds, CrossQ
 leads on all four tasks and no change is settled; on HalfCheetah, it does not even beat SAC in a
 settled way. The verdict of E2, as announced, holds. But, with twenty seeds, the change of leader from
-one task to the next rests on the five times larger budget of PPO: at equal budget, the ranking no
+one task to the next rests largely on the five times larger budget of PPO: at equal budget, the ranking no
 longer changes with the task. B3 moves little. With unequal budgets, 8 pairs change order
 from one measure to another, at ten as at twenty random seeds, with no settled reversal; with twenty
 seeds, the leader changes from one measure to another only on Hopper. At equal budget, 4 reversals

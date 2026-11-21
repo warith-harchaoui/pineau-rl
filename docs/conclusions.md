@@ -896,7 +896,7 @@ personne n'avait regardés avant d'écrire la règle. À dix graines, le premier
 mène sur HalfCheetah, CrossQ sur les trois autres tâches, et 3 changements restent établis. À vingt
 graines, CrossQ mène sur les quatre tâches et aucun changement n'est établi ; sur HalfCheetah, il ne
 devance même pas SAC de façon établie. Le verdict de E2, tel qu'annoncé, tient. Mais, avec vingt graines,
-le changement de premier d'une tâche à l'autre tient au budget cinq fois plus grand de PPO : à
+le changement de premier d'une tâche à l'autre tient en bonne part au budget cinq fois plus grand de PPO : à
 budget égal, le classement ne change plus avec la tâche. B3 bouge peu. À budgets inégaux, 8
 paires changent d'ordre d'une mesure à l'autre, à dix comme à vingt graines, sans renversement
 établi ; avec vingt graines, le premier ne change plus de mesure en mesure que sur Hopper. À budget
