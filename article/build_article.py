@@ -1,8 +1,8 @@
 """Builds the blog article « A-t-on écouté Joelle Pineau en 2018 ? » for deraison.ai, from fr.txt and en.txt.
 
 Writes, under an output directory that mirrors the site's tree:
-  pages/fr/blog/apprentissage-par-renforcement-a-t-on-ecoute-joelle-pineau.php
-  pages/en/blog/reinforcement-learning-did-we-listen-to-joelle-pineau.php
+  pages/fr/blog/ecouter-joelle-pineau.php
+  pages/en/blog/ecouter-joelle-pineau.php
   assets/images/blog/rl-pineau-<figure>-<lang>.svg      (copied from figures/, built by figures/build.py)
   assets/images/blog/rl-pineau-<figure>-mobile-<lang>.svg  (its narrow twin, served under 640 px by <picture>)
   assets/css/article-<slug>.css                         (the page's scoped rules, to paste into base.css)
@@ -22,6 +22,7 @@ Light markup, one line per block (paragraphs separated by a blank line):
   ### Sous-titre
   FIG wide|std|portrait | src (relatif à assets/images/blog) | alt | légende (HTML permis)
   VIDEO identifiant YouTube | titre du lecteur | légende (HTML permis)
+  HERO | src | alt | crédit (HTML permis) : l'image de tête, sous le chapeau
   - élément de liste (lignes consécutives)
   <...>  ligne HTML passée telle quelle
   BIBLIO titre | phrase d'introduction
@@ -40,8 +41,7 @@ from pathlib import Path
 
 ICI = Path(__file__).parent
 SITE = Path("/Users/warithharchaoui/web/deraison")  # read-only here: CSS, fonts and photos for the preview
-SLUGS = {"fr": "apprentissage-par-renforcement-a-t-on-ecoute-joelle-pineau",
-         "en": "reinforcement-learning-did-we-listen-to-joelle-pineau"}
+SLUGS = {"fr": "ecouter-joelle-pineau", "en": "listen-to-joelle-pineau"}  # the site pairs them through the registry key "twin"
 FIG_PREFIX = "rl-pineau-"
 
 
@@ -97,6 +97,16 @@ def renumber(raw: str) -> str:
 def build(lang: str) -> str:
     raw = (ICI / f"{lang}.txt").read_text(encoding="utf-8")
     raw = renumber(raw)
+    # HERO | src | alt | credit: the image under the lede, as the site's other articles have one
+    hero_html = ""
+    mh = re.search(r"^HERO \| (.+?) \| (.+?) \| (.+)$", raw, flags=re.M)
+    if mh:
+        raw = raw[:mh.start()] + raw[mh.end():]
+        src, alt, credit = mh.group(1).strip(), mh.group(2).strip(), mh.group(3).strip()
+        hero_html = (f'        <div class="drz-logo-hero drz-photo-hero">\n'
+                     f'            <img src="<?= ASSETS ?>/images/{src if "/" in src else "blog/" + src}" alt="{html.escape(alt, quote=True)}" loading="eager">\n'
+                     f'            <p class="drz-text drz-hero-credit">{inline(credit, lang)}</p>\n'
+                     f'        </div>')
     lines = raw.split("\n")
     blocks, buf = [], []
     for ln in lines + [""]:
@@ -271,6 +281,7 @@ def build(lang: str) -> str:
                     class="drz-text">{inline(lede, lang)}</p>
             </div>
         </div>
+{hero_html}
         <div class="drz-article-content" data-drz-box="RichTextContainer"
             style="transform:none">
 {brief_html}
@@ -374,7 +385,7 @@ def og_card(out: Path, lang: str) -> Path:
     tmp = out / "preview" / f"og-{lang}.html"
     tmp.parent.mkdir(parents=True, exist_ok=True)
     tmp.write_text(page, encoding="utf-8")
-    dst = out / "assets" / "images" / "og" / f"blog-{SLUGS[lang]}.png"
+    dst = out / "assets" / "images" / "og" / f"blog-{SLUGS[lang]}-{lang}.png"  # one card per language
     dst.parent.mkdir(parents=True, exist_ok=True)
     with sync_playwright() as p:
         b = p.chromium.launch()

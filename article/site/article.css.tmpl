@@ -872,3 +872,33 @@
    white-space: normal !important;
    overflow-wrap: anywhere
 }
+
+/* Hero: the portrait of Joelle Pineau under the lede, with its credit (CC BY 3.0) */
+:where(.drz-p-blog__SLUG) .drz-photo-hero{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 12px;
+   width: 100%;
+   max-width: 1120px;
+   margin: 0 auto 48px;
+   padding: 0 24px;
+   box-sizing: border-box
+}
+:where(.drz-p-blog__SLUG) .drz-photo-hero img{
+   width: min(100%, 560px);
+   height: auto;
+   border-radius: 16px;
+   display: block
+}
+:where(.drz-p-blog__SLUG) p.drz-hero-credit.drz-text{
+   font-size: 13px;
+   color: #777;
+   text-align: center;
+   max-width: 560px;
+   margin: 0
+}
+:where(.drz-p-blog__SLUG) .drz-hero-credit a,
+:where(.drz-p-blog__SLUG) .drz-hero-credit a.drz-text{
+   white-space: normal !important
+}

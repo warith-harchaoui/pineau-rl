@@ -138,6 +138,7 @@ assert len(inner) == 27 and len(s) - len(inner) == 3 and min(v for v in s if v >
 claim("E1 beyond 3000", *both(lambda l: f"{'au-delà de' if l == 'fr' else 'beyond'} {num(3000, l)}"))
 claim("E1 alt", *both(lambda l: (f"Trois contre trois au hasard : {pct(e1['random_3v3']['false_positive'], l, 1)}. Cinq contre cinq au hasard : {pct(e1['random_5v5']['false_positive'], l, 1)}. Dix contre dix au hasard : {pct(e1['random_10v10']['false_positive'], l, 1)}. Cinq meilleurs contre cinq pires sur dix essais, en rouge : {pct(e1['extreme_5v5_of_10']['false_positive'], l)}" if l == "fr" else
                                   f"Three against three at random: {pct(e1['random_3v3']['false_positive'], l, 1)}. Five against five at random: {pct(e1['random_5v5']['false_positive'], l, 1)}. Ten against ten at random: {pct(e1['random_10v10']['false_positive'], l, 1)}. Five best against five worst out of ten runs, in red: {pct(e1['extreme_5v5_of_10']['false_positive'], l)}")))
+claim("hero photo license", "CC BY-SA 4.0", "CC BY-SA 4.0")  # a license name, not a measure
 claim("waffle grids", "grilles de 100 cases", "grids of 100 squares")  # a figure's form: a hundred squares, one per percent
 claim("E1 alt threshold squares", "figurent le seuil de 5 %", "stand for the 5% threshold", "doc")
 claim("E2 alt badge", "porte « 1er »", "reads \"1st\"")
