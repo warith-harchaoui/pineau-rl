@@ -135,7 +135,7 @@ The loss grows as the physics departs from training and draws a V. Masses 10% li
 
 Have papers changed on this point? In classical RL, evaluation on held-out conditions goes from 33% to 45% of papers, with no detectable change. Held-out evaluation has become the rule elsewhere, in RL for large language models, whose problem sets separate training and test from the start.
 
-## a-baseline-too-good | A baseline too good to be true
+## a-baseline-too-good | A baseline a little too good to be true
 Pineau's criteria apply to ourselves first. One of our experiments was meant to illustrate a poorly tuned baseline. It sets two PPOs against each other on Hopper. The first keeps the default values of its software library, the ready-made software we take PPO from: the settings it uses when nothing is tuned. The second takes the settings published by the RL Baselines3 Zoo collection, the reference for this library[[9]]. First result: 2,877 for the default values, 1,003 for the tuned version. The published settings would do three times worse than the defaults?
 
 The result was too good for our demonstration. Checking it, we found an error on our side: our code prepared the data the agent sees with a setting of 0.99, where the collection uses 0.999. Our error was real. It explained nothing: with our error fixed, the published settings do just as badly. Ten agents trained with the collection's official script score 995, against 2,423 for the default values. Our most likely explanation: this published recipe has aged, the software around it having changed since the recipe came out. A result that looks too good gets checked to the end.
