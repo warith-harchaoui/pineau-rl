@@ -615,7 +615,7 @@ def grpo_graines(rows, lang, mob, title, sub, T):
     f.desc = T["desc"]
     groups = list(dict.fromkeys(r[0] for r in rows))
     s, L, W = f.s, f.L, f.W
-    top = f.top + 22
+    top = f.top + 40  # room for the model names above each pair of groups
     H = 210 if mob else 240
     x0, x1 = L + 36, W - L
     Y = lambda u: top + H - u / 70 * H
@@ -649,7 +649,10 @@ def grpo_graines(rows, lang, mob, title, sub, T):
                 s.text(x, b - 9, num(float(v100), lang), "sans7", 10.5 if mob else 11, col, "middle")
             elif gi % 2 == 0 and float(v100) >= 3:
                 s.text(x + 6, b + 4, num(float(v100), lang), "sans7", 10.5 if mob else 11, col)
-        lab = wrap(g, "sans7", lsize, gw - 6)
+        model, _, reward = g.partition(", ")  # the model once above its pair, the reward under each group
+        if gi % 2 == 0:
+            s.text(gx + gw, top - 18, model, "sans7", 14 if mob else 15, INK, "middle")
+        lab = wrap(reward or g, "sans7", lsize, gw - 6)
         for i, ln in enumerate(lab):
             s.text(gx + gw / 2, top + H + 22 + i * 15, ln, "sans7", lsize, col, "middle")
         if gi % 2 == 1 and gi < len(groups) - 1:

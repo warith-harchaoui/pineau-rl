@@ -35,6 +35,7 @@ import argparse
 import html
 import os
 import re
+import subprocess
 import shutil
 import sys
 from pathlib import Path
@@ -369,30 +370,13 @@ def preview(out: Path, lang: str, page: str) -> Path:
 
 
 def og_card(out: Path, lang: str) -> Path:
-    """The Open Graph card, 1200 x 630, in the layout of the site's other blog cards: logo, figure, title."""
-    from playwright.sync_api import sync_playwright
+    """The Open Graph card, 1200 x 630, drawn by the site's own generator (Satoshi, the h1 rule), as every other card."""
     title = re.search(r"^META [^|]*\|[^|]*\|[^|]*\| ([^|]+?) \|", (ICI / f"{lang}.txt").read_text(), flags=re.M)[1]
-    svg = (ICI / "figures" / f"e1-graines-{lang}.svg").read_text()
-    svg = re.sub(r'viewBox="0 0 (\d+) (\d+)"', lambda m: f'viewBox="0 112 {m[1]} {int(m[2]) - 112}"', svg, count=1)
-    svg = re.sub(r'(<svg[^>]*?) width="\d+" height="\d+"', r'\1 width="900" height="300"', svg, count=1)
-    page = (f'<html><head><meta charset="utf-8"><link rel="stylesheet" href="{SITE.as_uri()}/assets/css/fonts.css"></head>'
-            '<body style="margin:0;width:1200px;height:630px;background:#f8f8f8;font-family:Inter,sans-serif;position:relative">'
-            f'<div style="position:absolute;left:50px;top:30px;display:flex;align-items:center;gap:14px;font-size:26px;color:#111">'
-            f'<img src="{SITE.as_uri()}/favicon.svg" style="width:30px;height:30px">deraison.ai</div>'
-            f'<div style="position:absolute;left:150px;top:100px;background:#fff;padding:10px 0">{svg}</div>'
-            f'<div style="position:absolute;left:64px;right:64px;bottom:44px;font-size:44px;line-height:1.15;color:#111;'
-            f'letter-spacing:-0.02em">{html.escape(title)}</div></body></html>')
-    tmp = out / "preview" / f"og-{lang}.html"
-    tmp.parent.mkdir(parents=True, exist_ok=True)
-    tmp.write_text(page, encoding="utf-8")
     dst = out / "assets" / "images" / "og" / f"blog-{SLUGS[lang]}-{lang}.png"  # one card per language
     dst.parent.mkdir(parents=True, exist_ok=True)
-    with sync_playwright() as p:
-        b = p.chromium.launch()
-        pg = b.new_page(viewport={"width": 1200, "height": 630})
-        pg.goto(tmp.as_uri(), wait_until="networkidle")
-        pg.screenshot(path=str(dst))
-        b.close()
+    subprocess.run([sys.executable, str(SITE / "tools" / "og-cards" / "make_og.py"), "--lang", lang, "--title", title,
+                    "--hero", str(ICI / "figures" / f"e1-graines-{lang}.svg"), "--out", str(dst)],
+                   check=True, capture_output=True)
     return dst
 
 

@@ -327,11 +327,9 @@ MOB = {  # name -> lang -> (title, subtitle, width, height, relabel, extra optio
                ["--set", "x_tick_step=4", "--set", "x_label=Year", "--set", "series_colors=Test=#8E8E93"])},
     "grpo-graines": {
         "fr": ("Pile ou face : zéro", "Réussite au départ et après 100 pas", 400, 520,
-               {"Qwen, vraie récompense": "Qwen vraie", "Qwen, pile ou face": "Qwen pile ou face",
-                "Llama, vraie récompense": "Llama vraie", "Llama, pile ou face": "Llama pile ou face"}, []),
+               {}, []),
         "en": ("Coin flip: down to zero", "Success at the start and after 100 steps", 400, 520,
-               {"Qwen, true reward": "Qwen true", "Qwen, coin flip": "Qwen coin",
-                "Llama, true reward": "Llama true", "Llama, coin flip": "Llama coin"}, [])},
+               {}, [])},
     "grpo-coupure": {
         "fr": ("Des réponses coupées", "Qwen2.5 de 0,5 milliard, 8 réponses par problème", 400, 500,
                {"Complète et juste": "Juste", "Complète et fausse": "Fausse", "Coupée à 160 jetons": "Coupée"},
