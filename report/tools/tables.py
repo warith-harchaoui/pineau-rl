@@ -481,13 +481,13 @@ def t_accord():
         tot_same = sum(v["same"] for v in a1.values())
         tot_n = sum(v["n"] for v in a1.values())
         cap = L(lang,
-                r"Accord entre deux lectures à l'aveugle d'agents de langage, sur les lectures brutes, avant toute harmonisation. "
+                r"Accord entre deux lectures à l'aveugle d'agents IA, sur les lectures brutes, avant toute harmonisation. "
                 rf"G : dix articles du premier tirage de 2026 relus avec la grille v1 ({tot_same} décisions identiques sur {tot_n}, \file{{study/audit_stats.json}}) ; "
                 r"G2 : les mêmes dix articles relus avec la grille v2 ; R2 : dix articles tirés au hasard parmi les articles ajoutés (\texttt{random.Random(7)}, écart 12), relus avec les deux grilles ; R3 : dix articles de la trajectoire 2019 à 2024 (\texttt{random.Random(2030)}, écart 26). "
                 r"Accord : décisions identiques sur les articles où les deux lecteurs ont répondu oui ou non (Y3 converti en oui à partir de deux tâches) ; $\kappa$ : kappa de Cohen, vide quand un des deux lecteurs ne varie pas (accord trivial). "
                 r"Une case vide hors $\kappa$ : critère absent de cette double lecture. \textbf{En gras}, le seul critère sous 70~\% d'accord, signalé comme fragile par le script : Y1, mesure de performance, avant que ses règles soient précisées (écarts 17 et 19). "
                 r"Tous les lecteurs sont des copies du même modèle (écart 28) : l'accord mesure la constance de ce modèle, pas celle de deux lecteurs indépendants. Sources : \file{study/agree_v2.json}, \file{study/audit_stats.json}.",
-                r"Agreement between two blind readings by language model agents, on the raw readings, before any harmonisation. "
+                r"Agreement between two blind readings by AI agents, on the raw readings, before any harmonisation. "
                 rf"G: ten papers of the first 2026 draw reread with grid v1 ({tot_same} identical decisions out of {tot_n}, \file{{study/audit_stats.json}}); "
                 r"G2: the same ten papers reread with grid v2; R2: ten papers drawn at random from the added papers (\texttt{random.Random(7)}, deviation 12), reread with both grids; R3: ten papers of the 2019 to 2024 trajectory (\texttt{random.Random(2030)}, deviation 26). "
                 r"Agree: identical decisions over the papers where both readers answered yes or no (Y3 turned into yes from two tasks); $\kappa$: Cohen's kappa, blank when one of the two readers does not vary (trivial agreement). "

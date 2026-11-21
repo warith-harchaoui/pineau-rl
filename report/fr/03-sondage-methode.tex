@@ -302,8 +302,8 @@ dénominateurs sont les 50 articles.
 
 \section{Les lecteurs}\label{sec:sm-lecteurs}
 
-\paragraph{Des agents de modèle de langue}
-La lecture est confiée à des agents de modèle de langue : des sous-agents de Claude Code, chacun lancé
+\paragraph{Des modèles d'IA agentique}
+La lecture est confiée à des modèles d'IA agentique, c'est-à-dire des modèles d'IA générative qui agissent : ils ouvrent le PDF, cherchent la phrase qui fonde chaque décision et remplissent la grille. Ce rapport les appelle aussi agents IA. Ce sont des sous-agents de Claude Code, chacun lancé
 avec une consigne écrite, une liste d'identifiants et un dossier où écrire. Le dossier
 \file{study/readers/} donne la provenance de chaque agent, reconstruite le 15 novembre 2026 à partir des
 transcriptions des sessions (écart 28) : la consigne exacte (\file{prompts/<lecteur>.md}), le modèle
@@ -590,7 +590,7 @@ Une version antérieure de nos conclusions avançait que Pineau avait été éco
 coûtait peu. Ce classement venait de nous, après avoir vu les écarts. Pour le mettre à l'épreuve, trois
 évaluateurs indépendants notent chacun des 17 critères de pratique de la comparaison principale sur deux échelles
 de 1 à 5 : le coût $C$ pour un auteur qui a déjà ses résultats principaux, puis le risque $R$ que la
-pratique affaiblisse ou renverse sa conclusion. Ce sont trois agents de modèle de langue de trois
+pratique affaiblisse ou renverse sa conclusion. Ce sont trois agents IA de trois
 tailles différentes, sans accès aux résultats ni au dépôt, qui reçoivent seulement l'intitulé et la
 règle de chaque critère (\file{study/blind\_cost/}). Le test est la corrélation de Spearman entre la
 médiane des trois notes et l'écart observé, X3 retourné parce qu'une part plus basse y est un progrès.
