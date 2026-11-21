@@ -170,7 +170,7 @@ claim("Henderson script false positives", *both(lambda l: f"{pct(hs['false_posit
 claim("TRPO episode/agent sd", *both(lambda l: f"{pct(b1s['trpo']['eval_std_over_between_seed_sd'], l)} {('de l' + Q + 'écart type entre agents') if l == 'fr' else 'of the standard deviation between agents'}"))
 assert b1s["ppo_sb3"]["n10"]["random_5v5"]["share_abs_t_ge_henderson"] == 0
 claim("PPO with the script never reaches 9", "le même calcul n'atteint jamais 9", "the same computation never reaches 9")
-claim("B1 no reading reaches 9", "Aucune lecture n'atteint 9", "No reading reaches 9")
+claim("B1 no reading reaches 9", "Aucun de ces calculs n'atteint 9", "None of these computations reaches 9")
 claim("t-de-neuf alt", *both(lambda l: f"{'TRPO avec le script de 2017, en rouge :' if l == 'fr' else 'TRPO with the 2017 script, in red:'} {pct(hs['share_abs_t_ge_henderson'], l)} {'des tirages atteignent' if l == 'fr' else 'of draws reach'} {num(9.09, l, 2)}"))
 claim("t-de-neuf alt zeros", *both(lambda l: "script de 2017 : 0 %" if l == "fr" else "2017 script: 0%"))
 
