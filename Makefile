@@ -25,11 +25,16 @@ export PYTHONPATH := $(CURDIR)/src$(if $(PYTHONPATH),:$(PYTHONPATH))
 # In dependency order: extension_stats.json feeds robustness, title_filter_compare and trajectory.
 STUDY := analyze analyze_final audit_stats agree_v2 extension_stats robustness title_filter title_filter_compare trajectory
 SIM   := e1 e1_curve b1_trpo b1_script e2 e3 e4 e5 e6 e6_diag e7 e7_rank b3 dose e2_bonferroni
+# Deviations 12 and 20 of SIM_PROTOCOL.md: twenty seeds (_s20), the E4 replication on seeds 10 to 19 (_r10),
+# PPO read at 200,000 steps like SAC and CrossQ (_equal, _equal_s20).
+S20   := e2 e3 e5 e7 e7_rank b3 dose e2_bonferroni
+EQUAL := e2 b3
+SIM12 := $(S20:%=%_s20) e4_r10 $(EQUAL:%=%_equal) $(EQUAL:%=%_equal_s20)
 
 # Every JSON file the analysis rewrites. e6_official_eval.json needs the trained policies and env-zoo: not rewritten.
 OUTPUTS := study/results_2026.json study/results_final.json study/audit_stats.json study/agree_v2.json \
            study/extension_stats.json study/robustness.json study/title_filter.json study/title_filter_compare.json \
-           study/trajectory.json $(SIM:%=sim/analysis/%.json) sim/analysis/e6_official.json \
+           study/trajectory.json $(SIM:%=sim/analysis/%.json) $(SIM12:%=sim/analysis/%.json) sim/analysis/e6_official.json \
            sim/llm/results/summary.json sim/llm/results/gains.json sim/llm/results/extra.json \
            sim/llm/results/summary_5.json sim/llm/results/gains_5.json sim/llm/results/extra_5.json
 
@@ -48,6 +53,10 @@ analysis-study:
 analysis-sim:
 	@cd sim && for s in $(SIM); do echo "sim/analysis/$$s.py"; $(NICE) $(PY) analysis/$$s.py > /dev/null || exit 1; done
 	@echo "sim/analysis/e6_official.py stats"; cd sim && $(NICE) $(PY) analysis/e6_official.py stats > /dev/null
+	@cd sim && for s in $(S20); do echo "sim/analysis/$$s.py, twenty seeds"; SEEDS=0:20 SUFFIX=_s20 $(NICE) $(PY) analysis/$$s.py > /dev/null || exit 1; done
+	@echo "sim/analysis/e4.py, seeds 10 to 19"; cd sim && SEEDS=10:20 SUFFIX=_r10 $(NICE) $(PY) analysis/e4.py > /dev/null
+	@cd sim && for s in $(EQUAL); do echo "sim/analysis/$$s.py, equal budget"; BUDGET=equal SUFFIX=_equal $(NICE) $(PY) analysis/$$s.py > /dev/null || exit 1; \
+	  BUDGET=equal SEEDS=0:20 SUFFIX=_equal_s20 $(NICE) $(PY) analysis/$$s.py > /dev/null || exit 1; done
 
 # summary.py reads every finished run under sim/llm/results/, so a run finished after the last commit enters it.
 analysis-llm:

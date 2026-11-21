@@ -18,8 +18,9 @@ comps = []
 for task, S in G.items():
     for a, b in itertools.combinations(sorted(S), 2):
         x, y = S[a], S[b]
-        right = np.sign(x[:10].mean() - y[:10].mean())
-        rel = abs(x[:10].mean() - y[:10].mean()) / max(abs(x[:10].mean()), abs(y[:10].mean()))
+        k = 10 if DEFAULT else len(x)  # the right ranking: means of the 10 runs; deviation 20: of all the chosen seeds
+        right = np.sign(x[:k].mean() - y[:k].mean())
+        rel = abs(x[:k].mean() - y[:k].mean()) / max(abs(x[:k].mean()), abs(y[:k].mean()))
         hit = {n: float((np.sign(rng.choice(x, (N, n)).mean(1) - rng.choice(y, (N, n)).mean(1)) == right).mean()) for n in NS}
         comps.append(dict(task=task, pair=f"{a} vs {b}", rel_gap=float(rel), recovered=hit))
 close = [c for c in comps if c["rel_gap"] < .2]
