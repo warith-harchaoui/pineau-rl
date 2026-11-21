@@ -44,6 +44,9 @@ ICI = Path(__file__).parent
 SITE = Path("/Users/warithharchaoui/web/deraison")  # read-only here: CSS, fonts and photos for the preview
 SLUGS = {"fr": "ecouter-joelle-pineau", "en": "listen-to-joelle-pineau"}  # the site pairs them through the registry key "twin"
 FIG_PREFIX = "rl-pineau-"
+# The full document, served by deraison.ai itself rather than GitHub: (source in docs/, name on the site)
+PDFS = {"fr": ("conclusions.pdf", "apprentissage-par-renforcement-a-t-on-ecoute-joelle-pineau.pdf"),
+        "en": ("conclusions-en.pdf", "reinforcement-learning-did-we-listen-to-joelle-pineau.pdf")}
 
 
 def inline(s: str, lang: str) -> str:
@@ -345,6 +348,9 @@ def copy_assets(out: Path, lang: str) -> None:
                 shutil.copy(ICI / "figures" / mobile_name(src)[len(FIG_PREFIX):], dst / mobile_name(src))
         elif out.resolve() != SITE.resolve():
             shutil.copy(SITE / "assets" / "images" / "blog" / src, dst / src)
+    pdf = out / "assets" / "pdf" / PDFS[lang][1]
+    pdf.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy(ICI.parent / "docs" / PDFS[lang][0], pdf)
     css = out / "assets" / "css" / f"article-{SLUGS[lang]}.css"
     css.parent.mkdir(parents=True, exist_ok=True)
     css.write_text((ICI / "site" / "article.css.tmpl").read_text().replace("SLUG", SLUGS[lang]))
