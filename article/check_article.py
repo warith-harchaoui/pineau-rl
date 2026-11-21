@@ -280,7 +280,7 @@ assert e2s["leader_changes"] and [e2s["leaders"][t] for t in TK] == ["crossq", "
 assert not e2s["tasks"]["HalfCheetah-v5"]["pairs"]["crossq>sac"]["settled"]  # "sans que l'écart soit établi"
 assert [e2q["leaders"][t] for t in TK] == ["sac", "crossq", "crossq", "crossq"]  # "PPO ne mène plus ; SAC garde le guépard"
 assert set(e2qs["leaders"].values()) == {"crossq"} and not e2qs["leader_changes"] and not e2qs["settled_changes"]
-claim("equal budget, 200,000 steps", "relu à 200 000 pas", "read it at 200,000 steps", "doc")
+claim("equal budget, 200,000 steps", "lu le score de PPO à 200 000 pas", "read PPO's score at 200,000 steps", "doc")
 e3s = J("sim/analysis/e3_s20.json")
 assert e3s["Walker2d-v5"]["winner"] == "sb3" and e3s["Swimmer-v5"]["winner"] == "sbx" and sum(v["winner"] is not None for v in e3s.values()) == 2
 claim("E3 twenty seeds", *both(lambda l: f"{'avec' if l == 'fr' else 'with'} {num(e3s['Walker2d-v5']['iqm']['sb3'], l)} {'contre' if l == 'fr' else 'against'} {num(e3s['Walker2d-v5']['iqm']['sbx'], l)}"))
