@@ -1,0 +1,2 @@
+2026-11-19 19:27:40 llama1 random 4 on CPU: start (single attempt)
+2026-11-20 00:19:41 llama1 random 4 on CPU: {"model": "llama1_cpu", "task": "mul2", "reward": "random", "seed": 4, "done": true, "retries": {"generate": 0, "update": 0}, "wall": 16812.2}

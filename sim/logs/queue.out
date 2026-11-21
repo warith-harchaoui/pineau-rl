@@ -310,3 +310,225 @@
 2026-11-19 04:08:50 train crossq Walker2d-v5 19 done
 2026-11-19 05:49:43 train crossq Swimmer-v5 10 done
 2026-11-19 06:05:26 train crossq Swimmer-v5 11 done
+2026-11-19 09:28:26 train crossq Swimmer-v5 12 done
+2026-11-19 09:40:56 train crossq Swimmer-v5 13 done
+2026-11-19 12:10:51 train crossq Swimmer-v5 14 done
+2026-11-19 13:37:31 train crossq Swimmer-v5 15 done
+2026-11-19 15:56:38 train crossq Swimmer-v5 16 done
+2026-11-19 16:18:54 train crossq Swimmer-v5 17 done
+2026-11-19 19:00:47 train crossq Swimmer-v5 18 done
+2026-11-19 19:01:06 dose ppo_sb3 HalfCheetah-v5 10 done
+2026-11-19 19:01:24 dose ppo_sb3 HalfCheetah-v5 11 done
+2026-11-19 19:01:43 dose ppo_sb3 HalfCheetah-v5 12 done
+2026-11-19 19:02:02 dose ppo_sb3 HalfCheetah-v5 13 done
+2026-11-19 19:02:21 dose ppo_sb3 HalfCheetah-v5 14 done
+2026-11-19 19:02:40 dose ppo_sb3 HalfCheetah-v5 15 done
+2026-11-19 19:02:58 dose ppo_sb3 HalfCheetah-v5 16 done
+2026-11-19 19:03:16 dose ppo_sb3 HalfCheetah-v5 17 done
+2026-11-19 19:03:35 dose ppo_sb3 HalfCheetah-v5 18 done
+2026-11-19 19:03:53 dose ppo_sb3 HalfCheetah-v5 19 done
+2026-11-19 19:04:09 dose ppo_sb3 Hopper-v5 10 done
+2026-11-19 19:04:23 dose ppo_sb3 Hopper-v5 11 done
+2026-11-19 19:04:41 dose ppo_sb3 Hopper-v5 12 done
+2026-11-19 19:04:53 dose ppo_sb3 Hopper-v5 13 done
+2026-11-19 19:05:09 dose ppo_sb3 Hopper-v5 14 done
+2026-11-19 19:05:20 dose ppo_sb3 Hopper-v5 15 done
+2026-11-19 19:05:33 dose ppo_sb3 Hopper-v5 16 done
+2026-11-19 19:05:48 dose ppo_sb3 Hopper-v5 17 done
+2026-11-19 19:06:02 dose ppo_sb3 Hopper-v5 18 done
+2026-11-19 19:06:16 dose ppo_sb3 Hopper-v5 19 done
+2026-11-19 19:06:36 dose ppo_sb3 Walker2d-v5 10 done
+2026-11-19 19:06:49 dose ppo_sb3 Walker2d-v5 11 done
+2026-11-19 19:07:07 dose ppo_sb3 Walker2d-v5 12 done
+2026-11-19 19:07:21 dose ppo_sb3 Walker2d-v5 13 done
+2026-11-19 19:07:36 dose ppo_sb3 Walker2d-v5 14 done
+2026-11-19 19:07:58 dose ppo_sb3 Walker2d-v5 15 done
+2026-11-19 19:08:20 dose ppo_sb3 Walker2d-v5 16 done
+2026-11-19 19:08:34 dose ppo_sb3 Walker2d-v5 17 done
+2026-11-19 19:08:50 dose ppo_sb3 Walker2d-v5 18 done
+2026-11-19 19:09:11 dose ppo_sb3 Walker2d-v5 19 done
+2026-11-19 19:09:34 dose ppo_sb3 Swimmer-v5 10 done
+2026-11-19 19:09:55 dose ppo_sb3 Swimmer-v5 11 done
+2026-11-19 19:10:17 dose ppo_sb3 Swimmer-v5 12 done
+2026-11-19 19:10:39 dose ppo_sb3 Swimmer-v5 13 done
+2026-11-19 19:11:02 dose ppo_sb3 Swimmer-v5 14 done
+2026-11-19 19:11:25 dose ppo_sb3 Swimmer-v5 15 done
+2026-11-19 19:11:47 dose ppo_sb3 Swimmer-v5 16 done
+2026-11-19 19:12:09 dose ppo_sb3 Swimmer-v5 17 done
+2026-11-19 19:12:14 train crossq Swimmer-v5 19 done
+2026-11-19 19:12:27 dose ppo_sb3 Swimmer-v5 18 done
+2026-11-19 19:12:32 dose ppo_sb3 Swimmer-v5 19 done
+2026-11-19 19:12:40 dose sac HalfCheetah-v5 10 done
+2026-11-19 19:12:46 dose sac HalfCheetah-v5 11 done
+2026-11-19 19:12:54 dose sac HalfCheetah-v5 12 done
+2026-11-19 19:12:59 dose sac HalfCheetah-v5 13 done
+2026-11-19 19:13:07 dose sac HalfCheetah-v5 14 done
+2026-11-19 19:13:13 dose sac HalfCheetah-v5 15 done
+2026-11-19 19:13:22 dose sac HalfCheetah-v5 16 done
+2026-11-19 19:13:27 dose sac HalfCheetah-v5 17 done
+2026-11-19 19:13:36 dose sac HalfCheetah-v5 18 done
+2026-11-19 19:13:40 dose sac HalfCheetah-v5 19 done
+2026-11-19 19:13:42 dose sac Hopper-v5 10 done
+2026-11-19 19:13:49 dose sac Hopper-v5 11 done
+2026-11-19 19:13:52 dose sac Hopper-v5 12 done
+2026-11-19 19:13:56 dose sac Hopper-v5 13 done
+2026-11-19 19:14:02 dose sac Hopper-v5 15 done
+2026-11-19 19:14:04 dose sac Hopper-v5 14 done
+2026-11-19 19:14:09 dose sac Hopper-v5 16 done
+2026-11-19 19:14:12 dose sac Hopper-v5 17 done
+2026-11-19 19:14:21 dose sac Hopper-v5 18 done
+2026-11-19 19:14:28 dose sac Hopper-v5 19 done
+2026-11-19 19:14:31 dose sac Walker2d-v5 10 done
+2026-11-19 19:14:39 dose sac Walker2d-v5 11 done
+2026-11-19 19:14:48 dose sac Walker2d-v5 12 done
+2026-11-19 19:14:49 dose sac Walker2d-v5 13 done
+2026-11-19 19:14:59 dose sac Walker2d-v5 14 done
+2026-11-19 19:15:01 dose sac Walker2d-v5 15 done
+2026-11-19 19:15:10 dose sac Walker2d-v5 16 done
+2026-11-19 19:15:15 dose sac Walker2d-v5 17 done
+2026-11-19 19:15:24 dose sac Walker2d-v5 18 done
+2026-11-19 19:15:25 dose sac Walker2d-v5 19 done
+2026-11-19 19:15:41 dose sac Swimmer-v5 10 done
+2026-11-19 19:15:42 dose sac Swimmer-v5 11 done
+2026-11-19 19:15:57 dose sac Swimmer-v5 12 done
+2026-11-19 19:15:58 dose sac Swimmer-v5 13 done
+2026-11-19 19:16:14 dose sac Swimmer-v5 15 done
+2026-11-19 19:16:15 dose sac Swimmer-v5 14 done
+2026-11-19 19:16:31 dose sac Swimmer-v5 16 done
+2026-11-19 19:16:31 dose sac Swimmer-v5 17 done
+2026-11-19 19:16:48 dose sac Swimmer-v5 18 done
+2026-11-19 19:16:49 dose sac Swimmer-v5 19 done
+2026-11-19 19:17:00 dose ppo_sbx HalfCheetah-v5 10 done
+2026-11-19 19:17:01 dose ppo_sbx HalfCheetah-v5 11 done
+2026-11-19 19:17:13 dose ppo_sbx HalfCheetah-v5 12 done
+2026-11-19 19:17:14 dose ppo_sbx HalfCheetah-v5 13 done
+2026-11-19 19:17:25 dose ppo_sbx HalfCheetah-v5 15 done
+2026-11-19 19:17:25 dose ppo_sbx HalfCheetah-v5 14 done
+2026-11-19 19:17:38 dose ppo_sbx HalfCheetah-v5 16 done
+2026-11-19 19:17:38 dose ppo_sbx HalfCheetah-v5 17 done
+2026-11-19 19:17:50 dose ppo_sbx HalfCheetah-v5 18 done
+2026-11-19 19:17:50 dose ppo_sbx HalfCheetah-v5 19 done
+2026-11-19 19:18:00 dose ppo_sbx Hopper-v5 10 done
+2026-11-19 19:18:00 dose ppo_sbx Hopper-v5 11 done
+2026-11-19 19:18:08 dose ppo_sbx Hopper-v5 12 done
+2026-11-19 19:18:09 dose ppo_sbx Hopper-v5 13 done
+2026-11-19 19:18:17 dose ppo_sbx Hopper-v5 14 done
+2026-11-19 19:18:19 dose ppo_sbx Hopper-v5 15 done
+2026-11-19 19:18:27 dose ppo_sbx Hopper-v5 16 done
+2026-11-19 19:18:28 dose ppo_sbx Hopper-v5 17 done
+2026-11-19 19:18:35 dose ppo_sbx Hopper-v5 18 done
+2026-11-19 19:18:38 dose ppo_sbx Hopper-v5 19 done
+2026-11-19 19:18:45 dose ppo_sbx Walker2d-v5 10 done
+2026-11-19 19:18:51 dose ppo_sbx Walker2d-v5 11 done
+2026-11-19 19:18:51 dose ppo_sbx Walker2d-v5 12 done
+2026-11-19 19:18:58 dose ppo_sbx Walker2d-v5 13 done
+2026-11-19 19:18:59 dose ppo_sbx Walker2d-v5 14 done
+2026-11-19 19:19:12 dose ppo_sbx Walker2d-v5 15 done
+2026-11-19 19:19:16 dose ppo_sbx Walker2d-v5 16 done
+2026-11-19 19:19:18 dose ppo_sbx Walker2d-v5 17 done
+2026-11-19 19:19:27 dose ppo_sbx Walker2d-v5 18 done
+2026-11-19 19:19:30 dose ppo_sbx Walker2d-v5 19 done
+2026-11-19 19:19:42 dose ppo_sbx Swimmer-v5 10 done
+2026-11-19 19:19:46 dose ppo_sbx Swimmer-v5 11 done
+2026-11-19 19:19:58 dose ppo_sbx Swimmer-v5 12 done
+2026-11-19 19:20:00 dose ppo_sbx Swimmer-v5 13 done
+2026-11-19 19:20:13 dose ppo_sbx Swimmer-v5 14 done
+2026-11-19 19:20:16 dose ppo_sbx Swimmer-v5 15 done
+2026-11-19 19:20:28 dose ppo_sbx Swimmer-v5 16 done
+2026-11-19 19:20:30 dose ppo_sbx Swimmer-v5 17 done
+2026-11-19 19:20:44 dose ppo_sbx Swimmer-v5 18 done
+2026-11-19 19:20:45 dose ppo_sbx Swimmer-v5 19 done
+2026-11-19 19:20:59 dose crossq HalfCheetah-v5 11 done
+2026-11-19 19:20:59 dose crossq HalfCheetah-v5 10 done
+2026-11-19 19:21:15 dose crossq HalfCheetah-v5 12 done
+2026-11-19 19:21:15 dose crossq HalfCheetah-v5 13 done
+2026-11-19 19:21:30 dose crossq HalfCheetah-v5 14 done
+2026-11-19 19:21:30 dose crossq HalfCheetah-v5 15 done
+2026-11-19 19:21:45 dose crossq HalfCheetah-v5 17 done
+2026-11-19 19:21:45 dose crossq HalfCheetah-v5 16 done
+2026-11-19 19:22:00 dose crossq HalfCheetah-v5 19 done
+2026-11-19 19:22:00 dose crossq HalfCheetah-v5 18 done
+2026-11-19 19:22:15 dose crossq Hopper-v5 10 done
+2026-11-19 19:22:18 dose crossq Hopper-v5 11 done
+2026-11-19 19:22:26 dose crossq Hopper-v5 12 done
+2026-11-19 19:22:34 dose crossq Hopper-v5 13 done
+2026-11-19 19:22:41 dose crossq Hopper-v5 14 done
+2026-11-19 19:22:45 dose crossq Hopper-v5 15 done
+2026-11-19 19:22:56 dose crossq Hopper-v5 16 done
+2026-11-19 19:23:03 dose crossq Hopper-v5 17 done
+2026-11-19 19:23:14 dose crossq Hopper-v5 18 done
+2026-11-19 19:23:15 dose crossq Hopper-v5 19 done
+2026-11-19 19:23:34 dose crossq Walker2d-v5 10 done
+2026-11-19 19:23:36 dose crossq Walker2d-v5 11 done
+2026-11-19 19:23:51 dose crossq Walker2d-v5 13 done
+2026-11-19 19:23:52 dose crossq Walker2d-v5 12 done
+2026-11-19 19:24:06 dose crossq Walker2d-v5 14 done
+2026-11-19 19:24:07 dose crossq Walker2d-v5 15 done
+2026-11-19 19:24:26 dose crossq Walker2d-v5 16 done
+2026-11-19 19:24:27 dose crossq Walker2d-v5 17 done
+2026-11-19 19:24:47 dose crossq Walker2d-v5 18 done
+2026-11-19 19:24:47 dose crossq Walker2d-v5 19 done
+2026-11-19 19:25:05 dose crossq Swimmer-v5 10 done
+2026-11-19 19:25:05 dose crossq Swimmer-v5 11 done
+2026-11-19 19:25:24 dose crossq Swimmer-v5 13 done
+2026-11-19 19:25:24 dose crossq Swimmer-v5 12 done
+2026-11-19 19:25:42 dose crossq Swimmer-v5 14 done
+2026-11-19 19:25:43 dose crossq Swimmer-v5 15 done
+2026-11-19 19:26:00 dose crossq Swimmer-v5 16 done
+2026-11-19 19:26:02 dose crossq Swimmer-v5 17 done
+2026-11-19 19:26:19 dose crossq Swimmer-v5 18 done
+2026-11-19 19:26:19 pass finished
+2026-11-19 19:26:19 dose crossq Swimmer-v5 19 done
+2026-11-19 19:26:19 pass finished
+2026-11-20 01:07:39 pass finished
+2026-11-20 01:07:41 pass finished
+2026-11-20 02:07:43 pass finished
+2026-11-20 02:07:45 pass finished
+2026-11-20 03:07:47 pass finished
+2026-11-20 03:07:49 pass finished
+2026-11-20 04:07:51 pass finished
+2026-11-20 04:07:53 pass finished
+2026-11-20 05:07:56 pass finished
+2026-11-20 05:07:58 pass finished
+2026-11-20 06:08:00 pass finished
+2026-11-20 06:08:02 pass finished
+2026-11-20 07:08:04 pass finished
+2026-11-20 07:08:06 pass finished
+2026-11-20 08:08:08 pass finished
+2026-11-20 08:08:10 pass finished
+2026-11-20 09:08:13 pass finished
+2026-11-20 09:08:15 pass finished
+2026-11-20 10:08:17 pass finished
+2026-11-20 10:08:19 pass finished
+2026-11-20 11:08:21 pass finished
+2026-11-20 11:08:23 pass finished
+2026-11-20 12:08:25 pass finished
+2026-11-20 12:08:27 pass finished
+2026-11-20 13:08:30 pass finished
+2026-11-20 13:08:32 pass finished
+2026-11-20 14:08:34 pass finished
+2026-11-20 14:08:36 pass finished
+2026-11-20 15:08:38 pass finished
+2026-11-20 15:08:40 pass finished
+2026-11-20 16:08:43 pass finished
+2026-11-20 16:08:45 pass finished
+2026-11-20 17:08:47 pass finished
+2026-11-20 17:08:49 pass finished
+2026-11-20 18:08:51 pass finished
+2026-11-20 18:08:53 pass finished
+2026-11-20 19:08:55 pass finished
+2026-11-20 19:08:57 pass finished
+2026-11-20 20:09:00 pass finished
+2026-11-20 20:09:02 pass finished
+2026-11-20 21:09:04 pass finished
+2026-11-20 21:09:06 pass finished
+2026-11-20 22:09:08 pass finished
+2026-11-20 22:09:10 pass finished
+2026-11-20 23:09:12 pass finished
+2026-11-20 23:09:14 pass finished
+2026-11-21 00:09:17 pass finished
+2026-11-21 00:09:19 pass finished
+2026-11-21 01:09:21 pass finished
+2026-11-21 01:09:23 pass finished
+2026-11-21 03:09:26 pass finished
+2026-11-21 03:09:28 pass finished
