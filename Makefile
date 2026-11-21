@@ -25,24 +25,28 @@ export PYTHONPATH := $(CURDIR)/src$(if $(PYTHONPATH),:$(PYTHONPATH))
 
 # In dependency order: extension_stats.json feeds robustness, title_filter_compare and trajectory.
 STUDY := analyze analyze_final audit_stats agree_v2 extension_stats robustness title_filter title_filter_compare trajectory \
-         survey_extra x8_stats
-SIM   := e1 e1_curve b1_trpo b1_script e2 e3 e4 e5 e6 e6_diag e7 e7_rank b3 dose e2_bonferroni
+         survey_extra x8_stats q5_versions_stats
+SIM   := e1 e1_curve b1_trpo b1_script e2 e3 e4 e5 e6 e6_diag e7 e7_rank b3 dose e2_bonferroni e2_strict e7_test
 # Deviations 12 and 20 of SIM_PROTOCOL.md: twenty seeds (_s20), the E4 replication on seeds 10 to 19 (_r10),
 # PPO read at 200,000 steps like SAC and CrossQ (_equal, _equal_s20).
-S20   := e2 e3 e5 e7 e7_rank b3 dose e2_bonferroni
-EQUAL := e2 b3
+S20   := e2 e3 e5 e7 e7_rank b3 dose e2_bonferroni e2_strict e7_test
+EQUAL := e2 b3 e2_bonferroni e2_strict
+# Deviations 22 to 31 of SIM_PROTOCOL.md (21 November 2026): analyses of the data on disk, run after the lists above
+# (they read e3.json, e3_s20.json, e5.json and e6_official.json).
+POST  := e3_holm e1_grid e5_holdout rule_calibration b1_factor curves effect_sizes e6_speed
 SIM12 := $(S20:%=%_s20) e4_r10 $(EQUAL:%=%_equal) $(EQUAL:%=%_equal_s20)
 
 # Every JSON file the analysis rewrites. e6_official_eval.json needs the trained policies and env-zoo: not rewritten.
 OUTPUTS := study/results_2026.json study/results_final.json study/audit_stats.json study/agree_v2.json \
            study/extension_stats.json study/robustness.json study/title_filter.json study/title_filter_compare.json \
-           study/trajectory.json study/survey_extra.json study/x8_stats.json \
+           study/trajectory.json study/survey_extra.json study/x8_stats.json study/q5_versions.json \
            $(SIM:%=sim/analysis/%.json) $(SIM12:%=sim/analysis/%.json) sim/analysis/e6_official.json \
+           $(POST:%=sim/analysis/%.json) \
            sim/llm/results/summary.json sim/llm/results/gains.json sim/llm/results/extra.json \
            sim/llm/results/summary_5.json sim/llm/results/gains_5.json sim/llm/results/extra_5.json \
            sim/llm/results/logs_stats_5.json
 
-.PHONY: all install analysis analysis-study analysis-sim analysis-llm check test lint verify verify-head figures docs report clean
+.PHONY: all install analysis analysis-study analysis-sim hyperparams analysis-suite analysis-llm check test lint verify verify-head figures docs report clean
 
 all: verify
 
@@ -61,6 +65,18 @@ analysis-sim:
 	@echo "sim/analysis/e4.py, seeds 10 to 19"; cd sim && SEEDS=10:20 SUFFIX=_r10 $(NICE) $(PY) analysis/e4.py > /dev/null
 	@cd sim && for s in $(EQUAL); do echo "sim/analysis/$$s.py, equal budget"; BUDGET=equal SUFFIX=_equal $(NICE) $(PY) analysis/$$s.py > /dev/null || exit 1; \
 	  BUDGET=equal SEEDS=0:20 SUFFIX=_equal_s20 $(NICE) $(PY) analysis/$$s.py > /dev/null || exit 1; done
+	@cd sim && for s in $(POST); do echo "sim/analysis/$$s.py"; $(NICE) $(PY) analysis/$$s.py > /dev/null || exit 1; done
+
+# Deviation 28: the hyperparameters, read from the libraries of the training environment (sim/env), not in verify.
+# Deviations 32 to 34: the experiments of 21 November (queue sim/jobs_suite.txt); run once their trainings are finished.
+# Deviation 33 (a, b): e6_enjoy.py and e6_hub.py need env-zoo and the policies; their JSON files are not rewritten here.
+PY_TRAIN ?= $(CURDIR)/sim/env/bin/python
+SUITE := c6_determinism e6_gamma c2
+hyperparams:
+	cd sim && $(PY_TRAIN) analysis/hyperparams.py > /dev/null
+
+analysis-suite:
+	@cd sim && for s in $(SUITE); do echo "sim/analysis/$$s.py"; $(NICE) $(PY) analysis/$$s.py > /dev/null || exit 1; done
 
 # summary.py reads every finished run under sim/llm/results/, so a run finished after the last commit enters it.
 analysis-llm:

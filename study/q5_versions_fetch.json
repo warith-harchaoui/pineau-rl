@@ -1,0 +1,609 @@
+{
+ "C15": {
+  "year": "2018",
+  "title": "Can Deep Reinforcement Learning Solve Erdos-Selfridge-Spencer Games?",
+  "version": "arxiv",
+  "score": 1.0,
+  "arxiv_id": "1711.02301v5",
+  "arxiv_title": "Can Deep Reinforcement Learning Solve Erdos-Selfridge-Spencer Games?",
+  "file": "pdf/C15-arxiv.pdf"
+ },
+ "C16": {
+  "year": "2018",
+  "title": "QMIX: Monotonic Value Function Factorisation for Deep Multi-Agent Reinforcement Learning",
+  "version": "arxiv",
+  "score": 1.0,
+  "arxiv_id": "1803.11485v2",
+  "arxiv_title": "QMIX: Monotonic Value Function Factorisation for Deep Multi-Agent Reinforcement Learning",
+  "file": "pdf/C16-arxiv.pdf"
+ },
+ "C21": {
+  "year": "2018",
+  "title": "Credit Assignment For Collective Multiagent RL With Global Rewards",
+  "version": "arxiv",
+  "file": null,
+  "note": "no arXiv entry at 85%"
+ },
+ "C22": {
+  "year": "2018",
+  "title": "Learning Temporal Point Processes via Reinforcement Learning",
+  "version": "arxiv",
+  "score": 1.0,
+  "arxiv_id": "1811.05016v2",
+  "arxiv_title": "Learning Temporal Point Processes via Reinforcement Learning",
+  "file": "pdf/C22-arxiv.pdf"
+ },
+ "C25": {
+  "year": "2018",
+  "title": "Representation Balancing MDPs for Off-policy Policy Evaluation",
+  "version": "arxiv",
+  "score": 1.0,
+  "arxiv_id": "1805.09044v4",
+  "arxiv_title": "Representation Balancing MDPs for Off-Policy Policy Evaluation",
+  "file": "pdf/C25-arxiv.pdf"
+ },
+ "C27": {
+  "year": "2018",
+  "title": "Scalable Coordinated Exploration in Concurrent Reinforcement Learning",
+  "version": "arxiv",
+  "score": 1.0,
+  "arxiv_id": "1805.08948v2",
+  "arxiv_title": "Scalable Coordinated Exploration in Concurrent Reinforcement Learning",
+  "file": "pdf/C27-arxiv.pdf"
+ },
+ "C29": {
+  "year": "2018",
+  "title": "Multi-Agent Reinforcement Learning via Double Averaging Primal-Dual Optimization",
+  "version": "arxiv",
+  "score": 1.0,
+  "arxiv_id": "1806.00877v4",
+  "arxiv_title": "Multi-Agent Reinforcement Learning via Double Averaging Primal-Dual Optimization",
+  "file": "pdf/C29-arxiv.pdf"
+ },
+ "C210": {
+  "year": "2018",
+  "title": "Meta-Reinforcement Learning of Structured Exploration Strategies",
+  "version": "arxiv",
+  "score": 1.0,
+  "arxiv_id": "1802.07245v1",
+  "arxiv_title": "Meta-Reinforcement Learning of Structured Exploration Strategies",
+  "file": "pdf/C210-arxiv.pdf"
+ },
+ "C19": {
+  "year": "2018",
+  "title": "Time Limits in Reinforcement Learning",
+  "version": "arxiv",
+  "score": 1.0,
+  "arxiv_id": "1712.00378v4",
+  "arxiv_title": "Time Limits in Reinforcement Learning",
+  "file": "pdf/C19-arxiv.pdf"
+ },
+ "C211": {
+  "year": "2018",
+  "title": "Bayesian Control of Large MDPs with Unknown Dynamics in Data-Poor Environments",
+  "version": "arxiv",
+  "file": null,
+  "note": "no arXiv entry at 85%"
+ },
+ "C111": {
+  "year": "2018",
+  "title": "Fully Decentralized Multi-Agent Reinforcement Learning with Networked Agents",
+  "version": "arxiv",
+  "score": 1.0,
+  "arxiv_id": "1802.08757v2",
+  "arxiv_title": "Fully Decentralized Multi-Agent Reinforcement Learning with Networked Agents",
+  "file": "pdf/C111-arxiv.pdf"
+ },
+ "C112": {
+  "year": "2018",
+  "title": "Modeling Others using Oneself in Multi-Agent Reinforcement Learning",
+  "version": "arxiv",
+  "score": 1.0,
+  "arxiv_id": "1802.09640v3",
+  "arxiv_title": "Modeling Others using Oneself in Multi-Agent Reinforcement Learning",
+  "file": "pdf/C112-arxiv.pdf"
+ },
+ "C213": {
+  "year": "2018",
+  "title": "Lifelong Inverse Reinforcement Learning",
+  "version": "arxiv",
+  "score": 1.0,
+  "arxiv_id": "2207.00461v1",
+  "arxiv_title": "Lifelong Inverse Reinforcement Learning",
+  "file": "pdf/C213-arxiv.pdf"
+ },
+ "C114": {
+  "year": "2018",
+  "title": "Policy Optimization as Wasserstein Gradient Flows",
+  "version": "arxiv",
+  "score": 1.0,
+  "arxiv_id": "1808.03030v1",
+  "arxiv_title": "Policy Optimization as Wasserstein Gradient Flows",
+  "file": "pdf/C114-arxiv.pdf"
+ },
+ "C31": {
+  "year": "2018",
+  "title": "N2N learning: Network to Network Compression via Policy Gradient Reinforcement Learning",
+  "version": "arxiv",
+  "score": 1.0,
+  "arxiv_id": "1709.06030v2",
+  "arxiv_title": "N2N Learning: Network to Network Compression via Policy Gradient Reinforcement Learning",
+  "file": "pdf/C31-arxiv.pdf"
+ },
+ "C32": {
+  "year": "2018",
+  "title": "Leveraging Grammar and Reinforcement Learning for Neural Program Synthesis",
+  "version": "arxiv",
+  "score": 1.0,
+  "arxiv_id": "1805.04276v2",
+  "arxiv_title": "Leveraging Grammar and Reinforcement Learning for Neural Program Synthesis",
+  "file": "pdf/C32-arxiv.pdf"
+ },
+ "C115": {
+  "year": "2018",
+  "title": "Importance Weighted Transfer of Samples in Reinforcement Learning",
+  "version": "arxiv",
+  "score": 1.0,
+  "arxiv_id": "1805.10886v1",
+  "arxiv_title": "Importance Weighted Transfer of Samples in Reinforcement Learning",
+  "file": "pdf/C115-arxiv.pdf"
+ },
+ "C214": {
+  "year": "2018",
+  "title": "Post: Device Placement with Cross-Entropy Minimization and Proximal Policy Optimization",
+  "version": "arxiv",
+  "file": null,
+  "note": "no arXiv entry at 85%"
+ },
+ "C116": {
+  "year": "2018",
+  "title": "Policy Optimization with Demonstrations",
+  "version": "arxiv",
+  "file": null,
+  "note": "no arXiv entry at 85%"
+ },
+ "C117": {
+  "year": "2018",
+  "title": "End-to-end Active Object Tracking via Reinforcement Learning",
+  "version": "arxiv",
+  "score": 1.0,
+  "arxiv_id": "1705.10561v3",
+  "arxiv_title": "End-to-end Active Object Tracking via Reinforcement Learning",
+  "file": "pdf/C117-arxiv.pdf"
+ },
+ "C215": {
+  "year": "2018",
+  "title": "Genetic-Gated Networks for Deep Reinforcement Learning",
+  "version": "arxiv",
+  "file": null,
+  "note": "no arXiv entry at 85%"
+ },
+ "C34": {
+  "year": "2018",
+  "title": "Leave no Trace: Learning to Reset for Safe and Autonomous Reinforcement Learning",
+  "version": "arxiv",
+  "score": 1.0,
+  "arxiv_id": "1711.06782v1",
+  "arxiv_title": "Leave no Trace: Learning to Reset for Safe and Autonomous Reinforcement Learning",
+  "file": "pdf/C34-arxiv.pdf"
+ },
+ "C118": {
+  "year": "2018",
+  "title": "Discovering and Removing Exogenous State Variables and Rewards for Reinforcement Learning",
+  "version": "arxiv",
+  "score": 1.0,
+  "arxiv_id": "1806.01584v1",
+  "arxiv_title": "Discovering and Removing Exogenous State Variables and Rewards for Reinforcement Learning",
+  "file": "pdf/C118-arxiv.pdf"
+ },
+ "C35": {
+  "year": "2018",
+  "title": "Policy Optimization by Genetic Distillation",
+  "version": "arxiv",
+  "score": 1.0,
+  "arxiv_id": "1711.01012v2",
+  "arxiv_title": "Policy Optimization by Genetic Distillation",
+  "file": "pdf/C35-arxiv.pdf"
+ },
+ "C216": {
+  "year": "2018",
+  "title": "Visual Reinforcement Learning with Imagined Goals",
+  "version": "arxiv",
+  "score": 1.0,
+  "arxiv_id": "1807.04742v2",
+  "arxiv_title": "Visual Reinforcement Learning with Imagined Goals",
+  "file": "pdf/C216-arxiv.pdf"
+ },
+ "C217": {
+  "year": "2018",
+  "title": "Reinforcement Learning of Theorem Proving",
+  "version": "arxiv",
+  "score": 1.0,
+  "arxiv_id": "1805.07563v1",
+  "arxiv_title": "Reinforcement Learning of Theorem Proving",
+  "file": "pdf/C217-arxiv.pdf"
+ },
+ "C121": {
+  "year": "2018",
+  "title": "Mix & Match Agent Curricula for Reinforcement Learning",
+  "version": "arxiv",
+  "score": 0.963,
+  "arxiv_id": "1806.01780v1",
+  "arxiv_title": "Mix&Match - Agent Curricula for Reinforcement Learning",
+  "file": "pdf/C121-arxiv.pdf"
+ },
+ "C36": {
+  "year": "2018",
+  "title": "Temporal Difference Models: Model-Free Deep RL for Model-Based Control",
+  "version": "arxiv",
+  "score": 1.0,
+  "arxiv_id": "1802.09081v2",
+  "arxiv_title": "Temporal Difference Models: Model-Free Deep RL for Model-Based Control",
+  "file": "pdf/C36-arxiv.pdf"
+ },
+ "C218": {
+  "year": "2018",
+  "title": "Simple random search of static linear policies is competitive for reinforcement learning",
+  "version": "arxiv",
+  "file": null,
+  "note": "no arXiv entry at 85%"
+ },
+ "C37": {
+  "year": "2018",
+  "title": "Reinforcement Learning Algorithm Selection",
+  "version": "arxiv",
+  "score": 1.0,
+  "arxiv_id": "1701.08810v3",
+  "arxiv_title": "Reinforcement Learning Algorithm Selection",
+  "file": "pdf/C37-arxiv.pdf"
+ },
+ "C38": {
+  "year": "2018",
+  "title": "Neural Map: Structured Memory for Deep Reinforcement Learning",
+  "version": "arxiv",
+  "score": 1.0,
+  "arxiv_id": "1702.08360v1",
+  "arxiv_title": "Neural Map: Structured Memory for Deep Reinforcement Learning",
+  "file": "pdf/C38-arxiv.pdf"
+ },
+ "C39": {
+  "year": "2018",
+  "title": "TreeQN and ATreeC: Differentiable Tree-Structured Models for Deep Reinforcement Learning",
+  "version": "arxiv",
+  "score": 1.0,
+  "arxiv_id": "1710.11417v2",
+  "arxiv_title": "TreeQN and ATreeC: Differentiable Tree-Structured Models for Deep Reinforcement Learning",
+  "file": "pdf/C39-arxiv.pdf"
+ },
+ "C220": {
+  "year": "2018",
+  "title": "Verifiable Reinforcement Learning via Policy Extraction",
+  "version": "arxiv",
+  "score": 1.0,
+  "arxiv_id": "1805.08328v2",
+  "arxiv_title": "Verifiable Reinforcement Learning via Policy Extraction",
+  "file": "pdf/C220-arxiv.pdf"
+ },
+ "K002": {
+  "year": "2026",
+  "version": "proc",
+  "title": "MolEditRL: Structure-Preserving Molecular Editing via Discrete Diffusion and Reinforcement Learning",
+  "file": "pdf/K002-proc.pdf"
+ },
+ "K006": {
+  "year": "2026",
+  "version": "proc",
+  "title": "Joint Selection for Large-Scale Pre-Training Data via Policy Gradient-based Mask Learning",
+  "file": "pdf/K006-proc.pdf"
+ },
+ "K021": {
+  "year": "2026",
+  "version": "proc",
+  "title": "Beyond Distributions: Geometric Action Control for Continuous Reinforcement Learning",
+  "file": "pdf/K021-proc.pdf"
+ },
+ "K045": {
+  "year": "2026",
+  "version": "proc",
+  "title": "From Observations to Events: Event-Aware World Models for Reinforcement Learning",
+  "file": "pdf/K045-proc.pdf"
+ },
+ "K049": {
+  "year": "2026",
+  "version": "proc",
+  "title": "Safe Continuous-time Multi-Agent Reinforcement Learning via Epigraph Form",
+  "file": "pdf/K049-proc.pdf"
+ },
+ "K060": {
+  "year": "2026",
+  "version": "proc",
+  "title": "ARM-FM: Automated Reward Machines via Foundation Models for Compositional Reinforcement Learning",
+  "file": "pdf/K060-proc.pdf"
+ },
+ "K066": {
+  "year": "2026",
+  "version": "proc",
+  "title": "Bridging the performance-gap between target-free and target-based reinforcement learning",
+  "file": "pdf/K066-proc.pdf"
+ },
+ "K083": {
+  "year": "2026",
+  "version": "proc",
+  "title": "Use the Online Network If You Can: Towards Fast and Stable Reinforcement Learning",
+  "file": "pdf/K083-proc.pdf"
+ },
+ "K089": {
+  "year": "2026",
+  "version": "proc",
+  "title": "Partially Equivariant Reinforcement Learning in Symmetry-Breaking Environments",
+  "file": "pdf/K089-proc.pdf"
+ },
+ "K093": {
+  "year": "2026",
+  "version": "proc",
+  "title": "Cross-Embodiment Offline Reinforcement Learning for Heterogeneous Robot Datasets",
+  "file": "pdf/K093-proc.pdf"
+ },
+ "ML06": {
+  "year": "2026",
+  "version": "proc",
+  "title": "MEAL: A Benchmark for Continual Multi-Agent Reinforcement Learning",
+  "score": 1.0,
+  "pmlr_title": "MEAL: A Benchmark for Continual Multi-Agent Reinforcement Learning",
+  "file": "pdf/ML06-proc.pdf"
+ },
+ "ML11": {
+  "year": "2026",
+  "version": "proc",
+  "title": "Randomized Advantage Transformation (RAT): Computing Natural Policy Gradients via Direct Backpropagation",
+  "score": 1.0,
+  "pmlr_title": "Randomized Advantage Transformation (RAT): Computing Natural Policy Gradients via Direct Backpropagation",
+  "file": "pdf/ML11-proc.pdf"
+ },
+ "ML15": {
+  "year": "2026",
+  "version": "proc",
+  "title": "Moment Matching Q-Learning",
+  "score": 1.0,
+  "pmlr_title": "Moment Matching Q-Learning",
+  "file": "pdf/ML15-proc.pdf"
+ },
+ "ML16": {
+  "year": "2026",
+  "version": "proc",
+  "title": "Causal Flow Q-Learning for Robust Offline Reinforcement Learning",
+  "score": 1.0,
+  "pmlr_title": "Causal Flow Q-Learning for Robust Offline Reinforcement Learning",
+  "file": "pdf/ML16-proc.pdf"
+ },
+ "MLR06": {
+  "year": "2026",
+  "version": "proc",
+  "title": "Estimation of Treatment Effects Under Nonstationarity via the Truncated Policy Gradient Estimator",
+  "score": 1.0,
+  "pmlr_title": "Estimation of Treatment Effects Under Nonstationarity via the Truncated Policy Gradient Estimator",
+  "file": "pdf/MLR06-proc.pdf"
+ },
+ "K015": {
+  "year": "2026",
+  "version": "proc",
+  "title": "Tracking Drift: Variation-Aware Entropy Scheduling for Non-Stationary Reinforcement Learning",
+  "score": 1.0,
+  "pmlr_title": "Tracking Drift: Variation-Aware Entropy Scheduling for Non-Stationary Reinforcement Learning",
+  "file": "pdf/K015-proc.pdf"
+ },
+ "K016": {
+  "year": "2026",
+  "version": "proc",
+  "title": "Safety Generalization Under Distribution Shift in Safe Reinforcement Learning: A Diabetes Testbed",
+  "score": 1.0,
+  "pmlr_title": "Safety Generalization Under Distribution Shift in Safe Reinforcement Learning: A Diabetes Testbed",
+  "file": "pdf/K016-proc.pdf"
+ },
+ "K017": {
+  "year": "2026",
+  "version": "proc",
+  "title": "Long-Horizon Model-Based Offline Reinforcement Learning Without Explicit Conservatism",
+  "score": 1.0,
+  "pmlr_title": "Long-Horizon Model-Based Offline Reinforcement Learning Without Explicit Conservatism",
+  "file": "pdf/K017-proc.pdf"
+ },
+ "K042": {
+  "year": "2026",
+  "version": "proc",
+  "title": "Squeezing More from the Stream : Learning Representation Online for Streaming Reinforcement Learning",
+  "score": 1.0,
+  "pmlr_title": "Squeezing More from the Stream : Learning Representation Online for Streaming Reinforcement Learning",
+  "file": "pdf/K042-proc.pdf"
+ },
+ "K051": {
+  "year": "2026",
+  "version": "proc",
+  "title": "Hierarchical Reinforcement Learning for Sparse-Reward Search in Commutative Algebra",
+  "score": 1.0,
+  "pmlr_title": "Hierarchical Reinforcement Learning for Sparse-Reward Search in Commutative Algebra",
+  "file": "pdf/K051-proc.pdf"
+ },
+ "K052": {
+  "year": "2026",
+  "version": "proc",
+  "title": "RL-SPH: Learning to Achieve Feasible Solutions for Integer Linear Programs",
+  "score": 1.0,
+  "pmlr_title": "RL-SPH: Learning to Achieve Feasible Solutions for Integer Linear Programs",
+  "file": "pdf/K052-proc.pdf"
+ },
+ "K054": {
+  "year": "2026",
+  "version": "proc",
+  "title": "When Can You Poison Rewards? A Tight Characterization of Reward Poisoning in Linear MDPs",
+  "score": 1.0,
+  "pmlr_title": "When Can You Poison Rewards? A Tight Characterization of Reward Poisoning in Linear MDPs",
+  "file": "pdf/K054-proc.pdf"
+ },
+ "K056": {
+  "year": "2026",
+  "version": "proc",
+  "title": "RAMAC: Multimodal Risk-Aware Offline Reinforcement Learning and the Role of Behavior Regularization",
+  "score": 1.0,
+  "pmlr_title": "RAMAC: Multimodal Risk-Aware Offline Reinforcement Learning and the Role of Behavior Regularization",
+  "file": "pdf/K056-proc.pdf"
+ },
+ "K063": {
+  "year": "2026",
+  "version": "proc",
+  "title": "Benchmarking the Limits of In-Context Reinforcement Learning for Ad-Hoc Teamwork",
+  "score": 1.0,
+  "pmlr_title": "Benchmarking the Limits of In-Context Reinforcement Learning for Ad-Hoc Teamwork",
+  "file": "pdf/K063-proc.pdf"
+ },
+ "K073": {
+  "year": "2026",
+  "version": "proc",
+  "title": "SMAC: Score-Matched Actor-Critics for Robust Offline-to-Online Transfer",
+  "score": 1.0,
+  "pmlr_title": "SMAC: Score-Matched Actor-Critics for Robust Offline-to-Online Transfer",
+  "file": "pdf/K073-proc.pdf"
+ },
+ "K079": {
+  "year": "2026",
+  "version": "proc",
+  "title": "From Static Constraints to Dynamic Adaptation: Sample-Level Constraint Relaxation for Offline-to-Online Reinforcement Learning",
+  "score": 1.0,
+  "pmlr_title": "From Static Constraints to Dynamic Adaptation: Sample-Level Constraint Relaxation for Offline-to-Online Reinforcement Learning",
+  "file": "pdf/K079-proc.pdf"
+ },
+ "K085": {
+  "year": "2026",
+  "version": "proc",
+  "title": "Scalable Reinforcement Learning via Adaptive Batch Scaling",
+  "score": 1.0,
+  "pmlr_title": "Scalable Reinforcement Learning via Adaptive Batch Scaling",
+  "file": "pdf/K085-proc.pdf"
+ },
+ "NE10": {
+  "year": "2026",
+  "version": "proc",
+  "title": "Towards Robust Zero-Shot Reinforcement Learning",
+  "file": "pdf/NE10-proc.pdf",
+  "note": "deviation 22"
+ },
+ "NE12": {
+  "year": "2026",
+  "version": "proc",
+  "title": "Rainbow Delay Compensation: A Multi-Agent Reinforcement Learning Framework for Mitigating Observation Delays",
+  "file": "pdf/NE12-proc.pdf",
+  "note": "deviation 22"
+ },
+ "NER02": {
+  "year": "2026",
+  "version": "proc",
+  "title": "Text-to-Decision Agent: Offline Meta-Reinforcement Learning from Natural Language Supervision",
+  "file": "pdf/NER02-proc.pdf",
+  "note": "deviation 22"
+ },
+ "NER06": {
+  "year": "2026",
+  "version": "proc",
+  "title": "FairDICE: Fairness-Driven Offline Multi-Objective Reinforcement Learning",
+  "file": "pdf/NER06-proc.pdf",
+  "note": "deviation 22"
+ },
+ "K012": {
+  "year": "2026",
+  "version": "proc",
+  "title": "Deep RL Needs Deep Behavior Analysis: Exploring Implicit Planning by Model-Free Agents in Open-Ended Environments",
+  "file": "pdf/K012-proc.pdf",
+  "note": "deviation 22"
+ },
+ "K030": {
+  "year": "2026",
+  "version": "proc",
+  "title": "State Entropy Regularization for Robust Reinforcement Learning",
+  "file": "pdf/K030-proc.pdf",
+  "note": "deviation 22"
+ },
+ "K035": {
+  "year": "2026",
+  "version": "proc",
+  "title": "Learning Interactive World Model for Object-Centric Reinforcement Learning",
+  "file": "pdf/K035-proc.pdf",
+  "note": "deviation 22"
+ },
+ "K038": {
+  "year": "2026",
+  "version": "proc",
+  "title": "1000 Layer Networks for Self-Supervised RL: Scaling Depth Can Enable New Goal-Reaching Capabilities",
+  "file": "pdf/K038-proc.pdf",
+  "note": "deviation 22"
+ },
+ "K043": {
+  "year": "2026",
+  "version": "proc",
+  "title": "Intrinsic Benefits of Categorical Distributional Loss: Uncertainty-aware Regularized Exploration in Reinforcement Learning",
+  "file": "pdf/K043-proc.pdf",
+  "note": "deviation 22"
+ },
+ "K047": {
+  "year": "2026",
+  "version": "proc",
+  "title": "Adaptive Surrogate Gradients for Sequential Reinforcement Learning in Spiking Neural Networks",
+  "file": "pdf/K047-proc.pdf",
+  "note": "deviation 22"
+ },
+ "K055": {
+  "year": "2026",
+  "version": "proc",
+  "title": "Towards Large-Scale In-Context Reinforcement Learning by Meta-Training in Randomized Worlds",
+  "file": "pdf/K055-proc.pdf",
+  "note": "deviation 22"
+ },
+ "K058": {
+  "year": "2026",
+  "version": "proc",
+  "title": "Adaptive Neighborhood-Constrained Q Learning for Offline Reinforcement Learning",
+  "file": "pdf/K058-proc.pdf",
+  "note": "deviation 22"
+ },
+ "K072": {
+  "year": "2026",
+  "version": "proc",
+  "title": "Continuous Q-Score Matching: Diffusion Guided Reinforcement Learning for Continuous-Time Control",
+  "file": "pdf/K072-proc.pdf",
+  "note": "deviation 22"
+ },
+ "K078": {
+  "year": "2026",
+  "version": "proc",
+  "title": "Diffusion Guided Adversarial State Perturbations in Reinforcement Learning",
+  "file": "pdf/K078-proc.pdf",
+  "note": "deviation 22"
+ },
+ "K081": {
+  "year": "2026",
+  "version": "proc",
+  "title": "Structured Reinforcement Learning for Combinatorial Decision-Making",
+  "file": "pdf/K081-proc.pdf",
+  "note": "deviation 22"
+ },
+ "K082": {
+  "year": "2026",
+  "version": "proc",
+  "title": "Retrosynthesis Planning via Worst-path Policy Optimisation in Tree-structured MDPs",
+  "file": "pdf/K082-proc.pdf",
+  "note": "deviation 22"
+ },
+ "K084": {
+  "year": "2026",
+  "version": "proc",
+  "title": "Approximating Shapley Explanations in Reinforcement Learning",
+  "file": "pdf/K084-proc.pdf",
+  "note": "deviation 22"
+ },
+ "K086": {
+  "year": "2026",
+  "version": "proc",
+  "title": "Compute-Optimal Scaling for Value-Based Deep RL",
+  "file": "pdf/K086-proc.pdf",
+  "note": "deviation 22"
+ }
+}

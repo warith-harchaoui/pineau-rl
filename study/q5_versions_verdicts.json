@@ -1,0 +1,262 @@
+[
+ {
+  "id": "C216",
+  "year": "2018",
+  "version": "arxiv",
+  "item": 1,
+  "turn": true,
+  "uncertain": false,
+  "url": "https://github.com/vitchyr/rlkit",
+  "reason": "La section « Code » dit que l'implémentation de l'algorithme est disponible à ce lien."
+ },
+ {
+  "id": "C39",
+  "year": "2018",
+  "version": "arxiv",
+  "item": 2,
+  "turn": true,
+  "uncertain": false,
+  "url": "https://github.com/oxwhirl/treeqn",
+  "reason": "« Our code is available at » suivi d'un lien GitHub."
+ },
+ {
+  "id": "C35",
+  "year": "2018",
+  "version": "arxiv",
+  "item": 3,
+  "turn": false,
+  "uncertain": false,
+  "url": null,
+  "reason": "Seuls des liens vers rllab et gym, code de tiers."
+ },
+ {
+  "id": "K060",
+  "year": "2026",
+  "version": "proc",
+  "item": 4,
+  "turn": false,
+  "uncertain": false,
+  "url": null,
+  "reason": "Aucun lien vers du code dans les extraits."
+ },
+ {
+  "id": "K073",
+  "year": "2026",
+  "version": "proc",
+  "item": 5,
+  "turn": false,
+  "uncertain": false,
+  "url": null,
+  "reason": "Seuls des liens bibliographiques, aucun code propre."
+ },
+ {
+  "id": "C36",
+  "year": "2018",
+  "version": "arxiv",
+  "item": 6,
+  "turn": false,
+  "uncertain": false,
+  "url": null,
+  "reason": "Aucun lien vers du code dans l'extrait."
+ },
+ {
+  "id": "K078",
+  "year": "2026",
+  "version": "proc",
+  "item": 7,
+  "turn": true,
+  "uncertain": false,
+  "url": null,
+  "reason": "« Our code can be found at this GitHub Repo » : lien hypertexte vers le code propre, URL non visible."
+ },
+ {
+  "id": "ML06",
+  "year": "2026",
+  "version": "proc",
+  "item": 8,
+  "turn": true,
+  "uncertain": false,
+  "url": null,
+  "reason": "Note de bas de page : le code et les environnements sont accessibles sur GitHub, URL non visible."
+ },
+ {
+  "id": "K052",
+  "year": "2026",
+  "version": "proc",
+  "item": 9,
+  "turn": false,
+  "uncertain": false,
+  "url": null,
+  "reason": "Tous les liens renvoient à du code de tiers (bases, modules réutilisés)."
+ },
+ {
+  "id": "K089",
+  "year": "2026",
+  "version": "proc",
+  "item": 10,
+  "turn": true,
+  "uncertain": true,
+  "url": "https://pranaboy72.github.io/perl_page/",
+  "reason": "Page de projet donnée, mais rien ne dit qu'elle mène au code."
+ },
+ {
+  "id": "K043",
+  "year": "2026",
+  "version": "proc",
+  "item": 11,
+  "turn": false,
+  "uncertain": false,
+  "url": null,
+  "reason": "Mention de RLKit sans lien vers le code propre."
+ },
+ {
+  "id": "K002",
+  "year": "2026",
+  "version": "proc",
+  "item": 12,
+  "turn": false,
+  "uncertain": false,
+  "url": null,
+  "reason": "Seules des références bibliographiques à des outils de tiers."
+ },
+ {
+  "id": "K086",
+  "year": "2026",
+  "version": "proc",
+  "item": 13,
+  "turn": true,
+  "uncertain": false,
+  "url": "github.com/prestonfu/model_scaling",
+  "reason": "« Code: github.com/prestonfu/model scaling » en première page (tiret bas perdu à l'extraction)."
+ },
+ {
+  "id": "K021",
+  "year": "2026",
+  "version": "proc",
+  "item": 14,
+  "turn": true,
+  "uncertain": false,
+  "url": "https://github.com/Lin-Zhihao98/GAC",
+  "reason": "Section de disponibilité du code avec lien GitHub vers le code complet de GAC."
+ },
+ {
+  "id": "C19",
+  "year": "2018",
+  "version": "arxiv",
+  "item": 15,
+  "turn": true,
+  "uncertain": false,
+  "url": "sites.google.com/view/time-limits-in-rl",
+  "reason": "« The source code and videos can be found at » une page de projet."
+ },
+ {
+  "id": "K056",
+  "year": "2026",
+  "version": "proc",
+  "item": 16,
+  "turn": false,
+  "uncertain": false,
+  "url": null,
+  "reason": "Aucun lien vers du code dans l'extrait."
+ },
+ {
+  "id": "C217",
+  "year": "2018",
+  "version": "arxiv",
+  "item": 17,
+  "turn": false,
+  "uncertain": true,
+  "url": "https://github.com/JUrban/deepmath",
+  "reason": "Lien en note de bas de page dont on ne sait pas s'il s'agit du code propre ou d'une ressource de tiers."
+ },
+ {
+  "id": "ML16",
+  "year": "2026",
+  "version": "proc",
+  "item": 18,
+  "turn": false,
+  "uncertain": false,
+  "url": null,
+  "reason": "Liens vers les implémentations de méthodes de référence (FQL, Value Flows)."
+ },
+ {
+  "id": "K072",
+  "year": "2026",
+  "version": "proc",
+  "item": 19,
+  "turn": false,
+  "uncertain": false,
+  "url": null,
+  "reason": "Texte de la liste de contrôle NeurIPS, aucun lien."
+ },
+ {
+  "id": "K079",
+  "year": "2026",
+  "version": "proc",
+  "item": 20,
+  "turn": true,
+  "uncertain": false,
+  "url": "https://github.com/lpzu/DARE",
+  "reason": "« The code is publicly available at » suivi d'un lien GitHub."
+ },
+ {
+  "id": "C210",
+  "year": "2018",
+  "version": "arxiv",
+  "item": 21,
+  "turn": false,
+  "uncertain": false,
+  "url": null,
+  "reason": "Mention de rllab et MAML sans lien vers le code propre."
+ },
+ {
+  "id": "C32",
+  "year": "2018",
+  "version": "arxiv",
+  "item": 22,
+  "turn": false,
+  "uncertain": false,
+  "url": null,
+  "reason": "Aucun lien vers du code dans les extraits."
+ },
+ {
+  "id": "K049",
+  "year": "2026",
+  "version": "proc",
+  "item": 23,
+  "turn": true,
+  "uncertain": false,
+  "url": null,
+  "reason": "« Code is available at this link » : lien hypertexte vers le code propre, URL non visible."
+ },
+ {
+  "id": "C114",
+  "year": "2018",
+  "version": "arxiv",
+  "item": 24,
+  "turn": false,
+  "uncertain": true,
+  "url": "https://github.com/haarnoja/sac",
+  "reason": "Liens listés avec ceux des méthodes comparées ; impossible de savoir si l'un est le code propre."
+ },
+ {
+  "id": "K093",
+  "year": "2026",
+  "version": "proc",
+  "item": 25,
+  "turn": false,
+  "uncertain": false,
+  "url": null,
+  "reason": "Seules des références à des bibliothèques de tiers."
+ },
+ {
+  "id": "C22",
+  "year": "2018",
+  "version": "arxiv",
+  "item": 26,
+  "turn": true,
+  "uncertain": false,
+  "url": "https://github.com/shuangli01/Learning-Point-Processes-ViaReinforcement-Learning",
+  "reason": "« Our codes is at » suivi d'un lien GitHub."
+ }
+]

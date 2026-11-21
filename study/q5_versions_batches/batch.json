@@ -1,0 +1,217 @@
+[
+ {
+  "item": 1,
+  "rule": "Q5: the paper gives a link to code (GitHub, GitLab, Bitbucket, an anonymous mirror that contains the code, or a project page that leads to code). 'Available on request', 'will be released', 'will be made public at <URL>': no. A link to someone else's library, dataset or benchmark is not the paper's code.",
+  "excerpts": [
+   " the prior and compute rewards in the latent space using Equation (3). Any RL algorithm that trains Q-functions could be used, and we use TD3 [13] in our implementation. 5 Experiments Our experiments address the following questions: 1. How does our method compare to prior model-free RL algorithms in terms of sample e",
+   "ur system to be much more flexible in interfacing with humans and therefore more practical. 7 Code The environments are available publicly at https://github.com/vitchyr/multiworld and the algorithm implementation is available at https://github.com/vitchyr/rlkit. 8 Acknowledgements We would like to thank A"
+  ]
+ },
+ {
+  "item": 2,
+  "rule": "Q5: the paper gives a link to code (GitHub, GitLab, Bitbucket, an anonymous mirror that contains the code, or a project page that leads to code). 'Available on request', 'will be released', 'will be made public at <URL>': no. A link to someone else's library, dataset or benchmark is not the paper's code.",
+  "excerpts": [
+   "e.g., for improving exploration (Chiappa et al., [year]; Oh et al., [year]). However, this objective causes significant model capacity to be devoted to 1 Our code is available at https://github.com/oxwhirl/treeqn. 1 Published as a conference paper at ICLR [year] predicting irrelevant aspects of the environment dy",
+   "orithms were chosen for their simplicity and reasonable wallclock speeds, but TreeQN can also be used in other algorithms, as described in Section 3. Our implementations are based on OpenAI Baselines (Hesse et al., [year]). Q zt In tree-search on-line planning, a look-ahead tree of possible future states is constructed",
+   "ent of the auxiliary loss. bad configurations. However, the level generation process for Sokoban is challenging to reproduce exactly and has not been open-sourced. More details of the environment and rewards are given in Appendix A.1. Atari. To demonstrate the general applicability of TreeQN and ATreeC to comp",
+   "stems, pp. 2944–2952, [year]. Christopher Hesse, Matthias Plappert, Alec Radford, John Schulman, Szymon Sidor, and Yuhuai Wu. Openai baselines. https://github.com/openai/baselines, [year]. Donald E Knuth and Ronald W Moore. An analysis of alpha-beta pruning. Artificial intelligence, 6 (4):293–326, 1975. Leven"
+  ]
+ },
+ {
+  "item": 3,
+  "rule": "Q5: the paper gives a link to code (GitHub, GitLab, Bitbucket, an anonymous mirror that contains the code, or a project page that leads to code). 'Available on request', 'will be released', 'will be made public at <URL>': no. A link to someone else's library, dataset or benchmark is not the paper's code.",
+  "excerpts": [
+   "he action distribution of the chosen parent. πS is a binary policy which is trained using trajectories from the parents involved in the crossover. In our implementation, we reuse the trajectories from the parents’ previous mutation phase rather than generating new samples. The training objective for πS is weighted ma",
+   "Swimmer, Ant, HalfCheetah-Hilly, Walker2dHilly, Hopper-Hilly. The “Hilly” variants are more difficult versions of the original environments (https: //github.com/rll/rllab/pull/121). We set difficulty to 1.0 7 Published as a conference paper at ICLR [year] (a) Average episode reward for the child policies af",
+   "ess bonuses. In Figure 9, we compare GPO and Joint baseline using PPO on three Gym environments, for two different time-horizon values (512, 1024). 2 github.com/rll/rllab/blob/master/rllab/envs/mujoco/walker2d_env.py github.com/openai/gym/blob/master/gym/envs/mujoco/walker2d.py 14 Published as a conferenc"
+  ]
+ },
+ {
+  "item": 4,
+  "rule": "Q5: the paper gives a link to code (GitHub, GitLab, Bitbucket, an anonymous mirror that contains the code, or a project page that leads to code). 'Available on request', 'will be released', 'will be made public at <URL>': no. A link to someone else's library, dataset or benchmark is not the paper's code.",
+  "excerpts": [
+   "l., [year]) to generate all LARM components for all tasks, with the exception of the 1,000 LARMs for XLand-MiniGrid. These were generated using various open-source FMs of different scales for our ablation study. (a) MiniGrid (b) Craftium (c) Meta-World (d) XLand-MiniGrid Figure 5: Evaluation environments. (a) Mi",
+   "uate the FM’s generation capabilities, we sampled 1,000 diverse tasks from the XLand-MiniGrid environment (Nikulin et al., [year]) and prompted various open-source models to generate the corresponding reward machines, Python labeling functions, and natural language instructions. We compare models of different sc",
+   "oor, and reach the final goal. (a) DoorKey A.2.2 (b) BlockedUnlockPickup (c) UnlockToUnlock (d) KeyCorridor C RAFTIUM Craftium is a high-performance, open-source 3D voxel platform designed for reinforcement learning research. Inspired by Minecraft, Craftium offers rich, procedurally generated open worlds and f"
+  ]
+ },
+ {
+  "item": 5,
+  "rule": "Q5: the paper gives a link to code (GitHub, GitLab, Bitbucket, an anonymous mirror that contains the code, or a project page that leads to code). 'Available on request', 'will be released', 'will be made public at <URL>': no. A link to someone else's library, dataset or benchmark is not the paper's code.",
+  "excerpts": [
+   "nsequences of our work, none of which we feel must be specifically highlighted here. SMAC also pays an upfront cost to estimate the dataset score. In our implementation, training the diffusion score model adds roughly 3–4 GPU hours on a single L40S, and the full SMAC offline phase takes about 3x the wall-clock time o",
+   "ement learning, [year]. URL https://arxiv.org/abs/ 2306.07541. Jordan, K. Muon: An optimizer for hidden layers in neural networks. https://kellerjordan.github. io/posts/muon/, [year]. Blog post. Kingma, D. P. and Ba, J. Adam: A method for stochastic optimization, [year]. URL https://arxiv.org/abs/ 1412.6980. Ha"
+  ]
+ },
+ {
+  "item": 6,
+  "rule": "Q5: the paper gives a link to code (GitHub, GitLab, Bitbucket, an anonymous mirror that contains the code, or a project page that leads to code). 'Available on request', 'will be released', 'will be made public at <URL>': no. A link to someone else's library, dataset or benchmark is not the paper's code.",
+  "excerpts": [
+   "tor-valued Q-function that predicts per-dimension distance, with the reward function for dimension j given by −Dj (sj , sg,j ). We use the `1 norm in our implementation, which corresponds to absolute value reward −|sj − sg,j |. The resulting vector-valued Q-function can learn distances along each dimension separately"
+  ]
+ },
+ {
+  "item": 7,
+  "rule": "Q5: the paper gives a link to code (GitHub, GitLab, Bitbucket, an anonymous mirror that contains the code, or a project page that leads to code). 'Available on request', 'will be released', 'will be made public at <URL>': no. A link to someone else's library, dataset or benchmark is not the paper's code.",
+  "excerpts": [
+   " highlight the vulnerability of RL agents to semantics-aware adversarial perturbations, indicating the importance of developing more robust policies. Our code can be found at this GitHub Repo. 1 Introduction Reinforcement learning (RL) has seen significant advancements in recent years, becoming a key area o",
+   "planation. The training objective of Fθ changes correspondingly to \u0001 \u0001 1 L(θ) = E[∥Fθ ciin sit , cinoise , τt−1 − i st − ciskip sit ∥2 ] cout (13) In our implementation, we change the residual block layers from [2,2,2,2] to [2,2] and the denosing steps to 5, and set the drop condition rate to 0.1. We keep other hyper"
+  ]
+ },
+ {
+  "item": 8,
+  "rule": "Q5: the paper gives a link to code (GitHub, GitLab, Bitbucket, an anonymous mirror that contains the code, or a project page that leads to code). 'Available on request', 'will be released', 'will be made public at <URL>': no. A link to someone else's library, dataset or benchmark is not the paper's code.",
+  "excerpts": [
+   " Conference on Machine Learning, Seoul, South Korea. PMLR 306, [year]. Copyright [year] by the author(s). 1 1 The code and environments are accessible on GitHub. MEAL: A Benchmark for Continual MARL Table 1. Comparison of CRL and MARL benchmarks. MEAL combines continual learning and multi-agent reinforcement "
+  ]
+ },
+ {
+  "item": 9,
+  "rule": "Q5: the paper gives a link to code (GitHub, GitLab, Bitbucket, an anonymous mirror that contains the code, or a project page that leads to code). 'Available on request', 'will be released', 'will be made public at <URL>': no. A link to someone else's library, dataset or benchmark is not the paper's code.",
+  "excerpts": [
+   "g Heuristic Family (DHF) and Rounding Heuristic Family (RHF) baselines, respectively (see Appendix G.3). We use the built-in implementations from the open-source ILP solver SCIP (v8.1.0), with presolving and branching disabled to isolate heuristic performance. Each baseline exclusively enables its correspondin",
+   "venth International Conference on Learning Representations, [year]. Kostrikov, I. Pytorch implementations of reinforcement learning algorithms. https://github.com/ikostrikov/ pytorch-a2c-ppo-acktr-gail, [year]. Kruber, M., Lübbecke, M. E., and Parmentier, A. Learning when to use a decomposition. In Internati",
+   "ince all objective coefficients are negative, the minimization objective is equivalent to maximizing total profit (i.e., maximizing −c⊤ x). 1 https://github.com/ds4dm/learn2branch 20 RL-SPH: Learning to Achieve Feasible Solutions for Integer Linear Programs Table 8. Parameters for non-binary integer insta",
+   "a = 0.99, weight decay = 1 × 10−3 ), where the learning rate was linearly decayed. We implemented our ILP-GT based on the Graph Transformer code from GitHub2 (Wu et al., 2021b), with the same configuration. We utilized the official implementation3 of the positional encoding module (Gorishniy et al., [year])",
+   "eriments were performed using a single NVIDIA A100 GPU. The software environment includes PyTorch 1.12.0, Gymnasium 0.29.1, and SCIP 8.1.0. 2 https://github.com/ucbrise/graphtrans https://github.com/yandex-research/rtdl-num-embeddings 4 https://github.com/ikostrikov/pytorch-a2c-ppo-acktr-gail 3 21 RL-SPH:",
+   " that RL-SPH generalizes its problem-solving capabilities to unseen instances, even when encountering different variable types and domains. 5 https://github.com/sribdcn/Predict-and-Search_MILP_method https://github.com/MIRALab-USTC/L2O-DiffILO 7 https://github.com/agent-lab/diffusion-integer-programming 6"
+  ]
+ },
+ {
+  "item": 10,
+  "rule": "Q5: the paper gives a link to code (GitHub, GitLab, Bitbucket, an anonymous mirror that contains the code, or a project page that leads to code). 'Available on request', 'will be released', 'will be made public at <URL>': no. A link to someone else's library, dataset or benchmark is not the paper's code.",
+  "excerpts": [
+   "erform baselines, highlighting the importance of selective symmetry exploitation for robust and sample-efficient RL. Project page: https://pranaboy72.github.io/perl_page/ 1 I NTRODUCTION Group symmetries provide a powerful inductive bias in machine learning, enabling models to generalize efficiently. In r",
+   "ance: Analysis and recommendations. The American Statistician, 37(3):242–247, 1983. Ian Chuang. Manipulator-mujoco. Manipulator-Mujoco, [year]. https://github.com/ian-chuang/ Marc Finzi, Gregory Benton, and Andrew G Wilson. Residual pathway priors for soft equivariance constraints. In Advances in Neural Inf",
+   "al., 2021b). The remaining networks, including πN , P̂N , λω , λζ , and the critics, were implemented as standard MLPs. B.4 I MPLEMENTATION FRAMEWORK Our implementation builds on the Residual Pathway Prior (RPP) codebase (Finzi et al., 2021a), which provides flexible infrastructure for combining equivariant and non-e",
+   " measurable gate λ(s, a) ∈ [0, 1], as long as symmetry-breaking regions are routed to the true MDP so that the bound in Corollary 1 remains tight. In our implementation, however, λω is trained separately from the critics, so using it as a soft mixing weight inside the Bellman backup can affect stability. We compare t"
+  ]
+ },
+ {
+  "item": 11,
+  "rule": "Q5: the paper gives a link to code (GitHub, GitLab, Bitbucket, an anonymous mirror that contains the code, or a project page that leads to code). 'Available on request', 'will be released', 'will be made public at <URL>': no. A link to someone else's library, dataset or benchmark is not the paper's code.",
+  "excerpts": [
+   "performance of all considered algorithms. Please refer to the code in the implementation for more details. K.3 Hyper-parameters and Network structure Our implementation is adapted from the popular RLKit platform. For Distributional SAC with C51, we use 51 atoms similar to the C51 [5]. For distributional SAC with quan"
+  ]
+ },
+ {
+  "item": 12,
+  "rule": "Q5: the paper gives a link to code (GitHub, GitLab, Bitbucket, an anonymous mirror that contains the code, or a project page that leads to code). 'Available on request', 'will be released', 'will be made public at <URL>': no. A link to someone else's library, dataset or benchmark is not the paper's code.",
+  "excerpts": [
+   "15. A Patrícia Bento, Anne Hersey, Eloy Félix, Greg Landrum, Anna Gaulton, Francis Atkinson, Louisa J Bellis, Marleen De Veij, and Andrew R Leach. An open source chemical structure curation pipeline using rdkit. Journal of Cheminformatics, 12:1–16, [year]. Kevin Black, Michael Janner, Yilun Du, Ilya Kostrikov, a",
+   "ization via one fragment modiﬁcation. Nature machine intelligence, 3(12): 1040–1049, [year]. Andrew Dalke, Jerome Hert, and Christian Kramer. mmpdb: An open-source matched molecular pair platform for large multiproperty data sets. Journal of chemical information and modeling, 58 (5):902–910, [year]. Nicola De Cao "
+  ]
+ },
+ {
+  "item": 13,
+  "rule": "Q5: the paper gives a link to code (GitHub, GitLab, Bitbucket, an anonymous mirror that contains the code, or a project page that leads to code). 'Available on request', 'will be released', 'will be made public at <URL>': no. A link to someone else's library, dataset or benchmark is not the paper's code.",
+  "excerpts": [
+   "arting point for compute-optimal scaling in deep RL, mirroring studies in supervised learning but adapted to TD learning. Project page: value-scaling.github.io. 1 Introduction Scaling compute plays a crucial role in the success of modern machine learning (ML). In natural language and computer vision, comp",
+   "otably the UTD ratio. Most * Equal contribution. Corresponding authors: prestonfu@berkeley.edu, oleh.rybkin@gmail.com, aviralku@andrew.cmu.edu. Code: github.com/prestonfu/model scaling. 39th Conference on Neural Information Processing Systems (NeurIPS [year]). prior work focuses on presenting a single perfo"
+  ]
+ },
+ {
+  "item": 14,
+  "rule": "Q5: the paper gives a link to code (GitHub, GitLab, Bitbucket, an anonymous mirror that contains the code, or a project page that leads to code). 'Available on request', 'will be released', 'will be made public at <URL>': no. A link to someone else's library, dataset or benchmark is not the paper's code.",
+  "excerpts": [
+   "y entirely. C R EPRODUCIBILITY To ensure complete reproducibility and facilitate future research, we provide comprehensive implementation details and open-source resources for immediate verification of our results. C.1 I MPLEMENTATION D ETAILS Network Architecture: GAC uses a shared backbone with separate head",
+   "ion; 4). One final scaling. This yields approximately 6× speedup compared to vMF sampling with rejection methods. C.3 C ODE AVAILABILITY The complete source code for GAC is publicly available at: https://github.com/Lin-Zhihao98/GAC The repository includes the full training implementation, hyperparameter config"
+  ]
+ },
+ {
+  "item": 15,
+  "rule": "Q5: the paper gives a link to code (GitHub, GitLab, Bitbucket, an anonymous mirror that contains the code, or a project page that leads to code). 'Available on request', 'will be released', 'will be made public at <URL>': no. A link to someone else's library, dataset or benchmark is not the paper's code.",
+  "excerpts": [
+   "mpact of large experience replay buffers shown by Zhang & Sutton ([year]) can often be vastly reduced if timeout terminations are properly handled. The source code and videos can be found at: sites.google.com/view/time-limits-in-rl. While the importance of time-awareness for optimizing a time-limited objective ("
+  ]
+ },
+ {
+  "item": 16,
+  "rule": "Q5: the paper gives a link to code (GitHub, GitLab, Bitbucket, an anonymous mirror that contains the code, or a project page that leads to code). 'Available on request', 'will be released', 'will be made public at <URL>': no. A link to someone else's library, dataset or benchmark is not the paper's code.",
+  "excerpts": [
+   " one-step policy head, and the DiffusionQL implementation uses slightly heavier hyperparameters (e.g., a larger actor) than RADAC. As a result, under our implementation and hyperparameter choices, RADAC ends up slightly faster in wall-clock time on H OPPER -M EDIUM E XPERT- V 2. We do not claim that RADAC is intrinsi"
+  ]
+ },
+ {
+  "item": 17,
+  "rule": "Q5: the paper gives a link to code (GitHub, GitLab, Bitbucket, an anonymous mirror that contains the code, or a project page that leads to code). 'Available on request', 'will be released', 'will be made public at <URL>': no. A link to someone else's library, dataset or benchmark is not the paper's code.",
+  "excerpts": [
+   "d the RandomizedSearchCV method of Scikit-learn [31]. We use L2-regularized L2-loss support vector regression and ǫ = 0.0001 for LIBLINEAR. 7 https://github.com/JUrban/deepmath 8 Intel(R) Xeon(R) CPU E5-2698 v3 @ 2.30GHz with 256G RAM. 6 5 is low as expected - only about half of the performance of mlCoP. "
+  ]
+ },
+ {
+  "item": 18,
+  "rule": "Q5: the paper gives a link to code (GitHub, GitLab, Bitbucket, an anonymous mirror that contains the code, or a project page that leads to code). 'Available on request', 'will be released', 'will be made public at <URL>': no. A link to someone else's library, dataset or benchmark is not the paper's code.",
+  "excerpts": [
+   "L on visual tasks. But we do observe consistent performance improvement in all visual tasks over FQL using the default FQL hyperparameters. 3 https://github.com/seohongpark/fql 16 Causal Flow Q-Learning F. Experiment Details Tasks and Environments. We use pixel based tasks from OGBench (Park et al., 2025a",
+   " 400K offline training steps, almost doubles the vanilla value flow’s performance, which only achieves 0.32 with 1M offline training steps. 4 https://github.com/chongyi-zheng/value-flows 17 Figure 7. Causal Value Flows outperform vanilla Value Flows. "
+  ]
+ },
+ {
+  "item": 19,
+  "rule": "Q5: the paper gives a link to code (GitHub, GitLab, Bitbucket, an anonymous mirror that contains the code, or a project page that leads to code). 'Available on request', 'will be released', 'will be made public at <URL>': no. A link to someone else's library, dataset or benchmark is not the paper's code.",
+  "excerpts": [
+   "ge language model), then there should either be a way to access this model for reproducing the results or a way to reproduce the model (e.g., with an open-source dataset or instructions for how to construct the dataset). (d) We recognize that reproducibility may be tricky in some cases, in which case authors a",
+   "so “No” is an acceptable answer. Papers cannot be rejected simply for not including code, unless this is central to the contribution (e.g., for a new open-source benchmark). • The instructions should contain the exact command and environment needed to run to reproduce the results. See the NeurIPS code and data"
+  ]
+ },
+ {
+  "item": 20,
+  "rule": "Q5: the paper gives a link to code (GitHub, GitLab, Bitbucket, an anonymous mirror that contains the code, or a project page that leads to code). 'Available on request', 'will be released', 'will be made public at <URL>': no. A link to someone else's library, dataset or benchmark is not the paper's code.",
+  "excerpts": [
+   "monstrate that DARE consistently improves fine-tuning stability and achieves superior final performance over strong offline-to-online baselines. (The code is publicly available at https://github.com/ lpzu/DARE.) To cope with this fundamental challenge, most existing O2O approaches regulate policy updates or value estimation ",
+   "l, and estimating the statistics separately for each source. D.2. Hyperparameters for CQL and Cal-QL We implement the CQL and Cal-QL based on https://github.com/tinkoff-ai/CORL, and primarily follow the authors’ recommended hyperparameters (Tarasov et al., [year]). Since CQL-based algorithms are known to be",
+   "6 / 256 22 Sample-Level Constraint Relaxation for Offline-to-Online RL D.3. Hyperparameters for IQL and PEX We implement IQL and PEX based on https://github.com/Haichao-Zhang/PEX, the hyperparameters of which is illustrated in Tab. 6. Table 6. Hyperparameters for the IQL-based experiments. Hyperparameter ",
+   "0.005 0.9, AntMaze / 0.7, Locomotion 10.0, AntMaze / 3.0, Locomotion D.4. Hyperparameters for EDIS The implementation of EDIS are referred to https://github.com/liuxhym/EDIS. For EDIS-C, we use its official implementation of Cal-QL. For EDIS-I, we modify the classes of Q-function, value function, and poli"
+  ]
+ },
+ {
+  "item": 21,
+  "rule": "Q5: the paper gives a link to code (GitHub, GitLab, Bitbucket, an anonymous mirror that contains the code, or a project page that leads to code). 'Available on request', 'will be released', 'will be made public at <URL>': no. A link to someone else's library, dataset or benchmark is not the paper's code.",
+  "excerpts": [
+   "51843 and IIS1614653, as well as an ONR Young Investigator Program award for Sergey Levine. C. Ablation Study A. Experimental Details We built all of our implementation on the open source implementation of rllab (Duan et al., 2016a) and MAML (Finn et al., 2017a). Our policies were all feedforward policies of 2 layers"
+  ]
+ },
+ {
+  "item": 22,
+  "rule": "Q5: the paper gives a link to code (GitHub, GitLab, Bitbucket, an anonymous mirror that contains the code, or a project page that leads to code). 'Available on request', 'will be released', 'will be made public at <URL>': no. A link to someone else's library, dataset or benchmark is not the paper's code.",
+  "excerpts": [
+   "expensive, unlike our system that uses a single model for learning a large number of programs. A series of recent works aim to infer explicit program source code with the assumption that code structure provides an inductive bias for better generalization. In particular, explicitly modeling control flow stateme",
+   "al. ([year]) use their dataset to learn probability over the expansion rules of a predefined grammar, while (Devlin et al., 2017b) directly predict the source code of the programs. These last two methods use supervised training to maximize the likelihood of a single reference program, while we directly optimize "
+  ]
+ },
+ {
+  "item": 23,
+  "rule": "Q5: the paper gives a link to code (GitHub, GitLab, Bitbucket, an anonymous mirror that contains the code, or a project page that leads to code). 'Available on request', 'will be released', 'will be made public at <URL>': no. A link to someone else's library, dataset or benchmark is not the paper's code.",
+  "excerpts": [
+   "e approximations, more stable training, and improved performance over safe MARL baselines, validating the effectiveness and robustness of our method. Code is available at this link. 1 I NTRODUCTION MARL has achieved remarkable success in diverse domains, ranging from strategic games (Samvelyan et al., [year]; Vinyals "
+  ]
+ },
+ {
+  "item": 24,
+  "rule": "Q5: the paper gives a link to code (GitHub, GitLab, Bitbucket, an anonymous mirror that contains the code, or a project page that leads to code). 'Available on request', 'will be released', 'will be made public at <URL>': no. A link to someone else's library, dataset or benchmark is not the paper's code.",
+  "excerpts": [
+   "ective is defined as: JV (ψ ) ,\u0001 Est ∼qst V̄ψ (st ) − log Eat ∼π̃φ (st ) exp Qθs (st , at )/π̃φ (at | st ) \u00012 −Eat ∼π̃φ (st ) log π̃φ (at | st ) . In our implementation, we find the following approximation works well: JV (ψ ) , \u00112 \u0010 Est ∼qst V̄ψ (st ) − Eat ∼π̃φ (st ) [Qθs (st , at ) − log π̃φ (at | st )] , which is ",
+   "ent Specific Parameters Environment Swimmer Hopper-v1 Walker2d-v1 Humanoid ∗ DoFs 2 3 6 21 Reward Scale 100 1 3 3 Replay Pool 106 106 106 106 https://github.com/openai/baselines https://github.com/rll/rllab/tree/master/examples ‡ https://github.com/haarnoja/sac § https://github.com/haarnoja/softqlearning "
+  ]
+ },
+ {
+  "item": 25,
+  "rule": "Q5: the paper gives a link to code (GitHub, GitLab, Bitbucket, an anonymous mirror that contains the code, or a project page that leads to code). 'Available on request', 'will be released', 'will be made public at <URL>': no. A link to someone else's library, dataset or benchmark is not the paper's code.",
+  "excerpts": [
+   "ng Yu, Matthew Feickert, Paul Krzakala, Tianlin Liu, and Eduardo Fernandes Montesuma. Pot python optimal transport (version 0.9.5), [year]. URL https://github.com/PythonOT/POT. Justin Fu, Aviral Kumar, Ofir Nachum, George Tucker, and Sergey Levine. D4rl: Datasets for deep data-driven reinforcement learning.",
+   " Pannag Sanketi, Quan Vuong, Thomas Kollar, Benjamin Burchfiel, Russ Tedrake, Dorsa Sadigh, Sergey Levine, Percy Liang, and Chelsea Finn. Openvla: An open-source vision-language-action model. arXiv preprint arXiv:2406.09246, [year]. Moo Jin Kim, Chelsea Finn, and Percy Liang. Fine-tuning vision-language-action m",
+   " Tobias Kreiman, You Liang Tan, Lawrence Yunliang Chen, Pannag Sanketi, Quan Vuong, Ted Xiao, Dorsa Sadigh, Chelsea Finn, and Sergey Levine. Octo: An open-source generalist robot policy. In Proceedings of Robotics: Science and Systems, Delft, Netherlands, [year]. Open X-Embodiment Collaboration. Open x-embodimen"
+  ]
+ },
+ {
+  "item": 26,
+  "rule": "Q5: the paper gives a link to code (GitHub, GitLab, Bitbucket, an anonymous mirror that contains the code, or a project page that leads to code). 'Available on request', 'will be released', 'will be made public at <URL>': no. A link to someone else's library, dataset or benchmark is not the paper's code.",
+  "excerpts": [
+   "an efficient policy gradient algorithm for learning flexible point process models, and we show that it performs well in both synthetic and real data. Our codes is at: https://github.com/shuangli01/Learning-Point-Processes-ViaReinforcement-Learning 1 Introduction Many natural and artificial systems produce a",
+   "reward function. The kernel bandwidth σ is estimated using the “median trick” based on the observations [13]. For WGANTPP and RMTPP, we are using the open source codes. For WGANTPP2 , we have used the exact experimental setup as [27], which adopts Adam optimization method [17] with learning rate 1e-4, β1 = 0.5",
+   "PP, and achieves comparable and sometimes even better fitting against WGANTPP. Furthermore, 1 RMTPP has very similar performance with [19]. 2 https://github.com/xiaoshuai09/Wasserstein-Learning-For-Point-Process 3 https://github.com/dunan/NeuralPointProcess 7 4 Methods Real RLPP WGAN IP SE RMTPP SC 6 Meth",
+   " RNN to define a transformation for the temporal random variable instead of defining its output distribution. For example, we can establish 4 https://github.com/SheffieldML/GPy 9 our policy as a transformation of a sample from a unit rate exponential distribution. The same empirical objective in Eq. (8) w"
+  ]
+ }
+]

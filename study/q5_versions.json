@@ -1,0 +1,765 @@
+{
+ "readings": {
+  "P0": {
+   "ours2018": [
+    15,
+    48
+   ],
+   "classic2026": [
+    37,
+    50
+   ],
+   "diff": 0.4275,
+   "lo": 0.232046,
+   "hi": 0.579281,
+   "p": 4e-05,
+   "p_holm": 0.000443,
+   "holds": true,
+   "fragile": false,
+   "changed": {
+    "2018": [],
+    "2026": []
+   }
+  },
+  "P1": {
+   "ours2018": [
+    15,
+    48
+   ],
+   "classic2026": [
+    36,
+    50
+   ],
+   "diff": 0.4075,
+   "lo": 0.211268,
+   "hi": 0.561961,
+   "p": 0.0001,
+   "p_holm": 0.001102,
+   "holds": true,
+   "fragile": false,
+   "changed": {
+    "2018": [],
+    "2026": [
+     "K015",
+     "K056",
+     "K086"
+    ]
+   }
+  },
+  "P1_bound": {
+   "ours2018": [
+    15,
+    48
+   ],
+   "classic2026": [
+    37,
+    50
+   ],
+   "diff": 0.4275,
+   "lo": 0.232046,
+   "hi": 0.579281,
+   "p": 4e-05,
+   "p_holm": 0.000443,
+   "holds": true,
+   "fragile": false,
+   "changed": {
+    "2018": [],
+    "2026": [
+     "K015",
+     "K056",
+     "K086",
+     "K089"
+    ]
+   }
+  },
+  "P2": {
+   "ours2018": [
+    19,
+    48
+   ],
+   "classic2026": [
+    37,
+    50
+   ],
+   "diff": 0.344167,
+   "lo": 0.148546,
+   "hi": 0.505537,
+   "p": 0.000983,
+   "p_holm": 0.010811,
+   "holds": true,
+   "fragile": false,
+   "changed": {
+    "2018": [
+     "C19",
+     "C216",
+     "C22",
+     "C39"
+    ],
+    "2026": []
+   }
+  },
+  "P2_bound": {
+   "ours2018": [
+    21,
+    48
+   ],
+   "classic2026": [
+    37,
+    50
+   ],
+   "diff": 0.3025,
+   "lo": 0.107824,
+   "hi": 0.467683,
+   "p": 0.003772,
+   "p_holm": 0.034538,
+   "holds": true,
+   "fragile": false,
+   "changed": {
+    "2018": [
+     "C114",
+     "C19",
+     "C216",
+     "C217",
+     "C22",
+     "C39"
+    ],
+    "2026": []
+   }
+  },
+  "P3": {
+   "ours2018": [
+    18,
+    48
+   ],
+   "classic2026": [
+    37,
+    50
+   ],
+   "diff": 0.365,
+   "lo": 0.169156,
+   "hi": 0.524217,
+   "p": 0.000472,
+   "p_holm": 0.005197,
+   "holds": true,
+   "fragile": false,
+   "changed": {
+    "2018": [
+     "C19",
+     "C216",
+     "C219",
+     "C22",
+     "C39"
+    ],
+    "2026": []
+   }
+  },
+  "P3_bound": {
+   "ours2018": [
+    11,
+    48
+   ],
+   "classic2026": [
+    33,
+    50
+   ],
+   "diff": 0.430833,
+   "lo": 0.236593,
+   "hi": 0.581178,
+   "p": 2e-05,
+   "p_holm": 0.000219,
+   "holds": true,
+   "fragile": false,
+   "changed": {
+    "2018": [
+     "C11",
+     "C120",
+     "C14",
+     "C17",
+     "C18",
+     "C216",
+     "C219",
+     "C39"
+    ],
+    "2026": [
+     "K016",
+     "K030",
+     "K038",
+     "K056"
+    ]
+   }
+  }
+ },
+ "coverage": {
+  "2018_no": 33,
+  "2018_arxiv_found": [
+   "C111",
+   "C112",
+   "C114",
+   "C115",
+   "C117",
+   "C118",
+   "C121",
+   "C15",
+   "C16",
+   "C19",
+   "C210",
+   "C213",
+   "C216",
+   "C217",
+   "C22",
+   "C220",
+   "C25",
+   "C27",
+   "C29",
+   "C31",
+   "C32",
+   "C34",
+   "C35",
+   "C36",
+   "C37",
+   "C38",
+   "C39"
+  ],
+  "2018_no_arxiv": [
+   "C116",
+   "C21",
+   "C211",
+   "C214",
+   "C215",
+   "C218"
+  ],
+  "2026_proc_found": [
+   "K002",
+   "K006",
+   "K012",
+   "K015",
+   "K016",
+   "K017",
+   "K021",
+   "K030",
+   "K035",
+   "K038",
+   "K042",
+   "K043",
+   "K045",
+   "K047",
+   "K049",
+   "K051",
+   "K052",
+   "K054",
+   "K055",
+   "K056",
+   "K058",
+   "K060",
+   "K063",
+   "K066",
+   "K072",
+   "K073",
+   "K078",
+   "K079",
+   "K081",
+   "K082",
+   "K083",
+   "K084",
+   "K085",
+   "K086",
+   "K089",
+   "K093",
+   "ML06",
+   "ML11",
+   "ML15",
+   "ML16",
+   "MLR06",
+   "NE10",
+   "NE12",
+   "NER02",
+   "NER06"
+  ],
+  "2026_no_proc": [],
+  "status": {
+   "arxiv quoted address found": [],
+   "arxiv no occurrence": [
+    "C111",
+    "C112",
+    "C115",
+    "C117",
+    "C118",
+    "C121",
+    "C15",
+    "C16",
+    "C213",
+    "C220",
+    "C25",
+    "C27",
+    "C29",
+    "C31",
+    "C34",
+    "C37",
+    "C38"
+   ],
+   "arxiv to arbitrate": [
+    "C114",
+    "C19",
+    "C210",
+    "C216",
+    "C217",
+    "C22",
+    "C32",
+    "C35",
+    "C36",
+    "C39"
+   ],
+   "arxiv no other version": [
+    "C116",
+    "C21",
+    "C211",
+    "C214",
+    "C215",
+    "C218"
+   ],
+   "proc quoted address found": [
+    "K006",
+    "K012",
+    "K016",
+    "K017",
+    "K030",
+    "K038",
+    "K042",
+    "K045",
+    "K047",
+    "K051",
+    "K054",
+    "K055",
+    "K058",
+    "K063",
+    "K066",
+    "K081",
+    "K082",
+    "K083",
+    "K084",
+    "K085",
+    "ML11",
+    "MLR06",
+    "NE10",
+    "NE12",
+    "NER02",
+    "NER06"
+   ],
+   "proc no occurrence": [
+    "K015",
+    "K035",
+    "ML15"
+   ],
+   "proc to arbitrate": [
+    "K002",
+    "K021",
+    "K043",
+    "K049",
+    "K052",
+    "K056",
+    "K060",
+    "K072",
+    "K073",
+    "K078",
+    "K079",
+    "K086",
+    "K089",
+    "K093",
+    "ML06",
+    "ML16"
+   ],
+   "proc no other version": []
+  },
+  "turned": [
+   "C19 arxiv",
+   "C216 arxiv",
+   "C22 arxiv",
+   "C39 arxiv",
+   "K021 proc",
+   "K049 proc",
+   "K078 proc",
+   "K079 proc",
+   "K086 proc",
+   "K089 proc",
+   "ML06 proc"
+  ],
+  "uncertain": [
+   "C114 arxiv",
+   "C217 arxiv",
+   "K089 proc"
+  ]
+ },
+ "repositories": {
+  "n": 50,
+  "unknown": 4,
+  "created_after": {
+   "2018": [
+    "C219"
+   ],
+   "2026": []
+  },
+  "no_github_link": [
+   "C11",
+   "C120",
+   "C14",
+   "C17",
+   "C18",
+   "C19",
+   "K038",
+   "K056",
+   "K089"
+  ],
+  "rows": [
+   {
+    "id": "C110",
+    "repo": "flowersteam/geppg",
+    "created": "2018-04-16T14:50:56Z",
+    "last_day": "2018-07-15",
+    "after": false
+   },
+   {
+    "id": "C113",
+    "repo": "Dam930/rllab",
+    "created": "2017-12-14T16:46:26Z",
+    "last_day": "2018-07-15",
+    "after": false
+   },
+   {
+    "id": "C119",
+    "repo": "RonanFR/UCRL",
+    "created": "2017-05-04T06:50:21Z",
+    "last_day": "2018-07-15",
+    "after": false
+   },
+   {
+    "id": "C12",
+    "repo": "danecor/VaST",
+    "created": "2018-06-06T15:51:21Z",
+    "last_day": "2018-07-15",
+    "after": false
+   },
+   {
+    "id": "C13",
+    "repo": "david-abel/transfer_rl_icml_2018",
+    "created": "2017-09-20T00:22:34Z",
+    "last_day": "2018-07-15",
+    "after": false
+   },
+   {
+    "id": "C212",
+    "repo": "tensorflow/models",
+    "created": "2016-02-05T01:15:20Z",
+    "last_day": "2018-12-08",
+    "after": false
+   },
+   {
+    "id": "C216",
+    "repo": "vitchyr/rlkit",
+    "created": "2018-01-25T00:34:46Z",
+    "last_day": "2018-12-08",
+    "after": false
+   },
+   {
+    "id": "C219",
+    "repo": "episodeyang/e-maml",
+    "created": "2019-12-07T20:30:28Z",
+    "last_day": "2018-12-08",
+    "after": true
+   },
+   {
+    "id": "C22",
+    "repo": "shuangli01/Learning-Point-Processes-ViaReinforcement-Learning",
+    "created": null,
+    "last_day": "2018-12-08",
+    "after": null
+   },
+   {
+    "id": "C24",
+    "repo": "openai/EPG",
+    "created": "2018-02-23T00:54:49Z",
+    "last_day": "2018-12-08",
+    "after": false
+   },
+   {
+    "id": "C26",
+    "repo": "OptMLGroup/VRP-RL",
+    "created": "2018-10-22T20:02:02Z",
+    "last_day": "2018-12-08",
+    "after": false
+   },
+   {
+    "id": "C33",
+    "repo": "shehzaadzd/MINERVA",
+    "created": "2017-11-26T05:35:56Z",
+    "last_day": "2018-05-03",
+    "after": false
+   },
+   {
+    "id": "C39",
+    "repo": "oxwhirl/treeqn",
+    "created": "2018-03-08T10:35:13Z",
+    "last_day": "2018-05-03",
+    "after": false
+   },
+   {
+    "id": "K006",
+    "repo": "ByteDance-Seed/DATAMASK",
+    "created": "2025-12-29T11:31:57Z",
+    "last_day": "2026-04-27",
+    "after": false
+   },
+   {
+    "id": "K012",
+    "repo": "RileySE/Craftax-Foraging",
+    "created": "2024-05-23T18:43:55Z",
+    "last_day": "2025-12-07",
+    "after": false
+   },
+   {
+    "id": "K015",
+    "repo": "WtxwNs/AES",
+    "created": "2026-07-06T11:06:01Z",
+    "last_day": "2026-07-11",
+    "after": false
+   },
+   {
+    "id": "K016",
+    "repo": "safe-autonomylab/GlucoSim",
+    "created": null,
+    "last_day": "2026-07-11",
+    "after": null
+   },
+   {
+    "id": "K016",
+    "repo": "safeautonomy-lab/GlucoAlg",
+    "created": null,
+    "last_day": "2026-07-11",
+    "after": null
+   },
+   {
+    "id": "K017",
+    "repo": "twni2016/neubay",
+    "created": "2025-11-10T04:46:38Z",
+    "last_day": "2026-07-11",
+    "after": false
+   },
+   {
+    "id": "K021",
+    "repo": "Lin-Zhihao98/GAC",
+    "created": "2026-02-09T18:47:58Z",
+    "last_day": "2026-04-27",
+    "after": false
+   },
+   {
+    "id": "K030",
+    "repo": "JonathanAshlag/State_",
+    "created": null,
+    "last_day": "2025-12-07",
+    "after": null
+   },
+   {
+    "id": "K042",
+    "repo": "chandar-lab/stream-rep-rl",
+    "created": "2026-02-09T20:15:35Z",
+    "last_day": "2026-07-11",
+    "after": false
+   },
+   {
+    "id": "K045",
+    "repo": "MarquisDarwin/EAWM",
+    "created": "2025-11-23T21:46:35Z",
+    "last_day": "2026-04-27",
+    "after": false
+   },
+   {
+    "id": "K047",
+    "repo": "korneelf1/SpikingCrazyflie",
+    "created": "2024-06-10T10:24:20Z",
+    "last_day": "2025-12-07",
+    "after": false
+   },
+   {
+    "id": "K049",
+    "repo": "Wangxuefeng1024/Safe-Continuous-time-Multi-Agent-Reinforcement-Learning-via-Epigraph-Form",
+    "created": "2026-02-15T16:55:52Z",
+    "last_day": "2026-04-27",
+    "after": false
+   },
+   {
+    "id": "K051",
+    "repo": "Math-AI-Caltech/alghirsch-hrl",
+    "created": "2026-05-29T06:56:30Z",
+    "last_day": "2026-07-11",
+    "after": false
+   },
+   {
+    "id": "K054",
+    "repo": "aguilarjose11/IntrinsicRobustness_ICML26",
+    "created": "2026-05-28T16:40:16Z",
+    "last_day": "2026-07-11",
+    "after": false
+   },
+   {
+    "id": "K055",
+    "repo": "airs-cuhk/airsoul",
+    "created": "2025-01-17T07:22:39Z",
+    "last_day": "2025-12-07",
+    "after": false
+   },
+   {
+    "id": "K058",
+    "repo": "thu-rllab/ANQ",
+    "created": "2025-10-29T08:25:11Z",
+    "last_day": "2025-12-07",
+    "after": false
+   },
+   {
+    "id": "K063",
+    "repo": "AHT-Hub/ICRL4AHT",
+    "created": "2026-05-21T13:22:07Z",
+    "last_day": "2026-07-11",
+    "after": false
+   },
+   {
+    "id": "K066",
+    "repo": "theovincent/iS-DQN",
+    "created": "2025-03-27T09:54:57Z",
+    "last_day": "2026-04-27",
+    "after": false
+   },
+   {
+    "id": "K078",
+    "repo": "SliencerX/Diffusion_Guided_Adversarial_State_Perturbations_in_Reinforcement_Learning",
+    "created": "2025-11-10T21:35:26Z",
+    "last_day": "2025-12-07",
+    "after": false
+   },
+   {
+    "id": "K079",
+    "repo": "lpzu/DARE",
+    "created": "2026-05-16T21:17:24Z",
+    "last_day": "2026-07-11",
+    "after": false
+   },
+   {
+    "id": "K081",
+    "repo": "tumBAIS/Structured-RL",
+    "created": "2025-05-24T09:26:54Z",
+    "last_day": "2025-12-07",
+    "after": false
+   },
+   {
+    "id": "K082",
+    "repo": "MianchuWang/InterRetro",
+    "created": "2024-10-21T14:17:10Z",
+    "last_day": "2025-12-07",
+    "after": false
+   },
+   {
+    "id": "K083",
+    "repo": "AhmedMagdyHendawy/MINTO",
+    "created": "2026-02-08T13:50:57Z",
+    "last_day": "2026-04-27",
+    "after": false
+   },
+   {
+    "id": "K084",
+    "repo": "djeb20/fastsverl",
+    "created": "2025-11-04T21:16:06Z",
+    "last_day": "2025-12-07",
+    "after": false
+   },
+   {
+    "id": "K085",
+    "repo": "daisophila/ABS",
+    "created": "2026-07-04T03:46:11Z",
+    "last_day": "2026-07-11",
+    "after": false
+   },
+   {
+    "id": "K086",
+    "repo": "prestonfu/model_scaling",
+    "created": "2025-05-23T19:28:37Z",
+    "last_day": "2025-12-07",
+    "after": false
+   },
+   {
+    "id": "LR02",
+    "repo": "EthanRath/Daze-Backdoor-Attack",
+    "created": "2025-09-24T17:00:41Z",
+    "last_day": "2026-04-27",
+    "after": false
+   },
+   {
+    "id": "LR03",
+    "repo": "guoyihonggyh/MOBODY-Model-Based-Off-Dynamics-Offline-Reinforcement-Learning",
+    "created": "2025-05-29T19:36:39Z",
+    "last_day": "2026-04-27",
+    "after": false
+   },
+   {
+    "id": "LR09",
+    "repo": "MinWangcs/WISDOM",
+    "created": "2026-02-27T04:22:26Z",
+    "last_day": "2026-04-27",
+    "after": false
+   },
+   {
+    "id": "LR12",
+    "repo": "Ziffer-byakuya/GAS",
+    "created": "2026-01-31T09:06:15Z",
+    "last_day": "2026-04-27",
+    "after": false
+   },
+   {
+    "id": "ML06",
+    "repo": "TTomilin/MEAL",
+    "created": "2025-06-04T06:48:20Z",
+    "last_day": "2026-07-11",
+    "after": false
+   },
+   {
+    "id": "ML11",
+    "repo": "agent-lab/ICML2026-RAT",
+    "created": "2026-05-18T15:49:14Z",
+    "last_day": "2026-07-11",
+    "after": false
+   },
+   {
+    "id": "MLR06",
+    "repo": "wenqian-xing/TPG-Estimator",
+    "created": "2025-05-31T23:06:37Z",
+    "last_day": "2026-07-11",
+    "after": false
+   },
+   {
+    "id": "NE10",
+    "repo": "Whiterrrrr/BREEZE",
+    "created": "2025-10-15T06:19:28Z",
+    "last_day": "2025-12-07",
+    "after": false
+   },
+   {
+    "id": "NE12",
+    "repo": "linkjoker1006/RDC-pymarl",
+    "created": "2025-05-08T09:55:14Z",
+    "last_day": "2025-12-07",
+    "after": false
+   },
+   {
+    "id": "NER02",
+    "repo": "NJU-RL/T2DA",
+    "created": "2025-06-01T04:34:06Z",
+    "last_day": "2025-12-07",
+    "after": false
+   },
+   {
+    "id": "NER06",
+    "repo": "ku-dmlab/FairDICE",
+    "created": "2025-10-23T06:32:22Z",
+    "last_day": "2025-12-07",
+    "after": false
+   }
+  ]
+ }
+}
