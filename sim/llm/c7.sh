@@ -25,8 +25,9 @@ can_start() {  # can_start <minutes needed>
   [ "$m" -ge -60 ] && [ $((m + $1)) -le 420 ]
 }
 in_window() { [ "$WINDOW" = any ] && return 0; local m; m=$(mins); [ "$m" -ge 1380 ] || [ "$m" -lt 420 ]; }
-gpu_free() {  # nothing loaded in Ollama (the survey's local reader, deviation of study/PROTOCOL.md) and no runner left
-  [ "$(ollama ps 2>/dev/null | tail -n +2 | grep -c .)" -eq 0 ] && ! pgrep -f "ollama runner" > /dev/null
+gpu_free() {  # the survey's local reader (study/gemma_reader.py) is not running and nothing is loaded in Ollama
+  ! pgrep -f "python gemma_reader.py" > /dev/null && [ "$(ollama ps 2>/dev/null | tail -n +2 | grep -c .)" -eq 0 ] \
+    && ! pgrep -f "ollama runner" > /dev/null
 }
 disk_ok() { [ "$(df -g . | awk 'NR==2 {print $4}')" -ge "$MIN_FREE_GB" ]; }
 main_pids() { pgrep -f "env/bin/python (run|dose).py"; }  # the simulation jobs, paused while GRPO runs (as night.sh)
