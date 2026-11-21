@@ -1,0 +1,237 @@
+\chapter{The complete reading grid}
+\label{chap:A-grille}
+
+This appendix reproduces the reading grid of the survey, criterion by criterion, with the question
+put to the reader and its decision rule. It combines the reader's sheet (\file{study/GRILLE.md}) and
+the rules of the protocol (\file{study/PROTOCOL.md}): deviations 1 to 6 for the harmonisation of
+grid v1, deviations 11, 14, 17 and 19 for grid v2. When in doubt, the protocol prevails.
+
+\section{What the reader does}
+\label{sec:a-lecteur}
+
+The reader reads the whole paper, appendices included, before filling in one JSON file per paper
+(\cref{sec:formats}). For each criterion, the file gives the value, an exact quotation from the
+paper, copied word for word from the PDF, then the page. If nothing justifies a \texttt{yes}, the
+quotation is \enquote{absent après lecture des sections expériences, annexes et liens} (absent after
+reading the experiments, appendices and links sections) and the page is \texttt{null}. A quotation
+spread over two pages receives a list of pages. In a two-column PDF, a quotation that runs across
+lines is split into one-line pieces joined by \enquote{[...]}. The reader never sees another
+reader's codes, the results or the synthesis document. They run \file{study/check\_codes.py} on
+their own files and fix them until it reports zero problems. The possible values are
+\texttt{yes}, \texttt{no} and \texttt{na} (not applicable), except for the integer criteria and for
+the family X5.
+
+\section{Pineau's grid (Q1 to Q8)}
+\label{sec:a-pineau}
+
+Joelle Pineau presented these eight criteria at NeurIPS 2018 (slides 29 and 30), with the share of
+the 50 RL papers from 2018 she had read that met each one. Her sampling method is not described. The
+labels below are hers, word for word.
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Pineau's eight criteria and her 2018 figures.}
+\label{tab:a-pineau-2018}
+\begin{tabular}{@{}llr@{}}
+\toprule
+Code & Pineau's label & 2018 \\
+\midrule
+Q1 & Paper has experiments & 100\% \\
+Q2 & Paper uses neural networks & 90\% \\
+Q3 & All hyperparams for proposed algorithm are provided & 90\% \\
+Q4 & All hyperparams for baselines are provided & 60\% \\
+Q5 & Code is linked & 55\% \\
+Q6 & Method for choosing hyperparams is specified & 20\% \\
+Q7 & Evaluations on some variation of a hold-out test set & 10\% \\
+Q8 & Significance testing applied & 5\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{small}
+\begin{longtable}{@{}p{0.07\linewidth}p{0.27\linewidth}p{0.6\linewidth}@{}}
+\caption{Grid v1, Pineau's criteria: question and decision rule.}\label{tab:a-grille-q}\\
+\toprule
+Code & Question & Decision rule \\
+\midrule
+\endfirsthead
+\toprule
+Code & Question & Decision rule \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+Q1 & Does the paper have experiments? & \texttt{no}: every other criterion is \texttt{na} and
+  leaves the denominators (deviation 3). Pineau's denominators are the experimental papers. \\
+Q2 & Does it use neural networks? & Read directly. \\
+Q3 & Are all the hyperparameters of the method given? & \texttt{yes} if a table or a paragraph gives
+  them for all the main methods. \enquote{Default values of [library]} without listing them counts
+  \texttt{yes} only if the version is given. \\
+Q4 & Are all the hyperparameters of the baselines given? & Same rule as Q3. \texttt{na} if no
+  baseline is compared. \\
+Q5 & Is the code linked? & A link to code in the paper. \enquote{On request}, \enquote{will be
+  released}, \enquote{will be made public at <URL>}: \texttt{no}. A project page counts \texttt{yes}
+  only if it leads to code, checked by visiting it on 9 November 2026. An anonymous mirror that holds
+  the code counts \texttt{yes} (deviations 6 and 19). \\
+Q6 & Is the way the hyperparameters are chosen described? & The selection method is stated: grid,
+  random search, budget, criterion. \enquote{Tuned} and nothing more: \texttt{no}. \\
+Q7 & Does evaluation run on held-out conditions? & Tasks, environments, environment random seeds or
+  datasets seen neither in training nor in tuning. For an \texttt{llm} paper, benchmarks distinct
+  from the RL training data count \texttt{yes}. A \texttt{theory} paper with toy experiments:
+  \texttt{no} (deviation 4). New training random seeds, used to train, are not held-out conditions
+  (deviation 17). \\
+Q8 & Is a statistical test applied to a comparison? & A test (t, Welch, Mann-Whitney, bootstrap with
+  interval, rliable interquartile mean with stratified intervals) applied to a comparison. Error bars
+  alone: \texttt{no} for Q8, \texttt{yes} for X2. \\
+\end{longtable}
+\end{small}
+
+\section{Our additions in grid v1 (X1 to X7)}
+\label{sec:a-x}
+
+These criteria come from the ICLR 2018 talk and from the 2025 debate on the spurious rewards of
+language models (\cref{sec:llm-pourquoi}). They were written with the protocol, on 8 November 2026,
+before any reading.
+
+\begin{small}
+\begin{longtable}{@{}p{0.07\linewidth}p{0.27\linewidth}p{0.6\linewidth}@{}}
+\caption{Grid v1, our additions: question and decision rule.}\label{tab:a-grille-x}\\
+\toprule
+Code & Question & Decision rule \\
+\midrule
+\endfirsthead
+\toprule
+Code & Question & Decision rule \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+X1 & How many independent training runs behind the main results? & An integer, or \texttt{null} if
+  not stated: the smallest number announced for a main table or curve. For an \texttt{llm} paper,
+  count the independent RL training runs alone: pass@k and \enquote{16 samples} are evaluation
+  samples, which do not count. \\
+X2 & Is an uncertainty reported on the main results? & Standard deviation, standard error, confidence
+  interval, band around the curve. \\
+X3 & Are the best runs selected? & \enquote{Top-k}, \enquote{best of N}, best checkpoint chosen on
+  the test set. \texttt{yes} also when the paper's own tables show that the main result is the best
+  of several identical training runs, even if the text does not say so (deviation 5). \\
+X4 & Does the paper say that the baselines are tuned with the same care as the method? &
+  \texttt{yes} requires a tuning procedure described for the baselines, or an equal tuning budget
+  announced. \enquote{Same configuration as the method}, with no tuning described for anyone:
+  \texttt{no} (deviation 1). \\
+X5 & Which family does the paper belong to? & \texttt{llm} if the optimised policy is a pretrained
+  generative model conditioned on language (a language model of any size, a vision-language model, a
+  text-to-image model). \texttt{classic} if RL trains something else, even in the service of a large
+  model, or a transformer trained from scratch on RL tasks. \texttt{theory} for a paper with no
+  experiments or with toy experiments only. A paper with theoretical results that compares methods on
+  standard benchmarks, even in an appendix, is \texttt{classic} (deviation 18). \\
+X6 & For \texttt{llm}: how many distinct base-model families? & An integer, or \texttt{null}. Qwen,
+  Llama, Mistral, Gemma, DeepSeek, OLMo\dots{} Two sizes of Qwen count as one family. \\
+X7 & Is the compute used quantified? & \texttt{yes} requires at least one quantity: hours, GPU-hours,
+  FLOP, or a number of GPUs with a duration. The name of the hardware alone: \texttt{no}
+  (deviation 2). \\
+\end{longtable}
+\end{small}
+
+\section{Grid v2 (Y1 to Y12)}
+\label{sec:a-y}
+
+Grid v2 was written on 9 November 2026, before any v2 reading (deviation 11), together with its
+decision rules (deviation 14). The rules were made more precise after a pilot on three papers
+(deviation 17), then harmonised after the audit of the raw readings, before any percentage
+(deviation 19). Each criterion points to the 2018 source that motivates it.
+
+\paragraph{Scope rules} If Q1 is \texttt{no}, Y1 to Y12 are \texttt{na}. Y2 and Y11 are \texttt{na}
+if and only if X2 is \texttt{no}. Y4 is \texttt{na} if Y3 is 1. Y5 is \texttt{na} if and only if Q4
+is \texttt{na}. For a paper already read with grid v1, the reader receives the v1 values of Q1, Q4
+and X2, which set these rules, without seeing the other v1 codes.
+
+\begin{small}
+\begin{longtable}{@{}p{0.07\linewidth}p{0.27\linewidth}p{0.6\linewidth}@{}}
+\caption{Grid v2: question, source and decision rule.}\label{tab:a-grille-y}\\
+\toprule
+Code & Question & Decision rule \\
+\midrule
+\endfirsthead
+\toprule
+Code & Question & Decision rule \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+Y1 & Is the performance measure defined? (ICLR 2018, slide 27) & \texttt{yes} if the paper states
+  the quantity and the point of measurement: final return, mean over the last N episodes, best point,
+  area under the curve, pass@k with k and the number of samples, success rate and over what.
+  \enquote{Return} or \enquote{accuracy} and nothing more: \texttt{no}. A normalised score with no
+  statement of the point at which it is taken: \texttt{no}. The number of evaluation episodes is not
+  required (deviation 17). A curve whose evaluation points are stated counts as a point of
+  measurement. \enquote{Trained for N steps} followed by one figure counts as the final
+  point. For a quantity other than the score of a trained policy (error of an estimator, compute
+  time), \texttt{yes} if the quantity is defined (deviation 19). \\
+Y2 & Are the error bars defined? (checklist v1.2) & \texttt{yes} if the paper states what the band
+  or the interval represents: standard deviation, standard error, 95\% confidence interval, minimum
+  and maximum. Bars present but undefined: \texttt{no}. \\
+Y3 & How many tasks does the main conclusion cover? (Henderson et al., table 3) & An integer: the
+  number of distinct training setups on which the method is trained and compared, an environment or
+  a training dataset for \texttt{llm}. Two difficulty levels of one game, or the quality variants of
+  a dataset from one environment (D4RL medium, replay, expert), count as one task. Several evaluation
+  benchmarks of one trained model do not multiply the tasks (deviation 17). A single meta-training
+  counts as one task. A setup present only in an appendix does not count (deviation 19). Derived
+  value for the analysis: \texttt{yes} if the integer is at least 2. \\
+Y4 & Is a task where the method does not win shown? (Henderson et al., table 3) & \texttt{yes} if a
+  task-by-task result is given and at least one task where the method does not win is shown or
+  stated. \texttt{no} if the paper gives only means, or shows only tasks where the method wins. \\
+Y5 & Is the implementation of the baselines identified? (Henderson et al., figure 6) & \texttt{yes}
+  if, for each main baseline, the paper says where the code comes from: a named repository, library
+  or software framework, with or without version, \enquote{reimplemented by us}, figures copied from
+  papers with their source, a released model designated by its exact name, the authors' training
+  framework if the baselines are said to run in it (deviations 17 and 19). A single main baseline
+  with no origin gives \texttt{no}. \\
+Y6 & Are exclusions stated? (checklist v1.2) & \texttt{yes} if the paper says which runs, random
+  seeds or data were removed, or says explicitly that none was. An omitted combination with its
+  reason counts (deviation 17). A filtering of the training data stated with what it removes counts
+  too (deviation 19). Silence is \texttt{no}. \\
+Y7 & Is the version of the environments or benchmarks given? (checklist v1.2) & \texttt{yes} if the
+  version of each main environment or benchmark is given: Gym or Gymnasium suffix, suite version,
+  exact name and date of the test split for \texttt{llm}. \enquote{MuJoCo} alone: \texttt{no}.
+  \enquote{MATH-500} counts \texttt{yes}, \enquote{MATH} alone \texttt{no}. A dataset published on a
+  named repository counts as versioned, a split built by the authors only if it is published
+  (deviation 17). A name that covers several sets without saying which (\enquote{AMC},
+  \enquote{Minerva}) does not count. An environment fully specified in the paper counts
+  (deviation 19). \\
+Y8 & Is a generalisation test outside the training conditions carried out? (NeurIPS 2018, roadmap)
+  & \texttt{yes} if at least one evaluation runs on conditions absent from training and tuning: other
+  environment random seeds announced as such, new tasks, modified dynamics, a distinct test
+  distribution. Stricter than Q7: for \texttt{llm}, a different benchmark counts only if it is
+  presented as an out-of-distribution test. A test split from the same distribution falls under Q7.
+  Y8 \texttt{yes} presupposes Q7 \texttt{yes} (deviation 19). \\
+Y9 & Is the sensitivity to at least one hyperparameter shown? (ICLR 2018, slides 24 to 26) &
+  \texttt{yes} if at least one hyperparameter of the method, presented as such, is swept and the
+  result is shown through a performance measure. A component ablation does not count. A parameter
+  set at inference counts if it is presented as a hyperparameter. A condition of the environment does
+  not count (deviations 17 and 19). \\
+Y10 & Are the software dependencies listed with their versions? (checklist v1.2) & \texttt{yes} if
+  the versions of the main libraries are in the paper, or if an environment file is cited in the
+  linked repository. The repository is not visited, unless the paper points explicitly to the file. \\
+Y11 & Is the type of uncertainty named? (comparable to Gorsane et al., 2022) & \texttt{yes} or
+  \texttt{no}, plus a \texttt{kind} field: \texttt{std}, \texttt{se}, \texttt{ci}, \texttt{iqr},
+  \texttt{minmax} or \texttt{other}. Broader than Y2: it is enough that the type is named somewhere.
+  Percentile bands other than the interquartile range: \texttt{other} (deviation 17). \\
+Y12 & Is a statistical tool from after 2018 used? (adoption of Agarwal et al., 2021) & \texttt{yes}
+  if the paper uses at least one of these tools: interquartile mean, stratified bootstrap interval,
+  rliable, performance profiles, probability of improvement. A plain bootstrap on a mean counts if
+  it produces a reported interval. \\
+\end{longtable}
+\end{small}
+
+\section{Harmonisation}
+\label{sec:a-harmonisation}
+
+A harmonisation rule is written into the protocol, dated, before the first percentage it affects. It
+applies to both years, from the quotations, in \file{study/overrides.json} (grid v1) or
+\file{study/overrides\_v2.json} (grid v2), each modified value with its reason. Agreement between
+readers is computed on the raw readings, before harmonisation. For X3, X4 and X7, no rule was added
+after the enlarged reading, so that both years are still read with the same grid (deviation 19). The
+function \texttt{pineau\_rl.grid.validate} checks the schema and the scope rules of every file
+(\cref{sec:formats}).

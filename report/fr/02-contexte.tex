@@ -1,0 +1,473 @@
+\chapter{Contexte : l'apprentissage par renforcement et les seize failles}\label{chap:02-contexte}
+
+Ce chapitre pose les notions dont dépend la suite du rapport. La section~\ref{sec:cadre} donne le cadre
+formel de l'apprentissage par renforcement. La section~\ref{sec:ctx-programmes} décrit les quatre programmes de
+nos expériences et l'algorithme TRPO, la section~\ref{sec:ctx-taches} les tâches simulées. Les sections~\ref{sec:ctx-graines} et~\ref{sec:ctx-evaluation} précisent ce qu'une graine aléatoire fixe et comment on évalue un
+agent. La section~\ref{sec:failles} dresse l'inventaire des seize failles que Joelle Pineau a montrées en
+2018. La section~\ref{sec:voisins} situe notre travail parmi les travaux voisins. La section~\ref{sec:vocabulaire}
+fixe le vocabulaire employé pour les modèles de langue.
+
+\section{Le cadre formel}\label{sec:cadre}
+
+\paragraph{Le processus de décision markovien}
+L'apprentissage par renforcement (RL, pour \emph{reinforcement learning}) étudie un programme, l'agent,
+qui agit de façon répétée dans un environnement. Le cadre standard est le processus de décision
+markovien \parencite{puterman1994mdp,sutton2018rl}, un quintuplet
+\begin{equation}
+  \mathcal{M} = (\mathcal{S}, \mathcal{A}, P, r, \gamma),
+\end{equation}
+où $\mathcal{S}$ est l'ensemble des états, $\mathcal{A}$ l'ensemble des actions,
+$P(s' \mid s, a)$ la probabilité de passer à l'état $s'$ après l'action $a$ dans l'état $s$,
+$r(s, a)$ la récompense reçue et $\gamma \in [0, 1)$ le facteur d'actualisation, qui pèse les
+récompenses futures. Une distribution $\rho_0$ tire l'état initial. Dans les tâches de ce rapport,
+$\mathcal{S}$ et $\mathcal{A}$ sont des sous-ensembles de $\mathbb{R}^d$ : l'état décrit les positions
+et les vitesses des articulations d'un corps simulé, l'action les couples appliqués aux moteurs.
+
+\paragraph{Politique, épisode et retour}
+Une politique $\pi_\theta(a \mid s)$ donne la loi de l'action dans chaque état. En RL profond, elle
+est un réseau de neurones de paramètres $\theta$. Un épisode est une suite
+$\tau = (s_0, a_0, r_0, s_1, a_1, r_1, \dots, s_T)$ obtenue en tirant $s_0 \sim \rho_0$, puis
+$a_t \sim \pi_\theta(\cdot \mid s_t)$ et $s_{t+1} \sim P(\cdot \mid s_t, a_t)$, jusqu'à un état
+terminal ou jusqu'à une durée maximale. Le retour actualisé d'un épisode et l'objectif de
+l'apprentissage s'écrivent
+\begin{equation}
+  G(\tau) = \sum_{t=0}^{T-1} \gamma^t \, r(s_t, a_t),
+  \qquad
+  J(\theta) = \mathbb{E}_{\tau \sim \pi_\theta}\bigl[ G(\tau) \bigr].
+\end{equation}
+L'apprentissage cherche $\theta$ qui maximise $J$. Le score rapporté dans les articles et dans nos
+expériences est presque toujours le retour non actualisé $\sum_t r(s_t, a_t)$ d'un épisode, en moyenne
+sur plusieurs épisodes d'évaluation.
+
+\paragraph{Fonctions de valeur}
+La valeur d'un état et la valeur d'une action sous la politique $\pi$ sont
+\begin{equation}
+  V^\pi(s) = \mathbb{E}_\pi\Bigl[ \sum_{k \geq 0} \gamma^k r_{t+k} \Bigm| s_t = s \Bigr],
+  \qquad
+  Q^\pi(s, a) = \mathbb{E}_\pi\Bigl[ \sum_{k \geq 0} \gamma^k r_{t+k} \Bigm| s_t = s, a_t = a \Bigr].
+\end{equation}
+L'avantage $A^\pi(s, a) = Q^\pi(s, a) - V^\pi(s)$ mesure ce qu'une action rapporte de plus que la
+moyenne des actions de la politique dans cet état. Un algorithme acteur-critique apprend à la fois
+une politique (l'acteur) et une estimation d'une fonction de valeur (le critique), qui sert à réduire
+la variance du signal d'apprentissage de l'acteur.
+
+\paragraph{Gradient de politique}
+Pour une politique dérivable en $\theta$, le théorème du gradient de politique \parencite{sutton2018rl}
+donne
+\begin{equation}
+  \nabla_\theta J(\theta) = \mathbb{E}_{\pi_\theta}\bigl[ \nabla_\theta \log \pi_\theta(a_t \mid s_t)\, A^{\pi_\theta}(s_t, a_t) \bigr].
+\end{equation}
+Les méthodes dites \emph{on-policy}, comme TRPO et PPO, estiment cette espérance avec des épisodes
+tirés de la politique courante, puis jettent ces épisodes après la mise à jour. Les méthodes
+\emph{off-policy}, comme SAC et CrossQ, gardent les transitions passées dans une mémoire de rejeu et
+apprennent un critique $Q$ à partir de ces transitions. Elles réutilisent chaque transition plusieurs
+fois. Pour un même nombre de pas d'environnement, elles apprennent en général plus vite, au prix d'un
+calcul plus lourd par pas.
+
+\paragraph{Hyperparamètres}
+Les paramètres $\theta$ s'apprennent. D'autres réglages restent fixés par l'expérimentateur : le taux
+d'apprentissage, $\gamma$, la taille des réseaux, la taille des lots, le nombre de pas collectés avant
+chaque mise à jour. Ce sont les hyperparamètres. Les failles F4 à F7 de la section~\ref{sec:failles} les
+concernent.
+
+\section{Les quatre programmes et TRPO}\label{sec:ctx-programmes}
+
+Nos expériences emploient quatre programmes, c'est-à-dire quatre implémentations précises d'un
+algorithme, dans une bibliothèque et une version données. Le mot \enquote{algorithme} désigne la
+méthode décrite dans un article. Le mot \enquote{programme} désigne le code qui l'exécute. Deux
+programmes du même algorithme donnent parfois des résultats différents : c'est la faille F14. Les
+versions figées de chaque bibliothèque sont données au tableau~\ref{tab:env}. Le chapitre~\ref{chap:05-experiences-methode}
+détaille les budgets et l'évaluation.
+
+\paragraph{PPO, en PyTorch et en JAX}
+PPO (\emph{Proximal Policy Optimization}) \parencite{schulman2017ppo} est un algorithme acteur-critique
+\emph{on-policy}. Avec le rapport de probabilités
+$\rho_t(\theta) = \pi_\theta(a_t \mid s_t) / \pi_{\theta_\text{old}}(a_t \mid s_t)$ et un estimateur
+$\hat{A}_t$ de l'avantage, il maximise l'objectif tronqué
+\begin{equation}
+  L^{\text{CLIP}}(\theta) = \hat{\mathbb{E}}_t\Bigl[ \min\bigl( \rho_t(\theta)\, \hat{A}_t,\;
+  \operatorname{clip}\bigl(\rho_t(\theta), 1 - \epsilon, 1 + \epsilon\bigr)\, \hat{A}_t \bigr) \Bigr],
+\end{equation}
+auquel s'ajoutent une perte sur le critique et un bonus d'entropie. La troncature supprime l'intérêt, pour une mise à
+jour, d'éloigner trop la nouvelle politique de l'ancienne. Le programme \algo{PPO PyTorch} est celui de
+Stable-Baselines3 \parencite{raffin2021sb3}. Le programme \algo{PPO JAX} est celui de sbx, la réécriture
+de Stable-Baselines en JAX \parencite{raffin2023sbx,bradbury2018jax}. Les deux programmes partent des
+mêmes valeurs par défaut autant que les deux bibliothèques le permettent. Ils collectent l'expérience
+par paquets de \num{2048} pas. PPO était la référence de 2018. Le protocole le retient parce qu'il reste une
+référence courante en 2026 et que GRPO, l'algorithme de notre volet sur les modèles de langue
+(chapitre~\ref{chap:07-modeles-de-langue}), en dérive.
+
+\paragraph{SAC}
+SAC (\emph{Soft Actor-Critic}) \parencite{haarnoja2018sac} est un algorithme acteur-critique
+\emph{off-policy}. Il maximise le retour augmenté de l'entropie de la politique,
+\begin{equation}
+  J_{\text{SAC}}(\pi) = \sum_t \mathbb{E}_{(s_t, a_t) \sim \pi}\bigl[ r(s_t, a_t) + \alpha\, \mathcal{H}\bigl(\pi(\cdot \mid s_t)\bigr) \bigr],
+\end{equation}
+où le coefficient $\alpha$ règle l'exploration et s'ajuste pendant l'entraînement. Deux critiques $Q$
+appris en parallèle limitent la surestimation des valeurs. Des copies retardées de ces critiques, les
+réseaux cibles, stabilisent les cibles d'apprentissage. Le programme \algo{SAC} de nos expériences est
+celui de sbx. SAC sert de référence \emph{off-policy} courante en contrôle continu.
+
+\paragraph{CrossQ}
+CrossQ \parencite{bhatt2024crossq} descend de SAC. Il retire les réseaux cibles et ajoute une
+normalisation par lots aux critiques. Les paires $(s, a)$ et $(s', a')$ passent ensemble dans le
+critique, pour que la normalisation voie les deux distributions. Ses auteurs annoncent une efficacité
+en données au moins égale à celle de méthodes beaucoup plus coûteuses en calcul. Le programme
+\algo{CrossQ} de nos expériences est celui de sbx.
+
+\paragraph{TRPO}
+TRPO (\emph{Trust Region Policy Optimization}) \parencite{schulman2015trpo} est l'algorithme de la
+figure la plus célèbre de 2018 (faille F11). Il maximise un objectif de substitution sous une
+contrainte de divergence de Kullback-Leibler,
+\begin{equation}
+  \max_\theta\; \hat{\mathbb{E}}_t\bigl[ \rho_t(\theta)\, \hat{A}_t \bigr]
+  \quad \text{sous} \quad
+  \hat{\mathbb{E}}_t\bigl[ \mathrm{KL}\bigl( \pi_{\theta_\text{old}}(\cdot \mid s_t) \,\big\|\, \pi_\theta(\cdot \mid s_t) \bigr) \bigr] \leq \delta,
+\end{equation}
+résolue par un gradient conjugué suivi d'une recherche linéaire. PPO en est une simplification. Nous
+l'employons seulement dans l'expérience B1, avec le programme de sb3-contrib~2.9.2 et ses valeurs par
+défaut, sans aucun réglage (chapitre~\ref{chap:05-experiences-methode}).
+
+\section{Les tâches MuJoCo}\label{sec:ctx-taches}
+
+Henderson et ses coauteurs comparaient leurs algorithmes sur des tâches du simulateur MuJoCo
+(\emph{Multi-Joint dynamics with Contact}) \parencite{todorov2012mujoco,henderson2018matters}. Nous
+prenons les mêmes tâches dans leur version de 2026, celle de Gymnasium \parencite{towers2024gymnasium}.
+Le tableau~\ref{tab:taches} donne les dimensions des espaces d'état et d'action, lues dans
+l'environnement figé de nos expériences. Chaque épisode dure au plus \num{1000} pas.
+\task{Hopper} et \task{Walker2d} s'arrêtent plus tôt quand le corps tombe.
+
+\begin{table}[tbp]
+\centering\small
+\caption{Les quatre tâches de nos expériences, dans Gymnasium~1.1.1 et MuJoCo. Les dimensions et la
+durée maximale d'un épisode sont lues dans l'environnement de nos expériences (\file{sim/env}).}
+\label{tab:taches}
+\begin{tabular}{@{}l r r >{\raggedright\arraybackslash}p{7.4cm}@{}}
+\toprule
+Tâche & état & action & Corps simulé et récompense \\
+\midrule
+\task{HalfCheetah-v5} & 17 & 6 & guépard articulé en deux dimensions. Récompense : vitesse vers l'avant, moins un coût des commandes \\
+\task{Hopper-v5} & 11 & 3 & sauteur à une jambe. Récompense : vitesse vers l'avant, bonus tant que le corps reste debout \\
+\task{Walker2d-v5} & 17 & 6 & marcheur à deux jambes. Récompense : mêmes termes que \task{Hopper} \\
+\task{Swimmer-v5} & 8 & 2 & nageur à trois segments dans un fluide visqueux. Récompense : vitesse vers l'avant \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Pineau jugeait ces bancs d'essai \enquote{ridiculement simples} : des états décrits par peu de
+nombres, des transitions déterministes, un monde qui pèse moins de 100~kilo-octets
+\parencite{pineau2018neurips}. Cette critique fonde la faille F16. Nous gardons ces tâches, puisque le
+but est de refaire les expériences de 2018 telles qu'elles furent faites.
+
+\section{Ce que change une graine aléatoire}\label{sec:ctx-graines}
+
+\paragraph{Définition}
+Un entraînement tire beaucoup de nombres au hasard. Un ordinateur fabrique ce hasard à partir d'un
+entier de départ, la graine aléatoire (\emph{random seed}). Dans nos programmes, la graine aléatoire est
+passée à la bibliothèque (\file{seed=SEED} dans \file{sim/run.py}). La bibliothèque en dérive l'initialisation
+des poids des réseaux, le tirage des actions d'exploration, l'ordre des mini-lots et la suite des états
+initiaux de l'environnement d'entraînement. Dans ce rapport, un \emph{essai} désigne un entraînement
+complet avec une graine aléatoire donnée.
+
+\paragraph{Ce qui reste fixe}
+Même programme, même graine aléatoire, mêmes versions des bibliothèques et même machine : même
+résultat. Nos journaux le vérifient pour \algo{PPO PyTorch} et \algo{PPO JAX} : un essai arrêté puis
+relancé retrouve à l'identique ses points d'évaluation (\file{sim/SIM\_PROTOCOL.md}, écart~12~(e)).
+Changer la graine aléatoire change tous ces tirages. Le score final d'un même programme varie alors
+beaucoup. Sur nos trente essais de \algo{PPO PyTorch} sur \task{HalfCheetah}, l'écart type vaut 34~\% de
+la moyenne (chapitre~\ref{chap:06-experiences-resultats}).
+
+\paragraph{L'unité statistique est l'essai}
+La graine aléatoire est une source de variance au même titre que le tirage d'un échantillon dans une
+enquête. Une comparaison entre deux programmes repose donc sur plusieurs essais indépendants par
+programme, avec une incertitude calculée sur ces essais, sinon elle mesure le hasard du tirage.
+L'épisode ou le point d'une courbe ne compte pas pour une observation indépendante, puisqu'il vient
+d'un seul essai. La faille F11 et l'expérience B1 montrent ce qui arrive quand on prend l'épisode pour
+l'unité (chapitre~\ref{chap:06-experiences-resultats}).
+
+\section{Évaluer un agent}\label{sec:ctx-evaluation}
+
+\paragraph{Le score d'un essai}
+Évaluer un agent revient à jouer des épisodes avec sa politique, sans apprentissage, puis à faire la
+moyenne de leurs retours. Trois choix restent à faire. La faille F8 est l'article qui ne les dit pas.
+\begin{itemize}
+  \item Le point de mesure : le score à la fin de l'entraînement, le meilleur score atteint le long de
+  la courbe, ou la moyenne de la courbe, qui approche l'aire sous la courbe divisée par sa longueur.
+  \item Le mode de la politique : stochastique comme à l'entraînement, ou déterministe (l'action la
+  plus probable).
+  \item L'environnement : celui de l'entraînement, ou des conditions tenues à part, comme d'autres
+  graines d'environnement ou une physique modifiée (faille F15).
+\end{itemize}
+Nos programmes sont évalués tous les \num{50000} pas sur 10 épisodes, en mode déterministe, avec des
+graines d'environnement $\num{10000} + i$, où $i$ numérote les épisodes d'évaluation, qui ne servent
+jamais à l'entraînement (chapitre~\ref{chap:05-experiences-methode}).
+
+\paragraph{Agréger les essais}
+Avec $n$ essais de scores $x_{(1)} \leq \dots \leq x_{(n)}$, la moyenne et la médiane réagissent
+différemment aux essais extrêmes. \textcite{agarwal2021precipice} recommandent la moyenne interquartile
+(IQM, \emph{interquartile mean}), qui écarte le quart le plus bas et le quart le plus haut des essais
+puis fait la moyenne du reste :
+\begin{equation}
+  \mathrm{IQM}(x) = \frac{1}{n - 2k} \sum_{i = k + 1}^{n - k} x_{(i)}, \qquad k = \lfloor n/4 \rfloor .
+\end{equation}
+C'est la moyenne tronquée à 25~\% de \file{scipy.stats.trim\_mean}, que la bibliothèque rliable
+appelle : avec dix essais, l'IQM est la moyenne des six essais du milieu. Son intervalle de confiance
+se calcule par un bootstrap stratifié : on rééchantillonne les essais avec remise au sein de chaque
+tâche, on recalcule l'IQM, puis on prend les quantiles à 2,5~\% et 97,5~\% des \num{2000} répliques
+(\file{src/pineau\_rl/bootstrap.py}).
+
+\paragraph{Comparer deux programmes}
+La probabilité d'amélioration de $X$ sur $Y$ est la probabilité qu'un essai de $X$ batte un essai de
+$Y$ tiré indépendamment :
+\begin{equation}
+  P(X > Y) = \frac{1}{n_X n_Y} \sum_{i=1}^{n_X} \sum_{j=1}^{n_Y} \Bigl( \mathbb{1}[x_i > y_j] + \tfrac{1}{2}\, \mathbb{1}[x_i = y_j] \Bigr).
+\end{equation}
+Cette probabilité vaut la statistique $U$ de Mann-Whitney divisée par $n_X n_Y$. La valeur 0,5 signale deux
+programmes indiscernables. Nos expériences déclarent un écart établi quand l'intervalle bootstrap à
+95~\% de $P(X > Y)$ exclut 0,5. Le test $t$ de Welch \parencite{welch1947generalization}, qui compare deux
+moyennes sans supposer les variances égales, sert seulement dans les expériences E1 et B1, puisque
+c'est lui que la figure de 2018 employait.
+
+\section{Les seize failles montrées en 2018}\label{sec:failles}
+
+Dans ses deux conférences de 2018, à ICLR puis à NeurIPS \parencite{pineau2018iclr,pineau2018neurips},
+Pineau montre chaque faille par un exemple, souvent par une figure tirée de l'article de son équipe
+signé Peter Henderson et ses coauteurs \parencite{henderson2018matters}. Nous avons relevé seize
+failles, dans l'ordre des deux conférences, puis nous les avons rangées en quatre familles. Le tableau~\ref{tab:failles} les liste avec la diapositive ou la page qui les montre et l'instrument de ce
+rapport qui les mesure. Le numéro F1 à F16 sert seulement à retrouver une faille dans les tableaux.
+L'annexe~\ref{chap:A-grille} donne les règles de décision de chaque critère de lecture.
+
+\begin{small}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.6cm} >{\raggedright\arraybackslash}p{5.3cm} >{\raggedright\arraybackslash}p{3.6cm} >{\raggedright\arraybackslash}p{4.4cm}@{}}
+\caption{Les seize failles que Joelle Pineau a montrées en 2018 dans l'apprentissage par renforcement
+profond. Pour chacune : la diapositive de sa conférence d'ICLR ou la page de son document de NeurIPS
+qui la montre, puis les critères de lecture (Q, X, Y, chapitre~\ref{chap:03-sondage-methode}) et les
+expériences (E, B, chapitre~\ref{chap:05-experiences-methode}) qui la mesurent dans ce rapport.}\label{tab:failles}\\
+\toprule
+& Faille & Où Pineau la montre & Ce qui la mesure ici \\
+\midrule
+\endfirsthead
+\toprule
+& Faille & Où Pineau la montre & Ce qui la mesure ici \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\multicolumn{4}{@{}l}{\emph{Le matériel : ce qu'il faut pour refaire}} \\
+F1 & L'article publié sans son code & diapositive 6 (ICLR), page 29 (NeurIPS) & critère Q5 \\
+F2 & Aucun plan pour refaire l'expérience, comme pour AlphaGo & diapositives 9 à 12 (ICLR) & critères Q3 et X7 \\
+F3 & Le matériel et les logiciels, qui font partie du résultat & pages 34 et 35 (NeurIPS) & critères X7 et Y10 \\
+\midrule
+\multicolumn{4}{@{}l}{\emph{Le réglage : hyperparamètres et références}} \\
+F4 & Les hyperparamètres de la méthode, donnés en partie & page 29 (NeurIPS) & critère Q3 \\
+F5 & La façon de choisir les hyperparamètres, tue & page 29 (NeurIPS) & critère Q6 \\
+F6 & Des réglages qui changent tout et qui interagissent & diapositives 24 et 25 (ICLR) & critère Y9 \\
+F7 & Des références moins bien réglées que la méthode & diapositive 25 (ICLR), page 29 (NeurIPS) & critères Q4 et X4, expérience E6 \\
+\midrule
+\multicolumn{4}{@{}l}{\emph{Les graines aléatoires et la statistique}} \\
+F8 & Une mesure de performance jamais définie & diapositives 26 et 27 (ICLR) & critères Y1 et Y2, expérience B3 \\
+F9 & Trop peu d'essais : trois ou cinq, jamais dix dans son tableau & diapositive 28 (ICLR) & critère X1, expérience E5 \\
+F10 & Les meilleurs essais sur $N$, seuls publiés & diapositives 29 et 30 (ICLR) & critère X3, expériences E1 et E4 \\
+F11 & Même code, autre graine aléatoire : deux \enquote{algorithmes} & diapositive 31 (ICLR), page 22 (NeurIPS) & expériences E1 et B1 \\
+F12 & Aucun test statistique & page 29 (NeurIPS) & critères Q8, X2, Y11 et Y12 \\
+\midrule
+\multicolumn{4}{@{}l}{\emph{La portée des conclusions}} \\
+F13 & Le meilleur algorithme qui change avec la tâche & diapositives 20 et 21 (ICLR) & critères Y3 et Y4, expérience E2 \\
+F14 & Deux implémentations du même algorithme qui divergent & diapositives 22 et 23 (ICLR) & critère Y5, expérience E3 \\
+F15 & L'évaluation sur les conditions d'entraînement & pages 36 à 51 (NeurIPS) & critères Q7 et Y8, expérience E7 \\
+F16 & Des bancs d'essai trop simples, faciles à apprendre par cœur & pages 43 à 50 (NeurIPS) & critères X6 et Y7 \\
+\end{longtable}
+\end{small}
+
+\subsection{Le matériel : ce qu'il faut pour refaire}
+
+\paragraph{F1, l'article publié sans son code}
+Un article de RL décrit sa méthode en quelques pages. Le programme qui a produit les résultats compte
+des milliers de lignes, pleines de choix que la prose ne mentionne pas. Pineau reprend la formule de
+\textcite{buckheit1995wavelab} citée au chapitre~\ref{chap:01-introduction}, où ils condensaient une idée de Jon Claerbout :
+l'article est la publicité, la recherche est le code et les instructions qui ont produit les figures.
+Sur les 50 articles de RL de 2018 qu'elle a lus, 55~\% donnent un lien vers leur code.
+
+\paragraph{F2, aucun plan pour refaire l'expérience}
+Le code ne suffit pas sans les réglages exacts et une idée du calcul nécessaire. L'exemple de Pineau
+est AlphaGo \parencite{silver2016alphago}. L'article est détaillé, avec une longue annexe. Sa
+diapositive demande pourtant si cela suffit : il faudrait aussi les parties d'experts, le code, les
+hyperparamètres, les ordinateurs et le protocole d'évaluation. Une découverte qu'aucun laboratoire
+extérieur n'a les moyens de refaire reste une affirmation.
+
+\paragraph{F3, le matériel et les logiciels}
+Le même code lancé sur deux machines donne parfois deux résultats : les cartes graphiques n'arrondissent
+pas les calculs comme les processeurs, une nouvelle version d'une bibliothèque change une valeur par
+défaut. La liste de contrôle de Pineau demande l'infrastructure de calcul employée et le code
+\enquote{avec toutes ses dépendances}.
+
+\subsection{Le réglage : hyperparamètres et références}
+
+\paragraph{F4, les hyperparamètres de la méthode, donnés en partie}
+Un seul réglage oublié suffit à empêcher la reproduction : le lecteur prend la valeur par défaut de sa
+bibliothèque et obtient autre chose. Pineau compte que 90~\% des articles de 2018 donnent tous les
+hyperparamètres de leur méthode.
+
+\paragraph{F5, la façon de choisir les hyperparamètres, tue}
+Une valeur finale ne dit pas comment on l'a trouvée. Une équipe qui a essayé cent combinaisons et
+gardé la meilleure a optimisé sur son banc d'essai. Le lecteur a besoin du budget de recherche. Seuls
+20~\% des articles de 2018 le disent.
+
+\paragraph{F6, des réglages qui changent tout}
+Henderson et ses coauteurs changent un réglage à la fois. Pour PPO sur \task{HalfCheetah}, passer d'un
+réseau de deux couches de 64 neurones à un réseau de 400 puis 300 neurones fait tomber le score de
+\num{2201} à $\num{-1180}$. Les réglages interagissent : le meilleur réseau pour un algorithme cesse de l'être
+pour un autre. \textcite{engstrom2020implementation} puis \textcite{andrychowicz2021matters} ont confirmé
+cette sensibilité à grande échelle.
+
+\paragraph{F7, des références moins bien réglées que la méthode}
+L'auteur d'une méthode nouvelle la règle avec soin. Il prend souvent la référence avec ses valeurs par
+défaut. La comparaison oppose alors une méthode réglée à une méthode qui ne l'est pas. Pineau compte
+que 60~\% des articles de 2018 donnent les hyperparamètres de leurs références.
+\textcite{eimer2023hyperparameters} réclament le même budget de réglage pour les deux.
+
+\subsection{Les graines aléatoires et la statistique}
+
+\paragraph{F8, une mesure de performance jamais définie}
+Le score final, la moyenne sur l'entraînement et le meilleur score atteint ne classent pas toujours les
+méthodes dans le même ordre (section~\ref{sec:ctx-evaluation}). Un article qui ne dit pas laquelle il emploie, ni
+ce que représentent ses barres d'erreur, ne se compare à aucun autre.
+
+\paragraph{F9, trop peu d'essais}
+Pineau montre un tableau d'articles de 2015 à 2017 : ils lancent trois ou cinq graines aléatoires,
+aucun n'atteint dix. Avec trois essais, une moyenne dépend beaucoup du hasard d'un seul essai.
+\textcite{colas2018seeds} calculent le nombre de graines aléatoires nécessaire pour détecter un écart donné.
+
+\paragraph{F10, les meilleurs essais sur $N$}
+Une équipe lance dix essais, garde les meilleurs et publie leur moyenne. Chaque chiffre est vrai, mais
+la moyenne publiée dépasse ce que la méthode donne en moyenne. La dispersion paraît aussi plus petite
+qu'elle n'est. Pineau l'illustre par dix courbes dont elle garde les trois meilleures.
+
+\paragraph{F11, même code, autre graine aléatoire}
+Henderson et ses coauteurs entraînent dix fois TRPO sur \task{HalfCheetah} en changeant seulement la
+graine aléatoire, forment deux groupes de cinq et tracent les deux courbes moyennes. Elles sont
+nettement séparées. Un test les déclare différentes ($t = -9{,}09$, $p = 0{,}0016$). Pineau précise
+sur scène que les groupes ne sont pas triés. Les chapitres~\ref{chap:05-experiences-methode} et~\ref{chap:06-experiences-resultats}
+reviennent longuement sur ce chiffre (expériences E1 et B1).
+
+\paragraph{F12, aucun test statistique}
+Quand deux méthodes diffèrent de quelques points, un test ou un intervalle dit si l'écart dépasse ce
+que le hasard des graines produit seul. Seuls 5~\% des articles de 2018 appliquent un test à leurs
+comparaisons.
+
+\subsection{La portée des conclusions}
+
+\paragraph{F13, le meilleur algorithme qui change avec la tâche}
+Henderson et ses coauteurs classent quatre algorithmes sur quatre tâches. L'algorithme en tête sur
+\task{HalfCheetah} cesse de l'être sur \task{Hopper} ou \task{Swimmer}. Une conclusion générale tirée
+d'une ou deux tâches généralise un cas particulier.
+
+\paragraph{F14, deux implémentations qui divergent}
+Trois implémentations de TRPO, avec le même réseau, finissent sur \task{HalfCheetah} à \num{1939}, 834 et
+205. Comparer sa méthode à \enquote{TRPO} sans dire quelle implémentation on a prise revient à la
+comparer à un programme anonyme.
+
+\paragraph{F15, l'évaluation sur les conditions d'entraînement}
+En apprentissage supervisé, on évalue sur des données jamais vues. En RL, l'agent s'évalue souvent dans
+le monde même de son entraînement. Pineau projette une phrase qu'elle met en débat, selon laquelle le
+RL serait le seul cas de l'apprentissage automatique où tester sur son ensemble d'entraînement est
+acceptable. Elle propose de séparer les graines aléatoires d'entraînement et de test, puis les tâches
+\parencite{zhang2018dissection,zhang2018natural}. Seuls 10~\% des articles de 2018 évaluent sur des
+conditions tenues à part.
+
+\paragraph{F16, des bancs d'essai trop simples}
+Un agent assez gros retient la bonne suite d'actions d'un banc d'essai déterministe sans rien
+comprendre du monde \parencite{machado2018revisiting}. Pineau réclame aussi la version de chaque banc
+d'essai, pour qu'un résultat se refasse dans le même monde.
+
+\paragraph{Les remèdes de 2018}
+Aux seize failles, Pineau oppose d'abord une liste de contrôle de reproductibilité (pages 31 à
+33 à NeurIPS). Pour chaque algorithme : une description claire, une analyse de complexité, le lien vers
+le code et ses dépendances. Pour chaque résultat théorique : l'énoncé, les hypothèses, la preuve. Pour
+chaque figure : la collecte des données, la répartition entre entraînement, validation et test, les
+données exclues, la plage et la méthode de choix des hyperparamètres, le nombre exact d'essais, la
+définition des statistiques et des barres d'erreur, le matériel employé. Elle présente aussi le défi de
+reproduction d'ICLR 2018 (diapositives 37 à 43 à ICLR), où n'importe qui pouvait tenter de refaire un
+article soumis. NeurIPS a adopté la liste en 2019 \parencite{pineau2021improving}.
+
+\section{Travaux voisins}\label{sec:voisins}
+
+Le 9 novembre 2026, nous avons cherché sur arXiv, sur OpenReview et dans les actes des congrès. À notre
+connaissance, aucun travail ne réapplique la grille de Pineau à des articles de RL récents en la
+calibrant sur 2018. Aucun ne refait le protocole de Henderson et ses coauteurs avec les algorithmes de
+2026 sous un protocole écrit d'avance. Les travaux voisins se rangent en cinq groupes.
+
+\paragraph{L'expérience de 2018}
+\textcite{henderson2018matters} fondent la plupart des failles F6 à F14 : sensibilité aux
+hyperparamètres, aux implémentations, aux graines aléatoires, aux tâches. \textcite{islam2017reproducibility}
+les précèdent sur les mêmes tâches. \textcite{lynnerup2020survey} refont des algorithmes sur un vrai
+bras robotique. \textcite{bjorck2022variance} montrent, pour le contrôle à partir d'images, qu'une part
+de la variance entre graines vient d'essais qui échouent tôt par instabilité numérique.
+
+\paragraph{La méthode statistique}
+\textcite{colas2018seeds} font une analyse de puissance du nombre de graines aléatoires. \textcite{jordan2020evaluating}
+discutent la mesure de performance elle-même, puis \textcite{jordan2024position} le coût d'une
+comparaison rigoureuse. \textcite{agarwal2021precipice} apportent l'IQM, les intervalles par bootstrap
+stratifié, les profils de performance et la probabilité d'amélioration, réunis dans la bibliothèque
+rliable. Ils montrent que plusieurs améliorations annoncées sur les jeux Atari se fondent dans
+l'incertitude une fois les intervalles calculés. \textcite{patterson2024empirical} en tirent un guide.
+\textcite{eimer2023hyperparameters} réclament un budget de réglage égal pour les références. Ces travaux
+disent quoi faire. Notre sondage mesure si les articles le font.
+
+\paragraph{Les listes de contrôle et les défis de reproduction}
+\textcite{pineau2021improving} décrivent le programme de reproductibilité de NeurIPS 2019 : la liste de
+contrôle obligatoire, le défi de reproduction et la politique de dépôt du code. La part d'articles
+acceptés avec du code passe de moins de 50~\% à 74,4~\%. \textcite{magnusson2023nlpchecklist} mesurent
+l'effet de la liste de contrôle des congrès de traitement automatique des langues.
+
+\paragraph{Les audits de la littérature}
+\textcite{gundersen2018state} notent 400 articles des congrès IJCAI et AAAI sur la documentation des
+méthodes, des données et des expériences. \textcite{coakley2026shift} suivent \num{56800} articles de cinq
+congrès d'intelligence artificielle de 2014 à 2024 : la part qui partage code et données passe de 11~\% à 64~\%. La hausse commence avant les listes de contrôle. En RL, l'audit le plus proche est celui de
+\textcite{gorsane2022marl} : 75 articles de RL coopératif à plusieurs agents, de 2016 à 2022, dont
+environ un tiers ne quantifie aucune incertitude. Aucun de ces audits ne vise le RL à un seul agent ni
+la grille de 2018.
+
+\paragraph{Les modèles de langue}
+\textcite{hochlehnert2025sober} réévaluent des modèles de raisonnement et trouvent des écarts types de 5
+à 15 points de pourcentage d'une graine aléatoire d'échantillonnage à l'autre sur de petits bancs
+d'essai comme AIME~2024. \textcite{chandak2025incorrect} relèvent, dans un billet non relu par des pairs,
+des modèles de départ sous-évalués dans sept articles, l'équivalent moderne de la faille F7.
+\textcite{shao2025spurious} montrent qu'une récompense tirée au sort améliore les modèles Qwen en
+mathématiques, mais pas les modèles Llama ou OLMo. \textcite{yue2025rlvr} montrent que la mesure pass@$k$
+renverse un classement selon $k$, un exemple de la faille F8.
+
+\section{Le vocabulaire des modèles de langue}\label{sec:vocabulaire}
+
+Le vocabulaire du RL a gagné les modèles d'IA générative qui écrivent du texte. On emprunte au RL
+certains de ses algorithmes, avec une ressemblance vague, pour affiner les réponses d'un modèle de
+langue préentraîné, sans agent qui agit dans un monde. Ce rapport fixe ses mots comme suit.
+
+\begin{itemize}
+  \item \textbf{RL classique.} Le RL au sens de la section~\ref{sec:cadre} : un agent, souvent entraîné de
+  zéro, agit dans un environnement doté d'états qui évoluent, en robotique, dans les jeux ou en
+  contrôle. Le RL hors ligne en fait partie. C'est la famille \file{classic} du critère X5.
+  \item \textbf{RL de grands modèles.} Une étiquette de commodité pour les articles qui appellent RL ce
+  qu'ils appliquent à un modèle génératif préentraîné conditionné par le langage (modèle de langue,
+  modèle de vision-langage, modèle texte-image). C'est la famille \file{llm} du critère X5
+  (chapitre~\ref{chap:03-sondage-methode}). L'étiquette reprend le mot des articles. Elle ne vaut pas jugement
+  sur la nature de ce qu'ils font.
+  \item \textbf{RLHF.} L'apprentissage à partir de retours humains (\emph{reinforcement learning from
+  human feedback}) \parencite{christiano2017deep,ouyang2022instructgpt}. Des annotateurs classent des
+  réponses, un modèle de récompense apprend leurs préférences, puis le modèle de langue est affiné pour
+  maximiser ce score. Le sigle contient les lettres RL. Ce rapport ne range pas pour autant RLHF dans
+  le RL : la politique optimisée produit un texte en réponse à une invite, puis reçoit une seule note,
+  sans environnement dont l'état évolue sous ses actions.
+  \item \textbf{RLVR et GRPO.} Le RLVR (\emph{reinforcement learning with verifiable rewards}) remplace
+  le modèle de récompense par un programme qui vérifie la réponse : la réponse finale d'un problème de
+  mathématiques comparée à la bonne, un code soumis à des tests \parencite{deepseek2025r1}. GRPO
+  (\emph{Group Relative Policy Optimization}) \parencite{shao2024deepseekmath} est l'algorithme le plus
+  répandu de cette famille. Il dérive de PPO : il tire un groupe de réponses pour chaque invite et
+  remplace le critique par la récompense de chaque réponse centrée et réduite au sein du groupe. Notre
+  volet GRPO est décrit au chapitre~\ref{chap:07-modeles-de-langue}.
+\end{itemize}
+
+Les grands modèles de langue sont, dans ce rapport, des modèles d'IA générative. Les lecteurs de notre
+sondage sont des agents bâtis sur un tel modèle (chapitre~\ref{chap:03-sondage-methode}). Le mot \enquote{agent}
+désigne alors un programme qui lit un PDF et remplit une grille, pas l'agent d'un processus de décision
+markovien.

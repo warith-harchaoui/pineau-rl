@@ -1,0 +1,232 @@
+\chapter{Limites et menaces sur la validité}
+\label{chap:10-limites}
+
+Ce chapitre rassemble les limites du travail, pour qu'aucun lecteur n'ait à les chercher. Il les
+range selon les quatre familles de menaces de \textcite{shadish2002experimental}. La validité
+interne demande si l'effet mesuré vient bien de la cause supposée. La validité externe demande à
+quelles populations, tâches et conditions le résultat s'étend. La validité de construit demande si
+la mesure saisit la notion qu'elle prétend saisir. La validité de la conclusion statistique demande
+si les tests et les intervalles autorisent la conclusion tirée. Une dernière section dit ce que
+testerait un nouvel entraînement complet sur une autre machine.
+
+\section{Validité interne}
+\label{sec:val-interne}
+
+\subsection{Les lecteurs du sondage sont des agents de modèle de langue}
+
+Tous les articles ont été lus par des agents de modèle de langue, copies d'un même modèle
+(\texttt{claude-opus-5-5}). Deux lecteurs ont fini sur un modèle voisin (\texttt{claude-opus-5})
+pour treize articles, après l'arrêt d'une réponse par un filtre de contenu du fournisseur (écart 28 du sondage).
+Aucun humain n'a relu les articles à l'aveugle : la relecture prévue par l'écart 13 a été abandonnée
+avant de commencer (écart 23). Cinq garde-fous réduisent le risque sans l'annuler.
+
+\begin{enumerate}
+  \item \textbf{La citation obligatoire.} Chaque décision \enquote{oui} s'appuie sur une citation
+        exacte et sa page. Chacun peut vérifier chaque décision contre le PDF. Le script
+        \file{study/check\_codes.py} vérifie mécaniquement que chaque citation figure dans le texte.
+  \item \textbf{L'audit des citations.} Après les premiers pourcentages, nous avons cherché les
+        citations que la vérification mécanique ne retrouvait pas (écart 15, fichier
+        \file{study/v1\_quotes\_audit.md}) : sur 89 citations, aucune n'est inventée, 83 figurent mot pour mot dans
+        l'article, une est une paraphrase fidèle, 5 donnent des valeurs contraires aux règles.
+  \item \textbf{Les doubles lectures à l'aveugle.} Vingt articles du sondage ont été relus par un
+        second agent qui ignorait la première lecture. Sur les dix articles relus du premier tirage,
+        les deux lecteurs s'accordent sur 127 décisions sur 130 (98~\%). Deux agents s'accordent sur
+        au moins 80~\% des articles pour chaque critère, à une exception près, la mesure de
+        performance (Y1), à 60~\% sur le premier tirage, avant que ses règles soient précisées. Dix
+        articles de la trajectoire annuelle, relus de même, concordent à 80~\% au moins sur chacun
+        des 23 critères (\cref{tab:accord}).
+  \item \textbf{La recherche contre les \enquote{non}.} Un \enquote{non} ne s'appuie sur aucune
+        citation. Chaque \enquote{non} des critères des verdicts a été confronté au texte de
+        l'article avec des mots-clés fixés d'avance, puis chaque extrait trouvé a été jugé par un
+        arbitre qui ne voyait ni l'article ni l'année (écart 27). Sur 377 décisions \enquote{non},
+        10 passent à \enquote{oui} (2 en 2018, 8 en 2026) et aucun verdict ne change. Si l'on
+        retourne aussi les 24 décisions jugées douteuses, l'incertitude (X2) et la sensibilité (Y9)
+        passent juste au-dessus du seuil ($p = 0{,}07$ et $p = 0{,}054$).
+  \item \textbf{Le retrait du modèle voisin.} Sans les treize articles lus en partie par
+        \texttt{claude-opus-5}, les verdicts tiennent, sauf l'incertitude rapportée (X2), qui ne
+        passe plus la correction de Holm ($p = 0{,}07$, écart 29).
+\end{enumerate}
+
+Ces garde-fous laissent une menace entière. Les deux lecteurs d'une double lecture sont des copies
+du même modèle : leur accord mesure la stabilité de ce modèle, non l'accord de deux lecteurs
+indépendants. Un biais systématique du modèle, partagé par toutes ses copies, échappe aux doubles
+lectures. La consigne exacte, le modèle et les dates de chaque lecteur sont publiés
+(\file{study/readers/}), pour qu'un autre lecteur, humain ou non, refasse la lecture.
+
+\subsection{Les décisions prises après les résultats}
+
+Plusieurs règles ont été fixées après avoir vu des résultats : la règle de verdict du sondage
+(écart 20), l'harmonisation de la calibration de 2018 (écart 15), le classement descriptif sous
+physique modifiée (écart 11 des simulations), les détails du bootstrap GRPO (écart 13) et la remise à
+zéro du compte des échecs GRPO (écart 10). Le \cref{chap:09-ecarts} discute chacune. L'ordre
+d'écriture des écarts antérieurs au 15 novembre 2026 repose sur notre parole et sur les dates des
+commits (\cref{sec:parole}).
+
+\subsection{Les essais des simulations}
+
+Le registre reconstruit compte 42 tentatives arrêtées que le protocole ne déclarait pas
+(\cref{sec:registres}). Chaque arrêt a frappé tous les essais en cours à la fois, sans lien avec un
+score. Pour SAC et CrossQ, les courbes des tentatives arrêtées ont été écrasées : nous ne pouvons pas
+montrer que la relance retrouve la même courbe. Le protocole annonçait Stable-Baselines3 2.6.0.
+Tous les entraînements ont tourné avec la 2.9.2, la même pour tous les essais. Ces écarts ne
+favorisent aucun programme. Ils sont dits ici pour que le lecteur les connaisse.
+
+\subsection{Le matériel et la graine aléatoire du volet GRPO}
+
+Pour Qwen, le matériel a changé avec la graine aléatoire : les deux essais à vraie récompense qui
+donnent le gain ont tourné sur GPU, les trois qui n'en donnent pas sur CPU. Cinq essais ne
+séparent pas ces deux causes (\cref{sec:llm-materiel}). Les trois premiers essais ont tourné avant
+les garde-fous contre un calcul corrompu. Un gradient corrompu mais fini, écrêté à 1, a pu y passer
+sans trace. Le calcul MPS n'est pas déterministe d'une tentative à l'autre, si bien que la même
+graine aléatoire ne garantit pas le même essai sur GPU.
+
+\section{Validité externe}
+\label{sec:val-externe}
+
+\subsection{La population des articles}
+
+\begin{itemize}
+  \item \textbf{La population a changé.} 27 articles du premier tirage de 2026 sur 50 traitent de
+        grands modèles de langue, une famille absente en 2018. Nos verdicts valent pour le RL
+        classique.
+  \item \textbf{Le filtre de titre.} L'expression régulière appliquée aux titres rate les articles
+        de RL dont le titre ne le dit pas, en 2018 comme en 2026. Mesuré pour 2026 avec un plan écrit
+        d'avance (écart 24) : sur 400 articles tirés hors du filtre, 25 ont un résumé qui parle de
+        RL, soit environ 1\,037 articles manqués (de 708 à 1\,503), 45~\% de l'ensemble. C'est un
+        majorant, puisque la règle mécanique compte aussi des faux positifs. Lus avec les deux
+        grilles, 20 de ces articles ressemblent au premier tirage : le code en lien dans 60~\% d'entre
+        eux (67~\% dans le tirage), une incertitude dans 50~\% (47~\%). Les 7 articles de RL classique
+        parmi eux sont trop peu nombreux pour éprouver nos verdicts.
+  \item \textbf{Le tri sur le titre de la file de 2026.} Un article de RL classique dont le titre
+        contient \enquote{reasoning}, \enquote{preference} ou \enquote{math} n'a pas pu entrer dans
+        l'échantillon classique de 2026. Les 9 articles d'ICLR 2026 en tête de la file, injoignables
+        le 9 novembre 2026, ont été sautés.
+  \item \textbf{La source des PDF.} Les articles de 2026 ont été lus surtout dans leur version
+        arXiv (45 articles de RL classique sur 50), ceux de 2018 dans les actes des conférences. Une
+        version arXiv est parfois plus longue ou plus récente. Avec 5 articles seulement lus sur le
+        site d'une conférence, cet effet ne se mesure pas.
+  \item \textbf{La trajectoire sans ICLR.} Les années 2019 à 2024 ne couvrent qu'ICML et NeurIPS :
+        OpenReview refuse les téléchargements automatisés.
+  \item \textbf{Le tirage de Pineau.} Sa méthode de tirage de 2018 n'est pas décrite. Nos
+        comparaisons avec ses chiffres supposent un tirage comparable au nôtre et servent de
+        contexte, jamais de verdict.
+\end{itemize}
+
+\subsection{Les simulations}
+
+Les expériences se limitent au simulateur MuJoCo et à quatre tâches de locomotion
+(\task{HalfCheetah}, \task{Hopper}, \task{Walker2d}, \task{Swimmer}), celles de
+\textcite{henderson2018matters}. Elles ne disent rien des jeux à images, de la robotique réelle ni du
+RL hors ligne. E1 et B1 se limitent à une seule tâche (\task{HalfCheetah}) et à deux algorithmes
+(PPO et TRPO). Les quatre programmes sont pris avec leurs hyperparamètres par défaut, sauf dans E6 :
+un autre réglage pourrait changer les classements. La physique modifiée ne change que deux
+grandeurs, les masses et le frottement.
+
+\subsection{Les budgets}
+
+PPO s'entraîne 1\,024\,000 pas, SAC et CrossQ 200\,000 (écarts 1 et 14 (d) des simulations). La lecture
+à budget égal (écart 12 (iii)) compare PPO à 200\,000 pas, lu sur sa courbe d'un million de pas : un
+PPO réglé pour un budget de 200\,000 pas pourrait faire mieux. Le budget de SAC et de CrossQ, réduit
+pour tenir le calcul, les place dans le régime \enquote{peu de données}. Un budget plus long pourrait
+changer leur ordre.
+
+\subsection{Une seule plateforme}
+
+Tous les essais viennent d'un seul Mac à puce Apple M2 Max, partagé avec d'autres projets, sous
+macOS et pour arm64. MuJoCo, JAX et PyTorch arrondissent différemment d'un processeur à l'autre :
+la même graine aléatoire donne une autre courbe sur une autre machine (\cref{sec:reentrainer}).
+
+\subsection{L'échelle du volet GRPO}
+
+Le volet GRPO reste une illustration : deux modèles de 0,5 et 1 milliard de paramètres, une tâche de
+multiplication, 100 pas, des groupes de 8 réponses, des réponses limitées à 160 jetons, aucun terme
+KL. \textcite{shao2025spurious} travaillent sur des modèles de 7 milliards de paramètres spécialisés
+en mathématiques, sur MATH-500, avec bien plus de calcul. Notre volet ne réplique pas leur
+expérience et ne la réfute pas.
+
+\section{Validité de construit}
+\label{sec:val-construit}
+
+\begin{itemize}
+  \item \textbf{Notre grille lit 2018 autrement que Pineau.} Notre lecture trouve 55~\% d'articles
+        de 2018 qui donnent tous les hyperparamètres de leur méthode, quand Pineau en comptait
+        90~\%. Les critères ont le même intitulé mais des règles de décision implicites différentes. C'est la
+        raison de la règle de verdict à grille égale (écart 20).
+  \item \textbf{Un critère satisfait n'est pas une pratique bien faite.} Q5 vaut oui pour un lien
+        vers du code, sans vérifier que ce code tourne. X2 vaut oui pour une barre d'erreur, sans
+        juger si elle mesure la bonne dispersion : la barre peut résumer des épisodes au lieu des
+        graines aléatoires, ce que l'expérience B1 montre dangereux. Q8 vaut oui pour un test
+        appliqué, sans juger s'il est approprié.
+  \item \textbf{La mesure de performance (Y1)} est notre critère le plus fragile : 60~\% d'accord sur
+        le premier tirage, avant que ses règles soient précisées. Le verdict de la faille F8 se lit
+        avec cette réserve.
+  \item \textbf{Les cas limites de X3, X4 et X7} n'ont reçu aucune règle d'harmonisation nouvelle,
+        pour lire les deux années avec la même grille. Un calcul réduit au temps d'inférence ou des
+        graines aléatoires ratées écartées restent codés comme le lecteur les a lus.
+  \item \textbf{Ce qu'une liste de contrôle déclare.} Les réponses des auteurs à la liste de NeurIPS
+        ne garantissent pas la pratique qu'elles nomment : les 18 articles qui répondent oui à la
+        question sur la signification statistique n'appliquent aucun test. Le sondage mesure ce que
+        l'article fait, la liste de contrôle ce qu'il déclare.
+  \item \textbf{Le score d'un essai de simulation} est le retour moyen de dix épisodes déterministes
+        au dernier pas. L'expérience B3 montre qu'une autre mesure (meilleur score, moyenne de la
+        courbe) change l'ordre de certaines paires.
+  \item \textbf{Le pass@1 du volet GRPO} mêle justesse et concision, puisqu'une réponse coupée
+        compte pour fausse (\cref{sec:llm-coupure}).
+  \item \textbf{Les notes de coût et de risque} qui ont mis à l'épreuve la thèse du coût viennent de
+        trois agents de modèle de langue, de trois tailles différentes. Leur accord entre eux ne
+        garantit pas qu'un chercheur noterait de même.
+\end{itemize}
+
+\section{Validité de la conclusion statistique}
+\label{sec:val-stat}
+
+\paragraph{La taille des échantillons du sondage} Avec 50 articles de chaque côté, un changement de
+dix points passe encore souvent inaperçu : \enquote{pas de changement détectable} ne veut pas dire
+\enquote{aucun changement}. Le premier tirage comptait 14 articles de RL classique, trop peu pour
+détecter un écart de trente points, d'où l'élargissement de l'écart 12. La trajectoire repose sur
+20 articles par année : une part y a une incertitude d'environ vingt points de part et d'autre.
+
+\paragraph{Les comparaisons multiples} Le sondage compare dix-sept critères dans la comparaison
+principale. La correction de Holm protège le taux d'erreur de la famille, au prix de la puissance :
+un écart dont l'intervalle de Newcombe évite zéro sans passer Holm, comme Q6 ou Y12, est rapporté
+mais ne fait pas un verdict. Pour E2, 24 intervalles de probabilité d'amélioration sont aussi donnés
+au niveau simultané de 95~\% par la correction de Bonferroni (écart 18 des simulations,
+\cref{tab:e2-bonferroni}).
+
+\paragraph{Les verdicts fragiles} La hausse de l'incertitude rapportée (X2) ne passe plus la
+correction de Holm dans deux contrôles ($p = 0{,}07$ chaque fois). Elle reste le plus fragile des
+quatre changements. Le code et le calcul passent le seuil dans tous nos contrôles, la sensibilité à
+un hyperparamètre dans presque tous (\cref{tab:robustesse}).
+
+\paragraph{Le nombre de graines aléatoires des simulations} Les résultats principaux reposent sur dix graines
+aléatoires par couple. L'expérience E5 montre ce que ce nombre permet : entre deux programmes dont
+les moyennes diffèrent de moins de 20~\%, cinq graines aléatoires ne retrouvent le bon ordre que 71 fois sur
+cent en médiane, 62 fois mesuré sur vingt graines aléatoires. Les classements à dix graines sur les tâches où
+le premier ne bat pas nettement le deuxième ne valent pas plus. Les vingt graines aléatoires de l'écart 12
+confirment ou nuancent chaque résultat. Le \cref{chap:06-experiences-resultats} dit chaque
+divergence.
+
+\paragraph{Le nombre de graines aléatoires du volet GRPO} Avec cinq graines aléatoires, le bootstrap n'a que 126
+rééchantillons distincts, dix avec trois graines aléatoires. Les intervalles du \cref{chap:07-modeles-de-langue}
+sont très grossiers. Un intervalle qui contient zéro dit que nous ne pouvons pas conclure, pas que
+l'effet est nul.
+
+\paragraph{Les intervalles bootstrap} Les intervalles de rliable dépendent du générateur global de
+NumPy et de l'ordre des appels. Leurs bornes bougent avec la graine aléatoire du bootstrap, de l'ordre du bruit
+de Monte-Carlo (écart 13 des simulations) : un verdict dont la borne frôle le seuil reste fragile.
+
+\section{Ce que testerait un nouvel entraînement sur une autre machine}
+\label{sec:reentrainer}
+
+Un nouvel entraînement complet sur un autre processeur ne redonnerait pas nos courbes. MuJoCo, JAX
+et PyTorch arrondissent différemment d'un processeur à l'autre, si bien que la même graine aléatoire donne une
+autre trajectoire dès les premiers pas. Le volet GRPO l'illustre : pour un même modèle et une même
+graine aléatoire, le pass@1 de départ diffère entre GPU et CPU (\cref{sec:llm-materiel}).
+
+Un tel entraînement testerait donc les statistiques, pas chaque courbe. Il dirait si la dispersion
+entre graines aléatoires, les classements, les gonflements dus à la sélection et les pertes sous physique
+modifiée restent du même ordre avec d'autres tirages. Une conclusion qui ne
+survivrait qu'à nos propres graines aléatoires ne dirait rien des algorithmes. L'intégration continue fait déjà le test
+équivalent pour les analyses : sur Linux, les comptes, les verdicts et les classements reviennent
+exactement, les flottants à $10^{-12}$ près en relatif (\cref{sec:ci}). Aucun entraînement n'a été
+refait sur une autre machine.

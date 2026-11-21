@@ -63,7 +63,7 @@ def load_reads(root: str, readers: Iterable[str]) -> dict[str, Record]:
 
 
 def y3_yes_no(v: int) -> str:
-    """Y3 (number of runs per configuration) as a yes/no criterion: yes when at least 2."""
+    """Y3 (number of tasks behind the main conclusion) as a yes/no criterion: yes when at least 2."""
     return "yes" if v >= 2 else "no"
 
 

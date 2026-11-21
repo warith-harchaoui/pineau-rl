@@ -1,0 +1,126 @@
+\chapter{Supplementary tables}
+\label{chap:B-tableaux}
+
+This appendix gives the tables that do not appear in the chapters, then an index of every generated
+table and the list of result files they come from. Each generated table is written by
+\file{report/tools/tables.py} from a JSON result file: no number in it is typed by hand.
+
+\section{RL on large language models in the survey}
+\label{sec:b-lrl}
+
+The first 2026 draw holds 27 papers that apply what they call RL to large language models (family
+X5 \texttt{llm}, \cref{chap:A-grille}). The verdicts of the survey apply to classical RL.
+\Cref{tab:sondage-lrl} sets these papers against classical RL in 2026, criterion by criterion, where
+the result file allows it. The 18 \texttt{llm} papers read along the way in the queue of the
+enlargement are left out: the title screen had filtered them, so they do not form a random sample
+(survey deviation 12). The table reads as a description, with no verdict: it compares two families
+of papers from the same year.
+
+\section{Index of the generated tables}
+\label{sec:b-index}
+
+\begin{small}
+\begin{longtable}{@{}p{0.19\linewidth}p{0.43\linewidth}p{0.3\linewidth}@{}}
+\caption{Where to find each generated table.}\label{tab:b-index}\\
+\toprule
+Table & Content & Source file \\
+\midrule
+\endfirsthead
+\toprule
+Table & Content & Source file \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\Cref{tab:sondage-pineau} & Pineau's criteria, 2018 against classical RL in 2026 &
+  \file{extension\_stats.json}, \file{results\_final.json} \\
+\Cref{tab:sondage-extension} & Our criteria Y1 to Y12, same columns & \file{extension\_stats.json} \\
+\Cref{tab:sondage-lrl} & RL on large models against classical RL, 2026 & \file{extension\_stats.json} \\
+\Cref{tab:trajectoire} & Share per practice and per year, trend test & \file{trajectory.json} \\
+\Cref{tab:accord} & Agreement of the blind double readings & \file{agree\_v2.json} \\
+\Cref{tab:robustesse} & Robustness checks of the survey & \file{robustness.json} and variants \\
+\Cref{tab:e1} & E1: thirty PPO runs, false positives & \file{e1.json} \\
+\Cref{tab:b1} & B1: the $t$ of 9.09, two ways of computing it & \file{b1\_script.json}, \file{b1\_trpo.json} \\
+\Cref{tab:e2} & E2: ranking per task, ten and twenty random seeds, equal budget & \file{e2*.json} \\
+\Cref{tab:e2-bonferroni} & E2 with Bonferroni intervals & \file{e2\_bonferroni*.json} \\
+\Cref{tab:e3} & E3: PPO PyTorch against PPO JAX & \file{e3*.json} \\
+\Cref{tab:e4} & E4: the best three out of ten & \file{e4.json}, \file{e4\_r10.json} \\
+\Cref{tab:e5} & E5: how many random seeds recover the order & \file{e5*.json} \\
+\Cref{tab:e6} & E6: the tuned baseline & \file{e6*.json} \\
+\Cref{tab:e7} & E7: score kept under modified physics & \file{e7*.json} \\
+\Cref{tab:dose} & Physics modified by degrees & \file{dose*.json} \\
+\Cref{tab:b3} & B3: does the measure change the ranking & \file{b3*.json} \\
+\Cref{tab:grpo} & GRPO: every run & \file{summary\_5.json}, \file{gains\_5.json}, \file{extra\_5.json} \\
+\Cref{tab:ecarts} & The deviations of the three protocols & the three protocols \\
+\Cref{tab:env} & Versions of the environments & \file{envs/*.lock} \\
+\Cref{tab:calcul} & Compute per program and per task & \file{sim/logs}, \file{sim/results} \\
+\Cref{tab:articles-2026} & The 2026 papers read & \file{final\_2026.json} and queue A3 \\
+\Cref{tab:articles-2018} & The 2018 papers read & \file{calib\_2018\_v2.json} \\
+\end{longtable}
+\end{small}
+
+\section{The result files}
+\label{sec:b-fichiers}
+
+Each JSON result file comes from one script, rerun by \texttt{make analysis}
+(\cref{sec:make}). The criterion-by-criterion and pair-by-pair details that the tables summarise are
+in these files.
+
+\begin{small}
+\begin{longtable}{@{}p{0.3\linewidth}p{0.64\linewidth}@{}}
+\caption{The analysis scripts and the content of their JSON file.}\label{tab:b-fichiers}\\
+\toprule
+Script & Content of the result file \\
+\midrule
+\endfirsthead
+\toprule
+Script & Content of the result file \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\multicolumn{2}{@{}l}{\textit{Survey, folder \file{study/}}}\\
+\file{analyze.py} & Shares in the first 2026 draw (\file{results\_2026.json}). \\
+\file{analyze\_final.py} & Shares for 2026 and for the 2018 calibration, from the raw readings and
+  the harmonisation (\file{results\_final.json}). \\
+\file{audit\_stats.py} & Statistical audit of the comparison between 2018 and 2026: Newcombe
+  differences, Fisher, Holm, reader agreement (\file{audit\_stats.json}). \\
+\file{agree\_v2.py} & Agreement between readers on the raw readings, before harmonisation
+  (\file{agree\_v2.json}). \\
+\file{extension\_stats.py} & Main comparison: classical RL in 2026 against our reading of 2018,
+  criterion by criterion, with Wilson, Newcombe, Fisher and Holm (\file{extension\_stats.json}, with
+  variants without the neighbouring model and with the flipped decisions). \\
+\file{robustness.py} & Robustness cuts and test of the cost thesis (\file{robustness.json}). \\
+\file{title\_filter.py}, \file{title\_filter\_compare.py} & The title filter: share of hidden RL
+  and comparison of the twenty hidden papers (\file{title\_filter*.json}). \\
+\file{trajectory.py} & The trajectory from 2018 to 2026: shares per year, Cochran-Armitage,
+  immediate and delayed gaps (\file{trajectory.json}). \\
+\file{falsify\_no.py} & The search against the \enquote{no} decisions (\file{falsify\_no.json}). \\
+\file{checklist.py} & The checklists declared at NeurIPS 2025 against our readings
+  (\file{checklist.json}). \\
+\multicolumn{2}{@{}l}{\textit{Simulations, folder \file{sim/analysis/}}}\\
+\file{e1.py}, \file{e1\_curve.py} & E1: thirty PPO runs, Welch test on the final scores, then on the
+  curves. \\
+\file{b1\_trpo.py}, \file{b1\_script.py} & B1: the readings of the 2018 average $t$ on TRPO and PPO,
+  then the computation of Henderson's script. \\
+\file{e2.py}, \file{e2\_bonferroni.py} & E2: interquartile mean per task, probabilities of
+  improvement, changes of ranking, then the same intervals at the simultaneous Bonferroni level. \\
+\file{e3.py} & E3: the two implementations of PPO. \\
+\file{e4.py} & E4: mean and spread of the ten runs, then of the best three, reversals. \\
+\file{e5.py} & E5: share of draws that recover the order, for 3, 5, 10 and 20 random seeds. \\
+\file{e6.py}, \file{e6\_diag.py}, \file{e6\_official.py} & E6: default against Zoo, diagnosis of the
+  recipe, official policies evaluated with our protocol. \\
+\file{e7.py}, \file{e7\_rank.py} & E7: share of score kept under modified physics, then the
+  descriptive ranking. \\
+\file{dose.py} & The physics modified by degrees. \\
+\file{b3.py} & B3: three measures per run and the reversals between measures. \\
+\multicolumn{2}{@{}l}{\textit{GRPO strand, folder \file{sim/llm/}}}\\
+\file{summary.py} & Pass@1 at steps 0 and 100 of every run, gains, intervals, sensitivity to the
+  missing gain, CPU runs alone (\file{summary*.json}, \file{gains*.json}, \file{extra*.json}). \\
+\end{longtable}
+\end{small}
+
+The suffixes of the simulation files follow deviation 12: \file{\_s20} for twenty random seeds,
+\file{\_r10} for the replication of E4 on random seeds 10 to 19, \file{\_equal} and
+\file{\_equal\_s20} for the equal budget. The files of the GRPO strand follow deviation 14: no
+suffix for three random seeds, \file{\_5} for five.

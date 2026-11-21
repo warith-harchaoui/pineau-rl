@@ -1,0 +1,227 @@
+\chapter{Limitations and threats to validity}
+\label{chap:10-limites}
+
+This chapter gathers the limitations of the work, so that no reader has to hunt for them. It sorts
+them into the four families of threats of \textcite{shadish2002experimental}. Internal validity asks
+whether the measured effect really comes from the presumed cause. External validity asks to which
+populations, tasks and conditions the result extends. Construct validity asks whether the measure
+captures the notion it claims to capture. Statistical conclusion validity asks whether the tests and
+intervals license the conclusion drawn. A final section states what a new complete training run on
+another machine would test.
+
+\section{Internal validity}
+\label{sec:val-interne}
+
+\subsection{The survey readers are language-model agents}
+
+Every paper was read by language-model agents, copies of one model (\texttt{claude-opus-5-5}). Two
+readers finished on a neighbouring model (\texttt{claude-opus-5}) for thirteen papers, after a
+response was stopped by a content filter of the provider (survey deviation 28). No human reread the
+papers blind: the rereading planned by deviation 13 was dropped before it began (deviation 23). Five
+safeguards reduce the risk without removing it.
+
+\begin{enumerate}
+  \item \textbf{The mandatory quotation.} Every \enquote{yes} decision rests on an exact quotation
+        and its page. Anyone can check every decision against the PDF. The script
+        \file{study/check\_codes.py} checks mechanically that every quotation appears in the text.
+  \item \textbf{The quotation audit.} After the first percentages, we looked for the quotations that
+        the mechanical check did not find (deviation 15, file \file{study/v1\_quotes\_audit.md}). Of
+        89 quotations, none is invented: 83 appear word for word in the paper, one is a faithful
+        paraphrase and 5 give values that contradict the rules.
+  \item \textbf{The blind double readings.} Twenty papers of the survey were reread by a second agent
+        that did not see the first reading. On the ten reread papers of the first draw, the two
+        readers agree on 127 decisions out of 130 (98\%). For every criterion, two agents agree on at
+        least 80\% of the papers, with one exception: the performance measure (Y1), at 60\% on the
+        first draw, before its rules were made more precise. Ten papers of the yearly trajectory,
+        reread in the same way, agree at 80\% or more on each of the 23 criteria
+        (\cref{tab:accord}).
+  \item \textbf{The search against the \enquote{no} decisions.} A \enquote{no} rests on no
+        quotation. Every \enquote{no} on the verdict criteria was confronted with the text of the
+        paper through keywords fixed in advance. Each excerpt found was then judged by an arbiter that
+        saw neither the paper nor the year (deviation 27). Of 377 \enquote{no} decisions, 10 become
+        \enquote{yes} (2 in 2018, 8 in 2026) and no verdict changes. If the 24 decisions judged
+        doubtful are flipped as well, uncertainty (X2) and sensitivity (Y9) end up just above the
+        threshold ($p = 0.07$ and $p = 0.054$).
+  \item \textbf{Removing the neighbouring model.} Without the thirteen papers partly read by
+        \texttt{claude-opus-5}, the verdicts hold, except reported uncertainty (X2), which no longer
+        passes the Holm correction ($p = 0.07$, deviation 29).
+\end{enumerate}
+
+These safeguards leave one threat whole. The two readers of a double reading are copies of the same
+model: their agreement measures the stability of that model, which differs from the agreement of two
+independent readers. A systematic bias of the model, shared by all its copies, escapes the double
+readings. The exact instructions, the model and the dates of every reader are published
+(\file{study/readers/}), so that another reader, human or not, can redo the reading.
+
+\subsection{Decisions taken after the results}
+
+Several rules were fixed after results had been seen: the verdict rule of the survey
+(deviation 20), the harmonisation of the 2018 calibration (deviation 15), the descriptive ranking
+under modified physics (simulation deviation 11), the details of the GRPO bootstrap (deviation 13)
+and the reset of the GRPO failure count (deviation 10). \Cref{chap:09-ecarts} discusses each of them.
+The order in which the deviations before 15 November 2026 were written rests on our word and on the
+commit dates (\cref{sec:parole}).
+
+\subsection{The simulation runs}
+
+The reconstructed ledger counts 42 stopped attempts that the protocol did not declare
+(\cref{sec:registres}). Every stop hit all the runs in progress at once, with no link to a score. For
+SAC and CrossQ, the curves of the stopped attempts were overwritten: we cannot show that the relaunch
+reproduces the same curve. The protocol announced Stable-Baselines3 2.6.0. Every training ran with
+2.9.2, the same version for all runs. These deviations favour no program. They are stated here so
+that the reader knows them.
+
+\subsection{Hardware and random seed in the GRPO strand}
+
+For Qwen, the hardware changed with the random seed: the two true-reward runs that show the gain ran
+on the GPU, the three that do not show it ran on the CPU. Five runs cannot separate these two causes
+(\cref{sec:llm-materiel}). The first three runs ran before the safeguards against a corrupted
+computation existed. A gradient that was corrupted but finite, clipped to 1, may have gone through
+them without a trace. The MPS computation is not deterministic from one attempt to the next, so the
+same random seed does not guarantee the same run on the GPU.
+
+\section{External validity}
+\label{sec:val-externe}
+
+\subsection{The population of papers}
+
+\begin{itemize}
+  \item \textbf{The population has changed.} 27 of the 50 papers of the first 2026 draw deal with
+        large language models, a family absent in 2018. Our verdicts apply to classical RL.
+  \item \textbf{The title filter.} The regular expression applied to titles misses RL papers whose
+        title does not say so, in 2018 as in 2026. We measured this for 2026 with a plan written in
+        advance (deviation 24). Of 400 papers drawn outside the filter, 25 have an abstract that
+        mentions RL, which comes to about 1{,}037 missed papers (from 708 to 1{,}503), 45\% of the
+        whole. This is an upper bound, since the mechanical rule also counts false positives. Read
+        with both grids, 20 of these papers resemble the first draw: code linked in 60\% of them (67\%
+        in the draw), an uncertainty in 50\% (47\%). The 7 classical RL papers among them are too few
+        to test our verdicts.
+  \item \textbf{The title screen of the 2026 queue.} A classical RL paper whose title contains
+        \enquote{reasoning}, \enquote{preference} or \enquote{math} could not enter the classical 2026
+        sample. The 9 ICLR 2026 papers at the head of the queue, unreachable on 9 November 2026, were
+        skipped.
+  \item \textbf{The source of the PDFs.} The 2026 papers were read mostly in their arXiv version (45
+        of the 50 classical RL papers), the 2018 papers in the conference proceedings. An arXiv
+        version is sometimes longer or more recent. With only 5 papers read on a conference site,
+        this effect cannot be measured.
+  \item \textbf{The trajectory without ICLR.} The years 2019 to 2024 cover only ICML and NeurIPS:
+        OpenReview refuses automated downloads.
+  \item \textbf{Pineau's draw.} Her 2018 sampling method is not described. Our comparisons with her
+        figures assume a draw comparable to ours and serve only as context.
+\end{itemize}
+
+\subsection{The simulations}
+
+The experiments are limited to the MuJoCo simulator and to four locomotion tasks
+(\task{HalfCheetah}, \task{Hopper}, \task{Walker2d}, \task{Swimmer}), those of
+\textcite{henderson2018matters}. They say nothing about image-based games, real robotics or offline
+RL. E1 and B1 are limited to one task (\task{HalfCheetah}) and two algorithms (PPO and TRPO). The four
+programs run with their default hyperparameters, except in E6: another tuning might change the
+rankings. The modified physics changes only two quantities, the masses and the friction.
+
+\subsection{The budgets}
+
+PPO trains for 1{,}024{,}000 steps, SAC and CrossQ for 200{,}000 (simulation deviations 1 and 14 (d)).
+The equal-budget reading (deviation 12 (iii)) compares PPO at 200{,}000 steps, read off its
+one-million-step curve: a PPO tuned for a budget of 200{,}000 steps might do better. The budget of
+SAC and CrossQ, reduced to keep the compute within reach, places them in the \enquote{little data}
+regime. A longer budget might change their order.
+
+\subsection{One platform}
+
+Every run comes from one Mac with an Apple M2 Max chip, shared with other projects, under macOS and
+for arm64. MuJoCo, JAX and PyTorch round differently from one processor to another: the same random
+seed gives another curve on another machine (\cref{sec:reentrainer}).
+
+\subsection{The scale of the GRPO strand}
+
+The GRPO strand is an illustration: two models of 0.5 and 1 billion parameters, one multiplication
+task, 100 steps, groups of 8 answers, answers limited to 160 tokens, no KL term.
+\textcite{shao2025spurious} work on 7-billion-parameter models specialised in mathematics, on
+MATH-500, with far more compute. Our strand neither replicates nor refutes their experiment.
+
+\section{Construct validity}
+\label{sec:val-construit}
+
+\begin{itemize}
+  \item \textbf{Our grid reads 2018 differently from Pineau.} Our reading finds 55\% of 2018 papers
+        giving all the hyperparameters of their method, where Pineau counted 90\%. The criteria
+        share their wording but have different implicit decision rules. This is the reason for the
+        same-grid verdict rule (deviation 20).
+  \item \textbf{A satisfied criterion does not mean a practice done well.} Q5 is yes for a link to
+        code, with no check that the code runs. X2 is yes for an error bar, with no judgement of
+        whether it measures the right spread: the bar may summarise episodes instead of random seeds,
+        which experiment B1 shows to be dangerous. Q8 is yes for an applied test, with no judgement of
+        whether the test is appropriate.
+  \item \textbf{The performance measure (Y1)} is our weakest criterion: 60\% agreement on the first
+        draw, before its rules were made more precise. The verdict on flaw F8 is read with this
+        caveat.
+  \item \textbf{The borderline cases of X3, X4 and X7} received no new harmonisation rule, so that
+        both years are read with the same grid. A compute figure limited to inference time, or failed
+        random seeds that were discarded, stay coded as the reader read them.
+  \item \textbf{What a checklist declares.} The authors' answers to the NeurIPS checklist do not
+        guarantee the practice they name: none of the 18 papers that answer yes to the question on
+        statistical significance applies a test. The survey measures what the paper does, the
+        checklist what it declares.
+  \item \textbf{The score of a simulation run} is the mean return of ten deterministic episodes at
+        the last step. Experiment B3 shows that another measure (best score, mean of the curve)
+        changes the order of some pairs.
+  \item \textbf{The pass@1 of the GRPO strand} mixes correctness and concision, since a truncated
+        answer counts as wrong (\cref{sec:llm-coupure}).
+  \item \textbf{The cost and risk ratings} that tested the cost thesis come from three language-model
+        agents of three different sizes. Their agreement with one another does not guarantee that a
+        researcher would rate the same way.
+\end{itemize}
+
+\section{Statistical conclusion validity}
+\label{sec:val-stat}
+
+\paragraph{The sample sizes of the survey} With 50 papers on each side, a change of ten points still
+often goes unnoticed: \enquote{no detectable change} does not mean \enquote{no change}. The first draw
+had 14 classical RL papers, too few to detect a gap of thirty points, hence the enlargement of
+deviation 12. The trajectory rests on 20 papers per year: a share there has an uncertainty of about
+twenty points on either side.
+
+\paragraph{Multiple comparisons} The survey compares seventeen criteria in the main comparison. The
+Holm correction protects the family-wise error rate at the cost of power: a gap whose Newcombe
+interval excludes zero without passing Holm, such as Q6 or Y12, is reported but makes no verdict. For
+E2, 24 intervals of the probability of improvement are also given at the simultaneous 95\% level
+through the Bonferroni correction (simulation deviation 18, \cref{tab:e2-bonferroni}).
+
+\paragraph{The fragile verdicts} The rise of reported uncertainty (X2) no longer passes the Holm
+correction in two checks ($p = 0.07$ each time). It remains the most fragile of the four changes. Code
+and compute pass the threshold in all our checks, sensitivity to a hyperparameter in nearly all of
+them (\cref{tab:robustesse}).
+
+\paragraph{The number of random seeds in the simulations} The main results rest on ten random seeds
+per pair. Experiment E5 shows what this number allows: between two programs whose means differ by
+less than 20\%, five random seeds recover the right order only 71 times in a hundred at the median,
+62 times as measured on twenty random seeds. On the tasks where the first program does not clearly
+beat the second, the rankings at ten random seeds are no more reliable than that. The twenty random seeds of
+deviation 12 confirm or qualify each result. \Cref{chap:06-experiences-resultats} states every
+divergence.
+
+\paragraph{The number of random seeds in the GRPO strand} With five random seeds, the bootstrap has
+only 126 distinct resamples, ten with three random seeds. The intervals of
+\cref{chap:07-modeles-de-langue} are very coarse. An interval that contains zero says that we cannot
+conclude. It does not say that the effect is zero.
+
+\paragraph{The bootstrap intervals} The rliable intervals depend on NumPy's global generator and on
+the order of the calls. Their bounds move with the random seed of the bootstrap, at the level of Monte
+Carlo noise (simulation deviation 13): a verdict whose bound grazes the threshold stays fragile.
+
+\section{What a new training run on another machine would test}
+\label{sec:reentrainer}
+
+A new complete training run on another processor would not reproduce our curves. MuJoCo, JAX and
+PyTorch round differently from one processor to another, so the same random seed gives another
+trajectory from the first steps on. The GRPO strand illustrates this: for the same model and the same
+random seed, the starting pass@1 differs between GPU and CPU (\cref{sec:llm-materiel}).
+
+Such a training run would therefore test the statistics of the report. Its curves would differ from ours. It would tell whether the
+spread between random seeds, the rankings, the inflation due to selection and the losses under
+modified physics stay of the same order with other draws. A conclusion that survived only our own
+random seeds would say nothing about the algorithms. Continuous integration already runs the
+equivalent test for the analyses: on Linux, the counts, the verdicts and the rankings come back
+exactly, the floating-point values to within $10^{-12}$ in relative terms (\cref{sec:ci}). No training
+was redone on another machine.

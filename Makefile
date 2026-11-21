@@ -10,6 +10,7 @@
 #   make verify     analysis + check + test, then git diff: the JSON files must come back byte for byte
 #   make verify-head  the same in a fresh export of the last commit (safe while training runs write to sim/;
 #                   the policies, Zoo runs and training logs are left out, since no analysis reads them)
+#   make report     report/build.sh: the technical report in LaTeX (French and English), tables and figures from the JSON files
 #   make figures    docs/figures/build.py (needs sprezzature-figures, rsvg-convert and the LLM environment)
 #   make docs       docs/build.sh (needs md2star, pandoc and LuaLaTeX)
 #
@@ -38,7 +39,7 @@ OUTPUTS := study/results_2026.json study/results_final.json study/audit_stats.js
            sim/llm/results/summary.json sim/llm/results/gains.json sim/llm/results/extra.json \
            sim/llm/results/summary_5.json sim/llm/results/gains_5.json sim/llm/results/extra_5.json
 
-.PHONY: all install analysis analysis-study analysis-sim analysis-llm check test lint verify verify-head figures docs clean
+.PHONY: all install analysis analysis-study analysis-sim analysis-llm check test lint verify verify-head figures docs report clean
 
 all: verify
 
@@ -89,6 +90,9 @@ figures:
 
 docs: check
 	cd docs && ./build.sh
+
+report:
+	cd report && PY=$(PY) ./build.sh
 
 clean:
 	rm -rf docs/build study/__pycache__ sim/analysis/__pycache__ tests/__pycache__ src/pineau_rl/__pycache__ src/*.egg-info build

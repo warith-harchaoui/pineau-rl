@@ -1,0 +1,42 @@
+\chapter*{Résumé}\label{chap:00-resume}
+\addcontentsline{toc}{chapter}{Résumé}
+
+\paragraph{La question}
+En 2018, à ICLR puis à NeurIPS, Joelle Pineau a montré pourquoi les résultats publiés en apprentissage
+par renforcement profond (RL) inspiraient peu confiance. Nous y relevons seize failles et demandons, pour chacune, si elle a été écoutée.
+
+\paragraph{La méthode}
+Deux instruments servent, sous des protocoles écrits d'avance dont chaque écart est daté. Le
+sondage relit des articles avec la grille de Pineau (Q1 à Q8), sept critères tirés de sa conférence
+d'ICLR (X1 à X7) et une seconde grille (Y1 à Y12). Des agents de modèle de langue lisent chaque article
+entier et justifient chaque décision par une citation paginée. Le verdict compare 50 articles de RL
+classique de 2026 (hors modèles de langue) à notre lecture de 50 articles de 2018, avec les mêmes
+grilles et les mêmes lecteurs. Vingt articles par année lue entre 2019 et 2024 datent le changement. Les expériences refont celles de 2018
+avec PPO (en PyTorch et en JAX), SAC et CrossQ sur quatre tâches MuJoCo, dix graines aléatoires par
+programme et par tâche, puis vingt. Un volet entraîne deux petits modèles de langue avec GRPO.
+
+\paragraph{Les résultats du sondage}
+Notre lecture de 2018 s'écarte des chiffres de Pineau : 55~\% des articles donnent tous les
+hyperparamètres de leur méthode, quand elle en comptait 90~\%. Les verdicts comparent donc nos deux
+lectures. Dans le RL classique, quatre pratiques ont changé : le lien vers le code
+passe de 31~\% à 74~\% ($+43$ points, $[+23\,;\,+58]$), la sensibilité à un réglage montrée de 44~\% à
+80~\%, le calcul chiffré de 27~\% à 58~\%, une incertitude rapportée de 63~\% à 88~\%. Cette dernière
+est fragile : sans treize articles lus en partie par un autre modèle de langue, elle échoue à la
+correction de Holm ($p_{\text{Holm}} = 0{,}07$). Les quatre montent lentement, sans saut après la liste de
+contrôle de NeurIPS de 2019. Le test statistique (de 6~\% à 12~\%), les références décrites
+avec tous leurs réglages (35~\% contre 29~\%), l'évaluation tenue à part (33~\% puis 45~\%) et la
+version des bancs d'essai (23~\% puis 26~\%) n'ont pas bougé de façon détectable. Pineau a été écoutée
+sur ce qui se publie à côté du résultat, beaucoup moins sur la manière de le juger.
+
+\paragraph{Les résultats des expériences}
+Sur trente essais de PPO, deux groupes de cinq tirés au hasard trompent un
+test de Welch dans 1,2~\% des cas, triés dans 31~\%. Garder les trois meilleurs essais sur dix gonfle
+la moyenne de 33~\%. Le script de Peter Henderson, qui ignore la dispersion entre graines aléatoires,
+explique très probablement le $t$ de 9 de 2018 : sur nos essais de TRPO, il dépasse 9,09 dans 38~\% des tirages. À budget égal, avec
+vingt graines aléatoires, CrossQ mène sur les quatre tâches. Une physique modifiée de 20~\%
+envoie le meneur au dernier rang sur \task{Hopper}. Sur Qwen, avec cinq graines
+aléatoires, GRPO gagne $+14$ points, intervalle de $-3$ à $+34$, qui contient zéro.
+
+\paragraph{Code et données}
+Dépôt \repo{} (BSD 3-Clause) : protocoles et lectures citées (\file{study/}), entraînements (\file{sim/}),
+statistiques (\file{src/pineau\_rl/}). \file{make verify} régénère et vérifie chaque résultat.

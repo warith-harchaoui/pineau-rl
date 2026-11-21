@@ -45,9 +45,9 @@ ICI = Path(__file__).parent
 SITE = Path("/Users/warithharchaoui/web/deraison")  # read-only here: CSS, fonts and photos for the preview
 SLUGS = {"fr": "ecouter-joelle-pineau", "en": "listen-to-joelle-pineau"}  # the site pairs them through the registry key "twin"
 FIG_PREFIX = "rl-pineau-"
-# The full document, served by deraison.ai itself rather than GitHub: (source in docs/, name on the site)
-PDFS = {"fr": ("conclusions.pdf", "apprentissage-par-renforcement-a-t-on-ecoute-joelle-pineau.pdf"),
-        "en": ("conclusions-en.pdf", "reinforcement-learning-did-we-listen-to-joelle-pineau.pdf")}
+# The full document is the technical report (report/), served by deraison.ai itself rather than GitHub: (source, name on the site)
+PDFS = {"fr": ("report/rapport.pdf", "apprentissage-par-renforcement-a-t-on-ecoute-joelle-pineau.pdf"),
+        "en": ("report/report-en.pdf", "reinforcement-learning-did-we-listen-to-joelle-pineau.pdf")}
 
 
 def inline(s: str, lang: str) -> str:
@@ -67,7 +67,7 @@ def inline(s: str, lang: str) -> str:
 
 
 def pdf_version(name: str) -> str:
-    src = {site: ICI.parent / "docs" / doc for doc, site in PDFS.values()}[name]
+    src = {site: ICI.parent / doc for doc, site in PDFS.values()}[name]
     return hashlib.sha256(src.read_bytes()).hexdigest()[:10]
 
 
@@ -358,7 +358,7 @@ def copy_assets(out: Path, lang: str) -> None:
             shutil.copy(SITE / "assets" / "images" / "blog" / src, dst / src)
     pdf = out / "assets" / "pdf" / PDFS[lang][1]
     pdf.parent.mkdir(parents=True, exist_ok=True)
-    shutil.copy(ICI.parent / "docs" / PDFS[lang][0], pdf)
+    shutil.copy(ICI.parent / PDFS[lang][0], pdf)
     css = out / "assets" / "css" / f"article-{SLUGS[lang]}.css"
     css.parent.mkdir(parents=True, exist_ok=True)
     css.write_text((ICI / "site" / "article.css.tmpl").read_text().replace("SLUG", SLUGS[lang]))

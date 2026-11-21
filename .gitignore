@@ -33,3 +33,5 @@ suspended.pids
 
 # Output of the queue launchers (nohup)
 sim/logs-drive*.out
+report/build/
+report/figures/*.pdf

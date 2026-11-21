@@ -1,0 +1,46 @@
+\chapter*{Abstract}\label{chap:00-resume}
+\addcontentsline{toc}{chapter}{Abstract}
+
+\paragraph{The question}
+In 2018, at ICLR and then at NeurIPS, Joelle Pineau showed why the published results of deep
+reinforcement learning (RL) inspired little trust. We record sixteen flaws in her two talks and ask,
+for each one, whether the field listened.
+
+\paragraph{The method}
+We use two instruments, each under a protocol written in advance whose every deviation is dated. The
+survey rereads papers with Pineau's reading grid, her criteria Q1 to Q8, seven more drawn from her
+ICLR talk (X1 to X7) and a second grid of our own (Y1 to Y12). Language-model agents read each paper
+in full and justify each decision with a quotation and its page. The verdict compares 50 classical RL
+papers from 2026 (language models excluded) with our own reading of 50 papers from 2018, using the same
+grids and the same readers. Twenty papers for each of four years between 2019 and 2024 date the change.
+The experiments rerun those of 2018 with PPO (in PyTorch and in JAX), SAC and CrossQ on four tasks of
+the MuJoCo physics simulator, with ten random seeds per program and per task, then twenty. A further
+strand fine-tunes two small language models with GRPO, a descendant of PPO.
+
+\paragraph{Survey results}
+Our reading of 2018 departs from Pineau's figures: 55\% of papers give all the hyperparameters of their
+method, where she counted 90\%. The verdicts therefore compare our two readings. In classical RL, four
+practices changed. Linking the code rose from 31\% to 74\% ($+43$ points, $[+23,\,+58]$), showing the
+sensitivity to a setting from 44\% to 80\%, quantifying the compute, the machine time spent, from 27\%
+to 58\%, reporting an uncertainty from 63\% to 88\%. This last change is fragile: without thirteen
+papers read partly by another language model, it fails the Holm correction for multiple tests
+($p_{\text{Holm}} = 0.07$). All four rise slowly, with no jump after the 2019 NeurIPS checklist. The
+statistical test (6\% then 12\%), baselines described with all their settings (35\% against 29\%),
+evaluation on conditions held out of training (33\% then 45\%) and benchmark versions (23\% then 26\%)
+show no detectable change. Pineau was heard on what is published next to the result, much less on how
+the result itself is judged.
+
+\paragraph{Experimental results}
+Among thirty PPO runs, two groups of five drawn at random fool Welch's $t$-test, which compares two
+means, in 1.2\% of cases. Sorted groups fool it in 31\%. Keeping the best three runs out of ten
+inflates the mean by 33\%. Peter Henderson's script, which ignores the spread between random seeds,
+very probably explains the $t$ of 9 from 2018, the statistic that declared two groups of runs of the
+same program different: applied to our TRPO runs, its $t$ exceeds 9.09 in 38\% of draws. At equal budget, with
+twenty random seeds, CrossQ leads on all four tasks. Physics modified by 20\% sends the leader to last
+place on \task{Hopper}. On Qwen, with five random seeds, GRPO gains $+14$ points, with an interval from
+$-3$ to $+34$ that contains zero.
+
+\paragraph{Code and data}
+Repository \repo{} (BSD 3-Clause licence): protocols and quoted readings (\file{study/}), training runs
+(\file{sim/}), statistics (\file{src/pineau\_rl/}). \file{make verify} regenerates and checks every
+result.

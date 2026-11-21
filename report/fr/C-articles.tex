@@ -1,0 +1,46 @@
+\chapter{Les articles lus}
+\label{chap:C-articles}
+
+Cette annexe liste les articles des deux échantillons de la comparaison principale, avec leur
+identifiant, leur titre et leur conférence. L'identifiant renvoie au fichier de lecture
+\file{study/codes/<lecteur>/<id>.json} ou \file{study/codes\_v2/<lecteur>/<id>.json}, où chaque
+décision s'appuie sur une citation et sa page. Les PDF ne sont pas dans le dépôt
+(\cref{sec:absent}). Le script \file{study/fetch.py} les télécharge depuis les adresses notées dans les
+fichiers d'échantillon.
+
+\section{Les articles de 2026}
+\label{sec:c-2026}
+
+La population compte les 1\,252 articles d'ICLR 2026, d'ICML 2026 et de NeurIPS 2025 dont le titre
+correspond à l'expression régulière du protocole, sur 17\,836 articles acceptés
+(\cref{chap:03-sondage-methode}). Le préfixe de l'identifiant dit d'où vient l'article.
+\begin{itemize}
+  \item \texttt{LR}, \texttt{ML}, \texttt{NE} : le premier tirage (\texttt{random.Random(2018)}),
+        17 articles d'ICLR 2026, puis ICML 2026 et NeurIPS 2025 (\file{study/final\_2026.json}).
+  \item \texttt{MLR}, \texttt{NER} : les huit articles de remplacement d'ICML et de NeurIPS, tirés
+        par \texttt{random.Random(2026)} dans la même conférence, quand l'article tiré n'avait pas de
+        PDF librement accessible (\file{replacements\_2026.json}).
+  \item \texttt{K} : la file de l'élargissement (A3), mélangée par
+        \texttt{random.Random(2026)}, lue dans cet ordre après le tri sur le titre jusqu'à 36
+        articles de RL classique. La file complète se trouve dans
+        \file{classic\_queue\_2026.json}.
+\end{itemize}
+L'échantillon de RL classique de 2026 de la comparaison principale réunit les 14 articles
+\texttt{classic} du premier tirage et les 36 de la file A3. Le \cref{tab:articles-2026} liste les
+articles lus.
+
+\gentable{articles-2026}
+
+\section{Les articles de 2018}
+\label{sec:c-2018}
+
+Notre lecture de 2018 compte 50 articles de RL d'ICML 2018, de NeurIPS 2018 et d'ICLR 2018, les trois
+conférences que Pineau annonçait. Les 12 premiers forment la calibration du protocole, 6 d'ICML et
+6 de NeurIPS (\file{study/calib\_2018.json}). Les 38 autres viennent de l'élargissement A2, tirés
+dans l'ordre d'un mélange \texttt{random.Random(2018)} avec une répartition proportionnelle à la
+taille de chaque conférence (écart 12). L'échantillon réunit 21 articles d'ICML 2018 (préfixe
+\texttt{C1}), 20 de NeurIPS 2018 (\texttt{C2}) et 9 d'ICLR 2018 (\texttt{C3})
+(\file{study/calib\_2018\_v2.json}). Les comparaisons de chaque critère comptent les articles où le
+critère s'applique, si bien qu'un dénominateur peut descendre sous 50.
+
+\gentable{articles-2018}

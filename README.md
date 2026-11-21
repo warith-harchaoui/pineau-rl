@@ -93,6 +93,7 @@ stays in the results, our own mistakes included.
 | `envs/` | The pinned environments, the platform and the document toolchain ([`envs/README.md`](envs/README.md)). |
 | `src/pineau_rl/`, `pyproject.toml` | The reusable pieces as a Python package: statistics, run format, reading grid (see below). |
 | `Makefile`, `tests/`, `.github/workflows/verify.yml` | One-command recomputation, unit tests, continuous integration. |
+| `report/` | The technical report, the reference document the blog article links to: LaTeX in French (`rapport.tex`) and English (`report-en.tex`), its tables generated from the result files (`tools/tables.py`), its figures (`tools/figures.py`) and the compiled PDFs. `make report` rebuilds it. |
 | `article/` | The blog article in two languages (`fr.txt`, `en.txt`), its figures (`article/figures/`), its page builder and `check_article.py`, which checks every number of the article against the result files. |
 | `slides-en.md` | Pineau's ICLR 2018 slides, described one by one. |
 

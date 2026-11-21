@@ -99,6 +99,7 @@ résultats, nos propres erreurs comprises.
 | `envs/` | Les environnements figés, la plateforme et la chaîne du document ([`envs/LISEZMOI.md`](envs/LISEZMOI.md)). |
 | `src/pineau_rl/`, `pyproject.toml` | Les morceaux réutilisables en paquet Python : statistiques, format des essais, grille de lecture (voir plus bas). |
 | `Makefile`, `tests/`, `.github/workflows/verify.yml` | Le recalcul en une commande, les tests unitaires, l'intégration continue. |
+| `report/` | Le rapport technique, le document de référence vers lequel pointe l'article de blog : LaTeX en français (`rapport.tex`) et en anglais (`report-en.tex`), ses tableaux générés à partir des fichiers de résultats (`tools/tables.py`), ses figures (`tools/figures.py`) et les PDF compilés. `make report` le reconstruit. |
 | `article/` | L'article de blog en deux langues (`fr.txt`, `en.txt`), ses figures (`article/figures/`), son générateur de page et `check_article.py`, qui vérifie chaque nombre de l'article contre les fichiers de résultats. |
 | `slides.md` | Les diapositives de Pineau à ICLR 2018, décrites une à une. |
 

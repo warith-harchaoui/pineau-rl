@@ -1,0 +1,26 @@
+% Title page, shared: the language switches through \iffr.
+\hypersetup{pageanchor=false}% the title page shares page number i with the abstract: no duplicate anchor
+\begin{titlepage}
+\thispagestyle{empty}
+\newgeometry{top=3.2cm,bottom=2.6cm,inner=2.7cm,outer=2.7cm}
+{\color{accent}\rule{3.2em}{4pt}}\par\vspace{14pt}
+{\headfont\large\color{ink2}\iffr{Rapport technique}{Technical report}\par}\vspace{10pt}
+{\headfont\fontsize{30}{36}\selectfont\bfseries\color{ink}
+\iffr{Apprentissage par renforcement :\\A-t-on écouté Joelle Pineau\\en~2018~?}{Reinforcement Learning:\\Did We Listen to\\Joelle Pineau in~2018?}\par}
+\vspace{18pt}
+{\large\color{ink2}\iffr{Un sondage des articles de 2018 à 2026 et des expériences préenregistrées,\\chaque nombre recalculé d'une seule commande}{A survey of the papers from 2018 to 2026 and preregistered experiments,\\every number recomputed with one command}\par}
+\vfill
+{\headfont\Large\bfseries\color{ink}Warith Harchaoui\par}
+{\small\color{ink2}Deraison.ai \textperiodcentered{} \href{mailto:warithmetics@deraison.ai}{warithmetics@deraison.ai}\par}
+\vspace{14pt}
+{\small\color{ink2}\iffr{21 novembre 2026}{21 November 2026}\par}
+\vspace{22pt}
+{\footnotesize\color{ink2}
+\iffr{Code, données et protocoles}{Code, data and protocols}~: \repo\par
+\iffr{Article de blog}{Blog article}~: \iffr{\href{https://deraison.ai/blog/ecouter-joelle-pineau}{\texttt{deraison.ai/blog/ecouter-joelle-pineau}}}{\href{https://deraison.ai/en/blog/listen-to-joelle-pineau}{\texttt{deraison.ai/en/blog/listen-to-joelle-pineau}}}\par
+\iffr{Licence BSD 3-Clause pour le code}{BSD 3-Clause licence for the code}\par}
+\vspace{18pt}
+\includegraphics[height=16pt]{logo-deraison}\hspace{6pt}\raisebox{3pt}{\headfont\bfseries\Large\color{ink}Deraison.ai}
+\restoregeometry
+\end{titlepage}
+\hypersetup{pageanchor=true}

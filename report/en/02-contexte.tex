@@ -1,0 +1,465 @@
+\chapter{Context: reinforcement learning and the sixteen flaws}\label{chap:02-contexte}
+
+This chapter sets out the notions the rest of the report depends on. Section~\ref{sec:cadre} gives the
+formal framework of reinforcement learning. Section~\ref{sec:ctx-programmes} describes the four programs
+of our experiments and the TRPO algorithm, Section~\ref{sec:ctx-taches} the simulated tasks.
+Sections~\ref{sec:ctx-graines} and~\ref{sec:ctx-evaluation} state what a random seed fixes and how an
+agent is evaluated. Section~\ref{sec:failles} inventories the sixteen flaws Joelle Pineau showed in
+2018. Section~\ref{sec:voisins} places our work among related work. Section~\ref{sec:vocabulaire} fixes
+the vocabulary used for language models.
+
+\section{The formal framework}\label{sec:cadre}
+
+\paragraph{The Markov decision process}
+Reinforcement learning (RL) studies a program, the agent, that acts repeatedly in an environment. The
+standard framework is the Markov decision process \parencite{puterman1994mdp,sutton2018rl}, a 5-tuple
+\begin{equation}
+  \mathcal{M} = (\mathcal{S}, \mathcal{A}, P, r, \gamma),
+\end{equation}
+where $\mathcal{S}$ is the set of states, $\mathcal{A}$ the set of actions, $P(s' \mid s, a)$ the
+probability of moving to state $s'$ after action $a$ in state $s$, $r(s, a)$ the reward received and
+$\gamma \in [0, 1)$ the discount factor, which weights a reward less the later it comes. A distribution $\rho_0$ draws
+the initial state. In the tasks of this report, $\mathcal{S}$ and $\mathcal{A}$ are subsets of
+$\mathbb{R}^d$: the state describes the positions and velocities of the joints of a simulated body,
+the action the torques applied to its motors.
+
+\paragraph{Policy, episode and return}
+A policy $\pi_\theta(a \mid s)$ gives the distribution of the action in each state. In deep RL, the
+policy is a neural network with parameters $\theta$. An episode is a sequence
+$\tau = (s_0, a_0, r_0, s_1, a_1, r_1, \dots, s_T)$ obtained by drawing $s_0 \sim \rho_0$, then
+$a_t \sim \pi_\theta(\cdot \mid s_t)$ and $s_{t+1} \sim P(\cdot \mid s_t, a_t)$, until a terminal
+state or a maximum duration. The discounted return of an episode and the learning objective are
+\begin{equation}
+  G(\tau) = \sum_{t=0}^{T-1} \gamma^t \, r(s_t, a_t),
+  \qquad
+  J(\theta) = \mathbb{E}_{\tau \sim \pi_\theta}\bigl[ G(\tau) \bigr].
+\end{equation}
+Learning seeks the $\theta$ that maximises $J$. The score reported in papers and in our experiments is
+almost always the undiscounted return $\sum_t r(s_t, a_t)$ of an episode, averaged over several
+evaluation episodes.
+
+\paragraph{Value functions}
+The value of a state and the value of an action under the policy $\pi$ are
+\begin{equation}
+  V^\pi(s) = \mathbb{E}_\pi\Bigl[ \sum_{k \geq 0} \gamma^k r_{t+k} \Bigm| s_t = s \Bigr],
+  \qquad
+  Q^\pi(s, a) = \mathbb{E}_\pi\Bigl[ \sum_{k \geq 0} \gamma^k r_{t+k} \Bigm| s_t = s, a_t = a \Bigr].
+\end{equation}
+The advantage $A^\pi(s, a) = Q^\pi(s, a) - V^\pi(s)$ measures how much more an action yields than the
+average action of the policy in that state. An actor-critic algorithm learns both a policy (the actor)
+and an estimate of a value function (the critic). The critic's estimate reduces the variance of the
+actor's learning signal.
+
+\paragraph{Policy gradient}
+For a policy differentiable in $\theta$, the policy gradient theorem \parencite{sutton2018rl} gives
+\begin{equation}
+  \nabla_\theta J(\theta) = \mathbb{E}_{\pi_\theta}\bigl[ \nabla_\theta \log \pi_\theta(a_t \mid s_t)\, A^{\pi_\theta}(s_t, a_t) \bigr].
+\end{equation}
+So-called \emph{on-policy} methods, such as TRPO and PPO, estimate this expectation with episodes drawn
+from the current policy, then discard these episodes after the update. \emph{Off-policy} methods, such
+as SAC and CrossQ, keep past transitions in a replay buffer and learn a critic $Q$ from them. They reuse
+each transition several times. For the same number of environment steps, off-policy methods generally
+learn faster, at the price of heavier computation per step.
+
+\paragraph{Hyperparameters}
+The parameters $\theta$ are learned. Other settings stay fixed by the experimenter: the learning rate,
+$\gamma$, the size of the networks, the batch size, the number of steps collected before each update.
+These are the hyperparameters. Flaws F4 to F7 of Section~\ref{sec:failles} concern them.
+
+\section{The four programs and TRPO}\label{sec:ctx-programmes}
+
+Our experiments use four programs: four specific implementations of an algorithm, each in a given
+library and version. The word \enquote{algorithm} denotes the method described in a paper. The word
+\enquote{program} denotes the code that runs it. Two programs of the same algorithm sometimes give
+different results, which is flaw F14. The pinned versions of each library are given in
+Table~\ref{tab:env}. Chapter~\ref{chap:05-experiences-methode} details the budgets and the evaluation.
+
+\paragraph{PPO, in PyTorch and in JAX}
+PPO (\emph{Proximal Policy Optimization}) \parencite{schulman2017ppo} is an \emph{on-policy}
+actor-critic algorithm. With the probability ratio
+$\rho_t(\theta) = \pi_\theta(a_t \mid s_t) / \pi_{\theta_\text{old}}(a_t \mid s_t)$ and an estimator
+$\hat{A}_t$ of the advantage, PPO maximises the clipped objective
+\begin{equation}
+  L^{\text{CLIP}}(\theta) = \hat{\mathbb{E}}_t\Bigl[ \min\bigl( \rho_t(\theta)\, \hat{A}_t,\;
+  \operatorname{clip}\bigl(\rho_t(\theta), 1 - \epsilon, 1 + \epsilon\bigr)\, \hat{A}_t \bigr) \Bigr],
+\end{equation}
+to which a critic loss and an entropy bonus are added. Clipping removes the incentive for an update to
+move the new policy far from the old one. The program \algo{PPO PyTorch} is the one in
+Stable-Baselines3 \parencite{raffin2021sb3}. The program \algo{PPO JAX} is the one in sbx, the JAX
+rewrite of Stable-Baselines \parencite{raffin2023sbx,bradbury2018jax}. Both programs start from the
+same default values, as far as the two libraries allow. They collect experience in batches of
+2,048 steps. PPO was the standard baseline of 2018. The protocol keeps it because it remains a
+common baseline in 2026 and because GRPO, the algorithm of our language-model strand
+(Chapter~\ref{chap:07-modeles-de-langue}), derives from it.
+
+\paragraph{SAC}
+SAC (\emph{Soft Actor-Critic}) \parencite{haarnoja2018sac} is an \emph{off-policy} actor-critic
+algorithm. It maximises the return augmented by the entropy of the policy,
+\begin{equation}
+  J_{\text{SAC}}(\pi) = \sum_t \mathbb{E}_{(s_t, a_t) \sim \pi}\bigl[ r(s_t, a_t) + \alpha\, \mathcal{H}\bigl(\pi(\cdot \mid s_t)\bigr) \bigr],
+\end{equation}
+where the coefficient $\alpha$ sets the weight given to exploration and adapts during training. Two $Q$ critics learned
+in parallel limit the overestimation of values. Delayed copies of these critics, the target networks,
+stabilise the learning targets. The \algo{SAC} program of our experiments is the one in sbx. SAC is a
+common \emph{off-policy} baseline in continuous control.
+
+\paragraph{CrossQ}
+CrossQ \parencite{bhatt2024crossq} descends from SAC. It removes the target networks and adds batch
+normalisation to the critics. The pairs $(s, a)$ and $(s', a')$ go through the critic together, so
+that the normalisation sees both distributions. Its authors report a sample efficiency, the score
+reached per environment step, at least equal to that of methods far more expensive in computation. The
+\algo{CrossQ} program of our experiments is
+the one in sbx.
+
+\paragraph{TRPO}
+TRPO (\emph{Trust Region Policy Optimization}) \parencite{schulman2015trpo} is the algorithm of the most
+famous figure of 2018 (flaw F11). It maximises a surrogate objective under a Kullback-Leibler
+divergence constraint,
+\begin{equation}
+  \max_\theta\; \hat{\mathbb{E}}_t\bigl[ \rho_t(\theta)\, \hat{A}_t \bigr]
+  \quad \text{subject to} \quad
+  \hat{\mathbb{E}}_t\bigl[ \mathrm{KL}\bigl( \pi_{\theta_\text{old}}(\cdot \mid s_t) \,\big\|\, \pi_\theta(\cdot \mid s_t) \bigr) \bigr] \leq \delta,
+\end{equation}
+a problem solved by conjugate gradient followed by a line search. PPO is a simplification of TRPO. We
+use TRPO only in experiment B1, with the sb3-contrib~2.9.2 program and its default values, without any
+tuning (Chapter~\ref{chap:05-experiences-methode}).
+
+\section{The MuJoCo tasks}\label{sec:ctx-taches}
+
+Henderson and co-authors compared their algorithms on tasks of the MuJoCo simulator (\emph{Multi-Joint
+dynamics with Contact}) \parencite{todorov2012mujoco,henderson2018matters}. We take the same tasks in
+their 2026 version, the one in Gymnasium \parencite{towers2024gymnasium}. Table~\ref{tab:taches} gives
+the dimensions of the state and action spaces, read in the pinned environment of our experiments. Each
+episode lasts at most 1,000 steps. \task{Hopper} and \task{Walker2d} stop earlier when the body
+falls.
+
+\begin{table}[tbp]
+\centering\small
+\caption{The four tasks of our experiments, in Gymnasium~1.1.1 and MuJoCo. The dimensions and the
+maximum length of an episode are read in the environment of our experiments (\file{sim/env}).}
+\label{tab:taches}
+\begin{tabular}{@{}l r r >{\raggedright\arraybackslash}p{7.4cm}@{}}
+\toprule
+Task & state & action & Simulated body and reward \\
+\midrule
+\task{HalfCheetah-v5} & 17 & 6 & articulated cheetah in two dimensions. Reward: forward velocity, minus a control cost \\
+\task{Hopper-v5} & 11 & 3 & one-legged hopper. Reward: forward velocity, plus a bonus while the body stays upright \\
+\task{Walker2d-v5} & 17 & 6 & two-legged walker. Reward: the same terms as \task{Hopper} \\
+\task{Swimmer-v5} & 8 & 2 & three-segment swimmer in a viscous fluid. Reward: forward velocity \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Pineau judged these benchmarks \enquote{ridiculously simple}: states described by few numbers,
+deterministic transitions, a world weighing less than 100~kilobytes \parencite{pineau2018neurips}. This
+criticism grounds flaw F16. We keep these tasks, since the aim is to rerun the experiments of 2018 as
+they were run.
+
+\section{What a random seed changes}\label{sec:ctx-graines}
+
+\paragraph{Definition}
+A training run draws many numbers at random. A computer produces this randomness from a starting
+integer, the random seed. In our programs, the random seed is passed to the library (\file{seed=SEED}
+in \file{sim/run.py}). The library derives from it the initialisation of the network weights, the
+draw of exploration actions, the order of the mini-batches and the sequence of initial states of the
+training environment. In this report, a \emph{run} denotes a complete training with a given random
+seed.
+
+\paragraph{What stays fixed}
+Same program, same random seed, same library versions and same machine: same result. Our logs confirm
+it for \algo{PPO PyTorch} and \algo{PPO JAX}: a run stopped then restarted recovers its evaluation
+points identically (\file{sim/SIM\_PROTOCOL.md}, deviation~12~(e)). Changing the random seed changes
+all these draws. The final score of a given program then varies a great deal. Over our thirty runs of
+\algo{PPO PyTorch} on \task{HalfCheetah}, the standard deviation is 34\% of the mean
+(Chapter~\ref{chap:06-experiences-resultats}).
+
+\paragraph{The statistical unit is the run}
+The random seed is a source of variance, in the same way as the draw of a sample in a survey. A
+comparison between two programs therefore rests on several independent runs per program, with an
+uncertainty computed over these runs. With one run per program, the comparison measures the luck of
+the draw. An episode, or a point on a curve, does not count as an independent observation, since it
+belongs to one run. Flaw F11 and experiment B1 show what happens when the episode is taken as the unit
+(Chapter~\ref{chap:06-experiences-resultats}).
+
+\section{Evaluating an agent}\label{sec:ctx-evaluation}
+
+\paragraph{The score of a run}
+Evaluating an agent means playing episodes with its policy, without learning, then averaging their
+returns. Three choices remain open. A paper that leaves them unstated shows flaw F8.
+\begin{itemize}
+  \item The measurement point: the score at the end of training, the best score reached along the
+  curve, or the mean of the curve, which approximates the area under the curve divided by its length.
+  \item The policy mode: stochastic as in training, or deterministic (the most probable action).
+  \item The environment: the training one, or held-out conditions, such as other environment random
+  seeds or modified physics (flaw F15).
+\end{itemize}
+Our programs are evaluated every 50,000 steps on 10 episodes, in deterministic mode, with
+environment random seeds $10{,}000 + i$, where $i$ numbers the evaluation episodes. These random
+seeds never serve in training (Chapter~\ref{chap:05-experiences-methode}).
+
+\paragraph{Aggregating runs}
+With $n$ runs of scores $x_{(1)} \leq \dots \leq x_{(n)}$, the mean and the median react differently to
+extreme runs. \textcite{agarwal2021precipice} recommend the interquartile mean (IQM), which discards
+the lowest quarter and the highest quarter of the runs, then averages the rest:
+\begin{equation}
+  \mathrm{IQM}(x) = \frac{1}{n - 2k} \sum_{i = k + 1}^{n - k} x_{(i)}, \qquad k = \lfloor n/4 \rfloor .
+\end{equation}
+The IQM is the 25\% trimmed mean of \file{scipy.stats.trim\_mean}, which the rliable library calls:
+with ten runs, the IQM is the mean of the six middle runs. Its confidence interval comes from a
+stratified bootstrap. The runs are resampled with replacement within each task, the IQM is
+recomputed, then the 2.5\% and 97.5\% quantiles of the 2,000 replicates give the interval
+(\file{src/pineau\_rl/bootstrap.py}).
+
+\paragraph{Comparing two programs}
+The probability of improvement of $X$ over $Y$ is the probability that a run of $X$ beats an
+independently drawn run of $Y$:
+\begin{equation}
+  P(X > Y) = \frac{1}{n_X n_Y} \sum_{i=1}^{n_X} \sum_{j=1}^{n_Y} \Bigl( \mathbb{1}[x_i > y_j] + \tfrac{1}{2}\, \mathbb{1}[x_i = y_j] \Bigr).
+\end{equation}
+This probability equals the Mann-Whitney $U$ statistic divided by $n_X n_Y$. The value 0.5 signals two
+indistinguishable programs. Our experiments declare a gap established when the 95\% bootstrap interval
+of $P(X > Y)$ excludes 0.5. Welch's $t$-test \parencite{welch1947generalization}, which compares two
+means without assuming equal variances, serves only in experiments E1 and B1, since the 2018 figure
+used it.
+
+\section{The sixteen flaws shown in 2018}\label{sec:failles}
+
+In her two talks of 2018, at ICLR and then at NeurIPS \parencite{pineau2018iclr,pineau2018neurips},
+Pineau shows each flaw with an example, often a figure taken from her team's paper signed by Peter
+Henderson and co-authors \parencite{henderson2018matters}. We recorded sixteen flaws, in the order of
+the two talks, then sorted them into four families. Table~\ref{tab:failles} lists them with the slide
+or page that shows each one and the instrument of this report that measures it. The labels F1 to F16
+serve only to find a flaw in the tables. Appendix~\ref{chap:A-grille} gives the decision rules of
+each reading criterion.
+
+\begin{small}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.6cm} >{\raggedright\arraybackslash}p{5.3cm} >{\raggedright\arraybackslash}p{3.6cm} >{\raggedright\arraybackslash}p{4.4cm}@{}}
+\caption{The sixteen flaws Joelle Pineau showed in 2018 in deep reinforcement learning. For each one:
+the slide of her ICLR talk or the page of her NeurIPS document that shows it, then the reading
+criteria (Q, X, Y, Chapter~\ref{chap:03-sondage-methode}) and the experiments (E, B,
+Chapter~\ref{chap:05-experiences-methode}) that measure it in this report.}\label{tab:failles}\\
+\toprule
+& Flaw & Where Pineau shows it & What measures it here \\
+\midrule
+\endfirsthead
+\toprule
+& Flaw & Where Pineau shows it & What measures it here \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\multicolumn{4}{@{}l}{\emph{The materials: what rerunning takes}} \\
+F1 & The paper published without its code & slide 6 (ICLR), page 29 (NeurIPS) & criterion Q5 \\
+F2 & No plan for rerunning the experiment, as with AlphaGo & slides 9 to 12 (ICLR) & criteria Q3 and X7 \\
+F3 & Hardware and software, which belong to the result & pages 34 and 35 (NeurIPS) & criteria X7 and Y10 \\
+\midrule
+\multicolumn{4}{@{}l}{\emph{Tuning: hyperparameters and baselines}} \\
+F4 & The method's hyperparameters, given in part & page 29 (NeurIPS) & criterion Q3 \\
+F5 & How the hyperparameters were chosen, left unsaid & page 29 (NeurIPS) & criterion Q6 \\
+F6 & Settings that change everything and interact & slides 24 and 25 (ICLR) & criterion Y9 \\
+F7 & Baselines tuned less carefully than the method & slide 25 (ICLR), page 29 (NeurIPS) & criteria Q4 and X4, experiment E6 \\
+\midrule
+\multicolumn{4}{@{}l}{\emph{Random seeds and statistics}} \\
+F8 & A performance measure never defined & slides 26 and 27 (ICLR) & criteria Y1 and Y2, experiment B3 \\
+F9 & Too few runs: three or five, never ten in her table & slide 28 (ICLR) & criterion X1, experiment E5 \\
+F10 & Only the best runs out of $N$ published & slides 29 and 30 (ICLR) & criterion X3, experiments E1 and E4 \\
+F11 & Same code, another random seed: two \enquote{algorithms} & slide 31 (ICLR), page 22 (NeurIPS) & experiments E1 and B1 \\
+F12 & No statistical test & page 29 (NeurIPS) & criteria Q8, X2, Y11 and Y12 \\
+\midrule
+\multicolumn{4}{@{}l}{\emph{The reach of the conclusions}} \\
+F13 & The best algorithm changes with the task & slides 20 and 21 (ICLR) & criteria Y3 and Y4, experiment E2 \\
+F14 & Two implementations of the same algorithm that diverge & slides 22 and 23 (ICLR) & criterion Y5, experiment E3 \\
+F15 & Evaluation in the training conditions & pages 36 to 51 (NeurIPS) & criteria Q7 and Y8, experiment E7 \\
+F16 & Benchmarks too simple, easy to learn by heart & pages 43 to 50 (NeurIPS) & criteria X6 and Y7 \\
+\end{longtable}
+\end{small}
+
+\subsection{The materials: what rerunning takes}
+
+\paragraph{F1, the paper published without its code}
+An RL paper describes its method in a few pages. The program that produced the results runs to
+thousands of lines, full of choices the prose never mentions. Pineau takes up the line of
+\textcite{buckheit1995wavelab} quoted in Chapter~\ref{chap:01-introduction}, in which the two authors
+condensed an idea of Jon Claerbout: the paper is the advertising, the research is the code and the instructions that
+produced the figures. Of the 50 RL papers from 2018 she read, 55\% link to their code.
+
+\paragraph{F2, no plan for rerunning the experiment}
+Code falls short without the exact settings and an idea of the compute required. Pineau's example is
+AlphaGo \parencite{silver2016alphago}. The paper is detailed, with a long appendix. Her slide still
+asks whether that is enough: a rerun would also need the expert games, the code, the hyperparameters,
+the computers and the evaluation protocol. A discovery that no outside lab has the means to redo stays
+a claim.
+
+\paragraph{F3, hardware and software}
+The same code launched on two machines sometimes gives two results. Graphics cards round computations
+differently from processors. A new version of a library changes a default value. Pineau's checklist
+asks for \enquote{the computing infrastructure used} and for the code \enquote{including all
+dependencies}.
+
+\subsection{Tuning: hyperparameters and baselines}
+
+\paragraph{F4, the method's hyperparameters, given in part}
+One setting left out blocks reproduction: the reader takes the default value of their library and
+gets something else. Pineau counts 90\% of 2018 papers giving all the hyperparameters of their method.
+
+\paragraph{F5, how the hyperparameters were chosen, left unsaid}
+A final value says nothing of how it was found. A team that tried a hundred combinations and kept the
+best one has optimised on its benchmark. The reader needs the search budget. Only 20\% of 2018 papers
+state it.
+
+\paragraph{F6, settings that change everything}
+Henderson and co-authors change one setting at a time. For PPO on \task{HalfCheetah}, going from a
+network of two layers of 64 neurons to a network of 400 then 300 neurons drops the score from
+2,201 to $-1{,}180$. The settings interact: the best network for one algorithm stops being the
+best for another. \textcite{engstrom2020implementation} and then \textcite{andrychowicz2021matters}
+confirmed this sensitivity at large scale.
+
+\paragraph{F7, baselines tuned less carefully than the method}
+The author of a new method tunes it with care. The same author often takes the baseline with its
+default values. The comparison then pits a tuned method against an untuned one. Pineau counts 60\% of
+2018 papers giving the hyperparameters of their baselines. \textcite{eimer2023hyperparameters} call for
+the same tuning budget for both.
+
+\subsection{Random seeds and statistics}
+
+\paragraph{F8, a performance measure never defined}
+The final score, the mean over training and the best score reached do not always rank methods in the
+same order (Section~\ref{sec:ctx-evaluation}). A paper that states neither which measure it uses nor
+what its error bars represent compares with no other paper.
+
+\paragraph{F9, too few runs}
+Pineau shows a table of papers from 2015 to 2017: they launch three or five random seeds, none of them
+ten. With three runs, a mean depends heavily on the luck of one run.
+\textcite{colas2018seeds} compute the number of random seeds needed to detect a given gap.
+
+\paragraph{F10, the best runs out of $N$}
+A team launches ten runs, keeps the best ones and publishes their mean. Every number is true, yet the
+published mean exceeds what the method delivers on average. The spread also looks smaller than it is.
+Pineau illustrates the practice with ten curves of which she keeps the best three.
+
+\paragraph{F11, same code, another random seed}
+Henderson and co-authors train TRPO ten times on \task{HalfCheetah}, changing only the random seed.
+They form two groups of five and plot the two mean curves, which stand clearly apart. A test declares
+the curves different ($t = -9.09$, $p = 0.0016$). On stage, Pineau specifies that the groups are not
+sorted. Chapters~\ref{chap:05-experiences-methode} and~\ref{chap:06-experiences-resultats} return at
+length to this number (experiments E1 and B1).
+
+\paragraph{F12, no statistical test}
+When two methods differ by a few points, a test or an interval tells whether the gap exceeds what the
+luck of the random seeds produces by itself. Only 5\% of 2018 papers apply a test to their comparisons.
+
+\subsection{The reach of the conclusions}
+
+\paragraph{F13, the best algorithm changes with the task}
+Henderson and co-authors rank four algorithms on four tasks. The algorithm that leads on
+\task{HalfCheetah} stops leading on \task{Hopper} or \task{Swimmer}. A general conclusion drawn from
+one or two tasks generalises a special case.
+
+\paragraph{F14, two implementations that diverge}
+Three implementations of TRPO, with the same network, finish on \task{HalfCheetah} at 1,939, 834
+and 205. Comparing a method with \enquote{TRPO} without saying which implementation was taken amounts to
+comparing it with an anonymous program.
+
+\paragraph{F15, evaluation in the training conditions}
+In supervised learning, a model is evaluated on data it has never seen. In RL, the agent is often
+evaluated in the same world it trained in. Pineau shows a sentence she puts up for debate, according to
+which RL would be the only case of machine learning where testing on the training set is acceptable.
+She proposes separating the training and test random seeds, then the tasks
+\parencite{zhang2018dissection,zhang2018natural}. Only 10\% of 2018 papers evaluate on held-out
+conditions.
+
+\paragraph{F16, benchmarks too simple}
+A large enough agent memorises the right sequence of actions on a deterministic benchmark without
+understanding anything about the world \parencite{machado2018revisiting}. Pineau also asks for the
+version of each benchmark, so that a result can be rerun in the same world.
+
+\paragraph{The remedies of 2018}
+Against the sixteen flaws, Pineau first sets a reproducibility checklist (pages 31 to 33 at NeurIPS).
+For each algorithm, it asks for a clear description, a complexity analysis, the link to the code and
+its dependencies. For each theoretical result, it asks for the statement, the assumptions and the
+proof. For each figure, it asks for the data collection, the split between training, validation and
+test, the excluded data, the range and selection method of the hyperparameters, the exact number of
+runs, the definition of the statistics and error bars, the hardware used. She also presents the ICLR
+2018 reproducibility challenge (slides 37 to 43 at ICLR), in which anyone could try to reproduce a
+submitted paper. NeurIPS adopted the checklist in 2019 \parencite{pineau2021improving}.
+
+\section{Related work}\label{sec:voisins}
+
+On 9 November 2026, we searched arXiv, OpenReview and the conference proceedings. To our knowledge, no
+work reapplies Pineau's grid to recent RL papers while calibrating it on 2018. None reruns the protocol
+of Henderson and co-authors with the algorithms of 2026 under a protocol written in advance. Related
+work falls into five groups.
+
+\paragraph{The 2018 experiment}
+\textcite{henderson2018matters} ground most of flaws F6 to F14: sensitivity to hyperparameters, to
+implementations, to random seeds, to tasks. \textcite{islam2017reproducibility} preceded them on the
+same tasks. \textcite{lynnerup2020survey} rerun algorithms on a real robot arm.
+\textcite{bjorck2022variance} show, for control from images, that part of the variance between random
+seeds comes from runs that fail early through numerical instability.
+
+\paragraph{Statistical method}
+\textcite{colas2018seeds} run a power analysis of the number of random seeds.
+\textcite{jordan2020evaluating} discuss the choice of the performance measure, then
+\textcite{jordan2024position} the cost of a rigorous comparison. \textcite{agarwal2021precipice}
+contribute the IQM, stratified bootstrap intervals, performance profiles and the probability of
+improvement, gathered in the rliable library. They show that several improvements claimed on Atari
+games dissolve into the uncertainty once the intervals are computed. \textcite{patterson2024empirical}
+turn these results into a guide. \textcite{eimer2023hyperparameters} call for an equal tuning budget
+for baselines. These works say what to do. Our survey measures whether papers do it.
+
+\paragraph{Checklists and reproducibility challenges}
+\textcite{pineau2021improving} describe the NeurIPS 2019 reproducibility programme: the mandatory
+checklist, the reproducibility challenge and the code submission policy. The share of accepted papers
+with code rises from under 50\% to 74.4\%. \textcite{magnusson2023nlpchecklist} measure the effect of
+the checklist of natural language processing conferences.
+
+\paragraph{Audits of the literature}
+\textcite{gundersen2018state} score 400 papers from the IJCAI and AAAI conferences on how they document
+methods, data and experiments. \textcite{coakley2026shift} track 56,800 papers from five
+artificial intelligence conferences from 2014 to 2024: the share that releases code and data rises
+from 11\% to 64\%. The rise begins before the checklists. In RL, the closest audit is the one by
+\textcite{gorsane2022marl}: 75 papers on cooperative multi-agent RL, from 2016 to 2022, of which about
+a third quantify no uncertainty. None of these audits targets single-agent RL or the 2018 grid.
+
+\paragraph{Language models}
+\textcite{hochlehnert2025sober} re-evaluate reasoning models and find standard deviations of 5 to 15
+percentage points from one sampling random seed to the next on small benchmarks such as AIME~2024.
+\textcite{chandak2025incorrect} report, in a blog post that was not peer-reviewed, under-evaluated
+starting models in seven papers, the modern equivalent of flaw F7. \textcite{shao2025spurious} show
+that a randomly drawn reward improves Qwen models in mathematics, with no such gain for Llama or OLMo
+models. \textcite{yue2025rlvr} show that the pass@$k$ measure reverses a ranking depending on $k$, an
+instance of flaw F8.
+
+\section{The vocabulary of language models}\label{sec:vocabulaire}
+
+The vocabulary of RL has spread to the generative AI models that write text. Some of its algorithms
+are borrowed, with only a loose resemblance to the original setting, to fine-tune the answers of a
+pretrained language model, with no agent acting in a world. This report fixes its words as follows.
+
+\begin{itemize}
+  \item \textbf{Classical RL.} RL in the sense of Section~\ref{sec:cadre}: an agent, often trained from
+  scratch, acts in an environment whose states evolve, in robotics, games or control. Offline RL
+  belongs to it. Classical RL is the \file{classic} family of criterion X5.
+  \item \textbf{RL on large models.} A label of convenience for the papers that call RL what they
+  apply to a pretrained generative model conditioned on language (language model, vision-language
+  model, text-to-image model). It is the \file{llm} family of criterion X5
+  (Chapter~\ref{chap:03-sondage-methode}). The label takes up the papers' own word. It passes no
+  judgement on the nature of what they do.
+  \item \textbf{RLHF.} Learning from human feedback (\emph{reinforcement learning from human feedback})
+  \parencite{christiano2017deep,ouyang2022instructgpt}. Annotators rank answers, a reward model learns
+  their preferences, then the language model is fine-tuned to maximise this score. The acronym contains
+  the letters RL. This report nonetheless keeps RLHF out of RL: the optimised policy produces a text in
+  response to a prompt, then receives one score, with no environment whose state evolves under its
+  actions.
+  \item \textbf{RLVR and GRPO.} RLVR (\emph{reinforcement learning with verifiable rewards}) replaces
+  the reward model with a program that checks the answer: the final answer to a mathematics problem
+  compared with the correct one, code run against tests \parencite{deepseek2025r1}. GRPO (\emph{Group
+  Relative Policy Optimization}) \parencite{shao2024deepseekmath} is the most widespread algorithm of
+  this family. It derives from PPO: it draws a group of answers for each prompt and replaces the critic
+  with the reward of each answer, standardised within the group. Chapter~\ref{chap:07-modeles-de-langue}
+  describes our GRPO strand.
+\end{itemize}
+
+In this report, large language models are generative AI models. The readers of our survey are agents
+built on such a model (Chapter~\ref{chap:03-sondage-methode}). There, the word \enquote{agent} denotes
+a program that reads a PDF and fills in a grid, unrelated to the agent of a Markov decision process.

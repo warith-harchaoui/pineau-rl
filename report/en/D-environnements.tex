@@ -1,0 +1,106 @@
+\chapter{The software environments}
+\label{chap:D-environnements}
+
+This appendix gives the versions of the software that produced the results, the platform and the
+toolchain that builds the documents. The files in \file{envs/} are authoritative. \Cref{tab:env}
+extracts the key packages from them.
+
+\section{The platform}
+\label{sec:d-plateforme}
+
+Every run and every published analysis comes from one Mac with an Apple M2 Max chip, under
+macOS 27.2, for the arm64 architecture, with Python 3.11.18. The simulations ran on the central
+processor, one thread per run. The GRPO runs ran on the chip's graphics processor (the MPS backend of
+PyTorch) or on the central processor, depending on the run (\cref{chap:07-modeles-de-langue}). The
+original environments come from conda (\texttt{conda create -p sim/env python=3.11}). pip then
+installed each package. An ordinary \texttt{venv} environment receives the same packages.
+
+\section{The four environments}
+\label{sec:d-envs}
+
+Each file is the \texttt{pip freeze} of an environment, taken on 15 November 2026, with the Python
+version and the platform at the top. The \file{*.lock} files give the same lists with the SHA-256
+fingerprint of each package, for an installation with \texttt{pip install -{}-require-hashes}. The
+four \file{*.txt} files repeat the lists that the protocols cite, \file{sim/requirements.lock} and
+its siblings, gathered in one folder.
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{The frozen environments of the project (\file{envs/README.md}).}
+\label{tab:d-envs}
+\begin{tabularx}{\linewidth}{@{}llX@{}}
+\toprule
+File & Environment & What it runs \\
+\midrule
+\file{train.txt} & \file{sim/env} & the training runs (\file{sim/run.py}) and the re-evaluations
+  (\file{sim/dose.py}) \\
+\file{analysis.txt} & \file{sim/env-an} & every analysis script, \file{docs/check\_numbers.py},
+  continuous integration \\
+\file{zoo.txt} & \file{sim/env-zoo} & the official RL Baselines3 Zoo pipeline of experiment E6 \\
+\file{llm.txt} & \file{sim/env-llm} & GRPO (\file{sim/llm/grpo.py}) and the figures of \file{docs/} \\
+\file{test.txt} & on top of \file{analysis.txt} & the unit tests (\file{tests/}) \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\gentable{env}
+
+\section{Installation pitfalls}
+\label{sec:d-installer}
+
+\begin{itemize}
+  \item \textbf{Recreating an environment.} The paths matter, since the scripts and the launchers
+        call \file{sim/env/bin/python} and its siblings:
+\begin{lstlisting}[language=bash]
+python3.11 -m venv sim/env-an
+sim/env-an/bin/pip install -r envs/analysis.txt -r envs/test.txt
+make verify
+\end{lstlisting}
+        The other three follow the same pattern. \file{sim/env-zoo} is a \texttt{venv} built on the
+        Python of \file{sim/env}.
+  \item \textbf{rliable 1.2.0} is distributed only as a source archive. pip builds it in a few
+        seconds, since it is pure Python.
+  \item \textbf{On Linux}, \file{analysis.txt} installs as is. Continuous integration does so on
+        Ubuntu. The last digits of a bootstrap move with the processor: the byte-for-byte comparison
+        is required on macOS arm64, the platform of the results. Linux is compared to within
+        $10^{-12}$ in relative terms (\cref{sec:ci}).
+  \item \textbf{Training on Linux} works with \file{train.txt}, but the runs in the repository come
+        from macOS arm64. A new run elsewhere gives other curves for the same random seed: MuJoCo,
+        JAX and PyTorch round differently from one processor to another (\cref{sec:reentrainer}).
+  \item \textbf{GRPO} downloads \texttt{Qwen/Qwen2.5-0.5B-Instruct} and
+        \texttt{unsloth/Llama-3.2-1B-Instruct} from Hugging Face. Since deviation 15 (c) of the GRPO
+        strand, \file{grpo.py} pins the exact revision of each model, the one used in our runs.
+        \file{docs/figures/build.py} downloads Qwen's tokeniser.
+\end{itemize}
+
+\section{The document toolchain}
+\label{sec:d-chaine}
+
+Outside the Python environments, building the PDFs and the figures uses the tools of
+\cref{tab:d-chaine}. These tools draw and typeset without computing any number. \texttt{make check}
+and \texttt{make verify} need only \file{analysis.txt}.
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{The tools that build the documents.}
+\label{tab:d-chaine}
+\begin{tabularx}{\linewidth}{@{}llX@{}}
+\toprule
+Tool & Version & Used by \\
+\midrule
+pandoc & 3.6.1 & \file{docs/build.sh} \\
+md2star & 3.13.5 (PyPI) & \file{docs/build.sh} (DOCX and a first PDF) \\
+TeX Live 2026: LuaHBTeX, latexmk & 1.24.0, 4.88 & \file{docs/build.sh}, \file{report/build.sh} \\
+sprezzature-figures & 2.14.1 (2.14.0 on PyPI) & \file{docs/figures/build.py},
+  \file{article/figures/build.py} \\
+rsvg-convert (librsvg) & 2.61.3 & conversion of SVG files to PDF and PNG \\
+git & 2.50.0 & \texttt{make verify} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+This report is built by \texttt{make report}, which runs \file{report/build.sh}: the tables from the
+JSON files (\file{report/tools/tables.py}), the figures (\file{report/tools/figures.py}), then two
+passes of LuaLaTeX with biber, in French (\file{rapport.tex}) and in English (\file{report-en.tex}).

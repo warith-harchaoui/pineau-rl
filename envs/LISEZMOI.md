@@ -46,8 +46,8 @@ de `sim/env`.
 - **GRPO** a tourné sur le processeur graphique d'Apple (MPS) ou sur le processeur, selon l'essai
   (`sim/llm/LLM_PROTOCOL.md`, écart 11). `grpo.py` télécharge `Qwen/Qwen2.5-0.5B-Instruct` et
   `unsloth/Llama-3.2-1B-Instruct` depuis Hugging Face ; `docs/figures/build.py` télécharge le
-  découpeur en jetons de Qwen. La révision du modèle est celle servie le jour de l'essai : elle n'est
-  pas figée.
+  découpeur en jetons de Qwen. `grpo.py` fige la révision
+  du modèle qu'ont utilisée tous les essais, la seule présente dans le cache (`sim/llm/LLM_PROTOCOL.md`, écart 15).
 
 ## La chaîne du document
 

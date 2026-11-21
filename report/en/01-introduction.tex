@@ -1,0 +1,133 @@
+\chapter{Introduction}\label{chap:01-introduction}
+
+\section{Two talks in 2018}\label{sec:intro-conferences}
+
+\paragraph{Vancouver, then Montreal}
+In spring 2018, Joelle Pineau, a professor at McGill University in Montreal and head of Facebook's
+artificial intelligence research lab in that city, gives an invited talk at ICLR (\emph{International
+Conference on Learning Representations}) in Vancouver \parencite{pineau2018iclr}. The talk is titled
+\enquote{Reproducibility, Reusability, and Robustness in Deep Reinforcement Learning}. In December,
+Pineau takes up and extends her argument at NeurIPS (\emph{Neural Information Processing Systems}) in
+Montreal, as the Posner Lecture: \enquote{Reproducible, Reusable, and Robust Reinforcement Learning}
+\parencite{pineau2018neurips}. ICLR, NeurIPS and ICML (\emph{International Conference on Machine
+Learning}) are the three main conferences of machine learning.
+
+\paragraph{The starting question}
+When one team publishes a result, does another team that follows the recipe get the same one? Pineau
+starts from a survey by the journal \emph{Nature}: of 1,576 researchers across all disciplines,
+more than 70\% said they had already failed to reproduce a colleague's experiment, 52\% saw a
+\enquote{significant} reproducibility crisis and 38\% a \enquote{slight} one
+\parencite{baker2016reproducibility}. At a workshop in December 2017, she had put the same question to
+twenty machine learning specialists, 80\% of whom saw a crisis, slight or significant
+\parencite{pineau2018iclr}. She then quotes \textcite{buckheit1995wavelab}, for whom a scientific
+article about computation is only the advertising of the research. The research itself is the complete
+software environment and the full set of instructions that produced the figures.
+
+\paragraph{A growing field, costly errors}
+Pineau recalls that for nearly twenty years RL cited a single landmark success, the backgammon program
+TD-Gammon \parencite{tesauro1995tdgammon}, before AlphaGo \parencite{silver2016alphago}. Around 2000,
+an RL workshop gathered thirty-five people. For 2016, she counts about thirteen thousand RL papers
+published in the year \parencite{pineau2018iclr}. She adds that RL is approaching problems that
+matter: the design of medical treatments, the management of natural resources, of energy networks and
+of financial systems. Practitioners doubted too. In February 2018, Alex Irpan, of Google
+Brain, wrote that he answered no to anyone who asked him whether RL could solve their problem. He
+believed he was right at least 70\% of the time \parencite{irpan2018rlhard}. Pineau puts the address of
+this blog post on screen at NeurIPS.
+
+\paragraph{The sixteen flaws}
+Pineau then shows, figure after figure, what RL lacks to deserve trust. Most of the figures come from
+her team's paper signed by Peter Henderson and co-authors \parencite{henderson2018matters}. We recorded
+sixteen flaws in the two talks, labelled F1 to F16 and sorted into four families: the materials needed
+to rerun an experiment (code, plan, software), the tuning of hyperparameters (the settings an
+experimenter fixes by hand) and of baselines (the existing methods a new one is compared with), random
+seeds (the integer from which a training run draws all its randomness) and statistics, the reach of the
+conclusions. The most famous is flaw F11: ten training runs of
+the same program, split into two groups of five, give two curves that a test declares different, with
+$t = -9.09$ and $p = 0.0016$. Chapter~\ref{chap:02-contexte} describes the sixteen flaws one by one
+(Table~\ref{tab:failles}). Pineau goes beyond the diagnosis. She proposes a reproducibility checklist,
+which NeurIPS adopted in 2019 \parencite{pineau2021improving}. She also presents the ICLR 2018
+reproducibility challenge, in which anyone could try to reproduce a submitted paper.
+
+\section{The question}\label{sec:intro-question}
+
+Eight years have passed. RL has changed in size and in terrain: in 2025 and 2026, more than half of the
+RL papers in the first random draw of our survey apply what they call RL to large language models. The
+question of this report is simple: \emph{did we listen to Joelle Pineau?} For each of the sixteen
+flaws, we ask whether the papers published between 2018 and 2026 still show it. We also measure what
+the flaw costs when the experiments of 2018 are rerun with the algorithms of 2026. We take her list as
+a grid and apply it to published papers, then to our own experiments, with the same severity.
+
+\section{Two instruments}\label{sec:intro-instruments}
+
+\paragraph{The survey}
+The first instrument rereads papers with Pineau's reading grid (criteria Q1 to Q8), extended by seven
+criteria drawn from her ICLR talk (X1 to X7) and by a second grid of twelve criteria for the flaws she
+left unmeasured (Y1 to Y12). We read a first draw of 50 RL papers from 2025 and 2026, out of the
+1,252 RL papers of ICLR 2026, ICML 2026 and NeurIPS 2025. We then read 50 classical RL papers from
+2026 (robotics, games, control, language models excluded), 50 papers from 2018 and 20 papers per year
+for 2019, 2020, 2022 and 2024. Language-model agents read the papers. Each decision rests on an exact
+quotation and its page. The verdict compares classical RL in 2026 with our own reading of 2018, using
+the same grids and the same readers. Chapters~\ref{chap:03-sondage-methode}
+and~\ref{chap:04-sondage-resultats} describe the method and the results.
+
+\paragraph{The experiments}
+The second instrument reruns the experiments of 2018 under a protocol written before the first
+training run: four programs (PPO in PyTorch and in JAX, SAC, CrossQ) on four MuJoCo tasks, with ten
+random seeds per program and per task, then twenty. Thirty PPO runs and thirty TRPO runs on
+\task{HalfCheetah} complete the set, with one evaluation on random seeds never seen in training and
+another under modified physics. A further strand illustrates the same flaws on language models trained
+with GRPO. Chapters~\ref{chap:05-experiences-methode}, \ref{chap:06-experiences-resultats}
+and~\ref{chap:07-modeles-de-langue} describe these experiments.
+
+\section{Contributions}\label{sec:intro-contributions}
+
+\begin{enumerate}
+  \item \textbf{A same-grid measurement.} We apply Pineau's grid again to the papers of 2026 and
+  calibrate it on our own reading of 50 papers from 2018. With the same grid on both sides, four
+  practices changed in classical RL: linking the code (31\% then 74\%), showing the sensitivity to a
+  setting (44\% then 80\%), quantifying the compute (27\% then 58\%), reporting an uncertainty (63\%
+  then 88\%). Others show no detectable change, the statistical test among them (6\% then 12\%).
+  \item \textbf{A preregistered second grid.} Twelve criteria (Y1 to Y12), written with their decision
+  rules before any coding, cover the performance measure, the tasks, the implementations, the
+  versions, generalisation, sensitivity and recent statistical tools.
+  \item \textbf{A trajectory.} Four intermediate years read between 2018 and 2026 show the four
+  practices rising slowly, with no jump right after the 2019 checklist.
+  \item \textbf{A battery of checks.} The survey comes with blind double readings, an audit of the
+  quotations, a keyword search against the negative decisions, the published provenance of every
+  reader, cuts by provenance, conference and reader, sensitivity analyses to the readers' model and to
+  the title filter, a comparison with the checklists filled in by the authors.
+  \item \textbf{The experiments of 2018, rerun.} Two groups of five runs drawn at random fool a Welch
+  test in only 1.2\% of cases. Sorted, they fool it in 31\%. Keeping the best three runs out of ten
+  inflates the mean by 33\%. The best program changes with the task, except at equal budget with twenty
+  random seeds, where CrossQ leads on all four tasks. Physics modified by 20\% moves the leader to last
+  place on \task{Hopper}.
+  \item \textbf{An explanation of the $t$ of 9.} The script Peter Henderson published in 2017 measures
+  the spread between episodes and ignores the spread between random seeds. Applied to our TRPO runs,
+  its $t$ exceeds 9.09 in 38\% of random draws.
+  \item \textbf{A bridge to language models.} We wrote our own GRPO and ran it on two small open
+  models, with the true reward (the one that checks the answer) and with a coin-flip reward. With five
+  random seeds, Qwen's mean gain with the true reward is $+14$ points, with an interval from $-3$ to
+  $+34$ that contains zero.
+  \item \textbf{A repository that checks itself.} It holds the dated protocols, the readings with their
+  quotations, the training results, the analysis scripts and checks that compare every number of the
+  argued essay (\file{docs/conclusions-en.md}) and of the blog article with the result files
+  (Chapter~\ref{chap:08-logiciel}).
+\end{enumerate}
+
+\section{Reading guide}\label{sec:intro-guide}
+
+Chapter~\ref{chap:02-contexte} sets out the formal framework of RL, describes the programs and the
+tasks, inventories the sixteen flaws and places the work among related work.
+Chapters~\ref{chap:03-sondage-methode} and~\ref{chap:04-sondage-resultats} give the method and the
+results of the survey. Chapters~\ref{chap:05-experiences-methode} and~\ref{chap:06-experiences-resultats}
+do the same for the MuJoCo experiments. Chapter~\ref{chap:07-modeles-de-langue} describes the GRPO
+strand. Chapter~\ref{chap:08-logiciel} describes the software, from training to documents.
+Chapter~\ref{chap:09-ecarts} lists every deviation from the three protocols.
+Chapter~\ref{chap:10-limites} gathers the limitations. Chapter~\ref{chap:11-conclusion} takes up each
+flaw with its verdict. The appendices give the complete rules of the grid (Appendix~\ref{chap:A-grille}),
+additional tables (Appendix~\ref{chap:B-tableaux}), the list of papers read
+(Appendix~\ref{chap:C-articles}) and the software environments (Appendix~\ref{chap:D-environnements}).
+
+A reader in a hurry can read the abstract, Table~\ref{tab:failles}, Section~\ref{sec:sr-principale}
+and Chapter~\ref{chap:11-conclusion}. A reader who wants to redo a computation finds, in each caption,
+the result file that holds it.

@@ -1,0 +1,174 @@
+\chapter{Conclusion}
+\label{chap:11-conclusion}
+
+\section{La réponse}
+\label{sec:reponse}
+
+\begin{keybox}
+Joelle Pineau a été écoutée sur ce qui se publie à côté du résultat : le code, le calcul, l'effet
+d'un réglage. Elle l'a été beaucoup moins sur la façon de juger le résultat lui-même. Le test
+statistique reste rare, les réglages des méthodes de référence restent peu décrits, l'évaluation se
+fait encore souvent dans le monde de l'entraînement.
+\end{keybox}
+
+Cette réponse vaut pour le RL classique, lu par des agents de modèle de langue sur cinquante articles
+de chaque côté, puis comparé à notre propre lecture de 2018 avec les mêmes grilles
+(\cref{chap:03-sondage-methode,chap:04-sondage-resultats}). Elle s'appuie aussi sur des expériences
+refaites avec les algorithmes de 2026 sous des protocoles écrits d'avance
+(\cref{chap:05-experiences-methode,chap:06-experiences-resultats,chap:07-modeles-de-langue}).
+
+\section{Les nombres principaux}
+\label{sec:nombres}
+
+\paragraph{Quatre pratiques ont changé} Le lien vers le code passe de 31~\% à 74~\% des articles, la
+sensibilité à un réglage montrée de 44~\% à 80~\%, le calcul chiffré de 27~\% à 58~\%, une
+incertitude rapportée de 63~\% à 88~\% (\cref{tab:sondage-pineau,tab:sondage-extension}). Le code et
+le calcul résistent à toutes les coupes que nous avons tentées, la sensibilité à presque toutes.
+L'incertitude est fragile : elle ne passe plus la correction de Holm quand on retire les treize
+articles lus en partie par un autre modèle ($p = 0{,}07$). Lues sur 20 articles par année entre les
+deux dates, ces quatre pratiques montent lentement, sans saut juste après la liste de contrôle que
+NeurIPS impose depuis 2019 (\cref{tab:trajectoire}).
+
+\paragraph{D'autres n'ont pas bougé de façon détectable} Un test statistique passe de 6~\% à 12~\%, des
+références décrites avec tous leurs réglages de 35~\% à 29~\%, une évaluation tenue à part de 33~\% à
+45~\%, la version des bancs d'essai de 23~\% à 26~\%. Presque tous les articles tracent désormais des
+barres d'erreur, bien peu appliquent un test.
+
+\paragraph{Ce qu'une case cochée garantit} Les 18 articles de NeurIPS 2025 qui répondent oui à la
+question de la liste de contrôle sur la signification statistique n'appliquent aucun test. Sur le
+code, 5 articles sur 22 répondent oui sans lien vers leur code. Sur le calcul, 6 articles sur 21
+répondent oui sans chiffrer de temps de calcul.
+
+\paragraph{Les graines aléatoires et la sélection} Sur trente essais de PPO sur \task{HalfCheetah},
+deux groupes de cinq tirés au hasard ne trompent un test statistique que dans 1,2~\% des cas. Triés,
+ils le trompent dans 31~\% des cas. Garder les meilleurs gonfle le score de 33~\%
+(\cref{tab:e1,tab:e4}). Le $t$ de 9 de 2018 s'explique sans doute par le script publié par Peter
+Henderson, qui mesure la dispersion des épisodes et ignore celle des graines aléatoires. Appliqué à nos
+essais de TRPO, il dépasse 9 dans 38~\% des tirages au hasard (\cref{tab:b1}).
+
+\paragraph{La portée des classements} Sur nos quatre programmes, le meilleur change avec la tâche.
+PPO y dispose pourtant de cinq fois plus de pas que SAC et CrossQ : à budget égal et avec vingt
+graines aléatoires, CrossQ mène sur les quatre tâches (\cref{tab:e2}). Une physique modifiée de
+20~\% bouleverse le classement sur \task{Hopper} : le premier y finit dernier (\cref{tab:e7}).
+
+\paragraph{Le volet des modèles de langue} Avec cinq graines aléatoires, le gain moyen de Qwen avec
+la vraie récompense vaut $+14$ points, de $-3$ à $+34$, celui de Llama $+6$ points, de $-0{,}4$ à $+15$ :
+les deux intervalles contiennent zéro. Le gain de Qwen repose sur les deux essais faits sur GPU. Le
+matériel a changé avec la graine aléatoire. À pile ou face, la réussite tombe à 1~\% ou moins dans les neuf
+essais finis. Une part du gain apparent peut venir de la limite de 160 jetons
+(\cref{tab:grpo}).
+
+\section{Recommandations}
+\label{sec:recommandations}
+
+Les recommandations suivantes découlent des mesures de ce rapport. Chacune nomme la faille qu'elle
+vise et le résultat qui la justifie.
+
+\subsection{Pour les auteurs}
+
+\begin{enumerate}
+  \item \textbf{Annoncer le nombre de graines aléatoires et en lancer au moins dix.} Sur 41 articles
+        de RL expérimentaux du premier tirage de 2026, 20 ne disent pas combien d'essais ils
+        lancent. La médiane des autres vaut cinq. Avec cinq graines aléatoires, un écart de moins de 20~\% se
+        lit à l'envers près d'une fois sur trois, plus d'une fois sur trois quand vingt graines aléatoires fixent le bon ordre (E5, failles F9 et F10).
+  \item \textbf{Ne jamais trier ni sélectionner les essais.} Rapporter tous les essais, y compris
+        ceux qui échouent. Dire ceux qui ont été exclus (E1, E4, critères X3 et Y6).
+  \item \textbf{Tester sur les graines aléatoires, jamais sur les épisodes.} L'unité indépendante
+        est l'entraînement complet. Un test qui compte les épisodes déclare une différence entre deux
+        groupes du même code (B1, faille F11).
+  \item \textbf{Montrer un intervalle à côté de chaque courbe et dire ce qu'il représente.} Nommer
+        l'écart type, l'erreur type ou l'intervalle de confiance, puis la dispersion qu'il résume
+        (critères X2, Y2, Y11).
+  \item \textbf{Comparer à budget égal, ou dire l'écart de budget.} Un classement à budgets
+        inégaux compare aussi les budgets (E2 à budget égal).
+  \item \textbf{Régler les références avec le même soin que la méthode et le dire.} Donner le
+        budget de réglage de chacune et ses hyperparamètres finaux (E6, critères Q4, X4, Y5).
+  \item \textbf{Évaluer dans des conditions tenues à part.} Graines aléatoires d'environnement jamais vues,
+        dynamiques modifiées ou distribution de test distincte (E7, critères Q7, Y8).
+  \item \textbf{Donner les versions.} Celle de chaque banc d'essai et de chaque dépendance, dans un
+        fichier d'environnement figé (critères Y7, Y10).
+  \item \textbf{Pour un modèle de langue : plusieurs familles de modèles et la part de réponses
+        coupées.} Un résultat obtenu sur une seule famille renseigne sur cette famille. Un gain de
+        justesse se lit avec la limite de longueur, la part coupée avant et après, enfin la justesse des
+        réponses complètes (\cref{chap:07-modeles-de-langue}, critère X6).
+  \item \textbf{Écrire le protocole avant le premier essai et dater chaque écart.} Dire, pour chaque
+        changement, ce qui avait déjà été vu (\cref{chap:09-ecarts}).
+  \item \textbf{Recalculer chaque nombre publié depuis ses fichiers.} Un script qui confronte chaque
+        nombre du texte à son fichier de résultats coûte peu et attrape les dérives
+        (\cref{sec:verification}).
+\end{enumerate}
+
+\subsection{Pour les relecteurs}
+
+Les sept questions de l'article de blog s'adressent à tout lecteur. Un relecteur peut les poser à
+chaque soumission.
+\begin{enumerate}
+  \item Combien de graines aléatoires ? Avec moins de cinq essais, ou avec \enquote{les meilleurs
+        essais}, le résultat dit peu de chose.
+  \item Quelle incertitude ? Une moyenne sans intervalle ni bande autour de la courbe ne permet pas
+        de juger un écart.
+  \item Quelle méthode de référence, réglée comment ? Si la méthode a reçu un mois de réglages et la
+        référence ses valeurs par défaut, l'écart mesure le mois de réglages.
+  \item Quel budget ? Comparer deux méthodes entraînées sur des nombres de pas différents, c'est
+        aussi comparer ces nombres de pas.
+  \item Évalué où ? Un agent jugé sur les situations de son entraînement a pu les apprendre par cœur.
+  \item Quel code ? Sans code publié, le lecteur ignore ce que l'article a vraiment fait.
+  \item Quel calcul ? Un résultat que personne d'autre n'a les moyens de recalculer ne se reproduit
+        pas.
+\end{enumerate}
+Le relecteur peut ajouter une huitième question, que ce rapport justifie : quelle unité le test compare-t-il ?
+Un test sur les épisodes ou sur les points d'une courbe empilés ne mesure pas la variabilité entre
+entraînements.
+
+\subsection{Pour les conférences}
+
+\begin{enumerate}
+  \item \textbf{Demander le test, pas seulement les barres.} La question de NeurIPS sur la
+        signification statistique accepte des barres d'erreur \enquote{ou une autre information
+        appropriée}. Les 18 articles qui y répondent oui n'appliquent aucun test. Une question qui
+        demande l'unité du test et le nombre d'entraînements indépendants serait plus exigeante.
+  \item \textbf{Vérifier une case cochée sur un échantillon.} Des articles répondent oui sur le code
+        sans lien, sur le calcul sans chiffre. Un contrôle tiré au sort sur une part des articles
+        acceptés mesurerait l'écart entre déclaration et pratique.
+  \item \textbf{Exiger le lien vers le code dans la version finale.} \enquote{Le code sera publié}
+        ne vaut pas un lien.
+  \item \textbf{Demander la version de chaque banc d'essai.} Elle n'a pas bougé de façon détectable
+        depuis 2018 (23~\% puis 26~\%), alors que les trois agents IA qui ont noté le coût de chaque pratique
+        (\cref{chap:04-sondage-resultats}) la jugent presque gratuite.
+  \item \textbf{Soutenir les défis de reproduction.} Le défi d'ICLR 2018 présenté par Pineau a montré
+        qu'une reproduction par des tiers est faisable : parmi les participants qui ont répondu au
+        sondage, 54,5~\% en ont reproduit une partie, 32,7~\% l'essentiel. Le refaire par grandes familles de
+        résultats, avec un protocole écrit d'avance, mesurerait ce que la liste de contrôle ne mesure
+        pas.
+\end{enumerate}
+
+\section{Travaux futurs}
+\label{sec:futurs}
+
+\begin{itemize}
+  \item \textbf{Une relecture humaine à l'aveugle} d'un échantillon d'articles, sur les critères des
+        verdicts, mesurerait l'accord entre un humain et nos lecteurs, ce que les doubles lectures
+        entre copies d'un même modèle ne mesurent pas. Le plan de l'écart 13 du sondage reste prêt.
+  \item \textbf{Une seconde famille de lecteurs}, un autre modèle IA, relirait les mêmes articles avec
+        la même consigne, publiée dans \file{study/readers/}.
+  \item \textbf{ICLR dans la trajectoire.} Les années 2019 à 2024 manquent d'ICLR. Une lecture de ses
+        actes, par une voie de téléchargement qu'OpenReview accepte, compléterait la série.
+  \item \textbf{Une lecture, avec la même grille, des articles qui appliquent ce qu'ils appellent RL à de grands modèles de langue}, sur un échantillon de taille
+        comparable, dirait si l'évaluation tenue à part, qui y progresse, s'accompagne des autres
+        pratiques.
+  \item \textbf{Un nouvel entraînement complet sur une autre plateforme}, Linux sur x86-64, testerait
+        les statistiques de nos expériences avec d'autres tirages (\cref{sec:reentrainer}).
+  \item \textbf{D'autres familles de tâches} que la locomotion MuJoCo : jeux à images, RL hors ligne,
+        robotique réelle, où les conclusions de E2 à E7 restent à éprouver.
+  \item \textbf{Le volet GRPO sur un seul appareil}, avec plus de graines aléatoires, une limite de longueur plus
+        large et la justesse des réponses complètes mesurée à chaque évaluation, séparerait l'effet du
+        matériel de celui de la graine aléatoire. Le même protocole sur des modèles de 7 milliards de
+        paramètres rapprocherait le volet de \textcite{shao2025spurious}.
+\end{itemize}
+
+Pineau demandait en 2018 d'être aussi critique envers ses bons résultats qu'envers ses mauvais. Ce
+rapport a tenté de s'y tenir. En vérifiant nos résultats surprenants, nous avons trouvé deux
+pièges : une erreur de notre code dans E6, dont la correction n'a rien changé, puis la limite de
+longueur du volet GRPO. Deux graines aléatoires de plus ont défait le gain de Qwen que nous lisions
+à trois graines aléatoires. Le dépôt garde la trace de chaque correction, datée, pour qui voudra refaire le
+travail.

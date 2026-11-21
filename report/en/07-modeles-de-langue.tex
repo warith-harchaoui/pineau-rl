@@ -1,0 +1,366 @@
+\chapter{The language-model strand}
+\label{chap:07-modeles-de-langue}
+
+The previous chapters deal with programs that learn to act in a simulated world. This chapter
+describes a smaller strand, devoted to the generative AI models that write text. It sets out the
+vocabulary we use, the algorithm as we wrote it, the protocol, the runs and their results, then the
+measurement trap these runs exposed. The full protocol is in \file{sim/llm/LLM\_PROTOCOL.md}. Its
+seventeen deviations are summarised in \cref{chap:09-ecarts}.
+
+\section{Vocabulary}
+\label{sec:llm-vocabulaire}
+
+The vocabulary of RL has spread to generative AI models. Some RL algorithms are borrowed to refine
+the answers of a language model, with no agent acting in a world. A language model is an AI model
+that produces a text token by token, a token being a piece of a word. For a mathematics problem, a
+program compares the final answer with the correct answer. The reward is 1 when the two agree.
+The literature calls this RL with verifiable rewards (RLVR, \emph{reinforcement learning with
+verifiable rewards}). We keep the acronym when we cite a paper that uses it, without adopting its
+suggestion that the problem is the same as that of an agent in a world.
+
+Three differences separate this setting from the classical RL of
+\cref{chap:05-experiences-methode,chap:06-experiences-resultats}:
+\begin{itemize}
+  \item an \enquote{episode} shrinks to one answer: no state evolves under the actions, no
+        reward is delayed over several decisions;
+  \item the starting policy is a model already trained on huge corpora, which often answers
+        correctly before any fine-tuning;
+  \item the reward depends on the final text alone.
+\end{itemize}
+Fine-tuning from human feedback (RLHF, \emph{reinforcement learning from human feedback},
+\cite{ouyang2022instructgpt}) is never called RL here: we refer to it by its acronym, as one
+fine-tuning technique among others.
+
+\section{Why this strand}
+\label{sec:llm-pourquoi}
+
+In 2025, \textcite{shao2025spurious} showed that a reward drawn at random, without checking whether
+the answer is correct, improves Qwen models in mathematics, while Llama and OLMo models do not
+improve. On the Qwen2.5-Math-7B model and the MATH-500 benchmark, the true reward brings a gain of
+29.1 percentage points. A reward that praises a wrong answer fixed in advance brings 24.1, a reward
+drawn at random 21.4. The authors trace this to a behaviour that training amplifies without creating
+it: the model writes its reasoning as code, without running it, in 65\% of answers before training
+and in more than 90\% after training with a misleading reward. They recommend validating a method on
+several model families.
+
+This result extends two flaws of 2018: the best algorithm changes with the task (F13) and
+benchmarks that are too simple get learned (F16). The survey of \cref{chap:04-sondage-resultats}
+measures the same risk in papers: sixteen of the 27 papers of the first 2026 draw that apply what
+they call RL to large language models try one model family only (criterion X6). Our strand looks at
+the phenomenon closely, at small scale, with two model families. The protocol announces its scope in
+advance: an illustration on a laptop. It does not replicate \textcite{shao2025spurious}.
+
+\section{The GRPO algorithm, as we wrote it}
+\label{sec:grpo}
+
+GRPO (\emph{Group Relative Policy Optimization}) comes from \textcite{shao2024deepseekmath}. It keeps
+the clipped objective of PPO \parencite{schulman2017ppo} and replaces the critic network, which
+estimates the value of a state, with a normalisation within a group of answers to the same problem.
+We wrote it by hand, in PyTorch, in one file of 159 lines, \file{sim/llm/grpo.py}, to control
+every step. The file imports nothing but PyTorch and the Transformers library, which loads the model
+and its tokeniser: no fine-tuning library is involved.
+
+\subsection{The task and the reward}
+
+The task we chose, \file{mul2}, asks for the product of two integers from 12 to 99. The file
+enumerates the $88 \times 88 = 7{,}744$ ordered pairs, shuffles them with a generator whose random
+seed is fixed (\texttt{random.Random(12345)}) and independent of the random seed of the run, then
+sets the first 300 aside for testing. The other 7,444 serve for training. The prompt follows a fixed
+template, \enquote{What is $a$ * $b$? Think step by step, then finish with the final answer as an
+integer.}, passed through the model's chat template.
+
+An answer is correct when the last integer it contains, thousands separators removed, equals the
+product. The verdict requires no format, so that format is never rewarded. Let $c(o, q) \in \{0,1\}$ be this verdict
+for answer $o$ to problem $q$. The two conditions of the protocol define the reward $r$ of each
+answer:
+\begin{align}
+  \text{true reward (\texttt{true})} &: \quad r = c(o, q),\\
+  \text{reward drawn at random (\texttt{random})} &: \quad r \sim \mathrm{Bernoulli}(1/2),
+  \text{ drawn without looking at } o.
+\end{align}
+The coin toss and the draw of each step's problems come from the same generator,
+\texttt{random.Random(seed)}, which depends on the random seed of the run and nothing else.
+
+\subsection{One training step}
+
+Each step draws $B = 4$ training problems without replacement. For each problem $q_b$, the current
+policy $\pi_{\theta_{\text{old}}}$ produces $G = 8$ answers $o_{b,1}, \dots, o_{b,8}$, sampled at
+temperature 1 from the untruncated distribution (neither \emph{top-p} nor \emph{top-k}) and limited
+to 160 tokens. Each answer receives its reward $r_{b,i}$. The advantage of an answer compares its
+reward with those of its group:
+\begin{equation}
+  \hat A_{b,i} = \frac{r_{b,i} - \bar r_b}{s_b + 10^{-4}}, \qquad
+  \bar r_b = \frac1G \sum_{j=1}^{G} r_{b,j}, \qquad
+  s_b = \Bigl(\frac{1}{G-1}\sum_{j=1}^{G} (r_{b,j} - \bar r_b)^2\Bigr)^{1/2}.
+\end{equation}
+The standard deviation $s_b$ follows the PyTorch convention, with the factor $G-1$. A group in which
+all eight answers receive the same reward gives each of them a zero advantage and contributes no
+gradient.
+
+For token $t$ of answer $o_{b,i}$, the probability ratio compares the policy being updated with the
+policy that produced the answer:
+\begin{equation}
+  \rho_{b,i,t}(\theta) = \exp\bigl(\log \pi_\theta(o_{b,i,t} \mid q_b, o_{b,i,<t})
+    - \log \pi_{\theta_{\text{old}}}(o_{b,i,t} \mid q_b, o_{b,i,<t})\bigr).
+\end{equation}
+The loss we minimise is the negative of the clipped objective, averaged over tokens within each
+answer, then over answers within the step:
+\begin{equation}
+  \mathcal L(\theta) = -\frac{1}{BG} \sum_{b=1}^{B} \sum_{i=1}^{G} \frac{1}{|o_{b,i}|}
+  \sum_{t=1}^{|o_{b,i}|} \min\Bigl(\rho_{b,i,t}(\theta)\,\hat A_{b,i},\;
+  \operatorname{clip}\bigl(\rho_{b,i,t}(\theta), 1-\varepsilon, 1+\varepsilon\bigr)\,\hat A_{b,i}\Bigr),
+  \qquad \varepsilon = 0.2.
+  \label{eq:grpo}
+\end{equation}
+The length $|o_{b,i}|$ counts the tokens of the answer that are not padding (the mask
+\texttt{target != pad\_token\_id} in the function \texttt{token\_logps}). The reference
+log-probabilities $\log \pi_{\theta_{\text{old}}}$ are computed once, without gradient, before the
+first update.
+
+Each batch of 32 answers serves for two update passes (\texttt{EPOCHS = 2}). In each pass, the
+gradient accumulates over sub-batches of eight answers (two for Llama, setting \texttt{MICRO}), which
+gives the same gradient with less memory. The gradient norm is then clipped at 1. The Adam
+optimiser \parencite{kingma2015adam}, with its default moments, applies a learning rate of
+$3 \times 10^{-6}$. The weights stay in 32-bit floating point.
+
+\begin{notebox}
+\textbf{How our GRPO differs from that of \textcite{shao2024deepseekmath}.} Our loss has no
+Kullback-Leibler divergence term with respect to the starting model, as the protocol of 8 November
+2026 announced. The group holds 8 answers per problem and the step 4 problems, far fewer than in the
+reference papers. The 160-token limit is very short for written reasoning. The learning rate was not
+chosen by the planned pilot, which was stopped at step 10 (deviations 4 and 6). These choices are
+adequate for an illustration. They rule out reading our figures as a measurement of GRPO at the
+scale of the papers.
+\end{notebox}
+
+\subsection{Safeguards against a corrupted computation}
+
+The first runs on the Mac's graphics processor (GPU, through PyTorch's MPS interface) crashed on
+non-finite probabilities. Deviation~10 of the protocol documents the cause: macOS interrupts GPU work
+that hinders interactive use of the machine. Such a computation sometimes comes back without an
+error, with corrupted values. The same step, redone on the central processor (CPU), gives a gradient
+norm of 14.4 before clipping, with no non-finite value. Since that deviation, \file{grpo.py} applies
+four rules:
+\begin{enumerate}
+  \item an update whose gradient norm before clipping is non-finite or exceeds 1,000 is recomputed,
+        up to five times in a row, after which the run stops (\texttt{GRAD\_SANE},
+        \texttt{RETRIES});
+  \item a generation that raises a GPU error is redone, up to five times;
+  \item the run stops if the reference log-probabilities or the weights become non-finite;
+  \item the log counts the recomputations at each step (field \texttt{retries}).
+\end{enumerate}
+The threshold of 1,000 comes from the norm of 14.4 measured on CPU. A gradient that is corrupted but
+finite, below this threshold, then clipped at 1, would pass without a trace. The protocol records
+this as a limit, in particular for the first three runs, which ran before these rules existed.
+
+\subsection{The measurement}
+
+Evaluation uses the test set and combines two modes. Greedy accuracy takes one answer with no
+randomness, the most probable token at each step, for each of the first 150 test problems. Sampled
+accuracy draws 8 answers at temperature 1 for each of the first 50 test problems. With $c_{jk}$ the
+verdict on answer $k$ to problem $j$ and $\tau_{jk}$ the indicator of a cut-off answer:
+\begin{equation}
+  \text{pass@1} = \frac{1}{50}\sum_{j=1}^{50} \frac18 \sum_{k=1}^{8} c_{jk}, \qquad
+  \text{pass@8} = \frac{1}{50}\sum_{j=1}^{50} \max_{k} c_{jk}, \qquad
+  \text{cut-off share} = \frac{1}{400}\sum_{j,k} \tau_{jk}.
+\end{equation}
+An answer is cut off when its 160 tokens contain neither an end token nor a padding token (function
+\texttt{truncated}). Here pass@8 is the observed frequency over the eight draws, without the
+unbiased estimator used when more than $k$ answers are drawn. Evaluation takes place at step 0, step
+50 and step 100 (\texttt{EVAL\_EVERY = 50}). Every ten steps, the log also records the share of
+correct and of cut-off answers in the training batch, the loss, the gradient norm, the
+recomputations and the elapsed time. Each run writes a JSONL file,
+\file{sim/llm/results/<model>/mul2/<reward>/seed<seed>.jsonl}.
+
+The main measure is sampled pass@1, the quantity GRPO trains (deviation 3). Greedy accuracy and
+pass@8 stay in the logs. Pass@8 answers the question of \textcite{yue2025rlvr}: does fine-tuning widen
+what the model can do, or does it concentrate probability on answers the model already found within
+several draws?
+
+\section{The protocol and its runs}
+\label{sec:llm-protocole}
+
+\paragraph{Models} Two families, two small open models: Qwen2.5 with 0.5 billion parameters,
+\emph{Instruct} version \parencite{qwen2025qwen25}, then Llama 3.2 with 1 billion, \emph{Instruct}
+version, in the copy published by \texttt{unsloth} \parencite{meta2024llama32,grattafiori2024llama3}.
+Since deviation 15 (c), \file{grpo.py} pins the exact revision of the downloaded files
+(\texttt{7ae5576\dots} for Qwen, \texttt{5a8abab\dots} for Llama), the only revisions present in the
+machine's cache, downloaded on 22 and 27 October 2026, before the first run.
+
+\paragraph{Pilot} A pilot without training, on problems outside the test set, was to fix the task:
+the one on which both models lie between 15\% and 70\% accuracy. In greedy decoding, no task places
+both models in this range. The sum of three numbers (\file{add3}) is too easy for Llama. The
+multiplication \file{mul2} gives 7\% (Qwen) and 73\% (Llama) in greedy decoding, 11\% and 23\% in
+sampled pass@1 (deviation 3). The same pilot showed that 64 tokens cut off the answers of Qwen,
+which writes 100 to 160, which gave an apparent accuracy of 0.7\%. The limit went up to 160 tokens, after
+reading real outputs, before any training (deviation 1).
+
+\paragraph{Plan} Two models, two rewards, 100 steps per run, a learning rate of $3 \times 10^{-6}$
+for all conditions. The protocol planned 200 steps and five random seeds. Deviation 6 reduced the
+plan to 100 steps and three random seeds (0 to 2), before any retained run, to fit the available
+compute. Deviation 14, written on 15 November 2026 before any new run, restored random seeds 3 and
+4, with the same code and the same settings. The starting point of each run is the base model,
+measured with the random seed of the run.
+
+\paragraph{Statistics} For each random seed $s$, the gain is $g_s = \text{pass@1}_{100} -
+\text{pass@1}_{0}$. Each configuration (model, reward) is summarised by the mean gain and a 95\%
+percentile bootstrap interval: 10,000 resamples of the gains with replacement, generator
+\texttt{random.Random(0)}, bounds at ranks 250 and 9,750 of the sorted means
+(\file{sim/llm/summary.py}). The details of the bootstrap were fixed after the first results, with
+no choice among several variants (deviation 13). The interval is very rough: three random seeds
+allow only ten distinct resamples, five random seeds 126.
+
+\paragraph{A run that fails twice} The Llama run with the random reward and random seed 4 stopped
+two nights in a row on the first safeguard, at its first update. Deviation 16 counts this second
+failure as a result: the configuration is summarised over its four finished runs, with the failure
+stated next to them. A sensitivity analysis also replaces the missing gain with the smallest, then
+with the largest gain of the nineteen finished runs.
+
+\paragraph{Hardware} All runs ran on the project's Mac
+(\cref{chap:08-logiciel,chap:D-environnements}). The first three Qwen runs ran on the GPU, early in
+the morning, on an idle machine. After the crashes of deviation 8 and the diagnosis of deviation 10,
+the remaining Qwen runs moved to the CPU, with two threads (\file{cpu.sh}, deviation 11). The Llama
+runs, about two and a half times slower than Qwen on CPU, stayed on the GPU, at night only
+(\file{night.sh}), with the safeguards. \Cref{tab:grpo} gives the device of each run.
+
+\section{Results}
+\label{sec:llm-resultats}
+
+\gentable{grpo}
+
+\Cref{tab:grpo} gives, for each of the twenty runs, pass@1 at the start and after 100 steps, the
+device and the share of cut-off answers at the end. \Cref{fig:grpo-graines} shows each run as an
+arrow, \cref{fig:grpo-courbes} the three evaluation points of each run.
+
+\fig{grpo-graines}{Pass@1 at the start and after a hundred training steps, for each model, each
+reward and each of the five random seeds. A filled circle marks a run on GPU, an empty square a run
+on CPU, a cross the run that stopped twice. With the true reward, the same program gives very
+different results from one random seed to another. With the coin toss, success falls to zero or
+nearly so.}
+
+\fig{grpo-courbes}{Test pass@1 at steps 0, 50 and 100 of each run, per model, reward and random
+seed. Evaluation takes place only every fifty steps, so each curve joins three points.}
+
+\subsection{The reward drawn at random}
+
+With the coin toss, success falls to 1\% or less in all nine finished runs. The mean gain is $-10$
+points on Qwen (from $-11$ to $-9$) and $-24$ points on Llama (from $-24$ to $-23$). Replacing the
+missing Llama gain with the smallest gain of the nineteen finished runs changes little ($-24$, from
+$-24$ to $-23$). Replacing it with the largest, $+51$, lifts the mean to $-9$, with an interval from
+$-24$ to $+21$. In our hands, at this scale, the reward drawn at random destroys the starting
+competence of both families. It does not reproduce the gain that \textcite{shao2025spurious} observe
+on Qwen2.5-Math-7B. Our conditions differ from theirs in almost every respect (size and
+specialisation of the model, task, answer length, number of steps, absence of a KL term), so this
+disagreement does not refute their result.
+
+\subsection{The true reward, in two stages}
+
+With three random seeds, Qwen starts at about 10\% and ends at 36\%, 61\% and 13\%. The mean gain is
+$+26$ points, with an interval from $+2$ to $+51$. On Llama, success starts between 23\% and 25\% and
+ends at 20\%, 48\% and 25\%, a mean gain of $+7$ points, from $-4$ to $+22$. The same program gives
+three very different results: this is flaw F11, same code with another random seed, in miniature.
+
+With two more random seeds, the new Qwen runs end at 13\% and 0\%. Over five random seeds, the mean
+gain falls to $+14$ points, from $-3$ to $+34$: the interval now contains zero. The gain we read
+on Qwen with three random seeds no longer holds. On Llama, the two new runs end at 27\% and 33\%. The
+mean gain is $+6$ points, from $-0.4$ to $+15$: zero stays inside the interval. With five random
+seeds, we cannot say that GRPO improves either model on this task, under these conditions.
+
+\subsection{Hardware and random seed, mixed up}
+\label{sec:llm-materiel}
+
+The Qwen gain with the true reward comes from the two runs made on GPU, random seeds 0 and 1: $+26$
+and $+51$ points. The three true-reward runs that ran on CPU (random seeds 2 to 4) have a mean gain
+of $-2$ points, from $-11$ to $+4$. The four CPU runs with the random reward (random seeds 1 to 4)
+have a mean gain of $-11$ points, from $-11$ to $-10$. On CPU alone, the true reward brings Qwen no
+detectable gain. Data: \file{sim/llm/results/gains\_5.json} and \file{extra\_5.json}.
+
+These figures do not separate two causes. The hardware changed with the random seed: each Qwen
+random seed with the true reward ran on one device only. Two explanations remain open. In the
+first, the chance of the random seeds explains everything: the two favourable random seeds happened to
+fall on the GPU. In the second, the device changes the course of training, through the rounding of the
+computations or through GPU computations that were corrupted but finite and that the first runs
+would not have detected. Five runs do not decide between these explanations.
+
+The logs show that the device already alters the starting measurement. Pass@1 at step 0 depends on
+the base model and the random seed alone, since the reward comes into play only after this first
+evaluation: for a given model and random seed, the two conditions start from the same point if the
+computation is deterministic. They do start from the same point when both runs ran on the same device
+without incident, for example Qwen with random seeds 2, 3 and 4 on CPU. For Qwen with random seed 1, the true-reward run,
+on GPU, starts from \num{0.1025}. The random-reward run, on CPU, starts from \num{0.1175}. For Llama
+with random seed 3, both runs ran on GPU and start from \num{0.25} and \num{0.2425}: the MPS
+computation is not deterministic from one attempt to the next, as deviation 7 had already observed
+(\cref{tab:grpo}).
+
+\paragraph{A run outside the protocol} Deviation 16 (e) planned to run the Llama run with the random
+reward and random seed 4 once on CPU, after all other computations, to learn whether its double
+failure was due to the GPU. The run completed on 21 November 2026, with no recomputation. Its pass@1
+goes from \num{0.2325} at step 0 to \num{0.0025} at step 100
+(\file{sim/llm/results/llama1\_cpu/mul2/random/seed4.jsonl}). The result stays out of every
+statistic, as the deviation had set. It is consistent with a failure due to the GPU without proving
+it, since one run does not separate the device from chance. On CPU, this tenth random-reward
+run behaves like the other nine: success collapses.
+
+\section{The cutoff trap}
+\label{sec:llm-coupure}
+
+\subsection{The diagnosis}
+
+The incident of deviation 4 exposed this trap. During the learning-rate pilot, the share of correct
+answers in the training batch was 0.91 at step 10, while the test pass@1 of the base model was 0.11.
+The diagnosis of deviation 5 (\file{sim/llm/diag/replay\_batch.py}) replays, without training, the
+exact batch of step 10 of the pilot: the four multiplications $48 \times 49$, $14 \times 36$,
+$21 \times 50$ and $45 \times 17$, eight answers each, with the starting Qwen model. The model gives
+5 correct answers out of 32, in line with the test. Yet 23 of the 32 answers reach the 160-token
+limit before giving a result. None of these cut-off answers is correct. Among the 9 complete
+answers, 5 are correct (\cref{fig:grpo-coupure,fig:grpo-truncation}).
+
+\fig{grpo-coupure}{The answers of the Qwen2.5 model with 0.5 billion parameters before any training,
+eight per problem, on the four multiplications of the tenth step of the pilot. A complete correct
+answer is green, a complete wrong answer grey, a cut-off answer red. Most answers reach the 160-token
+limit before giving a result and are scored as wrong.}
+
+\fig[0.8\linewidth]{grpo-truncation}{The same thirty-two answers, as stacked bars: for each problem,
+the share of the eight answers that are complete and correct, complete and wrong, or cut off at 160
+tokens.}
+
+The 0.91 of step 10 was no counting error. The simplest explanation is that the true reward first
+teaches the model to finish before the cutoff, so that the training batch had become easier to
+finish. The reward drawn at random has no such lever, since it never looks at the answer. The
+protocol kept the 160 tokens and added the measurement of the cut-off share, in training and in
+test, before any retained run.
+
+\subsection{What the twenty runs show}
+
+At the start, the share of cut-off answers is high for Qwen and low for Llama: from 71\% to 77\% for
+Qwen, 3\% at most for Llama, according to the evaluation logs at step 0. With the true reward, over
+the ten runs, it ends between 0\% and 29\%. With the coin toss, it ends above one half in six runs out
+of nine, between 2\% and 16\% in the other three. Two Llama runs with the random reward end with
+99\% and 100\% of answers cut off. A third cuts off only 2\% and no longer gives any correct
+answer: the reward drawn at random does more than make the answers overrun the limit.
+
+A cut-off answer counts as wrong. A model that learns to answer more briefly therefore gains pass@1
+points without computing any better. Part of the gain measured with the true reward may come from
+this detail of the benchmark: learning to stop in time. Our logs do not measure the accuracy of the
+complete answers alone at each evaluation, so we cannot put a figure on this part. For Qwen, whose
+starting answers are cut off more than 70\% of the time in the test, it may be large.
+
+\begin{keybox}
+\textbf{Lesson for a language-model benchmark.} A length limit turns a measure of accuracy into a
+mixed measure of accuracy and concision. A paper that reports a pass@1 gain is read together with the
+length limit, the share of cut-off answers before and after training and the accuracy of
+the complete answers. Without these three numbers, the reader does not know what the gain measures.
+\end{keybox}
+
+\section{What this strand establishes and what it does not}
+\label{sec:llm-portee}
+
+This strand establishes three facts, for two small models, one multiplication task and 100 steps.
+With the true reward, the spread between random seeds is as large as the mean gain, as in the
+classical RL of 2018. A reward drawn at random makes the success of both families collapse. Part of
+the apparent gain may come from the length limit, which the protocol had not anticipated.
+
+The strand establishes neither the effect of GRPO at the scale of the papers nor the absence of the effect of
+\textcite{shao2025spurious} on larger models or on models specialised in mathematics. It does not
+separate the effect of the hardware from that of the random seed for Qwen. The limits that follow
+are taken up in \cref{chap:10-limites}.

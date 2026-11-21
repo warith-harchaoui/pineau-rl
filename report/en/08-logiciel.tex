@@ -1,0 +1,405 @@
+\chapter{Software and reproducibility}
+\label{chap:08-logiciel}
+
+In 2018, Pineau asked for work that is reproducible, reusable and robust. This chapter describes how
+the project repository, \repo, tries to meet these three demands. It presents the layout of the
+repository, the Python package that gathers the reusable computations, the file formats, the
+mechanical check of every published number, the tests, continuous integration, the frozen
+environments, the hardware and the compute used. A last section states what the repository lacks and
+how to obtain it.
+
+\section{Repository layout}
+\label{sec:depot}
+
+The repository follows a one-way flow, from runs to documents (\cref{fig:architecture}). A run writes
+a raw result file: an evaluation curve in CSV format for a simulation, a JSONL log for a GRPO run, a
+JSON reading file for a paper of the survey. An analysis script reads these files and writes a JSON
+result file. Two checking scripts then recompute every number of the texts from these JSON files.
+Every number in a document comes from them.
+
+\fig{architecture}{The repository, first part: from runs to JSON files. Training runs write the raw results (CSV, JSONL, logs). The analysis scripts, built on the \file{pineau\_rl} package, derive one JSON file per experiment from them. \texttt{make analysis} redoes this whole chain without any training.}
+
+\fig{architecture-2}{The repository, second part: from JSON files to documents. \file{check\_numbers.py} and \file{check\_article.py} hold every number of the texts against its JSON file, \file{tools/tables.py} generates the tables of this report. \texttt{make verify} chains analyses, checks and tests, then confirms that every JSON file comes back identical. Continuous integration reruns this path at every push to GitHub.}
+
+\begin{table}[tbp]
+\centering
+\small
+\caption{The directories of the repository and their role.}
+\label{tab:depot}
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+\toprule
+Path & Content \\
+\midrule
+\file{study/} & The survey: protocol (\file{PROTOCOL.md}), reader's sheet (\file{GRILLE.md}),
+  draws, readings (\file{codes/}, \file{codes\_v2/}), harmonisation (\file{overrides*.json}),
+  provenance of the readers (\file{readers/}), analysis scripts and JSON result files. \\
+\file{sim/} & The simulations: protocol (\file{SIM\_PROTOCOL.md}), one run (\file{run.py}), a
+  re-evaluation under modified physics (\file{dose.py}), run lists (\file{jobs*.txt}), launchers and
+  watchdog (\file{drive.sh}, \file{queue.sh}, \file{worker.sh}, \file{scale.sh},
+  \file{watchdog.sh}), curves (\file{results/}), logs (\file{logs/}), final policies
+  (\file{models/}). \\
+\file{sim/analysis/} & One script and one JSON file per experiment (E1 to E7, B1, B3, dose,
+  Bonferroni correction), with their variants at twenty random seeds and at equal budget. \\
+\file{sim/llm/} & The GRPO strand: protocol, \file{grpo.py}, launchers, diagnostics
+  (\file{diag/}), logs, results and \file{summary.py}. \\
+\file{src/pineau\_rl/} & The Python package of reusable computations (\cref{sec:paquet}). \\
+\file{tests/} & The unit tests (\cref{sec:tests}). \\
+\file{envs/} & The frozen environments, the platform and the document toolchain
+  (\cref{chap:D-environnements}). \\
+\file{docs/} & The summary document in two languages, its bibliography, its figures and
+  \file{check\_numbers.py}. \\
+\file{article/} & The blog article in two languages, its figures and \file{check\_article.py}. \\
+\file{report/} & This technical report, its generated tables and its figures. \\
+\file{tools/} & \file{compare\_results.py}, which compares JSON files value by value. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{The \texttt{pineau\_rl} package}
+\label{sec:paquet}
+
+The computations that serve several scripts form an installable Python package,
+\file{src/pineau\_rl/}, version 1.0.0, under the BSD 3-Clause licence. Its only dependencies are
+NumPy, SciPy, statsmodels and rliable. Every analysis script imports it. The \file{Makefile} puts
+\file{src/} on Python's search path, so the scripts run without installing the package. Submodules
+load on demand: \texttt{import pineau\_rl.stats} does not load rliable. The package has four public
+modules (\texttt{stats}, \texttt{bootstrap}, \texttt{runs}, \texttt{grid}) and a formatting module
+(\texttt{fmt}).
+
+\subsection{\texttt{pineau\_rl.stats}}
+
+This module gathers the statistics of the survey and of the experiments. Every function is
+deterministic. The module header warns that the computations follow the exact order of the original
+scripts, so that the result files regenerate byte for byte: simplifying an expression changes the
+last digit of a result.
+\begin{itemize}
+  \item \texttt{wilson(k, n, z=1.96)} and \texttt{wilson\_ci(k, n, alpha=0.05)}: the interval of
+        \textcite{wilson1927probable} for a proportion $k/n$. With $\hat p = k/n$, its centre is
+        $(\hat p + z^2/2n)/(1 + z^2/n)$ and its half-width
+        $z\sqrt{\hat p(1-\hat p)/n + z^2/4n^2}\,/(1 + z^2/n)$. The second function delegates to
+        statsmodels, with $z = \Phi^{-1}(1-\alpha/2)$.
+  \item \texttt{newcombe\_diff(ka, na, kb, nb)}: the 95\% interval for the difference of two
+        proportions by the hybrid method of \textcite{newcombe1998interval}, built from the two
+        Wilson intervals $(l_a, u_a)$ and $(l_b, u_b)$:
+        $d - \sqrt{(\hat p_a - l_a)^2 + (u_b - \hat p_b)^2}$ and
+        $d + \sqrt{(u_a - \hat p_a)^2 + (\hat p_b - l_b)^2}$, with $d = \hat p_a - \hat p_b$.
+  \item \texttt{fisher(ka, na, kb, nb)}: the two-sided $p$-value of Fisher's exact test on the
+        $2 \times 2$ table.
+  \item \texttt{compare(a, b)}: the two previous functions combined, \texttt{\{diff, lo, hi, p\}}, at
+        full precision.
+  \item \texttt{holm(pvalues)}: the $p$-values adjusted by the step-down procedure of
+        \textcite{holm1979simple}, $\tilde p_{(i)} = \min\bigl(1, \max_{j \le i}(m-j+1)\,p_{(j)}\bigr)$.
+  \item \texttt{cochran\_armitage(k, n, x)}: the test for a linear trend in proportions
+        \parencite{armitage1955tests}. With $\bar p = \sum k_i / \sum n_i$ and
+        $\bar x = \sum x_i n_i / \sum n_i$, the statistic is
+        $z = \sum x_i (k_i - n_i \bar p) \big/ \sqrt{\bar p(1-\bar p)\sum n_i (x_i - \bar x)^2}$.
+  \item \texttt{cohen\_kappa(a, b)}: the kappa of \textcite{cohen1960coefficient},
+        $(p_o - p_e)/(1 - p_e)$, \texttt{None} when $p_e = 1$.
+  \item \texttt{probability\_of\_improvement(x, y)}: $P(X > Y) + \tfrac12 P(X = Y)$ over all pairs
+        of runs, which is the Mann-Whitney $U$ statistic divided by $n_x n_y$
+        \parencite{agarwal2021precipice}.
+  \item \texttt{welch\_curve(a, b)}, \texttt{welch\_pooled(a, b)} and
+        \texttt{henderson\_script(M, S, a, b, n)}: the three readings of the statistic of
+        \textcite{henderson2018matters} studied by experiment B1. The first applies the test of
+        \textcite{welch1947generalization} at each evaluation point, then averages the $t$ values or
+        the $p$-values. The second stacks all the points of the curves as independent observations.
+        The third redoes the computation of the script \file{from\_same\_dist.py}
+        \parencite{henderson2017samedist}: a Welch test built from the means and standard deviations
+        across episodes, into which the spread between random seeds never enters.
+\end{itemize}
+
+\begin{lstlisting}[language=Python,caption={The computation of Henderson's script, in \texttt{pineau\_rl.stats}.},captionpos=b]
+def henderson_script(M, S, a, b, n):
+    t, p = _st.ttest_ind_from_stats(M[a].mean(0), S[a].mean(0), n,
+                                    M[b].mean(0), S[b].mean(0), n, equal_var=False)
+    return t.mean(), p.mean()
+\end{lstlisting}
+
+\subsection{\texttt{pineau\_rl.bootstrap}}
+
+The bootstrap module wraps the stratified bootstrap intervals of rliable \parencite{agarwal2021precipice}.
+\texttt{iqm(x)} returns the interquartile mean, the mean of the middle half of the scores.
+\texttt{iqm\_interval(scores, reps=2000)} returns, for each group of runs, the interquartile mean and
+its 95\% percentile bootstrap interval. \texttt{improvement\_interval(x, y, reps=2000,
+confidence=0.95)} returns the probability of improvement and its interval, at the requested level:
+the Bonferroni analysis of deviation 18 of the simulations uses it with $1 - 0.05/24$.
+\texttt{probability\_of\_improvement\_bootstrap(x, y, rng)} resamples $x$ and $y$ with an explicit
+NumPy generator, without rliable.
+
+A defect of rliable 1.2.0 dictates how this module is used. The library accepts a
+\texttt{random\_state} argument but draws its resamples from NumPy's global generator (deviation 13
+of the simulations). A script therefore seeds this generator once, at the start
+(\texttt{np.random.seed(2026)}), then calls the functions in a fixed order: each call consumes the
+global generator, so an interval depends on the calls that precede it. The module imports rliable
+as soon as the module itself loads, never inside a function, so that no import happens after the
+random seed is set.
+
+\subsection{\texttt{pineau\_rl.runs}}
+
+The runs module defines the format of a simulation run (\cref{sec:formats}) and its readers.
+\texttt{run\_path(root, algo, task, seed)} gives the path of a run. \texttt{read\_run(path,
+final\_step=None, upto=None)} reads a file and checks it: required columns present, steps strictly
+increasing. It returns \texttt{None} for a missing file or an unfinished run. The argument
+\texttt{upto} cuts the curve at a smaller budget, which serves the equal-budget analysis.
+\texttt{write\_run(path, rows)} writes the format from any library. \texttt{finals(\dots)} returns the
+score of each random seed at the requested step, \texttt{load\_grid(\dots)} the full grid
+\texttt{\{task: \{algorithm: scores\}\}} with the list of missing pairs.
+
+\subsection{\texttt{pineau\_rl.grid}}
+
+The grid module reads the survey grid. It defines the lists of criteria (\texttt{V1}: Q1 to Q8 and X1 to
+X7; \texttt{V2}: Y1 to Y12), the integer criteria (\texttt{INT}: X1, X6, Y3), the allowed values and
+the kinds of uncertainty of Y11 (\texttt{KINDS}). \texttt{load\_reads(root, readers)} loads the
+reading files, \texttt{load\_overrides(path)} the harmonisation. The final value of a criterion
+follows one of two semantics, kept apart because the scripts differ: \texttt{value\_v1} (one reading
+and its harmonisation) and \texttt{value} (the reading of the v2 grid when it has the criterion,
+otherwise that of the v1 grid, with Y3 turned into yes or no from 2 upward). \texttt{tally(values)}
+returns the numerator and the denominator of a share, \texttt{na} values excluded.
+\texttt{validate(rec, \dots)} checks a reading file (\cref{sec:formats}).
+
+\subsection{\texttt{pineau\_rl.fmt}}
+
+Numbers come out of this module the way the texts write them. \texttt{half\_up(x, nd)} rounds half away
+from zero, as a human reader does ($1.15 \to 1.2$), whereas Python's \texttt{round} rounds half to
+even. The float goes through its shortest representation, so that 1.15 stays 1.15. \texttt{pct},
+\texttt{num}, \texttt{ci} and \texttt{pts} produce a share as a percentage, an integer with a
+thousands separator, an interval in whole points and the signed bounds of a difference, in French or
+English style.
+
+\section{File formats}
+\label{sec:formats}
+
+\paragraph{A simulation run} The file \file{sim/results/<algo>/<task>/seed<k>.csv} holds one
+run, that is one program, task and random seed, with one line per evaluation:
+\begin{lstlisting}
+step,eval_mean,eval_std,perturbed_mean,wall
+50000,329.39900605740297,26.605081154353954,,85.5
+100000,690.435139859871,70.99379344477602,,188.4
+\end{lstlisting}
+\texttt{eval\_mean} and \texttt{eval\_std} give the mean and the standard deviation of the returns of
+the ten evaluation episodes, \texttt{perturbed\_mean} the mean return under modified physics (empty
+when not measured), \texttt{wall} the elapsed seconds. A run is finished when its last step reaches
+the program's budget. The two lines above are the first of PPO PyTorch on \task{HalfCheetah},
+random seed 0.
+
+\paragraph{A GRPO run} One JSONL file per model, reward and random seed
+(\cref{chap:07-modeles-de-langue}). Evaluation lines contain \texttt{step}, \texttt{greedy},
+\texttt{pass1}, \texttt{pass8} and \texttt{truncated}. Training lines, every ten steps, contain
+\texttt{train\_right}, \texttt{truncated}, \texttt{loss}, \texttt{grad\_norm}, \texttt{retries} and
+\texttt{wall}.
+
+\paragraph{A paper reading} One JSON file per paper and per reader, stored under
+\file{study/codes\_v2/} in the reader's directory. For each criterion, it holds the value, an exact
+quotation from the paper and its page, or the statement \enquote{absent after reading the
+experiments, appendices and links} with a null page (\cref{chap:A-grille}):
+\begin{lstlisting}
+{"id": "K001", "coder": "H", "title": "...",
+ "criteria": {
+  "Q1":  {"value": "yes", "quote": "We evaluate on six MuJoCo tasks", "page": 6},
+  "X1":  {"value": 5, "quote": "averaged over 5 random seeds", "page": 7},
+  "Y11": {"value": "yes", "kind": "se",
+          "quote": "shaded areas denote one standard error", "page": 7}},
+ "doubts": "..."}
+\end{lstlisting}
+
+\paragraph{The validator} \texttt{pineau\_rl.grid.validate} returns the list of problems in a reading
+file, empty when the file is valid. It checks the schema: every criterion present, values
+\texttt{yes}, \texttt{no} or \texttt{na}, integers or \texttt{null} for X1, X6 and Y3, an X5 family
+among \texttt{llm}, \texttt{classic} and \texttt{theory}, a \texttt{kind} field when Y11 is yes, a
+quotation for every criterion. It checks the scope rules of deviations 3 and 14 of the protocol: Q1
+set to no forces \texttt{na} everywhere; Y2 and Y11 are \texttt{na} if and only if X2 is no; Y4 is
+\texttt{na} when Y3 is 1; Y5 is \texttt{na} if and only if Q4 is \texttt{na}. Given a function that
+searches the text of the PDF, it finally checks that every quotation appears there. The function
+\texttt{segments} first removes the reader's notes in square brackets, splits a quotation stitched
+together with \enquote{[...]} into pieces and ignores pieces shorter than twelve letters. The script
+\file{study/check\_codes.py} applies this check with the PDFs. The reader's sheet asks each reader to
+run it on their files until it reports zero problems.
+
+\section{Every number checked against its file}
+\label{sec:verification}
+
+Two scripts check the published texts. They read no number typed by hand: they recompute it.
+
+\paragraph{\file{docs/check\_numbers.py}} For each numerical claim of the summary document, the
+script recomputes the value from a result file, formats it as each language writes it
+(\texttt{pineau\_rl.fmt}), then searches the text for the resulting string, with spaces and line
+breaks normalised. A few survey counts that the analysis scripts do not write are recounted from
+the readings, with the same rules. Assertions protect the qualitative facts, for example the name of
+the task on which the leader changes under modified physics. The script checks 188 claims in the two
+languages and stops at the first missing number, so \file{docs/build.sh} does not compile a document
+in which a figure has drifted.
+
+\begin{lstlisting}[language=Python,caption={One claim of \file{docs/check\_numbers.py}: the expected string is built from the data, never typed.},captionpos=b]
+add("agreement",
+    f"{same} décisions sur {total} ({pct(same / total)})",
+    f"{same} decisions out of {total} ({pct(same / total, lang='en')})")
+\end{lstlisting}
+
+\paragraph{\file{article/check\_article.py}} The script of the blog article adds a coverage check.
+Each claim builds, from a result file, the sentence that the two languages write, then searches the
+text for it. The few numbers without a file (a slide, a cited paper, a sample size) are searched for
+in the summary document. The script then removes from the text all checked sentences and the proper
+names that contain digits: any number left over is a failure. The bibliography lines are confronted
+with the file \file{docs/refs.bib}. The article has 161 checked claims in each language.
+
+\section{The targets of the \file{Makefile}}
+\label{sec:make}
+
+The \file{Makefile} trains nothing. Training goes through \file{sim/run.py}, \file{sim/drive.sh} and
+\file{sim/llm/grpo.py}.
+
+\begin{description}[style=nextline,leftmargin=1.5em]
+  \item[\texttt{make install}] installs the package in editable mode in the analysis environment,
+        with no dependency downloaded: they come from \file{envs/analysis.lock}.
+  \item[\texttt{make analysis}] reruns every analysis script, in dependency order: the nine of the
+        survey, the sixteen of the simulations at ten random seeds, the statistical analysis of the
+        official Zoo pipeline, the variants of deviation 12 (twenty random seeds, replication of E4
+        on random seeds 10 to 19, equal budget), then \file{summary.py} at three and at five random
+        seeds. The variants are selected through environment variables (\texttt{SEEDS},
+        \texttt{SUFFIX}, \texttt{BUDGET}).
+  \item[\texttt{make check}] runs the two checking scripts of \cref{sec:verification}.
+  \item[\texttt{make test}] runs the unit tests with pytest.
+  \item[\texttt{make lint}] runs ruff and mypy on the package and the tests.
+  \item[\texttt{make verify}] chains \texttt{analysis}, \texttt{check} and \texttt{test}, then asks
+        git whether every JSON result file has come back byte for byte.
+  \item[\texttt{make verify-head}] does the same in a fresh export of the last commit, without the
+        policies, the Zoo runs or the training logs, which no analysis reads. This target leaves
+        untouched a working copy in which runs are still writing.
+  \item[\texttt{make figures}] regenerates the figures of the summary document
+        (\file{docs/figures/build.py}).
+  \item[\texttt{make docs}] runs \texttt{check}, then builds the summary document
+        (\file{docs/build.sh}).
+  \item[\texttt{make report}] builds this report (\file{report/build.sh}): tables generated from
+        the JSON files, figures, then LuaLaTeX and biber, in French and in English.
+\end{description}
+
+\begin{lstlisting}[language=bash,caption={Recomputing every number from the committed results, without training.},captionpos=b]
+python3.11 -m venv sim/env-an
+sim/env-an/bin/pip install -r envs/analysis.txt -r envs/test.txt
+make verify          # analyses, numbers of the texts, tests, byte-for-byte diff
+make verify-head     # the same in a fresh export of the last commit
+\end{lstlisting}
+
+\section{Continuous integration}
+\label{sec:ci}
+
+The file \file{.github/workflows/verify.yml} replays the verification on every push and every pull
+request, on two platforms. The GitHub actions it uses are pinned to a commit hash, since a tag can be moved. Each
+job installs the analysis environment from \file{envs/analysis.lock}, with every package checked
+against its SHA-256 hash (\texttt{pip install -{}-require-hashes}), then installs the package, runs
+the tests, reruns all the analyses, checks the numbers of the texts and compares every result file
+with the commit using \file{tools/compare\_results.py}.
+\begin{itemize}
+  \item On Ubuntu 24.04 (x86-64), with Python 3.11.18, the version the author used, the comparison
+        accepts a relative difference of $10^{-12}$ on floats. It requires equality of counts,
+        verdicts, rankings and all strings. The $p$-values move in their fifteenth or sixteenth digit
+        with the mathematics library.
+  \item On macOS 15 (arm64), the family of machines that produced the results, the comparison
+        requires exact equality.
+\end{itemize}
+A third job builds the image of the \file{Dockerfile} and runs the tests and the number check in it.
+The image starts from \texttt{python:3.11-slim}, pinned by hash, installs the same locked file and
+mounts the repository at launch instead of copying it, so the same image serves any commit.
+
+\section{Tests}
+\label{sec:tests}
+
+The \file{tests/} directory holds eight test files and one file of shared helpers
+(\file{conftest.py}). The tests import the package and the thin layer \file{sim/analysis/runs.py},
+never an analysis script, which computes as soon as it is imported. The tests combine three kinds of
+checks: values published in the literature, an independent computation (statsmodels, SciPy,
+NumPy) and reference values on synthetic data, frozen to a relative $10^{-12}$. A reference value
+that changes announces a result file that changes.
+
+\begin{description}[style=nextline,leftmargin=1.5em]
+  \item[\file{test\_stats.py}] Wilson against a published value, against statsmodels and on its
+        properties (the interval contains the share and stays within $[0,1]$, it is symmetric, it
+        widens at 99\%); Newcombe against a published value and rebuilt from the two Wilson
+        intervals; Fisher against SciPy; Holm computed by hand and its properties; Cochran-Armitage
+        equal to $\sqrt N$ times the Pearson correlation between score and outcome; Cohen's kappa
+        and its list of categories; the probability of improvement.
+  \item[\file{test\_bootstrap.py}] the interquartile mean; the rliable intervals, identical under a
+        fixed global random seed and dependent on that random seed alone; the bootstrap probability of
+        improvement, which uses only its own generator.
+  \item[\file{test\_henderson.py}] the three readings of Henderson's statistic against SciPy; the
+        $p$-value of the mean $t$ with the mean Welch degrees of freedom; the computation of the
+        script, which ignores the spread between random seeds: on six synthetic random seeds, it
+        reaches a $t$ of 9 where a test over the random seeds sees nothing.
+  \item[\file{test\_runs.py}] the format of a run: writing then reading, missing or unfinished runs
+        returned as \texttt{None}, malformed files that raise an error, final scores and reference
+        grid.
+  \item[\file{test\_grid.py}] the two value semantics, the conversion of Y3, the harmonisation, the
+        validator (valid file, each problem reported, scope rules, quotations) and the splitting of
+        quotations.
+  \item[\file{test\_formatting.py}] rounding half away from zero, percentages, thousands, intervals
+        and the minus sign of both languages.
+  \item[\file{test\_pipelines.py}] the reading of runs by \file{sim/analysis/runs.py} and the GRPO
+        summary from end to end, on three synthetic random seeds: an unfinished run is set aside, while
+        the mean gain and the bootstrap interval match their expected values.
+  \item[\file{test\_draw.py}] the 2026 draw comes back from its rule (\file{study/draw\_2026.py}) and
+        depends on its random seed.
+\end{description}
+
+\section{Frozen environments}
+\label{sec:envs}
+
+Four Python environments ran the project, all under Python 3.11.18. Each file in \file{envs/} is the
+\texttt{pip freeze} of one of them, taken on 15 November 2026, with the Python version and the
+platform at the top. The \file{*.lock} files add the SHA-256 hash of each package.
+\Cref{chap:D-environnements} gives the versions. The training environment (\file{envs/train.txt})
+serves \file{run.py} and \file{dose.py}, the analysis environment (\file{analysis.txt}) the analyses,
+the verification and continuous integration, the Zoo environment (\file{zoo.txt}) the official
+pipeline of experiment E6, the language-model environment (\file{llm.txt}) GRPO and the figures
+of the summary document. A fifth file, \file{test.txt}, adds pytest to the analysis environment.
+
+\section{The trained policies}
+\label{sec:release}
+
+The final policies let anyone re-evaluate an agent without retraining it, as the graded
+re-evaluation in modified physics did (\file{sim/dose.py}). Those of PPO, TRPO and experiment E6 are
+in the repository. The weights of SAC and CrossQ, too heavy for git, are attached to the GitHub
+release \texttt{policies-v1}, as tar archives listed with their SHA-256 hash in a \file{SHA256SUMS}
+file. The script \file{sim/fetch\_models.py} downloads each archive, checks its hash, unpacks it
+under \file{models/}, then checks each policy file against \file{sim/models/MANIFEST.sha256}, the
+hashes taken on 15 November 2026 on the machine that trained them. The downloads run one after
+another, separated by a random pause of 1.5 to 4 seconds. A refused request waits according to an
+exponential backoff with full jitter, five attempts at most.
+
+\begin{lstlisting}[language=bash,caption={Fetching and checking the policies of SAC and CrossQ.},captionpos=b]
+cd sim && python3 fetch_models.py          # download, unpack, check everything
+cd sim && python3 fetch_models.py --check  # only check the policies already present
+\end{lstlisting}
+
+\section{Hardware and compute}
+\label{sec:log-calcul}
+
+All runs ran on one laptop, a Mac with an Apple M2 Max chip under macOS 27.2 (arm64), shared
+with other projects. Each simulation training runs on a single thread. The number of jobs in
+parallel changed over the project without affecting the results, since each run is determined by its
+random seed: four cores at the start, up to eight granted every hour according to the load of the
+machine (deviation 15 of the simulations), then two cores for the whole project from 19 November 2026
+(deviation 19). \Cref{sec:calcul} describes the launchers, the watchdog and the job queue.
+\Cref{tab:calcul} gives, per program and per task, the number of runs, the number of steps, the
+median duration of a run and the core-hours consumed.
+
+The GRPO runs have very different durations depending on the device. According to the \texttt{wall}
+field of their logs at step 100, a Qwen run took 42 to 52 minutes on GPU and 4.3 to 11.4 hours on
+CPU, a Llama run 69 to 148 minutes on GPU. These spreads also reflect the varying load of the
+machine.
+
+\section{What is not in the repository}
+\label{sec:absent}
+
+The PDFs of the papers read are protected by copyright. The script \file{study/fetch.py} downloads
+them again from the public sources (\texttt{cd study \&\& python3 fetch.py final\_2026.json pdf}).
+Pineau's slides are not in the repository for the same reason: they are on the websites of ICLR 2018
+and NeurIPS 2018. The file \file{slides-en.md} describes them one by one. The logs of the working
+sessions with the agents that read the papers are not public. The exact instructions, the model and
+the dates of each reader, reconstructed from these logs, are public (\file{study/readers/}).
+
+\section{Licence and citation}
+\label{sec:licence}
+
+The code, the protocols, the derived data and the documents are published under the BSD 3-Clause
+licence, the licence of scikit-learn (file \file{LICENSE}, Copyright (c) 2026, Warith Harchaoui). The
+file \file{CITATION.cff} gives the reference, which GitHub offers in APA and BibTeX.

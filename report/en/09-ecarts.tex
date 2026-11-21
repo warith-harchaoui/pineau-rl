@@ -1,0 +1,249 @@
+\chapter{Deviations from the protocols}
+\label{chap:09-ecarts}
+
+A protocol written in advance protects a result only if every later change is visible. This chapter
+describes the rule we followed, what a reader can check of it and what rests on our word. It then
+gives the complete list of deviations from the three protocols and discusses those that weigh most
+on the results.
+
+\section{The principle}
+\label{sec:ecarts-principe}
+
+The three protocols date from 8 November 2026: the survey protocol (\file{study/PROTOCOL.md}),
+written before any paper was read, the simulation protocol (\file{sim/SIM\_PROTOCOL.md}) and the
+protocol of the GRPO strand (\file{sim/llm/LLM\_PROTOCOL.md}), both written before any training.
+Each one fixes the question, the population or the runs, the measures and the analyses. Every later
+change is appended at the bottom of the file, in a numbered list of \enquote{deviations}. The body
+of the protocol is never rewritten.
+
+Each deviation records three things: its date, its reason and what we had already seen when we
+decided it. The third matters most. A rule fixed before a result is seen cannot have been chosen to
+suit that result. A rule fixed afterwards may have been. The deviations therefore say
+\enquote{BEFORE} or \enquote{AFTER}, in capitals, with the exact object of the comparison:
+before any training, after the PPO and SAC results but before any CrossQ result, after the values
+at step 100 were displayed but before any gain was computed. Three rules complete the arrangement.
+No run is removed. A run that crashes is relaunched once with the same random seed, then the
+incident is recorded. Once an analysis has been announced, its result is published whatever it is.
+
+The three protocols list 66 deviations: 29 for the survey, 20 for the simulations, 17 for the GRPO
+strand. \Cref{tab:ecarts} summarises all of them. \Cref{fig:frise-ecarts} places them in time,
+from 8 to 21 November 2026.
+
+\section{What rests on our word}
+\label{sec:parole}
+
+A reader can recompute every number from the committed results (\cref{chap:08-logiciel}) and check
+every survey decision against the quotation and the page it rests on. A reader cannot check, unaided,
+the order in which things were written.
+
+The repository became public on 15 November 2026. Its first commit, dated 9 November at 06:07,
+already holds results next to the protocols. For everything before 15 November, the order of writing
+rests on our word and on the commit dates, which their author could have forged. A critical review of
+the public repository also found several \enquote{before}/\enquote{after} statements that were wrong
+in their details. The corrections are dated and published: deviation 14 of the simulations,
+deviation 15 of the GRPO strand. They show that the rule was applied with errors. The reader learns
+this before deciding how far to trust the other statements.
+
+The repository offers three supports for that trust. The evaluation logs of every run are committed,
+including those of stopped runs when they were not overwritten. The attempt ledger lists every
+training launch. The provenance of the survey readers (instructions, model, dates, papers written)
+is reconstructed from the transcripts and published in \file{study/readers/} (survey deviation 28).
+
+\section{The attempt ledgers}
+\label{sec:registres}
+
+The simulation protocol states that a run that crashes is relaunched once and the incident recorded.
+Until 15 November, no ledger kept track of every launch. The reconstructed ledger,
+\file{sim/logs/attempts\_reconstructed.csv}, rests on the creation dates of the logs, the outputs of
+the launchers, the committed versions and our session logs. It gives one line per attempt:
+algorithm, task, random seed, attempt number, start, end, outcome, score seen before the relaunch and
+evidence. Simulation deviation 14 (e) draws up the balance: 292 launches for the 250 training runs of
+the first phase, 42 attempts stopped (only 2 of them declared) and none crashed. Every stop hit all
+the runs in progress at once. No run was relaunched or discarded after its final score was known. For
+PPO PyTorch and PPO JAX, the relaunches reproduce the evaluation points of the stopped attempts
+identically. For SAC and CrossQ, the stopped curves were overwritten and do not allow this check.
+
+Since 15 November, the launcher \file{queue.sh} keeps one log per attempt, never overwritten. It
+appends each attempt to the ledger \file{sim/logs/attempts.jsonl}: start, end, exit code, SHA-256
+fingerprint of the result. The watchdog writes into the ledger every job it stops. A stop by signal
+is no longer relaunched automatically. The stopped GRPO runs are recorded there too.
+
+\section{The list of deviations}
+\label{sec:liste-ecarts}
+
+\gentable{ecarts}
+
+\fig{frise-ecarts}{The protocols and their dated deviations, from 8 to 21 November 2026. One line per
+protocol (survey, simulations, GRPO strand). Each mark is a deviation, placed at its date. Its shape
+shows whether it was written before or after the results it concerns.}
+
+\section{Deviations of the survey}
+\label{sec:ecarts-sondage}
+
+\paragraph{Harmonisation (deviations 1 to 6, 15 and 19)} The decision rules of the protocol left
+borderline cases open. Deviations 1 to 6, recorded during reading and before any percentage, fix
+the most frequent ones: X4 requires a described setting for the baselines, X7 an amount of compute,
+Q5 a link that leads to code. Each change is recoded from the quotation, in a harmonisation file
+(\file{overrides.json}, \file{overrides\_v2.json}) that gives the reason for every modified value.
+Agreement between readers is always computed on the raw readings, before harmonisation. Deviation 15
+corrects a mistake of ours, seen after the percentages: the harmonisation rules had been applied
+only to the 2026 papers. The same rules, with no new rule added, were then applied to the twelve
+2018 papers of the calibration. Deviation 19 applies the harmonisation of grid v2 to both years,
+after an audit of the raw readings and before any percentage: 80 changes, each with its reason. For
+X3, X4 and X7, no new rule was added, so that both years are read with the same grid. Borderline
+cases stay coded as the reader read them.
+
+\paragraph{Grid v2 and its planning (deviations 11, 14, 16 and 17)} Grid v1 measured only part of the
+flaws. Grid v2, Y1 to Y12, was written on 9 November 2026 before any v2 reading (deviation 11), its
+decision rules the same day (deviation 14). They were made more precise after a pilot on three papers
+(deviations 16 and 17), still before the main coding. The work plan that precedes these deviations,
+\file{study/planification\_v2.md}, was kept as it was and made public on 15 November 2026. For each
+flaw, it states which v2 criteria are meant to move the verdict out of the \enquote{to be measured}
+state.
+
+\paragraph{The enlargement (deviation 12)} The power audit of the first draw shows that twelve 2018
+papers and fourteen classical RL papers from 2026 are too few to detect a gap of thirty points.
+Deviation 12, written before any draw and before any of the added papers was read, raises each of
+the two samples to 50 papers and fixes the main comparison: classical RL in 2026 against our own
+reading of 2018, with the same grids. The papers of the 2026 queue go through a title screen that
+sets aside titles presumed to concern large language models. \Cref{chap:10-limites} discusses its
+effect.
+
+\paragraph{The verdict rule (deviation 20)} Of all the survey deviations, this one weighs most on the
+conclusions. It was decided after the first results of the enlarged reading had been seen. Until
+then, a criterion counted as changed when the gap held against Pineau's figures. The secondary
+comparison shows that our grid reads 2018 differently from her: 55\% against 90\% for the
+hyperparameters of the method (Q3), 33\% against 10\% for the held-out evaluation (Q7).
+Comparing 2026 with her figures would mix the change in practices with the change in reading. Since
+this deviation, a verdict rests only on the main comparison of deviation 12, fixed before any of the
+added papers was read. The comparisons with Pineau are still shown, as context. The change of rule is
+declared as decided after the results. The comparison it retains had been fixed before them.
+
+\paragraph{The human review dropped (deviations 13 and 23)} Deviation 13 planned for Warith Harchaoui
+to reread ten 2026 papers alone, blind, on seven criteria. Deviation 23 dropped that plan on
+10 November 2026, before any rereading. As a result, no human reread the papers. Every decision can
+still be checked against its quotation. The folder \file{study/relecture\_humaine/} is kept as a
+trace of the plan.
+
+\paragraph{Analyses written in response to review (deviations 21, 22, 24 to 29)} After the results,
+several analyses were added to answer objections. Each was written before its own computation and
+published whatever it showed: the robustness cuts and the test of the cost thesis (deviation 21), the
+checklists declared by the authors (deviation 22), the title filter (deviation 24), the yearly
+trajectory and its second reading (deviations 25 and 26), the mechanical search against the
+\enquote{no} decisions (deviation 27), the provenance of the readers (deviation 28) and the removal of
+the thirteen papers partly read by another model (deviation 29). Deviation 21 removed one reading
+from the document: the thesis \enquote{Pineau was heard where it cost little} fails the correlation
+test that the deviation announced (\cref{chap:04-sondage-resultats}).
+
+\section{Deviations of the simulations}
+\label{sec:ecarts-sim}
+
+\paragraph{The budget (deviation 1)} SAC and CrossQ train for 200{,}000 steps instead of 300{,}000, a
+decision taken before the first training to keep the compute within reach. PPO keeps its million
+steps. This deviation creates the comparison at unequal budgets, which deviation 12 (iii) then
+corrects with a reading at equal budget.
+
+\paragraph{B3, written along the way (deviation 8)} Experiment B3, which asks whether the measure
+(final score, best score, mean of the curve) changes the ranking, was written on 10 November 2026,
+after the PPO and SAC results. It trains nothing: it rereads the curves already recorded. Deviation 8
+dated it \enquote{BEFORE any CrossQ result}. Deviation 14 (b) corrects that account, since seven
+CrossQ runs had finished when B3 was written. Our session logs, which are not public, show that no
+CrossQ score had been read. The exact wording becomes \enquote{before looking at any CrossQ result}.
+Deviation 7, which fixes the details of E2, E4 and E5, receives the same correction.
+
+\paragraph{The descriptive ranking under modified physics (deviation 11)} The most quoted reversal of
+the blog article, PPO JAX first on \task{Hopper} in the training physics and last in the modified
+physics, comes from a complement decided after the E7 results had been seen, without a test
+(\file{analysis/e7\_rank.py}). The document presents it as such. The graded re-evaluation of
+deviation 12 (ii), written before any new computation, then put this reversal to the test: PPO JAX is
+no longer first on \task{Hopper} in 10 of the 12 modified physics.
+
+\paragraph{The consolidation (deviation 12)} Written on 15 November 2026, before any new training and
+any new evaluation, this deviation adds three analyses with the same code and the same settings:
+twenty random seeds per pair (160 training runs), the re-evaluation of every policy under masses and
+friction modified by degrees, plus the reading of PPO at 200{,}000 steps, the budget of SAC and
+CrossQ. The results at ten random seeds remain the main results. \Cref{chap:06-experiences-resultats} gives both
+next to each other and states every divergence.
+
+\paragraph{The random seed of the bootstrap (deviation 13)} While the public repository was being
+prepared, six scripts did not reproduce their intervals identically. rliable ignores its
+\texttt{random\_state} argument and draws from NumPy's global generator. Each script now seeds this
+generator at the start. Two runs now give files identical byte for byte. The point estimates and the
+verdicts do not change. The bounds move at the level of Monte Carlo noise, by at most 16 points on an
+interquartile mean of 2{,}423 for E6.
+
+\paragraph{Seven corrections after a critical review (deviation 14)} A hostile review of the public
+repository established seven points, none of which changes a verdict.
+(a) The commit that described the dose script as \enquote{written before the dose results} was
+wrong: 30 of the 160 re-evaluations already existed. The script applies a rule written before any
+computation, with no free parameter.
+(b) The counts of finished CrossQ runs in deviations 7 and 8 were wrong.
+(c) The protocol announced Stable-Baselines3 2.6.0. Every training ran with version 2.9.2, installed
+before the first training.
+(d) PPO and TRPO collect in batches of 2{,}048 steps, so each block of 50{,}000 steps is in fact
+51{,}200 steps: the PPO and TRPO models have 1{,}024{,}000 steps, against 200{,}000 for SAC and
+CrossQ.
+(e) The undeclared relaunches, described in \cref{sec:registres}.
+(f) Six scripts read every file present. With random seeds 10 to 19, E6 would have gone from ten to
+twenty random seeds without saying so. Each script now names its random seeds.
+(g) The ledger \file{attempts.jsonl} and the per-attempt logs, from 15 November on.
+
+\paragraph{Organising the compute (deviations 9, 10, 15 to 17 and 19)} These deviations record stops
+by the watchdog, relaunches, the move to eight cores and then to two, plus a suspension tied to the
+Mac's battery, lifted the same morning. None changes a result: each run uses a single thread and
+depends only on its own random seed.
+
+\paragraph{Computing the additions (deviation 20)} Written on 21 November 2026, after every training
+had finished and before any computation on random seeds 10 to 19, this deviation fixes a defect of
+\file{analysis/e5.py}, which took the mean of the first ten runs as the \enquote{correct} ordering
+even with twenty random seeds. It then lists the computations, all part of \texttt{make analysis}. Two
+of them, the descriptive ranking and the Bonferroni correction at twenty random seeds, were not in
+deviation 12: they apply rules already written and are published whatever they show.
+
+\section{Deviations of the GRPO strand}
+\label{sec:ecarts-llm}
+
+\paragraph{The plan reduced, then restored (deviations 6 and 14)} Deviation 6, decided before any
+retained run, reduces the plan to 100 steps and three random seeds, sets the learning rate to
+$3 \times 10^{-6}$ without a full pilot and splits the update into sub-batches. Deviation 14, written
+on 15 November 2026 before any new run, adds random seeds 3 and 4. Of all the decisions, this
+restoration changed the reading of the strand most: Qwen's gain with the true reward, clear at three
+random seeds, is no longer clear at five (\cref{chap:07-modeles-de-langue}).
+
+\paragraph{The crashes and their cause (deviations 7 to 11)} The first retained runs crashed on
+non-finite probabilities or ran out of GPU memory. Deviations 7 and 8 set a relaunch rule, decided
+before any result of these runs was seen. Deviation 9 moves the runs to the night. Deviation 10 finds
+the cause: a GPU computation interrupted by macOS returns with corrupted values. It adds the
+safeguards of \file{grpo.py}. It also resets the failure count to zero, since the past crashes came
+from the machine. This change of rule was decided after the crashes were seen, at a time when no
+result of these runs existed. Deviation 11 moves the remaining Qwen runs to the CPU. It is the
+origin of the confounding between hardware and random seed discussed in \cref{sec:llm-materiel}.
+
+\paragraph{Corrections after review (deviation 15)} Written on 15 November 2026, after the results,
+this deviation corrects the breakdown of the nine failures of 9 November and the date of one run,
+pins the exact revision of both models in \file{grpo.py}, documents the stops of 15 November and
+commits to comparing the CPU runs alone, since the device changes between Qwen's random seeds.
+
+\paragraph{The run that fails twice (deviation 16)} This deviation was written on 17 November 2026,
+after the step-100 values of the seven other new runs had been displayed during a progress check,
+but before any gain or interval at five random seeds was computed. The Llama run with the randomly
+drawn reward and random seed 4 fails twice on the gradient safeguard. Under deviation 14, this second
+failure is a result. The configuration is summarised over its four finished runs, with a sensitivity
+analysis for the missing gain. The deviation also plans one CPU run outside the protocol, whose
+result is kept apart.
+
+\paragraph{The order of the CPU run (deviation 17)} With the two-core ceiling of simulation
+deviation 19, the Llama CPU run starts after all the other computations. It has no effect on the
+results.
+
+\section{What these deviations say about the work}
+\label{sec:ecarts-bilan}
+
+Most deviations have one of three causes: the compute available on one laptop, our own
+mistakes, objections raised in review. The deviations decided after the results are declared as
+such. The three that weigh most on a conclusion are the verdict rule of the survey (deviation 20),
+the descriptive ranking under modified physics (simulation deviation 11) and the reset of the GRPO
+failure count (deviation 10). For the first, the retained comparison had been fixed before the
+results. The second was put to the test by an analysis written in advance. The third affects no
+published number, since no crashed run had a result. A reader who rejects these three decisions can
+redo every computation without them from the committed files.

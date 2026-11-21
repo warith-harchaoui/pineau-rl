@@ -1,0 +1,127 @@
+\chapter{Introduction}\label{chap:01-introduction}
+
+\section{Deux conférences en 2018}\label{sec:intro-conferences}
+
+\paragraph{Vancouver, puis Montréal}
+Au printemps 2018, Joelle Pineau, professeure à l'université McGill de Montréal et directrice du
+laboratoire montréalais de recherche en intelligence artificielle de Facebook, donne une conférence
+invitée à ICLR (\emph{International Conference on Learning Representations}), à Vancouver
+\parencite{pineau2018iclr}. La conférence s'intitule \enquote{Reproductibilité, réutilisabilité et
+robustesse en apprentissage par renforcement profond}. En décembre, Pineau reprend et augmente son propos à NeurIPS
+(\emph{Neural Information Processing Systems}), à Montréal, comme conférence Posner : \enquote{Apprentissage
+par renforcement reproductible, réutilisable et robuste} \parencite{pineau2018neurips}. ICLR, NeurIPS et
+ICML (\emph{International Conference on Machine Learning}) sont les trois congrès principaux de
+l'apprentissage automatique.
+
+\paragraph{La question de départ}
+Si une équipe publie un résultat, une autre équipe qui suit la recette obtient-elle le même ? Pineau
+part d'un sondage de la revue \emph{Nature} : sur \num{1576} chercheurs de toutes disciplines, plus de 70~\%
+disaient avoir déjà échoué à reproduire l'expérience d'un collègue, 52~\% voyaient une crise
+\enquote{significative} de la reproductibilité et 38~\% une crise \enquote{légère}
+\parencite{baker2016reproducibility}. Lors d'un atelier en décembre 2017, elle a posé la même question à
+vingt spécialistes de l'apprentissage automatique : 80~\% y voient une crise, légère ou significative
+\parencite{pineau2018iclr}. Elle cite ensuite \textcite{buckheit1995wavelab} : un article scientifique sur
+le calcul est seulement la publicité de la recherche. La recherche elle-même est l'environnement
+logiciel complet et l'ensemble des instructions qui ont produit les figures.
+
+\paragraph{Un domaine qui grandit, des erreurs qui coûtent}
+Pineau rappelle que le RL a cité pendant près de vingt ans un seul succès marquant, le programme de
+backgammon TD-Gammon \parencite{tesauro1995tdgammon}, avant AlphaGo \parencite{silver2016alphago}. Vers 2000, un atelier sur le RL
+réunissait trente-cinq personnes. En 2016, elle compte environ treize mille articles de RL publiés dans
+l'année \parencite{pineau2018iclr}. Elle ajoute que le RL s'approche de problèmes qui comptent : la
+conception de traitements médicaux, la gestion des ressources naturelles, des réseaux d'énergie et des
+systèmes financiers. Le doute venait aussi des praticiens. En février 2018, Alex Irpan, de Google Brain,
+écrivait qu'il répondait non à qui lui demandait si le RL pouvait résoudre son problème. Il pensait avoir raison au moins 70~\% du temps \parencite{irpan2018rlhard}. Pineau projette l'adresse de ce
+billet à NeurIPS.
+
+\paragraph{Les seize failles}
+Pineau montre ensuite, figure après figure, ce qui manque au RL pour mériter la confiance. Les figures
+viennent pour la plupart de l'article de son équipe signé Peter Henderson et ses coauteurs
+\parencite{henderson2018matters}. Nous y avons relevé seize failles, numérotées F1 à F16 et rangées en
+quatre familles : le matériel nécessaire pour refaire une expérience (code, plan, logiciels), le
+réglage des hyperparamètres et des références, les graines aléatoires et la statistique, la portée des
+conclusions. La plus célèbre est la faille F11 : dix entraînements du même programme, répartis en deux
+groupes de cinq, donnent deux courbes qu'un test déclare différentes, avec $t = -9{,}09$ et
+$p = 0{,}0016$. Le chapitre~\ref{chap:02-contexte} décrit les seize failles une à une (tableau~\ref{tab:failles}). Pineau ne s'arrête pas au
+constat. Elle propose une liste de contrôle de reproductibilité, que NeurIPS adopte en 2019
+\parencite{pineau2021improving}. Elle présente aussi le défi de reproduction d'ICLR 2018, où n'importe
+qui pouvait tenter de refaire un article soumis.
+
+\section{La question}\label{sec:intro-question}
+
+Huit ans ont passé. Le RL a changé de taille et de terrain : en 2025 et 2026, plus de la moitié des
+articles de RL de notre premier tirage appliquent ce qu'ils appellent RL à de grands modèles de langue.
+La question de ce rapport est simple : \emph{a-t-on écouté Joelle Pineau ?} Pour chacune des seize failles,
+nous demandons si les articles publiés entre 2018 et 2026 la montrent encore. Nous mesurons aussi ce que coûte la faille
+quand on refait les expériences de 2018 avec les algorithmes de 2026. Nous prenons sa liste comme une
+grille et nous l'appliquons aux articles publiés, puis à nos propres expériences, avec la même
+sévérité.
+
+\section{Deux instruments}\label{sec:intro-instruments}
+
+\paragraph{Le sondage}
+Le premier instrument relit des articles avec la grille de lecture de Pineau (critères Q1 à Q8),
+complétée par sept critères tirés de sa conférence d'ICLR (X1 à X7) et par une seconde grille de douze
+critères pour les failles qu'elle laissait sans mesure (Y1 à Y12). Nous avons lu un premier tirage de 50
+articles de RL de 2025 et 2026, parmi les \num{1252} articles de RL d'ICLR 2026, d'ICML 2026 et de NeurIPS
+2025, puis 50 articles de RL classique de 2026 (robotique, jeux, contrôle, hors modèles de langue), 50 articles de 2018 et 20 articles par année en 2019, 2020,
+2022 et 2024. Des agents de modèle de langue lisent les articles. Chaque décision repose sur une citation
+exacte et sa page. Le verdict compare le RL classique de 2026 à notre propre lecture de 2018, avec les
+mêmes grilles et les mêmes lecteurs. Les chapitres~\ref{chap:03-sondage-methode} et~\ref{chap:04-sondage-resultats} décrivent
+la méthode et les résultats.
+
+\paragraph{Les expériences}
+Le second instrument refait les expériences de 2018 sous un protocole écrit avant le premier
+entraînement : quatre programmes (PPO en PyTorch et en JAX, SAC, CrossQ) sur quatre tâches MuJoCo, avec
+dix graines aléatoires par programme et par tâche, puis vingt. S'y ajoutent trente essais de PPO et
+trente de TRPO sur \task{HalfCheetah}, une évaluation sur des graines aléatoires jamais vues à
+l'entraînement et une autre sous une physique modifiée. Un volet illustre les mêmes failles sur des
+modèles de langue entraînés avec GRPO. Les chapitres~\ref{chap:05-experiences-methode}, \ref{chap:06-experiences-resultats} et~\ref{chap:07-modeles-de-langue} les décrivent.
+
+\section{Contributions}\label{sec:intro-contributions}
+
+\begin{enumerate}
+  \item \textbf{Une mesure à grille égale.} La grille de Pineau, réappliquée aux articles de 2026 et
+  calibrée sur notre propre lecture de 50 articles de 2018. À grille égale, quatre pratiques ont
+  changé dans le RL classique : le lien vers le code (31~\% puis 74~\%), la sensibilité à un réglage
+  montrée (44~\% puis 80~\%), le calcul chiffré (27~\% puis 58~\%), une incertitude rapportée (63~\%
+  puis 88~\%). D'autres n'ont pas bougé de façon détectable, dont le test statistique (6~\% puis 12~\%).
+  \item \textbf{Une seconde grille préenregistrée.} Douze critères (Y1 à Y12), écrits avec leurs règles
+  de décision avant tout codage, qui couvrent la mesure de performance, les tâches, les implémentations,
+  les versions, la généralisation, la sensibilité et les outils statistiques récents.
+  \item \textbf{Une trajectoire.} Quatre années lues entre 2018 et 2026 : les quatre pratiques montent
+  lentement, sans saut juste après la liste de contrôle de 2019.
+  \item \textbf{Une batterie de contrôles.} Double lecture à l'aveugle, audit des citations, recherche
+  mécanique contre les décisions négatives, provenance publiée de chaque lecteur, coupes par provenance,
+  conférence et lecteur, sensibilité au modèle des lecteurs et au filtre de titre, confrontation aux
+  listes de contrôle remplies par les auteurs.
+  \item \textbf{Les expériences de 2018, refaites.} Deux groupes de cinq essais tirés au hasard ne
+  trompent un test de Welch que dans 1,2~\% des cas. Triés, ils le trompent dans 31~\%. Garder les trois meilleurs
+  essais sur dix gonfle la moyenne de 33~\%. Le meilleur programme change avec la tâche, sauf à budget
+  égal avec vingt graines aléatoires, où CrossQ mène sur les quatre tâches. Une physique modifiée de
+  20~\% fait passer le premier au dernier rang sur \task{Hopper}.
+  \item \textbf{Une explication du $t$ de 9.} Le script publié par Peter Henderson en 2017 mesure la
+  dispersion entre épisodes et ignore celle entre graines aléatoires. Appliqué à nos essais de TRPO, il
+  dépasse 9,09 dans 38~\% des tirages au hasard.
+  \item \textbf{Un pont vers les modèles de langue.} Un GRPO écrit par nous, sur deux petits modèles
+  ouverts, avec la vraie récompense (celle qui vérifie la réponse) et une récompense tirée à pile ou face. Avec cinq graines
+  aléatoires, le gain moyen de Qwen avec la vraie récompense vaut $+14$ points, avec un intervalle de
+  $-3$ à $+34$ qui contient zéro.
+  \item \textbf{Un dépôt qui se vérifie.} Les protocoles datés, les lectures avec leurs citations, les
+  résultats des entraînements, les scripts d'analyse et des contrôles qui confrontent chaque nombre du document argumenté (\file{docs/conclusions.md})
+  et de l'article de blog aux fichiers de résultats (chapitre~\ref{chap:08-logiciel}).
+\end{enumerate}
+
+\section{Guide de lecture}\label{sec:intro-guide}
+
+Le chapitre~\ref{chap:02-contexte} pose le cadre formel du RL, décrit les programmes et les tâches, dresse
+l'inventaire des seize failles et situe le travail parmi les travaux voisins. Les chapitres~\ref{chap:03-sondage-methode} et~\ref{chap:04-sondage-resultats} donnent la méthode et les résultats du
+sondage. Les chapitres~\ref{chap:05-experiences-methode} et~\ref{chap:06-experiences-resultats} font de même pour les
+expériences sur MuJoCo. Le chapitre~\ref{chap:07-modeles-de-langue} décrit le volet GRPO. Le chapitre~\ref{chap:08-logiciel} décrit le logiciel, de l'entraînement aux documents. Le chapitre~\ref{chap:09-ecarts}
+liste tous les écarts aux trois protocoles. Le chapitre~\ref{chap:10-limites} rassemble les limites. Le chapitre~\ref{chap:11-conclusion} reprend chaque faille avec son verdict. Les annexes donnent les règles
+complètes de la grille (annexe~\ref{chap:A-grille}), des tableaux supplémentaires (annexe~\ref{chap:B-tableaux}),
+la liste des articles lus (annexe~\ref{chap:C-articles}) et les environnements logiciels
+(annexe~\ref{chap:D-environnements}).
+
+Un lecteur pressé lira le résumé, le tableau~\ref{tab:failles}, la section~\ref{sec:sr-principale} et le chapitre~\ref{chap:11-conclusion}. Un lecteur qui veut refaire un calcul trouvera, dans chaque légende, le
+fichier de résultats qui le contient.

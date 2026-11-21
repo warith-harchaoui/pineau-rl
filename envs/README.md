@@ -44,8 +44,8 @@ A plain `venv` gets the same packages. `sim/env-zoo` is a `venv` built over the 
   from one processor to the next. A rerun on another machine tests the statistics, not each curve.
 - **GRPO** ran on the Apple GPU (MPS) or on the CPU, depending on the run (`sim/llm/LLM_PROTOCOL-en.md`,
   deviation 11). `grpo.py` downloads `Qwen/Qwen2.5-0.5B-Instruct` and `unsloth/Llama-3.2-1B-Instruct`
-  from Hugging Face; `docs/figures/build.py` downloads the Qwen tokenizer. The model revision is the one
-  served on the day of the run: it is not pinned.
+  from Hugging Face; `docs/figures/build.py` downloads the Qwen tokenizer. `grpo.py` pins the model
+  revision every run used, the only one in the cache (`sim/llm/LLM_PROTOCOL-en.md`, deviation 15).
 
 ## The document toolchain
 

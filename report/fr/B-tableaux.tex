@@ -1,0 +1,128 @@
+\chapter{Tableaux complémentaires}
+\label{chap:B-tableaux}
+
+Cette annexe donne les tableaux qui ne figurent pas dans les chapitres, puis un index de tous les
+tableaux générés et la liste des fichiers de résultats d'où ils viennent. Chaque tableau généré est
+écrit par \file{report/tools/tables.py} à partir d'un fichier JSON de résultats : aucun nombre n'y
+est tapé à la main.
+
+\section{Le RL de grands modèles de langue dans le sondage}
+\label{sec:b-lrl}
+
+Le premier tirage de 2026 compte 27 articles qui appliquent ce qu'ils appellent RL à de grands
+modèles de langue (famille X5 \texttt{llm}, \cref{chap:A-grille}). Les verdicts du sondage valent pour
+le RL classique. Le \cref{tab:sondage-lrl} met ces articles en regard du RL classique de 2026, critère
+par critère, là où le fichier de résultats le permet. Les 18 articles \texttt{llm} lus en chemin dans
+la file de l'élargissement n'y entrent pas : le tri sur le titre les avait filtrés, si bien qu'ils ne
+forment pas un échantillon aléatoire (écart 12 du sondage). Le tableau se lit comme une description,
+sans verdict : il compare deux familles d'articles, pas deux époques.
+
+\section{Index des tableaux générés}
+\label{sec:b-index}
+
+\begin{small}
+\begin{longtable}{@{}p{0.19\linewidth}p{0.43\linewidth}p{0.3\linewidth}@{}}
+\caption{Où trouver chaque tableau généré.}\label{tab:b-index}\\
+\toprule
+Tableau & Contenu & Fichier source \\
+\midrule
+\endfirsthead
+\toprule
+Tableau & Contenu & Fichier source \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\Cref{tab:sondage-pineau} & Critères de Pineau, 2018 contre RL classique de 2026 &
+  \file{extension\_stats.json}, \file{results\_final.json} \\
+\Cref{tab:sondage-extension} & Nos critères Y1 à Y12, mêmes colonnes & \file{extension\_stats.json} \\
+\Cref{tab:sondage-lrl} & RL de grands modèles contre RL classique, 2026 & \file{extension\_stats.json} \\
+\Cref{tab:trajectoire} & Part par pratique et par année, test de tendance & \file{trajectory.json} \\
+\Cref{tab:accord} & Accord des doubles lectures à l'aveugle & \file{agree\_v2.json} \\
+\Cref{tab:robustesse} & Contrôles de robustesse du sondage & \file{robustness.json} et variantes \\
+\Cref{tab:e1} & E1 : trente essais de PPO, faux positifs & \file{e1.json} \\
+\Cref{tab:b1} & B1 : le $t$ de 9,09, deux façons de le calculer & \file{b1\_script.json}, \file{b1\_trpo.json} \\
+\Cref{tab:e2} & E2 : classement par tâche, dix et vingt graines aléatoires, budget égal & \file{e2*.json} \\
+\Cref{tab:e2-bonferroni} & E2 avec intervalles de Bonferroni & \file{e2\_bonferroni*.json} \\
+\Cref{tab:e3} & E3 : PPO PyTorch contre PPO JAX & \file{e3*.json} \\
+\Cref{tab:e4} & E4 : les trois meilleurs sur dix & \file{e4.json}, \file{e4\_r10.json} \\
+\Cref{tab:e5} & E5 : combien de graines aléatoires retrouvent l'ordre & \file{e5*.json} \\
+\Cref{tab:e6} & E6 : la référence réglée & \file{e6*.json} \\
+\Cref{tab:e7} & E7 : score gardé sous physique modifiée & \file{e7*.json} \\
+\Cref{tab:dose} & Physique modifiée par degrés & \file{dose*.json} \\
+\Cref{tab:b3} & B3 : la mesure change-t-elle le classement & \file{b3*.json} \\
+\Cref{tab:grpo} & GRPO : chaque essai & \file{summary\_5.json}, \file{gains\_5.json}, \file{extra\_5.json} \\
+\Cref{tab:ecarts} & Les écarts des trois protocoles & les trois protocoles \\
+\Cref{tab:env} & Versions des environnements & \file{envs/*.lock} \\
+\Cref{tab:calcul} & Le calcul par programme et par tâche & \file{sim/logs}, \file{sim/results} \\
+\Cref{tab:articles-2026} & Les articles de 2026 lus & \file{final\_2026.json} et file A3 \\
+\Cref{tab:articles-2018} & Les articles de 2018 lus & \file{calib\_2018\_v2.json} \\
+\end{longtable}
+\end{small}
+
+\section{Les fichiers de résultats}
+\label{sec:b-fichiers}
+
+Chaque fichier JSON de résultats vient d'un seul script, relancé par \texttt{make analysis}
+(\cref{sec:make}). Les détails critère par critère et paire par paire que les tableaux résument se
+trouvent dans ces fichiers.
+
+\begin{small}
+\begin{longtable}{@{}p{0.3\linewidth}p{0.64\linewidth}@{}}
+\caption{Les scripts d'analyse et ce que contient leur fichier JSON.}\label{tab:b-fichiers}\\
+\toprule
+Script & Contenu du fichier de résultats \\
+\midrule
+\endfirsthead
+\toprule
+Script & Contenu du fichier de résultats \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\multicolumn{2}{@{}l}{\textit{Sondage, dossier \file{study/}}}\\
+\file{analyze.py} & Parts du premier tirage de 2026 (\file{results\_2026.json}). \\
+\file{analyze\_final.py} & Parts de 2026 et de la calibration de 2018 depuis les lectures brutes et
+  l'harmonisation (\file{results\_final.json}). \\
+\file{audit\_stats.py} & Audit statistique de la comparaison entre 2018 et 2026 : différences de
+  Newcombe, Fisher, Holm, accord des lecteurs (\file{audit\_stats.json}). \\
+\file{agree\_v2.py} & Accord entre lecteurs sur les lectures brutes, avant harmonisation
+  (\file{agree\_v2.json}). \\
+\file{extension\_stats.py} & Comparaison principale : RL classique de 2026 contre notre lecture de
+  2018, critère par critère, avec Wilson, Newcombe, Fisher et Holm (\file{extension\_stats.json} ;
+  variantes sans le modèle voisin et avec les décisions retournées). \\
+\file{robustness.py} & Coupes de robustesse et test de la thèse du coût (\file{robustness.json}). \\
+\file{title\_filter.py}, \file{title\_filter\_compare.py} & Le filtre de titre : part de RL caché
+  et comparaison des vingt articles cachés (\file{title\_filter*.json}). \\
+\file{trajectory.py} & La trajectoire de 2018 à 2026 : parts par année, Cochran-Armitage, écarts
+  immédiat et tardif (\file{trajectory.json}). \\
+\file{falsify\_no.py} & La recherche contre les décisions \enquote{non} (\file{falsify\_no.json}). \\
+\file{checklist.py} & Les listes de contrôle déclarées à NeurIPS 2025 contre nos lectures
+  (\file{checklist.json}). \\
+\multicolumn{2}{@{}l}{\textit{Simulations, dossier \file{sim/analysis/}}}\\
+\file{e1.py}, \file{e1\_curve.py} & E1 : trente essais de PPO, test de Welch sur les scores finaux
+  puis sur les courbes. \\
+\file{b1\_trpo.py}, \file{b1\_script.py} & B1 : les lectures du $t$ moyen de 2018 sur TRPO et PPO, puis
+  le calcul du script de Henderson. \\
+\file{e2.py}, \file{e2\_bonferroni.py} & E2 : moyenne interquartile par tâche, probabilités
+  d'amélioration, changements de classement, puis les mêmes intervalles au niveau simultané de
+  Bonferroni. \\
+\file{e3.py} & E3 : les deux implémentations de PPO. \\
+\file{e4.py} & E4 : moyenne et dispersion des dix essais puis des trois meilleurs, renversements. \\
+\file{e5.py} & E5 : part des tirages qui retrouvent l'ordre, pour 3, 5, 10 et 20 graines aléatoires. \\
+\file{e6.py}, \file{e6\_diag.py}, \file{e6\_official.py} & E6 : défaut contre Zoo, diagnostic de
+  la recette, politiques officielles évaluées avec notre protocole. \\
+\file{e7.py}, \file{e7\_rank.py} & E7 : part du score gardée sous physique modifiée, puis le classement
+  descriptif. \\
+\file{dose.py} & La physique modifiée par degrés. \\
+\file{b3.py} & B3 : trois mesures par essai et les renversements entre mesures. \\
+\multicolumn{2}{@{}l}{\textit{Volet GRPO, dossier \file{sim/llm/}}}\\
+\file{summary.py} & Pass@1 aux pas 0 et 100 de chaque essai, gains, intervalles, sensibilité au
+  gain manquant, essais CPU seuls (\file{summary*.json}, \file{gains*.json}, \file{extra*.json}). \\
+\end{longtable}
+\end{small}
+
+Les suffixes des fichiers des simulations suivent l'écart 12 : \file{\_s20} pour vingt graines aléatoires,
+\file{\_r10} pour la réplication de E4 sur les graines aléatoires 10 à 19, \file{\_equal} et
+\file{\_equal\_s20} pour le budget égal. Les fichiers du volet GRPO suivent l'écart 14 : sans
+suffixe pour trois graines aléatoires, \file{\_5} pour cinq.

@@ -1,0 +1,43 @@
+\chapter{The papers read}
+\label{chap:C-articles}
+
+This appendix lists the papers of the two samples of the main comparison, with their identifier,
+title and venue. The identifier points to the reading file \file{study/codes/<reader>/<id>.json} or
+\file{study/codes\_v2/<reader>/<id>.json}, where every decision rests on a quotation and its page.
+The PDFs are not in the repository (\cref{sec:absent}). The script \file{study/fetch.py} downloads
+them from the addresses recorded in the sample files.
+
+\section{The 2026 papers}
+\label{sec:c-2026}
+
+The population consists of the 1{,}252 papers of ICLR 2026, ICML 2026 and NeurIPS 2025 whose title
+matches the regular expression of the protocol, out of 17{,}836 accepted papers
+(\cref{chap:03-sondage-methode}). The prefix of the identifier shows where the paper comes from.
+\begin{itemize}
+  \item \texttt{LR}, \texttt{ML}, \texttt{NE}: the first draw (\texttt{random.Random(2018)}),
+        17 papers from ICLR 2026, then ICML 2026 and NeurIPS 2025 (\file{study/final\_2026.json}).
+  \item \texttt{MLR}, \texttt{NER}: the eight replacement papers from ICML and NeurIPS, drawn by
+        \texttt{random.Random(2026)} in the same conference when the drawn paper had no freely
+        accessible PDF (\file{replacements\_2026.json}).
+  \item \texttt{K}: the queue of the enlargement (A3), shuffled by \texttt{random.Random(2026)} and
+        read in that order, after the title screen, until 36 classical RL papers had been read. The
+        complete queue is in \file{classic\_queue\_2026.json}.
+\end{itemize}
+The classical RL sample of 2026 in the main comparison combines the 14 \texttt{classic} papers of
+the first draw and the 36 of queue A3. \Cref{tab:articles-2026} lists the papers read.
+
+\gentable{articles-2026}
+
+\section{The 2018 papers}
+\label{sec:c-2018}
+
+Our reading of 2018 covers 50 RL papers from ICML 2018, NeurIPS 2018 and ICLR 2018, the three
+conferences Pineau named. The first 12 form the calibration of the protocol, 6 from ICML and 6 from
+NeurIPS (\file{study/calib\_2018.json}). The other 38 come from enlargement A2, drawn in the order of
+a \texttt{random.Random(2018)} shuffle, with an allocation proportional to the size of each
+conference (deviation 12). The sample combines 21 papers from ICML 2018 (prefix \texttt{C1}), 20 from
+NeurIPS 2018 (\texttt{C2}) and 9 from ICLR 2018 (\texttt{C3}) (\file{study/calib\_2018\_v2.json}).
+The comparison for each criterion counts the papers where the criterion applies, so a denominator
+can fall below 50.
+
+\gentable{articles-2018}
