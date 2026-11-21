@@ -23,8 +23,6 @@ Yet both curves come from a single program, the learning algorithm TRPO, with th
 
 FIG wide | rl-pineau-neurips2018-graines.webp | Slide "Let's look a little closer", subtitled "Both are same TRPO code with best hyperparameter configuration!". Two average-return curves on HalfCheetah, each the mean of five runs: the orange one ends clearly above the blue one. | Two groups of five training runs of the same TRPO program on HalfCheetah, differing only in their random seed. Joelle Pineau, NeurIPS 2018, [page 22 of her slides](https://media.neurips.cc/Conferences/NIPS2018/Slides/jpineau-NeurIPS-dec18-fb.pdf), after Henderson and coauthors (2018).
 
-FIG portrait | rl-joelle-pineau-2018.webp | Joelle Pineau smiles behind a lectern, in a white floral blouse, against a black background. | Joelle Pineau in 2018. Photo [Canada Science and Technology Museum](https://commons.wikimedia.org/wiki/File:Jo%C3%ABlle_Pineau_at_the_Canada_Science_and_Technology_Museum.jpg), CC BY 3.0 license, via Wikimedia Commons.
-
 The two-curve figure is taken from a paper by her team, signed by Peter Henderson and his coauthors[[3]]. It serves a broader point. Pineau starts from a survey by the journal *Nature*: of 1,576 researchers from every discipline, more than 70% said they had already failed to reproduce a colleague's experiment[[4]]. She then quotes two Stanford researchers, Buckheit and Donoho, who wrote in 1995 that a scientific paper about computation is merely the advertising of the research. The research itself is the complete software and the instructions that produced the figures[[5]]. Then she shows, figure after figure, what her field lacks to deserve trust.
 
 ## the-cheetah-the-seed | The cheetah, the random seed and the test
