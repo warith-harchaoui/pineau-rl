@@ -171,7 +171,7 @@ Nos expériences précisent la faille la plus célèbre. Les graines aléatoires
 - montrer un intervalle à côté de chaque courbe ;
 - faire porter le test sur les écarts entre graines aléatoires, jamais entre épisodes.
 
-Deux pièges nous ont guettés nous-mêmes : un résultat trop beau, où nous avons trouvé une erreur de notre code qui n'expliquait rien, puis un premier indicateur sur les modèles de langue qui mesurait aussi une limite de longueur. Le protocole écrit d'avance nous a mis sur la piste de l'erreur de code, la vérification des résultats surprenants sur la limite de longueur. Et le protocole garde la trace de chaque correction, datée : chacun peut voir ce que nous avons changé, et pourquoi. C'était le conseil de Pineau en 2018 : être aussi critique envers ses bons résultats qu'envers ses mauvais.
+Deux pièges nous ont guettés nous-mêmes : un résultat trop beau, où nous avons trouvé une erreur de notre code qui n'expliquait rien, puis un premier indicateur sur les modèles de langue qui mesurait aussi une limite de longueur. Le protocole écrit d'avance nous a mis sur la piste de l'erreur de code, la vérification des résultats surprenants sur la limite de longueur. Et le protocole garde la trace de chaque correction, datée : chacun peut voir ce que nous avons changé et pourquoi. C'était le conseil de Pineau en 2018 : être aussi critique envers ses bons résultats qu'envers ses mauvais.
 
 ## sept-questions | Sept questions pour lire une annonce de RL
 La liste de contrôle s'adresse aux auteurs. Le lecteur d'un article, d'un communiqué ou d'une démonstration en tire sept questions, qui ne demandent pas de savoir programmer.

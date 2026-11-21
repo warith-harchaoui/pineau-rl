@@ -171,7 +171,7 @@ Our experiments sharpen the most famous flaw. Random seeds produce visible gaps.
 - show an interval next to every curve;
 - run the test on the gaps between random seeds, never between episodes.
 
-Two traps lay in wait for us too: a result too good to be true, where we found an error in our own code that explained nothing, then a first indicator on language models that also measured a length limit. The protocol written in advance put us on the trail of the code error, checking surprising results on the length limit. And the protocol keeps a dated record of every correction: anyone can see what we changed, and why. That was Pineau's advice in 2018: be as critical of your good results as of your bad ones.
+Two traps lay in wait for us too: a result too good to be true, where we found an error in our own code that explained nothing, then a first indicator on language models that also measured a length limit. The protocol written in advance put us on the trail of the code error, checking surprising results on the length limit. And the protocol keeps a dated record of every correction: anyone can see what we changed and why. That was Pineau's advice in 2018: be as critical of your good results as of your bad ones.
 
 ## seven-questions | Seven questions for reading an RL claim
 The checklist is meant for authors. The reader of a paper, a press release or a demo can draw seven questions from it, which require no programming.
