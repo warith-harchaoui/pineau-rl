@@ -571,10 +571,11 @@ it to every paper, with a quotation for each decision.
 \textbf{The papers from 2026.} We took every paper from ICLR 2026, ICML
 2026 and NeurIPS 2025 whose title mentions reinforcement learning: 1,252
 out of 17,836. A first random draw kept 50 of them. Among these, 27
-apply RL to large language models, 14 belong to classical RL (robotics,
-games, control) and 9 are theoretical, 5 of them with no experiment at
-all. The percentages in this document are computed on the papers that
-have experiments.
+apply what they call RL to large language models (for convenience, we
+file them under ``RL on large models''), 14 belong to classical RL
+(robotics, games, control) and 9 are theoretical, 5 of them with no
+experiment at all. The percentages in this document are computed on the
+papers that have experiments.
 
 \textbf{Two samples enlarged.} With 14 classical RL papers and 12 papers
 from 2018, our first version left a gap of 30 points undetectable.
@@ -699,17 +700,19 @@ on how many random seeds it takes to recover the right ranking. E6
 compares a tuned baseline with a baseline left at its default values. E7
 measures what the modified physics costs.
 
-\textbf{The large language model strand.} Today RL serves mostly to
-fine-tune language models. The model receives a mathematics problem, its
-answer gets checked and the correct answers get rewarded. We use GRPO
-(\emph{Group Relative Policy Optimization}), one of the most widespread
-algorithms \autocite{shao2024deepseekmath}. We wrote it ourselves and
-ran it on two small open models, Qwen2.5 with 0.5 billion parameters
-\autocite{qwen2025qwen25} and Llama 3.2 with 1 billion
-\autocite{meta2024llama32,grattafiori2024llama3}. Each model trains
-twice: with the true reward, then with a reward decided by a coin toss.
-The protocol (\texttt{sim/llm/LLM\_PROTOCOL.md}) announces this small
-scale in advance.
+\textbf{The large language model strand.} RL's vocabulary has also
+reached the generative AI models that write text: some of RL's
+algorithms are borrowed (with a vague resemblance) to fine-tune their
+answers, with no agent acting in a world. The model receives a
+mathematics problem, its answer gets checked and the correct answers get
+rewarded. We use GRPO (\emph{Group Relative Policy Optimization}), one
+of the most widespread algorithms \autocite{shao2024deepseekmath}. We
+wrote it ourselves and ran it on two small open models, Qwen2.5 with 0.5
+billion parameters \autocite{qwen2025qwen25} and Llama 3.2 with 1
+billion \autocite{meta2024llama32,grattafiori2024llama3}. Each model
+trains twice: with the true reward, then with a reward decided by a coin
+toss. The protocol (\texttt{sim/llm/LLM\_PROTOCOL.md}) announces this
+small scale in advance.
 
 \section{The materials: code, settings, compute (F1 to
 F3)}\label{the-materials-code-settings-compute-f1-to-f3}
