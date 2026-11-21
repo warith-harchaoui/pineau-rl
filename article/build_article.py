@@ -21,6 +21,7 @@ Light markup, one line per block (paragraphs separated by a blank line):
   ## ancre | Titre de section
   ### Sous-titre
   FIG wide|std|portrait | src (relatif à assets/images/blog) | alt | légende (HTML permis)
+  VIDEO identifiant YouTube | titre du lecteur | légende (HTML permis)
   - élément de liste (lignes consécutives)
   <...>  ligne HTML passée telle quelle
   BIBLIO titre | phrase d'introduction
@@ -171,6 +172,17 @@ def build(lang: str) -> str:
                     f'            <div class="{cls}"><picture>{source}<img src="<?= ASSETS ?>/images/blog/{src}"\n'
                     f'                    alt="{html.escape(alt, quote=True)}"\n'
                     f'                    loading="lazy"></picture>\n'
+                    f'                <p class="drz-text drz-art-figcap">{inline(cap, lang)}</p>\n'
+                    f'            </div>')
+            elif ln.startswith("VIDEO "):
+                flush()
+                vid, vtitle, cap = [x.strip() for x in ln[6:].split("|", 2)]
+                out.append(
+                    f'            <div class="drz-art-fig drz-art-fig--wide"><div style="position:relative;width:100%;aspect-ratio:16/9">'
+                    f'<iframe src="https://www.youtube-nocookie.com/embed/{vid}" title="{html.escape(vtitle, quote=True)}"\n'
+                    f'                    style="position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:8px"\n'
+                    f'                    loading="lazy" referrerpolicy="strict-origin-when-cross-origin"\n'
+                    f'                    allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>\n'
                     f'                <p class="drz-text drz-art-figcap">{inline(cap, lang)}</p>\n'
                     f'            </div>')
             elif ln.startswith("- "):
@@ -330,6 +342,10 @@ def preview(out: Path, lang: str, page: str) -> Path:
     body = page.split("?>", 1)[1]
     body = body.replace("<?= ASSETS ?>", "../assets").replace("<?= url('/blog') ?>", "#")
     body = re.sub(r"<\?= url\('([^']*)'\) \?>", r"\1", body)
+    body = re.sub(r"<\?php require_once [^\n]*?\?>", "", body)
+    cal = "https://calendly.com/warith-harchaoui/" + ("discuter" if lang == "fr" else "discuss")  # what /rdv redirects to
+    body = re.sub(r"<\?= drz_button\(e\(rdv_url\(\)\), '([^']*)'[^\n]*?\?>",
+                  lambda m: f'<a class="drz-art-cta" href="{cal}" target="_blank" rel="noopener">{m[1]}&nbsp;↗</a>', body)
     links = "".join(f'<link rel="stylesheet" href="{SITE.as_uri()}/assets/css/{c}">' for c in ("fonts.css", "site.css", "base.css"))
     doc = (f'<!doctype html><html class="drz-p-blog__{SLUGS[lang]}" lang="{lang}"><head><meta charset="utf-8">'
            f'<meta name="viewport" content="width=device-width">{links}'

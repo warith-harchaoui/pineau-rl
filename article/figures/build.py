@@ -12,6 +12,8 @@ Run from anywhere, CPU-light:  nice python3 article/figures/build.py
 Writes data/<name>_<lang>.csv, then <name>-fr.svg and <name>-en.svg, and runs `sprezzature-figures check` on each.
 """
 import csv, json, re, subprocess, sys
+
+import draw
 from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
 
@@ -201,28 +203,33 @@ for lang in LANGS:
                "--set", "subtitle=Share of classical RL papers that follow the practice, from 2018 to 2026",
                "--set", "y_label=Share of papers (%)", "--set", "x_label=Year of publication", *axis]}[lang])
 
-# 9. GRPO: success at the first attempt, before and after 100 steps, per run.
-summ = J("sim/llm/results/summary.json")
+# 9. GRPO: success at the first attempt, at the start and after 100 steps, per run, five random seeds
+# (sim/llm/results/summary_5.json; the run that failed twice is drawn as a failure, from extra_5.json).
+summ = J("sim/llm/results/summary_5.json")
+failed = {(x["model"], x["reward"], x["seed"]) for x in J("sim/llm/results/extra_5.json")["failed"]}
 MOD = {"qwen05": "Qwen", "llama1": "Llama"}
 REW = {"fr": {"true": "vraie récompense", "random": "pile ou face"},
        "en": {"true": "true reward", "random": "coin flip"}}
-ORD = {"fr": ["première", "deuxième", "troisième"], "en": ["first", "second", "third"]}
+DEV = {"mps": "GPU", "cuda": "GPU", "cpu": "CPU"}
 for lang in LANGS:
     rows = []
     for m in ("qwen05", "llama1"):
         for rw in ("true", "random"):
-            for s in sorted((s for s in summ if s["model"] == m and s["reward"] == rw), key=lambda s: s["seed"]):
-                rows.append((f"{MOD[m]}, {REW[lang][rw]}", ORD[lang][s["seed"]], r(s["pass1_100"] * 100)))
-    start = {m: sorted({r(s["pass1_0"] * 100) for s in summ if s["model"] == m}) for m in MOD}
-    q, l = start["qwen05"], start["llama1"]
-    csvp = write(f"grpo_graines_{lang}", ["period", "region", "v"], rows)
-    FIGS.setdefault("grpo-graines", {})[lang] = ("bar-grouped", csvp, {
+            runs = {s["seed"]: s for s in summ if s["model"] == m and s["reward"] == rw}
+            for seed in range(5):
+                if seed in runs:
+                    s = runs[seed]
+                    rows.append((f"{MOD[m]}, {REW[lang][rw]}", seed, r(s["pass1_100"] * 100), r(s["pass1_0"] * 100),
+                                 DEV[s["device"]]))
+                else:
+                    assert (m, rw, seed) in failed, (m, rw, seed)
+                    rows.append((f"{MOD[m]}, {REW[lang][rw]}", seed, "", "", "failed"))
+    csvp = write(f"grpo_graines_{lang}", ["group", "seed", "pass1_100", "pass1_0", "device"], rows)
+    FIGS.setdefault("grpo-graines", {})[lang] = ("dumbbell", csvp, {
         "fr": ["--title", "Pile ou face fait tomber la réussite à zéro",
-               "--set", f"subtitle=Problèmes réussis au premier essai après 100 pas. Au départ : {q[0]} à {q[-1]} % pour Qwen, {l[0]} à {l[-1]} % pour Llama",
-               "--set", "language=fr", "--set", "width=760", "--set", "height=460"],
+               "--set", "subtitle=Problèmes réussis au premier essai, au départ puis après 100 pas, cinq graines aléatoires par modèle et par récompense"],
         "en": ["--title", "A coin flip drives success down to zero",
-               "--set", f"subtitle=Problems solved at the first attempt after 100 steps. At the start: {q[0]} to {q[-1]}% for Qwen, {l[0]} to {l[-1]}% for Llama",
-               "--set", "width=760", "--set", "height=460"]}[lang])
+               "--set", "subtitle=Problems solved at the first attempt, at the start and after 100 steps, five random seeds per model and reward"]}[lang])
 
 # 10. GRPO: the base model's answers on the pilot's step-10 batch, cut at 160 tokens or complete.
 for lang in LANGS:
@@ -269,84 +276,12 @@ for lang in LANGS:
                "--set", "y_label=Pairs that lose (out of 16, lower is better)",
                "--set", "x_label=Change from the training physics (%)", *axis]}[lang])
 
-# Deterministic touch-ups for what a kind exposes no option for. bar-grouped writes demo axis titles
-# ("Region", "Units", "Quarter") with no option to change them: they are replaced here, and the check forbids them.
-CHROME = {"fr": ("Région", "Unités", "Trimestre"), "en": ("Region", "Units", "Quarter")}
-AXES = {
-    "classement-taches": {"fr": ("Algorithme", "% du meilleur (plus haut est mieux)", "Tâche"),
-                          "en": ("Algorithm", "% of the best (higher is better)", "Task")},
-    "meilleurs-sur-dix": {"fr": ("Algorithme", "Hausse de la moyenne (%)", "Tâche"),
-                          "en": ("Algorithm", "Rise of the mean (%)", "Task")},
-    "grpo-graines": {"fr": ("Graine aléatoire", "Réussite au premier essai (%)", "Modèle et récompense"),
-                     "en": ("Random seed", "Success at the first attempt (%)", "Model and reward")},
-}
-
-
-def swap(text, a, b):
-    return text.replace(a, "\0").replace(b, a).replace("\0", b)
-
-
-def fix(name, lang, text, mobile=False):
-    axes = AXES_M if mobile else AXES
-    if name in axes:
-        for old, new in zip(CHROME[lang], axes[name][lang]):
-            assert text.count(f">{old}<") == 1, (name, old)
-            text = text.replace(f">{old}<", f">{new}<")
-    if name == "e1-graines":  # the swarm has a single group: its legend says nothing
-        for old in (">Groupe PPO<", ">Group PPO<"):
-            text = text.replace(old, ">PPO, un point par graine aléatoire<" if lang == "fr" else ">PPO, one dot per random seed<")
-        text = text.replace("Groupe PPO", "Essai de PPO").replace("Group PPO", "PPO run")
-    if name == "grpo-coupure":  # a wrong answer is not good news: grey, not green
-        text = text.replace("#009E73", "#8E8E93")
-    if name == "grpo-graines":  # the third seed in a darker blue: pale yellow bars vanish on white
-        text = text.replace("#F0E442", "#56B4E9")
-    if name == "physique-modifiee":  # same colour per algorithm as in the bar charts
-        text = swap(text, "#CC79A7", "#009E73")
-    if name == "grille-egale":
-        text = rotate_labels(text, list((CRIT_M if mobile else CRIT)[lang].values()), extra=70 if mobile else 96)
-    return text
-
-
-def rotate_labels(text, labels, extra=96, left=40):
-    """Eight practice names do not fit side by side under the errorbar chart: tilt them by 35 degrees.
-
-    The kind exposes no option for it, so this edits the rendered SVG: each label hangs from its tick, the canvas
-    grows downward and to the left, and the axis title moves under the tilted labels."""
-    w, h = map(int, re.search(r'<svg[^>]* width="(\d+)" height="(\d+)"', text).groups())
-    ys = set()
-    for lab in labels:
-        pat = re.compile(rf'<text x="([\d.]+)" y="([\d.]+)" font-size="13" fill="#1D1D1F" text-anchor="middle">{re.escape(lab)}</text>')
-        m = pat.findall(text)
-        assert len(m) == 1, lab
-        ys.add(m[0][1])
-        text = pat.sub(lambda m: f'<text x="{float(m[1]) + 4:.1f}" y="{float(m[2]) - 4:.1f}" font-size="13" fill="#1D1D1F" '
-                                 f'text-anchor="end" transform="rotate(-35 {float(m[1]) + 4:.1f} {float(m[2]) - 4:.1f})">{lab}</text>', text)
-    assert len(ys) == 1
-    head = f'width="{w}" height="{h}" viewBox="0 0 {w} {h}"'
-    assert text.count(head) == 1
-    text = text.replace(head, f'width="{w + left}" height="{h + extra}" viewBox="-{left} 0 {w + left} {h + extra}"')
-    rect = f'<rect width="{w}" height="{h}" fill="#FFFFFF"/>'
-    assert text.count(rect) == 1
-    text = text.replace(rect, f'<rect x="-{left}" width="{w + left}" height="{h + extra}" fill="#FFFFFF"/>')
-    title = re.compile(r'(<text x="[\d.]+" y=")([\d.]+)(" font-size="13" fill="#1D1D1F" text-anchor="middle">)(?!-)')
-    found = [m for m in title.finditer(text) if float(m[2]) > float(next(iter(ys)))]
-    assert len(found) == 1, found
-    m = found[0]
-    return text[:m.start()] + f"{m[1]}{h + extra - 14}{m[3]}" + text[m.end():]
-
-
 # Narrow variants for phones: the same data and the same message, drawn for a column of about 400 px.
 # Shorter titles and labels, a canvas 400 px wide and taller, so the type stays near its printed size.
 CRIT_M = {"fr": {"Q5": "Code", "Y9": "Réglage", "X7": "Calcul", "X2": "Incertitude", "Q7": "Tenue à part",
                  "Q8": "Test", "Y7": "Versions", "Q4": "Réf. réglées"},
           "en": {"Q5": "Code", "Y9": "Setting", "X7": "Compute", "X2": "Uncertainty", "Q7": "Held-out",
                  "Q8": "Test", "Y7": "Versions", "Q4": "Baselines"}}
-AXES_M = {
-    "classement-taches": {"fr": ("Algorithme", "% du meilleur", "Tâche"), "en": ("Algorithm", "% of the best", "Task")},
-    "meilleurs-sur-dix": {"fr": ("Algorithme", "Hausse (%)", "Tâche"), "en": ("Algorithm", "Rise (%)", "Task")},
-    "grpo-graines": {"fr": ("Graine aléatoire", "Réussite (%)", "Modèle, récompense"),
-                     "en": ("Random seed", "Success (%)", "Model, reward")},
-}
 MOB = {  # name -> lang -> (title, subtitle, width, height, relabel, extra options)
     "e1-graines": {
         "fr": ("30 graines aléatoires", "PPO sur HalfCheetah, un point par essai", 400, 300, {},
@@ -366,11 +301,11 @@ MOB = {  # name -> lang -> (title, subtitle, width, height, relabel, extra optio
                {"PPO, our computation": "PPO, ours", "TRPO, our computation": "TRPO, ours", "TRPO, stacked points": "TRPO, stacked",
                 "PPO, 2017 script": "PPO, script", "TRPO, 2017 script": "TRPO, script"}, [])},
     "meilleurs-sur-dix": {
-        "fr": ("3 sur 10 gonflent tout", "Hausse de la moyenne, trois meilleurs essais sur dix", 400, 520, {"HalfCheetah": "Cheetah"}, []),
-        "en": ("Best 3 of 10 inflate all", "Rise of the mean, best three runs of ten", 400, 520, {"HalfCheetah": "Cheetah"}, [])},
+        "fr": ("3 sur 10 gonflent tout", "Hausse de la moyenne, trois meilleurs essais sur dix", 400, 520, {}, []),
+        "en": ("Best 3 of 10 inflate all", "Rise of the mean, best three runs of ten", 400, 520, {}, [])},
     "classement-taches": {
-        "fr": ("Le premier change", "Score en % du meilleur de chaque tâche", 400, 520, {"HalfCheetah": "Cheetah"}, []),
-        "en": ("The leader changes", "Score as a % of the best on each task", 400, 520, {"HalfCheetah": "Cheetah"}, [])},
+        "fr": ("Le premier change", "Score en % du meilleur de chaque tâche", 400, 520, {}, []),
+        "en": ("The leader changes", "Score as a % of the best on each task", 400, 520, {}, [])},
     "physique-modifiee": {
         "fr": ("Hopper : le premier tombe", "Rang avant et après une physique modifiée", 400, 400,
                {"Physique d'entraînement": "Entraînement", "Physique modifiée": "Modifiée"},
@@ -391,10 +326,10 @@ MOB = {  # name -> lang -> (title, subtitle, width, height, relabel, extra optio
                {"Effect of a setting": "Setting", "Compute stated": "Compute", "Code linked": "Code", "Statistical test": "Test"},
                ["--set", "x_tick_step=4", "--set", "x_label=Year", "--set", "series_colors=Test=#8E8E93"])},
     "grpo-graines": {
-        "fr": ("Pile ou face : zéro", "Réussite après 100 pas ; P/F : pile ou face", 400, 520,
-               {"Qwen, vraie récompense": "Qwen vraie", "Qwen, pile ou face": "Qwen P/F",
-                "Llama, vraie récompense": "Llama vraie", "Llama, pile ou face": "Llama P/F"}, []),
-        "en": ("Coin flip: down to zero", "First-attempt success after 100 steps", 400, 520,
+        "fr": ("Pile ou face : zéro", "Réussite au départ et après 100 pas", 400, 520,
+               {"Qwen, vraie récompense": "Qwen vraie", "Qwen, pile ou face": "Qwen pile ou face",
+                "Llama, vraie récompense": "Llama vraie", "Llama, pile ou face": "Llama pile ou face"}, []),
+        "en": ("Coin flip: down to zero", "Success at the start and after 100 steps", 400, 520,
                {"Qwen, true reward": "Qwen true", "Qwen, coin flip": "Qwen coin",
                 "Llama, true reward": "Llama true", "Llama, coin flip": "Llama coin"}, [])},
     "grpo-coupure": {
@@ -432,27 +367,159 @@ def mobile_spec(name, lang, kind, csvp, opts):
     return kind, out, keep + extra + ["--set", f"width={w}", "--set", f"height={h}"]
 
 
+
+
+# The words each drawing adds to the title and subtitle: notes, keys, sources. Numbers come from the files above.
+def frac(x, lang):
+    return draw.num(x, lang)
+
+
+RANK = {"fr": lambda k: "1er" if k == 1 else f"{k}e", "en": lambda k: {1: "1st", 2: "2nd", 3: "3rd"}.get(k, f"{k}th")}
+E1V = sorted(e1["seeds_sorted"])
+CUT = 3000
+NHI = sum(v >= CUT for v in E1V)
+TRAJ_N = traj["Q5"]["by_year"]
+MID = sorted(int(y) for y in TRAJ_N if y not in ("2018", "2026"))
+assert all(TRAJ_N[str(y)]["n"] == TRAJ_N[str(MID[0])]["n"] for y in MID)
+E4MED = r(J("sim/analysis/e4.json")["inflation_median"] * 100)
+DPEAK = None
+
+
+def text(name, lang):
+    fr = lang == "fr"
+    P = lambda x, **k: draw.pct(x, lang, **k)
+    N = lambda x, **k: draw.num(x, lang, **k)
+    return {
+        "e1-graines": dict(
+            cut=CUT, median="médiane" if fr else "median",
+            note=(f"{NHI} essais sur {len(E1V)} dépassent {N(CUT)} :|même code,|autre graine" if fr
+                  else f"{NHI} of {len(E1V)} runs pass {N(CUT)}:|same code,|another seed"),
+            axis="Score final après un million de pas (plus haut est mieux)" if fr
+            else "Final score after one million steps (higher is better)",
+            source=(f"Données : {len(E1V)} entraînements de PPO (Stable-Baselines3) sur HalfCheetah, un par graine aléatoire" if fr
+                    else f"Data: {len(E1V)} PPO trainings (Stable-Baselines3) on HalfCheetah, one per random seed"),
+            desc=(f"Trente points sur un axe de score. {len(E1V) - NHI} essais vont de {N(E1V[0])} à {N(E1V[-NHI - 1])}, "
+                  f"{NHI} dépassent {N(CUT)}, jusqu'à {N(E1V[-1])}." if fr else
+                  f"Thirty dots on a score axis. {len(E1V) - NHI} runs range from {N(E1V[0])} to {N(E1V[-NHI - 1])}, "
+                  f"{NHI} pass {N(CUT)}, up to {N(E1V[-1])}.")),
+        "e1-faux-positifs": dict(
+            ref="5 % : le risque accepté" if fr else "5%: the accepted risk",
+            source="Données : 10 000 tirages parmi les 30 essais de PPO, test de Welch au seuil de 5 %" if fr
+            else "Data: 10,000 draws among the 30 PPO runs, Welch test at the 5% level",
+            desc="Barres horizontales : au hasard, de 1 à 2 % des tirages sont déclarés différents ; "
+                 "cinq meilleurs contre cinq pires, 31 %." if fr else
+                 "Horizontal bars: at random, 1 to 2% of draws are declared different; five best against five worst, 31%."),
+        "t-de-neuf": dict(
+            source="Données : 10 000 tirages de deux groupes de cinq essais ; 9,09 est le t publié par Henderson et al. en 2018" if fr
+            else "Data: 10,000 draws of two groups of five runs; 9.09 is the t published by Henderson et al. in 2018",
+            desc="Cinq barres horizontales : quatre façons de calculer donnent 0 % ; le script de 2017 sur TRPO, 38 %." if fr
+            else "Five horizontal bars: four ways of computing give 0%; the 2017 script on TRPO, 38%."),
+        "classement-taches": dict(
+            first="1er" if fr else "1st",
+            source="Données : moyenne interquartile de dix graines aléatoires, par algorithme et par tâche" if fr
+            else "Data: interquartile mean over ten random seeds, per algorithm and task",
+            desc="Quatre panneaux, un par tâche, barres classées : SAC en tête sur HalfCheetah, PPO (JAX) sur Hopper "
+                 "et Swimmer, CrossQ sur Walker2d." if fr else
+                 "Four panels, one per task, sorted bars: SAC leads on HalfCheetah, PPO (JAX) on Hopper and Swimmer, "
+                 "CrossQ on Walker2d."),
+        "meilleurs-sur-dix": dict(
+            median="médiane" if fr else "median", median_value=E4MED,
+            source="Données : dix entraînements par algorithme et par tâche ; hausse de la moyenne des trois meilleurs sur celle des dix" if fr
+            else "Data: ten trainings per algorithm and task; rise of the mean of the best three over the mean of all ten",
+            desc=f"Seize barres, quatre par tâche : la moyenne gonfle de {P(6)} à {P(84)}, {P(E4MED)} en médiane." if fr
+            else f"Sixteen bars, four per task: the mean inflates by {P(6)} to {P(84)}, {P(E4MED)} at the median."),
+        "physique-modifiee": dict(
+            hot={"PPO (JAX)", "CrossQ"}, rank=RANK[lang],
+            note="Physique modifiée : masses alourdies de 20 %, frottements réduits de 20 %." if fr
+            else "Modified physics: masses 20% heavier, friction 20% lower.",
+            source="Données : Hopper, moyenne interquartile de dix graines aléatoires, mêmes politiques dans les deux physiques" if fr
+            else "Data: Hopper, interquartile mean over ten random seeds, the same policies in both physics",
+            desc="Quatre lignes du score d'entraînement au score en physique modifiée : PPO (JAX) passe de premier à dernier, "
+                 "CrossQ de troisième à premier." if fr else
+                 "Four lines from the training score to the score in modified physics: PPO (JAX) goes from first to last, "
+                 "CrossQ from third to first."),
+        "grille-egale": dict(
+            better="plus fréquente en 2026 →" if fr else "more common in 2026 →",
+            worse="← moins fréquente" if fr else "← less common",
+            axis="Écart en points, 2026 moins 2018, avec son intervalle à 95 %" if fr
+            else "Gap in points, 2026 minus 2018, with its 95% interval",
+            source="Données : 50 articles de RL classique de 2026 et nos 50 de 2018, lus avec la même grille" if fr
+            else "Data: 50 classical RL papers from 2026 and our 50 from 2018, read with the same grid",
+            desc="Huit pratiques, un point et son intervalle : code en lien, effet d'un réglage, calcul chiffré et incertitude "
+                 "progressent nettement ; les quatre autres intervalles contiennent zéro." if fr else
+                 "Eight practices, a dot and its interval: code linked, effect of a setting, compute stated and uncertainty "
+                 "clearly rise; the four other intervals contain zero."),
+        "trajectoire": dict(
+            grey=CRIT[lang]["Q8"],
+            neurips="2019 : NeurIPS adopte la liste de contrôle de Pineau" if fr
+            else "2019: NeurIPS adopts Pineau's checklist",
+            axis="Année de publication" if fr else "Year of publication",
+            source=(f"Données : {TRAJ_N['2018']['n']} articles de 2018, {TRAJ_N['2026']['n']} de 2026, "
+                    f"{TRAJ_N[str(MID[0])]['n']} pour chacune des années entre les deux" if fr else
+                    f"Data: {TRAJ_N['2018']['n']} papers from 2018, {TRAJ_N['2026']['n']} from 2026, "
+                    f"{TRAJ_N[str(MID[0])]['n']} for each year in between"),
+            desc="Cinq lignes de 2018 à 2026 : toutes montent lentement, sans saut après 2019 ; le test statistique reste "
+                 "sous 25 %." if fr else
+                 "Five lines from 2018 to 2026: all climb slowly, with no jump after 2019; the statistical test stays "
+                 "under 25%."),
+        "grpo-graines": dict(
+            start="au départ" if fr else "at the start", end="après 100 pas" if fr else "after 100 steps",
+            gpu="carte graphique" if fr else "GPU", cpu="processeur" if fr else "CPU",
+            failed="arrêté deux fois" if fr else "stopped twice",
+            source="Données : vingt entraînements GRPO de cent pas, dont un arrêté deux fois par le garde-fou des gradients" if fr
+            else "Data: twenty GRPO trainings of a hundred steps, one of them stopped twice by the gradient safeguard",
+            desc="Dix-neuf flèches du départ à 100 pas, une croix pour l'essai arrêté. Vraie récompense : Qwen finit "
+                 "entre 0 et 61 %, Llama entre 20 et 48 %. Pile ou face : 1 % ou moins dans les neuf essais finis." if fr else
+                 "Nineteen arrows from the start to step 100, a cross for the stopped run. True reward: Qwen ends between "
+                 "0 and 61%, Llama between 20 and 48%. Coin flip: 1% or less in all nine finished runs."),
+        "grpo-coupure": dict(
+            source="Données : le lot du pas 10 du pilote, réponses du modèle de départ, coupées à 160 jetons" if fr
+            else "Data: the step-10 batch of the pilot, answers of the base model, cut at 160 tokens",
+            desc="Quatre rangées de huit carrés, un par réponse : la plupart sont coupées avant la fin." if fr
+            else "Four rows of eight squares, one per answer: most are cut before the end."),
+        "intensites": dict(
+            zero="physique d'entraînement" if fr else "training physics",
+            peak=lambda p: (f"{p[1]} sur 16 à {P(p[0], sign=True)}" if fr else f"{p[1]} of 16 at {P(p[0], sign=True)}"),
+            yaxis="Couples qui perdent, sur 16 (plus bas est mieux)" if fr else "Pairs that lose, out of 16 (lower is better)",
+            axis="Écart à la physique d'entraînement" if fr else "Change from the training physics",
+            source="Données : 16 couples d'algorithme et de tâche, dix graines aléatoires, une grandeur changée à la fois" if fr
+            else "Data: 16 pairs of algorithm and task, ten random seeds, one quantity changed at a time",
+            desc="Deux lignes en V : nulle perte à la physique d'entraînement, de plus en plus de couples perdent quand "
+                 "masses ou frottements s'en écartent." if fr else
+                 "Two V-shaped lines: no loss at the training physics, more and more pairs lose as masses or friction "
+                 "move away from it."),
+    }[name]
+
+
+def opt(opts, key):
+    for a, b in zip(opts[::2], opts[1::2]):
+        if a == "--title" and key == "title":
+            return b
+        if a == "--set" and b.startswith(key + "="):
+            return b.split("=", 1)[1]
+
+
 def render(only=None):
     bad = 0
     for name, per in FIGS.items():
         if only and name not in only:
             continue
-        jobs = [(lang, False, spec) for lang, spec in per.items()] + \
-               [(lang, True, mobile_spec(name, lang, *spec)) for lang, spec in per.items()]
-        for lang, mob, (kind, csvp, opts) in jobs:
-            svg = HERE / f"{name}{'-mobile' if mob else ''}-{lang}.svg"
-            subprocess.run(["nice", "sprezzature-figures", "render", kind, "--data", str(csvp), "--out", str(svg),
-                            "--theme", "academic", "--set", "mode=static", *opts], check=True, stdout=subprocess.DEVNULL)
-            svg.write_text(fix(name, lang, svg.read_text(), mob))
-            forbid = [x for c in CHROME.values() for x in c] + ["Overall median", "of week total"]
-            res = subprocess.run(["sprezzature-figures", "check", str(svg), "--expect-title", opts[1],
-                                  *[a for f in forbid for a in ("--forbid", f)]],
-                                 capture_output=True, text=True)
-            status = "clean" if res.returncode == 0 else "FINDINGS"
-            bad += res.returncode != 0
-            print(f"{svg.name}: {status}")
-            if res.returncode:
-                print(res.stdout.strip(), res.stderr.strip())
+        for lang, (kind, csvp, opts) in per.items():
+            for mob in (False, True):
+                if mob:
+                    _, src, _ = mobile_spec(name, lang, kind, csvp, opts)
+                    title, sub = MOB[name][lang][:2]
+                else:
+                    src, title, sub = csvp, opt(opts, "title"), opt(opts, "subtitle")
+                rows = list(csv.reader(open(src)))[1:]
+                svg = HERE / f"{name}{'-mobile' if mob else ''}-{lang}.svg"
+                svg.write_text(draw.DRAW[name](rows, lang, mob, title, sub, text(name, lang)), encoding="utf-8")
+                res = subprocess.run(["sprezzature-figures", "check", str(svg), "--expect-title", title],
+                                     capture_output=True, text=True)
+                bad += res.returncode != 0
+                print(f"{svg.name}: {'clean' if res.returncode == 0 else 'FINDINGS'}")
+                if res.returncode:
+                    print(res.stdout.strip(), res.stderr.strip())
     return bad
 
 

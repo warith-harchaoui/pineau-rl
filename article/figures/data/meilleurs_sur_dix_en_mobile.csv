@@ -1,8 +1,8 @@
 period,region,v
-Cheetah,SAC,19
-Cheetah,CrossQ,74
-Cheetah,PPO (PyTorch),35
-Cheetah,PPO (JAX),47
+HalfCheetah,SAC,19
+HalfCheetah,CrossQ,74
+HalfCheetah,PPO (PyTorch),35
+HalfCheetah,PPO (JAX),47
 Hopper,SAC,78
 Hopper,CrossQ,49
 Hopper,PPO (PyTorch),29

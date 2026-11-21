@@ -1,13 +1,21 @@
-period,region,v
-Qwen true,first,36
-Qwen true,second,61
-Qwen true,third,13
-Qwen coin,first,1
-Qwen coin,second,0
-Qwen coin,third,0
-Llama true,first,20
-Llama true,second,48
-Llama true,third,25
-Llama coin,first,0
-Llama coin,second,1
-Llama coin,third,0
+group,seed,pass1_100,pass1_0,device
+Qwen true,0,36,10,GPU
+Qwen true,1,61,10,GPU
+Qwen true,2,13,11,CPU
+Qwen true,3,13,10,CPU
+Qwen true,4,0,11,CPU
+Qwen coin,0,1,10,GPU
+Qwen coin,1,0,12,CPU
+Qwen coin,2,0,11,CPU
+Qwen coin,3,0,10,CPU
+Qwen coin,4,0,11,CPU
+Llama true,0,20,25,GPU
+Llama true,1,48,25,GPU
+Llama true,2,25,23,GPU
+Llama true,3,27,25,GPU
+Llama true,4,33,23,GPU
+Llama coin,0,0,25,GPU
+Llama coin,1,1,25,GPU
+Llama coin,2,0,23,GPU
+Llama coin,3,0,24,GPU
+Llama coin,4,,,failed

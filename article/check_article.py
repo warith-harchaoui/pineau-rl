@@ -20,7 +20,8 @@ J = lambda p: json.load(open(ROOT / p))
 NB = str.maketrans({" ": " ", " ": " "})
 norm = lambda t: re.sub(r"\s+", " ", t.translate(NB))
 
-TEXT = {l: norm((HERE / f"{l}.txt").read_text()) for l in ("fr", "en")}
+TEXT = {l: norm("\n".join(x for x in (HERE / f"{l}.txt").read_text().splitlines() if not x.startswith("<?")))  # PHP lines are code
+        for l in ("fr", "en")}
 DOC = {"fr": norm((ROOT / "docs/conclusions.md").read_text()), "en": norm((ROOT / "docs/conclusions-en.md").read_text())}
 BIB = norm((ROOT / "docs/refs.bib").read_text())
 
@@ -51,6 +52,7 @@ def sg(v):
 
 
 C = []  # (label, {lang: phrase}, kind) with kind "json" or "doc"
+claim_ = lambda *a, **k: None  # a claim whose sentence left the article; kept for the record
 
 
 def claim(label, fr, en, kind="json"):
@@ -88,27 +90,27 @@ for r_ in RD:
         assert "claude-opus-5 (" in r_["model_id"]
         other |= set(re.search(r"last writer of ([^)]*)\)", r_["model_id"])[1].split())
 assert len(other) == 13 and sum(r_["model_id"] != "claude-opus-5-5" for r_ in RD) == 2
-claim("thirteen papers on the neighbouring model", "pour treize articles", "for thirteen papers")
-claim("thirteen papers (cut)", "Sans les treize articles lus en partie par le modèle voisin", "Without the thirteen papers read in part by the neighbouring model")
+# (removed from the article on 2026-11-21) claim_("thirteen papers on the neighbouring model", "pour treize articles", "for thirteen papers")
+# (removed from the article on 2026-11-21) claim_("thirteen papers (cut)", "Sans les treize articles lus en partie par le modèle voisin", "Without the thirteen papers read in part by the neighbouring model")
 FN = J("study/falsify_no.json")
 cnt = FN["counts"]
 n_no = sum(v["no"] for v in cnt.values())
 turned = {y: sum(len(v["turned"]) for k, v in cnt.items() if k.startswith(y)) for y in ("2018", "2026")}
 doubt = sum(len(v["uncertain"]) for v in cnt.values())
 assert len({k.split()[1] for k in cnt}) == 7 and FN["verdict_changes"]["turned"] == []
-claim("seven of eight practices", "sur sept des huit pratiques comparées", "on seven of the eight practices compared")
+# (removed from the article on 2026-11-21) claim_("seven of eight practices", "sur sept des huit pratiques comparées", "on seven of the eight practices compared")
 claim("falsify no", *both(lambda l: (f"Sur {n_no} décisions « non », {sum(turned.values())} passent à « oui », {turned['2018']} en 2018 et {turned['2026']} en 2026" if l == "fr" else
                                     f"Of {n_no} \"no\" decisions, {sum(turned.values())} turn into \"yes\", {turned['2018']} in 2018 and {turned['2026']} in 2026")))
-claim("falsify doubtful", *both(lambda l: f"{'juge' if l == 'fr' else 'finds'} {doubt} {'autres décisions douteuses' if l == 'fr' else 'other decisions doubtful'}"))
+# (removed 2026-11-21) claim("falsify doubtful", *both(lambda l: f"{'juge' if l == 'fr' else 'finds'} {doubt} {'autres décisions douteuses' if l == 'fr' else 'other decisions doubtful'}"))
 SO = {r_["k"]: r_["classic_vs_ours2018"]["p_holm"] for r_ in J("study/extension_stats_sans_opus5.json")["rows"]}
 BD = FN["comparison"]
 assert SO["X2"] > 0.05 and all(SO[k] < 0.05 for k in ("Q5", "Y9", "X7"))           # without the thirteen papers
 assert BD["X2"]["bound"]["p_holm"] > 0.05 and BD["Y9"]["bound"]["p_holm"] > 0.05      # doubtful decisions turned
 assert all(BD[k]["bound"]["p_holm"] < 0.05 for k in ("Q5", "X7")) and FN["verdict_changes"]["bound"] == ["X2", "Y9"]
 assert all(X[k]["classic_vs_ours2018"]["p_holm"] < 0.05 for k in ("Q5", "Y9", "X7", "X2"))
-claim("X2 without the thirteen", *both(lambda l: f"{'ne passe plus la correction' if l == 'fr' else 'no longer passes the correction'} (p = {num(SO['X2'], l, 2)})"))
-claim("X2 doubtful turned", *both(lambda l: (f"les {doubt} décisions douteuses passent à « oui » (p = {num(BD['X2']['bound']['p_holm'], l, 2)})" if l == "fr" else
-                                             f"the {doubt} doubtful decisions turn into \"yes\" (p = {num(BD['X2']['bound']['p_holm'], l, 2)})")))
+assert num(SO["X2"], "fr", 2) == num(BD["X2"]["bound"]["p_holm"], "fr", 2)  # the same p, rounded, in both checks
+claim("X2 fragile", *both(lambda l: (f"deux de nos contrôles la font échouer, avec p = {num(SO['X2'], l, 2)} chaque fois" if l == "fr" else
+                                     f"two of our checks make it fail, with p = {num(SO['X2'], l, 2)} each time")))
 
 # Trajectory (study/trajectory.json).
 T = J("study/trajectory.json")
@@ -127,13 +129,20 @@ claim("Y9 later", f"de {pct(y9(['2019', '2020']), 'fr')} sur 2019 et 2020 à {pc
 e1 = J("sim/analysis/e1.json")
 s = e1["seeds_sorted"]
 inner = [v for v in s if v < 3000]
-claim("E1 mean, sd, cv", *both(lambda l: f"{num(e1['mean'], l)}, {('l' + Q + 'écart type') if l == 'fr' else 'the standard deviation'} {num(e1['sd'], l)}, {'soit' if l == 'fr' else 'or'} {pct(e1['cv'], l)}"))
+claim("E1 mean", *both(lambda l: f"{'La moyenne vaut' if l == 'fr' else 'The mean is'} {num(e1['mean'], l)}"))
+claim("E1 sd, cv", *both(lambda l: f"{num(e1['sd'], l)}, {'soit' if l == 'fr' else 'or'} {pct(e1['cv'], l)}"))
+claim("95% interval defined", "Un intervalle à 95 %", "A 95% interval", "doc")
 claim("E1 mean, median", *both(lambda l: f"{'Moyenne' if l == 'fr' else 'Mean'} {num(e1['mean'], l)}, {'médiane' if l == 'fr' else 'median'} {num(e1['median'], l)}"))
 claim("E1 27 runs range", *both(lambda l: de_a(num(min(s), l), num(max(inner), l), l).replace("de ", "entre ").replace(" à ", " et ").replace("from ", "between ").replace(" to ", " and ")))
 assert len(inner) == 27 and len(s) - len(inner) == 3 and min(v for v in s if v >= 3000) > 3000
 claim("E1 beyond 3000", *both(lambda l: f"{'au-delà de' if l == 'fr' else 'beyond'} {num(3000, l)}"))
-claim("E1 alt", *both(lambda l: (f"{pct(e1['extreme_5v5_of_10']['false_positive'], l)} de faux positifs. Dix contre dix au hasard : {pct(e1['random_10v10']['false_positive'], l, 1)}. Trois contre trois au hasard : {pct(e1['random_3v3']['false_positive'], l, 1)}. Cinq contre cinq au hasard : {pct(e1['random_5v5']['false_positive'], l, 1)}" if l == "fr" else
-                                  f"{pct(e1['extreme_5v5_of_10']['false_positive'], l)} false positives. Ten against ten at random: {pct(e1['random_10v10']['false_positive'], l, 1)}. Three against three at random: {pct(e1['random_3v3']['false_positive'], l, 1)}. Five against five at random: {pct(e1['random_5v5']['false_positive'], l, 1)}")))
+claim("E1 alt", *both(lambda l: (f"Trois contre trois au hasard : {pct(e1['random_3v3']['false_positive'], l, 1)}. Cinq contre cinq au hasard : {pct(e1['random_5v5']['false_positive'], l, 1)}. Dix contre dix au hasard : {pct(e1['random_10v10']['false_positive'], l, 1)}. Cinq meilleurs contre cinq pires sur dix essais, en rouge : {pct(e1['extreme_5v5_of_10']['false_positive'], l)}" if l == "fr" else
+                                  f"Three against three at random: {pct(e1['random_3v3']['false_positive'], l, 1)}. Five against five at random: {pct(e1['random_5v5']['false_positive'], l, 1)}. Ten against ten at random: {pct(e1['random_10v10']['false_positive'], l, 1)}. Five best against five worst out of ten runs, in red: {pct(e1['extreme_5v5_of_10']['false_positive'], l)}")))
+claim("E1 alt threshold line", "une ligne en pointillé à 5 %", "a dotted line at 5%", "doc")
+claim("E2 alt badge", "porte « 1er »", "reads \"1st\"")
+claim("GRPO5 alt after 100 steps", "à la réussite après 100 pas", "to success after 100 steps")
+claim("E1 alt max", *both(lambda l: f"{'jusqu' + Q + 'à' if l == 'fr' else 'up to'} {num(max(s), l)}"))
+claim("E1 alt median", *both(lambda l: f"{'la médiane' if l == 'fr' else 'the median'}, {num(e1['median'], l)}"))
 claim("E1 random 5v5", *both(lambda l: f"{'dans' if l == 'fr' else 'in'} {pct(e1['random_5v5']['false_positive'], l, 1)} {'des tirages' if l == 'fr' else 'of the draws'}"))
 claim("E1 gaps", *both(lambda l: f"{pct(e1['random_5v5']['median_gap'], l)} {'en médiane et de' if l == 'fr' else 'at the median and by'} {pct(e1['random_5v5']['p95_gap'], l)}"))
 claim("E1 sorted 31%", *both(lambda l: f"{pct(e1['extreme_5v5_of_10']['false_positive'], l)} {'de faux positifs' if l == 'fr' else 'false positives'}"))
@@ -162,7 +171,7 @@ claim("TRPO episode/agent sd", *both(lambda l: f"{pct(b1s['trpo']['eval_std_over
 assert b1s["ppo_sb3"]["n10"]["random_5v5"]["share_abs_t_ge_henderson"] == 0
 claim("PPO with the script never reaches 9", "le même calcul n'atteint jamais 9", "the same computation never reaches 9")
 claim("B1 no reading reaches 9", "Aucune lecture n'atteint 9", "No reading reaches 9")
-claim("t-de-neuf alt", *both(lambda l: f"{'TRPO avec le script de 2017 :' if l == 'fr' else 'TRPO with the 2017 script:'} {pct(hs['share_abs_t_ge_henderson'], l)} {'des tirages atteignent' if l == 'fr' else 'of draws reach'} {num(9.09, l, 2)}"))
+claim("t-de-neuf alt", *both(lambda l: f"{'TRPO avec le script de 2017, en rouge :' if l == 'fr' else 'TRPO with the 2017 script, in red:'} {pct(hs['share_abs_t_ge_henderson'], l)} {'des tirages atteignent' if l == 'fr' else 'of draws reach'} {num(9.09, l, 2)}"))
 claim("t-de-neuf alt zeros", *both(lambda l: "script de 2017 : 0 %" if l == "fr" else "2017 script: 0%"))
 
 # E4, E5 (sim/analysis/e4.json, e5.json).
@@ -173,8 +182,9 @@ ALG = ["sac", "crossq", "ppo_sb3", "ppo_sbx"]
 TK = ["HalfCheetah-v5", "Hopper-v5", "Walker2d-v5", "Swimmer-v5"]
 inf = lambda a, t: int(hu(e4["cells"][f"{a}/{t}"]["inflation"] * 100))
 first = TK[0]
-claim("E4 alt", *both(lambda l: (f"HalfCheetah{' :' if l == 'fr' else ':'} SAC {pct(inf('sac', first) / 100, l)}, CrossQ {pct(inf('crossq', first) / 100, l)}, PPO PyTorch {pct(inf('ppo_sb3', first) / 100, l)}, PPO JAX {pct(inf('ppo_sbx', first) / 100, l)}. "
-                                  + ". ".join(f"{t[:-3]}{' :' if l == 'fr' else ':'} " + ", ".join(str(inf(a, t)) for a in ALG) for t in TK[1:]))))
+claim("E4 alt", *both(lambda l: (f"HalfCheetah{' :' if l == 'fr' else ':'} SAC +{pct(inf('sac', first) / 100, l)}, CrossQ +{pct(inf('crossq', first) / 100, l)}, PPO PyTorch +{pct(inf('ppo_sb3', first) / 100, l)}, PPO JAX +{pct(inf('ppo_sbx', first) / 100, l)}. "
+                                  + ". ".join(f"{t[:-3]}{' :' if l == 'fr' else ':'} " + ", ".join("+" + str(inf(a, t)) for a in ALG) for t in TK[1:]))))
+claim("E4 alt median", *both(lambda l: f"{'à la médiane de' if l == 'fr' else 'at the median of'} +{pct(e4['inflation_median'], l)}"))
 e5 = J("sim/analysis/e5.json")
 claim("E5 close comparisons", *both(lambda l: f"{'moins de' if l == 'fr' else 'less than'} {pct(0.2, l)}, {'cinq graines aléatoires ne retrouvent le bon ordre que' if l == 'fr' else 'five random seeds recover the right order only'} {int(hu(e5['median_close']['5'] * 100))}"))
 assert e5["n_close"] == 7
@@ -182,7 +192,8 @@ assert e5["n_close"] == 7
 # E2, E3 (sim/analysis/e2.json, e3.json).
 e2 = J("sim/analysis/e2.json")["tasks"]
 rel = lambda a, t: int(hu(e2[t]["iqm"][a] / max(e2[t]["iqm"].values()) * 100))
-claim("E2 alt", *both(lambda l: ". ".join(f"{t[:-3]}{' :' if l == 'fr' else ':'} " + ", ".join(f"{n} {rel(a, t)}" for a, n in zip(ALG, ["SAC", "CrossQ", "PPO PyTorch", "PPO JAX"])) for t in TK)))
+NAME = dict(zip(ALG, ["SAC", "CrossQ", "PPO PyTorch", "PPO JAX"]))
+claim("E2 alt", *both(lambda l: ". ".join(f"{t[:-3]}{' :' if l == 'fr' else ':'} " + ", ".join(f"{NAME[a]} {rel(a, t)}" for a in sorted(ALG, key=lambda a: -rel(a, t))) for t in TK)))
 assert [e2[t]["order"][0] for t in TK] == ["sac", "ppo_sbx", "crossq", "ppo_sbx"]
 e3 = J("sim/analysis/e3.json")["Walker2d-v5"]
 claim("E3 Walker2d", *both(lambda l: f"{num(e3['iqm']['sb3'], l)}, PPO {'écrit en JAX' if l == 'fr' else 'written in JAX'} {num(e3['iqm']['sbx'], l)}, {'soit' if l == 'fr' else 'or'} {pct(1 - e3['iqm_ratio_sbx_over_sb3'], l)}"))
@@ -196,11 +207,13 @@ assert loss == 12 and len(e7) == 16
 claim("E7 masses and friction", *both(lambda l: f"{'masses alourdies de' if l == 'fr' else 'masses'} {pct(0.2, l)} {'et des frottements réduits de' if l == 'fr' else 'heavier and friction'} {pct(0.2, l)}"), "doc")
 ret = lambda a, t: e7[f"{a}/{t}"]["iqm"]
 claim("E7 Hopper retention", *both(lambda l: f"{pct(ret('ppo_sb3', 'Hopper-v5'), l)} {'de son score dans sa version PyTorch et' if l == 'fr' else 'of its score in its PyTorch version and'} {pct(ret('ppo_sbx', 'Hopper-v5'), l)} {'dans sa version JAX, quand SAC en garde' if l == 'fr' else 'in its JAX version, while SAC keeps'} {pct(ret('sac', 'Hopper-v5'), l)} {'et CrossQ' if l == 'fr' else 'and CrossQ'} {pct(ret('crossq', 'Hopper-v5'), l)}"))
-claim("E7 SAC Swimmer gain", *both(lambda l: f"SAC {'y gagne même' if l == 'fr' else 'even gains'} {pct(ret('sac', 'Swimmer-v5') - 1, l)}"))
+# (removed from the article on 2026-11-21) claim_("E7 SAC Swimmer gain", *both(lambda l: f"SAC {'y gagne même' if l == 'fr' else 'even gains'} {pct(ret('sac', 'Swimmer-v5') - 1, l)}"))
 hp = rk["Hopper-v5"]
 pm = lambda a: num(hp["iqm"]["perturbed_mean"][a], "x")
 claim("E7 alt", *both(lambda l: (f"CrossQ premier avec {num(hp['iqm']['perturbed_mean']['crossq'], l)}, SAC deuxième avec {num(hp['iqm']['perturbed_mean']['sac'], l)}, PPO PyTorch troisième avec {num(hp['iqm']['perturbed_mean']['ppo_sb3'], l)}, PPO JAX dernier avec {num(hp['iqm']['perturbed_mean']['ppo_sbx'], l)}" if l == "fr" else
                                   f"CrossQ first with {num(hp['iqm']['perturbed_mean']['crossq'], l)}, SAC second with {num(hp['iqm']['perturbed_mean']['sac'], l)}, PPO PyTorch third with {num(hp['iqm']['perturbed_mean']['ppo_sb3'], l)}, PPO JAX last with {num(hp['iqm']['perturbed_mean']['ppo_sbx'], l)}")))
+claim("E7 alt training", *both(lambda l: (f"PPO JAX premier avec {num(hp['iqm']['eval_mean']['ppo_sbx'], l)}, PPO PyTorch deuxième avec {num(hp['iqm']['eval_mean']['ppo_sb3'], l)}, CrossQ troisième avec {num(hp['iqm']['eval_mean']['crossq'], l)}, SAC quatrième avec {num(hp['iqm']['eval_mean']['sac'], l)}" if l == "fr" else
+                                           f"PPO JAX first with {num(hp['iqm']['eval_mean']['ppo_sbx'], l)}, PPO PyTorch second with {num(hp['iqm']['eval_mean']['ppo_sb3'], l)}, CrossQ third with {num(hp['iqm']['eval_mean']['crossq'], l)}, SAC fourth with {num(hp['iqm']['eval_mean']['sac'], l)}")))
 assert hp["training"] == ["ppo_sbx", "ppo_sb3", "crossq", "sac"] and hp["modified"] == ["crossq", "sac", "ppo_sb3", "ppo_sbx"]
 
 # E7 at several strengths, one quantity at a time (sim/analysis/dose.json, SIM deviation 12 (ii)).
@@ -219,10 +232,10 @@ claim("dose range", *both(lambda l: (f"les masses de {pct(-chg(STR['mass'][0]) /
                                  f"masses from {pct(-chg(STR['mass'][0]) / 100, l)} lighter to {pct(chg(STR['mass'][-1]) / 100, l)} heavier, friction from {pct(-chg(STR['friction'][0]) / 100, l)} lower to {pct(chg(STR['friction'][-1]) / 100, l)} higher")))
 claim("dose loss rule", "l'intervalle à 95 % de son score rapporté à celui de la physique d'entraînement reste sous 1",
       "the 95% interval of its score relative to the training physics stays below 1", "doc")
-claim("dose lighter masses", *both(lambda l: (f"Des masses allégées de {pct(0.1, l)} coûtent une part détectable de leur score à {nl('mass', '0.9')} couples sur 16, allégées de {pct(0.3, l)}, à {nl('mass', '0.7')}" if l == "fr" else
-                                          f"Masses {pct(0.1, l)} lighter cost {nl('mass', '0.9')} pairs out of 16 a detectable share of their score, {pct(0.3, l)} lighter cost {nl('mass', '0.7')}")))
-claim("dose heavier masses", *both(lambda l: (f"Alourdies de {pct(0.1, l)}, elles en font perdre {nl('mass', '1.1')} ; alourdies de {pct(0.2, l)}, {nl('mass', '1.2')}" if l == "fr" else
-                                          f"Masses {pct(0.1, l)} heavier cost {nl('mass', '1.1')} pairs; {pct(0.2, l)} heavier, {nl('mass', '1.2')}")))
+claim("dose lighter masses", *both(lambda l: (f"Des masses allégées de {pct(0.1, l)} coûtent une part détectable de leur score à {nl('mass', '0.9')} couples sur 16" if l == "fr" else
+                                          f"Masses {pct(0.1, l)} lighter cost {nl('mass', '0.9')} pairs out of 16 a detectable share of their score")))
+claim("dose heavier masses", *both(lambda l: (f"Alourdies de {pct(0.2, l)}, elles en font perdre {nl('mass', '1.2')}" if l == "fr" else
+                                          f"{pct(0.2, l)} heavier, they make {nl('mass', '1.2')} lose")))
 assert nl("friction", "1.2") == max(nl("friction", s) for s in STR["friction"])  # "friction matters less, except +20%"
 assert all(nl("friction", s) <= nl("mass", s) for s in STR["friction"] if s in STR["mass"] and s != "1.2")
 claim("dose friction +20%", *both(lambda l: (f"sauf augmentés de {pct(0.2, l)} : {nl('friction', '1.2')} couples y perdent" if l == "fr" else
@@ -230,7 +243,7 @@ claim("dose friction +20%", *both(lambda l: (f"sauf augmentés de {pct(0.2, l)} 
 hk = {k.split("/", 1)[1]: v["ranking"] for k, v in ds["ranking"].items() if k.startswith("Hopper-v5/")}
 assert hk["mass/1.0"][0] == "ppo_sbx"  # the leader in the training physics
 hs_ = [k for k in hk if not k.endswith("/1.0")]
-claim("dose Hopper leader", *both(lambda l: (f"n'est plus premier à {sum(hk[k][0] != 'ppo_sbx' for k in hs_)} intensités sur {len(hs_)}" if l == "fr" else
+claim_("dose Hopper leader", *both(lambda l: (f"n'est plus premier à {sum(hk[k][0] != 'ppo_sbx' for k in hs_)} intensités sur {len(hs_)}" if l == "fr" else
                                          f"no longer first at {sum(hk[k][0] != 'ppo_sbx' for k in hs_)} strengths out of {len(hs_)}")))
 claim("dose reference at 0%", *both(lambda l: f"{'À' if l == 'fr' else 'At'} {pct(chg('1.0'), l)}{', la physique d' + Q + 'entraînement sert de référence' if l == 'fr' else ', the training physics serves as the reference'}"))
 claim("dose 16 pairs", "soit 16 couples d'algorithme et de tâche", "or 16 pairs of algorithm and task")
@@ -269,8 +282,9 @@ assert dss["missing"] == {} and dss["control_max_rel_gap"] == 0 and dss["seeds"]
 hks = {k.split("/", 1)[1]: v["ranking"] for k, v in dss["ranking"].items() if k.startswith("Hopper-v5/")}
 assert hks["mass/1.0"][0] == "ppo_sbx"
 hss = [k for k in hks if not k.endswith("/1.0")]
-claim("dose Hopper leader, twenty seeds", *both(lambda l: (f"perd toujours la première place du sauteur à {sum(hks[k][0] != 'ppo_sbx' for k in hss)} intensités sur {len(hss)}" if l == "fr" else
-                                                       f"still loses first place on the hopper at {sum(hks[k][0] != 'ppo_sbx' for k in hss)} strengths out of {len(hss)}")))
+assert sum(hks[k][0] != "ppo_sbx" for k in hss) == sum(hk[k][0] != "ppo_sbx" for k in hs_)  # "with ten random seeds as with twenty"
+claim("dose Hopper leader, ten and twenty seeds", *both(lambda l: (f"n'est plus premier à {sum(hks[k][0] != 'ppo_sbx' for k in hss)} intensités sur {len(hss)}, avec dix graines aléatoires comme avec vingt" if l == "fr" else
+                                                       f"is no longer first at {sum(hks[k][0] != 'ppo_sbx' for k in hss)} strengths out of {len(hss)}, with ten random seeds as with twenty")))
 dls = {}
 for k, v in dss["ratio"].items():
     a, t, qn, st = k.split("/")
@@ -285,7 +299,7 @@ for qn in ("mass", "friction"):
 e6, e6o, e6d = J("sim/analysis/e6.json"), J("sim/analysis/e6_official.json"), J("sim/analysis/e6_diag.json")
 claim("E6 first pass", *both(lambda l: f"{num(e6['iqm']['default'], l)} {'pour les valeurs par défaut,' if l == 'fr' else 'for the default values,'} {num(e6['iqm']['zoo'], l)}"))
 claim("E6 official", *both(lambda l: f"{'obtiennent' if l == 'fr' else 'score'} {num(e6o['groups']['official v4']['iqm'], l)}, {'contre' if l == 'fr' else 'against'} {num(e6o['groups']['default v4']['iqm'], l)}"))
-claim("E6 fixed recipe", "1 012 sur la version 5 de la tâche, 984 sur la version 4", "1,012 on version 5 of the task and 984 on version 4", "doc")
+# (removed from the article on 2026-11-21) claim_("E6 fixed recipe", "1 012 sur la version 5 de la tâche, 984 sur la version 4", "1,012 on version 5 of the task and 984 on version 4", "doc")
 claim("E6 discount", *both(lambda l: f"{num(0.99, l, 2)}, {'là où le recueil emploie' if l == 'fr' else 'where the collection uses'} {num(0.999, l, 3)}"), "doc")
 
 # GRPO (sim/llm/results/summary.json, gains.json; docs/figures/data/grpo_truncation_*.csv).
@@ -294,32 +308,37 @@ run = lambda m, r: [x for x in sorted(sm, key=lambda x: x["seed"]) if x["model"]
 fin = lambda m, r, l: [pct(hu(x["pass1_100"], 2), l) for x in run(m, r)]
 q, ll = fin("qwen05", "true", "fr"), fin("llama1", "true", "fr")
 claim("GRPO Qwen true", *both(lambda l: ("finit à {}, {} et {}" if l == "fr" else "ends at {}, {} and {}").format(*fin("qwen05", "true", l))))
-claim("GRPO Llama true", *both(lambda l: ("finit à {}, {} et {}" if l == "fr" else "ends at {}, {} and {}").format(*fin("llama1", "true", l))))
-claim("GRPO alt", *both(lambda l: (("Qwen avec la vraie récompense : {}, {} et {} selon la graine aléatoire. Qwen à pile ou face : {}, {}, {}. Llama avec la vraie récompense : {}, {}, {}. Llama à pile ou face : {}, {}, {}") if l == "fr" else
-                                   ("Qwen with the true reward: {}, {} and {} depending on the random seed. Qwen with a coin flip: {}, {}, {}. Llama with the true reward: {}, {}, {}. Llama with a coin flip: {}, {}, {}")).format(
-    *fin("qwen05", "true", l), *fin("qwen05", "random", l), *fin("llama1", "true", l), *fin("llama1", "random", l))))
+claim_("GRPO Llama true", *both(lambda l: ("finit à {}, {} et {}" if l == "fr" else "ends at {}, {} and {}").format(*fin("llama1", "true", l))))
+claim_("GRPO alt (three seeds)")
 assert run("qwen05", "true")[2]["device"] == "cpu"
 q0 = sorted({int(hu(x["pass1_0"] * 100)) for x in sm if x["model"] == "qwen05"})
 l0 = sorted({int(hu(x["pass1_0"] * 100)) for x in sm if x["model"] == "llama1"})
 claim("GRPO Qwen start", *both(lambda l: f"{'environ' if l == 'fr' else 'about'} {pct(q0[0] / 100, l)}"))
-claim("GRPO Llama start", *both(lambda l: f"{de_a(pct(l0[0] / 100, l), pct(l0[-1] / 100, l), l).replace('from', 'at')}"))
+# (removed from the article on 2026-11-21) claim_("GRPO Llama start", *both(lambda l: f"{de_a(pct(l0[0] / 100, l), pct(l0[-1] / 100, l), l).replace('from', 'at')}"))
 g = lambda k: (sg(gn[k]["mean"] * 100), sg(gn[k]["ci"][0] * 100), sg(gn[k]["ci"][1] * 100))
-claim("GRPO gains", *both(lambda l: ("{} points sur Qwen, avec un intervalle de {} à {}, contre {} points sur Llama, de {} à {}" if l == "fr" else
-                                     "{} points on Qwen, with an interval from {} to {}, against {} points on Llama, from {} to {}").format(*g("qwen05 true"), *g("llama1 true"))))
+claim("GRPO gains", *both(lambda l: ("Le gain moyen vaut {} points, avec un intervalle de {} à {}" if l == "fr" else
+                                     "The mean gain is {} points, with an interval from {} to {}").format(*g("qwen05 true"))))
 assert gn["llama1 true"]["ci"][0] < 0 < gn["llama1 true"]["ci"][1]
 assert max(x["pass1_100"] for x in sm if x["reward"] == "random") <= 0.0125
 # Five random seeds (LLM_PROTOCOL deviations 14 and 16: summary_5.json, gains_5.json, extra_5.json).
 sm5, gn5, ex5 = J("sim/llm/results/summary_5.json"), J("sim/llm/results/gains_5.json"), J("sim/llm/results/extra_5.json")
 run5 = lambda m, r: [x for x in sorted(sm5, key=lambda x: x["seed"]) if x["model"] == m and x["reward"] == r]
 q5 = run5("qwen05", "true")
-claim("GRPO5 new Qwen runs", *both(lambda l: ("Les deux nouveaux essais de Qwen finissent à {} et {}" if l == "fr" else "The two new Qwen runs end at {} and {}").format(
+claim("GRPO5 new Qwen runs", *both(lambda l: ("les nouveaux essais finissent à {} et {}" if l == "fr" else "the new runs end at {} and {}").format(
     *[pct(hu(x["pass1_100"], 2), l) for x in q5[3:]])))
 g5 = lambda k: (sg(gn5[k]["mean"] * 100), sg(gn5[k]["ci"][0] * 100), sg(gn5[k]["ci"][1] * 100))
 assert gn5["qwen05 true"]["ci"][0] < 0 < gn5["qwen05 true"]["ci"][1] and len(gn5["qwen05 true"]["gains"]) == 5
-claim("GRPO5 Qwen gain", *both(lambda l: ("le gain moyen de Qwen tombe à {} points, avec un intervalle de {} à {} : il contient zéro" if l == "fr" else
-                                          "Qwen's mean gain falls to {} points, with an interval from {} to {}: it now contains zero").format(*g5("qwen05 true"))))
+claim("GRPO5 Qwen gain", *both(lambda l: ("le gain moyen tombe à {} points, avec un intervalle de {} à {} : il contient zéro" if l == "fr" else
+                                          "the mean gain drops to {} points, with an interval from {} to {}: it contains zero").format(*g5("qwen05 true"))))
+fin5 = lambda m, r, l: [pct(hu(x["pass1_100"], 2), l) for x in run5(m, r)]
+claim("GRPO5 alt Qwen true", *both(lambda l: ("Qwen avec la vraie récompense : {}, {}, {}, {} et {}" if l == "fr" else "Qwen with the true reward: {}, {}, {}, {} and {}").format(*fin5("qwen05", "true", l))))
+claim("GRPO5 alt Llama true", *both(lambda l: ("Llama avec la vraie récompense : {}, {}, {}, {} et {}" if l == "fr" else "Llama with the true reward: {}, {}, {}, {} and {}").format(*fin5("llama1", "true", l))))
+assert len(run5("qwen05", "random")) == 5 and max(x["pass1_100"] for x in run5("qwen05", "random")) <= 0.0125
+assert len(run5("llama1", "random")) == 4 and max(x["pass1_100"] for x in run5("llama1", "random")) <= 0.0125
+claim("GRPO5 alt coin flip", *both(lambda l: (f"cinq flèches qui tombent à {pct(0.01, l)} ou {pct(0, l)}" if l == "fr" else f"five arrows falling to {pct(0.01, l)} or {pct(0, l)}")))
+claim("GRPO5 alt Llama coin flip", *both(lambda l: (f"quatre flèches qui tombent à {pct(0.01, l)} ou moins" if l == "fr" else f"four arrows falling to {pct(0.01, l)} or less")))
 assert [x["device"] for x in q5] == ["mps", "mps", "cpu", "cpu", "cpu"]
-claim("GRPO5 GPU runs", *both(lambda l: ("{} et {} points" if l == "fr" else "{} and {} points").format(*[sg(x * 100) for x in gn5["qwen05 true"]["gains"][:2]])))
+# (removed from the article on 2026-11-21) claim_("GRPO5 GPU runs", *both(lambda l: ("{} et {} points" if l == "fr" else "{} and {} points").format(*[sg(x * 100) for x in gn5["qwen05 true"]["gains"][:2]])))
 cpu = ex5["cpu"]["qwen05 true"]
 assert cpu["seeds"] == [2, 3, 4]
 claim("GRPO5 CPU true", *both(lambda l: f"{'ont un gain moyen de' if l == 'fr' else 'have a mean gain of'} {sg(cpu['mean'] * 100)} points"))
