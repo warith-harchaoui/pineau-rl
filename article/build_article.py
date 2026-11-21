@@ -370,12 +370,12 @@ def preview(out: Path, lang: str, page: str) -> Path:
 
 
 def og_card(out: Path, lang: str) -> Path:
-    """The Open Graph card, 1200 x 630, drawn by the site's own generator (Satoshi, the h1 rule), as every other card."""
+    """The Open Graph card, 1200 x 630, drawn by the site's own generator (Satoshi, the h1 rule) around the hero photo, as every other card."""
     title = re.search(r"^META [^|]*\|[^|]*\|[^|]*\| ([^|]+?) \|", (ICI / f"{lang}.txt").read_text(), flags=re.M)[1]
     dst = out / "assets" / "images" / "og" / f"blog-{SLUGS[lang]}-{lang}.png"  # one card per language
     dst.parent.mkdir(parents=True, exist_ok=True)
     subprocess.run([sys.executable, str(SITE / "tools" / "og-cards" / "make_og.py"), "--lang", lang, "--title", title,
-                    "--hero", str(ICI / "figures" / f"e1-graines-{lang}.svg"), "--out", str(dst)],
+                    "--hero", str(SITE / "assets" / "images" / "conferences" / "joelle-pineau.webp"), "--out", str(dst)],
                    check=True, capture_output=True)
     return dst
 
