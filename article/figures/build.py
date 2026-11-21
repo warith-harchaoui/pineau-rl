@@ -439,8 +439,8 @@ def text(name, lang):
                  "Four lines from the training score to the score in modified physics: PPO (JAX) goes from first to last, "
                  "CrossQ from third to first."),
         "grille-egale": dict(
-            better="plus fréquente en 2026 →" if fr else "more common in 2026 →",
-            worse="← moins fréquente" if fr else "← less common",
+            better="plus fréquente en 2026" if fr else "more common in 2026",
+            worse="moins fréquente" if fr else "less common",
             axis="Écart en points, 2026 moins 2018, avec son intervalle à 95 %" if fr
             else "Gap in points, 2026 minus 2018, with its 95% interval",
             source="Données : 50 articles de RL classique de 2026 et nos 50 de 2018, lus avec la même grille" if fr
