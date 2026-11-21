@@ -192,7 +192,7 @@ Cet article résume un document bien plus long, qui reprend les seize failles un
 
 Nos verdicts valent pour le RL classique, lu par des programmes d'IA générative sur cinquante articles de chaque côté. Un changement de dix points peut encore y passer inaperçu. Joelle Pineau demandait que la critique s'applique d'abord à soi : notre travail est en ligne, chiffre par chiffre, pour qui voudra le refaire.
 
-Vous lancez des expériences de RL, ou vous devez juger celles d'un fournisseur ? Parlons-en.
+Parlons IA.
 
 <?php require_once dirname(__DIR__, 3) . '/layouts/buttons.php'; ?>
 <?= drz_button(e(rdv_url()), 'Prendre rendez-vous', 'drz-art-cta', 'primary', ' target="_blank" rel="noopener"', '', DRZ_ARROW) ?>

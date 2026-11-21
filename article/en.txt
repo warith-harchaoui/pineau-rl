@@ -192,7 +192,7 @@ This article summarizes a much longer document, which goes through the sixteen f
 
 Our verdicts hold for classical RL, read by generative AI programs on fifty papers on each side. A change of ten points can still go unnoticed there. Joelle Pineau asked that criticism apply to oneself first: our work is online, number by number, for anyone who wants to redo it.
 
-Running RL experiments, or judging a vendor's? Let's talk.
+Let's talk AI.
 
 <?php require_once dirname(__DIR__, 3) . '/layouts/buttons.php'; ?>
 <?= drz_button(e(rdv_url()), 'Book a call', 'drz-art-cta', 'primary', ' target="_blank" rel="noopener"', '', DRZ_ARROW) ?>
