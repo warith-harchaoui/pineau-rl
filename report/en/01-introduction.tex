@@ -48,6 +48,107 @@ $t = -9.09$ and $p = 0.0016$. Chapter~\ref{chap:02-contexte} describes the sixte
 which NeurIPS adopted in 2019 \parencite{pineau2021improving}. She also presents the ICLR 2018
 reproducibility challenge, in which anyone could try to reproduce a submitted paper.
 
+\section{The three Rs: reproducible, reusable, robust}\label{sec:intro-trois-r}
+
+\paragraph{What Pineau defines, what she shows}
+The titles of the two talks name three requirements. Pineau defines only one of them, through a
+quotation. The second page of her NeurIPS talk takes it from the report written by
+\textcite{bollen2015robust} for the US National Science Foundation: reproducibility \enquote{refers to the
+ability of a researcher to duplicate the results of a prior study\textellipsis{} using the same materials as were used
+by the original investigator}. It is \enquote{a minimum necessary condition for a finding to be
+believable and informative}. The full definition, on page~3 of that report, reads \enquote{the same
+materials and procedures}. One slide in Vancouver ties the three words into one sentence (ICLR,
+slide 16): \enquote{reusable material (software, datasets, experimental platforms) help us reproduce
+scientific methods to establish the robustness of the findings}. The other two words are shown, not
+defined. Reusability is the \enquote{reusable platforms for RL}, MuJoCo and the Arcade Learning
+Environment among them (ICLR, slide 15), the call to \enquote{commit to sharing reusable material} (ICLR,
+slide 44), then the lines of her checklist that ask for downloadable source code \enquote{including all
+dependencies} and for the simulation environment (NeurIPS, pages 31 to 33). Robustness is the pages
+titled \enquote{Robustness of policy gradient algorithms}, where the ranking of four algorithms changes
+from \task{HalfCheetah} to \task{Hopper} and \task{Swimmer} (NeurIPS, pages 14 and 15). Then come
+implementations that diverge (pages 16 and 17), random seeds (pages 21 and 22), the move \enquote{from
+fair comparisons\textellipsis{} to robust conclusions} (page 28) and benchmarks that are \enquote{brittle to
+perturbations} (page 44).
+
+\paragraph{Neighbouring vocabularies}
+The report Pineau quotes separates reproduction, with the same data, from replication, which follows
+the same procedures on new data. It calls a finding robust when it is reproducible, replicable and
+generalisable to other contexts \parencite[p.~3]{bollen2015robust}. The report of the US National
+Academies \parencite[Summary, p.~1]{nasem2019reproducibility} separates two words. Reproducibility there
+means consistent results obtained with the same input data, computational steps, methods, code and
+conditions of analysis. Replicability means consistent results across studies that answer the same
+question, each with its own data. The report by \textcite[Section~2.1, Figure~1]{pineau2021improving}
+crosses two axes, data and analysis. Same data and same analysis: the work is reproducible. New data,
+same analysis: it is replicable. Same data, another analysis, such as rewritten code: it is robust.
+Both changed: it is generalisable. In RL, training produces its own data. A new random seed produces new
+data. Rerunning the same code on other random seeds is therefore replication in all three vocabularies.
+We keep Pineau's three words and state, for each, what is held fixed, what varies and what \enquote{the
+same result} means.
+
+\paragraph{The same result}
+A learning curve changes from one machine to another: on another processor, MuJoCo, JAX and PyTorch
+round differently, so the same random seed gives another curve (\cref{sec:outils}). The result that
+reproduces is a conclusion drawn from several runs by a rule written in advance. \enquote{PPO JAX beats
+PPO PyTorch on \task{Hopper}} is true or false under the established-winner rule (\cref{sec:regle}),
+applied to the scores of ten runs. Getting the same result means getting the same verdict, by the same
+rule, from a new set of independent runs. The rule rests on a finite number of random seeds. It
+therefore sometimes declares a winner between two groups of runs of the same program: \cref{tab:regle-tranche}
+measures that rate. A single failed reproduction does not refute a conclusion, as
+\textcite[p.~4]{bollen2015robust} already said of replications: two studies that seem to disagree
+sometimes differ only by the sampling fluctuations of each. A conclusion drawn from three runs
+reproduces poorly by construction (\cref{sec:e5}).
+
+\paragraph{Reproducible}
+A result is reproducible when another person, with the same code, the same hyperparameters, the same
+task in the same version, the same budget of steps and the same evaluation protocol, reaches the same
+conclusion. Only the random seeds and the machine change. Reproduction is checked at two levels. The
+first is the identical rerun: same random seed, same machine, a single computing thread. It gave back
+the same evaluation points for PPO PyTorch and PPO JAX (\cref{sec:calcul}). For SAC and CrossQ, deviation~32
+checks it (\cref{sec:graines}). This level tests the code. The second level tests the conclusion: other
+random seeds, the same verdict. The three texts quoted above call this level a replication. Experiment
+E1 measures how often two groups of random seeds of the same program pass for two algorithms
+(\cref{sec:e1}). E5 counts the random seeds needed to recover the right ranking (\cref{sec:e5}). The
+consolidation reruns E2, E3, E5, E7 and B3 on random seeds 10 to 19 (\cref{sec:consolidation}). The
+survey measures whether a paper supplies what reproduction requires: the code (criterion Q5), the
+hyperparameters of the method and of the baselines and how they were chosen (Q3, Q4, Q6), the number of
+training runs (X1), the compute (X7), the versions of the environments and of the dependencies (Y7,
+Y10), as listed in \cref{tab:criteres}.
+
+\paragraph{Reusable}
+A piece of work is reusable when others take its material (code, simulated environment, dataset,
+reading grid) for another question without rewriting it, then get the behaviour it describes. The
+material is held fixed. The user, the question, the date and the software around the material change.
+Reusability qualifies material. It serves reproduction, in the order of slide 16. Experiment E6 shows
+its limit (\cref{sec:e6}). The hyperparameters that the RL Baselines3 Zoo collection publishes for PPO
+on \task{Hopper}, reused with the libraries of 2026, give a robot that stands upright without moving
+forward. With the libraries of 2022, the same recipe gave a robot that runs. Material reused without
+its versions changes its result. Our repository therefore freezes its environments with the hash of
+every package (\cref{sec:envs}, \cref{chap:D-environnements}) and publishes the package and its file
+formats (\cref{sec:paquet}, \cref{sec:formats}) under the BSD 3-Clause licence (\cref{sec:licence}).
+The command \texttt{make verify} recomputes every analysis and compares the result files byte for byte
+(\cref{sec:make}). The reading grid, with its decision rules, serves for other papers
+(\cref{chap:A-grille}). In the survey, the link to the code (Q5) and the list of dependencies with
+their versions (Y10) measure the reusable material of a paper.
+
+\paragraph{Robust}
+A conclusion is robust when it keeps its verdict under a change it claims not to depend on. The
+algorithm (the published idea) and the statistical rule are held fixed. One factor changes at a time.
+Our experiments change four of them: the task (E2, \cref{sec:e2}), the program that implements the same
+algorithm (E3, PPO written in PyTorch and in JAX, \cref{sec:e3}), the performance measure (B3,
+\cref{sec:b3}) and the physics of the evaluation world (E7 and the graded physics, \cref{sec:e7} and
+\cref{sec:dose}). The survey asks whether papers run these tests: the number of tasks behind the
+conclusion (Y3), a task where the method does not win (Y4), the implementation of the baselines (Y5),
+an evaluation outside the training conditions (Q7, Y8), the sensitivity to one hyperparameter (Y9).
+This sense of \enquote{robust} covers what the 2021 grid calls robust (E3 changes the code) and what it
+calls generalisable (E2 and E7 change the task or the physics). It matches the sense of
+\textcite{bollen2015robust}, for whom a robust finding reproduces, replicates and generalises. It also
+follows Pineau's pages, which put the change of task under the title of robustness.
+
+\paragraph{The order of the three requirements}
+The three requirements follow one another in the order of slide 16. Reusable material makes
+reproduction possible. A conclusion reproduced on other random seeds then becomes the reference against
+which the same conclusion is compared under another task, another program or another physics.
+
 \section{The question}\label{sec:intro-question}
 
 Eight years have passed. RL has changed in size and in terrain: in 2025 and 2026, more than half of the
