@@ -60,6 +60,58 @@ Tableau & Contenu & Fichier source \\
 \end{longtable}
 \end{small}
 
+Les analyses des écarts du 21 et du 22 novembre 2026 ont ajouté seize tableaux générés, chacun
+placé dans le chapitre de son analyse. Le \cref{tab:b-index-ajouts} renvoie à chacun et nomme
+le fichier de résultats d'où il vient.
+
+\begin{small}
+\begin{longtable}{@{}p{0.22\linewidth}p{0.4\linewidth}p{0.3\linewidth}@{}}
+\caption{Les tableaux générés des analyses du 21 et du 22 novembre 2026.}\label{tab:b-index-ajouts}\\
+\toprule
+Tableau & Contenu & Fichier source \\
+\midrule
+\endfirsthead
+\toprule
+Tableau & Contenu & Fichier source \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\multicolumn{3}{@{}l}{\textit{Sondage}}\\
+\Cref{tab:accord-intervalles} & Accord des doubles lectures réunies, intervalles de Wilson et kappa
+  avec intervalle bootstrap (écart 30 (a)) & \file{survey\_extra.json} \\
+\Cref{tab:difference-detectable} & Plus petite hausse et plus petite baisse détectables par critère
+  (écart 30 (b)) & \file{survey\_extra.json}, \file{extension\_stats.json} \\
+\Cref{tab:regle-origine} & La règle de verdict d'origine appliquée aux données (écart 30 (c)) &
+  \file{survey\_extra.json} \\
+\Cref{tab:q5-versions} & Q5 selon la version lue, actes ou arXiv (écart 31) & \file{q5\_versions.json} \\
+\Cref{tab:x8} & X8 contre X2, sources de l'incertitude par année (écart 32) & \file{x8\_stats.json},
+  \file{extension\_stats.json}, \file{survey\_extra.json} \\
+\multicolumn{3}{@{}l}{\textit{Simulations}}\\
+\Cref{tab:hyperparametres} & Réglages des cinq programmes tels qu'ils ont tourné (écart 28) &
+  \file{hyperparams.json} \\
+\Cref{tab:regle-tranche} & La règle \enquote{tranché} sur de vraies hypothèses nulles (écart 26) &
+  \file{rule\_calibration.json} \\
+\Cref{tab:e1-grille} & E1 sur les seize couples (écart 22) & \file{e1\_grid.json} \\
+\Cref{tab:e2-strict} & E2, décompte strict à côté du décompte préenregistré (écart 21) &
+  \file{e2\_strict*.json} \\
+\Cref{tab:e3-holm} & E3 avec la correction de Holm (écart 23) & \file{e3\_holm.json} \\
+\Cref{tab:e3-puissance} & Puissance du test de E3 selon le nombre de graines aléatoires (écart 23) &
+  \file{e3\_holm.json} \\
+\Cref{tab:e5-hors-echantillon} & E5 vérifié hors échantillon (écart 25) & \file{e5\_holdout.json},
+  \file{e5.json} \\
+\Cref{tab:e6-vitesse} & Vitesse des agents de E6 et agent publié par le Zoo (écarts 31 et 33) &
+  \file{e6\_enjoy.json}, \file{e6\_hub.json}, \file{e6\_speed.json} \\
+\Cref{tab:e7-test} & Le renversement sur \task{Hopper}, testé paire par paire (écart 24) &
+  \file{e7\_test*.json} \\
+\multicolumn{3}{@{}l}{\textit{Volet GRPO}}\\
+\Cref{tab:grpo-mesures} & Cinq mesures par configuration, intervalles par percentile et de Student
+  (écart 19) & \file{logs\_stats\_5.json} \\
+\Cref{tab:grpo-contraste} & Vraie récompense contre récompense tirée au sort (écart 19) &
+  \file{logs\_stats\_5.json} \\
+\end{longtable}
+\end{small}
+
 \section{Les fichiers de résultats}
 \label{sec:b-fichiers}
 
@@ -99,6 +151,16 @@ Script & Contenu du fichier de résultats \\
 \file{falsify\_no.py} & La recherche contre les décisions \enquote{non} (\file{falsify\_no.json}). \\
 \file{checklist.py} & Les listes de contrôle déclarées à NeurIPS 2025 contre nos lectures
   (\file{checklist.json}). \\
+\file{survey\_extra.py} & Doubles lectures avec intervalles, plus petite différence détectable,
+  règle de verdict d'origine, lecteurs et année, borne basse mécanique de X8 (écart 30,
+  \file{survey\_extra.json}). \\
+\file{q5\_versions.py}, \file{q5\_versions\_stats.py} & Q5 relu sur les actes et sur la dernière
+  version arXiv, dates des dépôts, quatre lectures de la comparaison (écart 31,
+  \file{q5\_versions.json}). \\
+\file{x8\_stats.py} & Le critère X8 contre X2, sources de l'incertitude, accord des doubles lectures
+  (écart 32, \file{x8\_stats.json}). \\
+\file{gemma\_stats.py} & Le lecteur \texttt{gemma3:12b} contre nos lecteurs (écart 33). La lecture
+  tourne encore : ce fichier n'a pas de résultat publié. \\
 \multicolumn{2}{@{}l}{\textit{Simulations, dossier \file{sim/analysis/}}}\\
 \file{e1.py}, \file{e1\_curve.py} & E1 : trente essais de PPO, test de Welch sur les scores finaux
   puis sur les courbes. \\
@@ -116,9 +178,31 @@ Script & Contenu du fichier de résultats \\
   descriptif. \\
 \file{dose.py} & La physique modifiée par degrés. \\
 \file{b3.py} & B3 : trois mesures par essai et les renversements entre mesures. \\
+\file{e2\_strict.py} & E2, décompte strict des paires qui s'inversent (écart 21). \\
+\file{e1\_grid.py} & E1 sur les seize couples (écart 22). \\
+\file{e3\_holm.py} & E3 avec la correction de Holm, écart de Hodges-Lehmann, puissance (écart 23). \\
+\file{e7\_test.py} & E7, chaque paire testée en physique d'entraînement et modifiée (écart 24). \\
+\file{e5\_holdout.py} & E5 hors échantillon (écart 25). \\
+\file{rule\_calibration.py} & Taux de faux positifs de la règle \enquote{tranché} (écart 26). \\
+\file{b1\_factor.py} & B1, le rapport entre le $t$ du script et celui des graines aléatoires
+  (écart 27). \\
+\file{hyperparams.py} & Les réglages des programmes tels qu'ils ont tourné (écart 28, \texttt{make
+  hyperparams}). \\
+\file{curves.py} & Courbes d'apprentissage : classement au fil des pas, score final contre meilleur
+  point, autocorrélation (écart 29). \\
+\file{effect\_sizes.py} & Tailles d'effet en points de score (écart 30). \\
+\file{e6\_speed.py}, \file{e6\_enjoy.py}, \file{e6\_hub.py} & E6 : vitesse lue dans les journaux,
+  agents rejoués avec notre protocole, agent publié par le Zoo (écarts 31 et 33). \\
+\file{c6\_determinism.py}, \file{e6\_gamma.py}, \file{c2.py} & Écarts 32, 33 (c) et 34, prêts
+  dans \texttt{make analysis-suite}. Leurs entraînements tournent encore : aucun résultat publié. \\
 \multicolumn{2}{@{}l}{\textit{Volet GRPO, dossier \file{sim/llm/}}}\\
 \file{summary.py} & Pass@1 aux pas 0 et 100 de chaque essai, gains, intervalles, sensibilité au
   gain manquant, essais CPU seuls (\file{summary*.json}, \file{gains*.json}, \file{extra*.json}). \\
+\file{logs\_stats.py} & Justesse gloutonne, pass@8, part coupée et justesse des réponses finies,
+  intervalles de Student, test de signe, contraste entre récompenses (écart 19,
+  \file{logs\_stats\_5.json}). \\
+\file{c7\_stats.py} & L'analyse de la relance, fixée par l'écart 20. La relance attend le GPU :
+  aucun résultat publié. \\
 \end{longtable}
 \end{small}
 

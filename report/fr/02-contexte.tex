@@ -91,9 +91,14 @@ $\hat{A}_t$ de l'avantage, il maximise l'objectif tronqué
 auquel s'ajoutent une perte sur le critique et un bonus d'entropie. La troncature supprime l'intérêt, pour une mise à
 jour, d'éloigner trop la nouvelle politique de l'ancienne. Le programme \algo{PPO PyTorch} est celui de
 Stable-Baselines3 \parencite{raffin2021sb3}. Le programme \algo{PPO JAX} est celui de sbx, la réécriture
-de Stable-Baselines en JAX \parencite{raffin2023sbx,bradbury2018jax}. Les deux programmes partent des
-mêmes valeurs par défaut autant que les deux bibliothèques le permettent. Ils collectent l'expérience
-par paquets de \num{2048} pas. PPO était la référence de 2018. Le protocole le retient parce qu'il reste une
+de Stable-Baselines en JAX \parencite{raffin2023sbx,bradbury2018jax}. Les deux programmes reçoivent
+les mêmes hyperparamètres d'algorithme et collectent l'expérience par paquets de \num{2048} pas. Leur
+initialisation par défaut diffère. Stable-Baselines3 active l'option \file{ortho\_init} : les couches
+cachées reçoivent une initialisation orthogonale de gain $\sqrt{2}$, la sortie de l'action un gain de
+0,01 et celle de la valeur un gain de 1 (\file{stable\_baselines3/common/policies.py}). La bibliothèque sbx la
+désactive par défaut et garde l'initialisation de Flax. Activée, l'option de sbx ne touche que la couche de
+sortie de l'action (\file{sbx/ppo/policies.py}). L'expérience E3 compare ces deux programmes
+(chapitre~\ref{chap:06-experiences-resultats}). PPO était la référence de 2018. Le protocole le retient parce qu'il reste une
 référence courante en 2026 et que GRPO, l'algorithme de notre volet sur les modèles de langue
 (chapitre~\ref{chap:07-modeles-de-langue}), en dérive.
 
@@ -109,11 +114,17 @@ réseaux cibles, stabilisent les cibles d'apprentissage. Le programme \algo{SAC}
 celui de sbx. SAC sert de référence \emph{off-policy} courante en contrôle continu.
 
 \paragraph{CrossQ}
-CrossQ \parencite{bhatt2024crossq} descend de SAC. Il retire les réseaux cibles et ajoute une
-normalisation par lots aux critiques. Les paires $(s, a)$ et $(s', a')$ passent ensemble dans le
-critique, pour que la normalisation voie les deux distributions. Ses auteurs annoncent une efficacité
-en données au moins égale à celle de méthodes beaucoup plus coûteuses en calcul. Le programme
-\algo{CrossQ} de nos expériences est celui de sbx.
+CrossQ \parencite{bhatt2024crossq} descend de SAC. Il retire les réseaux cibles et normalise les
+activations par lots. Les paires $(s, a)$ et $(s', a')$ passent ensemble dans le critique, pour que la
+normalisation voie les deux distributions. Ses auteurs annoncent une efficacité en données au moins
+égale à celle de méthodes beaucoup plus coûteuses en calcul. Le programme \algo{CrossQ} de nos
+expériences est celui de sbx. Il emploie une renormalisation par lots (\emph{batch renormalization}, \cite{ioffe2017batchrenorm}),
+dans l'acteur comme dans le critique, avec un élan de 0,99. Pendant les \num{100000} premières mises à jour
+de chaque réseau, la renormalisation se comporte comme une normalisation par lots ordinaire. Le critique y
+passe la moitié de notre budget. L'acteur, mis à jour une fois sur trois, n'en sort jamais
+(section~\ref{sec:programmes}). Son optimiseur
+Adam prend $\beta_1 = 0{,}5$ au lieu de 0,9 (\file{sbx/crossq/policies.py}). Le tableau~\ref{tab:hyperparametres}
+donne ses autres réglages.
 
 \paragraph{TRPO}
 TRPO (\emph{Trust Region Policy Optimization}) \parencite{schulman2015trpo} est l'algorithme de la
@@ -170,9 +181,11 @@ initiaux de l'environnement d'entraînement. Dans ce rapport, un \emph{essai} d�
 complet avec une graine aléatoire donnée.
 
 \paragraph{Ce qui reste fixe}
-Même programme, même graine aléatoire, mêmes versions des bibliothèques et même machine : même
-résultat. Nos journaux le vérifient pour \algo{PPO PyTorch} et \algo{PPO JAX} : un essai arrêté puis
-relancé retrouve à l'identique ses points d'évaluation (\file{sim/SIM\_PROTOCOL.md}, écart~12~(e)).
+Même programme, même graine aléatoire, mêmes versions des bibliothèques et même machine : le protocole
+attend le même résultat. Nos journaux le vérifient pour \algo{PPO PyTorch} et \algo{PPO JAX} : un essai
+arrêté puis relancé retrouve à l'identique ses points d'évaluation (\file{sim/SIM\_PROTOCOL.md},
+écart~12~(e)). Pour \algo{SAC} et \algo{CrossQ}, la même vérification est préenregistrée (écart~32 du même
+protocole) et en cours.
 Changer la graine aléatoire change tous ces tirages. Le score final d'un même programme varie alors
 beaucoup. Sur nos trente essais de \algo{PPO PyTorch} sur \task{HalfCheetah}, l'écart type vaut 34~\% de
 la moyenne (chapitre~\ref{chap:06-experiences-resultats}).
@@ -183,7 +196,9 @@ enquête. Une comparaison entre deux programmes repose donc sur plusieurs essais
 programme, avec une incertitude calculée sur ces essais, sinon elle mesure le hasard du tirage.
 L'épisode ou le point d'une courbe ne compte pas pour une observation indépendante, puisqu'il vient
 d'un seul essai. La faille F11 et l'expérience B1 montrent ce qui arrive quand on prend l'épisode pour
-l'unité (chapitre~\ref{chap:06-experiences-resultats}).
+l'unité (chapitre~\ref{chap:06-experiences-resultats}). Le critère X8 du sondage demande, pour cette
+raison, si les articles calculent leur incertitude sur des essais indépendants
+(section~\ref{sec:sm-x8}).
 
 \section{Évaluer un agent}\label{sec:ctx-evaluation}
 
@@ -224,7 +239,10 @@ $Y$ tiré indépendamment :
 \end{equation}
 Cette probabilité vaut la statistique $U$ de Mann-Whitney divisée par $n_X n_Y$. La valeur 0,5 signale deux
 programmes indiscernables. Nos expériences déclarent un écart établi quand l'intervalle bootstrap à
-95~\% de $P(X > Y)$ exclut 0,5. Le test $t$ de Welch \parencite{welch1947generalization}, qui compare deux
+95~\% de $P(X > Y)$ exclut 0,5, ou quand les intervalles des deux IQM ne se chevauchent pas. Sur des
+groupes d'essais d'un même programme, où aucun écart n'existe, cette règle conclut à tort un peu plus
+d'une fois sur vingt avec dix essais par groupe, près d'une fois sur dix avec cinq
+(section~\ref{sec:regle}). Le test $t$ de Welch \parencite{welch1947generalization}, qui compare deux
 moyennes sans supposer les variances égales, sert seulement dans les expériences E1 et B1, puisque
 c'est lui que la figure de 2018 employait.
 

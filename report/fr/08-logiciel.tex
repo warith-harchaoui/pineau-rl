@@ -32,17 +32,27 @@ JSON. Aucun nombre d'un document ne vient d'ailleurs.
 Chemin & Contenu \\
 \midrule
 \file{study/} & Le sondage : protocole (\file{PROTOCOL.md}), fiche du lecteur (\file{GRILLE.md}),
-  tirages, lectures (\file{codes/}, \file{codes\_v2/}), harmonisation (\file{overrides*.json}),
-  provenance des lecteurs (\file{readers/}), scripts d'analyse et fichiers JSON de résultats. \\
+  tirages, lectures (\file{codes/}, \file{codes\_v2/}, \file{codes\_x8/}), harmonisation
+  (\file{overrides*.json}), provenance des lecteurs (\file{readers/}), scripts d'analyse et fichiers JSON de
+  résultats, dont ceux des écarts 30 à 33 (\file{survey\_extra.py}, \file{x8\_stats.py},
+  \file{q5\_versions\_stats.py}). \\
 \file{sim/} & Les simulations : protocole (\file{SIM\_PROTOCOL.md}), un essai (\file{run.py}), une
   réévaluation sous physique modifiée (\file{dose.py}), listes d'essais (\file{jobs*.txt}),
   lanceurs et surveillant (\file{drive.sh}, \file{queue.sh}, \file{worker.sh}, \file{scale.sh},
-  \file{watchdog.sh}), courbes (\file{results/}), journaux (\file{logs/}), politiques finales
-  (\file{models/}). \\
+  \file{watchdog.sh}), courbes (\file{results/}, avec les deux vidéos d'évaluation de E6 dans
+  \file{results/e6\_video/}), journaux (\file{logs/}), politiques finales (\file{models/}), l'agent
+  publié par le Zoo et ses fichiers (\file{zoo\_hub/}). \\
 \file{sim/analysis/} & Un script et un fichier JSON par expérience (E1 à E7, B1, B3, dose,
-  correction de Bonferroni), avec leurs variantes à vingt graines aléatoires et à budget égal. \\
+  correction de Bonferroni), avec leurs variantes à vingt graines aléatoires et à budget égal. Les analyses
+  des écarts 21 à 31, une par fichier : décompte strict de E2 (\file{e2\_strict.py}), renversement de
+  \task{Hopper} testé (\file{e7\_test.py}), E1 sur seize couples, E3 avec Holm, E5 hors échantillon,
+  calibration de la règle, facteur de B1, courbes, tailles d'effet, vitesse des agents de E6. Le relevé des
+  hyperparamètres (\file{hyperparams.py}). Trois analyses écrites d'avance, en attente de leurs
+  entraînements (\file{c6\_determinism.py}, \file{e6\_gamma.py}, \file{c2.py}). \\
 \file{sim/llm/} & Le volet GRPO : protocole, \file{grpo.py}, lanceurs, diagnostics
-  (\file{diag/}), journaux, résultats et \file{summary.py}. \\
+  (\file{diag/}), journaux, résultats, \file{summary.py} et \file{logs\_stats.py} (écart~19). La relance
+  de l'écart~20 : son lanceur \file{c7.sh} et son analyse \file{c7\_stats.py}, écrite avant tout
+  essai. \\
 \file{src/pineau\_rl/} & Le paquet Python des calculs réutilisables (\cref{sec:paquet}). \\
 \file{tests/} & Les tests unitaires (\cref{sec:tests}). \\
 \file{envs/} & Les environnements figés, la plateforme et la chaîne de documents
@@ -187,7 +197,9 @@ atteint le budget du programme. Les deux lignes ci-dessus sont les premières de
 (\cref{chap:07-modeles-de-langue}). Les lignes d'évaluation contiennent \texttt{step},
 \texttt{greedy}, \texttt{pass1}, \texttt{pass8} et \texttt{truncated}. Les lignes d'entraînement,
 tous les dix pas, \texttt{train\_right}, \texttt{truncated}, \texttt{loss}, \texttt{grad\_norm},
-\texttt{retries} et \texttt{wall}.
+\texttt{retries} et \texttt{wall}. Ces fichiers ne gardent aucun verdict par problème. La relance de
+l'écart~20 ajoute, pour chaque essai, un fichier \file{seed<graine>.items.jsonl.gz} qui garde le verdict, la
+longueur et la réponse de chaque problème à chaque évaluation. Son journal écrit une ligne à chaque pas.
 
 \paragraph{Une lecture d'article} Un fichier JSON par article et par lecteur, rangé
 sous \file{study/codes\_v2/} dans le dossier du lecteur. Pour chaque critère, la valeur, une citation exacte de
@@ -255,12 +267,24 @@ Aucune cible n'entraîne quoi que ce soit. L'entraînement passe par \file{sim/r
 \begin{description}[style=nextline,leftmargin=1.5em]
   \item[\texttt{make install}] installe le paquet en mode éditable dans l'environnement d'analyse,
         sans dépendance téléchargée : elles viennent de \file{envs/analysis.lock}.
-  \item[\texttt{make analysis}] relance tous les scripts d'analyse, dans l'ordre des dépendances :
-        les neuf du sondage, les seize des simulations à dix graines aléatoires, l'analyse statistique du
-        pipeline officiel du Zoo, les variantes de l'écart 12 (vingt graines aléatoires, réplication de E4 sur
-        les graines aléatoires 10 à 19, budget égal), puis \file{summary.py} à trois et à cinq graines aléatoires. Les
-        variantes passent par des variables d'environnement (\texttt{SEEDS}, \texttt{SUFFIX},
-        \texttt{BUDGET}).
+  \item[\texttt{make analysis}] relance tous les scripts d'analyse, dans l'ordre des dépendances, par trois
+        cibles qui se lancent aussi seules.
+        \texttt{analysis-study} lance les douze scripts du sondage, dont ceux des écarts 30 à 33.
+        \texttt{analysis-sim} lance les dix-sept scripts des simulations à dix graines aléatoires, dont le
+        décompte strict de E2 et le test du renversement de \task{Hopper}, puis l'analyse statistique du
+        pipeline officiel du Zoo, les variantes des écarts 12 et 20 (vingt graines aléatoires, réplication de
+        E4 sur les graines aléatoires 10 à 19, budget égal) et les huit analyses des écarts 22 à 31, qui lisent
+        les fichiers des précédentes. \texttt{analysis-llm} lance \file{summary.py} à trois et à cinq graines
+        aléatoires, puis \file{logs\_stats.py} (écart~19). Les variantes passent par des variables
+        d'environnement (\texttt{SEEDS}, \texttt{SUFFIX}, \texttt{BUDGET}). Deux analyses de l'écart~33,
+        \file{e6\_enjoy.py} et \file{e6\_hub.py}, demandent l'environnement du Zoo et les politiques :
+        aucune cible ne les relance, comme \file{e6\_official\_eval.json}.
+  \item[\texttt{make hyperparams}] relit les réglages des cinq programmes dans les bibliothèques de
+        l'environnement d'entraînement et écrit \file{sim/analysis/hyperparams.json} (écart~28). Elle
+        reste hors de \texttt{verify}, qui tourne dans l'environnement d'analyse.
+  \item[\texttt{make analysis-suite}] lance les trois analyses écrites d'avance pour les expériences qui
+        tournent encore (écarts 32 à 34). Leurs fichiers JSON n'entrent dans la vérification qu'une fois
+        leurs entraînements finis.
   \item[\texttt{make check}] lance les deux scripts de vérification de la \cref{sec:verification}.
   \item[\texttt{make test}] lance les tests unitaires avec pytest.
   \item[\texttt{make lint}] lance ruff et mypy sur le paquet et les tests.
@@ -395,7 +419,8 @@ nombre d'essais, le nombre de pas, la durée médiane d'un essai et les heures d
 Les essais GRPO ont des durées très différentes selon l'appareil. D'après le champ \texttt{wall} de
 leurs journaux au pas 100, un essai Qwen a pris de 42 à 52 minutes sur GPU et de 4,3 à 11,4 heures
 sur CPU, un essai Llama de 69 à 148 minutes sur GPU. Ces écarts reflètent aussi la charge variable
-de la machine.
+de la machine. La relance de l'écart~20 prévoit, d'après ces journaux, environ 58 heures de GPU pour ses
+quarante essais, faits la nuit.
 
 \section{Ce qui n'est pas dans le dépôt}
 \label{sec:absent}

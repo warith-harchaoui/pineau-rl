@@ -67,7 +67,9 @@ articles de RL de 2025 et 2026, parmi les \num{1252} articles de RL d'ICLR 2026,
 2025, puis 50 articles de RL classique de 2026 (robotique, jeux, contrôle, hors modèles de langue), 50 articles de 2018 et 20 articles par année en 2019, 2020,
 2022 et 2024. Des agents IA lisent les articles. Chaque décision repose sur une citation
 exacte et sa page. Le verdict compare le RL classique de 2026 à notre propre lecture de 2018, avec les
-mêmes grilles et les mêmes lecteurs. Les chapitres~\ref{chap:03-sondage-methode} et~\ref{chap:04-sondage-resultats} décrivent
+mêmes grilles et des agents du même modèle. Aucun agent n'a pourtant lu les deux années, si bien que
+l'effet de l'année se confond avec celui de l'ensemble des lecteurs
+(section~\ref{sec:sm-annees}). Les chapitres~\ref{chap:03-sondage-methode} et~\ref{chap:04-sondage-resultats} décrivent
 la méthode et les résultats.
 
 \paragraph{Les expériences}
@@ -82,31 +84,44 @@ modèles de langue entraînés avec GRPO. Les chapitres~\ref{chap:05-experiences
 
 \begin{enumerate}
   \item \textbf{Une mesure à grille égale.} La grille de Pineau, réappliquée aux articles de 2026 et
-  calibrée sur notre propre lecture de 50 articles de 2018. À grille égale, quatre pratiques ont
-  changé dans le RL classique : le lien vers le code (31~\% puis 74~\%), la sensibilité à un réglage
-  montrée (44~\% puis 80~\%), le calcul chiffré (27~\% puis 58~\%), une incertitude rapportée (63~\%
-  puis 88~\%). D'autres n'ont pas bougé de façon détectable, dont le test statistique (6~\% puis 12~\%).
+  calibrée sur notre propre lecture de 50 articles de 2018. Quatre pratiques ont changé dans le RL
+  classique : le lien vers le code, la sensibilité à un réglage montrée, le calcul chiffré, une
+  incertitude rapportée (section~\ref{sec:sr-principale}). Toutes les quatre accompagnent le résultat.
+  Le réglage des références ne montre aucun signe de progrès. Pour les autres critères, dont le test
+  statistique et l'évaluation tenue à part, le sondage manque de puissance : il ne détecte aucun
+  changement, sans pouvoir en exclure un de trente points.
   \item \textbf{Une seconde grille préenregistrée.} Douze critères (Y1 à Y12), écrits avec leurs règles
   de décision avant tout codage, qui couvrent la mesure de performance, les tâches, les implémentations,
   les versions, la généralisation, la sensibilité et les outils statistiques récents.
   \item \textbf{Une trajectoire.} Quatre années lues entre 2018 et 2026 : les quatre pratiques montent
-  lentement, sans saut juste après la liste de contrôle de 2019.
-  \item \textbf{Une batterie de contrôles.} Double lecture à l'aveugle, audit des citations, recherche
-  mécanique contre les décisions négatives, provenance publiée de chaque lecteur, coupes par provenance,
-  conférence et lecteur, sensibilité au modèle des lecteurs et au filtre de titre, confrontation aux
-  listes de contrôle remplies par les auteurs.
-  \item \textbf{Les expériences de 2018, refaites.} Deux groupes de cinq essais tirés au hasard ne
-  trompent un test de Welch que dans 1,2~\% des cas. Triés, ils le trompent dans 31~\%. Garder les trois meilleurs
-  essais sur dix gonfle la moyenne de 33~\%. Le meilleur programme change avec la tâche, sauf à budget
-  égal avec vingt graines aléatoires, où CrossQ mène sur les quatre tâches. Une physique modifiée de
-  20~\% fait passer le premier au dernier rang sur \task{Hopper}.
-  \item \textbf{Une explication du $t$ de 9.} Le script publié par Peter Henderson en 2017 mesure la
-  dispersion entre épisodes et ignore celle entre graines aléatoires. Appliqué à nos essais de TRPO, il
-  dépasse 9,09 dans 38~\% des tirages au hasard.
+  lentement, sans saut juste après la liste de contrôle de 2019 (section~\ref{sec:sr-trajectoire}).
+  \item \textbf{Une batterie de contrôles.} Trente articles relus à l'aveugle, avec un intervalle sur
+  chaque accord, l'audit des citations, une recherche mécanique contre les décisions négatives, la
+  provenance publiée de chaque lecteur, des coupes par provenance, conférence et lecteur, la
+  sensibilité au modèle des lecteurs et au filtre de titre, la confrontation aux listes de contrôle
+  remplies par les auteurs. S'y ajoutent la plus petite différence que le sondage détectait pour chaque
+  critère et ce qu'aurait donné la règle de verdict d'origine (chapitre~\ref{chap:03-sondage-methode}).
+  \item \textbf{Deux relectures ajoutées après les résultats.} Le critère X8 demande si l'incertitude
+  rapportée est calculée sur des graines aléatoires indépendantes, ce que X2 ne demande pas : sa part ne
+  bouge pas de façon détectable. Le lien vers le code, relu sur la même sorte de version les deux années
+  (actes, dernière version arXiv, code public à la date de la conférence), garde son verdict dans chaque
+  lecture (section~\ref{sec:sm-relectures}).
+  \item \textbf{Les expériences de 2018, refaites.} Elles suivent un protocole écrit avant le premier
+  entraînement. Des compléments déclarés après les résultats les éprouvent : E1 sur les seize couples
+  (programme, tâche), un décompte strict des changements de classement par paires, la correction de
+  Holm sur la comparaison des deux PPO, un test du renversement sous physique modifiée, une validation
+  de E5 sur des graines aléatoires neuves, la calibration de la règle du vainqueur établi sur des
+  hypothèses nulles vraies, enfin un diagnostic de la référence de E6, dont la recette publiée a vieilli
+  avec ses bibliothèques (chapitre~\ref{chap:06-experiences-resultats}).
+  \item \textbf{Une explication probable du $t$ de 9.} Le script publié par Peter Henderson en 2017
+  mesure la dispersion entre épisodes et ignore celle entre graines aléatoires. Appliqué à nos essais
+  de TRPO, il atteint souvent la valeur publiée (section~\ref{sec:b1}). Le couple $(t, p)$ de 2018 écarte
+  les autres façons de calculer plus qu'il ne désigne ce script.
   \item \textbf{Un pont vers les modèles de langue.} Un GRPO écrit par nous, sur deux petits modèles
-  ouverts, avec la vraie récompense (celle qui vérifie la réponse) et une récompense tirée à pile ou face. Avec cinq graines
-  aléatoires, le gain moyen de Qwen avec la vraie récompense vaut $+14$ points, avec un intervalle de
-  $-3$ à $+34$ qui contient zéro.
+  ouverts, avec la vraie récompense (celle qui vérifie la réponse) et une récompense tirée à pile ou
+  face. Avec cinq graines aléatoires, aucun gain de réussite n'est établi. Le gain apparent de Qwen
+  vient de réponses plus courtes. Celui de Llama s'accompagne d'une chute de sa justesse gloutonne et de
+  son pass@8 (section~\ref{sec:llm-resultats}).
   \item \textbf{Un dépôt qui se vérifie.} Les protocoles datés, les lectures avec leurs citations, les
   résultats des entraînements, les scripts d'analyse et des contrôles qui confrontent chaque nombre du document argumenté (\file{docs/conclusions.md})
   et de l'article de blog aux fichiers de résultats (chapitre~\ref{chap:08-logiciel}).
@@ -118,7 +133,7 @@ Le chapitre~\ref{chap:02-contexte} pose le cadre formel du RL, décrit les progr
 l'inventaire des seize failles et situe le travail parmi les travaux voisins. Les chapitres~\ref{chap:03-sondage-methode} et~\ref{chap:04-sondage-resultats} donnent la méthode et les résultats du
 sondage. Les chapitres~\ref{chap:05-experiences-methode} et~\ref{chap:06-experiences-resultats} font de même pour les
 expériences sur MuJoCo. Le chapitre~\ref{chap:07-modeles-de-langue} décrit le volet GRPO. Le chapitre~\ref{chap:08-logiciel} décrit le logiciel, de l'entraînement aux documents. Le chapitre~\ref{chap:09-ecarts}
-liste tous les écarts aux trois protocoles. Le chapitre~\ref{chap:10-limites} rassemble les limites. Le chapitre~\ref{chap:11-conclusion} reprend chaque faille avec son verdict. Les annexes donnent les règles
+liste tous les écarts aux trois protocoles. Le chapitre~\ref{chap:10-limites} rassemble les limites. Le chapitre~\ref{chap:11-conclusion} répond à la question, dit ce que les mesures établissent en renvoyant à leurs chapitres et en tire des recommandations. Le verdict faille par faille se lit à la section~\ref{sec:sr-failles}. Les annexes donnent les règles
 complètes de la grille (annexe~\ref{chap:A-grille}), des tableaux supplémentaires (annexe~\ref{chap:B-tableaux}),
 la liste des articles lus (annexe~\ref{chap:C-articles}) et les environnements logiciels
 (annexe~\ref{chap:D-environnements}).

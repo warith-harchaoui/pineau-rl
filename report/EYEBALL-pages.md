@@ -1,5 +1,24 @@
 # Ralph eyeball loop: pages of the French report (rapport.tex)
 
+## Pass of 22 November 2026 (consolidation of the French writing wave)
+
+Build: `latexmk -lualatex -outdir=build/fr-final rapport.tex`, 211 pages, 0 overfull box, 0 undefined reference
+or citation, 0 multiply defined label, no « ?? » in the `pdftotext` output. Every page rendered at 40 dpi in
+contact sheets of 12 (18 sheets), suspicious pages at 55 dpi.
+
+| Page(s) | Issue | Fix |
+|---|---|---|
+| ch. 4, X8 paragraph (section 4.2) | the X8 table (4.3) and figure (4.3) landed five and seven pages after their paragraph, behind the four large floats of the main comparison (tables 4.1, 4.2, figures 4.1, 4.2) | `\fig{x2-x8}` now comes before `\gentable{x8}` in fr/04, so the figure, which carries the argument, is placed first: figure 4.3 now on p. 40, table 4.3 on p. 41, table 4.4 on p. 42; the float queue of section 4.2 stays dense (seven floats for about four pages of text) |
+| ch. 4 to 11 | the 16 new generated tables and 6 new figures | each included exactly once (tables 4.3 x8, 4.4 difference-detectable, 4.6 q5-versions, 4.8 regle-origine, 4.12 accord-intervalles, 5.1 hyperparametres, 5.2 regle-tranche, 6.2 e1-grille, 6.6 e2-strict, 6.8 e3-holm, 6.9 e3-puissance, 6.12 e5-hors-echantillon, 6.14 e6-vitesse, 6.16 e7-test, 7.2 grpo-mesures, 7.3 grpo-contraste), none overflowing |
+| annex B, table B.2 | new tables named by file name | now `\Cref{tab:...}`: « Tableau 4.12 », etc. |
+
+Checked and left as is: chapter ends with a short last page (ch. 3, 4, 5, 10, 11), which move with every edit; the
+longtable of the deviations (9.1) starting with five rows at the foot of p. 155, as allowed by the `\Needspace`
+rule; the generated captions that still contain a « , et » (gen/fr/regle-tranche, sondage-lrl, calcul, e4 and ecarts are
+generated: to be fixed in `report/tools/tables.py`, not here).
+
+## Pass of 21 November 2026
+
 State on 21 November 2026, after three full passes (every page at 40 dpi in contact sheets of 12, suspicious pages
 at 60 to 90 dpi). Build: `latexmk -lualatex -outdir=build/full rapport.tex`, 168 pages (8 roman + 160 arabic),
 0 overfull box, 0 undefined reference, 0 multiply defined label.

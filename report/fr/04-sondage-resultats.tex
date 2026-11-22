@@ -42,8 +42,11 @@ analysés pour la plupart des critères.
 
 \paragraph{Ce qui est comparé}
 La comparaison principale oppose nos 50 articles de RL classique de 2026 à notre lecture de 50 articles
-de 2018, avec les mêmes grilles, les mêmes règles harmonisées et les mêmes lecteurs
-(section~\ref{sec:sm-verdict}). Le tableau~\ref{tab:sondage-pineau} donne les critères de la grille v1, le tableau~\ref{tab:sondage-extension} ceux de la grille v2. Pour chaque critère : la part en 2018 et en 2026
+de 2018, avec les mêmes grilles et les mêmes règles harmonisées (section~\ref{sec:sm-verdict}). Les lecteurs
+sont des agents IA, copies d'un même modèle. Aucun lecteur principal n'a pourtant lu les deux années : les
+articles de 2018 et ceux de 2026 ont été lus par des lecteurs distincts (\file{study/survey\_extra.json}, champ
+\file{readers\_year}). Un effet propre aux lecteurs d'une année ne se sépare pas de l'année. Le
+chapitre~\ref{chap:10-limites} discute cette confusion. Le critère X8, plus bas, y échappe. Le tableau~\ref{tab:sondage-pineau} donne les critères de la grille v1, le tableau~\ref{tab:sondage-extension} ceux de la grille v2. Pour chaque critère : la part en 2018 et en 2026
 avec leurs intervalles de Wilson, l'écart avec son intervalle de Newcombe, la valeur $p$ du test exact
 de Fisher et la valeur ajustée par la correction de Holm, appliquée séparément aux 11 critères v1 et aux
 12 critères v2. La figure~\ref{fig:forest-criteres} dessine ces écarts critère par critère. La figure~\ref{fig:grille-egale} reprend les huit pratiques de l'article de blog.
@@ -54,13 +57,13 @@ de Fisher et la valeur ajustée par la correction de Holm, appliquée séparéme
 
 \fig{forest-criteres}{Tous les critères de lecture, grille v1 (Q, X) et grille v2 (Y), dans notre
 lecture de 2018 (48 articles expérimentaux) et dans nos 50 articles de RL classique de 2026, lus avec
-les mêmes grilles par les mêmes lecteurs. Pour chaque critère, les deux points donnent les deux parts,
+les mêmes grilles et les mêmes règles. Pour chaque critère, les deux points donnent les deux parts,
 la barre l'intervalle de Newcombe à 95~\% de leur écart. Les critères dont l'écart passe la correction
 de Holm sont mis en évidence. Pour X3, une part plus basse est un progrès. Données :
 \file{study/extension\_stats.json}.}
 
 \fig{grille-egale}{Écart, en points de pourcentage, entre 50 articles de RL classique de 2026 et 50
-articles de 2018 (48 expérimentaux), lus avec les mêmes grilles par les mêmes lecteurs, pour les huit
+articles de 2018 (48 expérimentaux), lus avec les mêmes grilles et les mêmes règles, pour les huit
 pratiques de l'article de blog. Le point donne l'écart observé, la barre son intervalle de Newcombe à
 95~\%. Les quatre pratiques en vert passent la correction de Holm : le lien vers le code (Q5),
 l'effet d'un réglage montré (Y9), le calcul chiffré (X7), une incertitude rapportée (X2). Les quatre
@@ -78,12 +81,39 @@ Quatre écarts passent la correction de Holm.
   $[+11\,;\,+47]$, $p_{\text{Holm}} = 0{,}02$.
   \item \textbf{Une incertitude rapportée (X2)} passe de 63~\% (30 sur 48) à 88~\% (44 sur 50) : $+26$
   points, $[+8\,;\,+41]$, $p_{\text{Holm}} = 0{,}04$. C'est le verdict le plus fragile
-  (section~\ref{sec:sr-robustesse}).
+  (section~\ref{sec:sr-robustesse}). Il compte toute barre d'erreur, quelle que soit la variabilité qu'elle
+  mesure : le critère X8, plus bas, demande laquelle.
 \end{itemize}
 Un cinquième critère passe aussi la correction : l'emploi de réseaux de neurones (Q2), de 79~\% (38
 sur 48) à 98~\% (49 sur 50), $+19$ points, $[+6\,;\,+32]$, $p_{\text{Holm}} = 0{,}03$. Q2 décrit la
 population et non une pratique de reproductibilité. L'écart dit que le RL classique de 2026 est presque
 entièrement du RL profond, ce qu'il n'était pas tout à fait en 2018. Le critère ne mesure aucune faille.
+
+\paragraph{Une barre d'erreur sur quoi ? Le critère X8}
+X2 vaut \file{yes} dès qu'un article rapporte une incertitude. Or l'expérience B1 (\cref{sec:b1}) montre qu'une
+barre calculée sur les épisodes d'un même entraînement est le piège même qui produit le $t$ de 9 de 2018 : elle
+ignore la variabilité entre graines aléatoires, celle qui décide si deux algorithmes diffèrent (faille F11). Un
+article qui trace ce genre de barre compte pourtant \file{yes} pour X2. L'écart 32, écrit avant toute lecture,
+ajoute donc un critère exploratoire, X8 : l'incertitude rapportée est-elle calculée sur des graines aléatoires,
+c'est-à-dire sur des entraînements indépendants ? Huit agents IA neufs, qui n'avaient lu aucun article du
+sondage, ont lu les 74 articles qui valent \file{yes} pour X2. Chacun lisait des articles des deux années, ce
+qui défait, pour ce seul critère, la confusion entre lecteurs et année. Parmi les articles expérimentaux, X8
+passe de 35~\% (17 sur 48) à 42~\% (21 sur 50) : $+7$ points, $[-12\,;\,+25]$, $p = 0{,}54$
+(\cref{tab:x8,fig:x2-x8}). La hausse de X2 ne s'accompagne d'aucune hausse détectable de l'incertitude
+calculée sur des graines aléatoires. Les barres d'erreur se sont répandues sans que leur source change de façon
+visible. En 2026, 14 des 44 articles qui tracent une barre ne disent pas sur quoi elle est calculée. X8 a été
+décidé après les résultats principaux et lu par d'autres agents que les lecteurs principaux : il nuance le
+verdict de X2 sans le remplacer.
+
+\fig{x2-x8}{Un carré par article expérimental, 48 en 2018 et 50 en 2026, coloré selon ce sur quoi son
+incertitude est calculée : graines aléatoires, graines et épisodes mêlés, épisodes, éléments de test, autre
+source, source non dite, aucune incertitude. Les articles qui rapportent une incertitude passent de 63~\% à
+88~\% (X2, écart qui passe la correction de Holm), ceux qui la calculent sur des graines aléatoires de 35~\% à
+42~\% seulement (X8, $+7$ points, $[-12\,;\,+25]$, aucun changement détectable). En 2026, 14 des 44 articles
+qui tracent une barre d'erreur ne disent pas sur quoi elle est calculée. Données : \file{study/x8\_stats.json},
+\file{study/extension\_stats.json} (\cref{tab:x8}).}
+
+\gentable{x8}
 
 \paragraph{Deux intervalles qui évitent zéro sans passer la correction}
 La façon de choisir les hyperparamètres (Q6) passe de 26~\% (12 sur 47) à 48~\% (24 sur 50) : $+22$
@@ -94,20 +124,36 @@ $[+1\,;\,+24]$, $p_{\text{Holm}} = 0{,}66$. Pris seuls, ces deux intervalles év
 changement après correction, sans pouvoir en exclure un.
 
 \paragraph{Aucun changement détectable pour les autres critères}
-Les 16 autres critères ont des intervalles qui contiennent zéro. Parmi ceux qui mesurent une faille :
-les hyperparamètres de la méthode (Q3, 55~\% puis 72~\%), ceux des références (Q4, 35~\% puis 29~\%),
-des références réglées avec le même soin (X4, 13~\% puis 16~\%), la mesure définie (Y1, 79~\% puis
-78~\%), les meilleurs essais gardés (X3, 19~\% puis 14~\%), le test statistique (Q8, 6~\% puis 12~\%),
-l'origine du code des références (Y5, 46~\% puis 41~\%), l'évaluation tenue à part (Q7, 33~\% puis
-45~\%), le test de généralisation (Y8, 23~\% puis 34~\%), la version des bancs d'essai (Y7, 23~\% puis
-26~\%), les versions des bibliothèques (Y10, 2~\% puis 8~\%).
+Les 16 autres critères ont des intervalles qui contiennent zéro. Parmi ceux qui mesurent une faille, tous ne
+se ressemblent pas.
+\begin{itemize}
+  \item \textbf{Des hausses que le sondage ne peut ni établir ni exclure.} Les hyperparamètres de la méthode
+  (Q3, 55~\% puis 72~\%), l'évaluation tenue à part (Q7, 33~\% puis 45~\%) et le test de généralisation (Y8,
+  23~\% puis 34~\%) montent de plus de dix points, comme le choix des hyperparamètres (Q6) du paragraphe
+  précédent.
+  \item \textbf{Des critères à plat.} Les hyperparamètres des références (Q4, 35~\% puis 29~\%), les
+  références réglées avec le même soin (X4, 13~\% puis 16~\%), la mesure définie (Y1, 79~\% puis 78~\%), les
+  meilleurs essais gardés (X3, 19~\% puis 14~\%), l'origine du code des références (Y5, 46~\% puis 41~\%) et
+  la version des bancs d'essai (Y7, 23~\% puis 26~\%) bougent de sept points au plus. Le réglage des
+  références, en particulier, ne montre aucun signe de progrès.
+  \item \textbf{Des pratiques rares.} Le test statistique (Q8, 6~\% puis 12~\%) et les versions des
+  bibliothèques (Y10, 2~\% puis 8~\%) partent de si bas qu'une hausse de six points reste dans le bruit du
+  tirage.
+\end{itemize}
 
 \paragraph{La puissance du sondage}
-Chaque intervalle de Newcombe s'étend sur vingt à quarante points. Avec 50 articles de chaque côté, un
-changement de dix points peut encore passer inaperçu. \enquote{Aucun changement détectable} ne veut donc
-pas dire \enquote{aucun changement}. Pour Q3 par exemple, l'écart observé vaut $+17$ points, avec un
-intervalle de $-2$ à $+34$ : la donnée reste compatible avec une hausse de trente points comme avec une
-stagnation.
+Chaque intervalle de Newcombe s'étend sur vingt à quarante points. L'écart 30 (b), écrit avant le calcul
+du dépôt, chiffre ce que le sondage pouvait voir (\cref{tab:difference-detectable}). Partant de la part de 2018 et des
+effectifs réels, le test exact de Fisher bilatéral ne détecte avec 80~\% de chances qu'une hausse de 18 à 30
+points selon le critère au seuil de 5~\%, de 26 à 39 points au seuil de Bonferroni sur onze critères. Pour Q7,
+il faut 29 points, 37 après correction. La hausse effectivement vue, 12 points, n'avait que 18~\% de chances
+d'être détectée au seuil de 5~\% et 4~\% après correction. Les quatre changements établis dépassent tous leur
+différence détectable. X2 est le plus juste : la puissance du test pour l'écart vu tombe à 52~\% au seuil de
+Bonferroni. \enquote{Aucun changement détectable} ne veut donc pas dire \enquote{aucun changement}. Pour Q3 par
+exemple, l'écart observé vaut $+17$ points, avec un intervalle de $-2$ à $+34$ : la donnée reste compatible
+avec une hausse de trente points comme avec une stagnation.
+
+\gentable{difference-detectable}
 
 \section{Relecture faille par faille}\label{sec:sr-failles}
 
@@ -119,7 +165,8 @@ Le lien vers le code passe de 31~\% à 74~\% des articles. La faille est écout�
 programme de reproductibilité de NeurIPS 2019 va dans le même sens : la part d'articles acceptés avec
 du code passe de moins de 50~\% à 74,4~\% \parencite{pineau2021improving}. Dans tout le premier tirage,
 grands modèles de langue compris, la part vaut 67~\% (30 sur 45). Un article de RL classique sur quatre
-publie encore son résultat sans son code.
+publie encore son résultat sans son code. La hausse se retrouve quand les deux années sont lues sur la même version
+de l'article (section~\ref{sec:sr-robustesse}).
 
 \paragraph{F2 et F3, le plan pour refaire et le matériel}
 Le calcul est chiffré dans 58~\% des articles de 2026 contre 27~\% en 2018. Les hyperparamètres de la
@@ -171,7 +218,10 @@ minimums.
 \paragraph{F12, l'incertitude et le test}
 La faille se coupe en deux. Rapporter une incertitude est devenu courant : 88~\% des articles de 2026
 contre 63~\% en 2018. Le type d'incertitude est nommé dans 41 des 44 articles de 2026 qui en rapportent
-une, contre 25 sur 30 en 2018 (Y11). Le test statistique n'a pas bougé de façon détectable : 12~\% des
+une, contre 25 sur 30 en 2018 (Y11). Nommer le type d'incertitude ne dit pas encore sur quoi elle est
+calculée. Parmi les articles qui tracent une barre, la part de ceux qui la calculent sur des graines
+aléatoires reste voisine d'un sur deux, 57~\% en 2018 et 48~\% en 2026 (X8, \cref{tab:x8}) : la leçon de la
+faille F11 et de l'expérience B1 reste à entendre. Le test statistique n'a pas bougé de façon détectable : 12~\% des
 articles de 2026 contre 6~\% en 2018 (Q8). Les outils apparus après 2018, comme l'IQM ou la bibliothèque
 rliable, passent de 2~\% à 14~\% (Y12), sans passer la correction. Les articles tracent des barres, ils
 testent rarement.
@@ -215,9 +265,44 @@ Le test de Cochran-Mantel-Haenszel, stratifié par conférence, garde les quatre
 ($p = 0{,}06$) ni Y12 ($p = 0{,}15$).
 
 \paragraph{La source du PDF (a2)}
-Cette coupe oppose 45 articles de 2026 lus sur arXiv à 5 lus sur le site d'une conférence. Elle ne peut rien trancher. Le rapport ne s'appuie pas sur elle. La différence de source reste une limite : une
-version arXiv est parfois plus longue ou plus récente que celle des actes, alors que les articles de
-2018 ont été lus dans les actes.
+Cette coupe oppose 45 articles de 2026 lus sur arXiv à 5 lus sur le site d'une conférence. Elle ne peut rien
+trancher. Le rapport ne s'appuie pas sur elle. La question qu'elle visait demande une mesure directe. Une
+version arXiv est parfois plus longue ou plus récente que celle des actes, alors que les articles de 2018 ont
+été lus dans les actes. Pour Q5, cette mesure a été faite.
+
+\paragraph{Q5 relu sur la même version les deux années (écart 31)}
+Le lien vers le code est le critère le plus exposé à l'asymétrie des versions : un auteur ajoute parfois
+l'adresse de son dépôt dans une version arXiv postérieure à la conférence. L'écart 31, écrit avant tout
+téléchargement, relit Q5 de trois façons qui traitent les deux années de la même manière :
+\begin{itemize}
+  \item \textbf{les deux années sur les actes} : les 45 articles de 2026 lus sur arXiv ont tous été retrouvés
+  dans les actes ;
+  \item \textbf{les deux années sur la dernière version arXiv} : 27 des 33 articles de 2018 qui valaient
+  \file{no} y ont été retrouvés, les six autres gardent leur lecture ;
+  \item \textbf{le code disponible à la conférence} : un \file{yes} dont tous les dépôts GitHub ont été créés
+  après le dernier jour de la conférence devient \file{no}.
+\end{itemize}
+Un arbitre neuf a tranché les cas douteux à l'aveugle, années masquées et identifiants remplacés. Chaque lecture
+reçoit aussi une borne où les cas incertains comptent \file{yes}. La borne de la dernière compte en plus
+\file{no} les dépôts sans date. Le verdict tient dans les sept lectures (\cref{tab:q5-versions,fig:q5-lectures}) : $+41$
+points $[+21\,;\,+56]$ sur les actes, $+34$ $[+15\,;\,+51]$ sur la dernière version arXiv, $+37$
+$[+17\,;\,+52]$ pour le code disponible à la conférence. La lecture la plus défavorable, la dernière version
+arXiv avec les cas incertains comptés \file{yes}, donne encore $+30$ points $[+11\,;\,+47]$,
+$p_{\text{Holm}} = 0{,}035$. L'asymétrie existe : en 2018, quatre articles n'ont un lien vers leur code que
+dans leur dernière version arXiv (C19, C216, C22, C39). Elle touche quatre à six articles sur 48 et n'explique
+qu'une petite part de la hausse. Un seul dépôt a été créé après sa conférence, celui de C219, un an après
+NeurIPS 2018. Une réserve : l'arbitre compte C19 \file{yes} dans la lecture arXiv, alors que l'écart 19 avait
+visité sa page et jugé qu'elle ne menait qu'à une bibliothèque publiée après l'article. Sans C19, cette lecture
+donne $+37$ points.
+
+\gentable{q5-versions}
+
+\fig{q5-lectures}{Q5, le code en lien, relu sur la même sorte de version les deux années : les actes, la
+dernière version arXiv, le code disponible à la conférence, chacune avec sa borne. À gauche, les parts de 2018
+et de 2026, avec les 55~\% de Pineau en pointillé. À droite, l'écart et son intervalle de Newcombe à 95~\%.
+L'écart reste entre $+30$ et $+43$ points et passe la correction de Holm dans chaque lecture. Notre lecture de
+2018 reste sous les 55~\% de Pineau dans toutes. Données : \file{study/q5\_versions.json},
+\file{study/results\_final.json} (\cref{tab:q5-versions}).}
 
 \paragraph{Un lecteur retiré à la fois (a4)}
 Retirer tour à tour chacun des seize lecteurs principaux ne rend fragile aucun des quatre verdicts. La
@@ -245,7 +330,8 @@ douteuses, l'incertitude rapportée et la sensibilité passent juste au-dessus d
 ($p_{\text{Holm}} = 0{,}07$ et $0{,}054$). Cette seconde borne n'était pas annoncée dans l'écart 27.
 
 \paragraph{Bilan de robustesse}
-Le code et le calcul passent le seuil dans tous nos contrôles. La sensibilité aux réglages le passe
+Le code et le calcul passent le seuil dans tous nos contrôles. Le code le passe aussi quand les deux années
+sont lues sur la même version. La sensibilité aux réglages le passe
 dans tous sauf la borne des décisions douteuses, où elle s'arrête à $p_{\text{Holm}} = 0{,}054$.
 L'incertitude rapportée échoue dans deux contrôles, sans les treize articles et avec la borne des
 décisions douteuses, avec $p_{\text{Holm}} = 0{,}07$ chaque fois. Le rapport la garde parmi les quatre
@@ -302,6 +388,9 @@ Trois mécanismes le rendent plausible, sans qu'aucun soit démontré.
   dont le titre correspond à notre expression. Celui de Pineau peut contenir des articles que notre
   filtre ne voit pas, ou en exclure.
 \end{itemize}
+Un quatrième mécanisme a été mesuré pour Q5 : la version lue. Relue sur la dernière version arXiv, notre
+lecture de 2018 passe de 31~\% à 40~\% (19 sur 48), 44~\% en comptant les cas incertains (21 sur 48,
+\cref{tab:q5-versions}). La version explique une part de l'écart aux 55~\% de Pineau, pas tout l'écart.
 Après correction, les écarts de Q4 et de Q5 restent compatibles avec le hasard ($p_{\text{Holm}} =
 0{,}06$). Ceux de Q3 et de Q7 ne le sont pas.
 
@@ -309,6 +398,22 @@ Après correction, les écarts de Q4 et de Q5 restent compatibles avec le hasard
 Comparer nos articles de 2026 aux chiffres de Pineau mêlerait le changement des pratiques et celui de
 la grille. L'écart 20 en tire la règle de verdict (section~\ref{sec:sm-verdict}). Les chiffres de Pineau restent
 montrés comme contexte, à la section~\ref{sec:sr-premier}.
+
+\paragraph{Ce qu'aurait donné la règle d'origine}
+La règle de l'écart 7 jugeait chaque critère de Pineau deux fois. Un critère avait \enquote{changé} si l'écart
+passait la correction de Holm contre ses chiffres de 2018. Le changement était \enquote{confirmé} si l'écart
+la passait aussi, dans le même sens, contre notre lecture de 2018. L'écart 20 l'a remplacée après avoir vu les
+résultats de la calibration. L'écart 30 (c), écrit avant le calcul du dépôt mais après une esquisse de la
+relecture technique (section~\ref{sec:ecarts-audit}), applique la règle d'origine aux mêmes données (\cref{tab:regle-origine}). Dans le RL classique de 2026, aucun critère n'aurait été \enquote{changé et
+confirmé}. Q4, Q6 et Q7 auraient \enquote{changé} contre Pineau, sans confirmation contre notre 2018. Q5, notre
+verdict le plus fort, aurait été \enquote{ambigu} : il passe la correction contre notre lecture de 2018, pas contre
+les chiffres de Pineau ($+18$ points, $p_{\text{Holm}} = 0{,}19$). Dans le premier tirage, grands modèles compris,
+seul Q7 aurait été \enquote{changé et confirmé}, porté par les articles sur les modèles de langue
+(section~\ref{sec:sr-premier}). La règle d'origine ne dit rien de X2, X7 et Y9 : Pineau ne donne pas de chiffre
+pour eux. Ce tableau ne renverse pas la décision de l'écart 20, qui repose sur l'écart de calibration mesuré
+pour Q3, 55~\% chez nous contre 90~\% chez Pineau. Il rend cette décision vérifiable.
+
+\gentable{regle-origine}
 
 \section{Le premier tirage et les modèles de langue}\label{sec:sr-premier}
 
@@ -423,6 +528,22 @@ sur le premier tirage de 2026, R2 sur les articles ajoutés de 2018 et de 2026, 
 2019 à 2024. Le seuil de 70~\% d'accord, sous lequel un critère est dit fragile, est marqué. Données :
 \file{study/agree\_v2.json}, \file{study/audit\_stats.json}.}
 
+\paragraph{Trente articles relus, avec leurs intervalles}
+Les quatre paires de doubles lectures réunissent 30 articles distincts. G et G2 relisent les mêmes dix articles
+de 2026, l'un avec la grille v1, l'autre avec la grille v2. R2 relit dix articles ajoutés, cinq de 2018 et cinq
+de 2026, R3 dix articles de la trajectoire. L'écart 30 (a), écrit avant ce calcul, réunit ces lectures et donne
+à chaque part d'accord son intervalle de Wilson, à chaque kappa un intervalle bootstrap percentile sur les
+articles (\cref{tab:accord-intervalles}). Sur les quatre critères des verdicts, les 120 décisions doublées sont
+identiques : 30 sur 30 pour chaque critère, avec un intervalle de Wilson de 89~\% à 100~\%. Trois critères
+gardent un kappa sous 0,70 : la mesure définie (Y1), l'origine du code des références (Y5) et les exclusions
+dites (Y6). Une paire seule renseigne mal. Sur dix articles, 9 accords ont pour intervalle [60\,;\,98]~\%. Le
+kappa de 0,80 de G sur Q3 a pour intervalle [0,31\,;\,1]. L'accord sur des articles de 2018 repose sur les cinq
+articles de R2 : 5 accords sur 5 ont pour intervalle de Wilson [57\,;\,100]~\%.
+
+\gentable{accord-intervalles}
+
+Les paragraphes qui suivent détaillent chaque paire.
+
 \paragraph{La grille v1 sur le premier tirage}
 Le second lecteur G et les lecteurs principaux s'accordent sur 127 décisions sur 130 (98~\%), soit 13
 critères sur 10 articles. Les trois désaccords touchent Q3, Q7 et X4, avec des kappas de 0,80, 0,78 et
@@ -449,7 +570,10 @@ plus bas sont ceux de Q7 et de Y8 (80~\%, kappa 0,41).
 Tous les lecteurs sont des copies du même modèle, à part les treize articles achevés par \file{claude-opus-5}. L'accord des doubles lectures mesure donc la
 stabilité de la lecture de ce modèle, pas l'accord de deux lecteurs indépendants. Un humain aurait pu
 lire autrement les mêmes passages. Les citations et les pages de \file{study/codes/} et
-\file{study/codes\_v2/} permettent à chacun de vérifier chaque décision.
+\file{study/codes\_v2/} permettent à chacun de vérifier chaque décision. Un lecteur d'une autre famille de
+modèles, \file{gemma3:12b}, relit les 98 articles des deux échantillons sur les critères des verdicts (écart 33,
+écrit avant cette lecture). Sa lecture n'était pas finie quand ce rapport a été compilé : le rapport n'en donne
+aucun résultat.
 
 \section{Ce que les articles déclarent}\label{sec:sr-declarations}
 
@@ -494,8 +618,12 @@ et le calcul résistent à toutes les coupes, la sensibilité à presque toutes.
 échoue dans deux contrôles, avec $p_{\text{Holm}} = 0{,}07$. Les quatre montent lentement de 2018 à 2024,
 sans saut juste après la liste de contrôle de 2019. Le test statistique, les références décrites et
 réglées avec soin, l'évaluation tenue à part, les versions des bancs d'essai et des bibliothèques n'ont
-pas bougé de façon détectable. Pineau a été écoutée sur ce qui se publie à côté du résultat, beaucoup
-moins sur la façon dont le résultat lui-même est jugé. Notre lecture de 2018 diffère de celle de Pineau
+pas bougé de façon détectable. Les changements nets concernent ce qui accompagne le résultat : le lien vers
+le code, le calcul chiffré, l'effet d'un réglage, la barre d'erreur. Le réglage des références ne montre aucun signe de
+progrès. Pour le reste, le sondage ne peut pas trancher : il ne voyait que des hausses d'environ trente points.
+La barre d'erreur s'est répandue sans que la part calculée sur des graines aléatoires bouge de façon
+détectable (X8). Le lien vers le code garde son verdict quand les deux années sont lues sur la même version. La
+règle de verdict d'origine, appliquée aux mêmes données, n'aurait confirmé aucun changement dans le RL classique. Notre lecture de 2018 diffère de celle de Pineau
 sur les hyperparamètres de la méthode et sur l'évaluation tenue à part, d'où la règle de verdict à
 grille égale. Le chapitre~\ref{chap:10-limites} rassemble les limites de ces résultats. Le chapitre~\ref{chap:11-conclusion} les met
 en regard des expériences.

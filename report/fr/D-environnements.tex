@@ -73,7 +73,10 @@ make verify
   \item \textbf{GRPO} télécharge \texttt{Qwen/Qwen2.5-0.5B-Instruct} et
         \texttt{unsloth/Llama-3.2-1B-Instruct} depuis Hugging Face. Depuis l'écart 15 (c) du volet
         GRPO, \file{grpo.py} fixe la révision exacte de chaque modèle, celle de nos essais.
-        \file{docs/figures/build.py} télécharge le découpeur en jetons de Qwen.
+                \file{docs/figures/build.py} télécharge le découpeur en jetons de Qwen. Le fichier
+        \file{generation\_config.json} de Qwen fixe une pénalité de répétition de 1,1, que les
+        essais publiés ont subie (écart 18 du volet GRPO). L'option \texttt{-{}-c7} de \file{grpo.py}
+        la ramène à 1,0 pour la relance de l'écart 20. Sans l'option, le code refait les anciens essais à l'identique.
 \end{itemize}
 
 \section{La chaîne des documents}
@@ -98,10 +101,16 @@ TeX Live 2026 : LuaHBTeX, latexmk & 1.24.0, 4.88 & \file{docs/build.sh}, \file{r
 sprezzature-figures & 2.14.1 (2.14.0 sur PyPI) & \file{docs/figures/build.py},
   \file{article/figures/build.py} \\
 rsvg-convert (librsvg) & 2.61.3 & conversion des SVG en PDF et en PNG \\
+ffmpeg & 8.1.2 & \file{report/tools/new\_figures.py} (images tirées des vidéos de E6) \\
 git & 2.50.0 & \texttt{make verify} \\
 \bottomrule
 \end{tabularx}
 \end{table}
+
+Deux outils hors de Python ont servi aux analyses des 21 et 22 novembre 2026. Le client
+\texttt{gh} 2.95.0 a lu la date de création des dépôts GitHub cités pour Q5 (écart 31 du
+sondage), une requête à la fois. Ollama 0.40.16 sert localement le lecteur \texttt{gemma3:12b} de
+l'écart 33 du sondage, dont chaque fichier de lecture note le condensé du modèle.
 
 Le présent rapport se construit par \texttt{make report}, qui lance \file{report/build.sh} : les
 tableaux depuis les fichiers JSON (\file{report/tools/tables.py}), les figures

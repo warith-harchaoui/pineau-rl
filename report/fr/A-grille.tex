@@ -4,7 +4,8 @@
 Cette annexe reproduit la grille de lecture du sondage, critère par critère, avec la question posée
 au lecteur et sa règle de décision. Elle réunit la fiche du lecteur (\file{study/GRILLE.md}) et les
 règles du protocole (\file{study/PROTOCOL.md}) : écarts 1 à 6 pour l'harmonisation de la grille v1,
-écarts 11, 14, 17 et 19 pour la grille v2. En cas de doute, le protocole fait foi.
+écarts 11, 14, 17 et 19 pour la grille v2, écart 32 pour le critère X8, ajouté après les résultats.
+En cas de doute, le protocole fait foi.
 
 \section{Ce que fait le lecteur}
 \label{sec:a-lecteur}
@@ -113,7 +114,8 @@ X1 & Combien d'entraînements indépendants pour les résultats principaux ? & U
   Pour un article \texttt{llm}, on compte les entraînements RL indépendants et non les échantillons
   d'évaluation : pass@k et \enquote{16 samples} ne sont pas des entraînements. \\
 X2 & Une incertitude est-elle rapportée sur les résultats principaux ? & Écart type, erreur type,
-  intervalle de confiance, bande autour de la courbe. \\
+  intervalle de confiance, bande autour de la courbe. Toute barre compte, quelle que soit la
+  dispersion qu'elle résume : le critère X8 (\cref{sec:a-x8}) demande sur quoi elle est calculée. \\
 X3 & Les meilleurs essais sont-ils sélectionnés ? & \enquote{Top-k}, \enquote{best of N}, meilleur
   point de contrôle choisi sur le test. \texttt{yes} aussi quand les propres tableaux de l'article
   montrent que le résultat principal est le meilleur de plusieurs entraînements identiques, même si
@@ -231,6 +233,48 @@ Y12 & Un outil statistique postérieur à 2018 est-il employé ? (adoption d'Aga
   bootstrap sur une moyenne compte s'il produit un intervalle rapporté. \\
 \end{longtable}
 \end{small}
+
+\section{Le critère ajouté après les résultats (X8)}
+\label{sec:a-x8}
+
+X2 compte toute barre d'erreur. Or une barre calculée sur les épisodes d'un même entraînement est le
+piège que montre l'expérience B1 (\cref{sec:b1}). Le critère X8 demande donc si l'incertitude est
+calculée sur des entraînements indépendants. Il a été écrit le 21 novembre 2026, après les résultats
+et avant toute lecture (écart 32 du sondage). Il est exploratoire : il s'ajoute aux résultats sans
+changer les verdicts de l'écart 20.
+
+\begin{small}
+\begin{longtable}{@{}p{0.07\linewidth}p{0.27\linewidth}p{0.6\linewidth}@{}}
+\caption{Le critère X8 : question et règle de décision.}\label{tab:a-grille-x8}\\
+\toprule
+Code & Question & Règle de décision \\
+\midrule
+\endfirsthead
+\toprule
+Code & Question & Règle de décision \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+X8 & L'incertitude des résultats principaux est-elle calculée sur des graines aléatoires ? &
+  \texttt{yes} si l'incertitude rapportée sur un tableau ou une courbe principale est calculée entre
+  au moins deux entraînements indépendants et que l'article le dit (\enquote{mean $\pm$ std over 5
+  seeds}, \enquote{shaded area: standard error across 10 runs}). \texttt{no} si elle est calculée sur des épisodes, des déroulements d'évaluation ou des éléments de test seulement, si elle réunit dans un
+  même écart les épisodes de toutes les graines aléatoires, ou si sa source n'est pas dite.
+  \texttt{na} si X2 vaut \texttt{no}. Pour un article \texttt{llm}, on compte les entraînements RL
+  indépendants, comme pour X1. Un champ obligatoire, \texttt{source}, nomme ce sur quoi la barre
+  est calculée : \texttt{seeds}, \texttt{pooled} (graines aléatoires et épisodes réunis),
+  \texttt{episodes}, \texttt{items}, \texttt{unstated} ou \texttt{other}. Citation exacte et page,
+  comme pour tout critère. \\
+\end{longtable}
+\end{small}
+
+X8 a été lu sur les 74 articles de la comparaison principale où X2 vaut \texttt{yes}, 30 de 2018 et
+44 de 2026, par huit agents neufs qui n'avaient lu aucun article du sondage. Les six lecteurs
+principaux, S1 à S6, ont reçu les articles tour à tour après un mélange \texttt{random.Random(2032)},
+si bien que chacun a lu les deux années. S7 et S8 ont relu vingt articles tirés par
+\texttt{random.Random(2033)}, dix par année. Les lecteurs recevaient la règle, pas l'hypothèse. Les
+citations sont vérifiées par la fonction de \file{study/check\_codes.py}.
 
 \section{L'harmonisation}
 \label{sec:a-harmonisation}

@@ -5,7 +5,10 @@ Les chapitres précédents traitent de programmes qui apprennent à agir dans un
 chapitre décrit un volet plus petit, consacré aux modèles d'IA générative qui écrivent du texte. Il
 présente le vocabulaire retenu, l'algorithme tel que nous l'avons écrit, le protocole, les essais et
 leurs résultats, puis le piège de mesure que ces essais ont révélé. Le protocole complet se trouve
-dans \file{sim/llm/LLM\_PROTOCOL.md}. Ses dix-sept écarts sont résumés au \cref{chap:09-ecarts}.
+dans \file{sim/llm/LLM\_PROTOCOL.md}. Ses vingt écarts sont résumés au \cref{chap:09-ecarts}. Les écarts~18
+et~19, écrits le 21 novembre 2026 après tous les résultats, déclarent des défauts trouvés par une relecture
+technique et tirent des journaux des mesures que la première version de ce chapitre laissait de côté. Ils
+changent la lecture du volet sans changer aucun chiffre publié.
 
 \section{Le vocabulaire}
 \label{sec:llm-vocabulaire}
@@ -56,8 +59,10 @@ réplique pas \textcite{shao2025spurious}.
 GRPO (\emph{Group Relative Policy Optimization}) vient de \textcite{shao2024deepseekmath}. Il
 reprend la fonction objectif coupée de PPO \parencite{schulman2017ppo} et remplace le réseau
 critique, qui estime la valeur d'un état, par une normalisation au sein d'un groupe de réponses au
-même problème. Nous l'avons écrit à la main, en PyTorch, dans un seul fichier de 159 lignes,
-\file{sim/llm/grpo.py}, pour contrôler chaque étape. Aucune bibliothèque d'affinage n'intervient :
+même problème. Nous l'avons écrit à la main, en PyTorch, dans un seul fichier, \file{sim/llm/grpo.py}, pour
+contrôler chaque étape. Le fichier comptait 159 lignes pour les essais décrits ici. Il en compte 266 depuis
+l'ajout de la relance de l'écart~20, derrière l'option \texttt{-{}-c7}. Sans cette option, il refait les
+anciens essais à l'identique. Aucune bibliothèque d'affinage n'intervient :
 le fichier n'importe que PyTorch et la bibliothèque Transformers, qui charge le modèle et son
 découpeur en jetons.
 
@@ -84,10 +89,17 @@ Le tirage de la pièce et celui des problèmes de chaque pas viennent du même g
 
 \subsection{Un pas d'entraînement}
 
-Chaque pas tire sans remise $B = 4$ problèmes d'entraînement. Pour chaque problème $q_b$, la
+Chaque pas tire $B = 4$ problèmes d'entraînement, sans remise à l'intérieur du pas : un problème peut revenir
+d'un pas à l'autre. Pour chaque problème $q_b$, la
 politique courante $\pi_{\theta_{\text{old}}}$ produit $G = 8$ réponses $o_{b,1}, \dots, o_{b,8}$,
-échantillonnées à la température 1, sans troncature de la distribution (ni \emph{top-p} ni
-\emph{top-k}), limitées à 160 jetons. Chaque réponse reçoit sa récompense $r_{b,i}$. L'avantage
+échantillonnées à la température 1, sans \emph{top-p} ni \emph{top-k}, limitées à 160 jetons. Pour Llama, la
+distribution échantillonnée est celle du modèle. Pour Qwen, elle ne l'est pas (écart~18, point~a). Le fichier
+\file{generation\_config.json} de Qwen2.5 fixe une pénalité de répétition de 1,1, que \file{grpo.py} ne
+remplace pas. Avant chaque tirage, le logit $\ell$ de tout jeton déjà présent dans le texte devient $\ell/1{,}1$
+s'il est positif et $1{,}1\,\ell$ sinon. Trois conséquences en découlent. Les réponses de Qwen ne suivent pas
+la politique dont $\log \pi_{\theta_{\text{old}}}$ donne les probabilités, sans correction. La pénalité frappe
+les chiffres répétés d'un calcul. La comparaison entre les deux familles mêle la famille et ce réglage de
+décodage. Chaque réponse reçoit sa récompense $r_{b,i}$. L'avantage
 d'une réponse compare sa récompense à celles de son groupe :
 \begin{equation}
   \hat A_{b,i} = \frac{r_{b,i} - \bar r_b}{s_b + 10^{-4}}, \qquad
@@ -113,15 +125,18 @@ par réponse dans le pas :
   \label{eq:grpo}
 \end{equation}
 La longueur $|o_{b,i}|$ compte les jetons de la réponse qui ne sont pas du remplissage (le masque
-\texttt{target != pad\_token\_id} de la fonction \texttt{token\_logps}). Les log-probabilités de
+\texttt{target != pad\_token\_id} de la fonction \texttt{token\_logps}). Chez Qwen, le jeton de remplissage
+est aussi le jeton d'arrêt \texttt{<|endoftext|>} : le masque retire donc du gradient le jeton qui termine la
+réponse (écart~18, point~d). Les log-probabilités de
 référence $\log \pi_{\theta_{\text{old}}}$ sont calculées une fois, sans gradient, avant la première
 mise à jour.
 
 Chaque lot de 32 réponses sert à deux passes de mise à jour (\texttt{EPOCHS = 2}). À chaque passe,
 le gradient s'accumule sur des sous-lots de huit réponses (deux pour Llama, réglage \texttt{MICRO}),
 ce qui donne le même gradient avec moins de mémoire. La norme du gradient est ensuite coupée à 1,
-puis l'optimiseur Adam \parencite{kingma2015adam}, avec ses moments par défaut, applique un taux
-d'apprentissage de $3 \times 10^{-6}$. Les poids restent en virgule flottante sur 32 bits.
+puis l'optimiseur Adam \parencite{kingma2015adam}, avec les réglages par défaut de PyTorch
+($\beta_1 = 0{,}9$, $\beta_2 = 0{,}999$, $\varepsilon = 10^{-8}$), applique un taux d'apprentissage de
+$3 \times 10^{-6}$. Les poids restent en virgule flottante sur 32 bits.
 
 \begin{notebox}
 \textbf{Ce qui distingue notre GRPO de celui de \textcite{shao2024deepseekmath}.} Notre perte n'a
@@ -166,17 +181,28 @@ verdict de la réponse $k$ au problème $j$ et $\tau_{jk}$ l'indicateur d'une r�
   \text{part coupée} = \frac{1}{400}\sum_{j,k} \tau_{jk}.
 \end{equation}
 Une réponse est coupée quand ses 160 jetons ne contiennent ni jeton de fin ni jeton de remplissage
-(fonction \texttt{truncated}). Le pass@8 est ici la fréquence observée sur exactement huit tirages,
+(fonction \texttt{truncated}). Cette fonction ne connaît que le jeton de fin principal : elle ignore les deux
+jetons d'arrêt supplémentaires de Llama, 128001 et 128008 (écart~18, point~d). Chez Qwen, la pénalité de
+répétition s'applique aussi à la réponse gloutonne. Le pass@8 est ici la fréquence observée sur exactement huit tirages,
 sans l'estimateur sans biais employé quand on tire plus de réponses que $k$. L'évaluation a lieu au
 pas 0, au pas 50 et au pas 100 (\texttt{EVAL\_EVERY = 50}). Tous les dix pas, le journal note aussi
 la part de réponses justes et coupées du lot d'entraînement, la perte, la norme du gradient, les
 recalculs et le temps écoulé. Chaque essai écrit un fichier JSONL,
-\file{sim/llm/results/<modèle>/mul2/<récompense>/seed<graine>.jsonl}.
+\file{sim/llm/results/<modèle>/mul2/<récompense>/seed<graine>.jsonl}. Le journal garde les quatre mesures
+de chaque évaluation, mais aucun verdict par problème. L'évaluation tire ses réponses dans le même générateur
+aléatoire que l'entraînement : l'évaluation du pas 50 change les tirages des pas suivants (écart~18,
+point~d).
 
-La mesure principale est le pass@1 échantillonné, celle que GRPO entraîne (écart 3). La justesse
-gloutonne et le pass@8 restent dans les journaux. Le pass@8 répond à la question de
-\textcite{yue2025rlvr} : l'affinage élargit-il ce que le modèle sait faire, ou concentre-t-il sa
-probabilité sur des réponses qu'il trouvait déjà en plusieurs tirages ?
+La mesure principale est le pass@1 échantillonné, celle que GRPO entraîne (écart 3). La première version
+de ce chapitre laissait la justesse gloutonne et le pass@8 dans les journaux. L'écart~19 les rapporte, avec
+une cinquième mesure, la justesse parmi les réponses finies :
+\begin{equation}
+  \text{justesse des finies} = \frac{\text{pass@1}}{1 - \text{part coupée}},
+\end{equation}
+qui suppose qu'une réponse coupée n'est jamais juste (0 sur 23 dans le diagnostic de l'écart~5,
+\cref{sec:llm-coupure}). Elle sépare ce que pass@1 doit à la justesse de ce qu'il doit à la brièveté. Le
+pass@8 répond à la question de \textcite{yue2025rlvr} : l'affinage élargit-il ce que le modèle sait faire, ou
+concentre-t-il sa probabilité sur des réponses qu'il trouvait déjà en plusieurs tirages ?
 
 \section{Le protocole et ses essais}
 \label{sec:llm-protocole}
@@ -189,8 +215,11 @@ révision exacte des fichiers téléchargés (\texttt{7ae5576\dots} pour Qwen, \
 pour Llama), les seules présentes dans le cache de la machine, téléchargées les 22 et 27 octobre
 2026, avant le premier essai.
 
-\paragraph{Pilote} Un pilote sans entraînement, sur des problèmes hors test, devait fixer la tâche :
-celle où les deux modèles se situent entre 15~\% et 70~\% de justesse. Aucune tâche ne place les deux
+\paragraph{Pilote} Un pilote sans entraînement devait fixer la tâche : celle où les deux modèles se situent
+entre 15~\% et 70~\% de justesse. Le protocole le voulait sur des problèmes hors test. Il a tourné sur le test
+(écart~18, point~b) : l'option \texttt{-{}-pilot} appelle la fonction d'évaluation, qui lit les 150 et 50
+premiers problèmes du test. Le choix de \file{mul2} et celui de la limite de 160 jetons ont donc été faits en
+regardant le test. Aucun entraînement n'a vu le test. Aucune tâche ne place les deux
 modèles dans cette plage en glouton. La somme de trois nombres (\file{add3}) est trop facile pour
 Llama. La multiplication \file{mul2} donne en glouton 7~\% (Qwen) et 73~\% (Llama), en pass@1
 échantillonné 11~\% et 23~\% (écart 3). Le même pilote a montré que 64 jetons coupaient les réponses de
@@ -211,6 +240,31 @@ générateur \texttt{random.Random(0)}, bornes aux rangs 250 et 9\,750 des moyen
 (\file{sim/llm/summary.py}). Les détails du bootstrap ont été fixés après les premiers résultats,
 sans choix entre plusieurs variantes (écart 13). L'intervalle est très grossier : trois graines aléatoires
 n'offrent que dix rééchantillons distincts, cinq graines aléatoires 126.
+
+\paragraph{Statistique ajoutée} L'écart~19, écrit avant le script \file{sim/llm/logs\_stats.py}, ajoute
+trois outils pour les cinq mesures. Une partie de ces valeurs avait été affichée par la relecture technique
+du même jour : la règle de lecture ne dépend pas de leur signe.
+\begin{itemize}
+  \item Dans chaque configuration, à côté de l'intervalle par percentile, l'intervalle de Student
+    $\bar g \pm t_{n-1;\,0{,}975}\, s_g/\sqrt n$, où $\bar g$ et $s_g$ sont la moyenne et l'écart type des
+    $n$ gains. Avec cinq graines aléatoires, l'intervalle par percentile n'a qu'environ 60~\% de la largeur de
+    l'intervalle de Student et couvre trop peu. Le test exact du signe compare les gains aux $2^n$ jeux de signes possibles.
+  \item Entre les deux récompenses, la question même du protocole : la différence des gains moyens, son
+    intervalle de Welch, avec les degrés de liberté de Welch-Satterthwaite, puis un test exact de permutation
+    sur toutes les répartitions des gains entre les deux récompenses, 252 pour Qwen et 126 pour Llama. La
+    correction de Holm s'applique aux deux modèles pour pass@1, le contraste principal, comme pour la justesse
+    des réponses finies. Elle s'applique ensuite aux huit autres contrastes.
+  \item Une règle : un gain ou un contraste est \emph{établi} quand son intervalle de Student ou de Welch
+    exclut 0 et que son $p$ exact, corrigé par Holm, passe sous 0,05.
+\end{itemize}
+Cette règle a une conséquence que le protocole n'avait pas vue. Avec cinq graines aléatoires, le test exact du
+signe ne descend jamais sous $p = 2/2^5 = 0{,}0625$, atteint quand les cinq gains ont le même signe. Avec
+quatre, il ne descend pas sous $2/2^4 = 0{,}125$. Aucun gain à l'intérieur d'une configuration ne peut donc
+être établi avec cinq graines aléatoires, même quand toutes vont dans le même sens. Plus de réponses par
+problème n'y changerait rien. Au pas 0, l'écart type de pass@1 entre graines aléatoires vaut 0,7~point pour
+Qwen et 1,1~point pour Llama, sous l'erreur type binomiale de 400 réponses (1,5 et 2,1~points). Les gains
+sous vraie récompense ont un écart type d'environ 24~points pour Qwen et 10 pour Llama. Il faut plus de
+graines aléatoires.
 
 \paragraph{Un essai qui échoue deux fois} L'essai Llama à récompense tirée au sort et graine aléatoire 4
 s'est arrêté deux nuits de suite sur le premier garde-fou, dès sa première mise à jour. L'écart 16
@@ -246,7 +300,7 @@ graine aléatoire. L'évaluation n'a lieu que tous les cinquante pas : la courbe
 
 \subsection{La récompense tirée au sort}
 
-À pile ou face, la réussite tombe à 1~\% ou moins dans les neuf essais finis. Le gain moyen vaut
+À pile ou face, la réussite tombe à 1,25~\% ou moins dans les neuf essais finis. Le gain moyen vaut
 $-10$ points sur Qwen (de $-11$ à $-9$) et $-24$ points sur Llama (de $-24$ à $-23$). Remplacer le
 gain manquant de Llama par le plus petit gain des dix-neuf essais finis change peu ($-24$, de $-24$ à
 $-23$). Le remplacer par le plus grand, $+51$, relève la moyenne à $-9$, avec un intervalle de $-24$ à
@@ -268,8 +322,47 @@ Avec deux graines aléatoires de plus, les nouveaux essais Qwen finissent à 13~
 graines aléatoires, le gain moyen tombe à $+14$ points, de $-3$ à $+34$ : l'intervalle contient
 désormais zéro. Le gain que nous lisions sur Qwen avec trois graines aléatoires ne tient plus. Sur Llama, les
 deux nouveaux essais finissent à 27~\% et 33~\%. Le gain moyen vaut $+6$ points, de $-0{,}4$ à $+15$ :
-zéro reste dans l'intervalle. Avec cinq graines aléatoires, nous ne pouvons pas dire que GRPO fait progresser
-l'un ou l'autre modèle sur cette tâche, dans ces conditions.
+zéro reste dans l'intervalle. Les intervalles de Student de l'écart~19 sont plus larges : de $-16$ à $+45$
+pour Qwen, de $-6$ à $+19$ pour Llama, avec un $p$ de signe de 0,31 pour les deux. Avec cinq graines
+aléatoires, nous ne pouvons pas dire que GRPO fait progresser l'un ou l'autre modèle sur cette tâche, dans
+ces conditions.
+
+\subsection{Les mesures que le pass@1 cachait}
+
+Le \cref{tab:grpo-mesures} donne les cinq mesures de chaque configuration, la \cref{fig:grpo-mesures} leurs
+gains graine par graine. Sous la vraie récompense, Llama gagne 6~points de pass@1 pendant que sa justesse
+gloutonne chute dans ses cinq essais, de 72,1~\% à 29,1~\% en moyenne ($-43$~points, Student
+$[-59\,;\,-27]$). Son pass@8 chute aussi, de 75,2~\% à 44,8~\% ($-30$~points, $[-44\,;\,-17]$). Le modèle
+ne calcule pas mieux. La distribution qu'il échantillonne à la température 1 se resserre : un tirage au
+hasard tombe un peu plus souvent juste, alors que la réponse la plus probable et la meilleure de huit
+tombent moins souvent juste. Chez Qwen, le pass@8 baisse dans quatre essais sur cinq, de 51,6~\% à 34,4~\%,
+avec un intervalle de Student qui contient zéro. À la question de \textcite{yue2025rlvr}, nos essais
+répondent que le pass@8 ne monte en moyenne dans aucune configuration. Sous la règle de l'écart~19, ces chutes restent non établies, faute
+d'un $p$ de signe sous 0,0625, alors que leurs intervalles de Student excluent zéro. Les deux constats valent
+ensemble.
+
+\gentable{grpo-mesures}
+
+\fig{grpo-mesures}{Gains par graine aléatoire en trois mesures, entre le pas 0 et le pas 100, pour Qwen2.5 de
+0,5 milliard de paramètres et Llama 3.2 de 1 milliard, sous la vraie récompense et sous la récompense tirée à
+pile ou face. Un point par graine aléatoire, la moyenne, l'intervalle de Student (trait épais) et
+l'intervalle par percentile du protocole (trait fin). Sous la vraie récompense, le pass@1 de Llama monte de
+6~points pendant que sa justesse gloutonne perd 43~points et son pass@8 30 : la distribution échantillonnée
+se resserre, le modèle ne multiplie pas mieux. Avec cinq graines aléatoires, l'intervalle par percentile est
+bien plus étroit que celui de Student.}
+
+\subsection{Vraie récompense contre pile ou face}
+
+Le protocole posait une question que la première version de ce chapitre ne testait pas : la vraie récompense
+fait-elle mieux que la récompense tirée au sort ? Le \cref{tab:grpo-contraste} y répond par la différence
+des gains moyens. Pour Llama, la vraie récompense fait mieux en pass@1, de $+30$~points
+$[+18\,;\,+43]$ (permutation exacte $p = 0{,}008$, Holm 0,016) : c'est établi. Pour Qwen, l'écart va dans le
+même sens, $+25$~points $[-6\,;\,+55]$ ($p = 0{,}040$, Holm 0,040), mais son intervalle contient zéro : il
+n'est pas établi. Aucun des huit contrastes secondaires ne passe Holm. La raison du contraste de Llama
+compte autant que son signe. La vraie récompense ne fait pas progresser Llama : elle le dégrade moins que la
+récompense tirée au sort, qui le détruit (pass@1 de 24~\% à 0,3~\%, justesse gloutonne de 72~\% à 0,8~\%).
+
+\gentable{grpo-contraste}
 
 \subsection{Le matériel et la graine aléatoire, mêlés}
 \label{sec:llm-materiel}
@@ -288,15 +381,26 @@ sur le GPU. Selon la seconde, l'appareil change la trajectoire de l'entraînemen
 calculs ou par des calculs GPU corrompus mais finis, que les premiers essais n'auraient pas
 détectés. Cinq essais ne départagent pas ces explications.
 
-Les journaux montrent que l'appareil modifie déjà la mesure de départ. Le pass@1 au pas 0 dépend
-du modèle de base et de la graine aléatoire seulement, puisque la récompense n'intervient qu'après
-cette première évaluation : pour un même modèle et une même graine aléatoire, les deux conditions
-partent du même point si le calcul est déterministe. C'est le cas quand les deux essais ont
-tourné sur le même appareil et sans incident, par exemple Qwen graines aléatoires 2, 3 et 4 sur CPU. Pour Qwen
-graine aléatoire 1, l'essai à vraie récompense, sur GPU, part de \num{0.1025}, l'essai à récompense tirée au
-sort, sur CPU, de \num{0.1175}. Pour Llama graine aléatoire 3, les deux essais ont tourné sur GPU et partent
-de \num{0.25} et de \num{0.2425} : le calcul MPS n'est pas déterministe d'une tentative à l'autre,
-ce que l'écart 7 avait déjà constaté (\cref{tab:grpo}).
+Les journaux établissent deux faits sur l'appareil (écart~18, point~c). Le pass@1 au pas 0 dépend
+du modèle de base, de la graine aléatoire et du hasard des tirages, puisque la récompense n'intervient qu'après
+cette première évaluation. La justesse gloutonne au pas 0, qui ne tire rien au hasard, vaut \num{0.0733} dans
+les dix essais Qwen, sur CPU comme sur GPU : l'appareil ne change pas la réponse la plus probable du modèle de
+départ. Les écarts de pass@1 au pas 0 entre essais Qwen d'une même graine aléatoire viennent des flux de
+hasard, qui diffèrent entre CPU et GPU pour une même graine. Pour Qwen graine aléatoire 1, l'essai à vraie
+récompense, sur GPU, part de \num{0.1025}, l'essai à récompense tirée au sort, sur CPU, de \num{0.1175}, pour
+cette raison. Le signe direct du non-déterminisme du calcul MPS vient de Llama. Pour la graine aléatoire 3,
+les deux essais ont tourné sur GPU, avec le même modèle et le même hasard. Ils partent pourtant d'un pass@1 de
+\num{0.25} et de \num{0.2425}. Leur justesse gloutonne vaut \num{0.707} d'un côté, \num{0.667} de l'autre. L'écart~7
+l'avait déjà constaté (\cref{tab:grpo}).
+
+Les journaux montrent aussi des groupes sans gradient. Sous la vraie récompense, beaucoup de groupes ont huit
+réponses toutes fausses, ou toutes justes, donc un avantage nul pour chacune. La norme du gradient vaut zéro
+dans 5, 4 et 7 des 10 pas journalisés pour les essais Qwen des graines aléatoires 2, 3 et 4 (les graines
+aléatoires 0 et 1 ne l'ont pas journalisée). Elle vaut zéro dans 3, 0, 3, 3 et 2 pas sur 10 pour les cinq
+essais Llama. L'essai Qwen de la graine
+aléatoire 4 cesse d'apprendre dès le pas 50, à 0~\% de pass@1, de pass@8 et de justesse gloutonne. Sous la
+récompense tirée au sort, la pièce donne presque toujours des récompenses mêlées : aucun pas journalisé n'a
+un gradient nul.
 
 \paragraph{Un essai hors protocole} L'écart 16 (e) prévoyait de lancer une fois sur CPU l'essai
 Llama à récompense tirée au sort et graine aléatoire 4, après tous les autres calculs, pour savoir si son
@@ -344,11 +448,21 @@ réponses coupées. Un troisième n'en coupe que 2~\% et ne donne plus aucune bo
 récompense tirée au sort ne se contente pas d'allonger les réponses au-delà de la limite.
 
 Une réponse coupée compte pour fausse. Un modèle qui apprend à répondre plus court gagne donc des
-points de pass@1 sans mieux calculer. Une part du gain mesuré avec la vraie récompense peut venir
-de ce détail du banc d'essai : apprendre à se taire à temps. Nos journaux ne mesurent pas la
-justesse des seules réponses complètes à chaque évaluation, si bien que nous ne pouvons pas chiffrer
-cette part. Pour Qwen, dont les réponses de départ sont coupées à plus de 70~\% au test, elle peut
-être grande.
+points de pass@1 sans mieux calculer. La première version de ce chapitre ne pouvait pas chiffrer cette part.
+La justesse parmi les réponses finies de l'écart~19 la chiffre (\cref{tab:grpo-mesures}).
+\begin{itemize}
+  \item Chez Qwen, sous la vraie récompense, la part coupée tombe de 74,9~\% à 6,0~\% dans les cinq essais.
+    La justesse parmi les réponses finies \emph{baisse}, de 41,2~\% à 27,5~\% ($-14$~points, Student
+    $[-46\,;\,+19]$, deux essais sur cinq en hausse). Tout le gain de pass@1 de Qwen s'explique par la fin des
+    réponses coupées. Le modèle apprend à finir avant 160 jetons. Il ne multiplie pas mieux.
+  \item Chez Llama, la longueur ne bouge presque pas : la part coupée passe de 2,0~\% à 2,7~\%. La justesse
+    des réponses finies suit le pass@1, $+7$~points, Student $[-5\,;\,+19]$.
+\end{itemize}
+À l'intérieur de la configuration Qwen à vraie récompense, raccourcir plus ne donne pas plus de gain : la
+corrélation de Pearson entre la variation de la part coupée et celle de pass@1 vaut $+0{,}23$ sur cinq
+essais. Sur les deux récompenses ensemble, la corrélation de Spearman vaut $-0{,}63$ pour Qwen et $-0{,}83$
+pour Llama, ce qui reflète surtout l'effet de la récompense (\file{sim/llm/results/logs\_stats\_5.json}, clé
+\texttt{length}).
 
 \begin{keybox}
 \textbf{Leçon pour un banc d'essai de modèle de langue.} Une limite de longueur transforme une mesure
@@ -361,10 +475,24 @@ que le gain mesure.
 \section{Ce que ce volet établit et ce qu'il n'établit pas}
 \label{sec:llm-portee}
 
-Ce volet établit trois faits, pour deux petits modèles, une tâche de multiplication et 100 pas.
-Avec la vraie récompense, l'écart entre graines aléatoires est aussi grand que le gain moyen, comme
-dans le RL classique de 2018. Une récompense tirée au sort fait chuter la réussite des deux familles.
-Une part du gain apparent peut venir de la limite de longueur, que le protocole n'avait pas prévue.
+Ce volet établit quatre faits, pour deux petits modèles, une tâche de multiplication et 100 pas.
+\begin{itemize}
+  \item Avec la vraie récompense, l'écart entre graines aléatoires est aussi grand que le gain moyen de
+    pass@1, comme dans le RL classique de 2018. Aucun gain de pass@1 n'est établi.
+  \item Une récompense tirée au sort fait chuter la réussite des deux familles, dans tous les essais et dans
+    les quatre mesures de justesse. C'est elle qui donne à Llama son seul contraste établi entre les deux récompenses.
+  \item Chez Llama, la vraie récompense resserre la distribution échantillonnée : le pass@1 monte un peu, la
+    justesse gloutonne et le pass@8 chutent dans les cinq essais.
+  \item Chez Qwen, tout le gain de pass@1 est un gain de brièveté : la justesse des réponses finies ne monte
+    pas.
+\end{itemize}
+Deux défauts déclarés pèsent sur ces faits : la pénalité de répétition de Qwen et un pilote qui a lu le test
+(écart~18). Le protocole à cinq graines aléatoires ne peut établir aucun gain dans une
+configuration. Une relance est écrite d'avance pour lever ces défauts (écart~20) : pénalité de répétition à
+1, pilote tenu hors du test, dix graines aléatoires par configuration sur le seul GPU, verdicts par problème
+gardés et une réponse gloutonne à 512 jetons, que la limite de longueur ne touche pas. Lancée le 22 novembre
+2026, elle attend que le GPU se libère et n'a encore produit aucun résultat. Sa règle est fixée : si le
+contraste principal n'est établi pour aucun des deux modèles, ce volet passe en annexe.
 
 Il n'établit ni l'effet de GRPO à l'échelle des articles, ni l'absence de l'effet de
 \textcite{shao2025spurious} sur des modèles plus grands ou spécialisés en mathématiques. Il ne
