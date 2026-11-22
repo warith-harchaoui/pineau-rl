@@ -387,7 +387,7 @@ def t_sondage_lrl():
         cap = L(lang,
                 r"RL appliqué aux grands modèles de langage (famille \texttt{llm} du critère X5) contre RL classique, dans le premier tirage aléatoire de 50 articles de 2026 (ICLR 2026, ICML 2026, NeurIPS 2025) : 27 articles \texttt{llm}, 14 \texttt{classic}, 9 \texttt{theory} (non montrés, comptés dans « Tous »). "
                 r"$k/n$ sur les articles à expériences où le critère s'applique, part en pourcentage entre parenthèses ; intervalle de Wilson à 95~\% pour la colonne « Tous », seul calculé par le script. "
-                r"Seule la grille v1 a ce découpage par famille dans les résultats (\file{study/audit_stats.json}, harmonisation de \file{study/overrides.json}) : la grille v2 n'est pas ventilée par famille, et aucun test entre familles n'a été préregistré ; le tableau est descriptif. "
+                r"Seule la grille v1 a ce découpage par famille dans les résultats (\file{study/audit_stats.json}, harmonisation de \file{study/overrides.json}) : la grille v2 n'est pas ventilée par famille. Aucun test entre familles n'a été préregistré ; le tableau est descriptif. "
                 rf"Les deux dernières colonnes rappellent l'échantillon classique élargi à 50 articles (tableau~\ref{{tab:sondage-pineau}}). Les {ap['llm']} articles \texttt{{llm}} et {ap['theory']} articles \texttt{{theory}} lus dans la file A3 restent à part : le tri sur le titre en avait déjà écarté beaucoup, ils ne forment pas un échantillon. "
                 r"Sources : \file{study/audit_stats.json}, \file{study/extension_stats.json}.",
                 r"RL applied to large language models (family \texttt{llm} of criterion X5) against classical RL, in the first random draw of 50 papers from 2026 (ICLR 2026, ICML 2026, NeurIPS 2025): 27 \texttt{llm} papers, 14 \texttt{classic}, 9 \texttt{theory} (not shown, counted in `All'). "
@@ -818,7 +818,7 @@ def t_e4():
         rows.append(L(lang, r"\multicolumn{2}{@{}l}{Comparaisons inversées} & \multicolumn{5}{r}{", r"\multicolumn{2}{@{}l}{Comparisons reversed} & \multicolumn{5}{r}{")
                     + f"{E['n_reversed']} / {E['n_comparisons']}" + r"} & \multicolumn{3}{r}{" + f"{R['n_reversed']} / {R['n_comparisons']}" + "}")
         cap = L(lang,
-                rf"Expérience E4 : garder les 3 meilleurs essais sur 10. Pour chaque programme et chaque tâche, moyenne et écart type des scores finaux des 10 essais, puis des 3 meilleurs, et gonflement de la moyenne (moyenne des 3 meilleurs divisée par celle des 10, moins 1). "
+                rf"Expérience E4 : garder les 3 meilleurs essais sur 10. Pour chaque programme et chaque tâche, moyenne et écart type des scores finaux des 10 essais, puis des 3 meilleurs ; gonflement de la moyenne (moyenne des 3 meilleurs divisée par celle des 10, moins 1). "
                 rf"Une comparaison (paire de programmes sur une tâche, 24 en tout) s'inverse quand le signe de l'écart entre moyennes change une fois que chaque programme ne garde que ses 3 meilleurs essais (écart 7 de \file{{sim/SIM_PROTOCOL.md}}). "
                 rf"À droite, la même analyse refaite sur les graines 10 à 19 (écart 12). Comparaisons inversées, graines 0 à 9 : {revs(E)} ; graines 10 à 19 : {revs(R)}. "
                 rf"L'écart type des 3 meilleurs tombe en médiane à {pct(E['sd_shrink_median'], lang)} de celui des 10. Sources : \file{{sim/analysis/e4.json}}, \file{{sim/analysis/e4\_r10.json}}.",
@@ -1261,7 +1261,7 @@ DEV_SIM = [
      r"E3 with Holm's correction over four tasks, gap in points and power."),
     (24, 21, "apav", r"E7 : le renversement sur Hopper en physique modifiée, testé paire par paire.",
      r"E7: the Hopper reversal under modified physics, tested pair by pair."),
-    (25, 21, "apav", r"E5 vérifié hors échantillon : graines 0 à 9 jugées sur les graines 10 à 19, et l'inverse.",
+    (25, 21, "apav", r"E5 vérifié hors échantillon : graines 0 à 9 jugées sur les graines 10 à 19, puis l'inverse.",
      r"E5 checked out of sample: seeds 0 to 9 judged on seeds 10 to 19, and the reverse."),
     (26, 21, "apav", r"La règle « tranché » calibrée sur de vraies hypothèses nulles (deux groupes du même programme).",
      r"The `settled' rule calibrated on true null hypotheses (two groups of the same program)."),
@@ -1506,7 +1506,7 @@ def t_calcul():
                     + f" & {g_n} & & & {num(g_h, lang, 1)}")
         cap = L(lang,
                 r"Calcul des expériences, relevé dans les fichiers de résultats : pour chaque programme et chaque tâche, nombre d'essais finis, pas d'entraînement par essai (colonne \texttt{step} de la dernière ligne), durée murale médiane d'un essai et somme des durées, en heures. "
-                r"La durée murale est la colonne \texttt{wall} de \file{sim/results/<programme>/<tâche>/seed<g>.csv} à la dernière évaluation (secondes depuis le lancement, évaluations comprises), et pour GRPO le dernier \texttt{wall} des pas d'entraînement de \file{sim/llm/results/<modèle>/mul2/<récompense>/seed<g>.jsonl}. "
+                r"La durée murale est la colonne \texttt{wall} de \file{sim/results/<programme>/<tâche>/seed<g>.csv} à la dernière évaluation (secondes depuis le lancement, évaluations comprises) ; pour GRPO, c'est le dernier \texttt{wall} des pas d'entraînement de \file{sim/llm/results/<modèle>/mul2/<récompense>/seed<g>.jsonl}. "
                 r"Ce ne sont pas des heures-cœurs : chaque entraînement tournait sur un fil, PPO JAX sur deux au début (écart 4), GRPO sur le GPU Apple ou sur deux fils CPU, sur une machine partagée dont la charge variait ; les réévaluations de E7 à plusieurs intensités et les dix agents officiels du Zoo (E6) n'enregistrent pas leur durée et manquent ici. "
                 rf"Les modèles PPO et TRPO comptent en vérité 1\,024\,000 pas (blocs de 51\,200, écart 14 (d)). Le registre reconstruit \file{{sim/logs/attempts\_reconstructed.csv}} compte {len(launches)} lancements pour les entraînements de la grille, de B1 et du diagnostic de E6, dont {len(ok)} aboutis (écart 14 (e)).",
                 r"Compute of the experiments, read from the result files: for each program and task, number of finished runs, training steps per run (column \texttt{step} of the last row), median wall-clock time of one run and sum of the times, in hours. "
@@ -1709,7 +1709,7 @@ def t_e3_holm():
                 r"Rule: a difference between the two PPOs is called settled only if it passes Holm; \textbf{in bold}, the only one that does, Swimmer at twenty seeds. "
                 r"Power of these tests in Table~\ref{tab:e3-puissance}. "
                 r"The preregistered result remains that of \file{sim/analysis/e3.json} (Table~\ref{tab:e3}). Source: \file{sim/analysis/e3_holm.json} (\file{sim/analysis/e3_holm.py}).")
-        floattable("e3-holm", lang, cap, L(lang, "E3 avec la correction de Holm, et sa puissance", "E3 with Holm's correction, and its power"),
+        floattable("e3-holm", lang, cap, L(lang, "E3 avec la correction de Holm et sa puissance", "E3 with Holm's correction, and its power"),
                    r"@{}lrrrrrr@{}", head, rows, tabcolsep="3.5pt")
 
 
@@ -1845,7 +1845,7 @@ def t_regle_tranche():
                 r"La règle « tranché » mise à l'épreuve sur de vraies hypothèses nulles (écart 26 de \file{sim/SIM_PROTOCOL.md}, écrit avant ce calcul) : deux groupes disjoints du même programme, où aucune différence n'existe. "
                 r"Sur chaque tirage, intervalle bootstrap percentile de la probabilité d'amélioration et intervalles des deux IQM (2\,000 rééchantillons, chaque groupe rééchantillonné à part, méthode de rliable réécrite en NumPy, \texttt{default\_rng(2026)}). "
                 r"Colonnes : part des tirages où l'intervalle de la probabilité d'amélioration exclut 0,5, où les intervalles des IQM sont disjoints, où l'un ou l'autre se produit (la règle du protocole, \textbf{en gras}). "
-                r"Une règle exacte au niveau de 95~\% se tromperait dans 5~\% des tirages : la règle est un peu libérale à 10 contre 10, nettement à 5 contre 5, et c'est la condition sur la probabilité d'amélioration qui la porte. "
+                r"Une règle exacte au niveau de 95~\% se tromperait dans 5~\% des tirages : la règle est un peu libérale à 10 contre 10, nettement à 5 contre 5. L'excès vient de la condition sur la probabilité d'amélioration. "
                 r"Source : \file{sim/analysis/rule_calibration.json} (\file{sim/analysis/rule_calibration.py}).",
                 r"The ``settled'' rule tested on true null hypotheses (deviation 26 of \file{sim/SIM_PROTOCOL.md}, written before this computation): two disjoint groups of the same program, where no difference exists. "
                 r"In each draw, the percentile bootstrap interval of the probability of improvement and the intervals of the two IQMs (2,000 resamples, each group resampled separately, rliable's method rewritten in NumPy, \texttt{default\_rng(2026)}). "
