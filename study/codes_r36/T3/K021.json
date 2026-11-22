@@ -1,0 +1,28 @@
+{
+ "id": "K021",
+ "coder": "T3",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "code",
+   "quote": "https://github.com/geometric-rl-anonymous/ [...] Geometric-Action-Control-for-Reproducibility",
+   "page": 22
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Table 3: Ablation study of GAC components on HalfCheetah-v4. Results averaged over 5 seeds.",
+   "page": 9
+  },
+  "X7": {
+   "value": "no",
+   "quote": "Empirical Timing (NVIDIA RTX 3090):",
+   "page": 22
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "seeds {0, 10, 42, 77, 123} and report mean episodic returns ± standard deviation.",
+   "page": 7
+  }
+ },
+ "doubts": "Q5: the anonymous repository holds trained models and evaluation scripts, with a complete release only planned. X7: only relative timings (0.78x SAC) on a named GPU, no duration."
+}

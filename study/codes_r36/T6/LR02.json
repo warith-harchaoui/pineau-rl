@@ -1,0 +1,6 @@
+{"id": "LR02", "coder": "T6", "criteria": {
+ "Q5": {"value": "no", "link_kind": "none", "quote": "In our appendix and supplementary material (provided on github and uploaded as a zip file to open review) we make sure to provide both an exhaustive list of the hyper-parameters we used along with the code we ran for our experiments.", "page": 11},
+ "Y9": {"value": "yes", "quote": "In Table 5 and Table 6 we compare the performance of Daze on the Hopper environment at different poisoning rates β and using different daze parameters k.", "page": 15},
+ "X7": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+ "X2": {"value": "yes", "quote": "PPO agents in terms of Attack Success Rate and Benign Return. Average scores and standard deviations are computed over 100 trajectories and 5 training seeds in simulation.", "page": 8}},
+ "doubts": "Q5: the paper says the code is on github but gives no address anywhere. Y9: the paper calls the β and k sweep an ablation, but β and k are numeric parameters of the attack it presents as hyper parameters, so I counted it."}

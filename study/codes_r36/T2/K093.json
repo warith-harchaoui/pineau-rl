@@ -1,0 +1,28 @@
+{
+ "id": "K093",
+ "coder": "T2",
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "link_kind": "none",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "iment Grouping clusters M by sweeping M",
+   "page": 10
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Wall-clock time [h]",
+   "page": 10
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Table 3: Each Algorithm Performance across Dataset (± is Standard Error, 5 seeds)",
+   "page": 9
+  }
+ },
+ "doubts": "X7: training time in hours appears only as a bar plot axis (about 40 to 140 h per run in Fig. 5), with no hardware named."
+}

@@ -1,0 +1,6 @@
+{"id": "C114", "coder": "T6", "criteria": {
+ "Q5": {"value": "yes", "link_kind": "project_page", "quote": "Demos of our framework on a set of RL tasks can be accessed online via: https://sites.google.com/view/wgf4rl/ .", "page": 5},
+ "Y9": {"value": "yes", "quote": "We further conduct experiments on Swimmer-v1 task to [...] analysis the influence of different Wasserstein-2 scale", "page": 3},
+ "X7": {"value": "no", "quote": "All experiments are conducted on a [...] single Tesla P100.", "page": 7},
+ "X2": {"value": "yes", "quote": "of policy learning. Figure 2 plots the mean (dark curves) [...] and standard derivation (light areas) of rewards over 5 runs.", "page": 7}},
+ "doubts": "Q5: the only own link is a Google Sites page presented as demos, coded project_page without knowing whether it leads to code. X2: the sentence on mean and std bands sits in Section 6.2 and may refer to Figure 1, but the main MuJoCo Figure 2 visibly carries shaded bands too."}

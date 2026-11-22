@@ -1,0 +1,6 @@
+{"id": "C113", "coder": "T6", "criteria": {
+ "Q5": {"value": "yes", "link_kind": "code", "quote": "Code available at github.com/Dam930/rllab.", "page": 7},
+ "Y9": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+ "X7": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+ "X2": {"value": "yes", "quote": "Figure 1: Comparison of on-line performance over sampled trajectories, with 90% confidence intervals.", "page": 8}},
+ "doubts": "Y9: the text refers to an Appendix E with meta-parameters that is not part of this 10-page PDF and no supplement file exists, so no sweep could be checked there."}

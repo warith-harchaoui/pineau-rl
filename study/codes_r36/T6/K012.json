@@ -1,0 +1,6 @@
+{"id": "K012", "coder": "T6", "criteria": {
+ "Q5": {"value": "yes", "link_kind": "code", "quote": "Full code for ForageWorld and our analysis is available at https://github.com/RileySE/Craftax-Foraging/tree/foraging", "page": 3},
+ "Y9": {"value": "yes", "quote": "512-unit RNN with a feedforward network significantly impairs performance, as does downsizing to a 64-unit network (550k parameters). A midsize 128-unit network also underperforms when", "page": 6},
+ "X7": {"value": "yes", "quote": "Each training run used a single GPU (NVIDIA A100 or H100) and typically converged within 24–48 hours, depending on configuration.", "page": 19},
+ "X2": {"value": "yes", "quote": "time-weighted EMA mean across 5 random seeds; shaded regions show one standard deviation.", "page": 6}},
+ "doubts": "Y9: the evidence is a network-size sweep (512, 128, 64 units) shown with performance curves, which the paper lists as a network size sweep inside its ablations; the other swept parameters (Table 3) are reported without results, and Figure 29 varies the exploration hyperparameters of PQN, an alternative algorithm."}

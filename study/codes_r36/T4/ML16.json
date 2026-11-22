@@ -1,0 +1,28 @@
+{
+ "id": "ML16",
+ "coder": "T4",
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "link_kind": "none",
+   "quote": "Causal-FQL is built upon the codebase of FQL (Park et al., 2025b)3 .",
+   "page": 16
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Discriminator loss coefficient. We sweep the discriminator loss coefficient over {1, 5, 10, 15}.",
+   "page": 8
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "training for all baselines and Causal-FQL proposed, averaging results over 4 seeds and present the results with mean [...] and standard deviations.",
+   "page": 6
+  }
+ },
+ "doubts": "Q5: only links to the FQL and Value Flows codebases of other authors, none to the paper's own code."
+}

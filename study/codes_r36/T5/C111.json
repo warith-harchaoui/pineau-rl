@@ -1,0 +1,6 @@
+{"id": "C111", "coder": "T5", "criteria": {
+ "Q5": {"value": "no", "link_kind": "none", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+ "Y9": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+ "X7": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+ "X2": {"value": "yes", "quote": "Figure 2. The globally averaged returns for Cooperative Navigation, when neural networks are used for function approximation.", "page": 8}},
+ "doubts": "X2: Figure 2 shows shaded bands (10 test runs) but neither caption nor text names them, and the linear-approximation result (Figure 1, Figures 3-4) has no spread."}

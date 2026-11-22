@@ -1,0 +1,6 @@
+{"id": "C11", "coder": "T8", "criteria": {
+ "Q5": {"value": "yes", "link_kind": "project_page", "quote": "RLlib documentation can be found at http://rllib.io", "page": 1},
+ "Y9": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+ "X7": {"value": "yes", "quote": "(Amazon, 2017). With 8192 cores, we achieve a reward [...] of 6000 in a median time of 3.7 minutes, which is over", "page": 8},
+ "X2": {"value": "yes", "quote": "Figure 8. The time required to achieve a reward of 6000 on the", "page": 8}},
+ "doubts": "Q5: the link is to the RLlib documentation site (the paper's own library, part of open-source Ray), coded as project page. X2: Fig. 8 bars carry unexplained error bars, while the throughput results (Fig. 7, Table 3) carry none; it is debatable which is the main result of this systems paper. Y9: only numbers of workers/CPUs/GPUs are varied, which are resources, not hyperparameters."}

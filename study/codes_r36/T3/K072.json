@@ -1,0 +1,28 @@
+{
+ "id": "K072",
+ "coder": "T3",
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "link_kind": "none",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Here we highlight several hyperparameters: the trajectory truncation parameter (time horizon) T [...] (needs to be sufficiently large); the total sample size N or the sampling interval ∆t, with N · ∆t = T .",
+   "page": 7
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "The time cost for each experiment is 352 seconds on a computer with Intel",
+   "page": 8
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We plot the mean running average reward over time and the shaded areas [...] represent the standard deviation across the runs.",
+   "page": 9
+  }
+ },
+ "doubts": "Y9: the swept step size ∆t (Figure 3) is called a hyperparameter by the paper but is also the sampling interval of the environment."
+}

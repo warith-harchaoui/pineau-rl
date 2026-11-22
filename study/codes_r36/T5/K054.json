@@ -1,0 +1,6 @@
+{"id": "K054", "coder": "T5", "criteria": {
+ "Q5": {"value": "yes", "link_kind": "code", "quote": "https://github.com/aguilarjose11/IntrinsicRobustness_ICML26", "page": 37},
+ "Y9": {"value": "no", "quote": "noise at different levels σ ∈ {0.0, 0.05, 0.1, 0.2} independently of ϕ, θ and P̂ .", "page": 40},
+ "X7": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+ "X2": {"value": "no", "quote": "Figure 1. Average policy difference (top row) and cumulative", "page": 8}},
+ "doubts": "Y9: the only sweep is the noise injected into the linear MDP parameters (a condition of the problem, not a hyperparameter of the attack)."}

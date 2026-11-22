@@ -1,0 +1,28 @@
+{
+ "id": "C31",
+ "coder": "T2",
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "link_kind": "none",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Figure 8: Average reward over 3 runs for various learning rates on the MNIST dataset",
+   "page": 17
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "teacher and a batch size of 3 was approximately 272 hours.",
+   "page": 10
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Figure 3: Student learning on MNIST. Reward, Accuracy, Compression vs Iteration (Top: Stage 1,",
+   "page": 9
+  }
+ },
+ "doubts": "X2: the main table (Table 1) has no spread; only the stage-1 learning curves of Figs. 3 to 5 carry unexplained shaded bands, and the stage-2 curves have none."
+}

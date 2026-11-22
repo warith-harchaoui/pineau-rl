@@ -1,0 +1,6 @@
+{"id": "C215", "coder": "T6", "criteria": {
+ "Q5": {"value": "no", "link_kind": "none", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+ "Y9": {"value": "yes", "quote": "In MuJoCo, as the mutation probability increases from 0.03 to 0.1 and 0.3, the performance decreases and becomes unstable.", "page": 9},
+ "X7": {"value": "yes", "quote": "Time refers to the time spent in training, where DQN is measured with 1 GPU(K40), A3C with 16 core cpu, ES and Simpe GA with 720 CPUs, and G2AC with 1 GPU(Titan X).", "page": 6},
+ "X2": {"value": "no", "quote": "Each curve averaged across three trials of different random seeds.", "page": 8}},
+ "doubts": "X7: the duration for G2AC (\"200M, 4 H\") is a table cell of Table 1 next to the 1 GPU (Titan X) caption, so hardware count and duration are given together but across caption and table."}

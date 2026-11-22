@@ -1,0 +1,28 @@
+{
+ "id": "LR12",
+ "coder": "T7",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "code",
+   "quote": "The experimental code is available at https://github.com/Ziffer-byakuya/GAS.",
+   "page": 14
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "In fig. 10, GAS is robust to the dataset reshape threshold when q% ≤ 40% and is sensitive when q% is extremely large.",
+   "page": 23
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Time 2h19min 2h43min 3h10min 3h38min 11h32min 1h44min 8h20min",
+   "page": 36
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "“mean±std” represent the mean and standard deviation. Each value represents the average performance",
+   "page": 11
+  }
+ },
+ "doubts": ""
+}

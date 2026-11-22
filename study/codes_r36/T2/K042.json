@@ -1,0 +1,28 @@
+{
+ "id": "K042",
+ "coder": "T2",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "code",
+   "quote": "Code Repository: github.com/chandar-lab/stream-rep-rl",
+   "page": 1
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "λSPR =2, and image augmentations with EMA τ =0, we conduct experiments with several values of these parameters",
+   "page": 7
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "the streaming DQN and Stream Q(λ) agents completed 40M frames of training in roughly 20 to 35 hours, while the QRC(λ)",
+   "page": 14
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Table 1. The aggregate return metrics with standard deviations,",
+   "page": 7
+  }
+ },
+ "doubts": ""
+}

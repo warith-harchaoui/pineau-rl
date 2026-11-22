@@ -1,0 +1,28 @@
+{
+ "id": "K078",
+ "coder": "T7",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "code",
+   "quote": "The results highlight the vulnerability of RL agents to semantics-aware adversarial perturbations, indicating the importance of developing more robust policies. Our code can be found at this GitHub Repo.",
+   "page": 1
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Ablation on Policy Guidance Strength Figure 3b illustrates the performance of our attack across various levels of policy guidance strength Γ2 . The figure indicates that as the strength increases, the effectiveness of our attack improves, leading to higher manipulation and deviation rates.",
+   "page": 10
+  },
+  "X7": {
+   "value": "no",
+   "quote": "We conduct all our experiments on a workstation equipped with an Intel I9-12900KF CPU, an RTX 3090 GPU, and 64GB system RAM.",
+   "page": 31
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Table 1: Episode reward of SHIFT-O and SHIFT-I against various defense methods in different environments with attack frequency 1.0 and 0.25. All results are reported with mean and std over 10 runs.",
+   "page": 8
+  }
+ },
+ "doubts": "Q5: the visible text says \"this GitHub Repo\" with no printed URL; the embedded hyperlink in the PDF is https://github.com/SliencerX/Diffusion_Guided_Adversarial_State_Perturbations_in_Reinforcement_Learning. X7: hardware named with no total duration; the only times are per-perturbation generation times (about 0.2 s per state with EDM, about 5 s with DDPM), coded as not quantifying the compute used."
+}

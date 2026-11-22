@@ -1,0 +1,6 @@
+{"id": "K015", "coder": "T8", "criteria": {
+ "Q5": {"value": "yes", "link_kind": "code", "quote": "Code and supplementary material are available at: [...] https://github.com/WtxwNs/AES.", "page": 1},
+ "Y9": {"value": "yes", "quote": "Table 5. Sensitivity to TD-error quantile q (AES, other settings fixed).", "page": 41},
+ "X7": {"value": "no", "quote": "Compute environment. Experiments were run on NVIDIA A100 GPUs with 40GB memory. Training used Python 3.9,", "page": 45},
+ "X2": {"value": "no", "quote": "random seeds with appropriate dispersion. Methods are", "page": 7}},
+ "doubts": "X2: the text claims results are averaged 'with appropriate dispersion', but main Tables 2 and 3 show only means, with no spread shown anywhere. X7: A100 GPUs named without count or duration."}

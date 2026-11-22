@@ -1,0 +1,6 @@
+{"id": "K089", "coder": "T5", "criteria": {
+ "Q5": {"value": "yes", "link_kind": "project_page", "quote": "Project page: https://pranaboy72.github.io/perl_page/", "page": 1},
+ "Y9": {"value": "yes", "quote": "Figure 9: Ablation study on κ sensitivity. We evaluated the sensitivity of our method to the choice", "page": 21},
+ "X7": {"value": "no", "quote": "All the experiments were run on NVIDIA RTX 4090 GPUs.", "page": 22},
+ "X2": {"value": "yes", "quote": "tasks. Shaded regions denote standard error. For RPP (Finzi et al., 2021a), we re-ran the official", "page": 10}},
+ "doubts": ""}

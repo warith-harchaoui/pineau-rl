@@ -1,0 +1,28 @@
+{
+ "id": "K030",
+ "coder": "T4",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "code",
+   "quote": "The code for our experiments is available at https://github.com/JonathanAshlag/State_ [...] entropy_robust_rl.",
+   "page": 27
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Regularization temperature. To study how the temperature parameter influences robustness, [...] we train state-entropy regularized agents with increasing regularization strength and evaluate their [...] in Figure 5(c) that as regularization increases, robust performance improves, illustrating the role of",
+   "page": 9
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "All experiments were conducted on a machine equipped with an NVIDIA RTX 4090 GPU. Recreating [...] experiments B.2 takes about 12 hours to run 25 seeds for the 3 baselines, sweeping regularization",
+   "page": 29
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "episodes and report 96% confidence bounds across 25 seeds.",
+   "page": 8
+  }
+ },
+ "doubts": ""
+}

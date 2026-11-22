@@ -1,0 +1,28 @@
+{
+ "id": "C211",
+ "coder": "T7",
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "link_kind": "none",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "Uniform and Gaussian distributions with different variances are used as prior distributions in order to investigate the effect of prior peakedness.",
+   "page": 9
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "no",
+   "quote": "that define 95%-confidence intervals for the expected return.",
+   "page": 7
+  }
+ },
+ "doubts": "Y9: Figure 4 varies the prior over the unknown model parameter (uniform, two Gaussian variances), treated as a modelling assumption about the problem rather than a hyperparameter of the method. X2: the only confidence interval is the posterior band of the Q-function surface in Figure 2(b), not a spread over the 100 runs on the main reward curves (Figures 2c and 4)."
+}

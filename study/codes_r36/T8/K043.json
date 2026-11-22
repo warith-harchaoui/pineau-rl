@@ -1,0 +1,6 @@
+{"id": "K043", "coder": "T8", "criteria": {
+ "Q5": {"value": "no", "link_kind": "none", "quote": "Justification: We are going to release our code once the paper is accepted to facilitate", "page": 17},
+ "Y9": {"value": "yes", "quote": "conducted an additional ablation study by varying the number of bins/atoms (equivalent to adjusting", "page": 36},
+ "X7": {"value": "no", "quote": "Justification: The experiments are conducted by using multiple RTX 3090 GPUs.", "page": 18},
+ "X2": {"value": "yes", "quote": "games. Results are averaged over three seeds, and the shade represents the standard deviation.", "page": 8}},
+ "doubts": "Y9: the paper is mostly analytical; the swept quantities are the number of atoms (L.3, Fig. 8) and the decomposition ratio epsilon of the decomposed algorithm H(mu, q_theta) (Fig. 3), which is an analysis knob more than a tuned hyperparameter."}

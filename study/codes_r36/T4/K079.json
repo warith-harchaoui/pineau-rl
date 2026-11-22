@@ -1,0 +1,28 @@
+{
+ "id": "K079",
+ "coder": "T4",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "code",
+   "quote": "strong offline-to-online baselines. (The code is [...] publicly available at https://github.com/ [...] lpzu/DARE.)",
+   "page": 1
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "from dominating a single update. We further examine the effect of this cap on Locomotion tasks. Setting Kmax = 32 [...] achieves a total score of 877.1, while setting Kmax = 128, which is effectively uncapped under our batch setting, achieves [...] 878.2.",
+   "page": 33
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "conducted on the same NVIDIA GeForce RTX 5090 GPU. [...] Table 15. Runtime comparison on hopper-medium-replay-v2. [...] 0.6h",
+   "page": 33
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Table 1. Performance after 0.2M online fine-tuning. Each result is averaged over the final 4 evaluations and 5 random seeds ± standard",
+   "page": 7
+  }
+ },
+ "doubts": "Y9: Kmax is presented as an implementation option (an exchange cap) with only two values tried, and the paper says DARE adds only one hyperparameter (the update frequency)."
+}

@@ -1,0 +1,28 @@
+{
+ "id": "C25",
+ "coder": "T7",
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "link_kind": "none",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We study the effect of the hyper-paramter ↵ in the IPM terms on the estimation results. We show the MSE of RepBM trained using different ↵.",
+   "page": 18
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "no",
+   "quote": "Figure 1: Plots showing the mean and standard deviation of the fractional error in",
+   "page": 3
+  }
+ },
+ "doubts": "Y9: the alpha sweep (Table 6) is in the appendix file, page 18 of the supp PDF. X2: main Tables 1-3 report root MSE over 100 or 80 runs without any spread; the only standard deviation is on a secondary motivating plot in the appendix (page 3 of the supp PDF)."
+}

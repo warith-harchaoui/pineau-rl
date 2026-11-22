@@ -1,0 +1,28 @@
+{
+ "id": "ML06",
+ "coder": "T2",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "code",
+   "quote": "The code and environments are accessible on GitHub.",
+   "page": 1
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "Performance peaks at two",
+   "page": 7
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "H100 GPU. The wall-clock time to train a task for 108 [...] steps on our hardware is ∼ 2 minutes.",
+   "page": 6
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Table 2. Comparison of CL methods in combination with IPPO across three difficulty levels with 95% confidence intervals.",
+   "page": 6
+  }
+ },
+ "doubts": "Q5: the GitHub address (github.com/TTomilin/MEAL) is only an embedded hyperlink on the footnote, not printed text; Y9: benchmark paper, only environment conditions (number of agents, sequence length, reward settings) are varied, no hyperparameter sweep of a proposed method."
+}

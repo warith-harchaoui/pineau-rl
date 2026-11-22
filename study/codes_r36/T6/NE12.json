@@ -1,0 +1,6 @@
+{"id": "NE12", "coder": "T6", "criteria": {
+ "Q5": {"value": "yes", "link_kind": "code", "quote": "The source code is available at https://github.com/linkjoker1006/RDC-pymarl.", "page": 1},
+ "Y9": {"value": "yes", "quote": "Figure 12: Performance under different history lengths.", "page": 10},
+ "X7": {"value": "yes", "quote": "Echo requires an average of 23.8 and 58.3 hours for training on MPE and SMAC, respectively, while Flash needs 10.8 and 34.5 hours correspondingly.", "page": 23},
+ "X2": {"value": "yes", "quote": "Figure 8: Performance under fixed delay on MPE.", "page": 8}},
+ "doubts": "X2: the shaded bands on Figures 8 and 9 (and the ± values in appendix Tables 4 to 9) are visible but never described in the text, so the caption quoted only points to the figure. Y9: history_length appears in the hyperparameter table (p. 17) and is swept in Figure 12, though the paper frames it as a compensator input setting."}

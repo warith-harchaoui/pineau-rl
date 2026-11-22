@@ -1,0 +1,28 @@
+{
+ "id": "C220",
+ "coder": "T3",
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "link_kind": "none",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Figure 4: (a) Reward (maximum R = 200) as a function of the size (in number of nodes) of the [...] decision tree extracted by V IPER, on the cart-pole benchmark.",
+   "page": 9
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "We compute the robustness \"(s0 ; ⇡) at 5 random states s0 2 S, which took just under 2.9 seconds for [...] each point (on a 2.5 GHz Intel Core i7 CPU)",
+   "page": 7
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y9: the swept quantity is the size of the extracted decision tree, which I treat as a hyperparameter of VIPER although the paper does not call it one. X7: only per-point verification times in seconds on a named CPU are given, not the total training compute."
+}

@@ -1,0 +1,28 @@
+{
+ "id": "K049",
+ "coder": "T8",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "code",
+   "quote": "the effectiveness and robustness of our method. Code is available at this link.",
+   "page": 1
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Figure 9: Sensitivity test of different z choices.",
+   "page": 10
+  },
+  "X7": {
+   "value": "no",
+   "quote": "Experiments were conducted on hardware comprising an Intel(R) Xeon(R) Gold 6254 CPU @",
+   "page": 26
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "one algorithm, with horizontal and vertical bars denoting standard deviations. Since the goal",
+   "page": 9
+  }
+ },
+ "doubts": "Q5: the GitHub address is only in the hyperlink behind 'this link', not in the printed text (https://github.com/Wangxuefeng1024/Safe-Continuous-time-Multi-Agent-Reinforcement-Learning-via-Epigraph-Form), so the quote cannot carry it. Y9: z is an auxiliary variable of the epigraph form trained at fixed offsets z* +/- c zmax, called a 'sensitivity test' but not explicitly a hyperparameter; Delta t sweep in D.3 is arguably an environment condition. X7: hardware listed (4 A5000 + 8 A6000) with no duration."
+}

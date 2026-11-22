@@ -1,0 +1,6 @@
+{"id": "K038", "coder": "T5", "criteria": {
+ "Q5": {"value": "yes", "link_kind": "project_page", "quote": "The project webpage and code can be found here: https://wang-kevin3290.github.io/scaling-crl/.", "page": 1},
+ "Y9": {"value": "yes", "quote": "Figure 7: Deeper networks unlock batch size scaling. We find that as depth increases from 4 to 64 in", "page": 7},
+ "X7": {"value": "yes", "quote": "Table 3: Wall-clock time (in hours) for Depth 4, 8, 16, 32, and 64 across all 10 environments.", "page": 20},
+ "X2": {"value": "yes", "quote": "Justification: Error bars in figures depict one standard error across random seeds. We used 5 seeds in Figure 1.", "page": 24}},
+ "doubts": "Q5: the link is a github.io project page that the paper says holds the code, coded project_page."}

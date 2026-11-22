@@ -1,0 +1,28 @@
+{
+ "id": "C112",
+ "coder": "T4",
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "link_kind": "none",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "obtained by the SOM agent as a function of the number of inference steps used for estimating the other’s goal for the Coin (left),",
+   "page": 8
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Figure 3 shows the mean and standard deviation of the [...] reward across 5 runs with different random seeds obtained",
+   "page": 5
+  }
+ },
+ "doubts": ""
+}

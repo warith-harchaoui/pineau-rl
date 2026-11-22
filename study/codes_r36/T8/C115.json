@@ -1,0 +1,6 @@
+{"id": "C115", "coder": "T8", "criteria": {
+ "Q5": {"value": "no", "link_kind": "none", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+ "Y9": {"value": "no", "quote": "where we set the model noise to be ten times the true value.", "page": 7},
+ "X7": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+ "X2": {"value": "yes", "quote": "20 runs and are reported with 95% confidence intervals.", "page": 7}},
+ "doubts": "Y9: model-noise over-estimation is compared only as IWFQI vs IWFQI with ideal weights (one value), not swept. X2: Fig. 3 (water reservoir) shows no visible band, but Figs. 1-2 carry 95% CIs."}

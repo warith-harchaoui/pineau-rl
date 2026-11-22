@@ -1,0 +1,28 @@
+{
+ "id": "C17",
+ "coder": "T7",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "code",
+   "quote": "tasks. Our source code is publicly available at https: [...] //bitbucket.org/RToroIcarte/qrm.",
+   "page": 5
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "is independently tested over several runs. We report the median performance and percentile 25 to 75 over the runs.",
+   "page": 6
+  }
+ },
+ "doubts": ""
+}

@@ -1,0 +1,28 @@
+{
+ "id": "C32",
+ "coder": "T1",
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "link_kind": "none",
+   "quote": "models are implemented using the Pytorch framework (pyt). Code and data will be made available.",
+   "page": 8
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Y9: only training-set size (full vs small) and a larger-decoder control (MLE_large) vary, neither presented as a hyperparameter sweep of the method."
+}

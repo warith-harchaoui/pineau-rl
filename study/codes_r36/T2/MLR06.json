@@ -1,0 +1,28 @@
+{
+ "id": "MLR06",
+ "coder": "T2",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "code",
+   "quote": "https://github.com/wenqian-xing/TPG-Estimator",
+   "page": 17
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Table 3: Sensitivity of post-k selection to the hyperparameter α.",
+   "page": 29
+  },
+  "X7": {
+   "value": "no",
+   "quote": "with a 12-core CPU and 18 GB of RAM.",
+   "page": 60
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "%) and STD (standard deviation). Average true ATE: τ = 2.05.",
+   "page": 17
+  }
+ },
+ "doubts": "X2: spread on main results is the standard deviation of the estimator (Table 1) and box plots over simulated trajectories (Figs. 4 and 6), not seeds of a learner; X7: CPU named with no duration."
+}

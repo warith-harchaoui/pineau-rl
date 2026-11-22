@@ -1,0 +1,28 @@
+{
+ "id": "LR15",
+ "coder": "T4",
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "link_kind": "none",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "{0.001, 0.01, 0.1} and the learning rate α ∈ {2−10 , 2−9 , . . . , 2−1 }. We tune both on the Humanoidv4 task with equal computation speeds and zero communication delays and observe that η = 0.1 is",
+   "page": 28
+  },
+  "X7": {
+   "value": "no",
+   "quote": "was emulated on machines with Intel(R) Xeon(R) Gold 6278C CPU @ 2.60GHz and 52 CPUs.",
+   "page": 28
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We run every experiment with 5 seeds and report (20%, 80%) confidence intervals.",
+   "page": 28
+  }
+ },
+ "doubts": "Y9: the η and α grid is tuned but the results per value are not shown; X7: CPUs named, and the time axes are emulated time, not real compute."
+}

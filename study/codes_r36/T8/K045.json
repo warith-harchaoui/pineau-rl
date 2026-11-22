@@ -1,0 +1,6 @@
+{"id": "K045", "coder": "T8", "criteria": {
+ "Q5": {"value": "yes", "link_kind": "code", "quote": "Our code is [...] released at https://github.com/MarquisDarwin/EAWM.", "page": 1},
+ "Y9": {"value": "yes", "quote": "Table 14: Game scores and human normalized mean score for different values of CI on the 6 games", "page": 27},
+ "X7": {"value": "yes", "quote": "GPUs. Training on Atari 100K, with three tasks running on the same GPU in parallel, took about 1.2", "page": 35},
+ "X2": {"value": "yes", "quote": "human-normalized scores and the 95% stratified bootstrap confidence intervals (Agarwal et al., 2021)", "page": 3}},
+ "doubts": ""}

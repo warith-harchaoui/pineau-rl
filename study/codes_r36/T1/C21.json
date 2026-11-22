@@ -1,0 +1,28 @@
+{
+ "id": "C21",
+ "coder": "T1",
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "link_kind": "none",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "test the effect of QoS penalty by using weights w ∈ [0, 10.0].",
+   "page": 8
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Figure 3: (a)-(c) Police patrolling [...] problem; (d)-(h) synthetic grid patrolling with varying population M , grids",
+   "page": 9
+  }
+ },
+ "doubts": "Y9: the QoS penalty weight w is swept (Fig. 2) but it is part of the reward/problem definition, read as an environment condition, not a hyperparameter of the method. X2: the spread is visible only on the figures (error bars on Fig. 2(c,d) and 3(b,c), bands on Fig. 3(d-h)), no caption names it."
+}

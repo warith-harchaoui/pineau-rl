@@ -1,0 +1,6 @@
+{"id": "K086", "coder": "T6", "criteria": {
+ "Q5": {"value": "no", "link_kind": "none", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+ "Y9": {"value": "yes", "quote": "Table 6: Learning rate sensitivity over grid search.", "page": 30},
+ "X7": {"value": "yes", "quote": "Formally, we can represent the total compute in FLOPs as follows (Rybkin et al., 2025):", "page": 3},
+ "X2": {"value": "yes", "quote": "in the amount of variance, seen as the size of the confidence interval in Figure 8.", "page": 12}},
+ "doubts": "X7: compute is the object of study, given in FLOPs (axes ×1e15 in Figure 7) per configuration from a proportional formula, but the paper never states hardware time or total resources used, so this could be read as no. X2: the main results are scaling fits; Figures 7 and 8 carry shaded confidence bands, while the per-run data points carry none."}

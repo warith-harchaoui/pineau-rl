@@ -1,0 +1,28 @@
+{
+ "id": "C214",
+ "coder": "T4",
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "link_kind": "none",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "With Inception-V3 trained on 4 GPUs for 40000 steps, it takes 13.5 hours to complete",
+   "page": 8
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Errors of per-step times are within 2% around the average.",
+   "page": 7
+  }
+ },
+ "doubts": "X7: the 4 GPUs x 13.5 h is an end-to-end training run used as an outcome measure, and the placement learning itself shows only a 'Time (hours)' axis in Figure 2 on 12 machines; X2: the 'within 2%' error bound is a measurement spread on the main Table 1, not a spread across runs."
+}

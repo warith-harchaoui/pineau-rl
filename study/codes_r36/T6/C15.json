@@ -1,0 +1,6 @@
+{"id": "C15", "coder": "T6", "criteria": {
+ "Q5": {"value": "no", "link_kind": "none", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+ "Y9": {"value": "no", "quote": "after some experimentation with different depths and widths, [...] where we found that network width did not have a significant effect on performance", "page": 1},
+ "X7": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+ "X2": {"value": "yes", "quote": "algorithm is run with 3 random seeds, and in all plots we [...] show minimum, mean, and maximum performance.", "page": 5}},
+ "doubts": "Y9: the supplement says depths and widths were tried (no numbers shown) and Figure 2 (linear model) vs Figure 3 (deep network) compares architectures of existing algorithms on a benchmark paper, which I did not count as a hyperparameter sweep of a proposed method."}

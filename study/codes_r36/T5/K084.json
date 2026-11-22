@@ -1,0 +1,6 @@
+{"id": "K084", "coder": "T5", "criteria": {
+ "Q5": {"value": "yes", "link_kind": "code", "quote": "FastSVERL code is available at: https://github.com/djeb20/fastsverl.", "page": 1},
+ "Y9": {"value": "yes", "quote": "to the changing policy, we vary the number of gradient descent updates applied to the explanation [...] models, per policy update, using the ratios 1:1, 2:1, 10:1, and 50:1. Figure 3b shows the approximation", "page": 9},
+ "X7": {"value": "no", "quote": "GPU: NVIDIA RTX 4090 (24GB VRAM)", "page": 35},
+ "X2": {"value": "yes", "quote": "Figure 1: How approximation accuracy improves with training updates in Mastermind-222. Shaded [...] regions, which are negligible, indicate standard error over 20 runs.", "page": 6}},
+ "doubts": "Y9: the swept quantity is the update ratio of the explanation models per policy update, shown on approximation error; I counted it as a hyperparameter of FastSVERL."}

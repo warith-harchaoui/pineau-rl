@@ -1,0 +1,28 @@
+{
+ "id": "K083",
+ "coder": "T1",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "code",
+   "quote": "Code is available at https://github.com/AhmedMagdyHendawy/MINTO.",
+   "page": 1
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "consistently improves sample efficiency and final performance without introducing additional hyperparameters",
+   "page": 10
+  },
+  "X7": {
+   "value": "no",
+   "quote": "conducted on the Lichtenberg high-performance computer and the Intelligent Autonomous Systems (IAS) cluster at TU Darmstadt.",
+   "page": 10
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Figure 2: Results of benchmarking MINTO and DQN on 15 Atari games with CNN, and IMPALA [...] with LayerNorm (LN) architectures. All results are reported using IQM and confidence interval on [...] 5 seeds and over all games.",
+   "page": 5
+  }
+ },
+ "doubts": "Y9: MINTO adds no hyperparameter; only the network architecture (CNN vs IMPALA+LN) and base algorithms vary, not counted as a sweep. X7: only HPC clusters named in the acknowledgments, no quantity."
+}

@@ -1,0 +1,6 @@
+{"id": "C12", "coder": "T5", "criteria": {
+ "Q5": {"value": "yes", "link_kind": "code", "quote": "The full code for VaST can be found at https://github. com/danecor/VaST/.", "page": 2},
+ "Y9": {"value": "yes", "quote": "Average test reward ± SEM during training for d = 64, d = 32, d = 24 and d =", "page": 6},
+ "X7": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+ "X2": {"value": "no", "quote": "[B] Performance comparison between models for 5 individual runs with different random seeds (mean in bold).", "page": 5}},
+ "doubts": "X2: the main curves (Fig. 3) show the 5 individual seeds around the mean but no spread measure; ± SEM appears only in the latent-dimensionality study (Fig. 4)."}

@@ -1,0 +1,28 @@
+{
+ "id": "LR09",
+ "coder": "T1",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "code",
+   "quote": "Source code is available at https://github.com/MinWangcs/WISDOM",
+   "page": 1
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Figure 13: Sensitivity to wavelet decomposition levels M (left) and TD loss coefficients αY (right).",
+   "page": 24
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "(s) compared to competitive NSRL methods such as SeCBAD and COREP. WISDOM is also more",
+   "page": 22
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Table 1: Converged average test success rate ± standard error (%) on Meta-World.",
+   "page": 8
+  }
+ },
+ "doubts": "X7: compute is given as runtime per episode in seconds (Table 5) on one named RTX 3090 GPU, no total training time; counted yes."
+}

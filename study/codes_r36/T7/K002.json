@@ -1,0 +1,28 @@
+{
+ "id": "K002",
+ "coder": "T7",
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "link_kind": "none",
+   "quote": "We release MolEdit-Instruct publicly on Hugging Face to facilitate future research.",
+   "page": 2
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "where x ∈ {50, 25, 10} denotes the denoising step size. Smaller x (i.e., more reverse steps) generally improves accuracy but increases cost.",
+   "page": 8
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "A6000 GPU using PyTorch and DGL. Pretraining on the MolEdit-Instruct dataset (3M examples) took approximately 100 hours.",
+   "page": 14
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q5: only the dataset is released (Hugging Face), no code link. Y9: the denoising step size sweep appears inside an ablation figure (Figure 4a) on pretrained models without RL fine-tuning, counted as a hyperparameter sweep."
+}

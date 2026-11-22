@@ -1,0 +1,28 @@
+{
+ "id": "C110",
+ "coder": "T1",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "code",
+   "quote": "Our code-base is made available online1 . [...] https://github.com/flowersteam/geppg",
+   "page": 3
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "GEP - PG is found to be robust to the number of GEP episodes [...] used to fill the DDPG replay buffer. Performance is stable [...] from about 100 to 600 GEP episodes (see Appendix G).",
+   "page": 7
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "A). In all figures, we show the mean and standard error of [...] the mean across 20 runs using different random seeds while",
+   "page": 4
+  }
+ },
+ "doubts": "Y9: the number of GEP episodes (100 to 600) and buffer size are said not to affect performance, but no performance value is given and Appendix G is not in this PDF; coded no."
+}

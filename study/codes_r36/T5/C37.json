@@ -1,0 +1,6 @@
+{"id": "C37", "coder": "T5", "criteria": {
+ "Q5": {"value": "no", "link_kind": "none", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+ "Y9": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+ "X7": {"value": "no", "quote": "Indeed, the DQN training is very long and SSBAS needs to train all the models in parallel.", "page": 10},
+ "X2": {"value": "yes", "quote": "Relative pseudo-regrets have a 95% confidence interval about ±6 ≈ ±1.5 × 10−4 per trajectory.", "page": 7}},
+ "doubts": "X2: the confidence interval is stated once for all relative pseudo-regrets (main metric, Table 2) while the main curves carry no band; Y9: the gridworld sweeps learning rates of the portfolio Q-learners, not a hyperparameter of ESBAS/SSBAS."}

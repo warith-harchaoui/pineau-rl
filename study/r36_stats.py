@@ -2,9 +2,9 @@
 
 Readings in codes_r36/T1..T8 (eight fresh readers, each reading both years), lists in assignments_r36.json.
 Values: the reader's raw value; Q5 with link_kind project_page is settled by the page check of deviation 36
-(r36_project_pages.json: the original reading's visit when it cites the same address, else one visit); a decision
-whose quote fails the check of r36_check.py after its reader's correction is "invalid" (left out; a second reading
-counts it "no").
+(r36_project_pages.json: the original reading's final value when it cites the same address, else one visit); a
+decision whose quote fails the check of r36_check.py after its reader's correction is "invalid" (left out; a second
+reading counts it "no"); a third reading counts every Q5 project page yes (precision after the reading, deviation 36).
 1. The main comparison redone with these readings only: per criterion (Q5, Y9, X7, X2), classical RL 2026 against
    our 2018, shares with Wilson, difference with Newcombe's interval, Fisher's p, Holm over the four.
 2. A logistic mixed model per criterion: logit P(yes) = b0 + b1 [year = 2026] + u_reader, u ~ N(0, s^2), fitted by
@@ -49,13 +49,13 @@ def r4(x):
     return None if x is None else round(float(x), 4)
 
 
-def value(pid, k, invalid_no=False):
+def value(pid, k, invalid_no=False, pages_yes=False):
     rd, rec = reads[pid]
     if any(e.startswith(k + " ") for e in bad[pid]):
         return "no" if invalid_no else "invalid"
     c = rec["criteria"][k]
     if k == "Q5" and c["value"] == "yes" and c["link_kind"] == "project_page":
-        return pages[pid]["value"]
+        return "yes" if pages_yes else pages[pid]["value"]
     return c["value"]
 
 
@@ -111,7 +111,7 @@ def glmm(ids, k):
 
 
 res = {"readers": {r: dict(n=len(asg[r]), n2018=sum(p in Y18 for p in asg[r])) for r in R}}
-for name, kw in (("main", {}), ("invalid_as_no", dict(invalid_no=True))):
+for name, kw in (("main", {}), ("invalid_as_no", dict(invalid_no=True)), ("project_pages_yes", dict(pages_yes=True))):
     rows = {}
     for k in CRIT:
         cnt = {}

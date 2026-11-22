@@ -1,0 +1,6 @@
+{"id": "K073", "coder": "T5", "criteria": {
+ "Q5": {"value": "no", "link_kind": "none", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+ "Y9": {"value": "yes", "quote": "In Figure 19, we evaluate SMAC in Kitchen across a range of score-matching weights κ.", "page": 20},
+ "X7": {"value": "yes", "quote": "model adds roughly 3–4 GPU hours on a single L40S, and", "page": 9},
+ "X2": {"value": "yes", "quote": "Figure 6. SMAC achieves smooth offline-to-online transfer to SAC. Plot shows offline-to-online transfer results for SMAC and", "page": 5}},
+ "doubts": "X2: the main curves (Fig. 6) show coloured bands around the means that the caption does not name, and the main Table 1 has no spread; per-environment regret tables in the appendix give mean ± std over seeds."}

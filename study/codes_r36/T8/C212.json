@@ -1,0 +1,6 @@
+{"id": "C212", "coder": "T8", "criteria": {
+ "Q5": {"value": "yes", "link_kind": "code", "quote": "Our code is available open-source at: https://github.com/tensorflow/models/tree/master/ [...] research/steve", "page": 6},
+ "Y9": {"value": "yes", "quote": "the effect of the horizon parameter on the performance of both STEVE and MVE. These results", "page": 7},
+ "X7": {"value": "yes", "quote": "Humanoid-v1 and RoboschoolHumanoidFlagrun-v1. Both were trained on a P100 GPU and had 8", "page": 7},
+ "X2": {"value": "yes", "quote": "The shaded area shows one standard deviation of scores in the region as defined above.", "page": 6}},
+ "doubts": "X7: the duration (about 60 hours) appears only on the x-axis of Fig. 5 (wall-clock in hours) next to the one-P100 statement, and only for the asynchronous wall-clock experiment."}

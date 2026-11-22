@@ -1,0 +1,28 @@
+{
+ "id": "K063",
+ "coder": "T7",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "code",
+   "quote": "We release the full benchmark, including the teammate suite, dataset generator, and evaluation pipeline, to facilitate reproducibility and future research. Our repository is available at https://github.com/AHT-Hub/ICRL4AHT.",
+   "page": 2
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "the context length increases from K = 250 to K = 2000 transitions. We observe no consistent correlation between context length and return; performance remains flat.",
+   "page": 8
+  },
+  "X7": {
+   "value": "no",
+   "quote": "Our implementation is built entirely in JAX (Bradbury et al., 2018), enabling high-throughput parallel rollouts on GPU/TPU",
+   "page": 15
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "a per-instance mean return is computed first, and tables report the mean ± standard deviation across 5 such instancelevel means.",
+   "page": 7
+  }
+ },
+ "doubts": "Y9: this is a benchmark paper; the swept hyperparameter (Transformer context length K) belongs to the studied ICRL baselines AD and DPT, not to a method proposed by the authors. X7: GPU use is mentioned but no duration, GPU count or GPU-hours."
+}

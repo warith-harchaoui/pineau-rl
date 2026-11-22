@@ -1,0 +1,28 @@
+{
+ "id": "K058",
+ "coder": "T3",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "code",
+   "quote": "code is available at https://github.com/thu-rllab/ANQ.",
+   "page": 2
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Figure 3: Performance and Q values of ANQ with varying Lagrange multiplier λ over five random",
+   "page": 10
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "ANQ completes the task in approximately two hours, achieving competitive efficiency with other fast",
+   "page": 24
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "halfcheetah-m 46.6 43.0 42.6 47.9 50.4 48.3 47.0 47.4 58.4 61.8±1.4",
+   "page": 8
+  }
+ },
+ "doubts": ""
+}

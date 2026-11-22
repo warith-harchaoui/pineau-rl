@@ -1,0 +1,28 @@
+{
+ "id": "C22",
+ "coder": "T3",
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "link_kind": "none",
+   "quote": "For WGANTPP and RMTPP, we are using [...] the open source codes.",
+   "page": 7
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "implementation in GPy package5 , which requires 50% more time than our method (127 mins vs [...] 80 mins) in processing 5% of the dataset.",
+   "page": 9
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X7: runtimes in minutes (Table 1, 80m for RLPP) are given without any hardware, which I counted as a quantity of compute."
+}

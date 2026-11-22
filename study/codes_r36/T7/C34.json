@@ -1,0 +1,28 @@
+{
+ "id": "C34",
+ "coder": "T7",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "project_page",
+   "quote": "Videos of our experiments: https://sites.google.com/site/mlleavenotrace/",
+   "page": 1
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "have. Increasing the number of reset attempts to 4 resulted in another 2.5x reduction in hard resets, while decreasing the reward by less than 25%.",
+   "page": 8
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "no",
+   "quote": "We did not do hyperparameter optimization for our experiments, but did run with 5 random seeds. To aggregate results, we took the median number across all random seeds that solved the task.",
+   "page": 18
+  }
+ },
+ "doubts": "Q5: the only link is a Google Sites page announced as videos of the experiments, coded project_page without visiting it. X2: main curves (Figures 5-8) show medians over 5 seeds with no band or bar."
+}

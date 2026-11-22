@@ -1,0 +1,28 @@
+{
+ "id": "ML11",
+ "coder": "T1",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "code",
+   "quote": "provided in Section C. The code for reproducing our results [...] is available at Code URL [...] https://github.com/agent-lab/ICML2026-RAT",
+   "page": 7
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "further study sensitivity of RAT to batch size, number of",
+   "page": 9
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "over 124 updates on Xeon(R) w5-2445 GeForce RTX 4090).",
+   "page": 8
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "and Sophia in most tasks. The shaded region denotes the standard error over 5 random seeds.",
+   "page": 7
+  }
+ },
+ "doubts": "X7: only wall-clock time per update in milliseconds on one named GPU (Table 2), no total training compute; counted yes."
+}

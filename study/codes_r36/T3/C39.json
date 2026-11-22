@@ -1,0 +1,28 @@
+{
+ "id": "C39",
+ "coder": "T3",
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "link_kind": "none",
+   "quote": "Openai baselines. https://github.com/openai/baselines, 2017.",
+   "page": 12
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Fig. 4 shows the result of a hyperparameter search on ηr and ηs , the coefficients of the auxiliary",
+   "page": 8
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Figure 6: Results for the Atari domain. The y-axis shows the moving average over 100 episodes. Each of five [...] random seeds is plotted faintly, with the mean in bold.",
+   "page": 10
+  }
+ },
+ "doubts": "X2: the main Atari curves show the five individual seeds faintly rather than a computed band, and Table 1 has no spread; I counted the plotted seeds as a visible spread."
+}

@@ -1,0 +1,6 @@
+{"id": "K085", "coder": "T5", "criteria": {
+ "Q5": {"value": "yes", "link_kind": "code", "quote": "Our code is available at https:// github.com/daisophila/ABS.", "page": 1},
+ "Y9": {"value": "yes", "quote": "Figure 5 presents the hyperparameter sensitivity of ABS with respect to the rollout range L (Top), policy change thresholds δ (Center), and adapt frequency K (Bottom) on Atari-10.", "page": 8},
+ "X7": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+ "X2": {"value": "yes", "quote": "these results with IQM HNS ± 95% confidence intervals.", "page": 7}},
+ "doubts": ""}

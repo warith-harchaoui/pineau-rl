@@ -1,0 +1,28 @@
+{
+ "id": "C14",
+ "coder": "T3",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "project_page",
+   "quote": "were implemented in C++ and the code is available from the [...] publications section of http://cs.unh.edu/˜mpetrik.",
+   "page": 7
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "Additional experimental results, which we omit here, show [...] that the runtimes of all methods are quite insensitive to κ",
+   "page": 8
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Table 1. Comparison of computation time of 100 step of value iteration for discretized versions of simple RL benchmarks from OpenAI",
+   "page": 18
+  },
+  "X2": {
+   "value": "no",
+   "quote": "To [...] enhance clarity, we omit confidence intervals which are very [...] small.",
+   "page": 7
+  }
+ },
+ "doubts": "Y9: the ambiguity budget κ is varied (appendix Table 1) but I read it as a parameter of the robust problem, not a hyperparameter of the method. X7: what is quantified is algorithm runtimes in ms/µs on a named CPU, not the total compute of the experiments."
+}

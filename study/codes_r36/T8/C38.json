@@ -1,0 +1,6 @@
+{"id": "C38", "coder": "T8", "criteria": {
+ "Q5": {"value": "no", "link_kind": "none", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+ "Y9": {"value": "yes", "quote": "quite robust to this downsampling, with a downsampling of around 3 (6x6 v.s. 15x15) doing just a", "page": 6},
+ "X7": {"value": "yes", "quote": "Each update step took on the order of 1-3 minutes depending on the number of threads available, [...] meaning each agent took on the order of a week to train.", "page": 13},
+ "X2": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null}},
+ "doubts": "Y9: the swept quantity is the Neural Map memory size (15x15, 8x8, 6x6 in Table 1), which the paper frames as a 'design decision' rather than explicitly as a hyperparameter. X7: only a rough duration ('on the order of a week' per agent, 1-3 min per update) with no hardware count."}

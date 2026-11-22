@@ -1,0 +1,28 @@
+{
+ "id": "K047",
+ "coder": "T1",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "code",
+   "quote": "The implementation and experiment scripts used in this work are publicly available at [...] github.com/korneelf1/SpikingCrazyflie.",
+   "page": 10
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Figure 3: Comparison between fixed and scheduled surrogate gradient slopes for both BC and RL settings.",
+   "page": 7
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Training completes in 6 hours on an M4 Pro MacBook (24GB RAM).",
+   "page": 6
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Figure 4: Comparison of training approaches under a reward curriculum. All experiments were run with 5",
+   "page": 8
+  }
+ },
+ "doubts": ""
+}

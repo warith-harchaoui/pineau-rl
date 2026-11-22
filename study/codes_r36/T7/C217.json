@@ -1,0 +1,28 @@
+{
+ "id": "C217",
+ "coder": "T7",
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "link_kind": "none",
+   "quote": "https://github.com/JUrban/deepmath",
+   "page": 5
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "The exact value of 0.95 has been determined experimentally using a small grid search.",
+   "page": 3
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "XGBoost 19 min 0.99 2.89",
+   "page": 5
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q5: the only GitHub link is a footnote for the Miz40 dataset, not the prover code. X7: the only duration is the 19 min training time of the XGBoost predictor in Table 1 (CPU named in a footnote), borderline as a compute quantity."
+}

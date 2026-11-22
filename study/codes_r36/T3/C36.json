@@ -1,0 +1,28 @@
+{
+ "id": "C36",
+ "coder": "T3",
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "link_kind": "none",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Second, Figure 3b compares the learning speed for different horizon values τmax . Performance [...] degrades when the horizon is too low, and learning becomes slower when the horizon is too high.",
+   "page": 8
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "The bold line shows the mean [...] across 3 random seeds, and the shaded region show one standard deviation.",
+   "page": 8
+  }
+ },
+ "doubts": ""
+}

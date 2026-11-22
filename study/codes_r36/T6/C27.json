@@ -1,0 +1,6 @@
+{"id": "C27", "coder": "T6", "criteria": {
+ "Q5": {"value": "no", "link_kind": "none", "quote": "For a demo, see https://youtu.be/kwvhfzbzb0o", "page": 8},
+ "Y9": {"value": "no", "quote": "Figure 3: Comparison of seed sampling varying the number K of agents, with a model ensemble size", "page": 8},
+ "X7": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+ "X2": {"value": "no", "quote": "Figure 3 presents the results of our seed sampling experiments on this cartpole problem. Each curve is averaged over 10 random instances.", "page": 8}},
+ "doubts": "Q5: the only link is a YouTube demo video, not code. Y9: the number K of parallel agents is varied, but I read it as a condition of the concurrent setting rather than a hyperparameter; the ensemble size min(K, 30) change is only described without numbers."}

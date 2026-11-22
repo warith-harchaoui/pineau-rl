@@ -1,0 +1,28 @@
+{
+ "id": "C120",
+ "coder": "T4",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "project_page",
+   "quote": "Videos and code available [...] at: https://sites.google.com/view/ [...] goalgeneration4rl.",
+   "page": 1
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "is almost invariant for any value of the hypermparameters",
+   "page": 12
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Figure 2. Learning curves comparing the training efficiency of our Goal GAN method and different baselines (first row) and variants",
+   "page": 6
+  }
+ },
+ "doubts": "Y9: invariance to Rmin/Rmax is argued, not measured with a sweep; X2: bands visible in Figure 2 but not named in the caption."
+}

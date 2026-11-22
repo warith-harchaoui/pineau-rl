@@ -1,0 +1,28 @@
+{
+ "id": "K081",
+ "coder": "T1",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "code",
+   "quote": "Our code is available at https://github.com/tumBAIS/Structured-RL.",
+   "page": 1
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "slightly higher for the critic – using a grid search for each algorithm. Each grid search involves",
+   "page": 18
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Discussion This robustness comes at a computational cost. SRL requires about 30 minutes of",
+   "page": 9
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Table 1: Standard deviation of validation rewards during training, final testing rewards over 10",
+   "page": 10
+  }
+ },
+ "doubts": "Y9: a grid search over σf, σb, τ and learning rate is described but its results are not shown. X2: main figures are boxplots over instances and Table 1 gives standard deviations over 10 seeds; the validation curves have no band."
+}

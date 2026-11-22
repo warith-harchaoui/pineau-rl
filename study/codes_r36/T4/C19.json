@@ -1,0 +1,28 @@
+{
+ "id": "C19",
+ "coder": "T4",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "project_page",
+   "quote": "The source code and videos can be found at: [...] sites.google.com/view/time-limits-in-rl.",
+   "page": 2
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "the learning is much faster and varying the buffer",
+   "page": 8
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "The averaged sum of rewards and standard errors are shown",
+   "page": 5
+  }
+ },
+ "doubts": "Y9: the buffer-size sweep (Fig. 7) is on tabular Q-learning with PEB rather than the main PPO setting; the γ=0.99 vs γ=1 comparison (Fig. 3) is a second candidate."
+}

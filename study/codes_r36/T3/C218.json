@@ -1,0 +1,28 @@
+{
+ "id": "C218",
+ "coder": "T3",
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "link_kind": "none",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Figure 4: An evaluation of the sensitivity of ARS to the choice of hyperparameters. The dotted",
+   "page": 14
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "ARS requires a median time of 21 minutes to reach the [...] prescribed reward threshold, when trained on one m5.24xlarge EC2 instance with 48 CPUs.",
+   "page": 13
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "dotted lines represent median rewards and the shaded regions represent percentiles.",
+   "page": 7
+  }
+ },
+ "doubts": "X2: Table 1 (episodes to threshold over three seeds) has no spread; the spread is on the 100-seed evaluation of Figure 1, which I took as a main result."
+}

@@ -1,0 +1,28 @@
+{
+ "id": "ML15",
+ "coder": "T5",
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "link_kind": "none",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Figure 2. Robustness analysis for η and N . (a) Performance is consistent across η ∈ [0.5, 5.0]. (b) High performance is maintained",
+   "page": 8
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "For single-step sampling (n = 1), the average training time is 17.70s (Gym), 17.64s (Adroit), and 17.71s",
+   "page": 22
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "medium-replay, medium-expert). We report the normalized average scores over five random seeds with standard deviations reported. Bold",
+   "page": 7
+  }
+ },
+ "doubts": "X7: compute is given as training time per 1,000 gradient steps (seconds) with no hardware named, not as total hours."
+}

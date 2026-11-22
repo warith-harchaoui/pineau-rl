@@ -1,0 +1,6 @@
+{"id": "K060", "coder": "T6", "criteria": {
+ "Q5": {"value": "no", "link_kind": "none", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+ "Y9": {"value": "no", "quote": "Figure 13: Performance on the Meta-World Shelf-Place task: With careful hyperparameter tuning, an agent that maximizes the sum of sparse task and reward machine rewards significantly outperforms the sparse reward agent.", "page": 15},
+ "X7": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+ "X2": {"value": "yes", "quote": "We report results averaged over 3 independent random seeds, with shaded regions and error bars indicating one standard deviation.", "page": 5}},
+ "doubts": "Y9: Figure 13 shows a tuned versus default configuration without the swept values, and Figure 11a compares foundation models of different scales on generation correctness, which I read as a component choice judged by an LLM rather than an RL performance sweep."}

@@ -1,0 +1,28 @@
+{
+ "id": "C219",
+ "coder": "T4",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "code",
+   "quote": "Code for meta RL algorithms available at: https://github.com/episodeyang/e-maml",
+   "page": 1
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Figure 3: Meta learning curves on Krazy World.",
+   "page": 6
+  }
+ },
+ "doubts": "X2: shaded bands are visible on Figures 3 and 4 but the captions never name them."
+}

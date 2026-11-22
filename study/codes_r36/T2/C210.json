@@ -1,0 +1,28 @@
+{
+ "id": "C210",
+ "coder": "T2",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "project_page",
+   "quote": "Videos and experimental details for all our experiments can be found [...] at https://sites.google.com/view/meta-explore/",
+   "page": 6
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "We describe the hyper-parameters swept over for gradient based meta-learning methods.",
+   "page": 2
+  },
+  "X7": {
+   "value": "no",
+   "quote": "All experiments were initially run on a local 2 GPU machine, and run",
+   "page": 6
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "Q5: the link is a project page announced for videos and experimental details, not explicitly code; Y9: hyperparameters were swept (supplement) but no results of the sweep are shown; X7: 2 GPU machine with no duration."
+}

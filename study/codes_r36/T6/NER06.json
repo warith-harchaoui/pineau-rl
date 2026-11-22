@@ -1,0 +1,6 @@
+{"id": "NER06", "coder": "T6", "criteria": {
+ "Q5": {"value": "yes", "link_kind": "code", "quote": "Our code is available at: https://github.com/ku-dmlab/FairDICE.git.", "page": 24},
+ "Y9": {"value": "yes", "quote": "Figure 2: Policy performance on Random MOMDP domain across different α and β values, evaluated", "page": 7},
+ "X7": {"value": "yes", "quote": "Training a single FairDICE policy on each D4MORL task required approximately 10 to 20 minutes on average.", "page": 25},
+ "X2": {"value": "yes", "quote": "seeds, and reported with 95 % confidence intervals.", "page": 7}},
+ "doubts": "X2: Figure 2 (Random MOMDP) carries 95% CIs, but the D4MORL continuous-control results (Figure 4, Table 4) show averages without visible spread, and the main claim rests on both."}

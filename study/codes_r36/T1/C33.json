@@ -1,0 +1,28 @@
+{
+ "id": "C33",
+ "coder": "T1",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "code",
+   "quote": "4 Available at https://github.com/shehzaadzd/MINERVA",
+   "page": 6
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "In our experiments, we tune our model over two hyper parameters, viz., β which is the entropy",
+   "page": 17
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "the wall clock inference time of MINERVA is 63s whereas that of a GPU implementation of DistMult,",
+   "page": 10
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Table 2: Performance on three tasks of COUNTRIES dataset with AUC-PR metric. MINERVA significantly outperforms all other methods on the hardest task (S3). Also variance across runs for MINERVA",
+   "page": 5
+  }
+ },
+ "doubts": "Q5: the only own-repository link (github.com/shehzaadzd/MINERVA, named after the method) is a footnote announcing where the filtered NELL-995 test set is available, coded code. X7: only wall-clock inference times in seconds, no training compute or hardware for MINERVA; counted yes. X2: ± on Table 2 (Countries) and Table 7 (std over 3 runs on the large datasets), but the main Table 4 has none."
+}

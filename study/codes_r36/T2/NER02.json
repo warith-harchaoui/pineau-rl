@@ -1,0 +1,28 @@
+{
+ "id": "NER02",
+ "coder": "T2",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "code",
+   "quote": "Our code is available at https://github.com/NJU-RL/T2DA.",
+   "page": 1
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "also investigate T2DA’s sensitivity to",
+   "page": 9
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "about 0.5 hours. The generalist policy training cost about 0.5-3 hours depending on the complexity",
+   "page": 22
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "return is plotted as the bold line, with 95% bootstrapped confidence intervals of the mean indicated by",
+   "page": 7
+  }
+ },
+ "doubts": "Y9: the only sensitivity studies vary the text encoder (CLIP, BERT, T5), LoRA versus full fine-tuning and data quality, which I read as components or data conditions, not hyperparameters."
+}

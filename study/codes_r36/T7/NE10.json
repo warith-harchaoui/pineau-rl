@@ -1,0 +1,28 @@
+{
+ "id": "NE10",
+ "coder": "T7",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "code",
+   "quote": "The official implementation is available at: https://github.com/Whiterrrrr/BREEZE.",
+   "page": 1
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "domain, RND dataset, 3 random seeds), performance improves near monotonically with τ and peaks at α = 0.05, and similarly to other domains.",
+   "page": 9
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "reported results use a batch size of 512, and training for 1 million steps takes approximately 20 hours",
+   "page": 29
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "stage. Table 1 reports this score across all tasks on each domain of ExORL, averaged on 5 random seeds, with standard deviations.",
+   "page": 8
+  }
+ },
+ "doubts": ""
+}

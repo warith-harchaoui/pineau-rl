@@ -1,0 +1,28 @@
+{
+ "id": "K055",
+ "coder": "T4",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "code",
+   "quote": "https://github.com/airs-cuhk/airsoul/tree/main/projects/OmniRL",
+   "page": 1
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "and variant number of tasks |Ttra |.",
+   "page": 10
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "The meta-training process is primarily conducted using 8 Nvidia Tesla A800 GPUs. [...] The average time cost per [...] iteration is 8 seconds for trajectories with T = 12K",
+   "page": 7
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Figure 5: Left: Normalized episodic return of TQL-UCB, PPO and OmniRL on 64 AnyMDP [...] evaluation tasks (mean ±95% CI).",
+   "page": 7
+  }
+ },
+ "doubts": "Y9: the number of training tasks and the context length are varied, but these are data and evaluation conditions rather than hyperparameters; X7: 8 GPUs with a per-iteration time (8 s) and up to 80K iterations, but no total duration stated; X2: Table 1 has no spread, Figure 5 does."
+}

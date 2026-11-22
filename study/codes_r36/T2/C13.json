@@ -1,0 +1,28 @@
+{
+ "id": "C13",
+ "coder": "T2",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "code",
+   "quote": "https://github.com/david-abel/transfer_ [...] rl_icml_2018.",
+   "page": 6
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "In our final experiment, we explore the choice of δ on",
+   "page": 8
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "objective. We provide 95% confidence intervals over the",
+   "page": 6
+  }
+ },
+ "doubts": "X2: the 95% CI statement sits in the jumpstart section, but the shaded bands are also visible on the main learning curves of Fig. 3."
+}

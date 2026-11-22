@@ -1,0 +1,28 @@
+{
+ "id": "C213",
+ "coder": "T1",
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "link_kind": "none",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Table 1: The average learning time per task.",
+   "page": 8
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "The whiskers [...] denote std. error.",
+   "page": 7
+  }
+ },
+ "doubts": "X7: only per-task learning time in seconds (Table 1), no hardware named; counted as a quantified duration. Y9: only the number of tasks trained is varied, treated as a condition not a hyperparameter."
+}

@@ -1,0 +1,28 @@
+{
+ "id": "K051",
+ "coder": "T3",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "code",
+   "quote": "The repository containing additional materials is available [...] at https://github.com/Math-AI-Caltech/a [...] lghirsch-hrl.",
+   "page": 2
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "no",
+   "quote": "Figure 8. Mean path length of the heuristic h-based linearization",
+   "page": 8
+  }
+ },
+ "doubts": "Q5: the GitHub repository is described as containing additional materials, not explicitly code. X2: error bars appear only on Figure 8 (path length of the baseline linearization), and the light curves of Figure 6 look like unsmoothed returns, not a spread."
+}

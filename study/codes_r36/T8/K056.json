@@ -1,0 +1,6 @@
+{"id": "K056", "coder": "T8", "criteria": {
+ "Q5": {"value": "yes", "link_kind": "project_page", "quote": "The code and experimental results are available on the project website.", "page": 1},
+ "Y9": {"value": "no", "quote": "Figure 9. Effect of RL weight η in RADAC. As η increases from 0 (pure BC), probability mass smoothly moves from the risky outer", "page": 20},
+ "X7": {"value": "yes", "quote": "Figure 13. Wall-clock training time (left) and per-action inference latency (right) on H OPPER -M EDIUM -E XPERT- V 2.", "page": 28},
+ "X2": {"value": "no", "quote": "Table 3. Stochastic-D4RL (1000-step evaluation): Mean and CVaR0.1± s.e. over 5 seeds.", "page": 21}},
+ "doubts": "Q5: the project address (https://kaifukazawa.github.io/ramac-project/) is only in the hyperlink, not in the printed text. Y9: eta sweeps (Fig. 7, 9) show only action distributions on the toy bandit, the K sweep (Fig. 12) shows estimator variance, and the RAFMAC eta sweep is stated without results. X7: the hours (61.2 h on one A6000 for RADAC) are printed only inside the Fig. 13 bar chart. X2: main Table 1 has no spread; +/- s.e. only in appendix Table 3 and +/- std in OOD-rate Table 2."}

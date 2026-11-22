@@ -1,0 +1,28 @@
+{
+ "id": "K082",
+ "coder": "T4",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "code",
+   "quote": "GitHub repository: https://github.com/MianchuWang/InterRetro.",
+   "page": 7
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "shows the learning curve on the Retro*-190 test set with β ∈ {0, 1, 2, 5, 10, 20}. The figure shows",
+   "page": 9
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Our models are trained on a single [...] NVIDIA RTX A5000 GPU and, without pre-training the single-step model, require approximately 48 [...] hours to fully converge.",
+   "page": 7
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  }
+ },
+ "doubts": "X2: the main Table 1 gives success rates with no spread at all."
+}

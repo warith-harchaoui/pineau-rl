@@ -1,0 +1,28 @@
+{
+ "id": "K006",
+ "coder": "T3",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "code",
+   "quote": "Code: https://github.com/ByteDance-Seed/DATAMASK",
+   "page": 1
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Figure 6 Averaged performance when tuning [...] hyper-parameter λ defined in Equation 1 compared to FineWeb, FineWeb-Edu, and FineWebSemdedup.",
+   "page": 8
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "On a platform with 384 [...] GPUs, the selection time is about 15 hours, while pre-training the 1.5B dense model with 400B tokens takes [...] about 2 days.",
+   "page": 11
+  },
+  "X2": {
+   "value": "no",
+   "quote": "Figure 13 Optimized values and their variance across three different subsets with Pair-wise Similarity, and optimized",
+   "page": 17
+  }
+ },
+ "doubts": "X2: the main pre-training results (Table 2) have no spread; mean ± std appears only on the optimization curves of Figure 13 in the appendix."
+}

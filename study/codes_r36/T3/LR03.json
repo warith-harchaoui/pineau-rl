@@ -1,0 +1,28 @@
+{
+ "id": "LR03",
+ "coder": "T3",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "code",
+   "quote": "Our codes are available at: https://github.com/guoyihonggyh/MOBODY-Model-Based-Off-DynamicsOffline-Reinforcement-Learning.",
+   "page": 11
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Table 9: Hyperparameters of the policy learning. Our method is not very sensitive to the hyperparameters.",
+   "page": 22
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Table 10: Running time comparison on A5000, AMD Ryzen Threadripper 3960X 24-Core Processor.",
+   "page": 23
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We report normalized target-domain scores (mean ± std [...] over three seeds).",
+   "page": 7
+  }
+ },
+ "doubts": ""
+}

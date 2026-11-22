@@ -1,0 +1,28 @@
+{
+ "id": "C216",
+ "coder": "T1",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "project_page",
+   "quote": "Videos of our method in simulated and real-world environments can be found at https://sites.google.com/site/visualrlwithimaginedgoals/.",
+   "page": 2
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "The top row uses 64 gradient updates per training cycle [...] and the bottom row uses 256 updates per cycle.",
+   "page": 2
+  },
+  "X7": {
+   "value": "no",
+   "quote": "Our method needs just 10,000 samples or about an hour of real-world interaction time to solve visual reaching.",
+   "page": 9
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "In all our simulation results, each plot shows a 95% confidence interval of the mean across 5 seeds.",
+   "page": 7
+  }
+ },
+ "doubts": "Q5: the only link is a Google Sites page announced for videos, coded project_page without visiting it. Y9: sweep of gradient updates per cycle is in the appendix HER comparison (Fig. 12, supplement p. 2); the relabeling mixture is presented as an ablation. X7: one hour is real-world interaction time, not compute."
+}

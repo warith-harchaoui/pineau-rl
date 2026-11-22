@@ -1,0 +1,28 @@
+{
+ "id": "C119",
+ "coder": "T7",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "code",
+   "quote": "The code is available on GitHub (https://github.com/RonanFR/UCRL).",
+   "page": 37
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "SCAL is always performing better than UCRL (Fig. 5(a)) and the smaller c, the better the regret.",
+   "page": 8
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent après lecture des sections expériences, annexes et liens",
+   "page": null
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "of T . Results are averaged over 20 runs and 95% confidence intervals are shown.",
+   "page": 8
+  }
+ },
+ "doubts": "Q5: the main text only says the code is on GitHub; the URL is in the appendix file (page 37 of the supp PDF). Y9: the swept quantity is the span bound c, an input of SCAL that the paper treats as prior knowledge rather than explicitly as a hyperparameter."
+}

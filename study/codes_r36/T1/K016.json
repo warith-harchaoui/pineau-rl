@@ -1,0 +1,28 @@
+{
+ "id": "K016",
+ "coder": "T1",
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "link_kind": "code",
+   "quote": "Code is [...] available at https://github.com/safe-autonomylab/GlucoSim and https://github.com/safeautonomy-lab/GlucoAlg.",
+   "page": 1
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Table 7. Hidden Size Sensitivity. BA-NODE dynamics prediction",
+   "page": 28
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "from roughly 2–11 seconds without shielding to 84–434",
+   "page": 32
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Table 3. Effect of predictive shielding on T1D control. Shielding",
+   "page": 8
+  }
+ },
+ "doubts": "X7: only evaluation runtimes in seconds on CPU-only servers (Table 18), no training compute; counted yes as a quantified duration."
+}

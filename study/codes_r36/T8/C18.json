@@ -1,0 +1,6 @@
+{"id": "C18", "coder": "T8", "criteria": {
+ "Q5": {"value": "yes", "link_kind": "code", "quote": "our code and learning curves (https://github.com/ [...] sfujim/TD3).", "page": 2},
+ "Y9": {"value": "no", "quote": "on Hopper-v1 without target networks, (τ = 1), and with slowupdating target networks, (τ = 0.1, 0.01), with a fixed and a", "page": 5},
+ "X7": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+ "X2": {"value": "yes", "quote": "Table 1. Max Average Return over 10 trials of 1 million time steps. Maximum value for each task is bolded. ± corresponds to a single", "page": 7}},
+ "doubts": "Y9: tau is swept in Fig. 3 but the quantity shown is the estimated value of a state, not a performance measure; the other studies are component ablations."}

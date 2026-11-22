@@ -1,0 +1,6 @@
+{"id": "K052", "coder": "T8", "criteria": {
+ "Q5": {"value": "no", "link_kind": "none", "quote": "We implemented our ILP-GT based on the Graph Transformer code from GitHub2 (Wu et al., 2021b), with the same", "page": 21},
+ "Y9": {"value": "yes", "quote": "Table 19 shows the performance of RL-SPH under different values of the toward-optimal bias α. With a toward-optimal", "page": 25},
+ "X7": {"value": "yes", "quote": "As shown in Table 9, the training durations for IS, CA, SC, MVC, and NBI were 31, 32, 26, 83, and 23 minutes, respectively.", "page": 21},
+ "X2": {"value": "yes", "quote": "IS PG (%) ↓ 99.98±0.05 20.60±2.10 18.09±2.74 99.98±0.05 4.10±2.25 0.14±0.59", "page": 7}},
+ "doubts": "Q5: only links to third-party code (Graph Transformer, positional encoding, PyTorch A2C, baselines); no link to the paper's own code. X2: the ± in Table 1 are not explained in the caption."}

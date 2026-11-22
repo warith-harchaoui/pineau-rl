@@ -1,0 +1,28 @@
+{
+ "id": "C35",
+ "coder": "T2",
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "link_kind": "none",
+   "quote": "github.com/rll/rllab/blob/master/rllab/envs/mujoco/walker2d_env.py",
+   "page": 14
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "In Figure 7, we experiment with varying the population size for GPO.",
+   "page": 10
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Table 3 shows the wall-clock time (in minutes), averaged over 3 runs, for GPO and the Joint baseline.",
+   "page": 16
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Table 1: Mean and standard-error for final performance of GPO and baselines using PPO.",
+   "page": 8
+  }
+ },
+ "doubts": "X7: the durations are wall-clock minutes per run in Table 3, on a named 12-core Intel Xeon machine."
+}

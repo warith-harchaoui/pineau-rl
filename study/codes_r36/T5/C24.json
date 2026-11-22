@@ -1,0 +1,6 @@
+{"id": "C24", "coder": "T5", "criteria": {
+ "Q5": {"value": "yes", "link_kind": "code", "quote": "An implementation of EPG is available at http://github.com/openai/EPG.", "page": 2},
+ "Y9": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+ "X7": {"value": "no", "quote": "In practice, this value may be very high, for example, each inner-loop worker takes approximately 196", "page": 7},
+ "X2": {"value": "yes", "quote": "show the mean value of 20 test-time training curves as a solid line, while the shaded area represents", "page": 5}},
+ "doubts": "X7: compute is given only as environment steps per worker (about 196 million) and 256 workers, with no duration; Y9: the test-time policy-architecture variations are a transfer test, not a sensitivity sweep of an EPG hyperparameter."}
