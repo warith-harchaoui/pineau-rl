@@ -1,6 +1,6 @@
 """New data figures of the technical report, drawn by hand in the house style (article/figures/draw.py).
 
-Eight figures, French and English, each read from the project's result files and nothing else:
+Fourteen figures, French and English, each read from the project's result files and nothing else:
     courbes-apprentissage   sim/results/<algo>/<task>/seed0..9.csv      (evaluation curves, IQM and its band)
     forest-criteres         study/extension_stats.json                  (2018 against 2026, Newcombe intervals)
     accord-lecteurs         study/agree_v2.json, study/audit_stats.json (blind double readings)
@@ -11,11 +11,17 @@ Eight figures, French and English, each read from the project's result files and
                                                                          b1_script.py, recomputed, checked against
                                                                          sim/analysis/b1_trpo.json, b1_script.json)
     grpo-courbes            sim/llm/results/<model>/mul2/<reward>/seed<k>.jsonl
+    e1-grille               sim/analysis/e1_grid.json                   (E1 on the sixteen pairs, random against sorted)
+    e6-vitesse              sim/analysis/e6_enjoy.json, e6_hub.json     (forward speed of each agent, one dot per seed)
+    e6-images               sim/results/e6_video/*.mp4, e6_enjoy.json   (four frames of each video, through ffmpeg)
+    q5-lectures             study/q5_versions.json, results_final.json  (Q5 under each version policy)
+    x2-x8                   study/x8_stats.json, extension_stats.json   (error bars against uncertainty over seeds)
+    grpo-mesures            sim/llm/results/logs_stats_5.json           (per-seed gains, Student and percentile)
 Writes report/figures/src/<name>-<lang>.svg and runs `sprezzature-figures check` on each; tools/figures.py, which
 runs this script with DRAW_FONTS=latex (the report's Latin Modern), converts them to PDF. Standard library and numpy only; the same input gives the same bytes.
 Run from anywhere:  python3 report/tools/new_figures.py [name ...]
 """
-import csv, json, math, re, subprocess, sys
+import csv, json, math, re, statistics, subprocess, sys
 from pathlib import Path
 
 import numpy as np
@@ -23,7 +29,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "article" / "figures"))
 import draw  # noqa: E402
-from draw import (Fig, INK, INK2, MUTED, RULE, GRID, PANEL, PAPER, RED, GREEN, ALGO_C, tint, width, wrap, num,  # noqa: E402
+from draw import (Fig, INK, INK2, MUTED, RULE, GRID, PANEL, PAPER, RED, GREEN, GREY, ALGO_C, tint, width, wrap, num,  # noqa: E402
                   pct, ticks, spread)
 
 SRC = ROOT / "report" / "figures" / "src"
@@ -943,9 +949,541 @@ def grpo_courbes(lang):
                     "Data: sim/llm/results/<model>/mul2/<reward>/seed<k>.jsonl, summary_5.json")
 
 
+# ---------------------------------------------------------------------------------------------------------------
+# Analyses of 22 November 2026 (deviations 22, 31 and 33 of SIM_PROTOCOL.md, 31 and 32 of PROTOCOL.md, 19 of
+# LLM_PROTOCOL.md). Each figure reads its result file and nothing else.
+
+def swarm(xs, r, step):
+    """Vertical offsets (in units of step) so that dots of radius r at positions xs do not overlap: each dot takes the
+    free slot nearest the axis, 0, -1, +1, -2, +2..."""
+    placed, out = [], [0] * len(xs)
+    for i in sorted(range(len(xs)), key=lambda i: xs[i]):
+        for k in range(40):
+            o = (k + 1) // 2 * (1 if k % 2 == 0 else -1)
+            if all(abs(xs[i] - x) >= 2 * r + 0.6 or o != oo for x, oo in placed):
+                out[i] = o
+                placed.append((xs[i], o))
+                break
+    return out
+
+
+# 9. E1 on the sixteen pairs: random against sorted groups.
+
+def e1_grille(lang):
+    fr = lang == "fr"
+    g = J("sim/analysis/e1_grid.json")
+    sm, pre = g["summary"], g["e1_preregistered_30_runs"]
+    f = RFig((f"Trier cinq essais contre cinq trompe le test|de {pct(rnd(sm['sorted_min'] * 100), lang)} "
+              f"à presque 100 % des fois") if fr else
+             (f"Sorting five runs against five fools the test|{pct(rnd(sm['sorted_min'] * 100), lang)} "
+              f"to nearly 100% of the time"),
+             ("Deux groupes de cinq essais du même programme sur la même tâche, comparés par le test de Welch : "
+              f"part des {num(10000, lang)} tirages déclarés différents à p < 0,05, toujours à tort. Cercle vide : "
+              "groupes tirés au hasard. Point plein : les cinq meilleurs contre les cinq pires de dix essais tirés. Graines 0 à 19.") if fr else
+             ("Two groups of five runs of the same program on the same task, compared by Welch's test: share of the "
+              f"{num(10000, lang)} draws declared different at p < 0.05, always wrongly. Hollow circle: groups drawn at "
+              "random. Filled dot: the five best against the five worst of ten runs drawn. Seeds 0 to 19."), RED)
+    s, L, W = f.s, f.L, f.W
+    tw = max(width(TASK(t), "sans7", 13) for t in TASKS) + 14
+    nw = max(width(NAME[a], "sans", 13) for a in ALGOS) + 16
+    x0, x1 = L + tw + nw, W - L - 58
+    X = lambda u: x0 + u * (x1 - x0)
+    rh, gap = 25, 12
+    top = f.top + 40
+    ys, y = {}, top
+    for t in TASKS:
+        for a in ALGOS:
+            ys[(a, t)] = y + rh / 2
+            y += rh
+        y += gap
+    bottom = y - gap
+    s.text(x0, top - 24, "Part des tirages déclarés différents" if fr else "Share of draws declared different",
+           "sans7", 13, INK)
+    for tk in ticks(0, 1, 0.25):
+        s.line(X(tk), top - 6, X(tk), bottom + 4, RULE if tk == 0 else GRID)
+        s.text(X(tk), bottom + 22, pct(tk * 100, lang), "tick", 13, MUTED, "middle")
+    s.line(X(0.05), top - 6, X(0.05), bottom + 4, INK2, 1.2, ' stroke-dasharray="4 3"')
+    s.text(X(0.05) + 5, top - 8, "5 %" if fr else "5%", "sans5", 13, INK2)
+    hot = min(g["cells"], key=lambda k: g["cells"][k]["sorted_5v5"])
+    for t in TASKS:
+        for i, a in enumerate(ALGOS):
+            c, yy = g["cells"][f"{a}/{t}"], ys[(a, t)]
+            col = draw.ALGO_C[NAME[a]]
+            if f"{a}/{t}" == hot:
+                s.rect(L - 6, yy - rh / 2 + 1, W - 2 * L + 12, rh - 2, tint(col, 0.88), rx=4)
+            bg = tint(col, 0.88) if f"{a}/{t}" == hot else PAPER
+            if i == 0:
+                s.text(L, yy + 4.5, TASK(t), "sans7", 13, INK, halo=bg)
+            s.text(x0 - 12, yy + 4.5, NAME[a], "sans", 13, INK2, "end", halo=bg)
+            r_, so = c["random_5v5"], c["sorted_5v5"]
+            s.line(X(r_), yy, X(so), yy, tint(col, 0.55), 2.4)
+            s.circle(X(r_), yy, 4.6, bg, f' stroke="{INK2}" stroke-width="1.6"')
+            s.circle(X(so), yy, 5.6, col, f' stroke="{bg}" stroke-width="1.4"')
+            v = so * 100
+            s.text(X(so) + 10, yy + 4.5, pct(v, lang, 0 if v < 99.5 else 1), "sans7", 13, col, halo=bg)
+        if t != TASKS[-1]:
+            yl_ = ys[(ALGOS[-1], t)] + rh / 2 + gap / 2
+            s.line(L, yl_, W - L, yl_, GRID)
+    y = bottom + 50
+    note = ((f"Tirés au hasard, les groupes trompent le test moins d'une fois sur vingt (médiane "
+             f"{pct(sm['random_median'] * 100, lang, 1)}). Triés, ils le trompent de {pct(sm['sorted_min'] * 100, lang)} "
+             f"à {pct(sm['sorted_max'] * 100, lang, 1)} des fois (médiane {pct(rnd(sm['sorted_median'] * 100), lang)}). "
+             f"Le couple surligné est celui de E1, le moins trompé : {pct(rnd(pre['sorted_5v5'] * 100), lang)} "
+             f"sur ses trente essais.") if fr else
+            (f"Drawn at random, the groups fool the test less than one time in twenty (median "
+             f"{pct(sm['random_median'] * 100, lang, 1)}). Sorted, they fool it {pct(sm['sorted_min'] * 100, lang)} "
+             f"to {pct(sm['sorted_max'] * 100, lang, 1)} of the time (median {pct(rnd(sm['sorted_median'] * 100), lang)}). "
+             f"The highlighted pair is E1's, the least fooled: {pct(rnd(pre['sorted_5v5'] * 100), lang)} over its "
+             f"thirty runs."))
+    y = text_lines(s, L, y, note, "sans", 13, INK2, W - 2 * L, 17.5)
+    f.src_size = 13
+    f.desc = (f"Seize lignes, une par programme et par tâche. Les cercles vides restent sous 5 % ; les points pleins vont "
+              f"de {pct(rnd(sm['sorted_min'] * 100), lang)} à {pct(sm['sorted_max'] * 100, lang, 1)}.") if fr else \
+             (f"Sixteen rows, one per program and task. Hollow circles stay under 5%; filled dots range from "
+              f"{pct(rnd(sm['sorted_min'] * 100), lang)} to {pct(sm['sorted_max'] * 100, lang, 1)}.")
+    return f.finish(y - 8, "Données : sim/analysis/e1_grid.json, test de Welch, default_rng(2018)" if fr else
+                    "Data: sim/analysis/e1_grid.json, Welch's test, default_rng(2018)")
+
+
+# 10. E6: forward speed of each agent, one dot per seed.
+
+def e6_vitesse(lang):
+    fr = lang == "fr"
+    en, hub = J("sim/analysis/e6_enjoy.json"), J("sim/analysis/e6_hub.json")
+    G = en["groups"]
+    assert all(G[k]["all_controls_equal"] for k in G)
+    ppo = draw.ALGO_C["PPO (PyTorch)"]
+    rows = [("official", "Script officiel du Zoo" if fr else "Official Zoo script", "recette publiée" if fr else "published recipe", RED),
+            ("zoofix", "Notre code, recette du Zoo" if fr else "Our code, Zoo recipe", "même recette" if fr else "same recipe", RED),
+            ("default", "Valeurs par défaut" if fr else "Default values", "aucun réglage" if fr else "no tuning", ppo),
+            ("hub", "Agent publié par le Zoo" if fr else "Agent published by the Zoo", "sb3/ppo-Hopper-v3, 2022", INK)]
+    med = G["official"]["median_speed"]
+    f = RFig(("La recette publiée donne des robots|qui tiennent debout sans avancer" if fr else
+              "The published recipe yields robots|that stand still"),
+             ("Vitesse moyenne vers l'avant de chaque agent de PPO (PyTorch) sur Hopper-v4, rejoué avec notre protocole : "
+              f"dix épisodes, un point par graine. Rester debout rapporte 1 par pas : un retour proche de {num(1000, lang)} sur "
+              f"{num(1000, lang)} pas est celui d'un robot immobile.") if fr else
+             ("Mean forward speed of each PPO (PyTorch) agent on Hopper-v4, replayed with our protocol: ten episodes, "
+              "one dot per seed. Staying upright earns 1 per step: a return near 1,000 over 1,000 steps is that of a "
+              "robot standing still."), RED)
+    f.src_size = 13
+    s, L, W = f.s, f.L, f.W
+    lw = max(max(width(a, "sans7", 13), width(b, "sans", 13)) for _, a, b, _ in rows) + 18
+    rw = width("retour médian" if fr else "median return", "sans7", 13) + 6
+    x0, x1 = L + lw, W - L - rw - 18
+    lo_, hi_ = -0.6, 3.0
+    X = lambda v: x0 + (v - lo_) / (hi_ - lo_) * (x1 - x0)
+    r, step = 4.8, 10.2
+    speeds = {k: [G[k]["runs"][sd]["mean_x_velocity"] for sd in sorted(G[k]["runs"], key=int)] for k in ("official", "zoofix", "default")}
+    rets = {k: statistics.median(G[k]["runs"][sd]["mean_return"] for sd in G[k]["runs"]) for k in speeds}
+    speeds["hub"], rets["hub"] = [hub["mean_x_velocity_100"]], hub["score_100_episodes"]
+    offs = {k: swarm([X(v) for v in speeds[k]], r, step) for k in speeds}
+    half = {k: max(abs(o) for o in offs[k]) * step + r + 3 for k in speeds}
+    rh = {k: max(64, 2 * half[k] + (44 if k != "hub" else 0)) for k in speeds}
+    top = f.top + 44
+    s.text(x1 + 18 + rw, top - 24, "retour médian" if fr else "median return", "sans7", 13, INK, "end")
+    ys, y = {}, top
+    for k, *_ in rows:
+        ys[k] = y + rh[k] / 2
+        y += rh[k]
+    bottom = y
+    for tk in ticks(-0.5, 3.0, 0.5):
+        s.line(X(tk), top - 6, X(tk), bottom, INK2 if tk == 0 else GRID, 1.3 if tk == 0 else 1)
+        s.text(X(tk), bottom + 20, num(tk, lang, 1), "tick", 13, MUTED, "middle")
+    s.text((x0 + x1) / 2, bottom + 40, "vitesse vers l'avant (m/s)" if fr else "forward speed (m/s)", "sans", 13, INK2, "middle")
+    s.text(X(0) + 6, top - 8, "immobile" if fr else "standing still", "sans5", 13, INK2)
+    for i, (k, name, sub, col) in enumerate(rows):
+        yy = ys[k]
+        if i:
+            s.line(L, yy - rh[k] / 2, W - L, yy - rh[k] / 2, GRID)
+        s.text(L, yy - 2, name, "sans7", 13, INK)
+        s.text(L, yy + 15, sub, "sans", 13, INK2)
+        for v, o in zip(speeds[k], offs[k]):
+            cy = yy - o * step
+            if k == "hub":
+                d = 7
+                s.path(f"M{X(v):.1f},{cy - d:.1f} L{X(v) + d:.1f},{cy:.1f} L{X(v):.1f},{cy + d:.1f} L{X(v) - d:.1f},{cy:.1f} Z",
+                       PAPER, 1.4, col)
+            else:
+                s.circle(X(v), cy, r, col, f' stroke="{PAPER}" stroke-width="1.2" fill-opacity="0.9"')
+        s.text(W - L, yy + 5, num(rets[k], lang), "sans7", 15, col, "end")
+        if k != "hub":
+            m = G[k]["median_speed"]
+            mx = X(m)
+            s.line(mx, yy - half[k], mx, yy + half[k], INK, 1.6)
+    # the falls: the seeds whose episodes end within a few dozen steps
+    for k in ("official", "zoofix"):
+        sd = min(G[k]["runs"], key=lambda s_: G[k]["runs"][s_]["mean_x_velocity"])
+        run = G[k]["runs"][sd]
+        n = statistics.median(e["length"] for e in run["episodes"])
+        v, o = run["mean_x_velocity"], offs[k][sorted(G[k]["runs"], key=int).index(sd)]
+        cy = ys[k] - o * step
+        s.line(X(v), cy + r + 2, X(v), ys[k] + half[k] + 4, MUTED, 1)
+        s.text(X(v) - 4, ys[k] + half[k] + 18, (f"graine {sd} : chute en {num(n, lang)} pas" if fr else
+                                               f"seed {sd}: falls in {num(n, lang)} steps"), "sans5", 13, INK2, "start")
+    dm = G["default"]["median_speed"]
+    s.text(X(dm), ys["default"] + half["default"] + 18, (f"médiane {num(dm, lang, 1)} m/s" if fr else
+                                                        f"median {num(dm, lang, 1)} m/s"), "sans5", 13, ppo, "middle")
+    s.text(X(med) + 10, ys["official"] - half["official"] + 8, (f"médiane {num(abs(med), lang, 2)} m/s" if fr else
+                                                               f"median {num(abs(med), lang, 2)} m/s"), "sans5", 13, RED)
+    hv = hub["mean_x_velocity_100"]
+    s.text(X(hv) + 12, ys["hub"] + 5, (f"{num(hv, lang, 2)} m/s sur 100 épisodes" if fr else f"{num(hv, lang, 2)} m/s over 100 episodes"),
+           "sans5", 13, INK)
+    y = bottom + 70
+    note = ("Trait noir : médiane du groupe. Les dix agents officiels redonnent exactement les retours de leur évaluation "
+            "d'origine. L'agent publié en 2022 par le Zoo, avec les mêmes réglages, avance : la recette a marché dans sa "
+            "pile logicielle d'origine.") if fr else \
+           ("Black tick: the group's median. The ten official agents give back exactly the returns of their original "
+            "evaluation. The agent the Zoo published in 2022, with the same settings, moves forward: the recipe worked in "
+            "its original software stack.")
+    y = text_lines(s, L, y, note, "sans", 13, INK2, W - 2 * L, 17.5)
+    f.desc = (f"Quatre rangées de points. Les deux groupes de la recette s'entassent sur 0 m/s avec un retour près de "
+              f"1 000 ; les valeurs par défaut vont de {num(G['default']['min_speed'], lang, 1)} à "
+              f"{num(G['default']['max_speed'], lang, 1)} m/s ; l'agent publié avance à {num(hv, lang, 2)} m/s.") if fr else \
+             (f"Four rows of dots. Both recipe groups pile up on 0 m/s with a return near 1,000; default values range from "
+              f"{num(G['default']['min_speed'], lang, 1)} to {num(G['default']['max_speed'], lang, 1)} m/s; the published "
+              f"agent moves at {num(hv, lang, 2)} m/s.")
+    return f.finish(y - 8, "Données : sim/analysis/e6_enjoy.json, e6_hub.json" if fr else
+                    "Data: sim/analysis/e6_enjoy.json, e6_hub.json")
+
+
+# 11. E6: four frames from each of the two evaluation videos.
+
+def video_frames(rel, steps, crop):
+    """PNG frames of an evaluation video, as base64: the video keeps one frame in four (deviation 33), so frame n is
+    step 4n. ffmpeg decodes, crops and writes each frame; the same video gives the same bytes."""
+    import base64, tempfile
+    out = []
+    with tempfile.TemporaryDirectory() as d:
+        for st in steps:
+            p = Path(d) / f"f{st}.png"
+            w, h, x, y = crop
+            subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(ROOT / rel), "-vf",
+                            f"select=eq(n\\,{st // 4}),crop={w}:{h}:{x}:{y}", "-frames:v", "1", "-fflags", "+bitexact",
+                            "-flags:v", "+bitexact", str(p)], check=True)
+            out.append(base64.b64encode(p.read_bytes()).decode())
+    return out
+
+
+def e6_images(lang):
+    fr = lang == "fr"
+    en = J("sim/analysis/e6_enjoy.json")
+    V = en["videos"]
+    steps = [0, 240, 480, 720]
+    assert all(st < V[k]["episode"]["length"] for k in V for st in steps)
+    eo, ed = V["official"]["episode"], V["default"]["episode"]
+    f = RFig((f"Même départ : l'agent officiel reste planté,|l'agent par défaut parcourt {num(rnd(ed['displacement']), lang)} mètres"
+              if fr else
+              f"Same start: the official agent stays put,|the default agent covers {num(rnd(ed['displacement']), lang)} metres"),
+             ("Quatre images de chaque vidéo d'évaluation sur Hopper-v4, aux mêmes pas. La caméra suit le robot : "
+              "quand il avance, c'est le damier qui défile.") if fr else
+             ("Four frames from each evaluation video on Hopper-v4, at the same steps. The camera follows the robot: "
+              "when it moves forward, the checkerboard scrolls past."), RED)
+    f.src_size = 13
+    s, L, W = f.s, f.L, f.W
+    gap = 10
+    fw = (W - 2 * L - 3 * gap) / 4
+    crop = (200, 200, 60, 40)
+    fh = fw * crop[1] / crop[0]
+    y = f.top + 22
+    rows = [("official", f"Script officiel du Zoo, graine {V['official']['seed']}" if fr else f"Official Zoo script, seed {V['official']['seed']}",
+             (f"retour {num(eo['ret'], lang)} en {num(eo['length'], lang)} pas, déplacement {num(eo['displacement'], lang, 2)} m"
+              if fr else f"return {num(eo['ret'], lang)} in {num(eo['length'], lang)} steps, displacement {num(eo['displacement'], lang, 2)} m"), RED),
+            ("default", f"Valeurs par défaut, graine {V['default']['seed']}" if fr else f"Default values, seed {V['default']['seed']}",
+             (f"retour {num(ed['ret'], lang)}, {num(ed['displacement'], lang, 1)} m en {num(ed['length'], lang)} pas, puis chute"
+              if fr else f"return {num(ed['ret'], lang)}, {num(ed['displacement'], lang, 1)} m in {num(ed['length'], lang)} steps, then a fall"),
+             draw.ALGO_C["PPO (PyTorch)"])]
+    for k, name, sub, col in rows:
+        s.rect(L, y - 13, 4, 32, col, rx=2)
+        s.text(L + 12, y, name, "sans7", 14, INK)
+        s.text(L + 12, y + 17, sub, "sans", 13, INK2)
+        y += 32
+        imgs = video_frames(V[k]["file"].replace("results/", "sim/results/", 1), steps, crop)
+        for j, (st, b64) in enumerate(zip(steps, imgs)):
+            x = L + j * (fw + gap)
+            s.add(f'<image x="{x:.1f}" y="{y:.1f}" width="{fw:.1f}" height="{fh:.1f}" preserveAspectRatio="none" '
+                  f'href="data:image/png;base64,{b64}"/>')
+            s.rect(x, y, fw, fh, "none", extra=f' stroke="{RULE}" stroke-width="1"')
+            s.text(x + fw / 2, y + fh + 18, (f"pas {num(st, lang)}" if fr else f"step {num(st, lang)}"), "sans5", 13, INK2, "middle")
+        y += fh + 50
+    note = ("Images extraites des vidéos du dépôt (une image sur quatre de l'épisode), recadrées sur le robot. "
+            "Les deux agents sont ceux dont le score est la médiane de leur groupe.") if fr else \
+           ("Frames taken from the repository's videos (one frame in four of the episode), cropped around the robot. "
+            "Both agents are those whose score is their group's median.")
+    y = text_lines(s, L, y - 6, note, "sans", 13, INK2, W - 2 * L, 17.5)
+    f.desc = ("Deux rangées de quatre images. En haut, le robot officiel reste droit sur le même carré du damier. "
+              "En bas, le robot par défaut se penche et court, le damier défile.") if fr else \
+             ("Two rows of four frames. Top, the official robot stands straight on the same square of the board. "
+              "Bottom, the default robot leans and runs, the board scrolls past.")
+    return f.finish(y - 8, "Données : sim/results/e6_video/official_seed7.mp4, default_seed5.mp4, sim/analysis/e6_enjoy.json"
+                    if fr else "Data: sim/results/e6_video/official_seed7.mp4, default_seed5.mp4, sim/analysis/e6_enjoy.json")
+
+
+# 12. Q5 under each version of the papers read.
+
+def q5_lectures(lang):
+    fr = lang == "fr"
+    q = J("study/q5_versions.json")["readings"]
+    pin = [r for r in J("study/results_final.json") if r["k"] == "Q5"][0]["pineau2018"]
+    labels = {"P0": ("Lecture publiée", "As published"), "P1": ("Actes, les deux années", "Proceedings, both years"),
+              "P1_bound": ("borne : incertains comptés oui", "bound: uncertain counted yes"),
+              "P2": ("Dernière version arXiv", "Latest arXiv version"),
+              "P2_bound": ("borne : incertains comptés oui", "bound: uncertain counted yes"),
+              "P3": ("Code public à la conférence", "Code public at the conference"),
+              "P3_bound": ("borne : dépôts sans date, non", "bound: undated repositories, no")}
+    keys = list(labels)
+    low = min(q[k]["diff"] for k in keys)
+    assert all(q[k]["p_holm"] < 0.05 and q[k]["lo"] > 0 for k in keys)
+    f = RFig((f"Quelle que soit la version lue, le code en lien|progresse d'au moins {num(rnd(low * 100), lang)} points"
+              if fr else f"Whichever version is read, code links|rise by at least {rnd(low * 100)} points"),
+             ("Q5, part des articles expérimentaux qui donnent le lien de leur code : 48 de 2018, 50 de RL classique en "
+              "2026. Les articles de 2026 ont souvent été lus sur arXiv, où le lien s'ajoute après l'acceptation : "
+              "on relit chaque année sur la même sorte de version. À droite, l'écart et son intervalle de Newcombe à 95 %.") if fr else
+             ("Q5, share of experimental papers that link their code: 48 from 2018, 50 of classical RL in 2026. The 2026 "
+              "papers were often read on arXiv, where the link is added after acceptance: each year is reread on the same "
+              "kind of version. On the right, the gap and its 95% Newcombe interval."), GREEN)
+    f.src_size = 13
+    s, L, W = f.s, f.L, f.W
+    lab_w = max(width(labels[k][0 if fr else 1], "sans7" if "_" not in k else "sans", 13) + (16 if "_" in k else 0) for k in keys) + 16
+    xa0, xa1 = L + lab_w, L + lab_w + 200
+    xb0, xb1 = xa1 + 46, W - L - 44
+    XA = lambda u: xa0 + u * (xa1 - xa0)
+    dlo, dhi = 0, 60
+    XB = lambda u: xb0 + (u * 100 - dlo) / (dhi - dlo) * (xb1 - xb0)
+    rh = 30
+    top = f.top + 62
+    bottom = top + len(keys) * rh
+    s.text(xa0, top - 44, "Part des articles" if fr else "Share of papers", "sans7", 13, INK)
+    kx = xa0
+    s.circle(kx + 5, top - 26, 4.5, PAPER, f' stroke="{INK2}" stroke-width="1.6"')
+    s.text(kx + 14, top - 21, "2018", "sans5", 13, INK2)
+    kx += 14 + width("2018", "sans5", 13) + 14
+    s.circle(kx + 5, top - 26, 5, GREEN)
+    s.text(kx + 14, top - 21, "2026", "sans5", 13, INK2)
+    s.text(xb0, top - 44, "Écart, en points" if fr else "Gap, in points", "sans7", 13, INK)
+    for tk in ticks(0, 1, 0.25):
+        s.line(XA(tk), top - 6, XA(tk), bottom, RULE if tk == 0 else GRID)
+        s.text(XA(tk), bottom + 20, pct(tk * 100, lang), "tick", 13, MUTED, "middle")
+    s.line(XA(pin), top - 6, XA(pin), bottom, INK2, 1.3, ' stroke-dasharray="4 3"')
+    s.text(XA(pin), bottom + 40, (f"Pineau, 2018 : {pct(pin * 100, lang)}" if fr else f"Pineau, 2018: {pct(pin * 100, lang)}"),
+           "sans5", 13, INK2, "middle")
+    for tk in ticks(dlo, dhi, 20):
+        s.line(XB(tk / 100), top - 6, XB(tk / 100), bottom, INK2 if tk == 0 else GRID, 1.3 if tk == 0 else 1)
+        s.text(XB(tk / 100), bottom + 20, num(tk, lang, sign=True) if tk else "0", "tick", 13, MUTED, "middle")
+    for i, k in enumerate(keys):
+        r = q[k]
+        y = top + i * rh + rh / 2
+        bound = "_" in k
+        if k == "P0":
+            s.rect(L - 6, y - rh / 2 + 2, W - 2 * L + 12, rh - 4, tint(GREEN, 0.86), rx=4)
+        bg = tint(GREEN, 0.86) if k == "P0" else PAPER
+        s.text(L + (16 if bound else 0), y + 4.5, labels[k][0 if fr else 1], "sans" if bound else "sans7", 13,
+               INK2 if bound else INK, halo=bg)
+        p18 = r["ours2018"][0] / r["ours2018"][1]
+        p26 = r["classic2026"][0] / r["classic2026"][1]
+        col = tint(GREEN, 0.35) if bound else GREEN
+        s.line(XA(p18), y, XA(p26), y, col, 2.2 if bound else 3)
+        s.circle(XA(p18), y, 4.3, bg, f' stroke="{INK2}" stroke-width="1.6"')
+        s.circle(XA(p26), y, 5, col)
+        s.line(XB(r["lo"]), y, XB(r["hi"]), y, col, 2.2 if bound else 3, ' stroke-linecap="round"')
+        s.circle(XB(r["diff"]), y, 4.5 if bound else 5.5, col, f' stroke="{bg}" stroke-width="1.6"')
+        s.text(XB(r["hi"]) + 8, y + 4.5, num(rnd(r["diff"] * 100), lang, sign=True), "sans5" if bound else "sans7", 13,
+               INK2 if bound else INK, halo=bg)
+    y = bottom + 74
+    note = (f"Les sept lectures passent la correction de Holm sur les onze critères. Notre lecture de 2018 reste sous "
+            f"celle de Pineau ({pct(rnd(q['P0']['ours2018'][0] / q['P0']['ours2018'][1] * 100), lang)} contre "
+            f"{pct(pin * 100, lang)}) : relire la dernière version arXiv n'en comble qu'une partie. Une borne compte "
+            "oui les décisions incertaines de l'arbitre ; la dernière compte non les dépôts sans date.") if fr else \
+           (f"All seven readings pass the Holm correction over the eleven criteria. Our reading of 2018 stays below "
+            f"Pineau's ({rnd(q['P0']['ours2018'][0] / q['P0']['ours2018'][1] * 100)}% against {pct(pin * 100, lang)}): "
+            "rereading the latest arXiv version closes only part of the gap. A bound counts the arbiter's uncertain "
+            "decisions as yes; the last one counts undated repositories as no.")
+    y = text_lines(s, L, y, note, "sans", 13, INK2, W - 2 * L, 17.5)
+    f.desc = (f"Sept lectures de Q5. L'écart 2026 moins 2018 va de {num(rnd(low * 100), lang, sign=True)} à "
+              f"{num(rnd(max(q[k]['diff'] for k in keys) * 100), lang, sign=True)} points, tous les intervalles au-dessus de zéro.") if fr else \
+             (f"Seven readings of Q5. The gap 2026 minus 2018 ranges from {num(rnd(low * 100), lang, sign=True)} to "
+              f"{num(rnd(max(q[k]['diff'] for k in keys) * 100), lang, sign=True)} points, every interval above zero.")
+    return f.finish(y - 8, "Données : study/q5_versions.json, study/results_final.json ; Newcombe, Fisher, Holm" if fr else
+                    "Data: study/q5_versions.json, study/results_final.json; Newcombe, Fisher, Holm")
+
+
+# 13. X2 against X8: error bars spread, those computed over seeds barely.
+
+def x2_x8(lang):
+    fr = lang == "fr"
+    x = J("study/x8_stats.json")
+    ext = {r["k"]: r for r in J("study/extension_stats.json")["rows"]}["X2"]
+    src = x["sources"]
+    cats = [("seeds", "sur des graines" if fr else "over seeds", GREEN),
+            ("pooled", "graines et épisodes mêlés" if fr else "seeds and episodes pooled", tint(GREEN, 0.55)),
+            ("episodes", "sur des épisodes" if fr else "over episodes", DARK),
+            ("items", "sur des éléments de test" if fr else "over test items", MUTED),
+            ("other", "autre" if fr else "other", GREY),
+            ("unstated", "non dit" if fr else "not stated", RED)]
+    c = x["main"]["counts"]
+    for yr in ("2018", "2026"):
+        assert sum(src[yr].values()) == c[yr]["x2_yes"] and src[yr]["seeds"] == c[yr]["yes"]
+    d8, d2 = x["main"]["diff"], ext["classic_vs_ours2018"]
+    f = RFig(("Les barres d'erreur se répandent,|celles calculées sur des graines à peine" if fr else
+              "Error bars spread,|those computed over seeds barely"),
+             ("Un carré par article expérimental lu, coloré selon ce sur quoi porte l'incertitude qu'il rapporte. "
+              "X2 : une incertitude est rapportée. X8 : elle est calculée sur des graines, des entraînements "
+              "indépendants, et l'article le dit.") if fr else
+             ("One square per experimental paper read, coloured by what its reported uncertainty is computed over. "
+              "X2: an uncertainty is reported. X8: it is computed over seeds, independent training runs, and the paper "
+              "says so."), GREEN)
+    f.src_size = 13
+    s, L, W = f.s, f.L, f.W
+    cell, g_ = 16, 3.8
+    ncol = 25
+    yw = width("2026", "sans7", 15) + 16
+    rcol = W - L - 118
+    top = f.top + 22
+    y = top
+    for yr in ("2018", "2026"):
+        n = c[yr]["n"]
+        seq = [col for key, _, col in cats for _ in range(src[yr].get(key, 0))] + [None] * (n - c[yr]["x2_yes"])
+        s.text(L, y + cell + 6, yr, "sans7", 15, INK)
+        for i, col in enumerate(seq):
+            cx, cy = L + yw + (i % ncol) * (cell + g_), y + (i // ncol) * (cell + g_)
+            if col is None:
+                s.rect(cx + 0.75, cy + 0.75, cell - 1.5, cell - 1.5, PAPER, 2, f' stroke="{RULE}" stroke-width="1.5"')
+            else:
+                s.rect(cx, cy, cell, cell, col, 2)
+        s.text(rcol, y + 11, f"X2 {pct(rnd(c[yr]['x2_yes'] / n * 100), lang)}", "sans7", 13, INK2)
+        s.text(rcol, y + 29, f"X8 {pct(rnd(c[yr]['yes'] / n * 100), lang)}", "sans7", 13, GREEN)
+        s.text(W - L, y + 29, f"{c[yr]['yes']}/{n}", "sans", 13, INK2, "end")
+        s.text(W - L, y + 11, f"{c[yr]['x2_yes']}/{n}", "sans", 13, INK2, "end")
+        y += 2 * (cell + g_) + 26
+    # key, wrapped to the width
+    kx, ky = L, y + 10
+    items = [(lab, col) for _, lab, col in cats] + [("aucune incertitude (X2 non)" if fr else "no uncertainty (X2 no)", None)]
+    for lab, col in items:
+        w_ = 14 + 6 + width(lab, "sans5", 13) + 18
+        if kx + w_ - 18 > W - L:
+            kx, ky = L, ky + 22
+        if col is None:
+            s.rect(kx + 0.75, ky - 10.25, 12.5, 11.5, PAPER, 2, f' stroke="{RULE}" stroke-width="1.5"')
+        else:
+            s.rect(kx, ky - 11, 14, 13, col, 2)
+        s.text(kx + 20, ky, lab, "sans5", 13, INK)
+        kx += w_
+    # the two gaps, 2026 minus 2018, with their Newcombe intervals
+    y = ky + 62
+    s.text(L, y - 26, "Écart 2026 moins 2018, en points, intervalle de Newcombe à 95 %" if fr else
+           "Gap, 2026 minus 2018, in points, 95% Newcombe interval", "sans7", 13, INK)
+    lw2 = max(width(t, "sans7", 13) for t in ("X2", "X8")) + 16
+    xb0, xb1 = L + lw2, W - L - 150
+    XB = lambda u: xb0 + (u * 100 + 20) / 70 * (xb1 - xb0)
+    rows = [("X2", d2, INK2), ("X8", d8, GREEN)]
+    yb = y + 2 * 30
+    for tk in ticks(-20, 50, 10):
+        s.line(XB(tk / 100), y - 8, XB(tk / 100), yb - 8, INK2 if tk == 0 else GRID, 1.3 if tk == 0 else 1)
+        s.text(XB(tk / 100), yb + 10, num(tk, lang, sign=True) if tk else "0", "tick", 13, MUTED, "middle")
+    for i, (k, d_, col) in enumerate(rows):
+        yy = y + i * 30 + 6
+        s.text(L, yy + 4.5, k, "sans7", 13, col)
+        s.line(XB(d_["lo"]), yy, XB(d_["hi"]), yy, col, 3, ' stroke-linecap="round"')
+        s.circle(XB(d_["diff"]), yy, 5.5, col, f' stroke="{PAPER}" stroke-width="1.6"')
+        s.text(XB(d_["hi"]) + 8, yy + 4.5, num(rnd(d_["diff"] * 100), lang, sign=True), "sans7", 13, col)
+        s.text(W - L, yy + 4.5, "Holm < 0,05" if (k == "X2" and fr) else "Holm < 0.05" if k == "X2" else f"p = {num(d8['p'], lang, 2)}",
+               "sans5", 13, col, "end")
+    y = yb + 44
+    un = src["2026"]["unstated"]
+    note = (f"En 2026, {un} des {c['2026']['x2_yes']} articles qui rapportent une incertitude ne disent pas sur quoi elle "
+            "porte. X8 a été lu après les résultats par huit agents neufs, chacun sur les deux années.") if fr else \
+           (f"In 2026, {un} of the {c['2026']['x2_yes']} papers that report an uncertainty do not say what it is computed "
+            "over. X8 was read after the results by eight fresh agents, each on both years.")
+    y = text_lines(s, L, y, note, "sans", 13, INK2, W - 2 * L, 17.5)
+    f.desc = (f"Deux grilles de carrés. 2018 : {c['2018']['x2_yes']} articles sur {c['2018']['n']} rapportent une incertitude, "
+              f"{c['2018']['yes']} sur des graines. 2026 : {c['2026']['x2_yes']} sur {c['2026']['n']}, {c['2026']['yes']} sur des graines.") if fr else \
+             (f"Two grids of squares. 2018: {c['2018']['x2_yes']} papers out of {c['2018']['n']} report an uncertainty, "
+              f"{c['2018']['yes']} over seeds. 2026: {c['2026']['x2_yes']} out of {c['2026']['n']}, {c['2026']['yes']} over seeds.")
+    return f.finish(y - 8, "Données : study/x8_stats.json, study/extension_stats.json ; Newcombe, Fisher" if fr else
+                    "Data: study/x8_stats.json, study/extension_stats.json; Newcombe, Fisher")
+
+
+# 14. GRPO: per-seed gains in three measures, Student and percentile intervals.
+
+def grpo_mesures(lang):
+    fr = lang == "fr"
+    g = J("sim/llm/results/logs_stats_5.json")["gains"]
+    lt, lg = g["llama1 true pass1"]["mean"], g["llama1 true greedy"]["mean"]
+    f = RFig((f"Vraie récompense : Llama gagne {num(rnd(lt * 100), lang)} points en pass@1|mais en perd "
+              f"{num(rnd(-lg * 100), lang)} en justesse gloutonne" if fr else
+              f"True reward: Llama gains {rnd(lt * 100)} points in pass@1|but loses {rnd(-lg * 100)} in greedy accuracy"),
+             ("Gain de chaque graine entre le pas 0 et le pas 100 de GRPO, en points, pour trois mesures sur les "
+              "problèmes de test. Trait épais : intervalle de Student à 95 %. Trait fin à sa droite : intervalle "
+              "bootstrap percentile du protocole, trop étroit avec cinq graines.") if fr else
+             ("Gain of each seed between step 0 and step 100 of GRPO, in points, for three measures on the test "
+              "problems. Thick bar: 95% Student interval. Thin bar on its right: the protocol's percentile bootstrap "
+              "interval, too narrow with five seeds."), GREEN)
+    f.src_size = 13
+    s, L, W = f.s, f.L, f.W
+    meas = [("pass1", "pass@1"), ("greedy", "glouton" if fr else "greedy"), ("pass8", "pass@8")]
+    models = [("qwen05", "Qwen2.5 0,5B" if fr else "Qwen2.5 0.5B"), ("llama1", "Llama 3.2 1B")]
+    rewards = [("true", "Vraie récompense" if fr else "True reward", GREEN), ("random", "Pile ou face" if fr else "Coin flip", RED)]
+    yl, gx = 48, 26
+    pw = (W - 2 * L - yl - gx) / 2
+    ph, gy = 230, 70
+    lo_, hi_ = -90, 60
+    top = f.top + 66
+    X0 = lambda j: L + yl + j * (pw + gx)
+    for j, (_, head, col) in enumerate(rewards):
+        s.rect(X0(j), top - 66, pw, 4, col, rx=2)
+        s.text(X0(j), top - 44, head, "sans7", 15, col)
+    for i, (m, mname) in enumerate(models):
+        y0 = top + i * (ph + gy)
+        Y = lambda v: y0 + (hi_ - v) / (hi_ - lo_) * ph
+        for j, (rw, _, col) in enumerate(rewards):
+            x0 = X0(j)
+            x1 = x0 + pw
+            n = len(g[f"{m} {rw} pass1"]["gains"])
+            s.text(x0, y0 - 14, mname, "sans7", 13.5, INK)
+            s.text(x0 + width(mname, "sans7", 13.5) + 7, y0 - 14, (f"{n} graines" if fr else f"{n} seeds"), "sans", 13, INK2)
+            for tk in ticks(lo_, hi_, 30):
+                s.line(x0, Y(tk), x1, Y(tk), INK2 if tk == 0 else GRID, 1.3 if tk == 0 else 1)
+                if j == 0:
+                    s.text(x0 - 7, Y(tk) + 4.5, num(tk, lang, sign=True) if tk else "0", "tick", 13, MUTED, "end")
+            cw = pw / 3
+            for k, (key, lab) in enumerate(meas):
+                d = g[f"{m} {rw} {key}"]
+                cx = x0 + cw * (k + 0.5)
+                s.text(cx, Y(lo_) + 22, lab, "sans5", 13, INK2, "middle")
+                bx = cx - 12
+                s.line(bx, Y(d["ci_t"][1] * 100), bx, Y(d["ci_t"][0] * 100), tint(col, 0.45), 7, ' stroke-linecap="round"')
+                s.line(bx + 11, Y(d["ci_boot"][1] * 100), bx + 11, Y(d["ci_boot"][0] * 100), col, 1.6)
+                s.line(bx - 9, Y(d["mean"] * 100), bx + 9, Y(d["mean"] * 100), INK, 2.4)
+                vals = [v * 100 for v in d["gains"]]
+                offs = swarm([Y(v) for v in vals], 3.6, 1)
+                for v, o in zip(vals, offs):
+                    s.circle(cx + 22 + o * 8, Y(v), 3.6, col, f' stroke="{PAPER}" stroke-width="1.1"')
+                mv = d["mean"] * 100
+                ty = Y(d["ci_t"][1] * 100) - 9 if d["ci_t"][1] * 100 < hi_ - 8 else Y(d["ci_t"][0] * 100) + 20
+                s.text(bx, ty, num(rnd(mv), lang, sign=True), "sans7", 13, INK, "middle")
+    y = top + 2 * ph + gy + 46
+    note = ("Point : une graine. Trait noir : gain moyen, chiffré au-dessus de l'intervalle. Pass@1 : réussite d'une "
+            "réponse tirée à la température 1 ; glouton : réponse la plus probable ; pass@8 : au moins une bonne réponse "
+            "sur huit. Sous la récompense à pile ou face, les trois mesures s'effondrent.") if fr else \
+           ("Dot: one seed. Black tick: mean gain, written above the interval. Pass@1: success of one answer sampled at "
+            "temperature 1; greedy: the most likely answer; pass@8: at least one right answer out of eight. Under the "
+            "coin-flip reward, all three measures collapse.")
+    y = text_lines(s, L, y, note, "sans", 13, INK2, W - 2 * L, 17.5)
+    f.desc = (f"Quatre panneaux. Llama, vraie récompense : pass@1 {num(rnd(lt * 100), lang, sign=True)} points, glouton "
+              f"{num(rnd(lg * 100), lang, sign=True)}, pass@8 {num(rnd(g['llama1 true pass8']['mean'] * 100), lang, sign=True)} ; "
+              "pile ou face : tout tombe.") if fr else \
+             (f"Four panels. Llama, true reward: pass@1 {num(rnd(lt * 100), lang, sign=True)} points, greedy "
+              f"{num(rnd(lg * 100), lang, sign=True)}, pass@8 {num(rnd(g['llama1 true pass8']['mean'] * 100), lang, sign=True)}; "
+              "coin flip: everything falls.")
+    return f.finish(y - 8, "Données : sim/llm/results/logs_stats_5.json ; Student, bootstrap percentile" if fr else
+                    "Data: sim/llm/results/logs_stats_5.json; Student, percentile bootstrap")
+
+
 FIGS = {"courbes-apprentissage": courbes_apprentissage, "forest-criteres": forest_criteres,
         "accord-lecteurs": accord_lecteurs, "e5-graines": e5_graines, "e7-carte": e7_carte, "dose-carte": dose_carte,
-        "b1-distribution": b1_distribution, "grpo-courbes": grpo_courbes}
+        "b1-distribution": b1_distribution, "grpo-courbes": grpo_courbes, "e1-grille": e1_grille,
+        "e6-vitesse": e6_vitesse, "e6-images": e6_images, "q5-lectures": q5_lectures, "x2-x8": x2_x8,
+        "grpo-mesures": grpo_mesures}
 
 
 def main(names):

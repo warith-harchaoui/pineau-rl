@@ -25,3 +25,21 @@ Iteration 3 (FR and EN, PDF rendered at 150 dpi): spectacular? yes, because the 
 
 ## grpo-courbes
 Iteration 6 (FR and EN, PDF rendered at 150 dpi): print pass (every text 13 px or more; 760 x 842): spectacular? yes, because the same two opposite stories hold with larger end labels spread 16 px apart, one shared vertical scale per row, annotations and note at 13 px; Chromium PDF checked.
+
+## e1-grille
+Iteration 2 (FR and EN, PDF rendered at 110 dpi, Latin Modern): spectacular? yes, because sixteen dumbbells run from a hollow circle stuck under the dashed 5 % line to a filled dot in the program's colour, so the spread of the sorted rate (26 % to 99,8 %) reads at once, and the highlighted preregistered pair sits at the low end; seeds moved to the subtitle so the note no longer leaves "à 19." alone on its line; title shortened to fit the PDF in English.
+
+## e6-vitesse
+Iteration 3: spectacular? yes, because nine of ten official dots stack on the 0 m/s line beside a right column that says 997 and 994, while the default dots sit at 2.5 to 2.9 m/s and the 2022 hub agent at 1.44; fixed: "1 000" broke across lines in the subtitle (now glued), the fall labels crossed the swarm (now under the row, with a pale leader), the default median label crossed its dots (now below the swarm).
+
+## e6-images
+Iteration 2: spectacular? yes, because the same four steps show a straight pole on the same square against a leaning, running hopper; fixed: the note touched the step labels of the last row (sprezzature labels_overlap), moved down 16 px. Frames come from the repository's MP4s through ffmpeg (bitexact), cropped 200 x 200 around the robot.
+
+## q5-lectures
+Iteration 1: spectacular? yes, because every reading keeps its interval right of zero (+30 to +43) and the 2018 hollow circles all stay left of Pineau's dashed 55 % line; bounds indented in pale green under their reading; nothing to fix.
+
+## x2-x8
+Iteration 2: spectacular? yes, because the 2026 waffle fills with red "not stated" squares while green "over seeds" squares barely grow (17 to 21), and the two gap bars below make the contrast exact (+26 passes Holm, +7 crosses zero); fixed: squares enlarged to use the width, key and gap header spaced apart, French title reworded ("celles calculées sur des graines à peine").
+
+## grpo-mesures
+Iteration 1: spectacular? yes, because in the Llama true-reward panel the pass@1 bar straddles +6 while greedy and pass@8 sit far below zero, and the coin-flip column shows every measure falling with tight intervals; the thin percentile bar beside each thick Student bar shows how much narrower the protocol's interval was; nothing to fix.

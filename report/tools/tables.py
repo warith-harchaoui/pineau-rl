@@ -107,6 +107,8 @@ def pval(p, lang):
     """p-values as written in the documents."""
     if p is None:
         return ""
+    if p == 0:  # a file rounded to six decimals (survey_extra.json): below 5 x 10^-7
+        return rf"$<$\,10\textsuperscript{{{MINUS}6}}"
     if p >= 0.995:
         return "1"
     if p >= 0.01:
@@ -1200,6 +1202,14 @@ DEV_STUDY = [
      r"Provenance of the readers published (\file{readers/}): two readers finished on \texttt{claude-opus-5} (13 papers); the readings do not change."),
     (29, 15, "apav", r"Comparaison principale et trajectoire refaites sans les 13 articles lus en partie par \texttt{claude-opus-5}.",
      r"Main comparison and trajectory redone without the 13 papers read partly by \texttt{claude-opus-5}."),
+    (30, 21, "apav", r"Analyses complémentaires sans lecture nouvelle : intervalles de l'accord, plus petite différence détectable, règle de verdict d'origine, lecteurs et année confondus.",
+     r"Further analyses with no new reading: intervals of the agreement, minimum detectable difference, original verdict rule, readers and year confounded."),
+    (31, 21, ("après les résultats, avant tout téléchargement", "after the results, before any download"), r"Q5 relu sur la dernière version arXiv (2018) et sur les actes (2026), arbitre à l'aveugle, dates de création des dépôts.",
+     r"Q5 reread on the latest arXiv version (2018) and on the proceedings (2026), blind arbiter, creation dates of the repositories."),
+    (32, 21, ("après les résultats, avant toute lecture", "after the results, before any reading"), r"Nouveau critère X8 : incertitude calculée sur des graines, lue par huit agents neufs sur les deux années.",
+     r"New criterion X8: uncertainty computed over seeds, read by eight fresh agents across both years."),
+    (33, 21, ("après les résultats, avant toute lecture", "after the results, before any reading"), r"Lecteur d'une autre famille de modèles (\texttt{gemma3:12b}, local) sur les 98 articles de la comparaison principale.",
+     r"A reader from another model family (\texttt{gemma3:12b}, local) on the 98 papers of the main comparison."),
 ]
 
 DEV_SIM = [
@@ -1243,6 +1253,34 @@ DEV_SIM = [
     (20, 21, ("après les entraînements, avant tout calcul sur les graines 10 à 19", "after the runs, before any computation on seeds 10 to 19"),
      r"Calcul des ajouts de l'écart 12 ; défaut de \file{e5.py} corrigé (bon ordre sur toutes les graines choisies).",
      r"Computation of the additions of deviation 12; defect of \file{e5.py} fixed (right order over all the chosen seeds)."),
+    (21, 21, "apav", r"E2 : décompte strict, une paire ne compte que si chacun bat l'autre de façon tranchée sur une tâche (défaut corrigé).",
+     r"E2: strict count, a pair counts only if each beats the other, settled, on some task (defect fixed)."),
+    (22, 21, "apav", r"E1 refait sur les seize couples (programme, tâche), graines 0 à 19.",
+     r"E1 redone on the sixteen (program, task) pairs, seeds 0 to 19."),
+    (23, 21, "apav", r"E3 avec la correction de Holm sur quatre tâches, écart en points et puissance.",
+     r"E3 with Holm's correction over four tasks, gap in points and power."),
+    (24, 21, "apav", r"E7 : le renversement sur Hopper en physique modifiée, testé paire par paire.",
+     r"E7: the Hopper reversal under modified physics, tested pair by pair."),
+    (25, 21, "apav", r"E5 vérifié hors échantillon : graines 0 à 9 jugées sur les graines 10 à 19, et l'inverse.",
+     r"E5 checked out of sample: seeds 0 to 9 judged on seeds 10 to 19, and the reverse."),
+    (26, 21, "apav", r"La règle « tranché » calibrée sur de vraies hypothèses nulles (deux groupes du même programme).",
+     r"The `settled' rule calibrated on true null hypotheses (two groups of the same program)."),
+    (27, 21, "apav", r"B1 : le facteur entre le $t$ du script et celui des graines vaut $\sqrt{n/5}/\rho$ (défaut corrigé).",
+     r"B1: the factor between the script's $t$ and the seeds' $t$ is $\sqrt{n/5}/\rho$ (defect fixed)."),
+    (28, 21, ("relevé, sans calcul statistique", "a record, no statistical computation"), r"Les hyperparamètres effectivement utilisés, lus dans les programmes construits et les modèles sauvegardés.",
+     r"The hyperparameters actually used, read from the built programs and the saved models."),
+    (29, 21, "apav", r"Courbes d'apprentissage : classement au fil de l'entraînement, score final contre meilleur point, autocorrélation.",
+     r"Learning curves: ranking during training, final score against best point, autocorrelation."),
+    (30, 21, ("avant ce calcul", "before this computation"), r"Tailles d'effet en points de score (Hodges-Lehmann) pour E2, E3 et E6.",
+     r"Effect sizes in score points (Hodges-Lehmann) for E2, E3 and E6."),
+    (31, 21, "apav", r"E6 : vitesse des agents officiels lue dans leurs journaux d'entraînement.",
+     r"E6: speed of the official agents read from their training logs."),
+    (32, 21, ("avant tout entraînement", "before any training run"), r"Déterminisme de SAC et CrossQ : trois entraînements refaits à l'identique.",
+     r"Determinism of SAC and CrossQ: three training runs redone identically."),
+    (33, 21, ("avant ces évaluations et cet entraînement", "before these evaluations and this training"), r"E6 : agents officiels rejoués (vitesse, vidéos), agent publié par le Zoo évalué, recette avec $\gamma = 0{,}99$.",
+     r"E6: official agents replayed (speed, videos), the agent published by the Zoo evaluated, recipe with $\gamma = 0.99$."),
+    (34, 21, ("avant tout entraînement", "before any training run"), r"Pourquoi les deux PPO divergent : graines 20 à 39 et initialisation orthogonale échangée.",
+     r"Why the two PPOs diverge: seeds 20 to 39 and orthogonal initialisation swapped."),
 ]
 
 DEV_LLM = [
@@ -1280,6 +1318,12 @@ DEV_LLM = [
      r"Llama, random reward, seed 4 fails twice: counted as a result; statistic over the finished runs, sensitivity to the missing gain."),
     (17, 19, "ne", r"L'essai Llama sur CPU part après la file, sous le plafond de deux cœurs.",
      r"The Llama CPU run starts after the queue, under the two-core cap."),
+    (18, 21, "ap", r"Défauts constatés : pénalité de répétition 1,1 chez Qwen, pilote lu sur le jeu de test, matériel et graine mêlés.",
+     r"Defects found: repetition penalty of 1.1 for Qwen, pilot read on the test set, device and seed mixed."),
+    (19, 21, ("avant le script", "before the script"), r"Analyses tirées des journaux : justesse gloutonne, pass@8, intervalles de Student, vraie récompense contre hasard, coupure.",
+     r"Analyses from the logs: greedy accuracy, pass@8, Student intervals, true reward against coin flip, truncation."),
+    (20, 22, ("avant tout essai de la relance", "before any run of the rerun"), r"Relance planifiée : 10 graines, sans pénalité de répétition, pilote hors du jeu de test ; rien n'est lancé.",
+     r"Rerun planned: 10 seeds, no repetition penalty, pilot off the test set; nothing is started."),
 ]
 
 
@@ -1550,9 +1594,685 @@ def t_articles():
                   [L(lang, "Id. & Titre & Conférence & Rôle", "Id & Title & Venue & Role")], rows, 4, size=r"\scriptsize", tabcolsep="3pt")
 
 
+# ----------------------------------------------------------------------------------------------------------------
+# Analyses of 22 November 2026 (deviations 21 to 33 of sim/SIM_PROTOCOL.md, 30 to 32 of study/PROTOCOL.md, 18 and 19
+# of sim/llm/LLM_PROTOCOL.md), each decided and pushed before its computation
+# ----------------------------------------------------------------------------------------------------------------
+def ci2(c, lang, nd=2):
+    return iv(num(c[0], lang, nd), num(c[1], lang, nd), lang)
+
+
+def pr_cell(p, c, lang):
+    """A probability of improvement and its interval."""
+    return f"{num(p, lang, 2)} {ci2(c, lang)}"
+
+
+def t_e2_strict():
+    F = {k: J(f"sim/analysis/e2_strict{k}.json") for k in ("", "_s20", "_equal", "_equal_s20")}
+    for lang in LANGS:
+        sep = r" \newline "
+
+        def pairs(d, strict_bonf):
+            keep = {r["pair"] for r in strict_bonf["reversing_pairs"]}
+            out = []
+            for r in d["reversing_pairs"]:
+                a, b = r["pair"].split("/")
+                txt = (f"{ALG[a]} > {ALG[b]} ({', '.join(T(w['task']) for w in r['a_wins'])}){L(lang, ', ', ', ')}"
+                       f"{ALG[b]} > {ALG[a]} ({', '.join(T(w['task']) for w in r['b_wins'])})")
+                out.append(bold(txt, r["pair"] in keep))
+            return sep.join(out)
+        head = [L(lang, r" & \multicolumn{2}{c}{\makecell{Décompte\\{}strict}} & \multicolumn{2}{c}{\makecell{Décompte\\{}préenregistré}} & ",
+                  r" & \multicolumn{2}{c}{\makecell{Strict\\{}count}} & \multicolumn{2}{c}{\makecell{Preregistered\\{}count}} & "),
+                r"\cmidrule(lr){2-3}\cmidrule(lr){4-5}",
+                L(lang, r"Analyse & 95~\% & Bonf. & 95~\% & Bonf. & Paires qui s'inversent, tranchées à 95~\% (en gras : aussi avec Bonferroni)",
+                  r"Analysis & 95\% & Bonf. & 95\% & Bonf. & Pairs that reverse, settled at 95\% (in bold: also with Bonferroni)")]
+        rows = []
+        for k, fr, en in (("", "10 graines", "10 seeds"), ("_s20", "20 graines", "20 seeds"),
+                          ("_equal", "Budget égal, 10 graines", "Equal budget, 10 seeds"),
+                          ("_equal_s20", "Budget égal, 20 graines", "Equal budget, 20 seeds")):
+            d = F[k]
+            rows.append(" & ".join([L(lang, fr, en), str(d["ci95"]["n_reversing_pairs"]), str(d["bonferroni"]["n_reversing_pairs"]),
+                                    str(d["ci95"]["n_settled_changes_preregistered"]), str(d["bonferroni"]["n_settled_changes_preregistered"]),
+                                    pairs(d["ci95"], d["bonferroni"])]))
+        cap = L(lang,
+                r"Expérience E2, changements de classement tranchés comptés de deux façons. Décompte préregistré (écart 7 de \file{sim/SIM_PROTOCOL.md}) : chaque triplet (tâche où $X$ mène par IQM, autre tâche, programme $Y$ qui y bat $X$ de façon tranchée), sans demander si $X$ bat $Y$ sur la première tâche. "
+                r"Décompte strict (écart 21, défaut corrigé, écrit avant ce calcul) : une paire $(A, B)$ s'inverse si $A$ bat $B$ de façon tranchée sur une tâche et $B$ bat $A$ de façon tranchée sur une autre, chaque fois avec un intervalle de probabilité d'amélioration qui exclut 0,5. "
+                r"95~\% : intervalles de chaque comparaison seule ; Bonf. : les 24 intervalles rendus simultanés (écart 18, niveau $1 - 0{,}05/24$). Entre parenthèses, les tâches où chaque programme bat l'autre ; une ligne par paire. "
+                r"Le script relit les intervalles déjà publiés et ne tire aucun nouveau rééchantillon. Sources : \file{sim/analysis/e2_strict.json}, \file{e2_strict_s20.json}, \file{e2_strict_equal.json}, \file{e2_strict_equal_s20.json} (\file{sim/analysis/e2_strict.py}).",
+                r"Experiment E2, settled changes of ranking counted two ways. Preregistered count (deviation 7 of \file{sim/SIM_PROTOCOL.md}): every triple (task where $X$ leads by IQM, another task, program $Y$ that beats $X$ there, settled), without asking whether $X$ beats $Y$ on the first task. "
+                r"Strict count (deviation 21, defect fixed, written before this computation): a pair $(A, B)$ reverses if $A$ beats $B$, settled, on one task and $B$ beats $A$, settled, on another, each time with a probability-of-improvement interval that excludes 0.5. "
+                r"95\%: the interval of each comparison alone; Bonf.: the 24 intervals made simultaneous (deviation 18, level $1 - 0.05/24$). In parentheses, the tasks where each program beats the other; one line per pair. "
+                r"The script rereads the intervals already published and draws no new resample. Sources: \file{sim/analysis/e2_strict.json}, \file{e2_strict_s20.json}, \file{e2_strict_equal.json}, \file{e2_strict_equal_s20.json} (\file{sim/analysis/e2_strict.py}).")
+        floattable("e2-strict", lang, cap, L(lang, "E2 : décompte strict des changements de classement", "E2: strict count of ranking changes"),
+                   r"@{}lrrrr>{\raggedright\arraybackslash}p{6cm}@{}", head, rows, tabcolsep="3.5pt")
+
+
+def t_e1_grille():
+    g = J("sim/analysis/e1_grid.json")
+    sm = g["summary"]
+    for lang in LANGS:
+        head = [L(lang, r"Tâche & Programme & $n$ & \makecell[r]{Coef. de\\{}variation} & Asymétrie & \makecell[r]{5 contre 5\\{}au hasard (\%)} & \makecell[r]{5 meilleurs contre\\{}5 pires (\%)}",
+                  r"Task & Program & $n$ & \makecell[r]{Coef. of\\{}variation} & Skewness & \makecell[r]{5 against 5\\{}at random (\%)} & \makecell[r]{5 best against\\{}5 worst (\%)}")]
+        rows = []
+        for t in TASKS:
+            for i, a in enumerate(ALGS):
+                c = g["cells"][f"{a}/{t}"]
+                lo = c["sorted_5v5"] == sm["sorted_min"]
+                rows.append(" & ".join([T(t) if i == 0 else "", ALG[a], str(c["n"]), pct(c["cv"], lang), num(c["skew"], lang, 2),
+                                        pc(c["random_5v5"], lang, 1), bold(pc(c["sorted_5v5"], lang, 1), lo)]))
+            rows.append("MID")
+        p = g["e1_preregistered_30_runs"]
+        rows.append(" & ".join([L(lang, r"\multicolumn{2}{@{}l}{E1 préenregistré (PPO PyTorch, HalfCheetah)}", r"\multicolumn{2}{@{}l}{E1 preregistered (PPO PyTorch, HalfCheetah)}"),
+                                str(p["n"]), pct(p["cv"], lang), num(p["skew"], lang, 2), pc(p["random_5v5"], lang, 1), pc(p["sorted_5v5"], lang, 1)]))
+        rows.append(" & ".join([L(lang, r"\multicolumn{5}{@{}l}{Médiane (étendue) sur les 16 couples}", r"\multicolumn{5}{@{}l}{Median (range) over the 16 pairs}"),
+                                f"{pc(sm['random_median'], lang, 1)} ({pc(sm['random_min'], lang, 1)}{to(lang)}{pc(sm['random_max'], lang, 1)})",
+                                f"{pc(sm['sorted_median'], lang, 1)} ({pc(sm['sorted_min'], lang, 1)}{to(lang)}{pc(sm['sorted_max'], lang, 1)})"]))
+        cap = L(lang,
+                r"Expérience E1 refaite sur les seize couples (programme, tâche) de E2, graines 0 à 19 (écart 22 de \file{sim/SIM_PROTOCOL.md}, analyse exploratoire décidée après les résultats, écrite avant ce calcul). "
+                r"Pour chaque couple, 10\,000 tirages de deux groupes disjoints de 5 essais au hasard, puis 10\,000 tirages de 10 essais coupés en 5 meilleurs contre 5 pires ; part des tirages où le test de Welch donne $p < 0{,}05$ alors que les deux groupes exécutent le même programme (générateur \texttt{default\_rng(2018)}). "
+                r"Le coefficient de variation et l'asymétrie décrivent les vingt scores finaux. \textbf{En gras}, le taux trié le plus bas : celui du couple préenregistré, PPO PyTorch sur HalfCheetah. "
+                r"Les intervalles par rééchantillonnage des populations que donne le fichier ne sont pas reportés : tirer avec remise crée des essais en double, ce qui les élargit et biaise vers le haut le taux trié. "
+                r"Sources : \file{sim/analysis/e1_grid.json} (\file{sim/analysis/e1_grid.py}) ; le résultat préenregistré reste celui de \file{sim/analysis/e1.json} (tableau~\ref{tab:e1}).",
+                r"Experiment E1 redone on the sixteen (program, task) pairs of E2, seeds 0 to 19 (deviation 22 of \file{sim/SIM_PROTOCOL.md}, exploratory analysis decided after the results, written before this computation). "
+                r"For each pair, 10,000 draws of two disjoint groups of 5 runs at random, then 10,000 draws of 10 runs cut into the 5 best against the 5 worst; share of draws where Welch's test gives $p < 0.05$ although both groups run the same program (generator \texttt{default\_rng(2018)}). "
+                r"Coefficient of variation and skewness describe the twenty final scores. \textbf{In bold}, the lowest sorted rate: that of the preregistered pair, PPO PyTorch on HalfCheetah. "
+                r"The population-resampling intervals in the file are not reported: drawing with replacement creates duplicate runs, which widens them and biases the sorted rate upward. "
+                r"Sources: \file{sim/analysis/e1_grid.json} (\file{sim/analysis/e1_grid.py}); the preregistered result remains that of \file{sim/analysis/e1.json} (Table~\ref{tab:e1}).")
+        floattable("e1-grille", lang, cap, L(lang, "E1 sur les seize couples", "E1 on the sixteen pairs"),
+                   r"@{}llrrrrr@{}", head, rows, tabcolsep="3.5pt")
+
+
+def t_e3_holm():
+    e = J("sim/analysis/e3_holm.json")
+    for lang in LANGS:
+        head = [L(lang, r"Tâche & \makecell[r]{IQM\\{}PyTorch} & \makecell[r]{IQM\\{}JAX} & \makecell[r]{$P(\text{JAX} > \text{PyTorch})$\\{}[IC 98,75~\%]} & \makecell[r]{Écart JAX $-$ PyTorch\\{}(Hodges-Lehmann) [IC 95~\%]} & \makecell[r]{$p$ Mann-\\{}Whitney} & $p$ Holm",
+                  r"Task & \makecell[r]{IQM\\{}PyTorch} & \makecell[r]{IQM\\{}JAX} & \makecell[r]{$P(\text{JAX} > \text{PyTorch})$\\{}[98.75\% CI]} & \makecell[r]{Gap JAX $-$ PyTorch\\{}(Hodges-Lehmann) [95\% CI]} & \makecell[r]{Mann-\\{}Whitney $p$} & Holm $p$")]
+        rows = []
+        for s, fr, en in (("s10", "10 graines (0 à 9)", "10 seeds (0 to 9)"), ("s20", "20 graines (0 à 19)", "20 seeds (0 to 19)")):
+            rows.append(rf"\multicolumn{{7}}{{@{{}}l}}{{\emph{{{L(lang, fr, en)}}}}}")
+            for t in TASKS:
+                r = e[s][t]
+                hl = r["hodges_lehmann_ci"]
+                cells = [r"\quad " + T(t), num(r["iqm"]["sb3"], lang), num(r["iqm"]["sbx"], lang),
+                         pr_cell(r["p_improve_sbx"], r["p_improve_ci_bonferroni"], lang),
+                         f"{num(r['hodges_lehmann_sbx_minus_sb3'], lang, sign=True)} {iv(num(hl[0], lang, sign=True), num(hl[1], lang, sign=True), lang)}",
+                         pval(r["mw_p"], lang), pval(r["mw_p_holm"], lang)]
+                rows.append(" & ".join(bold(c, r["settled_holm"]) for c in cells))
+        cap = L(lang,
+                r"Expérience E3 corrigée pour ses quatre tâches (écart 23 de \file{sim/SIM_PROTOCOL.md}, écrit avant ce calcul). Test de Mann-Whitney bilatéral par tâche puis correction de Holm sur les quatre tâches ; "
+                r"probabilité d'amélioration avec son intervalle au niveau simultané $1 - 0{,}05/4$ (rliable, 2\,000 rééchantillons) ; écart en points de score par l'estimateur de Hodges-Lehmann (médiane des différences deux à deux), intervalle percentile à 95~\% (5\,000 rééchantillons, \texttt{default\_rng(2026)}). "
+                r"Règle : une différence entre les deux PPO n'est dite tranchée que si elle passe Holm ; \textbf{en gras}, la seule qui passe, Swimmer à 20 graines. "
+                r"Puissance de ces tests au tableau~\ref{tab:e3-puissance}. "
+                r"Le résultat préenregistré reste celui de \file{sim/analysis/e3.json} (tableau~\ref{tab:e3}). Source : \file{sim/analysis/e3_holm.json} (\file{sim/analysis/e3_holm.py}).",
+                r"Experiment E3 corrected for its four tasks (deviation 23 of \file{sim/SIM_PROTOCOL.md}, written before this computation). Two-sided Mann-Whitney test per task, then Holm's correction over the four tasks; "
+                r"probability of improvement with its interval at the simultaneous level $1 - 0.05/4$ (rliable, 2,000 resamples); gap in score points by the Hodges-Lehmann estimator (median of pairwise differences), 95\% percentile interval (5,000 resamples, \texttt{default\_rng(2026)}). "
+                r"Rule: a difference between the two PPOs is called settled only if it passes Holm; \textbf{in bold}, the only one that does, Swimmer at twenty seeds. "
+                r"Power of these tests in Table~\ref{tab:e3-puissance}. "
+                r"The preregistered result remains that of \file{sim/analysis/e3.json} (Table~\ref{tab:e3}). Source: \file{sim/analysis/e3_holm.json} (\file{sim/analysis/e3_holm.py}).")
+        floattable("e3-holm", lang, cap, L(lang, "E3 avec la correction de Holm, et sa puissance", "E3 with Holm's correction, and its power"),
+                   r"@{}lrrrrrr@{}", head, rows, tabcolsep="3.5pt")
+
+
+def t_e3_puissance():
+    e = J("sim/analysis/e3_holm.json")
+    NS = (10, 20, 30, 40, 60)
+    md = e["min_detectable_p_improve_80pct_alpha_0_0125"]
+    for lang in LANGS:
+        head = [L(lang, r" & \multicolumn{5}{c}{Essais par programme} \\ \cmidrule(lr){2-6}", r" & \multicolumn{5}{c}{Runs per program} \\ \cmidrule(lr){2-6}")
+                + "\n" + L(lang, "Tâche", "Task") + " & " + " & ".join(f"$n = {n}$" for n in NS)]
+        rows = []
+        for t in TASKS:
+            pw = e["power"][t]
+            rows.append(" & ".join([T(t)] + [f"{pc(pw[str(n)]['alpha_0_0125'], lang)} ({pc(pw[str(n)]['alpha_0_05'], lang)})" for n in NS]))
+        rows.append("MID")
+        rows.append(" & ".join([L(lang, r"\makecell[l]{$P(\text{JAX} > \text{PyTorch})$ détectable\\{}à 80~\% de puissance}", r"\makecell[l]{$P(\text{JAX} > \text{PyTorch})$ detectable\\{}with 80\% power}")]
+                               + [num(md[str(n)], lang, 2) if str(n) in md else "" for n in NS]))
+        cap = L(lang,
+                r"Expérience E3, puissance du test de Mann-Whitney au niveau corrigé $0{,}05/4$ (entre parenthèses, au niveau $0{,}05$), en pourcentage : part des 2\,000 tirages où le test rejette, chaque tirage prenant avec remise $n$ essais par programme parmi les vingt observés, si bien que la différence vraie est celle des vingt graines (écart 23 de \file{sim/SIM_PROTOCOL.md}, écrit avant ce calcul). "
+                r"Dernière ligne : plus petite probabilité d'amélioration détectable avec 80~\% de puissance au niveau $0{,}05/4$ (approximation normale de la statistique $U$). Sur Walker2d, il faudrait environ soixante graines par programme pour voir à coup presque sûr l'écart observé à vingt. "
+                r"Source : \file{sim/analysis/e3_holm.json} (\file{sim/analysis/e3_holm.py}).",
+                r"Experiment E3, power of the Mann-Whitney test at the corrected level $0.05/4$ (in parentheses, at the $0.05$ level), in percent: share of 2,000 draws where the test rejects, each draw taking $n$ runs per program with replacement from the twenty observed, so that the true difference is that of the twenty seeds (deviation 23 of \file{sim/SIM_PROTOCOL.md}, written before this computation). "
+                r"Last row: smallest probability of improvement detectable with 80\% power at level $0.05/4$ (normal approximation of the $U$ statistic). On Walker2d, about sixty seeds per program would be needed to see the gap observed at twenty almost surely. "
+                r"Source: \file{sim/analysis/e3_holm.json} (\file{sim/analysis/e3_holm.py}).")
+        floattable("e3-puissance", lang, cap, L(lang, "E3 : puissance du test", "E3: power of the test"),
+                   r"@{}lrrrrr@{}", head, rows, tabcolsep="5pt")
+
+
+def t_e7_test():
+    E = {"": J("sim/analysis/e7_test.json")["tasks"], "_s20": J("sim/analysis/e7_test_s20.json")["tasks"]}
+    for lang in LANGS:
+        head = [L(lang, r" & \multicolumn{2}{c}{10 graines (0 à 9)} & \multicolumn{2}{c}{20 graines (0 à 19)}",
+                  r" & \multicolumn{2}{c}{10 seeds (0 to 9)} & \multicolumn{2}{c}{20 seeds (0 to 19)}"),
+                r"\cmidrule(lr){2-3}\cmidrule(lr){4-5}",
+                L(lang, r"Paire $A > B$ & \makecell[r]{physique\\{}d'entraînement} & \makecell[r]{physique\\{}modifiée} & \makecell[r]{physique\\{}d'entraînement} & \makecell[r]{physique\\{}modifiée}",
+                  r"Pair $A > B$ & \makecell[r]{training\\{}physics} & \makecell[r]{modified\\{}physics} & \makecell[r]{training\\{}physics} & \makecell[r]{modified\\{}physics}")]
+        hq = L(lang, r", question principale fixée d’avance : $P(A > B)$ [IC 95~\%]", r", main question fixed in advance: $P(A > B)$ [95\% CI]")
+        rows = [rf"\multicolumn{{5}}{{@{{}}l}}{{\emph{{Hopper{hq}}}}}"]
+        for key in E[""]["Hopper-v5"]["training"]["pairs"]:
+            cells = [r"\quad " + pair_label(key)]
+            for sfx in ("", "_s20"):
+                h = E[sfx]["Hopper-v5"]
+                tr, mo = h["training"]["pairs"][key], h["modified"]["pairs"][key]
+                sm = lambda d: rf"{num(d['p'], lang, 2)} {{\scriptsize {ci2(d['ci'], lang)}}}"  # noqa: E731
+                cells += [bold(sm(tr), tr["settled"]), bold(sm(mo), mo["settled"]) + (r"$^\dagger$" if key in h["settled_reversals"] else r"$^{\phantom{\dagger}}$")]
+            rows.append(" & ".join(cells))
+        lead = [L(lang, r"\quad Chef (IQM)", r"\quad Leader (IQM)")]
+        for sfx in ("", "_s20"):
+            h = E[sfx]["Hopper-v5"]
+            lead += [f"{ALG[h[ph]['leader']]}, {num(h[ph]['iqm'][h[ph]['leader']], lang)}" for ph in ("training", "modified")]
+        rows.append(" & ".join(lead))
+        rows.append("MID")
+        rows.append(rf"\multicolumn{{5}}{{@{{}}l}}{{\emph{{{L(lang, 'Renversements tranchés, toutes tâches', 'Settled reversals, all tasks')}}}}}")
+        for t in TASKS:
+            cells = [r"\quad " + T(t)]
+            for sfx in ("", "_s20"):
+                sr = E[sfx][t]["settled_reversals"]
+                cells.append(rf"\multicolumn{{2}}{{c}}{{{len(sr)}}}")
+            rows.append(" & ".join(cells))
+        def revs(sfx):
+            return L(lang, " ; ", "; ").join(f"{T(t)}{L(lang, ' : ', ': ')}{', '.join(pair_label(k) for k in E[sfx][t]['settled_reversals'])}"
+                                             for t in TASKS if E[sfx][t]["settled_reversals"])
+        rv = L(lang, f"Renversements tranchés à 10 graines : {revs('')} ; à 20 graines : {revs('_s20')}. ",
+               f"Settled reversals at ten seeds: {revs('')}; at twenty seeds: {revs('_s20')}. ")
+        cap = L(lang,
+                r"Expérience E7, le renversement de classement en physique modifiée (masses $\times$ 1,2, frottement $\times$ 0,8), testé (écart 24 de \file{sim/SIM_PROTOCOL.md}, écrit avant ce calcul ; le complément de l'écart 11 classait sans test). "
+                r"Pour chaque paire, la probabilité qu'un essai de $A$ batte un essai de $B$, avec son intervalle à 95~\% (rliable, 2\,000 rééchantillons, générateur global à 2026), sur le score final dans la physique d'entraînement puis dans la physique modifiée ; à 10 graines (résultat de l'écart) et à 20 graines. "
+                r"\textbf{En gras}, les comparaisons tranchées (intervalle qui exclut 0,5). $^\dagger$ : une paire qui se renverse de façon tranchée, c'est-à-dire tranchée dans un sens dans la physique d'entraînement et dans l'autre sens dans la physique modifiée. "
+                r"Les $p$ de Mann-Whitney et les mêmes comparaisons à chaque intensité de la dose sont dans les fichiers. " + rv + r"Sources : \file{sim/analysis/e7_test.json}, \file{sim/analysis/e7_test_s20.json} (\file{sim/analysis/e7_test.py}).",
+                r"Experiment E7, the change of ranking under modified physics (masses $\times$ 1.2, friction $\times$ 0.8), tested (deviation 24 of \file{sim/SIM_PROTOCOL.md}, written before this computation; the complement of deviation 11 ranked without a test). "
+                r"For each pair, the probability that a run of $A$ beats a run of $B$, with its 95\% interval (rliable, 2,000 resamples, global generator seeded with 2026), on the final score in the training physics and then in the modified physics; at ten seeds (the deviation's result) and at twenty. "
+                r"\textbf{In bold}, settled comparisons (interval that excludes 0.5). $^\dagger$: a pair that reverses, settled, that is, settled one way in the training physics and the other way in the modified physics. "
+                r"The Mann-Whitney $p$ values and the same comparisons at each strength of the dose are in the files. " + rv + r"Sources: \file{sim/analysis/e7_test.json}, \file{sim/analysis/e7_test_s20.json} (\file{sim/analysis/e7_test.py}).")
+        floattable("e7-test", lang, cap, L(lang, "E7 : le renversement sur Hopper, testé", "E7: the Hopper reversal, tested"),
+                   r"@{}lrrrr@{}", head, rows, tabcolsep="4pt")
+
+
+def t_e5_holdout():
+    h = J("sim/analysis/e5_holdout.json")
+    pre = h["e5_preregistered"]
+    A, B = "p_n_from_0_9_judged_on_10_19", "p_n_from_10_19_judged_on_0_9"
+    NS = ("3", "5", "10")
+    for lang in LANGS:
+        head = [L(lang, r"Mesure (part des tirages qui retrouvent l'ordre, \%) & $n = 3$ & $n = 5$ & $n = 10$",
+                  r"Measure (share of draws that recover the order, \%) & $n = 3$ & $n = 5$ & $n = 10$")]
+        rows = [rf"\multicolumn{{4}}{{@{{}}l}}{{\emph{{{L(lang, 'E5 préenregistré, ordre jugé sur le même échantillon', 'E5 preregistered, order judged on the same sample')}}}}}"]
+        rows.append(L(lang, r"\quad Médiane, 24 comparaisons", r"\quad Median, 24 comparisons") + " & " + " & ".join(pc(pre["median_all"][n], lang) for n in NS))
+        rows.append(L(lang, rf"\quad Médiane, {pre['n_close']} comparaisons serrées", rf"\quad Median, {pre['n_close']} close comparisons") + " & " + " & ".join(pc(pre["median_close"][n], lang) for n in NS))
+        for key, fr, en in ((A, "Tirés dans les graines 0 à 9, jugés sur les graines 10 à 19", "Drawn from seeds 0 to 9, judged on seeds 10 to 19"),
+                            (B, "Tirés dans les graines 10 à 19, jugés sur les graines 0 à 9", "Drawn from seeds 10 to 19, judged on seeds 0 to 9")):
+            rows.append(rf"\multicolumn{{4}}{{@{{}}l}}{{\emph{{{L(lang, fr, en)}}}}}")
+            rows.append(L(lang, r"\quad Médiane, 24 comparaisons", r"\quad Median, 24 comparisons") + " & " + " & ".join(pc(h["median_all"][key][n], lang) for n in NS))
+            rows.append(L(lang, rf"\quad Médiane, {h['n_close']} comparaisons serrées", rf"\quad Median, {h['n_close']} close comparisons") + " & " + " & ".join(pc(h["median_close"][key][n], lang) for n in NS))
+            rows.append(bold(L(lang, rf"\quad Moyenne, {h['n_close']} comparaisons serrées", rf"\quad Mean, {h['n_close']} close comparisons")) + " & " + " & ".join(bold(pc(h["mean_close"][key][n], lang)) for n in NS))
+        fl = L(lang, " ; ", "; ").join(f"{T(x.split()[0])}{L(lang, ' : ', ': ')}{ALG[x.split()[1]]} / {ALG[x.split()[3]]}" for x in h["flipped"])
+        signs = L(lang, f"Signe de l'écart des graines 0 à 9 retrouvé sur les graines 10 à 19 : {h['signs_kept']} comparaisons sur {h['n']}, {h['signs_kept_close']} serrées sur {h['n_close']} ; signes qui changent : {fl}. ",
+                  f"Sign of the gap on seeds 0 to 9 found again on seeds 10 to 19: {h['signs_kept']} comparisons out of {h['n']}, {h['signs_kept_close']} close ones out of {h['n_close']}; signs that change: {fl}. ")
+        cap = L(lang,
+                r"Expérience E5 vérifiée hors échantillon (écart 25 de \file{sim/SIM_PROTOCOL.md}, écrit avant ce calcul). E5 prend pour bon ordre le signe des moyennes de l'échantillon même où il tire avec remise : sa part mesure la stabilité du signe observé, pas la probabilité de retrouver le vrai ordre. "
+                + signs + r"Ici, $n$ essais par programme tirés sans remise dans une moitié des graines (10\,000 tirages, \texttt{default\_rng(2026)}), comptés justes quand ils retrouvent l'ordre des moyennes de l'autre moitié, dans les deux sens. Comparaison serrée : écart relatif sous 20~\% sur les graines 0 à 9. "
+                r"À $n = 10$, le tirage prend toute la moitié, d'où 100 ou 0~\% par comparaison : la moyenne des serrées donne alors la part des signes retrouvés. \textbf{En gras}, la moyenne des comparaisons serrées, la mesure sans circularité. "
+                r"Sources : \file{sim/analysis/e5_holdout.json} (\file{sim/analysis/e5_holdout.py}), \file{sim/analysis/e5.json} (tableau~\ref{tab:e5}).",
+                r"Experiment E5 checked out of sample (deviation 25 of \file{sim/SIM_PROTOCOL.md}, written before this computation). E5 takes as the right order the sign of the means of the very sample it draws from with replacement: its share measures the stability of the observed sign, not the probability of recovering the true order. "
+                + signs + r"Here, $n$ runs per program drawn without replacement from one half of the seeds (10,000 draws, \texttt{default\_rng(2026)}), counted right when they recover the order of the means of the other half, both ways. Close comparison: relative gap under 20\% on seeds 0 to 9. "
+                r"At $n = 10$ the draw takes the whole half, hence 100 or 0\% per comparison: the mean over close comparisons then gives the share of signs recovered. \textbf{In bold}, the mean over close comparisons, the measure without circularity. "
+                r"Sources: \file{sim/analysis/e5_holdout.json} (\file{sim/analysis/e5_holdout.py}), \file{sim/analysis/e5.json} (Table~\ref{tab:e5}).")
+        floattable("e5-hors-echantillon", lang, cap, L(lang, "E5 hors échantillon", "E5 out of sample"),
+                   r"@{}>{\raggedright\arraybackslash}p{6cm}rrr@{}", head, rows, tabcolsep="4pt")
+
+
+def t_regle_tranche():
+    r = J("sim/analysis/rule_calibration.json")
+    for lang in LANGS:
+        head = [L(lang, r"Groupes du même programme & \makecell[r]{IC de $P$\\{}exclut 0,5} & \makecell[r]{IC des IQM\\{}disjoints} & \makecell[r]{L'un ou l'autre\\{}(la règle)} & ",
+                  r"Groups of the same program & \makecell[r]{CI of $P$\\{}excludes 0.5} & \makecell[r]{IQM CIs\\{}disjoint} & \makecell[r]{Either\\{}(the rule)} & ")]
+        t30 = L(lang, r"Les 30 essais de HalfCheetah (E1 et B1), 2\,000 tirages", "The 30 runs on HalfCheetah (E1 and B1), 2,000 draws")
+        tgrid = L(lang, r"La règle à 5 contre 5 sur les seize couples de E2 (graines 0 à 19), 2\,000 tirages", "The rule at 5 against 5 on the sixteen pairs of E2 (seeds 0 to 19), 2,000 draws")
+        rows = [rf"\multicolumn{{5}}{{@{{}}l}}{{\emph{{{t30}}}}}"]
+        for a, an in (("ppo_sb3", "PPO PyTorch"), ("trpo", "TRPO")):
+            for k, fr, en in (("10v10", "10 contre 10", "10 against 10"), ("5v5", "5 contre 5", "5 against 5")):
+                c = r["halfcheetah_30_runs"][a][k]
+                rows.append(" & ".join([rf"\quad {an}, {L(lang, fr, en)}", pct(c["poi_excludes_half"], lang, 1), pct(c["iqm_disjoint"], lang, 1),
+                                        bold(pct(c["either"], lang, 1)), ""]))
+        rows.append("MID")
+        rows.append(rf"\multicolumn{{5}}{{@{{}}l}}{{\emph{{{tgrid}}}}}")
+        rows.append(L(lang, "Programme", "Program") + " & " + " & ".join(T(t) for t in TASKS))
+        rows.append(r"\cmidrule(lr){1-5}")
+        for a in ALGS:
+            rows.append(" & ".join([r"\quad " + ALG[a]] + [pct(r["grid_5v5"][f"{a}/{t}"]["either"], lang, 1) for t in TASKS]))
+        s = r["grid_5v5_summary"]
+        rows.append(L(lang, r"\multicolumn{5}{@{}l}{Médiane ", r"\multicolumn{5}{@{}l}{Median ") + f"{pct(s['median'], lang, 1)} ({pct(s['min'], lang, 1)}{to(lang)}{pct(s['max'], lang, 1)})" + "}")
+        cap = L(lang,
+                r"La règle « tranché » mise à l'épreuve sur de vraies hypothèses nulles (écart 26 de \file{sim/SIM_PROTOCOL.md}, écrit avant ce calcul) : deux groupes disjoints du même programme, où aucune différence n'existe. "
+                r"Sur chaque tirage, intervalle bootstrap percentile de la probabilité d'amélioration et intervalles des deux IQM (2\,000 rééchantillons, chaque groupe rééchantillonné à part, méthode de rliable réécrite en NumPy, \texttt{default\_rng(2026)}). "
+                r"Colonnes : part des tirages où l'intervalle de la probabilité d'amélioration exclut 0,5, où les intervalles des IQM sont disjoints, où l'un ou l'autre se produit (la règle du protocole, \textbf{en gras}). "
+                r"Une règle exacte au niveau de 95~\% se tromperait dans 5~\% des tirages : la règle est un peu libérale à 10 contre 10, nettement à 5 contre 5, et c'est la condition sur la probabilité d'amélioration qui la porte. "
+                r"Source : \file{sim/analysis/rule_calibration.json} (\file{sim/analysis/rule_calibration.py}).",
+                r"The ``settled'' rule tested on true null hypotheses (deviation 26 of \file{sim/SIM_PROTOCOL.md}, written before this computation): two disjoint groups of the same program, where no difference exists. "
+                r"In each draw, the percentile bootstrap interval of the probability of improvement and the intervals of the two IQMs (2,000 resamples, each group resampled separately, rliable's method rewritten in NumPy, \texttt{default\_rng(2026)}). "
+                r"Columns: share of draws where the probability-of-improvement interval excludes 0.5, where the IQM intervals are disjoint, where either holds (the protocol's rule, \textbf{in bold}). "
+                r"An exact rule at the 95\% level would err in 5\% of the draws: the rule is slightly liberal at 10 against 10, clearly so at 5 against 5, and the probability-of-improvement condition carries it. "
+                r"Source: \file{sim/analysis/rule_calibration.json} (\file{sim/analysis/rule_calibration.py}).")
+        floattable("regle-tranche", lang, cap, L(lang, "La règle « tranché » sur des hypothèses nulles", "The settled rule on null hypotheses"),
+                   r"@{}lrrrr@{}", head, rows, tabcolsep="5pt")
+
+
+def sci(x):
+    """A learning rate as siunitx writes it: 3e-4."""
+    m, e = f"{x:.0e}".split("e")
+    return rf"\num{{{m}e{int(e)}}}"
+
+
+def t_hyperparametres():
+    H = J("sim/analysis/hyperparams.json")["programs"]
+    P = ["ppo_sb3", "ppo_sbx", "sac", "crossq", "trpo"]
+    for lang in LANGS:
+        yes, no, auto = L(lang, "oui", "yes"), L(lang, "non", "no"), L(lang, "automatique", "automatic")
+
+        def dec(x):
+            return num(x, lang, len(repr(float(x)).split(".")[1].rstrip("0")))
+
+        def arch(l, act):
+            return ", ".join(str(v) for v in l) + ", " + {"tanh": "tanh", "Tanh": "tanh", "relu": "ReLU"}[act]
+
+        def clip(v):
+            return dec(float(re.search(r"val=([\d.]+)", v).group(1)) if isinstance(v, str) else v)
+        R = []
+
+        def row(fr, en, f):
+            R.append((L(lang, fr, en), [f(p, H[p]) for p in P]))
+        on = lambda *ks: lambda f: (lambda p, h: f(p, h) if p in ks else "")  # noqa: E731
+        ppo, off = ("ppo_sb3", "ppo_sbx"), ("sac", "crossq")
+        row("Taux d'apprentissage", "Learning rate",
+            lambda p, h: sci(h["learning_rate"]) + (L(lang, " (critique)", " (critic)") if p == "trpo" else ""))
+        row(r"Facteur d'actualisation $\gamma$", r"Discount factor $\gamma$", lambda p, h: dec(h["gamma"]))
+        row("Pas collectés par mise à jour", "Steps collected per update",
+            lambda p, h: num(h["n_steps"], lang) if p not in off else str(h["train_freq"][0]))
+        row("Taille des lots", "Batch size", lambda p, h: str(h["batch_size"]))
+        row("Passes sur chaque paquet", "Epochs over each rollout", on(*ppo)(lambda p, h: str(h["n_epochs"])))
+        row(r"Paramètre $\lambda$ de GAE", r"GAE parameter $\lambda$", on(*ppo, "trpo")(lambda p, h: dec(h["gae_lambda"])))
+        row(r"Troncature $\epsilon$", r"Clipping $\epsilon$", on(*ppo)(lambda p, h: clip(h["clip_range"])))
+        row("Avantages normalisés", "Normalised advantages", on(*ppo, "trpo")(lambda p, h: yes if h["normalize_advantage"] else no))
+        row("Coefficient de la perte de valeur", "Value-loss coefficient", on(*ppo)(lambda p, h: dec(h["vf_coef"])))
+        row("Norme maximale du gradient", "Maximum gradient norm", on(*ppo)(lambda p, h: dec(h["max_grad_norm"])))
+        row(r"Contrainte de divergence $\delta$", r"Divergence constraint $\delta$", on("trpo")(lambda p, h: dec(h["target_kl"])))
+        row("Gradient conjugué : pas, amortissement", "Conjugate gradient: steps, damping",
+            on("trpo")(lambda p, h: f"{h['cg_max_steps']}{L(lang, ' ; ', '; ')}{dec(h['cg_damping'])}"))
+        row("Recherche linéaire : facteur, essais", "Line search: factor, tries",
+            on("trpo")(lambda p, h: f"{dec(h['line_search_shrinking_factor'])}{L(lang, ' ; ', '; ')}{h['line_search_max_iter']}"))
+        row("Mises à jour du critique par itération", "Critic updates per iteration", on("trpo")(lambda p, h: str(h["n_critic_updates"])))
+        row("Coefficient d'entropie", "Entropy coefficient",
+            lambda p, h: (dec(h["ent_coef"]) if p in ppo else auto if h.get("ent_coef_init") == "auto" else ""))
+        row("Entropie cible", "Target entropy", on(*off)(lambda p, h: num(h["target_entropy"], lang)))
+        row("Mémoire de rejeu", "Replay buffer", on(*off)(lambda p, h: num(h["buffer_size"], lang)))
+        row("Pas avant d'apprendre", "Steps before learning", on(*off)(lambda p, h: str(h["learning_starts"])))
+        row("Pas de gradient par pas", "Gradient steps per step", on(*off)(lambda p, h: str(h["gradient_steps"])))
+        row(r"Mise à jour des réseaux cibles $\tau$", r"Target network update $\tau$",
+            on(*off)(lambda p, h: dec(h["tau"]) if p == "sac" else L(lang, "sans réseau cible", "no target network")))
+        row("Mises à jour du critique par mise à jour de l'acteur", "Critic updates per actor update",
+            on(*off)(lambda p, h: str(h["policy_delay"])))
+        row("Réseau de la politique", "Policy network",
+            lambda p, h: arch(h["policy"]["net_arch"]["pi"], h["policy"]["activation_fn"]) if p in ("ppo_sb3", "trpo")
+            else arch(h["policy"]["actor"]["net_arch"], h["policy"]["activation_fn"]))
+        row("Réseau de valeur ou critique", "Value or critic network",
+            lambda p, h: arch(h["policy"]["net_arch"]["vf"], h["policy"]["activation_fn"]) if p in ("ppo_sb3", "trpo")
+            else arch(h["policy"]["actor"]["net_arch"], h["policy"]["activation_fn"]) if p == "ppo_sbx"
+            else f"{h['policy']['n_critics']} {L(lang, 'fois', 'times')} " + arch(h["policy"]["qf"]["net_arch"], h["policy"]["activation_fn"]))
+        row("Renormalisation par lots : élan, préchauffage", "Batch renormalisation: momentum, warm-up",
+            on("crossq")(lambda p, h: f"{dec(h['policy']['batch_norm_momentum'])}{L(lang, ' ; ', '; ')}{num(h['policy']['renorm_warmup_steps'], lang)}"
+                         + L(lang, ", acteur et critique", ", actor and critic") * bool(h["policy"]["batch_norm_actor"] and h["policy"]["qf"]["use_batch_norm"])))
+        row("Initialisation orthogonale", "Orthogonal initialisation",
+            on(*ppo, "trpo")(lambda p, h: yes if h["policy"]["ortho_init"] else no))
+        row(r"$\log \sigma$ initial", r"Initial $\log \sigma$", on(*ppo, "trpo")(lambda p, h: dec(h["policy"]["log_std_init"])))
+
+        def opt(p, h):
+            if "optimizer" in h:  # PyTorch: read from the optimiser itself
+                o = h["optimizer"]
+                bs = L(lang, r"\,;\,", r",\,")
+                return rf"Adam, $\beta = ({dec(o['betas'][0])}{bs}{dec(o['betas'][1])})$, $\varepsilon = $ \num{{{o['eps']:.0e}}}"
+            kw = h["policy"]["optimizer_kwargs"]
+            s = L(lang, "Adam d'optax", "optax Adam")
+            if "b1" in kw:
+                s += rf", $\beta_1 = {dec(kw['b1'])}$"
+            if "eps" in kw:
+                s += rf", $\varepsilon = $ \num{{{kw['eps']:.0e}}}"
+            return s if kw else s + L(lang, ", par défaut", ", defaults")
+        row("Optimiseur", "Optimiser", opt)
+        head = [L(lang, "Réglage", "Setting") + " & " + " & ".join(["PPO PyTorch", "PPO JAX", "SAC", "CrossQ", "TRPO"])]
+        rows = [" & ".join([lab] + vals) for lab, vals in R]
+        cap = L(lang,
+                r"Les réglages des cinq programmes, tels qu'ils ont servi : \file{sim/analysis/hyperparams.py} (écart 28 de \file{sim/SIM_PROTOCOL.md}) construit chaque programme sur Hopper-v5 exactement comme \file{sim/run.py} (TRPO sur HalfCheetah-v5), lit les attributs de l'algorithme, de la politique et de l'optimiseur, puis les compare aux paramètres rangés dans un modèle sauvegardé par programme. "
+                r"Ce sont les valeurs par défaut des bibliothèques installées (versions au tableau~\ref{tab:env}) : aucun programme n'a été réglé. Une case vide : le réglage n'existe pas pour cet algorithme, ou il est désactivé. "
+                r"Les réseaux sont des perceptrons multicouches, dont on donne les largeurs des couches cachées et l'activation. CrossQ n'a pas de réseau cible : son $\tau$ existe dans la bibliothèque sans servir. "
+                r"Les deux PPO ont les mêmes réglages d'algorithme, mais pas la même initialisation : dans SBX, l'option orthogonale ne toucherait que la couche de sortie de l'action, dans Stable-Baselines3 elle couvre aussi les couches cachées et la sortie de valeur (écart 34). "
+                r"Source : \file{sim/analysis/hyperparams.json} (\texttt{make hyperparams}).",
+                r"The settings of the five programs as they ran: \file{sim/analysis/hyperparams.py} (deviation 28 of \file{sim/SIM_PROTOCOL.md}) builds each program on Hopper-v5 exactly as \file{sim/run.py} does (TRPO on HalfCheetah-v5), reads the attributes of the algorithm, the policy and the optimiser, then compares them with the parameters stored in one saved model per program. "
+                r"These are the default values of the installed libraries (versions in Table~\ref{tab:env}): no program was tuned. An empty cell: the setting does not exist for that algorithm, or it is switched off. "
+                r"The networks are multilayer perceptrons, given by the widths of their hidden layers and their activation. CrossQ has no target network: its $\tau$ exists in the library but is not used. "
+                r"The two PPOs share the same algorithm settings but not the same initialisation: in SBX the orthogonal option would touch only the action output layer, in Stable-Baselines3 it also covers the hidden layers and the value output (deviation 34). "
+                r"Source: \file{sim/analysis/hyperparams.json} (\texttt{make hyperparams}).")
+        floattable("hyperparametres", lang, cap, L(lang, "Réglages des cinq programmes", "Settings of the five programs"),
+                   r"@{}>{\raggedright\arraybackslash}p{4cm}>{\raggedright\arraybackslash}p{1.95cm}>{\raggedright\arraybackslash}p{1.95cm}"
+                   r">{\raggedright\arraybackslash}p{1.95cm}>{\raggedright\arraybackslash}p{2.05cm}>{\raggedright\arraybackslash}p{1.95cm}@{}",
+                   head, rows, tabcolsep="3.5pt")
+
+
+def t_e6_vitesse():
+    en, hub, sp = J("sim/analysis/e6_enjoy.json"), J("sim/analysis/e6_hub.json"), J("sim/analysis/e6_speed.json")
+    for lang in LANGS:
+        head = [L(lang, r"Agents (Hopper-v4, notre protocole) & \makecell[r]{Retour\\{}médian} & \makecell[r]{Vitesse médiane\\{}(m/s)} & \makecell[r]{Vitesses extrêmes\\{}(m/s)} & \makecell[r]{Agents sans\\{}chute}",
+                  r"Agents (Hopper-v4, our protocol) & \makecell[r]{Median\\{}return} & \makecell[r]{Median speed\\{}(m/s)} & \makecell[r]{Extreme speeds\\{}(m/s)} & \makecell[r]{Agents that\\{}never fall}")]
+        rows = []
+        lab = {"official": L(lang, "Script officiel du Zoo, 10 graines", "Official Zoo script, 10 seeds"),
+               "zoofix": L(lang, "Zoo corrigé, notre code, 10 graines", "Zoo corrected, our code, 10 seeds"),
+               "default": L(lang, "Valeurs par défaut, 10 graines", "Default values, 10 seeds")}
+        for g in ("official", "zoofix", "default"):
+            d = en["groups"][g]
+            runs = d["runs"].values()
+            assert d["all_controls_equal"]
+            rows.append(" & ".join([lab[g], num(statistics.median(r["mean_return"] for r in runs), lang),
+                                    num(d["median_speed"], lang, 2), f"{num(d['min_speed'], lang, 2)}{to(lang)}{num(d['max_speed'], lang, 2)}",
+                                    f"{sum(r['share_full_length'] == 1 for r in runs)}/{len(d['runs'])}"]))
+        rows.append(" & ".join([L(lang, r"\texttt{sb3/ppo-Hopper-v3} publié par le Zoo, 100 épisodes", r"\texttt{sb3/ppo-Hopper-v3} published by the Zoo, 100 episodes"),
+                                f"{num(hub['score_100_episodes'], lang)} ± {num(hub['sd_100'], lang)}", num(hub["mean_x_velocity_100"], lang, 2), "",
+                                L(lang, "1/1", "1/1") if hub["share_full_length_100"] == 1 else ""]))
+        mc = hub["model_card_results"]
+        s = sp["summary"]
+        cap = L(lang,
+                r"Expérience E6, ce que font les agents de la recette publiée (écarts 31 et 33 de \file{sim/SIM_PROTOCOL.md}, écrits avant ces calculs). Sur Hopper, la récompense d'un pas est la vitesse vers l'avant, plus 1 tant que le robot reste debout, moins un petit coût d'action : un retour d'environ 1\,000 sur 1\,000 pas est celui d'un robot debout qui n'avance pas. "
+                rf"Les politiques finales rejouées avec notre protocole (10 épisodes déterministes, graines d'évaluation 10\,000 à 10\,009, normalisation figée) ; les retours redonnent exactement ceux de \file{{e6\_official\_eval.json}} (contrôle). Vitesse : moyenne de \texttt{{x\_velocity}} sur l'épisode, puis moyenne des épisodes ; agents sans chute : les dix épisodes vont aux 1\,000 pas. "
+                rf"Dernière ligne : l'agent que le Zoo a publié sur Hugging Face, entraîné en 2022 avec Stable-Baselines3 1.5.1a8 et Gym 0.21, avec nos réglages ; sa fiche annonce {num(mc['mean_reward'], lang)} ± {num(mc['std_reward'], lang)} sur 10 épisodes, notre protocole donne {num(hub['score_10_episodes'], lang)} sur 10 épisodes. "
+                rf"Les journaux d'entraînement officiels disent la même chose : retour par pas des épisodes complets, médiane des graines {num(s['return_per_step_median_of_seeds'], lang, 3)} (de {num(s['range'][0], lang, 3)}{to(lang)}{num(s['range'][1], lang, 3)}). "
+                r"Sources : \file{sim/analysis/e6_enjoy.json}, \file{e6_hub.json}, \file{e6_speed.json}.",
+                r"Experiment E6, what the agents of the published recipe do (deviations 31 and 33 of \file{sim/SIM_PROTOCOL.md}, written before these computations). On Hopper, the reward of a step is the forward velocity, plus 1 while the robot stays upright, minus a small action cost: a return of about 1,000 over 1,000 steps is that of a robot standing still. "
+                rf"The final policies replayed with our protocol (10 deterministic episodes, evaluation seeds 10,000 to 10,009, frozen normalisation); the returns match those of \file{{e6\_official\_eval.json}} exactly (control). Speed: mean of \texttt{{x\_velocity}} over the episode, then mean of the episodes; agents that never fall: all ten episodes reach 1,000 steps. "
+                rf"Last row: the agent the Zoo published on Hugging Face, trained in 2022 with Stable-Baselines3 1.5.1a8 and Gym 0.21, with our settings; its model card states {num(mc['mean_reward'], lang)} ± {num(mc['std_reward'], lang)} over 10 episodes, our protocol gives {num(hub['score_10_episodes'], lang)} over 10 episodes. "
+                rf"The official training logs say the same: return per step of the full-length episodes, median over seeds {num(s['return_per_step_median_of_seeds'], lang, 3)} (from {num(s['range'][0], lang, 3)}{to(lang)}{num(s['range'][1], lang, 3)}). "
+                r"Sources: \file{sim/analysis/e6_enjoy.json}, \file{e6_hub.json}, \file{e6_speed.json}.")
+        floattable("e6-vitesse", lang, cap, L(lang, "E6 : la vitesse des agents", "E6: the agents' speed"),
+                   r"@{}>{\raggedright\arraybackslash}p{5.6cm}rrrr@{}", head, rows, tabcolsep="4pt")
+
+
+CRIT_ALL = ["Q2", "Q3", "Q4", "Q5", "Q6", "Q7", "Q8", "X2", "X3", "X4", "X7"] + [f"Y{i}" for i in range(1, 13)]
+
+
+def t_accord_intervalles():
+    dr = J("study/survey_extra.json")["double_readings"]
+    po = dr["pooled"]
+    for lang in LANGS:
+        head = [L(lang, r"Code & Critère & accord & \% [Wilson 95~\%] & $\kappa$ [IC 95~\%]",
+                  r"Code & Criterion & agree & \% [95\% Wilson] & $\kappa$ [95\% CI]")]
+        rows = []
+        for k in CRIT_ALL:
+            c = po[k]
+            weak = c["kappa"] is not None and c["kappa"] < 0.7
+            kap = "" if c["kappa"] is None else f"{num(c['kappa'], lang, 2)} {ci2(c['kappa_boot95'], lang)}"
+            cells = [k, CRIT[k][0 if lang == "fr" else 1], kn(c["same"], c["n"]),
+                     f"{pc(c['agree'], lang)} {iv(pc(c['wilson'][0], lang), pc(c['wilson'][1], lang), lang)}", kap]
+            rows.append(" & ".join(bold(x, weak) for x in cells))
+            if k in ("Q8", "X7"):
+                rows.append("MID")
+        verdict = ["Q5", "Y9", "X7", "X2"]
+        vs, vn = sum(po[k]["same"] for k in verdict), sum(po[k]["n"] for k in verdict)
+        pairs = {g: len(v["papers"]) for g, v in dr["pairs"].items()}
+        cap = L(lang,
+                rf"Accord des doubles lectures à l'aveugle, toutes paires réunies, avec ses intervalles (écart 30 (a) de \file{{study/PROTOCOL.md}}, écrit avant ce calcul). {dr['papers']} articles relus : G et G2, les mêmes {pairs['G']} articles de 2026 avec les deux grilles ; R2, {pairs['R2']} articles ajoutés (5 de 2018, 5 de 2026) ; R3, {pairs['R3']} articles de la trajectoire. "
+                rf"Accord : décisions identiques sur les articles où les deux lecteurs ont répondu ; intervalle de Wilson à 95~\% ; kappa de Cohen avec un intervalle bootstrap percentile (vide quand un lecteur ne varie pas). "
+                rf"Sur les quatre critères qui portent un verdict (Q5, Y9, X7, X2), {vs} décisions identiques sur {vn}. \textbf{{En gras}}, les critères dont le kappa reste sous 0,70. "
+                r"Avec dix articles par paire, 9 sur 10 a pour intervalle [60\,;\,98]~\% : l'accord d'une paire seule borne mal la fiabilité. Source : \file{study/survey_extra.json} (\file{study/survey_extra.py}).",
+                rf"Agreement of the blind double readings, all pairs pooled, with its intervals (deviation 30 (a) of \file{{study/PROTOCOL.md}}, written before this computation). {dr['papers']} papers reread: G and G2, the same {pairs['G']} papers of 2026 with both grids; R2, {pairs['R2']} added papers (5 from 2018, 5 from 2026); R3, {pairs['R3']} papers of the trajectory. "
+                rf"Agree: identical decisions over the papers where both readers answered; 95\% Wilson interval; Cohen's kappa with a percentile bootstrap interval (blank when one reader does not vary). "
+                rf"On the four criteria that carry a verdict (Q5, Y9, X7, X2), {vs} identical decisions out of {vn}. \textbf{{In bold}}, the criteria whose kappa stays under 0.70. "
+                r"With ten papers per pair, 9 out of 10 has the interval [60,\,98]\%: one pair's agreement bounds reliability poorly. Source: \file{study/survey_extra.json} (\file{study/survey_extra.py}).")
+        floattable("accord-intervalles", lang, cap, L(lang, "Accord des doubles lectures, avec intervalles", "Agreement of the double readings, with intervals"),
+                   r"@{}l>{\raggedright\arraybackslash}p{5.5cm}rrr@{}", head, rows, tabcolsep="4pt")
+
+
+def t_difference_detectable():
+    m = J("study/survey_extra.json")["mde"]
+    ext = {r["k"]: r for r in J("study/extension_stats.json")["rows"]}
+    for lang in LANGS:
+        none = L(lang, "aucune", "none")
+
+        def md(x, sgn):
+            return none if x is None else pc(sgn * x, lang, sign=True)
+        head = [L(lang, r" & & & & \multicolumn{2}{c}{Au seuil de 5~\%} & \multicolumn{2}{c}{\makecell{Bonferroni\\{}(5~\%/11)}} & \multicolumn{2}{c}{\makecell{Puissance de\\{}l'écart vu}}",
+                  r" & & & & \multicolumn{2}{c}{\makecell{At the\\{}5\% level}} & \multicolumn{2}{c}{\makecell{Bonferroni\\{}(5\%/11)}} & \multicolumn{2}{c}{\makecell{Power of\\{}the gap seen}}"),
+                r"\cmidrule(lr){5-6}\cmidrule(lr){7-8}\cmidrule(lr){9-10}",
+                L(lang, r"Code & Critère & 2018 (\%) & écart vu & hausse & baisse & hausse & baisse & 5~\% & Bonf.",
+                  r"Code & Criterion & 2018 (\%) & gap seen & rise & fall & rise & fall & 5\% & Bonf.")]
+        rows = []
+        for k in CRIT_ALL:
+            c = m[k]
+            hit = ext[k]["classic_vs_ours2018"]["p_holm"] < 0.05 and k != "Q2"
+            cells = [k, CRIT[k][0 if lang == "fr" else 1], pc(c["base"], lang), pc(c["observed"], lang, sign=True),
+                     md(c["up_5"], 1), md(c["down_5"], -1), md(c["up_bonf"], 1), md(c["down_bonf"], -1),
+                     pc(c["power_observed_5"], lang), pc(c["power_observed_bonf"], lang)]
+            rows.append(" & ".join(bold(x, hit) for x in cells))
+            if k in ("Q8", "X7"):
+                rows.append("MID")
+        q7 = m["Q7"]
+        cap = L(lang,
+                r"Plus petite différence que le sondage pouvait détecter (écart 30 (b) de \file{study/PROTOCOL.md}, écrit avant ce calcul) : pour chaque critère, partant de la part de 2018 et des effectifs réels, la plus petite hausse et la plus petite baisse, en points, que le test exact de Fisher bilatéral détecte avec 80~\% de puissance, au seuil de 5~\% puis de 5~\%/11 (Bonferroni sur les onze critères v1) ; « aucune » : aucune variation possible n'atteint cette puissance. "
+                rf"À droite, la puissance qu'avait le test pour l'écart effectivement vu. \textbf{{En gras}}, les quatre critères dont l'écart passe la correction de Holm (tableau~\ref{{tab:sondage-pineau}}) : tous dépassent la différence détectable. "
+                rf"Ailleurs, l'absence de changement détecté n'est pas une preuve d'absence : la hausse de Q7 ({pc(q7['observed'], lang, sign=True)} points) n'avait que {pct(q7['power_observed_5'], lang)} de chances d'être vue au seuil de 5~\%. "
+                r"Source : \file{study/survey_extra.json} (\file{study/survey_extra.py}).",
+                r"Smallest difference the survey could detect (deviation 30 (b) of \file{study/PROTOCOL.md}, written before this computation): for each criterion, starting from the 2018 share and the real sample sizes, the smallest rise and the smallest fall, in points, that the two-sided exact Fisher test detects with 80\% power, at the 5\% level then at 5\%/11 (Bonferroni over the eleven v1 criteria); ``none'': no possible change reaches that power. "
+                rf"On the right, the power the test had for the gap actually seen. \textbf{{In bold}}, the four criteria whose gap passes the Holm correction (Table~\ref{{tab:sondage-pineau}}): all exceed the detectable difference. "
+                rf"Elsewhere, no change detected is no proof of no change: the rise of Q7 ({pc(q7['observed'], lang, sign=True)} points) had only a {pct(q7['power_observed_5'], lang)} chance of being seen at the 5\% level. "
+                r"Source: \file{study/survey_extra.json} (\file{study/survey_extra.py}).")
+        floattable("difference-detectable", lang, cap, L(lang, "Plus petite différence détectable", "Minimum detectable difference"),
+                   r"@{}l>{\raggedright\arraybackslash}p{4.2cm}rrrrrrrr@{}", head, rows, tabcolsep="3.2pt")
+
+
+RULE = {"none": ("aucun changement", "no change"), "ambiguous": ("ambigu", "ambiguous"),
+        "changed, not confirmed": ("changé, non confirmé", "changed, not confirmed"),
+        "changed and confirmed": ("changé et confirmé", "changed and confirmed")}
+
+
+def t_regle_origine():
+    o = J("study/survey_extra.json")["original_rule"]
+    for lang in LANGS:
+        head = [L(lang, r" & & \multicolumn{2}{c}{Contre Pineau (2018)} & \multicolumn{2}{c}{Contre notre lecture de 2018} & ",
+                  r" & & \multicolumn{2}{c}{Against Pineau (2018)} & \multicolumn{2}{c}{Against our reading of 2018} & "),
+                r"\cmidrule(lr){3-4}\cmidrule(lr){5-6}",
+                L(lang, r"Critère & 2026 & écart [Newcombe] & $p$ Holm & écart [Newcombe] & $p$ Holm & Verdict",
+                  r"Criterion & 2026 & gap [Newcombe] & Holm $p$ & gap [Newcombe] & Holm $p$ & Verdict")]
+        rows = []
+        for s, fr, en in (("classic2026", "RL classique 2026 (échantillon des verdicts)", "Classical RL 2026 (the verdicts' sample)"),
+                          ("all2026", "Premier tirage 2026, grands modèles compris", "First 2026 draw, large models included")):
+            rows.append(rf"\multicolumn{{7}}{{@{{}}l}}{{\emph{{{L(lang, fr, en)}}}}}")
+            for k, c in o[s].items():
+                cells = [rf"\quad {k}", kn(*c["share"]), diff_cell(c["vs_pineau"], lang), pval(c["vs_pineau"]["p_holm"], lang),
+                         diff_cell(c["vs_ours2018"], lang), pval(c["vs_ours2018"]["p_holm"], lang), RULE[c["rule"]][0 if lang == "fr" else 1]]
+                rows.append(" & ".join(bold(x, c["rule"] != "none") for x in cells))
+            if s == "classic2026":
+                rows.append("MID")
+        cap = L(lang,
+                r"Ce qu'aurait donné la règle de verdict d'origine (écart 7 de \file{study/PROTOCOL.md}), remplacée ensuite par la comparaison à grille égale (écart 20) ; calcul de l'écart 30 (c), écrit avant lui. "
+                r"La règle compare chaque critère de Pineau à ses chiffres de 2018 et à notre lecture de 2018 : « changé et confirmé » quand les deux écarts passent Holm dans le même sens, « changé, non confirmé » quand seul l'écart à Pineau passe, « ambigu » quand seul l'écart à notre lecture passe, « aucun changement » sinon. "
+                r"Écarts en points, 2026 moins 2018, intervalle de Newcombe à 95~\%, test exact de Fisher, Holm sur les six critères. \textbf{En gras}, les critères qui reçoivent un autre verdict qu'« aucun changement ». "
+                r"Source : \file{study/survey_extra.json} (\file{study/survey_extra.py}).",
+                r"What the original verdict rule (deviation 7 of \file{study/PROTOCOL.md}), later replaced by the same-grid comparison (deviation 20), would have given; computation of deviation 30 (c), written before it. "
+                r"The rule compares each of Pineau's criteria with her 2018 figures and with our reading of 2018: ``changed and confirmed'' when both gaps pass Holm in the same direction, ``changed, not confirmed'' when only the gap to Pineau passes, ``ambiguous'' when only the gap to our reading passes, ``no change'' otherwise. "
+                r"Gaps in points, 2026 minus 2018, 95\% Newcombe interval, Fisher's exact test, Holm over the six criteria. \textbf{In bold}, the criteria that receive a verdict other than ``no change''. "
+                r"Source: \file{study/survey_extra.json} (\file{study/survey_extra.py}).")
+        floattable("regle-origine", lang, cap, L(lang, "La règle de verdict d'origine", "The original verdict rule"),
+                   r"@{}lrrrrrl@{}", head, rows, tabcolsep="3.5pt")
+
+
+Q5R = {"P0": ("Lecture publiée", "As published"),
+       "P1": ("Les deux années sur les actes", "Both years on the proceedings"),
+       "P1_bound": ("\\quad borne : incertains comptés oui", "\\quad bound: uncertain counted yes"),
+       "P2": ("Les deux années sur la dernière version arXiv", "Both years on the latest arXiv version"),
+       "P2_bound": ("\\quad borne : incertains comptés oui", "\\quad bound: uncertain counted yes"),
+       "P3": ("Code disponible à la conférence", "Code available at the conference"),
+       "P3_bound": ("\\quad borne : incertains oui, dépôts sans date non", "\\quad bound: uncertain yes, undated repositories no")}
+
+
+def t_q5_versions():
+    q = J("study/q5_versions.json")
+    for lang in LANGS:
+        head = [L(lang, r"Lecture de Q5 & 2018 & 2026 & écart [Newcombe] & $p$ & $p$ Holm & Articles qui changent",
+                  r"Reading of Q5 & 2018 & 2026 & gap [Newcombe] & $p$ & Holm $p$ & Papers that change")]
+        rows = []
+        for k, (fr, en) in Q5R.items():
+            r = q["readings"][k]
+            ch = r["changed"]
+            chs = L(lang, " ; ", "; ").join(f"{y} : {', '.join(v)}" if lang == "fr" else f"{y}: {', '.join(v)}" for y, v in ch.items() if v)
+            cells = [L(lang, fr, en), kn(*r["ours2018"]), kn(*r["classic2026"]), diff_cell(r, lang), pval(r["p"], lang), pval(r["p_holm"], lang), chs]
+            rows.append(" & ".join(cells))
+        cv, rp = q["coverage"], q["repositories"]
+        cap = L(lang,
+                rf"Q5 (code en lien) selon la version de l'article lue (écart 31 de \file{{study/PROTOCOL.md}}, écrit avant ce calcul). {len(cv['2018_arxiv_found'])} des {cv['2018_no']} « non » de 2018 retrouvés sur arXiv (dernière version), {len(cv['2026_proc_found'])} articles de 2026 retrouvés dans les actes ; les occurrences douteuses tranchées par un arbitre neuf à l'aveugle, l'incertain compté non puis, pour la borne, oui. "
+                rf"Code disponible à la conférence : un « oui » dont tous les dépôts GitHub ont été créés après le dernier jour de la conférence devient « non » ({rp['n']} dépôts datés ; un seul créé après, {', '.join(rp['created_after']['2018'])}). "
+                r"Écart en points, 2026 moins 2018, intervalle de Newcombe à 95~\%, test exact de Fisher, Holm sur les onze critères v1. Le verdict de Q5 tient dans chaque lecture, la plus défavorable comprise. "
+                r"Source : \file{study/q5_versions.json} (\file{study/q5_versions_stats.py}).",
+                rf"Q5 (code linked) according to the version of the paper read (deviation 31 of \file{{study/PROTOCOL.md}}, written before this computation). {len(cv['2018_arxiv_found'])} of the {cv['2018_no']} 2018 ``no'' found on arXiv (latest version), {len(cv['2026_proc_found'])} papers of 2026 found in the proceedings; doubtful occurrences settled by a fresh blind arbiter, uncertain counted no and, for the bound, yes. "
+                rf"Code available at the conference: a ``yes'' whose GitHub repositories were all created after the conference's last day turns ``no'' ({rp['n']} repositories dated; only one created after, {', '.join(rp['created_after']['2018'])}). "
+                r"Gap in points, 2026 minus 2018, 95\% Newcombe interval, Fisher's exact test, Holm over the eleven v1 criteria. The Q5 verdict holds in every reading, the least favourable included. "
+                r"Source: \file{study/q5_versions.json} (\file{study/q5_versions_stats.py}).")
+        floattable("q5-versions", lang, cap, L(lang, "Q5 selon la version lue", "Q5 by version read"),
+                   r"@{}>{\raggedright\arraybackslash}p{4.6cm}rrrrr>{\raggedright\arraybackslash}p{3.3cm}@{}", head, rows, tabcolsep="3.2pt")
+
+
+SRC_X8 = {"seeds": ("graines", "seeds"), "unstated": ("non dit", "not stated"), "items": ("éléments de test", "test items"),
+          "other": ("autre", "other"), "pooled": ("graines et épisodes mêlés", "seeds and episodes pooled"),
+          "episodes": ("épisodes", "episodes")}
+
+
+def t_x8():
+    x = J("study/x8_stats.json")
+    ext = {r["k"]: r for r in J("study/extension_stats.json")["rows"]}
+    lb = J("study/survey_extra.json")["seeds_lower_bound"]
+    for lang in LANGS:
+        def share(k, n, w):
+            return f"{kn(k, n)} & {pc(k / n, lang)} {iv(pc(w[0], lang), pc(w[1], lang), lang)}"
+        head = [L(lang, r" & \multicolumn{2}{c}{2018} & \multicolumn{2}{c}{2026} & & ", r" & \multicolumn{2}{c}{2018} & \multicolumn{2}{c}{2026} & & "),
+                r"\cmidrule(lr){2-3}\cmidrule(lr){4-5}",
+                L(lang, r"Mesure & $k/n$ & \% [Wilson] & $k/n$ & \% [Wilson] & écart [Newcombe] & $p$",
+                  r"Measure & $k/n$ & \% [Wilson] & $k/n$ & \% [Wilson] & gap [Newcombe] & $p$")]
+        rows = []
+        r2 = ext["X2"]
+        rows.append(" & ".join([L(lang, "X2, incertitude rapportée", "X2, uncertainty reported"),
+                                share(*r2["ours2018"], r2["wilson_ours2018"]), share(*r2["classic2026"], r2["wilson_classic2026"]),
+                                diff_cell(r2["classic_vs_ours2018"], lang), pval(r2["classic_vs_ours2018"]["p"], lang)]))
+        m = x["main"]
+        c18, c26 = m["counts"]["2018"], m["counts"]["2026"]
+        rows.append(" & ".join([bold(L(lang, "X8, incertitude calculée sur des graines", "X8, uncertainty computed over seeds")),
+                                share(c18["yes"], c18["n"], c18["wilson"]), share(c26["yes"], c26["n"], c26["wilson"]),
+                                bold(diff_cell(m["diff"], lang)), bold(pval(m["diff"]["p"], lang))]))
+        rows.append(" & ".join([L(lang, r"\quad parmi les articles X2 oui", r"\quad among X2 yes papers"),
+                                share(c18["yes"], c18["x2_yes"], c18["wilson_of_x2"]), share(c26["yes"], c26["x2_yes"], c26["wilson_of_x2"]),
+                                diff_cell(m["diff_among_x2"], lang), pval(m["diff_among_x2"]["p"], lang)]))
+        pq = x["pooled_yes"]
+        p18, p26 = pq["counts"]["2018"], pq["counts"]["2026"]
+        rows.append(" & ".join([L(lang, r"\quad graines et épisodes mêlés comptés oui", r"\quad seeds and episodes pooled counted yes"),
+                                share(p18["yes"], p18["n"], p18["wilson"]), share(p26["yes"], p26["n"], p26["wilson"]),
+                                diff_cell(pq["diff"], lang), pval(pq["diff"]["p"], lang)]))
+        l18, l26 = lb["2018"], lb["2026"]
+        rows.append(" & ".join([L(lang, r"\quad borne mécanique (citation qui nomme des graines)", r"\quad mechanical bound (a quote naming seeds)"),
+                                share(l18["seeds"], l18["experimental"], l18["wilson_of_experimental"]),
+                                share(l26["seeds"], l26["experimental"], l26["wilson_of_experimental"]),
+                                diff_cell(lb["diff_experimental"], lang), pval(lb["diff_experimental"]["p"], lang)]))
+        rows.append("MID")
+        rows.append(rf"\multicolumn{{7}}{{@{{}}l}}{{\emph{{{L(lang, 'Sur quoi porte l’incertitude des articles X2 oui', 'What the uncertainty of the X2 yes papers is computed over')}}}}}")
+        so = x["sources"]
+        for k in sorted(SRC_X8, key=lambda k: -so["2026"].get(k, 0)):
+            rows.append(" & ".join([r"\quad " + SRC_X8[k][0 if lang == "fr" else 1], str(so["2018"].get(k, 0)), "", str(so["2026"].get(k, 0)), "", "", ""]))
+        dd = x["double_reading"]["all"]
+        cap = L(lang,
+                rf"Nouveau critère X8 (écart 32 de \file{{study/PROTOCOL.md}}, écrit avant toute lecture) : parmi les articles expérimentaux, ceux dont l'incertitude rapportée est calculée sur des graines (des entraînements indépendants). Les {c18['x2_yes'] + c26['x2_yes']} articles X2 oui lus par huit agents neufs, chacun lecteur principal sur les deux années, ce qui défait la confusion entre lecteur et année pour ce critère ; {dd['n']} articles lus deux fois, {dd['same']} accords (kappa {num(dd['kappa'], lang, 2)}). "
+                rf"Écart en points, 2026 moins 2018, intervalle de Newcombe à 95~\%, test exact de Fisher ; $p$ Holm sur douze critères : {pval(m['p_holm_12'], lang)}. \textbf{{En gras}}, la mesure principale. "
+                r"La borne mécanique de l'écart 30 (e) compte les articles dont une citation nomme des graines : plus large que X8, car une citation qui nomme des graines ne rattache pas la barre d'erreur à elles. "
+                r"Partie basse : la source de l'incertitude des articles X2 oui, par année ; « non dit » : l'article ne dit pas sur quoi porte sa barre. "
+                r"Sources : \file{study/x8_stats.json} (\file{study/x8_stats.py}), \file{study/extension_stats.json}, \file{study/survey_extra.json}.",
+                rf"New criterion X8 (deviation 32 of \file{{study/PROTOCOL.md}}, written before any reading): among the experimental papers, those whose reported uncertainty is computed over seeds (independent training runs). The {c18['x2_yes'] + c26['x2_yes']} X2 yes papers read by eight fresh agents, each a primary reader on both years, which undoes the confound between reader and year for this criterion; {dd['n']} papers read twice, {dd['same']} agreements (kappa {num(dd['kappa'], lang, 2)}). "
+                rf"Gap in points, 2026 minus 2018, 95\% Newcombe interval, Fisher's exact test; Holm $p$ over twelve criteria: {pval(m['p_holm_12'], lang)}. \textbf{{In bold}}, the main measure. "
+                r"The mechanical bound of deviation 30 (e) counts the papers where a quote names seeds: wider than X8, since a quote that names seeds does not tie the error bar to them. "
+                r"Bottom part: the source of the uncertainty of the X2 yes papers, per year; ``not stated'': the paper does not say what its bar is computed over. "
+                r"Sources: \file{study/x8_stats.json} (\file{study/x8_stats.py}), \file{study/extension_stats.json}, \file{study/survey_extra.json}.")
+        floattable("x8", lang, cap, L(lang, "X8 : l'incertitude calculée sur des graines", "X8: uncertainty computed over seeds"),
+                   r"@{}>{\raggedright\arraybackslash}p{4.6cm}rrrrrr@{}", head, rows, tabcolsep="3.2pt")
+
+
+GMOD = {"qwen05": ("Qwen2.5 0,5B", "Qwen2.5 0.5B"), "llama1": ("Llama 3.2 1B", "Llama 3.2 1B")}
+GMEAS = {"pass1": ("pass@1 (échantillonné)", "pass@1 (sampled)"), "greedy": ("justesse gloutonne", "greedy accuracy"),
+         "pass8": ("pass@8", "pass@8"), "truncated": ("part coupée", "cut-off share"),
+         "finished": ("justesse des réponses finies", "accuracy of finished answers")}
+
+
+def t_grpo_mesures():
+    g = J("sim/llm/results/logs_stats_5.json")["gains"]
+    for lang in LANGS:
+        head = [L(lang, r"Mesure & \makecell[r]{pas 0\\{}(\%)} & \makecell[r]{pas 100\\{}(\%)} & \makecell[r]{gain\\{}(pts)} & \makecell[r]{IC percentile\\{}(bootstrap)} & IC de Student & \makecell[r]{graines\\{}en hausse} & \makecell[r]{$p$\\{}signe}",
+                  r"Measure & \makecell[r]{step 0\\{}(\%)} & \makecell[r]{step 100\\{}(\%)} & \makecell[r]{gain\\{}(pts)} & \makecell[r]{percentile CI\\{}(bootstrap)} & Student CI & \makecell[r]{seeds\\{}going up} & \makecell[r]{sign\\{}$p$}")]
+        rows = []
+        for m in ("qwen05", "llama1"):
+            for rew in ("true", "random"):
+                n = len(g[f"{m} {rew} pass1"]["gains"])
+                rows.append(rf"\multicolumn{{8}}{{@{{}}l}}{{\emph{{{GMOD[m][0 if lang == 'fr' else 1]}, {L(lang, 'vraie récompense' if rew == 'true' else 'récompense à pile ou face', 'true reward' if rew == 'true' else 'coin-flip reward')}, {n} {L(lang, 'graines', 'seeds')}}}}}")
+                for meas in GMEAS:
+                    d = g[f"{m} {rew} {meas}"]
+                    t_ex = d["ci_t"][0] > 0 or d["ci_t"][1] < 0
+                    cells = [r"\quad " + GMEAS[meas][0 if lang == "fr" else 1], pc(d["start"], lang, 1), pc(d["end"], lang, 1), gpts(d["mean"], lang),
+                             iv(gpts(d["ci_boot"][0], lang), gpts(d["ci_boot"][1], lang), lang),
+                             bold(iv(gpts(d["ci_t"][0], lang), gpts(d["ci_t"][1], lang), lang), t_ex),
+                             f"{d['positive']}/{len(d['gains'])}", pval(d["p_sign"], lang)]
+                    rows.append(" & ".join(cells))
+                if (m, rew) != ("llama1", "random"):
+                    rows.append(r"\addlinespace")
+        cap = L(lang,
+                r"Volet GRPO, cinq mesures tirées des journaux des essais déjà faits (écart 19 de \file{sim/llm/LLM_PROTOCOL.md}, écrit avant ce calcul) : pass@1 échantillonné (la mesure préregistrée), justesse gloutonne, pass@8, part des réponses coupées à 160 jetons, justesse parmi les réponses finies (pass@1 divisé par la part non coupée, une réponse coupée n'étant jamais juste). "
+                r"Niveaux moyens au pas 0 et au pas 100, en pourcentage ; gain moyen par graine en points, avec l'intervalle bootstrap percentile du protocole et l'intervalle de Student, plus large et plus honnête avec cinq graines ; graines dont le gain est positif ; $p$ du test exact du signe. "
+                r"\textbf{En gras}, les intervalles de Student qui excluent zéro. Règle fixée d'avance : un gain n'est établi que si l'intervalle de Student exclut zéro et si le $p$ exact corrigé par Holm passe 0,05 ; avec cinq graines, le test du signe ne descend jamais sous $2/32 = 0{,}0625$, si bien qu'aucun gain dans une configuration ne peut être établi. "
+                r"Source : \file{sim/llm/results/logs_stats_5.json} (\file{sim/llm/logs_stats.py}).",
+                r"GRPO strand, five measures drawn from the logs of the runs already made (deviation 19 of \file{sim/llm/LLM_PROTOCOL.md}, written before this computation): sampled pass@1 (the preregistered measure), greedy accuracy, pass@8, share of answers cut off at 160 tokens, accuracy among finished answers (pass@1 divided by the share not cut off, a cut-off answer never being right). "
+                r"Mean levels at step 0 and step 100, in percent; mean gain per seed in points, with the protocol's percentile bootstrap interval and the Student interval, wider and more honest with five seeds; seeds whose gain is positive; $p$ of the exact sign test. "
+                r"\textbf{In bold}, Student intervals that exclude zero. Rule fixed in advance: a gain is established only if the Student interval excludes zero and the Holm-corrected exact $p$ passes 0.05; with five seeds the sign test never goes below $2/32 = 0.0625$, so no gain within a configuration can be established. "
+                r"Source: \file{sim/llm/results/logs_stats_5.json} (\file{sim/llm/logs_stats.py}).")
+        floattable("grpo-mesures", lang, cap, L(lang, "GRPO : cinq mesures par configuration", "GRPO: five measures per configuration"),
+                   r"@{}lrrrrrrr@{}", head, rows, tabcolsep="3.2pt")
+
+
+def t_grpo_contraste():
+    c = J("sim/llm/results/logs_stats_5.json")["contrasts"]
+    for lang in LANGS:
+        head = [L(lang, r"Mesure & \makecell[r]{vraie $-$ hasard\\{}(pts)} & IC de Welch 95~\% & \makecell[r]{$p$ permutation\\{}exacte} & $p$ Holm & Statut",
+                  r"Measure & \makecell[r]{true $-$ random\\{}(pts)} & 95\% Welch CI & \makecell[r]{exact\\{}permutation $p$} & Holm $p$ & Status")]
+        rows = []
+        for m in ("qwen05", "llama1"):
+            d0 = c[f"{m} pass1"]
+            rows.append(rf"\multicolumn{{6}}{{@{{}}l}}{{\emph{{{GMOD[m][0 if lang == 'fr' else 1]}, {d0['n_true']} {L(lang, 'graines contre', 'seeds against')} {d0['n_random']}}}}}")
+            for meas in GMEAS:
+                d = c[f"{m} {meas}"]
+                ph = d.get("p_holm_main", d.get("p_holm_finished", d.get("p_holm_secondary")))
+                est = d.get("established")
+                status = "" if est is None else (L(lang, "établi", "established") if est else L(lang, "non établi", "not established"))
+                star = "$^*$" if "p_holm_main" in d else ""
+                cells = [r"\quad " + GMEAS[meas][0 if lang == "fr" else 1] + star, gpts(d["diff"], lang),
+                         iv(gpts(d["ci_welch"][0], lang), gpts(d["ci_welch"][1], lang), lang), pval(d["p_perm"], lang), pval(ph, lang), status]
+                rows.append(" & ".join(bold(x, bool(est)) for x in cells))
+            if m == "qwen05":
+                rows.append("MID")
+        cap = L(lang,
+                r"Volet GRPO, la comparaison que le protocole demande : gain moyen sous la vraie récompense moins gain moyen sous la récompense tirée à pile ou face, par modèle et par mesure (écart 19 de \file{sim/llm/LLM_PROTOCOL.md}). "
+                r"Intervalle de Welch à 95~\%, $p$ de la permutation exacte des graines entre les deux récompenses (toutes les partitions), correction de Holm : sur les deux modèles pour pass@1 (contraste principal, $^*$) et pour la justesse des réponses finies, sur les huit contrastes secondaires pour les autres mesures. "
+                r"Établi : intervalle qui exclut zéro et $p$ Holm sous 0,05 ; \textbf{en gras}. Pour Llama, la vraie récompense fait mieux que le hasard parce que la récompense à pile ou face détruit le modèle, pas parce que la vraie récompense le fait progresser (tableau~\ref{tab:grpo-mesures}). "
+                r"Source : \file{sim/llm/results/logs_stats_5.json} (\file{sim/llm/logs_stats.py}).",
+                r"GRPO strand, the comparison the protocol asks for: mean gain under the true reward minus mean gain under the coin-flip reward, per model and per measure (deviation 19 of \file{sim/llm/LLM_PROTOCOL.md}). "
+                r"95\% Welch interval, $p$ of the exact permutation of seeds between the two rewards (every split), Holm correction: over the two models for pass@1 (the main contrast, $^*$) and for the accuracy of finished answers, over the eight secondary contrasts for the other measures. "
+                r"Established: interval that excludes zero and Holm $p$ under 0.05; \textbf{in bold}. For Llama, the true reward beats the coin flip because the coin-flip reward destroys the model, not because the true reward makes it progress (Table~\ref{tab:grpo-mesures}). "
+                r"Source: \file{sim/llm/results/logs_stats_5.json} (\file{sim/llm/logs_stats.py}).")
+        floattable("grpo-contraste", lang, cap, L(lang, "GRPO : vraie récompense contre pile ou face", "GRPO: true reward against coin flip"),
+                   r"@{}lrrrrl@{}", head, rows, tabcolsep="3.5pt")
+
+
 def main():
     for f in (t_sondage, t_sondage_lrl, t_trajectoire, t_accord, t_robustesse, t_e1, t_b1, t_e2, t_e2_bonferroni, t_e3,
-              t_e4, t_e5, t_e6, t_e7, t_dose, t_b3, t_grpo, t_ecarts, t_env, t_calcul, t_articles):
+              t_e4, t_e5, t_e6, t_e7, t_dose, t_b3, t_grpo, t_ecarts, t_env, t_calcul, t_articles,
+              t_e2_strict, t_e1_grille, t_e3_holm, t_e3_puissance, t_e7_test, t_e5_holdout, t_regle_tranche, t_hyperparametres,
+              t_e6_vitesse, t_accord_intervalles, t_difference_detectable, t_regle_origine, t_q5_versions, t_x8,
+              t_grpo_mesures, t_grpo_contraste):
         f()
     names = sorted(p.stem for p in (GEN / "fr").glob("*.tex"))
     print(f"Wrote {len(names)} tables in gen/fr and gen/en: {', '.join(names)}")

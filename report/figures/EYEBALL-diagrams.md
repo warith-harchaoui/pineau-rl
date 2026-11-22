@@ -88,3 +88,6 @@ at in French and English, one honest line per look, fixed, rendered again.
   One near miss: the "23 sur 32" note of grpo-truncation sat 10 px off the 5/8 of its rows.
 - Iteration 2: the note's lines now share the baselines of rows 2 and 3; the last 12.5 px value of e1-henderson
   raised. Checks clean apart from the accepted grey source line; readable in print, layout unchanged.
+
+## frise-ecarts (22 November 2026)
+Brought up to date with the protocols: 87 deviations (33, 34, 20), the timeline now runs to the 22nd, its last day read from the deviations themselves. Looked at in French at 90 dpi: the 21st now carries the audit's burst (survey 30-33, simulations 20-34 on three lines, GRPO 18-19) and the 22nd the GRPO rerun plan (20); no overflow, check_bounds clean, the title ("35 des 87 écarts datent des deux premiers jours") still holds.

@@ -61,6 +61,22 @@ Ten random seeds are the main, preregistered results; twenty seeds (suffix `_s20
 | calcul | compute: runs per program and task, steps, median wall time, core-hours | sim/logs, sim/results |
 | articles-2026 | longtable of the 2026 papers read (id, title, venue) | study/final_2026.json, sample files |
 | articles-2018 | longtable of the 2018 papers read | study/calib_2018*.json, rl_population_2018.json |
+| e2-strict | E2 strict count of settled ranking changes (pairs that reverse) beside the preregistered count, 95% and Bonferroni, 10/20 seeds, own and equal budget | sim/analysis/e2_strict*.json |
+| e1-grille | E1 on the 16 program-task pairs: n, CV, skewness, false positives at random and sorted 5 against 5; the preregistered 30 runs | sim/analysis/e1_grid.json |
+| e3-holm | E3 with Holm over four tasks: IQMs, P at 98.75%, Hodges-Lehmann gap, Mann-Whitney p and Holm p, 10 and 20 seeds | sim/analysis/e3_holm.json |
+| e3-puissance | E3 power of Mann-Whitney at 0.05/4 (and 0.05) for n = 10 to 60, minimum detectable P | sim/analysis/e3_holm.json |
+| e7-test | E7 Hopper reversal tested: six pairs, P with interval in training and modified physics, settled reversals per task | sim/analysis/e7_test.json |
+| e5-hors-echantillon | E5 out of sample: seeds 0-9 judged on 10-19 and back, medians and mean of close comparisons, beside E5 | sim/analysis/e5_holdout.json, e5.json |
+| regle-tranche | the "settled" rule on true nulls: P interval excludes 0.5, IQM intervals disjoint, either; 30 runs and the 16-cell grid | sim/analysis/rule_calibration.json |
+| hyperparametres | settings of the five programs as they ran (generated replacement for the hand-typed table, same label) | sim/analysis/hyperparams.json |
+| e6-vitesse | E6 agents replayed: median return, median and extreme speed, agents that never fall; the Zoo's published agent | sim/analysis/e6_enjoy.json, e6_hub.json, e6_speed.json |
+| accord-intervalles | pooled double readings per criterion: agreement with Wilson interval, kappa with bootstrap interval | study/survey_extra.json |
+| difference-detectable | minimum detectable rise and fall per criterion at 5% and Bonferroni, power of the gap seen | study/survey_extra.json, extension_stats.json |
+| regle-origine | the original verdict rule (deviation 7) applied: against Pineau and against our 2018, verdict per criterion | study/survey_extra.json |
+| q5-versions | Q5 under each version policy (published, proceedings, latest arXiv, available at conference, bounds) | study/q5_versions.json |
+| x8 | X8 (uncertainty over seeds) against X2, among X2 yes, pooled, mechanical bound; sources of uncertainty per year | study/x8_stats.json, extension_stats.json, survey_extra.json |
+| grpo-mesures | GRPO five measures per configuration: levels, gain, percentile and Student intervals, seeds up, sign p | sim/llm/results/logs_stats_5.json |
+| grpo-contraste | GRPO true minus coin-flip reward per model and measure: Welch interval, exact permutation p, Holm, established | sim/llm/results/logs_stats_5.json |
 
 ## Figures (figures/<name>-fr.pdf and -en.pdf)
 
@@ -84,6 +100,12 @@ New, drawn in the house style (article/figures/draw.py toolkit, Roboto, signatur
 | flux-sondage | flow diagram of the survey: populations, draws, readers, double readings, harmonisation, final counts |
 | frise-ecarts | timeline of the protocols and their dated deviations, 9 to 21 November 2026 |
 | architecture | the repository as a pipeline: runs -> results CSV -> analysis scripts -> JSON -> check_numbers / check_article -> documents, with make targets and CI |
+| e1-grille | E1 on the 16 program-task pairs: false-positive rate at random (hollow) and sorted (filled), 5% line |
+| e6-vitesse | E6 forward speed of each agent, one dot per seed, median return column; the Zoo's published agent |
+| e6-images | E6 four frames (steps 0, 240, 480, 720) of the official and default evaluation videos (ffmpeg from sim/results/e6_video) |
+| q5-lectures | Q5 under seven version readings: 2018 and 2026 shares with Pineau's 55%, gap with Newcombe interval |
+| x2-x8 | waffle of experimental papers by what their uncertainty is computed over, 2018 and 2026; X2 and X8 gaps |
+| grpo-mesures | GRPO per-seed gains in pass@1, greedy, pass@8; Student interval, percentile interval beside |
 
 ## Style
 

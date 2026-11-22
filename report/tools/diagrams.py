@@ -528,22 +528,23 @@ def frise_ecarts(lang):
     counts = {ln: sum(1 for d in devs if d[0] == ln) for ln in lanes}
     total = len(devs)
     first2 = sum(1 for d in devs if d[2] is None or d[2] <= 9)
-    assert (counts["study"], counts["sim"], counts["llm"]) == (29, 20, 17)
-    assert all(d[2] is None or 8 <= d[2] <= 21 for d in devs)
+    assert (counts["study"], counts["sim"], counts["llm"]) == (33, 34, 20)
+    last = max(d[2] for d in devs if d[2] is not None)
+    assert all(d[2] is None or 8 <= d[2] <= last for d in devs)
     T = {
         "title": (f"{first2} des {total} écarts datent des deux premiers jours" if fr else
                   f"{first2} of the {total} deviations date from the first two days"),
-        "sub": ("Les trois protocoles et leurs écarts, jour par jour, du 8 au 21 novembre 2026" if fr else
-                "The three protocols and their deviations, day by day, from 8 to 21 November 2026"),
+        "sub": (f"Les trois protocoles et leurs écarts, jour par jour, du 8 au {last} novembre 2026" if fr else
+                f"The three protocols and their deviations, day by day, from 8 to {last} November 2026"),
         "source": ("Sources : écarts de study/PROTOCOL.md, sim/SIM_PROTOCOL.md, sim/llm/LLM_PROTOCOL.md ; "
                    "historique git ; article de blog sur deraison.ai" if fr else
                    "Sources: deviations of study/PROTOCOL.md, sim/SIM_PROTOCOL.md, sim/llm/LLM_PROTOCOL.md; "
                    "git history; blog article on deraison.ai"),
-        "desc": ("Frise verticale, un jour par ligne du 8 au 21 novembre 2026, une colonne par protocole "
+        "desc": (f"Frise verticale, un jour par ligne du 8 au {last} novembre 2026, une colonne par protocole "
                  "(sondage, simulations, GRPO) et une colonne de jalons. Chaque écart est une pastille numérotée "
                  "sur le jour que son texte indique ; les écarts sans date, notés avant le premier commit, "
                  "sont des pastilles creuses sur la ligne du 8. L'article paraît le 21." if fr else
-                 "Vertical timeline, one day per row from 8 to 21 November 2026, one column per protocol "
+                 f"Vertical timeline, one day per row from 8 to {last} November 2026, one column per protocol "
                  "(survey, simulations, GRPO) and a column of milestones. Each deviation is a numbered dot on "
                  "the day its text gives; the undated deviations, recorded before the first commit, are hollow "
                  "dots on the row of the 8th. The article is published on the 21st."),
@@ -586,7 +587,7 @@ def frise_ecarts(lang):
     y += 18
     wd_fr = ["lun.", "mar.", "mer.", "jeu.", "ven.", "sam.", "dim."]
     wd_en = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-    for di, day in enumerate(range(8, 22)):
+    for di, day in enumerate(range(8, last + 1)):
         wd = datetime.date(2026, 11, day).weekday()
         cells = {ln: sorted([d for d in devs if d[0] == ln and (d[2] or 8) == day],
                             key=lambda d: (d[2] is not None, d[1])) for ln in lanes}

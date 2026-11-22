@@ -4,7 +4,7 @@
 \setlength{\tabcolsep}{3.5pt}
 \setlength{\LTcapwidth}{\textwidth}
 \begin{longtable}{@{}r>{\raggedright\arraybackslash}p{1.25cm}>{\raggedright\arraybackslash}p{3.1cm}>{\raggedright\arraybackslash}p{9.6cm}@{}}
-\caption[Écarts aux trois protocoles]{Les 66 écarts aux trois protocoles, dans l'ordre de leurs listes : sondage (\file{study/PROTOCOL.md}), expériences (\file{sim/SIM\_PROTOCOL.md}), volet GRPO (\file{sim/llm/LLM\_PROTOCOL.md}). Date : jour de novembre 2026 donné par le protocole (« n. d. » quand l'écart n'est pas daté ; les écarts 1 à 10 du sondage ont été notés pendant le codage, avant l'agrégation). Moment : ce que le protocole déclare avoir déjà vu quand l'écart a été écrit (avant ou après les résultats concernés, ou sans effet sur les résultats pour l'organisation du calcul). Le résumé tient en une ligne ; le texte complet, qui fait foi, est dans le protocole (version anglaise : fichiers \file{-en.md}). Le nombre des écarts, leur numérotation et leurs dates sont vérifiés contre les fichiers par \file{report/tools/tables.py}.}\label{tab:ecarts}\\
+\caption[Écarts aux trois protocoles]{Les 87 écarts aux trois protocoles, dans l'ordre de leurs listes : sondage (\file{study/PROTOCOL.md}), expériences (\file{sim/SIM\_PROTOCOL.md}), volet GRPO (\file{sim/llm/LLM\_PROTOCOL.md}). Date : jour de novembre 2026 donné par le protocole (« n. d. » quand l'écart n'est pas daté ; les écarts 1 à 10 du sondage ont été notés pendant le codage, avant l'agrégation). Moment : ce que le protocole déclare avoir déjà vu quand l'écart a été écrit (avant ou après les résultats concernés, ou sans effet sur les résultats pour l'organisation du calcul). Le résumé tient en une ligne ; le texte complet, qui fait foi, est dans le protocole (version anglaise : fichiers \file{-en.md}). Le nombre des écarts, leur numérotation et leurs dates sont vérifiés contre les fichiers par \file{report/tools/tables.py}.}\label{tab:ecarts}\\
 \toprule
 N\textsuperscript{o} & Date & Moment & Résumé \\
 \midrule
@@ -18,7 +18,7 @@ N\textsuperscript{o} & Date & Moment & Résumé \\
 \endfoot
 \bottomrule
 \endlastfoot
-\multicolumn{4}{@{}l}{\textbf{Sondage} (\file{study/PROTOCOL.md}, 29 écarts)} \\
+\multicolumn{4}{@{}l}{\textbf{Sondage} (\file{study/PROTOCOL.md}, 33 écarts)} \\
 1 & n. d. & pendant le codage, avant l'agrégation & X4 harmonisé : \texttt{yes} exige un réglage décrit des références ; « même configuration » sans réglage devient \texttt{no}. \\
 2 & n. d. & pendant le codage, avant l'agrégation & X7 harmonisé : \texttt{yes} exige une quantité de calcul (heures, GPU-heures, FLOP) ; le nom du matériel seul vaut \texttt{no}. \\
 3 & n. d. & pendant le codage, avant l'agrégation & Articles sans expérience (Q1 \texttt{no}) : Q2 à Q8 et X1 à X4 en \texttt{na}, hors des dénominateurs. \\
@@ -48,8 +48,12 @@ N\textsuperscript{o} & Date & Moment & Résumé \\
 27 & 15 nov. & après les résultats, avant toute recherche & Recherche par mots-clés contre les « non » de la comparaison principale, arbitre à l'aveugle ; décisions retournées, puis douteuses. \\
 28 & 15 nov. & après les résultats & Provenance des lecteurs publiée (\file{readers/}) : deux lecteurs ont fini sur \texttt{claude-opus-5} (13 articles) ; les lectures ne changent pas. \\
 29 & 15 nov. & après les résultats, avant ce calcul & Comparaison principale et trajectoire refaites sans les 13 articles lus en partie par \texttt{claude-opus-5}. \\
+30 & 21 nov. & après les résultats, avant ce calcul & Analyses complémentaires sans lecture nouvelle : intervalles de l'accord, plus petite différence détectable, règle de verdict d'origine, lecteurs et année confondus. \\
+31 & 21 nov. & après les résultats, avant tout téléchargement & Q5 relu sur la dernière version arXiv (2018) et sur les actes (2026), arbitre à l'aveugle, dates de création des dépôts. \\
+32 & 21 nov. & après les résultats, avant toute lecture & Nouveau critère X8 : incertitude calculée sur des graines, lue par huit agents neufs sur les deux années. \\
+33 & 21 nov. & après les résultats, avant toute lecture & Lecteur d'une autre famille de modèles (\texttt{gemma3:12b}, local) sur les 98 articles de la comparaison principale. \\
 \addlinespace
-\multicolumn{4}{@{}l}{\textbf{Expériences} (\file{sim/SIM\_PROTOCOL.md}, 20 écarts)} \\
+\multicolumn{4}{@{}l}{\textbf{Expériences} (\file{sim/SIM\_PROTOCOL.md}, 34 écarts)} \\
 1 & n. d. & avant le premier entraînement & SAC et CrossQ : 200\,000 pas au lieu de 300\,000, faute de calcul ; TD3 non lancé. \\
 2 & n. d. & après les résultats & E6 : erreur de notre côté (gamma de normalisation 0,99 au lieu de 0,999) ; recette corrigée relancée, diagnostic sur Hopper v4 et v5. \\
 3 & 9 nov. & après les résultats & E1 : seconde statistique, le $t$ moyen le long de la courbe comme Henderson et al. (\file{e1\_curve.py}). \\
@@ -70,8 +74,22 @@ N\textsuperscript{o} & Date & Moment & Résumé \\
 18 & 16 nov. & après les résultats, avant ce calcul & E2 : les 24 intervalles de probabilité d'amélioration rendus simultanés par Bonferroni (99,79~\%). \\
 19 & 19 nov. & sans effet sur les résultats & Plafond de deux cœurs pour tout le projet ; surveillant relancé. \\
 20 & 21 nov. & après les entraînements, avant tout calcul sur les graines 10 à 19 & Calcul des ajouts de l'écart 12 ; défaut de \file{e5.py} corrigé (bon ordre sur toutes les graines choisies). \\
+21 & 21 nov. & après les résultats, avant ce calcul & E2 : décompte strict, une paire ne compte que si chacun bat l'autre de façon tranchée sur une tâche (défaut corrigé). \\
+22 & 21 nov. & après les résultats, avant ce calcul & E1 refait sur les seize couples (programme, tâche), graines 0 à 19. \\
+23 & 21 nov. & après les résultats, avant ce calcul & E3 avec la correction de Holm sur quatre tâches, écart en points et puissance. \\
+24 & 21 nov. & après les résultats, avant ce calcul & E7 : le renversement sur Hopper en physique modifiée, testé paire par paire. \\
+25 & 21 nov. & après les résultats, avant ce calcul & E5 vérifié hors échantillon : graines 0 à 9 jugées sur les graines 10 à 19, et l'inverse. \\
+26 & 21 nov. & après les résultats, avant ce calcul & La règle « tranché » calibrée sur de vraies hypothèses nulles (deux groupes du même programme). \\
+27 & 21 nov. & après les résultats, avant ce calcul & B1 : le facteur entre le $t$ du script et celui des graines vaut $\sqrt{n/5}/\rho$ (défaut corrigé). \\
+28 & 21 nov. & relevé, sans calcul statistique & Les hyperparamètres effectivement utilisés, lus dans les programmes construits et les modèles sauvegardés. \\
+29 & 21 nov. & après les résultats, avant ce calcul & Courbes d'apprentissage : classement au fil de l'entraînement, score final contre meilleur point, autocorrélation. \\
+30 & 21 nov. & avant ce calcul & Tailles d'effet en points de score (Hodges-Lehmann) pour E2, E3 et E6. \\
+31 & 21 nov. & après les résultats, avant ce calcul & E6 : vitesse des agents officiels lue dans leurs journaux d'entraînement. \\
+32 & 21 nov. & avant tout entraînement & Déterminisme de SAC et CrossQ : trois entraînements refaits à l'identique. \\
+33 & 21 nov. & avant ces évaluations et cet entraînement & E6 : agents officiels rejoués (vitesse, vidéos), agent publié par le Zoo évalué, recette avec $\gamma = 0{,}99$. \\
+34 & 21 nov. & avant tout entraînement & Pourquoi les deux PPO divergent : graines 20 à 39 et initialisation orthogonale échangée. \\
 \addlinespace
-\multicolumn{4}{@{}l}{\textbf{GRPO} (\file{sim/llm/LLM\_PROTOCOL.md}, 17 écarts)} \\
+\multicolumn{4}{@{}l}{\textbf{GRPO} (\file{sim/llm/LLM\_PROTOCOL.md}, 20 écarts)} \\
 1 & n. d. & après lecture de sorties, avant tout entraînement & Limite de longueur portée de 64 à 160 jetons. \\
 2 & n. d. & avant tout entraînement & Mesures réduites à 150 problèmes en glouton et 50 en échantillonnage, pour le coût. \\
 3 & n. d. & après le pilote, avant tout entraînement & Tâche \texttt{mul2} retenue ; mesure principale : pass@1 échantillonné. \\
@@ -89,5 +107,8 @@ N\textsuperscript{o} & Date & Moment & Résumé \\
 15 & 15 nov. & après les résultats & Corrections après relecture critique (comptes de l'écart 8, dates) ; aucun résultat ne change. \\
 16 & 17 nov. & après les valeurs au pas 100, avant tout gain & Llama, récompense au hasard, graine 4 échoue deux fois : compté comme résultat ; statistique sur les essais finis, sensibilité au gain manquant. \\
 17 & 19 nov. & sans effet sur les résultats & L'essai Llama sur CPU part après la file, sous le plafond de deux cœurs. \\
+18 & 21 nov. & après les résultats & Défauts constatés : pénalité de répétition 1,1 chez Qwen, pilote lu sur le jeu de test, matériel et graine mêlés. \\
+19 & 21 nov. & avant le script & Analyses tirées des journaux : justesse gloutonne, pass@8, intervalles de Student, vraie récompense contre hasard, coupure. \\
+20 & 22 nov. & avant tout essai de la relance & Relance planifiée : 10 graines, sans pénalité de répétition, pilote hors du jeu de test ; rien n'est lancé. \\
 \end{longtable}
 \endgroup

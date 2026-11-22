@@ -4,7 +4,7 @@
 \setlength{\tabcolsep}{3.5pt}
 \setlength{\LTcapwidth}{\textwidth}
 \begin{longtable}{@{}r>{\raggedright\arraybackslash}p{1.25cm}>{\raggedright\arraybackslash}p{3.1cm}>{\raggedright\arraybackslash}p{9.6cm}@{}}
-\caption[Deviations from the three protocols]{The 66 deviations from the three protocols, in the order of their lists: survey (\file{study/PROTOCOL-en.md}), experiments (\file{sim/SIM\_PROTOCOL-en.md}), GRPO strand (\file{sim/llm/LLM\_PROTOCOL-en.md}). Date: day of November 2026 given by the protocol (`undated' when the deviation carries no date; survey deviations 1 to 10 were noted during coding, before aggregation). Timing: what the protocol declares had already been seen when the deviation was written (before or after the results concerned, or no effect on the results for the organisation of the computation). The summary takes one line; the full text, which prevails, is in the protocol (the French files are the dated originals). The number of deviations, their numbering and their dates are checked against the files by \file{report/tools/tables.py}.}\label{tab:ecarts}\\
+\caption[Deviations from the three protocols]{The 87 deviations from the three protocols, in the order of their lists: survey (\file{study/PROTOCOL-en.md}), experiments (\file{sim/SIM\_PROTOCOL-en.md}), GRPO strand (\file{sim/llm/LLM\_PROTOCOL-en.md}). Date: day of November 2026 given by the protocol (`undated' when the deviation carries no date; survey deviations 1 to 10 were noted during coding, before aggregation). Timing: what the protocol declares had already been seen when the deviation was written (before or after the results concerned, or no effect on the results for the organisation of the computation). The summary takes one line; the full text, which prevails, is in the protocol (the French files are the dated originals). The number of deviations, their numbering and their dates are checked against the files by \file{report/tools/tables.py}.}\label{tab:ecarts}\\
 \toprule
 No. & Date & Timing & Summary \\
 \midrule
@@ -18,7 +18,7 @@ No. & Date & Timing & Summary \\
 \endfoot
 \bottomrule
 \endlastfoot
-\multicolumn{4}{@{}l}{\textbf{Survey} (\file{study/PROTOCOL-en.md}, 29 deviations)} \\
+\multicolumn{4}{@{}l}{\textbf{Survey} (\file{study/PROTOCOL-en.md}, 33 deviations)} \\
 1 & undated & during coding, before aggregation & X4 harmonised: \texttt{yes} requires a described tuning of the baselines; `same configuration' with no tuning becomes \texttt{no}. \\
 2 & undated & during coding, before aggregation & X7 harmonised: \texttt{yes} requires a quantity of compute (hours, GPU-hours, FLOP); the hardware name alone is \texttt{no}. \\
 3 & undated & during coding, before aggregation & Papers with no experiment (Q1 \texttt{no}): Q2 to Q8 and X1 to X4 set to \texttt{na}, out of the denominators. \\
@@ -48,8 +48,12 @@ No. & Date & Timing & Summary \\
 27 & 15 Nov. & after the results, before any search & Keyword search against the `no' decisions of the main comparison, blind arbiter; decisions turned, then doubtful ones. \\
 28 & 15 Nov. & after the results & Provenance of the readers published (\file{readers/}): two readers finished on \texttt{claude-opus-5} (13 papers); the readings do not change. \\
 29 & 15 Nov. & after the results, before this computation & Main comparison and trajectory redone without the 13 papers read partly by \texttt{claude-opus-5}. \\
+30 & 21 Nov. & after the results, before this computation & Further analyses with no new reading: intervals of the agreement, minimum detectable difference, original verdict rule, readers and year confounded. \\
+31 & 21 Nov. & after the results, before any download & Q5 reread on the latest arXiv version (2018) and on the proceedings (2026), blind arbiter, creation dates of the repositories. \\
+32 & 21 Nov. & after the results, before any reading & New criterion X8: uncertainty computed over seeds, read by eight fresh agents across both years. \\
+33 & 21 Nov. & after the results, before any reading & A reader from another model family (\texttt{gemma3:12b}, local) on the 98 papers of the main comparison. \\
 \addlinespace
-\multicolumn{4}{@{}l}{\textbf{Experiments} (\file{sim/SIM\_PROTOCOL-en.md}, 20 deviations)} \\
+\multicolumn{4}{@{}l}{\textbf{Experiments} (\file{sim/SIM\_PROTOCOL-en.md}, 34 deviations)} \\
 1 & undated & before the first training run & SAC and CrossQ: 200,000 steps instead of 300,000, for lack of compute; TD3 not launched. \\
 2 & undated & after the results & E6: an error on our side (normalisation gamma 0.99 instead of 0.999); corrected recipe rerun, diagnosis on Hopper v4 and v5. \\
 3 & 9 Nov. & after the results & E1: a second statistic, the mean $t$ along the curve as in Henderson et al. (\file{e1\_curve.py}). \\
@@ -70,8 +74,22 @@ No. & Date & Timing & Summary \\
 18 & 16 Nov. & after the results, before this computation & E2: the 24 probability-of-improvement intervals made simultaneous by Bonferroni (99.79\%). \\
 19 & 19 Nov. & no effect on the results & Cap of two cores for the whole project; watchdog restarted. \\
 20 & 21 Nov. & after the runs, before any computation on seeds 10 to 19 & Computation of the additions of deviation 12; defect of \file{e5.py} fixed (right order over all the chosen seeds). \\
+21 & 21 Nov. & after the results, before this computation & E2: strict count, a pair counts only if each beats the other, settled, on some task (defect fixed). \\
+22 & 21 Nov. & after the results, before this computation & E1 redone on the sixteen (program, task) pairs, seeds 0 to 19. \\
+23 & 21 Nov. & after the results, before this computation & E3 with Holm's correction over four tasks, gap in points and power. \\
+24 & 21 Nov. & after the results, before this computation & E7: the Hopper reversal under modified physics, tested pair by pair. \\
+25 & 21 Nov. & after the results, before this computation & E5 checked out of sample: seeds 0 to 9 judged on seeds 10 to 19, and the reverse. \\
+26 & 21 Nov. & after the results, before this computation & The `settled' rule calibrated on true null hypotheses (two groups of the same program). \\
+27 & 21 Nov. & after the results, before this computation & B1: the factor between the script's $t$ and the seeds' $t$ is $\sqrt{n/5}/\rho$ (defect fixed). \\
+28 & 21 Nov. & a record, no statistical computation & The hyperparameters actually used, read from the built programs and the saved models. \\
+29 & 21 Nov. & after the results, before this computation & Learning curves: ranking during training, final score against best point, autocorrelation. \\
+30 & 21 Nov. & before this computation & Effect sizes in score points (Hodges-Lehmann) for E2, E3 and E6. \\
+31 & 21 Nov. & after the results, before this computation & E6: speed of the official agents read from their training logs. \\
+32 & 21 Nov. & before any training run & Determinism of SAC and CrossQ: three training runs redone identically. \\
+33 & 21 Nov. & before these evaluations and this training & E6: official agents replayed (speed, videos), the agent published by the Zoo evaluated, recipe with $\gamma = 0.99$. \\
+34 & 21 Nov. & before any training run & Why the two PPOs diverge: seeds 20 to 39 and orthogonal initialisation swapped. \\
 \addlinespace
-\multicolumn{4}{@{}l}{\textbf{GRPO} (\file{sim/llm/LLM\_PROTOCOL-en.md}, 17 deviations)} \\
+\multicolumn{4}{@{}l}{\textbf{GRPO} (\file{sim/llm/LLM\_PROTOCOL-en.md}, 20 deviations)} \\
 1 & undated & after reading outputs, before any training & Length limit raised from 64 to 160 tokens. \\
 2 & undated & before any training & Measures reduced to 150 problems for greedy decoding and 50 for sampling, for cost. \\
 3 & undated & after the pilot, before any training & Task \texttt{mul2} chosen; main measure: sampled pass@1. \\
@@ -89,5 +107,8 @@ No. & Date & Timing & Summary \\
 15 & 15 Nov. & after the results & Corrections after a critical review (counts of deviation 8, dates); no result changes. \\
 16 & 17 Nov. & after the step-100 values, before any gain & Llama, random reward, seed 4 fails twice: counted as a result; statistic over the finished runs, sensitivity to the missing gain. \\
 17 & 19 Nov. & no effect on the results & The Llama CPU run starts after the queue, under the two-core cap. \\
+18 & 21 Nov. & after the results & Defects found: repetition penalty of 1.1 for Qwen, pilot read on the test set, device and seed mixed. \\
+19 & 21 Nov. & before the script & Analyses from the logs: greedy accuracy, pass@8, Student intervals, true reward against coin flip, truncation. \\
+20 & 22 Nov. & before any run of the rerun & Rerun planned: 10 seeds, no repetition penalty, pilot off the test set; nothing is started. \\
 \end{longtable}
 \endgroup
