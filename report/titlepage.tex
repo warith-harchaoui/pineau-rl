@@ -14,7 +14,28 @@
 {\small\color{ink2}Deraison.ai \textperiodcentered{} \href{mailto:warithmetics@deraison.ai}{warithmetics@deraison.ai}\par}
 \vspace{14pt}
 {\small\color{ink2}\iffr{21 novembre 2026}{21 November 2026}\par}
-\vspace{22pt}
+\vspace{10pt}
+% Version box (Warith, 22 November 2026). The PDFs of v1.0 (local tag v1.0, commit 08f0e9f) were built and committed
+% on 22 November 2026; the date below is the one the author dictated, the one of the title page.
+\begin{keybox}[fontupper=\footnotesize,top=4pt,bottom=4pt]
+\iffr{\textbf{Version 1.0 du 21 novembre 2026, addendum prévu.} Encore en cours, chacun avec son écart :}%
+{\textbf{Version 1.0 of 21 November 2026, addendum planned.} Still running, each with its deviation:}
+\begin{itemize}[nosep,leftmargin=1.2em]
+  \item \iffr{simulations C2, les deux PPO qui divergent (écart 34 des simulations), C4c, la recette du Zoo avec
+        $\gamma = 0{,}99$ (écart 33), C6, le déterminisme de SAC et CrossQ (écart 32)~;}%
+        {simulations C2, why the two PPOs diverge (simulation deviation 34), C4c, the Zoo recipe with
+        $\gamma = 0.99$ (deviation 33), C6, the determinism of SAC and CrossQ (deviation 32);}
+  \item \iffr{C5, le lecteur \texttt{gemma3:12b}, d'une autre famille de modèles (écart 33 du sondage)~;}%
+        {C5, the \texttt{gemma3:12b} reader, from another model family (survey deviation 33);}
+  \item \iffr{C7, GRPO relancé sur dix graines (écart 20 du volet GRPO)~;}%
+        {C7, GRPO rerun on ten seeds (GRPO deviation 20);}
+  \item \iffr{la relecture humaine à l'aveugle (écart 35 du sondage)~;}%
+        {the blind human re-reading (survey deviation 35);}
+  \item \iffr{le démêlage de l'année et des lecteurs (écart 36 du sondage).}%
+        {disentangling the year from the readers (survey deviation 36).}
+\end{itemize}
+\end{keybox}
+\vspace{12pt}
 {\footnotesize\color{ink2}
 \iffr{Code, données et protocoles}{Code, data and protocols}~: \repo\par
 \iffr{Article de blog}{Blog article}~: \iffr{\href{https://deraison.ai/blog/ecouter-joelle-pineau}{\texttt{deraison.ai/blog/ecouter-joelle-pineau}}}{\href{https://deraison.ai/en/blog/listen-to-joelle-pineau}{\texttt{deraison.ai/en/blog/listen-to-joelle-pineau}}}\par
