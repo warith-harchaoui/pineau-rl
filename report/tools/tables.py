@@ -1210,6 +1210,12 @@ DEV_STUDY = [
      r"New criterion X8: uncertainty computed over seeds, read by eight fresh agents across both years."),
     (33, 21, ("après les résultats, avant toute lecture", "after the results, before any reading"), r"Lecteur d'une autre famille de modèles (\texttt{gemma3:12b}, local) sur les 98 articles de la comparaison principale.",
      r"A reader from another model family (\texttt{gemma3:12b}, local) on the 98 papers of the main comparison."),
+    (35, 22, ("après les résultats, avant tout tirage et toute lecture humaine", "after the results, before any draw and any human reading"),
+     r"Relecture humaine à l'aveugle des deux années par Warith : 15 articles de 2018 et 15 de 2026, critères Q5, Y9, X7, X2, X8.",
+     r"Blind human re-reading of both years by Warith: 15 papers from 2018 and 15 from 2026, criteria Q5, Y9, X7, X2, X8."),
+    (36, 22, ("après les résultats, avant toute lecture et tout calcul", "after the results, before any reading and any computation"),
+     r"L'année et les lecteurs démêlés : huit lecteurs neufs lisent chacun les deux années sur Q5, Y9, X7 et X2.",
+     r"Year and readers disentangled: eight fresh readers each read both years on Q5, Y9, X7 and X2."),
 ]
 
 DEV_SIM = [

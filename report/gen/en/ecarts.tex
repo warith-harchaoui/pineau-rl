@@ -4,7 +4,7 @@
 \setlength{\tabcolsep}{3.5pt}
 \setlength{\LTcapwidth}{\textwidth}
 \begin{longtable}{@{}r>{\raggedright\arraybackslash}p{1.25cm}>{\raggedright\arraybackslash}p{3.1cm}>{\raggedright\arraybackslash}p{9.6cm}@{}}
-\caption[Deviations from the three protocols]{The 87 deviations from the three protocols, in the order of their lists: survey (\file{study/PROTOCOL-en.md}), experiments (\file{sim/SIM\_PROTOCOL-en.md}), GRPO strand (\file{sim/llm/LLM\_PROTOCOL-en.md}). Date: day of November 2026 given by the protocol (`undated' when the deviation carries no date; survey deviations 1 to 10 were noted during coding, before aggregation). Timing: what the protocol declares had already been seen when the deviation was written (before or after the results concerned, or no effect on the results for the organisation of the computation). The summary takes one line; the full text, which prevails, is in the protocol (the French files are the dated originals). The number of deviations, their numbering and their dates are checked against the files by \file{report/tools/tables.py}.}\label{tab:ecarts}\\
+\caption[Deviations from the three protocols]{The 89 deviations from the three protocols, in the order of their lists: survey (\file{study/PROTOCOL-en.md}), experiments (\file{sim/SIM\_PROTOCOL-en.md}), GRPO strand (\file{sim/llm/LLM\_PROTOCOL-en.md}). Date: day of November 2026 given by the protocol (`undated' when the deviation carries no date; survey deviations 1 to 10 were noted during coding, before aggregation). Timing: what the protocol declares had already been seen when the deviation was written (before or after the results concerned, or no effect on the results for the organisation of the computation). The summary takes one line; the full text, which prevails, is in the protocol (the French files are the dated originals). The number of deviations, their numbering and their dates are checked against the files by \file{report/tools/tables.py}.}\label{tab:ecarts}\\
 \toprule
 No. & Date & Timing & Summary \\
 \midrule
@@ -18,7 +18,7 @@ No. & Date & Timing & Summary \\
 \endfoot
 \bottomrule
 \endlastfoot
-\multicolumn{4}{@{}l}{\textbf{Survey} (\file{study/PROTOCOL-en.md}, 33 deviations)} \\
+\multicolumn{4}{@{}l}{\textbf{Survey} (\file{study/PROTOCOL-en.md}, 35 deviations)} \\
 1 & undated & during coding, before aggregation & X4 harmonised: \texttt{yes} requires a described tuning of the baselines; `same configuration' with no tuning becomes \texttt{no}. \\
 2 & undated & during coding, before aggregation & X7 harmonised: \texttt{yes} requires a quantity of compute (hours, GPU-hours, FLOP); the hardware name alone is \texttt{no}. \\
 3 & undated & during coding, before aggregation & Papers with no experiment (Q1 \texttt{no}): Q2 to Q8 and X1 to X4 set to \texttt{na}, out of the denominators. \\
@@ -52,6 +52,8 @@ No. & Date & Timing & Summary \\
 31 & 21 Nov. & after the results, before any download & Q5 reread on the latest arXiv version (2018) and on the proceedings (2026), blind arbiter, creation dates of the repositories. \\
 32 & 21 Nov. & after the results, before any reading & New criterion X8: uncertainty computed over seeds, read by eight fresh agents across both years. \\
 33 & 21 Nov. & after the results, before any reading & A reader from another model family (\texttt{gemma3:12b}, local) on the 98 papers of the main comparison. \\
+35 & 22 Nov. & after the results, before any draw and any human reading & Blind human re-reading of both years by Warith: 15 papers from 2018 and 15 from 2026, criteria Q5, Y9, X7, X2, X8. \\
+36 & 22 Nov. & after the results, before any reading and any computation & Year and readers disentangled: eight fresh readers each read both years on Q5, Y9, X7 and X2. \\
 \addlinespace
 \multicolumn{4}{@{}l}{\textbf{Experiments} (\file{sim/SIM\_PROTOCOL-en.md}, 34 deviations)} \\
 1 & undated & before the first training run & SAC and CrossQ: 200,000 steps instead of 300,000, for lack of compute; TD3 not launched. \\

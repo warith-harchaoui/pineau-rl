@@ -4,7 +4,7 @@
 \setlength{\tabcolsep}{3.5pt}
 \setlength{\LTcapwidth}{\textwidth}
 \begin{longtable}{@{}r>{\raggedright\arraybackslash}p{1.25cm}>{\raggedright\arraybackslash}p{3.1cm}>{\raggedright\arraybackslash}p{9.6cm}@{}}
-\caption[Écarts aux trois protocoles]{Les 87 écarts aux trois protocoles, dans l'ordre de leurs listes : sondage (\file{study/PROTOCOL.md}), expériences (\file{sim/SIM\_PROTOCOL.md}), volet GRPO (\file{sim/llm/LLM\_PROTOCOL.md}). Date : jour de novembre 2026 donné par le protocole (« n. d. » quand l'écart n'est pas daté ; les écarts 1 à 10 du sondage ont été notés pendant le codage, avant l'agrégation). Moment : ce que le protocole déclare avoir déjà vu quand l'écart a été écrit (avant ou après les résultats concernés, ou sans effet sur les résultats pour l'organisation du calcul). Le résumé tient en une ligne ; le texte complet, qui fait foi, est dans le protocole (version anglaise : fichiers \file{-en.md}). Le nombre des écarts, leur numérotation et leurs dates sont vérifiés contre les fichiers par \file{report/tools/tables.py}.}\label{tab:ecarts}\\
+\caption[Écarts aux trois protocoles]{Les 89 écarts aux trois protocoles, dans l'ordre de leurs listes : sondage (\file{study/PROTOCOL.md}), expériences (\file{sim/SIM\_PROTOCOL.md}), volet GRPO (\file{sim/llm/LLM\_PROTOCOL.md}). Date : jour de novembre 2026 donné par le protocole (« n. d. » quand l'écart n'est pas daté ; les écarts 1 à 10 du sondage ont été notés pendant le codage, avant l'agrégation). Moment : ce que le protocole déclare avoir déjà vu quand l'écart a été écrit (avant ou après les résultats concernés, ou sans effet sur les résultats pour l'organisation du calcul). Le résumé tient en une ligne ; le texte complet, qui fait foi, est dans le protocole (version anglaise : fichiers \file{-en.md}). Le nombre des écarts, leur numérotation et leurs dates sont vérifiés contre les fichiers par \file{report/tools/tables.py}.}\label{tab:ecarts}\\
 \toprule
 N\textsuperscript{o} & Date & Moment & Résumé \\
 \midrule
@@ -18,7 +18,7 @@ N\textsuperscript{o} & Date & Moment & Résumé \\
 \endfoot
 \bottomrule
 \endlastfoot
-\multicolumn{4}{@{}l}{\textbf{Sondage} (\file{study/PROTOCOL.md}, 33 écarts)} \\
+\multicolumn{4}{@{}l}{\textbf{Sondage} (\file{study/PROTOCOL.md}, 35 écarts)} \\
 1 & n. d. & pendant le codage, avant l'agrégation & X4 harmonisé : \texttt{yes} exige un réglage décrit des références ; « même configuration » sans réglage devient \texttt{no}. \\
 2 & n. d. & pendant le codage, avant l'agrégation & X7 harmonisé : \texttt{yes} exige une quantité de calcul (heures, GPU-heures, FLOP) ; le nom du matériel seul vaut \texttt{no}. \\
 3 & n. d. & pendant le codage, avant l'agrégation & Articles sans expérience (Q1 \texttt{no}) : Q2 à Q8 et X1 à X4 en \texttt{na}, hors des dénominateurs. \\
@@ -52,6 +52,8 @@ N\textsuperscript{o} & Date & Moment & Résumé \\
 31 & 21 nov. & après les résultats, avant tout téléchargement & Q5 relu sur la dernière version arXiv (2018) et sur les actes (2026), arbitre à l'aveugle, dates de création des dépôts. \\
 32 & 21 nov. & après les résultats, avant toute lecture & Nouveau critère X8 : incertitude calculée sur des graines, lue par huit agents neufs sur les deux années. \\
 33 & 21 nov. & après les résultats, avant toute lecture & Lecteur d'une autre famille de modèles (\texttt{gemma3:12b}, local) sur les 98 articles de la comparaison principale. \\
+35 & 22 nov. & après les résultats, avant tout tirage et toute lecture humaine & Relecture humaine à l'aveugle des deux années par Warith : 15 articles de 2018 et 15 de 2026, critères Q5, Y9, X7, X2, X8. \\
+36 & 22 nov. & après les résultats, avant toute lecture et tout calcul & L'année et les lecteurs démêlés : huit lecteurs neufs lisent chacun les deux années sur Q5, Y9, X7 et X2. \\
 \addlinespace
 \multicolumn{4}{@{}l}{\textbf{Expériences} (\file{sim/SIM\_PROTOCOL.md}, 34 écarts)} \\
 1 & n. d. & avant le premier entraînement & SAC et CrossQ : 200\,000 pas au lieu de 300\,000, faute de calcul ; TD3 non lancé. \\
