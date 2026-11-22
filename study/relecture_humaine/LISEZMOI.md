@@ -1,8 +1,8 @@
 *English version: [README.md](README.md).*
 
-# Relecture humaine à l'aveugle (expérience A1)
+# Relectures humaines
 
-**Abandonnée le 10 novembre 2026 avant toute relecture (écart 23 de `study/PROTOCOL.md`).** Ce dossier garde le plan.
+**La relecture A1 a été abandonnée le 10 novembre 2026 avant toute relecture (écart 23 de `study/PROTOCOL.md`).** Ce dossier en garde le plan.
 
 Depuis le 22 novembre 2026, ce dossier sert aussi à deux relectures humaines demandées par Warith Harchaoui : sa
 relecture passée, s'il en retrouve la trace (`warith_v0.csv`, section suivante ; écart 34 réservé, écrit seulement
@@ -32,19 +32,45 @@ brutes. Tant que le fichier n'a aucune ligne, le script s'arrête.
 
 Le script n'est pas encore dans le `Makefile`, pour que `make verify` passe avec un fichier vide. Une fois le fichier
 rempli : ajouter `relecture_humaine/accord_v0` à la fin de la liste `STUDY` et `study/relecture_humaine/accord_v0.json`
-à `OUTPUTS`, lancer le script une fois, valider `accord_v0.json`, puis écrire l'écart 34 dans les deux protocoles.
+à `OUTPUTS`, lancer le script une fois, valider `accord_v0.json` dans git, puis écrire l'écart 34 dans les deux protocoles.
+
+## Relecture de l'écart 35 : 30 feuilles à l'aveugle, 2018 et 2026
+
+Écart 35 de `study/PROTOCOL.md`, écrit avant le tirage. Trente articles de la comparaison principale, 15 de 2018 et 15
+de 2026, tirés par `tirage35.py`, sous des noms opaques H01 à H30 dans un ordre aléatoire.
+
+**Avant d'avoir rempli les 30 feuilles, n'ouvre pas** `tirage35.json` (il relie chaque feuille à son article), le
+commit du tirage, `study/codes*/`, les fichiers de résultats (`*_stats.json`, `results_*.json`, `survey_extra.json`,
+`compare*.json`), ni `docs/`, `report/` ou `article/` au sujet de ces articles.
+
+1. Si `feuilles/pdf/` manque (les copies restent hors du dépôt) : `../sim/env-an/bin/python
+   relecture_humaine/feuilles35.py` depuis `study/`. Il refait les copies renommées des PDF, annexe jointe à la fin, et
+   n'écrase jamais une feuille commencée.
+2. Pour chaque feuille `feuilles/Hxx.md`, ouvre `feuilles/pdf/Hxx.pdf` et remplis, après chaque deux-points : la date,
+   la durée en minutes, puis pour Q5, Y9, X7, X2 et X8 la décision (`yes`, `no`, `na`), la citation exacte et la page
+   du fichier PDF ; pour X8, la source. X8 vaut `na` si et seulement si X2 vaut `no`. Les règles sont écrites dans la
+   feuille.
+3. Le PDF montre l'année (en-tête, références) : on ne peut pas l'éviter. L'aveugle porte sur la lecture des agents.
+4. Compte 15 à 20 minutes par article : cinq critères, les expériences, les légendes et l'annexe. Soit 8 à 10 heures
+   pour les 30.
+5. Quand les 30 feuilles sont remplies : `../sim/env-an/bin/python relecture_humaine/compare.py` depuis `study/`. Le
+   script refuse de tourner tant qu'une feuille est incomplète ; il dit alors quoi compléter. Il écrit `compare35.json`.
+   Ensuite, ajouter `relecture_humaine/compare` à la fin de `STUDY` et `study/relecture_humaine/compare35.json` à
+   `OUTPUTS` dans le `Makefile`, valider dans git les feuilles remplies avec `compare35.json`.
+
+## Plan A1 (abandonné)
 
 Écart 13 de `study/PROTOCOL.md`. But : mesurer l'accord entre une lecture humaine et la lecture des
 agents, sur les critères qui fondent les verdicts du document. C'est la réponse à l'objection « des
 machines ont lu les articles ».
 
-## La règle d'or : ne rien regarder des agents avant d'avoir fini
+### La règle d'or : ne rien regarder des agents avant d'avoir fini
 
 N'ouvre ni `study/codes/`, ni `study/results_*.json`, ni `study/audit_stats.json`, ni le document
 `docs/conclusions.md` pour ces 10 articles avant d'avoir rempli toute la grille. La comparaison se
 fait ensuite, par script.
 
-## Ce qu'il faut faire
+### Ce qu'il faut faire
 
 1. Ouvre `grille.csv` (dans un tableur). Une ligne par article. Le PDF se trouve dans
    `study/pdf/<id>.pdf` (dépôt local ; `study/fetch.py` le retélécharge au besoin).
@@ -58,7 +84,7 @@ fait ensuite, par script.
 5. Quand c'est fini : `python3 study/relecture_humaine/compare_a1.py`. Le script donne l'accord et le
    kappa de Cohen, critère par critère, et liste les désaccords avec les deux citations.
 
-## Les sept critères et leurs règles (celles des agents, `study/PROTOCOL.md`)
+### Les sept critères et leurs règles (celles des agents, `study/PROTOCOL.md`)
 
 - **Q4, tous les hyperparamètres des références sont donnés.** `yes` si un tableau ou un paragraphe
   les donne pour toutes les méthodes comparées. « Valeurs par défaut de [bibliothèque] » sans les

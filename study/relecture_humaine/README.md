@@ -1,8 +1,8 @@
 *Translation of [LISEZMOI.md](LISEZMOI.md), made on 10 November 2026. The French text is the original.*
 
-# Blind human rereading (experiment A1)
+# Human re-readings
 
-**Abandoned on 10 November 2026 before any review (deviation 23 of `study/PROTOCOL-en.md`).** This folder keeps the plan.
+**The A1 re-reading was abandoned on 10 November 2026 before any review (deviation 23 of `study/PROTOCOL-en.md`).** This folder keeps its plan.
 
 Since 22 November 2026, this folder also serves two human re-readings asked for by Warith Harchaoui: his past
 re-reading, if he finds its record (`warith_v0.csv`, next section; deviation 34 reserved, written only once the facts
@@ -33,17 +33,42 @@ The script is not in the `Makefile` yet, so that `make verify` passes with an em
 `relecture_humaine/accord_v0` at the end of the `STUDY` list and `study/relecture_humaine/accord_v0.json` to `OUTPUTS`,
 run the script once, commit `accord_v0.json`, then write deviation 34 in both protocols.
 
+## Re-reading of deviation 35: 30 blind sheets, 2018 and 2026
+
+Deviation 35 of `study/PROTOCOL-en.md`, written before the draw. Thirty papers of the main comparison, 15 of 2018 and
+15 of 2026, drawn by `tirage35.py`, under opaque names H01 to H30 in a random order.
+
+**Before filling the 30 sheets, do not open** `tirage35.json` (it ties each sheet to its paper), the commit of the
+draw, `study/codes*/`, the results files (`*_stats.json`, `results_*.json`, `survey_extra.json`, `compare*.json`), nor
+`docs/`, `report/` or `article/` about these papers.
+
+1. If `feuilles/pdf/` is missing (the copies stay out of the repository): `../sim/env-an/bin/python
+   relecture_humaine/feuilles35.py` from `study/`. It remakes the renamed copies of the PDFs, supplement appended at
+   the end, and never overwrites a started sheet.
+2. For each sheet `feuilles/Hxx.md`, open `feuilles/pdf/Hxx.pdf` and fill in, after each colon: the date, the minutes
+   spent, then for Q5, Y9, X7, X2 and X8 the decision (`yes`, `no`, `na`), the exact quote and the page of the PDF
+   file; for X8, the source. X8 is `na` if and only if X2 is `no`. The rules are written in the sheet.
+3. The PDF shows the year (header, references): this cannot be avoided. The blindness covers the agents' reading.
+4. Allow 15 to 20 minutes per paper: five criteria, the experiments, the captions and the supplement. That is 8 to 10
+   hours for the 30.
+5. When the 30 sheets are filled: `../sim/env-an/bin/python relecture_humaine/compare.py` from `study/`. The script
+   refuses to run while a sheet is incomplete, and says what to complete. It writes `compare35.json`. Then add
+   `relecture_humaine/compare` at the end of `STUDY` and `study/relecture_humaine/compare35.json` to `OUTPUTS` in the
+   `Makefile`, and commit the filled sheets with `compare35.json`.
+
+## A1 plan (abandoned)
+
 Deviation 13 of `study/PROTOCOL.md`. Goal: measure the agreement between a human reading and the
 agents' reading, on the criteria behind the document's verdicts. This is the answer to the
 objection "machines read the papers".
 
-## The golden rule: look at nothing from the agents before you are done
+### The golden rule: look at nothing from the agents before you are done
 
 Do not open `study/codes/`, `study/results_*.json`, `study/audit_stats.json` or the document
 `docs/conclusions.md` for these 10 papers before you have filled in the whole grid. The
 comparison comes afterwards, by script.
 
-## What to do
+### What to do
 
 1. Open `grille.csv` (in a spreadsheet). One row per paper. The PDF is in
    `study/pdf/<id>.pdf` (local repository; `study/fetch.py` downloads it again if needed).
@@ -58,7 +83,7 @@ comparison comes afterwards, by script.
    agreement and Cohen's kappa for each criterion. It also lists the disagreements with both
    quotations.
 
-## The seven criteria and their rules (the agents' rules, `study/PROTOCOL.md`)
+### The seven criteria and their rules (the agents' rules, `study/PROTOCOL.md`)
 
 - **Q4, all the hyperparameters of the baselines are given.** `yes` if a table or a paragraph
   gives them for all the compared methods. "Default values of [library]" without listing them

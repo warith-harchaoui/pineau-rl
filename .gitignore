@@ -35,3 +35,5 @@ suspended.pids
 sim/logs-drive*.out
 report/build/
 report/figures/*.pdf
+# Renamed copies of study/pdf/ for the blind sheets of deviation 35 (study/relecture_humaine/feuilles35.py)
+study/relecture_humaine/feuilles/pdf/
