@@ -357,7 +357,7 @@ lectures de la grille v1 (lecteurs A à G) ont eu lieu le 8 novembre dans une se
 autre dossier que le dépôt. Les seconds lecteurs G, G2, R2 et R3 n'ont ouvert aucun fichier d'un autre
 lecteur.
 
-\paragraph{L'année et les lecteurs se confondent}\label{sec:sm-annees}
+\paragraph{Dans la comparaison principale, l'année et les lecteurs se confondent}\label{sec:sm-annees}
 Aucun lecteur principal n'a lu les deux années de la comparaison principale. Les articles de 2018
 viennent des lecteurs F, F2 et H1 à H4, ceux du RL classique de 2026 des lecteurs A à E, A2 à E2 et K1
 à K6 (\file{study/survey\_extra.json}, clé \file{readers\_in\_both\_years}, vide). Tous sont des copies
@@ -379,8 +379,10 @@ les données permettent de voir.
   pour les quatre critères des verdicts. Pour X2, cette différence est une baisse ($-0{,}2$ : 5 sur 5
   en 2018, 4 sur 5 en 2026), alors que le verdict de X2 est une hausse. Cinq articles par année ne ferment pas la question.
 \end{itemize}
-Les lecteurs du critère X8 lisent chacun les deux années (section~\ref{sec:sm-x8}). Pour ce critère
-seul, l'année ne se confond pas avec les lecteurs.
+Les lecteurs du critère X8 lisaient déjà chacun les deux années (section~\ref{sec:sm-x8}). L'écart 36
+fait de même pour les quatre critères des verdicts : huit lecteurs neufs relisent les 98 articles
+expérimentaux, chacun sur les deux années (section~\ref{sec:sm-doubles}). Ses résultats sont à la
+section~\ref{sec:sr-annees}.
 
 \section{Les doubles lectures à l'aveugle}\label{sec:sm-doubles}
 
@@ -395,10 +397,46 @@ Un second lecteur relit des articles sans voir la première lecture ni savoir qu
   A4, relus avec les annexes (écart 26).
 \end{itemize}
 Trente articles sont relus en tout. Seuls les cinq articles de 2018 de R2 mesurent l'accord sur des
-articles de 2018. Tous les lecteurs étant des copies du même modèle, l'accord mesure la stabilité de ce
+articles de 2018, avant la relecture complète de l'écart 36. Tous les lecteurs étant des copies du même modèle, l'accord mesure la stabilité de ce
 modèle plus que l'accord de deux lecteurs indépendants (écart 28). L'écart 33 prévoit pour cette raison
 un lecteur d'une autre famille de modèles, \file{gemma3:12b}, qui relit les articles des verdicts. Sa
 lecture est en cours et ce rapport n'en donne aucun résultat.
+
+\paragraph{Huit lecteurs neufs sur les deux années (écart 36)}
+L'écart 36, écrit le 22 novembre 2026 après les résultats et avant toute lecture, ajoute une relecture
+complète des 98 articles expérimentaux de la comparaison principale, 48 de 2018 et 50 de 2026, sur les
+quatre critères des verdicts : Q5, Y9, X7 et X2.
+\begin{itemize}
+  \item \textbf{Les lecteurs.} Huit agents IA neufs, T1 à T8, de la même famille de modèles que les
+  lecteurs d'origine, n'avaient lu aucun article du sondage. Chacun reçoit sa liste, le chemin des PDF et la consigne
+  \file{study/r36\_prompt.txt}, qui recopie les règles des quatre critères. Il
+  ne voit ni les autres lectures ni les résultats. L'année se lit dans chaque PDF : les lecteurs
+  reçoivent les règles, pas l'hypothèse.
+  \item \textbf{La répartition.} Un générateur \file{random.Random(2035)} distribue les articles de
+  chaque année à tour de rôle, puis mélange chaque liste pour que les années alternent dans l'ordre de
+  lecture (\file{study/r36\_assign.py}). Chaque lecteur lit six articles de 2018 et six ou sept de
+  2026. L'année et le lecteur sont ainsi croisés.
+  \item \textbf{Le contrôle.} Chaque citation est cherchée dans le PDF comme pour X8
+  (\file{study/r36\_check.py}). Les 98 fichiers passent, du premier coup ou après correction par leur
+  lecteur : aucune décision n'est invalide. Un \enquote{oui} de Q5 qui renvoie à une page de projet
+  prend la valeur finale de la lecture d'origine quand celle-ci cite la même adresse, ce qui vaut pour les onze \enquote{oui} concernés. Une variante de l'analyse compte toute page de
+  projet \enquote{oui}, la moins favorable au
+  verdict de Q5.
+  \item \textbf{L'analyse.} Le script \file{study/r36\_stats.py} refait la comparaison principale avec
+  ces seules lectures : Newcombe, Fisher, Holm sur les quatre critères. Il ajuste ensuite, par
+  critère, un modèle logistique mixte. La probabilité d'un \enquote{oui} y dépend de l'année et d'un
+  effet aléatoire du lecteur, de loi normale d'écart type $s$, au maximum de vraisemblance, par
+  quadrature de Gauss-Hermite à 40 nœuds. Un test du rapport de vraisemblance juge l'effet de
+  l'année, avec Holm sur les quatre critères. À côté, l'accord des lectures neuves avec les codes
+  finals se calcule par critère et par année, avec un test de Fisher de l'accord de 2018 contre celui
+  de 2026.
+  \item \textbf{La règle, fixée d'avance.} Un verdict tient si la différence entre années et l'effet de
+  l'année sont positifs et passent tous deux la correction de Holm à 5~\%. Il est \enquote{même sens,
+  non établi} si les deux sont positifs et qu'un des deux tests échoue, \enquote{non reproduit}
+  sinon.
+\end{itemize}
+Chaque article a déjà sa lecture d'origine. Les lectures neuves forment donc avec elles une double
+lecture complète, sans troisième lecture. Les résultats sont à la section~\ref{sec:sr-annees}.
 
 \paragraph{Ce qu'on compare}
 L'accord se calcule sur les lectures brutes, avant toute harmonisation : l'harmonisation s'applique
@@ -418,12 +456,30 @@ le kappa n'est pas défini est retiré et compté. Les trois paires sont ensuite
 pour la grille v1 ou G2 pour la v2, avec R2 et R3, soit au plus trente articles par critère. Les
 résultats sont à la section~\ref{sec:sr-accord}.
 
-\paragraph{La relecture humaine prévue, puis abandonnée}
+\paragraph{La relecture humaine, abandonnée puis préenregistrée de nouveau}
 L'écart 13 prévoyait qu'un humain, l'auteur, relise seul 10 articles de 2026 sur sept critères, sans
 voir les lectures des agents. Les articles avaient été tirés par \file{random.Random(2027)}. L'écart 23
 abandonne cette relecture le 10 novembre 2026, avant qu'elle commence. Le dossier
 \file{study/relecture\_humaine/} reste comme trace du plan. Aucun humain n'a donc relu les articles à
 l'aveugle. Chaque décision reste vérifiable par sa citation et sa page.
+
+L'écart 35, écrit le 22 novembre 2026 après les résultats et avant tout tirage, prévoit une nouvelle
+relecture humaine, sur les deux années cette fois. L'auteur relira seul trente articles de la
+comparaison principale, quinze par année, tirés par \file{random.Random(2034)} parmi ceux qu'aucune
+double lecture ni le plan de l'écart 13 ne visaient déjà.
+\begin{itemize}
+  \item \textbf{L'aveugle.} Chaque article reçoit une feuille à nom opaque, H01 à H30, avec une copie
+  renommée de son PDF (\file{study/relecture\_humaine/feuilles/}). La feuille n'affiche ni identifiant,
+  ni titre, ni conférence, ni année, ni aucune valeur d'un agent. Le PDF montre pourtant l'année. Le lecteur, auteur du sondage, connaît aussi l'hypothèse : l'écart
+  le dit d'avance.
+  \item \textbf{Les critères.} Q5, Y9, X7, X2 et X8, avec les règles des agents recopiées dans chaque
+  feuille. Chaque décision donne une citation exacte et sa page.
+  \item \textbf{L'analyse.} Le script \file{compare.py} refuse de tourner tant qu'une des trente
+  feuilles reste incomplète. Il lira ensuite les codes des agents, mesurera l'accord de l'humain avec
+  eux, puis dira si la différence entre années tient sous une lecture humaine.
+\end{itemize}
+Au 22 novembre 2026, les trente feuilles sont vides : ce rapport ne donne aucun résultat de cette
+relecture.
 
 \section{Le pilote et l'harmonisation}\label{sec:sm-harmonisation}
 
@@ -518,8 +574,10 @@ Avec 50 articles de 2018, la comparaison secondaire de l'écart 12 a confirmé q
 autrement que Pineau (chapitre~\ref{chap:04-sondage-resultats}). L'écart 20, décidé le 9 novembre 2026 après ces
 premiers résultats, en tire la règle du rapport : un verdict repose seulement sur la comparaison
 principale de l'écart 12, nos 50 articles de RL classique de 2026 contre notre lecture de 50 articles
-de 2018, avec les mêmes grilles, lues par des agents du même modèle. Aucun agent n'a pourtant lu les deux
-années : l'effet de l'année se confond avec celui des lecteurs (section~\ref{sec:sm-annees}). Cette comparaison avait été fixée
+de 2018, avec les mêmes grilles, lues par des agents du même modèle. Les agents de 2018 ne sont pas ceux
+de 2026 : dans cette comparaison, l'effet de l'année se confond avec celui des lecteurs
+(section~\ref{sec:sm-annees}), que l'écart 36 sépare (section~\ref{sec:sr-annees}). Cette comparaison avait été fixée
+
 avant toute lecture des articles ajoutés. Les comparaisons avec les chiffres de Pineau restent montrées comme
 contexte. Le changement de règle a été décidé après avoir vu ces résultats. Le protocole le déclare.
 Un critère \enquote{a changé} quand l'écart passe le seuil de 5~\% après la correction de Holm.

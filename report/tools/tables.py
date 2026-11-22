@@ -2201,6 +2201,103 @@ def t_x8():
                    r"@{}>{\raggedright\arraybackslash}p{4.6cm}rrrrrr@{}", head, rows, tabcolsep="3.2pt")
 
 
+R36_VERDICT = {"holds": ("tient", "holds"), "same direction, not established": ("même sens, non établi", "same direction, not established"),
+               "not reproduced": ("non reproduit", "not reproduced")}
+
+
+def p3(p, lang):
+    """p-values of deviation 36: three decimals from 0.01 up, so that 0.053 is not printed as 0.05."""
+    return num(p, lang, 3) if 0.01 <= p < 0.995 else pval(p, lang)
+
+
+def t_r36():
+    r = J("study/r36_stats.json")
+    keys = ["Q5", "Y9", "X7", "X2"]
+    for lang in LANGS:
+        def share(c):
+            return f"{kn(c['yes'], c['n'])} & {pc(c['share'], lang)}"
+        head = [L(lang, r" & & \multicolumn{2}{c}{2018} & \multicolumn{2}{c}{2026} & \multicolumn{2}{c}{Écart, Fisher} & \multicolumn{2}{c}{Effet de l'année} & & ",
+                  r" & & \multicolumn{2}{c}{2018} & \multicolumn{2}{c}{2026} & \multicolumn{2}{c}{Gap, Fisher} & \multicolumn{2}{c}{Year effect} & & "),
+                r"\cmidrule(lr){3-4}\cmidrule(lr){5-6}\cmidrule(lr){7-8}\cmidrule(lr){9-10}",
+                L(lang, r"Code & Critère & $k/n$ & \% & $k/n$ & \% & \makecell[r]{points\\{}[Newcombe]} & \makecell[r]{$p$\\{}Holm} & \makecell[r]{rapport de cotes\\{}[Wald]} & \makecell[r]{$p$\\{}Holm} & \makecell[r]{$s$ lecteurs\\{}($p$)} & Verdict",
+                  r"Code & Criterion & $k/n$ & \% & $k/n$ & \% & \makecell[r]{points\\{}[Newcombe]} & \makecell[r]{Holm\\{}$p$} & \makecell[r]{odds ratio\\{}[Wald]} & \makecell[r]{Holm\\{}$p$} & \makecell[r]{reader $s$\\{}($p$)} & Verdict")]
+        rows = []
+        for k in keys:
+            m, mm, v = r["main"][k], r["mixed_model"][k], r["verdicts"][k]
+            hold = v["verdict"] == "holds"
+            d = m["diff"]
+            cells = [k, CRIT[k][0 if lang == "fr" else 1], share(m["counts"]["2018"]), share(m["counts"]["2026"]),
+                     mc(pc(d["diff"], lang, sign=True), iv(num(D(d["lo"]) * 100, lang, 1, sign=True), num(D(d["hi"]) * 100, lang, 1, sign=True), lang)),
+                     p3(d["p_holm4"], lang),
+                     mc(num(mm["odds_ratio"], lang, 2), iv(num(mm["or_wald95"][0], lang, 2), num(mm["or_wald95"][1], lang, 2), lang)),
+                     p3(mm["p_lrt_holm4"], lang),
+                     f"{num(mm['reader_sd'], lang, 2)} ({pval(mm['p_reader_sd'], lang)})",
+                     R36_VERDICT[v["verdict"]][0 if lang == "fr" else 1]]
+            rows.append(" & ".join(bold(x, hold) if i < 2 else x for i, x in enumerate(cells)))
+        pp = r["project_pages_yes"]["Q5"]
+        d = pp["diff"]
+        rows.append(" & ".join([r"\quad Q5", L(lang, "toute page de projet comptée oui", "every project page counted yes"),
+                                share(pp["counts"]["2018"]), share(pp["counts"]["2026"]),
+                                mc(pc(d["diff"], lang, sign=True), iv(num(D(d["lo"]) * 100, lang, 1, sign=True), num(D(d["hi"]) * 100, lang, 1, sign=True), lang)),
+                                p3(d["p_holm4"], lang), "", "", "", ""]))
+        nr = len(r["readers"])
+        nw = L(lang, "huit", "eight") if nr == 8 else str(nr)
+        n18 = r["main"]["Q5"]["counts"]["2018"]["n"]
+        n26 = r["main"]["Q5"]["counts"]["2026"]["n"]
+        overlap = all(r["verdicts"][k]["intervals_overlap"] for k in keys)
+        orig = L(lang, " ; ", "; ").join(f"{k} {pc(r['verdicts'][k]['original']['diff'], lang, sign=True)}" for k in keys)
+        cap = L(lang,
+                rf"Écart 36 de \file{{study/PROTOCOL.md}} (écrit avant toute lecture et tout calcul) : les {n18 + n26} articles expérimentaux de la comparaison principale ({n18} de 2018, {n26} de 2026) relus par {nw} agents neufs, T1 à T{nr}, qui lisent chacun les deux années (6 articles de 2018 et 6 ou 7 de 2026). "
+                r"Écart 2026 moins 2018 en points, intervalle de Newcombe à 95~\%, test exact de Fisher avec Holm sur les quatre critères. "
+                r"Effet de l'année : modèle logistique mixte par critère, logit P(oui) = $b_0 + b_1 \times [2026] + u$, $u$ effet aléatoire du lecteur d'écart type $s$, maximum de vraisemblance par quadrature de Gauss-Hermite ; rapport de cotes $e^{b_1}$ avec son intervalle de Wald à 95~\%, test du rapport de vraisemblance de $b_1 = 0$ avec Holm sur les quatre critères ; $s$ avec son test à la frontière (demi-khi-deux). "
+                r"Règle fixée d'avance : un verdict tient si les deux tests passent Holm à 5~\% avec un effet positif ; « même sens, non établi » si les deux effets sont positifs et qu'un test échoue. \textbf{En gras}, les verdicts qui tiennent. "
+                + (r"Chaque intervalle de Newcombe recouvre celui de la comparaison principale" if overlap else r"Un intervalle de Newcombe au moins ne recouvre pas celui de la comparaison principale")
+                + rf" (écarts d'origine : {orig} points). "
+                r"Dernière ligne : la lecture où toute page de projet compte « oui » pour Q5, la moins favorable à son verdict. Aucune décision invalide. "
+                r"Source : \file{study/r36_stats.json} (\file{study/r36_stats.py}).",
+                rf"Deviation 36 of \file{{study/PROTOCOL.md}} (written before any reading and any computation): the {n18 + n26} experimental papers of the main comparison ({n18} from 2018, {n26} from 2026) reread by {nw} fresh agents, T1 to T{nr}, each of whom reads both years (6 papers from 2018 and 6 or 7 from 2026). "
+                r"Gap 2026 minus 2018 in points, 95\% Newcombe interval, Fisher's exact test with Holm over the four criteria. "
+                r"Year effect: a logistic mixed model per criterion, logit P(yes) = $b_0 + b_1 \times [2026] + u$, $u$ a random reader effect with standard deviation $s$, maximum likelihood with Gauss-Hermite quadrature; odds ratio $e^{b_1}$ with its 95\% Wald interval, likelihood-ratio test of $b_1 = 0$ with Holm over the four criteria; $s$ with its boundary test (half chi-square). "
+                r"Rule fixed in advance: a verdict holds if both tests pass Holm at 5\% with a positive effect; ``same direction, not established'' if both effects are positive and one test fails. \textbf{In bold}, the verdicts that hold. "
+                + (r"Every Newcombe interval overlaps the one of the main comparison" if overlap else r"At least one Newcombe interval does not overlap the one of the main comparison")
+                + rf" (original gaps: {orig} points). "
+                r"Last row: the reading where every project page counts ``yes'' for Q5, the least favourable to its verdict. No decision is invalid. "
+                r"Source: \file{study/r36_stats.json} (\file{study/r36_stats.py}).")
+        floattable("r36", lang, cap, L(lang, "L'année et les lecteurs démêlés (écart 36)", "Year and readers disentangled (deviation 36)"),
+                   r"@{}l>{\raggedright\arraybackslash}p{2.6cm}rrrrrrrrr>{\raggedright\arraybackslash}p{1.9cm}@{}", head, rows, tabcolsep="2.4pt")
+
+
+def t_r36_accord():
+    a = J("study/r36_stats.json")["agreement_with_final_codes"]
+    for lang in LANGS:
+        def ag(c):
+            return f"{kn(c['same'], c['n'])} & {pc(c['agree'], lang)}"
+        head = [L(lang, r" & & \multicolumn{3}{c}{Les deux années} & \multicolumn{2}{c}{2018} & \multicolumn{2}{c}{2026} & & \multicolumn{2}{c}{Désaccords} ",
+                  r" & & \multicolumn{3}{c}{Both years} & \multicolumn{2}{c}{2018} & \multicolumn{2}{c}{2026} & & \multicolumn{2}{c}{Disagreements} "),
+                r"\cmidrule(lr){3-5}\cmidrule(lr){6-7}\cmidrule(lr){8-9}\cmidrule(lr){11-12}",
+                L(lang, r"Code & Critère & $k/n$ & \% [Wilson] & kappa & $k/n$ & \% & $k/n$ & \% & \makecell[r]{$p$ Fisher\\{}2018/2026} & \makecell[r]{oui neuf,\\{}non d'origine} & \makecell[r]{non neuf,\\{}oui d'origine}",
+                  r"Code & Criterion & $k/n$ & \% [Wilson] & kappa & $k/n$ & \% & $k/n$ & \% & \makecell[r]{Fisher $p$\\{}2018/2026} & \makecell[r]{new yes,\\{}original no} & \makecell[r]{new no,\\{}original yes}")]
+        rows = []
+        for k in ("Q5", "Y9", "X7", "X2"):
+            c = a[k]
+            al = c["all"]
+            rows.append(" & ".join([k, CRIT[k][0 if lang == "fr" else 1], kn(al["same"], al["n"]),
+                                    f"{pc(al['agree'], lang)} {iv(pc(al['wilson'][0], lang), pc(al['wilson'][1], lang), lang)}",
+                                    num(al["kappa"], lang, 2), ag(c["2018"]), ag(c["2026"]), pval(c["p_fisher_2018_vs_2026"], lang),
+                                    str(al["new_yes_orig_no"]), str(al["new_no_orig_yes"])]))
+        cap = L(lang,
+                r"Écart 36 : accord des lectures neuves (huit agents, chacun sur les deux années) avec les codes finals harmonisés de la comparaison principale, sur les mêmes articles. "
+                r"$k/n$ : décisions identiques sur décisions comparées ; part de décisions identiques avec son intervalle de Wilson à 95~\%, kappa de Cohen, puis l'accord par année et le test exact de Fisher de l'accord de 2018 contre celui de 2026 : un désaccord qui dépendrait de l'année serait le biais que l'écart vise. "
+                r"Deux dernières colonnes : les articles où la lecture neuve dit oui et le code final non, puis l'inverse. "
+                r"Source : \file{study/r36_stats.json} (\file{study/r36_stats.py}).",
+                r"Deviation 36: agreement of the new readings (eight agents, each on both years) with the final harmonised codes of the main comparison, on the same papers. "
+                r"$k/n$: identical decisions out of decisions compared; share of identical decisions with its 95\% Wilson interval, Cohen's kappa, then the agreement per year and Fisher's exact test of the 2018 agreement against the 2026 one: a disagreement that depended on the year would be the bias the deviation targets. "
+                r"Last two columns: the papers where the new reading says yes and the final code no, then the reverse. "
+                r"Source: \file{study/r36_stats.json} (\file{study/r36_stats.py}).")
+        floattable("r36-accord", lang, cap, L(lang, "Écart 36 : accord avec les codes d'origine", "Deviation 36: agreement with the original codes"),
+                   r"@{}l>{\raggedright\arraybackslash}p{2.6cm}rrrrrrrrrr@{}", head, rows, tabcolsep="2.6pt")
+
+
 GMOD = {"qwen05": ("Qwen2.5 0,5B", "Qwen2.5 0.5B"), "llama1": ("Llama 3.2 1B", "Llama 3.2 1B")}
 GMEAS = {"pass1": ("pass@1 (échantillonné)", "pass@1 (sampled)"), "greedy": ("justesse gloutonne", "greedy accuracy"),
          "pass8": ("pass@8", "pass@8"), "truncated": ("part coupée", "cut-off share"),
@@ -2278,7 +2375,9 @@ def main():
               t_e4, t_e5, t_e6, t_e7, t_dose, t_b3, t_grpo, t_ecarts, t_env, t_calcul, t_articles,
               t_e2_strict, t_e1_grille, t_e3_holm, t_e3_puissance, t_e7_test, t_e5_holdout, t_regle_tranche, t_hyperparametres,
               t_e6_vitesse, t_accord_intervalles, t_difference_detectable, t_regle_origine, t_q5_versions, t_x8,
-              t_grpo_mesures, t_grpo_contraste):
+              t_r36, t_r36_accord, t_grpo_mesures, t_grpo_contraste):
+        if len(sys.argv) > 1 and f.__name__[2:].replace("_", "-") not in sys.argv[1:]:
+            continue  # tables.py r36 r36-accord: only the tables named
         f()
     names = sorted(p.stem for p in (GEN / "fr").glob("*.tex"))
     print(f"Wrote {len(names)} tables in gen/fr and gen/en: {', '.join(names)}")

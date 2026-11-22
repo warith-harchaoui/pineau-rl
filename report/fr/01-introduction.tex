@@ -172,9 +172,10 @@ articles de RL de 2025 et 2026, parmi les \num{1252} articles de RL d'ICLR 2026,
 2025, puis 50 articles de RL classique de 2026 (robotique, jeux, contrôle, hors modèles de langue), 50 articles de 2018 et 20 articles par année en 2019, 2020,
 2022 et 2024. Des agents IA lisent les articles. Chaque \enquote{oui} repose sur une citation
 exacte et sa page. Un \enquote{non} dit ce qui a été lu sans rien trouver. Le verdict compare le RL classique de 2026 à notre propre lecture de 2018, avec les
-mêmes grilles et des agents du même modèle. Aucun agent n'a pourtant lu les deux années, si bien que
-l'effet de l'année se confond avec celui de l'ensemble des lecteurs
-(section~\ref{sec:sm-annees}). Les chapitres~\ref{chap:03-sondage-methode} et~\ref{chap:04-sondage-resultats} décrivent
+mêmes grilles et des agents du même modèle. Les agents qui ont lu 2018 ne sont pas ceux qui ont lu
+2026 (section~\ref{sec:sm-annees}). Huit agents neufs ont donc relu les articles des deux années,
+chacun sur les deux, pour séparer l'effet de l'année de celui des lecteurs : trois des quatre verdicts
+tiennent, le quatrième garde son sens sans être établi (section~\ref{sec:sr-annees}). Les chapitres~\ref{chap:03-sondage-methode} et~\ref{chap:04-sondage-resultats} décrivent
 la méthode et les résultats.
 
 \paragraph{Les expériences}
@@ -271,7 +272,9 @@ extrait trouvé a été jugé par un arbitre. Dix sont passées à \enquote{oui}
 (écart 27, \file{study/falsify\_no.json}). Les consignes de chaque agent sont publiées mot pour mot
 (\file{study/readers/prompts/}, écart 28). Les doubles lectures restent faites par des copies du même
 modèle. Une lecture humaine doit donc contrôler les agents : c'est la relecture à l'aveugle de trente
-articles, quinze de chaque année, préenregistrée à l'écart 35.
+articles, quinze de chaque année, préenregistrée à l'écart 35. Ses trente feuilles attendent encore
+leur lecteur.
+
 % TRACE MANQUANTE : écart 34 (relecture humaine passée de l'auteur), à citer ici seulement quand l'auteur en donne les faits.
 
 \section{Guide de lecture}\label{sec:intro-guide}

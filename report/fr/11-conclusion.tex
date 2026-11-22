@@ -30,7 +30,10 @@ réglage et l'incertitude rapportée passent la correction de Holm dans la compa
 que nous avons tentées, la sensibilité à presque toutes. Le code garde son verdict quand les deux
 années sont lues sur la même sorte de version, actes ou arXiv (\cref{sec:sr-robustesse}).
 L'incertitude rapportée est le changement le plus fragile : elle ne passe plus la correction quand
-on retire les treize articles lus en partie par un autre modèle. Le critère X8 en précise le sens.
+on retire les treize articles lus en partie par un autre modèle. Les lecteurs de 2018 n'étant pas
+ceux de 2026, huit lecteurs neufs ont relu les deux années : les hausses du code, du calcul et de la
+sensibilité tiennent, celle de l'incertitude rapportée garde son sens sans être établie
+(\cref{sec:sr-annees}). Le critère X8 précise le sens de cette dernière.
 La part des articles qui calculent leur incertitude sur des graines aléatoires passe de 35~\% à
 42~\%, un écart que le sondage ne détecte pas : la barre d'erreur s'est répandue plus vite que la
 barre calculée sur les entraînements indépendants (\cref{sec:sr-principale}). Lues sur 20 articles
@@ -194,7 +197,11 @@ d'une courbe empilés, ne mesure pas la variabilité entre entraînements.
   \item \textbf{Une lecture, avec la même grille, des articles qui appliquent ce qu'ils appellent RL
         à de grands modèles de langue}, sur un échantillon de taille comparable, dirait si
         l'évaluation tenue à part, qui y progresse, s'accompagne des autres pratiques.
+  \item \textbf{La relecture humaine de l'écart 35.} Trente articles, quinze par année, attendent la
+        lecture à l'aveugle de l'auteur. Le script qui la comparera aux agents est écrit et refuse de
+        tourner avant que les trente feuilles soient remplies.
   \item \textbf{Un nouvel entraînement complet sur une autre plateforme}, Linux sur x86-64,
+
         testerait les statistiques de nos expériences avec d'autres tirages (\cref{sec:reentrainer}).
   \item \textbf{D'autres familles de tâches} que la locomotion MuJoCo : jeux à images, RL hors
         ligne, robotique réelle, où les conclusions de E2 à E7 restent à éprouver.

@@ -29,7 +29,10 @@ sensitivity to a setting and reported uncertainty pass the Holm correction in th
 sensitivity nearly every one. Code keeps its verdict when both years are read on the same kind of
 version, proceedings or arXiv (\cref{sec:sr-robustesse}). Reported uncertainty is the most fragile
 change: it no longer passes the correction once the thirteen papers partly read by another model are
-removed. Criterion X8 makes its meaning precise. The share of papers that compute their uncertainty
+removed. Since the readers of 2018 are not those of 2026, eight fresh readers reread both years: the
+rises in code, compute and sensitivity hold, while the rise in reported uncertainty keeps its direction
+without being established (\cref{sec:sr-annees}). Criterion X8 makes the meaning of that last rise
+precise. The share of papers that compute their uncertainty
 over random seeds goes from 35\% to 42\%, a gap the survey does not detect: the error bar has spread
 faster than the bar computed over independent training runs (\cref{sec:sr-principale}). Read on 20
 papers per year between the two dates, the four practices rise slowly, with no jump right after the
@@ -192,7 +195,11 @@ curve, does not measure the variability between training runs.
   \item \textbf{The papers that apply what they call RL to large language models, read with the same
         grid} on a sample of comparable size, would tell whether held-out evaluation, which is
         progressing there, comes with the other practices.
+  \item \textbf{The human rereading of deviation 35.} Thirty papers, fifteen per year, await the
+        author's blind reading. The script that will compare it with the agents is written and refuses
+        to run until all thirty sheets are filled.
   \item \textbf{A new complete training run on another platform}, Linux on x86-64, would test the
+
         statistics of our experiments with other draws (\cref{sec:reentrainer}).
   \item \textbf{Other families of tasks} than MuJoCo locomotion: image-based games, offline RL, real
         robotics, where the conclusions of E2 to E7 have yet to be tested.

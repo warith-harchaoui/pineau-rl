@@ -266,13 +266,21 @@ held-out evaluation (+35 points) and declined on the baselines' hyperparameters 
 against our own reading of 2018. They measure the change of grid as much as the change of practice. This is why the
 verdicts compare our two readings and set her figures aside as context.
 
-### 3.7 The confound we have not removed
+### 3.7 Year and readers, disentangled
 
 No primary reader read both years. The papers of 2018 and those of 2026 were read by different agents. An effect
 peculiar to one year's readers cannot be told apart from the year itself. Within 2018, the share of code links varies
 between readers more than chance alone would easily explain (permutation p = 0.049). X8 escapes this confound, since each of its readers read both years.
-For the four verdict criteria, a preregistered re-reading by eight new agents who each read both years is planned
-(Section 6).
+
+For the four verdict criteria, eight new agents then reread all 98 papers with experiments, each of them on both
+years (survey deviation 36, written before any reading). With their readings alone, the code link goes from 31% to
+72%, sensitivity from 42% to 78% and compute from 31% to 66%. All three rises pass both tests fixed in advance after
+Holm's correction: the Fisher test on the gap and the likelihood-ratio test on the year effect of a logistic model
+with a random reader effect. Reported uncertainty goes from 69% to 86%, a gap of +17 points with interval
+[+0.6, +33.0]. Its year effect passes (p = 0.04 after Holm) but the Fisher test misses (p = 0.053 after Holm). Under
+the rule fixed in advance, its rise keeps the same direction without being established. The estimated spread between
+readers is nil for two criteria and not significant for the other two. The new readers still come from the same model
+family as the original ones, so a bias shared by the whole family would escape them.
 
 ## 4. B1: where does the t of 9 come from?
 
@@ -420,8 +428,6 @@ property a recipe keeps once published: it holds only with the software the reci
 This short version, like version 1.0 of the technical report, comes before an addendum. Each item below has a
 deviation written before its result.
 
-- **The year and the readers, disentangled** (survey deviation 36). Eight new agents each read papers from both years
-  on the four verdict criteria, which removes the confound of Section 3.7.
 - **A blind human re-reading** (survey deviation 35). The author rereads thirty papers, fifteen from each year, drawn
   in advance and shown without their year.
 - **A reader from another model family** (survey deviation 33). A local open model reads the 98 papers with
@@ -432,7 +438,7 @@ deviation written before its result.
 ## 7. Limits
 
 The readers are agents of one model. Their double readings measure the stability of that model, not the agreement of
-independent readers. The year is confounded with the reader set for the four verdict criteria. The verdict rule
+independent readers. Eight new readers separate the year from the reader set, but they share the model family of the first readers. The verdict rule
 changed after the first results. The original rule would have confirmed no change. With fifty papers per year, the
 survey sees only large changes. B1 recovers an order of magnitude with a different TRPO and different episodes, not
 the published run itself. E6 rests on one task, one algorithm of the collection and one published agent for 2022.

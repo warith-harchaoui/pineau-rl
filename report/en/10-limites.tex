@@ -17,8 +17,9 @@ running, then what a new complete training run on another machine would test.
 Every paper was read by AI agents, copies of one model (\texttt{claude-opus-5-5}). Two
 readers finished on a neighbouring model (\texttt{claude-opus-5}) for thirteen papers, after a
 response was stopped by a content filter of the provider (survey deviation 28). No human reread the
-papers blind: the rereading planned by deviation 13 was dropped before it began (deviation 23). Five
-safeguards reduce the risk without removing it.
+papers blind: the rereading planned by deviation 13 was dropped before it began (deviation 23). The
+one of deviation 35, thirty papers of both years drawn at random, still awaits its reader
+(\cref{sec:sm-doubles}). Five safeguards reduce the risk without removing it.
 
 \begin{enumerate}
   \item \textbf{The mandatory quotation.} Every \enquote{yes} decision rests on an exact quotation
@@ -60,7 +61,7 @@ readings. The exact instructions, the model and the dates of every reader are pu
 of models, \texttt{gemma3:12b}, is rereading the 98 experimental papers of the main comparison at
 the time of writing (survey deviation 33, \cref{sec:val-en-cours}).
 
-\subsection{Readers and year are confounded}
+\subsection{Readers and year}
 
 No main reader read both years. The 2018 papers were read by F, F2 and H1 to H4, the classical RL
 papers of 2026 by other agents (\file{study/survey\_extra.json}, key \texttt{readers\_year}). All are
@@ -77,8 +78,16 @@ calibration, H1 to H4 the added papers. For the verdict criteria, only the secon
 years. On its five papers per year, it finds, for all four criteria, the same differences between
 years as the main readers. Five papers per year are still too few to close the question. Criterion
 X8 closes it for itself alone, since each of its six main readers read both years (deviation 32).
-The reader from another family of models of deviation 33 will take the question up again for the
-four verdict criteria.
+
+Deviation 36 separates the year from the readers for the four verdict criteria. Eight fresh readers
+reread the 98 papers, each of them on both years. A model with a random reader effect then measures
+the year effect for a given reader. The verdicts on Q5, Y9 and X7 hold. The one on X2, already the most
+fragile, keeps its direction without being established under the rule fixed in advance. The reader
+standard deviation is zero or indistinguishable from zero (\cref{sec:sr-annees}). Two limits remain.
+The fresh readers see the year in every PDF. They also come from the same model family as the original
+readers: a bias of that family that varied with the year would affect both readings alike, so the
+90\% to 100\% agreement between them does not rule it out. The reader from another family of models
+(deviation 33) and the human rereading (deviation 35) target that bias. Neither has a result yet.
 
 \subsection{Decisions taken after the results}
 
@@ -309,7 +318,7 @@ Carlo noise (simulation deviation 13): a verdict whose bound grazes the threshol
 \section{What is still running}
 \label{sec:val-en-cours}
 
-Five experiments are written in advance and not yet finished on 22 November 2026. The report gives
+Six experiments are written in advance and not yet finished on 22 November 2026. The report gives
 no result for any of them. Each answers a limitation of this chapter.
 \begin{itemize}
   \item \textbf{The determinism of SAC and CrossQ} (simulation deviation 32): three training runs
@@ -321,6 +330,8 @@ no result for any of them. Each answers a limitation of this chapter.
         runs add power to E3 and swap the orthogonal initialisation.
   \item \textbf{A reader from another family of models} (survey deviation 33): \texttt{gemma3:12b}
         rereads the four verdict criteria on the 98 experimental papers.
+  \item \textbf{The human rereading} (survey deviation 35): the author will reread thirty papers of
+        both years blind. The thirty sheets still await their reader.
   \item \textbf{The GRPO rerun} (deviation 20 of the GRPO strand): 40 runs on a single device, with
         no repetition penalty and a pilot kept out of the test set, wait for the GPU to become free.
 \end{itemize}

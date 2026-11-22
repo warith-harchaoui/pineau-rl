@@ -352,7 +352,7 @@ as a format example. K002 is not M7's and enters no double reading. The grid v1 
 G) took place on 8 November in a session opened in a folder other than the repository. The second
 readers G, G2, R2 and R3 opened no file of another reader.
 
-\paragraph{Year and readers are confounded}\label{sec:sm-annees}
+\paragraph{In the main comparison, year and readers are confounded}\label{sec:sm-annees}
 No primary reader read both years of the main comparison. The papers of 2018 come from readers F, F2
 and H1 to H4, those of classical RL in 2026 from readers A to E, A2 to E2 and K1 to K6
 (\file{study/survey\_extra.json}, key \file{readers\_in\_both\_years}, empty). All are copies of the
@@ -374,8 +374,10 @@ written before its computation, measures what the data allow us to see.
   four criteria behind the verdicts. For X2, this difference is a fall ($-0.2$: 5 of 5 in 2018, 4 of 5
   in 2026), whereas the X2 verdict is a rise. Five papers per year do not close the question.
 \end{itemize}
-The readers of criterion X8 each read both years (Section~\ref{sec:sm-x8}). For that criterion alone,
-the year is not confounded with the readers.
+The readers of criterion X8 already each read both years (Section~\ref{sec:sm-x8}). Deviation 36 does
+the same for the four criteria behind the verdicts: eight fresh readers reread the 98 experimental
+papers, each of them on both years (Section~\ref{sec:sm-doubles}). Its results are in
+Section~\ref{sec:sr-annees}.
 
 \section{The blind double readings}\label{sec:sm-doubles}
 
@@ -389,11 +391,44 @@ A second reader rereads papers without seeing the first reading or knowing who m
   \item \textbf{R3 (both grids).} 10 papers drawn by \file{random.Random(2030)} among the 80 of A4,
   reread with the appendices (deviation 26).
 \end{itemize}
-Thirty papers are reread in all. Only R2's five papers from 2018 measure agreement on papers from 2018.
+Thirty papers are reread in all. Only R2's five papers from 2018 measure agreement on papers from 2018,
+before the complete rereading of deviation 36.
 Since all readers are copies of the same model, agreement measures the stability of that model more
 than the agreement of two independent readers (deviation 28). For this reason, deviation 33 plans a
 reader from another family of models, \file{gemma3:12b}, which rereads the papers behind the verdicts.
 Its reading is running: this report gives no result from it.
+
+\paragraph{Eight fresh readers on both years (deviation 36)}
+Deviation 36, written on 22 November 2026 after the results and before any reading, adds a complete
+rereading of the 98 experimental papers of the main comparison, 48 from 2018 and 50 from 2026, on the
+four criteria behind the verdicts: Q5, Y9, X7 and X2.
+\begin{itemize}
+  \item \textbf{The readers.} Eight fresh AI agents, T1 to T8, from the same model family as the
+  original readers, had read no paper of the survey. Each receives its list, the path to the PDFs and the prompt
+  \file{study/r36\_prompt.txt}, which copies out the rules of the four criteria. It sees neither the other readings nor the results. The year shows in every PDF: the readers
+  get the rules, not the hypothesis.
+  \item \textbf{The allocation.} A \file{random.Random(2035)} generator deals the papers of each year
+  in turn, then shuffles each list so that the years alternate in the reading order
+  (\file{study/r36\_assign.py}). Each reader reads six papers from 2018 and six or seven from 2026.
+  Year and reader are thus crossed.
+  \item \textbf{The check.} Each quotation is looked up in the PDF as for X8
+  (\file{study/r36\_check.py}). All 98 files pass, at once or after their reader's correction: no
+  decision is invalid. A Q5 \enquote{yes} that points to a project page takes the final value of the
+  original reading when that reading cites the same address, which holds for all eleven such \enquote{yes}. A variant of the analysis counts every project page as \enquote{yes}, the least favourable to the Q5 verdict.
+  \item \textbf{The analysis.} The script \file{study/r36\_stats.py} redoes the main comparison with
+  these readings only: Newcombe, Fisher, Holm over the four criteria. It then fits, per criterion, a
+  logistic mixed model. The probability of a \enquote{yes} depends on the year and on a random reader
+  effect, normal with standard deviation $s$, fitted by maximum likelihood with 40-node Gauss-Hermite
+  quadrature. A likelihood-ratio test judges the year effect, with Holm over the four criteria.
+  Beside it, the agreement of the new readings with the final codes is computed per criterion and per
+  year, with Fisher's test of the 2018 agreement against the 2026 one.
+  \item \textbf{The rule, fixed in advance.} A verdict holds if the difference between years and the
+  year effect are both positive and both pass the Holm correction at 5\%. It is \enquote{same
+  direction, not established} if both are positive but one of the two tests fails, \enquote{not
+  reproduced} otherwise.
+\end{itemize}
+Every paper already has its original reading. The new readings therefore form a complete double
+reading with them, with no third reading. The results are in Section~\ref{sec:sr-annees}.
 
 \paragraph{The quantity compared}
 Agreement is computed on the raw readings, before any harmonisation: harmonisation applies to both
@@ -413,12 +448,28 @@ undefined is dropped and counted. The three pairs are then pooled by criterion: 
 for v2, with R2 and R3, that is at most thirty papers per criterion. The results are in
 Section~\ref{sec:sr-accord}.
 
-\paragraph{The human rereading, planned then abandoned}
+\paragraph{The human rereading, abandoned then preregistered again}
 Deviation 13 planned for a human, the author, to reread 10 papers from 2026 alone on seven criteria,
 without seeing the agents' readings. The papers had been drawn by \file{random.Random(2027)}. Deviation
 23 abandons this rereading on 10 November 2026, before it started. The folder
 \file{study/relecture\_humaine/} remains as a trace of the plan. No human reread the papers
 blind. Each decision remains checkable through its quotation and its page.
+
+Deviation 35, written on 22 November 2026 after the results and before any draw, plans a new human
+rereading, this time on both years. The author will reread alone thirty papers of the main comparison,
+fifteen per year, drawn by \file{random.Random(2034)} among those that no double reading and no part of
+the deviation 13 plan had already covered.
+\begin{itemize}
+  \item \textbf{Blindness.} Each paper gets a sheet with an opaque name (H01 to H30) and a renamed copy of its PDF (\file{study/relecture\_humaine/feuilles/}). The sheet shows no identifier, title,
+  conference, year or agent value. The PDF still shows the year. The reader, who wrote the survey, also knows the hypothesis: the
+  deviation says so in advance.
+  \item \textbf{Criteria.} Q5, Y9, X7, X2 and X8, with the agents' rules copied into each sheet. Each
+  decision gives an exact quotation and its page.
+  \item \textbf{Analysis.} The script \file{compare.py} refuses to run while any of the thirty sheets is
+  incomplete. It will then read the agents' codes, measure the human's agreement with them and say
+  whether the difference between years holds under a human reading.
+\end{itemize}
+On 22 November 2026, the thirty sheets are empty: this report gives no result from this rereading.
 
 \section{The pilot and the harmonisation}\label{sec:sm-harmonisation}
 
@@ -512,8 +563,9 @@ With 50 papers from 2018, the secondary comparison of deviation 12 confirmed tha
 differently from Pineau (Chapter~\ref{chap:04-sondage-resultats}). Deviation 20, decided on 9 November
 2026 after these first results, draws from it the rule of the report: a verdict rests only on the main
 comparison of deviation 12, our 50 classical RL papers from 2026 against our reading of 50 papers from
-2018, with the same grids, read by agents of the same model. No agent read both years, however: the
-year effect is confounded with the readers' (Section~\ref{sec:sm-annees}). This comparison had been
+2018, with the same grids, read by agents of the same model. The agents of 2018 are not those of 2026:
+in this comparison the year effect is confounded with the readers' (Section~\ref{sec:sm-annees}). Deviation 36 separates the two (Section~\ref{sec:sr-annees}). This comparison had been
+
 fixed before any reading of the added papers. The comparisons with Pineau's figures stay on display as context. The change of rule
 was decided after seeing these results, which the protocol declares. A criterion \enquote{changed}
 when its gap passes the 5\% threshold after the Holm correction.

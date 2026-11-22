@@ -174,6 +174,22 @@ claim("Q5 arXiv", f"it rises by {sg(qv['P2']['diff'] * 100)} points. Both pass")
 pp = J("study/survey_extra.json")["readers_year"]["confound"]["2018"]["Q5"]["p_perm"]
 claim("reader permutation", f"(permutation p = {pv(pp, 2)})")
 
+# Year and readers disentangled (study/r36_stats.json, keys main, mixed_model, verdicts; survey deviation 36).
+r36 = J("study/r36_stats.json")
+rm, rv, rmm = r36["main"], r36["verdicts"], r36["mixed_model"]
+assert [rv[k]["verdict"] for k in ("Q5", "Y9", "X7", "X2")] == ["holds"] * 3 + ["same direction, not established"]
+assert sorted(k for k in rmm if rmm[k]["reader_sd"] == 0) == ["Q5", "Y9"] and all(rmm[k]["p_reader_sd"] > .05 for k in rmm)
+sh = lambda k, y: pct(rm[k]["counts"][y]["share"])
+claim("r36 n", f"reread all {rm['Q5']['counts']['2018']['n'] + rm['Q5']['counts']['2026']['n']} papers with experiments")
+claim("r36 three", f"the code link goes from {sh('Q5', '2018')} to {sh('Q5', '2026')}, sensitivity from {sh('Y9', '2018')} to "
+      f"{sh('Y9', '2026')} and compute from {sh('X7', '2018')} to {sh('X7', '2026')}")
+dx = rm["X2"]["diff"]
+s1 = lambda x: f"+{num(x * 100, 1)}" if x > 0 else f"-{num(-x * 100, 1)}"
+claim("r36 X2", f"Reported uncertainty goes from {sh('X2', '2018')} to {sh('X2', '2026')}, a gap of {sg(dx['diff'] * 100)} points "
+      f"with interval [{s1(dx['lo'])}, {s1(dx['hi'])}]")
+claim("r36 X2 p", f"Its year effect passes (p = {pv(rmm['X2']['p_lrt_holm4'])} after Holm) but the Fisher test misses "
+      f"(p = {pv(dx['p_holm4'], 2)} after Holm)")
+
 # Trajectory (study/trajectory.json, rows.Q5).
 tq = J("study/trajectory.json")["rows"]["Q5"]
 by = tq["by_year"]
@@ -319,8 +335,8 @@ claim("ten official seeds", "our ten official seeds")
 
 # What is still running, and the protocol (counts fixed in the protocols).
 D("98 papers", "reads the 98 papers with experiments")
-D("eight new agents", "Eight new agents each read papers")
-D("eight new agents 2", "a preregistered re-reading by eight new agents")
+D("eight new agents", "eight new agents then reread all")
+D("eight new readers", "Eight new readers separate the year from the reader set")
 D("thirty papers human", "rereads thirty papers, fifteen from each year")
 D("89 quotes", "left 89 quotes not found")
 D("90% chars", "passes if 90% of its characters")

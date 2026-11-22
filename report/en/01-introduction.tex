@@ -168,8 +168,9 @@ left unmeasured (Y1 to Y12). We read a first draw of 50 RL papers from 2025 and 
 2026 (robotics, games, control, language models excluded), 50 papers from 2018 and 20 papers per year
 for 2019, 2020, 2022 and 2024. AI agents read the papers. Each \enquote{yes} rests on an exact
 quotation and its page. A \enquote{no} says what was read without finding it. The verdict compares classical RL in 2026 with our own reading of 2018, using
-the same grids and agents of the same model. No agent read both years, however, so the effect of the
-year is confounded with that of the reader set (Section~\ref{sec:sm-annees}).
+the same grids and agents of the same model. The agents that read 2018 are not those that read 2026
+(Section~\ref{sec:sm-annees}). Eight fresh agents therefore reread the papers of both years, each of
+them on both, to separate the effect of the year from that of the readers: three of the four verdicts hold, while the fourth keeps its direction without being established (Section~\ref{sec:sr-annees}).
 Chapters~\ref{chap:03-sondage-methode}
 and~\ref{chap:04-sondage-resultats} describe the method and the results.
 
@@ -268,7 +269,9 @@ advance. For 283 of them, an arbiter judged the passage found. Ten turned into `
 changed (deviation 27, \file{study/falsify\_no.json}). The instructions given to each agent are published
 word for word (\file{study/readers/prompts/}, deviation 28). The double readings are still made by copies
 of the same model. A human reading must therefore check the agents: that is the blind re-reading of thirty
-papers, fifteen from each year, preregistered in deviation 35.
+papers, fifteen from each year, preregistered in deviation 35. Its thirty sheets still await their
+reader.
+
 % TRACE MANQUANTE: deviation 34 (the author's past human re-reading), cited here only once the author supplies the facts.
 
 \section{Reading guide}\label{sec:intro-guide}

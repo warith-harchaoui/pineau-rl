@@ -46,8 +46,10 @@ The main comparison sets our 50 classical RL papers from 2026 against our readin
 2018, with the same grids and the same harmonised rules (Section~\ref{sec:sm-verdict}). The readers are AI
 agents, copies of one model. No primary reader read both years, however: the 2018 papers and the 2026 papers
 were read by different readers (\file{study/survey\_extra.json}, field \file{readers\_year}). An effect peculiar
-to one year's readers cannot be told apart from the year itself. Chapter~\ref{chap:10-limites} discusses this
-confound. Criterion X8, further on, escapes it. Table~\ref{tab:sondage-pineau} gives the criteria of grid v1,
+to one year's readers cannot be told apart from the year itself in this comparison. Deviation 36 separates
+the two by having the 98 papers reread by eight readers who each read both years: the verdicts on Q5, Y9
+and X7 hold, while X2 keeps its direction without being established (Section~\ref{sec:sr-annees}).
+Criterion X8, further on, already escaped this confound. Table~\ref{tab:sondage-pineau} gives the criteria of grid v1,
 Table~\ref{tab:sondage-extension} those of grid v2. For each criterion, the tables give the share in
 2018 and in 2026 with their Wilson intervals, the gap with its Newcombe interval, the $p$-value of
 Fisher's exact test and the value adjusted by the Holm correction, applied separately to the 11 v1
@@ -564,6 +566,42 @@ anyone check each decision. A reader from another family of models, \file{gemma3
 of both samples on the criteria of the verdicts (deviation 33, written before this reading). Its reading was
 not finished when this report was compiled: the report gives no result from it.
 
+\paragraph{Year and readers disentangled}\label{sec:sr-annees}
+In the main comparison, the readers of 2018 are not those of 2026 (Section~\ref{sec:sm-annees}).
+Deviation 36 has the 98 experimental papers of that comparison reread by eight fresh agents, T1 to T8,
+each of whom reads six papers from 2018 and six or seven from 2026 (Section~\ref{sec:sm-doubles}). With
+these readings alone, the share of \enquote{yes} goes from 31\% to 72\% for code linked (Q5), from 42\%
+to 78\% for sensitivity to a hyperparameter (Y9), from 31\% to 66\% for quantified compute (X7) and from
+69\% to 86\% for reported uncertainty (X2) (\cref{tab:r36}).
+
+\gentable{r36}
+
+The logistic mixed model gives each reader its own leaning towards \enquote{yes}, then measures the
+year effect for a given reader. The reader standard deviation is 0 for Q5 and Y9, 0.24 for X7 and 0.44
+for X2: none of them stands out from zero ($p \geq 0.25$). The leaning towards \enquote{yes} therefore
+varies little from one reader to the next. After the Holm correction over the four criteria, Q5, Y9
+and X7 pass both tests fixed in advance, Fisher's test on the difference and the test of the year
+effect in the model. Their verdicts hold. For X2, the difference is $+17$ points, $[+0.6,\,+33.0]$.
+The year effect passes the correction ($p_{\text{Holm}} = 0.037$), but Fisher's test narrowly misses it
+($p_{\text{Holm}} = 0.053$), so the rule calls this verdict \enquote{same direction, not established}.
+X2 was already the most fragile verdict (Section~\ref{sec:sr-robustesse}). Every Newcombe interval
+overlaps the one of the main comparison. In the reading least favourable to Q5, where every project
+page counts as \enquote{yes}, its rise still passes the Holm correction, from 42\% to 74\%
+($p_{\text{Holm}} = 0.004$).
+
+\paragraph{The new readings match the original codes}
+Each paper thus has two complete readings: a fresh reader's and the original final code, harmonised.
+They agree on 94\% to 99\% of the papers depending on the criterion, on 90\% to 100\% depending on the
+criterion and the year (\cref{tab:r36-accord}). No criterion shows a clearly different agreement in
+2018 and 2026: the smallest Fisher $p$ is 0.11. For X7, all six disagreements go towards
+\enquote{yes}, two in 2018 and four in 2026. Eight X7 \enquote{yes} rest on measured durations
+(running, inference or training times) rather than on a stated total compute. Deviation 19 leaves
+this borderline case to the reader's judgement. Three of these papers are from 2018 and five from
+2026. Six of the eight are already \enquote{yes} in the original code.
+Chapter~\ref{chap:10-limites} states what this rereading does not separate.
+
+\gentable{r36-accord}
+
 \section{The declarations of the papers}\label{sec:sr-declarations}
 
 \paragraph{Statistical significance}
@@ -604,7 +642,9 @@ language models, with no sign that these papers follow different practices.
 With the same grid on both sides, in classical RL, four practices changed between 2018 and 2026:
 linking the code, showing the sensitivity to a hyperparameter, quantifying the compute, reporting an
 uncertainty. Code and compute withstand every cut, sensitivity nearly every one. Reported uncertainty
-fails in two checks, with $p_{\text{Holm}} = 0.07$. All four rise slowly from 2018 to 2024, with no jump
+fails in two checks, with $p_{\text{Holm}} = 0.07$. Eight fresh readers, each reading both years, find
+the other three rises again. The rise in uncertainty keeps its direction without being established.
+All four rise slowly from 2018 to 2024, with no jump
 right after the 2019 checklist. The statistical test, baselines described and tuned with care,
 held-out evaluation, benchmark versions and library versions show no detectable change. The clear changes
 concern what accompanies the result: the code link, the declared compute, the effect of a setting, the error

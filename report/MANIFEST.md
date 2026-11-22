@@ -75,6 +75,8 @@ Ten random seeds are the main, preregistered results; twenty seeds (suffix `_s20
 | regle-origine | the original verdict rule (deviation 7) applied: against Pineau and against our 2018, verdict per criterion | study/survey_extra.json |
 | q5-versions | Q5 under each version policy (published, proceedings, latest arXiv, available at conference, bounds) | study/q5_versions.json |
 | x8 | X8 (uncertainty over seeds) against X2, among X2 yes, pooled, mechanical bound; sources of uncertainty per year | study/x8_stats.json, extension_stats.json, survey_extra.json |
+| r36 | deviation 36, fresh readers on both years: Q5, Y9, X7, X2 shares 2018 and 2026, Newcombe gap, Fisher Holm p, mixed model year odds ratio with Wald interval and Holm p, reader SD, verdict; Q5 with every project page yes | study/r36_stats.json |
+| r36-accord | deviation 36: agreement of the fresh readings with the original final codes per criterion and year, Wilson, kappa, Fisher 2018 against 2026, direction of disagreements | study/r36_stats.json |
 | grpo-mesures | GRPO five measures per configuration: levels, gain, percentile and Student intervals, seeds up, sign p | sim/llm/results/logs_stats_5.json |
 | grpo-contraste | GRPO true minus coin-flip reward per model and measure: Welch interval, exact permutation p, Holm, established | sim/llm/results/logs_stats_5.json |
 

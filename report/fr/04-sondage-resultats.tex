@@ -45,8 +45,10 @@ La comparaison principale oppose nos 50 articles de RL classique de 2026 à notr
 de 2018, avec les mêmes grilles et les mêmes règles harmonisées (section~\ref{sec:sm-verdict}). Les lecteurs
 sont des agents IA, copies d'un même modèle. Aucun lecteur principal n'a pourtant lu les deux années : les
 articles de 2018 et ceux de 2026 ont été lus par des lecteurs distincts (\file{study/survey\_extra.json}, champ
-\file{readers\_year}). Un effet propre aux lecteurs d'une année ne se sépare pas de l'année. Le
-chapitre~\ref{chap:10-limites} discute cette confusion. Le critère X8, plus bas, y échappe. Le tableau~\ref{tab:sondage-pineau} donne les critères de la grille v1, le tableau~\ref{tab:sondage-extension} ceux de la grille v2. Pour chaque critère : la part en 2018 et en 2026
+\file{readers\_year}). Un effet propre aux lecteurs d'une année ne se sépare pas de l'année dans cette
+comparaison. L'écart 36 l'en sépare en faisant relire les 98 articles par huit lecteurs qui lisent
+chacun les deux années : les verdicts de Q5, Y9 et X7 tiennent, celui de X2 garde son sens sans être
+établi (section~\ref{sec:sr-annees}). Le critère X8, plus bas, échappait déjà à cette confusion. Le tableau~\ref{tab:sondage-pineau} donne les critères de la grille v1, le tableau~\ref{tab:sondage-extension} ceux de la grille v2. Pour chaque critère : la part en 2018 et en 2026
 avec leurs intervalles de Wilson, l'écart avec son intervalle de Newcombe, la valeur $p$ du test exact
 de Fisher et la valeur ajustée par la correction de Holm, appliquée séparément aux 11 critères v1 et aux
 12 critères v2. La figure~\ref{fig:forest-criteres} dessine ces écarts critère par critère. La figure~\ref{fig:grille-egale} reprend les huit pratiques de l'article de blog.
@@ -576,6 +578,43 @@ modèles, \file{gemma3:12b}, relit les 98 articles des deux échantillons sur le
 écrit avant cette lecture). Sa lecture n'était pas finie quand ce rapport a été compilé : le rapport n'en donne
 aucun résultat.
 
+\paragraph{L'année et les lecteurs démêlés}\label{sec:sr-annees}
+Dans la comparaison principale, les lecteurs de 2018 ne sont pas ceux de 2026
+(section~\ref{sec:sm-annees}). L'écart 36 fait relire les 98 articles expérimentaux de cette
+comparaison par huit agents neufs, T1 à T8, qui lisent chacun six articles de 2018 et six ou sept de
+2026 (section~\ref{sec:sm-doubles}). Avec ces seules lectures, la part de \enquote{oui} passe de 31~\%
+à 72~\% pour le code en lien (Q5), de 42~\% à 78~\% pour la sensibilité à un hyperparamètre (Y9), de
+31~\% à 66~\% pour le calcul chiffré (X7) et de 69~\% à 86~\% pour l'incertitude rapportée (X2)
+(\cref{tab:r36}).
+
+\gentable{r36}
+
+Le modèle logistique mixte donne à chaque lecteur son propre penchant pour le \enquote{oui}, puis
+mesure l'effet de l'année à lecteur égal. L'écart type des lecteurs vaut 0 pour Q5 et Y9, 0,24 pour
+X7 et 0,44 pour X2 : aucun ne se distingue de zéro ($p \geq 0{,}25$). Le penchant pour le
+\enquote{oui} varie donc peu d'un lecteur à l'autre. Après la correction de Holm sur les quatre
+critères, Q5, Y9 et X7 passent les deux tests fixés d'avance, celui de Fisher sur la différence et
+celui de l'effet de l'année dans le modèle. Leurs verdicts tiennent. Pour X2, la différence vaut
+$+17$ points, $[+0{,}6\,;\,+33{,}0]$. L'effet de l'année passe la correction
+($p_{\text{Holm}} = 0{,}037$), mais le test de Fisher la manque de peu ($p_{\text{Holm}} = 0{,}053$) :
+la règle dit ce verdict \enquote{même sens, non établi}. X2 était déjà le verdict le plus fragile
+(section~\ref{sec:sr-robustesse}). Chaque intervalle de Newcombe recouvre celui de la comparaison
+principale. Dans la lecture la moins favorable à Q5, où toute page de projet compte \enquote{oui},
+sa hausse passe encore la correction de Holm, de 42~\% à 74~\% ($p_{\text{Holm}} = 0{,}004$).
+
+\paragraph{Les lectures neuves rejoignent les codes d'origine}
+Chaque article a ainsi deux lectures complètes : celle d'un lecteur neuf et le code final d'origine,
+harmonisé. Leur accord va de 94~\% à 99~\% selon le critère, de 90~\% à 100~\% selon le critère et
+l'année (\cref{tab:r36-accord}). Aucun critère ne montre d'accord nettement différent entre 2018 et
+2026 : le plus petit $p$ de Fisher vaut 0,11. Pour X7, les six désaccords vont tous vers le
+\enquote{oui}, deux en 2018 et quatre en 2026. Huit \enquote{oui} de X7 reposent sur des durées
+mesurées (temps d'exécution, d'inférence ou d'entraînement) plutôt que sur un calcul total déclaré.
+L'écart 19 laisse ce cas limite au jugement du lecteur. Trois de ces articles sont de 2018 et cinq de
+2026. Six des huit valent déjà \enquote{oui} dans le code d'origine. Le
+chapitre~\ref{chap:10-limites} dit ce que cette relecture ne sépare pas.
+
+\gentable{r36-accord}
+
 \section{Ce que les articles déclarent}\label{sec:sr-declarations}
 
 \paragraph{La signification statistique}
@@ -616,7 +655,9 @@ que ces articles suivent d'autres pratiques.
 À grille égale, dans le RL classique, quatre pratiques ont changé entre 2018 et 2026 : le lien vers le
 code, la sensibilité à un hyperparamètre montrée, le calcul chiffré, une incertitude rapportée. Le code
 et le calcul résistent à toutes les coupes, la sensibilité à presque toutes. L'incertitude rapportée
-échoue dans deux contrôles, avec $p_{\text{Holm}} = 0{,}07$. Les quatre montent lentement de 2018 à 2024,
+échoue dans deux contrôles, avec $p_{\text{Holm}} = 0{,}07$. Huit lecteurs neufs, qui lisent chacun les
+deux années, retrouvent les trois autres hausses. Celle de l'incertitude garde son sens sans être
+établie. Les quatre montent lentement de 2018 à 2024,
 sans saut juste après la liste de contrôle de 2019. Le test statistique, les références décrites et
 réglées avec soin, l'évaluation tenue à part, les versions des bancs d'essai et des bibliothèques n'ont
 pas bougé de façon détectable. Les changements nets concernent ce qui accompagne le résultat : le lien vers
