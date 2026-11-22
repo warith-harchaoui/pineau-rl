@@ -12,6 +12,15 @@ L'apprentissage par renforcement (RL, pour *reinforcement learning*) apprend à 
 
 ENDBRIEF
 
+## trois-r | Trois R, trois définitions
+**Reproductible.** Un résultat est reproductible quand une autre personne, avec le même programme, les mêmes réglages et la même tâche, lance ses propres entraînements et arrive à la même conclusion, par exemple « ce programme bat celui-là ». Les courbes, elles, bougent : le hasard de l'entraînement les change d'un essai à l'autre, d'un ordinateur à l'autre aussi. La conclusion, elle, revient quand elle était solide. Un exemple de cet article : j'ai relancé trente fois l'algorithme TRPO de la figure de 2018, puis appliqué le petit programme de calcul que Peter Henderson, de l'équipe de Pineau, avait publié en 2017. Le chiffre phare de la figure, que je raconte plus bas, est ressorti de mes propres entraînements.
+
+**Réutilisable.** Un travail est réutilisable quand d'autres prennent ses pièces (le code, le simulateur, les réglages publiés, la grille de lecture) pour s'en servir ailleurs sans tout réécrire. Encore faut-il que ces pièces tiennent leur promesse. Un exemple de cet article : les réglages que le recueil RL Baselines3 Zoo publie pour Hopper, le robot qui saute sur une jambe. Repris avec les logiciels d'aujourd'hui, ils donnent un robot qui tient debout sans avancer. Avec les logiciels de 2022, la même recette faisait courir le robot. Une pièce réutilisable voyage donc avec la liste de ses logiciels et de leurs versions : mon dépôt fige celles de tout ce qu'il emploie.
+
+**Robuste.** Une conclusion est robuste quand elle tient sous un changement dont elle prétend ne pas dépendre : une autre tâche, une autre programmation du même algorithme, un monde un peu différent de celui de l'entraînement. Un exemple de cet article : sur Hopper, la version de PPO écrite avec la boîte à outils JAX arrive première dans la physique de son entraînement. Avec des masses plus lourdes et des frottements plus faibles, elle finit dernière. Son avance tenait à ce monde-là.
+
+Pineau enchaîne les trois mots sur une diapositive de Vancouver : « le matériel réutilisable nous aide à reproduire les méthodes scientifiques, pour établir la robustesse des résultats ». Les pièces réutilisables permettent de refaire. Refaire avec un autre hasard, puis sous d'autres conditions, dit ce qui tient.
+
 ## deux-courbes | Deux courbes, un seul programme
 Au printemps 2018, à Vancouver, Joelle Pineau monte sur la scène d'ICLR, l'un des trois grands congrès de l'apprentissage automatique[[1]]. Elle est professeure à l'université McGill et dirige le laboratoire de recherche en intelligence artificielle de Facebook à Montréal. En décembre, à Montréal, elle reprend et augmente son propos devant NeurIPS, le plus grand des trois[[2]].
 

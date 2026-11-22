@@ -12,6 +12,15 @@ Reinforcement learning (RL) teaches a machine to act by trial and error, guided 
 
 ENDBRIEF
 
+## three-rs | Three Rs, three definitions
+**Reproducible.** A result is reproducible when someone else, with the same program, the same settings and the same task, launches their own training runs and reaches the same conclusion, such as "this program beats that one." The curves themselves move: chance during training changes them from one run to the next, from one computer to another too. The conclusion comes back when it was sound. An example from this article: I relaunched TRPO, the algorithm of the 2018 figure, thirty times, then applied the small calculation program that Peter Henderson, of Pineau's team, had published in 2017. The headline number of that figure, which I come back to below, came out of my own training runs.
+
+**Reusable.** A piece of work is reusable when others take its parts (the code, the simulator, the published settings, the reading grid) to use elsewhere without rewriting everything. The parts still have to keep their promise. An example from this article: the settings that the RL Baselines3 Zoo collection publishes for Hopper, the robot that hops on one leg. Reused with today's software, they give a robot that stands upright without moving forward. With the software of 2022, the same recipe made the robot run. A reusable part therefore travels with the list of its software and their versions: my repository pins the versions of everything it uses.
+
+**Robust.** A conclusion is robust when it holds under a change it claims not to depend on: another task, another program for the same algorithm, a world slightly different from the one of training. An example from this article: on Hopper, the version of PPO written with the JAX toolkit comes first in the physics it trained in. With heavier masses and weaker friction, it finishes last. Its lead belonged to that world.
+
+Pineau chains the three words on one slide in Vancouver: "reusable material (software, datasets, experimental platforms) help us reproduce scientific methods to establish the robustness of the findings." Reusable parts make it possible to redo the work. Redoing it with another draw of chance, then under other conditions, shows what holds.
+
 ## two-curves | Two curves, one program
 In the spring of 2018, in Vancouver, Joelle Pineau walks onto the stage of ICLR, one of the three major conferences of machine learning[[1]]. She is a professor at McGill University and runs Facebook's artificial intelligence research lab in Montreal. In December, in Montreal, she takes up and extends her talk before NeurIPS, the largest of the three[[2]].
 
