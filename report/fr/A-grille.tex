@@ -3,7 +3,7 @@
 
 Cette annexe reproduit la grille de lecture du sondage, critère par critère, avec la question posée
 au lecteur et sa règle de décision. Elle réunit la fiche du lecteur (\file{study/GRILLE.md}) et les
-règles du protocole (\file{study/PROTOCOL.md}) : écarts 1 à 6 pour l'harmonisation de la grille v1,
+règles du protocole du sondage (\file{study/PROTOCOL.md}) : écarts 1 à 6 pour l'harmonisation de la grille v1,
 écarts 11, 14, 17 et 19 pour la grille v2, écart 32 pour le critère X8, ajouté après les résultats.
 En cas de doute, le protocole fait foi.
 
@@ -24,8 +24,8 @@ entiers et pour la famille X5.
 \section{La grille de Pineau (Q1 à Q8)}
 \label{sec:a-pineau}
 
-Joelle Pineau a présenté ces huit critères à NeurIPS 2018 (diapositives 29 et 30), avec la part
-des 50 articles de RL de 2018 qu'elle avait lus qui les satisfaisaient. Sa méthode de tirage n'est
+Joelle Pineau a présenté ces huit critères à NeurIPS 2018 (diapositives 29 et 30). Elle donnait pour
+chacun la part des articles qui le satisfaisaient, sur 50 articles de RL de 2018 qu'elle avait lus. Sa méthode de tirage n'est
 pas décrite. Ses intitulés sont donnés en anglais, tels qu'elle les a écrits.
 
 \begin{table}[htbp]
@@ -212,7 +212,7 @@ Y8 & Un test de généralisation hors des conditions d'entraînement est-il fait
   l'entraînement et du réglage : autres graines aléatoires d'environnement annoncées comme telles, tâches
   nouvelles, dynamiques modifiées, distribution de test distincte. Plus strict que Q7 : pour
   \texttt{llm}, un banc différent ne compte que s'il est présenté comme un test hors distribution.
-  Une séparation de test de même distribution relève de Q7. Y8 \texttt{yes} suppose Q7 \texttt{yes}
+  Une séparation de test de même distribution relève de Q7. Y8 \texttt{yes} entraîne Q7 \texttt{yes}
   (écart 19). \\
 Y9 & La sensibilité à au moins un hyperparamètre est-elle montrée ? (ICLR 2018, diapositives 24 à
   26) & \texttt{yes} si au moins un hyperparamètre de la méthode, présenté comme tel, est balayé et
@@ -240,8 +240,8 @@ Y12 & Un outil statistique postérieur à 2018 est-il employé ? (adoption d'Aga
 X2 compte toute barre d'erreur. Or une barre calculée sur les épisodes d'un même entraînement est le
 piège que montre l'expérience B1 (\cref{sec:b1}). Le critère X8 demande donc si l'incertitude est
 calculée sur des entraînements indépendants. Il a été écrit le 21 novembre 2026, après les résultats
-et avant toute lecture (écart 32 du sondage). Il est exploratoire : il s'ajoute aux résultats sans
-changer les verdicts de l'écart 20.
+et avant toute lecture de ce critère (écart 32 du sondage). Il est exploratoire : il s'ajoute aux
+résultats sans changer les verdicts rendus par la règle de l'écart 20 du sondage.
 
 \begin{small}
 \begin{longtable}{@{}p{0.07\linewidth}p{0.27\linewidth}p{0.6\linewidth}@{}}
@@ -270,7 +270,7 @@ X8 & L'incertitude des résultats principaux est-elle calculée sur des graines 
 \end{small}
 
 X8 a été lu sur les 74 articles de la comparaison principale où X2 vaut \texttt{yes}, 30 de 2018 et
-44 de 2026, par huit agents neufs qui n'avaient lu aucun article du sondage. Les six lecteurs
+44 de 2026, par huit agents neufs, S1 à S8, qui n'avaient lu aucun article du sondage. Les six lecteurs
 principaux, S1 à S6, ont reçu les articles tour à tour après un mélange \texttt{random.Random(2032)},
 si bien que chacun a lu les deux années. S7 et S8 ont relu vingt articles tirés par
 \texttt{random.Random(2033)}, dix par année. Les lecteurs recevaient la règle, pas l'hypothèse. Les

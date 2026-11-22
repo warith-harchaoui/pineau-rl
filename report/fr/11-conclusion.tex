@@ -18,8 +18,8 @@ côté, puis comparé à notre propre lecture de 2018 avec les mêmes grilles
 (\cref{chap:03-sondage-methode,chap:04-sondage-resultats}). Elle s'appuie aussi sur des expériences
 refaites avec les algorithmes de 2026 sous des protocoles écrits d'avance
 (\cref{chap:05-experiences-methode,chap:06-experiences-resultats,chap:07-modeles-de-langue}). Les
-nombres qui la fondent sont donnés une fois, dans ces chapitres. Cette conclusion dit ce qu'ils
-établissent et renvoie à eux.
+nombres qui la fondent viennent de ces chapitres. Cette conclusion dit ce qu'ils établissent et
+renvoie à eux.
 
 \section{Ce que les mesures établissent}
 \label{sec:nombres}
@@ -31,9 +31,9 @@ que nous avons tentées, la sensibilité à presque toutes. Le code garde son ve
 années sont lues sur la même sorte de version, actes ou arXiv (\cref{sec:sr-robustesse}).
 L'incertitude rapportée est le changement le plus fragile : elle ne passe plus la correction quand
 on retire les treize articles lus en partie par un autre modèle. Les lecteurs de 2018 n'étant pas
-ceux de 2026, huit lecteurs neufs ont relu les deux années : les hausses du code, du calcul et de la
+ceux de 2026, huit lecteurs neufs, T1 à T8, ont relu les deux années (écart 36) : les hausses du code, du calcul et de la
 sensibilité tiennent, celle de l'incertitude rapportée garde son sens sans être établie
-(\cref{sec:sr-annees}). Le critère X8 précise le sens de cette dernière.
+(\cref{sec:sr-annees}). Le critère X8 montre ce que mesure cette dernière hausse.
 La part des articles qui calculent leur incertitude sur des graines aléatoires passe de 35~\% à
 42~\%, un écart que le sondage ne détecte pas : la barre d'erreur s'est répandue plus vite que la
 barre calculée sur les entraînements indépendants (\cref{sec:sr-principale}). Lues sur 20 articles
@@ -105,7 +105,7 @@ vise et le résultat qui la justifie.
         failles F9 et F10).
   \item \textbf{Ne jamais trier ni sélectionner les essais.} Rapporter tous les essais, y compris
         ceux qui échouent. Dire ceux qui ont été exclus (E1, E4, critères X3 et Y6).
-  \item \textbf{Tester sur les graines aléatoires, jamais sur les épisodes.} L'unité indépendante
+  \item \textbf{Tester sur les graines aléatoires.} L'unité indépendante
         est l'entraînement complet. Un test qui compte les épisodes déclare une différence entre
         deux groupes du même code (B1, faille F11). La même règle vaut pour la barre d'erreur : en
         2026, moins d'un article expérimental sur deux la calcule sur des graines aléatoires (X8).
@@ -165,8 +165,9 @@ d'une courbe empilés, ne mesure pas la variabilité entre entraînements.
 \subsection{Pour les conférences}
 
 \begin{enumerate}
-  \item \textbf{Demander le test, pas seulement les barres.} La question de NeurIPS sur la
-        signification statistique accepte des barres d'erreur \enquote{ou une autre information appropriée}. Les articles qui y répondent oui n'appliquent aucun test. Une question qui
+  \item \textbf{Demander le test en plus des barres.} La question de NeurIPS sur la
+        signification statistique accepte des barres d'erreur \enquote{ou une autre information
+        appropriée}. Les 18 articles de notre tirage qui y répondent oui n'appliquent aucun test. Une question qui
         demande l'unité du test et le nombre d'entraînements indépendants serait plus exigeante.
   \item \textbf{Vérifier une case cochée sur un échantillon.} Des articles répondent oui sur le code
         sans lien, sur le calcul sans chiffre. Un contrôle tiré au sort sur une part des articles
@@ -192,7 +193,7 @@ d'une courbe empilés, ne mesure pas la variabilité entre entraînements.
         ses actes, par une voie de téléchargement qu'OpenReview accepte, compléterait la série.
   \item \textbf{Un sondage plus grand sur les critères qui montent sans être établis.} Le test
         statistique, l'évaluation tenue à part et la méthode de choix des réglages montent de 6 à 22
-        points sans que le sondage puisse le dire. Un échantillon assez grand pour détecter une
+        points sans que le sondage puisse l'établir. Un échantillon assez grand pour détecter une
         hausse de dix points trancherait.
   \item \textbf{Une lecture, avec la même grille, des articles qui appliquent ce qu'ils appellent RL
         à de grands modèles de langue}, sur un échantillon de taille comparable, dirait si
@@ -201,7 +202,6 @@ d'une courbe empilés, ne mesure pas la variabilité entre entraînements.
         lecture à l'aveugle de l'auteur. Le script qui la comparera aux agents est écrit et refuse de
         tourner avant que les trente feuilles soient remplies.
   \item \textbf{Un nouvel entraînement complet sur une autre plateforme}, Linux sur x86-64,
-
         testerait les statistiques de nos expériences avec d'autres tirages (\cref{sec:reentrainer}).
   \item \textbf{D'autres familles de tâches} que la locomotion MuJoCo : jeux à images, RL hors
         ligne, robotique réelle, où les conclusions de E2 à E7 restent à éprouver.

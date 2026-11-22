@@ -7,13 +7,13 @@ par renforcement profond (RL) inspiraient peu confiance. Nous y relevons seize f
 chacune, si les articles de 2018 à 2026 l'ont corrigée.
 
 \paragraph{La méthode}
-Deux instruments servent, sous des protocoles écrits d'avance dont chaque écart est daté. Le
+Deux instruments répondent à la question, sous des protocoles écrits d'avance dont chaque écart est daté. Le
 sondage relit des articles avec la grille de lecture de Pineau (Q1 à Q8), sept critères tirés de sa
 conférence d'ICLR (X1 à X7) et une seconde grille (Y1 à Y12). Des agents IA, c'est-à-dire des modèles
 d'IA agentique, lisent chaque article entier et justifient chaque décision par une citation paginée. Le
 verdict compare 50 articles de RL classique de 2026 (hors modèles de langue) à notre lecture de 50
-articles de 2018, avec les mêmes grilles et des agents du même modèle. Vingt articles par année lue
-entre 2019 et 2024 datent le changement. Les expériences refont celles de 2018 avec quatre programmes
+articles de 2018, avec les mêmes grilles et des agents du même modèle. Vingt articles par année, pour
+quatre années entre 2019 et 2024, datent le changement. Les expériences refont celles de 2018 avec quatre programmes
 (PPO en PyTorch et en JAX, SAC, CrossQ) sur quatre tâches MuJoCo, dix graines aléatoires par programme
 et par tâche, puis vingt. Un volet entraîne deux petits modèles de langue avec GRPO.
 
@@ -22,45 +22,43 @@ Notre lecture de 2018 s'écarte des chiffres de Pineau : 55~\% des articles donn
 hyperparamètres de leur méthode, quand elle en comptait 90~\%. Les verdicts comparent donc nos deux
 lectures. Dans le RL classique, quatre pratiques ont changé : le lien vers le code passe de 31~\% à
 74~\% ($+43$ points, $[+23\,;\,+58]$), la sensibilité à un réglage montrée de 44~\% à 80~\%, le calcul
-chiffré de 27~\% à 58~\%, une incertitude rapportée de 63~\% à 88~\%. Le lien vers le code résiste à la
-version lue : sur les actes les deux années, puis sur la dernière version arXiv, la hausse vaut encore
+chiffré de 27~\% à 58~\%, une incertitude rapportée de 63~\% à 88~\%. Le lien vers le code résiste au choix de la
+version lue. Sur les actes les deux années, puis sur la dernière version arXiv, la hausse vaut encore
 $+41$ et $+34$ points et passe la correction de Holm (section~\ref{sec:sm-versions}). L'incertitude
-rapportée est le verdict le plus fragile. Sans treize articles lus en partie par un autre modèle, elle
+rapportée est le verdict le plus fragile. Quand on retire treize articles lus en partie par un autre modèle, elle
 échoue à la correction de Holm ($p_{\text{Holm}} = 0{,}07$). Sa hausse ne s'accompagne d'aucune hausse
 détectable de la part des articles qui calculent cette incertitude sur des graines aléatoires
 indépendantes (critère X8, ajouté après les résultats : 35~\% puis 42~\%, $[-12\,;\,+25]$). Les quatre
 pratiques montent lentement, sans saut après la liste de contrôle de NeurIPS de 2019.
 
 Les changements nets concernent donc ce qui accompagne le résultat : le lien vers le code, le calcul
-chiffré, l'effet d'un réglage, la barre d'erreur. Le réglage des références ne montre aucun signe de progrès : les articles
+chiffré, l'effet d'un réglage, la barre d'erreur. Le réglage des références ne montre aucun signe de progrès. Les articles
 qui décrivent tous les réglages de leurs références passent de 35~\% à 29~\%. Pour le reste, le sondage
 ne peut pas trancher. Avec une cinquantaine d'articles par année, son test ne détectait avec 80~\% de
 puissance que des hausses d'environ trente points, trente-sept après la correction de Bonferroni. Plusieurs critères montent sans
 franchir ce seuil : l'évaluation tenue à part (33~\% puis 45~\%), la façon de choisir les
 hyperparamètres (26~\% puis 48~\%), le test statistique (de 6~\% à 12~\%). La version des bancs
-d'essai, elle, stagne (23~\% puis 26~\%). Trente articles relus à l'aveugle donnent 30 accords sur 30
+d'essai stagne (23~\% puis 26~\%). Trente articles relus à l'aveugle donnent 30 accords sur 30
 pour chacun des quatre critères des verdicts. Les agents qui ont lu 2018 ne sont pas ceux qui ont lu
-2026. Huit agents neufs ont donc relu les 98 articles des verdicts, chacun sur les deux années. Un
-modèle à effet aléatoire du lecteur a séparé l'année des lecteurs : les hausses du code, de la
-
-sensibilité et du calcul tiennent, celle de l'incertitude garde son sens sans être établie
-(section~\ref{sec:sr-annees}). Une relecture humaine à l'aveugle de trente articles, préenregistrée,
-attend encore son lecteur. La
-règle de verdict
- a changé après les premiers résultats. L'ancienne exigeait un écart contre les chiffres
-de Pineau et contre notre 2018 : elle n'aurait confirmé aucun critère du RL classique et aurait déclaré
+2026. Un écart entre les deux années pouvait venir des lecteurs. Huit agents neufs ont donc relu
+les 98 articles expérimentaux des verdicts, chacun sur les deux années. Un modèle à effet aléatoire du
+lecteur a séparé l'année des lecteurs : les hausses du code, de la sensibilité et du calcul tiennent,
+celle de l'incertitude garde son sens sans être établie (section~\ref{sec:sr-annees}). Une relecture
+humaine à l'aveugle de trente articles est préenregistrée et reste à faire. La règle de verdict a
+changé après les premiers résultats. L'ancienne exigeait un écart contre les chiffres de Pineau et
+contre notre lecture de 2018 : elle n'aurait confirmé aucun critère du RL classique et aurait déclaré
 le lien vers le code \enquote{ambigu} (section~\ref{sec:sm-verdict}).
 
 \paragraph{Les résultats des expériences}
 Sur trente essais de PPO sur \task{HalfCheetah}, deux groupes de cinq tirés au hasard trompent un
-test de Welch dans 1,2~\% des cas, triés dans 31~\%. Refait sur les seize couples (programme, tâche),
-le tri trompe le test de 26~\% à près de 100~\% des fois selon le couple : le cas préenregistré est le
+test de Welch dans 1,2~\% des cas, deux groupes triés dans 31~\%. Refait sur les seize couples (programme, tâche),
+le tri trompe le test de 26~\% à près de 100~\% des tirages selon le couple : le cas préenregistré est le
 plus clément (section~\ref{sec:e1}). Garder les trois meilleurs essais sur dix gonfle la moyenne de
 33~\% pour ce même PPO. Le script de Peter Henderson, qui ignore la dispersion entre graines aléatoires,
-explique probablement le $t$ de 9 de 2018 : sur nos essais de TRPO, il dépasse 9,09 dans 38~\% des
+explique probablement le $t$ de 9 de 2018. Sur nos essais de TRPO, il dépasse 9,09 dans 38~\% des
 tirages. Le couple $(t, p)$ publié écarte surtout les autres façons de calculer, sans désigner ce script
-à coup sûr. Le meilleur programme change avec la tâche. Compté par paires qui s'inversent vraiment
-d'une tâche à l'autre, le nombre de changements de classement établis vaut 3 à dix graines, contre 14
+à coup sûr. Le meilleur programme change avec la tâche. Compté strictement, par paires qui s'inversent
+d'une tâche à l'autre, le nombre de changements de classement établis vaut 3 à dix graines aléatoires, contre 14
 au décompte préenregistré, qui comptait des triplets. À budget égal avec vingt graines aléatoires,
 CrossQ mène sur les quatre tâches, mais une paire (PPO JAX et SAC) s'inverse encore de façon établie
 après la correction de Bonferroni (section~\ref{sec:e2}). Les deux PPO, aux hyperparamètres
@@ -69,18 +67,18 @@ d'algorithme identiques et à l'initialisation par défaut différente, se sépa
 qui déclare un vainqueur établi conclut à tort dans 5,4~\% à 6,2~\% des tirages de dix contre dix
 essais d'un même programme, près de 10~\% à cinq contre cinq (section~\ref{sec:regle}). La recette
 publiée du RL Baselines3 Zoo, appliquée aujourd'hui, donne sur \task{Hopper} des agents qui tiennent
-debout sans avancer (0,00~m/s). L'agent que le Zoo a publié en 2022 avec ces réglages atteint
+debout sans avancer (0,00~m/s). L'agent que le Zoo a publié en 2022 avec ces réglages atteint un score de
 \num{2439} sous notre protocole : la recette a marché dans sa pile logicielle d'origine, puis a vieilli
 (section~\ref{sec:e6}). Une physique modifiée de 20~\% renverse sur \task{Hopper} des comparaisons
-établies : à dix comme à vingt graines, SAC y bat les deux PPO, qui le battaient à l'entraînement.
+établies : à dix comme à vingt graines aléatoires, SAC y bat les deux PPO, qui le battaient à l'entraînement.
 CrossQ y bat les trois autres programmes. Ce test a été ajouté après les résultats
 (section~\ref{sec:e7}).
 
 \paragraph{Le volet GRPO}
 Sur Qwen, avec cinq graines aléatoires, GRPO gagne $+14$ points de réussite (pass@1), intervalle de
-$-3$ à $+34$, qui contient zéro. Ce gain vient de réponses plus courtes : la part des réponses coupées à
+$-3$ à $+34$, qui contient zéro. Ce gain apparent vient de réponses plus courtes : la part des réponses coupées à
 160 jetons tombe de 75~\% à 6~\%, la justesse des réponses finies ne monte pas. Sur Llama, le pass@1
-monte de 6 points pendant que la justesse gloutonne perd 43 points et le pass@8 30. La vraie récompense
+monte de 6 points pendant que la justesse gloutonne perd 43 points et le pass@8 en perd 30. La vraie récompense
 bat une récompense tirée à pile ou face de façon établie pour Llama seulement, parce que la récompense
 au hasard détruit le modèle (section~\ref{sec:llm-resultats}). Une relance à dix graines aléatoires,
 préenregistrée (écart 20 du protocole GRPO), est en cours.

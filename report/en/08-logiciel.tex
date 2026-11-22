@@ -169,7 +169,7 @@ returns the numerator and the denominator of a share, \texttt{na} values exclude
 \subsection{\texttt{pineau\_rl.fmt}}
 
 Numbers come out of this module the way the texts write them. \texttt{half\_up(x, nd)} rounds half away
-from zero, as a human reader does ($1.15 \to 1.2$), whereas Python's \texttt{round} rounds half to
+from zero, as taught at school ($1.15 \to 1.2$), whereas Python's \texttt{round} rounds half to
 even. The float goes through its shortest representation, so that 1.15 stays 1.15. \texttt{pct},
 \texttt{num}, \texttt{ci} and \texttt{pts} produce a share as a percentage, an integer with a
 thousands separator, an interval in whole points and the signed bounds of a difference, in French or
@@ -217,10 +217,15 @@ experiments, appendices and links} with a null page (\cref{chap:A-grille}):
 file, empty when the file is valid. It checks the schema: every criterion present, values
 \texttt{yes}, \texttt{no} or \texttt{na}, integers or \texttt{null} for X1, X6 and Y3, an X5 family
 among \texttt{llm}, \texttt{classic} and \texttt{theory}, a \texttt{kind} field when Y11 is yes, a
-quotation for every criterion. It checks the scope rules of deviations 3 and 14 of the protocol: Q1
-set to no forces \texttt{na} everywhere; Y2 and Y11 are \texttt{na} if and only if X2 is no; Y4 is
-\texttt{na} when Y3 is 1; Y5 is \texttt{na} if and only if Q4 is \texttt{na}. Given a function that
-searches the text of the PDF, it finally checks that every quotation appears there. The function
+quotation for every criterion. It checks the scope rules of deviations 3 and 14 of the protocol:
+\begin{itemize}
+  \item Q1 set to no forces \texttt{na} everywhere;
+  \item Y2 and Y11 are \texttt{na} if and only if X2 is no;
+  \item Y4 is \texttt{na} when Y3 is 1;
+  \item Y5 is \texttt{na} if and only if Q4 is \texttt{na}.
+\end{itemize}
+Given a function that searches the text of the PDF, the validator finally checks that every
+quotation appears there. The function
 \texttt{segments} first removes the reader's notes in square brackets, splits a quotation stitched
 together with \enquote{[...]} into pieces and ignores pieces shorter than twelve letters. The script
 \file{study/check\_codes.py} applies this check with the PDFs. The reader's sheet asks each reader to
@@ -237,8 +242,8 @@ script recomputes the value from a result file, formats it as each language writ
 breaks normalised. A few survey counts that the analysis scripts do not write are recounted from
 the readings, with the same rules. Assertions protect the qualitative facts, for example the name of
 the task on which the leader changes under modified physics. The script checks 188 claims in the two
-languages and stops at the first missing number, so \file{docs/build.sh} does not compile a document
-in which a figure has drifted.
+languages and stops at the first missing number: \file{docs/build.sh} therefore does not compile a
+document in which a figure has drifted.
 
 \begin{lstlisting}[language=Python,caption={One claim of \file{docs/check\_numbers.py}: the expected string is built from the data, never typed.},captionpos=b]
 add("agreement",
@@ -275,10 +280,10 @@ The \file{Makefile} trains nothing. Training goes through \file{sim/run.py}, \fi
         \file{e6\_hub.py}, need the Zoo environment and the policies: no target reruns them, as with
         \file{e6\_official\_eval.json}.
   \item[\texttt{make hyperparams}] reads the settings of the five programs back from the libraries of the
-        training environment and writes \file{sim/analysis/hyperparams.json} (deviation~28). It stays
+        training environment and writes \file{sim/analysis/hyperparams.json} (deviation~28). This target stays
         outside \texttt{verify}, which runs in the analysis environment.
   \item[\texttt{make analysis-suite}] runs the three analyses written in advance for the experiments
-        still running (deviations 32 to 34). Their JSON files enter the verification only once their
+        not yet finished (deviations 32 to 34). Their JSON files enter the verification only once their
         training runs have finished.
   \item[\texttt{make check}] runs the two checking scripts of \cref{sec:verification}.
   \item[\texttt{make test}] runs the unit tests with pytest.
@@ -317,8 +322,8 @@ with the commit using \file{tools/compare\_results.py}.
         accepts a relative difference of $10^{-12}$ on floats. It requires equality of counts,
         verdicts, rankings and all strings. The $p$-values move in their fifteenth or sixteenth digit
         with the mathematics library.
-  \item On macOS 15 (arm64), the family of machines that produced the results, the comparison
-        requires exact equality.
+  \item On macOS 15 (arm64), a system of the machine family that produced the results (a Mac under
+        macOS 27.2, \cref{sec:log-calcul}), the comparison requires exact equality.
 \end{itemize}
 A third job builds the image of the \file{Dockerfile} and runs the tests and the number check in it.
 The image starts from \texttt{python:3.11-slim}, pinned by hash, installs the same locked file and
@@ -385,8 +390,9 @@ release \texttt{policies-v1}, as tar archives listed with their SHA-256 hash in 
 file. The script \file{sim/fetch\_models.py} downloads each archive, checks its hash, unpacks it
 under \file{models/}, then checks each policy file against \file{sim/models/MANIFEST.sha256}, the
 hashes taken on 15 November 2026 on the machine that trained them. The downloads run one after
-another, separated by a random pause of 1.5 to 4 seconds. A refused request waits according to an
-exponential backoff with full jitter, five attempts at most.
+another, separated by a random pause of 1.5 to 4 seconds. A refused request is retried after a
+wait drawn at random between zero and a ceiling that doubles with each failure (exponential backoff
+with full jitter), five attempts at most.
 
 \begin{lstlisting}[language=bash,caption={Fetching and checking the policies of SAC and CrossQ.},captionpos=b]
 cd sim && python3 fetch_models.py          # download, unpack, check everything
@@ -398,18 +404,19 @@ cd sim && python3 fetch_models.py --check  # only check the policies already pre
 
 All runs ran on one laptop, a Mac with an Apple M2 Max chip under macOS 27.2 (arm64), shared
 with other projects. Each simulation training runs on a single thread. The number of jobs in
-parallel changed over the project without affecting the results, since each run is determined by its
-random seed: four cores at the start, up to eight granted every hour according to the load of the
-machine (deviation 15 of the simulations), then two cores for the whole project from 19 November 2026
-(deviation 19). \Cref{sec:calcul} describes the launchers, the watchdog and the job queue.
+parallel changed over the project: four cores at the start, up to eight granted every hour according
+to the load of the machine (deviation 15 of the simulations), then two cores for the whole project
+from 19 November 2026 (deviation 19). This sharing leaves the results untouched as long as a run
+depends on its random seed alone: the relaunches check it for PPO, while deviation 32 is still
+testing it for SAC and CrossQ (\cref{sec:registres}). \Cref{sec:calcul} describes the launchers, the watchdog and the job queue.
 \Cref{tab:calcul} gives, per program and per task, the number of runs, the number of steps, the
 median duration of a run and the core-hours consumed.
 
 The GRPO runs have very different durations depending on the device. According to the \texttt{wall}
 field of their logs at step 100, a Qwen run took 42 to 52 minutes on GPU and 4.3 to 11.4 hours on
 CPU, a Llama run 69 to 148 minutes on GPU. These spreads also reflect the varying load of the
-machine. From these logs, the rerun of deviation~20 plans about 58 GPU hours for its forty runs, made at
-night.
+machine. From these logs, the rerun of deviation~20 plans about 58 GPU hours for its forty runs, to be
+run at night.
 
 \section{What is not in the repository}
 \label{sec:absent}

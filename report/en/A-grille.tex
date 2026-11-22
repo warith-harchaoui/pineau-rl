@@ -3,7 +3,7 @@
 
 This appendix reproduces the reading grid of the survey, criterion by criterion, with the question
 put to the reader and its decision rule. It combines the reader's sheet (\file{study/GRILLE.md}) and
-the rules of the protocol (\file{study/PROTOCOL.md}): deviations 1 to 6 for the harmonisation of
+the rules of the survey protocol (\file{study/PROTOCOL.md}): deviations 1 to 6 for the harmonisation of
 grid v1, deviations 11, 14, 17 and 19 for grid v2, deviation 32 for criterion X8, added after the
 results. When in doubt, the protocol prevails.
 
@@ -17,7 +17,7 @@ quotation is \enquote{absent après lecture des sections expériences, annexes e
 reading the experiments, appendices and links sections) and the page is \texttt{null}. A quotation
 spread over two pages receives a list of pages. In a two-column PDF, a quotation that runs across
 lines is split into one-line pieces joined by \enquote{[...]}. The reader never sees another
-reader's codes, the results or the synthesis document. They run \file{study/check\_codes.py} on
+reader's codes, the results or the summary document. They run \file{study/check\_codes.py} on
 their own files and fix them until it reports zero problems. The possible values are
 \texttt{yes}, \texttt{no} and \texttt{na} (not applicable), except for the integer criteria and for
 the family X5.
@@ -25,8 +25,8 @@ the family X5.
 \section{Pineau's grid (Q1 to Q8)}
 \label{sec:a-pineau}
 
-Joelle Pineau presented these eight criteria at NeurIPS 2018 (slides 29 and 30), with the share of
-the 50 RL papers from 2018 she had read that met each one. Her sampling method is not described. The
+Joelle Pineau presented these eight criteria at NeurIPS 2018 (slides 29 and 30). For each one, she
+gave the share of papers that met it, out of 50 RL papers from 2018 she had read. Her sampling method is not described. The
 labels below are hers, word for word.
 
 \begin{table}[htbp]
@@ -207,7 +207,7 @@ Y8 & Is a generalisation test outside the training conditions carried out? (Neur
   environment random seeds announced as such, new tasks, modified dynamics, a distinct test
   distribution. Stricter than Q7: for \texttt{llm}, a different benchmark counts only if it is
   presented as an out-of-distribution test. A test split from the same distribution falls under Q7.
-  Y8 \texttt{yes} presupposes Q7 \texttt{yes} (deviation 19). \\
+  Y8 \texttt{yes} implies Q7 \texttt{yes} (deviation 19). \\
 Y9 & Is the sensitivity to at least one hyperparameter shown? (ICLR 2018, slides 24 to 26) &
   \texttt{yes} if at least one hyperparameter of the method, presented as such, is swept and the
   result is shown through a performance measure. A component ablation does not count. A parameter
@@ -233,8 +233,8 @@ Y12 & Is a statistical tool from after 2018 used? (adoption of Agarwal et al., 2
 X2 counts every error bar. Yet a bar computed over the episodes of one training run is the trap that
 experiment B1 shows (\cref{sec:b1}). Criterion X8 therefore asks whether the uncertainty is computed
 over independent training runs. It was written on 21 November 2026, after the results and before any
-reading (survey deviation 32). It is exploratory: it adds to the results without changing the
-verdicts of deviation 20.
+reading of this criterion (survey deviation 32). It is exploratory: it adds to the results without
+changing the verdicts given by the rule of survey deviation 20.
 
 \begin{small}
 \begin{longtable}{@{}p{0.07\linewidth}p{0.27\linewidth}p{0.6\linewidth}@{}}
@@ -263,7 +263,7 @@ X8 & Is the uncertainty of the main results computed over random seeds? &
 \end{small}
 
 X8 was read on the 74 papers of the main comparison where X2 is \texttt{yes}, 30 from 2018 and 44
-from 2026, by eight fresh agents that had read no paper of the survey. The six main readers, S1 to
+from 2026, by eight fresh agents, S1 to S8, that had read no paper of the survey. The six main readers, S1 to
 S6, received the papers in turn after a shuffle with \texttt{random.Random(2032)}, so each of them
 read both years. S7 and S8 reread twenty papers drawn with \texttt{random.Random(2033)}, ten per
 year. The readers received the rule, not the hypothesis. The quotations are checked by the function

@@ -274,10 +274,10 @@ def forest_criteres(lang):
     f = RFig("À grille égale, quatre pratiques progressent nettement entre 2018 et 2026" if fr else
             "Read with the same grid, four practices clearly rose between 2018 and 2026",
             ("Part des articles qui satisfont chaque critère, lus avec les mêmes grilles par les mêmes lecteurs : "
-             "48\u00a0articles de 2018, 50\u00a0de RL classique en 2026. À droite, l'écart et son intervalle de Newcombe à 95 %.")
+             "48\u00a0articles de 2018, 50\u00a0de RL classique en 2026. À droite, la différence et son intervalle de Newcombe à 95 %.")
             if fr else
             ("Share of papers meeting each criterion, read with the same grids by the same readers: "
-             "48\u00a0papers of 2018, 50\u00a0of classical RL in 2026. On the right, the gap and its 95% Newcombe interval."),
+             "48\u00a0papers of 2018, 50\u00a0of classical RL in 2026. On the right, the difference and its 95% Newcombe interval."),
             GREEN)
     s, L, W = f.s, f.L, f.W
     lab_w = 196
@@ -296,7 +296,7 @@ def forest_criteres(lang):
     kx += 14 + width("2018", "sans5", 11.5) + 14
     s.circle(kx + 5, top - 22, 5, INK)
     s.text(kx + 14, top - 18, "2026", "sans5", 11.5, INK2)
-    s.text(xb0, top - 40, "Écart 2026 moins 2018, en points" if fr else "Gap, 2026 minus 2018, in points", "sans7", 12.5, INK)
+    s.text(xb0, top - 40, "Différence 2026 moins 2018, en points" if fr else "Difference, 2026 minus 2018, in points", "sans7", 12.5, INK)
     s.rect(xb0, top - 28, 14, 10, tint(GREEN, 0.82), rx=2)
     s.text(xb0 + 20, top - 18, "passe la correction de Holm" if fr else "passes the Holm correction", "sans5", 11.5, INK2)
     bottom = top + len(rows) * rh
@@ -441,9 +441,9 @@ def e5_graines(lang):
             (f"Between close programs, twenty seeds|still get the order wrong "
              f"{rnd((1 - mc) * 100)} times in 100"),
             ("Part des tirages qui retrouvent le bon classement d'une paire, selon le nombre de graines par "
-             "programme. Une ligne par paire et par tâche (24). En rouge, les paires à moins de 20 % d'écart relatif.") if fr else
+             "programme. Une ligne par paire et par tâche (24). En rouge, les paires à moins de 20 % de différence relative.") if fr else
             ("Share of draws that recover the right ranking of a pair of programs, by the number of seeds per "
-             "program. One line per pair and task (24). In red, the pairs whose relative gap is under 20%."), RED)
+             "program. One line per pair and task (24). In red, the pairs whose relative difference is under 20%."), RED)
     s, L, W = f.s, f.L, f.W
     NS = ["3", "5", "10", "20"]
     # columns measured in the faces drawn: ticks | panel | direct labels | gap, ticks | panel | direct labels
@@ -1238,10 +1238,10 @@ def q5_lectures(lang):
               if fr else f"Whichever version is read, code links|rise by at least {rnd(low * 100)} points"),
              ("Q5, part des articles expérimentaux qui donnent le lien de leur code : 48 de 2018, 50 de RL classique en "
               "2026. Les articles de 2026 ont souvent été lus sur arXiv, où le lien s'ajoute après l'acceptation : "
-              "on relit chaque année sur la même sorte de version. À droite, l'écart et son intervalle de Newcombe à 95 %.") if fr else
+              "on relit chaque année sur la même sorte de version. À droite, la différence et son intervalle de Newcombe à 95 %.") if fr else
              ("Q5, share of experimental papers that link their code: 48 from 2018, 50 of classical RL in 2026. The 2026 "
               "papers were often read on arXiv, where the link is added after acceptance: each year is reread on the same "
-              "kind of version. On the right, the gap and its 95% Newcombe interval."), GREEN)
+              "kind of version. On the right, the difference and its 95% Newcombe interval."), GREEN)
     f.src_size = 13
     s, L, W = f.s, f.L, f.W
     lab_w = max(width(labels[k][0 if fr else 1], "sans7" if "_" not in k else "sans", 13) + (16 if "_" in k else 0) for k in keys) + 16
@@ -1260,7 +1260,7 @@ def q5_lectures(lang):
     kx += 14 + width("2018", "sans5", 13) + 14
     s.circle(kx + 5, top - 26, 5, GREEN)
     s.text(kx + 14, top - 21, "2026", "sans5", 13, INK2)
-    s.text(xb0, top - 44, "Écart, en points" if fr else "Gap, in points", "sans7", 13, INK)
+    s.text(xb0, top - 44, "Différence, en points" if fr else "Difference, in points", "sans7", 13, INK)
     for tk in ticks(0, 1, 0.25):
         s.line(XA(tk), top - 6, XA(tk), bottom, RULE if tk == 0 else GRID)
         s.text(XA(tk), bottom + 20, pct(tk * 100, lang), "tick", 13, MUTED, "middle")
@@ -1370,8 +1370,8 @@ def x2_x8(lang):
         kx += w_
     # the two gaps, 2026 minus 2018, with their Newcombe intervals
     y = ky + 62
-    s.text(L, y - 26, "Écart 2026 moins 2018, en points, intervalle de Newcombe à 95 %" if fr else
-           "Gap, 2026 minus 2018, in points, 95% Newcombe interval", "sans7", 13, INK)
+    s.text(L, y - 26, "Différence 2026 moins 2018, en points, intervalle de Newcombe à 95 %" if fr else
+           "Difference, 2026 minus 2018, in points, 95% Newcombe interval", "sans7", 13, INK)
     lw2 = max(width(t, "sans7", 13) for t in ("X2", "X8")) + 16
     xb0, xb1 = L + lw2, W - L - 150
     XB = lambda u: xb0 + (u * 100 + 20) / 70 * (xb1 - xb0)

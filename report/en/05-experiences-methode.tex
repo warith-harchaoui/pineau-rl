@@ -19,7 +19,8 @@ the documents.
 
 The protocol of the experiments is the file \file{sim/SIM\_PROTOCOL.md}. Its first version is dated
 8~November~2026. It was written before any training. It fixes the questions, the algorithms, the tasks, the
-budgets, the number of random seeds, the evaluation and the analyses. It also lays down three rules of
+budgets, the number of random seeds, the evaluation and the analyses. Throughout the report, a \emph{run} is one
+complete training of one program on one task with a given random seed. The protocol lays down three rules of
 conduct:
 \begin{itemize}
   \item the random seeds are fixed before launching, from 0 to 29;
@@ -30,11 +31,10 @@ conduct:
 Every later change enters a numbered, dated list of \enquote{deviations}, together with a note of what we had
 already seen when we decided it. The protocol counts thirty-four of them as of 22~November~2026.
 \Cref{chap:09-ecarts} gives all of them, with those of the survey and of the language-model study. This chapter
-cites a deviation by its number when it changes a method. \Cref{sec:avant-apres} sorts the decisions by
+cites by number every deviation of the experiment protocol that changes a method. \Cref{sec:avant-apres} sorts the decisions by
 whether they precede or follow the results they affect.
 
-Throughout the report, a \emph{run} is one complete training of one program on one task with a given random
-seed. The \emph{main} results are the ones the protocol announced: ten random seeds per pair of program and
+The \emph{main} results are the ones the protocol announced: ten random seeds per pair of program and
 task. The additions of deviation~12 (twenty random seeds, equal budget, replication) are given next to them.
 Every divergence is stated.
 
@@ -65,7 +65,7 @@ SBX (\enquote{Stable-Baselines Jax}) rewrites PPO, SAC and CrossQ in JAX with th
 provides TRPO. rliable computes interquartile means, their bootstrap intervals and probabilities of
 improvement.
 
-\paragraph{A version deviation}
+\paragraph{Stable-Baselines3~2.9.2 instead of 2.6.0}
 The protocol announced Stable-Baselines3~2.6.0. Every training run used version~2.9.2, installed on
 8~November at 10:11, before the first training run (deviation~14, item~c). The versions in
 \file{envs/train.txt} are the ones that actually ran.
@@ -74,9 +74,10 @@ The protocol announced Stable-Baselines3~2.6.0. Every training run used version~
 To make a run on a given machine depend on its random seed alone, each training runs on a single thread
 (\texttt{OMP\_NUM\_THREADS=1}, \texttt{torch.set\_num\_threads(1)}, single-thread XLA options for JAX). The
 relaunches of PPO PyTorch and PPO JAX confirmed it (\cref{sec:calcul}). For SAC and CrossQ, the check is the
-object of deviation~32, written before any training, whose relaunches are still running. On another processor,
-MuJoCo, JAX and PyTorch round differently. The same random seed gives a different curve there. A rerun
-elsewhere tests the statistics of the report. It recovers no curve identically.
+object of deviation~32, written before any training, whose relaunches have not finished. All our runs used this
+one machine. On another processor, MuJoCo, JAX and PyTorch may order floating-point operations differently and
+round differently, so the same random seed would give a different curve there. We have not measured this. A
+rerun elsewhere tests the statistics of the report, with no hope of recovering its curves digit for digit.
 
 \section{The tasks}\label{sec:taches}
 
@@ -113,7 +114,7 @@ their settings.
 \paragraph{PPO, twice}
 PPO (\emph{Proximal Policy Optimization}, \cite{schulman2017ppo}) was the reference algorithm of 2018. It is
 still a common point of comparison in 2026. It is also the direct ancestor of GRPO, the algorithm of
-the language-model study. PPO is an \enquote{on-policy} algorithm: it collects a batch of transitions with the
+the language-model study. PPO is an \enquote{on-policy} algorithm. It collects a batch of transitions with the
 current policy, uses it for a few gradient passes, then discards it. Let
 $r_t(\theta) = \pi_\theta(a_t\mid s_t)/\pi_{\theta_{\text{old}}}(a_t\mid s_t)$ be the ratio of the
 probabilities of the action under the new and the old policy. Let $\hat A_t$ be the advantage estimated by GAE
@@ -128,9 +129,9 @@ with $\epsilon = 0.2$, plus a value-function error term. Two programs implement 
   \item \algo{PPO PyTorch}, the \texttt{PPO} class of Stable-Baselines3 (\texttt{ppo\_sb3} in the code);
   \item \algo{PPO JAX}, the \texttt{PPO} class of SBX (\texttt{ppo\_sbx} in the code).
 \end{itemize}
-The two programs have the same algorithm settings: every hyperparameter of \cref{tab:hyperparametres} has the
-same default value in both libraries. Their default values still differ on one point, the initialisation of
-the weights:
+The two programs have the same algorithm settings: every row of \cref{tab:hyperparametres} has the same
+default value in both libraries except orthogonal initialisation. The two libraries initialise the weights
+differently:
 \begin{itemize}
   \item Stable-Baselines3 turns the option \texttt{ortho\_init} on by default. Each weight matrix is then drawn
     orthogonal and multiplied by a gain: $\sqrt2$ for the hidden layers, 0.01 for the action output, 1 for the
@@ -139,7 +140,7 @@ the weights:
     truncated normal distribution of variance $1/n_{\text{in}}$, where $n_{\text{in}}$ is the number of inputs
     of the layer (LeCun's scheme), zero biases.
 \end{itemize}
-The option does not even do the same thing in the two libraries. Switched on in SBX, it initialises only the
+Nor does the option do the same thing in the two libraries. Switched on in SBX, it initialises only the
 action output orthogonally, with gain 0.01 (\file{sbx/ppo/policies.py}, lines 81 to 84). Finally, the two
 programs differ in the numerical library, its random generators and its rounding. Experiment E3 measures what
 these differences cost together, without separating them. Deviation~34, written before any training, swaps the
@@ -147,8 +148,8 @@ option between the two programs to isolate the share of the initialisation. Its 
 this report gives no result from it.
 
 \paragraph{SAC}
-SAC (\emph{Soft Actor-Critic}, \cite{haarnoja2018sac}) has been the \enquote{off-policy} standard of continuous
-control since 2019. It keeps every transition it has seen in a replay buffer and learns at every step from a
+SAC (\emph{Soft Actor-Critic}, \cite{haarnoja2018sac}) has served as the \enquote{off-policy} baseline of
+continuous control since 2019. It keeps every transition it has seen in a replay buffer and learns at every step from a
 batch drawn from that buffer. It maximises the return augmented with the entropy of the policy,
 $\sum_t \mathbb{E}\bigl[r_t + \alpha\,\mathcal{H}(\pi(\cdot\mid s_t))\bigr]$, with a coefficient $\alpha$
 tuned automatically towards a target entropy. Two critic networks estimate the value of actions. Slow copies of
@@ -160,7 +161,9 @@ CrossQ \parencite{bhatt2024crossq}, published at ICLR~2024, targets data efficie
 of interaction with the environment. A descendant of SAC, it removes the target networks, widens the critic
 and inserts batch renormalisation layers \parencite{ioffe2017batchrenorm} in the critic as in the actor. The
 program is the \texttt{CrossQ} class of SBX (\texttt{crossq}). Its critic has two layers of \num{1024}~units,
-instead of the paper's \num{2048}: SBX makes this choice to compute faster. We kept it.
+instead of the paper's \num{2048}: SBX makes this choice to compute faster. We kept it. CrossQ also uses Adam with
+$\beta_1 = 0.5$ instead of 0.9, the value of the original implementation, which SBX keeps as its default
+(\file{sbx/crossq/policies.py}).
 
 \paragraph{CrossQ's batch renormalisation, as SBX codes it}
 A renormalisation layer centres and scales each activation. The \texttt{BatchRenorm} class of
@@ -176,8 +179,7 @@ without advancing each other's counter). We measured it on one saved model, that
 (\file{sim/models/crossq/Hopper-v5/seed0.zip}). The \texttt{steps} counter of the actor's three
 \texttt{BatchRenorm} layers reads \num{66633}, that of the critic's three layers \num{199900}, against a
 warm-up of \num{100000} passes. The other random seeds and tasks follow the same update schedule, but we read
-only this model. CrossQ also uses Adam with $\beta_1 = 0.5$ instead of 0.9, the value of the original
-implementation, which SBX keeps as its default (\file{sbx/crossq/policies.py}).
+only this model.
 
 \paragraph{TRPO, for B1 only}
 TRPO (\emph{Trust Region Policy Optimization}, \cite{schulman2015trpo}) is the algorithm of figure~5 of
@@ -195,8 +197,8 @@ The protocol planned TD3 if the budget allowed. The budget did not allow it: TD3
 \paragraph{Why the default values}
 The four programs of the main grid keep the default values of their library. None was tuned. This choice
 applies Pineau's request on baselines to the letter (flaw F7, baselines tuned less carefully than the method):
-each program receives the same tuning effort, here none. The choice has a cost. A program well served by its
-default values is favoured. The ranking of E2 holds for these settings. Experiment E6 measures, on one
+each program receives the same tuning effort, in this case none. This equality has a cost: a program well
+served by its default values is favoured. The ranking of E2 holds for these settings. Experiment E6 measures, on one
 case, what a published tuning changes. The only command that builds a program of the grid, in
 \file{sim/run.py}, is \texttt{cls("MlpPolicy", TASK, seed=SEED, verbose=0)}, with no other argument.
 \Cref{tab:hyperparametres} records the settings as they ran: \file{sim/analysis/hyperparams.py} rebuilds each
@@ -259,8 +261,8 @@ initialisation of the networks, the initial positions of the simulated body, the
 the batches drawn from the replay buffer. \file{sim/run.py} passes it to the constructor of the program
 (\texttt{seed=SEED}), which derives from it the generators of NumPy, PyTorch or JAX and that of the training
 environment. For PPO PyTorch and PPO JAX, a relaunch with the same random seed on the same machine gave back
-the same evaluation points (\cref{sec:calcul}). For SAC and CrossQ, deviation~32 reruns three runs unchanged to
-check it. These training runs are still going.
+the same evaluation points (\cref{sec:calcul}). For SAC and CrossQ, the check awaits
+deviation~32 (\cref{sec:outils}).
 
 \paragraph{Training random seeds}
 The training random seeds are the integers 0 to 29, fixed before the first training run:
@@ -357,7 +359,7 @@ budget. On request, it also cuts a curve at a given step (the equal-budget readi
 \texttt{write\_run} writes this format from any library.
 
 \paragraph{The final policies}
-Each run saves its final policy in
+The final policy of each run is saved in
 \file{models/}\allowbreak\file{<program>/}\allowbreak\file{<task>/}\allowbreak\file{seed<k>.zip}, with the
 normalisation statistics alongside for the programs tuned like the Zoo (\file{.vecnorm.pkl}). The file
 \file{sim/models/MANIFEST.sha256} gives the SHA-256 fingerprint of 250~policies, taken on 15~November~2026 on
@@ -368,7 +370,7 @@ checks each archive and each policy against the manifest. The option \texttt{-{}
 policies already present.
 
 \paragraph{The logs}
-Each launch writes a log. Since deviation~14, each attempt keeps its own
+A log goes with each launch. Since deviation~14, each attempt keeps its own
 (\file{logs/<task>.attempt<n>.log}, never overwritten) and appends a line to the ledger
 \file{logs/attempts.jsonl}: task, attempt number, start, end, exit code, SHA-256 fingerprint of the result. For
 the earlier period, the ledger \file{logs/attempts\_reconstructed.csv} rebuilds one line per attempt from the
@@ -424,12 +426,12 @@ level $1-\alpha$, the percentiles taken are $100\,\alpha/2$ and $100\,(1-\alpha/
 
 \subsection{The winner rule}\label{sec:regle}
 The protocol fixes one rule for declaring that one program beats another. We call it \emph{the
-settled-winner rule}. A gap is settled when one of two conditions holds:
+settled-winner rule}. A difference is settled when one of two conditions holds:
 \begin{itemize}
   \item the 95\% intervals of the two IQMs do not overlap;
   \item the 95\% interval of the probability of improvement excludes 0.5.
 \end{itemize}
-Otherwise no winner is declared, whatever the gap between the IQMs. E3 applies both conditions
+Otherwise no winner is declared, whatever the difference between the two IQMs. E3 applies both conditions
 (\file{e3.py}). E2, E2 with Bonferroni and B3 use the second: a pair is called \enquote{settled} there when the
 interval of its probability of improvement excludes 0.5. E7 and the physics by degrees use the analogue for a
 ratio: a loss is settled when the interval of the IQM of the ratio stays below 1.
@@ -441,9 +443,10 @@ the rule where no difference exists: two disjoint groups drawn from the thirty r
 (\file{sim/analysis/rule\_calibration.py}, \num{2000} draws, \num{2000} resamples per interval). A rule exact
 at the 95\% level would declare a winner in 5\% of the draws. \Cref{tab:regle-tranche} gives the actual rate:
 5.4\% for PPO PyTorch and 6.2\% for TRPO at ten runs against ten, 9.9\% and 9.1\% at five against five. Over
-\num{2000}~draws, the Monte Carlo error of a share near 5\% is about half a point. The draws, taken from the
-same thirty runs, are not independent either: 5.4\% cannot be told apart from 5\%, whereas the rates at five
-against five clearly differ from it. The condition on the probability of improvement does nearly all the work.
+\num{2000}~independent draws, the Monte Carlo error of a share near 5\% would be about half a point. Our draws,
+taken from the same thirty runs, are not independent, so this half point gives only an order of magnitude. With
+that reservation, 5.4\% cannot be told apart from 5\%, whereas the rates at five against five stand well clear
+of it. The condition on the probability of improvement does nearly all the work.
 The IQM intervals are disjoint in only 0.6\% and 0.9\% of the draws at ten against ten. The rule is
 slightly liberal at ten random seeds and clearly liberal at five. A verdict whose interval grazes 0.5 is read
 with this reservation, such as that of PPO JAX against CrossQ on \task{Hopper} at ten random seeds,
@@ -531,14 +534,14 @@ corrections are used.
   \item \emph{Holm} \parencite{holm1979simple} adjusts sorted $p$-values $p_{(1)}\le\dots\le p_{(m)}$ into
     $\tilde p_{(i)}=\min\bigl(1,\max_{j\le i}(m-j+1)\,p_{(j)}\bigr)$. A hypothesis is rejected when
     $\tilde p_{(i)}<0.05$. The probability of at least one false rejection in the family stays below 5\%, with
-    no assumption on how the tests depend on one another. Holm serves E6 over its two or three comparisons and
-    E3 over its four tasks (deviation~23).
+    no assumption on how the tests depend on one another. Holm serves E3 over its four tasks (deviation~23) and
+    E6, separately over the three comparisons of its diagnosis and the two of its official pipeline.
 \end{itemize}
 One family can receive both corrections: the corrected E3 gives its Mann-Whitney $p$-values adjusted by Holm
 and its intervals of the probability of improvement at the Bonferroni level, $1-0.05/4$, that is 98.75\%.
 
 \subsection{Other tests}\label{sec:autres-tests}
-The Shapiro-Wilk test \parencite{shapiro1965analysis} measures how far a distribution departs from the normal
+The Shapiro-Wilk test \parencite{shapiro1965analysis} measures how well a sample fits a normal
 distribution. E1 applies it to the thirty scores of PPO PyTorch.
 
 \paragraph{The Mann-Whitney test}
@@ -549,8 +552,8 @@ a group holds at most eight scores with no tie, otherwise the normal approximati
 continuity (\texttt{scipy.stats.mannwhitneyu}, method \texttt{auto}). The E6 diagnosis reports it next to the
 Welch test. The corrected E3 (deviation~23) and the test of E7 (deviation~24) use it for their $p$-values.
 
-\paragraph{The Hodges-Lehmann gap}
-A probability of improvement says who wins, not by how much. The gap in score points that deviation~30 sets
+\paragraph{The Hodges-Lehmann difference}
+A probability of improvement says who wins, not by how much. The difference in score points that deviation~30 sets
 beside it is the estimator of \textcite{hodges1963estimates}, the median of the $n_xn_y$ pairwise differences:
 \begin{equation}\label{eq:hl}
   \hat\Delta=\operatorname{med}\{\,x_i-y_j : 1\le i\le n_x,\ 1\le j\le n_y\,\}.
@@ -574,15 +577,16 @@ of $U/n^2$ under the null hypothesis.
 \paragraph{The number of independent points in a curve}
 The twenty points of a learning curve are not twenty independent measurements: a run above the mean curve at
 one point stays above it at the next. Deviation~29 measures this dependence by the lag-1 autocorrelation $r$ of
-the deviations of each curve from the mean curve, then derives the effective number of independent points in a
-curve of 20 points, $20\,(1-r)/(1+r)$, the formula of a first-order autoregressive process
+the difference between each curve and the mean curve, then derives the effective number of independent points
+in a curve of 20 points, $20\,(1-r)/(1+r)$, the large-sample approximation for a first-order autoregressive
+process
 (\file{sim/analysis/curves.py}). The pooled reading of B1 counts these twenty points as twenty observations.
 
 \subsection{Reproducible intervals}\label{sec:reproductibilite-bootstrap}
 rliable~1.2.0 accepts a \texttt{random\_state} argument but draws its resamples from NumPy's global generator
-(\texttt{np.random.choice}). Six scripts did not give their intervals back identically from one execution to
+(\texttt{np.random.choice}). Six scripts did not give the same intervals from one execution to
 the next (deviation~13). Each script now seeds this generator at the start (\texttt{np.random.seed(2026)}),
-then calls rliable in a fixed order. Every call consumes the global generator, so the interval of a comparison
+then calls rliable in a fixed order. Since every call consumes the global generator, the interval of a comparison
 depends on the calls that precede it in the same script. The correction changed no point estimate and no
 verdict. The bounds moved at the level of Monte Carlo noise, by at most 16~points on an IQM of \num{2423} for
 E6.
@@ -672,7 +676,7 @@ after the results, before this computation (deviation~22) \\
 E2 strict & How many pairs really reverse? &
 Pairs settled one way on one task and the other way on another, with no new resampling. & those of E2 &
 after the results, before this computation (deviation~21) \\
-E3 corrected & Does the E3 gap survive four tasks? &
+E3 corrected & Does the E3 difference survive four tasks? &
 Mann-Whitney and Holm over four tasks, intervals at 98.75\%, Hodges-Lehmann, power. & those of E3 &
 after the results, before this computation (deviation~23) \\
 E5 out of sample & Is E5 recovered on other random seeds? &
@@ -690,7 +694,7 @@ before these computations (deviations~31 and 33) \\
 Determinism & Does a relaunch of SAC and CrossQ give back the same run? &
 Three runs redone unchanged, compared point by point. & 3 training runs, running & before any
 training (deviation~32) \\
-PPO divergence & Does the initialisation explain the E3 gap? &
+PPO divergence & Does the initialisation explain the E3 difference? &
 On \task{Walker2d} and \task{Swimmer}, both PPOs at random seeds 20 to 39, then each with the other's
 initialisation option at random seeds 0 to 19. & 160 training runs, running & before any training (deviation~34) \\
 \end{longtable}
@@ -705,8 +709,8 @@ a generator of random seed 2018:
     variation (standard deviation divided by the mean), Shapiro-Wilk test;
   \item for $k=3$, 5 and 10, \num{10000} draws of two disjoint groups of $k$ runs, obtained by permuting the
     thirty, then taking the first $k$ against the next $k$. Each draw receives a Welch test and the relative
-    gap between the means $|\bar a-\bar b|/\min(\bar a,\bar b)$. The script reports the share of draws where
-    $p<0.05$, along with the median and the 95th percentile of the relative gap;
+    difference between the means $|\bar a-\bar b|/\min(\bar a,\bar b)$. The script counts the share of draws
+    where $p<0.05$ and gives the median and the 95th percentile of the relative difference;
   \item the \enquote{sorted} split: \num{10000} draws of ten runs without replacement, sorted by score, then a
     Welch test of the best five against the worst five. This split shows what sorting the runs before the
     comparison would produce;
@@ -726,17 +730,18 @@ creates crush the variance within groups and inflate the sorted rate: these inte
 estimate is, with no coverage guarantee. The analysis is exploratory.
 
 \paragraph{The second statistic}
-\textcite{henderson2018matters} test curves, where we tested final scores (\cref{sec:t-moyen}).
+Figure~5 of \textcite{henderson2018matters} compares whole learning curves (\cref{sec:t-moyen}), whereas E1
+compares final scores.
 \file{sim/analysis/e1\_curve.py} redoes their statistic on the thirty curves: \num{10000} draws of ten runs,
 split into two groups of five at random or sorted by final score, then a Welch test at each of the twenty
-evaluation points. We report the share of draws declared different by the average t, by the average p and by
+evaluation points. The script derives from them the share of draws declared different by the average t, by the average p and by
 the test at the last point, the 95th percentile of $|\bar t|$ and the share of draws where
 $|\bar t|\ge 9.09$. This statistic was added on 9~November, after the results of \file{e1.py} (deviation~3).
 It complements the preregistered analysis without replacing it.
 
 \subsection{B1: the puzzle of the t of 9}\label{sec:plan-b1}
 For TRPO on \task{HalfCheetah}, \textcite{henderson2018matters} publish $t=-9.09$ and $p=0.0016$ between two
-groups of five runs of the same code. Pineau specifies that these groups are not sorted. B1 looks for the
+groups of five runs of the same code. Pineau states on stage that these groups are not sorted (flaw F11, \cref{sec:failles}). B1 looks for the
 origin of this number in two stages, each written before its computation.
 
 \paragraph{First stage: their algorithm}
@@ -746,7 +751,7 @@ and the same evaluation as E1. \file{sim/analysis/b1\_trpo.py} applies the three
 \cref{sec:t-moyen} to the TRPO and PPO curves, with the same draws as \file{e1\_curve.py}. The reading rule
 was fixed in advance. If the 95th percentile of $|\bar t|$ under random splits comes close to 9 with TRPO, the
 spread of the algorithm explains their number. If only the pooled reading comes close, their computation
-explains it. If no reading comes close, neither lead explains it: the report then says so.
+explains it. If no reading comes close, the report concludes that neither lead explains their number.
 
 \paragraph{Second stage: their script}
 Deviation~6, written on 9~November at 23:55 after the results of \file{b1\_trpo.py} and before any computation
@@ -757,7 +762,7 @@ converted to $p$, since a Welch test on five against five has at least 4~degrees
 of the $p$ values remains compatible. The second fact is the 2017 script (\cref{sec:script-henderson}).
 \file{sim/analysis/b1\_script.py} applies this computation to the thirty TRPO curves and the thirty PPO
 curves, with the same draws (generator of random seed 2018, \num{10000} draws of ten runs split five against
-five, at random then sorted), for $n=10$ then $n=5$. It also reports, per program, the ratio of the mean
+five, at random then sorted), for $n=10$ and for $n=5$. It also computes, per program, the ratio of the mean
 standard deviation between episodes at the last point to the standard deviation of the final scores between
 random seeds.
 
@@ -791,8 +796,8 @@ bootstrap resamples are identical to those of \file{e2.py}. Only the percentile 
 99.79\%. It counts the settled changes with the same definition (deviation~18).
 
 \paragraph{The strict count}
-The preregistered definition counts a triple without asking whether the leader really beats, in a settled way,
-the program that beats it elsewhere. \enquote{SAC leads on \task{HalfCheetah} and loses to CrossQ on
+The preregistered definition counts a triple without asking whether the leader beats, in a settled way and on the
+task it leads, the program that beats it elsewhere. \enquote{SAC leads on \task{HalfCheetah} and loses to CrossQ on
 \task{Walker2d}} counts there as one settled change, even when the order of SAC and CrossQ on
 \task{HalfCheetah} is not settled. Deviation~21, written before this computation, adds a strict count, by pairs
 (\file{sim/analysis/e2\_strict.py}): a pair $(A,B)$ \emph{reverses in a settled way} when $A$ beats $B$ in a
@@ -804,23 +809,25 @@ computes.
 
 \subsection{E3: two programs of the same algorithm}\label{sec:plan-e3}
 \file{sim/analysis/e3.py} pits PPO PyTorch against PPO JAX on each task, with the same random seeds and the
-scores at one million steps. It reports the two IQMs with their intervals, the ratio of the IQMs, the
+scores at one million steps. It gives the two IQMs with their intervals, their ratio, the
 probability that a PPO JAX run beats a PPO PyTorch run with its interval, the overlap of the intervals, then
 the winner under the rule of \cref{sec:regle}.
 
 \paragraph{Four tasks, one correction}
 E3 tests four tasks with no correction. The analysis at twenty random seeds also asks the same question a second
-time. Deviation~23, written before this computation, corrects both (\file{sim/analysis/e3\_holm.py}): for each
-task, the two-sided Mann-Whitney test of PPO JAX against PPO PyTorch, the Holm correction over the four tasks,
-the interval of the probability of improvement at the 98.75\% level, the Hodges-Lehmann gap in score points
-(\cref{eq:hl}). It also estimates the power of the test for $n$ from 10 to 60 runs per program and the smallest
+time. Deviation~23 corrects the first multiplicity and names the second without correcting it: the
+analysis at ten random seeds and the one at twenty are each corrected over their four tasks, with no correction
+between them. Its plan, written before the repository's computation (\file{sim/analysis/e3\_holm.py}), fixes for
+each task the two-sided Mann-Whitney test of PPO JAX against PPO PyTorch, the Holm correction over the four
+tasks, the interval of the probability of improvement at the 98.75\% level and the Hodges-Lehmann difference in
+score points (\cref{eq:hl}). The script also estimates the power of the test for $n$ from 10 to 60 runs per program and the smallest
 detectable effect (\cref{eq:mde}).
 
 \subsection{E4: the best three out of ten}\label{sec:plan-e4}
 For each program and each task, \file{sim/analysis/e4.py} computes the mean and the standard deviation of the
 ten runs, then of the best three, finally the inflation $\bar x_{\text{best 3}}/\bar x_{10}-1$. A
 comparison is a pair of programs on one task: there are 24. It \emph{reverses} if the sign of the difference in
-means changes when each program keeps only its best three runs. The script reports the median inflation, its
+means changes when each program keeps only its best three runs. The script sums it up with the median inflation, its
 range, the median ratio of the standard deviations and the number of reversals.
 
 \subsection{E5: how many random seeds?}\label{sec:plan-e5}
@@ -833,8 +840,8 @@ the true distribution of the algorithm's scores. For $n=3$, 5, 10 and 20, we dra
   =\operatorname{sign}(\bar x-\bar y)\Bigr],\qquad N=\num{10000}.
 \end{equation}
 For PPO PyTorch on \task{HalfCheetah}, the analysis at ten random seeds draws from the thirty runs of E1. The script
-reports the median of $\hat P_n$ over the 24 comparisons, then over the \emph{close} comparisons, those whose
-relative gap between means $|\bar x-\bar y|/\max(|\bar x|,|\bar y|)$ stays below 20\%. Deviation~20 fixed a
+publishes the median of $\hat P_n$ over the 24 comparisons and, among them, over the \emph{close} comparisons,
+those whose relative difference between means $|\bar x-\bar y|/\max(|\bar x|,|\bar y|)$ stays below 20\%. Deviation~20 fixed a
 defect before the computation at twenty random seeds: the script took as the correct order the mean of the first ten
 runs, even with twenty. It now takes the mean of all the chosen random seeds. The analysis at ten random seeds came
 back identical to the byte.
@@ -844,14 +851,15 @@ The correct order of \cref{eq:e5} is the sign of the means of the same sample th
 replacement. $\hat P_n$ thus estimates how stable the observed sign is when the experiment is redone with $n$
 runs drawn from this sample. It does not measure the probability of recovering the true order of the two
 algorithms. Drawing $n=20$ runs from ten observed, in the analysis at ten random seeds, is an extrapolation.
-Deviation~25, written before this computation, validates E5 out of sample (\file{sim/analysis/e5\_holdout.py}).
+Deviation~25 validates E5 out of sample (\file{sim/analysis/e5\_holdout.py}), under a plan fixed before the
+script ran.
 The correct order there comes from other runs, random seeds 10 to 19. The script counts the comparisons whose
 sign observed on random seeds 0 to 9 is kept on seeds 10 to 19. It then draws $n=3$, 5 and 10 runs without
 replacement from random seeds 0 to 9, \num{10000} times, counts the draws that recover the order of random
 seeds 10 to 19, then goes the other way.
 
 \subsection{E6: the tuned baseline}\label{sec:plan-e6}
-E6 was meant to illustrate flaw F7, the poorly tuned baseline: the gap a \enquote{new method} can claim for
+E6 was meant to illustrate flaw F7, the poorly tuned baseline: the edge a \enquote{new method} claims for
 itself when it alone is tuned. The initial design pits, on \task{Hopper-v5}, ten runs of PPO PyTorch with its
 default values (those of E2) against ten runs with the Zoo settings (\file{e6.py}).
 
@@ -874,8 +882,8 @@ deterministic episodes, evaluation random seeds \num{10000} to \num{10009}, obse
 then frozen, no reward normalisation. Two comparisons, fixed in advance and corrected by Holm, pit the official
 policies against our corrected Zoo on v4, then against our default values on v4. The reading rule was written
 down. If the official runs clearly exceed \num{1000}, our application was at fault. If they plateau too, the
-published recipe does worse than the default values in this version of the libraries. The report then says so
-without speaking of a baseline badly tuned by us.
+published recipe does worse than the default values in this version of the libraries. The report then records it
+without speaking of a baseline that we tuned badly.
 
 \paragraph{A robot that stands without moving forward}
 On \task{Hopper}, the reward of a step is the forward velocity, plus 1 as long as the robot stays upright,
@@ -888,14 +896,14 @@ computation, read the speed instead of the score:
     lower bound of the mean speed follows, the return per step minus 1;
   \item deviation~33 (a) replays the official policies, our policies tuned like the Zoo and our default
     policies with our protocol, recording the speed and the position at every step, then films one episode
-    (\file{sim/analysis/e6\_enjoy.py}). Control: the replayed returns must equal the scores already published
-    exactly;
+    (\file{sim/analysis/e6\_enjoy.py}). Control: the replayed returns must reproduce the scores already
+    published digit for digit;
   \item deviation~33 (b) downloads the agent the Zoo publishes for \task{Hopper-v3}, inspects each serialised
     object before loading it, then evaluates it with our protocol on \task{Hopper-v4}
     (\file{sim/analysis/e6\_hub.py}).
 \end{itemize}
-Deviation~33 (c) retrains the Zoo recipe with $\gamma=0.99$. Its training runs are still going: this report
-gives no result from it.
+Deviation~33 (c) retrains the Zoo recipe with $\gamma=0.99$. Its training runs had not finished when this
+report was compiled, so none of their results appear here.
 
 \subsection{E7: the modified physics}\label{sec:plan-e7}
 For each run $s$, \file{sim/analysis/e7.py} computes the ratio of the two final scores
@@ -908,14 +916,15 @@ otherwise. The IQM of the ratios differs from the ratio of the IQMs: two ranking
 share of score kept.
 
 \paragraph{The descriptive ranking}
-\file{e7\_rank.py} ranks the four programs on each task by the IQM of the score, in the training physics then
-in the modified physics. It says whether the leader changes. This complement, decided after the E7 results,
+\file{e7\_rank.py} ranks the four programs on each task by the IQM of the score, in each of the two
+physics. It says whether the leader changes. This complement, decided after the E7 results,
 has no test (deviation~11).
 
 \paragraph{The ranking in modified physics, tested}
-Deviation~24, written before this computation, gives this ranking the test it lacked
-(\file{sim/analysis/e7\_test.py}). For each task and each pair, it computes the probability of improvement with
-its interval and the Mann-Whitney $p$-value, in the training physics then in the modified physics. A pair
+Deviation~24 gives this ranking the test it lacked
+(\file{sim/analysis/e7\_test.py}). Its rule was written before the computation. For each task and each pair,
+the script computes the probability of improvement with
+its interval and the Mann-Whitney $p$-value, in the training physics as in the modified physics. A pair
 \emph{reverses in a settled way} when it is settled one way in the first and the other way in the second. The
 main question was fixed in advance: PPO JAX against CrossQ and against SAC on \task{Hopper}. The rest is
 descriptive. The script redoes the same computation at each degree of the physics by degrees.
@@ -925,7 +934,7 @@ descriptive. The script redoes the same computation at each degree of the physic
 task, quantity and factor, it computes the IQM of the ratio to the score at 1.0 times, with its bootstrap
 interval, then the same verdict as E7. For each task and each physics, it ranks the four programs by the IQM
 of the score, with no test. Finally it checks that the score at 1.0 times recovers the final score of
-\file{run.py} and reports the largest relative gap. The rule dates from deviation~12, item~ii, written before
+\file{run.py} and records the largest relative difference between the two. The rule dates from deviation~12, item~ii, written before
 any computation. The script itself was written when 30 of the 160 re-evaluations already existed, one of which
 had been displayed: the commit that called it \enquote{written before the results} was wrong (deviation~14,
 item~a). The script has no free parameter.
@@ -944,7 +953,7 @@ directions. PPO curves have twenty points over one million steps, SAC and CrossQ
 \num{200000}: the mean of the curve does not cover the same budget (deviation~8).
 
 \paragraph{The curves themselves}
-Deviation~29, written before these computations, adds three exploratory readings of the curves
+Deviation~29, which predates these computations, adds three exploratory readings of the curves
 (\file{sim/analysis/curves.py}):
 \begin{itemize}
   \item the ranking of the four programs at \num{50000}, \num{100000}, \num{150000} and \num{200000}~steps,
@@ -973,7 +982,7 @@ computation on random seeds 10 to 19, fixes the list of computations, all launch
   \item on the twenty random seeds (suffix \file{\_s20}): E2, E3, E5, E7, B3, the physics by degrees, the
     descriptive ranking of E7 and the Bonferroni correction of E2;
   \item E4 on random seeds 10 to 19 alone (suffix \file{\_r10}), as an independent replication;
-  \item E2 and B3 at equal budget, on ten random seeds (\file{\_equal}) then on twenty (\file{\_equal\_s20}).
+  \item E2 and B3 at equal budget, on ten random seeds (\file{\_equal}) and on twenty (\file{\_equal\_s20}).
 \end{itemize}
 Before deviation~20, the only scores of random seeds 10 to 19 that had been read were the controls of the physics
 by degrees at 1.0 times, which compare each file with itself. The last two additions of the first list were not
@@ -1033,7 +1042,7 @@ consolidation: 42~attempts were stopped and none crashed. Of the 42 stops, only 
 memory incident of the GRPO pilot, a stop requested on 9~November for an overloaded machine, then four stops
 to stay at four cores. Each stop hit every running run at once. No run was relaunched or discarded after its
 final score was known, nor for any reason linked to its score. For PPO PyTorch and PPO JAX, the relaunches
-recover the evaluation points of the stopped attempts identically. For SAC and CrossQ, the stopped curves were
+recover the evaluation points of the stopped attempts as they were. For SAC and CrossQ, the stopped curves were
 overwritten, which makes this check impossible. The later stops by the watchdog, on 12, 15 and 16~November,
 are described in deviations~10, 14 and 16 (\cref{chap:09-ecarts}).
 
@@ -1081,7 +1090,7 @@ by deviation.
 A technical review of the repository flagged, on 21~November, analyses that were too weak or missing.
 Deviations~21 to~31 came out of it. Each was written before the repository's script computed its result. For
 deviations~21 to~27 and~31, the review had already made a draft computation outside the repository. Each
-deviation says so. These are complements decided after the main results, which they do not replace:
+deviation concerned flags it. These are complements decided after the main results, which they do not replace:
 \begin{itemize}
   \item the strict count of E2 (deviation~21), E1 on the sixteen pairs (deviation~22), the corrected E3 and its
     power (deviation~23);
@@ -1092,8 +1101,8 @@ deviation says so. These are complements decided after the main results, which t
   \item the speed of the official agents read in their logs (deviation~31).
 \end{itemize}
 
-\paragraph{Written before any training or evaluation concerned}
-Three deviations of the same day precede any data: the determinism of SAC and CrossQ (deviation~32), the
+\paragraph{Still on 21~November, before any data}
+Three deviations of 21~November precede any data concerned: the determinism of SAC and CrossQ (deviation~32), the
 continuation of the E6 diagnosis, with replay, published agent and recipe at $\gamma=0.99$ (deviation~33),
 the divergence of the two PPOs (deviation~34). The training runs of deviations~32, 33 (c) and 34 are still going
 when this report is compiled.

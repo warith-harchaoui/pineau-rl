@@ -284,8 +284,8 @@ def survey_rows(rows, keys, lang):
 
 def survey_head(lang):
     return [
-        L(lang, r" & & \multicolumn{3}{c}{\makecell{Notre lecture\\{}de 2018}} & \multicolumn{3}{c}{\makecell{RL classique\\{}2026}} & \multicolumn{2}{c}{Écart} & & ",
-          r" & & \multicolumn{3}{c}{\makecell{Our reading\\{}of 2018}} & \multicolumn{3}{c}{\makecell{Classical RL\\{}2026}} & \multicolumn{2}{c}{Gap} & & "),
+        L(lang, r" & & \multicolumn{3}{c}{\makecell{Notre lecture\\{}de 2018}} & \multicolumn{3}{c}{\makecell{RL classique\\{}2026}} & \multicolumn{2}{c}{Différence} & & ",
+          r" & & \multicolumn{3}{c}{\makecell{Our reading\\{}of 2018}} & \multicolumn{3}{c}{\makecell{Classical RL\\{}2026}} & \multicolumn{2}{c}{Difference} & & "),
         r"\cmidrule(lr){3-5}\cmidrule(lr){6-8}",
         L(lang, r"Code & Critère & $k/n$ & \multicolumn{2}{c}{\% [Wilson]} & $k/n$ & \multicolumn{2}{c}{\% [Wilson]} & \multicolumn{2}{c}{[Newcombe]} & $p$ & $p$ Holm",
           r"Code & Criterion & $k/n$ & \multicolumn{2}{c}{\% [Wilson]} & $k/n$ & \multicolumn{2}{c}{\% [Wilson]} & \multicolumn{2}{c}{[Newcombe]} & $p$ & Holm $p$"),
@@ -307,12 +307,12 @@ def t_sondage():
         cap = L(lang,
                 rf"Grille de Pineau (critères Q2 à Q8) et critères X tirés de sa conférence ICLR 2018, lus avec la même grille et les mêmes lecteurs sur deux échantillons : notre lecture de {s['ours2018']} articles de 2018 (ICML, NeurIPS, ICLR) et {s['classic2026']} articles de RL classique de 2026 ({s['classic2026'] - len(s['a3'])} du premier tirage, {len(s['a3'])} de la file A3). C'est la comparaison principale, la seule qui fonde un verdict (écart 20 de \file{{study/PROTOCOL.md}}). "
                 r"$k/n$ : articles qui remplissent le critère sur les articles où il s'applique (articles à expériences, Q1 différent de « non ») ; la part en pourcentage porte son intervalle de Wilson à 95~\%. "
-                r"Écart : RL classique 2026 moins 2018, en points de pourcentage, avec l'intervalle de Newcombe à 95~\% ; $p$ : test exact de Fisher bilatéral ; $p$ Holm : correction de Holm sur les onze critères de la grille v1. "
-                r"\textbf{En gras}, les critères dont l'écart passe la correction de Holm ($p$ Holm $<$ 0,05). Pour X3, une part plus basse est un progrès ; Q2 (réseaux de neurones) décrit la population étudiée, pas une pratique de reproductibilité. Les chiffres de Pineau elle-même sont au tableau~\ref{tab:sondage-pineau-contexte}. "
+                r"Différence : RL classique 2026 moins 2018, en points de pourcentage, avec l'intervalle de Newcombe à 95~\% ; $p$ : test exact de Fisher bilatéral ; $p$ Holm : correction de Holm sur les onze critères de la grille v1. "
+                r"\textbf{En gras}, les critères dont la différence passe la correction de Holm ($p$ Holm $<$ 0,05). Pour X3, une part plus basse est un progrès ; Q2 (réseaux de neurones) décrit la population étudiée, pas une pratique de reproductibilité. Les chiffres de Pineau elle-même sont au tableau~\ref{tab:sondage-pineau-contexte}. "
                 r"Source : \file{study/extension_stats.json} (script \file{study/extension_stats.py}, écrit avant toute lecture des articles ajoutés).",
                 rf"Pineau's grid (criteria Q2 to Q8) and the X criteria drawn from her ICLR 2018 talk, read with the same grid and the same readers on two samples: our reading of {s['ours2018']} papers from 2018 (ICML, NeurIPS, ICLR) and {s['classic2026']} classical RL papers from 2026 ({s['classic2026'] - len(s['a3'])} from the first draw, {len(s['a3'])} from the A3 queue). This is the main comparison, the only one a verdict rests on (deviation 20 of \file{{study/PROTOCOL.md}}). "
                 r"$k/n$: papers that meet the criterion out of the papers where it applies (papers with experiments, Q1 not `no'); the percentage carries its 95\% Wilson interval. "
-                r"Gap: classical RL 2026 minus 2018, in percentage points, with the 95\% Newcombe interval; $p$: two-sided Fisher exact test; Holm $p$: Holm correction over the eleven criteria of grid v1. "
+                r"Difference: classical RL 2026 minus 2018, in percentage points, with the 95\% Newcombe interval; $p$: two-sided Fisher exact test; Holm $p$: Holm correction over the eleven criteria of grid v1. "
                 r"\textbf{In bold}, the criteria whose gap passes the Holm correction (Holm $p < 0.05$). For X3, a lower share is progress; Q2 (neural networks) describes the population studied, not a reproducibility practice. Pineau's own figures are in Table~\ref{tab:sondage-pineau-contexte}. "
                 r"Source: \file{study/extension_stats.json} (script \file{study/extension_stats.py}, written before any reading of the added papers).")
         floattable("sondage-pineau", lang, cap,
@@ -321,8 +321,8 @@ def t_sondage():
         # sondage-pineau-contexte: Pineau's own figures, as context
         # one group row per criterion (code and label across the table), then its two comparisons: the label keeps
         # one line instead of wrapping over three in a narrow column
-        head = [L(lang, r"Code & Critère, puis comparaison & $k/n$ & \% & Pineau 2018 & \multicolumn{2}{c}{Écart [Newcombe]} & $p$ & $p$ Holm",
-                  r"Code & Criterion, then comparison & $k/n$ & \% & Pineau 2018 & \multicolumn{2}{c}{Gap [Newcombe]} & $p$ & Holm $p$")]
+        head = [L(lang, r"Code & Critère, puis comparaison & $k/n$ & \% & Pineau 2018 & \multicolumn{2}{c}{Différence [Newcombe]} & $p$ & $p$ Holm",
+                  r"Code & Criterion, then comparison & $k/n$ & \% & Pineau 2018 & \multicolumn{2}{c}{Difference [Newcombe]} & $p$ & Holm $p$")]
         body = []
         for k in pin:
             r = rows[k]
@@ -341,19 +341,19 @@ def t_sondage():
         cap = L(lang,
                 rf"Les chiffres de Pineau (2018), comme contexte et jamais comme verdict : ses parts sur 50 articles de RL de 2018, pour les six critères qu'elle chiffre (pourcentage publié, \file{{study/results_final.json}} ; entre parenthèses le $k/n$ des tests, son pourcentage multiplié par 50 et arrondi, soit {pct(rows['Q5']['pineau2018'][0] / 50, lang)} pour Q5 et {pct(rows['Q8']['pineau2018'][0] / 50, lang)} pour Q8), comparées à notre lecture de {s['ours2018']} articles de 2018 avec notre grille, puis aux {rows['Q3']['all2026'][1]} articles expérimentaux du premier tirage de 2026, grands modèles de langage compris. "
                 r"La première ligne de chaque critère mesure l'écart entre notre grille et la sienne sur la même année : notre lecture est plus sévère sur Q3 et plus large sur Q7, ce qui a conduit à ne fonder les verdicts que sur la comparaison avec la même grille (écart 20 de \file{study/PROTOCOL.md}, tableau~\ref{tab:sondage-pineau}). La seconde mêle le changement des pratiques, celui de la grille et celui de la population. "
-                r"Écart en points avec l'intervalle de Newcombe à 95~\%, test exact de Fisher, correction de Holm sur Q3 à Q8 dans chaque famille de comparaisons. \textbf{En gras}, ce qui passe la correction de Holm. Le tirage de Pineau reste inconnu. Sources : \file{study/extension_stats.json}, \file{study/results_final.json}.",
+                r"Différence en points avec l'intervalle de Newcombe à 95~\%, test exact de Fisher, correction de Holm sur Q3 à Q8 dans chaque famille de comparaisons. \textbf{En gras}, ce qui passe la correction de Holm. Le tirage de Pineau reste inconnu. Sources : \file{study/extension_stats.json}, \file{study/results_final.json}.",
                 rf"Pineau's figures (2018), as context and never as a verdict: her shares on 50 RL papers from 2018, for the six criteria she quantifies (published percentage, \file{{study/results_final.json}}; in parentheses the $k/n$ used by the tests, her percentage times 50 and rounded, that is {pct(rows['Q5']['pineau2018'][0] / 50, lang)} for Q5 and {pct(rows['Q8']['pineau2018'][0] / 50, lang)} for Q8), set against our reading of {s['ours2018']} papers from 2018 with our grid, then against the {rows['Q3']['all2026'][1]} experimental papers of the first 2026 draw, large language models included. "
                 r"The first row of each criterion measures the gap between our grid and hers on the same year: our reading is stricter on Q3 and broader on Q7, which led us to base verdicts only on the same-grid comparison (deviation 20 of \file{study/PROTOCOL.md}, Table~\ref{tab:sondage-pineau}). The second mixes the change in practice, the change of grid and the change of population. "
-                r"Gap in points with the 95\% Newcombe interval, Fisher exact test, Holm correction over Q3 to Q8 within each family of comparisons. \textbf{In bold}, what passes the Holm correction. Pineau's draw remains unknown. Sources: \file{study/extension_stats.json}, \file{study/results_final.json}.")
+                r"Difference in points with the 95\% Newcombe interval, Fisher exact test, Holm correction over Q3 to Q8 within each family of comparisons. \textbf{In bold}, what passes the Holm correction. Pineau's draw remains unknown. Sources: \file{study/extension_stats.json}, \file{study/results_final.json}.")
         floattable("sondage-pineau-contexte", lang, cap,
                    L(lang, "Les chiffres de Pineau, comme contexte", "Pineau's figures, as context"),
                    r"@{}l>{\raggedright\arraybackslash}p{4cm}rrr r@{\hspace{0.28em}}l rr@{}", head, body, tabcolsep="4pt")
         body = survey_rows(rows, v2, lang)
         cap = L(lang,
                 rf"Grille v2 (critères Y1 à Y12, écarts 11 et 14 de \file{{study/PROTOCOL.md}}, écrite le 9 novembre 2026 avant toute lecture v2), sur les mêmes échantillons que le tableau~\ref{{tab:sondage-pineau}} : {s['ours2018']} articles de 2018 lus par nous et {s['classic2026']} articles de RL classique de 2026. "
-                r"Mêmes colonnes : $k/n$ sur les articles où le critère s'applique, part avec intervalle de Wilson à 95~\%, écart en points avec l'intervalle de Newcombe à 95~\%, test exact de Fisher, correction de Holm sur les douze critères de la grille v2 (famille distincte de la grille v1). "
+                r"Mêmes colonnes : $k/n$ sur les articles où le critère s'applique, part avec intervalle de Wilson à 95~\%, différence en points avec l'intervalle de Newcombe à 95~\%, test exact de Fisher, correction de Holm sur les douze critères de la grille v2 (famille distincte de la grille v1). "
                 r"Y3 vaut « oui » quand la conclusion principale porte sur au moins deux tâches ; Y2 et Y11 ne s'appliquent qu'aux articles qui rapportent une incertitude, Y4 qu'aux articles à plusieurs tâches. "
-                r"\textbf{En gras}, les critères dont l'écart passe la correction de Holm : seul Y9. Valeurs harmonisées (\file{study/overrides_v2.json}). Source : \file{study/extension_stats.json}.",
+                r"\textbf{En gras}, les critères dont la différence passe la correction de Holm : seul Y9. Valeurs harmonisées (\file{study/overrides_v2.json}). Source : \file{study/extension_stats.json}.",
                 rf"Grid v2 (criteria Y1 to Y12, deviations 11 and 14 of \file{{study/PROTOCOL.md}}, written on 9 November 2026 before any v2 reading), on the same samples as Table~\ref{{tab:sondage-pineau}}: {s['ours2018']} papers from 2018 read by us and {s['classic2026']} classical RL papers from 2026. "
                 r"Same columns: $k/n$ over the papers where the criterion applies, share with its 95\% Wilson interval, gap in points with its 95\% Newcombe interval, Fisher exact test, Holm correction over the twelve criteria of grid v2 (a family separate from grid v1). "
                 r"Y3 is `yes' when the main conclusion rests on at least two tasks; Y2 and Y11 apply only to papers that report an uncertainty, Y4 only to papers with several tasks. "
@@ -421,9 +421,9 @@ def t_trajectoire():
             row = [k, CRIT[k][0 if lang == "fr" else 1]] + cells + ([pval(t["p"], lang), pval(t["p_holm"], lang)] if t else ["", ""])
             body.append(" & ".join(bold(x, sig) for x in row))
         body.append("MID")
-        body.append(L(lang, r"\multicolumn{10}{@{}l}{\emph{Écarts entre périodes (Newcombe, Fisher, Holm sur les cinq critères testés)}}",
-                      r"\multicolumn{10}{@{}l}{\emph{Gaps between periods (Newcombe, Fisher, Holm over the five tested criteria)}}"))
-        body.append(L(lang, r"Code & Critère & \multicolumn{3}{r}{\makecell[r]{2019-2020 contre 2018\\{}écart [IC]}} & $p$ Holm & \multicolumn{3}{r}{\makecell[r]{2022-2024 contre 2019-2020\\{}écart [IC]}} & $p$ Holm",
+        body.append(L(lang, r"\multicolumn{10}{@{}l}{\emph{Différences entre périodes (Newcombe, Fisher, Holm sur les cinq critères testés)}}",
+                      r"\multicolumn{10}{@{}l}{\emph{Differences between periods (Newcombe, Fisher, Holm over the five tested criteria)}}"))
+        body.append(L(lang, r"Code & Critère & \multicolumn{3}{r}{\makecell[r]{2019-2020 contre 2018\\{}différence [IC]}} & $p$ Holm & \multicolumn{3}{r}{\makecell[r]{2022-2024 contre 2019-2020\\{}différence [IC]}} & $p$ Holm",
                       r"Code & Criterion & \multicolumn{3}{r}{\makecell[r]{2019-2020 against 2018\\{}gap [CI]}} & Holm $p$ & \multicolumn{3}{r}{\makecell[r]{2022-2024 against 2019-2020\\{}gap [CI]}} & Holm $p$"))
         body.append(r"\cmidrule(lr){1-10}")
         for k, r in tr["rows"].items():
@@ -438,7 +438,7 @@ def t_trajectoire():
                 r"2018 : notre lecture des articles à expériences ; 2019, 2020, 2022 et 2024 : les 20 premiers articles expérimentaux de RL classique par année, tirés au hasard dans ICML et NeurIPS (ICLR absente, son site refusant les téléchargements automatiques) ; 2026 : l'échantillon classique de la comparaison principale. "
                 r"Le nombre entre parenthèses donne le dénominateur quand il diffère de l'effectif de la colonne (critère sans objet pour certains articles). Avec 20 articles, une part a une incertitude d'environ vingt points de part et d'autre. "
                 r"Pour les cinq critères testés (Q5, Y9, X7, X2, Q8) : test de tendance de Cochran-Armitage sur les six années (scores égaux aux années), $p$ bilatéral et $p$ corrigé par Holm sur les cinq ; les six autres lignes sont descriptives. "
-                r"Partie basse : écart immédiat (2019 et 2020 réunis contre 2018) et écart tardif (2022 et 2024 contre 2019 et 2020), en points, intervalle de Newcombe à 95~\%, Holm sur les cinq critères dans chaque famille. "
+                r"Partie basse : différence immédiate (2019 et 2020 réunis contre 2018) et différence tardive (2022 et 2024 contre 2019 et 2020), en points, intervalle de Newcombe à 95~\%, Holm sur les cinq critères dans chaque famille. "
                 r"\textbf{En gras}, ce qui passe la correction de Holm. Source : \file{study/trajectory.json} (\file{study/trajectory.py}).",
                 r"Trajectory of classical RL from 2018 to 2026 (deviation 25 of \file{study/PROTOCOL.md}, written before any draw): share of papers that meet each criterion, in percent, by year. "
                 r"2018: our reading of the papers with experiments; 2019, 2020, 2022 and 2024: the first 20 experimental classical RL papers per year, drawn at random from ICML and NeurIPS (ICLR is missing, its site refusing automated downloads); 2026: the classical sample of the main comparison. "
@@ -521,7 +521,7 @@ def t_robustesse():
         def add(label, f):
             rows.append(label + " & " + " & ".join(f(k) for k in K))
 
-        add(L(lang, "Comparaison principale : écart [IC]", "Main comparison: gap [CI]"), lambda k: dcell(main[k]["classic_vs_ours2018"], lang))
+        add(L(lang, "Comparaison principale : différence [IC]", "Main comparison: gap [CI]"), lambda k: dcell(main[k]["classic_vs_ours2018"], lang))
         add(L(lang, r"\quad $p$ Holm", r"\quad Holm $p$"), lambda k: pcell(main[k]["classic_vs_ours2018"]["p_holm"], lang))
         rows.append("MID")
         add(L(lang, "(a1) premier tirage seul (14)", "(a1) first draw only (14)"), lambda k: dcell(rob["a"][k]["a1_first_only"], lang))
@@ -552,15 +552,15 @@ def t_robustesse():
         nno = sum(v["no"] for v in fn["counts"].values()) if "counts" in fn else None
         cap = L(lang,
                 r"Contrôles de robustesse du sondage, tous exploratoires (écarts 21, 27 et 29 de \file{study/PROTOCOL.md}) : ils disent si un verdict est fragile, sans en changer aucun. Colonnes : les quatre critères qui ont changé (Q5, Y9, X7, X2) et les deux dont l'intervalle évite zéro sans passer Holm (Q6, Y12). "
-                r"Écarts en points (RL classique 2026 moins notre lecture de 2018), intervalle de Newcombe à 95~\%, test de Fisher, Holm sur la famille de la grille du critère comme dans la comparaison principale. "
+                r"Différences en points (RL classique 2026 moins notre lecture de 2018), intervalle de Newcombe à 95~\%, test de Fisher, Holm sur la famille de la grille du critère comme dans la comparaison principale. "
                 r"(a1) le RL classique de 2026 coupé selon sa provenance (premier tirage sans tri sur le titre, file A3 avec tri), puis $p$ de Fisher entre les deux provenances au sein de 2026 ; (a2) $p$ de Fisher entre articles de 2026 lus sur arXiv (45) et sur le site d'une conférence (5), une coupe trop déséquilibrée pour trancher (écart 21 c) ; "
-                r"(a3) test de Cochran-Mantel-Haenszel stratifié par conférence (correction de Haldane) ; (a4) comparaison refaite sans chaque lecteur principal tour à tour : étendue des écarts et plus basse borne inférieure ; un critère est fragile quand l'écart change de signe ou que l'intervalle contient zéro avec au moins 35 articles de chaque côté. "
+                r"(a3) test de Cochran-Mantel-Haenszel stratifié par conférence (correction de Haldane) ; (a4) comparaison refaite sans chaque lecteur principal tour à tour : étendue des différences et plus basse borne inférieure ; un critère est fragile quand la différence change de signe ou que l'intervalle contient zéro avec au moins 35 articles de chaque côté. "
                 rf"Partie basse : sans les treize articles lus en partie par \texttt{{claude-opus-5}} (écart 29) ; avec les {nturn} décisions « non » qu'un arbitre à l'aveugle a retournées après la recherche par mots-clés, puis avec aussi les {nunc} décisions jugées douteuses, sur {nno} décisions « non » examinées (écart 27). "
                 r"\textbf{En gras}, les écarts dont l'intervalle exclut zéro et les $p$ sous 0,05 (sauf les $p$ d'homogénéité de (a1) et (a2), où un $p$ élevé est attendu). "
-                rf"La thèse « écoutée là où cela coûtait peu » est rejetée par le test à l'aveugle (b) : corrélation de Spearman entre l'écart observé et le coût médian noté par trois évaluateurs {num(b['C']['rho'], lang, 2, sign=True)} ($p$ par permutation {pval(b['C']['p_two_sided'], lang)}), avec le risque {num(b['R']['rho'], lang, 2, sign=True)} ($p$ = {pval(b['R']['p_two_sided'], lang)}). "
+                rf"La thèse « écoutée là où cela coûtait peu » est rejetée par le test à l'aveugle (b) : corrélation de Spearman entre la différence observée et le coût médian noté par trois évaluateurs {num(b['C']['rho'], lang, 2, sign=True)} ($p$ par permutation {pval(b['C']['p_two_sided'], lang)}), avec le risque {num(b['R']['rho'], lang, 2, sign=True)} ($p$ = {pval(b['R']['p_two_sided'], lang)}). "
                 r"Sources : \file{study/robustness.json}, \file{study/extension_stats_sans_opus5.json}, \file{study/extension_stats_falsify_turned.json}, \file{study/extension_stats_falsify_bound.json}, \file{study/falsify_no.json}.",
                 r"Robustness checks of the survey, all exploratory (deviations 21, 27 and 29 of \file{study/PROTOCOL.md}): they say whether a verdict is fragile, without changing any. Columns: the four criteria that changed (Q5, Y9, X7, X2) and the two whose interval avoids zero without passing Holm (Q6, Y12). "
-                r"Gaps in points (classical RL 2026 minus our reading of 2018), 95\% Newcombe interval, Fisher test, Holm over the criterion's grid family as in the main comparison. "
+                r"Differences in points (classical RL 2026 minus our reading of 2018), 95\% Newcombe interval, Fisher test, Holm over the criterion's grid family as in the main comparison. "
                 r"(a1) classical RL 2026 split by provenance (first draw with no title screen, A3 queue with the screen), then Fisher $p$ between the two provenances within 2026; (a2) Fisher $p$ between 2026 papers read on arXiv (45) and on a conference site (5), a cut too unbalanced to settle anything (deviation 21 c); "
                 r"(a3) Cochran-Mantel-Haenszel test stratified by conference (Haldane correction); (a4) comparison redone without each primary reader in turn: range of the gaps and lowest lower bound; a criterion is fragile when the gap changes sign or the interval contains zero with at least 35 papers on each side. "
                 rf"Bottom part: without the thirteen papers read partly by \texttt{{claude-opus-5}} (deviation 29); with the {nturn} `no' decisions a blind arbiter turned after the keyword search, then with the {nunc} decisions judged doubtful as well, out of {nno} `no' decisions examined (deviation 27). "
@@ -588,8 +588,8 @@ def t_e1():
             L(lang, f"Shapiro-Wilk, $p$ & {pval(e['shapiro_p'], lang)} & IQM & {L(lang, 'voir tableau', 'see Table')}~\\ref{{tab:e2}}",
               f"Shapiro-Wilk, $p$ & {pval(e['shapiro_p'], lang)} & IQM & {L(lang, 'voir tableau', 'see Table')}~\\ref{{tab:e2}}"),
             "MID",
-            L(lang, r"Groupes comparés & \makecell[r]{Faux positifs\\{}($p<0{,}05$)} & \makecell[r]{Écart apparent\\{}médian} & \makecell[r]{Écart dépassé\\{}1 fois sur 20}",
-              r"Groups compared & \makecell[r]{False positives\\{}($p<0.05$)} & \makecell[r]{Median\\{}apparent gap} & \makecell[r]{Gap exceeded\\{}1 time in 20}"),
+            L(lang, r"Groupes comparés & \makecell[r]{Faux positifs\\{}($p<0{,}05$)} & \makecell[r]{Différence apparent\\{}médian} & \makecell[r]{Différence dépassé\\{}1 fois sur 20}",
+              r"Groups compared & \makecell[r]{False positives\\{}($p<0.05$)} & \makecell[r]{Median\\{}apparent difference} & \makecell[r]{Difference exceeded\\{}1 time in 20}"),
             r"\cmidrule(lr){1-4}",
         ]
         for k, fr, en in (("random_3v3", "3 contre 3, au hasard", "3 against 3, at random"),
@@ -861,11 +861,11 @@ def t_e5():
         cap = L(lang,
                 r"Expérience E5 : combien de graines retrouvent le bon classement ? Pour chaque comparaison de E2, 10\,000 tirages avec remise de $n$ essais par programme parmi ses essais (la distribution observée tient lieu de programme), puis la part des tirages dont les moyennes donnent le bon ordre, en pourcentage. "
                 r"Bon ordre : celui des moyennes de tous les essais choisis (10, ou 20 avec l'écart 20) ; à 10 graines, PPO PyTorch sur HalfCheetah tire dans les 30 essais de E1, comme préregistré. "
-                r"Écart : différence relative des deux moyennes, divisée par la plus grande en valeur absolue. \textbf{En gras}, les comparaisons serrées (écart sous 20~\%) ; la dernière ligne donne leur nombre et la médiane de leurs parts. "
+                r"Différence : différence relative des deux moyennes, divisée par la plus grande en valeur absolue. \textbf{En gras}, les comparaisons serrées (différence sous 20~\%) ; la dernière ligne donne leur nombre et la médiane de leurs parts. "
                 r"Sources : \file{sim/analysis/e5.json}, \file{sim/analysis/e5\_s20.json}.",
                 r"Experiment E5: how many seeds recover the right ranking? For each E2 comparison, 10,000 draws with replacement of $n$ runs per program from its runs (the observed distribution stands in for the program), then the share of draws whose means give the right order, in percent. "
                 r"Right order: that of the means of all the chosen runs (10, or 20 with deviation 20); at ten seeds, PPO PyTorch on HalfCheetah draws from the 30 runs of E1, as preregistered. "
-                r"Gap: relative difference of the two means, divided by the larger in absolute value. \textbf{In bold}, close comparisons (gap under 20\%); the last row gives their number and the median of their shares. "
+                r"Difference: relative difference of the two means, divided by the larger in absolute value. \textbf{In bold}, close comparisons (difference under 20\%); the last row gives their number and the median of their shares. "
                 r"Sources: \file{sim/analysis/e5.json}, \file{sim/analysis/e5\_s20.json}.")
         floattable("e5", lang, cap, L(lang, "E5 : graines nécessaires pour retrouver le classement", "E5: seeds needed to recover the ranking"),
                    r"@{}llrrrrrrrrrr@{}", head, rows, tabcolsep="3pt")
@@ -1691,8 +1691,8 @@ def t_e1_grille():
 def t_e3_holm():
     e = J("sim/analysis/e3_holm.json")
     for lang in LANGS:
-        head = [L(lang, r"Tâche & \makecell[r]{IQM\\{}PyTorch} & \makecell[r]{IQM\\{}JAX} & \makecell[r]{$P(\text{JAX} > \text{PyTorch})$\\{}[IC 98,75~\%]} & \makecell[r]{Écart JAX $-$ PyTorch\\{}(Hodges-Lehmann) [IC 95~\%]} & \makecell[r]{$p$ Mann-\\{}Whitney} & $p$ Holm",
-                  r"Task & \makecell[r]{IQM\\{}PyTorch} & \makecell[r]{IQM\\{}JAX} & \makecell[r]{$P(\text{JAX} > \text{PyTorch})$\\{}[98.75\% CI]} & \makecell[r]{Gap JAX $-$ PyTorch\\{}(Hodges-Lehmann) [95\% CI]} & \makecell[r]{Mann-\\{}Whitney $p$} & Holm $p$")]
+        head = [L(lang, r"Tâche & \makecell[r]{IQM\\{}PyTorch} & \makecell[r]{IQM\\{}JAX} & \makecell[r]{$P(\text{JAX} > \text{PyTorch})$\\{}[IC 98,75~\%]} & \makecell[r]{Différence JAX $-$ PyTorch\\{}(Hodges-Lehmann) [IC 95~\%]} & \makecell[r]{$p$ Mann-\\{}Whitney} & $p$ Holm",
+                  r"Task & \makecell[r]{IQM\\{}PyTorch} & \makecell[r]{IQM\\{}JAX} & \makecell[r]{$P(\text{JAX} > \text{PyTorch})$\\{}[98.75\% CI]} & \makecell[r]{Difference JAX $-$ PyTorch\\{}(Hodges-Lehmann) [95\% CI]} & \makecell[r]{Mann-\\{}Whitney $p$} & Holm $p$")]
         rows = []
         for s, fr, en in (("s10", "10 graines (0 à 9)", "10 seeds (0 to 9)"), ("s20", "20 graines (0 à 19)", "20 seeds (0 to 19)")):
             rows.append(rf"\multicolumn{{7}}{{@{{}}l}}{{\emph{{{L(lang, fr, en)}}}}}")
@@ -1819,7 +1819,7 @@ def t_e5_holdout():
                 r"À $n = 10$, le tirage prend toute la moitié, d'où 100 ou 0~\% par comparaison : la moyenne des serrées donne alors la part des signes retrouvés. \textbf{En gras}, la moyenne des comparaisons serrées, la mesure sans circularité. "
                 r"Sources : \file{sim/analysis/e5_holdout.json} (\file{sim/analysis/e5_holdout.py}), \file{sim/analysis/e5.json} (tableau~\ref{tab:e5}).",
                 r"Experiment E5 checked out of sample (deviation 25 of \file{sim/SIM_PROTOCOL.md}, written before this computation). E5 takes as the right order the sign of the means of the very sample it draws from with replacement: its share measures the stability of the observed sign, not the probability of recovering the true order. "
-                + signs + r"Here, $n$ runs per program drawn without replacement from one half of the seeds (10,000 draws, \texttt{default\_rng(2026)}), counted right when they recover the order of the means of the other half, both ways. Close comparison: relative gap under 20\% on seeds 0 to 9. "
+                + signs + r"Here, $n$ runs per program drawn without replacement from one half of the seeds (10,000 draws, \texttt{default\_rng(2026)}), counted right when they recover the order of the means of the other half, both ways. Close comparison: relative difference under 20\% on seeds 0 to 9. "
                 r"At $n = 10$ the draw takes the whole half, hence 100 or 0\% per comparison: the mean over close comparisons then gives the share of signs recovered. \textbf{In bold}, the mean over close comparisons, the measure without circularity. "
                 r"Sources: \file{sim/analysis/e5_holdout.json} (\file{sim/analysis/e5_holdout.py}), \file{sim/analysis/e5.json} (Table~\ref{tab:e5}).")
         floattable("e5-hors-echantillon", lang, cap, L(lang, "E5 hors échantillon", "E5 out of sample"),
@@ -2059,7 +2059,7 @@ def t_difference_detectable():
         q7 = m["Q7"]
         cap = L(lang,
                 r"Plus petite différence que le sondage pouvait détecter (écart 30 (b) de \file{study/PROTOCOL.md}, écrit avant ce calcul) : pour chaque critère, partant de la part de 2018 et des effectifs réels, la plus petite hausse et la plus petite baisse, en points, que le test exact de Fisher bilatéral détecte avec 80~\% de puissance, au seuil de 5~\% puis de 5~\%/11 (Bonferroni sur les onze critères v1) ; « aucune » : aucune variation possible n'atteint cette puissance. "
-                rf"À droite, la puissance qu'avait le test pour l'écart effectivement vu. \textbf{{En gras}}, les quatre critères dont l'écart passe la correction de Holm (tableau~\ref{{tab:sondage-pineau}}) : tous dépassent la différence détectable. "
+                rf"À droite, la puissance qu'avait le test pour l'écart effectivement vu. \textbf{{En gras}}, les quatre critères dont la différence passe la correction de Holm (tableau~\ref{{tab:sondage-pineau}}) : tous dépassent la différence détectable. "
                 rf"Ailleurs, l'absence de changement détecté n'est pas une preuve d'absence : la hausse de Q7 ({pc(q7['observed'], lang, sign=True)} points) n'avait que {pct(q7['power_observed_5'], lang)} de chances d'être vue au seuil de 5~\%. "
                 r"Source : \file{study/survey_extra.json} (\file{study/survey_extra.py}).",
                 r"Smallest difference the survey could detect (deviation 30 (b) of \file{study/PROTOCOL.md}, written before this computation): for each criterion, starting from the 2018 share and the real sample sizes, the smallest rise and the smallest fall, in points, that the two-sided exact Fisher test detects with 80\% power, at the 5\% level then at 5\%/11 (Bonferroni over the eleven v1 criteria); ``none'': no possible change reaches that power. "
@@ -2096,11 +2096,11 @@ def t_regle_origine():
         cap = L(lang,
                 r"Ce qu'aurait donné la règle de verdict d'origine (écart 7 de \file{study/PROTOCOL.md}), remplacée ensuite par la comparaison à grille égale (écart 20) ; calcul de l'écart 30 (c), écrit avant lui. "
                 r"La règle compare chaque critère de Pineau à ses chiffres de 2018 et à notre lecture de 2018 : « changé et confirmé » quand les deux écarts passent Holm dans le même sens, « changé, non confirmé » quand seul l'écart à Pineau passe, « ambigu » quand seul l'écart à notre lecture passe, « aucun changement » sinon. "
-                r"Écarts en points, 2026 moins 2018, intervalle de Newcombe à 95~\%, test exact de Fisher, Holm sur les six critères. \textbf{En gras}, les critères qui reçoivent un autre verdict qu'« aucun changement ». "
+                r"Différences en points, 2026 moins 2018, intervalle de Newcombe à 95~\%, test exact de Fisher, Holm sur les six critères. \textbf{En gras}, les critères qui reçoivent un autre verdict qu'« aucun changement ». "
                 r"Source : \file{study/survey_extra.json} (\file{study/survey_extra.py}).",
                 r"What the original verdict rule (deviation 7 of \file{study/PROTOCOL.md}), later replaced by the same-grid comparison (deviation 20), would have given; computation of deviation 30 (c), written before it. "
                 r"The rule compares each of Pineau's criteria with her 2018 figures and with our reading of 2018: ``changed and confirmed'' when both gaps pass Holm in the same direction, ``changed, not confirmed'' when only the gap to Pineau passes, ``ambiguous'' when only the gap to our reading passes, ``no change'' otherwise. "
-                r"Gaps in points, 2026 minus 2018, 95\% Newcombe interval, Fisher's exact test, Holm over the six criteria. \textbf{In bold}, the criteria that receive a verdict other than ``no change''. "
+                r"Differences in points, 2026 minus 2018, 95\% Newcombe interval, Fisher's exact test, Holm over the six criteria. \textbf{In bold}, the criteria that receive a verdict other than ``no change''. "
                 r"Source: \file{study/survey_extra.json} (\file{study/survey_extra.py}).")
         floattable("regle-origine", lang, cap, L(lang, "La règle de verdict d'origine", "The original verdict rule"),
                    r"@{}lrrrrrl@{}", head, rows, tabcolsep="3.5pt")
@@ -2131,11 +2131,11 @@ def t_q5_versions():
         cap = L(lang,
                 rf"Q5 (code en lien) selon la version de l'article lue (écart 31 de \file{{study/PROTOCOL.md}}, écrit avant ce calcul). {len(cv['2018_arxiv_found'])} des {cv['2018_no']} « non » de 2018 retrouvés sur arXiv (dernière version), {len(cv['2026_proc_found'])} articles de 2026 retrouvés dans les actes ; les occurrences douteuses tranchées par un arbitre neuf à l'aveugle, l'incertain compté non puis, pour la borne, oui. "
                 rf"Code disponible à la conférence : un « oui » dont tous les dépôts GitHub ont été créés après le dernier jour de la conférence devient « non » ({rp['n']} dépôts datés ; un seul créé après, {', '.join(rp['created_after']['2018'])}). "
-                r"Écart en points, 2026 moins 2018, intervalle de Newcombe à 95~\%, test exact de Fisher, Holm sur les onze critères v1. Le verdict de Q5 tient dans chaque lecture, la plus défavorable comprise. "
+                r"Différence en points, 2026 moins 2018, intervalle de Newcombe à 95~\%, test exact de Fisher, Holm sur les onze critères v1. Le verdict de Q5 tient dans chaque lecture, la plus défavorable comprise. "
                 r"Source : \file{study/q5_versions.json} (\file{study/q5_versions_stats.py}).",
                 rf"Q5 (code linked) according to the version of the paper read (deviation 31 of \file{{study/PROTOCOL.md}}, written before this computation). {len(cv['2018_arxiv_found'])} of the {cv['2018_no']} 2018 ``no'' found on arXiv (latest version), {len(cv['2026_proc_found'])} papers of 2026 found in the proceedings; doubtful occurrences settled by a fresh blind arbiter, uncertain counted no and, for the bound, yes. "
                 rf"Code available at the conference: a ``yes'' whose GitHub repositories were all created after the conference's last day turns ``no'' ({rp['n']} repositories dated; only one created after, {', '.join(rp['created_after']['2018'])}). "
-                r"Gap in points, 2026 minus 2018, 95\% Newcombe interval, Fisher's exact test, Holm over the eleven v1 criteria. The Q5 verdict holds in every reading, the least favourable included. "
+                r"Difference in points, 2026 minus 2018, 95\% Newcombe interval, Fisher's exact test, Holm over the eleven v1 criteria. The Q5 verdict holds in every reading, the least favourable included. "
                 r"Source: \file{study/q5_versions.json} (\file{study/q5_versions_stats.py}).")
         floattable("q5-versions", lang, cap, L(lang, "Q5 selon la version lue", "Q5 by version read"),
                    r"@{}>{\raggedright\arraybackslash}p{4.6cm}rrrrr>{\raggedright\arraybackslash}p{3.3cm}@{}", head, rows, tabcolsep="3.2pt")
@@ -2188,12 +2188,12 @@ def t_x8():
         dd = x["double_reading"]["all"]
         cap = L(lang,
                 rf"Nouveau critère X8 (écart 32 de \file{{study/PROTOCOL.md}}, écrit avant toute lecture) : parmi les articles expérimentaux, ceux dont l'incertitude rapportée est calculée sur des graines (des entraînements indépendants). Les {c18['x2_yes'] + c26['x2_yes']} articles X2 oui lus par huit agents neufs, chacun lecteur principal sur les deux années, ce qui défait la confusion entre lecteur et année pour ce critère ; {dd['n']} articles lus deux fois, {dd['same']} accords (kappa {num(dd['kappa'], lang, 2)}). "
-                rf"Écart en points, 2026 moins 2018, intervalle de Newcombe à 95~\%, test exact de Fisher ; $p$ Holm sur douze critères : {pval(m['p_holm_12'], lang)}. \textbf{{En gras}}, la mesure principale. "
+                rf"Différence en points, 2026 moins 2018, intervalle de Newcombe à 95~\%, test exact de Fisher ; $p$ Holm sur douze critères : {pval(m['p_holm_12'], lang)}. \textbf{{En gras}}, la mesure principale. "
                 r"La borne mécanique de l'écart 30 (e) compte les articles dont une citation nomme des graines : plus large que X8, car une citation qui nomme des graines ne rattache pas la barre d'erreur à elles. "
                 r"Partie basse : la source de l'incertitude des articles X2 oui, par année ; « non dit » : l'article ne dit pas sur quoi porte sa barre. "
                 r"Sources : \file{study/x8_stats.json} (\file{study/x8_stats.py}), \file{study/extension_stats.json}, \file{study/survey_extra.json}.",
                 rf"New criterion X8 (deviation 32 of \file{{study/PROTOCOL.md}}, written before any reading): among the experimental papers, those whose reported uncertainty is computed over seeds (independent training runs). The {c18['x2_yes'] + c26['x2_yes']} X2 yes papers read by eight fresh agents, each a primary reader on both years, which undoes the confound between reader and year for this criterion; {dd['n']} papers read twice, {dd['same']} agreements (kappa {num(dd['kappa'], lang, 2)}). "
-                rf"Gap in points, 2026 minus 2018, 95\% Newcombe interval, Fisher's exact test; Holm $p$ over twelve criteria: {pval(m['p_holm_12'], lang)}. \textbf{{In bold}}, the main measure. "
+                rf"Difference in points, 2026 minus 2018, 95\% Newcombe interval, Fisher's exact test; Holm $p$ over twelve criteria: {pval(m['p_holm_12'], lang)}. \textbf{{In bold}}, the main measure. "
                 r"The mechanical bound of deviation 30 (e) counts the papers where a quote names seeds: wider than X8, since a quote that names seeds does not tie the error bar to them. "
                 r"Bottom part: the source of the uncertainty of the X2 yes papers, per year; ``not stated'': the paper does not say what its bar is computed over. "
                 r"Sources: \file{study/x8_stats.json} (\file{study/x8_stats.py}), \file{study/extension_stats.json}, \file{study/survey_extra.json}.")
@@ -2216,8 +2216,8 @@ def t_r36():
     for lang in LANGS:
         def share(c):
             return f"{kn(c['yes'], c['n'])} & {pc(c['share'], lang)}"
-        head = [L(lang, r" & & \multicolumn{2}{c}{2018} & \multicolumn{2}{c}{2026} & \multicolumn{2}{c}{Écart, Fisher} & \multicolumn{2}{c}{Effet de l'année} & & ",
-                  r" & & \multicolumn{2}{c}{2018} & \multicolumn{2}{c}{2026} & \multicolumn{2}{c}{Gap, Fisher} & \multicolumn{2}{c}{Year effect} & & "),
+        head = [L(lang, r" & & \multicolumn{2}{c}{2018} & \multicolumn{2}{c}{2026} & \multicolumn{2}{c}{Différence, Fisher} & \multicolumn{2}{c}{Effet de l'année} & & ",
+                  r" & & \multicolumn{2}{c}{2018} & \multicolumn{2}{c}{2026} & \multicolumn{2}{c}{Difference, Fisher} & \multicolumn{2}{c}{Year effect} & & "),
                 r"\cmidrule(lr){3-4}\cmidrule(lr){5-6}\cmidrule(lr){7-8}\cmidrule(lr){9-10}",
                 L(lang, r"Code & Critère & $k/n$ & \% & $k/n$ & \% & \makecell[r]{points\\{}[Newcombe]} & \makecell[r]{$p$\\{}Holm} & \makecell[r]{rapport de cotes\\{}[Wald]} & \makecell[r]{$p$\\{}Holm} & \makecell[r]{$s$ lecteurs\\{}($p$)} & Verdict",
                   r"Code & Criterion & $k/n$ & \% & $k/n$ & \% & \makecell[r]{points\\{}[Newcombe]} & \makecell[r]{Holm\\{}$p$} & \makecell[r]{odds ratio\\{}[Wald]} & \makecell[r]{Holm\\{}$p$} & \makecell[r]{reader $s$\\{}($p$)} & Verdict")]
@@ -2248,7 +2248,7 @@ def t_r36():
         orig = L(lang, " ; ", "; ").join(f"{k} {pc(r['verdicts'][k]['original']['diff'], lang, sign=True)}" for k in keys)
         cap = L(lang,
                 rf"Écart 36 de \file{{study/PROTOCOL.md}} (écrit avant toute lecture et tout calcul) : les {n18 + n26} articles expérimentaux de la comparaison principale ({n18} de 2018, {n26} de 2026) relus par {nw} agents neufs, T1 à T{nr}, qui lisent chacun les deux années (6 articles de 2018 et 6 ou 7 de 2026). "
-                r"Écart 2026 moins 2018 en points, intervalle de Newcombe à 95~\%, test exact de Fisher avec Holm sur les quatre critères. "
+                r"Différence 2026 moins 2018 en points, intervalle de Newcombe à 95~\%, test exact de Fisher avec Holm sur les quatre critères. "
                 r"Effet de l'année : modèle logistique mixte par critère, logit P(oui) = $b_0 + b_1 \times [2026] + u$, $u$ effet aléatoire du lecteur d'écart type $s$, maximum de vraisemblance par quadrature de Gauss-Hermite ; rapport de cotes $e^{b_1}$ avec son intervalle de Wald à 95~\%, test du rapport de vraisemblance de $b_1 = 0$ avec Holm sur les quatre critères ; $s$ avec son test à la frontière (demi-khi-deux). "
                 r"Règle fixée d'avance : un verdict tient si les deux tests passent Holm à 5~\% avec un effet positif ; « même sens, non établi » si les deux effets sont positifs et qu'un test échoue. \textbf{En gras}, les verdicts qui tiennent. "
                 + (r"Chaque intervalle de Newcombe recouvre celui de la comparaison principale" if overlap else r"Un intervalle de Newcombe au moins ne recouvre pas celui de la comparaison principale")
@@ -2256,7 +2256,7 @@ def t_r36():
                 r"Dernière ligne : la lecture où toute page de projet compte « oui » pour Q5, la moins favorable à son verdict. Aucune décision invalide. "
                 r"Source : \file{study/r36_stats.json} (\file{study/r36_stats.py}).",
                 rf"Deviation 36 of \file{{study/PROTOCOL.md}} (written before any reading and any computation): the {n18 + n26} experimental papers of the main comparison ({n18} from 2018, {n26} from 2026) reread by {nw} fresh agents, T1 to T{nr}, each of whom reads both years (6 papers from 2018 and 6 or 7 from 2026). "
-                r"Gap 2026 minus 2018 in points, 95\% Newcombe interval, Fisher's exact test with Holm over the four criteria. "
+                r"Difference 2026 minus 2018 in points, 95\% Newcombe interval, Fisher's exact test with Holm over the four criteria. "
                 r"Year effect: a logistic mixed model per criterion, logit P(yes) = $b_0 + b_1 \times [2026] + u$, $u$ a random reader effect with standard deviation $s$, maximum likelihood with Gauss-Hermite quadrature; odds ratio $e^{b_1}$ with its 95\% Wald interval, likelihood-ratio test of $b_1 = 0$ with Holm over the four criteria; $s$ with its boundary test (half chi-square). "
                 r"Rule fixed in advance: a verdict holds if both tests pass Holm at 5\% with a positive effect; ``same direction, not established'' if both effects are positive and one test fails. \textbf{In bold}, the verdicts that hold. "
                 + (r"Every Newcombe interval overlaps the one of the main comparison" if overlap else r"At least one Newcombe interval does not overlap the one of the main comparison")

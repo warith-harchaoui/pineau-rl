@@ -1,12 +1,12 @@
 \chapter{Context: reinforcement learning and the sixteen flaws}\label{chap:02-contexte}
 
-This chapter sets out the notions the rest of the report depends on. Section~\ref{sec:cadre} gives the
-formal framework of reinforcement learning. Section~\ref{sec:ctx-programmes} describes the four programs
-of our experiments and the TRPO algorithm, Section~\ref{sec:ctx-taches} the simulated tasks.
-Sections~\ref{sec:ctx-graines} and~\ref{sec:ctx-evaluation} state what a random seed fixes and how an
-agent is evaluated. Section~\ref{sec:failles} inventories the sixteen flaws Joelle Pineau showed in
-2018. Section~\ref{sec:voisins} places our work among related work. Section~\ref{sec:vocabulaire} fixes
-the vocabulary used for language models.
+This chapter sets out the notions the rest of the report depends on: the formal framework of
+reinforcement learning (Section~\ref{sec:cadre}), the four programs of our experiments and the TRPO
+algorithm (Section~\ref{sec:ctx-programmes}), the simulated tasks (Section~\ref{sec:ctx-taches}), what
+a random seed fixes and how an agent is evaluated (Sections~\ref{sec:ctx-graines}
+and~\ref{sec:ctx-evaluation}). It then inventories the sixteen flaws Joelle Pineau showed in 2018
+(Section~\ref{sec:failles}), places our work among related work (Section~\ref{sec:voisins}) and fixes
+the vocabulary used for language models (Section~\ref{sec:vocabulaire}).
 
 \section{The formal framework}\label{sec:cadre}
 
@@ -115,8 +115,9 @@ that the normalisation sees both distributions. Its authors report a sample effi
 reached per environment step, at least equal to that of methods far more expensive in computation. The
 \algo{CrossQ} program of our experiments is the one in sbx. It uses batch renormalisation
 \parencite{ioffe2017batchrenorm}, in the actor as in the critic, with a momentum of 0.99. For the first
-100,000 updates of each network, batch renormalisation behaves as plain batch normalisation. The
-critic spends half our budget there. The actor, updated once in three, never leaves it
+100,000 updates of each network, batch renormalisation behaves as plain batch normalisation. Measured
+against our budget of steps, this threshold keeps the critic in that regime for the first half of
+training. The actor, updated once in three, never reaches the threshold
 (Section~\ref{sec:programmes}). Its Adam optimiser takes $\beta_1 = 0.5$ instead of 0.9
 (\file{sbx/crossq/policies.py}). Table~\ref{tab:hyperparametres} gives its other settings.
 
@@ -177,9 +178,12 @@ seed.
 \paragraph{What stays fixed}
 Same program, same random seed, same library versions and same machine: the protocol expects the same
 result. Our logs confirm it for \algo{PPO PyTorch} and \algo{PPO JAX}: a run stopped then restarted recovers its evaluation
-points identically (\file{sim/SIM\_PROTOCOL.md}, deviation~12~(e)). For \algo{SAC} and \algo{CrossQ}, the same check is
-preregistered (deviation~32 of the same protocol) and running. Changing the random seed changes
-all these draws. The final score of a given program then varies a great deal. Over our thirty runs of
+points identically (\file{sim/SIM\_PROTOCOL.md}, deviation~14~(e)). For \algo{SAC} and \algo{CrossQ}, the same check is
+preregistered (deviation~32 of the same protocol) and under way.
+
+\paragraph{What changes}
+Changing the random seed changes the initialisation of the weights, the exploration, the order of the
+mini-batches and the initial states. The final score of a given program then varies a great deal. Over our thirty runs of
 \algo{PPO PyTorch} on \task{HalfCheetah}, the standard deviation is 34\% of the mean
 (Chapter~\ref{chap:06-experiences-resultats}).
 
@@ -223,14 +227,14 @@ recomputed, then the 2.5\% and 97.5\% quantiles of the 2,000 replicates give the
 
 \paragraph{Comparing two programs}
 The probability of improvement of $X$ over $Y$ is the probability that a run of $X$ beats an
-independently drawn run of $Y$:
+independently drawn run of $Y$. With $n_X$ runs of $X$ and $n_Y$ runs of $Y$, it is estimated by
 \begin{equation}
   P(X > Y) = \frac{1}{n_X n_Y} \sum_{i=1}^{n_X} \sum_{j=1}^{n_Y} \Bigl( \mathbb{1}[x_i > y_j] + \tfrac{1}{2}\, \mathbb{1}[x_i = y_j] \Bigr).
 \end{equation}
-This probability equals the Mann-Whitney $U$ statistic divided by $n_X n_Y$. The value 0.5 signals two
-indistinguishable programs. Our experiments declare a gap settled when the 95\% bootstrap interval
-of $P(X > Y)$ excludes 0.5, or when the intervals of the two IQMs do not overlap. On groups of runs of
-one program, where no gap exists, this rule concludes wrongly slightly more than once in twenty with
+This estimate equals the Mann-Whitney $U$ statistic divided by $n_X n_Y$. At 0.5, a run of $X$ beats a
+run of $Y$ half the time. Our experiments declare a gap settled when the 95\% bootstrap interval of
+$P(X > Y)$ excludes 0.5, or when the intervals of the two IQMs do not overlap: this is the
+settled-winner rule. On groups of runs of one program, where no gap exists, it concludes wrongly slightly more than once in twenty with
 ten runs per group, nearly once in ten with five (Section~\ref{sec:regle}). Welch's $t$-test \parencite{welch1947generalization}, which compares two
 means without assuming equal variances, serves only in experiments E1 and B1, since the 2018 figure
 used it.
@@ -351,7 +355,7 @@ published mean exceeds what the method delivers on average. The spread also look
 Pineau illustrates the practice with ten curves of which she keeps the best three.
 
 \paragraph{F11, same code, another random seed}
-Henderson and co-authors train TRPO ten times on \task{HalfCheetah}, changing only the random seed.
+Henderson's team trains TRPO ten times on \task{HalfCheetah}, changing only the random seed.
 They form two groups of five and plot the two mean curves, which stand clearly apart. A test declares
 the curves different ($t = -9.09$, $p = 0.0016$). On stage, Pineau specifies that the groups are not
 sorted. Chapters~\ref{chap:05-experiences-methode} and~\ref{chap:06-experiences-resultats} return at
@@ -359,12 +363,13 @@ length to this number (experiments E1 and B1).
 
 \paragraph{F12, no statistical test}
 When two methods differ by a few points, a test or an interval tells whether the gap exceeds what the
-luck of the random seeds produces by itself. Only 5\% of 2018 papers apply a test to their comparisons.
+luck of the random seeds produces by itself. In Pineau's reading, 5\% of 2018 papers apply a test to
+their comparisons.
 
 \subsection{The reach of the conclusions}
 
 \paragraph{F13, the best algorithm changes with the task}
-Henderson and co-authors rank four algorithms on four tasks. The algorithm that leads on
+Henderson's paper ranks four algorithms on four tasks. The algorithm that leads on
 \task{HalfCheetah} stops leading on \task{Hopper} or \task{Swimmer}. A general conclusion drawn from
 one or two tasks generalises a special case.
 
@@ -378,8 +383,8 @@ In supervised learning, a model is evaluated on data it has never seen. In RL, t
 evaluated in the same world it trained in. Pineau shows a sentence she puts up for debate, according to
 which RL would be the only case of machine learning where testing on the training set is acceptable.
 She proposes separating the training and test random seeds, then the tasks
-\parencite{zhang2018dissection,zhang2018natural}. Only 10\% of 2018 papers evaluate on held-out
-conditions.
+\parencite{zhang2018dissection,zhang2018natural}. Pineau finds only 10\% of 2018 papers that
+evaluate on held-out conditions.
 
 \paragraph{F16, benchmarks too simple}
 A large enough agent memorises the right sequence of actions on a deterministic benchmark without
@@ -392,15 +397,15 @@ For each algorithm, it asks for a clear description, a complexity analysis, the 
 its dependencies. For each theoretical result, it asks for the statement, the assumptions and the
 proof. For each figure, it asks for the data collection, the split between training, validation and
 test, the excluded data, the range and selection method of the hyperparameters, the exact number of
-runs, the definition of the statistics and error bars, the hardware used. She also presents the ICLR
-2018 reproducibility challenge (slides 37 to 43 at ICLR), in which anyone could try to reproduce a
-submitted paper. NeurIPS adopted the checklist in 2019 \parencite{pineau2021improving}.
+runs, the definition of the statistics and error bars, the hardware used. Pineau adds the ICLR 2018
+reproducibility challenge (slides 37 to 43 at ICLR), presented in Chapter~\ref{chap:01-introduction}.
+NeurIPS adopted the checklist in 2019 \parencite{pineau2021improving}.
 
 \section{Related work}\label{sec:voisins}
 
 On 9 November 2026, we searched arXiv, OpenReview and the conference proceedings. To our knowledge, no
-work reapplies Pineau's grid to recent RL papers while calibrating it on 2018. None reruns the protocol
-of Henderson and co-authors with the algorithms of 2026 under a protocol written in advance. Related
+work reapplies Pineau's grid to recent RL papers while calibrating it on 2018. None reruns
+Henderson's protocol with the algorithms of 2026 under a protocol written in advance. Related
 work falls into five groups.
 
 \paragraph{The 2018 experiment}
@@ -432,7 +437,7 @@ methods, data and experiments. \textcite{coakley2026shift} track 56,800 papers f
 artificial intelligence conferences from 2014 to 2024: the share that releases code and data rises
 from 11\% to 64\%. The rise begins before the checklists. In RL, the closest audit is the one by
 \textcite{gorsane2022marl}: 75 papers on cooperative multi-agent RL, from 2016 to 2022, of which about
-a third quantify no uncertainty. None of these audits targets single-agent RL or the 2018 grid.
+a third quantify no uncertainty. These audits leave aside single-agent RL and the 2018 grid.
 
 \paragraph{Language models}
 \textcite{hochlehnert2025sober} re-evaluate reasoning models and find standard deviations of 5 to 15
@@ -447,7 +452,7 @@ instance of flaw F8.
 
 The vocabulary of RL has spread to the generative AI models that write text. Some of its algorithms
 are borrowed, with only a loose resemblance to the original setting, to fine-tune the answers of a
-pretrained language model, with no agent acting in a world. This report fixes its words as follows.
+pretrained language model, with no agent acting in a world. We fix our words as follows.
 
 \begin{itemize}
   \item \textbf{Classical RL.} RL in the sense of Section~\ref{sec:cadre}: an agent, often trained from
@@ -461,7 +466,7 @@ pretrained language model, with no agent acting in a world. This report fixes it
   \item \textbf{RLHF.} Learning from human feedback (\emph{reinforcement learning from human feedback})
   \parencite{christiano2017deep,ouyang2022instructgpt}. Annotators rank answers, a reward model learns
   their preferences, then the language model is fine-tuned to maximise this score. The acronym contains
-  the letters RL. This report nonetheless keeps RLHF out of RL: the optimised policy produces a text in
+  the letters RL. We nonetheless keep RLHF out of classical RL: the optimised policy produces a text in
   response to a prompt, then receives one score, with no environment whose state evolves under its
   actions.
   \item \textbf{RLVR and GRPO.} RLVR (\emph{reinforcement learning with verifiable rewards}) replaces
@@ -475,4 +480,4 @@ pretrained language model, with no agent acting in a world. This report fixes it
 
 In this report, large language models are generative AI models. The readers of our survey are agents
 built on such a model (Chapter~\ref{chap:03-sondage-methode}). There, the word \enquote{agent} denotes
-a program that reads a PDF and fills in a grid, unrelated to the agent of a Markov decision process.
+a piece of software that reads a PDF and fills in a grid, unrelated to the agent of a Markov decision process.

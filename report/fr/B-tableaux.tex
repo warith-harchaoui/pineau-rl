@@ -1,21 +1,18 @@
 \chapter{Tableaux complémentaires}
 \label{chap:B-tableaux}
 
-Cette annexe donne les tableaux qui ne figurent pas dans les chapitres, puis un index de tous les
-tableaux générés et la liste des fichiers de résultats d'où ils viennent. Chaque tableau généré est
+Cette annexe donne un index de tous les tableaux générés et la liste des fichiers de résultats d'où
+ils viennent. Chaque tableau généré est
 écrit par \file{report/tools/tables.py} à partir d'un fichier JSON de résultats : aucun nombre n'y
 est tapé à la main.
 
 \section{Le RL de grands modèles de langue dans le sondage}
 \label{sec:b-lrl}
 
-Le premier tirage de 2026 compte 27 articles qui appliquent ce qu'ils appellent RL à de grands
-modèles de langue (famille X5 \texttt{llm}, \cref{chap:A-grille}). Les verdicts du sondage valent pour
-le RL classique. Le \cref{tab:sondage-lrl} met ces articles en regard du RL classique de 2026, critère
-par critère, là où le fichier de résultats le permet. Les 18 articles \texttt{llm} lus en chemin dans
-la file de l'élargissement n'y entrent pas : le tri sur le titre les avait filtrés, si bien qu'ils ne
-forment pas un échantillon aléatoire (écart 12 du sondage). Le tableau se lit comme une description,
-sans verdict : il compare deux familles d'articles, pas deux époques.
+Le \cref{tab:sondage-lrl}, qui met les 27 articles du premier tirage de 2026 sur les grands modèles de
+langue (famille X5 \texttt{llm}, \cref{chap:A-grille}) en regard du RL classique de la même année, est
+composé et commenté au \cref{chap:04-sondage-resultats}. Les 18 articles \texttt{llm} lus en chemin dans
+la file de l'élargissement n'y entrent pas (\cref{chap:03-sondage-methode}).
 
 \section{Index des tableaux générés}
 \label{sec:b-index}
@@ -116,8 +113,8 @@ Tableau & Contenu & Fichier source \\
 \label{sec:b-fichiers}
 
 Chaque fichier JSON de résultats vient d'un seul script, relancé par \texttt{make analysis}
-(\cref{sec:make}). Les détails critère par critère et paire par paire que les tableaux résument se
-trouvent dans ces fichiers.
+(\cref{sec:make}). Le détail de chaque critère et de chaque paire, que les tableaux résument, se
+trouve dans ces fichiers.
 
 \begin{small}
 \begin{longtable}{@{}p{0.3\linewidth}p{0.64\linewidth}@{}}
@@ -180,7 +177,7 @@ Script & Contenu du fichier de résultats \\
 \file{b3.py} & B3 : trois mesures par essai et les renversements entre mesures. \\
 \file{e2\_strict.py} & E2, décompte strict des paires qui s'inversent (écart 21). \\
 \file{e1\_grid.py} & E1 sur les seize couples (écart 22). \\
-\file{e3\_holm.py} & E3 avec la correction de Holm, écart de Hodges-Lehmann, puissance (écart 23). \\
+\file{e3\_holm.py} & E3 avec la correction de Holm, différence de Hodges-Lehmann, puissance (écart 23). \\
 \file{e7\_test.py} & E7, chaque paire testée en physique d'entraînement et modifiée (écart 24). \\
 \file{e5\_holdout.py} & E5 hors échantillon (écart 25). \\
 \file{rule\_calibration.py} & Taux de faux positifs de la règle \enquote{tranché} (écart 26). \\
@@ -194,7 +191,7 @@ Script & Contenu du fichier de résultats \\
 \file{e6\_speed.py}, \file{e6\_enjoy.py}, \file{e6\_hub.py} & E6 : vitesse lue dans les journaux,
   agents rejoués avec notre protocole, agent publié par le Zoo (écarts 31 et 33). \\
 \file{c6\_determinism.py}, \file{e6\_gamma.py}, \file{c2.py} & Écarts 32, 33 (c) et 34, prêts
-  dans \texttt{make analysis-suite}. Leurs entraînements tournent encore : aucun résultat publié. \\
+  dans \texttt{make analysis-suite}. Leurs entraînements n'étaient pas finis à la compilation : aucun résultat publié. \\
 \multicolumn{2}{@{}l}{\textit{Volet GRPO, dossier \file{sim/llm/}}}\\
 \file{summary.py} & Pass@1 aux pas 0 et 100 de chaque essai, gains, intervalles, sensibilité au
   gain manquant, essais CPU seuls (\file{summary*.json}, \file{gains*.json}, \file{extra*.json}). \\

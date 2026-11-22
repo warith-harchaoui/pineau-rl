@@ -1,20 +1,16 @@
 \chapter{Supplementary tables}
 \label{chap:B-tableaux}
 
-This appendix gives the tables that do not appear in the chapters, then an index of every generated
-table and the list of result files they come from. Each generated table is written by
+This appendix gives an index of every generated table and the list of result files they come from. Each generated table is written by
 \file{report/tools/tables.py} from a JSON result file: no number in it is typed by hand.
 
 \section{RL on large language models in the survey}
 \label{sec:b-lrl}
 
-The first 2026 draw holds 27 papers that apply what they call RL to large language models (family
-X5 \texttt{llm}, \cref{chap:A-grille}). The verdicts of the survey apply to classical RL.
-\Cref{tab:sondage-lrl} sets these papers against classical RL in 2026, criterion by criterion, where
-the result file allows it. The 18 \texttt{llm} papers read along the way in the queue of the
-enlargement are left out: the title screen had filtered them, so they do not form a random sample
-(survey deviation 12). The table reads as a description, with no verdict: it compares two families
-of papers from the same year.
+\Cref{tab:sondage-lrl}, which sets the 27 papers of the first 2026 draw on large language models
+(family X5 \texttt{llm}, \cref{chap:A-grille}) against classical RL from the same year, is set and
+discussed in \cref{chap:04-sondage-resultats}. The 18 \texttt{llm} papers read along the way in the
+queue of the enlargement are left out of it (\cref{chap:03-sondage-methode}).
 
 \section{Index of the generated tables}
 \label{sec:b-index}
@@ -116,8 +112,8 @@ Table & Content & Source file \\
 \label{sec:b-fichiers}
 
 Each JSON result file comes from one script, rerun by \texttt{make analysis}
-(\cref{sec:make}). The criterion-by-criterion and pair-by-pair details that the tables summarise are
-in these files.
+(\cref{sec:make}). The detail of each criterion and each pair, which the tables summarise, is in
+these files.
 
 \begin{small}
 \begin{longtable}{@{}p{0.3\linewidth}p{0.64\linewidth}@{}}
@@ -179,7 +175,7 @@ Script & Content of the result file \\
 \file{b3.py} & B3: three measures per run and the reversals between measures. \\
 \file{e2\_strict.py} & E2, strict count of the pairs that reverse (deviation 21). \\
 \file{e1\_grid.py} & E1 over the sixteen pairs (deviation 22). \\
-\file{e3\_holm.py} & E3 with the Holm correction, Hodges-Lehmann gap, power (deviation 23). \\
+\file{e3\_holm.py} & E3 with the Holm correction, Hodges-Lehmann difference, power (deviation 23). \\
 \file{e7\_test.py} & E7, each pair tested in the training physics and the modified physics
   (deviation 24). \\
 \file{e5\_holdout.py} & E5 out of sample (deviation 25). \\
@@ -194,7 +190,7 @@ Script & Content of the result file \\
 \file{e6\_speed.py}, \file{e6\_enjoy.py}, \file{e6\_hub.py} & E6: speed read in the logs, agents
   replayed with our protocol, agent published by the Zoo (deviations 31 and 33). \\
 \file{c6\_determinism.py}, \file{e6\_gamma.py}, \file{c2.py} & Deviations 32, 33 (c) and 34, ready
-  in \texttt{make analysis-suite}. Their training runs are still going: no published result. \\
+  in \texttt{make analysis-suite}. Their training runs had not finished at compilation: no published result. \\
 \multicolumn{2}{@{}l}{\textit{GRPO strand, folder \file{sim/llm/}}}\\
 \file{summary.py} & Pass@1 at steps 0 and 100 of every run, gains, intervals, sensitivity to the
   missing gain, CPU runs alone (\file{summary*.json}, \file{gains*.json}, \file{extra*.json}). \\

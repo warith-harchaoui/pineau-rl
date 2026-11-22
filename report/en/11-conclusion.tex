@@ -17,8 +17,8 @@ with our own reading of 2018 using the same grids
 (\cref{chap:03-sondage-methode,chap:04-sondage-resultats}). It also rests on experiments rerun with
 the algorithms of 2026 under protocols written in advance
 (\cref{chap:05-experiences-methode,chap:06-experiences-resultats,chap:07-modeles-de-langue}). The
-numbers it rests on are given once, in those chapters. This conclusion says what they establish and
-refers back to them.
+numbers it rests on come from those chapters. This conclusion says what they establish and refers
+back to them.
 
 \section{What the measurements establish}
 \label{sec:nombres}
@@ -29,10 +29,10 @@ sensitivity to a setting and reported uncertainty pass the Holm correction in th
 sensitivity nearly every one. Code keeps its verdict when both years are read on the same kind of
 version, proceedings or arXiv (\cref{sec:sr-robustesse}). Reported uncertainty is the most fragile
 change: it no longer passes the correction once the thirteen papers partly read by another model are
-removed. Since the readers of 2018 are not those of 2026, eight fresh readers reread both years: the
+removed. Since the readers of 2018 are not those of 2026, eight fresh readers, T1 to T8, reread both years (deviation 36): the
 rises in code, compute and sensitivity hold, while the rise in reported uncertainty keeps its direction
-without being established (\cref{sec:sr-annees}). Criterion X8 makes the meaning of that last rise
-precise. The share of papers that compute their uncertainty
+without being established (\cref{sec:sr-annees}). Criterion X8 shows what that last rise
+measures. The share of papers that compute their uncertainty
 over random seeds goes from 35\% to 42\%, a gap the survey does not detect: the error bar has spread
 faster than the bar computed over independent training runs (\cref{sec:sr-principale}). Read on 20
 papers per year between the two dates, the four practices rise slowly, with no jump right after the
@@ -103,7 +103,7 @@ targets and the result that justifies it.
         order is judged out of sample (E5, flaws F9 and F10).
   \item \textbf{Never sort or select runs.} Report every run, including those that fail. State which
         were excluded (E1, E4, criteria X3 and Y6).
-  \item \textbf{Test across random seeds, never across episodes.} The independent unit is the
+  \item \textbf{Test across random seeds.} The independent unit is the
         complete training run. A test that counts episodes declares a difference between two groups
         of the same code (B1, flaw F11). The same rule holds for the error bar: in 2026, fewer than
         one experimental paper in two computes it over random seeds (X8).
@@ -163,8 +163,8 @@ curve, does not measure the variability between training runs.
 
 \begin{enumerate}
   \item \textbf{Ask for the test as well as the bars.} The NeurIPS question on statistical
-        significance accepts error bars \enquote{or other appropriate information}. The papers that
-        answer yes to it apply no test. A question that asks for the unit of the test and the number
+        significance accepts error bars \enquote{or other appropriate information}. The 18 papers of
+        our sample that answer yes to it apply no test. A question that asks for the unit of the test and the number
         of independent training runs would demand more.
   \item \textbf{Check a ticked box on a sample.} Some papers answer yes on code with no link, on
         compute with no figure. A check drawn at random on a share of the accepted papers would
@@ -190,7 +190,7 @@ curve, does not measure the variability between training runs.
         proceedings, through a download route that OpenReview accepts, would complete the series.
   \item \textbf{A larger survey on the criteria that rise without being established.} The
         statistical test, held-out evaluation and the method for choosing settings rise by 6 to 22
-        points without the survey being able to say so. A sample large enough to detect a rise of ten
+        points without the survey being able to establish it. A sample large enough to detect a rise of ten
         points would settle it.
   \item \textbf{The papers that apply what they call RL to large language models, read with the same
         grid} on a sample of comparable size, would tell whether held-out evaluation, which is
@@ -199,7 +199,6 @@ curve, does not measure the variability between training runs.
         author's blind reading. The script that will compare it with the agents is written and refuses
         to run until all thirty sheets are filled.
   \item \textbf{A new complete training run on another platform}, Linux on x86-64, would test the
-
         statistics of our experiments with other draws (\cref{sec:reentrainer}).
   \item \textbf{Other families of tasks} than MuJoCo locomotion: image-based games, offline RL, real
         robotics, where the conclusions of E2 to E7 have yet to be tested.

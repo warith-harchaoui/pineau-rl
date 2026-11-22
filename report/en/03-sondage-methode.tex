@@ -1,7 +1,7 @@
 \chapter{The survey: method}\label{chap:03-sondage-methode}
 
-The first instrument of this report rereads published papers with Pineau's reading grid, extended by
-seven criteria drawn from her ICLR talk and by a second grid of our own. This chapter describes the
+The survey, the first instrument of this report, rereads published papers with Pineau's reading grid,
+extended by seven criteria drawn from her ICLR talk and by a second grid that we wrote. This chapter describes the
 method in full: the timeline and the protocol (Section~\ref{sec:sm-protocole}), the populations and
 the draws (Section~\ref{sec:sm-tirages}), the grids and their decision rules
 (Section~\ref{sec:sm-grilles}), the readers (Section~\ref{sec:sm-lecteurs}), the double readings
@@ -19,7 +19,8 @@ The survey protocol (\file{study/PROTOCOL.md}) is dated 8 November 2026, before 
 read. It fixes the question, the populations, the draws, the grid, the decision rules, the double
 reading and the analysis. Every later change is entered at the bottom of the file, in a numbered list
 of \enquote{deviations}. Each deviation is dated and states whether it was decided before or after the
-result it concerns was known. The file counts 33 of them as of 22 November 2026. The instruction sheet
+result it concerns was known. As of 22 November 2026, the file holds 35 of them, numbered 1 to 36
+(Section~\ref{sec:sm-ecarts}). The instruction sheet
 given to the readers (\file{study/GRILLE.md}) summarises the protocol. The plan of the second grid
 (\file{study/planification\_v2.md}), written on 9 November 2026 before any coding, was made public as
 it stood on 15 November 2026.
@@ -33,20 +34,23 @@ stages followed one another as below.
   reader.
   \item \textbf{9 November.} Grid v2 (Y1 to Y12) and its decision rules, written before any coding
   (deviations 11 and 14). Enlargement of the two samples, written before any draw (deviation 12).
-  Pilot (deviations 16 and 17), enlarged reading, audit of the raw readings, harmonisation (deviations
-  18 and 19), then first percentages. Same-grid verdict rule (deviation 20).
+  Human rereading planned (deviation 13). Harmonisation of the 2018 calibration caught up (deviation
+  15). Pilot (deviations 16 and 17), enlarged reading, audit of the raw readings, harmonisation
+  (deviations 18 and 19), then first percentages. Same-grid verdict rule (deviation 20).
   \item \textbf{10 and 11 November.} Robustness analyses (deviation 21), checklist declarations (A5,
-  deviation 22), sensitivity to the title filter (A6, deviation 24), trajectory from 2019 to 2024 (A4,
-  deviations 25 and 26).
+  deviation 22), human rereading abandoned (deviation 23), sensitivity to the title filter (A6,
+  deviation 24), trajectory from 2019 to 2024 (A4, deviations 25 and 26).
   \item \textbf{15 November.} Keyword search against the negative decisions (deviation 27), provenance
   of the readers (deviation 28), sensitivity to the change of model (deviation 29).
   \item \textbf{21 and 22 November.} Response to a technical audit, each deviation written before its
   own computation: complementary analyses of the data already read (deviation 30), a re-reading of Q5
   on the same kind of version in both years (deviation 31), criterion X8 (deviation 32), a reader from
-  another family of models (deviation 33, running).
+  another family of models (deviation 33, running). On 22 November, after the results, a human
+  rereading of both years, preregistered and not yet done (deviation 35), then eight fresh readers who
+  each read both years (deviation 36).
 \end{enumerate}
 
-\fig{flux-sondage}{The survey, first part: from the populations to the samples. The RL papers of ICML, NeurIPS and ICLR 2018, those of ICLR 2026, ICML 2026 and NeurIPS 2025, those of ICML and NeurIPS in 2019, 2020, 2022 and 2024. Every sample comes from a draw whose random seed is written in the protocol: 50 papers from 2018 (48 with experiments), 50 classical RL papers from 2026, 20 papers per year for 2019, 2020, 2022 and 2024. The first 2026 draw is kept as context.}
+\fig{flux-sondage}{The survey, first part: from the populations to the samples. The three populations are the RL papers of ICML, NeurIPS and ICLR 2018, those of ICLR 2026, ICML 2026 and NeurIPS 2025, those of ICML and NeurIPS in 2019, 2020, 2022 and 2024. Every sample comes from a draw whose random seed is written in the protocol: 50 papers from 2018 (48 with experiments), 50 classical RL papers from 2026, 20 papers per year for 2019, 2020, 2022 and 2024. The first 2026 draw is kept as context.}
 
 \fig{flux-sondage-2}{The survey, second part: from reading to comparisons. Every decision of the readers quotes a sentence of the paper with its page. Three sets of blind double readings, the harmonisation of the rules, the quote audit and the search for evidence against every \enquote{no} test these decisions before the final comparisons.}
 
@@ -85,7 +89,7 @@ for ICML, the proceedings archives for NeurIPS (deviation 8).
 
 \paragraph{Enlargement A2: 50 papers from 2018}
 With 12 papers from 2018 and 14 classical RL papers from 2026, the statistical audit of the first draw
-(\file{study/audit\_stats.py}) lacks the power to detect a gap of 30 points. Deviation 12, written on 9
+(\file{study/audit\_stats.py}) lacks the power to detect a difference of 30 points. Deviation 12, written on 9
 November 2026 before any draw and before any reading of the added papers, enlarges both samples. For
 2018, the population brings together the three conferences Pineau names: 131 RL papers, 54 at ICML, 52
 at NeurIPS and 25 at ICLR (\file{study/rl\_population\_2018.json}). The ICLR 2018 list, 336 papers of
@@ -109,16 +113,17 @@ skips the titles that contain \enquote{LLM}, \enquote{language model}, \enquote{
 \enquote{reward model}, \enquote{chain-of-thought}, \enquote{math} or \enquote{agentic}. The screen
 sets aside 429 papers (\file{study/classic\_screened\_out\_2026.json}) and leaves an ordered queue of
 773 papers (\file{study/classic\_queue\_2026.json}). The readers code the family of each paper in the
-queue (criterion X5), in order. Reading stops once 36 \file{classic} papers are coded. The 9 ICLR 2026
-papers at the head of the queue were unreachable on 9 November 2026, the proceedings site being down:
-they are skipped. The queue is frozen so that the selection does not depend on the reading date
-(deviation 17). In all, 70 papers of the queue were read: 36 enter the classical RL sample, 18 belong
-to large language models and 3 to theory. The other 13 were read after the last paper retained
-(\cref{tab:articles-2026}). The first 36 \file{classic} papers in the order of the draw form the
-sample. The 18 \file{llm} papers and the 3 \file{theory} papers read before the thirty-sixth
-\file{classic} one stay coded and reported apart. They form no sample, since the title screen set aside
-many others like them. The 2026 classical RL sample brings together the 14 \file{classic} papers of the
-first draw and these 36 papers.
+queue (criterion X5), in order, up to the thirty-sixth \file{classic} paper. The 9 ICLR 2026 papers at
+the head of the queue were unreachable on 9 November 2026, the proceedings site being down: they are
+skipped. The queue is frozen so that the selection does not depend on the reading date (deviation 17).
+In all, 70 papers of the queue were read. The first 36 \file{classic} papers form the sample. Before
+the thirty-sixth, 18 papers belonged to large language models (\file{llm}) and 3 to theory
+(\file{theory}). The last 13 were read after the last paper retained (\cref{tab:articles-2026}). The
+\file{llm} and \file{theory} papers stay coded and reported apart. They form no sample, since the
+title screen set aside many others like them. The 2026 classical RL sample brings together the 14
+\file{classic} papers of the first draw and these 36 papers. Deviation 18 refines X5 before this sample
+is frozen: applied to the 120 papers read, the rule changes one code, K006, from \file{llm} to
+\file{classic}.
 
 \paragraph{Trajectory A4: 2019, 2020, 2022 and 2024}
 Deviation 25, written on 10 November 2026 before any draw, adds four years to date the change. The
@@ -131,8 +136,8 @@ of each year that have a PDF. The sample takes, per year, the first 20 \file{cla
 experiments, in order. In 2019 and 2020, the first 24 papers held only 19 and 18 of them: the next
 three papers of each year were read, as planned. Eight readers (M1 to M8) each read twelve papers taken
 from all years, so that no reader is confounded with a year. M7 reads eighteen, including the six extra
-papers of 2019 and 2020. The NeurIPS 2019 to 2022 appendices are
-zip archives, which the first download had left aside. The raw readings of the first pass are recorded
+papers of 2019 and 2020. A second pass was needed: the NeurIPS 2019 to 2022 appendices are zip
+archives, which the first download had left aside. The raw readings of the first pass are recorded
 in the repository (commit \file{0d3519a}). Each reader then rereads their papers with the appendix and
 changes the decisions the appendix justifies.
 
@@ -243,10 +248,8 @@ The protocol fixes the following rules, completed by deviations 1 to 6.
   \file{yes}. A \file{theory} paper with toy experiments counts as \file{no} (deviation 4).
   \item \textbf{Q8.} A test applied to a comparison: $t$, Welch, Mann-Whitney, bootstrap with an
   interval, rliable IQM with stratified intervals. Error bars with no test count as \file{no} for Q8
-  and as \file{yes} for X2. X2 therefore counts any error bar, whatever its source. A bar computed over
-  the episodes of a single run, the one experiment B1 shows to mislead (Section~\ref{sec:b1}), counts
-  as much as a bar computed over random seeds. Criterion X8, added after the results, tells them apart
-  (Section~\ref{sec:sm-x8}).
+  and as \file{yes} for X2. X2 therefore counts any error bar, whatever its source. Criterion X8,
+  added after the results, asks which source (Section~\ref{sec:sm-x8}).
   \item \textbf{X1.} The smallest number of independent training runs stated for a main table or
   curve. For \file{llm}, evaluation samples (pass@$k$, \enquote{16 samples}) do not count.
   \item \textbf{X3.} \file{yes} also when the paper's tables show that the main result is the best of
@@ -312,7 +315,7 @@ baseline for Q4. Pineau reports 100\% experimental papers: her denominators are 
 \section{The readers}\label{sec:sm-lecteurs}
 
 \paragraph{Agentic AI models}
-The reading is entrusted to agentic AI models, generative AI models that act: they open the PDF, find the sentence behind each decision and fill in the grid. This report also calls them AI agents. They are Claude Code subagents each launched with a written
+The reading is entrusted to agentic AI models, generative AI models that act: they open the PDF, find the sentence behind each decision and fill in the grid. We also call them AI agents. They are Claude Code subagents, each launched with a written
 instruction, a list of identifiers and a folder to write in. The folder \file{study/readers/} gives the
 provenance of each agent, reconstructed on 15 November 2026 from the session transcripts (deviation
 28): the exact instruction (\file{prompts/<reader>.md}), the model recorded in the transcript, the
@@ -345,12 +348,12 @@ if 90\% of its characters are found in a window of the text. A failing file goes
 second failure on the same criterion is decided from the PDF and recorded in
 \file{study/overrides\_v2.json}.
 
-\paragraph{Three facts the protocol did not state}
-The reconstruction of deviation 28 established three facts the protocol did not state. Readers C2 and
+\paragraph{Three facts outside the protocol}
+The reconstruction of deviation 28 established three facts the protocol left unstated. Readers C2 and
 M4 finished on the model \file{claude-opus-5}. The primary reader M7 opened the file K002 of reader K1
 as a format example. K002 is not M7's and enters no double reading. The grid v1 readings (readers A to
-G) took place on 8 November in a session opened in a folder other than the repository. The second
-readers G, G2, R2 and R3 opened no file of another reader.
+G) took place on 8 November in a session opened in a folder other than the repository. The reconstruction
+also checks that the second readers G, G2, R2 and R3 opened no file of another reader.
 
 \paragraph{In the main comparison, year and readers are confounded}\label{sec:sm-annees}
 No primary reader read both years of the main comparison. The papers of 2018 come from readers F, F2
@@ -366,18 +369,17 @@ written before its computation, measures what the data allow us to see.
   \num{10000} permutations of the answers between readers, NumPy generator with seed 2031, readers of
   at least five papers. In 2018, Q5 ranges from 0 out of 8 (H3) to 6 out of 11 (F), $p = 0.049$. In
   2026, X7 ranges from 17\% to 83\%, $p = 0.027$. The six other (criterion, year) pairs behind the
-  verdicts have $p > 0.18$. These gaps mix the reader with the batch of papers: F read the twelve
+  verdicts have $p > 0.18$. These differences between readers mix the reader with the batch of papers: F read the twelve
   papers of the initial calibration, eleven of them with experiments (the twelfth, C23, has none and
   leaves the count), the H readers the thirty-eight added ones.
   \item \textbf{Between the years}, the only reader who read both is R2, on five papers of each. On
-  these ten papers, R2's difference between 2026 and 2018 equals that of the primary readers for the
-  four criteria behind the verdicts. For X2, this difference is a fall ($-0.2$: 5 of 5 in 2018, 4 of 5
-  in 2026), whereas the X2 verdict is a rise. Five papers per year do not close the question.
+  these ten papers, R2's difference between 2026 and 2018 equals the one the primary readers obtain on
+  the same ten papers, for the four criteria behind the verdicts. For X2, this difference is a fall
+  ($-0.2$: 5 of 5 in 2018, 4 of 5 in 2026), whereas the X2 verdict, over the 98 papers, is a rise. Five papers per year do not close the question.
 \end{itemize}
 The readers of criterion X8 already each read both years (Section~\ref{sec:sm-x8}). Deviation 36 does
 the same for the four criteria behind the verdicts: eight fresh readers reread the 98 experimental
-papers, each of them on both years (Section~\ref{sec:sm-doubles}). Its results are in
-Section~\ref{sec:sr-annees}.
+papers, each of them on both years (Section~\ref{sec:sm-doubles}).
 
 \section{The blind double readings}\label{sec:sm-doubles}
 
@@ -409,12 +411,12 @@ four criteria behind the verdicts: Q5, Y9, X7 and X2.
   get the rules, not the hypothesis.
   \item \textbf{The allocation.} A \file{random.Random(2035)} generator deals the papers of each year
   in turn, then shuffles each list so that the years alternate in the reading order
-  (\file{study/r36\_assign.py}). Each reader reads six papers from 2018 and six or seven from 2026.
+  (\file{study/r36\_assign.py}). The eight each read six papers from 2018 and six or seven from 2026.
   Year and reader are thus crossed.
   \item \textbf{The check.} Each quotation is looked up in the PDF as for X8
   (\file{study/r36\_check.py}). All 98 files pass, at once or after their reader's correction: no
   decision is invalid. A Q5 \enquote{yes} that points to a project page takes the final value of the
-  original reading when that reading cites the same address, which holds for all eleven such \enquote{yes}. A variant of the analysis counts every project page as \enquote{yes}, the least favourable to the Q5 verdict.
+  original reading when that reading cites the same address, which holds for all eleven such \enquote{yes}. A variant of the analysis, the least favourable to the Q5 verdict, counts every project page as \enquote{yes}.
   \item \textbf{The analysis.} The script \file{study/r36\_stats.py} redoes the main comparison with
   these readings only: Newcombe, Fisher, Holm over the four criteria. It then fits, per criterion, a
   logistic mixed model. The probability of a \enquote{yes} depends on the year and on a random reader
@@ -423,14 +425,15 @@ four criteria behind the verdicts: Q5, Y9, X7 and X2.
   Beside it, the agreement of the new readings with the final codes is computed per criterion and per
   year, with Fisher's test of the 2018 agreement against the 2026 one.
   \item \textbf{The rule, fixed in advance.} A verdict holds if the difference between years and the
-  year effect are both positive and both pass the Holm correction at 5\%. It is \enquote{same
+  year effect in the model are both positive and if their two tests, Fisher's and the likelihood-ratio
+  test, both pass the Holm correction at 5\%. It is \enquote{same
   direction, not established} if both are positive but one of the two tests fails, \enquote{not
   reproduced} otherwise.
 \end{itemize}
 Every paper already has its original reading. The new readings therefore form a complete double
 reading with them, with no third reading. The results are in Section~\ref{sec:sr-annees}.
 
-\paragraph{The quantity compared}
+\paragraph{Agreement, on the raw readings}
 Agreement is computed on the raw readings, before any harmonisation: harmonisation applies to both
 readings and would inflate agreement. For each criterion, \file{study/agree\_v2.py} keeps the papers
 where both readers answered \file{yes} or \file{no} (Y3 transformed as in the analysis), then computes
@@ -439,14 +442,14 @@ agreement is called fragile. The agreement of grid v1 on the first draw is compu
 \file{study/audit\_stats.py}, which also counts the \file{na} values.
 
 \paragraph{Intervals on agreement}
-On ten papers, an agreement of 9 out of 10 has the Wilson interval $[0.60,\,0.98]$: one pair of
+On ten papers, an agreement of 9 out of 10 has the Wilson interval $[60,\,98]$\%: one pair of
 readers says little. Deviation 30 (a), written before its computation, adds two intervals
 (\file{study/survey\_extra.py}). The share of agreement receives its Wilson interval
 (Section~\ref{sec:sm-stats}). Kappa receives a percentile bootstrap interval over the papers:
 \num{10000} resamples with replacement, NumPy generator with seed 2030. A resample where kappa is
 undefined is dropped and counted. The three pairs are then pooled by criterion: G for grid v1 or G2
-for v2, with R2 and R3, that is at most thirty papers per criterion. The results are in
-Section~\ref{sec:sr-accord}.
+for v2, with R2 and R3, that is at most thirty papers per criterion
+(results in Section~\ref{sec:sr-accord}).
 
 \paragraph{The human rereading, abandoned then preregistered again}
 Deviation 13 planned for a human, the author, to reread 10 papers from 2026 alone on seven criteria,
@@ -463,13 +466,13 @@ the deviation 13 plan had already covered.
   \item \textbf{Blindness.} Each paper gets a sheet with an opaque name (H01 to H30) and a renamed copy of its PDF (\file{study/relecture\_humaine/feuilles/}). The sheet shows no identifier, title,
   conference, year or agent value. The PDF still shows the year. The reader, who wrote the survey, also knows the hypothesis: the
   deviation says so in advance.
-  \item \textbf{Criteria.} Q5, Y9, X7, X2 and X8, with the agents' rules copied into each sheet. Each
-  decision gives an exact quotation and its page.
+  \item \textbf{Criteria.} Q5, Y9, X7, X2 and X8, with the agents' rules copied into each sheet. Every
+  decision comes with an exact quotation and its page.
   \item \textbf{Analysis.} The script \file{compare.py} refuses to run while any of the thirty sheets is
   incomplete. It will then read the agents' codes, measure the human's agreement with them and say
   whether the difference between years holds under a human reading.
 \end{itemize}
-On 22 November 2026, the thirty sheets are empty: this report gives no result from this rereading.
+On 22 November 2026, the thirty sheets are still empty.
 
 \section{The pilot and the harmonisation}\label{sec:sm-harmonisation}
 
@@ -504,8 +507,7 @@ a link to the code were visited on 9 November 2026. Five lead to the code, two d
 leads to an expired anonymous mirror (HTTP 410). The link of C19 leads to a library released after the
 paper, without its scripts. The author of the protocol ruled on two cases, NE16 and ML14, all of whose
 experiments are in the appendix, so that the rule on settings present only in an appendix does not
-apply to them. Deviation 18 refines X5 before the classical RL sample is frozen: applied to the 120
-papers read, the rule changes one code, K006, from \file{llm} to \file{classic}.
+apply to them.
 
 \paragraph{Three criteria with no new rule}
 For X3, X4 and X7, the audit found borderline cases, such as compute reduced to inference time or
@@ -530,7 +532,7 @@ French comments that the reader had added to an exact English quotation, the two
 folder. The five values contrary to the rules led to deviation 15.
 
 \paragraph{The keyword search against the \enquote{no} decisions}
-A \file{yes} decision rests on a quotation and a page. A \file{no} decision rests on nothing. Yet the
+A \file{yes} decision rests on a quotation and a page. A \file{no} decision rests on no quotation. Yet the
 \enquote{changed} verdicts rest mostly on the \file{no} decisions of 2018. Deviation 27, written on 15
 November 2026 after the results and before any search, checks every final \file{no} decision of the
 two samples of the main comparison against the text of the paper, on the seven criteria Q4, Q5, Q7,
@@ -563,25 +565,25 @@ With 50 papers from 2018, the secondary comparison of deviation 12 confirmed tha
 differently from Pineau (Chapter~\ref{chap:04-sondage-resultats}). Deviation 20, decided on 9 November
 2026 after these first results, draws from it the rule of the report: a verdict rests only on the main
 comparison of deviation 12, our 50 classical RL papers from 2026 against our reading of 50 papers from
-2018, with the same grids, read by agents of the same model. The agents of 2018 are not those of 2026:
-in this comparison the year effect is confounded with the readers' (Section~\ref{sec:sm-annees}). Deviation 36 separates the two (Section~\ref{sec:sr-annees}). This comparison had been
-
-fixed before any reading of the added papers. The comparisons with Pineau's figures stay on display as context. The change of rule
-was decided after seeing these results, which the protocol declares. A criterion \enquote{changed}
-when its gap passes the 5\% threshold after the Holm correction.
+2018, with the same grids, read by agents of the same model. This comparison had been fixed before
+any reading of the added papers. The change of rule, by contrast, followed the results, which the
+protocol declares. The comparisons with Pineau's figures stay on display as context. A criterion
+\enquote{changed} when the Fisher $p$-value of its difference between years, adjusted by the Holm
+correction, stays below 5\%. We then say that the difference passes the correction. The agents of
+2018 are not those of 2026: in this comparison the year effect is confounded with the readers'
+(Section~\ref{sec:sm-annees}), which deviation 36 separates (Section~\ref{sec:sr-annees}).
 
 \paragraph{What the original rule would have given}
 Deviation 30 (c) applies the rule of deviation 7 to the final data. It was written before the
 repository's computation, but after the technical review of 21 November had sketched its result
 (Section~\ref{sec:ecarts-audit}). This rule applies to Q3 to Q8, the criteria for which Pineau gives a
-figure. A criterion \enquote{changed} under it when the gap between classical RL in 2026 and Pineau's
-figures passes the Holm correction over these six criteria. The change is \enquote{confirmed} when the
-gap to our reading of 2018 passes it too, in the same direction. It is \enquote{ambiguous} when the gap
-passes only against our reading of 2018. X2, X7 and Y9 have no figure from Pineau: the original rule
-did not judge them. The result is given in Section~\ref{sec:sr-pineau}, with \cref{tab:regle-origine}.
-The calibration justifies the change of rule. On Q3, our reading of 2018 finds 55\% where Pineau
-counted 90\% (Section~\ref{sec:sr-pineau}). Measuring 2026 against her figures would mix the change in
-practice with the change of grid.
+figure. A criterion \enquote{changed} under it when the difference between classical RL in 2026 and
+Pineau's figures passes the Holm correction over these six criteria. The change is \enquote{confirmed}
+when the difference from our reading of 2018 passes it too, in the same direction. It is
+\enquote{ambiguous} when the difference passes only against our reading of 2018. X2, X7 and Y9 have no
+figure from Pineau: the original rule did not judge them. The result, in Section~\ref{sec:sr-pineau}
+with \cref{tab:regle-origine}, makes the change of rule checkable, a change the calibration on Q3
+justifies (55\% in our reading of 2018, 90\% in Pineau's).
 
 \section{The statistics}\label{sec:sm-stats}
 
@@ -603,7 +605,7 @@ shares close to 0 or 1. With $z = \Phi^{-1}(0.975)$,
 
 \paragraph{Newcombe interval for a difference}
 Pineau's 50 papers also form a sample. Treating her shares as exact, the 55\% of papers with code for
-instance, would overstate the certainty of the verdicts. The gap $d = \hat{p}_a - \hat{p}_b$ between
+instance, would overstate the certainty of the verdicts. The difference $d = \hat{p}_a - \hat{p}_b$ between
 two independent samples therefore receives the hybrid interval of \textcite{newcombe1998interval} (his
 method 10). With the Wilson intervals $(l_a, u_a)$ and $(l_b, u_b)$ of each share,
 \begin{equation}
@@ -636,7 +638,7 @@ a comparable figure. For the trajectory, each family brings together the five te
 X7, X2, Q8).
 
 \paragraph{Minimum detectable difference}
-A gap that does not pass the threshold does not prove the absence of change. To say what the survey
+A difference that does not pass the threshold does not prove the absence of change. To say what the survey
 could see, deviation 30 (b), written before the repository's computation (the technical review had
 sketched its order of magnitude, Section~\ref{sec:ecarts-audit}), computes the exact power of the
 two-sided Fisher test. Let $p_0$ be the share observed in our reading of 2018, $n_0$ and $n_1$ the
@@ -653,8 +655,8 @@ rise is the smallest $\delta$, in steps of one point, such that $\pi(p_0 + \delt
 minimum detectable fall is defined in the same way with $p_0 - \delta$. The computation runs at
 $\alpha = 0.05$, then at the Bonferroni threshold $0.05/m$, with $m = 11$ for the v1 criteria and
 $m = 12$ for the v2 criteria (\file{study/survey\_extra.py}). The same formula, with $p_1$ equal to the
-share observed in 2026, gives the power the test had for the gap actually seen. The results are in
-Section~\ref{sec:sr-principale}.
+share observed in 2026, gives the power the test had for the difference actually seen
+(Section~\ref{sec:sr-principale}).
 
 \paragraph{Cochran-Armitage trend test}
 For trajectory A4, the test of \textcite{cochran1954some} and \textcite{armitage1955tests} looks for a
@@ -668,8 +670,8 @@ $\bar{x} = \sum_i x_i n_i / N$,
   \qquad
   z = T / \sqrt{\operatorname{Var}(T)}.
 \end{equation}
-The two-sided $p$-value is read from the normal distribution. Two Newcombe gaps complete this test, each
-with a Fisher test: 2019 and 2020 pooled against 2018 (the immediate effect of the checklist), then 2022
+The two-sided $p$-value is read from the normal distribution. Two differences complete this test, each
+with its Newcombe interval and a Fisher test: 2019 and 2020 pooled against 2018 (the immediate effect of the checklist), then 2022
 and 2024 pooled against 2019 and 2020 (the later effect).
 
 \paragraph{Cohen's kappa}
@@ -692,8 +694,8 @@ together with the share of agreement, the number of papers and its bootstrap int
 For the robustness analyses, a Cochran-Mantel-Haenszel test \parencite{mantel1959statistical} combines
 the $2 \times 2$ tables of each conference (ICML, NeurIPS, ICLR), with a Haldane correction of 0.5 per
 cell and a continuity correction (\file{statsmodels.stats.contingency\_tables.StratifiedTable}). The
-Spearman correlation between the cost or risk scores and the observed gaps receives a permutation
-$p$-value: 10,000 permutations of the gaps, NumPy generator with random seed 2026.
+Spearman correlation between the cost or risk scores and the observed differences receives a permutation
+$p$-value: 10,000 permutations of the differences, NumPy generator with random seed 2026.
 
 \section{The robustness analyses}\label{sec:sm-robustesse}
 
@@ -714,7 +716,7 @@ passing Holm (Q6, Y12), \file{study/robustness.py} redoes the comparison in four
   \item \textbf{(a4) Reader.} The comparison is redone removing each primary reader in turn. This cut
   does not see an effect shared by all the readers of one year (Section~\ref{sec:sm-annees}).
 \end{itemize}
-A verdict is called fragile if the gap changes sign in a cut, or if the recomputed Newcombe interval
+A verdict is called fragile if the difference changes sign in a cut, or if the recomputed Newcombe interval
 contains zero while each side keeps at least 35 papers. Cut (a2) first read a damaged local copy of a
 file. Redone on the repository file, it sets 45 papers read on arXiv against 5 read on a conference
 site and settles nothing (deviation 21, c). For Q5, the re-reading of Section~\ref{sec:sm-versions}
@@ -722,20 +724,20 @@ measures the effect of the version read directly.
 
 \paragraph{The cost and the risk of each practice (deviation 21, b)}
 An earlier version of our conclusions claimed that Pineau had been heard where listening to her cost
-little. That ranking came from us, after seeing the gaps. To put it to the test, three independent
+little. That judgement about cost came from us, formed after seeing the differences. To put it to the test, three independent
 raters each score the 17 practice criteria of the main comparison on two scales from 1 to 5: the cost
 $C$ for an author who already has the main results, then the risk $R$ that the practice weakens or
 reverses the conclusion. The raters are three AI agents of three different sizes, with no
 access to the results or to the repository, who receive only the title and the rule of each criterion
 (\file{study/blind\_cost/}). The test is the Spearman correlation between the median of the three scores
-and the observed gap, with X3 reversed because a lower share is progress for it. A clear negative
+and the observed difference, with X3 reversed because a lower share is progress for it. A clear negative
 correlation would support the earlier claim.
 
 \paragraph{Without the thirteen papers read partly by another model (deviation 29)}
 The thirteen papers finished by \file{claude-opus-5} are removed, then the main comparison and the
 trajectory are redone with the same tests (environment variable \file{EXCLUDE}, outputs
 \file{extension\_stats\_sans\_opus5.json} and \file{trajectory\_sans\_opus5.json}). A verdict changes if
-a gap or a trend moves from one side of the threshold to the other after the Holm correction.
+a difference or a trend moves from one side of the threshold to the other after the Holm correction.
 
 \paragraph{The title filter (A6, deviation 24)}
 For each of the 400 papers drawn outside the filter, the abstract is read on the official page. A paper
@@ -763,7 +765,7 @@ often come from the arXiv version.
 A technical audit of 21 November 2026 raised two points the earlier checks had left open: what X2
 measures, then the version of the papers read for Q5. The two re-readings that answer them were written
 into the protocol after the results and before any computation (deviations 32 and 31). They are
-exploratory and change no verdict of deviation 20.
+exploratory: no verdict of deviation 20 depends on them.
 
 \paragraph{Criterion X8: an uncertainty computed over random seeds}\label{sec:sm-x8}
 X2 counts any error bar (Section~\ref{sec:sm-grilles}). Yet a bar computed over the episodes of a
@@ -790,15 +792,15 @@ fills in a \file{source} field: \file{seeds}, \file{pooled} (seeds and episodes 
   \item \textbf{The analysis.} The script \file{study/x8\_stats.py} compares the two years with
   Newcombe and Fisher, alone and then with a Holm correction over the eleven v1 criteria plus X8.
   Beside it: the share among papers with X2 \file{yes}, the same measure with \file{pooled} counted
-  \file{yes}, then a mechanical bound that searches the quotations of X2, Y2 and Y11 for a word about
-  seeds or runs (deviation 30, e). The agreement of the double readings receives the intervals of
+  \file{yes}, then a mechanical bound that searches the quotations of X2, Y2 and Y11 for a word naming a random
+  seed or a run (deviation 30, e). The agreement of the double readings receives the intervals of
   Section~\ref{sec:sm-doubles} (generator with seed 2032).
 \end{itemize}
-X8 was read after the results, by agents other than the primary readers. The results are in
-Section~\ref{sec:sr-principale}.
+X8 was read after the results, by agents other than the primary readers (result in
+Section~\ref{sec:sr-principale}).
 
 \paragraph{Q5 reread on the same kind of version}\label{sec:sm-versions}
-45 of the 50 classical RL papers from 2026 were read on arXiv, where a link to code is often added after
+Of the 50 classical RL papers from 2026, 45 were read on arXiv, where a link to code is often added after
 acceptance. The papers of 2018 come mostly from the proceedings. Part of the rise of Q5 could therefore
 come from the version read. Deviation 31 rereads Q5 on the same kind of version in both years,
 mechanically, with the Q5 pattern of deviation 27 unchanged (\file{study/q5\_versions.py}).
@@ -824,8 +826,8 @@ mechanically, with the Q5 pattern of deviation 27 unchanged (\file{study/q5\_ver
   reading redoes the main comparison with the same test: Newcombe, Fisher, Holm over the eleven v1
   criteria with the ten other $p$-values unchanged (\file{study/q5\_versions\_stats.py}).
 \end{itemize}
-The downloads targeted one host at a time, 3 to 6~seconds apart for arXiv. No request was refused. The
-results are in Section~\ref{sec:sr-robustesse}.
+The downloads targeted one host at a time, 3 to 6~seconds apart for arXiv. No request was refused.
+Section~\ref{sec:sr-robustesse} gives the seven readings.
 
 \section{Deviations from the protocol}\label{sec:sm-ecarts}
 
@@ -837,11 +839,12 @@ their position relative to the results, next to those of the two other protocols
   \item \textbf{Rules clarified before any percentage}: deviations 1 to 6 (grid v1), 14, 16 to 19
   (grid v2, pilot, X5 family, harmonisation). They remove ambiguities without targeting a number.
   \item \textbf{Instruments added before their own computation}: deviations 11 and 12 (grid v2,
-  enlargement), 13 (human rereading, abandoned by deviation 23), 22, 24, 25 and 26 (A5, A6, A4 and its
+  enlargement), 13 and 23 (human rereading planned, then abandoned before it started), 22, 24, 25 and 26 (A5, A6, A4 and its
   second reading).
   \item \textbf{Decisions taken after seeing results}: deviations 7 (initial calibration), 15 (2018
   harmonisation caught up), 20 (same-grid verdict rule), 21, 27, 28 and 29 (analyses answering a
-  critical review), 30 to 33 (response to the technical audit of 21 November). The analyses were all
+  critical review), 30 to 33 (response to the technical audit of 21 November), 35 and 36 (human rereading of both
+  years, eight fresh readers on both years). The analyses were all
   written before their own computation. The protocol declares these decisions as such.
   \item \textbf{Incidents with no effect on the data}: deviations 9 (contact address removed from the
   download header) and 10 (working scripts overwritten in a shared temporary folder, codes intact).

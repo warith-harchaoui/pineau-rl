@@ -6,8 +6,8 @@ them into the four families of threats of \textcite{shadish2002experimental}. In
 whether the measured effect really comes from the presumed cause. External validity asks to which
 populations, tasks and conditions the result extends. Construct validity asks whether the measure
 captures the notion it claims to capture. Statistical conclusion validity asks whether the tests and
-intervals license the conclusion drawn. Two sections close the chapter: the experiments still
-running, then what a new complete training run on another machine would test.
+intervals license the conclusion drawn. Two sections close the chapter: the experiments not yet
+finished, then what a new complete training run on another machine would test.
 
 \section{Internal validity}
 \label{sec:val-interne}
@@ -58,8 +58,8 @@ model: their agreement measures the stability of that model, which differs from 
 independent readers. A systematic bias of the model, shared by all its copies, escapes the double
 readings. The exact instructions, the model and the dates of every reader are published
 (\file{study/readers/}), so that another reader can redo the reading. A reader from another family
-of models, \texttt{gemma3:12b}, is rereading the 98 experimental papers of the main comparison at
-the time of writing (survey deviation 33, \cref{sec:val-en-cours}).
+of models, \texttt{gemma3:12b}, is rereading the 98 experimental papers of the main comparison
+(survey deviation 33). Its reading had not finished by 22 November 2026 (\cref{sec:val-en-cours}).
 
 \subsection{Readers and year}
 
@@ -79,12 +79,12 @@ years. On its five papers per year, it finds, for all four criteria, the same di
 years as the main readers. Five papers per year are still too few to close the question. Criterion
 X8 closes it for itself alone, since each of its six main readers read both years (deviation 32).
 
-Deviation 36 separates the year from the readers for the four verdict criteria. Eight fresh readers
-reread the 98 papers, each of them on both years. A model with a random reader effect then measures
+Deviation 36 separates the year from the readers for the four verdict criteria. Eight fresh readers,
+T1 to T8, reread the 98 papers, each of them on both years. A model with a random reader effect then measures
 the year effect for a given reader. The verdicts on Q5, Y9 and X7 hold. The one on X2, already the most
 fragile, keeps its direction without being established under the rule fixed in advance. The reader
-standard deviation is zero or indistinguishable from zero (\cref{sec:sr-annees}). Two limits remain.
-The fresh readers see the year in every PDF. They also come from the same model family as the original
+standard deviation is zero or indistinguishable from zero (\cref{sec:sr-annees}). Two limits are left.
+Readers T1 to T8 see the year in every PDF. They also come from the same model family as the original
 readers: a bias of that family that varied with the year would affect both readings alike, so the
 90\% to 100\% agreement between them does not rule it out. The reader from another family of models
 (deviation 33) and the human rereading (deviation 35) target that bias. Neither has a result yet.
@@ -94,8 +94,8 @@ readers: a bias of that family that varied with the year would affect both readi
 Several rules were fixed after results had been seen: the verdict rule of the survey
 (deviation 20), the harmonisation of the 2018 calibration (deviation 15), the descriptive ranking
 under modified physics (simulation deviation 11), the details of the GRPO bootstrap (deviation 13)
-and the reset of the GRPO failure count (deviation 10). The twenty-one deviations of 21 and 22
-November 2026 all come from a technical review made after the results. For eight simulation
+and the reset of the GRPO failure count (deviation 10). The twenty-one deviations born of the
+technical review of 21 November 2026 all come after the results. For eight simulation
 deviations, that review had already computed a draft version of the numbers
 (\cref{sec:ecarts-audit}). They are published as exploratory or corrective, next to the
 preregistered results. \Cref{chap:09-ecarts} discusses each of these decisions. The order in which
@@ -107,14 +107,14 @@ the deviations before 15 November 2026 were written rests on our word and on the
 The reconstructed ledger counts 42 stopped attempts that the protocol did not declare
 (\cref{sec:registres}). Every stop hit all the runs in progress at once, with no link to a score. For
 SAC and CrossQ, the curves of the stopped attempts were overwritten: we cannot show that the relaunch
-reproduces the same curve. The determinism of these two JAX programs remains to be established
-(deviation 32, running). The protocol announced Stable-Baselines3 2.6.0. Every training ran with
+reproduces the same curve. The determinism of these two JAX programs has yet to be established
+(deviation 32, not yet finished). The protocol announced Stable-Baselines3 2.6.0. Every training ran with
 2.9.2, the same version for all runs. These deviations favour no program. They are stated here so
 that the reader knows them.
 
 \subsection{The GRPO strand}
 
-Three defects of the GRPO strand bear on the cause of the measured effects (deviation 18 of the GRPO
+Three defects of the GRPO strand affect the cause of the measured effects (deviation 18 of the GRPO
 strand).
 \begin{itemize}
   \item \textbf{The hardware changes with the random seed.} For Qwen, the two true-reward runs that
@@ -167,7 +167,7 @@ The rerun of deviation 20 of the GRPO strand corrects all three defects (\cref{s
   \item \textbf{The trajectory without ICLR.} The years 2019 to 2024 cover only ICML and NeurIPS:
         OpenReview refuses automated downloads.
   \item \textbf{Pineau's draw.} Her 2018 sampling method is not described. Our comparisons with her
-        figures assume a draw comparable to ours and serve as context, never as a verdict.
+        figures assume a draw comparable to ours and serve as context: no verdict depends on them.
 \end{itemize}
 
 \subsection{The simulations}
@@ -176,7 +176,7 @@ The experiments are limited to the MuJoCo simulator and to four locomotion tasks
 (\task{HalfCheetah}, \task{Hopper}, \task{Walker2d}, \task{Swimmer}), those of
 \textcite{henderson2018matters}. They say nothing about image-based games, real robotics or offline
 RL. In their preregistered form, E1 and B1 are limited to one task (\task{HalfCheetah}) and two
-algorithms (PPO and TRPO). E1 redone over the sixteen (program, task) pairs extends the finding to
+programs (PPO and TRPO). E1 redone over the sixteen (program, task) pairs extends the finding to
 the four programs and the four tasks (deviation 22, \cref{sec:e1}). The four programs run with their
 default hyperparameters, except in E6: another tuning might change the rankings. The modified
 physics changes only two quantities, the masses and the friction.
@@ -186,10 +186,10 @@ physics changes only two quantities, the masses and the friction.
 PPO trains for 1{,}024{,}000 steps, SAC and CrossQ for 200{,}000 (simulation deviations 1 and 14 (d)).
 The equal-budget reading (deviation 12 (iii)) compares PPO at 200{,}000 steps, read off its
 one-million-step curve: a PPO tuned for a budget of 200{,}000 steps might do better. The budget of
-SAC and CrossQ, reduced to keep the compute within reach, places them in the \enquote{little data}
+SAC and CrossQ, reduced to stay within the available compute, places them in the \enquote{little data}
 regime. A longer budget might change their order. CrossQ's batch-renormalisation warm-up also lasts
 100{,}000 updates: the critic spends half its budget in it, the actor its whole training, as
-measured on the seed-0 model on Hopper (deviation 28, \cref{tab:hyperparametres},
+measured on the policy trained with random seed 0 on \task{Hopper} (deviation 28, \cref{tab:hyperparametres},
 \cref{sec:programmes}).
 
 \subsection{One platform}
@@ -222,8 +222,9 @@ MATH-500, with far more compute. Our strand neither replicates nor refutes their
         and 42\% of those of 2026, a gap of $+7$ points, $[-12, +25]$, which the survey does not
         detect. The rise of X2 therefore measures the spread of the error bar more than that of the
         bar computed over random seeds (\cref{sec:sr-principale}). X8 was read after the results by
-        eight fresh agents (Claude Code, model \texttt{opus}) that had read no paper of the survey.
-  \item \textbf{The performance measure (Y1)} is our weakest criterion: 60\% agreement on the first
+        eight other fresh agents, S1 to S8 (Claude Code, model \texttt{opus}), that had read no paper
+        of the survey. They are distinct from readers T1 to T8 of deviation 36.
+  \item \textbf{The performance measure (Y1)} long divided the readers: 60\% agreement on the first
         draw, before its rules were made more precise, 26 agreements out of 30 over all the double
         readings. The verdict on flaw F8 is read with this caveat.
   \item \textbf{The borderline cases of X3, X4 and X7} received no new harmonisation rule, so that
@@ -272,19 +273,19 @@ zero without passing Holm, such as Q6 or Y12, is reported but makes no verdict. 
 probability-of-improvement intervals are also given at the simultaneous 95\% level through the
 Bonferroni correction (simulation deviation 18, \cref{tab:e2-bonferroni}). E3 tests four tasks: with
 the Holm correction (deviation 23), only the difference on \task{Swimmer} at twenty random seeds
-stays settled.
+is still settled.
 
 \paragraph{The fragile verdicts} The rise of reported uncertainty (X2) no longer passes the Holm
 correction in two checks ($p = 0.07$ each time). Its observed power after correction is only 0.52
-(deviation 30 (b)). It remains the most fragile of the four changes. Code and compute pass the
+(deviation 30 (b)). This rise is the most fragile of the four changes. Code and compute pass the
 threshold in all our checks, sensitivity to a hyperparameter in nearly all of them
 (\cref{tab:robustesse}).
 
-\paragraph{The \enquote{settled} rule of the simulations} A pair is called settled when the 95\%
-interval of its probability of improvement excludes 0.5, or when the intervals of the two
-interquartile means are disjoint (\cref{sec:regle}). Deviation 26 measures its actual false-positive
-rate on two groups drawn from the same program, where no difference exists
-(\cref{tab:regle-tranche}, \cref{sec:regle}). The rule settles wrongly slightly more than once in
+\paragraph{The \enquote{settled} rule of the simulations} A pair is established, \enquote{settled} in
+the generated tables, when the 95\% interval of the probability of improvement excludes 0.5, or when the intervals of the two
+interquartile means are disjoint (\cref{sec:regle}). Deviation 26 measures the actual false-positive
+rate of this rule on two groups drawn from the same program, where no difference exists
+(\cref{tab:regle-tranche}). The rule settles wrongly slightly more than once in
 twenty at ten runs against ten, nearly once in ten at five against five. The condition on the
 interquartile means adds almost nothing. A pair settled narrowly at ten random seeds, such as PPO
 JAX against CrossQ on \task{Hopper} (\cref{sec:e7}), is read with this rate in mind.
@@ -299,8 +300,8 @@ comparisons, five random seeds recover the out-of-sample order 65 times in a hun
 (deviation 25, \file{sim/analysis/e5\_holdout.json}). The power of E3 gives the same order of
 magnitude: at ten random seeds per program, the test corrected for four tasks detects four times out
 of five only a probability of improvement of at least 0.94, 0.81 at twenty (deviation 23). On the
-tasks where the first program does not clearly beat the second, the rankings at ten random seeds are
-no more reliable than that. The twenty random seeds of deviation 12 confirm or qualify each result.
+tasks where the first program does not clearly beat the second, the rankings at ten random seeds
+offer no better guarantee than these rates. The twenty random seeds of deviation 12 confirm or qualify each result.
 \Cref{chap:06-experiences-resultats} states every divergence.
 
 \paragraph{The number of random seeds in the GRPO strand} With five random seeds, the bootstrap has
@@ -313,13 +314,15 @@ the effect is zero.
 
 \paragraph{The bootstrap intervals} The rliable intervals depend on NumPy's global generator and on
 the order of the calls. Their bounds move with the random seed of the bootstrap, at the level of Monte
-Carlo noise (simulation deviation 13): a verdict whose bound grazes the threshold stays fragile.
+Carlo noise (simulation deviation 13): a verdict whose bound grazes the threshold is fragile.
 
-\section{What is still running}
+\section{The experiments not yet finished}
 \label{sec:val-en-cours}
 
 Six experiments are written in advance and not yet finished on 22 November 2026. The report gives
-no result for any of them. Each answers a limitation of this chapter.
+no result for any of them. Each answers a limitation of this chapter. At 13:18 that day, the
+watchdog stopped the simulation queue on a memory alert: one CrossQ training run (deviation 32) and
+one run of the Zoo recipe (deviation 33 (c)) were left unfinished.
 \begin{itemize}
   \item \textbf{The determinism of SAC and CrossQ} (simulation deviation 32): three training runs
         repeated identically will tell whether these JAX programs give the same run again.

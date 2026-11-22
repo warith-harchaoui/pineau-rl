@@ -19,11 +19,12 @@ un fil d'exécution par essai. Les essais GRPO ont tourné sur le processeur gra
 \section{Les quatre environnements}
 \label{sec:d-envs}
 
-Chaque fichier est le \texttt{pip freeze} d'un environnement, pris le 15 novembre 2026, avec la
+Chaque fichier de \file{envs/} est le \texttt{pip freeze} d'un environnement, pris le 15 novembre 2026, avec la
 version de Python et la plateforme en tête. Les fichiers \file{*.lock} donnent les mêmes listes avec
 l'empreinte SHA-256 de chaque paquet, pour une installation par \texttt{pip install
--{}-require-hashes}. Les quatre fichiers \file{*.txt} reprennent les listes que citent les
-protocoles, \file{sim/requirements.lock} et ses voisins, réunies en un seul dossier.
+-{}-require-hashes}. Quatre fichiers \file{*.txt}, un par environnement, reprennent les listes que
+citent les protocoles, \file{sim/requirements.lock} et ses voisins, réunies en un seul dossier. Le
+cinquième, \file{test.txt}, ajoute les paquets des tests à l'environnement d'analyse.
 
 \begin{table}[htbp]
 \centering
@@ -109,8 +110,8 @@ git & 2.50.0 & \texttt{make verify} \\
 
 Deux outils hors de Python ont servi aux analyses des 21 et 22 novembre 2026. Le client
 \texttt{gh} 2.95.0 a lu la date de création des dépôts GitHub cités pour Q5 (écart 31 du
-sondage), une requête à la fois. Ollama 0.40.16 sert localement le lecteur \texttt{gemma3:12b} de
-l'écart 33 du sondage, dont chaque fichier de lecture note le condensé du modèle.
+sondage), une requête à la fois. Ollama 0.40.16 sert localement \texttt{gemma3:12b}, le lecteur de
+l'écart 33 du sondage. Chaque fichier de lecture de ce lecteur note le condensé du modèle.
 
 Le présent rapport se construit par \texttt{make report}, qui lance \file{report/build.sh} : les
 tableaux depuis les fichiers JSON (\file{report/tools/tables.py}), les figures

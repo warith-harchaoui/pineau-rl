@@ -44,9 +44,9 @@ seeds (the integer from which a training run draws all its randomness) and stati
 conclusions. The most famous is flaw F11: ten training runs of
 the same program, split into two groups of five, give two curves that a test declares different, with
 $t = -9.09$ and $p = 0.0016$. Chapter~\ref{chap:02-contexte} describes the sixteen flaws one by one
-(Table~\ref{tab:failles}). Pineau goes beyond the diagnosis. She proposes a reproducibility checklist,
-which NeurIPS adopted in 2019 \parencite{pineau2021improving}. She also presents the ICLR 2018
-reproducibility challenge, in which anyone could try to reproduce a submitted paper.
+(Table~\ref{tab:failles}). Pineau also proposes two remedies: the ICLR 2018
+reproducibility challenge, in which anyone could try to reproduce a submitted paper, then a
+reproducibility checklist, which NeurIPS adopted in 2019 \parencite{pineau2021improving}.
 
 \section{The three Rs: reproducible, reusable, robust}\label{sec:intro-trois-r}
 
@@ -60,11 +60,11 @@ believable and informative}. The full definition, on page~3 of that report, read
 materials and procedures}. One slide in Vancouver ties the three words into one sentence (ICLR,
 slide 16): \enquote{reusable material (software, datasets, experimental platforms) help us reproduce
 scientific methods to establish the robustness of the findings}. The other two words are shown, not
-defined. Reusability is the \enquote{reusable platforms for RL}, MuJoCo and the Arcade Learning
+defined. For reusability, Pineau shows the \enquote{reusable platforms for RL}, MuJoCo and the Arcade Learning
 Environment among them (ICLR, slide 15), the call to \enquote{commit to sharing reusable material} (ICLR,
 slide 44), then the lines of her checklist that ask for downloadable source code \enquote{including all
-dependencies} and for the simulation environment (NeurIPS, pages 31 to 33). Robustness is the pages
-titled \enquote{Robustness of policy gradient algorithms}, where the ranking of four algorithms changes
+dependencies} and for the simulation environment (NeurIPS, pages 31 to 33). For robustness, she shows
+the pages titled \enquote{Robustness of policy gradient algorithms}, where the ranking of four algorithms changes
 from \task{HalfCheetah} to \task{Hopper} and \task{Swimmer} (NeurIPS, pages 14 and 15). Then come
 implementations that diverge (pages 16 and 17), random seeds (pages 21 and 22), the move \enquote{from
 fair comparisons\textellipsis{} to robust conclusions} (page 28) and benchmarks that are \enquote{brittle to
@@ -78,9 +78,14 @@ Academies \parencite[Summary, p.~1]{nasem2019reproducibility} separates two word
 means consistent results obtained with the same input data, computational steps, methods, code and
 conditions of analysis. Replicability means consistent results across studies that answer the same
 question, each with its own data. The report by \textcite[Section~2.1, Figure~1]{pineau2021improving}
-crosses two axes, data and analysis. Same data and same analysis: the work is reproducible. New data,
-same analysis: it is replicable. Same data, another analysis, such as rewritten code: it is robust.
-Both changed: it is generalisable. In RL, training produces its own data. A new random seed produces new
+crosses two axes, data and analysis, which give four cells:
+\begin{itemize}
+  \item same data and same analysis: the work is reproducible;
+  \item new data and same analysis: it is replicable;
+  \item same data and another analysis, such as rewritten code: it is robust;
+  \item new data and another analysis: it is generalisable.
+\end{itemize}
+In RL, training produces its own data. A new random seed produces new
 data. Rerunning the same code on other random seeds is therefore replication in all three vocabularies.
 We keep Pineau's three words and state, for each, what is held fixed, what varies and what \enquote{the
 same result} means.
@@ -89,23 +94,23 @@ same result} means.
 A learning curve changes from one machine to another: on another processor, MuJoCo, JAX and PyTorch
 round differently, so the same random seed gives another curve (\cref{sec:outils}). The result that
 reproduces is a conclusion drawn from several runs by a rule written in advance. \enquote{PPO JAX beats
-PPO PyTorch on \task{Hopper}} is true or false under the established-winner rule (\cref{sec:regle}),
+PPO PyTorch on \task{Hopper}} is true or false under the settled-winner rule (\cref{sec:regle}),
 applied to the scores of ten runs. Getting the same result means getting the same verdict, by the same
 rule, from a new set of independent runs. The rule rests on a finite number of random seeds. It
 therefore sometimes declares a winner between two groups of runs of the same program: \cref{tab:regle-tranche}
 measures that rate. A single failed reproduction does not refute a conclusion, as
 \textcite[p.~4]{bollen2015robust} already said of replications: two studies that seem to disagree
 sometimes differ only by the sampling fluctuations of each. A conclusion drawn from three runs
-reproduces poorly by construction (\cref{sec:e5}).
+reproduces poorly, as experiment E5 measures (\cref{sec:e5}).
 
 \paragraph{Reproducible}
 A result is reproducible when another person, with the same code, the same hyperparameters, the same
 task in the same version, the same budget of steps and the same evaluation protocol, reaches the same
 conclusion. Only the random seeds and the machine change. Reproduction is checked at two levels. The
 first is the identical rerun: same random seed, same machine, a single computing thread. It gave back
-the same evaluation points for PPO PyTorch and PPO JAX (\cref{sec:calcul}). For SAC and CrossQ, deviation~32
-checks it (\cref{sec:graines}). This level tests the code. The second level tests the conclusion: other
-random seeds, the same verdict. The three texts quoted above call this level a replication. Experiment
+the same evaluation points for PPO PyTorch and PPO JAX (\cref{sec:calcul}). For SAC and CrossQ, the same check
+is preregistered (simulation deviation~32) and under way (\cref{sec:graines}). This level tests the code. The second level tests the conclusion: other
+random seeds, the same verdict. Bollen's report, the National Academies report and the 2021 grid call this level a replication. Experiment
 E1 measures how often two groups of random seeds of the same program pass for two algorithms
 (\cref{sec:e1}). E5 counts the random seeds needed to recover the right ranking (\cref{sec:e5}). The
 consolidation reruns E2, E3, E5, E7 and B3 on random seeds 10 to 19 (\cref{sec:consolidation}). The
@@ -121,8 +126,8 @@ material is held fixed. The user, the question, the date and the software around
 Reusability qualifies material. It serves reproduction, in the order of slide 16. Experiment E6 shows
 its limit (\cref{sec:e6}). The hyperparameters that the RL Baselines3 Zoo collection publishes for PPO
 on \task{Hopper}, reused with the libraries of 2026, give a robot that stands upright without moving
-forward. With the libraries of 2022, the same recipe gave a robot that runs. Material reused without
-its versions changes its result. Our repository therefore freezes its environments with the hash of
+forward. With the libraries of 2022, the same recipe gave a robot that runs. Reused without its
+versions, this material changed its result. Our repository therefore freezes its environments with the hash of
 every package (\cref{sec:envs}, \cref{chap:D-environnements}) and publishes the package and its file
 formats (\cref{sec:paquet}, \cref{sec:formats}) under the BSD 3-Clause licence (\cref{sec:licence}).
 The command \texttt{make verify} recomputes every analysis and compares the result files byte for byte
@@ -133,7 +138,7 @@ their versions (Y10) measure the reusable material of a paper.
 \paragraph{Robust}
 A conclusion is robust when it keeps its verdict under a change it claims not to depend on. The
 algorithm (the published idea) and the statistical rule are held fixed. One factor changes at a time.
-Our experiments change four of them: the task (E2, \cref{sec:e2}), the program that implements the same
+Our experiments test four factors, each in an experiment of its own: the task (E2, \cref{sec:e2}), the program that implements the same
 algorithm (E3, PPO written in PyTorch and in JAX, \cref{sec:e3}), the performance measure (B3,
 \cref{sec:b3}) and the physics of the evaluation world (E7 and the graded physics, \cref{sec:e7} and
 \cref{sec:dose}). The survey asks whether papers run these tests: the number of tasks behind the
@@ -152,25 +157,26 @@ which the same conclusion is compared under another task, another program or ano
 \section{The question}\label{sec:intro-question}
 
 Eight years have passed. RL has changed in size and in terrain: in 2025 and 2026, more than half of the
-RL papers in the first random draw of our survey apply what they call RL to large language models. The
-question of this report is simple: \emph{did we listen to Joelle Pineau?} For each of the sixteen
-flaws, we ask whether the papers published between 2018 and 2026 still show it. We also measure what
-the flaw costs when the experiments of 2018 are rerun with the algorithms of 2026. We take her list as
-a grid and apply it to published papers, then to our own experiments, with the same severity.
+RL papers in the first random draw of our survey apply what they call RL to large language models. This
+report asks one question: \emph{did we listen to Joelle Pineau?} For each of the sixteen flaws, we ask
+whether the papers published between 2018 and 2026 still show it, then what it costs when the
+experiments of 2018 are rerun with the algorithms of 2026. Pineau's list becomes a grid, applied with
+the same severity to published papers and to our own experiments.
 
 \section{Two instruments}\label{sec:intro-instruments}
 
 \paragraph{The survey}
 The first instrument rereads papers with Pineau's reading grid (criteria Q1 to Q8), extended by seven
 criteria drawn from her ICLR talk (X1 to X7) and by a second grid of twelve criteria for the flaws she
-left unmeasured (Y1 to Y12). We read a first draw of 50 RL papers from 2025 and 2026, out of the
-1,252 RL papers of ICLR 2026, ICML 2026 and NeurIPS 2025. We then read 50 classical RL papers from
-2026 (robotics, games, control, language models excluded), 50 papers from 2018 and 20 papers per year
-for 2019, 2020, 2022 and 2024. AI agents read the papers. Each \enquote{yes} rests on an exact
+left unmeasured (Y1 to Y12). We had AI agents read a first draw of 50 RL papers from 2025 and 2026, out
+of the 1,252 RL papers of ICLR 2026, ICML 2026 and NeurIPS 2025, then 50 classical RL papers from 2026
+(robotics, games, control, language models excluded), 50 papers from 2018 and 20 papers per year for
+2019, 2020, 2022 and 2024. These agents are programs built on a generative AI model that read each PDF
+and fill in the grid (\cref{sec:vocabulaire}). Each \enquote{yes} rests on an exact
 quotation and its page. A \enquote{no} says what was read without finding it. The verdict compares classical RL in 2026 with our own reading of 2018, using
-the same grids and agents of the same model. The agents that read 2018 are not those that read 2026
-(Section~\ref{sec:sm-annees}). Eight fresh agents therefore reread the papers of both years, each of
-them on both, to separate the effect of the year from that of the readers: three of the four verdicts hold, while the fourth keeps its direction without being established (Section~\ref{sec:sr-annees}).
+the same grids and agents of the same model. The readers of 2018 and those of 2026 were different agents
+(Section~\ref{sec:sm-annees}). Eight fresh agents therefore reread the experimental papers behind the
+verdicts, each of them reading both years, to separate the effect of the year from that of the readers: three of the four verdicts hold, while the fourth keeps its direction without being established (Section~\ref{sec:sr-annees}).
 Chapters~\ref{chap:03-sondage-methode}
 and~\ref{chap:04-sondage-resultats} describe the method and the results.
 
@@ -198,12 +204,13 @@ and~\ref{chap:07-modeles-de-langue} describe these experiments.
   versions, generalisation, sensitivity and recent statistical tools.
   \item \textbf{A trajectory.} Four years read between 2018 and 2026 show the four practices rising
   slowly, with no jump right after the 2019 checklist (Section~\ref{sec:sr-trajectoire}).
-  \item \textbf{A battery of checks.} Thirty papers reread blind, with an interval on each agreement,
-  an audit of the quotations, a keyword search against the negative decisions, the published
-  provenance of every reader, cuts by provenance, conference and reader, sensitivity analyses to the
-  readers' model and to the title filter, a comparison with the checklists filled in by the authors.
-  To these we add the smallest difference the survey could detect on each criterion and what the
-  original verdict rule would have given (Chapter~\ref{chap:03-sondage-methode}).
+  \item \textbf{A battery of checks.} Thirty papers were reread blind, with an interval on each
+  agreement. The quotations were audited. Each negative decision was set against a keyword search.
+  The provenance of every reader is published. The results are cut by provenance, by conference and
+  by reader, then tested against the readers' model, against the title filter and against the
+  checklists filled in by the authors. For each criterion, we give the smallest difference the survey
+  could detect and what the original verdict rule would have given
+  (Chapter~\ref{chap:03-sondage-methode}).
   \item \textbf{Two re-readings added after the results.} Criterion X8 asks whether the reported
   uncertainty is computed over independent random seeds, a question X2 does not ask: its share does
   not move detectably. The code link, reread on the same kind of version in both years (proceedings,
@@ -226,7 +233,7 @@ and~\ref{chap:07-modeles-de-langue} describe these experiments.
   Llama's comes with a fall in its greedy accuracy and its pass@8 (Section~\ref{sec:llm-resultats}).
   \item \textbf{A repository that checks itself.} It holds the dated protocols, the readings with their
   quotations, the training results, the analysis scripts and checks that compare every number of the
-  argued essay (\file{docs/conclusions-en.md}) and of the blog article with the result files
+  summary document (\file{docs/conclusions-en.md}) and of the blog article with the result files
   (Chapter~\ref{chap:08-logiciel}).
 \end{enumerate}
 
@@ -281,7 +288,7 @@ tasks, inventories the sixteen flaws and places the work among related work.
 Chapters~\ref{chap:03-sondage-methode} and~\ref{chap:04-sondage-resultats} give the method and the
 results of the survey. Chapters~\ref{chap:05-experiences-methode} and~\ref{chap:06-experiences-resultats}
 do the same for the MuJoCo experiments. Chapter~\ref{chap:07-modeles-de-langue} describes the GRPO
-strand. Chapter~\ref{chap:08-logiciel} describes the software, from training to documents.
+strand. Chapter~\ref{chap:08-logiciel} presents the software, from training to documents.
 Chapter~\ref{chap:09-ecarts} lists every deviation from the three protocols.
 Chapter~\ref{chap:10-limites} gathers the limitations. Chapter~\ref{chap:11-conclusion} answers the
 question, says what the measurements establish with a pointer to their chapters, then draws

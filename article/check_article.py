@@ -148,7 +148,7 @@ claim("E1 alt median", *both(lambda l: f"{'la médiane' if l == 'fr' else 'the m
 claim("E1 random 5v5", *both(lambda l: f"{'dans' if l == 'fr' else 'in'} {pct(e1['random_5v5']['false_positive'], l, 1)} {'des tirages' if l == 'fr' else 'of the draws'}"))
 claim("E1 gaps", *both(lambda l: f"{pct(e1['random_5v5']['median_gap'], l)} {'en médiane et de' if l == 'fr' else 'at the median and by'} {pct(e1['random_5v5']['p95_gap'], l)}"))
 claim("E1 sorted 31%", *both(lambda l: f"{pct(e1['extreme_5v5_of_10']['false_positive'], l)} {'de faux positifs' if l == 'fr' else 'false positives'}"))
-claim("E1 near one in three (brief)", *both(lambda l: "près d'une fois sur trois" if l == "fr" else "nearly one time in three"))
+claim("E1 near one in three (brief)", *both(lambda l: "près d'une fois sur trois" if l == "fr" else "nearly a third of the time"))
 claim("E1 draws", *both(lambda l: f"{num(10000, l)} {'tirages' if l == 'fr' else 'draws'}"))
 claim("E1 draws (verb)", *both(lambda l: f"{num(10000, l)} {'fois' if l == 'fr' else 'times'}"))
 claim("E1 top3", *both(lambda l: f"{pct(e1['top3_of_10']['inflation'], l)} : {num(e1['top3_of_10']['mean_top3'], l)} au lieu de {num(e1['top3_of_10']['mean_all'], l)}" if l == "fr"
@@ -162,7 +162,7 @@ assert cu["random_5v5"]["share_abs_mean_t_ge_9"] == cu["sorted_5v5"]["share_abs_
 claim("E1 curve none of 20000 reaches 9", "Aucun de mes 20 000 tirages n'atteint 9", "None of my 20,000 draws reaches 9")
 tr = b1["trpo"]
 claim("B1 TRPO cv", *both(lambda l: f"{pct(tr['cv'], l)} {'de sa moyenne' if l == 'fr' else 'of its mean'}"))
-claim("B1 mean t", *both(lambda l: f"{num(tr['random_5v5']['mean_t']['abs_t_p95'], l, 1)} {('qu' + Q + 'une fois sur vingt au hasard,') if l == 'fr' else 'only one time in twenty at random,'} {num(tr['sorted_5v5']['mean_t']['abs_t_p95'], l, 1)}"))
+claim("B1 mean t", *both(lambda l: f"{num(tr['random_5v5']['mean_t']['abs_t_p95'], l, 1)} {('qu' + Q + 'une fois sur vingt au hasard,') if l == 'fr' else 'in only one random draw in twenty,'} {num(tr['sorted_5v5']['mean_t']['abs_t_p95'], l, 1)}"))
 claim("B1 pooled", *both(lambda l: f"{num(tr['random_5v5']['pooled']['abs_t_p95'], l, 1)} {'au hasard et à' if l == 'fr' else 'at random and'} {num(tr['sorted_5v5']['pooled']['abs_t_p95'], l, 1)}"))
 claim("B1 pooled false positives", *both(lambda l: f"{pct(tr['random_5v5']['pooled']['false_positive'], l)} {'des tirages au hasard' if l == 'fr' else 'of the random draws'}"))
 assert all(tr[g][m]["share_abs_t_ge_henderson"] == 0 for g in ("random_5v5", "sorted_5v5") for m in ("mean_t", "pooled"))
@@ -253,7 +253,7 @@ claim("dose heavier masses", *both(lambda l: (f"Alourdies de {pct(0.2, l)}, elle
 assert nl("friction", "1.2") == max(nl("friction", s) for s in STR["friction"])  # "friction matters less, except +20%"
 assert all(nl("friction", s) <= nl("mass", s) for s in STR["friction"] if s in STR["mass"] and s != "1.2")
 claim("dose friction +20%", *both(lambda l: (f"sauf augmentés de {pct(0.2, l)} : {nl('friction', '1.2')} couples y perdent" if l == "fr" else
-                                         f"except {pct(0.2, l)} higher: {nl('friction', '1.2')} pairs lose there")))
+                                         f"except {pct(0.2, l)} higher, which costs {nl('friction', '1.2')} pairs")))
 hk = {k.split("/", 1)[1]: v["ranking"] for k, v in ds["ranking"].items() if k.startswith("Hopper-v5/")}
 assert hk["mass/1.0"][0] == "ppo_sbx"  # the leader in the training physics
 hs_ = [k for k in hk if not k.endswith("/1.0")]
@@ -314,7 +314,7 @@ e6, e6o, e6d = J("sim/analysis/e6.json"), J("sim/analysis/e6_official.json"), J(
 claim("E6 first pass", *both(lambda l: f"{num(e6['iqm']['default'], l)} {'pour les valeurs par défaut,' if l == 'fr' else 'for the default values,'} {num(e6['iqm']['zoo'], l)}"))
 claim("E6 official", *both(lambda l: f"{'obtiennent' if l == 'fr' else 'score'} {num(e6o['groups']['official v4']['iqm'], l)}, {'contre' if l == 'fr' else 'against'} {num(e6o['groups']['default v4']['iqm'], l)}"))
 # (removed from the article on 2026-11-21) claim_("E6 fixed recipe", "1 012 sur la version 5 de la tâche, 984 sur la version 4", "1,012 on version 5 of the task and 984 on version 4", "doc")
-claim("E6 discount", *both(lambda l: f"{num(0.99, l, 2)}, {'là où le recueil emploie' if l == 'fr' else 'where the collection uses'} {num(0.999, l, 3)}"), "doc")
+claim("E6 discount", *both(lambda l: f"{num(0.99, l, 2)}, {'là où le recueil emploie' if l == 'fr' else 'whereas the collection uses'} {num(0.999, l, 3)}"), "doc")
 
 # GRPO (sim/llm/results/summary.json, gains.json; docs/figures/data/grpo_truncation_*.csv).
 sm, gn = J("sim/llm/results/summary.json"), J("sim/llm/results/gains.json")
@@ -405,7 +405,7 @@ D("population 2026", "1 252 sur 17 836", "1,252 out of 17,836")
 D("first draw", "27 appliquent ce qu'ils appellent RL à de grands modèles de langue, 14 relèvent du RL classique", "27 apply what they call RL to large language models, 14 belong to classical RL")
 D("theory", "et 9 sont théoriques", "and 9 are theoretical")
 D("agreement", "127 décisions sur 130 (98 %)", "127 decisions out of 130 (98%)")
-D("Pineau 55 vs 90", "55 % d'articles qui donnent tous les réglages de leur méthode, quand Pineau en comptait 90 %", "55% of papers giving all the settings of their method, where Pineau counted 90%")
+D("Pineau 55 vs 90", "55 % d'articles qui donnent tous les réglages de leur méthode, quand Pineau en comptait 90 %", "55% of papers giving all the settings of their method, whereas Pineau counted 90%")
 D("Pineau read 50", "Pineau avait lu 50 articles", "Pineau had read 50")
 D("we reread 50 from 2018", "50 articles de 2018", "50 papers from 2018")
 D("topped up to 50", "jusqu'à 50", "up to 50")

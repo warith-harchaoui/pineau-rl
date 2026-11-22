@@ -7,7 +7,7 @@ interne demande si l'effet mesuré vient bien de la cause supposée. La validit�
 quelles populations, tâches et conditions le résultat s'étend. La validité de construit demande si
 la mesure saisit la notion qu'elle prétend saisir. La validité de la conclusion statistique demande
 si les tests et les intervalles autorisent la conclusion tirée. Deux sections finissent le chapitre :
-les expériences qui tournent encore, puis ce que testerait un nouvel entraînement complet sur une
+les expériences pas encore finies, puis ce que testerait un nouvel entraînement complet sur une
 autre machine.
 
 \section{Validité interne}
@@ -62,8 +62,8 @@ du même modèle : leur accord mesure la stabilité de ce modèle, non l'accord 
 indépendants. Un biais systématique du modèle, partagé par toutes ses copies, échappe aux doubles
 lectures. La consigne exacte, le modèle et les dates de chaque lecteur sont publiés
 (\file{study/readers/}), pour qu'un autre lecteur refasse la lecture. Un lecteur d'une autre famille
-de modèles, \texttt{gemma3:12b}, relit en ce moment les 98 articles expérimentaux de la comparaison
-principale (écart 33 du sondage, \cref{sec:val-en-cours}).
+de modèles, \texttt{gemma3:12b}, relit les 98 articles expérimentaux de la comparaison principale
+(écart 33 du sondage). Sa lecture n'était pas finie au 22 novembre 2026 (\cref{sec:val-en-cours}).
 
 \subsection{Les lecteurs et l'année}
 
@@ -82,12 +82,12 @@ verdicts, seul le second lecteur R2 a lu les deux années. Sur ses cinq articles
 pour clore la question. Le critère X8 la ferme pour lui seul, puisque chacun de ses six lecteurs
 principaux a lu les deux années (écart 32).
 
-L'écart 36 sépare l'année des lecteurs pour les quatre critères des verdicts. Huit lecteurs neufs
-relisent les 98 articles, chacun sur les deux années. Un modèle à effet aléatoire du lecteur
+L'écart 36 sépare l'année des lecteurs pour les quatre critères des verdicts. Huit lecteurs neufs,
+T1 à T8, ont relu les 98 articles, chacun sur les deux années. Un modèle à effet aléatoire du lecteur
 mesure ensuite l'effet de l'année à lecteur égal. Les verdicts de Q5, Y9 et X7 tiennent. Celui de X2, déjà le
 plus fragile, garde son sens sans être établi selon la règle fixée d'avance. L'écart type des
-lecteurs est nul ou indiscernable de zéro (\cref{sec:sr-annees}). Deux limites restent. Les lecteurs
-neufs voient l'année dans chaque PDF. Ils sont aussi de la même famille de modèles que les lecteurs
+lecteurs est nul ou indiscernable de zéro (\cref{sec:sr-annees}). Il subsiste deux limites. Les
+lecteurs T1 à T8 voient l'année dans chaque PDF. Ils sont aussi de la même famille de modèles que les lecteurs
 d'origine : un biais de cette famille qui jouerait selon l'année toucherait les deux lectures de la
 même façon. L'accord de 90~\% à 100~\% entre elles ne l'exclut donc pas. Le lecteur d'une autre famille
 de modèles (écart 33) et la relecture humaine (écart 35) visent ce biais. Ni l'un ni l'autre n'a encore
@@ -98,8 +98,8 @@ de résultat.
 Plusieurs règles ont été fixées après avoir vu des résultats : la règle de verdict du sondage
 (écart 20), l'harmonisation de la calibration de 2018 (écart 15), le classement descriptif sous
 physique modifiée (écart 11 des simulations), les détails du bootstrap GRPO (écart 13) et la remise à
-zéro du compte des échecs GRPO (écart 10). Les vingt et un écarts des 21 et 22 novembre 2026 viennent
-tous d'une relecture technique faite après les résultats. Pour huit écarts des simulations, cette
+zéro du compte des échecs GRPO (écart 10). Les vingt et un écarts nés de la relecture technique du
+21 novembre 2026 viennent tous après les résultats. Pour huit écarts des simulations, cette
 relecture avait déjà calculé une version brouillon des nombres (\cref{sec:ecarts-audit}). Ils sont
 publiés comme exploratoires ou correctifs, à côté des résultats préenregistrés. Le
 \cref{chap:09-ecarts} discute chacune de ces décisions. L'ordre d'écriture des écarts antérieurs au
@@ -111,7 +111,7 @@ Le registre reconstruit compte 42 tentatives arrêtées que le protocole ne déc
 (\cref{sec:registres}). Chaque arrêt a frappé tous les essais en cours à la fois, sans lien avec un
 score. Pour SAC et CrossQ, les courbes des tentatives arrêtées ont été écrasées : nous ne pouvons
 pas montrer que la relance retrouve la même courbe. Le déterminisme de ces deux programmes JAX
-reste à établir (écart 32, en cours). Le protocole annonçait Stable-Baselines3 2.6.0. Tous les
+reste à établir (écart 32, pas encore fini). Le protocole annonçait Stable-Baselines3 2.6.0. Tous les
 entraînements ont tourné avec la 2.9.2, la même pour tous les essais. Ces écarts ne favorisent aucun
 programme. Ils sont dits ici pour que le lecteur les connaisse.
 
@@ -145,8 +145,8 @@ La relance de l'écart 20 du volet GRPO corrige les trois défauts (\cref{sec:va
         grands modèles de langue, une famille absente en 2018. Nos verdicts valent pour le RL
         classique.
   \item \textbf{Le filtre de titre.} L'expression régulière appliquée aux titres rate les articles
-        de RL dont le titre ne le dit pas, en 2018 comme en 2026. Mesuré pour 2026 avec un plan
-        écrit d'avance (écart 24) : sur 400 articles tirés hors du filtre, 25 ont un résumé qui
+        de RL dont le titre ne le dit pas, en 2018 comme en 2026. Nous l'avons mesuré pour 2026 avec un
+        plan écrit d'avance (écart 24) : sur 400 articles tirés hors du filtre, 25 ont un résumé qui
         parle de RL, soit environ 1\,037 articles manqués (de 708 à 1\,503), 45~\% de l'ensemble.
         C'est un majorant, puisque la règle mécanique compte aussi des faux positifs. Lus avec les
         deux grilles, 20 de ces articles ressemblent au premier tirage : le code en lien dans 60~\%
@@ -171,7 +171,7 @@ La relance de l'écart 20 du volet GRPO corrige les trois défauts (\cref{sec:va
         OpenReview refuse les téléchargements automatisés.
   \item \textbf{Le tirage de Pineau.} Sa méthode de tirage de 2018 n'est pas décrite. Nos
         comparaisons avec ses chiffres supposent un tirage comparable au nôtre et servent de
-        contexte, jamais de verdict.
+        contexte : aucun verdict n'en dépend.
 \end{itemize}
 
 \subsection{Les simulations}
@@ -180,7 +180,7 @@ Les expériences se limitent au simulateur MuJoCo et à quatre tâches de locomo
 (\task{HalfCheetah}, \task{Hopper}, \task{Walker2d}, \task{Swimmer}), celles de
 \textcite{henderson2018matters}. Elles ne disent rien des jeux à images, de la robotique réelle ni
 du RL hors ligne. E1 et B1 se limitent dans leur forme préenregistrée à une seule tâche
-(\task{HalfCheetah}) et à deux algorithmes (PPO et TRPO). E1 refait sur les seize couples
+(\task{HalfCheetah}) et à deux programmes (PPO et TRPO). E1 refait sur les seize couples
 (programme, tâche) étend le constat aux quatre programmes et aux quatre tâches (écart 22,
 \cref{sec:e1}). Les quatre programmes sont pris avec leurs hyperparamètres par défaut, sauf dans E6 :
 un autre réglage pourrait changer les classements. La physique modifiée ne change que deux grandeurs,
@@ -191,10 +191,10 @@ les masses et le frottement.
 PPO s'entraîne 1\,024\,000 pas, SAC et CrossQ 200\,000 (écarts 1 et 14 (d) des simulations). La
 lecture à budget égal (écart 12 (iii)) compare PPO à 200\,000 pas, lu sur sa courbe d'un million de
 pas : un PPO réglé pour un budget de 200\,000 pas pourrait faire mieux. Le budget de SAC et de
-CrossQ, réduit pour tenir le calcul, les place dans le régime \enquote{peu de données}. Un budget
+CrossQ, réduit pour rester dans le calcul disponible, les place dans le régime \enquote{peu de données}. Un budget
 plus long pourrait changer leur ordre. L'échauffement de la renormalisation par lots de CrossQ dure
 en outre 100\,000 mises à jour : le critique y passe la moitié de son budget, l'acteur tout son
-entraînement, mesuré sur le modèle de la graine~0 sur Hopper (écart 28, \cref{tab:hyperparametres},
+entraînement, mesuré sur la politique entraînée avec la graine aléatoire 0 sur \task{Hopper} (écart 28, \cref{tab:hyperparametres},
 \cref{sec:programmes}).
 
 \subsection{Une seule plateforme}
@@ -205,7 +205,7 @@ macOS et pour arm64. Une autre machine donnerait d'autres courbes pour la même 
 
 \subsection{L'échelle du volet GRPO}
 
-Le volet GRPO reste une illustration : deux modèles de 0,5 et 1 milliard de paramètres, une tâche de
+Le volet GRPO est une illustration : deux modèles de 0,5 et 1 milliard de paramètres, une tâche de
 multiplication, 100 pas, des groupes de 8 réponses, des réponses limitées à 160 jetons, aucun terme
 KL. \textcite{shao2025spurious} travaillent sur des modèles de 7 milliards de paramètres spécialisés
 en mathématiques, sur MATH-500, avec bien plus de calcul. Notre volet ne réplique pas leur
@@ -228,9 +228,10 @@ expérience et ne la réfute pas.
         articles expérimentaux de 2018 et 42~\% de ceux de 2026, un écart de $+7$ points,
         $[-12\,;\,+25]$, que le sondage ne détecte pas. La hausse de X2 mesure donc la diffusion de la
         barre d'erreur plus que celle de la barre calculée sur des graines aléatoires
-        (\cref{sec:sr-principale}). X8 a été lu après les résultats par huit agents neufs (Claude
-        Code, modèle \texttt{opus}), qui n'avaient lu aucun article du sondage.
-  \item \textbf{La mesure de performance (Y1)} est notre critère le plus fragile : 60~\% d'accord sur
+        (\cref{sec:sr-principale}). X8 a été lu après les résultats par huit autres agents neufs,
+        S1 à S8 (Claude Code, modèle \texttt{opus}), qui n'avaient lu aucun article du sondage. Ils
+        sont distincts des lecteurs T1 à T8 de l'écart 36.
+  \item \textbf{La mesure de performance (Y1)} a longtemps divisé les lecteurs : 60~\% d'accord sur
         le premier tirage, avant que ses règles soient précisées, 26 accords sur 30 sur l'ensemble des
         doubles lectures. Le verdict de la faille F8 se lit avec cette réserve.
   \item \textbf{Les cas limites de X3, X4 et X7} n'ont reçu aucune règle d'harmonisation nouvelle,
@@ -285,15 +286,15 @@ différence sur \task{Swimmer} à vingt graines aléatoires reste établie.
 
 \paragraph{Les verdicts fragiles} La hausse de l'incertitude rapportée (X2) ne passe plus la
 correction de Holm dans deux contrôles ($p = 0{,}07$ chaque fois). Sa puissance observée après
-correction ne vaut que 0,52 (écart 30 (b)). Elle reste le plus fragile des quatre changements. Le
+correction ne vaut que 0,52 (écart 30 (b)). Cette hausse est le plus fragile des quatre changements. Le
 code et le calcul passent le seuil dans tous nos contrôles, la sensibilité à un hyperparamètre dans
 presque tous (\cref{tab:robustesse}).
 
-\paragraph{La règle \enquote{tranché} des simulations} Une paire est dite tranchée quand
-l'intervalle à 95~\% de sa probabilité d'amélioration exclut 0,5, ou quand les intervalles des deux
-moyennes interquartiles sont disjoints (\cref{sec:regle}). L'écart 26 mesure son taux réel de faux
-positifs sur deux groupes tirés du même programme, où aucune différence n'existe
-(\cref{tab:regle-tranche}, \cref{sec:regle}). La règle tranche à tort un peu plus d'une fois sur vingt à
+\paragraph{La règle \enquote{tranché} des simulations} Une paire est établie, \enquote{tranchée}
+dans les tableaux générés, quand l'intervalle à 95~\% de la probabilité d'amélioration exclut 0,5, ou quand les intervalles des deux
+moyennes interquartiles sont disjoints (\cref{sec:regle}). L'écart 26 mesure le taux réel de faux
+positifs de cette règle sur deux groupes tirés du même programme, où aucune différence n'existe
+(\cref{tab:regle-tranche}). La règle tranche à tort un peu plus d'une fois sur vingt à
 dix essais contre dix, près d'une fois sur dix à cinq contre cinq. La condition sur les moyennes
 interquartiles n'y ajoute presque rien. Une paire tranchée de justesse à dix graines
 aléatoires, comme PPO JAX contre CrossQ sur \task{Hopper} (\cref{sec:e7}), se lit avec ce taux en
@@ -310,8 +311,8 @@ retrouvent l'ordre hors échantillon 65 fois sur cent en moyenne (écart 25,
 \file{sim/analysis/e5\_holdout.json}). La puissance de E3 donne le même
 ordre de grandeur : à dix graines aléatoires par programme, le test corrigé pour quatre tâches ne
 détecte quatre fois sur cinq qu'une probabilité d'amélioration de 0,94 au moins, 0,81 à vingt
-(écart 23). Les classements à dix graines aléatoires sur les tâches où le premier ne bat pas
-nettement le deuxième ne valent pas plus. Les vingt graines aléatoires de l'écart 12 confirment ou
+(écart 23). Sur les tâches où le premier ne bat pas nettement le deuxième, les classements à dix
+graines aléatoires n'offrent pas de meilleure garantie que ces taux. Les vingt graines aléatoires de l'écart 12 confirment ou
 nuancent chaque résultat. Le \cref{chap:06-experiences-resultats} dit chaque divergence.
 
 \paragraph{Le nombre de graines aléatoires du volet GRPO} Avec cinq graines aléatoires, le bootstrap
@@ -326,13 +327,15 @@ que l'effet est nul.
 \paragraph{Les intervalles bootstrap} Les intervalles de rliable dépendent du générateur global de
 NumPy et de l'ordre des appels. Leurs bornes bougent avec la graine aléatoire du bootstrap, de
 l'ordre du bruit de Monte-Carlo (écart 13 des simulations) : un verdict dont la borne frôle le seuil
-reste fragile.
+est fragile.
 
-\section{Ce qui tourne encore}
+\section{Les expériences pas encore finies}
 \label{sec:val-en-cours}
 
 Six expériences sont écrites d'avance et pas encore finies au 22 novembre 2026. Le rapport n'en
-donne aucun résultat. Chacune répond à une limite de ce chapitre.
+donne aucun résultat. Chacune répond à une limite de ce chapitre. Ce jour-là à 13 h 18, le
+surveillant a arrêté la file des simulations sur une alerte de mémoire : un entraînement de CrossQ
+(écart 32) et un de la recette du Zoo (écart 33 (c)) sont restés inachevés.
 \begin{itemize}
   \item \textbf{Le déterminisme de SAC et de CrossQ} (écart 32 des simulations) : trois
         entraînements refaits à l'identique diront si ces programmes JAX redonnent le même essai.
@@ -352,8 +355,8 @@ donne aucun résultat. Chacune répond à une limite de ce chapitre.
 \section{Ce que testerait un nouvel entraînement sur une autre machine}
 \label{sec:reentrainer}
 
-Aucun entraînement n'a été refait sur une autre machine. Nous attendons qu'un nouvel entraînement
-complet sur un autre processeur ne redonne pas nos courbes. MuJoCo, JAX et PyTorch n'y feraient pas
+Aucun entraînement n'a été refait sur une autre machine. Nous nous attendons à ce qu'un nouvel
+entraînement complet sur un autre processeur ne redonne pas nos courbes. MuJoCo, JAX et PyTorch n'y feraient pas
 leurs arrondis dans le même ordre. Deux trajectoires qui diffèrent au dernier chiffre d'une
 observation s'écartent ensuite au fil des pas. Le volet GRPO montre qu'une même machine ne suffit pas
 toujours : sur le GPU du Mac, la même graine aléatoire a donné deux points de départ différents

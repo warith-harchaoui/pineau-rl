@@ -42,10 +42,10 @@ quatre familles : le matériel nécessaire pour refaire une expérience (code, p
 réglage des hyperparamètres et des références, les graines aléatoires et la statistique, la portée des
 conclusions. La plus célèbre est la faille F11 : dix entraînements du même programme, répartis en deux
 groupes de cinq, donnent deux courbes qu'un test déclare différentes, avec $t = -9{,}09$ et
-$p = 0{,}0016$. Le chapitre~\ref{chap:02-contexte} décrit les seize failles une à une (tableau~\ref{tab:failles}). Pineau ne s'arrête pas au
-constat. Elle propose une liste de contrôle de reproductibilité, que NeurIPS adopte en 2019
-\parencite{pineau2021improving}. Elle présente aussi le défi de reproduction d'ICLR 2018, où n'importe
-qui pouvait tenter de refaire un article soumis.
+$p = 0{,}0016$. Le chapitre~\ref{chap:02-contexte} décrit les seize failles une à une (tableau~\ref{tab:failles}). Pineau propose aussi deux
+remèdes : le défi de reproduction d'ICLR 2018, où n'importe qui pouvait tenter de refaire un article
+soumis, puis une liste de contrôle de reproductibilité, que NeurIPS adopte en 2019
+\parencite{pineau2021improving}.
 
 \section{Les trois R : reproductible, réutilisable, robuste}\label{sec:intro-trois-r}
 
@@ -59,11 +59,11 @@ définition complète, page~3 du rapport, dit \enquote{le même matériel et les
 diapositive de Vancouver relie les trois mots en une phrase (ICLR, diapositive 16) : \enquote{le matériel
 réutilisable (logiciels, jeux de données, plateformes d'expérience) nous aide à reproduire les méthodes
 scientifiques, pour établir la robustesse des résultats}. Les deux autres mots sont montrés, sans
-définition. La réutilisabilité, ce sont les \enquote{plateformes réutilisables pour le RL}, parmi
+définition. Pour la réutilisabilité, Pineau montre les \enquote{plateformes réutilisables pour le RL}, parmi
 lesquelles MuJoCo et l'Arcade Learning Environment (ICLR, diapositive 15), l'appel à \enquote{s'engager à partager
 du matériel réutilisable} (ICLR, diapositive 44), puis les lignes de sa liste de contrôle qui demandent
 le code téléchargeable \enquote{avec toutes ses dépendances} et l'environnement de simulation (NeurIPS,
-pages 31 à 33). La robustesse, ce sont les pages intitulées \enquote{robustesse des algorithmes de
+pages 31 à 33). Pour la robustesse, elle montre les pages intitulées \enquote{robustesse des algorithmes de
 gradient de politique}, où le classement de quatre algorithmes change de \task{HalfCheetah} à
 \task{Hopper} et à \task{Swimmer} (NeurIPS, pages 14 et 15). Viennent ensuite les implémentations qui
 divergent (pages 16 et 17), les graines aléatoires, ces nombres de départ dont l'ordinateur tire tout le
@@ -80,9 +80,14 @@ mots. La reproductibilité y désigne des résultats cohérents obtenus avec les
 mêmes étapes de calcul, le même code et les mêmes conditions d'analyse. La réplicabilité désigne des
 résultats cohérents entre des études qui posent la même question, chacune avec ses propres données. Le
 rapport de \textcite[section~2.1, figure~1]{pineau2021improving} croise deux axes, les données et
-l'analyse. Mêmes données et même analyse : le travail est reproductible. Nouvelles données, même
-analyse : il est réplicable. Mêmes données, autre analyse, par exemple un code réécrit : il est robuste.
-Les deux changés : il est généralisable. En RL, l'entraînement fabrique ses propres données. Une
+l'analyse. Il en tire quatre cases :
+\begin{itemize}
+  \item mêmes données et même analyse : le travail est reproductible ;
+  \item nouvelles données et même analyse : il est réplicable ;
+  \item mêmes données et autre analyse, par exemple un code réécrit : il est robuste ;
+  \item nouvelles données et autre analyse : il est généralisable.
+\end{itemize}
+En RL, l'entraînement fabrique ses propres données. Une
 nouvelle graine aléatoire en fabrique de nouvelles. Relancer le même code sur d'autres graines
 aléatoires relève donc de la réplication dans ces trois vocabulaires. Nous gardons les trois mots de
 Pineau et nous disons, pour chacun, ce qui reste fixe, ce qui change et ce que \enquote{le même résultat}
@@ -100,16 +105,16 @@ vainqueur entre deux groupes d'essais du même programme : le \cref{tab:regle-tr
 Un seul échec de reproduction ne réfute pas une conclusion, ce que \textcite[p.~4]{bollen2015robust}
 disaient déjà des réplications : deux études qui semblent se contredire ne diffèrent parfois que par
 les fluctuations de leurs échantillons. Une conclusion tirée de trois essais se
-reproduit mal par construction (\cref{sec:e5}).
+reproduit mal : l'expérience E5 le mesure (\cref{sec:e5}).
 
 \paragraph{Reproductible}
 Un résultat est reproductible quand une autre personne, avec le même code, les mêmes hyperparamètres, la
 même tâche dans la même version, le même budget de pas et le même protocole d'évaluation, retrouve la même
 conclusion. Seules les graines aléatoires et la machine changent. La reproduction se vérifie à deux
 niveaux. Le premier est la relance à l'identique : même graine aléatoire, même machine, un seul fil de calcul. Elle a redonné les mêmes points
-d'évaluation pour PPO PyTorch et PPO JAX (\cref{sec:calcul}). Pour SAC et CrossQ, l'écart~32 la vérifie
-(\cref{sec:graines}). Ce niveau éprouve le code. Le second niveau éprouve la conclusion : d'autres graines
-aléatoires, le même verdict. Les trois textes cités plus haut nomment ce niveau une réplication. L'expérience E1 mesure combien de fois deux groupes de graines aléatoires du
+d'évaluation pour PPO PyTorch et PPO JAX (\cref{sec:calcul}). Pour SAC et CrossQ, la même vérification
+est préenregistrée (écart~32 des simulations) et en cours (\cref{sec:graines}). Ce niveau éprouve le code. Le second niveau éprouve la conclusion : d'autres graines
+aléatoires, le même verdict. Le rapport de Bollen, celui des académies américaines et la grille de 2021 nomment ce niveau une réplication. L'expérience E1 mesure combien de fois deux groupes de graines aléatoires du
 même programme passent pour deux algorithmes (\cref{sec:e1}). E5 compte les graines aléatoires qu'il faut
 pour retrouver le bon classement (\cref{sec:e5}). La consolidation relance E2, E3, E5, E7 et B3 sur les
 graines aléatoires 10 à 19 (\cref{sec:consolidation}). Le sondage mesure si un article fournit ce que la
@@ -125,7 +130,7 @@ changent. La réutilisabilité
 qualifie un matériel. Elle sert la reproduction, dans l'ordre de la diapositive 16. L'expérience E6 en montre la limite (\cref{sec:e6}). Les hyperparamètres que le recueil RL
 Baselines3 Zoo publie pour PPO sur \task{Hopper}, repris avec les bibliothèques de 2026, donnent un robot
 qui tient debout sans avancer. Avec les bibliothèques de 2022, la même recette donnait un robot qui court.
-Un matériel repris sans ses versions change de résultat. Notre dépôt fige donc ses environnements avec
+Repris sans ses versions, ce matériel a changé de résultat. Notre dépôt fige donc ses environnements avec
 l'empreinte de chaque paquet (\cref{sec:envs}, \cref{chap:D-environnements}), publie le paquet et ses
 formats de fichiers (\cref{sec:paquet}, \cref{sec:formats}), sous licence BSD 3-Clause
 (\cref{sec:licence}). La commande \texttt{make verify} recalcule chaque analyse et compare les fichiers
@@ -136,7 +141,7 @@ dépendances avec leurs versions (Y10) mesurent le matériel réutilisable d'un 
 \paragraph{Robuste}
 Une conclusion est robuste quand elle garde son verdict sous un changement dont elle prétend ne pas
 dépendre. L'algorithme (l'idée publiée) et la règle statistique restent fixes. Un seul facteur
-change à la fois. Nos expériences en changent quatre : la tâche (E2, \cref{sec:e2}), le programme qui
+change à la fois. Nos expériences éprouvent quatre facteurs, chacun dans une expérience à part : la tâche (E2, \cref{sec:e2}), le programme qui
 implémente le même algorithme (E3, PPO écrit en PyTorch puis en JAX, \cref{sec:e3}), la mesure de
 performance (B3, \cref{sec:b3}) et la physique du monde d'évaluation (E7 et la physique par degrés,
 \cref{sec:e7} et \cref{sec:dose}). Le sondage demande si les articles font ces épreuves : le nombre de
@@ -156,25 +161,26 @@ laquelle on compare la même conclusion sous une autre tâche, un autre programm
 
 Huit ans ont passé. Le RL a changé de taille et de terrain : en 2025 et 2026, plus de la moitié des
 articles de RL de notre premier tirage appliquent ce qu'ils appellent RL à de grands modèles de langue.
-La question de ce rapport est simple : \emph{a-t-on écouté Joelle Pineau ?} Pour chacune des seize failles,
-nous demandons si les articles publiés entre 2018 et 2026 la montrent encore. Nous mesurons aussi ce que coûte la faille
-quand on refait les expériences de 2018 avec les algorithmes de 2026. Nous prenons sa liste comme une
-grille et nous l'appliquons aux articles publiés, puis à nos propres expériences, avec la même
-sévérité.
+Ce rapport pose une question : \emph{a-t-on écouté Joelle Pineau ?} Pour chacune des seize failles,
+nous demandons si les articles publiés entre 2018 et 2026 la montrent encore, puis ce qu'elle coûte
+quand on refait les expériences de 2018 avec les algorithmes de 2026. La liste de Pineau devient une
+grille, appliquée avec la même sévérité aux articles publiés et à nos propres expériences.
 
 \section{Deux instruments}\label{sec:intro-instruments}
 
 \paragraph{Le sondage}
 Le premier instrument relit des articles avec la grille de lecture de Pineau (critères Q1 à Q8),
 complétée par sept critères tirés de sa conférence d'ICLR (X1 à X7) et par une seconde grille de douze
-critères pour les failles qu'elle laissait sans mesure (Y1 à Y12). Nous avons lu un premier tirage de 50
-articles de RL de 2025 et 2026, parmi les \num{1252} articles de RL d'ICLR 2026, d'ICML 2026 et de NeurIPS
-2025, puis 50 articles de RL classique de 2026 (robotique, jeux, contrôle, hors modèles de langue), 50 articles de 2018 et 20 articles par année en 2019, 2020,
-2022 et 2024. Des agents IA lisent les articles. Chaque \enquote{oui} repose sur une citation
+critères pour les failles qu'elle laissait sans mesure (Y1 à Y12). Nous avons fait lire un premier tirage de
+50 articles de RL de 2025 et 2026, parmi les \num{1252} articles de RL d'ICLR 2026, d'ICML 2026 et de
+NeurIPS 2025, puis 50 articles de RL classique de 2026 (robotique, jeux, contrôle, hors modèles de
+langue), 50 articles de 2018 et 20 articles par année en 2019, 2020, 2022 et 2024. Les lecteurs sont
+des agents IA, des programmes bâtis sur un modèle d'IA générative qui lisent chaque PDF et remplissent
+la grille (\cref{sec:vocabulaire}). Chaque \enquote{oui} repose sur une citation
 exacte et sa page. Un \enquote{non} dit ce qui a été lu sans rien trouver. Le verdict compare le RL classique de 2026 à notre propre lecture de 2018, avec les
-mêmes grilles et des agents du même modèle. Les agents qui ont lu 2018 ne sont pas ceux qui ont lu
-2026 (section~\ref{sec:sm-annees}). Huit agents neufs ont donc relu les articles des deux années,
-chacun sur les deux, pour séparer l'effet de l'année de celui des lecteurs : trois des quatre verdicts
+mêmes grilles et des agents du même modèle. Les lecteurs de 2018 et ceux de 2026 étaient des agents
+différents (section~\ref{sec:sm-annees}). Huit agents neufs ont donc relu les articles expérimentaux
+des verdicts, chacun lisant les deux années, pour séparer l'effet de l'année de celui des lecteurs : trois des quatre verdicts
 tiennent, le quatrième garde son sens sans être établi (section~\ref{sec:sr-annees}). Les chapitres~\ref{chap:03-sondage-methode} et~\ref{chap:04-sondage-resultats} décrivent
 la méthode et les résultats.
 
@@ -201,12 +207,13 @@ modèles de langue entraînés avec GRPO. Les chapitres~\ref{chap:05-experiences
   les versions, la généralisation, la sensibilité et les outils statistiques récents.
   \item \textbf{Une trajectoire.} Quatre années lues entre 2018 et 2026 : les quatre pratiques montent
   lentement, sans saut juste après la liste de contrôle de 2019 (section~\ref{sec:sr-trajectoire}).
-  \item \textbf{Une batterie de contrôles.} Trente articles relus à l'aveugle, avec un intervalle sur
-  chaque accord, l'audit des citations, une recherche mécanique contre les décisions négatives, la
-  provenance publiée de chaque lecteur, des coupes par provenance, conférence et lecteur, la
-  sensibilité au modèle des lecteurs et au filtre de titre, la confrontation aux listes de contrôle
-  remplies par les auteurs. S'y ajoutent la plus petite différence que le sondage détectait pour chaque
-  critère et ce qu'aurait donné la règle de verdict d'origine (chapitre~\ref{chap:03-sondage-methode}).
+  \item \textbf{Une batterie de contrôles.} Trente articles ont été relus à l'aveugle, avec un
+  intervalle sur chaque accord. Les citations ont été auditées. Chaque décision négative a été
+  confrontée à une recherche mécanique. La provenance de chaque lecteur est publiée. Les résultats sont coupés par
+  provenance, par conférence et par lecteur, puis éprouvés contre le modèle des lecteurs, contre le
+  filtre de titre et contre les listes de contrôle remplies par les auteurs. Pour chaque critère, nous
+  donnons la plus petite différence que le sondage détectait et ce qu'aurait donné la règle de verdict
+  d'origine (chapitre~\ref{chap:03-sondage-methode}).
   \item \textbf{Deux relectures ajoutées après les résultats.} Le critère X8 demande si l'incertitude
   rapportée est calculée sur des graines aléatoires indépendantes, ce que X2 ne demande pas : sa part ne
   bouge pas de façon détectable. Le lien vers le code, relu sur la même sorte de version les deux années
@@ -229,7 +236,7 @@ modèles de langue entraînés avec GRPO. Les chapitres~\ref{chap:05-experiences
   vient de réponses plus courtes. Celui de Llama s'accompagne d'une chute de sa justesse gloutonne et de
   son pass@8 (section~\ref{sec:llm-resultats}).
   \item \textbf{Un dépôt qui se vérifie.} Les protocoles datés, les lectures avec leurs citations, les
-  résultats des entraînements, les scripts d'analyse et des contrôles qui confrontent chaque nombre du document argumenté (\file{docs/conclusions.md})
+  résultats des entraînements, les scripts d'analyse et des contrôles qui confrontent chaque nombre du document de synthèse (\file{docs/conclusions.md})
   et de l'article de blog aux fichiers de résultats (chapitre~\ref{chap:08-logiciel}).
 \end{enumerate}
 
@@ -282,7 +289,7 @@ leur lecteur.
 Le chapitre~\ref{chap:02-contexte} pose le cadre formel du RL, décrit les programmes et les tâches, dresse
 l'inventaire des seize failles et situe le travail parmi les travaux voisins. Les chapitres~\ref{chap:03-sondage-methode} et~\ref{chap:04-sondage-resultats} donnent la méthode et les résultats du
 sondage. Les chapitres~\ref{chap:05-experiences-methode} et~\ref{chap:06-experiences-resultats} font de même pour les
-expériences sur MuJoCo. Le chapitre~\ref{chap:07-modeles-de-langue} décrit le volet GRPO. Le chapitre~\ref{chap:08-logiciel} décrit le logiciel, de l'entraînement aux documents. Le chapitre~\ref{chap:09-ecarts}
+expériences sur MuJoCo. Le chapitre~\ref{chap:07-modeles-de-langue} décrit le volet GRPO. Le chapitre~\ref{chap:08-logiciel} présente le logiciel, de l'entraînement aux documents. Le chapitre~\ref{chap:09-ecarts}
 liste tous les écarts aux trois protocoles. Le chapitre~\ref{chap:10-limites} rassemble les limites. Le chapitre~\ref{chap:11-conclusion} répond à la question, dit ce que les mesures établissent en renvoyant à leurs chapitres et en tire des recommandations. Le verdict faille par faille se lit à la section~\ref{sec:sr-failles}. Les annexes donnent les règles
 complètes de la grille (annexe~\ref{chap:A-grille}), des tableaux supplémentaires (annexe~\ref{chap:B-tableaux}),
 la liste des articles lus (annexe~\ref{chap:C-articles}) et les environnements logiciels

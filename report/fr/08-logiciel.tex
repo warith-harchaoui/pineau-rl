@@ -148,7 +148,7 @@ survienne après la graine aléatoire.
 
 Ce module définit le format d'un essai de simulation (\cref{sec:formats}) et ses lecteurs.
 \texttt{run\_path(root, algo, task, seed)} donne le chemin d'un essai. \texttt{read\_run(path,
-final\_step=None, upto=None)} lit un fichier et le vérifie : colonnes requises présentes, pas
+final\_step=None, upto=None)} lit un fichier et le vérifie : colonnes requises présentes, numéros de pas
 strictement croissants. Elle rend \texttt{None} pour un fichier absent ou un essai inachevé. L'argument
 \texttt{upto} coupe la courbe à un budget plus petit, ce qui sert au budget égal.
 \texttt{write\_run(path, rows)} écrit le format depuis n'importe quelle bibliothèque.
@@ -171,7 +171,7 @@ contrôle un fichier de lecture (\cref{sec:formats}).
 \subsection{\texttt{pineau\_rl.fmt}}
 
 Ce module écrit les nombres comme les textes les écrivent. \texttt{half\_up(x, nd)} arrondit la
-moitié vers l'extérieur, comme un lecteur ($1{,}15 \to 1{,}2$), alors que la fonction
+moitié vers l'extérieur, comme on l'apprend à l'école ($1{,}15 \to 1{,}2$), alors que la fonction
 \texttt{round} de Python arrondit au pair. Le flottant passe par sa représentation la plus courte,
 pour que 1,15 reste 1,15. \texttt{pct}, \texttt{num}, \texttt{ci} et \texttt{pts} produisent une
 part en pourcentage, un entier avec séparateur de milliers, un intervalle en points entiers et les
@@ -220,9 +220,14 @@ de lecture, vide quand il est valide. Il vérifie le schéma : chaque critère p
 \texttt{yes}, \texttt{no} ou \texttt{na}, des entiers ou \texttt{null} pour X1, X6 et Y3, une famille
 X5 parmi \texttt{llm}, \texttt{classic} et \texttt{theory}, un champ \texttt{kind} quand Y11 vaut oui,
 une citation pour chaque critère. Il vérifie les règles de portée des écarts 3 et 14 du protocole :
-Q1 non impose \texttt{na} partout ; Y2 et Y11 valent \texttt{na} si et seulement si X2 vaut non ; Y4
-vaut \texttt{na} quand Y3 vaut 1 ; Y5 vaut \texttt{na} si et seulement si Q4 vaut \texttt{na}. Avec
-une fonction de recherche dans le texte du PDF, il vérifie enfin que chaque citation s'y trouve. La
+\begin{itemize}
+  \item Q1 non impose \texttt{na} partout ;
+  \item Y2 et Y11 valent \texttt{na} si et seulement si X2 vaut non ;
+  \item Y4 vaut \texttt{na} quand Y3 vaut 1 ;
+  \item Y5 vaut \texttt{na} si et seulement si Q4 vaut \texttt{na}.
+\end{itemize}
+Avec une fonction de recherche dans le texte du PDF, le validateur vérifie enfin que chaque citation
+s'y trouve. La
 fonction \texttt{segments} retire d'abord les notes du lecteur entre crochets, coupe une citation
 cousue par \enquote{[...]} en morceaux et ignore les morceaux de moins de douze lettres. Le script
 \file{study/check\_codes.py} applique ce contrôle avec les PDF. La fiche du lecteur lui demande de
@@ -240,8 +245,8 @@ langue l'écrit (\texttt{pineau\_rl.fmt}), puis cherche la chaîne obtenue dans 
 retours à la ligne normalisés. Quelques comptes du sondage que les scripts d'analyse n'écrivent
 pas sont recomptés depuis les lectures, avec les mêmes règles. Des assertions protègent les faits
 qualitatifs, par exemple le nom de la tâche où le programme en tête change sous physique modifiée. Le script
-vérifie 188 affirmations dans les deux langues et s'arrête au premier nombre manquant, si bien que
-\file{docs/build.sh} ne compile pas un document dont un chiffre a dérivé.
+vérifie 188 affirmations dans les deux langues et s'arrête au premier nombre manquant :
+\file{docs/build.sh} ne compile donc pas un document dont un chiffre a dérivé.
 
 \begin{lstlisting}[language=Python,caption={Une affirmation de \file{docs/check\_numbers.py} : la chaîne attendue est construite depuis les données, jamais tapée.},captionpos=b]
 add("agreement",
@@ -280,10 +285,10 @@ Aucune cible n'entraîne quoi que ce soit. L'entraînement passe par \file{sim/r
         \file{e6\_enjoy.py} et \file{e6\_hub.py}, demandent l'environnement du Zoo et les politiques :
         aucune cible ne les relance, comme \file{e6\_official\_eval.json}.
   \item[\texttt{make hyperparams}] relit les réglages des cinq programmes dans les bibliothèques de
-        l'environnement d'entraînement et écrit \file{sim/analysis/hyperparams.json} (écart~28). Elle
+        l'environnement d'entraînement et écrit \file{sim/analysis/hyperparams.json} (écart~28). Cette cible
         reste hors de \texttt{verify}, qui tourne dans l'environnement d'analyse.
-  \item[\texttt{make analysis-suite}] lance les trois analyses écrites d'avance pour les expériences qui
-        tournent encore (écarts 32 à 34). Leurs fichiers JSON n'entrent dans la vérification qu'une fois
+  \item[\texttt{make analysis-suite}] lance les trois analyses écrites d'avance pour les expériences pas
+        encore finies (écarts 32 à 34). Leurs fichiers JSON n'entrent dans la vérification qu'une fois
         leurs entraînements finis.
   \item[\texttt{make check}] lance les deux scripts de vérification de la \cref{sec:verification}.
   \item[\texttt{make test}] lance les tests unitaires avec pytest.
@@ -324,8 +329,8 @@ les analyses, vérifie les nombres des textes et compare chaque fichier de résu
         comparaison accepte un écart relatif de $10^{-12}$ sur les flottants. Elle exige l'égalité
         des comptes, des verdicts, des classements et de toutes les chaînes. Les valeurs $p$ bougent à leur
         quinzième ou seizième chiffre avec la bibliothèque mathématique.
-  \item Sur macOS 15 (arm64), la famille de machines dont viennent les résultats, la comparaison
-        exige l'égalité exacte.
+  \item Sur macOS 15 (arm64), système de la famille de machines dont viennent les résultats (un Mac
+        sous macOS 27.2, \cref{sec:log-calcul}), la comparaison exige l'égalité exacte.
 \end{itemize}
 Une troisième tâche construit l'image du \file{Dockerfile} et y lance les tests et la vérification
 des nombres. L'image part de \texttt{python:3.11-slim}, fixée par empreinte, installe le même
@@ -351,11 +356,11 @@ change.
         entre score et issue ; le kappa de Cohen et sa liste de catégories ; la probabilité
         d'amélioration.
   \item[\file{test\_bootstrap.py}] la moyenne interquartile ; les intervalles de rliable, identiques
-        sous une graine aléatoire globale fixée et dépendants de cette seule graine ; la probabilité
+        sous une graine aléatoire globale fixée et dépendants de cette seule graine aléatoire ; la probabilité
         d'amélioration bootstrap, qui n'emploie que son propre générateur.
   \item[\file{test\_henderson.py}] les trois lectures de la statistique de Henderson contre SciPy ;
         la valeur $p$ du $t$ moyen avec les degrés de liberté de Welch moyens ; le calcul du script,
-        qui ignore la dispersion entre graines aléatoires : sur six graines fabriquées, il atteint un $t$ de 9
+        qui ignore la dispersion entre graines aléatoires : sur six graines aléatoires fabriquées, il atteint un $t$ de 9
         là où un test sur les graines aléatoires ne voit rien.
   \item[\file{test\_runs.py}] le format d'un essai : écriture puis lecture, essais absents ou
         inachevés rendus \texttt{None}, fichiers mal formés qui lèvent une erreur, scores finaux et
@@ -396,8 +401,9 @@ empreinte SHA-256 dans un fichier \file{SHA256SUMS}. Le script \file{sim/fetch\_
 télécharge chaque archive, vérifie son empreinte, la décompresse sous \file{models/}, puis vérifie
 chaque fichier de politique contre \file{sim/models/MANIFEST.sha256}, les empreintes prises le
 15 novembre 2026 sur la machine qui les a entraînées. Les téléchargements se suivent un par un,
-séparés par une pause aléatoire de 1,5 à 4 secondes. Une requête refusée attend selon un recul
-exponentiel à gigue complète, cinq tentatives au plus.
+séparés par une pause aléatoire de 1,5 à 4 secondes. Une requête refusée est reprise après une
+attente tirée au hasard entre zéro et un plafond qui double à chaque échec (recul exponentiel à gigue
+complète), cinq tentatives au plus.
 
 \begin{lstlisting}[language=bash,caption={Récupérer et vérifier les politiques de SAC et de CrossQ.},captionpos=b]
 cd sim && python3 fetch_models.py          # télécharger, décompresser, tout vérifier
@@ -409,10 +415,11 @@ cd sim && python3 fetch_models.py --check  # vérifier seulement les politiques 
 
 Tous les essais ont tourné sur un seul ordinateur portable, un Mac à puce Apple M2 Max sous macOS
 27.2 (arm64), partagé avec d'autres projets. Chaque entraînement de simulation tourne sur un seul
-fil d'exécution. Le nombre de tâches en parallèle a changé au fil du projet, sans effet sur les
-résultats puisque chaque essai est déterminé par sa graine aléatoire : quatre cœurs au départ, jusqu'à huit
-accordés chaque heure selon la charge de la machine (écart 15 des simulations), puis deux cœurs pour
-tout le projet à partir du 19 novembre 2026 (écart 19). La \cref{sec:calcul} décrit les lanceurs,
+fil d'exécution. Le nombre de tâches en parallèle a changé au fil du projet : quatre cœurs au départ,
+jusqu'à huit accordés chaque heure selon la charge de la machine (écart 15 des simulations), puis
+deux cœurs pour tout le projet à partir du 19 novembre 2026 (écart 19). Ce partage ne touche pas les
+résultats tant qu'un essai ne dépend que de sa graine aléatoire : les relances le vérifient pour PPO,
+l'écart 32 le teste encore pour SAC et CrossQ (\cref{sec:registres}). La \cref{sec:calcul} décrit les lanceurs,
 le surveillant et la file d'attente. Le \cref{tab:calcul} donne, par programme et par tâche, le
 nombre d'essais, le nombre de pas, la durée médiane d'un essai et les heures de cœur consommées.
 
@@ -420,7 +427,7 @@ Les essais GRPO ont des durées très différentes selon l'appareil. D'après le
 leurs journaux au pas 100, un essai Qwen a pris de 42 à 52 minutes sur GPU et de 4,3 à 11,4 heures
 sur CPU, un essai Llama de 69 à 148 minutes sur GPU. Ces écarts reflètent aussi la charge variable
 de la machine. La relance de l'écart~20 prévoit, d'après ces journaux, environ 58 heures de GPU pour ses
-quarante essais, faits la nuit.
+quarante essais, à lancer la nuit.
 
 \section{Ce qui n'est pas dans le dépôt}
 \label{sec:absent}

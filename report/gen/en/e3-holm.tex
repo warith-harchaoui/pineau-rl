@@ -7,7 +7,7 @@
 \label{tab:e3-holm}
 \begin{tabular}{@{}lrrrrrr@{}}
 \toprule
-Task & \makecell[r]{IQM\\{}PyTorch} & \makecell[r]{IQM\\{}JAX} & \makecell[r]{$P(\text{JAX} > \text{PyTorch})$\\{}[98.75\% CI]} & \makecell[r]{Gap JAX $-$ PyTorch\\{}(Hodges-Lehmann) [95\% CI]} & \makecell[r]{Mann-\\{}Whitney $p$} & Holm $p$ \\
+Task & \makecell[r]{IQM\\{}PyTorch} & \makecell[r]{IQM\\{}JAX} & \makecell[r]{$P(\text{JAX} > \text{PyTorch})$\\{}[98.75\% CI]} & \makecell[r]{Difference JAX $-$ PyTorch\\{}(Hodges-Lehmann) [95\% CI]} & \makecell[r]{Mann-\\{}Whitney $p$} & Holm $p$ \\
 \midrule
 \multicolumn{7}{@{}l}{\emph{10 seeds (0 to 9)}} \\
 \quad HalfCheetah & 1,407 & 1,254 & 0.36 [0.06,\,0.68] & −144 [−321,\,+130] & 0.31 & 0.72 \\

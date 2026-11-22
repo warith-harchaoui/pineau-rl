@@ -1,11 +1,13 @@
 \chapter{Contexte : l'apprentissage par renforcement et les seize failles}\label{chap:02-contexte}
 
-Ce chapitre pose les notions dont dépend la suite du rapport. La section~\ref{sec:cadre} donne le cadre
-formel de l'apprentissage par renforcement. La section~\ref{sec:ctx-programmes} décrit les quatre programmes de
-nos expériences et l'algorithme TRPO, la section~\ref{sec:ctx-taches} les tâches simulées. Les sections~\ref{sec:ctx-graines} et~\ref{sec:ctx-evaluation} précisent ce qu'une graine aléatoire fixe et comment on évalue un
-agent. La section~\ref{sec:failles} dresse l'inventaire des seize failles que Joelle Pineau a montrées en
-2018. La section~\ref{sec:voisins} situe notre travail parmi les travaux voisins. La section~\ref{sec:vocabulaire}
-fixe le vocabulaire employé pour les modèles de langue.
+Ce chapitre pose les notions dont dépend la suite du rapport : le cadre formel de l'apprentissage par
+renforcement (section~\ref{sec:cadre}), les quatre programmes de nos expériences et l'algorithme TRPO
+(section~\ref{sec:ctx-programmes}), les tâches simulées (section~\ref{sec:ctx-taches}), ce qu'une
+graine aléatoire fixe et comment on évalue un agent (sections~\ref{sec:ctx-graines}
+et~\ref{sec:ctx-evaluation}). Il dresse ensuite l'inventaire des seize failles que Joelle Pineau a
+montrées en 2018 (section~\ref{sec:failles}), situe notre travail parmi les travaux voisins
+(section~\ref{sec:voisins}) et fixe le vocabulaire employé pour les modèles de langue
+(section~\ref{sec:vocabulaire}).
 
 \section{Le cadre formel}\label{sec:cadre}
 
@@ -120,8 +122,9 @@ normalisation voie les deux distributions. Ses auteurs annoncent une efficacité
 égale à celle de méthodes beaucoup plus coûteuses en calcul. Le programme \algo{CrossQ} de nos
 expériences est celui de sbx. Il emploie une renormalisation par lots (\emph{batch renormalization}, \cite{ioffe2017batchrenorm}),
 dans l'acteur comme dans le critique, avec un élan de 0,99. Pendant les \num{100000} premières mises à jour
-de chaque réseau, la renormalisation se comporte comme une normalisation par lots ordinaire. Le critique y
-passe la moitié de notre budget. L'acteur, mis à jour une fois sur trois, n'en sort jamais
+de chaque réseau, la renormalisation se comporte comme une normalisation par lots ordinaire. Rapporté à
+notre budget de pas, ce seuil laisse le critique dans ce régime pendant la première moitié de
+l'entraînement. L'acteur, mis à jour une fois sur trois, n'atteint jamais le seuil
 (section~\ref{sec:programmes}). Son optimiseur
 Adam prend $\beta_1 = 0{,}5$ au lieu de 0,9 (\file{sbx/crossq/policies.py}). Le tableau~\ref{tab:hyperparametres}
 donne ses autres réglages.
@@ -184,9 +187,12 @@ complet avec une graine aléatoire donnée.
 Même programme, même graine aléatoire, mêmes versions des bibliothèques et même machine : le protocole
 attend le même résultat. Nos journaux le vérifient pour \algo{PPO PyTorch} et \algo{PPO JAX} : un essai
 arrêté puis relancé retrouve à l'identique ses points d'évaluation (\file{sim/SIM\_PROTOCOL.md},
-écart~12~(e)). Pour \algo{SAC} et \algo{CrossQ}, la même vérification est préenregistrée (écart~32 du même
+écart~14~(e)). Pour \algo{SAC} et \algo{CrossQ}, la même vérification est préenregistrée (écart~32 du même
 protocole) et en cours.
-Changer la graine aléatoire change tous ces tirages. Le score final d'un même programme varie alors
+
+\paragraph{Ce qui change}
+Changer la graine aléatoire change l'initialisation des poids, l'exploration, l'ordre des mini-lots et
+les états initiaux. Le score final d'un même programme varie alors
 beaucoup. Sur nos trente essais de \algo{PPO PyTorch} sur \task{HalfCheetah}, l'écart type vaut 34~\% de
 la moyenne (chapitre~\ref{chap:06-experiences-resultats}).
 
@@ -204,17 +210,17 @@ raison, si les articles calculent leur incertitude sur des essais indépendants
 
 \paragraph{Le score d'un essai}
 Évaluer un agent revient à jouer des épisodes avec sa politique, sans apprentissage, puis à faire la
-moyenne de leurs retours. Trois choix restent à faire. La faille F8 est l'article qui ne les dit pas.
+moyenne de leurs retours. Trois choix restent à faire. Un article qui ne les dit pas montre la faille F8.
 \begin{itemize}
   \item Le point de mesure : le score à la fin de l'entraînement, le meilleur score atteint le long de
   la courbe, ou la moyenne de la courbe, qui approche l'aire sous la courbe divisée par sa longueur.
   \item Le mode de la politique : stochastique comme à l'entraînement, ou déterministe (l'action la
   plus probable).
   \item L'environnement : celui de l'entraînement, ou des conditions tenues à part, comme d'autres
-  graines d'environnement ou une physique modifiée (faille F15).
+  graines aléatoires d'environnement ou une physique modifiée (faille F15).
 \end{itemize}
 Nos programmes sont évalués tous les \num{50000} pas sur 10 épisodes, en mode déterministe, avec des
-graines d'environnement $\num{10000} + i$, où $i$ numérote les épisodes d'évaluation, qui ne servent
+graines aléatoires d'environnement $\num{10000} + i$, où $i$ numérote les épisodes d'évaluation, qui ne servent
 jamais à l'entraînement (chapitre~\ref{chap:05-experiences-methode}).
 
 \paragraph{Agréger les essais}
@@ -233,14 +239,15 @@ tâche, on recalcule l'IQM, puis on prend les quantiles à 2,5~\% et 97,5~\% des
 
 \paragraph{Comparer deux programmes}
 La probabilité d'amélioration de $X$ sur $Y$ est la probabilité qu'un essai de $X$ batte un essai de
-$Y$ tiré indépendamment :
+$Y$ tiré indépendamment. Avec $n_X$ essais de $X$ et $n_Y$ essais de $Y$, on l'estime par
 \begin{equation}
   P(X > Y) = \frac{1}{n_X n_Y} \sum_{i=1}^{n_X} \sum_{j=1}^{n_Y} \Bigl( \mathbb{1}[x_i > y_j] + \tfrac{1}{2}\, \mathbb{1}[x_i = y_j] \Bigr).
 \end{equation}
-Cette probabilité vaut la statistique $U$ de Mann-Whitney divisée par $n_X n_Y$. La valeur 0,5 signale deux
-programmes indiscernables. Nos expériences déclarent un écart établi quand l'intervalle bootstrap à
-95~\% de $P(X > Y)$ exclut 0,5, ou quand les intervalles des deux IQM ne se chevauchent pas. Sur des
-groupes d'essais d'un même programme, où aucun écart n'existe, cette règle conclut à tort un peu plus
+Cette estimation vaut la statistique $U$ de Mann-Whitney divisée par $n_X n_Y$. À 0,5, un essai de $X$
+bat un essai de $Y$ une fois sur deux. Nos expériences déclarent un écart établi quand l'intervalle
+bootstrap à 95~\% de $P(X > Y)$ exclut 0,5, ou quand les intervalles des deux IQM ne se chevauchent
+pas : c'est la règle du vainqueur établi. Sur des groupes d'essais d'un même programme, où aucun écart
+n'existe, elle conclut à tort un peu plus
 d'une fois sur vingt avec dix essais par groupe, près d'une fois sur dix avec cinq
 (section~\ref{sec:regle}). Le test $t$ de Welch \parencite{welch1947generalization}, qui compare deux
 moyennes sans supposer les variances égales, sert seulement dans les expériences E1 et B1, puisque
@@ -362,7 +369,7 @@ la moyenne publiée dépasse ce que la méthode donne en moyenne. La dispersion 
 qu'elle n'est. Pineau l'illustre par dix courbes dont elle garde les trois meilleures.
 
 \paragraph{F11, même code, autre graine aléatoire}
-Henderson et ses coauteurs entraînent dix fois TRPO sur \task{HalfCheetah} en changeant seulement la
+L'équipe de Henderson entraîne dix fois TRPO sur \task{HalfCheetah} en changeant seulement la
 graine aléatoire, forment deux groupes de cinq et tracent les deux courbes moyennes. Elles sont
 nettement séparées. Un test les déclare différentes ($t = -9{,}09$, $p = 0{,}0016$). Pineau précise
 sur scène que les groupes ne sont pas triés. Les chapitres~\ref{chap:05-experiences-methode} et~\ref{chap:06-experiences-resultats}
@@ -370,13 +377,13 @@ reviennent longuement sur ce chiffre (expériences E1 et B1).
 
 \paragraph{F12, aucun test statistique}
 Quand deux méthodes diffèrent de quelques points, un test ou un intervalle dit si l'écart dépasse ce
-que le hasard des graines produit seul. Seuls 5~\% des articles de 2018 appliquent un test à leurs
-comparaisons.
+que le hasard des graines aléatoires produit seul. Dans la lecture de Pineau, 5~\% des articles de
+2018 appliquent un test à leurs comparaisons.
 
 \subsection{La portée des conclusions}
 
 \paragraph{F13, le meilleur algorithme qui change avec la tâche}
-Henderson et ses coauteurs classent quatre algorithmes sur quatre tâches. L'algorithme en tête sur
+L'article de Henderson classe quatre algorithmes sur quatre tâches. L'algorithme en tête sur
 \task{HalfCheetah} cesse de l'être sur \task{Hopper} ou \task{Swimmer}. Une conclusion générale tirée
 d'une ou deux tâches généralise un cas particulier.
 
@@ -390,8 +397,8 @@ En apprentissage supervisé, on évalue sur des données jamais vues. En RL, l'a
 le monde même de son entraînement. Pineau projette une phrase qu'elle met en débat, selon laquelle le
 RL serait le seul cas de l'apprentissage automatique où tester sur son ensemble d'entraînement est
 acceptable. Elle propose de séparer les graines aléatoires d'entraînement et de test, puis les tâches
-\parencite{zhang2018dissection,zhang2018natural}. Seuls 10~\% des articles de 2018 évaluent sur des
-conditions tenues à part.
+\parencite{zhang2018dissection,zhang2018natural}. Pineau ne trouve que 10~\% d'articles de 2018 qui
+évaluent sur des conditions tenues à part.
 
 \paragraph{F16, des bancs d'essai trop simples}
 Un agent assez gros retient la bonne suite d'actions d'un banc d'essai déterministe sans rien
@@ -404,15 +411,15 @@ Aux seize failles, Pineau oppose d'abord une liste de contrôle de reproductibil
 le code et ses dépendances. Pour chaque résultat théorique : l'énoncé, les hypothèses, la preuve. Pour
 chaque figure : la collecte des données, la répartition entre entraînement, validation et test, les
 données exclues, la plage et la méthode de choix des hyperparamètres, le nombre exact d'essais, la
-définition des statistiques et des barres d'erreur, le matériel employé. Elle présente aussi le défi de
-reproduction d'ICLR 2018 (diapositives 37 à 43 à ICLR), où n'importe qui pouvait tenter de refaire un
-article soumis. NeurIPS a adopté la liste en 2019 \parencite{pineau2021improving}.
+définition des statistiques et des barres d'erreur, le matériel employé. Pineau y ajoute le défi de
+reproduction d'ICLR 2018 (diapositives 37 à 43 à ICLR), présenté au chapitre~\ref{chap:01-introduction}.
+NeurIPS a adopté la liste en 2019 \parencite{pineau2021improving}.
 
 \section{Travaux voisins}\label{sec:voisins}
 
 Le 9 novembre 2026, nous avons cherché sur arXiv, sur OpenReview et dans les actes des congrès. À notre
 connaissance, aucun travail ne réapplique la grille de Pineau à des articles de RL récents en la
-calibrant sur 2018. Aucun ne refait le protocole de Henderson et ses coauteurs avec les algorithmes de
+calibrant sur 2018. Aucun ne refait le protocole de Henderson avec les algorithmes de
 2026 sous un protocole écrit d'avance. Les travaux voisins se rangent en cinq groupes.
 
 \paragraph{L'expérience de 2018}
@@ -420,7 +427,7 @@ calibrant sur 2018. Aucun ne refait le protocole de Henderson et ses coauteurs a
 hyperparamètres, aux implémentations, aux graines aléatoires, aux tâches. \textcite{islam2017reproducibility}
 les précèdent sur les mêmes tâches. \textcite{lynnerup2020survey} refont des algorithmes sur un vrai
 bras robotique. \textcite{bjorck2022variance} montrent, pour le contrôle à partir d'images, qu'une part
-de la variance entre graines vient d'essais qui échouent tôt par instabilité numérique.
+de la variance entre graines aléatoires vient d'essais qui échouent tôt par instabilité numérique.
 
 \paragraph{La méthode statistique}
 \textcite{colas2018seeds} font une analyse de puissance du nombre de graines aléatoires. \textcite{jordan2020evaluating}
@@ -443,7 +450,7 @@ l'effet de la liste de contrôle des congrès de traitement automatique des lang
 méthodes, des données et des expériences. \textcite{coakley2026shift} suivent \num{56800} articles de cinq
 congrès d'intelligence artificielle de 2014 à 2024 : la part qui partage code et données passe de 11~\% à 64~\%. La hausse commence avant les listes de contrôle. En RL, l'audit le plus proche est celui de
 \textcite{gorsane2022marl} : 75 articles de RL coopératif à plusieurs agents, de 2016 à 2022, dont
-environ un tiers ne quantifie aucune incertitude. Aucun de ces audits ne vise le RL à un seul agent ni
+environ un tiers ne quantifie aucune incertitude. Ces audits laissent de côté le RL à un seul agent et
 la grille de 2018.
 
 \paragraph{Les modèles de langue}
@@ -459,7 +466,7 @@ renverse un classement selon $k$, un exemple de la faille F8.
 
 Le vocabulaire du RL a gagné les modèles d'IA générative qui écrivent du texte. On emprunte au RL
 certains de ses algorithmes, avec une ressemblance vague, pour affiner les réponses d'un modèle de
-langue préentraîné, sans agent qui agit dans un monde. Ce rapport fixe ses mots comme suit.
+langue préentraîné, sans agent qui agit dans un monde. Nous fixons nos mots comme suit.
 
 \begin{itemize}
   \item \textbf{RL classique.} Le RL au sens de la section~\ref{sec:cadre} : un agent, souvent entraîné de
@@ -473,8 +480,8 @@ langue préentraîné, sans agent qui agit dans un monde. Ce rapport fixe ses mo
   \item \textbf{RLHF.} L'apprentissage à partir de retours humains (\emph{reinforcement learning from
   human feedback}) \parencite{christiano2017deep,ouyang2022instructgpt}. Des annotateurs classent des
   réponses, un modèle de récompense apprend leurs préférences, puis le modèle de langue est affiné pour
-  maximiser ce score. Le sigle contient les lettres RL. Ce rapport ne range pas pour autant RLHF dans
-  le RL : la politique optimisée produit un texte en réponse à une invite, puis reçoit une seule note,
+  maximiser ce score. Le sigle contient les lettres RL. Nous ne rangeons pas pour autant RLHF dans
+  le RL classique : la politique optimisée produit un texte en réponse à une invite, puis reçoit une seule note,
   sans environnement dont l'état évolue sous ses actions.
   \item \textbf{RLVR et GRPO.} Le RLVR (\emph{reinforcement learning with verifiable rewards}) remplace
   le modèle de récompense par un programme qui vérifie la réponse : la réponse finale d'un problème de
@@ -487,5 +494,5 @@ langue préentraîné, sans agent qui agit dans un monde. Ce rapport fixe ses mo
 
 Les grands modèles de langue sont, dans ce rapport, des modèles d'IA générative. Les lecteurs de notre
 sondage sont des agents bâtis sur un tel modèle (chapitre~\ref{chap:03-sondage-methode}). Le mot \enquote{agent}
-désigne alors un programme qui lit un PDF et remplit une grille, pas l'agent d'un processus de décision
+désigne alors un logiciel qui lit un PDF et remplit une grille, pas l'agent d'un processus de décision
 markovien.
