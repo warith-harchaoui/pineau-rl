@@ -229,6 +229,48 @@ and~\ref{chap:07-modeles-de-langue} describe these experiments.
   (Chapter~\ref{chap:08-logiciel}).
 \end{enumerate}
 
+\section{Genesis}\label{sec:intro-genese}
+% Every date below comes from a trace listed in .private/genese-traces.md (file and line, or commit and date).
+
+\paragraph{The reflection}
+% TRACE MANQUANTE: the years of reflection before November 2026 (no dated note, email or post).
+% TRACE MANQUANTE: which of Pineau's talks the author followed and when (first viewing of the ICLR 2018 video,
+% attendance or not at NeurIPS 2018 in Montréal).
+On 8 November 2026, the author asked the coding agent that would coordinate the work for a project on
+Joelle Pineau. In that message he calls the ICLR 2018 talk ``this video I love [\dots] even though it is
+dated''. He also writes: ``I never took up RL because I had suspicions about RL and Joelle Pineau more
+than confirmed them at the time'' (our translation from the French). The message is kept in the session
+transcripts on the author's machine. They are not published.
+
+\paragraph{The protocol and the readings}
+The same morning, the ICLR talk was transcribed automatically, then copied to the author's machine. The
+three protocols state that they were written on 8 November 2026, before any reading and any training.
+They entered the repository with the first commit, on 9 November at 06:07. Git therefore attests the 9th.
+The 8th is the date each file gives itself. The first reading agent started on 8 November at 09:14. The
+last of the 45 agents of the first wave finished on 11 November (\file{study/readers/readers.csv}). The
+re-readings added after the results were written on 21 and 22 November (survey deviations 30 to 33, 35
+and 36).
+
+\paragraph{The computations}
+% TRACE MANQUANTE: any trials before November 2026 (dated notebook, repository or commit).
+The first PPO trainings finished on 8 November around 10:53, going by the dates of their logs. The first
+GRPO run dates from the same evening. The computations took two weeks, from 8 to 22 November 2026. Some
+are still running (box on the title page).
+
+\paragraph{Why agents read}
+AI agents read the papers. Facts that anyone can check in the repository support that choice. Each agent
+reads the whole paper, appendices included (\file{study/GRILLE-en.md}). The NeurIPS appendices shipped as
+zip archives were extracted, then re-read by each reader (deviation 25). Each ``yes'' quotes the exact
+sentence of the paper and its page. A script finds every quote in the PDF (\file{study/check\_codes.py}).
+Of the 89 quotes of grid v1 not found at first, none was invented. A ``no'' quotes nothing. The 377 final
+``no'' decisions on the verdict criteria were therefore set against the text with patterns fixed in
+advance. For 283 of them, an arbiter judged the passage found. Ten turned into ``yes'' and no verdict
+changed (deviation 27, \file{study/falsify\_no.json}). The instructions given to each agent are published
+word for word (\file{study/readers/prompts/}, deviation 28). The double readings are still made by copies
+of the same model. A human reading must therefore check the agents: that is the blind re-reading of thirty
+papers, fifteen from each year, preregistered in deviation 35.
+% TRACE MANQUANTE: deviation 34 (the author's past human re-reading), cited here only once the author supplies the facts.
+
 \section{Reading guide}\label{sec:intro-guide}
 
 Chapter~\ref{chap:02-contexte} sets out the formal framework of RL, describes the programs and the

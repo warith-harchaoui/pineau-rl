@@ -232,6 +232,48 @@ modèles de langue entraînés avec GRPO. Les chapitres~\ref{chap:05-experiences
   et de l'article de blog aux fichiers de résultats (chapitre~\ref{chap:08-logiciel}).
 \end{enumerate}
 
+\section{Genèse}\label{sec:intro-genese}
+% Every date below comes from a trace listed in .private/genese-traces.md (file and line, or commit and date).
+
+\paragraph{La réflexion}
+% TRACE MANQUANTE : les années de réflexion avant novembre 2026 (aucune note, aucun courriel, aucun billet daté).
+% TRACE MANQUANTE : les conférences de Pineau suivies par l'auteur et la date de chacune (premier visionnage de la
+% vidéo d'ICLR 2018, présence ou non à NeurIPS 2018 à Montréal).
+Le 8 novembre 2026, l'auteur demande à l'agent de programmation qui coordonnera le travail un projet sur
+Joelle Pineau. Il y appelle la conférence d'ICLR 2018 \enquote{cette vidéo que j'adore [\dots] même si
+elle date}. Il y écrit aussi : \enquote{je ne me suis jamais mis au RL parce que j'avais des soupçons sur
+le RL et Joelle Pineau les a plus que confirmés à l'époque}. Ce message est conservé dans les
+transcriptions des sessions, sur la machine de l'auteur. Elles ne sont pas publiées.
+
+\paragraph{Le protocole et les lectures}
+Le même matin, la conférence d'ICLR est transcrite automatiquement, puis copiée sur la machine de
+l'auteur. Les trois protocoles disent avoir été écrits le 8 novembre 2026, avant toute lecture et tout
+entraînement. Ils entrent dans le dépôt avec le premier commit, le 9 novembre à 6~h~07 : git atteste
+donc le 9, le 8 est la date que chaque fichier se donne. Le premier agent lecteur démarre le 8 novembre à
+9~h~14. Le dernier des 45 agents de la première vague finit le 11 novembre (\file{study/readers/readers.csv}).
+Les relectures ajoutées après les résultats sont écrites les 21 et 22 novembre (écarts 30 à 33, 35 et 36 du sondage).
+
+\paragraph{Les calculs}
+% TRACE MANQUANTE : d'éventuels essais antérieurs à novembre 2026 (carnet, dépôt ou commit daté).
+Les premiers entraînements de PPO finissent le 8 novembre vers 10~h~53, d'après la date de leurs
+journaux. Le premier essai de GRPO date du soir même. Les calculs durent deux semaines, du 8 au
+22 novembre 2026. Certains tournent encore (encadré de la page de titre).
+
+\paragraph{Pourquoi des agents lisent}
+Des agents IA ont lu les articles. Ce choix se défend par des faits que le dépôt permet de vérifier.
+Chaque agent lit l'article entier, annexes comprises (\file{study/GRILLE.md}). Les annexes de NeurIPS
+livrées en archives zip ont été extraites, puis relues par chaque lecteur (écart 25). Chaque \enquote{oui}
+cite la phrase exacte de l'article et sa page. Un script retrouve chaque citation dans le PDF
+(\file{study/check\_codes.py}). Sur les 89 citations de la grille v1 d'abord introuvables, aucune
+n'était inventée. Un \enquote{non} ne cite rien. Les 377 décisions finales \enquote{non} des critères
+des verdicts ont donc été confrontées au texte avec des motifs fixés d'avance. Pour 283 d'entre elles, un
+extrait trouvé a été jugé par un arbitre. Dix sont passées à \enquote{oui} et aucun verdict n'a changé
+(écart 27, \file{study/falsify\_no.json}). Les consignes de chaque agent sont publiées mot pour mot
+(\file{study/readers/prompts/}, écart 28). Les doubles lectures restent faites par des copies du même
+modèle. Une lecture humaine doit donc contrôler les agents : c'est la relecture à l'aveugle de trente
+articles, quinze de chaque année, préenregistrée à l'écart 35.
+% TRACE MANQUANTE : écart 34 (relecture humaine passée de l'auteur), à citer ici seulement quand l'auteur en donne les faits.
+
 \section{Guide de lecture}\label{sec:intro-guide}
 
 Le chapitre~\ref{chap:02-contexte} pose le cadre formel du RL, décrit les programmes et les tâches, dresse
