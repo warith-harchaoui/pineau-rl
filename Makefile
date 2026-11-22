@@ -3,8 +3,8 @@
 #   make install    install the package src/pineau_rl (pyproject.toml) in PY, editable, with no other package:
 #                   the dependencies come from envs/analysis.lock, nothing is downloaded
 #   make analysis   rerun every analysis script of study/, sim/analysis/ and sim/llm/summary.py (rewrites their JSON)
-#   make check      docs/check_numbers.py and article/check_article.py: every key number of both documents and of
-#                   the blog article against those JSON files
+#   make check      docs/check_numbers.py, article/check_article.py and paper/check_short.py: every key number of both
+#                   documents, of the blog article and of the short paper against those JSON files
 #   make test       the unit tests (tests/)
 #   make lint       ruff and mypy on the package and the tests (needs ruff and mypy, which the locks leave out)
 #   make verify     analysis + check + test, then git diff: the JSON files must come back byte for byte
@@ -88,6 +88,7 @@ analysis-llm:
 check:
 	cd docs && $(PY) check_numbers.py
 	cd article && $(PY) check_article.py
+	cd paper && $(PY) check_short.py
 
 test:
 	$(PY) -m pytest -q -p no:cacheprovider tests
