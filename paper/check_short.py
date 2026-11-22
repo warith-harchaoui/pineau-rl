@@ -201,7 +201,7 @@ claim("E1 spread", f"mean of {num(e1['mean'])} and a standard deviation of {num(
 claim("E1 random", f"declares a difference in {pct(e1['random_5v5']['false_positive'], 1)} of the draws")
 claim("E1 sorted", f"the test declares a difference in {pct(e1['extreme_5v5_of_10']['false_positive'])} of the draws")
 claim("E1 top3", f"the mean rises by {pct(e1['top3_of_10']['inflation'])}")
-claim("E1 B1 intro", f"fool Welch's t-test in {pct(e1['random_5v5']['false_positive'], 1)} of cases, and sorted groups in "
+claim("E1 B1 intro", f"fool Welch's t-test in {pct(e1['random_5v5']['false_positive'], 1)} of cases. Sorted groups fool it in "
       f"{pct(e1['extreme_5v5_of_10']['false_positive'])}")
 D("draws", "10,000 times")
 claim("ten into two", "Split ten of them into two groups of five")
@@ -225,7 +225,7 @@ D("10^-16", "of the order of 10^-16")
 D("at least 4", "would need at least 4")
 S = bs["trpo"]["n10"]
 claim("script random", f"the average t reaches 9.09 in {pct(S['random_5v5']['share_abs_t_ge_henderson'])} of 10,000 draws, with a "
-      f"median of {num(S['random_5v5']['abs_t_median'], 1)}, and the test declares a difference in "
+      f"median of {num(S['random_5v5']['abs_t_median'], 1)}. The test declares a difference in "
       f"{pct(S['random_5v5']['false_positive'])} of the draws")
 claim("script sorted", f"with sorted groups, {pct(S['sorted_5v5']['share_abs_t_ge_henderson'])} of the draws reach 9.09")
 claim("script n5", f"{pct(bs['trpo']['n5']['random_5v5']['share_abs_t_ge_henderson'])} of the random draws still reach 9.09")

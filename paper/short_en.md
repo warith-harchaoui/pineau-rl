@@ -1,9 +1,9 @@
-# Did We Listen to Joelle Pineau? Reinforcement Learning Papers of 2018 and 2026 Read with the Same Grid, and Two Experiments
+# Did We Listen to Joelle Pineau? Reinforcement Learning Papers of 2018 and 2026 Read with the Same Grid, Two Experiments Rerun
 
 **Warith Harchaoui**, Deraison.ai, warithmetics@deraison.ai
 
 Short version of the technical report *Reinforcement Learning: Did We Listen to Joelle Pineau in 2018?* (version 1.0,
-21 November 2026). Every number below comes from a result file of the repository, and `paper/check_short.py` ties
+21 November 2026). Every number below comes from a result file of the repository. `paper/check_short.py` ties
 each one to its key. Code, data and protocols: the repository of the technical report, BSD 3-Clause licence for the
 code.
 
@@ -52,13 +52,13 @@ figures would mix a change of practice with a change of grid.
 The second instrument reruns the experiments of 2018 with the algorithms of 2026. Of the experiments of the technical
 report, we keep two here. B1 asks where the t of 9 comes from. E6 asks what happens when a baseline is run with its
 published tuning. Both touch the survey directly: B1 shows that an error bar can satisfy a reading criterion while it
-measures the wrong thing, and E6 shows that a recipe can be published, followed to the letter and still fail.
+measures the wrong thing. E6 shows that a recipe can be published, followed to the letter and still fail.
 
 Our contributions are three.
 
 1. **A like-for-like survey.** Pineau's grid, completed with criteria from her ICLR talk and a second grid of twelve
    criteria written in advance, applied to 2018 and to 2026 by the same kind of reader. Four practices changed. The
-   tuning of baselines did not. For most other criteria, the survey cannot decide, and we say how large a change it
+   tuning of baselines did not. For most other criteria, the survey cannot decide. We say how large a change it
    could have seen.
 2. **A probable explanation of the t of 9.** A script published by Henderson in 2017 reproduces the order of magnitude
    of the 2018 figure on our TRPO runs. The published pair (t, p) rules out the other ways of computing more than it
@@ -67,7 +67,7 @@ Our contributions are three.
    standing one today. The failure is not ours: the collection's own training script reproduces it.
 
 The technical report holds the rest: the trajectory of four intermediate years, the experiments on rankings across
-tasks, on the best runs kept, on the number of random seeds, on modified physics, and a strand on language models
+tasks, on the best runs kept, on the number of random seeds, on modified physics, as well as a strand on language models
 fine-tuned with GRPO.
 
 ### Related work
@@ -79,7 +79,7 @@ close.
 - **The 2018 experiment.** Henderson et al. ground most of the flaws Pineau showed: sensitivity to hyperparameters, to
   implementations, to random seeds and to tasks. Islam et al. preceded them on the same tasks.
 - **Statistical method.** Colas et al. run a power analysis of the number of random seeds. Agarwal et al. contribute
-  the interquartile mean, stratified bootstrap intervals and the probability of improvement, and show that several
+  the interquartile mean, stratified bootstrap intervals and the probability of improvement. They show that several
   improvements claimed on Atari games dissolve once the intervals are computed. Patterson et al. turn these results
   into a guide. Eimer et al. call for an equal tuning budget for baselines. These works say what to do. Our survey
   measures whether papers do it.
@@ -88,7 +88,7 @@ close.
   50% to 74.4%.
 - **Audits of the literature.** Gundersen and Kjensmo score 400 papers from IJCAI and AAAI on how they document
   methods, data and experiments. Coakley et al. track 56,800 papers from five AI conferences from 2014 to 2024: the
-  share that releases code and data rises from 11% to 64%, and the rise begins before the checklists. In RL, the
+  share that releases code and data rises from 11% to 64%. The rise begins before the checklists. In RL, the
   closest audit covers 75 papers on cooperative multi-agent RL, of which about a third quantify no uncertainty
   (Gorsane et al.). None of these audits targets single-agent RL with the 2018 grid.
 - **Language models.** Hochlehnert et al. find, on small reasoning benchmarks, standard deviations of 5 to 15 points
@@ -101,7 +101,7 @@ close.
 
 The main comparison uses two samples. For 2018, we read 50 RL papers from ICLR, ICML and NeurIPS 2018, the three
 venues Pineau surveyed. For 2026, we read 50 classical RL papers from ICLR 2026, ICML 2026 and NeurIPS 2025. Of the
-2018 papers, 48 have experiments, and the criteria about experiments are computed on them. Pineau did not describe how
+2018 papers, 48 have experiments. The criteria about experiments are computed on them. Pineau did not describe how
 she drew her 50 papers. We therefore compare her figures with ours only as context. Both of our samples were drawn
 before any of their papers was read, by a seeded shuffle of public lists of accepted papers filtered on the title.
 The protocol fixed both samples on 9 November 2026, before any reading of the papers added to the first draw.
@@ -157,7 +157,7 @@ For each criterion, we compute the share of "yes" in each year with its Wilson i
 interval and the p-value of Fisher's exact test. The Holm correction applies separately to the 11 criteria of grid v1
 and to the 12 of grid v2. A criterion **changed** when its gap passes the 5% threshold after this correction. This
 rule was decided after the first results, on 9 November 2026: the original rule also required a gap against Pineau's
-figures, and our reading of 2018 departs from hers. The technical report gives what the original rule would have said
+figures. Our reading of 2018 departs from hers. The technical report gives what the original rule would have said
 (it confirms no classical RL criterion and calls the code link "ambiguous").
 
 ## 3. The survey: results
@@ -194,7 +194,7 @@ Among papers with experiments, X8 goes from 35% (17 of 48) to 42% (21 of 50): +7
 bars spread while their source changed in no detectable way. In 2026, 14 of the 44 papers that draw a bar do not say
 what it is computed over (Figure 3, `report/figures/x2-x8-en.pdf`). X8 qualifies the X2 verdict without replacing it.
 
-### 3.3 What did not change, and what the survey cannot see
+### 3.3 What did not change, what the survey cannot see
 
 The tuning of baselines shows no sign of progress. Papers that give all the hyperparameters of their baselines (Q4)
 go from 35% to 29%: -7 points, [-25, +11]. A new method still receives more care than the methods it claims to beat,
@@ -279,9 +279,9 @@ For the four verdict criteria, a preregistered re-reading by eight new agents wh
 ### 4.1 The puzzle
 
 Figure 5 of Henderson et al. sets two groups of five TRPO runs against each other on HalfCheetah, with the same code
-and the same settings, and reports t = -9.09, p = 0.0016. Pineau said in 2018 that the groups were not sorted. Yet with
-thirty PPO runs of our own, two groups of five drawn at random fool Welch's t-test in 1.2% of cases, and sorted groups
-in 31%. The average t along the curve never comes near 9. Where does the figure come from? Before the computation, we
+and the same settings. It reports t = -9.09, p = 0.0016. Pineau said in 2018 that the groups were not sorted. Yet with
+thirty PPO runs of our own, two groups of five drawn at random fool Welch's t-test in 1.2% of cases. Sorted groups
+fool it in 31%. The average t along the curve never comes near 9. Where does the figure come from? Before the computation, we
 wrote down three leads: the spread specific to TRPO, another reading of the caption, or another computation.
 
 ### 4.2 Same code, another random seed, in 2026
@@ -291,8 +291,8 @@ and the same settings, changing only the random seed. The final returns have a m
 of 568, from 1,138 to 3,430. Split ten of them into two groups of five drawn at random, 10,000 times: Welch's test
 declares a difference in 1.2% of the draws, under the 5% it promises. Sort the ten runs by final score and set the
 best five against the worst five: the test declares a difference in 31% of the draws. Keep the best three runs out of
-ten, as some papers of 2018 did, and the mean rises by 33%. Pineau's warning holds in 2026, with today's code: the
-spread between seeds is large, and a careless choice of seeds turns it into a result.
+ten, as some papers of 2018 did: the mean rises by 33%. Pineau's warning holds in 2026, with today's code: the
+spread between seeds is large. A careless choice of seeds turns it into a result.
 
 ### 4.3 Two leads that fall short
 
@@ -321,13 +321,13 @@ episodes where it should count training runs.
 
 Applied to our thirty TRPO curves, with ten evaluation episodes per point and a plan written before the computation:
 
-- with groups drawn at random, the average t reaches 9.09 in 38% of 10,000 draws, with a median of 7.1, and the test
-  declares a difference in 43% of the draws;
-- with sorted groups, 70% of the draws reach 9.09;
+- with groups drawn at random, the average t reaches 9.09 in 38% of 10,000 draws, with a median of 7.1. The test
+  declares a difference in 43% of the draws.
+- with sorted groups, 70% of the draws reach 9.09.
 - with five episodes instead of ten, 23% of the random draws still reach 9.09.
 
 Applied to our thirty PPO curves, the same script never reaches 9.09. One time in twenty, its average t exceeds 3.6
-(Figure 4, `report/figures/t-de-neuf-en.pdf`; Figure 5, `report/figures/b1-distribution-en.pdf`).
+(Figure 4, `report/figures/t-de-neuf-en.pdf`, Figure 5, `report/figures/b1-distribution-en.pdf`).
 
 ### 4.5 Why TRPO alone gets there
 
@@ -339,16 +339,16 @@ agents. For our PPO, it is 30%. The median factor is 18.1 for TRPO and 4.0 for P
 scores almost the same at every episode, while two TRPO agents differ a great deal: counting episodes instead of seeds
 then manufactures huge t values.
 
-### 4.6 What B1 establishes, and what it does not
+### 4.6 What B1 establishes, what it does not
 
 We cannot prove that this script produced the 2018 figure. Its name, its output format, the order of magnitude it
 recovers and the published (t, p) pair, which rules out the two other readings, make it likely. Our conditions differ:
-our evaluation episodes are played by a deterministic policy, theirs were training episodes of a stochastic policy;
-our TRPO comes from sb3-contrib. The order of magnitude comes back despite these differences.
+our evaluation episodes are played by a deterministic policy, theirs were training episodes of a stochastic policy.
+Our TRPO comes from sb3-contrib. The order of magnitude comes back despite these differences.
 
 The lesson for the survey is direct. Same code, another random seed: chance fooled the very test that was meant to
 measure it. An error bar computed over the episodes of a single agent satisfies X2 while it repeats the computation of
-the script. This is why X8 matters, and why its flat line (Section 3.2) weighs on the X2 verdict.
+the script. This is why X8 matters. It is also why its flat line (Section 3.2) weighs on the X2 verdict.
 
 ## 5. E6: a published recipe that aged
 
@@ -370,7 +370,7 @@ plateau near 1,000 from early in training. The published settings did nearly thr
 
 ### 5.3 Our error, then the official script
 
-The result was too good to accept without a check, and we found an error of ours: the Zoo's reward normalisation uses
+The result was too good to accept without a check. We found an error of ours: the Zoo's reward normalisation uses
 the algorithm's discount factor, 0.999, while our first pass left the default. The corrected recipe obtains 1,012
 [902, 1,135] on Hopper-v5 and 984 [773, 1,002] on Hopper-v4, the version the collection was tuned for. The defaults
 obtain 2,423 [1,657, 3,058] on v4. Our error was real. It explains nothing.
@@ -411,7 +411,7 @@ single published agent, perhaps the best of a tuning run, whereas our ten offici
 
 E6 does not show a baseline its authors tuned badly. It shows a published tuning that has aged with the software
 around it, to the point of doing worse today than the default values of the same library. A baseline run "with the
-published settings" can therefore be a robot standing still, and a paper that beats it beats nothing. The check that
+published settings" can therefore be a robot standing still. A paper that beats it beats nothing. The check that
 caught it went as far as the official script, the training logs and the videos. Pineau's reusability is not a
 property a recipe keeps once published: it holds only with the software the recipe was tuned on.
 
@@ -433,7 +433,7 @@ deviation written before its result.
 
 The readers are agents of one model. Their double readings measure the stability of that model, not the agreement of
 independent readers. The year is confounded with the reader set for the four verdict criteria. The verdict rule
-changed after the first results, and the original rule would have confirmed no change. With fifty papers per year, the
+changed after the first results. The original rule would have confirmed no change. With fifty papers per year, the
 survey sees only large changes. B1 recovers an order of magnitude with a different TRPO and different episodes, not
 the published run itself. E6 rests on one task, one algorithm of the collection and one published agent for 2022.
 We do not know which change of library made the recipe age.
@@ -463,9 +463,9 @@ the effect of a setting and draw error bars far more often than those of 2018. T
 result. The practices that shape the result itself show no detectable change: baselines are not described with more
 care, error bars are not computed more often over independent runs, significance tests stay rare. The two experiments
 show why this distinction matters. An error bar can be present and measure the wrong spread: that is how two groups of
-the same code once looked like two algorithms. A published recipe can be present, followed to the letter, and produce
+the same code once looked like two algorithms. A published recipe can be present, followed to the letter and still produce
 a robot that stands still. Pineau asked for results that a second team can rerun, reuse and trust. The papers of 2026 show their materials far
-more often. Whether those materials hold up, the survey cannot yet tell, and the two experiments show why someone has
+more often. Whether those materials hold up, the survey cannot yet tell. The two experiments show why someone has
 to look.
 
 ## Reproducibility statement
