@@ -1,4 +1,4 @@
-"""A1: agreement between the blind human reading (grille.csv) and the agents' raw reading (study/codes/)."""
+"""A1 (deviation 13, abandoned by deviation 23; named compare.py until 22 November 2026): agreement between the blind human reading (grille.csv) and the agents' raw reading (study/codes/)."""
 import csv, json, sys
 from pathlib import Path
 HERE = Path(__file__).resolve().parent
@@ -24,4 +24,4 @@ for c in ("Q4", "Q5", "Q6", "Q7", "Q8", "X1", "X2"):
     pe = sum((sum(h == k for h, _ in pairs) / n) * (sum(a == k for _, a in pairs) / n) for k in cats)
     out[c] = dict(same=same, n=n, kappa=None if pe == 1 else round((same / n - pe) / (1 - pe), 2), disagreements=dis)
     print(f"{c}: {same}/{n} kappa={out[c]['kappa']}")
-json.dump(out, open(HERE / "compare.json", "w"), indent=1, ensure_ascii=False)
+json.dump(out, open(HERE / "compare_a1.json", "w"), indent=1, ensure_ascii=False)

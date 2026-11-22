@@ -4,6 +4,36 @@
 
 **Abandonnée le 10 novembre 2026 avant toute relecture (écart 23 de `study/PROTOCOL.md`).** Ce dossier garde le plan.
 
+Depuis le 22 novembre 2026, ce dossier sert aussi à deux relectures humaines demandées par Warith Harchaoui : sa
+relecture passée, s'il en retrouve la trace (`warith_v0.csv`, section suivante ; écart 34 réservé, écrit seulement
+quand les faits seront fournis), puis une relecture à l'aveugle préenregistrée des deux années (écart 35, section
+« Relecture de l'écart 35 » plus bas). Le plan A1 ci-dessous reste tel quel ; son script s'appelle désormais
+`compare_a1.py`.
+
+## `warith_v0.csv` : la relecture passée de Warith
+
+Une ligne par article et par critère, colonnes `id, critere, decision, date, aveugle, citation, page, source` :
+
+- `id` : l'identifiant de l'article dans le sondage (`C11`, `K015`, `LR11`…) ;
+- `critere` : le code du critère (`Q5`, `X2`, `Y9`…) ;
+- `decision` : `yes`, `no` ou `na` ; un entier pour X1, X6 et Y3 ;
+- `date` : le jour de la lecture (`AAAA-MM-JJ`), ou le mois (`AAAA-MM`), ou l'année si c'est tout ce que la trace dit ;
+- `aveugle` : `oui` si Warith ne voyait pas la lecture des agents au moment de lire, `non` s'il la voyait ;
+- `citation` et `page` : le passage de l'article qui fonde la décision avec sa page, si la trace les donne ;
+- `source` : d'où vient la ligne (un fichier, un carnet, un courriel, avec sa date), pour qu'on puisse la retrouver.
+
+Rien n'est déduit ni reconstruit : une ligne dont la trace manque reste absente. Quand le fichier a au moins une ligne,
+`../sim/env-an/bin/python relecture_humaine/accord_v0.py` (depuis `study/`) écrit `accord_v0.json` : pour chaque
+critère, la part d'accord avec la lecture des agents et son intervalle de Wilson, le kappa de Cohen avec un intervalle
+bootstrap (10 000 tirages, `default_rng(2037)`), comme `agree_v2.py`. Les « oui » des agents sont comptés à part de
+leurs « non » : une relecture qui voyait la lecture des agents vérifie surtout leurs « oui ». Tout est donné pour les
+lignes `aveugle = oui`, pour les lignes `aveugle = non`, contre les valeurs finales harmonisées et contre les lectures
+brutes. Tant que le fichier n'a aucune ligne, le script s'arrête.
+
+Le script n'est pas encore dans le `Makefile`, pour que `make verify` passe avec un fichier vide. Une fois le fichier
+rempli : ajouter `relecture_humaine/accord_v0` à la fin de la liste `STUDY` et `study/relecture_humaine/accord_v0.json`
+à `OUTPUTS`, lancer le script une fois, valider `accord_v0.json`, puis écrire l'écart 34 dans les deux protocoles.
+
 Écart 13 de `study/PROTOCOL.md`. But : mesurer l'accord entre une lecture humaine et la lecture des
 agents, sur les critères qui fondent les verdicts du document. C'est la réponse à l'objection « des
 machines ont lu les articles ».
@@ -25,7 +55,7 @@ fait ensuite, par script.
 3. Pour X1, écris un nombre entier (le plus petit nombre d'entraînements indépendants annoncé pour
    un résultat principal), ou laisse vide si l'article ne le dit pas.
 4. Compte environ 20 à 25 minutes par article.
-5. Quand c'est fini : `python3 study/relecture_humaine/compare.py`. Le script donne l'accord et le
+5. Quand c'est fini : `python3 study/relecture_humaine/compare_a1.py`. Le script donne l'accord et le
    kappa de Cohen, critère par critère, et liste les désaccords avec les deux citations.
 
 ## Les sept critères et leurs règles (celles des agents, `study/PROTOCOL.md`)

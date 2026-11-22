@@ -4,6 +4,35 @@
 
 **Abandoned on 10 November 2026 before any review (deviation 23 of `study/PROTOCOL-en.md`).** This folder keeps the plan.
 
+Since 22 November 2026, this folder also serves two human re-readings asked for by Warith Harchaoui: his past
+re-reading, if he finds its record (`warith_v0.csv`, next section; deviation 34 reserved, written only once the facts
+are supplied), and a blind preregistered re-reading of both years (deviation 35, section "Re-reading of deviation 35"
+below). The A1 plan below stays as it is; its script is now called `compare_a1.py`.
+
+## `warith_v0.csv`: Warith's past re-reading
+
+One row per paper and criterion, columns `id, critere, decision, date, aveugle, citation, page, source`:
+
+- `id`: the paper's identifier in the survey (`C11`, `K015`, `LR11`…);
+- `critere`: the criterion code (`Q5`, `X2`, `Y9`…);
+- `decision`: `yes`, `no` or `na`; an integer for X1, X6 and Y3;
+- `date`: the day of the reading (`YYYY-MM-DD`), or the month (`YYYY-MM`), or the year if that is all the record says;
+- `aveugle` (blind): `oui` if Warith could not see the agents' reading when he read, `non` if he could;
+- `citation` and `page`: the passage of the paper the decision rests on, and its page, if the record gives them;
+- `source`: where the row comes from (a file, a notebook, an email, with its date), so that it can be found again.
+
+Nothing is inferred or reconstructed: a row whose record is missing stays out. Once the file has at least one row,
+`../sim/env-an/bin/python relecture_humaine/accord_v0.py` (from `study/`) writes `accord_v0.json`: per criterion, the
+share of agreement with the agents' reading and its Wilson interval, Cohen's kappa with a bootstrap interval (10,000
+resamples, `default_rng(2037)`), as `agree_v2.py` does. The agents' "yes" are counted apart from their "no": a
+re-reading that could see the agents' reading mostly checks their "yes". Everything is given for the rows with
+`aveugle = oui`, for those with `aveugle = non`, against the final harmonised values and against the raw reads. While
+the file has no row, the script stops.
+
+The script is not in the `Makefile` yet, so that `make verify` passes with an empty file. Once the file is filled: add
+`relecture_humaine/accord_v0` at the end of the `STUDY` list and `study/relecture_humaine/accord_v0.json` to `OUTPUTS`,
+run the script once, commit `accord_v0.json`, then write deviation 34 in both protocols.
+
 Deviation 13 of `study/PROTOCOL.md`. Goal: measure the agreement between a human reading and the
 agents' reading, on the criteria behind the document's verdicts. This is the answer to the
 objection "machines read the papers".
@@ -25,7 +54,7 @@ comparison comes afterwards, by script.
 3. For X1, write an integer (the smallest number of independent training runs announced for
    a main result), or leave the cell empty if the paper does not say.
 4. Allow about 20 to 25 minutes per paper.
-5. When you are done: `python3 study/relecture_humaine/compare.py`. The script gives the
+5. When you are done: `python3 study/relecture_humaine/compare_a1.py`. The script gives the
    agreement and Cohen's kappa for each criterion. It also lists the disagreements with both
    quotations.
 
