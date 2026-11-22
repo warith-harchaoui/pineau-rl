@@ -2,7 +2,7 @@
 
 Readings in codes_r36/T1..T8 (eight fresh readers, each reading both years), lists in assignments_r36.json.
 Values: the reader's raw value; Q5 with link_kind project_page is settled by the page check of deviation 36
-(r36_project_pages.json: the original reading's final value when it cites the same address, else one visit); a
+(r36_project_pages.json, written by r36_pages.py, which needs the PDFs: the original reading's final value when it cites the same address, else one visit); a
 decision whose quote fails the check of r36_check.py after its reader's correction is "invalid" (left out; a second
 reading counts it "no"); a third reading counts every Q5 project page yes (precision after the reading, deviation 36).
 1. The main comparison redone with these readings only: per criterion (Q5, Y9, X7, X2), classical RL 2026 against
@@ -25,7 +25,6 @@ from scipy.special import expit, logsumexp
 from scipy.stats import chi2, norm
 from pineau_rl.grid import iter_reads
 from pineau_rl.stats import cohen_kappa, compare, fisher, holm, wilson_ci
-from r36_check import check
 from samples import val
 
 CRIT = ["Q5", "Y9", "X7", "X2"]
@@ -36,7 +35,8 @@ reads = {r["id"]: (rd, r) for rd, r in iter_reads("codes_r36", R)}
 assert set(reads) == set(Y18 + Y26), "readings incomplete"
 assert all(reads[p][0] == r for r in R for p in asg[r]), "a paper read by a reader it was not assigned to"
 pages = json.load(open("r36_project_pages.json"))
-bad = {p: check(f"codes_r36/{rd}/{p}.json") for p, (rd, _) in reads.items()}
+qc = json.load(open("r36_quote_check.json"))  # written by r36_check.py --json (needs the PDFs)
+bad = {p: qc[f"codes_r36/{rd}/{p}.json"] for p, (rd, _) in reads.items()}
 NODES, WEIGHTS = np.polynomial.hermite.hermgauss(40)
 LOGW = np.log(WEIGHTS / np.sqrt(np.pi))
 

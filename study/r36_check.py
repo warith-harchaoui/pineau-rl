@@ -5,6 +5,8 @@ Format: {"id", "coder", "criteria": {"Q5": {"value", "link_kind", "quote", "page
 code, project_page, none, and yes needs code or project_page. Every quote that is not an "absent" note must be found
 in the paper's text (the function of check_codes.py, threshold 0.9); a yes needs a real quote.
 Run from study/: python3 r36_check.py codes_r36/<reader> ...  (exit code 1 on any problem)
+With --json first, the problems of every file are also written to r36_quote_check.json, which r36_stats.py reads
+(the PDFs are not in the repository, so make verify cannot redo this check).
 """
 import glob, json, sys
 from check_codes import found
@@ -44,11 +46,15 @@ def check(path):
 
 
 if __name__ == "__main__":
-    bad = 0
-    for d in sys.argv[1:]:
+    bad, out = 0, {}
+    write = sys.argv[1:2] == ["--json"]
+    for d in sys.argv[1 + write:]:
         for f in sorted(glob.glob(f"{d}/*.json")):
-            if (errs := check(f)):
+            out[f] = errs = check(f)
+            if errs:
                 bad += 1
                 print(f"{f}:", *errs, sep="\n    ")
+    if write:
+        json.dump(out, open("r36_quote_check.json", "w"), indent=1, ensure_ascii=False)
     print(f"{bad} file(s) to send back")
     sys.exit(1 if bad else 0)
