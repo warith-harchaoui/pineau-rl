@@ -109,8 +109,8 @@ assert BD["X2"]["bound"]["p_holm"] > 0.05 and BD["Y9"]["bound"]["p_holm"] > 0.05
 assert all(BD[k]["bound"]["p_holm"] < 0.05 for k in ("Q5", "X7")) and FN["verdict_changes"]["bound"] == ["X2", "Y9"]
 assert all(X[k]["classic_vs_ours2018"]["p_holm"] < 0.05 for k in ("Q5", "Y9", "X7", "X2"))
 assert num(SO["X2"], "fr", 2) == num(BD["X2"]["bound"]["p_holm"], "fr", 2)  # the same p, rounded, in both checks
-claim("X2 fragile", *both(lambda l: (f"deux de nos contrôles la font échouer, avec p = {num(SO['X2'], l, 2)} chaque fois" if l == "fr" else
-                                     f"two of our checks make it fail, with p = {num(SO['X2'], l, 2)} each time")))
+claim("X2 fragile", *both(lambda l: (f"deux de mes contrôles la font échouer, avec p = {num(SO['X2'], l, 2)} chaque fois" if l == "fr" else
+                                     f"two of my checks make it fail, with p = {num(SO['X2'], l, 2)} each time")))
 
 # Trajectory (study/trajectory.json).
 T = J("study/trajectory.json")
@@ -120,7 +120,7 @@ claim("Q8 in 2024", *both(lambda l: f"{pct(ty('Q8', '2024'), l)} {'en' if l == '
 claim("20 papers per year", "20 par année de 2019 à 2024, 50 de 2026", "20 per year from 2019 to 2024, 50 from 2026")
 assert {T["sizes"][y] for y in ("2019", "2020", "2022", "2024")} == {20} and T["sizes"]["2026"] == 50
 claim("20 per year read", "20 articles de RL classique par année d'ICML et de NeurIPS, en 2019, 2020, 2022 et 2024",
-      "20 classical RL papers per year from ICML and NeurIPS, in 2019, 2020, 2022 and 2024")
+      "20 classical RL papers read per year from ICML and NeurIPS, in 2019, 2020, 2022 and 2024")
 y9 = lambda ys: sum(T["rows"]["Y9"]["by_year"][y]["k"] for y in ys) / sum(T["rows"]["Y9"]["by_year"][y]["n"] for y in ys)
 claim("Y9 later", f"de {pct(y9(['2019', '2020']), 'fr')} sur 2019 et 2020 à {pct(y9(['2022', '2024']), 'fr')} sur 2022 et 2024",
       f"from {pct(y9(['2019', '2020']), 'en')} over 2019 and 2020 to {pct(y9(['2022', '2024']), 'en')} over 2022 and 2024")
@@ -159,7 +159,7 @@ claim("5% threshold", "seuil habituel de 5 %", "usual 5% threshold", "doc")
 cu, b1, b1s = J("sim/analysis/e1_curve.json"), J("sim/analysis/b1_trpo.json"), J("sim/analysis/b1_script.json")
 claim("E1 curve p95", *both(lambda l: f"{num(cu['random_5v5']['abs_mean_t_p95'], l, 1)} {'quand les groupes sont tirés au hasard,' if l == 'fr' else 'when the groups are drawn at random,'} {num(cu['sorted_5v5']['abs_mean_t_p95'], l, 1)}"))
 assert cu["random_5v5"]["share_abs_mean_t_ge_9"] == cu["sorted_5v5"]["share_abs_mean_t_ge_9"] == 0
-claim("E1 curve none of 20000 reaches 9", "Aucun de nos 20 000 tirages n'atteint 9", "None of our 20,000 draws reaches 9")
+claim("E1 curve none of 20000 reaches 9", "Aucun de mes 20 000 tirages n'atteint 9", "None of my 20,000 draws reaches 9")
 tr = b1["trpo"]
 claim("B1 TRPO cv", *both(lambda l: f"{pct(tr['cv'], l)} {'de sa moyenne' if l == 'fr' else 'of its mean'}"))
 claim("B1 mean t", *both(lambda l: f"{num(tr['random_5v5']['mean_t']['abs_t_p95'], l, 1)} {('qu' + Q + 'une fois sur vingt au hasard,') if l == 'fr' else 'only one time in twenty at random,'} {num(tr['sorted_5v5']['mean_t']['abs_t_p95'], l, 1)}"))

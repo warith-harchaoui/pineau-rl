@@ -33,6 +33,10 @@ DATA = (ARGS.data or HERE / "data").resolve()
 DATA.mkdir(parents=True, exist_ok=True)
 OUT.mkdir(parents=True, exist_ok=True)
 J = lambda p: json.load(open(ROOT / p))
+# The blog speaks in the first person singular, the report in the plural (Warith, 2026-11-22).
+BLOG = ARGS.out is None
+MY_FR, MY_EN = ("mon", "my") if BLOG else ("notre", "our")
+MES_FR, MES_EN = ("mes", "my") if BLOG else ("nos", "our")
 
 
 def r(x, nd=0):
@@ -95,8 +99,8 @@ for lang in LANGS:
 
 # 3. The t of 9: share of random draws (two groups of five) whose mean t reaches Henderson's 9.09.
 curve, b1, b1s = J("sim/analysis/e1_curve.json"), J("sim/analysis/b1_trpo.json"), J("sim/analysis/b1_script.json")
-T9 = [("PPO", "notre calcul", "our computation", curve["random_5v5"]["share_abs_mean_t_ge_9"]),
-      ("TRPO", "notre calcul", "our computation", b1["trpo"]["random_5v5"]["mean_t"]["share_abs_t_ge_henderson"]),
+T9 = [("PPO", f"{MY_FR} calcul", f"{MY_EN} computation", curve["random_5v5"]["share_abs_mean_t_ge_9"]),
+      ("TRPO", f"{MY_FR} calcul", f"{MY_EN} computation", b1["trpo"]["random_5v5"]["mean_t"]["share_abs_t_ge_henderson"]),
       ("TRPO", "points empilés", "stacked points", b1["trpo"]["random_5v5"]["pooled"]["share_abs_t_ge_henderson"]),
       ("PPO", "script de 2017", "2017 script", b1s["ppo_sb3"]["n10"]["random_5v5"]["share_abs_t_ge_henderson"]),
       ("TRPO", "script de 2017", "2017 script", b1s["trpo"]["n10"]["random_5v5"]["share_abs_t_ge_henderson"])]
@@ -184,12 +188,12 @@ for lang in LANGS:
                  [(CRIT[lang][k], *pts(ext[k]["classic_vs_ours2018"])) for k in keys])
     FIGS.setdefault("grille-egale", {})[lang] = ("errorbar", csvp, {
         "fr": ["--title", "À grille égale, quatre pratiques ont changé",
-               "--set", "subtitle=50 articles de RL classique de 2026 contre nos 50 de 2018 ; barre : intervalle à 95 %",
+               "--set", f"subtitle=50 articles de RL classique de 2026 contre {MES_FR} 50 de 2018 ; barre : intervalle à 95 %",
                "--set", "y_axis_title=Écart en points (2026 moins 2018)",
                "--set", "x_axis_title=Pratique relevée dans l'article",
                "--set", "width=820", "--set", "height=460"],
         "en": ["--title", "With the same grid, four practices changed",
-               "--set", "subtitle=50 classical RL papers from 2026 against our 50 from 2018; bar: 95% interval",
+               "--set", f"subtitle=50 classical RL papers from 2026 against {MES_EN} 50 from 2018; bar: 95% interval",
                "--set", "y_axis_title=Gap in points (2026 minus 2018)",
                "--set", "x_axis_title=Practice found in the paper",
                "--set", "width=820", "--set", "height=460"]}[lang])
@@ -306,10 +310,10 @@ MOB = {  # name -> lang -> (title, subtitle, width, height, relabel, extra optio
                dict(zip(FP_LAB["en"], ["Random 3/3", "Random 5/5", "Random 10/10", "Sorted 5/5"])), [])},
     "t-de-neuf": {
         "fr": ("Seul le script atteint 9", "Tirages au hasard où le t moyen atteint 9,09", 400, 460,
-               {"PPO, notre calcul": "PPO, nous", "TRPO, notre calcul": "TRPO, nous", "TRPO, points empilés": "TRPO, empilés",
+               {"PPO, mon calcul": "PPO, moi", "TRPO, mon calcul": "TRPO, moi", "TRPO, points empilés": "TRPO, empilés",
                 "PPO, script de 2017": "PPO, script", "TRPO, script de 2017": "TRPO, script"}, []),
         "en": ("Only the script reaches 9", "Random draws where the mean t reaches 9.09", 400, 460,
-               {"PPO, our computation": "PPO, ours", "TRPO, our computation": "TRPO, ours", "TRPO, stacked points": "TRPO, stacked",
+               {"PPO, my computation": "PPO, mine", "TRPO, my computation": "TRPO, mine", "TRPO, stacked points": "TRPO, stacked",
                 "PPO, 2017 script": "PPO, script", "TRPO, 2017 script": "TRPO, script"}, [])},
     "meilleurs-sur-dix": {
         "fr": ("3 sur 10 gonflent tout", "Hausse de la moyenne, trois meilleurs essais sur dix", 400, 520, {}, []),
@@ -452,8 +456,8 @@ def text(name, lang):
             worse="moins fréquente" if fr else "less common",
             axis="Écart en points, 2026 moins 2018, avec son intervalle à 95 %" if fr
             else "Gap in points, 2026 minus 2018, with its 95% interval",
-            source="Données : 50 articles de RL classique de 2026 et nos 50 de 2018, lus avec la même grille" if fr
-            else "Data: 50 classical RL papers from 2026 and our 50 from 2018, read with the same grid",
+            source=f"Données : 50 articles de RL classique de 2026 et {MES_FR} 50 de 2018, lus avec la même grille" if fr
+            else f"Data: 50 classical RL papers from 2026 and {MES_EN} 50 from 2018, read with the same grid",
             desc="Huit pratiques, un point et son intervalle : code en lien, effet d'un réglage, calcul chiffré et incertitude "
                  "progressent nettement ; les quatre autres intervalles contiennent zéro." if fr else
                  "Eight practices, a dot and its interval: code linked, effect of a setting, compute stated and uncertainty "
