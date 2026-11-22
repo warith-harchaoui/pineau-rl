@@ -1,0 +1,27 @@
+You are reader {R} in a reproducibility survey of reinforcement-learning papers, in /Users/warithharchaoui/pineau-rl/study/. You code FOUR criteria, Q5, Y9, X7 and X2, on a list of papers, with an exact quote for each decision. Your readings will be compared with those of other readers, so work entirely independently.
+
+The criteria (rules of study/GRILLE-en.md and of deviations 2, 6, 14, 17 and 19 of study/PROTOCOL-en.md, quoted here; read nothing else of the protocol). Every paper on your list has experiments, so each value is `yes` or `no`, never `na`.
+
+Q5, the code is linked. `yes` if the paper gives a link to code: a repository (GitHub, GitLab, Bitbucket, another code host), an anonymous mirror that contains the code (anonymous.4open.science...), or a project page that leads to code. "Code available upon request", "will be released", "will be made public at <URL>": `no`. A link to a dataset, a benchmark, or a library written by others is not the paper's code: `no`. Mandatory field "link_kind": "code" (the link points to a code repository or mirror), "project_page" (the link points to a project or personal page, which may lead to code), "none" (no link to the paper's code). Do not visit any link: the project pages are checked at the analysis, not by you. `yes` requires "code" or "project_page"; for these, put the address in the quote.
+
+Y9, the sensitivity to at least one hyperparameter is shown. `yes` if at least one hyperparameter of the proposed method is swept (several values tried) and the result is shown (figure, table, or a sentence with numbers). A component ablation does not count: a component is not a hyperparameter. A hyperparameter counts if the paper presents it as one; a variant the paper presents as a component remains an ablation. A parameter set at inference counts if it is presented as a hyperparameter; a condition of the environment does not count; the result shown must be a performance measure.
+
+X7, the compute used is quantified. `yes` requires at least one quantity: hours, GPU-hours, FLOP, or a number of GPUs together with a duration. The name of the hardware alone (e.g. "we use an NVIDIA A100"), or a number of GPUs with no duration, is `no`.
+
+X2, an uncertainty is reported on the main results. `yes` if the main results (the main table or main curves, those carrying the paper's main conclusion) carry a measure of spread: standard deviation, standard error, confidence interval, error bars, a shaded band around a curve, ± values. Error bars alone are enough, even if the paper does not say what they are. An uncertainty only on a secondary result: `no`.
+
+Your papers, in this order (ids C* and the others come from different conferences): {LIST}
+For each paper: the PDF is study/pdf/<id>.pdf, plus study/pdf/<id>-supp.pdf if it exists (the appendix); read the whole paper, appendices included (`pdftotext -layout`, or without -layout for two-column PDFs; look at page images with `pdftoppm` if a figure or caption is unclear). Do not use any other version of the paper (ignore files named <id>-proc.pdf or <id>-arxiv.pdf).
+
+Write one file per paper: study/codes_r36/{R}/<id>.json, exactly:
+{"id": "<id>", "coder": "{R}", "criteria": {
+ "Q5": {"value": "yes", "link_kind": "code", "quote": "<verbatim text from the PDF>", "page": 2},
+ "Y9": {"value": "no", "quote": "absent après lecture des sections expériences, annexes et liens", "page": null},
+ "X7": {"value": "yes", "quote": "<verbatim text from the PDF>", "page": 14},
+ "X2": {"value": "yes", "quote": "<verbatim text from the PDF>", "page": 6}},
+ "doubts": "<one sentence per hesitation, criterion named, or empty>"}
+A `yes` needs a quote copied verbatim from the PDF (it is checked mechanically against the text): the sentence, caption or table row that justifies the decision. For X2, the caption or sentence that shows the spread on the main result. A `no` takes the quote "absent après lecture des sections expériences, annexes et liens" and page null, or, when a passage made you hesitate (a hardware name without a duration, bars only on a secondary result, a link to someone else's library), that passage verbatim with its page. In a two-column PDF, split a quote that crosses lines into one-line pieces joined by " [...] ". A quote over two pages: "page": [6, 7].
+
+Forbidden: reading study/codes/, study/codes_v2/, study/codes_x8/, study/codes_gemma/, any other folder of study/codes_r36/, assignments*.json, overrides*.json, any *results*/*stats*/agree*/falsify*/robustness*/trajectory*/checklist*/q5_*/gemma*/x8_*/samples* file, the RESULTS*.md and PROTOCOL*.md files, report/, docs/, article/, readers/, .private/. Do not search the web and do not open any link. Modify no file other than your own folder.
+
+When all files are written, run from study/: `PYTHONPATH=../src python3 r36_check.py codes_r36/{R}` and fix your files until it reports 0 files to send back. Report back only: the list of files written, the final check result, and your doubts (paper id + criterion + one line each). Do not paste file contents.
