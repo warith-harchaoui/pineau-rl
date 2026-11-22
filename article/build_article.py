@@ -228,6 +228,14 @@ def build(lang: str) -> str:
         body.append("\n".join(out))
 
     chip, date_iso, date_txt, title, lede = meta
+    # a lede cut by <br> becomes one paragraph per line, a short gap between them: a wrapped line no longer
+    # looks like the start of the next one
+    lines = lede.split("<br>")
+    lede_html = "\n".join(
+        f'                <p dir="auto"\n'
+        f'                    style="--ui-letter-spacing:-0.01em;--ui-line-height:1.55em;--ui-text-color:rgb(102, 102, 102)'
+        f'{";margin:0 0 0.55em" if i < len(lines) - 1 else ""}"\n'
+        f'                    class="drz-text">{inline(x, lang)}</p>' for i, x in enumerate(lines))
     brief_html = ""
     if brief:
         bt, toct = brief["head"]
@@ -288,9 +296,7 @@ def build(lang: str) -> str:
                     class="drz-text">{inline(title, lang).replace("A-t-on", '<span style="white-space:nowrap">A-t-on</span>')}</h1>
             </div>
             <div class="drz-article-lede" data-drz-box="RichTextContainer" style="transform:none">
-                <p dir="auto"
-                    style="--ui-letter-spacing:-0.01em;--ui-line-height:1.55em;--ui-text-color:rgb(102, 102, 102)"
-                    class="drz-text">{inline(lede, lang)}</p>
+{lede_html}
             </div>
         </div>
 {hero_html}
