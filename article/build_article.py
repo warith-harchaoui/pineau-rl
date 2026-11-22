@@ -71,6 +71,12 @@ def pdf_version(name: str) -> str:
     return hashlib.sha256(src.read_bytes()).hexdigest()[:10]
 
 
+def fig_version(name: str) -> str:
+    """Our figures carry a fingerprint of their content, as the full document does: the host's cache keeps an image a week."""
+    f = ICI / "figures" / name[len(FIG_PREFIX):] if name.startswith(FIG_PREFIX) else None
+    return f"?v={hashlib.sha256(f.read_bytes()).hexdigest()[:10]}" if f and f.exists() else ""
+
+
 def nbsp(s: str) -> str:
     # n'agit que hors des balises et hors du PHP
     parts = re.split(r"(<\?=.*?\?>|<[^>]+>)", s)
@@ -188,10 +194,10 @@ def build(lang: str) -> str:
                 kind, src, alt, cap = [x.strip() for x in ln[4:].split("|", 3)]
                 cls = {"wide": "drz-art-fig drz-art-fig--wide", "portrait": "drz-art-fig drz-art-fig--portrait"}.get(kind, "drz-art-fig")
                 mob = mobile_name(src)
-                source = (f'<source media="(max-width: 640px)" srcset="<?= ASSETS ?>/images/blog/{mob}">'
+                source = (f'<source media="(max-width: 640px)" srcset="<?= ASSETS ?>/images/blog/{mob}{fig_version(mob)}">'
                           if mob else "")
                 out.append(
-                    f'            <div class="{cls}"><picture>{source}<img src="<?= ASSETS ?>/images/blog/{src}"\n'
+                    f'            <div class="{cls}"><picture>{source}<img src="<?= ASSETS ?>/images/blog/{src}{fig_version(src)}"\n'
                     f'                    alt="{html.escape(alt, quote=True)}"\n'
                     f'                    loading="lazy"></picture>\n'
                     f'                <p class="drz-text drz-art-figcap">{inline(cap, lang)}</p>\n'
