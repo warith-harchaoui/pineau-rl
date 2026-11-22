@@ -337,8 +337,8 @@ ne calcule pas mieux. La distribution qu'il échantillonne à la température 1 
 hasard tombe un peu plus souvent juste, alors que la réponse la plus probable et la meilleure de huit
 tombent moins souvent juste. Chez Qwen, le pass@8 baisse dans quatre essais sur cinq, de 51,6~\% à 34,4~\%,
 avec un intervalle de Student qui contient zéro. À la question de \textcite{yue2025rlvr}, nos essais
-répondent que le pass@8 ne monte en moyenne dans aucune configuration. Sous la règle de l'écart~19, ces chutes restent non établies, faute
-d'un $p$ de signe sous 0,0625, alors que leurs intervalles de Student excluent zéro. Les deux constats valent
+répondent que le pass@8 ne monte en moyenne dans aucune configuration. Sous la règle de l'écart~19, ces chutes restent non établies, puisque
+le $p$ de signe ne peut pas descendre sous 0,0625, alors que leurs intervalles de Student excluent zéro. Les deux constats valent
 ensemble.
 
 \gentable{grpo-mesures}
@@ -480,7 +480,8 @@ Ce volet établit quatre faits, pour deux petits modèles, une tâche de multipl
   \item Avec la vraie récompense, l'écart entre graines aléatoires est aussi grand que le gain moyen de
     pass@1, comme dans le RL classique de 2018. Aucun gain de pass@1 n'est établi.
   \item Une récompense tirée au sort fait chuter la réussite des deux familles, dans tous les essais et dans
-    les quatre mesures de justesse. C'est elle qui donne à Llama son seul contraste établi entre les deux récompenses.
+    les quatre mesures de justesse, là où elles sont définies : un essai de Llama (graine aléatoire~1) ne finit
+    aucune réponse, et la justesse des finies n'y existe pas (graines aléatoires 0, 2 et 3 seulement). C'est cette chute qui donne à Llama son seul contraste établi entre les deux récompenses.
   \item Chez Llama, la vraie récompense resserre la distribution échantillonnée : le pass@1 monte un peu, la
     justesse gloutonne et le pass@8 chutent dans les cinq essais.
   \item Chez Qwen, tout le gain de pass@1 est un gain de brièveté : la justesse des réponses finies ne monte

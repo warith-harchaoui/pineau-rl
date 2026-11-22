@@ -5,56 +5,84 @@
 \label{sec:reponse}
 
 \begin{keybox}
-Joelle Pineau was heard on what is published next to the result: the code, the compute, the effect
-of a setting. She was heard much less on how the result itself is judged. The statistical test
-remains rare, the settings of the baselines remain poorly described, evaluation still often takes
-place in the training world.
+Joelle Pineau was heard on what accompanies the result: the code link, the declared compute, the
+effect of a setting, the error bar. The bar has spread without uncertainty computed over random seeds
+following it detectably. The tuning of baselines shows no sign of progress. For the rest, including
+the statistical test and held-out evaluation, the survey cannot decide: it could only see rises of
+about thirty points.
 \end{keybox}
 
-This answer applies to classical RL, read by AI agents in fifty papers on each side,
-then compared with our own reading of 2018 using the same grids
+This answer applies to classical RL, read by AI agents in fifty papers on each side, then compared
+with our own reading of 2018 using the same grids
 (\cref{chap:03-sondage-methode,chap:04-sondage-resultats}). It also rests on experiments rerun with
 the algorithms of 2026 under protocols written in advance
-(\cref{chap:05-experiences-methode,chap:06-experiences-resultats,chap:07-modeles-de-langue}).
+(\cref{chap:05-experiences-methode,chap:06-experiences-resultats,chap:07-modeles-de-langue}). The
+numbers it rests on are given once, in those chapters. This conclusion says what they establish and
+refers back to them.
 
-\section{The main numbers}
+\section{What the measurements establish}
 \label{sec:nombres}
 
-\paragraph{Four practices have changed} A link to the code goes from 31\% to 74\% of papers, the
-sensitivity to a setting shown from 44\% to 80\%, the compute stated in figures from 27\% to 58\%, a
-reported uncertainty from 63\% to 88\% (\cref{tab:sondage-pineau,tab:sondage-extension}). Code and
-compute survive every cut we tried, sensitivity nearly every one. Uncertainty is fragile: it no
-longer passes the Holm correction once the thirteen papers partly read by another model are removed
-($p = 0.07$). Read on 20 papers per year between the two dates, these four practices rise slowly,
-with no jump right after the checklist that NeurIPS has required since 2019
-(\cref{tab:trajectoire}).
+\paragraph{Four practices have changed} The link to the code, the compute stated in figures, the
+sensitivity to a setting and reported uncertainty pass the Holm correction in the main comparison
+(\cref{tab:sondage-pineau,tab:sondage-extension}). Code and compute survive every cut we tried,
+sensitivity nearly every one. Code keeps its verdict when both years are read on the same kind of
+version, proceedings or arXiv (\cref{sec:sr-robustesse}). Reported uncertainty is the most fragile
+change: it no longer passes the correction once the thirteen papers partly read by another model are
+removed. Criterion X8 makes its meaning precise. The share of papers that compute their uncertainty
+over random seeds goes from 35\% to 42\%, a gap the survey does not detect: the error bar has spread
+faster than the bar computed over independent training runs (\cref{sec:sr-principale}). Read on 20
+papers per year between the two dates, the four practices rise slowly, with no jump right after the
+checklist that NeurIPS has required since 2019 (\cref{tab:trajectoire}).
 
-\paragraph{Others have not moved detectably} A statistical test goes from 6\% to 12\%, baselines
-described with all their settings from 35\% to 29\%, a held-out evaluation from 33\% to 45\%, the
-version of the benchmarks from 23\% to 26\%. Nearly every paper now draws error bars, very few apply a
-test.
+\paragraph{Judging the result} The tuning of baselines stagnates: the hyperparameters given for the
+baselines (Q4), the same tuning care announced (X4) and the origin of their code (Y5) do not rise.
+The version of the benchmarks (Y7), the definition of the performance measure (Y1) and the selection
+of the best runs (X3) do not move either. The statistical test, held-out evaluation, the
+hyperparameters of the method and the way they are chosen rise by 6 to 22 points depending on the
+criterion, with none of these rises passing the correction. The survey could only detect a rise of
+about thirty points (\cref{sec:val-stat}). It does not say that these practices stagnate. It says
+that it cannot know.
 
-\paragraph{What a ticked box guarantees} The 18 NeurIPS 2025 papers that answer yes to the checklist
-question on statistical significance apply no test. On code, 5 papers out of 22 answer yes without a
-link to their code. On compute, 6 papers out of 21 answer yes without giving a compute time.
+\paragraph{What a ticked box guarantees} The 18 NeurIPS 2025 papers that answer yes to their
+checklist question on statistical significance apply no test. On code and on compute, some of the
+\enquote{yes} answers have neither a link nor a figure behind them (\cref{sec:sr-declarations}).
 
-\paragraph{Random seeds and selection} Over thirty PPO runs on \task{HalfCheetah}, two groups of five
-drawn at random fool a statistical test in only 1.2\% of cases. Sorted, they fool it in 31\% of cases.
-Keeping the best runs inflates the score by 33\% (\cref{tab:e1,tab:e4}). The $t$ of 9 from 2018 most
-probably comes from the script published by Peter Henderson, which measures the spread of the
-episodes and ignores the spread of the random seeds. Applied to our TRPO runs, the script exceeds 9
-in 38\% of random draws (\cref{tab:b1}).
+\paragraph{Random seeds and selection} Two groups of five runs drawn at random from those of one
+program rarely fool a statistical test. Sorted, the five best against the five worst fool it from
+26\% to nearly 100\% of the time depending on the (program, task) pair, 31\% in the preregistered
+case, PPO on \task{HalfCheetah} (\cref{sec:e1}). Keeping the best three of ten runs inflates the
+mean by 32\% at the median over the sixteen pairs (\cref{tab:e4}). The $t$ of 9.09 from 2018 probably
+comes from the script published by Peter Henderson, which measures the spread of the episodes and
+ignores the spread of the random seeds. The published ($t$, $p$) pair excludes the other readings of
+the computation more than it points to this script: the competing reading, the mean of the $p$
+values, has no well-defined degrees of freedom. Applied to our TRPO runs, the script exceeds 9 in
+38\% of random draws (\cref{tab:b1}).
 
 \paragraph{How far the rankings reach} Across our four programs, the best one changes with the task.
-Yet PPO has five times more steps than SAC and CrossQ: at equal budget and with twenty random seeds,
-CrossQ leads on all four tasks (\cref{tab:e2}). A physics modified by 20\% overturns the ranking on
-\task{Hopper}: the first program finishes last (\cref{tab:e7}).
+Yet PPO has five times more steps than SAC and CrossQ. At equal budget and with twenty random seeds,
+CrossQ leads on all four tasks, but the order of two pairs still reverses from one task to another in
+a settled way. The reversal of PPO JAX and SAC even survives the Bonferroni correction
+(\cref{sec:e2}). The preregistered count of ranking changes counted triplets rather than pairs and
+inflated the evidence: it stays published next to the strict count. The two implementations of PPO
+differ in a settled way only on \task{Swimmer}, by a gap that is small in score points
+(\cref{sec:e3}). Under a physics modified by 20\%, CrossQ beats each of the three other programs on
+\task{Hopper}, at ten as at twenty random seeds. PPO JAX loses there against SAC, which it beat in
+the training physics (\cref{sec:e7}).
 
-\paragraph{The language-model strand} With five random seeds, Qwen's mean gain with the true reward is
-$+14$ points, from $-3$ to $+34$, Llama's $+6$ points, from $-0.4$ to $+15$: both intervals contain
-zero. Qwen's gain rests on the two runs done on the GPU. The hardware changed with the random seed.
-With a coin-flip reward, success falls to 1\% or less in the nine finished runs. Part of the apparent
-gain may come from the 160-token limit (\cref{tab:grpo}).
+\paragraph{The tuned reference method} The agents trained with the recipe published by RL
+Baselines3 Zoo stay upright on \task{Hopper} without moving forward. The agent that the Zoo itself
+published in 2022, with the same settings and an older software stack, moves forward and scores
+close to our default agents. The recipe worked in its original stack and has aged (\cref{sec:e6}).
+
+\paragraph{The language-model strand} With five random seeds, no gain within a configuration can be
+established, since the exact sign test does not go below 0.0625. One contrast is established: for
+Llama, the true reward does better than the randomly drawn reward, because the latter destroys the
+model. Under the true reward, Llama loses greedy accuracy and pass@8 in each of the five random seeds,
+while its pass@1 rises slightly. For Qwen, the pass@1 gain is explained by the end of truncated
+answers: the accuracy of finished answers does not rise. Qwen also ran with a repetition penalty that
+Llama did not have (\cref{chap:07-modeles-de-langue}). A rerun of ten random seeds per configuration,
+written in advance, waits for the GPU (deviation 20 of the GRPO strand).
 
 \section{Recommendations}
 \label{sec:recommandations}
@@ -67,29 +95,40 @@ targets and the result that justifies it.
 \begin{enumerate}
   \item \textbf{State the number of random seeds and run at least ten.} Of 41 experimental RL papers
         in the first 2026 draw, 20 do not say how many runs they launch. The median of the others is
-        five. With five random seeds, a gap of less than 20\% reads backwards nearly one time in three, more than one time in three when twenty random seeds set the true order (E5, flaws F9 and F10).
+        five. With five random seeds, a gap of less than 20\% reads backwards nearly one time in
+        three, more than one time in three when twenty random seeds set the true order or when the
+        order is judged out of sample (E5, flaws F9 and F10).
   \item \textbf{Never sort or select runs.} Report every run, including those that fail. State which
         were excluded (E1, E4, criteria X3 and Y6).
-  \item \textbf{Test across random seeds.} The independent unit is the complete training run. A
-        test that counts episodes instead declares a difference between two groups of the same code
-        (B1, flaw F11).
-  \item \textbf{Show an interval next to every curve and say what it represents.} Name the standard
-        deviation, the standard error or the confidence interval, then the spread it summarises
-        (criteria X2, Y2, Y11).
+  \item \textbf{Test across random seeds, never across episodes.} The independent unit is the
+        complete training run. A test that counts episodes declares a difference between two groups
+        of the same code (B1, flaw F11). The same rule holds for the error bar: in 2026, fewer than
+        one experimental paper in two computes it over random seeds (X8).
+  \item \textbf{Show an interval next to every curve and say what it is computed over.} Name the
+        standard deviation, the standard error or the confidence interval, then the spread it
+        summarises: 14 of the 44 papers of 2026 that draw a bar do not say what it is computed over
+        (criteria X2, X8, Y2, Y11).
   \item \textbf{Compare at equal budget, or state the difference in budget.} A ranking at unequal
         budgets also compares the budgets (E2 at equal budget).
+  \item \textbf{Correct for multiple comparisons and say what the sample could see.} Four tasks
+        tested without correction made E3 read two differences, only one of which survives the Holm
+        correction. A \enquote{no difference} is read together with the smallest difference the
+        sample detects (E3, \cref{sec:val-stat}).
   \item \textbf{Tune the baselines with the same care as the method and say so.} Give the tuning
-        budget of each baseline and its final hyperparameters (E6, criteria Q4, X4, Y5).
+        budget of each baseline, its final hyperparameters and the version of the libraries in which
+        its recipe was tuned (E6, criteria Q4, X4, Y5).
   \item \textbf{Evaluate under held-out conditions.} Environment random seeds never seen, modified
         dynamics or a distinct test distribution (E7, criteria Q7, Y8).
   \item \textbf{Give the versions.} The version of each benchmark and of each dependency, in a frozen
         environment file (criteria Y7, Y10).
-  \item \textbf{For a language model: several model families and the share of truncated answers.} A
-        result obtained on one family informs about that family. A gain in correctness is read
-        together with the length limit, the truncated share before and after and the correctness of
-        the complete answers (\cref{chap:07-modeles-de-langue}, criterion X6).
+  \item \textbf{For a language model: several model families, the full decoding setup and several
+        measures.} A result obtained on one family informs about that family. A setting inherited
+        from the model's configuration file, such as a repetition penalty, changes what is sampled. A
+        gain in accuracy is read together with the length limit, the truncated share before and
+        after, the accuracy of the complete answers, the greedy answer and pass@$k$
+        (\cref{chap:07-modeles-de-langue}, criterion X6).
   \item \textbf{Write the protocol before the first run and date every deviation.} For each change,
-        state what had already been seen (\cref{chap:09-ecarts}).
+        state what had already been seen, including by a reviewer (\cref{chap:09-ecarts}).
   \item \textbf{Recompute every published number from its files.} A script that checks every number
         in the text against its result file costs little and catches drift
         (\cref{sec:verification}).
@@ -113,43 +152,43 @@ submission.
   \item What code? Without published code, the reader does not know what the paper really did.
   \item What compute? A result that nobody else can afford to recompute cannot be reproduced.
 \end{enumerate}
-The reviewer can add an eighth question, which this report justifies: which unit does the test
-compare? A test over episodes, or over the stacked points of a curve, does not measure the
-variability between training runs.
+The reviewer can add an eighth question, which this report justifies: over which unit are the
+uncertainty and the test computed? A bar or a test over episodes, or over the stacked points of a
+curve, does not measure the variability between training runs.
 
 \subsection{For conferences}
 
 \begin{enumerate}
-  \item \textbf{Ask for the test as well as the bars.} The NeurIPS question on statistical significance
-        accepts error bars \enquote{or other appropriate information}. The 18 papers that answer yes
-        to it apply no test. A question that asks for the unit of the test and the number of
-        independent training runs would demand more.
+  \item \textbf{Ask for the test as well as the bars.} The NeurIPS question on statistical
+        significance accepts error bars \enquote{or other appropriate information}. The papers that
+        answer yes to it apply no test. A question that asks for the unit of the test and the number
+        of independent training runs would demand more.
   \item \textbf{Check a ticked box on a sample.} Some papers answer yes on code with no link, on
         compute with no figure. A check drawn at random on a share of the accepted papers would
         measure the gap between declaration and practice.
   \item \textbf{Require the link to the code in the camera-ready version.} \enquote{Code will be
-        released} is no substitute for a link.
+        released} is no substitute for a link. A link added only to the arXiv version escapes the
+        proceedings.
   \item \textbf{Ask for the version of each benchmark.} This practice has not moved detectably since
-        2018 (23\% then 26\%), although the three agentic AI models that rated the cost of each practice
-        (\cref{chap:04-sondage-resultats}) judge it nearly free.
-  \item \textbf{Support reproducibility challenges.} The ICLR 2018 challenge presented by Pineau showed
-        that reproduction by third parties is feasible: among the participants who answered the
-        survey, 54.5\% reproduced part of a paper and 32.7\% most of it. Running it again by broad
-        families of results, with a protocol written in advance, would measure what the checklist
-        does not.
+        2018 (23\% then 26\%), although the three agentic AI models that rated the cost of each
+        practice (\cref{chap:04-sondage-resultats}) judge it nearly free.
+  \item \textbf{Support reproducibility challenges.} The ICLR 2018 challenge presented by Pineau
+        showed that reproduction by third parties is feasible: among the participants who answered
+        the survey, 54.5\% reproduced part of a paper, 32.7\% most of it
+        \parencite[slides 37 to 43]{pineau2018iclr}. Running it again by broad families of results,
+        with a protocol written in advance, would measure what the checklist does not.
 \end{enumerate}
 
 \section{Future work}
 \label{sec:futurs}
 
 \begin{itemize}
-  \item \textbf{A blind human rereading} of a sample of papers, on the verdict criteria, would measure
-        the agreement between a human and our readers, which the double readings between copies of
-        one model cannot measure. The plan of survey deviation 13 is still ready.
-  \item \textbf{A second family of readers}, another AI model, would reread the same papers with the
-        same instructions, published in \file{study/readers/}.
   \item \textbf{ICLR in the trajectory.} The years 2019 to 2024 lack ICLR. A reading of its
         proceedings, through a download route that OpenReview accepts, would complete the series.
+  \item \textbf{A larger survey on the criteria that rise without being established.} The
+        statistical test, held-out evaluation and the method for choosing settings rise by 6 to 22
+        points without the survey being able to say so. A sample large enough to detect a rise of ten
+        points would settle it.
   \item \textbf{The papers that apply what they call RL to large language models, read with the same
         grid} on a sample of comparable size, would tell whether held-out evaluation, which is
         progressing there, comes with the other practices.
@@ -157,14 +196,15 @@ variability between training runs.
         statistics of our experiments with other draws (\cref{sec:reentrainer}).
   \item \textbf{Other families of tasks} than MuJoCo locomotion: image-based games, offline RL, real
         robotics, where the conclusions of E2 to E7 have yet to be tested.
-  \item \textbf{The GRPO strand on one device}, with more random seeds, a wider length limit and
-        the correctness of complete answers measured at every evaluation, would separate the effect of
-        the hardware from that of the random seed. The same protocol on 7-billion-parameter models
-        would bring the strand closer to \textcite{shao2025spurious}.
+  \item \textbf{The GRPO strand at a larger scale.} If the rerun of deviation 20 establishes its
+        contrast, the same protocol on 7-billion-parameter models would bring the strand closer to
+        \textcite{shao2025spurious}.
 \end{itemize}
 
-In 2018, Pineau asked researchers to be as critical of their good results as of their bad ones. This
-report tried to hold to that. While checking our surprising results, we found two traps: an error in
-our code in E6, whose correction changed nothing, then the length limit of the GRPO strand. Two more
-random seeds undid the Qwen gain that we read at three random seeds. The repository keeps a dated
-record of every correction for anyone who wants to redo the work.
+In 2018, Pineau asked researchers to be as critical of their good results as of their bad ones. We
+tried to hold to that. While checking our surprising results, we found two traps: an error in our
+code in E6, whose correction changed nothing, then the length limit of the GRPO strand. Two more
+random seeds undid the Qwen gain that we read at three random seeds. A technical review of our
+repository then found other errors of our own making: a count in E2 that was too generous, a factor
+written wrongly in B1, a repetition penalty overlooked in Qwen. The repository keeps a dated record
+of every correction for anyone who wants to redo the work.

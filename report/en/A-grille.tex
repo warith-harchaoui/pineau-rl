@@ -4,7 +4,8 @@
 This appendix reproduces the reading grid of the survey, criterion by criterion, with the question
 put to the reader and its decision rule. It combines the reader's sheet (\file{study/GRILLE.md}) and
 the rules of the protocol (\file{study/PROTOCOL.md}): deviations 1 to 6 for the harmonisation of
-grid v1, deviations 11, 14, 17 and 19 for grid v2. When in doubt, the protocol prevails.
+grid v1, deviations 11, 14, 17 and 19 for grid v2, deviation 32 for criterion X8, added after the
+results. When in doubt, the protocol prevails.
 
 \section{What the reader does}
 \label{sec:a-lecteur}
@@ -112,7 +113,8 @@ X1 & How many independent training runs behind the main results? & An integer, o
   count the independent RL training runs alone: pass@k and \enquote{16 samples} are evaluation
   samples, which do not count. \\
 X2 & Is an uncertainty reported on the main results? & Standard deviation, standard error, confidence
-  interval, band around the curve. \\
+  interval, band around the curve. Every bar counts, whatever the spread it summarises: criterion X8
+  (\cref{sec:a-x8}) asks what it is computed over. \\
 X3 & Are the best runs selected? & \enquote{Top-k}, \enquote{best of N}, best checkpoint chosen on
   the test set. \texttt{yes} also when the paper's own tables show that the main result is the best
   of several identical training runs, even if the text does not say so (deviation 5). \\
@@ -224,6 +226,48 @@ Y12 & Is a statistical tool from after 2018 used? (adoption of Agarwal et al., 2
   it produces a reported interval. \\
 \end{longtable}
 \end{small}
+
+\section{The criterion added after the results (X8)}
+\label{sec:a-x8}
+
+X2 counts every error bar. Yet a bar computed over the episodes of one training run is the trap that
+experiment B1 shows (\cref{sec:b1}). Criterion X8 therefore asks whether the uncertainty is computed
+over independent training runs. It was written on 21 November 2026, after the results and before any
+reading (survey deviation 32). It is exploratory: it adds to the results without changing the
+verdicts of deviation 20.
+
+\begin{small}
+\begin{longtable}{@{}p{0.07\linewidth}p{0.27\linewidth}p{0.6\linewidth}@{}}
+\caption{Criterion X8: question and decision rule.}\label{tab:a-grille-x8}\\
+\toprule
+Code & Question & Decision rule \\
+\midrule
+\endfirsthead
+\toprule
+Code & Question & Decision rule \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+X8 & Is the uncertainty of the main results computed over random seeds? &
+  \texttt{yes} if the uncertainty reported on a main table or curve is computed across at least two
+  independent training runs and the paper says so (\enquote{mean $\pm$ std over 5 seeds},
+  \enquote{shaded area: standard error across 10 runs}). \texttt{no} if it is computed over
+  episodes, evaluation rollouts or test items only, if it pools the episodes of all random seeds in
+  one spread, or if its source is not stated. \texttt{na} if X2 is \texttt{no}. For an \texttt{llm}
+  paper, count the independent RL training runs, as for X1. A mandatory field, \texttt{source},
+  names what the bar is computed over: \texttt{seeds}, \texttt{pooled} (random seeds and episodes
+  together), \texttt{episodes}, \texttt{items}, \texttt{unstated} or \texttt{other}. Exact quotation
+  and page, as for every criterion. \\
+\end{longtable}
+\end{small}
+
+X8 was read on the 74 papers of the main comparison where X2 is \texttt{yes}, 30 from 2018 and 44
+from 2026, by eight fresh agents that had read no paper of the survey. The six main readers, S1 to
+S6, received the papers in turn after a shuffle with \texttt{random.Random(2032)}, so each of them
+read both years. S7 and S8 reread twenty papers drawn with \texttt{random.Random(2033)}, ten per
+year. The readers received the rule, not the hypothesis. The quotations are checked by the function
+of \file{study/check\_codes.py}.
 
 \section{Harmonisation}
 \label{sec:a-harmonisation}

@@ -59,6 +59,59 @@ Table & Content & Source file \\
 \end{longtable}
 \end{small}
 
+The analyses of the deviations of 21 and 22 November 2026 added sixteen generated tables, each placed
+in the chapter of its analysis. \Cref{tab:b-index-ajouts} refers to each and names the result file
+it comes from.
+
+\begin{small}
+\begin{longtable}{@{}p{0.22\linewidth}p{0.4\linewidth}p{0.3\linewidth}@{}}
+\caption{The generated tables of the analyses of 21 and 22 November 2026.}\label{tab:b-index-ajouts}\\
+\toprule
+Table & Content & Source file \\
+\midrule
+\endfirsthead
+\toprule
+Table & Content & Source file \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\multicolumn{3}{@{}l}{\textit{Survey}}\\
+\Cref{tab:accord-intervalles} & Agreement of the pooled double readings, Wilson intervals and kappa
+  with a bootstrap interval (deviation 30 (a)) & \file{survey\_extra.json} \\
+\Cref{tab:difference-detectable} & Smallest detectable rise and smallest detectable fall per
+  criterion (deviation 30 (b)) & \file{survey\_extra.json}, \file{extension\_stats.json} \\
+\Cref{tab:regle-origine} & The original verdict rule applied to the data (deviation 30 (c)) &
+  \file{survey\_extra.json} \\
+\Cref{tab:q5-versions} & Q5 according to the version read, proceedings or arXiv (deviation 31) &
+  \file{q5\_versions.json} \\
+\Cref{tab:x8} & X8 against X2, sources of the uncertainty per year (deviation 32) &
+  \file{x8\_stats.json}, \file{extension\_stats.json}, \file{survey\_extra.json} \\
+\multicolumn{3}{@{}l}{\textit{Simulations}}\\
+\Cref{tab:hyperparametres} & Settings of the five programs as they ran (deviation 28) &
+  \file{hyperparams.json} \\
+\Cref{tab:regle-tranche} & The \enquote{settled} rule on true null hypotheses (deviation 26) &
+  \file{rule\_calibration.json} \\
+\Cref{tab:e1-grille} & E1 over the sixteen pairs (deviation 22) & \file{e1\_grid.json} \\
+\Cref{tab:e2-strict} & E2, strict count next to the preregistered count (deviation 21) &
+  \file{e2\_strict*.json} \\
+\Cref{tab:e3-holm} & E3 with the Holm correction (deviation 23) & \file{e3\_holm.json} \\
+\Cref{tab:e3-puissance} & Power of the E3 test by number of random seeds (deviation 23) &
+  \file{e3\_holm.json} \\
+\Cref{tab:e5-hors-echantillon} & E5 checked out of sample (deviation 25) & \file{e5\_holdout.json},
+  \file{e5.json} \\
+\Cref{tab:e6-vitesse} & Speed of the E6 agents and the agent published by the Zoo (deviations 31 and
+  33) & \file{e6\_enjoy.json}, \file{e6\_hub.json}, \file{e6\_speed.json} \\
+\Cref{tab:e7-test} & The reversal on \task{Hopper}, tested pair by pair (deviation 24) &
+  \file{e7\_test*.json} \\
+\multicolumn{3}{@{}l}{\textit{GRPO strand}}\\
+\Cref{tab:grpo-mesures} & Five measures per configuration, percentile and Student intervals
+  (deviation 19) & \file{logs\_stats\_5.json} \\
+\Cref{tab:grpo-contraste} & True reward against randomly drawn reward (deviation 19) &
+  \file{logs\_stats\_5.json} \\
+\end{longtable}
+\end{small}
+
 \section{The result files}
 \label{sec:b-fichiers}
 
@@ -98,6 +151,16 @@ Script & Content of the result file \\
 \file{falsify\_no.py} & The search against the \enquote{no} decisions (\file{falsify\_no.json}). \\
 \file{checklist.py} & The checklists declared at NeurIPS 2025 against our readings
   (\file{checklist.json}). \\
+\file{survey\_extra.py} & Double readings with intervals, smallest detectable difference, original
+  verdict rule, readers and year, mechanical lower bound of X8 (deviation 30,
+  \file{survey\_extra.json}). \\
+\file{q5\_versions.py}, \file{q5\_versions\_stats.py} & Q5 reread in the proceedings and in the
+  latest arXiv version, repository dates, four readings of the comparison (deviation 31,
+  \file{q5\_versions.json}). \\
+\file{x8\_stats.py} & Criterion X8 against X2, sources of the uncertainty, agreement of the double
+  readings (deviation 32, \file{x8\_stats.json}). \\
+\file{gemma\_stats.py} & The \texttt{gemma3:12b} reader against our readers (deviation 33). The
+  reading is still running: this file has no published result. \\
 \multicolumn{2}{@{}l}{\textit{Simulations, folder \file{sim/analysis/}}}\\
 \file{e1.py}, \file{e1\_curve.py} & E1: thirty PPO runs, Welch test on the final scores, then on the
   curves. \\
@@ -114,9 +177,32 @@ Script & Content of the result file \\
   descriptive ranking. \\
 \file{dose.py} & The physics modified by degrees. \\
 \file{b3.py} & B3: three measures per run and the reversals between measures. \\
+\file{e2\_strict.py} & E2, strict count of the pairs that reverse (deviation 21). \\
+\file{e1\_grid.py} & E1 over the sixteen pairs (deviation 22). \\
+\file{e3\_holm.py} & E3 with the Holm correction, Hodges-Lehmann gap, power (deviation 23). \\
+\file{e7\_test.py} & E7, each pair tested in the training physics and the modified physics
+  (deviation 24). \\
+\file{e5\_holdout.py} & E5 out of sample (deviation 25). \\
+\file{rule\_calibration.py} & False-positive rate of the \enquote{settled} rule (deviation 26). \\
+\file{b1\_factor.py} & B1, the ratio between the $t$ of the script and that of the random seeds
+  (deviation 27). \\
+\file{hyperparams.py} & The settings of the programs as they ran (deviation 28, \texttt{make
+  hyperparams}). \\
+\file{curves.py} & Learning curves: ranking along the steps, final score against best point,
+  autocorrelation (deviation 29). \\
+\file{effect\_sizes.py} & Effect sizes in score points (deviation 30). \\
+\file{e6\_speed.py}, \file{e6\_enjoy.py}, \file{e6\_hub.py} & E6: speed read in the logs, agents
+  replayed with our protocol, agent published by the Zoo (deviations 31 and 33). \\
+\file{c6\_determinism.py}, \file{e6\_gamma.py}, \file{c2.py} & Deviations 32, 33 (c) and 34, ready
+  in \texttt{make analysis-suite}. Their training runs are still going: no published result. \\
 \multicolumn{2}{@{}l}{\textit{GRPO strand, folder \file{sim/llm/}}}\\
 \file{summary.py} & Pass@1 at steps 0 and 100 of every run, gains, intervals, sensitivity to the
   missing gain, CPU runs alone (\file{summary*.json}, \file{gains*.json}, \file{extra*.json}). \\
+\file{logs\_stats.py} & Greedy accuracy, pass@8, truncated share and accuracy of finished answers,
+  Student intervals, sign test, contrast between rewards (deviation 19,
+  \file{logs\_stats\_5.json}). \\
+\file{c7\_stats.py} & The analysis of the rerun, fixed by deviation 20. The rerun waits for the GPU:
+  no published result. \\
 \end{longtable}
 \end{small}
 

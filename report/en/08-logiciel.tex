@@ -31,17 +31,26 @@ Every number in a document comes from them.
 Path & Content \\
 \midrule
 \file{study/} & The survey: protocol (\file{PROTOCOL.md}), reader's sheet (\file{GRILLE.md}),
-  draws, readings (\file{codes/}, \file{codes\_v2/}), harmonisation (\file{overrides*.json}),
-  provenance of the readers (\file{readers/}), analysis scripts and JSON result files. \\
+  draws, readings (\file{codes/}, \file{codes\_v2/}, \file{codes\_x8/}), harmonisation
+  (\file{overrides*.json}), provenance of the readers (\file{readers/}), analysis scripts and JSON result
+  files, among them those of deviations 30 to 33 (\file{survey\_extra.py}, \file{x8\_stats.py},
+  \file{q5\_versions\_stats.py}). \\
 \file{sim/} & The simulations: protocol (\file{SIM\_PROTOCOL.md}), one run (\file{run.py}), a
   re-evaluation under modified physics (\file{dose.py}), run lists (\file{jobs*.txt}), launchers and
   watchdog (\file{drive.sh}, \file{queue.sh}, \file{worker.sh}, \file{scale.sh},
-  \file{watchdog.sh}), curves (\file{results/}), logs (\file{logs/}), final policies
-  (\file{models/}). \\
+  \file{watchdog.sh}), curves (\file{results/}, with the two evaluation videos of E6 in
+  \file{results/e6\_video/}), logs (\file{logs/}), final policies (\file{models/}), the agent published
+  by the Zoo and its files (\file{zoo\_hub/}). \\
 \file{sim/analysis/} & One script and one JSON file per experiment (E1 to E7, B1, B3, dose,
-  Bonferroni correction), with their variants at twenty random seeds and at equal budget. \\
+  Bonferroni correction), with their variants at twenty random seeds and at equal budget. The analyses
+  of deviations 21 to 31, one per file: the strict count of E2 (\file{e2\_strict.py}), the \task{Hopper}
+  reversal tested (\file{e7\_test.py}), E1 on sixteen pairs, E3 with Holm, E5 out of sample, the
+  calibration of the rule, the factor of B1, the curves, the effect sizes, the speed of the E6 agents. The
+  survey of the hyperparameters (\file{hyperparams.py}). Three analyses written in advance, waiting for
+  their training runs (\file{c6\_determinism.py}, \file{e6\_gamma.py}, \file{c2.py}). \\
 \file{sim/llm/} & The GRPO strand: protocol, \file{grpo.py}, launchers, diagnostics
-  (\file{diag/}), logs, results and \file{summary.py}. \\
+  (\file{diag/}), logs, results, \file{summary.py} and \file{logs\_stats.py} (deviation~19). The rerun of
+  deviation~20: its launcher \file{c7.sh} and its analysis \file{c7\_stats.py}, written before any run. \\
 \file{src/pineau\_rl/} & The Python package of reusable computations (\cref{sec:paquet}). \\
 \file{tests/} & The unit tests (\cref{sec:tests}). \\
 \file{envs/} & The frozen environments, the platform and the document toolchain
@@ -186,7 +195,9 @@ random seed 0.
 (\cref{chap:07-modeles-de-langue}). Evaluation lines contain \texttt{step}, \texttt{greedy},
 \texttt{pass1}, \texttt{pass8} and \texttt{truncated}. Training lines, every ten steps, contain
 \texttt{train\_right}, \texttt{truncated}, \texttt{loss}, \texttt{grad\_norm}, \texttt{retries} and
-\texttt{wall}.
+\texttt{wall}. These files keep no verdict per problem. The rerun of deviation~20 adds, for each run, a file
+\file{seed<seed>.items.jsonl.gz} that keeps the verdict, the length and the answer for every problem at
+every evaluation. Its log writes one line per step.
 
 \paragraph{A paper reading} One JSON file per paper and per reader, stored under
 \file{study/codes\_v2/} in the reader's directory. For each criterion, it holds the value, an exact
@@ -251,12 +262,24 @@ The \file{Makefile} trains nothing. Training goes through \file{sim/run.py}, \fi
 \begin{description}[style=nextline,leftmargin=1.5em]
   \item[\texttt{make install}] installs the package in editable mode in the analysis environment,
         with no dependency downloaded: they come from \file{envs/analysis.lock}.
-  \item[\texttt{make analysis}] reruns every analysis script, in dependency order: the nine of the
-        survey, the sixteen of the simulations at ten random seeds, the statistical analysis of the
-        official Zoo pipeline, the variants of deviation 12 (twenty random seeds, replication of E4
-        on random seeds 10 to 19, equal budget), then \file{summary.py} at three and at five random
-        seeds. The variants are selected through environment variables (\texttt{SEEDS},
-        \texttt{SUFFIX}, \texttt{BUDGET}).
+  \item[\texttt{make analysis}] reruns every analysis script, in dependency order, through three
+        targets that also run alone. \texttt{analysis-study} runs the twelve survey scripts, among them
+        those of deviations 30 to 33. \texttt{analysis-sim} runs the seventeen simulation scripts at ten
+        random seeds, among them the strict count of E2 and the test of the \task{Hopper} reversal, then
+        the statistical analysis of the official Zoo pipeline, the variants of deviations 12 and 20
+        (twenty random seeds, replication of E4 on random seeds 10 to 19, equal budget) and the eight
+        analyses of deviations 22 to 31, which read the files of the earlier ones. \texttt{analysis-llm}
+        runs \file{summary.py} at three and at five random seeds, then \file{logs\_stats.py}
+        (deviation~19). The variants are selected through environment variables (\texttt{SEEDS},
+        \texttt{SUFFIX}, \texttt{BUDGET}). Two analyses of deviation~33, \file{e6\_enjoy.py} and
+        \file{e6\_hub.py}, need the Zoo environment and the policies: no target reruns them, as with
+        \file{e6\_official\_eval.json}.
+  \item[\texttt{make hyperparams}] reads the settings of the five programs back from the libraries of the
+        training environment and writes \file{sim/analysis/hyperparams.json} (deviation~28). It stays
+        outside \texttt{verify}, which runs in the analysis environment.
+  \item[\texttt{make analysis-suite}] runs the three analyses written in advance for the experiments
+        still running (deviations 32 to 34). Their JSON files enter the verification only once their
+        training runs have finished.
   \item[\texttt{make check}] runs the two checking scripts of \cref{sec:verification}.
   \item[\texttt{make test}] runs the unit tests with pytest.
   \item[\texttt{make lint}] runs ruff and mypy on the package and the tests.
@@ -385,7 +408,8 @@ median duration of a run and the core-hours consumed.
 The GRPO runs have very different durations depending on the device. According to the \texttt{wall}
 field of their logs at step 100, a Qwen run took 42 to 52 minutes on GPU and 4.3 to 11.4 hours on
 CPU, a Llama run 69 to 148 minutes on GPU. These spreads also reflect the varying load of the
-machine.
+machine. From these logs, the rerun of deviation~20 plans about 58 GPU hours for its forty runs, made at
+night.
 
 \section{What is not in the repository}
 \label{sec:absent}

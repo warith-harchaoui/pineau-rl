@@ -67,7 +67,9 @@ left unmeasured (Y1 to Y12). We read a first draw of 50 RL papers from 2025 and 
 2026 (robotics, games, control, language models excluded), 50 papers from 2018 and 20 papers per year
 for 2019, 2020, 2022 and 2024. AI agents read the papers. Each decision rests on an exact
 quotation and its page. The verdict compares classical RL in 2026 with our own reading of 2018, using
-the same grids and the same readers. Chapters~\ref{chap:03-sondage-methode}
+the same grids and agents of the same model. No agent read both years, however, so the effect of the
+year is confounded with that of the reader set (Section~\ref{sec:sm-annees}).
+Chapters~\ref{chap:03-sondage-methode}
 and~\ref{chap:04-sondage-resultats} describe the method and the results.
 
 \paragraph{The experiments}
@@ -83,31 +85,43 @@ and~\ref{chap:07-modeles-de-langue} describe these experiments.
 
 \begin{enumerate}
   \item \textbf{A same-grid measurement.} We apply Pineau's grid again to the papers of 2026 and
-  calibrate it on our own reading of 50 papers from 2018. With the same grid on both sides, four
-  practices changed in classical RL: linking the code (31\% then 74\%), showing the sensitivity to a
-  setting (44\% then 80\%), quantifying the compute (27\% then 58\%), reporting an uncertainty (63\%
-  then 88\%). Others show no detectable change, the statistical test among them (6\% then 12\%).
+  calibrate it on our own reading of 50 papers from 2018. Four practices changed in classical RL:
+  linking the code, showing the sensitivity to a setting, quantifying the compute, reporting an
+  uncertainty (Section~\ref{sec:sr-principale}). All four accompany the result. The tuning of
+  baselines shows no sign of progress. For the other criteria, the statistical test and held-out
+  evaluation among them, the survey lacks power: it detects no change without being able to rule
+  out one of thirty points.
   \item \textbf{A preregistered second grid.} Twelve criteria (Y1 to Y12), written with their decision
   rules before any coding, cover the performance measure, the tasks, the implementations, the
   versions, generalisation, sensitivity and recent statistical tools.
-  \item \textbf{A trajectory.} Four intermediate years read between 2018 and 2026 show the four
-  practices rising slowly, with no jump right after the 2019 checklist.
-  \item \textbf{A battery of checks.} The survey comes with blind double readings, an audit of the
-  quotations, a keyword search against the negative decisions, the published provenance of every
-  reader, cuts by provenance, conference and reader, sensitivity analyses to the readers' model and to
-  the title filter, a comparison with the checklists filled in by the authors.
-  \item \textbf{The experiments of 2018, rerun.} Two groups of five runs drawn at random fool a Welch
-  test in only 1.2\% of cases. Sorted, they fool it in 31\%. Keeping the best three runs out of ten
-  inflates the mean by 33\%. The best program changes with the task, except at equal budget with twenty
-  random seeds, where CrossQ leads on all four tasks. Physics modified by 20\% moves the leader to last
-  place on \task{Hopper}.
-  \item \textbf{An explanation of the $t$ of 9.} The script Peter Henderson published in 2017 measures
-  the spread between episodes and ignores the spread between random seeds. Applied to our TRPO runs,
-  its $t$ exceeds 9.09 in 38\% of random draws.
+  \item \textbf{A trajectory.} Four years read between 2018 and 2026 show the four practices rising
+  slowly, with no jump right after the 2019 checklist (Section~\ref{sec:sr-trajectoire}).
+  \item \textbf{A battery of checks.} Thirty papers reread blind, with an interval on each agreement,
+  an audit of the quotations, a keyword search against the negative decisions, the published
+  provenance of every reader, cuts by provenance, conference and reader, sensitivity analyses to the
+  readers' model and to the title filter, a comparison with the checklists filled in by the authors.
+  To these we add the smallest difference the survey could detect on each criterion and what the
+  original verdict rule would have given (Chapter~\ref{chap:03-sondage-methode}).
+  \item \textbf{Two re-readings added after the results.} Criterion X8 asks whether the reported
+  uncertainty is computed over independent random seeds, a question X2 does not ask: its share does
+  not move detectably. The code link, reread on the same kind of version in both years (proceedings,
+  latest arXiv version, public code at the date of the conference), keeps its verdict in every reading
+  (Section~\ref{sec:sm-relectures}).
+  \item \textbf{The experiments of 2018, rerun.} They follow a protocol written before the first
+  training run. Complements declared after the results put them to the test: E1 on the sixteen
+  (program, task) pairs, a strict count of ranking changes by pairs, the Holm correction on the
+  comparison of the two PPOs, a test of the reversal under modified physics, a check of E5 on fresh
+  random seeds, the calibration of the settled-winner rule on true null hypotheses. A diagnosis of the
+  E6 reference closes the list: its published recipe aged with its libraries
+  (Chapter~\ref{chap:06-experiences-resultats}).
+  \item \textbf{A probable explanation of the $t$ of 9.} The script Peter Henderson published in 2017
+  measures the spread between episodes and ignores the spread between random seeds. Applied to our
+  TRPO runs, it often reaches the published value (Section~\ref{sec:b1}). The $(t, p)$ pair of 2018
+  rules out the other ways of computing more than it designates this script.
   \item \textbf{A bridge to language models.} We wrote our own GRPO and ran it on two small open
   models, with the true reward (the one that checks the answer) and with a coin-flip reward. With five
-  random seeds, Qwen's mean gain with the true reward is $+14$ points, with an interval from $-3$ to
-  $+34$ that contains zero.
+  random seeds, no gain in success is established. Qwen's apparent gain comes from shorter answers.
+  Llama's comes with a fall in its greedy accuracy and its pass@8 (Section~\ref{sec:llm-resultats}).
   \item \textbf{A repository that checks itself.} It holds the dated protocols, the readings with their
   quotations, the training results, the analysis scripts and checks that compare every number of the
   argued essay (\file{docs/conclusions-en.md}) and of the blog article with the result files
@@ -123,8 +137,10 @@ results of the survey. Chapters~\ref{chap:05-experiences-methode} and~\ref{chap:
 do the same for the MuJoCo experiments. Chapter~\ref{chap:07-modeles-de-langue} describes the GRPO
 strand. Chapter~\ref{chap:08-logiciel} describes the software, from training to documents.
 Chapter~\ref{chap:09-ecarts} lists every deviation from the three protocols.
-Chapter~\ref{chap:10-limites} gathers the limitations. Chapter~\ref{chap:11-conclusion} takes up each
-flaw with its verdict. The appendices give the complete rules of the grid (Appendix~\ref{chap:A-grille}),
+Chapter~\ref{chap:10-limites} gathers the limitations. Chapter~\ref{chap:11-conclusion} answers the
+question, says what the measurements establish with a pointer to their chapters, then draws
+recommendations.
+The flaw-by-flaw verdict is in Section~\ref{sec:sr-failles}. The appendices give the complete rules of the grid (Appendix~\ref{chap:A-grille}),
 additional tables (Appendix~\ref{chap:B-tableaux}), the list of papers read
 (Appendix~\ref{chap:C-articles}) and the software environments (Appendix~\ref{chap:D-environnements}).
 

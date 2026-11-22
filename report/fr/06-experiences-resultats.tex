@@ -548,7 +548,10 @@ l'intervalle $[0{,}52\,;\,0{,}94]$, ne se retrouve pas sur les dix graines aléa
 une moitié et jugés sur l'autre, $n$ essais retrouvent l'ordre des comparaisons proches dans 60~\% des tirages
 en moyenne avec trois graines aléatoires, 65~\% avec cinq et 71~\% avec dix (69~\% et 71~\% dans l'autre sens
 avec trois et cinq). E5 donnait, pour les mêmes comparaisons, 65~\%, 71~\% et 77~\% en médiane. Sans
-circularité, les parts restent proches de celles de E5, un peu plus basses : E5 se révèle un peu optimiste.
+circularité, les parts restent proches de celles de E5. Elles sont un peu plus basses dans un sens, pas dans
+l'autre : 69~\% contre 65~\% avec trois graines aléatoires, 71~\% contre 71~\% avec cinq. Avec dix, les dix
+essais d'une moitié sont tous tirés : chaque comparaison est retrouvée dans tous les tirages ou dans aucun, et
+la part vaut 5 sur 7 dans les deux sens. E5 n'est donc un peu optimiste que dans un sens.
 
 \gentable{e5-hors-echantillon}
 
@@ -897,7 +900,7 @@ ajouts de l'écart~12 les confirment ou les nuancent.
 \begin{itemize}
   \item Le programme en tête change avec la tâche aux budgets du protocole (E2), de façon établie, avec ou sans
     correction de Bonferroni. Au décompte strict, l'ordre de quatre paires s'inverse à vingt graines
-    aléatoires, deux avec Bonferroni, comme à dix.
+    aléatoires (trois à dix), deux avec Bonferroni aux deux tailles.
   \item La sélection des trois meilleurs essais sur dix gonfle toujours la moyenne et inverse 3~comparaisons
     sur 24, sur les graines aléatoires 10 à 19 comme sur les graines aléatoires 0 à 9 (E4).
   \item La physique modifiée renverse le classement de \task{Hopper}. Le renversement de PPO JAX et de PPO

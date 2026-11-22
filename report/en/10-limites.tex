@@ -6,8 +6,8 @@ them into the four families of threats of \textcite{shadish2002experimental}. In
 whether the measured effect really comes from the presumed cause. External validity asks to which
 populations, tasks and conditions the result extends. Construct validity asks whether the measure
 captures the notion it claims to capture. Statistical conclusion validity asks whether the tests and
-intervals license the conclusion drawn. A final section states what a new complete training run on
-another machine would test.
+intervals license the conclusion drawn. Two sections close the chapter: the experiments still
+running, then what a new complete training run on another machine would test.
 
 \section{Internal validity}
 \label{sec:val-interne}
@@ -27,14 +27,19 @@ safeguards reduce the risk without removing it.
   \item \textbf{The quotation audit.} After the first percentages, we looked for the quotations that
         the mechanical check did not find (deviation 15, file \file{study/v1\_quotes\_audit.md}). Of
         89 quotations, none is invented: 83 appear word for word in the paper, one is a faithful
-        paraphrase and 5 give values that contradict the rules.
-  \item \textbf{The blind double readings.} Twenty papers of the survey were reread by a second agent
-        that did not see the first reading. On the ten reread papers of the first draw, the two
-        readers agree on 127 decisions out of 130 (98\%). For every criterion, two agents agree on at
-        least 80\% of the papers, with one exception: the performance measure (Y1), at 60\% on the
-        first draw, before its rules were made more precise. Ten papers of the yearly trajectory,
-        reread in the same way, agree at 80\% or more on each of the 23 criteria
-        (\cref{tab:accord}).
+        paraphrase, 5 give values that contradict the rules.
+  \item \textbf{The blind double readings.} Thirty papers of the survey were reread by a second agent
+        that did not see the first reading: the first ten of the first 2026 draw (readers G and G2),
+        five 2018 papers and five 2026 papers (R2), ten papers of the yearly trajectory (R3). On the
+        ten reread papers of the first draw, the two readers agree on 127 decisions out of 130
+        (98\%). On the four verdict criteria, the thirty papers give thirty agreements, a Wilson
+        interval of $[0.89, 1]$. Over the thirty papers pooled, every criterion exceeds 80\%
+        agreement. The least reliable are the origin of the baselines (Y5) and the exclusions (Y6),
+        25 agreements out of 30 each, with a Cohen's kappa of 0.65 and 0.62 whose bootstrap interval
+        goes below 0.35 (\file{study/survey\_extra.json}, deviation 30 (a)). On the first draw, the
+        performance measure (Y1) reached only 60\% agreement, before its rules were made more
+        precise. The ten papers of the trajectory agree at 80\% or more on each of the 23 criteria
+        (\cref{tab:accord}). Agreement on 2018 papers rests on the five papers of R2.
   \item \textbf{The search against the \enquote{no} decisions.} A \enquote{no} rests on no
         quotation. Every \enquote{no} on the verdict criteria was confronted with the text of the
         paper through keywords fixed in advance. Each excerpt found was then judged by an arbiter that
@@ -51,34 +56,74 @@ These safeguards leave one threat whole. The two readers of a double reading are
 model: their agreement measures the stability of that model, which differs from the agreement of two
 independent readers. A systematic bias of the model, shared by all its copies, escapes the double
 readings. The exact instructions, the model and the dates of every reader are published
-(\file{study/readers/}), so that another reader, human or not, can redo the reading.
+(\file{study/readers/}), so that another reader can redo the reading. A reader from another family
+of models, \texttt{gemma3:12b}, is rereading the 98 experimental papers of the main comparison at
+the time of writing (survey deviation 33, \cref{sec:val-en-cours}).
+
+\subsection{Readers and year are confounded}
+
+No main reader read both years. The 2018 papers were read by F, F2 and H1 to H4, the classical RL
+papers of 2026 by other agents (\file{study/survey\_extra.json}, key \texttt{readers\_year}). All are
+copies of the same model, but each session has its own instructions, date and version of the grid.
+In the main comparison, an effect of the set of readers therefore cannot be told apart from an effect
+of the year. Removing one reader at a time (deviation 21) does not detect it, since the effect would
+come from the set as a whole.
+
+Deviation 30 (d) measures what the data allow. Within one year, readers sometimes differ more than
+chance would explain: in 2018, the share of Q5 goes from 0\% (H3, 0 papers out of 8) to 55\% (F, 6
+out of 11), with $p = 0.049$ by permuting the readers. In 2026, that of X7 goes from 17\% to 83\%,
+with $p = 0.027$. These gaps mix the reader with the batch of papers: F read the twelve papers of the
+calibration, H1 to H4 the added papers. For the verdict criteria, only the second reader R2 read both
+years. On its five papers per year, it finds, for all four criteria, the same differences between
+years as the main readers. Five papers per year are still too few to close the question. Criterion
+X8 closes it for itself alone, since each of its six main readers read both years (deviation 32).
+The reader from another family of models of deviation 33 will take the question up again for the
+four verdict criteria.
 
 \subsection{Decisions taken after the results}
 
 Several rules were fixed after results had been seen: the verdict rule of the survey
 (deviation 20), the harmonisation of the 2018 calibration (deviation 15), the descriptive ranking
 under modified physics (simulation deviation 11), the details of the GRPO bootstrap (deviation 13)
-and the reset of the GRPO failure count (deviation 10). \Cref{chap:09-ecarts} discusses each of them.
-The order in which the deviations before 15 November 2026 were written rests on our word and on the
-commit dates (\cref{sec:parole}).
+and the reset of the GRPO failure count (deviation 10). The twenty-one deviations of 21 and 22
+November 2026 all come from a technical review made after the results. For eight simulation
+deviations, that review had already computed a draft version of the numbers
+(\cref{sec:ecarts-audit}). They are published as exploratory or corrective, next to the
+preregistered results. \Cref{chap:09-ecarts} discusses each of these decisions. The order in which
+the deviations before 15 November 2026 were written rests on our word and on the commit dates
+(\cref{sec:parole}).
 
 \subsection{The simulation runs}
 
 The reconstructed ledger counts 42 stopped attempts that the protocol did not declare
 (\cref{sec:registres}). Every stop hit all the runs in progress at once, with no link to a score. For
 SAC and CrossQ, the curves of the stopped attempts were overwritten: we cannot show that the relaunch
-reproduces the same curve. The protocol announced Stable-Baselines3 2.6.0. Every training ran with
+reproduces the same curve. The determinism of these two JAX programs remains to be established
+(deviation 32, running). The protocol announced Stable-Baselines3 2.6.0. Every training ran with
 2.9.2, the same version for all runs. These deviations favour no program. They are stated here so
 that the reader knows them.
 
-\subsection{Hardware and random seed in the GRPO strand}
+\subsection{The GRPO strand}
 
-For Qwen, the hardware changed with the random seed: the two true-reward runs that show the gain ran
-on the GPU, the three that do not show it ran on the CPU. Five runs cannot separate these two causes
-(\cref{sec:llm-materiel}). The first three runs ran before the safeguards against a corrupted
-computation existed. A gradient that was corrupted but finite, clipped to 1, may have gone through
-them without a trace. The MPS computation is not deterministic from one attempt to the next, so the
-same random seed does not guarantee the same run on the GPU.
+Three defects of the GRPO strand bear on the cause of the measured effects (deviation 18 of the GRPO
+strand).
+\begin{itemize}
+  \item \textbf{The hardware changes with the random seed.} For Qwen, the two true-reward runs that
+        show the gain ran on the GPU, the three that do not show it on the CPU. Five runs cannot
+        separate these two causes (\cref{sec:llm-materiel}). The first three runs ran before the
+        safeguards against a corrupted computation existed: a gradient that was corrupted but
+        finite, clipped to 1, may have gone through them without a trace. The MPS computation is not
+        deterministic from one attempt to the next. The Llama runs show it: at random seed 3, the
+        true-reward run and the randomly-drawn-reward run start from the same model with the same
+        randomness on the same GPU. Their greedy accuracy at step 0 is nevertheless 0.707 and 0.667.
+  \item \textbf{Qwen ran with a repetition penalty of 1.1}, taken from its configuration file, which
+        Llama does not have. The comparison between the two families therefore mixes the family with
+        the decoding setting. Qwen's sampled answers also depart from the policy whose probabilities
+        the training computes.
+  \item \textbf{The pilot read the test set.} The task and the 160-token ceiling were chosen by
+        looking at the test problems. No training saw that set.
+\end{itemize}
+The rerun of deviation 20 of the GRPO strand corrects all three defects (\cref{sec:val-en-cours}).
 
 \section{External validity}
 \label{sec:val-externe}
@@ -101,13 +146,19 @@ same random seed does not guarantee the same run on the GPU.
         sample. The 9 ICLR 2026 papers at the head of the queue, unreachable on 9 November 2026, were
         skipped.
   \item \textbf{The source of the PDFs.} The 2026 papers were read mostly in their arXiv version (45
-        of the 50 classical RL papers), the 2018 papers in the conference proceedings. An arXiv
-        version is sometimes longer or more recent. With only 5 papers read on a conference site,
-        this effect cannot be measured.
+        of the 50 classical RL papers), the 2018 papers in the conference proceedings. A link to code
+        is often added to the arXiv version after acceptance: the rise of Q5 might have come from
+        that. Survey deviation 31 measured it by rereading Q5 on the same kind of version in both
+        years. With both years read in the proceedings, the rise is $+41$ points, $[+21, +56]$. With
+        both years read in the latest arXiv version, it is $+34$ points, $[+15, +51]$. In the least
+        favourable reading, it is still $+30$ points, $[+11, +47]$, with $p_{\text{Holm}} = 0.035$
+        (\file{study/q5\_versions.json}, \cref{sec:sr-robustesse}). The asymmetry of versions is
+        real, but it changes only four to six of the 48 papers of 2018: it explains part of the gap
+        between our 2018 Q5 and Pineau's, not the verdict.
   \item \textbf{The trajectory without ICLR.} The years 2019 to 2024 cover only ICML and NeurIPS:
         OpenReview refuses automated downloads.
   \item \textbf{Pineau's draw.} Her 2018 sampling method is not described. Our comparisons with her
-        figures assume a draw comparable to ours and serve only as context.
+        figures assume a draw comparable to ours and serve as context, never as a verdict.
 \end{itemize}
 
 \subsection{The simulations}
@@ -115,9 +166,11 @@ same random seed does not guarantee the same run on the GPU.
 The experiments are limited to the MuJoCo simulator and to four locomotion tasks
 (\task{HalfCheetah}, \task{Hopper}, \task{Walker2d}, \task{Swimmer}), those of
 \textcite{henderson2018matters}. They say nothing about image-based games, real robotics or offline
-RL. E1 and B1 are limited to one task (\task{HalfCheetah}) and two algorithms (PPO and TRPO). The four
-programs run with their default hyperparameters, except in E6: another tuning might change the
-rankings. The modified physics changes only two quantities, the masses and the friction.
+RL. In their preregistered form, E1 and B1 are limited to one task (\task{HalfCheetah}) and two
+algorithms (PPO and TRPO). E1 redone over the sixteen (program, task) pairs extends the finding to
+the four programs and the four tasks (deviation 22, \cref{sec:e1}). The four programs run with their
+default hyperparameters, except in E6: another tuning might change the rankings. The modified
+physics changes only two quantities, the masses and the friction.
 
 \subsection{The budgets}
 
@@ -125,13 +178,16 @@ PPO trains for 1{,}024{,}000 steps, SAC and CrossQ for 200{,}000 (simulation dev
 The equal-budget reading (deviation 12 (iii)) compares PPO at 200{,}000 steps, read off its
 one-million-step curve: a PPO tuned for a budget of 200{,}000 steps might do better. The budget of
 SAC and CrossQ, reduced to keep the compute within reach, places them in the \enquote{little data}
-regime. A longer budget might change their order.
+regime. A longer budget might change their order. CrossQ's batch-renormalisation warm-up also lasts
+100{,}000 updates: the critic spends half its budget in it, the actor its whole training, as
+measured on the seed-0 model on Hopper (deviation 28, \cref{tab:hyperparametres},
+\cref{sec:programmes}).
 
 \subsection{One platform}
 
 Every run comes from one Mac with an Apple M2 Max chip, shared with other projects, under macOS and
-for arm64. MuJoCo, JAX and PyTorch round differently from one processor to another: the same random
-seed gives another curve on another machine (\cref{sec:reentrainer}).
+for arm64. Another machine would give other curves for the same random seed
+(\cref{sec:reentrainer}).
 
 \subsection{The scale of the GRPO strand}
 
@@ -149,13 +205,18 @@ MATH-500, with far more compute. Our strand neither replicates nor refutes their
         share their wording but have different implicit decision rules. This is the reason for the
         same-grid verdict rule (deviation 20).
   \item \textbf{A satisfied criterion does not mean a practice done well.} Q5 is yes for a link to
-        code, with no check that the code runs. X2 is yes for an error bar, with no judgement of
-        whether it measures the right spread: the bar may summarise episodes instead of random seeds,
-        which experiment B1 shows to be dangerous. Q8 is yes for an applied test, with no judgement of
-        whether the test is appropriate.
+        code, with no check that the code runs. Q8 is yes for an applied test, with no judgement of
+        whether the test is appropriate. X2 is yes for any error bar, whereas the bar computed over
+        the episodes of one training run is exactly the trap that experiment B1 shows
+        (\cref{sec:b1}). Criterion X8, added after the results (deviation 32), asks whether the main
+        uncertainty is computed over random seeds. It is in 35\% of the experimental papers of 2018
+        and 42\% of those of 2026, a gap of $+7$ points, $[-12, +25]$, which the survey does not
+        detect. The rise of X2 therefore measures the spread of the error bar more than that of the
+        bar computed over random seeds (\cref{sec:sr-principale}). X8 was read after the results by
+        eight fresh agents (Claude Code, model \texttt{opus}) that had read no paper of the survey.
   \item \textbf{The performance measure (Y1)} is our weakest criterion: 60\% agreement on the first
-        draw, before its rules were made more precise. The verdict on flaw F8 is read with this
-        caveat.
+        draw, before its rules were made more precise, 26 agreements out of 30 over all the double
+        readings. The verdict on flaw F8 is read with this caveat.
   \item \textbf{The borderline cases of X3, X4 and X7} received no new harmonisation rule, so that
         both years are read with the same grid. A compute figure limited to inference time, or failed
         random seeds that were discarded, stay coded as the reader read them.
@@ -165,63 +226,117 @@ MATH-500, with far more compute. Our strand neither replicates nor refutes their
         checklist what it declares.
   \item \textbf{The score of a simulation run} is the mean return of ten deterministic episodes at
         the last step. Experiment B3 shows that another measure (best score, mean of the curve)
-        changes the order of some pairs.
+        changes the order of some pairs. Reporting the best point of the curve instead of the last
+        inflates the interquartile mean of PPO by up to 48\% (PPO JAX on \task{Walker2d}, ten random
+        seeds, deviation 29, \file{sim/analysis/curves.json}).
+  \item \textbf{E3 compares two programs, not two implementations of one algorithm.} The two PPOs
+        share their algorithm hyperparameters, not their default initialisation: Stable-Baselines3
+        initialises every layer orthogonally, while sbx leaves its orthogonal option off and keeps
+        Flax's default initialisation (\cref{sec:programmes}). Deviation 34 tests whether this
+        difference explains E3.
   \item \textbf{The pass@1 of the GRPO strand} mixes correctness and concision, since a truncated
-        answer counts as wrong (\cref{sec:llm-coupure}).
-  \item \textbf{The cost and risk ratings} that tested the cost thesis come from three language-model
-        agents of three different sizes. Their agreement with one another does not guarantee that a
+        answer counts as wrong (\cref{sec:llm-coupure}). For Qwen, the pass@1 gain under the true
+        reward is explained entirely by the drop in truncated answers. The accuracy of finished
+        answers does not rise (deviation 19 of the GRPO strand).
+  \item \textbf{The cost and risk ratings} that tested the cost thesis come from three agentic AI
+        models of three different sizes. Their agreement with one another does not guarantee that a
         researcher would rate the same way.
 \end{itemize}
 
 \section{Statistical conclusion validity}
 \label{sec:val-stat}
 
-\paragraph{The sample sizes of the survey} With 50 papers on each side, a change of ten points still
-often goes unnoticed: \enquote{no detectable change} does not mean \enquote{no change}. The first draw
-had 14 classical RL papers, too few to detect a gap of thirty points, hence the enlargement of
-deviation 12. The trajectory rests on 20 papers per year: a share there has an uncertainty of about
-twenty points on either side.
+\paragraph{The sample sizes of the survey} With 48 experimental papers from 2018 and 50 from 2026,
+the survey sees only large changes. Deviation 30 (b) computes, for each criterion, the smallest rise
+that Fisher's test detects four times out of five: about thirty points for most criteria, more at the
+corrected level (\cref{tab:difference-detectable}, \cref{sec:sr-principale}). \enquote{No detectable
+change} therefore does not mean \enquote{no change}. On Q3, Q6, Q7 and Y8, the survey sees rises of
+11 to 22 points without being able to establish them. That of Q6 even has a Newcombe interval that
+avoids zero before correction. The first draw had 14 classical RL papers, too few to detect a gap of
+thirty points, hence the enlargement of deviation 12. The trajectory rests on 20 papers per year: a
+share there has an uncertainty of about twenty points on either side.
 
-\paragraph{Multiple comparisons} The survey compares seventeen criteria in the main comparison. The
-Holm correction protects the family-wise error rate at the cost of power: a gap whose Newcombe
-interval excludes zero without passing Holm, such as Q6 or Y12, is reported but makes no verdict. For
-E2, 24 intervals of the probability of improvement are also given at the simultaneous 95\% level
-through the Bonferroni correction (simulation deviation 18, \cref{tab:e2-bonferroni}).
+\paragraph{Multiple comparisons} The survey compares 23 criteria in the main comparison, with a Holm
+correction applied separately to the 11 criteria of grid v1 and the 12 of grid v2. The correction
+protects the error rate of each family at the cost of power: a gap whose Newcombe interval avoids
+zero without passing Holm, such as Q6 or Y12, is reported but makes no verdict. For E2, the 24
+probability-of-improvement intervals are also given at the simultaneous 95\% level through the
+Bonferroni correction (simulation deviation 18, \cref{tab:e2-bonferroni}). E3 tests four tasks: with
+the Holm correction (deviation 23), only the difference on \task{Swimmer} at twenty random seeds
+stays settled.
 
 \paragraph{The fragile verdicts} The rise of reported uncertainty (X2) no longer passes the Holm
-correction in two checks ($p = 0.07$ each time). It remains the most fragile of the four changes. Code
-and compute pass the threshold in all our checks, sensitivity to a hyperparameter in nearly all of
-them (\cref{tab:robustesse}).
+correction in two checks ($p = 0.07$ each time). Its observed power after correction is only 0.52
+(deviation 30 (b)). It remains the most fragile of the four changes. Code and compute pass the
+threshold in all our checks, sensitivity to a hyperparameter in nearly all of them
+(\cref{tab:robustesse}).
+
+\paragraph{The \enquote{settled} rule of the simulations} A pair is called settled when the 95\%
+interval of its probability of improvement excludes 0.5, or when the intervals of the two
+interquartile means are disjoint (\cref{sec:regle}). Deviation 26 measures its actual false-positive
+rate on two groups drawn from the same program, where no difference exists
+(\cref{tab:regle-tranche}, \cref{sec:regle}). The rule settles wrongly slightly more than once in
+twenty at ten runs against ten, nearly once in ten at five against five. The condition on the
+interquartile means adds almost nothing. A pair settled narrowly at ten random seeds, such as PPO
+JAX against CrossQ on \task{Hopper} (\cref{sec:e7}), is read with this rate in mind.
 
 \paragraph{The number of random seeds in the simulations} The main results rest on ten random seeds
 per pair. Experiment E5 shows what this number allows: between two programs whose means differ by
 less than 20\%, five random seeds recover the right order only 71 times in a hundred at the median,
-62 times as measured on twenty random seeds. On the tasks where the first program does not clearly
-beat the second, the rankings at ten random seeds are no more reliable than that. The twenty random seeds of
-deviation 12 confirm or qualify each result. \Cref{chap:06-experiences-resultats} states every
-divergence.
+62 times as measured on twenty random seeds. E5 judges the right order on the very sample it draws
+from. Judged out of sample, on random seeds 10 to 19, the order drawn from random seeds 0 to 9 is
+kept in 20 comparisons out of 24, but in only 5 out of 7 for the close comparisons. On those close
+comparisons, five random seeds recover the out-of-sample order 65 times in a hundred on average
+(deviation 25, \file{sim/analysis/e5\_holdout.json}). The power of E3 gives the same order of
+magnitude: at ten random seeds per program, the test corrected for four tasks detects four times out
+of five only a probability of improvement of at least 0.94, 0.81 at twenty (deviation 23). On the
+tasks where the first program does not clearly beat the second, the rankings at ten random seeds are
+no more reliable than that. The twenty random seeds of deviation 12 confirm or qualify each result.
+\Cref{chap:06-experiences-resultats} states every divergence.
 
 \paragraph{The number of random seeds in the GRPO strand} With five random seeds, the bootstrap has
-only 126 distinct resamples, ten with three random seeds. The intervals of
-\cref{chap:07-modeles-de-langue} are very coarse. An interval that contains zero says that we cannot
-conclude. It does not say that the effect is zero.
+only 126 distinct resamples, ten with three random seeds. The percentile intervals of the protocol
+are too narrow: on five random seeds, they are only about 60\% as wide as a Student interval. The
+exact sign test never goes below $p = 2/32 = 0.0625$ with five random seeds, so no gain within a
+configuration can be established, even when all five random seeds go the same way (deviation 19 of
+the GRPO strand). An interval that contains zero says that we cannot conclude. It does not say that
+the effect is zero.
 
 \paragraph{The bootstrap intervals} The rliable intervals depend on NumPy's global generator and on
 the order of the calls. Their bounds move with the random seed of the bootstrap, at the level of Monte
 Carlo noise (simulation deviation 13): a verdict whose bound grazes the threshold stays fragile.
 
+\section{What is still running}
+\label{sec:val-en-cours}
+
+Five experiments are written in advance and not yet finished on 22 November 2026. The report gives
+no result for any of them. Each answers a limitation of this chapter.
+\begin{itemize}
+  \item \textbf{The determinism of SAC and CrossQ} (simulation deviation 32): three training runs
+        repeated identically will tell whether these JAX programs give the same run again.
+  \item \textbf{The Zoo recipe with $\gamma = 0.99$} (simulation deviation 33 (c)): ten training runs
+        will tell whether the discount factor explains the agents that stay upright without moving
+        forward.
+  \item \textbf{The cause of the gap between the two PPOs} (simulation deviation 34): 160 training
+        runs add power to E3 and swap the orthogonal initialisation.
+  \item \textbf{A reader from another family of models} (survey deviation 33): \texttt{gemma3:12b}
+        rereads the four verdict criteria on the 98 experimental papers.
+  \item \textbf{The GRPO rerun} (deviation 20 of the GRPO strand): 40 runs on a single device, with
+        no repetition penalty and a pilot kept out of the test set, wait for the GPU to become free.
+\end{itemize}
+
 \section{What a new training run on another machine would test}
 \label{sec:reentrainer}
 
-A new complete training run on another processor would not reproduce our curves. MuJoCo, JAX and
-PyTorch round differently from one processor to another, so the same random seed gives another
-trajectory from the first steps on. The GRPO strand illustrates this: for the same model and the same
-random seed, the starting pass@1 differs between GPU and CPU (\cref{sec:llm-materiel}).
+No training was redone on another machine. We expect a new complete training run on another
+processor not to reproduce our curves. MuJoCo, JAX and PyTorch would not perform their roundings in
+the same order there. Two trajectories that differ in the last digit of one observation then drift
+apart step after step. The GRPO strand shows that one machine is not always enough: on the Mac's
+GPU, the same random seed gave two different starting points (\cref{sec:val-interne}).
 
-Such a training run would therefore test the statistics of the report. Its curves would differ from ours. It would tell whether the
+Such a training run would therefore test the statistics, not each curve. It would tell whether the
 spread between random seeds, the rankings, the inflation due to selection and the losses under
 modified physics stay of the same order with other draws. A conclusion that survived only our own
 random seeds would say nothing about the algorithms. Continuous integration already runs the
 equivalent test for the analyses: on Linux, the counts, the verdicts and the rankings come back
-exactly, the floating-point values to within $10^{-12}$ in relative terms (\cref{sec:ci}). No training
-was redone on another machine.
+exactly, the floating-point values to within $10^{-12}$ in relative terms (\cref{sec:ci}).

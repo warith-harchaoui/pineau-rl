@@ -1,4 +1,19 @@
-# Ralph eyeball loop: pages of the French report (rapport.tex)
+# Ralph eyeball loop: pages of the French report (rapport.tex) and of the English report (report-en.tex)
+
+## Pass of 22 November 2026, English report (report-en.tex), after the English wave and the bilingual fixes
+
+Build: `make report` (tables and figures regenerated, both PDFs, Ghostscript pass). report-en.pdf 205 pages,
+rapport.pdf 211 pages. In both logs: 0 overfull box, 0 undefined reference or citation, 0 multiply defined label;
+`pdftotext` shows no « Ï » and no « ?? »; `check_bounds`: 72 SVG, every text inside its canvas and its panel. Every
+English page rendered at 30 dpi in contact sheets of 12 (18 sheets), suspicious pages at 50 dpi.
+
+| Page(s) | Finding | Decision |
+|---|---|---|
+| EN ch. 6, section 6.7 (E6) | table 6.13 (e6), cited in the opening paragraph of the section (p. 113), landed on p. 118, behind figures 6.11 and 6.12, because `\gentable{e6}` came after four paragraphs of text | `\gentable{e6}` moved in en/06 to just after the paragraph that cites it: table 6.13 now on p. 115, table 6.14 on p. 116, figures 6.11 and 6.12 on p. 117 and 118; 205 pages, nothing else moved |
+| EN p. 138 and 139 | figures 7.2 and 7.3 each alone on a float page, a third of each page empty | left as is: each figure is about 60 % of a page and cannot share it with text; both sit on the page where they are cited or the next one (the French report places them the same way, p. 142 and 144) |
+| EN p. 39, 90, 182 | chapters 3, 5 and 11 end on a short last page | left as is, as in the French pass |
+| everywhere in EN | floats against their first citation | after the E6 fix above, every figure and table within two pages of its citation in the running text (cross-references from tables and chapter introductions aside); no float before the heading of its section; no overflow; no widowed heading |
+| FR p. 123 to 126 (recheck) | the bilingual fixes moved one French float: figure 6.14 (e7, *Hopper*) from p. 125 to p. 126, cited on p. 123; pages 124 and 125 carry figure 6.13 and table 6.15 with text | left as is: three pages, the intervening pages are the floats of the same section; no other French float moved (page of every caption compared with the consolidation build) |
 
 ## Pass of 22 November 2026 (consolidation of the French writing wave)
 
@@ -65,3 +80,10 @@ sa section, les colonnes de critères sur trois lignes, les nombres mal alignés
 des matières qui débordait, un tableau long coupé juste après son en-tête, les chemins de fichiers qui débordaient
 dans la version anglaise. Restent : le texte des figures maison, imprimé entre 6,4 et 7 points et à moins de 6 points
 pour six figures, à redessiner pour l'impression ; quelques fins de chapitre de deux à cinq lignes.
+
+Passe du 22 novembre 2026 sur le rapport anglais (205 pages) : aucun débordement, aucun titre orphelin, chaque
+flottant à deux pages au plus de sa première citation, après une correction : le tableau 6.13 (E6), cité au début de
+la section 6.7, arrivait cinq pages plus loin ; son appel `\gentable{e6}` est remonté juste après le paragraphe qui
+le cite, et il tombe deux pages après. Les figures 7.2 et 7.3 occupent chacune une page de
+flottants aux deux tiers pleine, comme en français. Côté français, les corrections bilingues n'ont déplacé qu'un
+flottant : la figure 6.14 passe de la page 125 à la page 126, citée page 123, laissée telle quelle.

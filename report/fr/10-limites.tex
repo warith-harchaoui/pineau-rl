@@ -235,8 +235,9 @@ expérience et ne la réfute pas.
         \task{Walker2d}, dix graines aléatoires, écart 29, \file{sim/analysis/curves.json}).
   \item \textbf{E3 compare deux programmes, pas deux écritures d'un même algorithme.} Les deux PPO
         partagent leurs hyperparamètres d'algorithme, pas leur initialisation par défaut :
-        Stable-Baselines3 initialise toutes les couches de façon orthogonale, sbx la seule sortie de
-        l'action (écart 34). L'écart 34 teste si cette différence explique E3.
+        Stable-Baselines3 initialise toutes les couches de façon orthogonale, alors que sbx laisse son
+        option orthogonale désactivée et garde l'initialisation par défaut de Flax
+        (\cref{sec:programmes}). L'écart 34 teste si cette différence explique E3.
   \item \textbf{Le pass@1 du volet GRPO} mêle justesse et concision, puisqu'une réponse coupée
         compte pour fausse (\cref{sec:llm-coupure}). Chez Qwen, le gain de pass@1 sous vraie
         récompense s'explique tout entier par la baisse des réponses coupées. La justesse des

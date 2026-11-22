@@ -171,8 +171,8 @@ Nous l'avons gardé.
 Une couche de renormalisation centre et réduit chaque activation. La classe \texttt{BatchRenorm} de
 \file{sbx/common/jax\_layers.py} le fait en deux phases. Pendant ses \num{100000} premiers passages
 d'entraînement, la couche emploie la moyenne et la variance du lot courant, comme une normalisation par lots
-ordinaire. Ensuite, elle corrige ces statistiques par des moyennes glissantes d'élan 0,99, mises à jour à chaque
-passage. Le compteur de chaque couche n'avance que lorsque son réseau est entraîné. Le critique est mis à jour à
+ordinaire. Ensuite, elle corrige ces statistiques par des moyennes glissantes d'élan 0,99, que chaque passage met à
+jour dès le premier. Le compteur de chaque couche n'avance que lorsque son réseau est entraîné. Le critique est mis à jour à
 chaque pas après les 100 premiers, soit près de \num{200000} fois : il passe la moitié de l'entraînement dans la
 première phase. L'acteur n'est mis à jour qu'une fois sur trois (\texttt{policy\_delay=3}), soit environ
 \num{67000} fois en \num{200000}~pas : ses couches ne quittent jamais la première phase

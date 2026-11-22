@@ -71,7 +71,11 @@ make verify
   \item \textbf{GRPO} downloads \texttt{Qwen/Qwen2.5-0.5B-Instruct} and
         \texttt{unsloth/Llama-3.2-1B-Instruct} from Hugging Face. Since deviation 15 (c) of the GRPO
         strand, \file{grpo.py} pins the exact revision of each model, the one used in our runs.
-        \file{docs/figures/build.py} downloads Qwen's tokeniser.
+        \file{docs/figures/build.py} downloads Qwen's tokeniser. Qwen's file
+        \file{generation\_config.json} sets a repetition penalty of 1.1, which the published runs
+        underwent (deviation 18 of the GRPO strand). The option \texttt{-{}-c7} of \file{grpo.py}
+        brings it back to 1.0 for the rerun of deviation 20. Without the option, the code repeats
+        the earlier runs identically.
 \end{itemize}
 
 \section{The document toolchain}
@@ -96,10 +100,16 @@ TeX Live 2026: LuaHBTeX, latexmk & 1.24.0, 4.88 & \file{docs/build.sh}, \file{re
 sprezzature-figures & 2.14.1 (2.14.0 on PyPI) & \file{docs/figures/build.py},
   \file{article/figures/build.py} \\
 rsvg-convert (librsvg) & 2.61.3 & conversion of SVG files to PDF and PNG \\
+ffmpeg & 8.1.2 & \file{report/tools/new\_figures.py} (frames taken from the E6 videos) \\
 git & 2.50.0 & \texttt{make verify} \\
 \bottomrule
 \end{tabularx}
 \end{table}
+
+Two tools outside Python served the analyses of 21 and 22 November 2026. The \texttt{gh} client
+2.95.0 read the creation date of the GitHub repositories cited for Q5 (survey deviation 31), one
+request at a time. Ollama 0.40.16 serves locally the \texttt{gemma3:12b} reader of survey deviation
+33, each of whose reading files records the digest of the model.
 
 This report is built by \texttt{make report}, which runs \file{report/build.sh}: the tables from the
 JSON files (\file{report/tools/tables.py}), the figures (\file{report/tools/figures.py}), then two

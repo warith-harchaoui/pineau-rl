@@ -4,41 +4,79 @@
 \paragraph{The question}
 In 2018, at ICLR and then at NeurIPS, Joelle Pineau showed why the published results of deep
 reinforcement learning (RL) inspired little trust. We record sixteen flaws in her two talks and ask,
-for each one, whether the field listened.
+for each one, whether the papers from 2018 to 2026 corrected it.
 
 \paragraph{The method}
 We use two instruments, each under a protocol written in advance whose every deviation is dated. The
-survey rereads papers with Pineau's reading grid, her criteria Q1 to Q8, seven more drawn from her
-ICLR talk (X1 to X7) and a second grid of our own (Y1 to Y12). Agentic AI models read each paper
-in full and justify each decision with a quotation and its page. The verdict compares 50 classical RL
-papers from 2026 (language models excluded) with our own reading of 50 papers from 2018, using the same
-grids and the same readers. Twenty papers for each of four years between 2019 and 2024 date the change.
-The experiments rerun those of 2018 with PPO (in PyTorch and in JAX), SAC and CrossQ on four tasks of
-the MuJoCo physics simulator, with ten random seeds per program and per task, then twenty. A further
-strand fine-tunes two small language models with GRPO, a descendant of PPO.
+survey rereads papers with Pineau's reading grid (Q1 to Q8), seven criteria drawn from her ICLR talk
+(X1 to X7) and a second grid of our own (Y1 to Y12). AI agents, that is agentic AI models, read each
+paper in full and justify each decision with a quotation and its page. The verdict compares 50
+classical RL papers from 2026 (language models excluded) with our own reading of 50 papers from 2018,
+using the same grids and agents of the same model. Twenty papers for each year read between 2019 and
+2024 date the change. The experiments rerun those of 2018 with four programs (PPO in PyTorch and in
+JAX, SAC, CrossQ) on four tasks of the MuJoCo physics simulator, with ten random seeds per program and
+per task, then twenty. A further strand fine-tunes two small language models with GRPO, a descendant
+of PPO.
 
 \paragraph{Survey results}
 Our reading of 2018 departs from Pineau's figures: 55\% of papers give all the hyperparameters of their
 method, where she counted 90\%. The verdicts therefore compare our two readings. In classical RL, four
 practices changed. Linking the code rose from 31\% to 74\% ($+43$ points, $[+23,\,+58]$), showing the
-sensitivity to a setting from 44\% to 80\%, quantifying the compute, the machine time spent, from 27\%
-to 58\%, reporting an uncertainty from 63\% to 88\%. This last change is fragile: without thirteen
-papers read partly by another language model, it fails the Holm correction for multiple tests
-($p_{\text{Holm}} = 0.07$). All four rise slowly, with no jump after the 2019 NeurIPS checklist. The
-statistical test (6\% then 12\%), baselines described with all their settings (35\% against 29\%),
-evaluation on conditions held out of training (33\% then 45\%) and benchmark versions (23\% then 26\%)
-show no detectable change. Pineau was heard on what is published next to the result, much less on how
-the result itself is judged.
+sensitivity to a setting from 44\% to 80\%, quantifying the compute from 27\% to 58\%, reporting an
+uncertainty from 63\% to 88\%. The code link survives a change of the version read: on the proceedings
+in both years, then on the latest arXiv version, the rise is still $+41$ and $+34$ points and passes the
+Holm correction for multiple tests (Section~\ref{sec:sm-versions}). Reported uncertainty is the most
+fragile verdict. Without thirteen papers read partly by another model, it fails the Holm correction
+($p_{\text{Holm}} = 0.07$). Its rise comes with no detectable rise in the share of papers that compute
+this uncertainty over independent random seeds (criterion X8, added after the results: 35\% then 42\%,
+$[-12,\,+25]$). All four practices rise slowly, with no jump after the 2019 NeurIPS checklist.
+
+The clear changes therefore concern what accompanies the result: the code link, the declared compute,
+the effect of a setting, the error bar. The tuning of baselines shows no sign of progress: papers that
+describe all the settings of their baselines go from 35\% to 29\%. For the rest, the survey cannot
+decide. With some fifty papers per year, its test detected with 80\% power only rises of about thirty
+points, thirty-seven after the Bonferroni correction. Several criteria rise without crossing that
+threshold: evaluation held out of training (33\% then 45\%), the way hyperparameters are chosen (26\%
+then 48\%), the statistical test (from 6\% to 12\%). Benchmark versions stagnate (23\% then 26\%).
+Thirty papers reread blind give 30 agreements out of 30 on each of the four criteria behind the
+verdicts. No primary reader read both years, however: the effect of the year is confounded with that of
+the reader set (Section~\ref{sec:sm-annees}). The verdict rule changed after the first results. The
+original rule required a gap against Pineau's figures and against our 2018: it would have confirmed no
+classical RL criterion and would have called the code link \enquote{ambiguous}
+(Section~\ref{sec:sm-verdict}).
 
 \paragraph{Experimental results}
-Among thirty PPO runs, two groups of five drawn at random fool Welch's $t$-test, which compares two
-means, in 1.2\% of cases. Sorted groups fool it in 31\%. Keeping the best three runs out of ten
-inflates the mean by 33\%. Peter Henderson's script, which ignores the spread between random seeds,
-very probably explains the $t$ of 9 from 2018, the statistic that declared two groups of runs of the
-same program different: applied to our TRPO runs, its $t$ exceeds 9.09 in 38\% of draws. At equal budget, with
-twenty random seeds, CrossQ leads on all four tasks. Physics modified by 20\% sends the leader to last
-place on \task{Hopper}. On Qwen, with five random seeds, GRPO gains $+14$ points, with an interval from
-$-3$ to $+34$ that contains zero.
+Among thirty PPO runs on \task{HalfCheetah}, two groups of five drawn at random fool Welch's $t$-test,
+which compares two means, in 1.2\% of cases. Sorted groups fool it in 31\%. Repeated on the sixteen
+(program, task) pairs, sorting fools the test from 26\% to nearly 100\% of the time depending on the
+pair: the preregistered case is the mildest (Section~\ref{sec:e1}). Keeping the best three runs out of
+ten inflates the mean by 33\% for the same PPO. Peter Henderson's script, which ignores the spread
+between random seeds, probably explains the $t$ of 9 from 2018: applied to our TRPO runs, its $t$
+exceeds 9.09 in 38\% of draws. The published $(t, p)$ pair mostly rules out the other ways of computing,
+without designating this script for certain. The best program changes with the task. Counted as pairs
+that truly reverse from one task to another, settled ranking changes number 3 at ten seeds, against 14
+in the preregistered count, which counted triples. At equal budget with twenty random seeds, CrossQ
+leads on all four tasks, yet one pair (PPO JAX and SAC) still reverses in a settled way after the
+Bonferroni correction (Section~\ref{sec:e2}). The two PPOs, with identical algorithm hyperparameters
+and different default initialisation, separate in a settled way on \task{Swimmer} only, after the Holm
+correction over four tasks (Section~\ref{sec:e3}). The rule that declares a settled winner concludes
+wrongly in 5.4\% to 6.2\% of draws of ten against ten runs of one program, nearly 10\% at five against
+five (Section~\ref{sec:regle}). The published recipe of the RL Baselines3 Zoo, applied today, gives
+agents on \task{Hopper} that stand upright without moving forward (0.00~m/s). The agent the Zoo
+published in 2022 with these settings reaches \num{2439} under our protocol: the recipe worked in its
+original software stack, then aged (Section~\ref{sec:e6}). Physics modified by 20\% reverses settled
+comparisons on \task{Hopper}: at ten as at twenty seeds, SAC beats both PPOs there, which beat it in
+training. CrossQ beats the three other programs there. This test was added after the results
+(Section~\ref{sec:e7}).
+
+\paragraph{The GRPO strand}
+On Qwen, with five random seeds, GRPO gains $+14$ points of success (pass@1), with an interval from
+$-3$ to $+34$ that contains zero. The gain comes from shorter answers: the share of answers cut off at
+160 tokens falls from 75\% to 6\%. The accuracy of finished answers does not rise. On Llama,
+pass@1 rises by 6 points while greedy accuracy loses 43 points and pass@8 loses 30. The true reward
+beats a coin-flip reward in a settled way for Llama only, because the coin-flip reward destroys the
+model (Section~\ref{sec:llm-resultats}). A rerun with ten random seeds, preregistered (deviation 20 of
+the GRPO protocol), is running.
 
 \paragraph{Code and data}
 Repository \repo{} (BSD 3-Clause licence): protocols and quoted readings (\file{study/}), training runs

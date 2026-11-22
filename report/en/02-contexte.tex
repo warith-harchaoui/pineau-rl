@@ -86,9 +86,14 @@ $\hat{A}_t$ of the advantage, PPO maximises the clipped objective
 to which a critic loss and an entropy bonus are added. Clipping removes the incentive for an update to
 move the new policy far from the old one. The program \algo{PPO PyTorch} is the one in
 Stable-Baselines3 \parencite{raffin2021sb3}. The program \algo{PPO JAX} is the one in sbx, the JAX
-rewrite of Stable-Baselines \parencite{raffin2023sbx,bradbury2018jax}. Both programs start from the
-same default values, as far as the two libraries allow. They collect experience in batches of
-2,048 steps. PPO was the standard baseline of 2018. The protocol keeps it because it remains a
+rewrite of Stable-Baselines \parencite{raffin2023sbx,bradbury2018jax}. Both programs receive the
+same algorithm hyperparameters and collect experience in batches of 2,048 steps. Their default
+initialisation differs. Stable-Baselines3 turns on its \file{ortho\_init} option: the hidden layers
+receive an orthogonal initialisation with gain $\sqrt{2}$, the action output a gain of 0.01 and the
+value output a gain of 1 (\file{stable\_baselines3/common/policies.py}). The sbx library turns it off by
+default and keeps Flax's initialisation. When turned on, sbx's option touches only the action output
+layer (\file{sbx/ppo/policies.py}). Experiment E3 compares these two programs
+(Chapter~\ref{chap:06-experiences-resultats}). PPO was the standard baseline of 2018. The protocol keeps it because it remains a
 common baseline in 2026 and because GRPO, the algorithm of our language-model strand
 (Chapter~\ref{chap:07-modeles-de-langue}), derives from it.
 
@@ -104,12 +109,16 @@ stabilise the learning targets. The \algo{SAC} program of our experiments is the
 common \emph{off-policy} baseline in continuous control.
 
 \paragraph{CrossQ}
-CrossQ \parencite{bhatt2024crossq} descends from SAC. It removes the target networks and adds batch
-normalisation to the critics. The pairs $(s, a)$ and $(s', a')$ go through the critic together, so
+CrossQ \parencite{bhatt2024crossq} descends from SAC. It removes the target networks and normalises
+the activations by batch. The pairs $(s, a)$ and $(s', a')$ go through the critic together, so
 that the normalisation sees both distributions. Its authors report a sample efficiency, the score
 reached per environment step, at least equal to that of methods far more expensive in computation. The
-\algo{CrossQ} program of our experiments is
-the one in sbx.
+\algo{CrossQ} program of our experiments is the one in sbx. It uses batch renormalisation
+\parencite{ioffe2017batchrenorm}, in the actor as in the critic, with a momentum of 0.99. For the first
+100,000 updates of each network, batch renormalisation behaves as plain batch normalisation. The
+critic spends half our budget there. The actor, updated once in three, never leaves it
+(Section~\ref{sec:programmes}). Its Adam optimiser takes $\beta_1 = 0.5$ instead of 0.9
+(\file{sbx/crossq/policies.py}). Table~\ref{tab:hyperparametres} gives its other settings.
 
 \paragraph{TRPO}
 TRPO (\emph{Trust Region Policy Optimization}) \parencite{schulman2015trpo} is the algorithm of the most
@@ -166,9 +175,10 @@ training environment. In this report, a \emph{run} denotes a complete training w
 seed.
 
 \paragraph{What stays fixed}
-Same program, same random seed, same library versions and same machine: same result. Our logs confirm
-it for \algo{PPO PyTorch} and \algo{PPO JAX}: a run stopped then restarted recovers its evaluation
-points identically (\file{sim/SIM\_PROTOCOL.md}, deviation~12~(e)). Changing the random seed changes
+Same program, same random seed, same library versions and same machine: the protocol expects the same
+result. Our logs confirm it for \algo{PPO PyTorch} and \algo{PPO JAX}: a run stopped then restarted recovers its evaluation
+points identically (\file{sim/SIM\_PROTOCOL.md}, deviation~12~(e)). For \algo{SAC} and \algo{CrossQ}, the same check is
+preregistered (deviation~32 of the same protocol) and running. Changing the random seed changes
 all these draws. The final score of a given program then varies a great deal. Over our thirty runs of
 \algo{PPO PyTorch} on \task{HalfCheetah}, the standard deviation is 34\% of the mean
 (Chapter~\ref{chap:06-experiences-resultats}).
@@ -179,7 +189,8 @@ comparison between two programs therefore rests on several independent runs per 
 uncertainty computed over these runs. With one run per program, the comparison measures the luck of
 the draw. An episode, or a point on a curve, does not count as an independent observation, since it
 belongs to one run. Flaw F11 and experiment B1 show what happens when the episode is taken as the unit
-(Chapter~\ref{chap:06-experiences-resultats}).
+(Chapter~\ref{chap:06-experiences-resultats}). For this reason, criterion X8 of the survey asks whether
+papers compute their uncertainty over independent runs (Section~\ref{sec:sm-x8}).
 
 \section{Evaluating an agent}\label{sec:ctx-evaluation}
 
@@ -217,8 +228,10 @@ independently drawn run of $Y$:
   P(X > Y) = \frac{1}{n_X n_Y} \sum_{i=1}^{n_X} \sum_{j=1}^{n_Y} \Bigl( \mathbb{1}[x_i > y_j] + \tfrac{1}{2}\, \mathbb{1}[x_i = y_j] \Bigr).
 \end{equation}
 This probability equals the Mann-Whitney $U$ statistic divided by $n_X n_Y$. The value 0.5 signals two
-indistinguishable programs. Our experiments declare a gap established when the 95\% bootstrap interval
-of $P(X > Y)$ excludes 0.5. Welch's $t$-test \parencite{welch1947generalization}, which compares two
+indistinguishable programs. Our experiments declare a gap settled when the 95\% bootstrap interval
+of $P(X > Y)$ excludes 0.5, or when the intervals of the two IQMs do not overlap. On groups of runs of
+one program, where no gap exists, this rule concludes wrongly slightly more than once in twenty with
+ten runs per group, nearly once in ten with five (Section~\ref{sec:regle}). Welch's $t$-test \parencite{welch1947generalization}, which compares two
 means without assuming equal variances, serves only in experiments E1 and B1, since the 2018 figure
 used it.
 
