@@ -20,7 +20,18 @@ J = lambda p: json.load(open(ROOT / p))
 NB = str.maketrans({" ": " ", " ": " "})
 norm = lambda t: re.sub(r"\s+", " ", t.translate(NB))
 
-TEXT = {l: norm("\n".join(x for x in (HERE / f"{l}.txt").read_text().splitlines() if not x.startswith("<")))  # PHP and HTML lines are code
+TIP = re.compile(r"\{\{\?([^|{}]+)\|([^{}]+)\}\}")
+
+
+def untip(t):
+    """{{?term|definition}}: the term stays in its sentence, the definitions move to a block of their own before the
+    bibliography, where their numbers are checked like any other."""
+    defs = [m[2] for m in TIP.finditer(t)]
+    head, sep, tail = TIP.sub(lambda m: m[1], t).partition("\nBIBLIO ")
+    return head + "\n\nTOOLTIPS " + " ".join(defs) + "\n" + sep + tail
+
+
+TEXT = {l: norm(untip("\n".join(x for x in (HERE / f"{l}.txt").read_text().splitlines() if not x.startswith("<"))))  # PHP and HTML lines are code
         for l in ("fr", "en")}
 DOC = {"fr": norm((ROOT / "docs/conclusions.md").read_text()), "en": norm((ROOT / "docs/conclusions-en.md").read_text())}
 BIB = norm((ROOT / "docs/refs.bib").read_text())
@@ -109,8 +120,8 @@ assert BD["X2"]["bound"]["p_holm"] > 0.05 and BD["Y9"]["bound"]["p_holm"] > 0.05
 assert all(BD[k]["bound"]["p_holm"] < 0.05 for k in ("Q5", "X7")) and FN["verdict_changes"]["bound"] == ["X2", "Y9"]
 assert all(X[k]["classic_vs_ours2018"]["p_holm"] < 0.05 for k in ("Q5", "Y9", "X7", "X2"))
 assert num(SO["X2"], "fr", 2) == num(BD["X2"]["bound"]["p_holm"], "fr", 2)  # the same p, rounded, in both checks
-claim("X2 fragile", *both(lambda l: (f"deux de mes contrôles la font échouer, avec p = {num(SO['X2'], l, 2)} chaque fois" if l == "fr" else
-                                     f"two of my checks make it fail, with p = {num(SO['X2'], l, 2)} each time")))
+claim("X2 fragile", *both(lambda l: (f"deux de ces variantes la font échouer, avec p = {num(SO['X2'], l, 2)} chaque fois" if l == "fr" else
+                                     f"two of these variants make it fail, with p = {num(SO['X2'], l, 2)} each time")))
 
 # Trajectory (study/trajectory.json).
 T = J("study/trajectory.json")
@@ -129,7 +140,7 @@ claim("Y9 later", f"de {pct(y9(['2019', '2020']), 'fr')} sur 2019 et 2020 à {pc
 e1 = J("sim/analysis/e1.json")
 s = e1["seeds_sorted"]
 inner = [v for v in s if v < 3000]
-claim("E1 mean", *both(lambda l: f"{'La moyenne vaut' if l == 'fr' else 'The mean is'} {num(e1['mean'], l)}"))
+claim_("E1 mean (removed 2026-11-23, the caption keeps it)", *both(lambda l: f"{'La moyenne vaut' if l == 'fr' else 'The mean is'} {num(e1['mean'], l)}"))
 claim("E1 sd, cv", *both(lambda l: f"{num(e1['sd'], l)}, {'soit' if l == 'fr' else 'or'} {pct(e1['cv'], l)}"))
 claim("95% interval defined", "Un intervalle à 95 %", "A 95% interval", "doc")
 claim("E1 mean, median", *both(lambda l: f"{'Moyenne' if l == 'fr' else 'Mean'} {num(e1['mean'], l)}, {'médiane' if l == 'fr' else 'median'} {num(e1['median'], l)}"))
@@ -145,9 +156,9 @@ claim("E2 alt badge", "porte « 1er »", "reads \"1st\"")
 claim("GRPO5 alt after 100 steps", "à la réussite après 100 pas", "to success after 100 steps")
 claim("E1 alt max", *both(lambda l: f"{'jusqu' + Q + 'à' if l == 'fr' else 'up to'} {num(max(s), l)}"))
 claim("E1 alt median", *both(lambda l: f"{'la médiane' if l == 'fr' else 'the median'}, {num(e1['median'], l)}"))
-claim("E1 random 5v5", *both(lambda l: f"{'dans' if l == 'fr' else 'in'} {pct(e1['random_5v5']['false_positive'], l, 1)} {'des tirages' if l == 'fr' else 'of the draws'}"))
+claim_("E1 random 5v5 (removed 2026-11-23, the alt text keeps it)", *both(lambda l: f"{'dans' if l == 'fr' else 'in'} {pct(e1['random_5v5']['false_positive'], l, 1)} {'des tirages' if l == 'fr' else 'of the draws'}"))
 claim("E1 gaps", *both(lambda l: f"{pct(e1['random_5v5']['median_gap'], l)} {'en médiane et de' if l == 'fr' else 'at the median and by'} {pct(e1['random_5v5']['p95_gap'], l)}"))
-claim("E1 sorted 31%", *both(lambda l: f"{pct(e1['extreme_5v5_of_10']['false_positive'], l)} {'de faux positifs' if l == 'fr' else 'false positives'}"))
+claim_("E1 sorted 31% (removed 2026-11-23, the alt text keeps it)", *both(lambda l: f"{pct(e1['extreme_5v5_of_10']['false_positive'], l)} {'de faux positifs' if l == 'fr' else 'false positives'}"))
 claim("E1 near one in three (brief)", *both(lambda l: "près d'une fois sur trois" if l == "fr" else "nearly a third of the time"))
 claim("E1 draws", *both(lambda l: f"{num(10000, l)} {'tirages' if l == 'fr' else 'draws'}"))
 claim("E1 draws (verb)", *both(lambda l: f"{num(10000, l)} {'fois' if l == 'fr' else 'times'}"))
@@ -190,7 +201,7 @@ claim("t-de-neuf alt zeros", *both(lambda l: "script de 2017 : aucun tirage" if 
 
 # E4, E5 (sim/analysis/e4.json, e5.json).
 e4 = J("sim/analysis/e4.json")
-claim("E4 median range", *both(lambda l: f"{pct(e4['inflation_median'], l)} {'en médiane, de' if l == 'fr' else 'at the median, from'} {pct(e4['inflation_range'][0], l)} {'à' if l == 'fr' else 'to'} {pct(e4['inflation_range'][1], l)}"))
+claim_("E4 median range (removed 2026-11-23, the figure shows it)", *both(lambda l: f"{pct(e4['inflation_median'], l)} {'en médiane, de' if l == 'fr' else 'at the median, from'} {pct(e4['inflation_range'][0], l)} {'à' if l == 'fr' else 'to'} {pct(e4['inflation_range'][1], l)}"))
 claim("E4 reversals", *both(lambda l: f"{'Sur' if l == 'fr' else 'Of'} {e4['n_comparisons']} {'comparaisons entre deux programmes,' if l == 'fr' else 'comparisons between two programs,'} {e4['n_reversed']}"))
 ALG = ["sac", "crossq", "ppo_sb3", "ppo_sbx"]
 TK = ["HalfCheetah-v5", "Hopper-v5", "Walker2d-v5", "Swimmer-v5"]
@@ -246,13 +257,13 @@ claim("dose range", *both(lambda l: (f"les masses de {pct(-chg(STR['mass'][0]) /
                                  f"masses from {pct(-chg(STR['mass'][0]) / 100, l)} lighter to {pct(chg(STR['mass'][-1]) / 100, l)} heavier, friction from {pct(-chg(STR['friction'][0]) / 100, l)} lower to {pct(chg(STR['friction'][-1]) / 100, l)} higher")))
 claim("dose loss rule", "l'intervalle à 95 % de son score rapporté à celui de la physique d'entraînement reste sous 1",
       "the 95% interval of its score relative to the training physics stays below 1", "doc")
-claim("dose lighter masses", *both(lambda l: (f"Des masses allégées de {pct(0.1, l)} coûtent une part détectable de leur score à {nl('mass', '0.9')} couples sur 16" if l == "fr" else
+claim_("dose lighter masses (removed 2026-11-23, the alt text keeps it)", *both(lambda l: (f"Des masses allégées de {pct(0.1, l)} coûtent une part détectable de leur score à {nl('mass', '0.9')} couples sur 16" if l == "fr" else
                                           f"Masses {pct(0.1, l)} lighter cost {nl('mass', '0.9')} pairs out of 16 a detectable share of their score")))
-claim("dose heavier masses", *both(lambda l: (f"Alourdies de {pct(0.2, l)}, elles en font perdre {nl('mass', '1.2')}" if l == "fr" else
+claim_("dose heavier masses (removed 2026-11-23, the alt text keeps it)", *both(lambda l: (f"Alourdies de {pct(0.2, l)}, elles en font perdre {nl('mass', '1.2')}" if l == "fr" else
                                           f"{pct(0.2, l)} heavier, they make {nl('mass', '1.2')} lose")))
 assert nl("friction", "1.2") == max(nl("friction", s) for s in STR["friction"])  # "friction matters less, except +20%"
 assert all(nl("friction", s) <= nl("mass", s) for s in STR["friction"] if s in STR["mass"] and s != "1.2")
-claim("dose friction +20%", *both(lambda l: (f"sauf augmentés de {pct(0.2, l)} : {nl('friction', '1.2')} couples y perdent" if l == "fr" else
+claim_("dose friction +20% (removed 2026-11-23, the alt text keeps it)", *both(lambda l: (f"sauf augmentés de {pct(0.2, l)} : {nl('friction', '1.2')} couples y perdent" if l == "fr" else
                                          f"except {pct(0.2, l)} higher, which costs {nl('friction', '1.2')} pairs")))
 hk = {k.split("/", 1)[1]: v["ranking"] for k, v in ds["ranking"].items() if k.startswith("Hopper-v5/")}
 assert hk["mass/1.0"][0] == "ppo_sbx"  # the leader in the training physics
@@ -324,7 +335,7 @@ sm, gn = J("sim/llm/results/summary.json"), J("sim/llm/results/gains.json")
 run = lambda m, r: [x for x in sorted(sm, key=lambda x: x["seed"]) if x["model"] == m and x["reward"] == r]
 fin = lambda m, r, l: [pct(hu(x["pass1_100"], 2), l) for x in run(m, r)]
 q, ll = fin("qwen05", "true", "fr"), fin("llama1", "true", "fr")
-claim("GRPO Qwen true", *both(lambda l: ("finit à {}, {} et {}" if l == "fr" else "ends at {}, {} and {}").format(*fin("qwen05", "true", l))))
+claim_("GRPO Qwen true (removed 2026-11-23, the alt text keeps it)", *both(lambda l: ("finit à {}, {} et {}" if l == "fr" else "ends at {}, {} and {}").format(*fin("qwen05", "true", l))))
 claim_("GRPO Llama true", *both(lambda l: ("finit à {}, {} et {}" if l == "fr" else "ends at {}, {} and {}").format(*fin("llama1", "true", l))))
 claim_("GRPO alt (three seeds)")
 assert run("qwen05", "true")[2]["device"] == "cpu"
@@ -341,7 +352,7 @@ assert max(x["pass1_100"] for x in sm if x["reward"] == "random") <= 0.0125
 sm5, gn5, ex5 = J("sim/llm/results/summary_5.json"), J("sim/llm/results/gains_5.json"), J("sim/llm/results/extra_5.json")
 run5 = lambda m, r: [x for x in sorted(sm5, key=lambda x: x["seed"]) if x["model"] == m and x["reward"] == r]
 q5 = run5("qwen05", "true")
-claim("GRPO5 new Qwen runs", *both(lambda l: ("les nouveaux essais finissent à {} et {}" if l == "fr" else "the new runs end at {} and {}").format(
+claim_("GRPO5 new Qwen runs (removed 2026-11-23, the alt text keeps it)", *both(lambda l: ("les nouveaux essais finissent à {} et {}" if l == "fr" else "the new runs end at {} and {}").format(
     *[pct(hu(x["pass1_100"], 2), l) for x in q5[3:]])))
 g5 = lambda k: (sg(gn5[k]["mean"] * 100), sg(gn5[k]["ci"][0] * 100), sg(gn5[k]["ci"][1] * 100))
 assert gn5["qwen05 true"]["ci"][0] < 0 < gn5["qwen05 true"]["ci"][1] and len(gn5["qwen05 true"]["gains"]) == 5
@@ -486,7 +497,7 @@ def number_ok_in_doc(phrase, lang):
 
 
 NUM = r"(?<![\w.])[−+]?\d+(?:[ ,.]\d{1,3})*(?:\s?%)?"
-NAMES = ["CC BY 3.0", "Qwen2.5-Math-7B", "Qwen2.5", "Llama 3.2", "MATH-500", "Walker2d", "Baselines3", "HalfCheetah-v5"]
+NAMES = ["pass@1", "CC BY 3.0", "Qwen2.5-Math-7B", "Qwen2.5", "Llama 3.2", "MATH-500", "Walker2d", "Baselines3", "HalfCheetah-v5"]
 
 
 def body_of(lang):
@@ -494,6 +505,7 @@ def body_of(lang):
     body, _, bib = t.partition(" BIBLIO ")
     body = re.sub(r"\]\([^)]*\)", "]", body)                      # link targets
     body = re.sub(r"FIG \w+ \| \S+", "FIG", body)                   # figure file names
+    body = re.sub(r"VIDEO \S+ \|", "VIDEO |", body)                 # video id and start time
     body = re.sub(r"## \S+ \|", "##", body)                         # section anchors
     body = re.sub(r"\[\[\d+\]\]", "", body)                         # note calls
     body = re.sub(r"META [^|]*\|[^|]*\|[^|]*\|", "META |", body)    # chip, ISO date, written date

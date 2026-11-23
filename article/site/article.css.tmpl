@@ -907,3 +907,164 @@ p.drz-hero-credit.drz-text a.drz-text{
    text-underline-offset: 2px;
    white-space: normal !important
 }
+
+/* Tooltips on technical words, {{?term|definition}} in the article's text (Warith, 2026-11-23).
+   CSS only: the card shows on hover and on keyboard or touch focus, the term carries aria-describedby.
+   Wide screens: a small card above the word, with an arrow. Phones and tablets: a card pinned to the
+   bottom of the screen, headed by the term, so it never runs off the edge. */
+:where(.drz-p-blog__SLUG) .drz-tip{
+   position: relative;
+   cursor: help;
+   white-space: nowrap;
+   text-decoration: underline dotted;
+   text-decoration-color: #8f8f8f;
+   text-decoration-thickness: 1.5px;
+   text-underline-offset: .24em;
+   border-radius: 3px;
+   transition: background-color .15s ease, text-decoration-color .15s ease
+}
+
+:where(.drz-p-blog__SLUG) .drz-tip:hover,:where(.drz-p-blog__SLUG) .drz-tip:focus{
+   background-color: #e9fcff;
+   text-decoration-color: #111;
+   outline: none
+}
+
+:where(.drz-p-blog__SLUG) .drz-tip:focus-visible{
+   outline: 2px solid #111;
+   outline-offset: 2px
+}
+
+:where(.drz-p-blog__SLUG) .drz-tip-card{
+   position: absolute;
+   z-index: 30;
+   left: 50%;
+   bottom: calc(100% + 10px);
+   width: max-content;
+   max-width: min(320px, 80vw);
+   box-sizing: border-box;
+   padding: 11px 14px 12px;
+   background: #fff;
+   color: #333;
+   border: 1px solid #e3e3e3;
+   border-radius: 10px;
+   box-shadow: 0 10px 28px rgba(0, 0, 0, .10), 0 1px 3px rgba(0, 0, 0, .06);
+   font-size: 14px;
+   line-height: 1.5;
+   font-weight: 400;
+   font-style: normal;
+   letter-spacing: -.005em;
+   text-align: left;
+   text-decoration: none;
+   white-space: normal;
+   overflow-wrap: break-word;
+   hyphens: manual;
+   -webkit-hyphens: manual;
+   opacity: 0;
+   visibility: hidden;
+   pointer-events: none;
+   transform: translate(-50%, 4px);
+   transition: opacity .15s ease, transform .15s ease, visibility 0s linear .15s
+}
+
+/* the arrow under the card */
+:where(.drz-p-blog__SLUG) .drz-tip-card::after{
+   content: "";
+   position: absolute;
+   left: 50%;
+   top: 100%;
+   width: 10px;
+   height: 10px;
+   background: #fff;
+   border-right: 1px solid #e3e3e3;
+   border-bottom: 1px solid #e3e3e3;
+   transform: translate(-50%, -50%) rotate(45deg)
+}
+
+/* an invisible bridge between the word and the card: the pointer can travel to the card without closing it */
+:where(.drz-p-blog__SLUG) .drz-tip-card::before{
+   content: "";
+   position: absolute;
+   left: 0;
+   right: 0;
+   top: 100%;
+   height: 14px
+}
+
+:where(.drz-p-blog__SLUG) .drz-tip:hover .drz-tip-card,:where(.drz-p-blog__SLUG) .drz-tip:focus .drz-tip-card,:where(.drz-p-blog__SLUG) .drz-tip:focus-within .drz-tip-card{
+   opacity: 1;
+   visibility: visible;
+   pointer-events: auto;
+   transform: translate(-50%, 0);
+   transition-delay: 0s
+}
+
+@media(hover: none) {
+   :where(.drz-p-blog__SLUG) .drz-tip{
+      cursor: pointer
+   }
+}
+
+@media(max-width: 809.98px) {
+   :where(.drz-p-blog__SLUG) .drz-tip-card{
+      position: fixed;
+      left: 16px;
+      right: 16px;
+      bottom: 16px;
+      width: auto;
+      max-width: none;
+      padding: 14px 16px 15px;
+      font-size: 15px;
+      border-radius: 14px;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, .18), 0 1px 3px rgba(0, 0, 0, .08);
+      transform: translateY(8px)
+   }
+
+   :where(.drz-p-blog__SLUG) .drz-tip-card::after{
+      display: none
+   }
+
+   :where(.drz-p-blog__SLUG) .drz-tip-card::before{
+      content: attr(data-term);
+      position: static;
+      display: block;
+      height: auto;
+      margin-bottom: 4px;
+      font-weight: 600;
+      color: #111
+   }
+
+   :where(.drz-p-blog__SLUG) .drz-tip:hover .drz-tip-card,:where(.drz-p-blog__SLUG) .drz-tip:focus .drz-tip-card,:where(.drz-p-blog__SLUG) .drz-tip:focus-within .drz-tip-card{
+      transform: translateY(0)
+   }
+}
+
+@media(prefers-reduced-motion: reduce) {
+   :where(.drz-p-blog__SLUG) .drz-tip,:where(.drz-p-blog__SLUG) .drz-tip-card{
+      transition: none
+   }
+
+   :where(.drz-p-blog__SLUG) .drz-tip-card{
+      transform: translate(-50%, 0)
+   }
+
+   :where(.drz-p-blog__SLUG) .drz-tip:hover .drz-tip-card,:where(.drz-p-blog__SLUG) .drz-tip:focus .drz-tip-card{
+      transition: none
+   }
+}
+
+@media(prefers-reduced-motion: reduce) and (max-width: 809.98px) {
+   :where(.drz-p-blog__SLUG) .drz-tip-card{
+      transform: none
+   }
+}
+
+@media print {
+   :where(.drz-p-blog__SLUG) .drz-tip{
+      text-decoration: none
+   }
+
+   :where(.drz-p-blog__SLUG) .drz-tip-card{
+      display: none
+   }
+}

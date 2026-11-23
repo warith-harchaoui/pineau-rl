@@ -21,14 +21,16 @@ Light markup, one line per block (paragraphs separated by a blank line):
   ## ancre | Titre de section
   ### Sous-titre
   FIG wide|std|portrait | src (relatif à assets/images/blog) | alt | légende (HTML permis)
-  VIDEO identifiant YouTube | titre du lecteur | légende (HTML permis)
+  VIDEO identifiant YouTube[@secondes] | titre du lecteur | légende (HTML permis) ; @1705 fait démarrer le lecteur à 1705 s
   HERO | src | alt | crédit (HTML permis) : l'image de tête, sous le chapeau
   - élément de liste (lignes consécutives)
   <...>  ligne HTML passée telle quelle
   BIBLIO titre | phrase d'introduction
   REF n | notice (HTML) | note
 Dans le texte : [[n]] appel de note, *italique*, **gras**, [texte](url) lien externe,
-{{/chemin}} lien interne au site (url()). Les liens vers le dépôt (https://github.com/warith-harchaoui/pineau-rl) s'ouvrent dans un nouvel onglet.
+{{/chemin}} lien interne au site (url()),
+{{?terme|définition}} infobulle : le terme souligné en pointillé, sa définition sur une carte au survol et au focus
+(CSS seul, règles .drz-tip dans site/article.css.tmpl). Les liens vers le dépôt (https://github.com/warith-harchaoui/pineau-rl) s'ouvrent dans un nouvel onglet.
 En français, les espaces avant : ; ? ! % » et après « deviennent insécables, comme l'espace des milliers.
 """
 import argparse
@@ -50,7 +52,20 @@ PDFS = {"fr": ("report/rapport.pdf", "apprentissage-par-renforcement-a-t-on-ecou
         "en": ("report/report-en.pdf", "reinforcement-learning-did-we-listen-to-joelle-pineau.pdf")}
 
 
+TIP_IDS = [0]  # one counter per page: build() resets it, every tooltip gets its own id
+
+
+def tooltip(m: re.Match) -> str:
+    """{{?term|definition}}: a focusable term, described by a card that CSS shows on hover and on focus (no JavaScript)."""
+    TIP_IDS[0] += 1
+    i = f"drz-tip-{TIP_IDS[0]}"
+    term, defn = m[1].strip(), m[2].strip()
+    return (f'<span class="drz-tip" tabindex="0" aria-describedby="{i}">{term}'
+            f'<span class="drz-tip-card" role="tooltip" id="{i}" data-term="{html.escape(term, quote=True)}">{defn}</span></span>')
+
+
 def inline(s: str, lang: str) -> str:
+    s = re.sub(r"\{\{\?([^|{}]+)\|([^{}]+)\}\}", tooltip, s)
     s = re.sub(r"\[\[(\d+)\]\]", r'<sup class="drz-ref"><a class="drz-text" href="#ref-\1">\1</a></sup>', s)
     s = re.sub(r"\*\*(.+?)\*\*", r'<strong class="drz-text">\1</strong>', s)
     s = re.sub(r"(?<![*\w])\*(?!\s)(.+?)(?<!\s)\*(?!\w)", r'<em class="drz-text">\1</em>', s)
@@ -115,6 +130,7 @@ def renumber(raw: str) -> str:
 def build(lang: str) -> str:
     raw = (ICI / f"{lang}.txt").read_text(encoding="utf-8")
     raw = renumber(raw)
+    TIP_IDS[0] = 0
     # HERO | src | alt | credit: the image under the lede, as the site's other articles have one
     hero_html = ""
     mh = re.search(r"^HERO \| (.+?) \| (.+?) \| (.+)$", raw, flags=re.M)
@@ -205,10 +221,14 @@ def build(lang: str) -> str:
             elif ln.startswith("VIDEO "):
                 flush()
                 vid, vtitle, cap = [x.strip() for x in ln[6:].split("|", 2)]
+                vid, _, start = vid.partition("@")  # VIDEO id@1705: the player starts at 1705 s (same youtube.com host, CSP unchanged)
+                if start and not start.isdigit():
+                    raise SystemExit(f"VIDEO {vid}@{start}: the start time is a whole number of seconds")
+                qs = f"?start={start}" if start else ""
                 out.append(
                     f'            <div class="drz-art-fig drz-art-fig--wide"><div style="position:relative;width:100%;aspect-ratio:16/9">'
                     # YouTube's own embed code, as its Share > Embed button gives it, made fluid
-                    f'<iframe width="560" height="315" src="https://www.youtube.com/embed/{vid}" title="{html.escape(vtitle, quote=True)}"\n'
+                    f'<iframe width="560" height="315" src="https://www.youtube.com/embed/{vid}{qs}" title="{html.escape(vtitle, quote=True)}"\n'
                     f'                    frameborder="0" style="position:absolute;inset:0;width:100%;height:100%;border-radius:8px"\n'
                     f'                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"\n'
                     f'                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>\n'
