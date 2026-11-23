@@ -291,6 +291,9 @@ claim("equal budget, 200,000 steps", "lu le score de PPO à 200 000 pas", "read 
 e3s = J("sim/analysis/e3_s20.json")
 assert e3s["Walker2d-v5"]["winner"] == "sb3" and e3s["Swimmer-v5"]["winner"] == "sbx" and sum(v["winner"] is not None for v in e3s.values()) == 2
 claim("E3 twenty seeds", *both(lambda l: f"{'avec' if l == 'fr' else 'with'} {num(e3s['Walker2d-v5']['iqm']['sb3'], l)} {'contre' if l == 'fr' else 'against'} {num(e3s['Walker2d-v5']['iqm']['sbx'], l)}"))
+e3h = J("sim/analysis/e3_holm.json")["s20"]  # Holm over the four tasks: only Swimmer stays established
+assert [t_ for t_ in TK if e3h[t_]["settled_holm"]] == ["Swimmer-v5"] and e3h["Swimmer-v5"]["hodges_lehmann_sbx_minus_sb3"] > 0
+claim("E3 Holm Swimmer", *both(lambda l: f"{num(e3s['Swimmer-v5']['iqm']['sbx'], l)} {'contre' if l == 'fr' else 'against'} {num(e3s['Swimmer-v5']['iqm']['sb3'], l)}"))
 dss = J("sim/analysis/dose_s20.json")
 assert dss["missing"] == {} and dss["control_max_rel_gap"] == 0 and dss["seeds"] == [0, 20]
 hks = {k.split("/", 1)[1]: v["ranking"] for k, v in dss["ranking"].items() if k.startswith("Hopper-v5/")}
@@ -360,6 +363,13 @@ gl5 = gn5["llama1 true"]
 assert -0.01 < gl5["ci"][0] < 0  # "just below zero"
 claim("GRPO5 Llama gain", *both(lambda l: ("le gain moyen vaut {} points, de juste sous zéro à {}" if l == "fr" else "the mean gain is {} points, from just below zero to {}").format(
     sg(gl5["mean"] * 100), sg(gl5["ci"][1] * 100))))
+LS = J("sim/llm/results/logs_stats_5.json")["gains"]  # the measures pass@1 hid (Llama's greedy accuracy, Qwen's cut answers)
+lg = LS["llama1 true greedy"]
+assert lg["positive"] == 0 and len(lg["gains"]) == 5
+claim("GRPO5 Llama greedy", *both(lambda l: (f"de {-int(hu(lg['mean'] * 100))} points en moyenne" if l == "fr" else f"by {-int(hu(lg['mean'] * 100))} points on average")))
+qc, qf = LS["qwen05 true truncated"], LS["qwen05 true finished"]
+assert qf["end"] <= qf["start"]  # "la justesse de ses réponses finies ne monte pas"
+claim("GRPO5 Qwen cut", *both(lambda l: de_a(pct(hu(qc["start"], 2), l), pct(hu(qc["end"], 2), l), l)))
 # "nine finished runs" with the coin flip, all at 1% or less; the tenth failed (ex5["failed"]).
 assert sum(x["reward"] == "random" for x in sm5) == 9 and max(x["pass1_100"] for x in sm5 if x["reward"] == "random") == 0.0125
 assert ex5["failed"] == [{"model": "llama1", "reward": "random", "seed": 4}]
@@ -400,6 +410,16 @@ r36s = lambda k, y: Decimal(R36[k]["counts"][y]["yes"]) / Decimal(R36[k]["counts
 for k in ("Q5", "Y9", "X7", "X2"):
     claim(f"r36 {k}", *both(lambda l: de_a(pct(r36s(k, "2018"), l), pct(r36s(k, "2026"), l), l)))
 claim("r36 X2 p", *both(lambda l: f"(p = {num(R36['X2']['diff']['p'], l, 3)})"))
+# The reader from another model family (study/gemma_stats.json, gemma_stats_invalid_no.json): the sign of the four
+# rises kept; with its invalid "yes" counted "no", the rise of X2 no longer established.
+GM, GN = J("study/gemma_stats.json")["criteria"], J("study/gemma_stats_invalid_no.json")["criteria"]
+assert all(GM[k]["difference"]["gemma"]["diff"] > 0 and GN[k]["difference"]["gemma"]["diff"] > 0 for k in ("Q5", "Y9", "X7", "X2"))
+gx = GN["X2"]["difference"]["gemma"]
+assert gx["lo"] < 0 < gx["hi"] and GN["X2"]["difference"]["reading"] == "same direction, not settled"
+claim("gemma X2 invalid as no", *both(lambda l: f"({sg(gx['diff'] * 100)} points, {de_a(sg(gx['lo'] * 100), sg(gx['hi'] * 100), l)})"))
+# Power of the survey (study/survey_extra.json): the smallest rise detected with 80% power, over the criteria.
+MDE = [c["up_5"] for c in J("study/survey_extra.json")["mde"].values() if c["up_5"] is not None]
+claim("survey power 18 to 30", *both(lambda l: (f"hausse de {int(hu(min(MDE) * 100))} à {int(hu(max(MDE) * 100))} points" if l == "fr" else f"rise of {int(hu(min(MDE) * 100))} to {int(hu(max(MDE) * 100))} points")))
 claim("r36 papers", *both(lambda l: f"{R36['Q5']['counts']['2018']['n'] + R36['Q5']['counts']['2026']['n']} " + ("articles expérimentaux" if l == "fr" else "experimental papers")))
 D("t and p of 2018", "t = −9,09, p = 0,0016", "t = −9.09, p = 0.0016")
 D("published t", "9,09 avec p = 0,0016", "9.09 with p = 0.0016")
