@@ -49,6 +49,10 @@ def r4(x):
     return None if x is None else round(float(x), 4)
 
 
+def r3(x):  # odds ratios: the report prints two decimals; a fourth one lands on a rounding edge across platforms
+    return None if x is None else round(float(x), 3)
+
+
 def value(pid, k, invalid_no=False, pages_yes=False):
     rd, rec = reads[pid]
     if any(e.startswith(k + " ") for e in bad[pid]):
@@ -105,8 +109,8 @@ def glmm(ids, k):
     # reader SD = 0: plain logistic regression (the model at the lower bound of log s)
     lr0 = max(0.0, 2 * (nll((b0, b1, -50.0), y, x, g) - full.fun)) if not boundary else 0.0
     lo, hi = b1 - norm.ppf(.975) * se, b1 + norm.ppf(.975) * se
-    return dict(n=len(ids), b0=r4(b0), b1=r4(b1), se_b1=r4(se), odds_ratio=r4(np.exp(b1)),
-                or_wald95=[r4(np.exp(lo)), r4(np.exp(hi))], b1_wald95=[r4(lo), r4(hi)], p_lrt=r6(chi2.sf(lr, 1)),
+    return dict(n=len(ids), b0=r4(b0), b1=r4(b1), se_b1=r4(se), odds_ratio=r3(np.exp(b1)),
+                or_wald95=[r3(np.exp(lo)), r3(np.exp(hi))], b1_wald95=[r4(lo), r4(hi)], p_lrt=r6(chi2.sf(lr, 1)),
                 reader_sd=r4(0.0 if boundary else np.exp(ls)), p_reader_sd=r6(0.5 * chi2.sf(lr0, 1) if lr0 else 1.0),
                 converged=bool(full.success and null.success))
 
