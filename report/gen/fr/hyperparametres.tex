@@ -3,7 +3,7 @@
 \centering
 \footnotesize
 \setlength{\tabcolsep}{3.5pt}
-\caption[Réglages des cinq programmes]{Les réglages des cinq programmes, tels qu'ils ont servi : \file{sim/analysis/hyperparams.py} (écart 28 de \file{sim/SIM\_PROTOCOL.md}) construit chaque programme sur Hopper-v5 exactement comme \file{sim/run.py} (TRPO sur HalfCheetah-v5), lit les attributs de l'algorithme, de la politique et de l'optimiseur, puis les compare aux paramètres rangés dans un modèle sauvegardé par programme. Ce sont les valeurs par défaut des bibliothèques installées (versions au tableau~\ref{tab:env}) : aucun programme n'a été réglé. Une case vide : le réglage n'existe pas pour cet algorithme, ou il est désactivé. Les réseaux sont des perceptrons multicouches, dont on donne les largeurs des couches cachées et l'activation. CrossQ n'a pas de réseau cible : son $\tau$ existe dans la bibliothèque sans servir. Les deux PPO ont les mêmes réglages d'algorithme, mais pas la même initialisation : dans SBX, l'option orthogonale ne toucherait que la couche de sortie de l'action, dans Stable-Baselines3 elle couvre aussi les couches cachées et la sortie de valeur (écart 34). Source : \file{sim/analysis/hyperparams.json} (\texttt{make hyperparams}).}
+\caption[Réglages des cinq programmes]{Les réglages des cinq programmes, lus dans les programmes tels qu'ils ont tourné (\file{sim/analysis/hyperparams.py}, écart 28) et vérifiés contre un modèle sauvegardé par programme. Ce sont les valeurs par défaut des bibliothèques installées (tableau~\ref{tab:env}) : aucun programme n'a été réglé. Case vide : réglage absent ou désactivé. Réseaux : largeurs des couches cachées et activation. CrossQ n'a pas de réseau cible. Les deux PPO diffèrent par l'initialisation orthogonale, qui couvre plus de couches dans Stable-Baselines3 que dans SBX (écart 34). Source : \file{sim/analysis/hyperparams.json}.}
 \label{tab:hyperparametres}
 \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{1.95cm}>{\raggedright\arraybackslash}p{1.95cm}>{\raggedright\arraybackslash}p{1.95cm}>{\raggedright\arraybackslash}p{2.05cm}>{\raggedright\arraybackslash}p{1.95cm}@{}}
 \toprule
@@ -47,7 +47,7 @@ Réseau de valeur ou critique & 64, 64, tanh & 64, 64, tanh & 2 fois 256, 256, R
 Renormalisation par lots : élan, préchauffage &  &  &  & 0,99 ; 100\,000, acteur et critique &  \\
 Initialisation orthogonale & oui & non &  &  & oui \\
 $\log \sigma$ initial & 0 & 0 &  &  & 0 \\
-Optimiseur & \makecell[tl]{Adam\\{}$\beta = (0,9\,;\,0,999)$\\{}$\varepsilon = $ \num{1e-05}} & \makecell[tl]{Adam d'optax\\{}$\varepsilon = $ \num{1e-05}} & \makecell[tl]{Adam d'optax\\{}par défaut} & \makecell[tl]{Adam d'optax\\{}$\beta_1 = 0,5$} & \makecell[tl]{Adam\\{}$\beta = (0,9\,;\,0,999)$\\{}$\varepsilon = $ \num{1e-05}} \\
+Optimiseur & \makecell[tl]{Adam\\{}$\beta_1 = 0{,}9$\\{}$\beta_2 = 0{,}999$\\{}$\varepsilon = 10^{-5}$} & \makecell[tl]{Adam d'optax\\{}$\varepsilon = 10^{-5}$} & \makecell[tl]{Adam d'optax\\{}par défaut} & \makecell[tl]{Adam d'optax\\{}$\beta_1 = 0{,}5$} & \makecell[tl]{Adam\\{}$\beta_1 = 0{,}9$\\{}$\beta_2 = 0{,}999$\\{}$\varepsilon = 10^{-5}$} \\
 \bottomrule
 \end{tabularx}
 \end{table}

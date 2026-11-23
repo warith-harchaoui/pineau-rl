@@ -1932,13 +1932,13 @@ def t_hyperparametres():
             if "optimizer" in h:  # PyTorch: read from the optimiser itself
                 o = h["optimizer"]
                 bs = L(lang, r"\,;\,", r",\,")
-                return rf"\makecell[tl]{{Adam\\{{}}$\beta = ({dec(o['betas'][0])}{bs}{dec(o['betas'][1])})$\\{{}}$\varepsilon = $ \num{{{o['eps']:.0e}}}}}"
+                return rf"\makecell[tl]{{Adam\\{{}}$\beta_1 = {dec(o['betas'][0]).replace(',', '{,}')}$\\{{}}$\beta_2 = {dec(o['betas'][1]).replace(',', '{,}')}$\\{{}}$\varepsilon = 10^{{{int(round(__import__('math').log10(o['eps'])))}}}$}}"
             kw = h["policy"]["optimizer_kwargs"]
             s = [L(lang, "Adam d'optax", "optax Adam")]
             if "b1" in kw:
-                s.append(rf"$\beta_1 = {dec(kw['b1'])}$")
+                s.append(rf"$\beta_1 = {dec(kw['b1']).replace(',', '{,}')}$")
             if "eps" in kw:
-                s.append(rf"$\varepsilon = $ \num{{{kw['eps']:.0e}}}")
+                s.append(rf"$\varepsilon = 10^{{{int(round(__import__('math').log10(kw['eps'])))}}}$")
             if not kw:
                 s.append(L(lang, "par défaut", "defaults"))
             return r"\makecell[tl]{" + r"\\{}".join(s) + "}"
@@ -1951,16 +1951,14 @@ def t_hyperparametres():
             else:
                 rows.append(" & ".join([it[0]] + it[1]))
         cap = L(lang,
-                r"Les réglages des cinq programmes, tels qu'ils ont servi : \file{sim/analysis/hyperparams.py} (écart 28 de \file{sim/SIM_PROTOCOL.md}) construit chaque programme sur Hopper-v5 exactement comme \file{sim/run.py} (TRPO sur HalfCheetah-v5), lit les attributs de l'algorithme, de la politique et de l'optimiseur, puis les compare aux paramètres rangés dans un modèle sauvegardé par programme. "
-                r"Ce sont les valeurs par défaut des bibliothèques installées (versions au tableau~\ref{tab:env}) : aucun programme n'a été réglé. Une case vide : le réglage n'existe pas pour cet algorithme, ou il est désactivé. "
-                r"Les réseaux sont des perceptrons multicouches, dont on donne les largeurs des couches cachées et l'activation. CrossQ n'a pas de réseau cible : son $\tau$ existe dans la bibliothèque sans servir. "
-                r"Les deux PPO ont les mêmes réglages d'algorithme, mais pas la même initialisation : dans SBX, l'option orthogonale ne toucherait que la couche de sortie de l'action, dans Stable-Baselines3 elle couvre aussi les couches cachées et la sortie de valeur (écart 34). "
-                r"Source : \file{sim/analysis/hyperparams.json} (\texttt{make hyperparams}).",
-                r"The settings of the five programs as they ran: \file{sim/analysis/hyperparams.py} (deviation 28 of \file{sim/SIM_PROTOCOL.md}) builds each program on Hopper-v5 exactly as \file{sim/run.py} does (TRPO on HalfCheetah-v5), reads the attributes of the algorithm, the policy and the optimiser, then compares them with the parameters stored in one saved model per program. "
-                r"These are the default values of the installed libraries (versions in Table~\ref{tab:env}): no program was tuned. An empty cell: the setting does not exist for that algorithm, or it is switched off. "
-                r"The networks are multilayer perceptrons, given by the widths of their hidden layers and their activation. CrossQ has no target network: its $\tau$ exists in the library but is not used. "
-                r"The two PPOs share the same algorithm settings but not the same initialisation: in SBX the orthogonal option would touch only the action output layer, in Stable-Baselines3 it also covers the hidden layers and the value output (deviation 34). "
-                r"Source: \file{sim/analysis/hyperparams.json} (\texttt{make hyperparams}).")
+                r"Les réglages des cinq programmes, lus dans les programmes tels qu'ils ont tourné (\file{sim/analysis/hyperparams.py}, écart 28) et vérifiés contre un modèle sauvegardé par programme. "
+                r"Ce sont les valeurs par défaut des bibliothèques installées (tableau~\ref{tab:env}) : aucun programme n'a été réglé. Case vide : réglage absent ou désactivé. Réseaux : largeurs des couches cachées et activation. "
+                r"CrossQ n'a pas de réseau cible. Les deux PPO diffèrent par l'initialisation orthogonale, qui couvre plus de couches dans Stable-Baselines3 que dans SBX (écart 34). "
+                r"Source : \file{sim/analysis/hyperparams.json}.",
+                r"The settings of the five programs, read from the programs as they ran (\file{sim/analysis/hyperparams.py}, deviation 28) and checked against one saved model per program. "
+                r"These are the default values of the installed libraries (Table~\ref{tab:env}): no program was tuned. Empty cell: setting absent or switched off. Networks: widths of the hidden layers and activation. "
+                r"CrossQ has no target network. The two PPOs differ by their orthogonal initialisation, which covers more layers in Stable-Baselines3 than in SBX (deviation 34). "
+                r"Source: \file{sim/analysis/hyperparams.json}.")
         floattable("hyperparametres", lang, cap, L(lang, "Réglages des cinq programmes", "Settings of the five programs"),
                    r"@{}>{\raggedright\arraybackslash}p{4cm}>{\raggedright\arraybackslash}p{1.95cm}>{\raggedright\arraybackslash}p{1.95cm}"
                    r">{\raggedright\arraybackslash}p{1.95cm}>{\raggedright\arraybackslash}p{2.05cm}>{\raggedright\arraybackslash}p{1.95cm}@{}",
@@ -2219,8 +2217,8 @@ def t_r36():
     r = J("study/r36_stats.json")
     keys = ["Q5", "Y9", "X7", "X2"]
     for lang in LANGS:
-        def share(c):  # "31 % (15/48)": the share first, its count beside it
-            return rf"{pc(c['share'], lang)} \textcolor{{ink2}}{{({kn(c['yes'], c['n'])})}}"
+        def share(c):  # the share, its count under it
+            return mc(pc(c['share'], lang), rf"\textcolor{{ink2}}{{{kn(c['yes'], c['n'])}}}")
 
         def diff(d):
             return mc(pc(d["diff"], lang, sign=True), iv(num(D(d["lo"]) * 100, lang, 1, sign=True), num(D(d["hi"]) * 100, lang, 1, sign=True), lang))
@@ -2238,7 +2236,7 @@ def t_r36():
                                     p3(m["diff"]["p_holm4"], lang),
                                     mc(num(mm["odds_ratio"], lang, 2), iv(num(mm["or_wald95"][0], lang, 2), num(mm["or_wald95"][1], lang, 2), lang)),
                                     p3(mm["p_lrt_holm4"], lang),
-                                    f"{num(mm['reader_sd'], lang, 2)} ({pval(mm['p_reader_sd'], lang)})",
+                                    mc(num(mm['reader_sd'], lang, 2), f"({pval(mm['p_reader_sd'], lang)})"),
                                     bold(R36_VERDICT[v["verdict"]][0 if lang == "fr" else 1], hold)]))
             rows.append(r"\addlinespace[2pt]")
         pp = r["project_pages_yes"]["Q5"]
@@ -2263,14 +2261,15 @@ def t_r36():
                 r"Last row: Q5 when every project page counts ``yes'', the least favourable reading. "
                 r"Source: \file{study/r36_stats.json}.")
         floattable("r36", lang, cap, L(lang, "L'année et les lecteurs démêlés (écart 36)", "Year and readers disentangled (deviation 36)"),
-                   r"@{}>{\raggedright\arraybackslash}p{3cm}rrrrrrr>{\raggedright\arraybackslash}p{1.7cm}@{}", head, rows, tabcolsep="3.5pt")
+                   r"@{}>{\raggedright\arraybackslash}p{3.3cm}rrrrrrr>{\raggedright\arraybackslash}p{1.6cm}@{}", head, rows, tabcolsep="3.5pt",
+                   env="tabular")
 
 
 def t_r36_accord():
     a = J("study/r36_stats.json")["agreement_with_final_codes"]
     for lang in LANGS:
         def ag(c):
-            return rf"{pc(c['agree'], lang)} \textcolor{{ink2}}{{({kn(c['same'], c['n'])})}}"
+            return mc(pc(c['agree'], lang), rf"\textcolor{{ink2}}{{{kn(c['same'], c['n'])}}}")
         head = [L(lang, r" & \multicolumn{2}{c}{Les deux années} & \multicolumn{3}{c}{Par année} & \multicolumn{2}{c}{Désaccords} ",
                   r" & \multicolumn{2}{c}{Both years} & \multicolumn{3}{c}{Per year} & \multicolumn{2}{c}{Disagreements} "),
                 r"\cmidrule(lr){2-3}\cmidrule(lr){4-6}\cmidrule(lr){7-8}",
@@ -2281,7 +2280,7 @@ def t_r36_accord():
             c = a[k]
             al = c["all"]
             rows.append(" & ".join([f"{CRIT[k][0 if lang == 'fr' else 1]} ({k})",
-                                    mc(rf"{pc(al['agree'], lang)} \textcolor{{ink2}}{{({kn(al['same'], al['n'])})}}",
+                                    mc(pc(al['agree'], lang), rf"\textcolor{{ink2}}{{{kn(al['same'], al['n'])}}}",
                                        iv(pc(al['wilson'][0], lang), pc(al['wilson'][1], lang), lang)),
                                     num(al["kappa"], lang, 2), ag(c["2018"]), ag(c["2026"]), pval(c["p_fisher_2018_vs_2026"], lang),
                                     str(al["new_yes_orig_no"]), str(al["new_no_orig_yes"])]))
@@ -2297,7 +2296,7 @@ def t_r36_accord():
                 r"Last two columns: number of papers where the new reading says yes and the final code no, then the reverse. "
                 r"Source: \file{study/r36_stats.json}.")
         floattable("r36-accord", lang, cap, L(lang, "Écart 36 : accord avec les codes d'origine", "Deviation 36: agreement with the original codes"),
-                   r"@{}>{\raggedright\arraybackslash}p{3cm}rrrrrrr@{}", head, rows, tabcolsep="4pt")
+                   r"@{}>{\raggedright\arraybackslash}p{3.6cm}rrrrrrr@{}", head, rows, tabcolsep="5pt", env="tabular")
 
 
 GMOD = {"qwen05": ("Qwen2.5 0,5B", "Qwen2.5 0.5B"), "llama1": ("Llama 3.2 1B", "Llama 3.2 1B")}

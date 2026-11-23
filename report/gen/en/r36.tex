@@ -5,21 +5,21 @@
 \setlength{\tabcolsep}{3.5pt}
 \caption[Year and readers disentangled (deviation 36)]{Year and readers disentangled (deviation 36). The 98 experimental papers of the main comparison (48 from 2018, 50 from 2026), reread by eight fresh agents, each of whom reads both years. Shares of papers that follow the practice; difference 2026 minus 2018 in points with the 95\% Newcombe interval and Fisher's exact test. Year effect: a logistic mixed model with a random reader effect of standard deviation $s$, odds ratio with its 95\% Wald interval and likelihood-ratio test. Holm runs over the four criteria. Rule fixed in advance: a verdict holds if both tests pass with a positive effect (\textbf{in bold}). Last row: Q5 when every project page counts ``yes'', the least favourable reading. Source: \file{study/r36\_stats.json}.}
 \label{tab:r36}
-\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}Xrrrrrrr>{\raggedright\arraybackslash}p{1.7cm}@{}}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{3.3cm}rrrrrrr>{\raggedright\arraybackslash}p{1.6cm}@{}}
 \toprule
  & & & \multicolumn{2}{c}{Difference, Fisher} & \multicolumn{3}{c}{Year effect, mixed model} &  \\
 \cmidrule(lr){4-5}\cmidrule(lr){6-8}
 Criterion & 2018 & 2026 & \makecell[r]{points\\{}[Newcombe]} & \makecell[r]{Holm\\{}$p$} & \makecell[r]{odds ratio\\{}[Wald]} & \makecell[r]{Holm\\{}$p$} & \makecell[r]{reader $s$\\{}($p$)} & Verdict \\
 \midrule
-\textbf{Code linked (Q5)} & 31 \textcolor{ink2}{(15/48)} & 72 \textcolor{ink2}{(36/50)} & \makecell{+41\\{}[+21.1,\,+56.2]} & 0.0004 & \makecell{5.66\\{}[2.37,\,13.48]} & 0.0002 & 0.00 (1) & \textbf{holds} \\
+\textbf{Code linked (Q5)} & \makecell{31\\{}\textcolor{ink2}{15/48}} & \makecell{72\\{}\textcolor{ink2}{36/50}} & \makecell{+41\\{}[+21.1,\,+56.2]} & 0.0004 & \makecell{5.66\\{}[2.37,\,13.48]} & 0.0002 & \makecell{0.00\\{}(1)} & \textbf{holds} \\
 \addlinespace[2pt]
-\textbf{Sensitivity to a hyperparameter (Y9)} & 42 \textcolor{ink2}{(20/48)} & 78 \textcolor{ink2}{(39/50)} & \makecell{+36\\{}[+17.0,\,+52.1]} & 0.001 & \makecell{4.96\\{}[2.06,\,11.98]} & 0.0006 & 0.00 (1) & \textbf{holds} \\
+\textbf{Sensitivity to a hyperparameter (Y9)} & \makecell{42\\{}\textcolor{ink2}{20/48}} & \makecell{78\\{}\textcolor{ink2}{39/50}} & \makecell{+36\\{}[+17.0,\,+52.1]} & 0.001 & \makecell{4.96\\{}[2.06,\,11.98]} & 0.0006 & \makecell{0.00\\{}(1)} & \textbf{holds} \\
 \addlinespace[2pt]
-\textbf{Compute quantified (X7)} & 31 \textcolor{ink2}{(15/48)} & 66 \textcolor{ink2}{(33/50)} & \makecell{+35\\{}[+15.0,\,+50.9]} & 0.001 & \makecell{4.37\\{}[1.83,\,10.42]} & 0.001 & 0.24 (0.39) & \textbf{holds} \\
+\textbf{Compute quantified (X7)} & \makecell{31\\{}\textcolor{ink2}{15/48}} & \makecell{66\\{}\textcolor{ink2}{33/50}} & \makecell{+35\\{}[+15.0,\,+50.9]} & 0.001 & \makecell{4.37\\{}[1.83,\,10.42]} & 0.001 & \makecell{0.24\\{}(0.39)} & \textbf{holds} \\
 \addlinespace[2pt]
-Uncertainty reported (X2) & 69 \textcolor{ink2}{(33/48)} & 86 \textcolor{ink2}{(43/50)} & \makecell{+17\\{}[+0.6,\,+33.0]} & 0.053 & \makecell{2.88\\{}[1.03,\,8.03]} & 0.037 & 0.44 (0.25) & same direction, not established \\
+Uncertainty reported (X2) & \makecell{69\\{}\textcolor{ink2}{33/48}} & \makecell{86\\{}\textcolor{ink2}{43/50}} & \makecell{+17\\{}[+0.6,\,+33.0]} & 0.053 & \makecell{2.88\\{}[1.03,\,8.03]} & 0.037 & \makecell{0.44\\{}(0.25)} & same direction, not established \\
 \addlinespace[2pt]
-\textit{Q5, every project page counted yes} & 42 \textcolor{ink2}{(20/48)} & 74 \textcolor{ink2}{(37/50)} & \makecell{+32\\{}[+12.8,\,+48.7]} & 0.004 &  &  &  &  \\
+\textit{Q5, every project page counted yes} & \makecell{42\\{}\textcolor{ink2}{20/48}} & \makecell{74\\{}\textcolor{ink2}{37/50}} & \makecell{+32\\{}[+12.8,\,+48.7]} & 0.004 &  &  &  &  \\
 \bottomrule
-\end{tabularx}
+\end{tabular}
 \end{table}

@@ -3,7 +3,7 @@
 \centering
 \footnotesize
 \setlength{\tabcolsep}{3.5pt}
-\caption[Settings of the five programs]{The settings of the five programs as they ran: \file{sim/analysis/hyperparams.py} (deviation 28 of \file{sim/SIM\_PROTOCOL.md}) builds each program on Hopper-v5 exactly as \file{sim/run.py} does (TRPO on HalfCheetah-v5), reads the attributes of the algorithm, the policy and the optimiser, then compares them with the parameters stored in one saved model per program. These are the default values of the installed libraries (versions in Table~\ref{tab:env}): no program was tuned. An empty cell: the setting does not exist for that algorithm, or it is switched off. The networks are multilayer perceptrons, given by the widths of their hidden layers and their activation. CrossQ has no target network: its $\tau$ exists in the library but is not used. The two PPOs share the same algorithm settings but not the same initialisation: in SBX the orthogonal option would touch only the action output layer, in Stable-Baselines3 it also covers the hidden layers and the value output (deviation 34). Source: \file{sim/analysis/hyperparams.json} (\texttt{make hyperparams}).}
+\caption[Settings of the five programs]{The settings of the five programs, read from the programs as they ran (\file{sim/analysis/hyperparams.py}, deviation 28) and checked against one saved model per program. These are the default values of the installed libraries (Table~\ref{tab:env}): no program was tuned. Empty cell: setting absent or switched off. Networks: widths of the hidden layers and activation. CrossQ has no target network. The two PPOs differ by their orthogonal initialisation, which covers more layers in Stable-Baselines3 than in SBX (deviation 34). Source: \file{sim/analysis/hyperparams.json}.}
 \label{tab:hyperparametres}
 \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{1.95cm}>{\raggedright\arraybackslash}p{1.95cm}>{\raggedright\arraybackslash}p{1.95cm}>{\raggedright\arraybackslash}p{2.05cm}>{\raggedright\arraybackslash}p{1.95cm}@{}}
 \toprule
@@ -47,7 +47,7 @@ Value or critic network & 64, 64, tanh & 64, 64, tanh & 2 times 256, 256, ReLU &
 Batch renormalisation: momentum, warm-up &  &  &  & 0.99; 100,000, actor and critic &  \\
 Orthogonal initialisation & yes & no &  &  & yes \\
 Initial $\log \sigma$ & 0 & 0 &  &  & 0 \\
-Optimiser & \makecell[tl]{Adam\\{}$\beta = (0.9,\,0.999)$\\{}$\varepsilon = $ \num{1e-05}} & \makecell[tl]{optax Adam\\{}$\varepsilon = $ \num{1e-05}} & \makecell[tl]{optax Adam\\{}defaults} & \makecell[tl]{optax Adam\\{}$\beta_1 = 0.5$} & \makecell[tl]{Adam\\{}$\beta = (0.9,\,0.999)$\\{}$\varepsilon = $ \num{1e-05}} \\
+Optimiser & \makecell[tl]{Adam\\{}$\beta_1 = 0.9$\\{}$\beta_2 = 0.999$\\{}$\varepsilon = 10^{-5}$} & \makecell[tl]{optax Adam\\{}$\varepsilon = 10^{-5}$} & \makecell[tl]{optax Adam\\{}defaults} & \makecell[tl]{optax Adam\\{}$\beta_1 = 0.5$} & \makecell[tl]{Adam\\{}$\beta_1 = 0.9$\\{}$\beta_2 = 0.999$\\{}$\varepsilon = 10^{-5}$} \\
 \bottomrule
 \end{tabularx}
 \end{table}
