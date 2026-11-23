@@ -454,3 +454,10 @@
 {"job": "train-ppo_sb3_zoog99-Hopper-v4-3", "end": "2026-11-22 13:18:12", "stopped_by": "watchdog", "free_gb": 9, "swap_growth_mb": 14161}
 {"job": "train-ppo_sb3_zoog99-Hopper-v4-3", "attempt": 2, "start": "2026-11-23 05:32:47", "end": "2026-11-23 08:21:55", "exit": 0, "sha256": "283f6002ed403659a292498450372daeb0d2dc34188f9e394e9e88f4cdc2802d"}
 {"job": "train-ppo_sb3_zoog99-Hopper-v4-4", "attempt": 1, "start": "2026-11-23 08:21:56", "end": "2026-11-23 09:13:46", "exit": 0, "sha256": "7df386571c69f16f102b0dfa11c9987f1f3f0abaad4dadfedbdfe97f6c75d7fb"}
+{"job": "train-crossq_rerun-Walker2d-v5-0", "attempt": 3, "start": "2026-11-23 05:32:43", "end": "2026-11-23 15:21:47", "exit": 0, "sha256": "ea58b638669874dd06140aac4035fb7e0c3cd668292ccda52cc87db0bb8124b3"}
+{"job": "train-ppo_sb3_zoog99-Hopper-v4-5", "attempt": 1, "start": "2026-11-23 15:21:47", "end": "2026-11-23 16:02:19", "exit": 0, "sha256": "eba39da35ad3420b4e1187c829c22cc02b1c4999d09afa44cb626dc0ee1f1129"}
+{"job": "train-ppo_sb3_zoog99-Hopper-v4-6", "attempt": 1, "start": "2026-11-23 16:02:20", "end": "2026-11-23 16:24:16", "exit": 0, "sha256": "077fc217df6521cf170a6eb8472ad281179b354642b8de307c8c7edd78b20b70"}
+{"job": "train-ppo_sb3_zoog99-Hopper-v4-7", "attempt": 1, "start": "2026-11-23 16:24:17", "end": "2026-11-23 16:41:26", "exit": 0, "sha256": "85e3638c76f136b2304ff554ae4b84016d1a7883df3daf2c8d17d447805b549a"}
+{"job": "train-ppo_sb3_zoog99-Hopper-v4-8", "attempt": 1, "start": "2026-11-23 16:41:30", "end": "2026-11-23 16:55:40", "exit": 0, "sha256": "fb2a9c9a52d37af8364bec0fb599576af5959f44ade77a4f7156f6819a5f8241"}
+{"job": "train-ppo_sb3_zoog99-Hopper-v4-9", "attempt": 1, "start": "2026-11-23 16:55:42", "end": "2026-11-23 17:08:11", "exit": 0, "sha256": "8bf7184ac11e9efa84185c7d379032e7c04bdc69f4fc0853f3ad0732def75839"}
+{"job": "train-ppo_sb3-Walker2d-v5-20", "attempt": 1, "start": "2026-11-23 17:08:12", "end": "2026-11-23 17:19:23", "exit": 0, "sha256": "9e5dd60be64eb64c0e313cad3f2df943bf95da63688b7709e7de7dd3b1e93559"}
