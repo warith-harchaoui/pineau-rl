@@ -2271,7 +2271,7 @@ def t_r36():
             name = bold(f"{CRIT[k][0 if lang == 'fr' else 1]} ({k})", hold)
             rows.append(" & ".join([name, share(m["counts"]["2018"]), share(m["counts"]["2026"]), diff(m["diff"]),
                                     p3(m["diff"]["p_holm4"], lang),
-                                    mc(num(mm["odds_ratio"], lang, 2), iv(num(mm["or_wald95"][0], lang, 2), num(mm["or_wald95"][1], lang, 2), lang)),
+                                    mc(num(D(math.exp(mm["b1"])), lang, 2), iv(num(D(math.exp(mm["b1_wald95"][0])), lang, 2), num(D(math.exp(mm["b1_wald95"][1])), lang, 2), lang)),  # from b1 (4 decimals): the stored ratios have 3
                                     p3(mm["p_lrt_holm4"], lang),
                                     mc(num(mm['reader_sd'], lang, 2), f"({pval(mm['p_reader_sd'], lang)})"),
                                     bold(R36_VERDICT[v["verdict"]][0 if lang == "fr" else 1], hold)]))
