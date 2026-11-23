@@ -19,19 +19,18 @@
 % on 22 November 2026; the date below is the one the author dictated, the one of the title page (24 November 2026, Warith,
 % 23 November). Each item leaves the box as soon as its work is settled (Warith, 23 November 2026).
 \begin{keybox}[fontupper=\footnotesize,top=4pt,bottom=4pt]
-\iffr{\textbf{Version 1.0 du 24 novembre 2026, addendum prévu.} Encore en cours, chacun avec son écart :}%
-{\textbf{Version 1.0 of 24 November 2026, addendum planned.} Still running, each with its deviation:}
+\iffr{\textbf{Version 1.0 du 24 novembre 2026, addendum prévu.} Encore en cours :}%
+{\textbf{Version 1.0 of 24 November 2026, addendum planned.} Still running:}
 \begin{itemize}[nosep,leftmargin=1.2em]
-  \item \iffr{simulations C2, les deux PPO qui divergent (écart 34 des simulations), C4c, la recette du Zoo avec
-        $\gamma = 0{,}99$ (écart 33), C6, le déterminisme de SAC et CrossQ (écart 32)~;}%
-        {simulations C2, why the two PPOs diverge (simulation deviation 34), C4c, the Zoo recipe with
-        $\gamma = 0.99$ (deviation 33), C6, the determinism of SAC and CrossQ (deviation 32);}
-  \item \iffr{C5, le lecteur \texttt{gemma3:12b}, d'une autre famille de modèles (écart 33 du sondage)~;}%
-        {C5, the \texttt{gemma3:12b} reader, from another model family (survey deviation 33);}
-  \item \iffr{C7, GRPO relancé sur dix graines (écart 20 du volet GRPO)~;}%
-        {C7, GRPO rerun on ten seeds (GRPO deviation 20);}
-  \item \iffr{la relecture humaine à l'aveugle (écart 35 du sondage).}%
-        {the blind human re-reading (survey deviation 35).}
+  \item \iffr{trois vérifications des simulations : pourquoi les deux PPO divergent, la recette du Zoo
+        rejouée avec un facteur d'actualisation de 0,99 au lieu de 0,999, le déterminisme de SAC et de CrossQ
+        (\cref{sec:val-en-cours})~;}%
+        {three checks of the simulations: why the two PPOs diverge, the Zoo recipe rerun with a discount
+        factor of 0.99 instead of 0.999, the determinism of SAC and CrossQ (\cref{sec:val-en-cours});}
+  \item \iffr{GRPO relancé sur dix graines aléatoires (\cref{sec:llm-portee})~;}%
+        {GRPO rerun on ten random seeds (\cref{sec:llm-portee});}
+  \item \iffr{la relecture humaine à l'aveugle de trente articles (\cref{sec:val-en-cours}).}%
+        {the blind human rereading of thirty papers (\cref{sec:val-en-cours}).}
 \end{itemize}
 
 \end{keybox}

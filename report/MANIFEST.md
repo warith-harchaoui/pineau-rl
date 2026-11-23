@@ -100,7 +100,6 @@ New, drawn in the house style (article/figures/draw.py toolkit, Roboto, signatur
 | b1-distribution | distribution of the t statistic over the random draws, seeds-based t against Henderson's script, the 9.09 line |
 | grpo-courbes | GRPO evaluation curves per model, reward and seed over the 100 steps |
 | flux-sondage | flow diagram of the survey: populations, draws, readers, double readings, harmonisation, final counts |
-| frise-ecarts | timeline of the protocols and their dated deviations, 9 to 21 November 2026 |
 | architecture | the repository as a pipeline: runs -> results CSV -> analysis scripts -> JSON -> check_numbers / check_article -> documents, with make targets and CI |
 | e1-grille | E1 on the 16 program-task pairs: false-positive rate at random (hollow) and sorted (filled), 5% line |
 | e6-vitesse | E6 forward speed of each agent, one dot per seed, median return column; the Zoo's published agent |

@@ -1,16 +1,12 @@
 \chapter{The survey: method}\label{chap:03-sondage-methode}
 
 The survey, the first instrument of this report, rereads published papers with Pineau's reading grid,
-extended by seven criteria drawn from her ICLR talk and by a second grid that we wrote. This chapter describes the
-method in full: the stages and the protocol (Section~\ref{sec:sm-protocole}), the populations and
-the draws (Section~\ref{sec:sm-tirages}), the grids and their decision rules
-(Section~\ref{sec:sm-grilles}), the readers (Section~\ref{sec:sm-lecteurs}), the double readings
-(Section~\ref{sec:sm-doubles}), the harmonisation (Section~\ref{sec:sm-harmonisation}), the checks of
-quotations and of negative decisions (Section~\ref{sec:sm-controles}), the calibration on 2018 and the
-verdict rule (Section~\ref{sec:sm-verdict}), then the statistics (Section~\ref{sec:sm-stats}), the
-robustness analyses (Section~\ref{sec:sm-robustesse}) and two re-readings added after the results
-(Section~\ref{sec:sm-relectures}). Section~\ref{sec:sm-ecarts} summarises the
-deviations from the protocol. Chapter~\ref{chap:04-sondage-resultats} gives the results.
+extended by seven criteria drawn from her ICLR talk and by a second grid that we wrote. Both years
+are read with the same grids by AI agents of the same model and every \enquote{yes} quotes a sentence
+of the paper with its page. This chapter follows the order of the work: the protocol, the draws, the
+grids, the readers and their double readings, the harmonisation and the checks, the verdict rule, the
+statistics, then the re-readings added after the results and the deviations from the protocol.
+Chapter~\ref{chap:04-sondage-resultats} gives the results.
 
 \section{The protocol and its stages}\label{sec:sm-protocole}
 
@@ -26,7 +22,7 @@ given to the readers (\file{study/GRILLE.md}) summarises the protocol. The plan 
 it stood.
 
 \paragraph{The stages}
-Figure~\ref{fig:flux-sondage} shows the complete flow, from the populations to the final counts. The
+Figures~\ref{fig:flux-sondage} and~\ref{fig:flux-sondage-2} show the complete flow, from the populations to the final counts. The
 stages followed one another as below.
 \begin{enumerate}
   \item \textbf{Protocol and grid v1.} Protocol, first draw of 50 papers from 2025 and 2026, calibration on 12
@@ -45,7 +41,7 @@ stages followed one another as below.
   \item \textbf{Technical audit and re-readings.} Response to a technical audit, each deviation written before its
   own computation: complementary analyses of the data already read (deviation 30), a re-reading of Q5
   on the same kind of version in both years (deviation 31), criterion X8 (deviation 32), a reader from
-  another family of models (deviation 33, running). Then, after the results, a human
+  another family of models (deviation 33). Then, after the results, a human
   rereading of both years, preregistered and not yet done (deviation 35), then eight fresh readers who
   each read both years (deviation 36).
 \end{enumerate}
@@ -55,6 +51,9 @@ stages followed one another as below.
 \fig{flux-sondage-2}{The survey, second part: from reading to comparisons. Every decision of the readers quotes a sentence of the paper with its page. Three sets of blind double readings, the harmonisation of the rules, the quote audit and the search for evidence against every \enquote{no} test these decisions before the final comparisons.}
 
 \section{Populations and draws}\label{sec:sm-tirages}
+
+\Cref{tab:echantillons} summarises, for each sample, the population, the draw and what enters the
+analysis.
 
 \paragraph{The definition of an RL paper}
 A paper belongs to the population if it is accepted to the main track of a conference and if its
@@ -180,7 +179,7 @@ next, after the search for related work, still before any coding.
 Appendix~\ref{chap:A-grille} reproduces the rules in full.
 
 \begin{small}
-\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.9cm} >{\raggedright\arraybackslash}p{8.6cm} >{\raggedright\arraybackslash}p{1.6cm} >{\raggedright\arraybackslash}p{2.4cm}@{}}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.9cm} >{\raggedright\arraybackslash}p{8.0cm} >{\raggedright\arraybackslash}p{2.2cm} >{\raggedright\arraybackslash}p{2.4cm}@{}}
 \caption{The reading criteria. The \enquote{Values} column gives the permitted answers. A
 \file{yes}/\file{no}/\file{na} criterion takes \file{na} when it does not apply. The last column gives
 the flaw of Table~\ref{tab:failles} that the criterion measures, or its role.}\label{tab:criteres}\\
@@ -396,9 +395,9 @@ A second reader rereads papers without seeing the first reading or knowing who m
 Thirty papers are reread in all. Only R2's five papers from 2018 measure agreement on papers from 2018,
 before the complete rereading of deviation 36.
 Since all readers are copies of the same model, agreement measures the stability of that model more
-than the agreement of two independent readers (deviation 28). For this reason, deviation 33 plans a
-reader from another family of models, \file{gemma3:12b}, which rereads the papers behind the verdicts.
-Its reading is running: this report gives no result from it.
+than the agreement of two independent readers (deviation 28). Two complete rereadings, written after
+the results, answer this: eight fresh readers of the same model who each read both years (deviation
+36), then a reader from another family of models (deviation 33, Section~\ref{sec:sm-gemma}).
 
 \paragraph{Eight fresh readers on both years (deviation 36)}
 Deviation 36, written after the results and before any reading, adds a complete
@@ -432,6 +431,39 @@ four criteria behind the verdicts: Q5, Y9, X7 and X2.
 \end{itemize}
 Every paper already has its original reading. The new readings therefore form a complete double
 reading with them, with no third reading. The results are in Section~\ref{sec:sr-annees}.
+
+\paragraph{A reader from another family of models (deviation 33)}\label{sec:sm-gemma}
+All our readers, the eight fresh ones included, belong to the same family of models. Deviation 33,
+written after the results and before any reading, adds a reader from another family,
+\texttt{gemma3:12b} (Google), served locally by Ollama at temperature 0, seed 0 and a context of
+\num{98304} tokens. It asks two questions. Does this reader find the differences between years on Q5,
+Y9, X7 and X2? Does its disagreement with our readers depend on the year?
+\begin{itemize}
+  \item \textbf{The sample and the input.} The 98 papers with experiments of the main comparison, in
+  an order shuffled by \file{random.Random(2034)}. The text comes from \file{pdftotext}, reference
+  section removed, truncated at \num{320000} characters. The prompt copies the rules of
+  \file{GRILLE-en.md} for the four criteria, with their clarifications (deviations 2, 6, 14, 17 and
+  19). One call per criterion (\file{study/gemma\_reader.py}).
+  \item \textbf{The check.} A \enquote{yes} is valid only if its quotation is found in the PDF and
+  contains its criterion's pattern, fixed for the search against the \enquote{no} decisions (deviation
+  27). Otherwise there is a single retry, after which the decision is \enquote{invalid} and leaves the
+  denominators. A malformed answer counts as invalid for its own criterion only. A \enquote{no} is
+  always valid. The call per criterion and the pattern rule were fixed after a pilot of three papers,
+  outside the analysis, before the full reading; the rule on malformed answers, before the
+  rereading of the one paper concerned.
+  \item \textbf{The analysis.} The script \file{study/gemma\_stats.py} gives, per criterion and per
+  year, the agreement of the valid decisions with our final codes, with Wilson and a bootstrap kappa,
+  then a Fisher test of the 2018 agreement against the 2026 agreement. It then recomputes the 2026
+  minus 2018 difference from these decisions alone, Newcombe and Fisher with Holm over the four
+  criteria, next to our readers' difference on the same papers. An announced variant counts every
+  invalid decision as \enquote{no}.
+  \item \textbf{The rule, fixed in advance.} Same sign and overlapping intervals:
+  \enquote{reproduced}. Same sign and this reader's interval containing zero: \enquote{same
+  direction, not established}. Opposite sign: \enquote{not reproduced}. The protocol notes that a
+  model of 12 billion parameters reads less well than a large model: a disagreement does not by itself
+  refute our readings, while a disagreement that depends on the year would be the bias sought.
+\end{itemize}
+The results are in Section~\ref{sec:sr-gemma}.
 
 \paragraph{Agreement, on the raw readings}
 Agreement is computed on the raw readings, before any harmonisation: harmonisation applies to both

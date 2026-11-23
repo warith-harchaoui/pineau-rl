@@ -5,7 +5,7 @@
 \setlength{\tabcolsep}{3.5pt}
 \caption[Settings of the five programs]{The settings of the five programs, read from the programs as they ran (\file{sim/analysis/hyperparams.py}, deviation 28) and checked against one saved model per program. These are the default values of the installed libraries (Table~\ref{tab:env}): no program was tuned. Empty cell: setting absent or switched off. Networks: widths of the hidden layers and activation. CrossQ has no target network. The two PPOs differ by their orthogonal initialisation, which covers more layers in Stable-Baselines3 than in SBX (deviation 34). Source: \file{sim/analysis/hyperparams.json}.}
 \label{tab:hyperparametres}
-\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{1.95cm}>{\raggedright\arraybackslash}p{1.95cm}>{\raggedright\arraybackslash}p{1.95cm}>{\raggedright\arraybackslash}p{2.05cm}>{\raggedright\arraybackslash}p{1.95cm}@{}}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{2.05cm}>{\raggedright\arraybackslash}p{2.05cm}>{\raggedright\arraybackslash}p{2.05cm}>{\raggedright\arraybackslash}p{2.05cm}>{\raggedright\arraybackslash}p{2.05cm}@{}}
 \toprule
 Setting & PPO PyTorch & PPO JAX & SAC & CrossQ & TRPO \\
 \midrule

@@ -621,9 +621,9 @@ Le \cref{tab:experiences} résume les plans. Il ne contient que des faits de con
 le nombre d'essais et le moment où l'analyse a été écrite.
 
 {\small
-\begin{longtable}{@{}>{\raggedright\arraybackslash}p{1.3cm}>{\raggedright\arraybackslash}p{3.6cm}
-  >{\raggedright\arraybackslash}p{4.45cm}>{\raggedright\arraybackslash}p{1.9cm}
-  >{\raggedright\arraybackslash}p{2.6cm}@{}}
+\begin{longtable}{@{}>{\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000\arraybackslash}p{2.1cm}
+  >{\raggedright\arraybackslash}p{3.4cm}>{\raggedright\arraybackslash}p{3.85cm}
+  >{\raggedright\arraybackslash}p{2.0cm}>{\raggedright\arraybackslash}p{2.5cm}@{}}
 \caption{Les expériences : la question posée, le plan, les essais employés et le moment où l'analyse a été
 fixée. \enquote{Préenregistrée} signifie écrite avant tout résultat de l'expérience. Aucun chiffre de cette
 table n'est un résultat.}\label{tab:experiences}\\
@@ -639,19 +639,19 @@ Expérience & Question & Plan & Essais & Analyse fixée \\
 \endfoot
 E1 & Deux groupes d'essais du même programme passent-ils pour deux algorithmes ? &
 PPO PyTorch sur \task{HalfCheetah}, 30 graines aléatoires. \num{10000} tirages de deux groupes, test de Welch
-sur les scores finaux, au hasard puis triés. & 30 entraînements & préenregistrée \\
+sur les scores finaux, au hasard puis triés. & 30 essais & préenregistrée \\
 E1, seconde statistique & Le t moyen sur la courbe de 2018 se retrouve-t-il ? &
 Les mêmes 30 courbes, test de Welch à chacun des 20 points, t moyen et p moyen. & les 30 de E1 &
 après les résultats de E1 (écart~3) \\
 B1, TRPO & La dispersion de TRPO explique-t-elle le t de 9 ? &
-TRPO sur \task{HalfCheetah}, 30 graines aléatoires, trois lectures du t moyen. & 30 entraînements &
+TRPO sur \task{HalfCheetah}, 30 graines aléatoires, trois lectures du t moyen. & 30 essais &
 avant tout entraînement TRPO (écart~4) \\
 B1, script & Le calcul de Henderson explique-t-il le t de 9 ? &
 Le script de 2017 appliqué aux courbes de TRPO et de PPO, mêmes tirages. & les 30 de E1 et les 30 de TRPO &
 après B1 TRPO, avant ce calcul (écart~6) \\
 E2 & Le programme en tête change-t-il de tâche en tâche ? &
 4 programmes sur 4 tâches, IQM et intervalle, probabilité d'amélioration par paire. &
-160 entraînements & détails fixés avant tout score de CrossQ (écarts~7 et 14) \\
+160 essais & détails fixés avant tout score de CrossQ (écarts~7 et 14) \\
 E2, Bonferroni & Le verdict de E2 résiste-t-il à 24 comparaisons ? &
 Les 24 intervalles de E2 au niveau simultané de 95~\%. & ceux de E2 &
 après E2, avant ce calcul (écart~18) \\
@@ -665,7 +665,7 @@ Pour chaque comparaison, \num{10000} tirages avec remise de $n$ essais, $n$ de 3
 ceux de E2, les 30 de E1 & avant tout score de CrossQ (écart~7) \\
 E6 & Que change une référence réglée selon les réglages publiés ? &
 PPO PyTorch sur \task{Hopper}, valeurs par défaut contre réglages du Zoo, puis diagnostic et script
-officiel. & 40 entraînements de plus que E2, plus 10 officiels & préenregistrée, diagnostic après le premier résultat
+officiel. & 40 essais de plus que E2, plus 10 officiels & préenregistrée, diagnostic après le premier résultat
 (écarts~2 et 5) \\
 E7 & Que coûte une physique modifiée ? &
 Rapport du score en physique modifiée au score en physique d'entraînement, par essai. & ceux de E2 &
@@ -677,7 +677,7 @@ B3 & La mesure choisie change-t-elle le classement ? &
 Score final, meilleur score, moyenne de la courbe, inversions entre mesures. & ceux de E2 &
 avant tout score de CrossQ (écart~8) \\
 Vingt graines aléatoires & Les résultats à dix graines aléatoires tiennent-ils ? &
-Graines aléatoires 10 à 19, mêmes règles, E2, E3, E5, E7, B3, physique par degrés. & 150 entraînements de plus &
+Graines aléatoires 10 à 19, mêmes règles, E2, E3, E5, E7, B3, physique par degrés. & 150 essais de plus &
 avant tout nouvel entraînement (écarts~12 et 20) \\
 Budget égal & Le classement de E2 tient-il au budget de PPO ? &
 PPO lu à \num{200000}~pas, E2 et B3 recalculés. & ceux de E2 &
@@ -707,11 +707,11 @@ E6, vitesse & Le plateau de la recette du Zoo est-il un robot immobile ? &
 Journaux d'entraînement, rejeu avec la vitesse, vidéo, agent publié par le Zoo. & ceux de E6 &
 avant ces calculs (écarts~31 et 33) \\
 Déterminisme & Une relance de SAC et CrossQ redonne-t-elle le même essai ? &
-Trois essais refaits à l'identique, comparés point par point. & 3 entraînements, en cours & avant tout
+Trois essais refaits à l'identique, comparés point par point. & 3 essais, en cours & avant tout
 entraînement (écart~32) \\
 Divergence des PPO & L'initialisation explique-t-elle la différence de E3 ? &
 Sur \task{Walker2d} et \task{Swimmer}, les deux PPO aux graines aléatoires 20 à 39, puis chacun avec l'option
-d'initialisation de l'autre aux graines aléatoires 0 à 19. & 160 entraînements, en cours & avant tout entraînement (écart~34) \\
+d'initialisation de l'autre aux graines aléatoires 0 à 19. & 160 essais, en cours & avant tout entraînement (écart~34) \\
 \end{longtable}
 }
 
@@ -1009,8 +1009,8 @@ soient. Les résultats à dix graines aléatoires restent les résultats princip
 \paragraph{La machine}
 Tous les entraînements ont tourné sur processeur, sur le Mac de la \cref{sec:outils}, partagé avec d'autres
 projets. Un entraînement ou une réévaluation occupe un cœur (un seul fil de calcul). Le
-\cref{tab:calcul} donne, par programme et par tâche, le nombre d'essais, les pas, la durée médiane et les
-heures de cœur.
+\cref{tab:calcul} donne, par programme et par tâche, le nombre d'essais, les pas, la durée médiane d'un essai et
+la somme des durées, en heures.
 
 \gentable{calcul}
 
@@ -1067,7 +1067,7 @@ du surveillant sont décrits aux écarts~10, 14 et 16 (\cref{chap:09-ecarts}).
 Les essais écrivent leurs fichiers CSV et JSON. Les scripts de \file{sim/analysis/} en tirent les fichiers
 JSON de résultats. \texttt{make verify} recalcule chaque analyse et compare les fichiers à l'octet près, puis
 \file{docs/check\_numbers.py} et \file{article/check\_article.py} vérifient chaque nombre des documents contre
-ces fichiers. Le \cref{chap:08-logiciel} décrit cette chaîne et la dessine (\cref{fig:architecture}).
+ces fichiers. Le \cref{chap:08-logiciel} décrit cette chaîne et la dessine (\cref{fig:architecture,fig:architecture-2}).
 
 \section{Ce qui a été écrit avant les résultats, ce qui l'a été après}\label{sec:avant-apres}
 

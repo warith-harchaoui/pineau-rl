@@ -25,9 +25,10 @@ the family X5.
 \section{Pineau's grid (Q1 to Q8)}
 \label{sec:a-pineau}
 
-Joelle Pineau presented these eight criteria at NeurIPS 2018 (slides 29 and 30). For each one, she
+Joelle Pineau presented these eight criteria at NeurIPS 2018 (slides 29 and 30, \cref{tab:a-pineau-2018}). For each one, she
 gave the share of papers that met it, out of 50 RL papers from 2018 she had read. Her sampling method is not described. The
-labels below are hers, word for word.
+labels below are hers, word for word. \Cref{tab:a-grille-q} gives the question asked and the
+decision rule for each.
 
 \begin{table}[htbp]
 \centering
@@ -51,7 +52,7 @@ Q8 & Significance testing applied & 5\% \\
 \end{table}
 
 \begin{small}
-\begin{longtable}{@{}p{0.07\linewidth}p{0.27\linewidth}p{0.6\linewidth}@{}}
+\begin{longtable}{@{}p{0.07\linewidth}>{\raggedright\arraybackslash}p{0.27\linewidth}>{\raggedright\arraybackslash}p{0.6\linewidth}@{}}
 \caption{Grid v1, Pineau's criteria: question and decision rule.}\label{tab:a-grille-q}\\
 \toprule
 Code & Question & Decision rule \\
@@ -93,10 +94,10 @@ Q8 & Is a statistical test applied to a comparison? & A test (t, Welch, Mann-Whi
 
 These criteria come from the ICLR 2018 talk and from the 2025 debate on the spurious rewards of
 language models (\cref{sec:llm-pourquoi}). They were written with the protocol,
-before any reading.
+before any reading (\cref{tab:a-grille-x}).
 
 \begin{small}
-\begin{longtable}{@{}p{0.07\linewidth}p{0.27\linewidth}p{0.6\linewidth}@{}}
+\begin{longtable}{@{}p{0.07\linewidth}>{\raggedright\arraybackslash}p{0.27\linewidth}>{\raggedright\arraybackslash}p{0.6\linewidth}@{}}
 \caption{Grid v1, our additions: question and decision rule.}\label{tab:a-grille-x}\\
 \toprule
 Code & Question & Decision rule \\
@@ -147,10 +148,11 @@ decision rules (deviation 14). The rules were made more precise after a pilot on
 \paragraph{Scope rules} If Q1 is \texttt{no}, Y1 to Y12 are \texttt{na}. Y2 and Y11 are \texttt{na}
 if and only if X2 is \texttt{no}. Y4 is \texttt{na} if Y3 is 1. Y5 is \texttt{na} if and only if Q4
 is \texttt{na}. For a paper already read with grid v1, the reader receives the v1 values of Q1, Q4
-and X2, which set these rules, without seeing the other v1 codes.
+and X2, which set these rules, without seeing the other v1 codes. \Cref{tab:a-grille-y} gives the
+question, the source and the rule of each Y criterion.
 
 \begin{small}
-\begin{longtable}{@{}p{0.07\linewidth}p{0.27\linewidth}p{0.6\linewidth}@{}}
+\begin{longtable}{@{}p{0.07\linewidth}>{\raggedright\arraybackslash}p{0.27\linewidth}>{\raggedright\arraybackslash}p{0.6\linewidth}@{}}
 \caption{Grid v2: question, source and decision rule.}\label{tab:a-grille-y}\\
 \toprule
 Code & Question & Decision rule \\
@@ -231,13 +233,13 @@ Y12 & Is a statistical tool from after 2018 used? (adoption of Agarwal et al., 2
 \label{sec:a-x8}
 
 X2 counts every error bar. Yet a bar computed over the episodes of one training run is the trap that
-experiment B1 shows (\cref{sec:b1}). Criterion X8 therefore asks whether the uncertainty is computed
+experiment B1 shows (\cref{sec:b1}). Criterion X8 (\cref{tab:a-grille-x8}) therefore asks whether the uncertainty is computed
 over independent training runs. It was written after the results and before any
 reading of this criterion (survey deviation 32). It is exploratory: it adds to the results without
 changing the verdicts given by the rule of survey deviation 20.
 
 \begin{small}
-\begin{longtable}{@{}p{0.07\linewidth}p{0.27\linewidth}p{0.6\linewidth}@{}}
+\begin{longtable}{@{}p{0.07\linewidth}>{\raggedright\arraybackslash}p{0.27\linewidth}>{\raggedright\arraybackslash}p{0.6\linewidth}@{}}
 \caption{Criterion X8: question and decision rule.}\label{tab:a-grille-x8}\\
 \toprule
 Code & Question & Decision rule \\

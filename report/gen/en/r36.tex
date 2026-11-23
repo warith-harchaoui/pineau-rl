@@ -2,10 +2,10 @@
 \begin{table}[tbp]
 \centering
 \footnotesize
-\setlength{\tabcolsep}{3.5pt}
+\setlength{\tabcolsep}{2.5pt}
 \caption[Year and readers disentangled (deviation 36)]{Year and readers disentangled (deviation 36). The 98 experimental papers of the main comparison (48 from 2018, 50 from 2026), reread by eight fresh agents, each of whom reads both years. Shares of papers that follow the practice; difference 2026 minus 2018 in points with the 95\% Newcombe interval and Fisher's exact test. Year effect: a logistic mixed model with a random reader effect of standard deviation $s$, odds ratio with its 95\% Wald interval and likelihood-ratio test. Holm runs over the four criteria. Rule fixed in advance: a verdict holds if both tests pass with a positive effect (\textbf{in bold}). Last row: Q5 when every project page counts ``yes'', the least favourable reading. Source: \file{study/r36\_stats.json}.}
 \label{tab:r36}
-\begin{tabular}{@{}>{\raggedright\arraybackslash}p{3.3cm}rrrrrrr>{\raggedright\arraybackslash}p{1.6cm}@{}}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}Xrrrrrrr>{\raggedright\arraybackslash}p{1.6cm}@{}}
 \toprule
  & & & \multicolumn{2}{c}{Difference, Fisher} & \multicolumn{3}{c}{Year effect, mixed model} &  \\
 \cmidrule(lr){4-5}\cmidrule(lr){6-8}
@@ -21,5 +21,5 @@ Uncertainty reported (X2) & \makecell{69\\{}\textcolor{ink2}{33/48}} & \makecell
 \addlinespace[2pt]
 \textit{Q5, every project page counted yes} & \makecell{42\\{}\textcolor{ink2}{20/48}} & \makecell{74\\{}\textcolor{ink2}{37/50}} & \makecell{+32\\{}[+12.8,\,+48.7]} & 0.004 &  &  &  &  \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}

@@ -6,7 +6,7 @@
 
 \begin{keybox}
 Joelle Pineau was heard on what accompanies the result: the code link, the declared compute, the
-effect of a setting, the error bar. The bar has spread without uncertainty computed over random seeds
+effect of a setting and, on weaker evidence, the error bar. The bar has spread without uncertainty computed over random seeds
 following it detectably. The tuning of baselines shows no sign of progress.
 \end{keybox}
 
@@ -26,30 +26,34 @@ sensitivity to a setting and reported uncertainty pass the Holm correction in th
 (\cref{tab:sondage-pineau,tab:sondage-extension}). Code and compute survive every cut we tried,
 sensitivity nearly every one. Code keeps its verdict when both years are read on the same kind of
 version, proceedings or arXiv (\cref{sec:sr-robustesse}). Reported uncertainty is the most fragile
-change: it no longer passes the correction once the thirteen papers partly read by another model are
-removed. Since the readers of 2018 are not those of 2026, eight fresh readers, T1 to T8, reread both years (deviation 36): the
-rises in code, compute and sensitivity hold, while the rise in reported uncertainty keeps its direction
-without being established (\cref{sec:sr-annees}). Criterion X8 shows what that last rise
+change: it no longer passes the correction once the two papers of the comparison read partly by
+another model are removed. Its verdict therefore depends on two papers. Since the readers of 2018 are
+not those of 2026, eight fresh readers reread both years: the rises in code, compute and sensitivity
+hold, while the rise in reported uncertainty keeps its direction without being established
+(\cref{sec:sr-annees}). A reader from another model family finds the direction of all four rises.
+When its \enquote{yes} answers without a quotation found in the paper count as \enquote{no}, it does
+not confirm the rise in reported uncertainty (\cref{sec:sr-gemma}). Criterion X8 shows what that last rise
 measures. The share of papers that compute their uncertainty
 over random seeds goes from 35\% to 42\%, a gap the survey does not detect: the error bar has spread
 faster than the bar computed over independent training runs (\cref{sec:sr-principale}). Read on 20
 papers per year between the two dates, the four practices rise slowly, with no jump right after the
 checklist that NeurIPS has required since 2019 (\cref{tab:trajectoire}).
 
-\paragraph{Judging the result} The tuning of baselines stagnates: the hyperparameters given for the
+\paragraph{Judging the result has barely moved} The tuning of baselines stagnates: the hyperparameters given for the
 baselines (Q4), the same tuning care announced (X4) and the origin of their code (Y5) do not rise.
 The version of the benchmarks (Y7), the definition of the performance measure (Y1) and the selection
 of the best runs (X3) do not move either. The statistical test, held-out evaluation, the
 hyperparameters of the method and the way they are chosen rise by 6 to 22 points depending on the
-criterion, with none of these rises passing the correction. The survey could only detect a rise of
-about thirty points (\cref{sec:val-stat}). It does not say that these practices stagnate. It says
+criterion, with none of these rises passing the correction. The survey could detect with 80\% power
+only a rise of 18 to 30 points depending on the criterion, 26 to 39 after correction
+(\cref{sec:val-stat}). It does not say that these practices stagnate. It says
 that it cannot know.
 
-\paragraph{What a ticked box guarantees} The 18 NeurIPS 2025 papers that answer yes to their
+\paragraph{A ticked box does not guarantee the practice} The 18 NeurIPS 2025 papers that answer yes to their
 checklist question on statistical significance apply no test. On code and on compute, some of the
 \enquote{yes} answers have neither a link nor a figure behind them (\cref{sec:sr-declarations}).
 
-\paragraph{Random seeds and selection} Two groups of five runs drawn at random from those of one
+\paragraph{Chance fools the eye, sorting fools the test} Two groups of five runs drawn at random from those of one
 program rarely fool a statistical test. Sorted, the five best against the five worst fool it from
 26\% to nearly 100\% of the time depending on the (program, task) pair, 31\% in the preregistered
 case, PPO on \task{HalfCheetah} (\cref{sec:e1}). Keeping the best three of ten runs inflates the
@@ -60,7 +64,7 @@ the computation more than it points to this script: the competing reading, the m
 values, has no well-defined degrees of freedom. Applied to our TRPO runs, the script exceeds 9 in
 38\% of random draws (\cref{tab:b1}).
 
-\paragraph{How far the rankings reach} Across our four programs, the best one changes with the task.
+\paragraph{The best program depends on the task, the budget and the physics} Across our four programs, the best one changes with the task.
 Yet PPO has five times more steps than SAC and CrossQ. At equal budget and with twenty random seeds,
 CrossQ leads on all four tasks, but the order of two pairs still reverses from one task to another in
 a settled way. The reversal of PPO JAX and SAC even survives the Bonferroni correction
@@ -71,19 +75,19 @@ differ in a settled way only on \task{Swimmer}, by a gap that is small in score 
 \task{Hopper}, at ten as at twenty random seeds. PPO JAX loses there against SAC, which it beat in
 the training physics (\cref{sec:e7}).
 
-\paragraph{The tuned reference method} The agents trained with the recipe published by RL
+\paragraph{A published recipe has aged} The agents trained with the recipe published by RL
 Baselines3 Zoo stay upright on \task{Hopper} without moving forward. The agent that the Zoo itself
 published in 2022, with the same settings and an older software stack, moves forward and scores
 close to our default agents. The recipe worked in its original stack and has aged (\cref{sec:e6}).
 
-\paragraph{The language-model strand} With five random seeds, no gain within a configuration can be
+\paragraph{On language models, no GRPO gain is established} With five random seeds, no gain within a configuration can be
 established, since the exact sign test does not go below 0.0625. One contrast is established: for
 Llama, the true reward does better than the randomly drawn reward, because the latter destroys the
 model. Under the true reward, Llama loses greedy accuracy and pass@8 in each of the five random seeds,
 while its pass@1 rises slightly. For Qwen, the pass@1 gain is explained by the end of truncated
 answers: the accuracy of finished answers does not rise. Qwen also ran with a repetition penalty that
 Llama did not have (\cref{chap:07-modeles-de-langue}). A rerun of ten random seeds per configuration,
-written in advance, waits for the GPU (deviation 20 of the GRPO strand).
+written in advance, waits for the GPU (\cref{sec:val-en-cours}).
 
 \section{Recommendations}
 \label{sec:recommandations}
@@ -193,18 +197,19 @@ curve, does not measure the variability between training runs.
   \item \textbf{The papers that apply what they call RL to large language models, read with the same
         grid} on a sample of comparable size, would tell whether held-out evaluation, which is
         progressing there, comes with the other practices.
-  \item \textbf{The human rereading of deviation 35.} Thirty papers, fifteen per year, await our
+  \item \textbf{The blind human rereading.} Thirty papers, fifteen per year, await our
         blind reading. The script that will compare it with the agents is written and refuses
         to run until all thirty sheets are filled.
   \item \textbf{A new complete training run on another platform}, Linux on x86-64, would test the
         statistics of our experiments with other draws (\cref{sec:reentrainer}).
   \item \textbf{Other families of tasks} than MuJoCo locomotion: image-based games, offline RL, real
         robotics, where the conclusions of E2 to E7 have yet to be tested.
-  \item \textbf{The GRPO strand at a larger scale.} If the rerun of deviation 20 establishes its
-        contrast, the same protocol on 7-billion-parameter models would bring the strand closer to
+  \item \textbf{The GRPO strand at a larger scale.} If the rerun with ten random seeds establishes
+        its contrast, the same protocol on 7-billion-parameter models would bring the strand closer to
         \textcite{shao2025spurious}.
 \end{itemize}
 
+\paragraph{What we corrected}
 In 2018, Pineau asked researchers to be as critical of their good results as of their bad ones. We
 tried to hold to that. While checking our surprising results, we found two traps: an error in our
 code in E6, whose correction changed nothing, then the length limit of the GRPO strand. Two more
@@ -216,9 +221,10 @@ of every correction for anyone who wants to redo the work.
 \section{Opening}\label{sec:ouverture}
 As early as 2019, Michael I. Jordan described artificial intelligence as an engineering discipline
 still to be built, rather than a revolution already made \parencite{mijordan2019revolution,mijordan2019drai}.
-He returns to that idea about recent incidents in which AI agents were left free to act: they are,
-he says, ``mostly bad engineering practice''. He compares: ``in chemical engineering, we would never
-have had a situation where explosions were allowed to happen to see how far things could go wrong''
+He returns to that idea about a recent incident in which AI agents were left free to act: they are,
+he says, \enquote{mostly bad engineering practice}. He compares: \enquote{in chemical engineering,
+we would never have had a situation where explosions were allowed to happen to see how far things
+could go wrong}
 \parencite[our translation from the French]{mijordan2026liberation}.
 
 Pineau's three Rs state the same demand at the scale of a paper. A reproducible result, reusable

@@ -1,11 +1,10 @@
-"""The six figures of docs/, redrawn in the house style for the report: figures/src/<name>-<lang>.svg.
+"""Five of the six figures of docs/, redrawn in the house style for the report: figures/src/<name>-<lang>.svg.
 
   e1-henderson       the t statistic of Henderson et al. (2018): which way of computing it reaches 9
   ecarts-classique   classical RL 2026 against our reading of 2018, seventeen criteria, Newcombe intervals
   ecarts-pineau      the first 2026 draw against Pineau's figures of 2018, six criteria
   remesure-dumbbell  Pineau's grid, 2018 against 2026, five criteria
   remesure-ic        what the 2026 papers report, eight criteria with their Wilson interval
-  grpo-truncation    the base model's answers on the pilot's step-10 batch: right, wrong, cut at 160 tokens
 
 Same names as docs/figures/<name>.svg, same data: the numbers come from docs/figures/data/*.csv (written by
 docs/figures/build.py from the result files), the Holm-adjusted p-values that pick the highlighted rows from
@@ -331,60 +330,8 @@ def e1_henderson(lang):
                     "(docs/figures/data/e1_henderson_en.csv)")
 
 
-def grpo_truncation(lang):
-    fr = lang == "fr"
-    src = rows("grpo_truncation", lang)
-    probs = list(dict.fromkeys(r[0] for r in src))
-    kinds = list(dict.fromkeys(r[1] for r in src))
-    cnt = {(r[0], r[1]): int(r[2]) for r in src}
-    assert len(probs) == 4 and len(kinds) == 3 and all(sum(cnt[p, k] for k in kinds) == 8 for p in probs)
-    cut = sum(cnt[p, kinds[2]] for p in probs)
-    total = 8 * len(probs)
-    cols = [GREEN, NEUTRAL, RED]
-    T = {"title": (f"Avant tout entraînement, {cut} réponses sur {total} |sont coupées à 160 jetons" if fr else
-                   f"Before any training, {cut} answers out of {total} |are cut at 160 tokens"),
-         "sub": ("Qwen2.5 de 0,5 milliard de paramètres, lot du pas 10 du pilote : 8 réponses tirées par problème "
-                 "de multiplication" if fr else
-                 "Qwen2.5 with 0.5 billion parameters, the pilot's step-10 batch: 8 sampled answers per "
-                 "multiplication problem"),
-         "accent": RED,
-         "desc": (f"Quatre problèmes de multiplication, huit réponses du modèle de départ pour chacun, une case par "
-                  f"réponse : verte si complète et juste, grise si complète et fausse, rouge si coupée à 160 jetons "
-                  f"avant d'avoir donné un résultat. {cut} cases sur {total} sont rouges." if fr else
-                  f"Four multiplication problems, eight answers of the base model for each, one square per answer: "
-                  f"green if complete and right, grey if complete and wrong, red if cut at 160 tokens before giving "
-                  f"a result. {cut} squares out of {total} are red.")}
-    f = fig(T)
-    s, L, W = f.s, f.L, f.W
-    y = f.legend(list(zip(kinds, cols)), f.top + 12) + 6
-    cell, gap, lw = 40, 6, 74
-    top = y
-    for i, p in enumerate(probs):
-        yy = top + i * (cell + gap)
-        tx(s, L + lw - 14, yy + cell / 2 + 5, p, "sans7", 14, INK, "end")
-        k = 0
-        for kind, col in zip(kinds, cols):
-            for _ in range(cnt[p, kind]):
-                s.rect(L + lw + k * (cell + gap), yy, cell, cell, col, rx=4)
-                k += 1
-        nc = cnt[p, kinds[2]]
-        tx(s, L + lw + 8 * (cell + gap) + 6, yy + cell / 2 + 5, f"{nc}/8", "tick", 13, REDT)
-    bx = L + lw + 8 * (cell + gap) + 64
-    base = lambda i: top + i * (cell + gap) + cell / 2 + 5    # the baseline of row i's "n/8"
-    yb = base(2)
-    tx(s, bx, base(1) + 6, f"{cut} sur {total}" if fr else f"{cut} of {total}", "serif", 38, REDT)
-    for j, ln in enumerate(D.wrap("réponses coupées |avant leur résultat, |toutes comptées fausses" if fr else
-                                  "answers cut |before their result, |all counted wrong", "sans5", 13, W - L - bx)):
-        tx(s, bx, yb + j * 17, ln, "sans5", 13, INK2)
-    y = top + len(probs) * (cell + gap) - gap
-    return G.finish(f, y + 10, "Données : sim/llm/diag/replay_batch.json, "
-                            "jetons comptés par le tokenizer de Qwen" if fr else
-                    "Data: sim/llm/diag/replay_batch.json, "
-                    "tokens counted by Qwen's tokenizer")
-
-
 FIGS = {"e1-henderson": e1_henderson, "ecarts-classique": ecarts_classique, "ecarts-pineau": ecarts_pineau,
-        "remesure-dumbbell": remesure_dumbbell, "remesure-ic": remesure_ic, "grpo-truncation": grpo_truncation}
+        "remesure-dumbbell": remesure_dumbbell, "remesure-ic": remesure_ic}
 
 
 def main():

@@ -1,16 +1,22 @@
 \chapter{Introduction}\label{chap:01-introduction}
 
-\section{Two talks in 2018}\label{sec:intro-conferences}
+\section{Two curves, one program}\label{sec:intro-conferences}
 
-\paragraph{Vancouver, then Montreal}
-In spring 2018, Joelle Pineau, a professor at McGill University in Montreal and head of Facebook's
-artificial intelligence research lab in that city, gives an invited talk at ICLR (\emph{International
-Conference on Learning Representations}) in Vancouver \parencite{pineau2018iclr}. The talk is titled
-\enquote{Reproducibility, Reusability, and Robustness in Deep Reinforcement Learning}. In December,
-Pineau takes up and extends her argument at NeurIPS (\emph{Neural Information Processing Systems}) in
-Montreal, as the Posner Lecture: \enquote{Reproducible, Reusable, and Robust Reinforcement Learning}
-\parencite{pineau2018neurips}. ICLR, NeurIPS and ICML (\emph{International Conference on Machine
-Learning}) are the three main conferences of machine learning.
+\paragraph{Vancouver, spring 2018}
+Joelle Pineau puts two learning curves on screen. A simulated cheetah learns to run. Each curve
+follows its score over training, averaged over five runs. The two curves separate clearly and a test
+declares them different: $t = -9.09$, $p = 0.0016$. A reviewer would see two algorithms. Yet both
+curves come from the same program, the TRPO algorithm, with the same settings. Only the random seed
+changes, the starting number from which the computer draws all the randomness of a training run
+\parencite{henderson2018matters}. The scene takes place during the invited talk at ICLR
+(\emph{International Conference on Learning Representations}) in Vancouver \parencite{pineau2018iclr},
+titled \enquote{Reproducibility, Reusability, and Robustness in Deep Reinforcement Learning}. Pineau
+is then a professor at McGill University in Montreal and head of Facebook's artificial intelligence
+research lab in that city. In December, she takes up and extends her argument at NeurIPS
+(\emph{Neural Information Processing Systems}) in Montreal, as the Posner Lecture:
+\enquote{Reproducible, Reusable, and Robust Reinforcement Learning} \parencite{pineau2018neurips}.
+ICLR, NeurIPS and ICML (\emph{International Conference on Machine Learning}) are the three main
+conferences of machine learning.
 
 \paragraph{The starting question}
 When one team publishes a result, does another team that follows the recipe get the same one? Pineau
@@ -41,9 +47,8 @@ sixteen flaws in the two talks, labelled F1 to F16 and sorted into four families
 to rerun an experiment (code, plan, software), the tuning of hyperparameters (the settings an
 experimenter fixes by hand) and of baselines (the existing methods a new one is compared with), random
 seeds (the integer from which a training run draws all its randomness) and statistics, the reach of the
-conclusions. The most famous is flaw F11: ten training runs of
-the same program, split into two groups of five, give two curves that a test declares different, with
-$t = -9.09$ and $p = 0.0016$. Chapter~\ref{chap:02-contexte} describes the sixteen flaws one by one
+conclusions. The most famous is flaw F11, the two curves of the same program.
+Chapter~\ref{chap:02-contexte} describes the sixteen flaws one by one
 (Table~\ref{tab:failles}). Pineau also proposes two remedies: the ICLR 2018
 reproducibility challenge, in which anyone could try to reproduce a submitted paper, then a
 reproducibility checklist, which NeurIPS adopted in 2019 \parencite{pineau2021improving}.
@@ -156,14 +161,14 @@ which the same conclusion is compared under another task, another program or ano
 
 \section{The question}\label{sec:intro-question}
 
-Eight years have passed. RL has changed in size and in terrain: in 2025 and 2026, more than half of the
-RL papers in the first random draw of our survey apply what they call RL to large language models. This
+Eight years have passed. RL has changed in size and in terrain: in 2025 and 2026, 27 of the 50 RL papers
+in the first random draw of our survey apply what they call RL to large language models. This
 report asks one question: \emph{did we listen to Joelle Pineau?} For each of the sixteen flaws, we ask
 whether the papers published between 2018 and 2026 still show it, then what it costs when the
 experiments of 2018 are rerun with the algorithms of 2026. Pineau's list becomes a grid, applied with
 the same severity to published papers and to our own experiments.
 
-\section{Two instruments}\label{sec:intro-instruments}
+\section{Two instruments: reread the papers, rerun the experiments}\label{sec:intro-instruments}
 
 \paragraph{The survey}
 The first instrument rereads papers with Pineau's reading grid (criteria Q1 to Q8), extended by seven
@@ -180,6 +185,21 @@ verdicts, each of them reading both years, to separate the effect of the year fr
 Chapters~\ref{chap:03-sondage-methode}
 and~\ref{chap:04-sondage-resultats} describe the method and the results.
 
+\paragraph{Why agents read}
+AI agents read the papers. Facts that anyone can check in the repository support that choice. Each
+agent reads the whole paper, appendices included. The NeurIPS appendices shipped as archives were
+extracted, then reread by each reader. Each \enquote{yes} quotes the exact sentence of the paper and
+its page. A script finds every quote in the PDF: of the 89 quotes of the first grid not found at
+first, none was invented. A \enquote{no} quotes nothing. The 377 final \enquote{no} decisions on the
+verdict criteria were therefore set against the text with patterns fixed in advance. For 283 of them,
+an arbiter judged the passage found. Ten turned into \enquote{yes} and no verdict changed. The
+instructions given to each agent are published word for word (\cref{sec:sm-lecteurs}). The double
+readings are made by copies of the same model. A reader from another model family,
+\texttt{gemma3:12b}, therefore reread the 98 papers behind the verdicts. It finds the direction of all
+four rises. Its disagreement with our readers does not depend on the year in any detectable way
+(\cref{sec:sr-gemma}). A blind human rereading of thirty papers, fifteen from each year, is
+preregistered. Its thirty sheets still await their reader (\cref{sec:futurs}).
+
 \paragraph{The experiments}
 The second instrument reruns the experiments of 2018 under a protocol written before the first
 training run: four programs (PPO in PyTorch and in JAX, SAC, CrossQ) on four MuJoCo tasks, with ten
@@ -189,95 +209,68 @@ another under modified physics. A further strand illustrates the same flaws on l
 with GRPO. Chapters~\ref{chap:05-experiences-methode}, \ref{chap:06-experiences-resultats}
 and~\ref{chap:07-modeles-de-langue} describe these experiments.
 
-\section{Contributions}\label{sec:intro-contributions}
+\section{What this report establishes}\label{sec:intro-contributions}
 
+\paragraph{The findings}
 \begin{enumerate}
-  \item \textbf{A same-grid measurement.} We apply Pineau's grid again to the papers of 2026 and
-  calibrate it on our own reading of 50 papers from 2018. Four practices changed in classical RL:
-  linking the code, showing the sensitivity to a setting, quantifying the compute, reporting an
-  uncertainty (Section~\ref{sec:sr-principale}). All four accompany the result. The tuning of
-  baselines shows no sign of progress. For the other criteria, the statistical test and held-out
-  evaluation among them, the survey lacks power: it detects no change without being able to rule
-  out one of thirty points.
-  \item \textbf{A preregistered second grid.} Twelve criteria (Y1 to Y12), written with their decision
-  rules before any coding, cover the performance measure, the tasks, the implementations, the
-  versions, generalisation, sensitivity and recent statistical tools.
-  \item \textbf{A trajectory.} Four years read between 2018 and 2026 show the four practices rising
-  slowly, with no jump right after the 2019 checklist (Section~\ref{sec:sr-trajectoire}).
-  \item \textbf{A battery of checks.} Thirty papers were reread blind, with an interval on each
-  agreement. The quotations were audited. Each negative decision was set against a keyword search.
-  The provenance of every reader is published. The results are cut by provenance, by conference and
-  by reader, then tested against the readers' model, against the title filter and against the
-  checklists filled in by the authors. For each criterion, we give the smallest difference the survey
-  could detect and what the original verdict rule would have given
-  (Chapter~\ref{chap:03-sondage-methode}).
-  \item \textbf{Two re-readings added after the results.} Criterion X8 asks whether the reported
-  uncertainty is computed over independent random seeds, a question X2 does not ask: its share does
-  not move detectably. The code link, reread on the same kind of version in both years (proceedings,
-  latest arXiv version, public code at the date of the conference), keeps its verdict in every reading
-  (Section~\ref{sec:sm-relectures}).
-  \item \textbf{The experiments of 2018, rerun.} They follow a protocol written before the first
-  training run. Complements declared after the results put them to the test: E1 on the sixteen
-  (program, task) pairs, a strict count of ranking changes by pairs, the Holm correction on the
-  comparison of the two PPOs, a test of the reversal under modified physics, a check of E5 on fresh
-  random seeds, the calibration of the settled-winner rule on true null hypotheses. A diagnosis of the
-  E6 reference closes the list: its published recipe aged with its libraries
-  (Chapter~\ref{chap:06-experiences-resultats}).
-  \item \textbf{A probable explanation of the $t$ of 9.} The script Peter Henderson published in 2017
-  measures the spread between episodes and ignores the spread between random seeds. Applied to our
-  TRPO runs, it often reaches the published value (Section~\ref{sec:b1}). The $(t, p)$ pair of 2018
-  rules out the other ways of computing more than it designates this script.
-  \item \textbf{A bridge to language models.} We wrote our own GRPO and ran it on two small open
-  models, with the true reward (the one that checks the answer) and with a coin-flip reward. With five
-  random seeds, no gain in success is established. Qwen's apparent gain comes from shorter answers.
-  Llama's comes with a fall in its greedy accuracy and its pass@8 (Section~\ref{sec:llm-resultats}).
-  \item \textbf{A repository that checks itself.} It holds the dated protocols, the readings with their
-  quotations, the training results, the analysis scripts and checks that compare every number of the
-  summary document (\file{docs/conclusions-en.md}) and of the blog article with the result files
-  (Chapter~\ref{chap:08-logiciel}).
+  \item \textbf{Four practices changed in classical RL, all around the result.} On the same grid,
+  linking the code rose from 31\% to 74\% of papers, showing the effect of a setting from 44\% to
+  80\%, quantifying the compute from 27\% to 58\% and reporting an uncertainty from 63\% to 88\%. The
+  first three rises survive our checks, among them a rereading of the 98 papers by eight fresh readers
+  who each read both years. The fourth keeps its direction without being established: its verdict
+  depends on two papers read partly by another model (\cref{sec:sr-principale,sec:sr-annees}).
+  \item \textbf{The way the result is judged has barely moved.} The statistical test goes from 6\% to
+  12\%, baselines described with all their settings from 35\% to 29\%, held-out evaluation from 33\%
+  to 45\%, benchmark versions from 23\% to 26\%. None of these gaps is detectable: with fifty papers
+  per year, the survey could see with 80\% power only a rise of 18 to 30 points depending on the
+  criterion (\cref{sec:sr-principale,sec:val-stat}).
+  \item \textbf{The error bar spread faster than the bar computed over random seeds.} Papers that
+  compute their uncertainty over independent training runs go from 35\% to 42\% only, with no
+  detectable change (criterion X8, \cref{sec:sr-principale}).
+  \item \textbf{The rise is slow, with no jump after the 2019 NeurIPS checklist.} Twenty papers per
+  year in 2019, 2020, 2022 and 2024 trace a steady climb (\cref{sec:sr-trajectoire}).
+  \item \textbf{Chance fools the eye, sorting fools the test.} Among thirty PPO runs, two groups of
+  five drawn at random fool Welch's test in 1.2\% of draws, the five best against the five worst in
+  31\%. Keeping the best three runs out of ten inflates the mean by 33\% for this PPO, by 32\% at the
+  median over the sixteen (program, task) pairs (\cref{sec:e1,sec:e4}).
+  \item \textbf{The $t$ of 9 from 2018 has a probable explanation.} The script Peter Henderson
+  published in 2017 measures the spread between episodes and ignores the spread between random seeds.
+  Applied to our thirty TRPO runs, it exceeds 9.09 in 38\% of random draws. The $(t, p)$ pair of 2018
+  rules out the other ways of computing more than it designates this script (\cref{sec:b1}).
+  \item \textbf{The best program depends on the task, the budget and the physics.} At equal budget
+  with twenty random seeds, CrossQ leads on all four tasks. Under physics modified by 20\%, PPO JAX
+  drops from first to last place on \task{Hopper} (\cref{sec:e2,sec:e7}).
+  \item \textbf{A published recipe ages with its libraries.} The RL Baselines3 Zoo settings for PPO on
+  \task{Hopper}, reused in 2026, give robots that stand upright without moving forward (0.00~m/s).
+  The agent the Zoo published in 2022 with these settings reaches a score of \num{2439} under our
+  protocol (\cref{sec:e6}).
+  \item \textbf{On small language models, no GRPO gain is established at five random seeds.} Qwen's
+  apparent gain comes from shorter answers: the share of cut-off answers falls from 75\% to 6\%, while
+  the accuracy of finished answers does not rise (\cref{sec:llm-resultats}).
 \end{enumerate}
 
-\section{Genesis}\label{sec:intro-genese}
-% Every date below comes from a trace listed in .private/genese-traces.md (file and line, or commit and date).
-
-\paragraph{The reflection}
-% TRACE MANQUANTE: the years of reflection before November 2026 (no dated note, email or post).
-% TRACE MANQUANTE: which of Pineau's talks the author followed and when (first viewing of the ICLR 2018 video,
-% attendance or not at NeurIPS 2018 in Montréal).
-At the start, we asked the coding agent that would coordinate the work for a project on
-Joelle Pineau. In that message we call the ICLR 2018 talk ``this video I love [\dots] even though it is
-dated''. We also write: ``I never took up RL because I had suspicions about RL and Joelle Pineau more
-than confirmed them at the time'' (our translation from the French). The message is kept in the transcripts of
-our working sessions, which remain private.
-
-\paragraph{The protocol and the readings}
-The ICLR talk was first transcribed automatically. The three protocols were written before any reading
-and any training, then entered the repository with its first commit. The 45 agents
-of the first reading wave are described in \file{study/readers/readers.csv}. The re-readings added after
-the results are described in their deviations (survey deviations 30 to 33, 35 and 36).
-
-\paragraph{The computations}
-% TRACE MANQUANTE: any trials before November 2026 (dated notebook, repository or commit).
-The computations took two weeks. Some are not finished yet (box on the title
-page).
-
-\paragraph{Why agents read}
-AI agents read the papers. Facts that anyone can check in the repository support that choice. Each agent
-reads the whole paper, appendices included (\file{study/GRILLE-en.md}). The NeurIPS appendices shipped as
-zip archives were extracted, then re-read by each reader (deviation 25). Each ``yes'' quotes the exact
-sentence of the paper and its page. A script finds every quote in the PDF (\file{study/check\_codes.py}).
-Of the 89 quotes of grid v1 not found at first, none was invented. A ``no'' quotes nothing. The 377 final
-``no'' decisions on the verdict criteria were therefore set against the text with patterns fixed in
-advance. For 283 of them, an arbiter judged the passage found. Ten turned into ``yes'' and no verdict
-changed (deviation 27, \file{study/falsify\_no.json}). The instructions given to each agent are published
-word for word (\file{study/readers/prompts/}, deviation 28). The double readings are still made by copies
-of the same model. A human reading must therefore check the agents: that is the blind re-reading of thirty
-papers, fifteen from each year, preregistered in deviation 35. Its thirty sheets still await their
-reader.
-
-% TRACE MANQUANTE: deviation 34 (the author's past human re-reading), cited here only once the author supplies the facts.
+\paragraph{What is new in the method}
+\begin{enumerate}
+  \item Pineau's grid applied again on equal terms: both years read with the same rules by agents
+  of the same model, reread by eight readers who each read both years, then by a reader from another
+  model family (\cref{chap:03-sondage-methode}).
+  \item A second grid of twelve criteria (Y1 to Y12), preregistered with its decision rules, for the
+  flaws the 2018 grid did not measure (\cref{chap:A-grille}).
+  \item Checks published with their results: thirty papers reread blind with an interval on each
+  agreement, the quotations audited, each negative decision set against the text and, for each
+  criterion, the smallest difference the survey could detect (\cref{chap:04-sondage-resultats}).
+  \item Three protocols written before the first reading and the first training run, every deviation
+  dated and published (\cref{chap:09-ecarts}).
+  \item A repository that checks itself: \texttt{make verify} recomputes every analysis from the
+  result files, then checks compare every number of the summary document
+  (\file{docs/conclusions-en.md}) and of the blog article with those files (\cref{chap:08-logiciel}).
+\end{enumerate}
 
 \section{Reading guide}\label{sec:intro-guide}
+
+A reader in a hurry can read the abstract, Section~\ref{sec:intro-contributions},
+Table~\ref{tab:failles}, Section~\ref{sec:sr-principale}, Figures~\ref{fig:grille-egale}
+and~\ref{fig:e1-faux-positifs}, then Chapter~\ref{chap:11-conclusion}.
 
 Chapter~\ref{chap:02-contexte} sets out the formal framework of RL, describes the programs and the
 tasks, inventories the sixteen flaws and places the work among related work.
@@ -293,6 +286,5 @@ The flaw-by-flaw verdict is in Section~\ref{sec:sr-failles}. The appendices give
 additional tables (Appendix~\ref{chap:B-tableaux}), the list of papers read
 (Appendix~\ref{chap:C-articles}) and the software environments (Appendix~\ref{chap:D-environnements}).
 
-A reader in a hurry can read the abstract, Table~\ref{tab:failles}, Section~\ref{sec:sr-principale}
-and Chapter~\ref{chap:11-conclusion}. A reader who wants to redo a computation finds, in each caption,
+A reader who wants to redo a computation finds, in each caption,
 the result file that holds it.

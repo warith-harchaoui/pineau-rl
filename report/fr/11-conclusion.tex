@@ -6,7 +6,7 @@
 
 \begin{keybox}
 Joelle Pineau a été écoutée sur ce qui accompagne le résultat : le lien vers le code, le calcul
-chiffré, l'effet d'un réglage, la barre d'erreur. La barre s'est répandue sans que l'incertitude
+chiffré, l'effet d'un réglage et, de façon plus fragile, la barre d'erreur. La barre s'est répandue sans que l'incertitude
 calculée sur des graines aléatoires la suive de façon détectable. Le réglage des méthodes de
 référence ne montre aucun signe de progrès.
 \end{keybox}
@@ -28,31 +28,35 @@ réglage et l'incertitude rapportée passent la correction de Holm dans la compa
 que nous avons tentées, la sensibilité à presque toutes. Le code garde son verdict quand les deux
 années sont lues sur la même sorte de version, actes ou arXiv (\cref{sec:sr-robustesse}).
 L'incertitude rapportée est le changement le plus fragile : elle ne passe plus la correction quand
-on retire les treize articles lus en partie par un autre modèle. Les lecteurs de 2018 n'étant pas
-ceux de 2026, huit lecteurs neufs, T1 à T8, ont relu les deux années (écart 36) : les hausses du code, du calcul et de la
-sensibilité tiennent, celle de l'incertitude rapportée garde son sens sans être établie
-(\cref{sec:sr-annees}). Le critère X8 montre ce que mesure cette dernière hausse.
+on retire les deux articles de la comparaison lus en partie par un autre modèle. Son verdict dépend
+donc de deux articles. Les lecteurs de 2018 n'étant pas ceux de 2026, huit lecteurs neufs ont relu
+les deux années : les hausses du code, du calcul et de la sensibilité tiennent, celle de
+l'incertitude rapportée garde son sens sans être établie (\cref{sec:sr-annees}). Un lecteur d'une
+autre famille de modèles retrouve le sens des quatre hausses. Quand ses \enquote{oui} sans citation
+retrouvée comptent \enquote{non}, il ne confirme pas celle de l'incertitude rapportée
+(\cref{sec:sr-gemma}). Le critère X8 montre ce que mesure cette dernière hausse.
 La part des articles qui calculent leur incertitude sur des graines aléatoires passe de 35~\% à
 42~\%, un écart que le sondage ne détecte pas : la barre d'erreur s'est répandue plus vite que la
 barre calculée sur les entraînements indépendants (\cref{sec:sr-principale}). Lues sur 20 articles
 par année entre les deux dates, les quatre pratiques montent lentement, sans saut juste après la
 liste de contrôle que NeurIPS impose depuis 2019 (\cref{tab:trajectoire}).
 
-\paragraph{Le jugement du résultat} Le réglage des références stagne : les hyperparamètres des
+\paragraph{Le jugement du résultat a peu bougé} Le réglage des références stagne : les hyperparamètres des
 références donnés (Q4), le même soin de réglage annoncé (X4) et l'origine de leur code (Y5) ne
 montent pas. La version des bancs d'essai (Y7), la définition de la mesure de performance (Y1) et la
 sélection des meilleurs essais (X3) ne bougent pas non plus. Le test statistique, l'évaluation tenue
 à part, les hyperparamètres de la méthode et la façon de les choisir montent de 6 à 22 points selon
-le critère, sans qu'aucune de ces hausses ne passe la correction. Le sondage ne pouvait détecter
-qu'une hausse d'environ trente points (\cref{sec:val-stat}) : il ne dit pas que ces pratiques
+le critère, sans qu'aucune de ces hausses ne passe la correction. Le sondage ne détectait avec
+80~\% de puissance qu'une hausse de 18 à 30 points selon le critère, de 26 à 39 après correction
+(\cref{sec:val-stat}) : il ne dit pas que ces pratiques
 stagnent, il dit qu'il ne peut pas le savoir.
 
-\paragraph{Ce qu'une case cochée garantit} Les 18 articles de NeurIPS 2025 qui répondent oui à la
+\paragraph{Une case cochée ne garantit pas la pratique} Les 18 articles de NeurIPS 2025 qui répondent oui à la
 question de leur liste de contrôle sur la signification statistique n'appliquent aucun test. Sur le
 code et sur le calcul, une partie des \enquote{oui} n'a ni lien ni chiffre derrière elle
 (\cref{sec:sr-declarations}).
 
-\paragraph{Les graines aléatoires et la sélection} Deux groupes de cinq essais tirés au hasard
+\paragraph{Le hasard trompe l'œil, le tri trompe le test} Deux groupes de cinq essais tirés au hasard
 parmi ceux d'un même programme trompent rarement un test statistique. Triés, les cinq meilleurs
 contre les cinq pires le trompent de 26~\% à près de 100~\% des fois selon le couple (programme,
 tâche), 31~\% dans le cas préenregistré, PPO sur \task{HalfCheetah} (\cref{sec:e1}). Garder les trois
@@ -63,7 +67,7 @@ Henderson, qui mesure la dispersion des épisodes et ignore celle des graines al
 lecture concurrente, la moyenne des $p$, n'a pas de degrés de liberté bien définis. Appliqué à nos
 essais de TRPO, ce script dépasse 9 dans 38~\% des tirages au hasard (\cref{tab:b1}).
 
-\paragraph{La portée des classements} Sur nos quatre programmes, le meilleur change avec la tâche.
+\paragraph{Le meilleur programme dépend de la tâche, du budget et de la physique} Sur nos quatre programmes, le meilleur change avec la tâche.
 PPO y dispose pourtant de cinq fois plus de pas que SAC et CrossQ. À budget égal et avec vingt
 graines aléatoires, CrossQ mène sur les quatre tâches, mais l'ordre de deux paires s'inverse encore
 de façon établie d'une tâche à l'autre. L'inversion de PPO JAX et de SAC résiste même à la correction de Bonferroni (\cref{sec:e2}). Le décompte préenregistré des changements de classement comptait des
@@ -72,11 +76,11 @@ Les deux écritures de PPO ne diffèrent de façon établie que sur \task{Swimme
 points de score (\cref{sec:e3}). Sous une physique modifiée de 20~\%, CrossQ bat chacun des trois
 autres programmes sur \task{Hopper}, à dix comme à vingt graines aléatoires. PPO JAX y perd contre SAC, qu'il battait en physique d'entraînement (\cref{sec:e7}).
 
-\paragraph{La méthode de référence réglée} Les agents entraînés avec la recette publiée par RL
+\paragraph{Une recette publiée a vieilli} Les agents entraînés avec la recette publiée par RL
 Baselines3 Zoo tiennent debout sur \task{Hopper} sans avancer. L'agent que le Zoo a lui-même publié
 en 2022, avec les mêmes réglages et une pile logicielle plus ancienne, avance et obtient un score proche de celui de nos agents par défaut. La recette marchait dans sa pile d'origine et a vieilli (\cref{sec:e6}).
 
-\paragraph{Le volet des modèles de langue} Avec cinq graines aléatoires, aucun gain à l'intérieur
+\paragraph{Sur les modèles de langue, aucun gain de GRPO n'est établi} Avec cinq graines aléatoires, aucun gain à l'intérieur
 d'une configuration ne peut être établi, puisque le test exact de signe ne descend pas sous 0,0625.
 Un contraste est établi : chez Llama, la vraie récompense fait mieux que la récompense tirée au sort,
 parce que celle-ci détruit le modèle. Sous la vraie récompense, Llama perd en justesse gloutonne et en
@@ -84,7 +88,7 @@ pass@8 dans chacune des cinq graines aléatoires, alors que son pass@1 monte un 
 de pass@1 s'explique par la fin des réponses coupées : la justesse des réponses finies ne monte pas.
 Qwen a de plus tourné avec une pénalité de répétition que Llama n'avait pas
 (\cref{chap:07-modeles-de-langue}). Une relance de dix graines aléatoires par configuration, écrite
-d'avance, attend le GPU (écart 20 du volet GRPO).
+d'avance, attend le GPU (\cref{sec:val-en-cours}).
 
 \section{Recommandations}
 \label{sec:recommandations}
@@ -196,18 +200,19 @@ d'une courbe empilés, ne mesure pas la variabilité entre entraînements.
   \item \textbf{Une lecture, avec la même grille, des articles qui appliquent ce qu'ils appellent RL
         à de grands modèles de langue}, sur un échantillon de taille comparable, dirait si
         l'évaluation tenue à part, qui y progresse, s'accompagne des autres pratiques.
-  \item \textbf{La relecture humaine de l'écart 35.} Trente articles, quinze par année, attendent notre
+  \item \textbf{La relecture humaine à l'aveugle.} Trente articles, quinze par année, attendent notre
         lecture à l'aveugle. Le script qui la comparera aux agents est écrit et refuse de
         tourner avant que les trente feuilles soient remplies.
   \item \textbf{Un nouvel entraînement complet sur une autre plateforme}, Linux sur x86-64,
         testerait les statistiques de nos expériences avec d'autres tirages (\cref{sec:reentrainer}).
   \item \textbf{D'autres familles de tâches} que la locomotion MuJoCo : jeux à images, RL hors
         ligne, robotique réelle, où les conclusions de E2 à E7 restent à éprouver.
-  \item \textbf{Le volet GRPO à plus grande échelle.} Si la relance de l'écart 20 établit son
-        contraste, le même protocole sur des modèles de 7 milliards de paramètres rapprocherait le
+  \item \textbf{Le volet GRPO à plus grande échelle.} Si la relance à dix graines aléatoires établit
+        son contraste, le même protocole sur des modèles de 7 milliards de paramètres rapprocherait le
         volet de \textcite{shao2025spurious}.
 \end{itemize}
 
+\paragraph{Ce que nous avons corrigé}
 Pineau demandait en 2018 d'être aussi critique envers ses bons résultats qu'envers ses mauvais.
 Nous avons tenté de nous y tenir. En vérifiant nos résultats surprenants, nous avons trouvé deux
 pièges : une erreur de notre code dans E6, dont la correction n'a rien changé, puis la limite de
@@ -220,7 +225,7 @@ refaire le travail.
 \section{Ouverture}\label{sec:ouverture}
 Michael I. Jordan décrivait dès 2019 l'intelligence artificielle comme une discipline d'ingénieurs
 encore à bâtir, plus que comme une révolution déjà faite
-\parencite{mijordan2019revolution,mijordan2019drai}. Il y revient à propos d'incidents récents où des
+\parencite{mijordan2019revolution,mijordan2019drai}. Il y revient à propos d'un incident récent où des
 agents IA ont été laissés libres d'agir : ce sont, dit-il, \enquote{surtout des mauvaises pratiques
 d'ingénierie}. Il compare : \enquote{en ingénierie chimique, on n'aurait jamais eu une situation où
 l'on aurait laissé des explosions se produire pour voir jusqu'où les choses pouvaient mal tourner}

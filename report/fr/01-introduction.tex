@@ -1,16 +1,22 @@
 \chapter{Introduction}\label{chap:01-introduction}
 
-\section{Deux conférences en 2018}\label{sec:intro-conferences}
+\section{Deux courbes, un seul programme}\label{sec:intro-conferences}
 
-\paragraph{Vancouver, puis Montréal}
-Au printemps 2018, Joelle Pineau, professeure à l'université McGill de Montréal et directrice du
-laboratoire montréalais de recherche en intelligence artificielle de Facebook, donne une conférence
-invitée à ICLR (\emph{International Conference on Learning Representations}), à Vancouver
-\parencite{pineau2018iclr}. La conférence s'intitule \enquote{Reproductibilité, réutilisabilité et
-robustesse en apprentissage par renforcement profond}. En décembre, Pineau reprend et augmente son propos à NeurIPS
-(\emph{Neural Information Processing Systems}), à Montréal, comme conférence Posner : \enquote{Apprentissage
-par renforcement reproductible, réutilisable et robuste} \parencite{pineau2018neurips}. ICLR, NeurIPS et
-ICML (\emph{International Conference on Machine Learning}) sont les trois congrès principaux de
+\paragraph{Vancouver, printemps 2018}
+Joelle Pineau projette deux courbes d'apprentissage. Un guépard simulé apprend à courir. Chaque courbe
+suit son score au fil de l'entraînement, en moyenne sur cinq essais. Les deux courbes se séparent
+nettement et un test les déclare différentes : $t = -9{,}09$, $p = 0{,}0016$. Un relecteur y verrait
+deux algorithmes. Or les deux courbes sortent du même programme, l'algorithme TRPO, avec les mêmes
+réglages. Seule change la graine aléatoire, ce nombre de départ dont l'ordinateur tire tout le hasard
+d'un entraînement \parencite{henderson2018matters}. La scène se passe pendant la conférence invitée
+d'ICLR (\emph{International Conference on Learning Representations}), à Vancouver
+\parencite{pineau2018iclr}, intitulée \enquote{Reproductibilité, réutilisabilité et robustesse en
+apprentissage par renforcement profond}. Pineau est alors professeure à l'université McGill de
+Montréal et directrice du laboratoire montréalais de recherche en intelligence artificielle de
+Facebook. En décembre, elle reprend et augmente son propos à NeurIPS (\emph{Neural Information
+Processing Systems}), à Montréal, comme conférence Posner : \enquote{Apprentissage par renforcement
+reproductible, réutilisable et robuste} \parencite{pineau2018neurips}. ICLR, NeurIPS et ICML
+(\emph{International Conference on Machine Learning}) sont les trois congrès principaux de
 l'apprentissage automatique.
 
 \paragraph{La question de départ}
@@ -40,9 +46,7 @@ viennent pour la plupart de l'article de son équipe signé Peter Henderson et s
 \parencite{henderson2018matters}. Nous y avons relevé seize failles, numérotées F1 à F16 et rangées en
 quatre familles : le matériel nécessaire pour refaire une expérience (code, plan, logiciels), le
 réglage des hyperparamètres et des références, les graines aléatoires et la statistique, la portée des
-conclusions. La plus célèbre est la faille F11 : dix entraînements du même programme, répartis en deux
-groupes de cinq, donnent deux courbes qu'un test déclare différentes, avec $t = -9{,}09$ et
-$p = 0{,}0016$. Le chapitre~\ref{chap:02-contexte} décrit les seize failles une à une (tableau~\ref{tab:failles}). Pineau propose aussi deux
+conclusions. La plus célèbre est la faille F11, les deux courbes du même programme. Le chapitre~\ref{chap:02-contexte} décrit les seize failles une à une (tableau~\ref{tab:failles}). Pineau propose aussi deux
 remèdes : le défi de reproduction d'ICLR 2018, où n'importe qui pouvait tenter de refaire un article
 soumis, puis une liste de contrôle de reproductibilité, que NeurIPS adopte en 2019
 \parencite{pineau2021improving}.
@@ -159,14 +163,14 @@ laquelle on compare la même conclusion sous une autre tâche, un autre programm
 
 \section{La question}\label{sec:intro-question}
 
-Huit ans ont passé. Le RL a changé de taille et de terrain : en 2025 et 2026, plus de la moitié des
-articles de RL de notre premier tirage appliquent ce qu'ils appellent RL à de grands modèles de langue.
+Huit ans ont passé. Le RL a changé de taille et de terrain : en 2025 et 2026, 27 des 50 articles de RL
+de notre premier tirage appliquent ce qu'ils appellent RL à de grands modèles de langue.
 Ce rapport pose une question : \emph{a-t-on écouté Joelle Pineau ?} Pour chacune des seize failles,
 nous demandons si les articles publiés entre 2018 et 2026 la montrent encore, puis ce qu'elle coûte
 quand on refait les expériences de 2018 avec les algorithmes de 2026. La liste de Pineau devient une
 grille, appliquée avec la même sévérité aux articles publiés et à nos propres expériences.
 
-\section{Deux instruments}\label{sec:intro-instruments}
+\section{Deux instruments : relire les articles, refaire les expériences}\label{sec:intro-instruments}
 
 \paragraph{Le sondage}
 Le premier instrument relit des articles avec la grille de lecture de Pineau (critères Q1 à Q8),
@@ -184,6 +188,22 @@ des verdicts, chacun lisant les deux années, pour séparer l'effet de l'année 
 tiennent, le quatrième garde son sens sans être établi (section~\ref{sec:sr-annees}). Les chapitres~\ref{chap:03-sondage-methode} et~\ref{chap:04-sondage-resultats} décrivent
 la méthode et les résultats.
 
+\paragraph{Pourquoi des agents lisent}
+Des agents IA ont lu les articles. Ce choix se défend par des faits que le dépôt permet de vérifier.
+Chaque agent lit l'article entier, annexes comprises. Les annexes de NeurIPS livrées en archives ont
+été extraites, puis relues par chaque lecteur. Chaque \enquote{oui} cite la phrase exacte de l'article
+et sa page. Un script retrouve chaque citation dans le PDF : sur les 89 citations de la première grille
+d'abord introuvables, aucune n'était inventée. Un \enquote{non} ne cite rien. Les 377 décisions
+finales \enquote{non} des critères des verdicts ont donc été confrontées au texte avec des motifs fixés
+d'avance. Pour 283 d'entre elles, un extrait trouvé a été jugé par un arbitre. Dix sont passées à
+\enquote{oui} et aucun verdict n'a changé. Les consignes de chaque agent sont publiées mot pour mot
+(\cref{sec:sm-lecteurs}). Les doubles lectures sont faites par des copies du même modèle. Un lecteur
+d'une autre famille de modèles, \texttt{gemma3:12b}, a donc relu les 98 articles des verdicts. Il
+retrouve le sens des quatre hausses. Son désaccord avec nos lecteurs ne dépend pas de l'année de façon
+détectable (\cref{sec:sr-gemma}). Une relecture humaine à l'aveugle de trente articles, quinze de
+chaque année, est préenregistrée. Ses trente feuilles attendent encore leur lecteur
+(\cref{sec:futurs}).
+
 \paragraph{Les expériences}
 Le second instrument refait les expériences de 2018 sous un protocole écrit avant le premier
 entraînement : quatre programmes (PPO en PyTorch et en JAX, SAC, CrossQ) sur quatre tâches MuJoCo, avec
@@ -192,96 +212,73 @@ trente de TRPO sur \task{HalfCheetah}, une évaluation sur des graines aléatoir
 l'entraînement et une autre sous une physique modifiée. Un volet illustre les mêmes failles sur des
 modèles de langue entraînés avec GRPO. Les chapitres~\ref{chap:05-experiences-methode}, \ref{chap:06-experiences-resultats} et~\ref{chap:07-modeles-de-langue} les décrivent.
 
-\section{Contributions}\label{sec:intro-contributions}
+\section{Ce que ce rapport établit}\label{sec:intro-contributions}
 
+\paragraph{Les résultats}
 \begin{enumerate}
-  \item \textbf{Une mesure à grille égale.} La grille de Pineau, réappliquée aux articles de 2026 et
-  calibrée sur notre propre lecture de 50 articles de 2018. Quatre pratiques ont changé dans le RL
-  classique : le lien vers le code, la sensibilité à un réglage montrée, le calcul chiffré, une
-  incertitude rapportée (section~\ref{sec:sr-principale}). Toutes les quatre accompagnent le résultat.
-  Le réglage des références ne montre aucun signe de progrès. Pour les autres critères, dont le test
-  statistique et l'évaluation tenue à part, le sondage manque de puissance : il ne détecte aucun
-  changement, sans pouvoir en exclure un de trente points.
-  \item \textbf{Une seconde grille préenregistrée.} Douze critères (Y1 à Y12), écrits avec leurs règles
-  de décision avant tout codage, qui couvrent la mesure de performance, les tâches, les implémentations,
-  les versions, la généralisation, la sensibilité et les outils statistiques récents.
-  \item \textbf{Une trajectoire.} Quatre années lues entre 2018 et 2026 : les quatre pratiques montent
-  lentement, sans saut juste après la liste de contrôle de 2019 (section~\ref{sec:sr-trajectoire}).
-  \item \textbf{Une batterie de contrôles.} Trente articles ont été relus à l'aveugle, avec un
-  intervalle sur chaque accord. Les citations ont été auditées. Chaque décision négative a été
-  confrontée à une recherche mécanique. La provenance de chaque lecteur est publiée. Les résultats sont coupés par
-  provenance, par conférence et par lecteur, puis éprouvés contre le modèle des lecteurs, contre le
-  filtre de titre et contre les listes de contrôle remplies par les auteurs. Pour chaque critère, nous
-  donnons la plus petite différence que le sondage détectait et ce qu'aurait donné la règle de verdict
-  d'origine (chapitre~\ref{chap:03-sondage-methode}).
-  \item \textbf{Deux relectures ajoutées après les résultats.} Le critère X8 demande si l'incertitude
-  rapportée est calculée sur des graines aléatoires indépendantes, ce que X2 ne demande pas : sa part ne
-  bouge pas de façon détectable. Le lien vers le code, relu sur la même sorte de version les deux années
-  (actes, dernière version arXiv, code public à la date de la conférence), garde son verdict dans chaque
-  lecture (section~\ref{sec:sm-relectures}).
-  \item \textbf{Les expériences de 2018, refaites.} Elles suivent un protocole écrit avant le premier
-  entraînement. Des compléments déclarés après les résultats les éprouvent : E1 sur les seize couples
-  (programme, tâche), un décompte strict des changements de classement par paires, la correction de
-  Holm sur la comparaison des deux PPO, un test du renversement sous physique modifiée, une validation
-  de E5 sur des graines aléatoires neuves, la calibration de la règle du vainqueur établi sur des
-  hypothèses nulles vraies, enfin un diagnostic de la référence de E6, dont la recette publiée a vieilli
-  avec ses bibliothèques (chapitre~\ref{chap:06-experiences-resultats}).
-  \item \textbf{Une explication probable du $t$ de 9.} Le script publié par Peter Henderson en 2017
-  mesure la dispersion entre épisodes et ignore celle entre graines aléatoires. Appliqué à nos essais
-  de TRPO, il atteint souvent la valeur publiée (section~\ref{sec:b1}). Le couple $(t, p)$ de 2018 écarte
-  les autres façons de calculer plus qu'il ne désigne ce script.
-  \item \textbf{Un pont vers les modèles de langue.} Un GRPO écrit par nous, sur deux petits modèles
-  ouverts, avec la vraie récompense (celle qui vérifie la réponse) et une récompense tirée à pile ou
-  face. Avec cinq graines aléatoires, aucun gain de réussite n'est établi. Le gain apparent de Qwen
-  vient de réponses plus courtes. Celui de Llama s'accompagne d'une chute de sa justesse gloutonne et de
-  son pass@8 (section~\ref{sec:llm-resultats}).
-  \item \textbf{Un dépôt qui se vérifie.} Les protocoles datés, les lectures avec leurs citations, les
-  résultats des entraînements, les scripts d'analyse et des contrôles qui confrontent chaque nombre du document de synthèse (\file{docs/conclusions.md})
-  et de l'article de blog aux fichiers de résultats (chapitre~\ref{chap:08-logiciel}).
+  \item \textbf{Quatre pratiques ont changé dans le RL classique, toutes autour du résultat.} À grille
+  égale, le lien vers le code passe de 31~\% à 74~\% des articles, l'effet d'un réglage montré de
+  44~\% à 80~\%, le calcul chiffré de 27~\% à 58~\% et une incertitude rapportée de 63~\% à 88~\%.
+  Les trois premières hausses résistent à nos contrôles, dont une relecture des 98 articles par huit
+  lecteurs neufs qui lisent chacun les deux années. La quatrième garde son sens sans être établie : son
+  verdict dépend de deux articles lus en partie par un autre modèle
+  (\cref{sec:sr-principale,sec:sr-annees}).
+  \item \textbf{La façon de juger le résultat a peu bougé.} Le test statistique passe de 6~\% à
+  12~\%, les références décrites avec tous leurs réglages de 35~\% à 29~\%, l'évaluation tenue à part
+  de 33~\% à 45~\%, la version des bancs d'essai de 23~\% à 26~\%. Aucun de ces écarts n'est
+  détectable : avec cinquante articles par année, le sondage ne voyait avec 80~\% de puissance qu'une
+  hausse de 18 à 30 points selon le critère (\cref{sec:sr-principale,sec:val-stat}).
+  \item \textbf{La barre d'erreur s'est répandue plus vite que la barre calculée sur des graines
+  aléatoires.} Les articles qui calculent leur incertitude sur des entraînements indépendants passent
+  de 35~\% à 42~\% seulement, sans changement détectable (critère X8, \cref{sec:sr-principale}).
+  \item \textbf{La hausse est lente et ne saute pas après la liste de contrôle de NeurIPS en 2019.}
+  Vingt articles par année en 2019, 2020, 2022 et 2024 dessinent une montée régulière
+  (\cref{sec:sr-trajectoire}).
+  \item \textbf{Le hasard trompe l'œil, le tri trompe le test.} Sur trente essais de PPO, deux groupes
+  de cinq tirés au hasard trompent un test de Welch dans 1,2~\% des tirages, les cinq meilleurs
+  contre les cinq pires dans 31~\%. Garder les trois meilleurs essais sur dix gonfle la moyenne de
+  33~\% pour ce PPO, de 32~\% en médiane sur les seize couples (programme, tâche)
+  (\cref{sec:e1,sec:e4}).
+  \item \textbf{Le $t$ de 9 de 2018 a une explication probable.} Le script publié par Peter Henderson
+  en 2017 mesure la dispersion entre épisodes et ignore celle entre graines aléatoires. Appliqué à nos
+  trente essais de TRPO, il dépasse 9,09 dans 38~\% des tirages au hasard. Le couple $(t, p)$ de 2018
+  écarte les autres façons de calculer plus qu'il ne désigne ce script (\cref{sec:b1}).
+  \item \textbf{Le meilleur programme dépend de la tâche, du budget et de la physique.} À budget égal
+  et vingt graines aléatoires, CrossQ mène sur les quatre tâches. Sous une physique modifiée de
+  20~\%, PPO JAX passe de la première à la dernière place sur \task{Hopper}
+  (\cref{sec:e2,sec:e7}).
+  \item \textbf{Une recette publiée vieillit avec ses bibliothèques.} Les réglages du RL Baselines3
+  Zoo pour PPO sur \task{Hopper}, repris en 2026, donnent des robots qui tiennent debout sans avancer
+  (0,00~m/s). L'agent que le Zoo a publié en 2022 avec ces réglages atteint un score de \num{2439}
+  sous notre protocole (\cref{sec:e6}).
+  \item \textbf{Sur de petits modèles de langue, aucun gain de GRPO n'est établi à cinq graines
+  aléatoires.} Le gain apparent de Qwen vient de réponses plus courtes : la part des réponses coupées
+  tombe de 75~\% à 6~\%, la justesse des réponses finies ne monte pas (\cref{sec:llm-resultats}).
 \end{enumerate}
 
-\section{Genèse}\label{sec:intro-genese}
-% Every date below comes from a trace listed in .private/genese-traces.md (file and line, or commit and date).
-
-\paragraph{La réflexion}
-% TRACE MANQUANTE : les années de réflexion avant novembre 2026 (aucune note, aucun courriel, aucun billet daté).
-% TRACE MANQUANTE : les conférences de Pineau suivies par l'auteur et la date de chacune (premier visionnage de la
-% vidéo d'ICLR 2018, présence ou non à NeurIPS 2018 à Montréal).
-Au départ, nous demandons à l'agent de programmation qui coordonnera le travail un projet sur
-Joelle Pineau. Nous y appelons la conférence d'ICLR 2018 \enquote{cette vidéo que j'adore [\dots] même si
-elle date}. Nous y écrivons aussi : \enquote{je ne me suis jamais mis au RL parce que j'avais des soupçons sur
-le RL et Joelle Pineau les a plus que confirmés à l'époque}. Ce message est conservé dans les
-transcriptions de nos sessions de travail, qui restent privées.
-
-\paragraph{Le protocole et les lectures}
-La conférence d'ICLR est d'abord transcrite automatiquement. Les trois protocoles sont écrits avant toute
-lecture et tout entraînement, puis entrent dans le dépôt avec son premier commit. Les
-45 agents de la première vague de lecture sont décrits dans \file{study/readers/readers.csv}. Les
-relectures ajoutées après les résultats sont décrites dans leurs écarts (écarts 30 à 33, 35 et 36 du sondage).
-
-\paragraph{Les calculs}
-% TRACE MANQUANTE : d'éventuels essais antérieurs à novembre 2026 (carnet, dépôt ou commit daté).
-Les calculs durent deux semaines. Certains ne sont pas encore finis (encadré de la
-page de titre).
-
-\paragraph{Pourquoi des agents lisent}
-Des agents IA ont lu les articles. Ce choix se défend par des faits que le dépôt permet de vérifier.
-Chaque agent lit l'article entier, annexes comprises (\file{study/GRILLE.md}). Les annexes de NeurIPS
-livrées en archives zip ont été extraites, puis relues par chaque lecteur (écart 25). Chaque \enquote{oui}
-cite la phrase exacte de l'article et sa page. Un script retrouve chaque citation dans le PDF
-(\file{study/check\_codes.py}). Sur les 89 citations de la grille v1 d'abord introuvables, aucune
-n'était inventée. Un \enquote{non} ne cite rien. Les 377 décisions finales \enquote{non} des critères
-des verdicts ont donc été confrontées au texte avec des motifs fixés d'avance. Pour 283 d'entre elles, un
-extrait trouvé a été jugé par un arbitre. Dix sont passées à \enquote{oui} et aucun verdict n'a changé
-(écart 27, \file{study/falsify\_no.json}). Les consignes de chaque agent sont publiées mot pour mot
-(\file{study/readers/prompts/}, écart 28). Les doubles lectures restent faites par des copies du même
-modèle. Une lecture humaine doit donc contrôler les agents : c'est la relecture à l'aveugle de trente
-articles, quinze de chaque année, préenregistrée à l'écart 35. Ses trente feuilles attendent encore
-leur lecteur.
-
-% TRACE MANQUANTE : écart 34 (relecture humaine passée de l'auteur), à citer ici seulement quand l'auteur en donne les faits.
+\paragraph{Ce qui est nouveau dans la méthode}
+\begin{enumerate}
+  \item La grille de Pineau réappliquée à l'identique : les deux années lues avec les mêmes règles
+  par des agents du même modèle, relues par huit lecteurs qui lisent chacun les deux années, puis par
+  un lecteur d'une autre famille de modèles (\cref{chap:03-sondage-methode}).
+  \item Une seconde grille de douze critères (Y1 à Y12), préenregistrée avec ses règles de décision,
+  pour les failles que la grille de 2018 ne mesurait pas (\cref{chap:A-grille}).
+  \item Des contrôles publiés avec leurs résultats : trente articles relus à l'aveugle avec un
+  intervalle sur chaque accord, les citations auditées, chaque décision négative confrontée au texte
+  et, pour chaque critère, la plus petite différence que le sondage détectait
+  (\cref{chap:04-sondage-resultats}).
+  \item Trois protocoles écrits avant la première lecture et le premier entraînement, chaque écart
+  daté et publié (\cref{chap:09-ecarts}).
+  \item Un dépôt qui se vérifie : \texttt{make verify} recalcule chaque analyse depuis les fichiers de
+  résultats, puis des contrôles confrontent chaque nombre du document de synthèse
+  (\file{docs/conclusions.md}) et de l'article de blog à ces fichiers (\cref{chap:08-logiciel}).
+\end{enumerate}
 
 \section{Guide de lecture}\label{sec:intro-guide}
+
+Un lecteur pressé lira le résumé, la section~\ref{sec:intro-contributions}, le
+tableau~\ref{tab:failles}, la section~\ref{sec:sr-principale}, les figures~\ref{fig:grille-egale}
+et~\ref{fig:e1-faux-positifs}, puis le chapitre~\ref{chap:11-conclusion}.
 
 Le chapitre~\ref{chap:02-contexte} pose le cadre formel du RL, décrit les programmes et les tâches, dresse
 l'inventaire des seize failles et situe le travail parmi les travaux voisins. Les chapitres~\ref{chap:03-sondage-methode} et~\ref{chap:04-sondage-resultats} donnent la méthode et les résultats du
@@ -292,5 +289,5 @@ complètes de la grille (annexe~\ref{chap:A-grille}), des tableaux supplémentai
 la liste des articles lus (annexe~\ref{chap:C-articles}) et les environnements logiciels
 (annexe~\ref{chap:D-environnements}).
 
-Un lecteur pressé lira le résumé, le tableau~\ref{tab:failles}, la section~\ref{sec:sr-principale} et le chapitre~\ref{chap:11-conclusion}. Un lecteur qui veut refaire un calcul trouvera, dans chaque légende, le
-fichier de résultats qui le contient.
+Un lecteur qui veut refaire un calcul trouvera, dans chaque légende, le fichier de résultats qui le
+contient.

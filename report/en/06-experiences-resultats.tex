@@ -1,9 +1,13 @@
 % 06-experiences-resultats (en): every experiment's result, ten seeds first, then twenty seeds and equal budget.
-\chapter{The experiments: results}\label{chap:06-experiences-resultats}
+\chapter{The experiments: chance fools the eye, sorting fools the test}\label{chap:06-experiences-resultats}\chaptermark{The experiments: results}
 
-This chapter gives the result of each experiment described in \cref{chap:05-experiences-methode}. Every
-section follows the same order: the question, the plan in one sentence, the result with its intervals, then
-what the result means and what it leaves open.
+Chance in the random seeds fools the eye, rarely the test. Sorting the runs fools the test. Keeping the best
+three runs out of ten inflates the mean by a third. A test that counts episodes instead of random seeds
+recovers the t of 9 published in 2018. The leading program depends on the task, the budget and the physics.
+Five random seeds read a small difference backwards nearly one time in three. A published tuning recipe has
+aged with its libraries. This chapter gives the result of each experiment of \cref{chap:05-experiences-methode},
+in the same order: the question, the plan in one sentence, the result with its intervals, then what the
+result means and what it leaves open.
 
 \paragraph{Reading conventions}
 The main results are those with ten random seeds (0 to 9), as the protocol announced. The results with twenty
@@ -14,13 +18,12 @@ as $[\num{2268}, \num{3369}]$, is a 95\% bootstrap interval, unless the text nam
 is \emph{settled} when it satisfies the settled-winner rule (\cref{sec:regle}): the IQM intervals are disjoint,
 or the interval of the probability of improvement excludes 0.5. The generated tables use the same word. The
 rule exceeds its nominal 5\%. It errs slightly more than one time in twenty at ten runs against ten, nearly
-one time in ten at five against five (deviation~26, \cref{tab:regle-tranche}). The condition on
+one time in ten at five against five (a control written after the results, \cref{tab:regle-tranche}). The condition on
 the probability of improvement produces almost all of these false positives. A settled difference whose interval
-comes close to 0.5 is read with this margin in mind. The tables are produced by the script
-\file{report/tools/tables.py} from the JSON files of \file{sim/analysis/}. The numbers in the text come from
-the same files, rounded as in \file{docs/conclusions.md}.
+comes close to 0.5 is read with this margin in mind. The tables and the numbers in the text are read from
+the repository's result files (\cref{chap:08-logiciel}).
 
-\section{E1: same code, another random seed}\label{sec:e1}
+\section{E1: chance rarely fools the test, sorting does}\label{sec:e1}
 
 \paragraph{Question and plan}
 Can two groups of runs of the same program, which differ only in their random seeds, pass for two different
@@ -40,7 +43,7 @@ evaluation score, the mean return of ten episodes played without randomness on r
 training. Only the training random seed changes from one dot to the next. Mean \num{1688}, median
 \num{1580} (dotted line). Twenty-seven runs end between \num{1138} and \num{1999}, three beyond \num{3000}.}
 
-\paragraph{Chance rarely fools the test, sorting often does}
+\paragraph{The test's false positives}
 \Cref{tab:e1} and \cref{fig:e1-faux-positifs} give the share of the \num{10000} draws in which Welch's test,
 at the 5\% level, declares two groups from the same program different. Each of these declarations is a false
 positive.
@@ -77,15 +80,15 @@ ten: an inflation of 33\%. Experiment E4 extends this measurement to the four pr
 
 \paragraph{The 2018 statistic, out of PPO's reach}
 \textcite{henderson2018matters} test whole learning curves. The second statistic of E1, added after the
-previous results (deviation~3), recomputes their average t on our thirty curves: a Welch test at each of the
+previous results, recomputes their average t on our thirty curves: a Welch test at each of the
 twenty evaluation points, then the mean of the $t$ values (\cref{sec:t-moyen}). One time in twenty, the
 absolute value of the average t exceeds 1.4 when the groups of five are drawn at random, 2.5 when they are
 sorted by final score. The \num{20000} draws all stay below 9, the value published in 2018 that \cref{sec:b1} examines. The test at the last point alone recovers the
 result on final scores: about 31\% false positives for sorted groups.
 
 \paragraph{Sixteen pairs instead of one}
-E1 covers one program and one task, whereas the shape of the distribution depends on both. Deviation~22,
-decided after the results and written before the computation, repeats the two five-against-five draws on each
+E1 covers one program and one task, whereas the shape of the distribution depends on both. An analysis
+decided after the results and written before the computation repeats the two five-against-five draws on each
 of the sixteen (program, task) pairs of E2, with their twenty random seeds (\cref{tab:e1-grille},
 \cref{fig:e1-grille}).
 \begin{itemize}
@@ -118,7 +121,7 @@ Sorting the runs turns this chance into false positives: nearly one time in thre
 more than four times in five on nine of the fifteen others. Selecting the best runs inflates the mean by a
 third. The grid is an exploratory analysis, decided after the results.
 
-\section{B1: the puzzle of the t of 9}\label{sec:b1}
+\section{B1: a test that counts episodes recovers the t of 9}\label{sec:b1}
 
 \paragraph{Question}
 Figure~5 of \textcite{henderson2018matters} sets two groups of five TRPO runs against each other on
@@ -131,7 +134,7 @@ TRPO, another reading of their caption, or another computation (\cref{sec:plan-b
 The thirty TRPO runs, trained with the default values of sb3-contrib, spread far more than the PPO runs. Their
 final mean is \num{1951}, their standard deviation 930, or 48\% of the mean, against 34\% for PPO. Even so,
 with groups of five drawn at random, the average t over the curve exceeds 1.4 only one time in twenty, as for
-PPO. With sorted groups, it exceeds 1.9 one time in twenty. The rule fixed in advance (deviation~4) rules out
+PPO. With sorted groups, it exceeds 1.9 one time in twenty. The rule fixed before any TRPO training rules out
 the spread of the algorithm as the explanation.
 
 \paragraph{Second lead: stacked points, a faulty computation that still falls short}
@@ -139,8 +142,8 @@ This lead takes the third of the readings of the average t (\cref{sec:t-moyen}),
 hundred points of the five curves of each group as if they were independent observations. One time in twenty, its $|t|$ exceeds 5.0 with groups drawn at random, 6.3 with sorted groups.
 No draw reaches 9. This reading has a worse defect than its failure. It declares a difference in 53\% of the
 random draws with TRPO and in 23\% with PPO, although both groups run the same code. The twenty points of a
-curve are not independent: a run that starts well often stays ahead. Deviation~29 puts a number on this
-dependence (\file{sim/analysis/curves.json}). The lag-1 autocorrelation of the difference between a curve and
+curve are not independent: a run that starts well often stays ahead. An analysis written after the results and
+before this computation puts a number on this dependence. The lag-1 autocorrelation of the difference between a curve and
 the mean curve has a median of $r = 0.71$ for PPO and $0.92$ for TRPO. If this difference follows a first-order
 autoregressive process with coefficient $r$, a series of $n$ points is worth about $n(1-r)/(1+r)$ independent
 points. A twenty-point curve is then worth about 3.4 for PPO and 0.9 for TRPO.
@@ -167,8 +170,8 @@ The variability between random seeds, the one the figure was meant to measure, n
 script counts episodes instead of independent training runs.
 
 \paragraph{The script finds the t of 9 on our TRPO runs}
-Applied to our thirty TRPO curves with $n=10$ episodes, following a plan written before the computation
-(deviation~6), the script gives the results of \cref{tab:b1}:
+Applied to our thirty TRPO curves with $n=10$ episodes, following a plan written before the computation,
+the script gives the results of \cref{tab:b1}:
 \begin{itemize}
   \item With groups drawn at random, the absolute value of the average t reaches 9.09 in 38\% of the draws.
     Its median is 7.1. The test declares a difference in 43\% of the draws.
@@ -191,9 +194,9 @@ with $n$ episodes. The ratio of the two $t$ values is therefore
 \begin{equation}
   \frac{t_{\text{script}}}{t_{\text{seeds}}} = \frac{\sigma\sqrt{2/5}}{S\sqrt{2/n}} = \frac{\sqrt{n/5}}{\rho},
 \end{equation}
-that is $\sqrt2/\rho$ for our ten episodes and $1/\rho$ for the sensitivity analysis with five. Deviation~27
-checks this identity on each of the \num{10000} draws, to the last digit (largest relative difference
-$7\times10^{-16}$, \file{sim/analysis/b1\_factor.json}). For our TRPO, the standard deviation between the
+that is $\sqrt2/\rho$ for our ten episodes and $1/\rho$ for the sensitivity analysis with five. A control
+written before this computation checks this identity on each of the \num{10000} draws, to the last digit
+(largest relative difference $7\times10^{-16}$). For our TRPO, the standard deviation between the
 episodes of one agent is only 7\% of the standard deviation between agents. For our PPO, it is 30\%. The median
 factor per draw is 18.1 for TRPO and 4.0 for PPO with ten episodes, 12.8 and 2.8 with five. A TRPO agent scores
 almost the same at every episode, while two TRPO agents differ a great deal. In this case, counting episodes
@@ -275,7 +278,7 @@ and \task{Swimmer}, CrossQ on \task{Walker2d}.}
 \paragraph{A settled change, a lead seldom settled}
 The leading program differs from task to task. The change is settled under the protocol's rule: SAC, leading
 on \task{HalfCheetah}, is beaten in a settled way on \task{Hopper} by both PPOs, on \task{Walker2d} by CrossQ
-and PPO PyTorch, on \task{Swimmer} by the other three. \file{e2.py} counts 14~settled changes. The leading
+and PPO PyTorch, on \task{Swimmer} by the other three. The preregistered count finds 14~settled changes. The leading
 program, however, beats all the others in a settled way only on \task{Walker2d}. On the other three tasks, ten
 random seeds do not separate it from the runner-up: SAC from CrossQ on \task{HalfCheetah}, PPO JAX from PPO
 PyTorch on \task{Hopper}, PPO JAX from CrossQ on \task{Swimmer}. The interval of CrossQ on
@@ -283,7 +286,7 @@ PyTorch on \task{Hopper}, PPO JAX from CrossQ on \task{Swimmer}. The interval of
 
 \paragraph{With Bonferroni's correction}
 E2 computes 24~probability-of-improvement intervals with no correction. Raised to a simultaneous 95\% level,
-that is 99.79\% each (deviation~18), they leave 12~settled changes instead of 14 (\cref{tab:e2-bonferroni}).
+that is 99.79\% each (a correction written after E2 and before this computation), they leave 12~settled changes instead of 14 (\cref{tab:e2-bonferroni}).
 Two pairs lose their status: PPO JAX against CrossQ on \task{Hopper}, PPO PyTorch against SAC on
 \task{Walker2d}. The verdict of E2 survives the correction.
 
@@ -293,11 +296,11 @@ Two pairs lose their status: PPO JAX against CrossQ on \task{Hopper}, PPO PyTorc
 
 \paragraph{What the preregistered count counts}
 The number 14 counts triples, not pairs that reverse. For each task $T$ where a program $X$ leads by IQM,
-\file{e2.py} counts every other task $U$ and every program $Y$ that beats $X$ in a settled way on $U$
+the script counts every other task $U$ and every program $Y$ that beats $X$ in a settled way on $U$
 (\file{sim/analysis/e2.py}, lines 34 to 37). It never asks whether $X$ beats $Y$ on $T$. \enquote{SAC leads
 on \task{HalfCheetah} and loses to CrossQ on \task{Walker2d}} counts there as one settled change, although SAC
-and CrossQ are not separated on \task{HalfCheetah}. Deviation~21, written before this computation to fix
-this defect, adds a strict count. A pair $(A, B)$ reverses when $A$ beats $B$ in a settled way on one task
+and CrossQ are not separated on \task{HalfCheetah}. Written after the results and before this
+computation, a strict count fixes this defect. A pair $(A, B)$ reverses when $A$ beats $B$ in a settled way on one task
 and $B$ beats $A$ in a settled way on another. \Cref{tab:e2-strict} contrasts the two counts. With ten
 random seeds, three pairs reverse:
 \begin{itemize}
@@ -317,14 +320,15 @@ another.
 what a final ranking hides: the curves of SAC and CrossQ stop at \num{200000}~steps, those of PPO continue to
 one million. The equal-budget reading then compares the four programs at the same point of these curves.
 
-The ranking forms late. Deviation~29 compares, with twenty random seeds, the ranking of the four programs at
+The ranking forms late. An exploratory analysis, written after the results and before this computation,
+compares with twenty random seeds the ranking of the four programs at
 step $k$ with the final ranking through Kendall's $\tau$, which equals 1 for two identical rankings and $-1$
 for two reversed ones. Its median over the four tasks is 0.17 at \num{50000}~steps, 0 at \num{100000}, 0.17
 at \num{150000} and 0.67 at \num{200000}. The program that leads at the end already leads at
 \num{200000}~steps on two tasks out of four. At the level of a single run, the Spearman correlation (the correlation of
 ranks) between the score at \num{50000}~steps and the final score has a median of $-0.07$ for PPO and 0.19 for SAC and
 CrossQ: a run that looks promising early seldom stays ahead. These comparisons read PPO early in its budget of
-one million steps (\file{sim/analysis/curves.json}).
+one million steps.
 
 \fig{courbes-apprentissage}{Evaluation curves of the four programs (PPO PyTorch, PPO JAX, SAC, CrossQ) on the
 four tasks (one task per column). The horizontal axis gives the training steps, one point every
@@ -349,8 +353,8 @@ two pairs of SAC with the PPOs, as before, plus CrossQ against PPO JAX and the p
 \end{itemize}
 
 \paragraph{At equal budget}
-PPO receives five times more steps than SAC and CrossQ. Read at \num{200000}~steps on its curve
-(deviation~12, item~iii), PPO no longer leads on any task.
+PPO receives five times more steps than SAC and CrossQ. Read at \num{200000}~steps on its curve, a
+reading written before any look at these scores, PPO no longer leads on any task.
 \begin{itemize}
   \item With ten random seeds, SAC leads on \task{HalfCheetah}, CrossQ on the other three tasks. The
     preregistered count leaves 3~settled changes: SAC, leading on \task{HalfCheetah}, is beaten in a settled
@@ -386,7 +390,7 @@ qualifications weigh on the verdict.
     we do not know. In one case, experiment E6 shows a published tuning doing worse than the default values.
 \end{itemize}
 
-\section{E3: two programs of the same algorithm}\label{sec:e3}
+\section{E3: two programs of the same algorithm part ways on one task}\label{sec:e3}
 
 \paragraph{Question and plan}
 Do two programs that implement the same algorithm give the same result? E3 sets PPO PyTorch against PPO JAX on
@@ -400,8 +404,8 @@ run. On no task does either PPO win under the settled-winner rule. Yet the appar
 \task{Walker2d}, the IQM is \num{2158} with PyTorch and \num{1272} with JAX, 41\% lower. The probability that
 JAX does better is 0.27, from 0.06 to 0.52: the interval still touches 0.5. The two IQM intervals overlap. On
 the other three tasks, the probabilities of improvement stay close to 0.5: 0.36 on \task{HalfCheetah}, 0.54
-on \task{Hopper}, 0.66 on \task{Swimmer}. The IQM intervals of \file{e3.json} differ by a few points from
-those of \file{e2.json} for the same runs, because each script consumes the random generator in its own order
+on \task{Hopper}, 0.66 on \task{Swimmer}. The IQM intervals of E3 differ by a few points from those of E2
+for the same runs, because each script consumes the random generator in its own order
 (\cref{sec:reproductibilite-bootstrap}).
 
 \gentable{e3}
@@ -419,7 +423,7 @@ The differences resemble those at ten random seeds. The ten added random seeds n
 
 \paragraph{Four tasks, one correction}
 The settled-winner rule judges each task alone, whereas E3 tests four tasks and the twenty-seed reading looks
-at the same question a second time. Written before this computation, deviation~23 adds a Mann-Whitney test
+at the same question a second time. Written after the results and before this computation, a complement adds a Mann-Whitney test
 per task, corrected by Holm's procedure over the four tasks. It also gives the difference in score points through
 the Hodges-Lehmann estimator, the median of the differences between a PPO JAX run and a PPO PyTorch run
 (\cref{tab:e3-holm}). With ten random seeds, no task passes the correction. With twenty:
@@ -450,12 +454,12 @@ one task, between two libraries by the same author. These two libraries share th
 not their default initialisation. The option \texttt{ortho\_init} is true in Stable-Baselines3 and false in
 SBX, which then keeps Flax's initialisation for every layer. When switched on, the option does not do the same
 thing in the two libraries either. In SBX, it initialises only the action output layer, at scale 0.01. In Stable-Baselines3, it also initialises the hidden layers, with gain $\sqrt2$, then the
-value output, with gain 1 (\file{sim/analysis/hyperparams.json}, \cref{sec:programmes}). E3 does not identify
+value output, with gain 1 (\cref{sec:programmes}). E3 does not identify
 which code difference causes the difference in scores: the weight initialisation, the random generators or the rounding of the
-numerical library. The experiment of deviation~34 adds twenty random seeds on \task{Walker2d} and
-\task{Swimmer}, then swaps the initialisation of the two programs. Preregistered, it is still running.
+numerical library. An experiment written in advance adds twenty random seeds on \task{Walker2d} and
+\task{Swimmer}, then swaps the initialisation of the two programs. It is still running.
 
-\section{E4: the best three out of ten}\label{sec:e4}
+\section{E4: keeping the best three out of ten inflates the mean by a third}\label{sec:e4}
 
 \paragraph{Question and plan}
 What happens to a result when only the best three of ten runs are published, a practice
@@ -494,7 +498,7 @@ Selecting the best runs always inflates the mean, by about a third at the median
 comparisons. The result replicates on independent random seeds. E4 measures the effect of a practice. How many
 papers follow the practice is a question for the survey (criterion X3, \cref{chap:04-sondage-resultats}).
 
-\section{E5: how many random seeds?}\label{sec:e5}
+\section{E5: five random seeds are not enough for a small difference}\label{sec:e5}
 
 \paragraph{Question and plan}
 How many random seeds does it take to recover the correct order of two programs? E5 draws $n$ runs per program
@@ -512,7 +516,7 @@ five random seeds.
 \gentable{e5}
 
 \paragraph{Twenty random seeds}
-The correct order becomes that of the means of twenty runs. The draws are made among the twenty. Over the
+The correct order becomes that of the means of twenty runs. The draws are made among the twenty (\cref{fig:e5-graines}, right panel). Over the
 24 comparisons, the median barely moves: 93\% with three random seeds, 97\% with five. The close comparisons
 now number eight. They are harder than ten random seeds suggested: the median is 59\%, 62\%, 67\% and 74\%
 with three, five, ten and twenty random seeds. CrossQ and PPO PyTorch on \task{Swimmer} have means that differ
@@ -530,7 +534,7 @@ the close comparisons in only 62\% of the draws at the median.}
 E5 takes as the correct order the sign of the means of the same sample it draws from, with replacement. Its
 share therefore measures the stability of the observed sign, not the probability of recovering the true
 order. For the same reason, the twenty-seed column of the ten-seed panel draws twenty runs from ten: it is an
-extrapolation. Deviation~25, whose text precedes the computation, removes this circularity. It judges the order
+extrapolation. A check written after the results and before the computation removes this circularity. It judges the order
 of random seeds 0 to 9 on random seeds 10 to 19, then the reverse (\cref{tab:e5-hors-echantillon}). The sign
 of the difference between two programs is found again in 20 comparisons out of 24, including 5 of the 7 close
 comparisons. Four signs flip: PPO PyTorch against PPO JAX on \task{HalfCheetah} and CrossQ against PPO PyTorch
@@ -554,7 +558,7 @@ reference, such a difference is read backwards more than one time in three. The 
 magnitude. E5 lets the observed runs stand in for the true distribution. With ten or twenty runs, this
 distribution is poorly known. For the closest comparisons, so is the correct order.
 
-\section{E6: a baseline that looked a little too good}\label{sec:e6}
+\section{E6: a published recipe has aged with its libraries}\label{sec:e6}
 
 \paragraph{Question and plan}
 E6 was meant to illustrate flaw F7: the lead a new method credits to itself when it alone is tuned. On
@@ -571,8 +575,8 @@ early as \num{50000}~steps. The published settings would do nearly three times w
 
 \paragraph{An error on our side that explains nothing}
 The result was too good to believe without a check. We found an error in our code. The Zoo's reward
-normalisation uses the algorithm's discount factor, 0.999. Our first pass left it at its default value, 0.99
-(deviation~2). The diagnosis, decided after this first result, reruns the corrected recipe on
+normalisation uses the algorithm's discount factor, 0.999. Our first pass left it at its default value, 0.99.
+The diagnosis, decided after this first result, reruns the corrected recipe on
 \task{Hopper-v5} and on \task{Hopper-v4}, plus the default values on v4, ten random seeds each.
 \begin{itemize}
   \item The corrected recipe obtains \num{1012} $[902, \num{1135}]$ on v5 and \num{984} $[773, \num{1002}]$ on
@@ -588,8 +592,8 @@ on v4 as on v5, the recipe plateaus near \num{1000}.
 
 \paragraph{The official script plateaus too}
 Two explanations remained: the published recipe really does worse than the default values with today's
-libraries, or our way of applying it still differs from the Zoo's. Deviation~5, written before any
-official training, decides between them with the Zoo's own script. The ten policies trained by
+libraries, or our way of applying it still differs from the Zoo's. A control written before any
+official training decides between them with the Zoo's own script. The ten policies trained by
 \texttt{rl\_zoo3.train} on \task{Hopper-v4}, evaluated with our protocol, obtain \num{995}
 $[821, \num{1006}]$. This matches our corrected recipe, \num{984} $[777, \num{1002}]$ in this analysis: the
 probability that an official policy beats ours is 0.58, from 0.32 to 0.82. The default values obtain
@@ -605,13 +609,13 @@ On \task{Hopper}, the reward of one step is
 where $v_{x,t}$ is the forward velocity in metres per second, the term 1 is the bonus paid while the robot
 stays upright and $a_t$ is the action (Gymnasium's default values). A step lasts 0.008~seconds, so
 \num{1000}~steps take eight seconds. A return close to \num{1000} over \num{1000}~steps is that of a robot
-that stands upright without moving forward. Two deviations, each written before its computation, checked
+that stands upright without moving forward. Two controls, each written before its computation, checked
 this.
 \begin{itemize}
-  \item The official training logs (deviation~31). Over the last 200 episodes of each random seed, the
+  \item The official training logs. Over the last 200 episodes of each random seed, the
     episodes that reach \num{1000}~steps earn a median of 1.002 per step, from 0.978 to 1.013 depending on the
     random seed: the bonus alone, with no forward progress.
-  \item The final policies replayed with our protocol (deviation~33, \cref{tab:e6-vitesse},
+  \item The final policies replayed with our protocol (\cref{tab:e6-vitesse},
     \cref{fig:e6-vitesse}). The thirty replayed policies, official, corrected Zoo and default, give back the
     returns already published. The official agents
     move forward at 0.00~m/s at the median, from $-0.45$ to 0.03~m/s. Eight random seeds out of ten hold all
@@ -621,8 +625,7 @@ this.
 The evaluation videos show it (\cref{fig:e6-images}). The official agent of random seed 7 stays upright for
 \num{1000}~steps and ends 2~centimetres behind its starting point. The default agent of random seed 5 runs
 19~metres in 862~steps, then falls. The Zoo's evaluation script, \texttt{rl\_zoo3.enjoy}, also gives
-\num{996.55} over five episodes of \num{1000}~steps for random seed 7
-(\file{sim/logs/e6\_rl\_zoo3\_enjoy\_seed7.log}).
+\num{996.55} over five episodes of \num{1000}~steps for random seed 7.
 
 \gentable{e6-vitesse}
 
@@ -639,19 +642,18 @@ of the checkerboard for \num{1000}~steps, for a return of 997. Bottom, the agent
 random seed 5: it runs 19~metres in 862~steps before falling.}
 
 \paragraph{The recipe worked in 2022}
-Deviation~33 fixed in advance the reading of one last control: the agent the Zoo itself published for this
-task, \texttt{sb3/ppo-Hopper-v3} on Hugging Face (revision \texttt{b29cb57\dots},
-\file{sim/zoo\_hub/fetch.json}). Its \file{config.yml} file gives our hyperparameters. It was trained in 2022
+One last control, whose reading was fixed in advance, replays the agent the Zoo itself published for this
+task, \texttt{sb3/ppo-Hopper-v3} on Hugging Face (revision \texttt{b29cb57\dots}). Its \file{config.yml} file gives our hyperparameters. It was trained in 2022
 with Stable-Baselines3~1.5.1a8, Gym~0.21 and PyTorch~1.11. Its model card reports \num{2410}~$\pm$~10 on
 \task{Hopper-v3}. Replayed with our protocol on \task{Hopper-v4}, it obtains \num{2439} over ten episodes and
-\num{2438}~$\pm$~4 over a hundred, all of \num{1000}~steps, at 1.44~m/s (\file{sim/analysis/e6\_hub.json}).
-The reading fixed by deviation~33 applies: the recipe worked with its original libraries and has aged with
+\num{2438}~$\pm$~4 over a hundred, all of \num{1000}~steps, at 1.44~m/s.
+The reading fixed in advance applies: the recipe worked with its original libraries and has aged with
 them. This control rests on a single published agent, perhaps the best of a tuning run, whereas our ten
 official random seeds all plateau near \num{1000}. A file serialized by Python can run code when it is
 loaded. Every object in the file was therefore inspected before any loading. The file contains only tensors,
 NumPy arrays, a Gym space and Stable-Baselines3 classes.
 
-In score points, the Hodges-Lehmann estimator (deviation~30, \file{sim/analysis/effect\_sizes.json}) gives
+In score points, the Hodges-Lehmann estimator, added before this computation, gives
 the typical difference between an official policy and a default policy on v4: $-\num{1464}$~points
 $[-\num{2342}, -606]$. Between an official policy and a policy of the corrected Zoo recipe, it is $+5$~points
 $[-18, 54]$. The difference from the default values is large. The difference from our application of the
@@ -670,9 +672,9 @@ official script.
 \paragraph{Limits}
 We do not know which library change made the recipe age. We tried only one task and one algorithm of the
 Zoo. The 2022 control rests on a single published agent. A rerun of the recipe with the discount factor
-0.99 instead of 0.999 is written in advance (deviation~33, item~c) and still running.
+0.99 instead of 0.999 is written in advance and still running.
 
-\section{E7: the cost of a modified physics}\label{sec:e7}
+\section{E7: in a nearby physics, the leader on Hopper ends last}\label{sec:e7}
 
 \paragraph{Question and plan}
 Pineau asked that training be kept apart from evaluation. Our agents are already evaluated on random seeds
@@ -703,7 +705,7 @@ below 1, a cell marked as a gain an interval above 1.}
 \gentable{e7}
 
 \paragraph{The ranking upended on Hopper}
-The descriptive complement of deviation~11, with no test, ranks the programs in each physics by the IQM of
+A descriptive complement added after the results, with no test, ranks the programs in each physics by the IQM of
 their score. On \task{Hopper}, the order reverses. PPO JAX, first in the training physics with \num{3064},
 ends last in the modified physics with 525. CrossQ, third with \num{2302}, takes the lead with \num{1302},
 ahead of SAC (751) and PPO PyTorch (609). On \task{Walker2d}, SAC moves from last place to second. On
@@ -717,8 +719,8 @@ place, CrossQ from third to first. The scores are interquartile means of the fin
 ranks follow from these means. \Cref{tab:e7-test} tests the pairs one by one.}
 
 \paragraph{The reversal, tested}
-A ranking by IQM does not say which pairs really change order. Deviation~24 tests each pair on \task{Hopper}
-through its probability of improvement, in each physics, following a plan written before the computation
+A ranking by IQM does not say which pairs really change order. A complementary test judges each pair on
+\task{Hopper} through its probability of improvement, in each physics, following a plan written before the computation
 (\cref{tab:e7-test}).
 A pair reverses in a settled way when it is settled in one direction in the training physics and in the other
 direction in the modified physics.
@@ -756,19 +758,19 @@ says little about robustness. E7 tests only one modification, which changes two 
 \Cref{sec:dose} separates the two quantities and varies the size of the change. The share kept is computed run by
 run, so it does not read as the ratio of the two IQMs of the ranking.
 
-\section{The physics modified by degrees}\label{sec:dose}
+\section{The physics by degrees: the loss grows with the size of the change}\label{sec:dose}
 
 \paragraph{Question and plan}
-Does the reversal of E7 hinge on one modification chosen in advance? Deviation~12, item~ii, re-evaluates each
-final policy while changing one quantity at a time: masses from 30\% lighter to 30\% heavier, friction from
+Does the reversal of E7 hinge on one modification chosen in advance? An addition written before any computation
+re-evaluates each final policy while changing one quantity at a time: masses from 30\% lighter to 30\% heavier, friction from
 40\% weaker to 20\% stronger. A pair loses when the interval of the IQM of its ratio to the score in the training
 physics stays below 1, as in E7 (\cref{sec:plan-e7}).
 
 \paragraph{The control}
-At 1.0 times, the re-evaluations recover the final score written by \file{run.py}: the largest relative difference
+At 1.0 times, the re-evaluations recover the final score written by the training script: the largest relative difference
 is zero, for the 160 policies at ten random seeds as for the 320 at twenty.
 
-\paragraph{The loss grows with the size of the change}
+\paragraph{The pairs that lose}
 \Cref{tab:dose}, \cref{fig:intensites} and \cref{fig:dose-carte} count the pairs that lose, out of 16, for each
 physics. With ten random seeds:
 \begin{itemize}
@@ -811,8 +813,8 @@ at 1.2 times, 10. On \task{Hopper}, PPO JAX again loses the lead in 10 physics o
 random seeds.
 
 \paragraph{Hopper's pairs, tested at each intensity}
-Deviation~24 also tests the pairs on \task{Hopper} at each intensity, with twenty random seeds (key
-\texttt{dose} of \file{sim/analysis/e7\_test\_s20.json}). CrossQ beats each of the three other programs in a
+The same test also judges the pairs on \task{Hopper} at each intensity, with twenty random seeds. CrossQ
+beats each of the three other programs in a
 settled way when friction drops to 0.6, 0.7 or 0.8 times and when the masses rise to 1.3 times. With masses at
 1.1 and 1.2 times, or friction at 0.9 times, CrossQ leads and beats PPO JAX in a settled way without beating
 all the others. With masses at 0.7 times, PPO PyTorch beats the other three. The reversal on \task{Hopper}
@@ -826,7 +828,7 @@ tasks. On \task{Hopper}, the pairwise test settles the lead of CrossQ in four of
 The modifications are small and uniform: each mass or each friction coefficient changes by the same factor.
 They cannot replace a real test of generalisation, on other bodies or other tasks.
 
-\section{B3: does the measure change the ranking?}\label{sec:b3}
+\section{B3: the chosen measure changes the winner of close comparisons only}\label{sec:b3}
 
 \paragraph{Question and plan}
 Can a paper that does not define its measure choose its winner? B3 ranks the four programs by three measures
@@ -861,8 +863,8 @@ that learns fast early on.
 \end{itemize}
 
 \paragraph{What the best point adds}
-Deviation~29 also measures, run by run, what reporting the best point of the curve instead of the final score
-gains (\file{sim/analysis/curves.json}). For PPO, the final score is below the best point in 55\% to 100\% of
+The exploratory analysis of the curves also measures, run by run, what reporting the best point of the
+curve instead of the final score gains. For PPO, the final score is below the best point in 55\% to 100\% of
 the runs depending on the task. Reporting the best point then inflates the IQM by up to 48\% (PPO JAX on
 \task{Walker2d}, ten random seeds), 37\% for the same pair at twenty and 33\% for PPO PyTorch on
 \task{Hopper} at twenty. For SAC and CrossQ, evaluated at only four points, the inflation stays under 10\%,
@@ -877,8 +879,8 @@ close comparison an open question.
 
 \section{Ten or twenty random seeds, equal budget: what holds and what changes}\label{sec:consolidation}
 
-The results with ten random seeds remain the main results, as the protocol announced. The additions of
-deviation~12 confirm or qualify them.
+The results with ten random seeds remain the main results, as the protocol announced. The additions written
+before any new training (twenty random seeds, equal budget, replication) confirm or qualify them.
 
 \paragraph{What holds}
 \begin{itemize}
@@ -926,13 +928,14 @@ The limits specific to each experiment are stated in its section. A few limits a
   \item Ten random seeds, then twenty, leave wide intervals for close comparisons. E5 puts a number on this.
   \item Several analyses were added after a result had been seen: the second statistic of E1, the diagnosis of
     E6, the descriptive ranking of E7. \Cref{sec:avant-apres} lists them. The text presents them as such.
-  \item The analyses of deviations 21 to 31 were written after a technical review of the repository, which had
+  \item The analyses added last (deviations 21 to 31) were written after a technical review of the repository, which had
     already computed a draft version of several of these numbers outside the repository. Each deviation says
     so. The repository's scripts made the computation after the deviation was written. Their results are
     published whatever they turned out to be. On one point, the repository's computation differs from the
     draft: the strict count of E2 at equal budget with twenty random seeds gives one pair with Bonferroni, not
     two.
-  \item Three experiments are written in advance and still running: the determinism of SAC and CrossQ
-    (deviation~32), the Zoo recipe with the discount factor 0.99 (deviation~33) and the cause of the difference
-    between the two PPOs (deviation~34). This chapter reports none of their results.
+  \item Three experiments are written in advance and still running: the determinism of SAC and CrossQ,
+    the Zoo recipe with the discount factor 0.99 and the cause of the difference between the two PPOs
+    (deviations 32 to 34 of the simulation protocol, \cref{chap:09-ecarts}). This chapter reports none of
+    their results.
 \end{itemize}

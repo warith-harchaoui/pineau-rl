@@ -24,9 +24,10 @@ entiers et pour la famille X5.
 \section{La grille de Pineau (Q1 à Q8)}
 \label{sec:a-pineau}
 
-Joelle Pineau a présenté ces huit critères à NeurIPS 2018 (diapositives 29 et 30). Elle donnait pour
+Joelle Pineau a présenté ces huit critères à NeurIPS 2018 (diapositives 29 et 30, \cref{tab:a-pineau-2018}). Elle donnait pour
 chacun la part des articles qui le satisfaisaient, sur 50 articles de RL de 2018 qu'elle avait lus. Sa méthode de tirage n'est
-pas décrite. Ses intitulés sont donnés en anglais, tels qu'elle les a écrits.
+pas décrite. Ses intitulés sont donnés en anglais, tels qu'elle les a écrits. Le \cref{tab:a-grille-q}
+donne la question posée et la règle de décision de chacun.
 
 \begin{table}[htbp]
 \centering
@@ -50,7 +51,7 @@ Q8 & Significance testing applied & 5~\% \\
 \end{table}
 
 \begin{small}
-\begin{longtable}{@{}p{0.07\linewidth}p{0.27\linewidth}p{0.6\linewidth}@{}}
+\begin{longtable}{@{}p{0.07\linewidth}>{\raggedright\arraybackslash}p{0.27\linewidth}>{\raggedright\arraybackslash}p{0.6\linewidth}@{}}
 \caption{Grille v1, critères de Pineau : question et règle de décision.}\label{tab:a-grille-q}\\
 \toprule
 Code & Question & Règle de décision \\
@@ -94,10 +95,10 @@ Q8 & Un test statistique est-il appliqué à une comparaison ? & Un test (t, Wel
 
 Ces critères viennent de la conférence d'ICLR 2018 et du débat de 2025 sur les récompenses trompeuses des
 modèles de langue (\cref{sec:llm-pourquoi}). Ils ont été écrits avec le
-protocole, avant toute lecture.
+protocole, avant toute lecture (\cref{tab:a-grille-x}).
 
 \begin{small}
-\begin{longtable}{@{}p{0.07\linewidth}p{0.27\linewidth}p{0.6\linewidth}@{}}
+\begin{longtable}{@{}p{0.07\linewidth}>{\raggedright\arraybackslash}p{0.27\linewidth}>{\raggedright\arraybackslash}p{0.6\linewidth}@{}}
 \caption{Grille v1, nos ajouts : question et règle de décision.}\label{tab:a-grille-x}\\
 \toprule
 Code & Question & Règle de décision \\
@@ -151,9 +152,10 @@ de 2018 qui le motive.
 \texttt{na} si et seulement si X2 vaut \texttt{no}. Y4 vaut \texttt{na} si Y3 vaut 1. Y5 vaut
 \texttt{na} si et seulement si Q4 vaut \texttt{na}. Pour un article déjà lu avec la grille v1, le
 lecteur reçoit les valeurs v1 de Q1, Q4 et X2, qui fixent ces règles, sans voir les autres codes v1.
+Le \cref{tab:a-grille-y} donne la question, la source et la règle de chaque critère Y.
 
 \begin{small}
-\begin{longtable}{@{}p{0.07\linewidth}p{0.27\linewidth}p{0.6\linewidth}@{}}
+\begin{longtable}{@{}p{0.07\linewidth}>{\raggedright\arraybackslash}p{0.27\linewidth}>{\raggedright\arraybackslash}p{0.6\linewidth}@{}}
 \caption{Grille v2 : question, source et règle de décision.}\label{tab:a-grille-y}\\
 \toprule
 Code & Question & Règle de décision \\
@@ -238,13 +240,13 @@ Y12 & Un outil statistique postérieur à 2018 est-il employé ? (adoption d'Aga
 \label{sec:a-x8}
 
 X2 compte toute barre d'erreur. Or une barre calculée sur les épisodes d'un même entraînement est le
-piège que montre l'expérience B1 (\cref{sec:b1}). Le critère X8 demande donc si l'incertitude est
+piège que montre l'expérience B1 (\cref{sec:b1}). Le critère X8 (\cref{tab:a-grille-x8}) demande donc si l'incertitude est
 calculée sur des entraînements indépendants. Il a été écrit après les résultats
 et avant toute lecture de ce critère (écart 32 du sondage). Il est exploratoire : il s'ajoute aux
 résultats sans changer les verdicts rendus par la règle de l'écart 20 du sondage.
 
 \begin{small}
-\begin{longtable}{@{}p{0.07\linewidth}p{0.27\linewidth}p{0.6\linewidth}@{}}
+\begin{longtable}{@{}p{0.07\linewidth}>{\raggedright\arraybackslash}p{0.27\linewidth}>{\raggedright\arraybackslash}p{0.6\linewidth}@{}}
 \caption{Le critère X8 : question et règle de décision.}\label{tab:a-grille-x8}\\
 \toprule
 Code & Question & Règle de décision \\

@@ -12,7 +12,7 @@ dépôt et comment l'obtenir.
 \label{sec:depot}
 
 Le dépôt suit un flux à sens unique, des essais vers les documents
-(\cref{fig:architecture}). Un essai écrit un fichier de résultats brut : une courbe d'évaluation au
+(\cref{fig:architecture,fig:architecture-2}) ; le \cref{tab:depot} nomme ses dossiers. Un essai écrit un fichier de résultats brut : une courbe d'évaluation au
 format CSV pour une simulation, un journal JSONL pour un essai GRPO, un fichier JSON de lecture pour
 un article du sondage. Un script d'analyse lit ces fichiers et écrit un fichier JSON de résultats.
 Deux scripts de vérification recalculent ensuite chaque nombre des textes à partir de ces fichiers
@@ -34,8 +34,8 @@ Chemin & Contenu \\
 \file{study/} & Le sondage : protocole (\file{PROTOCOL.md}), fiche du lecteur (\file{GRILLE.md}),
   tirages, lectures (\file{codes/}, \file{codes\_v2/}, \file{codes\_x8/}), harmonisation
   (\file{overrides*.json}), provenance des lecteurs (\file{readers/}), scripts d'analyse et fichiers JSON de
-  résultats, dont ceux des écarts 30 à 33 (\file{survey\_extra.py}, \file{x8\_stats.py},
-  \file{q5\_versions\_stats.py}). \\
+  résultats, dont ceux des écarts 30 à 36 (\file{survey\_extra.py}, \file{x8\_stats.py},
+  \file{q5\_versions\_stats.py}, \file{gemma\_stats.py}, \file{r36\_stats.py}). \\
 \file{sim/} & Les simulations : protocole (\file{SIM\_PROTOCOL.md}), un essai (\file{run.py}), une
   réévaluation sous physique modifiée (\file{dose.py}), listes d'essais (\file{jobs*.txt}),
   lanceurs et surveillant (\file{drive.sh}, \file{queue.sh}, \file{worker.sh}, \file{scale.sh},
@@ -284,7 +284,7 @@ Aucune cible n'entraîne quoi que ce soit. L'entraînement passe par \file{sim/r
         sans dépendance téléchargée : elles viennent de \file{envs/analysis.lock}.
   \item[\texttt{make analysis}] relance tous les scripts d'analyse, dans l'ordre des dépendances, par trois
         cibles qui se lancent aussi seules.
-        \texttt{analysis-study} lance les douze scripts du sondage, dont ceux des écarts 30 à 33.
+        \texttt{analysis-study} lance les scripts du sondage, dont ceux des écarts 30 à 36.
         \texttt{analysis-sim} lance les dix-sept scripts des simulations à dix graines aléatoires, dont le
         décompte strict de E2 et le test du renversement de \task{Hopper}, puis l'analyse statistique du
         pipeline officiel du Zoo, les variantes des écarts 12 et 20 (vingt graines aléatoires, réplication de
@@ -437,7 +437,7 @@ deux cœurs pour tout le projet (écart 19). Ce partage ne touche pas les
 résultats tant qu'un essai ne dépend que de sa graine aléatoire : les relances le vérifient pour PPO,
 l'écart 32 le teste encore pour SAC et CrossQ (\cref{sec:registres}). La \cref{sec:calcul} décrit les lanceurs,
 le surveillant et la file d'attente. Le \cref{tab:calcul} donne, par programme et par tâche, le
-nombre d'essais, le nombre de pas, la durée médiane d'un essai et les heures de cœur consommées.
+nombre d'essais, le nombre de pas, la durée murale médiane d'un essai et la somme de ces durées.
 
 Les essais GRPO ont des durées très différentes selon l'appareil. D'après le champ \texttt{wall} de
 leurs journaux au pas 100, un essai Qwen a pris de 42 à 52 minutes sur GPU et de 4,3 à 11,4 heures

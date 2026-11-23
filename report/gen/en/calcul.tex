@@ -3,7 +3,8 @@
 \centering
 \footnotesize
 \setlength{\tabcolsep}{4pt}
-\caption[Compute of the experiments]{Compute of the experiments, read from the result files: for each program and task, number of finished runs, training steps per run (column \texttt{step} of the last row), median wall-clock time of one run and sum of the times, in hours. Wall-clock time is the column \texttt{wall} of \file{sim/results/<program>/<task>/seed<s>.csv} at the last evaluation (seconds since launch, evaluations included), and for GRPO the last \texttt{wall} of the training steps of \file{sim/llm/results/<model>/mul2/<reward>/seed<s>.jsonl}. These are not core-hours: each training run ran on one thread, PPO JAX on two at first (deviation 4), GRPO on the Apple GPU or on two CPU threads, on a shared machine whose load varied; the re-evaluations of E7 at several strengths and the ten official Zoo agents (E6) do not record their duration and are missing here. The PPO and TRPO models actually count 1,024,000 steps (blocks of 51,200, deviation 14 (d)). The reconstructed ledger \file{sim/logs/attempts\_reconstructed.csv} counts 292 launches for the training runs of the grid, of B1 and of the E6 diagnosis, 250 of them successful (deviation 14 (e)).}
+\begin{threeparttable}
+\caption[Compute of the experiments]{Compute of the experiments, read from the result files: for each program and task, number of finished runs, training steps per run (column \texttt{step} of the last row), median wall-clock time of one run and sum of the times, in hours. These are not core-hours.}
 \label{tab:calcul}
 \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}Xlrrrr@{}}
 \toprule
@@ -39,4 +40,8 @@ GRPO, Llama 3.2 1B & mul2, true reward & 5 & 100 & 1.21 & 6.1 \\
 \multicolumn{2}{@{}l}{\emph{Total GRPO (finished runs)}} & 19 & & & 61.7 \\
 \bottomrule
 \end{tabularx}
+\begin{tablenotes}[flushleft]\scriptsize
+\item[] Wall-clock time is the column \texttt{wall} of \file{sim/results/<program>/<task>/seed<s>.csv} at the last evaluation (seconds since launch, evaluations included); for GRPO, it is the last \texttt{wall} of the training steps of \file{sim/llm/results/<model>/mul2/<reward>/seed<s>.jsonl}. Each training run ran on one thread, PPO JAX on two at first (deviation 4), GRPO on the Apple GPU or on two CPU threads, on a shared machine whose load varied; the re-evaluations of E7 at several strengths and the ten official Zoo agents (E6) do not record their duration and are missing here. The PPO and TRPO models actually count 1,024,000 steps (blocks of 51,200, deviation 14 (d)). The reconstructed ledger \file{sim/logs/attempts\_reconstructed.csv} counts 292 launches for the training runs of the grid, of B1 and of the E6 diagnosis, 250 of them successful (deviation 14 (e)).
+\end{tablenotes}
+\end{threeparttable}
 \end{table}

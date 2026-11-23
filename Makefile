@@ -26,7 +26,7 @@ export PYTHONPATH := $(CURDIR)/src$(if $(PYTHONPATH),:$(PYTHONPATH))
 
 # In dependency order: extension_stats.json feeds robustness, title_filter_compare and trajectory.
 STUDY := analyze analyze_final audit_stats agree_v2 extension_stats robustness title_filter title_filter_compare trajectory \
-         survey_extra x8_stats q5_versions_stats r36_stats relecture_humaine/tirage35
+         survey_extra x8_stats q5_versions_stats r36_stats gemma_stats relecture_humaine/tirage35
 SIM   := e1 e1_curve b1_trpo b1_script e2 e3 e4 e5 e6 e6_diag e7 e7_rank b3 dose e2_bonferroni e2_strict e7_test
 # Deviations 12 and 20 of SIM_PROTOCOL.md: twenty seeds (_s20), the E4 replication on seeds 10 to 19 (_r10),
 # PPO read at 200,000 steps like SAC and CrossQ (_equal, _equal_s20).
@@ -43,7 +43,7 @@ SIM12 := $(S20:%=%_s20) e4_r10 $(EQUAL:%=%_equal) $(EQUAL:%=%_equal_s20)
 OUTPUTS := study/results_2026.json study/results_final.json study/audit_stats.json study/agree_v2.json \
            study/extension_stats.json study/robustness.json study/title_filter.json study/title_filter_compare.json \
            study/trajectory.json study/survey_extra.json study/x8_stats.json study/q5_versions.json \
-           study/r36_stats.json \
+           study/r36_stats.json study/gemma_stats.json study/gemma_stats_invalid_no.json \
            study/relecture_humaine/tirage35.json \
            $(SIM:%=sim/analysis/%.json) $(SIM12:%=sim/analysis/%.json) sim/analysis/e6_official.json \
            $(POST:%=sim/analysis/%.json) \
@@ -62,6 +62,7 @@ analysis: analysis-study analysis-sim analysis-llm
 
 analysis-study:
 	@cd study && for s in $(STUDY); do echo "study/$$s.py"; $(NICE) $(PY) $$s.py > /dev/null || exit 1; done
+	@echo "study/gemma_stats.py, invalid decisions counted no (survey deviation 33)"; cd study && INVALID_NO=1 $(NICE) $(PY) gemma_stats.py > /dev/null
 
 analysis-sim:
 	@cd sim && for s in $(SIM); do echo "sim/analysis/$$s.py"; $(NICE) $(PY) analysis/$$s.py > /dev/null || exit 1; done

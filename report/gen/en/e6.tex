@@ -3,7 +3,8 @@
 \centering
 \footnotesize
 \setlength{\tabcolsep}{3.5pt}
-\caption[E6: default values against the published recipe]{Experiment E6, the baseline: PPO PyTorch on Hopper, one million steps, 10 seeds per group, Stable-Baselines3 default values against the settings published by RL Baselines3 Zoo. The first pass (preregistered, \file{sim/analysis/e6.json}, bootstrap with 2,000 resamples) normalised observations with a gamma of 0.99 instead of 0.999; the diagnosis decided after that result (deviation 2) reruns the corrected recipe on Hopper v5 and v4, the version the Zoo was tuned for (\file{e6\_diag.json}, 5,000 resamples, Holm over three comparisons); then ten agents trained with the Zoo's official script, evaluated with our protocol (deviation 5, written before any official training; \file{e6\_official.json}, 2,000 resamples, Holm over two comparisons). The bounds of one group therefore vary from one file to the next at the Monte Carlo level. IQM with its 95\% bootstrap interval (rliable); $P(A > B)$: probability that a run of $A$ beats a run of $B$, bootstrap interval; Welch test, Holm correction, Mann-Whitney test where the script computes it. \textbf{In bold}, comparisons that pass the Holm correction: the published recipe does worse than the default values, with our code as with the official script. Mean and standard deviation of the official agents computed here from their ten scores (\file{e6\_official.json}).}
+\begin{threeparttable}
+\caption[E6: default values against the published recipe]{Experiment E6, the baseline: PPO PyTorch on Hopper, one million steps, 10 seeds per group, Stable-Baselines3 default values against the settings published by RL Baselines3 Zoo. \textbf{In bold}, comparisons that pass the Holm correction: the published recipe does worse than the default values, with our code as with the official script. Sources: \file{sim/analysis/e6.json}, \file{e6\_diag.json}, \file{e6\_official.json}.}
 \label{tab:e6}
 \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}Xrrrl@{}}
 \toprule
@@ -29,4 +30,8 @@ Official Zoo script, v4 / Zoo corrected, v4 & 0.58 [0.32,\,0.82] & 0.88 & 0.88 &
 \textbf{Official Zoo script, v4 / Default values v4} & \textbf{0.09 [0.00,\,0.30]} & \textbf{0.0005} & \textbf{0.001} &  \\
 \bottomrule
 \end{tabularx}
+\begin{tablenotes}[flushleft]\scriptsize
+\item[] The first pass (preregistered, \file{sim/analysis/e6.json}, bootstrap with 2,000 resamples) normalised observations with a gamma of 0.99 instead of 0.999; the diagnosis decided after that result (deviation 2) reruns the corrected recipe on Hopper v5 and v4, the version the Zoo was tuned for (\file{e6\_diag.json}, 5,000 resamples, Holm over three comparisons); then ten agents trained with the Zoo's official script, evaluated with our protocol (deviation 5, written before any official training; \file{e6\_official.json}, 2,000 resamples, Holm over two comparisons). The bounds of one group therefore vary from one file to the next at the Monte Carlo level. IQM with its 95\% bootstrap interval (rliable); $P(A > B)$: probability that a run of $A$ beats a run of $B$, bootstrap interval; Welch test, Holm correction, Mann-Whitney test where the script computes it. Mean and standard deviation of the official agents computed here from their ten scores (\file{e6\_official.json}).
+\end{tablenotes}
+\end{threeparttable}
 \end{table}

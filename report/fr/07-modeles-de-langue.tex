@@ -1,14 +1,17 @@
-\chapter{Le volet des modèles de langue}
+\chapter{Les modèles de langue : un gain apparent fait de réponses plus courtes}\chaptermark{Le volet des modèles de langue}
 \label{chap:07-modeles-de-langue}
 
-Les chapitres précédents traitent de programmes qui apprennent à agir dans un monde simulé. Ce
-chapitre décrit un volet plus petit, consacré aux modèles d'IA générative qui écrivent du texte. Il
-présente le vocabulaire retenu, l'algorithme tel que nous l'avons écrit, le protocole, les essais et
-leurs résultats, puis le piège de mesure que ces essais ont révélé. Le protocole complet se trouve
-dans \file{sim/llm/LLM\_PROTOCOL.md}. Ses vingt écarts sont résumés au \cref{chap:09-ecarts}. Les écarts~18
-et~19, écrits après tous les résultats, déclarent des défauts trouvés par une relecture
-technique et relèvent dans les journaux des mesures que la première version de ce chapitre laissait de côté. Ils
-changent la lecture du volet sans changer aucun chiffre publié.
+Avec cinq graines aléatoires, aucun gain de GRPO n'est établi sur nos deux petits modèles de langue. Le gain
+apparent de Qwen venait de réponses plus courtes : la vraie récompense lui apprend à finir avant la limite
+de longueur, pas à mieux multiplier. Une récompense tirée au sort détruit la compétence de départ des deux
+familles de modèles. Les chapitres précédents traitent de programmes qui apprennent à agir dans un monde
+simulé. Ce volet, plus petit, porte sur les modèles d'IA générative qui écrivent du texte : le vocabulaire
+retenu, l'algorithme tel que nous l'avons écrit, le protocole, les essais et leurs résultats, puis le piège
+de mesure que ces essais ont révélé. Le protocole complet se trouve dans \file{sim/llm/LLM\_PROTOCOL.md}. Ses
+vingt écarts sont résumés au \cref{chap:09-ecarts}. Deux d'entre eux (18 et 19), écrits après tous les
+résultats, déclarent des défauts trouvés par une relecture technique et relèvent dans les journaux des
+mesures que la première version de ce chapitre laissait de côté. Ils changent la lecture du volet sans
+changer aucun chiffre publié.
 
 \section{Le vocabulaire}
 \label{sec:llm-vocabulaire}
@@ -329,7 +332,7 @@ Avec deux graines aléatoires de plus, les nouveaux essais Qwen finissent à 13~
 graines aléatoires, le gain moyen tombe à $+14$ points, de $-3$ à $+34$ : l'intervalle contient
 désormais zéro. Le gain que nous lisions sur Qwen avec trois graines aléatoires ne tient plus. Sur Llama, les
 deux nouveaux essais finissent à 27~\% et 33~\%. Le gain moyen vaut $+6$ points, de $-0{,}4$ à $+15$ :
-zéro reste dans l'intervalle. Les intervalles de Student de l'écart~19 sont plus larges : de $-16$ à $+45$
+zéro reste dans l'intervalle. Les intervalles de Student, ajoutés après les résultats, sont plus larges : de $-16$ à $+45$
 pour Qwen, de $-6$ à $+19$ pour Llama, avec un $p$ de signe de 0,31 pour les deux. Avec cinq graines
 aléatoires, nous ne pouvons pas dire que GRPO fait progresser l'un ou l'autre modèle sur cette tâche, dans
 ces conditions.
@@ -344,7 +347,7 @@ ne calcule pas mieux. La distribution qu'il échantillonne à la température 1 
 hasard tombe un peu plus souvent juste, alors que la réponse la plus probable et la meilleure de huit
 tombent moins souvent juste. Chez Qwen, le pass@8 baisse dans quatre essais sur cinq, de 51,6~\% à 34,4~\%,
 avec un intervalle de Student qui contient zéro. À la question de \textcite{yue2025rlvr}, nos essais
-répondent que le pass@8 ne monte en moyenne dans aucune configuration. Sous la règle de l'écart~19, les deux
+répondent que le pass@8 ne monte en moyenne dans aucune configuration. Sous la règle ajoutée après les résultats, les deux
 chutes de Llama ne sont pas établies, puisque le $p$ de signe ne peut pas descendre sous 0,0625, alors que leurs
 intervalles de Student excluent zéro. La règle refuse donc ici d'établir des chutes que l'intervalle de
 Student, pris seul, signalerait.
@@ -379,8 +382,7 @@ Le gain de Qwen avec la vraie récompense vient des deux essais faits sur GPU, g
 et 1 : $+26$ et $+51$ points. Les trois essais à vraie récompense qui ont tourné sur CPU (graines aléatoires 2
 à 4) ont un gain moyen de $-2$ points, de $-11$ à $+4$. Les quatre essais sur CPU à récompense tirée
 au sort (graines aléatoires 1 à 4) ont un gain moyen de $-11$ points, de $-11$ à $-10$. Sur CPU seul, la vraie
-récompense n'apporte à Qwen aucun gain détectable. Données :
-\file{sim/llm/results/gains\_5.json} et \file{extra\_5.json}.
+récompense n'apporte à Qwen aucun gain détectable.
 
 Ces chiffres ne séparent pas deux causes. Le matériel a changé avec la graine aléatoire : chaque
 graine aléatoire de Qwen à vraie récompense n'a tourné que sur un appareil. Deux explications restent
@@ -389,7 +391,7 @@ sur le GPU. Selon la seconde, l'appareil change la trajectoire de l'entraînemen
 calculs ou par des calculs GPU corrompus mais finis, que les premiers essais n'auraient pas
 détectés. Cinq essais ne départagent pas ces explications.
 
-Les journaux établissent deux faits sur l'appareil (écart~18, point~c). Le pass@1 au pas 0 dépend
+Les journaux établissent deux faits sur l'appareil. Le pass@1 au pas 0 dépend
 du modèle de base, de la graine aléatoire et du hasard des tirages, puisque la récompense n'intervient qu'après
 cette première évaluation. La justesse gloutonne au pas 0, qui ne tire rien au hasard, vaut \num{7.33}~\% dans
 les dix essais Qwen, sur CPU comme sur GPU. Premier fait, l'appareil ne change donc pas la réponse la plus
@@ -399,7 +401,7 @@ par exemple, l'essai à vraie récompense, sur GPU, part de \num{10.25}~\%, l'es
 sur CPU, de \num{11.75}~\%. Le second fait, le signe direct du non-déterminisme du calcul MPS, vient de Llama.
 Pour la graine aléatoire 3, les deux essais ont tourné sur GPU, avec le même modèle et le même hasard. Ils
 partent pourtant d'un pass@1 de 25~\% et de \num{24.25}~\%. Leur justesse gloutonne vaut \num{70.7}~\% d'un
-côté, \num{66.7}~\% de l'autre. L'écart~7 l'avait déjà constaté (\cref{tab:grpo}).
+côté, \num{66.7}~\% de l'autre. Le journal des écarts l'avait déjà noté pendant les essais (écart~7, \cref{tab:grpo}).
 
 Les journaux montrent aussi des groupes sans gradient. Sous la vraie récompense, beaucoup de groupes ont huit
 réponses toutes fausses, ou toutes justes, donc un avantage nul pour chacune. La norme du gradient vaut zéro
@@ -410,12 +412,12 @@ aléatoire 4 cesse d'apprendre dès le pas 50, à 0~\% de pass@1, de pass@8 et d
 récompense tirée au sort, la pièce donne presque toujours des récompenses mêlées : aucun pas journalisé n'a
 un gradient nul.
 
-\paragraph{Un essai hors protocole} L'écart 16 (e) prévoyait de lancer une fois sur CPU l'essai
+\paragraph{Un essai hors protocole} Une décision écrite avant tout calcul à cinq graines aléatoires
+prévoyait de lancer une fois sur CPU l'essai
 Llama à récompense tirée au sort et graine aléatoire 4, après tous les autres calculs, pour savoir si son
 double échec tenait au GPU. L'essai a abouti sans aucun recalcul. Son pass@1
-passe de \num{23.25}~\% au pas 0 à \num{0.25}~\% au pas 100
-(\file{sim/llm/results/llama1\_cpu/mul2/random/seed4.jsonl}). Le résultat sort de toute
-statistique, comme l'écart l'avait fixé. Il cadre avec un échec dû au GPU, sans le prouver : un
+passe de \num{23.25}~\% au pas 0 à \num{0.25}~\% au pas 100. Le résultat sort de toute
+statistique, comme cette décision l'avait fixé. Il cadre avec un échec dû au GPU, sans le prouver : un
 seul essai ne sépare pas l'appareil du hasard. Sur CPU, ce dixième essai se comporte comme les neuf autres essais à récompense tirée au sort : la réussite s'effondre.
 
 \section{Le piège de la coupure}
@@ -423,9 +425,9 @@ seul essai ne sépare pas l'appareil du hasard. Sur CPU, ce dixième essai se co
 
 \subsection{Le diagnostic}
 
-L'incident de l'écart 4 a mis ce piège au jour. Pendant le pilote du taux d'apprentissage, la part de
+Un incident a mis ce piège au jour. Pendant le pilote du taux d'apprentissage, la part de
 réponses justes du lot d'entraînement valait 0,91 au pas 10, alors que le pass@1 de test du modèle
-de base valait 0,11. Le diagnostic de l'écart 5 (\file{sim/llm/diag/replay\_batch.py}) rejoue,
+de base valait 0,11. Un diagnostic rejoue,
 sans entraînement, le lot exact du pas 10 du pilote : les quatre multiplications $48 \times 49$,
 $14 \times 36$, $21 \times 50$ et $45 \times 17$, huit réponses chacune, avec le modèle Qwen de
 départ. Le modèle donne 5 réponses justes sur 32, ce qui concorde avec le test. Mais 23 réponses sur 32
@@ -455,7 +457,7 @@ récompense tirée au sort ne se contente pas d'allonger les réponses au-delà 
 
 Une réponse coupée compte pour fausse. Un modèle qui apprend à répondre plus court gagne donc des
 points de pass@1 sans mieux calculer. La première version de ce chapitre ne pouvait pas chiffrer cette part.
-La justesse parmi les réponses finies de l'écart~19 la chiffre (\cref{tab:grpo-mesures}).
+La justesse parmi les réponses finies, ajoutée après les résultats, la chiffre (\cref{tab:grpo-mesures}).
 \begin{itemize}
   \item Chez Qwen, sous la vraie récompense, la part coupée tombe de 74,9~\% à 6,0~\% dans les cinq essais.
     La justesse parmi les réponses finies \emph{baisse}, de 41,2~\% à 27,5~\% ($-14$~points, Student
@@ -467,8 +469,7 @@ La justesse parmi les réponses finies de l'écart~19 la chiffre (\cref{tab:grpo
 À l'intérieur de la configuration Qwen à vraie récompense, la corrélation de Pearson entre la variation de la
 part coupée et celle de pass@1 vaut $+0{,}23$ sur cinq essais. Sur si peu de points, rien n'indique que
 raccourcir davantage rapporte davantage. Sur les deux récompenses ensemble, la corrélation de Spearman vaut $-0{,}63$ pour Qwen et $-0{,}83$
-pour Llama, ce qui reflète surtout l'effet de la récompense (\file{sim/llm/results/logs\_stats\_5.json}, clé
-\texttt{length}).
+pour Llama, ce qui reflète surtout l'effet de la récompense.
 
 \begin{keybox}
 \textbf{Leçon pour un banc d'essai de modèle de langue.} Une limite de longueur transforme une mesure

@@ -1,9 +1,7 @@
-"""Three diagrams of the technical report, in French and English: figures/src/<name>-<lang>.svg.
+"""Two diagrams of the technical report, in French and English: figures/src/<name>-<lang>.svg.
 
   flux-sondage   the survey as a flow: populations, draws, samples, readers, double readings, harmonisation,
                  checks, final comparisons (counts from study/*.json, study/PROTOCOL.md, docs/conclusions.md)
-  frise-ecarts   the three protocols and their dated deviations, day by day from 8 to 21 November 2026 (dates read
-                 from the deviation texts of the three protocols)
   architecture   the repository as a pipeline, from training runs to documents, with the make targets and the CI
 
 The survey flow and the repository each take two figures (flux-sondage and flux-sondage-2, architecture and
@@ -14,11 +12,9 @@ by path): its faces embedded as subsets (Latin Modern when tools/figures.py runs
 Roboto otherwise), the house header and footer. Every text goes
 through `tx`, which refuses a character missing from the subset of its face. The same input gives the same bytes.
 """
-import datetime
 import importlib.util
 import json
 import math
-import re
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -503,132 +499,7 @@ def flux_sondage_2(lang):
 
 
 # ---------------------------------------------------------------------------------------------------------------
-# 2. The deviations, day by day
-
-
-def deviations():
-    """(lane, number, day or None) for every deviation of the three protocols, the day read from its own text."""
-    out = []
-    for lane, path in (("study", "study/PROTOCOL.md"), ("sim", "sim/SIM_PROTOCOL.md"),
-                       ("llm", "sim/llm/LLM_PROTOCOL.md")):
-        body = (ROOT / path).read_text(encoding="utf-8").split("## Écarts", 1)[1]
-        for it in re.split(r"\n(?=\d+\. )", body):
-            m = re.match(r"(\d+)\. ", it)
-            if not m:
-                continue
-            d = re.search(r"(\d+)(?:er)? novembre 2026", it)
-            out.append((lane, int(m[1]), int(d[1]) if d else None))
-    return out
-
-
-def frise_ecarts(lang):
-    fr = lang == "fr"
-    devs = deviations()
-    lanes = ("study", "sim", "llm")
-    lane_c = {"study": C26, "sim": CSIM, "llm": C18}
-    lane_n = {"study": ("Sondage", "Survey"), "sim": ("Simulations", "Simulations"), "llm": ("GRPO", "GRPO")}
-    counts = {ln: sum(1 for d in devs if d[0] == ln) for ln in lanes}
-    total = len(devs)
-    first2 = sum(1 for d in devs if d[2] is None or d[2] <= 9)
-    assert (counts["study"], counts["sim"], counts["llm"]) == (33, 34, 20)
-    last = max(d[2] for d in devs if d[2] is not None)
-    assert all(d[2] is None or 8 <= d[2] <= last for d in devs)
-    T = {
-        "title": (f"{first2} des {total} écarts datent des deux premiers jours" if fr else
-                  f"{first2} of the {total} deviations date from the first two days"),
-        "sub": (f"Les trois protocoles et leurs écarts, jour par jour, du 8 au {last} novembre 2026" if fr else
-                f"The three protocols and their deviations, day by day, from 8 to {last} November 2026"),
-        "source": ("Sources : écarts de study/PROTOCOL.md, sim/SIM_PROTOCOL.md, sim/llm/LLM_PROTOCOL.md ; "
-                   "historique git ; article de blog sur deraison.ai" if fr else
-                   "Sources: deviations of study/PROTOCOL.md, sim/SIM_PROTOCOL.md, sim/llm/LLM_PROTOCOL.md; "
-                   "git history; blog article on deraison.ai"),
-        "desc": (f"Frise verticale, un jour par ligne du 8 au {last} novembre 2026, une colonne par protocole "
-                 "(sondage, simulations, GRPO) et une colonne de jalons. Chaque écart est une pastille numérotée "
-                 "sur le jour que son texte indique ; les écarts sans date, notés avant le premier commit, "
-                 "sont des pastilles creuses sur la ligne du 8. L'article paraît le 21." if fr else
-                 f"Vertical timeline, one day per row from 8 to {last} November 2026, one column per protocol "
-                 "(survey, simulations, GRPO) and a column of milestones. Each deviation is a numbered dot on "
-                 "the day its text gives; the undated deviations, recorded before the first commit, are hollow "
-                 "dots on the row of the 8th. The article is published on the 21st."),
-    }
-    f = figure(T)
-    s, L, W = f.s, f.L, f.W
-    DW, LW, LG = 70, 142, 10
-    R, P = 12.5, 28                              # dot radius, dot pitch
-    lx = [L + DW + i * (LW + LG) for i in range(3)]
-    mx = lx[2] + LW + 18
-    MW = W - L - mx
-    per = int((LW + (P - 2 * R)) // P)           # dots per line
-    MS = {  # milestones per day: (French, English); every one from the protocols, README or git history
-        8: [("Les trois protocoles, |avant toute lecture |et tout entraînement",
-             "The three protocols, |before any reading |or training")],
-        9: [("Premier commit", "First commit")],
-        12: [("Les 12 essais GRPO |à trois graines finis", "The 12 GRPO runs |with three seeds done")],
-        13: [("Les 40 essais CrossQ |finis : fin des |simulations prévues",
-              "The 40 CrossQ runs |done: planned |simulations finished")],
-        15: [("Dépôt public ; |consolidation écrite |avant tout essai", "Repository public; |consolidation written |before any run")],
-        21: [("Fin des entraînements, |consolidation calculée", "Training finished, |consolidation computed"),
-             ("Article publié |sur deraison.ai", "Article published |on deraison.ai")],
-    }
-    y = f.top + 4
-    s.circle(L + 9, y - 5, 8, INK2)
-    lab1 = "écart daté dans son texte" if fr else "deviation dated in its text"
-    tx(s, L + 24, y, lab1, "sans", MIN, INK2)
-    x2 = L + 24 + D.width(lab1, "sans", MIN) + 24
-    s.circle(x2 + 8, y - 5, 7.3, PAPER, f' stroke="{INK2}" stroke-width="1.5"')
-    tx(s, x2 + 23, y, "sans date : noté avant le premier commit, placé au 8" if fr else
-       "undated: recorded before the first commit, placed on the 8th", "sans", MIN, INK2)
-    y += 34
-    for i, ln in enumerate(lanes):
-        col = lane_c[ln]
-        s.rect(lx[i], y - 15, LW, 4, col, rx=2)
-        tx(s, lx[i], y + 6, lane_n[ln][0 if fr else 1], "sans7", 14.5, INK)
-        tx(s, lx[i] + LW, y + 6, str(counts[ln]), "sans7", 14.5, col, "end")
-    s.rect(mx, y - 15, MW, 4, INK, rx=2)
-    tx(s, mx, y + 6, "Jalons" if fr else "Milestones", "sans7", 14.5, INK)
-    y += 18
-    wd_fr = ["lun.", "mar.", "mer.", "jeu.", "ven.", "sam.", "dim."]
-    wd_en = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-    for di, day in enumerate(range(8, last + 1)):
-        wd = datetime.date(2026, 11, day).weekday()
-        cells = {ln: sorted([d for d in devs if d[0] == ln and (d[2] or 8) == day],
-                            key=lambda d: (d[2] is not None, d[1])) for ln in lanes}
-        nrows = max([math.ceil(len(v) / per) for v in cells.values()] + [0])
-        ms = MS.get(day, [])
-        mlines = sum(len(lines(m[0 if fr else 1], "sans", MIN, MW)) for m in ms)
-        h = max(nrows * P + 8, mlines * 17 + (6 if len(ms) > 1 else 0) + 12, 32)
-        if di % 2 == 0:
-            s.rect(L - 6, y, W - 2 * L + 12, h, PANEL, rx=4)
-        bg = PANEL if di % 2 == 0 else PAPER
-        tx(s, L + 20, y + 21, str(day), "sans7", 16, INK, "end", bg=bg)
-        tx(s, L + 26, y + 21, (wd_fr if fr else wd_en)[wd], "sans", MIN, SOFT, bg=bg)
-        for i, ln in enumerate(lanes):
-            col = lane_c[ln]
-            for k, d in enumerate(cells[ln]):
-                cx = lx[i] + R + (k % per) * P
-                cy = y + 4 + R + (k // per) * P
-                if d[2] is None:
-                    s.circle(cx, cy, R - 0.8, PAPER, f' stroke="{col}" stroke-width="1.6"')
-                    tx(s, cx, cy + 4.6, str(d[1]), "sans7", MIN, col, "middle", bg=PAPER)
-                else:
-                    s.circle(cx, cy, R, col)
-                    tx(s, cx, cy + 4.6, str(d[1]), "sans7", MIN, PAPER, "middle", bg=col)
-        yy = y + 21
-        for j, m in enumerate(ms):
-            pub = day == 21 and j == len(ms) - 1          # the publication, the last milestone
-            if pub:
-                yy += 6
-                s.circle(mx - 9, yy - 4.5, 4.5, D.RED)
-            for ln_ in lines(m[0 if fr else 1], "sans", MIN, MW):
-                tx(s, mx, yy, ln_, "sans7" if pub else "sans5" if day in (15, 21) else "sans", MIN,
-                   INK if day in (15, 21) else INK2, bg=bg)
-                yy += 17
-        y += h + 2
-    return finish(f, y, T["source"])
-
-
-# ---------------------------------------------------------------------------------------------------------------
-# 3. The repository as a pipeline, in two figures: producing and analysing (architecture), then checking,
+# 2. The repository as a pipeline, in two figures: producing and analysing (architecture), then checking,
 #    writing and rerunning (architecture-2)
 
 

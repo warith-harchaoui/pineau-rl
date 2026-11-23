@@ -3,7 +3,8 @@
 \centering
 \footnotesize
 \setlength{\tabcolsep}{3.5pt}
-\caption[Trajectoire 2018 à 2026]{Trajectoire du RL classique de 2018 à 2026 (écart 25 de \file{study/PROTOCOL.md}, écrit avant tout tirage) : part des articles qui remplissent chaque critère, en pourcentage, par année. 2018 : notre lecture des articles à expériences ; 2019, 2020, 2022 et 2024 : les 20 premiers articles expérimentaux de RL classique par année, tirés au hasard dans ICML et NeurIPS (ICLR absente, son site refusant les téléchargements automatiques) ; 2026 : l'échantillon classique de la comparaison principale. Le nombre entre parenthèses donne le dénominateur quand il diffère de l'effectif de la colonne (critère sans objet pour certains articles). Avec 20 articles, une part a une incertitude d'environ vingt points de part et d'autre. Pour les cinq critères testés (Q5, Y9, X7, X2, Q8) : test de tendance de Cochran-Armitage sur les six années (scores égaux aux années), $p$ bilatéral et $p$ corrigé par Holm sur les cinq ; les six autres lignes sont descriptives. Partie basse : différence immédiate (2019 et 2020 réunis contre 2018) et différence tardive (2022 et 2024 contre 2019 et 2020), en points, intervalle de Newcombe à 95~\%, Holm sur les cinq critères dans chaque famille. \textbf{En gras}, ce qui passe la correction de Holm. Source : \file{study/trajectory.json} (\file{study/trajectory.py}).}
+\begin{threeparttable}
+\caption[Trajectoire 2018 à 2026]{Trajectoire du RL classique de 2018 à 2026 (écart 25 de \file{study/PROTOCOL.md}, écrit avant tout tirage) : part des articles qui remplissent chaque critère, en pourcentage, par année. \textbf{En gras}, ce qui passe la correction de Holm. Source : \file{study/trajectory.json} (\file{study/trajectory.py}).}
 \label{tab:trajectoire}
 \begin{tabularx}{\linewidth}{@{}l>{\raggedright\arraybackslash}Xrrrrrrrr@{}}
 \toprule
@@ -32,4 +33,8 @@ X2 & Incertitude rapportée & \multicolumn{3}{r}{+20 [+1\,;\,+37]} & 0,23 & \mul
 Q8 & Test statistique appliqué & \multicolumn{3}{r}{+1 [−10\,;\,+14]} & 1 & \multicolumn{3}{r}{+10 [−5\,;\,+25]} & 0,62 \\
 \bottomrule
 \end{tabularx}
+\begin{tablenotes}[flushleft]\scriptsize
+\item[] 2018 : notre lecture des articles à expériences ; 2019, 2020, 2022 et 2024 : les 20 premiers articles expérimentaux de RL classique par année, tirés au hasard dans ICML et NeurIPS (ICLR absente, son site refusant les téléchargements automatiques) ; 2026 : l'échantillon classique de la comparaison principale. Le nombre entre parenthèses donne le dénominateur quand il diffère de l'effectif de la colonne (critère sans objet pour certains articles). Avec 20 articles, une part a une incertitude d'environ vingt points de part et d'autre. Pour les cinq critères testés (Q5, Y9, X7, X2, Q8) : test de tendance de Cochran-Armitage sur les six années (scores égaux aux années), $p$ bilatéral et $p$ corrigé par Holm sur les cinq ; les six autres lignes sont descriptives. Partie basse : différence immédiate (2019 et 2020 réunis contre 2018) et différence tardive (2022 et 2024 contre 2019 et 2020), en points, intervalle de Newcombe à 95~\%, Holm sur les cinq critères dans chaque famille.
+\end{tablenotes}
+\end{threeparttable}
 \end{table}

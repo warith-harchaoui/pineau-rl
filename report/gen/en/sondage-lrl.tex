@@ -3,7 +3,8 @@
 \centering
 \footnotesize
 \setlength{\tabcolsep}{3.5pt}
-\caption[RL on large models against classical RL, first 2026 draw]{RL applied to large language models (family \texttt{llm} of criterion X5) against classical RL, in the first random draw of 50 papers from 2026 (ICLR 2026, ICML 2026, NeurIPS 2025): 27 \texttt{llm} papers, 14 \texttt{classic}, 9 \texttt{theory} (not shown, counted in `All'). $k/n$ over the papers with experiments where the criterion applies, share in percent in parentheses; 95\% Wilson interval for the `All' column, the only one the script computes. Only grid v1 has this split by family in the results (\file{study/audit\_stats.json}, harmonisation of \file{study/overrides.json}): grid v2 is not broken down by family, and no test between families was preregistered; the table is descriptive. The last two columns recall the classical sample enlarged to 50 papers (Table~\ref{tab:sondage-pineau}). The 18 \texttt{llm} papers and 3 \texttt{theory} papers read in the A3 queue stay apart: the title screen had already removed many of them, so they do not form a sample. Sources: \file{study/audit\_stats.json}, \file{study/extension\_stats.json}.}
+\begin{threeparttable}
+\caption[RL on large models against classical RL, first 2026 draw]{RL applied to large language models (family \texttt{llm} of criterion X5) against classical RL, in the first random draw of 50 papers from 2026 (ICLR 2026, ICML 2026, NeurIPS 2025): 27 \texttt{llm} papers, 14 \texttt{classic}, 9 \texttt{theory} (not shown, counted in `All'). A descriptive table. Sources: \file{study/audit\_stats.json}, \file{study/extension\_stats.json}.}
 \label{tab:sondage-lrl}
 \begin{tabularx}{\linewidth}{@{}l>{\raggedright\arraybackslash}Xrrrrrr@{}}
 \toprule
@@ -23,4 +24,8 @@ X4 & Baselines tuned with the same care & 0/27 (0) & 2/14 (14) & 2/44 & 5 [1,\,1
 X7 & Compute quantified & 12/27 (44) & 8/14 (57) & 21/45 & 47 [33,\,61] & 29/50 & 58 \\
 \bottomrule
 \end{tabularx}
+\begin{tablenotes}[flushleft]\scriptsize
+\item[] $k/n$ over the papers with experiments where the criterion applies, share in percent in parentheses; 95\% Wilson interval for the `All' column, the only one the script computes. Only grid v1 has this split by family in the results (\file{study/audit\_stats.json}, harmonisation of \file{study/overrides.json}): grid v2 is not broken down by family. No test between families was preregistered. The last two columns recall the classical sample enlarged to 50 papers (Table~\ref{tab:sondage-pineau}). The 18 \texttt{llm} papers and 3 \texttt{theory} papers read in the A3 queue stay apart: the title screen had already removed many of them, so they do not form a sample.
+\end{tablenotes}
+\end{threeparttable}
 \end{table}

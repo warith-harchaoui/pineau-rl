@@ -15,8 +15,10 @@ queue of the enlargement are left out of it (\cref{chap:03-sondage-methode}).
 \section{Index of the generated tables}
 \label{sec:b-index}
 
+\Cref{tab:b-index} gives, for each generated table, the chapter that discusses it and its source file.
+
 \begin{small}
-\begin{longtable}{@{}p{0.19\linewidth}p{0.43\linewidth}p{0.3\linewidth}@{}}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.19\linewidth}>{\raggedright\arraybackslash}p{0.43\linewidth}>{\raggedright\arraybackslash}p{0.3\linewidth}@{}}
 \caption{Where to find each generated table.}\label{tab:b-index}\\
 \toprule
 Table & Content & Source file \\
@@ -60,7 +62,7 @@ in the chapter of its analysis. \Cref{tab:b-index-ajouts} refers to each and nam
 it comes from.
 
 \begin{small}
-\begin{longtable}{@{}p{0.22\linewidth}p{0.4\linewidth}p{0.3\linewidth}@{}}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.22\linewidth}>{\raggedright\arraybackslash}p{0.4\linewidth}>{\raggedright\arraybackslash}p{0.3\linewidth}@{}}
 \caption{The generated tables of the analyses added after the technical review.}\label{tab:b-index-ajouts}\\
 \toprule
 Table & Content & Source file \\
@@ -113,10 +115,10 @@ Table & Content & Source file \\
 
 Each JSON result file comes from one script, rerun by \texttt{make analysis}
 (\cref{sec:make}). The detail of each criterion and each pair, which the tables summarise, is in
-these files.
+these files (\cref{tab:b-fichiers}).
 
 \begin{small}
-\begin{longtable}{@{}p{0.3\linewidth}p{0.64\linewidth}@{}}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.3\linewidth}>{\raggedright\arraybackslash}p{0.64\linewidth}@{}}
 \caption{The analysis scripts and the content of their JSON file.}\label{tab:b-fichiers}\\
 \toprule
 Script & Content of the result file \\
@@ -155,8 +157,10 @@ Script & Content of the result file \\
   \file{q5\_versions.json}). \\
 \file{x8\_stats.py} & Criterion X8 against X2, sources of the uncertainty, agreement of the double
   readings (deviation 32, \file{x8\_stats.json}). \\
-\file{gemma\_stats.py} & The \texttt{gemma3:12b} reader against our readers (deviation 33). The
-  reading is still running: this file has no published result. \\
+\file{gemma\_stats.py} & The \texttt{gemma3:12b} reader against our readers: agreement and kappa per
+  criterion and per year, year $\times$ reader interaction, 2026 minus 2018 differences read by this
+  reader and by ours (deviation 33, \file{gemma\_stats.json}; variant where an invalid decision counts
+  as \enquote{no}, \file{gemma\_stats\_invalid\_no.json}). \\
 \multicolumn{2}{@{}l}{\textit{Simulations, folder \file{sim/analysis/}}}\\
 \file{e1.py}, \file{e1\_curve.py} & E1: thirty PPO runs, Welch test on the final scores, then on the
   curves. \\

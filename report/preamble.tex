@@ -57,10 +57,10 @@
 % A long table never starts with its caption and header alone at the foot of a page
 \usepackage{needspace}
 \BeforeBeginEnvironment{longtable}{\par\Needspace*{14\baselineskip}}
-\renewcommand{\topfraction}{0.88}
+\renewcommand{\topfraction}{0.9}
 \renewcommand{\bottomfraction}{0.6}
-\renewcommand{\textfraction}{0.1}
-\renewcommand{\floatpagefraction}{0.72}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.86}% a float page must be nearly full; floats of 75 to 88 % go on top of a text page
 \setcounter{topnumber}{3}
 \setcounter{bottomnumber}{2}
 \setcounter{totalnumber}{4}

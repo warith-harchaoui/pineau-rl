@@ -1,12 +1,14 @@
-\chapter{The language-model strand}
+\chapter{Language models: an apparent gain made of shorter answers}\chaptermark{The language-model strand}
 \label{chap:07-modeles-de-langue}
 
-The previous chapters deal with programs that learn to act in a simulated world. This chapter
-describes a smaller strand, devoted to the generative AI models that write text. It sets out the
-vocabulary we use, the algorithm as we wrote it, the protocol, the runs and their results, then the
-measurement trap these runs exposed. The full protocol is in \file{sim/llm/LLM\_PROTOCOL.md}. Its
-twenty deviations are summarised in \cref{chap:09-ecarts}. Deviations~18 and~19, written
-after all the results, declare defects found by a technical review and pick out in the
+With five random seeds, no GRPO gain is established on our two small language models. Qwen's apparent gain
+came from shorter answers: the true reward teaches it to finish before the length limit, not to multiply any
+better. A coin-flip reward destroys the starting skill of both model families. The previous chapters deal
+with programs that learn to act in a simulated world. This smaller strand turns to the generative AI models
+that write text: the vocabulary we use, the algorithm as we wrote it, the protocol, the runs and their
+results, then the measurement trap these runs exposed. The full protocol is in
+\file{sim/llm/LLM\_PROTOCOL.md}. Its twenty deviations are summarised in \cref{chap:09-ecarts}. Two of them
+(18 and 19), written after all the results, declare defects found by a technical review and pick out in the
 logs measurements that the first version of this chapter left aside. They change how the strand reads
 without changing any published figure.
 
@@ -322,8 +324,8 @@ three very different results: this is flaw F11, same code with another random se
 With two more random seeds, the new Qwen runs end at 13\% and 0\%. Over five random seeds, the mean
 gain falls to $+14$ points, from $-3$ to $+34$: the interval now contains zero. The gain we read
 on Qwen with three random seeds no longer holds. On Llama, the two new runs end at 27\% and 33\%. The
-mean gain is $+6$ points, from $-0.4$ to $+15$: zero stays inside the interval. The Student intervals
-of deviation~19 are wider: from $-16$ to $+45$ for Qwen, from $-6$ to $+19$ for Llama, with a sign-test
+mean gain is $+6$ points, from $-0.4$ to $+15$: zero stays inside the interval. The Student intervals,
+added after the results, are wider: from $-16$ to $+45$ for Qwen, from $-6$ to $+19$ for Llama, with a sign-test
 $p$ of 0.31 for both. With five random seeds, we cannot say that GRPO improves either model on this
 task, under these conditions.
 
@@ -336,8 +338,8 @@ too, from 75.2\% to 44.8\% ($-30$~points, $[-44, -17]$). The model does not comp
 distribution it samples at temperature 1 narrows: a random draw is right a little more often, while the
 most probable answer and the best of eight are right less often. In Qwen, pass@8 falls in four runs out of
 five, from 51.6\% to 34.4\%, with a Student interval that contains zero. To the question of
-\textcite{yue2025rlvr}, our runs answer that pass@8 rises on average in no configuration. Under the rule of
-deviation~19, Llama's two drops are not established, since the sign-test $p$ cannot fall below 0.0625,
+\textcite{yue2025rlvr}, our runs answer that pass@8 rises on average in no configuration. Under the rule
+added after the results, Llama's two drops are not established, since the sign-test $p$ cannot fall below 0.0625,
 while their Student intervals exclude zero. Here the rule therefore declines to establish drops that the
 Student interval, taken alone, would flag.
 
@@ -370,7 +372,7 @@ The Qwen gain with the true reward comes from the two runs made on GPU, random s
 and $+51$ points. The three true-reward runs that ran on CPU (random seeds 2 to 4) have a mean gain
 of $-2$ points, from $-11$ to $+4$. The four CPU runs with the random reward (random seeds 1 to 4)
 have a mean gain of $-11$ points, from $-11$ to $-10$. On CPU alone, the true reward brings Qwen no
-detectable gain. Data: \file{sim/llm/results/gains\_5.json} and \file{extra\_5.json}.
+detectable gain.
 
 These figures do not separate two causes. The hardware changed with the random seed: each Qwen
 random seed with the true reward ran on one device only. Two explanations remain open. In the
@@ -379,7 +381,7 @@ fall on the GPU. In the second, the device changes the course of training, throu
 computations or through GPU computations that were corrupted but finite and that the first runs
 would not have detected. Five runs do not decide between these explanations.
 
-The logs establish two facts about the device (deviation~18, item~c). Pass@1 at step 0 depends on the
+The logs establish two facts about the device. Pass@1 at step 0 depends on the
 base model, the random seed and the chance of the draws, since the reward comes into play only after
 this first evaluation. Greedy accuracy at step 0, which draws nothing at random, is \num{7.33}\% in all
 ten Qwen runs, on CPU as on GPU. First fact, then: the device does not change the starting model's most
@@ -390,7 +392,7 @@ The second fact, the direct sign that the MPS computation is not deterministic, 
 seed 3, both runs ran on GPU, with the same model and the same random stream. They nevertheless start from a
 pass@1 of 25\% and \num{24.25}\%. Their greedy accuracy is \num{70.7}\% on one side, \num{66.7}\% on the
 other.
-Deviation~7 had already observed it (\cref{tab:grpo}).
+The deviation log had already noted it during the runs (deviation~7, \cref{tab:grpo}).
 
 The logs also show groups that yield no gradient. Under the true reward, many groups have eight answers
 all wrong, or all right, hence a zero advantage for each. The gradient norm is zero in 5, 4 and 7 of the
@@ -399,12 +401,11 @@ zero in 3, 0, 3, 3 and 2 steps out of 10 for the five Llama runs. The Qwen run w
 learning from step 50, at 0\% pass@1, pass@8 and greedy accuracy. Under the reward drawn at random, the
 coin almost always gives mixed rewards: no logged step has a zero gradient.
 
-\paragraph{A run outside the protocol} Deviation 16 (e) planned to run the Llama run with the random
+\paragraph{A run outside the protocol} A decision written before any five-seed computation planned to run the Llama run with the random
 reward and random seed 4 once on CPU, after all other computations, to learn whether its double
 failure was due to the GPU. The run completed with no recomputation. Its pass@1
-goes from \num{23.25}\% at step 0 to \num{0.25}\% at step 100
-(\file{sim/llm/results/llama1\_cpu/mul2/random/seed4.jsonl}). The result stays out of every
-statistic, as the deviation had set. It is consistent with a failure due to the GPU without proving
+goes from \num{23.25}\% at step 0 to \num{0.25}\% at step 100. The result stays out of every
+statistic, as that decision had set. It is consistent with a failure due to the GPU without proving
 it, since one run does not separate the device from chance. On CPU, this tenth random-reward
 run behaves like the other nine: success collapses.
 
@@ -413,9 +414,9 @@ run behaves like the other nine: success collapses.
 
 \subsection{The diagnosis}
 
-The incident of deviation 4 exposed this trap. During the learning-rate pilot, the share of correct
+An incident exposed this trap. During the learning-rate pilot, the share of correct
 answers in the training batch was 0.91 at step 10, while the test pass@1 of the base model was 0.11.
-The diagnosis of deviation 5 (\file{sim/llm/diag/replay\_batch.py}) replays, without training, the
+A diagnosis replays, without training, the
 exact batch of step 10 of the pilot: the four multiplications $48 \times 49$, $14 \times 36$,
 $21 \times 50$ and $45 \times 17$, eight answers each, with the starting Qwen model. The model gives
 5 correct answers out of 32, in line with the test. Yet 23 of the 32 answers reach the 160-token
@@ -445,7 +446,7 @@ answer: the reward drawn at random does more than make the answers overrun the l
 
 A cut-off answer counts as wrong. A model that learns to answer more briefly therefore gains pass@1
 points without computing any better. The first version of this chapter could not put a figure on this
-part. The finished accuracy of deviation~19 does (\cref{tab:grpo-mesures}).
+part. The finished accuracy, added after the results, does (\cref{tab:grpo-mesures}).
 \begin{itemize}
   \item In Qwen, under the true reward, the cut-off share falls from 74.9\% to 6.0\% in all five runs. The
     accuracy among finished answers \emph{falls}, from 41.2\% to 27.5\% ($-14$~points, Student
@@ -458,8 +459,7 @@ Within the Qwen configuration with the true reward, the Pearson correlation betw
 cut-off share and the change in pass@1 is $+0.23$ over five runs. On so few points, nothing suggests that
 shortening further brings a further gain.
 Over both rewards together, the Spearman correlation is $-0.63$ for Qwen and $-0.83$ for Llama, which
-mostly reflects the effect of the reward (\file{sim/llm/results/logs\_stats\_5.json}, key
-\texttt{length}).
+mostly reflects the effect of the reward.
 
 \begin{keybox}
 \textbf{Lesson for a language-model benchmark.} A length limit turns a measure of accuracy into a

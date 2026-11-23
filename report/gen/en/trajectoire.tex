@@ -3,7 +3,8 @@
 \centering
 \footnotesize
 \setlength{\tabcolsep}{3.5pt}
-\caption[Trajectory 2018 to 2026]{Trajectory of classical RL from 2018 to 2026 (deviation 25 of \file{study/PROTOCOL.md}, written before any draw): share of papers that meet each criterion, in percent, by year. 2018: our reading of the papers with experiments; 2019, 2020, 2022 and 2024: the first 20 experimental classical RL papers per year, drawn at random from ICML and NeurIPS (ICLR is missing, its site refusing automated downloads); 2026: the classical sample of the main comparison. The number in parentheses gives the denominator when it differs from the column size (criterion not applicable to some papers). With 20 papers, a share carries an uncertainty of about twenty points either way. For the five tested criteria (Q5, Y9, X7, X2, Q8): Cochran-Armitage trend test over the six years (scores equal to the years), two-sided $p$ and Holm-corrected $p$ over the five; the six other rows are descriptive. Bottom part: immediate gap (2019 and 2020 pooled against 2018) and later gap (2022 and 2024 against 2019 and 2020), in points, 95\% Newcombe interval, Holm over the five criteria within each family. \textbf{In bold}, what passes the Holm correction. Source: \file{study/trajectory.json} (\file{study/trajectory.py}).}
+\begin{threeparttable}
+\caption[Trajectory 2018 to 2026]{Trajectory of classical RL from 2018 to 2026 (deviation 25 of \file{study/PROTOCOL.md}, written before any draw): share of papers that meet each criterion, in percent, by year. \textbf{In bold}, what passes the Holm correction. Source: \file{study/trajectory.json} (\file{study/trajectory.py}).}
 \label{tab:trajectoire}
 \begin{tabularx}{\linewidth}{@{}l>{\raggedright\arraybackslash}Xrrrrrrrr@{}}
 \toprule
@@ -32,4 +33,8 @@ X2 & Uncertainty reported & \multicolumn{3}{r}{+20 [+1,\,+37]} & 0.23 & \multico
 Q8 & Statistical test applied & \multicolumn{3}{r}{+1 [−10,\,+14]} & 1 & \multicolumn{3}{r}{+10 [−5,\,+25]} & 0.62 \\
 \bottomrule
 \end{tabularx}
+\begin{tablenotes}[flushleft]\scriptsize
+\item[] 2018: our reading of the papers with experiments; 2019, 2020, 2022 and 2024: the first 20 experimental classical RL papers per year, drawn at random from ICML and NeurIPS (ICLR is missing, its site refusing automated downloads); 2026: the classical sample of the main comparison. The number in parentheses gives the denominator when it differs from the column size (criterion not applicable to some papers). With 20 papers, a share carries an uncertainty of about twenty points either way. For the five tested criteria (Q5, Y9, X7, X2, Q8): Cochran-Armitage trend test over the six years (scores equal to the years), two-sided $p$ and Holm-corrected $p$ over the five; the six other rows are descriptive. Bottom part: immediate gap (2019 and 2020 pooled against 2018) and later gap (2022 and 2024 against 2019 and 2020), in points, 95\% Newcombe interval, Holm over the five criteria within each family.
+\end{tablenotes}
+\end{threeparttable}
 \end{table}

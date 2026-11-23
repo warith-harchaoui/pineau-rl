@@ -606,9 +606,9 @@ diagnosis interval, as \file{docs/conclusions.md} does.
 number of runs and the moment the analysis was written.
 
 {\small
-\begin{longtable}{@{}>{\raggedright\arraybackslash}p{1.3cm}>{\raggedright\arraybackslash}p{3.6cm}
-  >{\raggedright\arraybackslash}p{4.45cm}>{\raggedright\arraybackslash}p{1.9cm}
-  >{\raggedright\arraybackslash}p{2.6cm}@{}}
+\begin{longtable}{@{}>{\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000\arraybackslash}p{2.1cm}
+  >{\raggedright\arraybackslash}p{3.4cm}>{\raggedright\arraybackslash}p{3.85cm}
+  >{\raggedright\arraybackslash}p{2.0cm}>{\raggedright\arraybackslash}p{2.5cm}@{}}
 \caption{The experiments: the question asked, the design, the runs used and the moment the analysis was
 fixed. \enquote{Preregistered} means written before any result of the experiment. Every number in this table
 is a design choice.}\label{tab:experiences}\\
@@ -624,19 +624,19 @@ Experiment & Question & Design & Runs & Analysis fixed \\
 \endfoot
 E1 & Do two groups of runs of the same program pass for two algorithms? &
 PPO PyTorch on \task{HalfCheetah}, 30 random seeds. \num{10000} draws of two groups, Welch test on the final
-scores, at random then sorted. & 30 training runs & preregistered \\
+scores, at random then sorted. & 30 runs & preregistered \\
 E1, second statistic & Is the average t on the 2018 curve recovered? &
 The same 30 curves, Welch test at each of the 20 points, average t and average p. & the 30 of E1 &
 after the E1 results (deviation~3) \\
 B1, TRPO & Does the spread of TRPO explain the t of 9? &
-TRPO on \task{HalfCheetah}, 30 random seeds, three readings of the average t. & 30 training runs &
+TRPO on \task{HalfCheetah}, 30 random seeds, three readings of the average t. & 30 runs &
 before any TRPO training (deviation~4) \\
 B1, script & Does Henderson's computation explain the t of 9? &
 The 2017 script applied to the TRPO and PPO curves, same draws. & the 30 of E1 and the 30 of TRPO &
 after B1 TRPO, before this computation (deviation~6) \\
 E2 & Does the leading program change from task to task? &
 4 programs on 4 tasks, IQM and interval, probability of improvement per pair. &
-160 training runs & details fixed before any CrossQ score (deviations~7 and 14) \\
+160 runs & details fixed before any CrossQ score (deviations~7 and 14) \\
 E2, Bonferroni & Does the E2 verdict survive 24 comparisons? &
 The 24 intervals of E2 at a simultaneous level of 95\%. & those of E2 &
 after E2, before this computation (deviation~18) \\
@@ -650,7 +650,7 @@ For each comparison, \num{10000} draws with replacement of $n$ runs, $n$ from 3 
 those of E2, the 30 of E1 & before any CrossQ score (deviation~7) \\
 E6 & What does a baseline tuned with the published settings change? &
 PPO PyTorch on \task{Hopper}, default values against Zoo settings, then diagnosis and official script. &
-40 training runs beyond E2, plus 10 official & preregistered, diagnosis after the first result
+40 runs beyond E2, plus 10 official & preregistered, diagnosis after the first result
 (deviations~2 and 5) \\
 E7 & What does a modified physics cost? &
 Ratio of the score in modified physics to the score in training physics, per run. & those of E2 &
@@ -662,7 +662,7 @@ B3 & Does the chosen measure change the ranking? &
 Final score, best score, mean of the curve, reversals between measures. & those of E2 &
 before any CrossQ score (deviation~8) \\
 Twenty random seeds & Do the results at ten random seeds hold? &
-Random seeds 10 to 19, same rules, E2, E3, E5, E7, B3, physics by degrees. & 150 more training runs &
+Random seeds 10 to 19, same rules, E2, E3, E5, E7, B3, physics by degrees. & 150 more runs &
 before any new training (deviations~12 and 20) \\
 Equal budget & Does the E2 ranking depend on PPO's budget? &
 PPO read at \num{200000}~steps, E2 and B3 recomputed. & those of E2 &
@@ -692,11 +692,11 @@ E6, speed & Is the plateau of the Zoo recipe a robot standing still? &
 Training logs, replay with speed, video, agent published by the Zoo. & those of E6 &
 before these computations (deviations~31 and 33) \\
 Determinism & Does a relaunch of SAC and CrossQ give back the same run? &
-Three runs redone unchanged, compared point by point. & 3 training runs, running & before any
+Three runs redone unchanged, compared point by point. & 3 runs, running & before any
 training (deviation~32) \\
 PPO divergence & Does the initialisation explain the E3 difference? &
 On \task{Walker2d} and \task{Swimmer}, both PPOs at random seeds 20 to 39, then each with the other's
-initialisation option at random seeds 0 to 19. & 160 training runs, running & before any training (deviation~34) \\
+initialisation option at random seeds 0 to 19. & 160 runs, running & before any training (deviation~34) \\
 \end{longtable}
 }
 
@@ -994,7 +994,7 @@ show. The results at ten random seeds remain the main results.
 \paragraph{The machine}
 Every training run used the processor of the Mac of \cref{sec:outils}, shared with other projects. A training
 run or a re-evaluation occupies one core (one thread). \Cref{tab:calcul} gives, per program and task, the
-number of runs, the steps, the median duration and the core-hours.
+number of runs, the steps, the median duration of a run and the sum of the durations, in hours.
 
 \gentable{calcul}
 
@@ -1050,7 +1050,7 @@ are described in deviations~10, 14 and 16 (\cref{chap:09-ecarts}).
 The runs write their CSV and JSON files. The scripts of \file{sim/analysis/} derive the JSON result files from
 them. \texttt{make verify} recomputes every analysis and compares the files byte for byte, then
 \file{docs/check\_numbers.py} and \file{article/check\_article.py} check every number in the documents against
-these files. \Cref{chap:08-logiciel} describes this chain and draws it (\cref{fig:architecture}).
+these files. \Cref{chap:08-logiciel} describes this chain and draws it (\cref{fig:architecture,fig:architecture-2}).
 
 \section{What was written before the results, what was written after}\label{sec:avant-apres}
 

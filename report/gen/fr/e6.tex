@@ -3,7 +3,8 @@
 \centering
 \footnotesize
 \setlength{\tabcolsep}{3.5pt}
-\caption[E6 : valeurs par défaut contre recette publiée]{Expérience E6, la méthode de référence : PPO PyTorch sur Hopper, un million de pas, 10 graines par groupe, valeurs par défaut de Stable-Baselines3 contre les réglages publiés par RL Baselines3 Zoo. La première passe (préregistrée, \file{sim/analysis/e6.json}, bootstrap de 2\,000 rééchantillons) normalisait les observations avec un gamma de 0,99 au lieu de 0,999 ; le diagnostic décidé après ce résultat (écart 2) relance la recette corrigée sur Hopper v5 et v4, la version pour laquelle le Zoo a été réglé (\file{e6\_diag.json}, 5\,000 rééchantillons, Holm sur trois comparaisons) ; puis dix agents entraînés avec le script officiel du Zoo, évalués avec notre protocole (écart 5, écrit avant tout entraînement officiel ; \file{e6\_official.json}, 2\,000 rééchantillons, Holm sur deux comparaisons). Les bornes d'un même groupe varient ainsi d'un fichier à l'autre au niveau Monte-Carlo. IQM avec intervalle à 95~\% par bootstrap (rliable) ; $P(A > B)$ : probabilité qu'un essai de $A$ batte un essai de $B$, intervalle bootstrap ; test de Welch, correction de Holm, test de Mann-Whitney quand le script le calcule. \textbf{En gras}, les comparaisons qui passent la correction de Holm : la recette publiée fait moins bien que les valeurs par défaut, avec notre code comme avec le script officiel. Moyenne et écart type des agents officiels calculés ici à partir de leurs dix scores (\file{e6\_official.json}).}
+\begin{threeparttable}
+\caption[E6 : valeurs par défaut contre recette publiée]{Expérience E6, la méthode de référence : PPO PyTorch sur Hopper, un million de pas, 10 graines par groupe, valeurs par défaut de Stable-Baselines3 contre les réglages publiés par RL Baselines3 Zoo. \textbf{En gras}, les comparaisons qui passent la correction de Holm : la recette publiée fait moins bien que les valeurs par défaut, avec notre code comme avec le script officiel. Sources : \file{sim/analysis/e6.json}, \file{e6\_diag.json}, \file{e6\_official.json}.}
 \label{tab:e6}
 \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}Xrrrl@{}}
 \toprule
@@ -29,4 +30,8 @@ Script officiel du Zoo, v4 / Zoo corrigé, v4 & 0,58 [0,32\,;\,0,82] & 0,88 & 0,
 \textbf{Script officiel du Zoo, v4 / Valeurs par défaut v4} & \textbf{0,09 [0,00\,;\,0,30]} & \textbf{0,0005} & \textbf{0,001} &  \\
 \bottomrule
 \end{tabularx}
+\begin{tablenotes}[flushleft]\scriptsize
+\item[] La première passe (préregistrée, \file{sim/analysis/e6.json}, bootstrap de 2\,000 rééchantillons) normalisait les observations avec un gamma de 0,99 au lieu de 0,999 ; le diagnostic décidé après ce résultat (écart 2) relance la recette corrigée sur Hopper v5 et v4, la version pour laquelle le Zoo a été réglé (\file{e6\_diag.json}, 5\,000 rééchantillons, Holm sur trois comparaisons) ; puis dix agents entraînés avec le script officiel du Zoo, évalués avec notre protocole (écart 5, écrit avant tout entraînement officiel ; \file{e6\_official.json}, 2\,000 rééchantillons, Holm sur deux comparaisons). Les bornes d'un même groupe varient ainsi d'un fichier à l'autre au niveau Monte-Carlo. IQM avec intervalle à 95~\% par bootstrap (rliable) ; $P(A > B)$ : probabilité qu'un essai de $A$ batte un essai de $B$, intervalle bootstrap ; test de Welch, correction de Holm, test de Mann-Whitney quand le script le calcule. Moyenne et écart type des agents officiels calculés ici à partir de leurs dix scores (\file{e6\_official.json}).
+\end{tablenotes}
+\end{threeparttable}
 \end{table}

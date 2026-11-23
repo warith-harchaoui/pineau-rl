@@ -48,9 +48,11 @@ one of deviation 35, thirty papers of both years drawn at random, still awaits i
         \enquote{yes} (2 in 2018, 8 in 2026) and no verdict changes. If the 24 decisions judged
         doubtful are flipped as well, uncertainty (X2) and sensitivity (Y9) end up just above the
         threshold ($p = 0.07$ and $p = 0.054$).
-  \item \textbf{Removing the neighbouring model.} Without the thirteen papers partly read by
-        \texttt{claude-opus-5}, the verdicts hold, except reported uncertainty (X2), which no longer
-        passes the Holm correction ($p = 0.07$, deviation 29).
+  \item \textbf{Removing the neighbouring model.} Of the thirteen papers partly read by
+        \texttt{claude-opus-5}, only two are in the main comparison, both classical RL papers of 2026
+        and both \enquote{yes} for X2. Without them, the verdicts hold, except reported uncertainty
+        (X2), which no longer passes the Holm correction ($p = 0.07$, deviation 29): its verdict
+        rests on two papers.
 \end{enumerate}
 
 These safeguards leave one threat whole. The two readers of a double reading are copies of the same
@@ -58,8 +60,10 @@ model: their agreement measures the stability of that model, which differs from 
 independent readers. A systematic bias of the model, shared by all its copies, escapes the double
 readings. The exact instructions, the model and the dates of every reader are published
 (\file{study/readers/}), so that another reader can redo the reading. A reader from another family
-of models, \texttt{gemma3:12b}, is rereading the 98 experimental papers of the main comparison
-(survey deviation 33). Its reading has not finished yet (\cref{sec:val-en-cours}).
+of models, \texttt{gemma3:12b}, has reread the 98 experimental papers of the main comparison
+(survey deviation 33). It recovers the sign of all four differences. Its disagreement with our
+readers, frequent and nearly always towards \enquote{no}, does not depend detectably on the year
+(\cref{sec:sr-gemma}).
 
 \subsection{Readers and year}
 
@@ -70,7 +74,7 @@ In the main comparison, an effect of the set of readers therefore cannot be told
 of the year. Removing one reader at a time (deviation 21) does not detect it, since the effect would
 come from the set as a whole.
 
-Deviation 30 (d) measures what the data allow. Within one year, readers sometimes differ more than
+An analysis added after the results measures what the data allow (deviation 30 (d)). Within one year, readers sometimes differ more than
 chance would explain: in 2018, the share of Q5 goes from 0\% (H3, 0 papers out of 8) to 55\% (F, 6
 out of 11), with $p = 0.049$ by permuting the readers. In 2026, that of X7 goes from 17\% to 83\%,
 with $p = 0.027$. These gaps mix the reader with the batch of papers: F read the twelve papers of the
@@ -79,15 +83,18 @@ years. On its five papers per year, it finds, for all four criteria, the same di
 years as the main readers. Five papers per year are still too few to close the question. Criterion
 X8 closes it for itself alone, since each of its six main readers read both years (deviation 32).
 
-Deviation 36 separates the year from the readers for the four verdict criteria. Eight fresh readers,
-T1 to T8, reread the 98 papers, each of them on both years. A model with a random reader effect then measures
+A rereading added after the results separates the year from the readers for the four verdict
+criteria (deviation 36). Eight fresh readers, T1 to T8, reread the 98 papers, each of them on both years. A model with a random reader effect then measures
 the year effect for a given reader. The verdicts on Q5, Y9 and X7 hold. The one on X2, already the most
 fragile, keeps its direction without being established under the rule fixed in advance. The reader
 standard deviation is zero or indistinguishable from zero (\cref{sec:sr-annees}). Two limits are left.
 Readers T1 to T8 see the year in every PDF. They also come from the same model family as the original
 readers: a bias of that family that varied with the year would affect both readings alike, so the
 90\% to 100\% agreement between them does not rule it out. The reader from another family of models
-(deviation 33) and the human rereading (deviation 35) target that bias. Neither has a result yet.
+(deviation 33) and the human rereading (deviation 35) target that bias. The first detects no
+disagreement that depends on the year (Fisher $p$ from 0.13 to 0.73 depending on the criterion), on
+valid decisions that number only 14 to 42 per year and criterion: it rules out a large bias of this
+kind, not a small one (\cref{sec:sr-gemma}). The second has no result yet.
 
 \subsection{Decisions taken after the results}
 
@@ -134,6 +141,7 @@ strand).
 \end{itemize}
 The rerun of deviation 20 of the GRPO strand corrects all three defects (\cref{sec:val-en-cours}).
 
+\Needspace*{8\baselineskip}
 \section{External validity}
 \label{sec:val-externe}
 
@@ -157,8 +165,8 @@ The rerun of deviation 20 of the GRPO strand corrects all three defects (\cref{s
   \item \textbf{The source of the PDFs.} The 2026 papers were read mostly in their arXiv version (45
         of the 50 classical RL papers), the 2018 papers in the conference proceedings. A link to code
         is often added to the arXiv version after acceptance: the rise of Q5 might have come from
-        that. Survey deviation 31 measured it by rereading Q5 on the same kind of version in both
-        years. With both years read in the proceedings, the rise is $+41$ points, $[+21, +56]$. With
+        that. We measured it by rereading Q5 on the same kind of version in both years (survey
+        deviation 31). With both years read in the proceedings, the rise is $+41$ points, $[+21, +56]$. With
         both years read in the latest arXiv version, it is $+34$ points, $[+15, +51]$. In the least
         favourable reading, it is still $+30$ points, $[+11, +47]$, with $p_{\text{Holm}} = 0.035$
         (\file{study/q5\_versions.json}, \cref{sec:sr-robustesse}). The asymmetry of versions is
@@ -242,8 +250,8 @@ MATH-500, with far more compute. Our strand neither replicates nor refutes their
   \item \textbf{E3 compares two programs, not two implementations of one algorithm.} The two PPOs
         share their algorithm hyperparameters, not their default initialisation: Stable-Baselines3
         initialises every layer orthogonally, while sbx leaves its orthogonal option off and keeps
-        Flax's default initialisation (\cref{sec:programmes}). Deviation 34 tests whether this
-        difference explains E3.
+        Flax's default initialisation (\cref{sec:programmes}). An experiment still running tests
+        whether this difference explains E3 (deviation 34, \cref{sec:val-en-cours}).
   \item \textbf{The pass@1 of the GRPO strand} mixes correctness and concision, since a truncated
         answer counts as wrong (\cref{sec:llm-coupure}). For Qwen, the pass@1 gain under the true
         reward is explained entirely by the drop in truncated answers. The accuracy of finished
@@ -257,8 +265,8 @@ MATH-500, with far more compute. Our strand neither replicates nor refutes their
 \label{sec:val-stat}
 
 \paragraph{The sample sizes of the survey} With 48 experimental papers from 2018 and 50 from 2026,
-the survey sees only large changes. Deviation 30 (b) computes, for each criterion, the smallest rise
-that Fisher's test detects four times out of five: about thirty points for most criteria, more at the
+the survey sees only large changes. For each criterion, we computed the smallest rise that Fisher's
+test detects four times out of five (deviation 30 (b)): about thirty points for most criteria, more at the
 corrected level (\cref{tab:difference-detectable}, \cref{sec:sr-principale}). \enquote{No detectable
 change} therefore does not mean \enquote{no change}. On Q3, Q6, Q7 and Y8, the survey sees rises of
 11 to 22 points without being able to establish them. That of Q6 even has a Newcombe interval that
@@ -283,9 +291,9 @@ threshold in all our checks, sensitivity to a hyperparameter in nearly all of th
 
 \paragraph{The \enquote{settled} rule of the simulations} A pair is established, \enquote{settled} in
 the generated tables, when the 95\% interval of the probability of improvement excludes 0.5, or when the intervals of the two
-interquartile means are disjoint (\cref{sec:regle}). Deviation 26 measures the actual false-positive
-rate of this rule on two groups drawn from the same program, where no difference exists
-(\cref{tab:regle-tranche}). The rule settles wrongly slightly more than once in
+interquartile means are disjoint (\cref{sec:regle}). We measured the actual false-positive rate of
+this rule on two groups drawn from the same program, where no difference exists
+(deviation 26, \cref{tab:regle-tranche}). The rule settles wrongly slightly more than once in
 twenty at ten runs against ten, nearly once in ten at five against five. The condition on the
 interquartile means adds almost nothing. A pair settled narrowly at ten random seeds, such as PPO
 JAX against CrossQ on \task{Hopper} (\cref{sec:e7}), is read with this rate in mind.
@@ -319,7 +327,7 @@ Carlo noise (simulation deviation 13): a verdict whose bound grazes the threshol
 \section{The experiments not yet finished}
 \label{sec:val-en-cours}
 
-Six experiments are written in advance and not yet finished. The report gives
+Five experiments are written in advance and not yet finished. The report gives
 no result for any of them. Each answers a limitation of this chapter. The watchdog stopped
 the simulation queue once on a memory alert, then the queue resumed.
 \begin{itemize}
@@ -330,8 +338,6 @@ the simulation queue once on a memory alert, then the queue resumed.
         forward.
   \item \textbf{The cause of the gap between the two PPOs} (simulation deviation 34): 160 training
         runs add power to E3 and swap the orthogonal initialisation.
-  \item \textbf{A reader from another family of models} (survey deviation 33): \texttt{gemma3:12b}
-        rereads the four verdict criteria on the 98 experimental papers.
   \item \textbf{The human rereading} (survey deviation 35): we will reread ourselves thirty papers of
         both years blind. The thirty sheets still await their reader.
   \item \textbf{The GRPO rerun} (deviation 20 of the GRPO strand): 40 runs on a single device, with

@@ -3,7 +3,8 @@
 \centering
 \footnotesize
 \setlength{\tabcolsep}{4pt}
-\caption[Les chiffres de Pineau, comme contexte]{Les chiffres de Pineau (2018), comme contexte et jamais comme verdict : ses parts sur 50 articles de RL de 2018, pour les six critères qu'elle chiffre (pourcentage publié, \file{study/results\_final.json} ; entre parenthèses le $k/n$ des tests, son pourcentage multiplié par 50 et arrondi, soit 56~\% pour Q5 et 4~\% pour Q8), comparées à notre lecture de 50 articles de 2018 avec notre grille, puis aux 45 articles expérimentaux du premier tirage de 2026, grands modèles de langage compris. La première ligne de chaque critère mesure l'écart entre notre grille et la sienne sur la même année : notre lecture est plus sévère sur Q3 et plus large sur Q7, ce qui a conduit à ne fonder les verdicts que sur la comparaison avec la même grille (écart 20 de \file{study/PROTOCOL.md}, tableau~\ref{tab:sondage-pineau}). La seconde mêle le changement des pratiques, celui de la grille et celui de la population. Différence en points avec l'intervalle de Newcombe à 95~\%, test exact de Fisher, correction de Holm sur Q3 à Q8 dans chaque famille de comparaisons. \textbf{En gras}, ce qui passe la correction de Holm. Le tirage de Pineau reste inconnu. Sources : \file{study/extension\_stats.json}, \file{study/results\_final.json}.}
+\begin{threeparttable}
+\caption[Les chiffres de Pineau, comme contexte]{Les chiffres de Pineau (2018), comme contexte et jamais comme verdict : ses parts sur 50 articles de RL de 2018, pour les six critères qu'elle chiffre, comparées à notre lecture de 50 articles de 2018 avec notre grille, puis aux 45 articles expérimentaux du premier tirage de 2026, grands modèles de langage compris. \textbf{En gras}, ce qui passe la correction de Holm. Sources : \file{study/extension\_stats.json}, \file{study/results\_final.json}.}
 \label{tab:sondage-pineau-contexte}
 \begin{tabularx}{\linewidth}{@{}l>{\raggedright\arraybackslash}Xrrr r@{\hspace{0.28em}}l rr@{}}
 \toprule
@@ -34,4 +35,8 @@ Q8 & \multicolumn{8}{@{}l}{Test statistique appliqué} \\
  & \quad premier tirage 2026 & 2/45 & 4 &  & 0 & [−10\,;\,+11] & 1 & 1 \\
 \bottomrule
 \end{tabularx}
+\begin{tablenotes}[flushleft]\scriptsize
+\item[] Pineau : pourcentage publié ; entre parenthèses le $k/n$ des tests, son pourcentage multiplié par 50 et arrondi, soit 56~\% pour Q5 et 4~\% pour Q8. Son tirage reste inconnu. La première ligne de chaque critère mesure l'écart entre notre grille et la sienne sur la même année : notre lecture est plus sévère sur Q3 et plus large sur Q7, ce qui a conduit à ne fonder les verdicts que sur la comparaison avec la même grille (écart 20 de \file{study/PROTOCOL.md}, tableau~\ref{tab:sondage-pineau}). La seconde mêle le changement des pratiques, celui de la grille et celui de la population. Différence en points avec l'intervalle de Newcombe à 95~\%, test exact de Fisher, correction de Holm sur Q3 à Q8 dans chaque famille de comparaisons.
+\end{tablenotes}
+\end{threeparttable}
 \end{table}

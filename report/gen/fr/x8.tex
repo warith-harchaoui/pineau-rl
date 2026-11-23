@@ -3,7 +3,8 @@
 \centering
 \footnotesize
 \setlength{\tabcolsep}{3.2pt}
-\caption[X8 : l'incertitude calculée sur des graines]{Nouveau critère X8 (écart 32 de \file{study/PROTOCOL.md}, écrit avant toute lecture) : parmi les articles expérimentaux, ceux dont l'incertitude rapportée est calculée sur des graines (des entraînements indépendants). Les 74 articles X2 oui lus par huit agents neufs, chacun lecteur principal sur les deux années, ce qui défait la confusion entre lecteur et année pour ce critère ; 20 articles lus deux fois, 19 accords (kappa 0,89). Différence en points, 2026 moins 2018, intervalle de Newcombe à 95~\%, test exact de Fisher ; $p$ Holm sur douze critères : 1. \textbf{En gras}, la mesure principale. La borne mécanique de l'écart 30 (e) compte les articles dont une citation nomme des graines : plus large que X8, car une citation qui nomme des graines ne rattache pas la barre d'erreur à elles. Partie basse : la source de l'incertitude des articles X2 oui, par année ; « non dit » : l'article ne dit pas sur quoi porte sa barre. Sources : \file{study/x8\_stats.json} (\file{study/x8\_stats.py}), \file{study/extension\_stats.json}, \file{study/survey\_extra.json}.}
+\begin{threeparttable}
+\caption[X8 : l'incertitude calculée sur des graines]{Nouveau critère X8 (écart 32 de \file{study/PROTOCOL.md}, écrit avant toute lecture) : parmi les articles expérimentaux, ceux dont l'incertitude rapportée est calculée sur des graines (des entraînements indépendants). Les 74 articles X2 oui lus par huit agents neufs, chacun lecteur principal sur les deux années, ce qui défait la confusion entre lecteur et année pour ce critère ; 20 articles lus deux fois, 19 accords (kappa 0,89). Différence en points, 2026 moins 2018, intervalle de Newcombe à 95~\%, test exact de Fisher ; $p$ Holm sur douze critères : 1. \textbf{En gras}, la mesure principale. Sources : \file{study/x8\_stats.json} (\file{study/x8\_stats.py}), \file{study/extension\_stats.json}, \file{study/survey\_extra.json}.}
 \label{tab:x8}
 \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}Xrrrrrr@{}}
 \toprule
@@ -15,7 +16,7 @@ X2, incertitude rapportée & 30/48 & 63 [48\,;\,75] & 44/50 & 88 [76\,;\,94] & +
 \textbf{X8, incertitude calculée sur des graines} & 17/48 & 35 [23\,;\,50] & 21/50 & 42 [29\,;\,56] & \textbf{+7 [−12\,;\,+25]} & \textbf{0,54} \\
 \quad parmi les articles X2 oui & 17/30 & 57 [39\,;\,73] & 21/44 & 48 [34\,;\,62] & −9 [−30\,;\,+14] & 0,49 \\
 \quad graines et épisodes mêlés comptés oui & 19/48 & 40 [27\,;\,54] & 23/50 & 46 [33\,;\,60] & +6 [−13\,;\,+25] & 0,55 \\
-\quad borne mécanique (citation qui nomme des graines) & 14/48 & 29 [18\,;\,43] & 27/50 & 54 [40\,;\,67] & +25 [+5\,;\,+42] & 0,01 \\
+\hangindent=1em\hangafter=1\quad borne mécanique (citation qui nomme des graines) & 14/48 & 29 [18\,;\,43] & 27/50 & 54 [40\,;\,67] & +25 [+5\,;\,+42] & 0,01 \\
 \midrule
 \multicolumn{7}{@{}l}{\emph{Sur quoi porte l’incertitude des articles X2 oui}} \\
 \quad graines & 17 &  & 21 &  &  &  \\
@@ -26,4 +27,8 @@ X2, incertitude rapportée & 30/48 & 63 [48\,;\,75] & 44/50 & 88 [76\,;\,94] & +
 \quad épisodes & 1 &  & 1 &  &  &  \\
 \bottomrule
 \end{tabularx}
+\begin{tablenotes}[flushleft]\scriptsize
+\item[] La borne mécanique de l'écart 30 (e) compte les articles dont une citation nomme des graines : plus large que X8, car une citation qui nomme des graines ne rattache pas la barre d'erreur à elles. Partie basse : la source de l'incertitude des articles X2 oui, par année ; « non dit » : l'article ne dit pas sur quoi porte sa barre.
+\end{tablenotes}
+\end{threeparttable}
 \end{table}

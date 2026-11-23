@@ -5,7 +5,7 @@
 \setlength{\tabcolsep}{3.5pt}
 \caption[Réglages des cinq programmes]{Les réglages des cinq programmes, lus dans les programmes tels qu'ils ont tourné (\file{sim/analysis/hyperparams.py}, écart 28) et vérifiés contre un modèle sauvegardé par programme. Ce sont les valeurs par défaut des bibliothèques installées (tableau~\ref{tab:env}) : aucun programme n'a été réglé. Case vide : réglage absent ou désactivé. Réseaux : largeurs des couches cachées et activation. CrossQ n'a pas de réseau cible. Les deux PPO diffèrent par l'initialisation orthogonale, qui couvre plus de couches dans Stable-Baselines3 que dans SBX (écart 34). Source : \file{sim/analysis/hyperparams.json}.}
 \label{tab:hyperparametres}
-\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{1.95cm}>{\raggedright\arraybackslash}p{1.95cm}>{\raggedright\arraybackslash}p{1.95cm}>{\raggedright\arraybackslash}p{2.05cm}>{\raggedright\arraybackslash}p{1.95cm}@{}}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{2.05cm}>{\raggedright\arraybackslash}p{2.05cm}>{\raggedright\arraybackslash}p{2.05cm}>{\raggedright\arraybackslash}p{2.05cm}>{\raggedright\arraybackslash}p{2.05cm}@{}}
 \toprule
 Réglage & PPO PyTorch & PPO JAX & SAC & CrossQ & TRPO \\
 \midrule

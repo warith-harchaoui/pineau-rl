@@ -2,15 +2,11 @@
 
 Le sondage, premier instrument de ce rapport, relit des articles publiés avec la grille de lecture de
 Pineau, complétée par sept critères tirés de sa conférence d'ICLR et par une seconde grille que nous
-avons écrite. Ce chapitre décrit la méthode en entier : les étapes et le
-protocole (section~\ref{sec:sm-protocole}), les populations et les tirages (section~\ref{sec:sm-tirages}), les
-grilles et leurs règles de décision (section~\ref{sec:sm-grilles}), les lecteurs
-(section~\ref{sec:sm-lecteurs}), les doubles lectures (section~\ref{sec:sm-doubles}), l'harmonisation
-(section~\ref{sec:sm-harmonisation}), les contrôles des citations et des décisions négatives
-(section~\ref{sec:sm-controles}), la calibration sur 2018 et la règle de verdict (section~\ref{sec:sm-verdict}),
-puis les statistiques (section~\ref{sec:sm-stats}), les analyses de robustesse
-(section~\ref{sec:sm-robustesse}) et deux relectures ajoutées après les résultats
-(section~\ref{sec:sm-relectures}). La section~\ref{sec:sm-ecarts} résume les écarts au protocole. Le chapitre~\ref{chap:04-sondage-resultats} donne les résultats.
+avons écrite. Les deux années sont lues avec les mêmes grilles par des agents IA du même modèle et
+chaque \enquote{oui} cite une phrase de l'article et sa page. Ce chapitre suit l'ordre du travail : le
+protocole, les tirages, les grilles, les lecteurs et leurs doubles lectures, l'harmonisation et les
+contrôles, la règle de verdict, les statistiques, puis les relectures ajoutées après les résultats et
+les écarts au protocole. Le chapitre~\ref{chap:04-sondage-resultats} donne les résultats.
 
 \section{Le protocole et ses étapes}\label{sec:sm-protocole}
 
@@ -26,7 +22,7 @@ lecteurs (\file{study/GRILLE.md}) résume le protocole. Le plan de la seconde gr
 tel quel.
 
 \paragraph{Les étapes}
-La figure~\ref{fig:flux-sondage} montre le flux complet, des populations aux comptes finaux. Les étapes se
+Les figures~\ref{fig:flux-sondage} et~\ref{fig:flux-sondage-2} montrent le flux complet, des populations aux comptes finaux. Les étapes se
 sont succédé ainsi.
 \begin{enumerate}
   \item \textbf{Protocole et grille v1.} Protocole, premier tirage de 50 articles de 2025 et 2026, calibration sur
@@ -45,7 +41,7 @@ sont succédé ainsi.
   \item \textbf{Audit technique et relectures.} Réponse à un audit technique, chaque écart écrit avant son propre
   calcul : analyses complémentaires sur les données déjà lues (écart 30), relecture de Q5 sur la même
   sorte de version les deux années (écart 31), critère X8 (écart 32), lecteur d'une autre famille de
-  modèles (écart 33, en cours). Ensuite, après les résultats, une relecture humaine des deux
+  modèles (écart 33). Ensuite, après les résultats, une relecture humaine des deux
   années, préenregistrée et pas encore faite (écart 35), puis huit lecteurs neufs qui lisent chacun
   les deux années (écart 36).
 \end{enumerate}
@@ -55,6 +51,9 @@ sont succédé ainsi.
 \fig{flux-sondage-2}{Le sondage, seconde partie : de la lecture aux comparaisons. Chaque décision des lecteurs cite une phrase de l'article avec sa page. Trois séries de doubles lectures à l'aveugle, l'harmonisation des règles, l'audit des citations et la recherche de ce qui pourrait démentir chaque \enquote{non} mettent ces décisions à l'épreuve avant les comparaisons finales.}
 
 \section{Populations et tirages}\label{sec:sm-tirages}
+
+Le \cref{tab:echantillons} résume, pour chaque échantillon, la population, le tirage et ce qui entre
+dans l'analyse.
 
 \paragraph{La définition d'un article de RL}
 Un article appartient à la population s'il est accepté au programme principal d'une conférence et si
@@ -181,7 +180,7 @@ ont été ajoutés ensuite, après la recherche de travaux voisins, toujours ava
 L'annexe~\ref{chap:A-grille} reproduit les règles en entier.
 
 \begin{small}
-\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.9cm} >{\raggedright\arraybackslash}p{8.6cm} >{\raggedright\arraybackslash}p{1.6cm} >{\raggedright\arraybackslash}p{2.4cm}@{}}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.9cm} >{\raggedright\arraybackslash}p{8.0cm} >{\raggedright\arraybackslash}p{2.2cm} >{\raggedright\arraybackslash}p{2.4cm}@{}}
 \caption{Les critères de lecture. La colonne \enquote{Valeurs} donne les réponses permises. Un critère \file{yes}/\file{no}/\file{na} vaut \file{na} quand il ne s'applique pas. La dernière colonne
 donne la faille du tableau~\ref{tab:failles} que le critère mesure, ou son rôle.}\label{tab:criteres}\\
 \toprule
@@ -404,9 +403,9 @@ Un second lecteur relit des articles sans voir la première lecture ni savoir qu
 \end{itemize}
 Trente articles sont relus en tout. Seuls les cinq articles de 2018 de R2 mesurent l'accord sur des
 articles de 2018, avant la relecture complète de l'écart 36. Tous les lecteurs étant des copies du même modèle, l'accord mesure la stabilité de ce
-modèle plus que l'accord de deux lecteurs indépendants (écart 28). L'écart 33 prévoit pour cette raison
-un lecteur d'une autre famille de modèles, \file{gemma3:12b}, qui relit les articles des verdicts. Sa
-lecture est en cours et ce rapport n'en donne aucun résultat.
+modèle plus que l'accord de deux lecteurs indépendants (écart 28). Deux relectures complètes, écrites
+après les résultats, y répondent : huit lecteurs neufs du même modèle qui lisent chacun les deux années
+(écart 36), puis un lecteur d'une autre famille de modèles (écart 33, section~\ref{sec:sm-gemma}).
 
 \paragraph{Huit lecteurs neufs sur les deux années (écart 36)}
 L'écart 36, écrit après les résultats et avant toute lecture, ajoute une relecture
@@ -443,6 +442,39 @@ quatre critères des verdicts : Q5, Y9, X7 et X2.
 \end{itemize}
 Chaque article a déjà sa lecture d'origine. Les lectures neuves forment donc avec elles une double
 lecture complète, sans troisième lecture. Les résultats sont à la section~\ref{sec:sr-annees}.
+
+\paragraph{Un lecteur d'une autre famille de modèles (écart 33)}\label{sec:sm-gemma}
+Tous nos lecteurs, les huit neufs compris, sont de la même famille de modèles. L'écart 33, écrit après
+les résultats et avant toute lecture, ajoute un lecteur d'une autre famille, \texttt{gemma3:12b}
+(Google), servi localement par Ollama à température 0, graine 0 et contexte de \num{98304} jetons. Il
+pose deux questions. Ce lecteur retrouve-t-il les différences entre années sur Q5, Y9, X7 et X2 ?
+Son désaccord avec nos lecteurs dépend-il de l'année ?
+\begin{itemize}
+  \item \textbf{L'échantillon et l'entrée.} Les 98 articles expérimentaux de la comparaison
+  principale, dans un ordre mélangé par \file{random.Random(2034)}. Le texte vient de
+  \file{pdftotext}, section des références retirée, tronqué à \num{320000} caractères. La consigne
+  recopie les règles de \file{GRILLE-en.md} pour les quatre critères, avec leurs précisions (écarts 2,
+  6, 14, 17 et 19). Un appel par critère (\file{study/gemma\_reader.py}).
+  \item \textbf{Le contrôle.} Un \enquote{oui} n'est valide que si sa citation est retrouvée dans le
+  PDF et contient le motif de son critère fixé pour la recherche contre les \enquote{non}
+  (écart 27). Sinon, un seul nouvel essai, puis la décision est \enquote{invalide} et sort des
+  dénominateurs. Une réponse mal formée vaut invalide pour son seul critère. Un \enquote{non} est
+  toujours valide. L'appel par critère et la règle du motif ont été fixés après un pilote de trois
+  articles, hors analyse, avant la lecture complète ; la règle de la réponse mal formée, avant la
+  relecture du seul article concerné.
+  \item \textbf{L'analyse.} Le script \file{study/gemma\_stats.py} donne, par critère et par année,
+  l'accord des décisions valides avec nos codes finals, avec Wilson et un kappa bootstrap, puis un
+  test de Fisher de l'accord de 2018 contre celui de 2026. Il refait ensuite la différence 2026 moins
+  2018 avec ces seules décisions, Newcombe et Fisher avec Holm sur les quatre critères, à côté de celle
+  de nos lecteurs sur les mêmes articles. Une variante annoncée compte \enquote{non} toute décision
+  invalide.
+  \item \textbf{La règle, fixée d'avance.} Même signe et intervalles qui se recouvrent :
+  \enquote{reproduite}. Même signe et intervalle de ce lecteur contenant zéro : \enquote{même sens,
+  non établie}. Signe contraire : \enquote{non reproduite}. Le protocole note qu'un modèle de 12
+  milliards de paramètres lit moins bien qu'un grand modèle : un désaccord ne réfute pas à lui seul nos
+  lectures, un désaccord qui dépend de l'année serait le biais cherché.
+\end{itemize}
+Les résultats sont à la section~\ref{sec:sr-gemma}.
 
 \paragraph{L'accord, sur les lectures brutes}
 L'accord se calcule sur les lectures brutes, avant toute harmonisation : l'harmonisation s'applique

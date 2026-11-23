@@ -17,8 +17,11 @@ la file de l'élargissement n'y entrent pas (\cref{chap:03-sondage-methode}).
 \section{Index des tableaux générés}
 \label{sec:b-index}
 
+Le \cref{tab:b-index} donne, pour chaque tableau généré, le chapitre qui le commente et son fichier
+source.
+
 \begin{small}
-\begin{longtable}{@{}p{0.19\linewidth}p{0.43\linewidth}p{0.3\linewidth}@{}}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.19\linewidth}>{\raggedright\arraybackslash}p{0.43\linewidth}>{\raggedright\arraybackslash}p{0.3\linewidth}@{}}
 \caption{Où trouver chaque tableau généré.}\label{tab:b-index}\\
 \toprule
 Tableau & Contenu & Fichier source \\
@@ -62,7 +65,7 @@ placé dans le chapitre de son analyse. Le \cref{tab:b-index-ajouts} renvoie à 
 le fichier de résultats d'où il vient.
 
 \begin{small}
-\begin{longtable}{@{}p{0.22\linewidth}p{0.4\linewidth}p{0.3\linewidth}@{}}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.22\linewidth}>{\raggedright\arraybackslash}p{0.4\linewidth}>{\raggedright\arraybackslash}p{0.3\linewidth}@{}}
 \caption{Les tableaux générés des analyses ajoutées après la relecture technique.}\label{tab:b-index-ajouts}\\
 \toprule
 Tableau & Contenu & Fichier source \\
@@ -114,10 +117,10 @@ Tableau & Contenu & Fichier source \\
 
 Chaque fichier JSON de résultats vient d'un seul script, relancé par \texttt{make analysis}
 (\cref{sec:make}). Le détail de chaque critère et de chaque paire, que les tableaux résument, se
-trouve dans ces fichiers.
+trouve dans ces fichiers (\cref{tab:b-fichiers}).
 
 \begin{small}
-\begin{longtable}{@{}p{0.3\linewidth}p{0.64\linewidth}@{}}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.3\linewidth}>{\raggedright\arraybackslash}p{0.64\linewidth}@{}}
 \caption{Les scripts d'analyse et ce que contient leur fichier JSON.}\label{tab:b-fichiers}\\
 \toprule
 Script & Contenu du fichier de résultats \\
@@ -156,8 +159,10 @@ Script & Contenu du fichier de résultats \\
   \file{q5\_versions.json}). \\
 \file{x8\_stats.py} & Le critère X8 contre X2, sources de l'incertitude, accord des doubles lectures
   (écart 32, \file{x8\_stats.json}). \\
-\file{gemma\_stats.py} & Le lecteur \texttt{gemma3:12b} contre nos lecteurs (écart 33). La lecture
-  tourne encore : ce fichier n'a pas de résultat publié. \\
+\file{gemma\_stats.py} & Le lecteur \texttt{gemma3:12b} contre nos lecteurs : accord et kappa par
+  critère et par année, interaction année $\times$ lecteur, différences 2026 moins 2018 lues par ce
+  lecteur et par les nôtres (écart 33, \file{gemma\_stats.json} ; variante où une décision invalide
+  compte \enquote{non}, \file{gemma\_stats\_invalid\_no.json}). \\
 \multicolumn{2}{@{}l}{\textit{Simulations, dossier \file{sim/analysis/}}}\\
 \file{e1.py}, \file{e1\_curve.py} & E1 : trente essais de PPO, test de Welch sur les scores finaux
   puis sur les courbes. \\

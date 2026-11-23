@@ -3,7 +3,8 @@
 \centering
 \footnotesize
 \setlength{\tabcolsep}{3.2pt}
-\caption[GRPO : modèles, récompenses, graines]{Volet GRPO (\file{sim/llm/LLM\_PROTOCOL.md}) : deux petits modèles ouverts, Qwen2.5 à 0,5 milliard de paramètres et Llama 3.2 à 1 milliard, entraînés 100 pas sur la tâche \texttt{mul2} (produit de deux nombres de 12 à 99), avec la vraie récompense puis une récompense tirée à pile ou face, cinq graines (0 à 2 puis 3 et 4, écart 14). Réussite au premier essai : pass@1 échantillonné sur les problèmes de test, en pourcentage ; gain : pas 100 moins pas 0, en points ; réponses coupées : part des réponses qui atteignent la limite de 160 jetons sans donner de résultat, toutes comptées fausses. Matériel : GPU Apple (MPS) ou CPU ; trois essais Qwen sont passés sur CPU après des gradients non finis sur MPS (écarts 10 et 11), si bien que matériel et graine se confondent pour Qwen. Partie basse : statistique préregistrée, moyenne des gains par graine et intervalle bootstrap percentile à 95~\% (10\,000 tirages, \texttt{random.Random(0)}), très grossier avec cinq graines ; \textbf{en gras}, les intervalles qui excluent zéro. La configuration Llama, récompense au hasard, est résumée sur ses quatre essais finis (écart 16), avec la sensibilité au gain manquant. Sources : \file{sim/llm/results/summary\_5.json}, \file{gains\_5.json}, \file{extra\_5.json} ; part coupée au pas 0 : première évaluation de chaque fichier \file{sim/llm/results/<modèle>/mul2/<récompense>/seed<g>.jsonl}.}
+\begin{threeparttable}
+\caption[GRPO : modèles, récompenses, graines]{Volet GRPO (\file{sim/llm/LLM\_PROTOCOL.md}) : deux petits modèles ouverts, Qwen2.5 à 0,5 milliard de paramètres et Llama 3.2 à 1 milliard, entraînés 100 pas sur la tâche \texttt{mul2} (produit de deux nombres de 12 à 99), avec la vraie récompense puis une récompense tirée à pile ou face, cinq graines (0 à 2 puis 3 et 4, écart 14). \textbf{En gras}, les intervalles qui excluent zéro. Sources : \file{sim/llm/results/summary\_5.json}, \file{gains\_5.json}, \file{extra\_5.json}.}
 \label{tab:grpo}
 \begin{tabular}{@{}lllrrrrrr@{}}
 \toprule
@@ -46,4 +47,8 @@ Llama 3.2 1B & vraie & 0 & GPU (MPS) & 25 & 20 & −4 & 2 & 9 \\
 \multicolumn{7}{@{}l}{\quad Llama 3.2 1B, au hasard, graine 4 = plus grand gain, +51 } & \multicolumn{2}{r}{−9 [−24\,;\,+21]} \\
 \bottomrule
 \end{tabular}
+\begin{tablenotes}[flushleft]\scriptsize
+\item[] Réussite au premier essai : pass@1 échantillonné sur les problèmes de test, en pourcentage ; gain : pas 100 moins pas 0, en points ; réponses coupées : part des réponses qui atteignent la limite de 160 jetons sans donner de résultat, toutes comptées fausses. Matériel : GPU Apple (MPS) ou CPU ; trois essais Qwen sont passés sur CPU après des gradients non finis sur MPS (écarts 10 et 11), si bien que matériel et graine se confondent pour Qwen. Partie basse : statistique préregistrée, moyenne des gains par graine et intervalle bootstrap percentile à 95~\% (10\,000 tirages, \texttt{random.Random(0)}), très grossier avec cinq graines. La configuration Llama, récompense au hasard, est résumée sur ses quatre essais finis (écart 16), avec la sensibilité au gain manquant. Part coupée au pas 0 : première évaluation de chaque fichier \file{sim/llm/results/<modèle>/mul2/<récompense>/seed<g>.jsonl}.
+\end{tablenotes}
+\end{threeparttable}
 \end{table}

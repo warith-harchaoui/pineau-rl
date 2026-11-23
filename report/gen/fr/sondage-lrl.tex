@@ -3,7 +3,8 @@
 \centering
 \footnotesize
 \setlength{\tabcolsep}{3.5pt}
-\caption[RL sur grands modèles contre RL classique, premier tirage 2026]{RL appliqué aux grands modèles de langage (famille \texttt{llm} du critère X5) contre RL classique, dans le premier tirage aléatoire de 50 articles de 2026 (ICLR 2026, ICML 2026, NeurIPS 2025) : 27 articles \texttt{llm}, 14 \texttt{classic}, 9 \texttt{theory} (non montrés, comptés dans « Tous »). $k/n$ sur les articles à expériences où le critère s'applique, part en pourcentage entre parenthèses ; intervalle de Wilson à 95~\% pour la colonne « Tous », seul calculé par le script. Seule la grille v1 a ce découpage par famille dans les résultats (\file{study/audit\_stats.json}, harmonisation de \file{study/overrides.json}) : la grille v2 n'est pas ventilée par famille. Aucun test entre familles n'a été préregistré ; le tableau est descriptif. Les deux dernières colonnes rappellent l'échantillon classique élargi à 50 articles (tableau~\ref{tab:sondage-pineau}). Les 18 articles \texttt{llm} et 3 articles \texttt{theory} lus dans la file A3 restent à part : le tri sur le titre en avait déjà écarté beaucoup, ils ne forment pas un échantillon. Sources : \file{study/audit\_stats.json}, \file{study/extension\_stats.json}.}
+\begin{threeparttable}
+\caption[RL sur grands modèles contre RL classique, premier tirage 2026]{RL appliqué aux grands modèles de langage (famille \texttt{llm} du critère X5) contre RL classique, dans le premier tirage aléatoire de 50 articles de 2026 (ICLR 2026, ICML 2026, NeurIPS 2025) : 27 articles \texttt{llm}, 14 \texttt{classic}, 9 \texttt{theory} (non montrés, comptés dans « Tous »). Tableau descriptif. Sources : \file{study/audit\_stats.json}, \file{study/extension\_stats.json}.}
 \label{tab:sondage-lrl}
 \begin{tabularx}{\linewidth}{@{}l>{\raggedright\arraybackslash}Xrrrrrr@{}}
 \toprule
@@ -23,4 +24,8 @@ X4 & Références réglées avec le même soin & 0/27 (0) & 2/14 (14) & 2/44 & 5
 X7 & Calcul chiffré & 12/27 (44) & 8/14 (57) & 21/45 & 47 [33\,;\,61] & 29/50 & 58 \\
 \bottomrule
 \end{tabularx}
+\begin{tablenotes}[flushleft]\scriptsize
+\item[] $k/n$ sur les articles à expériences où le critère s'applique, part en pourcentage entre parenthèses ; intervalle de Wilson à 95~\% pour la colonne « Tous », seul calculé par le script. Seule la grille v1 a ce découpage par famille dans les résultats (\file{study/audit\_stats.json}, harmonisation de \file{study/overrides.json}) : la grille v2 n'est pas ventilée par famille. Aucun test entre familles n'a été préregistré. Les deux dernières colonnes rappellent l'échantillon classique élargi à 50 articles (tableau~\ref{tab:sondage-pineau}). Les 18 articles \texttt{llm} et 3 articles \texttt{theory} lus dans la file A3 restent à part : le tri sur le titre en avait déjà écarté beaucoup, ils ne forment pas un échantillon.
+\end{tablenotes}
+\end{threeparttable}
 \end{table}

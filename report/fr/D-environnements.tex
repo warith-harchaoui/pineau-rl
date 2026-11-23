@@ -24,14 +24,15 @@ version de Python et la plateforme en tête. Les fichiers \file{*.lock} donnent 
 l'empreinte SHA-256 de chaque paquet, pour une installation par \texttt{pip install
 -{}-require-hashes}. Quatre fichiers \file{*.txt}, un par environnement, reprennent les listes que
 citent les protocoles, \file{sim/requirements.lock} et ses voisins, réunies en un seul dossier. Le
-cinquième, \file{test.txt}, ajoute les paquets des tests à l'environnement d'analyse.
+cinquième, \file{test.txt}, ajoute les paquets des tests à l'environnement d'analyse
+(\cref{tab:d-envs}).
 
 \begin{table}[htbp]
 \centering
 \small
 \caption{Les environnements figés du projet (\file{envs/README.md}).}
 \label{tab:d-envs}
-\begin{tabularx}{\linewidth}{@{}llX@{}}
+\begin{tabularx}{\linewidth}{@{}ll>{\raggedright\arraybackslash}X@{}}
 \toprule
 Fichier & Environnement & Ce qu'il fait tourner \\
 \midrule
@@ -74,8 +75,8 @@ make verify
         viennent de macOS arm64. Un nouvel essai ailleurs donne d'autres courbes pour la même
         graine aléatoire : MuJoCo, JAX et PyTorch arrondissent différemment d'un processeur à l'autre
         (\cref{sec:reentrainer}).
-  \item \textbf{GRPO} télécharge \texttt{Qwen/Qwen2.5-0.5B-Instruct} et
-        \texttt{unsloth/Llama-3.2-1B-Instruct} depuis Hugging Face. Depuis l'écart 15 (c) du volet
+  \item \textbf{GRPO} télécharge \path{Qwen/Qwen2.5-0.5B-Instruct} et
+        \path{unsloth/Llama-3.2-1B-Instruct} depuis Hugging Face. Depuis l'écart 15 (c) du volet
         GRPO, \file{grpo.py} fixe la révision exacte de chaque modèle, celle de nos essais.
                 \file{docs/figures/build.py} télécharge le découpeur en jetons de Qwen. Le fichier
         \file{generation\_config.json} de Qwen fixe une pénalité de répétition de 1,1, que les
@@ -95,7 +96,7 @@ Hors des environnements Python, la construction des PDF et des figures emploie l
 \small
 \caption{Les outils de construction des documents.}
 \label{tab:d-chaine}
-\begin{tabularx}{\linewidth}{@{}llX@{}}
+\begin{tabularx}{\linewidth}{@{}ll>{\raggedright\arraybackslash}X@{}}
 \toprule
 Outil & Version & Employé par \\
 \midrule
@@ -113,8 +114,8 @@ git & 2.50.0 & \texttt{make verify} \\
 
 Deux outils hors de Python ont servi aux analyses ajoutées après la relecture technique. Le client
 \texttt{gh} 2.95.0 a lu la date de création des dépôts GitHub cités pour Q5 (écart 31 du
-sondage), une requête à la fois. Ollama 0.40.16 sert localement \texttt{gemma3:12b}, le lecteur de
-l'écart 33 du sondage. Chaque fichier de lecture de ce lecteur note le condensé du modèle.
+sondage), une requête à la fois. Ollama 0.40.16 a servi localement \texttt{gemma3:12b}, le lecteur
+de l'écart 33 du sondage. Chaque fichier de lecture de ce lecteur note le condensé du modèle.
 
 Le présent rapport se construit par \texttt{make report}, qui lance \file{report/build.sh} : les
 tableaux depuis les fichiers JSON (\file{report/tools/tables.py}), les figures

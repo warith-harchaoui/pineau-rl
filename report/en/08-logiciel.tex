@@ -11,7 +11,8 @@ how to obtain it.
 \section{Repository layout}
 \label{sec:depot}
 
-The repository follows a one-way flow, from runs to documents (\cref{fig:architecture}). A run writes
+The repository follows a one-way flow, from runs to documents
+(\cref{fig:architecture,fig:architecture-2}); \cref{tab:depot} names its directories. A run writes
 a raw result file: an evaluation curve in CSV format for a simulation, a JSONL log for a GRPO run, a
 JSON reading file for a paper of the survey. An analysis script reads these files and writes a JSON
 result file. Two checking scripts then recompute every number of the texts from these JSON files.
@@ -33,8 +34,8 @@ Path & Content \\
 \file{study/} & The survey: protocol (\file{PROTOCOL.md}), reader's sheet (\file{GRILLE.md}),
   draws, readings (\file{codes/}, \file{codes\_v2/}, \file{codes\_x8/}), harmonisation
   (\file{overrides*.json}), provenance of the readers (\file{readers/}), analysis scripts and JSON result
-  files, among them those of deviations 30 to 33 (\file{survey\_extra.py}, \file{x8\_stats.py},
-  \file{q5\_versions\_stats.py}). \\
+  files, among them those of deviations 30 to 36 (\file{survey\_extra.py}, \file{x8\_stats.py},
+  \file{q5\_versions\_stats.py}, \file{gemma\_stats.py}, \file{r36\_stats.py}). \\
 \file{sim/} & The simulations: protocol (\file{SIM\_PROTOCOL.md}), one run (\file{run.py}), a
   re-evaluation under modified physics (\file{dose.py}), run lists (\file{jobs*.txt}), launchers and
   watchdog (\file{drive.sh}, \file{queue.sh}, \file{worker.sh}, \file{scale.sh},
@@ -278,8 +279,8 @@ The \file{Makefile} trains nothing. Training goes through \file{sim/run.py}, \fi
   \item[\texttt{make install}] installs the package in editable mode in the analysis environment,
         with no dependency downloaded: they come from \file{envs/analysis.lock}.
   \item[\texttt{make analysis}] reruns every analysis script, in dependency order, through three
-        targets that also run alone. \texttt{analysis-study} runs the twelve survey scripts, among them
-        those of deviations 30 to 33. \texttt{analysis-sim} runs the seventeen simulation scripts at ten
+        targets that also run alone. \texttt{analysis-study} runs the survey scripts, among them
+        those of deviations 30 to 36. \texttt{analysis-sim} runs the seventeen simulation scripts at ten
         random seeds, among them the strict count of E2 and the test of the \task{Hopper} reversal, then
         the statistical analysis of the official Zoo pipeline, the variants of deviations 12 and 20
         (twenty random seeds, replication of E4 on random seeds 10 to 19, equal budget) and the eight
@@ -426,7 +427,7 @@ to the load of the machine (deviation 15 of the simulations), then two cores for
 depends on its random seed alone: the relaunches check it for PPO, while deviation 32 is still
 testing it for SAC and CrossQ (\cref{sec:registres}). \Cref{sec:calcul} describes the launchers, the watchdog and the job queue.
 \Cref{tab:calcul} gives, per program and per task, the number of runs, the number of steps, the
-median duration of a run and the core-hours consumed.
+median wall-clock time of a run and the sum of these times.
 
 The GRPO runs have very different durations depending on the device. According to the \texttt{wall}
 field of their logs at step 100, a Qwen run took 42 to 52 minutes on GPU and 4.3 to 11.4 hours on
