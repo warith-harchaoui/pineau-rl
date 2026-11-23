@@ -858,7 +858,7 @@ def architecture_2(lang):
 
 # ---------------------------------------------------------------------------------------------------------------
 
-FIGS = (("flux-sondage", flux_sondage), ("flux-sondage-2", flux_sondage_2), ("frise-ecarts", frise_ecarts),
+FIGS = (("flux-sondage", flux_sondage), ("flux-sondage-2", flux_sondage_2),
         ("architecture", architecture), ("architecture-2", architecture_2))
 
 

@@ -103,3 +103,10 @@ Traceback (most recent call last):
     from pineau_rl.grid import load_overrides, segments, validate
 ModuleNotFoundError: No module named 'pineau_rl'
 10:59:06 C119 FAILED JSONDecodeError('Unterminated string starting at: line 1 column 27 (char 26)')
+05:32:06 GRPO training running, waiting 5 min
+05:37:06 GRPO training running, waiting 5 min
+05:42:06 GRPO training running, waiting 5 min
+05:47:07 GRPO training running, waiting 5 min
+05:52:07 GRPO training running, waiting 5 min
+05:57:08 GRPO training running, waiting 5 min
+07:41:14 39/98 C119 5943.7 s {'Q5': 'yes', 'X2': 'no!', 'X7': 'no', 'Y9': 'no'}  retried

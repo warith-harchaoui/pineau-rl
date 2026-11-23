@@ -12,3 +12,5 @@
 2026-11-23 03:08:08 llama1_c7 random 0: start
 2026-11-23 04:56:44 llama1_c7 random 0: {"model": "llama1_c7", "task": "mul2", "reward": "random", "seed": 0, "done": true, "retries": {"generate": 0, "update": 0}, "wall": 5713.7}
 2026-11-23 04:56:45 qwen05_c7 true 1: start
+2026-11-23 06:02:05 qwen05_c7 true 1: {"model": "qwen05_c7", "task": "mul2", "reward": "true", "seed": 1, "done": true, "retries": {"generate": 0, "update": 6}, "wall": 3348.1}
+2026-11-23 06:02:05 waiting (window: night, GPU free: no, disk: 36 GB)
