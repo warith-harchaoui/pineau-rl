@@ -5,45 +5,34 @@ Pineau, complétée par sept critères tirés de sa conférence d'ICLR et par un
 avons écrite. Les deux années sont lues avec les mêmes grilles par des agents IA du même modèle et
 chaque \enquote{oui} cite une phrase de l'article et sa page. Ce chapitre suit l'ordre du travail : le
 protocole, les tirages, les grilles, les lecteurs et leurs doubles lectures, l'harmonisation et les
-contrôles, la règle de verdict, les statistiques, puis les relectures ajoutées après les résultats et
-les écarts au protocole. Le chapitre~\ref{chap:04-sondage-resultats} donne les résultats.
+contrôles, la règle de verdict, les statistiques, puis deux relectures complémentaires. Le chapitre~\ref{chap:04-sondage-resultats} donne les résultats.
 
 \section{Le protocole et ses étapes}\label{sec:sm-protocole}
 
 \paragraph{Un protocole écrit avant la lecture}
-Le protocole du sondage (\file{study/PROTOCOL.md}) est écrit avant la lecture du
-premier article. Il fixe la question, les populations, les tirages, la grille, les règles de décision,
-la double lecture et l'analyse. Tout changement ultérieur s'inscrit en bas du fichier, dans une liste
-numérotée d'\enquote{écarts}. Chaque écart est daté et dit s'il a été décidé avant ou après que le
-résultat concerné a été connu. Le fichier en compte 35, numérotés de 1 à 36
-(section~\ref{sec:sm-ecarts}). La fiche remise aux
-lecteurs (\file{study/GRILLE.md}) résume le protocole. Le plan de la seconde grille
-(\file{study/planification\_v2.md}), écrit avant tout codage, a été rendu public
-tel quel.
+Le protocole du sondage (\file{study/PROTOCOL.md}) a été écrit avant la lecture du premier article
+et chaque changement ultérieur y est consigné, publié dans le dépôt. Il fixe la question, les
+populations, les tirages, la grille, les règles de décision, la double lecture et l'analyse. La fiche
+remise aux lecteurs (\file{study/GRILLE.md}) le résume. Le plan de la seconde grille
+(\file{study/planification\_v2.md}) est publié tel quel.
 
 \paragraph{Les étapes}
 Les figures~\ref{fig:flux-sondage} et~\ref{fig:flux-sondage-2} montrent le flux complet, des populations aux comptes finaux. Les étapes se
 sont succédé ainsi.
 \begin{enumerate}
-  \item \textbf{Protocole et grille v1.} Protocole, premier tirage de 50 articles de 2025 et 2026, calibration sur
-  12 articles de 2018, lecture avec la grille v1 (Q1 à Q8, X1 à X7) par sept lecteurs, dont un second
-  lecteur.
-  \item \textbf{Grille v2 et élargissement.} Grille v2 (Y1 à Y12) et ses règles de décision, écrites avant tout codage
-  (écarts 11 et 14). Élargissement des deux échantillons, écrit avant tout tirage (écart 12).
-  Relecture humaine prévue (écart 13). Harmonisation de la calibration de 2018 rattrapée (écart 15).
-  Pilote (écarts 16 et 17), lecture élargie, audit des lectures brutes, harmonisation (écarts 18 et
-  19), puis premiers pourcentages. Règle de verdict à grille égale (écart 20).
-  \item \textbf{Robustesse et trajectoire.} Analyses de robustesse (écart 21), déclarations des listes de
-  contrôle (A5, écart 22), abandon de la relecture humaine (écart 23), sensibilité au filtre de titre
-  (A6, écart 24), trajectoire de 2019 à 2024 (A4, écarts 25 et 26).
-  \item \textbf{Contre-vérifications.} Recherche mécanique contre les décisions négatives (écart 27), provenance
-  des lecteurs (écart 28), sensibilité au changement de modèle (écart 29).
-  \item \textbf{Audit technique et relectures.} Réponse à un audit technique, chaque écart écrit avant son propre
-  calcul : analyses complémentaires sur les données déjà lues (écart 30), relecture de Q5 sur la même
-  sorte de version les deux années (écart 31), critère X8 (écart 32), lecteur d'une autre famille de
-  modèles (écart 33). Ensuite, après les résultats, une relecture humaine des deux
-  années, préenregistrée et pas encore faite (écart 35), puis huit lecteurs neufs qui lisent chacun
-  les deux années (écart 36).
+  \item \textbf{Grille v1.} Premier tirage de 50 articles de 2025 et 2026, calibration sur 12 articles
+  de 2018, lecture avec la grille v1 (Q1 à Q8, X1 à X7) par sept lecteurs, dont un second lecteur.
+  \item \textbf{Grille v2 et élargissement.} Grille v2 (Y1 à Y12) et ses règles de décision.
+  Élargissement des deux échantillons à 50 articles. Pilote, lecture élargie, audit des lectures
+  brutes, harmonisation des deux années, puis premiers pourcentages et règle de verdict à grille égale.
+  \item \textbf{Robustesse et trajectoire.} Analyses de robustesse, déclarations des listes de contrôle
+  (A5), sensibilité au filtre de titre (A6), trajectoire de 2019 à 2024 (A4) relue avec les annexes.
+  \item \textbf{Contre-vérifications.} Recherche mécanique contre les décisions négatives, provenance
+  des lecteurs, sensibilité au changement de modèle.
+  \item \textbf{Relectures complémentaires.} Intervalles sur l'accord, puissance, lecteurs et année,
+  règle qui exige aussi les chiffres de Pineau. Relecture de Q5 sur la même sorte de version les deux
+  années, critère X8. Huit lecteurs neufs qui lisent chacun les deux années, puis un lecteur d'une
+  autre famille de modèles.
 \end{enumerate}
 
 \fig{flux-sondage}{Le sondage, première partie : des populations aux échantillons. Les trois populations sont les articles de RL d'ICML, de NeurIPS et d'ICLR 2018, ceux d'ICML et de NeurIPS en 2019, 2020, 2022 et 2024, ceux d'ICLR 2026, d'ICML 2026 et de NeurIPS 2025. Chaque échantillon vient d'un tirage dont la graine aléatoire est écrite dans le protocole : 50 articles de 2018 (48 expérimentaux), 20 articles par année pour 2019, 2020, 2022 et 2024, 50 articles de RL classique de 2026. Le premier tirage de 2026 est gardé comme contexte.}
@@ -85,12 +74,12 @@ l'ordre, par un tirage \file{random.Random(2026)} dans le reste de la même conf
 Pour vérifier que nos lecteurs retrouvent à peu près les chiffres de Pineau, le protocole ajoute 6
 articles de RL d'ICML 2018 et 6 de NeurIPS 2018, avec le même filtre et la même graine
 (\file{study/calib\_2018.json}). Les annexes séparées de 2018 sont lues : le matériel supplémentaire
-de PMLR pour ICML, les archives des actes pour NeurIPS (écart 8).
+de PMLR pour ICML, les archives des actes pour NeurIPS.
 
 \paragraph{L'élargissement A2 : 50 articles de 2018}
 Avec 12 articles de 2018 et 14 articles de RL classique de 2026, l'audit statistique du premier tirage
-(\file{study/audit\_stats.py}) n'a pas la puissance de détecter une différence de 30 points. L'écart 12, écrit
-avant tout tirage et toute lecture des articles ajoutés, élargit les deux échantillons. Pour 2018,
+(\file{study/audit\_stats.py}) n'a pas la puissance de détecter une différence de 30 points. Nous
+avons donc élargi les deux échantillons. Pour 2018,
 la population réunit les trois conférences que Pineau annonce : 131 articles de RL, dont 54 à ICML, 52
 à NeurIPS et 25 à ICLR (\file{study/rl\_population\_2018.json}). La liste d'ICLR 2018 vient du
 programme officiel de la conférence, les interfaces d'OpenReview et de dblp refusant les requêtes
@@ -107,8 +96,7 @@ d'arXiv. L'échantillon est \file{study/calib\_2018\_v2.json}.
 
 \paragraph{L'élargissement A3 : 50 articles de RL classique de 2026}
 La population de départ est celle des \num{1252} articles, moins les 50 du premier tirage, soit
-\num{1202} articles, mélangés avec \file{random.Random(2026)}. Un tri sur le seul titre, fixé dans
-l'écart 12, saute les titres qui contiennent \enquote{LLM}, \enquote{language model},
+\num{1202} articles, mélangés avec \file{random.Random(2026)}. Un tri sur le seul titre saute les titres qui contiennent \enquote{LLM}, \enquote{language model},
 \enquote{reasoning}, \enquote{RLHF}, \enquote{RLVR}, \enquote{GRPO}, \enquote{preference},
 \enquote{alignment}, \enquote{reward model}, \enquote{chain-of-thought}, \enquote{math} ou
 \enquote{agentic}. Le tri écarte 429 articles (\file{study/classic\_screened\_out\_2026.json}) et
@@ -116,35 +104,35 @@ laisse une file ordonnée de 773 articles (\file{study/classic\_queue\_2026.json
 la famille de chaque article de la file (critère X5) dans l'ordre, jusqu'au trente-sixième article
 \file{classic}. Les 9 articles d'ICLR 2026 en tête de file étaient injoignables au moment de la lecture, le
 site des actes étant en panne : ils sont sautés. La file est figée pour que la sélection ne dépende pas
-de la date de lecture (écart 17). Au total, 70 articles de la file ont été lus. Les 36 premiers
+de la date de lecture. Au total, 70 articles de la file ont été lus. Les 36 premiers
 articles \file{classic} forment l'échantillon. Avant le trente-sixième, 18 articles relevaient des
 grands modèles de langue (\file{llm}) et 3 de la théorie (\file{theory}). Les 13 derniers ont été lus
 après le dernier article retenu (\cref{tab:articles-2026}). Les articles \file{llm} et \file{theory}
 restent codés et rapportés à part. Ils ne forment pas un échantillon, puisque le tri sur le titre en a
 écarté beaucoup d'autres. L'échantillon de RL classique de 2026 réunit les 14 articles \file{classic}
-du premier tirage et ces 36 articles. L'écart 18 précise X5 avant de figer cet échantillon : appliquée
-aux 120 articles lus, la règle ne change qu'un code, K006, de \file{llm} à \file{classic}.
+du premier tirage et ces 36 articles. La règle de X5, qui lit la famille sur le modèle que le RL
+entraîne, a été fixée avant de figer cet échantillon : sur les 120 articles lus, elle ne change qu'un
+code, K006, de \file{llm} à \file{classic}.
 
 \paragraph{La trajectoire A4 : 2019, 2020, 2022 et 2024}
-L'écart 25, écrit avant tout tirage, ajoute quatre années pour dater le
-changement. La population de chaque année réunit les articles de RL des actes principaux d'ICML
+Quatre années s'ajoutent pour dater le changement. La population de chaque année réunit les articles de RL des actes principaux d'ICML
 (volumes PMLR 97, 119, 162 et 235) et de NeurIPS. ICLR manque : OpenReview refuse les téléchargements
-automatiques. Après le tri sur le titre de l'écart 12, la population compte 134 articles en 2019, 222
+automatiques. Après le même tri sur le titre, la population compte 134 articles en 2019, 222
 en 2020, 301 en 2022 et 374 en 2024 (\file{study/trajectory\_queue.json}). L'ordre de lecture est un
 mélange \file{random.Random(<année>)} des deux conférences réunies. Les lecteurs lisent les 24 premiers
 articles de chaque année qui ont un PDF. L'échantillon prend, par année, les 20 premiers articles
 \file{classic} à expériences dans l'ordre. En 2019 et 2020, les 24 premiers articles n'en comptaient
-que 19 et 18 : les trois suivants de chaque année ont été lus, comme prévu. Huit lecteurs (M1 à M8)
+que 19 et 18 : les trois suivants de chaque année ont été lus. Huit lecteurs (M1 à M8)
 lisent chacun douze articles pris dans toutes les années, pour ne pas confondre un lecteur avec une
-année. M7 en lit dix-huit, avec les six articles supplémentaires de 2019 et 2020. Une seconde passe a
-été nécessaire : les annexes de NeurIPS 2019 à 2022 sont des archives zip, que le premier
-téléchargement avait laissées de côté. Les lectures brutes de la première passe sont enregistrées dans
+année. M7 en lit dix-huit, avec les six articles supplémentaires de 2019 et 2020. Nous avons corrigé
+un oubli par une seconde passe : les annexes de NeurIPS 2019 à 2022 sont des archives zip, que notre
+premier téléchargement avait laissées de côté. Les lectures brutes de la première passe sont enregistrées dans
 le dépôt (commit \file{0d3519a}). Chaque lecteur relit ensuite ses articles avec l'annexe et change
 les décisions qu'elle justifie.
 
 \paragraph{Les analyses A5 et A6}
-L'analyse A5 (écart 22) prend les 30 articles de NeurIPS 2025 déjà lus, sans tirage : 16 du premier
-tirage et 14 de la file A3. L'analyse A6 (écart 24) tire 400 articles parmi les articles des trois
+L'analyse A5 prend les 30 articles de NeurIPS 2025 déjà lus, sans tirage : 16 du premier
+tirage et 14 de la file A3. L'analyse A6 tire 400 articles parmi les articles des trois
 listes de 2026 dont le titre ne correspond pas à l'expression, avec \file{random.Random(2029)}.
 
 \begin{table}[tbp]
@@ -171,12 +159,10 @@ A6, filtre de titre & articles de 2026 hors filtre & \file{Random(2029)} : 400 &
 \section{Les grilles de lecture}\label{sec:sm-grilles}
 
 \paragraph{Deux versions de la grille}
-Le tableau~\ref{tab:criteres} liste les 27 critères des deux grilles, plus le critère X8, ajouté après
-les résultats (section~\ref{sec:sm-x8}). La grille v1 réunit les huit critères de Pineau (Q1 à
+Le tableau~\ref{tab:criteres} liste les 27 critères des deux grilles, plus le critère complémentaire
+X8 (section~\ref{sec:sm-x8}). La grille v1 réunit les huit critères de Pineau (Q1 à
 Q8), tels qu'elle les présente à NeurIPS (page 29), puis sept critères tirés de sa conférence d'ICLR (X1
-à X7). La grille v2 (Y1 à Y12) couvre les failles que la v1 laisse sans mesure. Elle a été écrite
-(écart 11), avec ses règles de décision (écart 14), avant tout codage v2. Y11 et Y12
-ont été ajoutés ensuite, après la recherche de travaux voisins, toujours avant tout codage.
+à X7). La grille v2 (Y1 à Y12) couvre les failles que la v1 laisse sans mesure. Y11 et Y12 viennent de la recherche de travaux voisins.
 L'annexe~\ref{chap:A-grille} reproduit les règles en entier.
 
 \begin{small}
@@ -226,13 +212,13 @@ Y10 & Les dépendances logicielles sont listées avec leurs versions & oui, non,
 Y11 & Le type d'incertitude est nommé & oui, non, na & F12 \\
 Y12 & Un outil statistique postérieur à 2018 est employé & oui, non, na & F12 \\
 \midrule
-\multicolumn{4}{@{}l}{\emph{Ajouté après les résultats (écart 32)}} \\
+\multicolumn{4}{@{}l}{\emph{Critère complémentaire}} \\
 X8 & L'incertitude rapportée est calculée sur des graines aléatoires indépendantes & oui, non & F11, F12 \\
 \end{longtable}
 \end{small}
 
 \paragraph{Règles de décision de la grille v1}
-Le protocole fixe les règles suivantes, complétées par les écarts 1 à 6.
+Le protocole fixe les règles suivantes, précisions d'harmonisation comprises.
 \begin{itemize}
   \item \textbf{Q3 et Q4.} \file{yes} si un tableau ou un paragraphe donne les hyperparamètres de toutes
   les méthodes principales. \enquote{Valeurs par défaut de [bibliothèque]} sans les lister compte
@@ -240,36 +226,36 @@ Le protocole fixe les règles suivantes, complétées par les écarts 1 à 6.
   comparée.
   \item \textbf{Q5.} Un lien vers du code dans l'article. \enquote{Sur demande}, \enquote{sera publié}
   et \enquote{will be made public at <URL>} valent \file{no}. Une page de projet compte \file{yes}
-  seulement si elle mène à du code, ce qui a été vérifié en visitant chaque page (écarts 6 et 19).
+  seulement si elle mène à du code, ce qui a été vérifié en visitant chaque page.
   \item \textbf{Q6.} La méthode de choix est dite : grille, recherche aléatoire, budget, critère.
   \enquote{Tuned} sans plus vaut \file{no}.
   \item \textbf{Q7.} Évaluation sur des tâches, environnements, graines d'environnement ou jeux de
   données non vus à l'entraînement ni au réglage. Pour \file{llm}, des bancs d'essai distincts des
   données d'entraînement RL comptent \file{yes}. Un article \file{theory} à expériences jouets vaut
-  \file{no} (écart 4).
+  \file{no}.
   \item \textbf{Q8.} Un test appliqué à une comparaison : $t$, Welch, Mann-Whitney, bootstrap avec
   intervalle, IQM de rliable avec intervalles stratifiés. Des barres d'erreur seules valent \file{no}
   pour Q8 et \file{yes} pour X2. X2 compte donc toute barre d'erreur, quelle que soit sa source. Le
-  critère X8, ajouté après les résultats, demande laquelle (section~\ref{sec:sm-x8}).
+  critère X8 demande laquelle (section~\ref{sec:sm-x8}).
   \item \textbf{X1.} Le plus petit nombre d'entraînements indépendants annoncé pour un tableau ou une
   courbe principale. Pour \file{llm}, les échantillons d'évaluation (pass@$k$, \enquote{16 samples})
   ne comptent pas.
   \item \textbf{X3.} \file{yes} aussi quand les tableaux de l'article montrent que le résultat principal
-  est le meilleur de plusieurs entraînements identiques, même si le texte ne le dit pas (écart 5).
+  est le meilleur de plusieurs entraînements identiques, même si le texte ne le dit pas.
   \item \textbf{X4.} \file{yes} exige un réglage décrit pour les références ou un budget de réglage
   égal annoncé. \enquote{Même configuration que la méthode}, sans réglage décrit pour personne, vaut
-  \file{no} (écart 1).
-  \item \textbf{X5.} La famille se lit sur le modèle que le RL entraîne (écart 18) : \file{llm} si la
+  \file{no}.
+  \item \textbf{X5.} La famille se lit sur le modèle que le RL entraîne : \file{llm} si la
   politique optimisée est un modèle génératif préentraîné conditionné par le langage, \file{classic}
   sinon, même au service d'un grand modèle. \file{theory} est réservé aux articles sans expérience ou à
   expériences jouets seulement.
   \item \textbf{X7.} \file{yes} exige au moins une quantité : heures, GPU-heures, FLOP, ou un nombre de
-  GPU avec une durée. Le seul nom du matériel vaut \file{no} (écart 2).
+  GPU avec une durée. Le seul nom du matériel vaut \file{no}.
 \end{itemize}
 
 \paragraph{Règles de décision de la grille v2}
-L'écart 14 fixe les règles, l'écart 17 les précise après le pilote, l'écart 19 après l'audit des
-lectures brutes.
+Les règles suivantes comprennent les précisions tirées du pilote et de l'audit des lectures brutes
+(section~\ref{sec:sm-harmonisation}).
 \begin{itemize}
   \item \textbf{Portée.} Si Q1 vaut \file{no}, tous les autres critères valent \file{na}. Y2 et Y11
   valent \file{na} si et seulement si X2 vaut \file{no}. Y4 vaut \file{na} si Y3 vaut 1. Y5 vaut
@@ -278,7 +264,7 @@ lectures brutes.
   retour final, moyenne sur les $N$ derniers épisodes, meilleur point, aire sous la courbe, pass@$k$
   avec $k$ et le nombre d'échantillons. \enquote{Return} ou \enquote{accuracy} sans plus vaut
   \file{no}. Une courbe dont les points d'évaluation sont dits vaut un point de mesure. Pour une
-  quantité qui n'est pas le score d'une politique, la quantité définie suffit (écart 19).
+  quantité qui n'est pas le score d'une politique, la quantité définie suffit.
   \item \textbf{Y2.} Ce que représentent la bande ou l'intervalle est dit. Des barres présentes mais non
   définies valent \file{no}.
   \item \textbf{Y3.} Un entier, le nombre de cadres d'entraînement distincts de la conclusion
@@ -323,7 +309,7 @@ dénominateurs sont les 50 articles.
 La lecture est confiée à des modèles d'IA agentique, c'est-à-dire des modèles d'IA générative qui agissent : ils ouvrent le PDF, cherchent la phrase qui fonde chaque décision et remplissent la grille. Nous les appelons aussi agents IA. Ce sont des sous-agents de Claude Code, chacun lancé
 avec une consigne écrite, une liste d'identifiants et un dossier où écrire. Le dossier
 \file{study/readers/} donne la provenance de chaque agent, reconstruite à partir des
-transcriptions des sessions (écart 28) : la consigne exacte (\file{prompts/<lecteur>.md}), le modèle
+transcriptions des sessions : la consigne exacte (\file{prompts/<lecteur>.md}), le modèle
 relevé dans la transcription, les dates, les articles écrits et la manière de lire les PDF
 (\file{readers.csv}). Les 38 dossiers de lecture correspondent chacun à un agent et à ses articles,
 sans discordance (\file{folder\_check.csv}). Tous les lecteurs ont tourné sur le modèle
@@ -354,8 +340,8 @@ introuvable tel quel est cherché de façon floue : il passe si 90~\% de ses car
 une fenêtre du texte. Un fichier en échec retourne à son lecteur. Un deuxième échec sur le même critère
 est tranché depuis le PDF et noté dans \file{study/overrides\_v2.json}.
 
-\paragraph{Trois faits hors protocole}
-La reconstruction de l'écart 28 a établi trois faits que le protocole taisait. Les lecteurs C2 et M4
+\paragraph{Trois faits de la reconstruction}
+La reconstruction de la provenance établit trois faits. Les lecteurs C2 et M4
 ont fini sur le modèle \file{claude-opus-5}. Le lecteur principal M7 a ouvert le fichier K002 du
 lecteur K1 comme exemple de format. K002 n'est pas à lui et n'entre dans aucune double lecture. Les
 lectures de la grille v1 (lecteurs A à G) ont eu lieu dans une session ouverte dans un
@@ -368,8 +354,8 @@ viennent des lecteurs F, F2 et H1 à H4, ceux du RL classique de 2026 des lecteu
 à K6 (\file{study/survey\_extra.json}, clé \file{readers\_in\_both\_years}, vide). Tous sont des copies
 du même modèle. Chacun a pourtant sa session, sa consigne écrite et sa date. Un effet propre aux
 lecteurs d'une année se mêle donc à l'effet de l'année. La coupe qui retire un lecteur à la fois
-(section~\ref{sec:sm-robustesse}) ne le voit pas. L'écart 30 (d), écrit avant son calcul, mesure ce que
-les données permettent de voir.
+(section~\ref{sec:sm-robustesse}) ne le voit pas. Nous avons mesuré ce que les données permettent
+d'en voir.
 \begin{itemize}
   \item \textbf{Au sein d'une année}, la part d'un critère varie d'un lecteur à l'autre. Un test par
   permutation le mesure : statistique du khi-deux du tableau lecteurs $\times$ réponses,
@@ -385,9 +371,9 @@ les données permettent de voir.
   cette différence est une baisse ($-0{,}2$ : 5 sur 5 en 2018, 4 sur 5 en 2026), alors que le verdict
   de X2, sur les 98 articles, est une hausse. Cinq articles par année ne ferment pas la question.
 \end{itemize}
-Les lecteurs du critère X8 lisaient déjà chacun les deux années (section~\ref{sec:sm-x8}). L'écart 36
-fait de même pour les quatre critères des verdicts : huit lecteurs neufs relisent les 98 articles
-expérimentaux, chacun sur les deux années (section~\ref{sec:sm-doubles}).
+Les lecteurs du critère X8 lisent chacun les deux années (section~\ref{sec:sm-x8}). Huit lecteurs
+neufs font de même pour les quatre critères des verdicts : ils relisent les 98 articles expérimentaux,
+chacun sur les deux années (section~\ref{sec:sm-doubles}).
 
 \section{Les doubles lectures à l'aveugle}\label{sec:sm-doubles}
 
@@ -399,18 +385,16 @@ Un second lecteur relit des articles sans voir la première lecture ni savoir qu
   \item \textbf{R2 (deux grilles).} 10 articles tirés par \file{random.Random(7)} parmi les articles
   ajoutés par A2 et A3 : 5 de 2018 et 5 de 2026.
   \item \textbf{R3 (deux grilles).} 10 articles tirés par \file{random.Random(2030)} parmi les 80 de
-  A4, relus avec les annexes (écart 26).
+  A4, relus avec les annexes.
 \end{itemize}
-Trente articles sont relus en tout. Seuls les cinq articles de 2018 de R2 mesurent l'accord sur des
-articles de 2018, avant la relecture complète de l'écart 36. Tous les lecteurs étant des copies du même modèle, l'accord mesure la stabilité de ce
-modèle plus que l'accord de deux lecteurs indépendants (écart 28). Deux relectures complètes, écrites
-après les résultats, y répondent : huit lecteurs neufs du même modèle qui lisent chacun les deux années
-(écart 36), puis un lecteur d'une autre famille de modèles (écart 33, section~\ref{sec:sm-gemma}).
+Trente articles sont relus en tout, dont seulement cinq de 2018, ceux de R2. Tous les lecteurs étant
+des copies du même modèle, l'accord mesure la stabilité de ce modèle plus que l'accord de deux lecteurs
+indépendants. Deux relectures complètes y répondent : huit lecteurs neufs du même modèle qui lisent
+chacun les deux années, puis un lecteur d'une autre famille de modèles (section~\ref{sec:sm-gemma}).
 
-\paragraph{Huit lecteurs neufs sur les deux années (écart 36)}
-L'écart 36, écrit après les résultats et avant toute lecture, ajoute une relecture
-complète des 98 articles expérimentaux de la comparaison principale, 48 de 2018 et 50 de 2026, sur les
-quatre critères des verdicts : Q5, Y9, X7 et X2.
+\paragraph{Huit lecteurs neufs sur les deux années}
+Une relecture complète reprend les 98 articles expérimentaux de la comparaison principale, 48 de 2018
+et 50 de 2026, sur les quatre critères des verdicts : Q5, Y9, X7 et X2.
 \begin{itemize}
   \item \textbf{Les lecteurs.} Huit agents IA neufs, T1 à T8, de la même famille de modèles que les
   lecteurs d'origine, n'avaient lu aucun article du sondage. Chacun reçoit sa liste, le chemin des PDF et la consigne
@@ -434,7 +418,7 @@ quatre critères des verdicts : Q5, Y9, X7 et X2.
   l'année, avec Holm sur les quatre critères. À côté, l'accord des lectures neuves avec les codes
   finals se calcule par critère et par année, avec un test de Fisher de l'accord de 2018 contre celui
   de 2026.
-  \item \textbf{La règle, fixée d'avance.} Un verdict tient si la différence entre années et l'effet de
+  \item \textbf{La règle.} Un verdict tient si la différence entre années et l'effet de
   l'année dans le modèle sont tous deux positifs et si leurs deux tests, celui de Fisher et celui du
   rapport de vraisemblance, passent la correction de Holm à 5~\%. Il est \enquote{même sens,
   non établi} si les deux sont positifs et qu'un des deux tests échoue, \enquote{non reproduit}
@@ -443,9 +427,9 @@ quatre critères des verdicts : Q5, Y9, X7 et X2.
 Chaque article a déjà sa lecture d'origine. Les lectures neuves forment donc avec elles une double
 lecture complète, sans troisième lecture. Les résultats sont à la section~\ref{sec:sr-annees}.
 
-\paragraph{Un lecteur d'une autre famille de modèles (écart 33)}\label{sec:sm-gemma}
-Tous nos lecteurs, les huit neufs compris, sont de la même famille de modèles. L'écart 33, écrit après
-les résultats et avant toute lecture, ajoute un lecteur d'une autre famille, \texttt{gemma3:12b}
+\paragraph{Un lecteur d'une autre famille de modèles}\label{sec:sm-gemma}
+Tous nos lecteurs, les huit neufs compris, sont de la même famille de modèles. Un dernier lecteur vient
+d'une autre famille : \texttt{gemma3:12b}
 (Google), servi localement par Ollama à température 0, graine 0 et contexte de \num{98304} jetons. Il
 pose deux questions. Ce lecteur retrouve-t-il les différences entre années sur Q5, Y9, X7 et X2 ?
 Son désaccord avec nos lecteurs dépend-il de l'année ?
@@ -453,25 +437,24 @@ Son désaccord avec nos lecteurs dépend-il de l'année ?
   \item \textbf{L'échantillon et l'entrée.} Les 98 articles expérimentaux de la comparaison
   principale, dans un ordre mélangé par \file{random.Random(2034)}. Le texte vient de
   \file{pdftotext}, section des références retirée, tronqué à \num{320000} caractères. La consigne
-  recopie les règles de \file{GRILLE-en.md} pour les quatre critères, avec leurs précisions (écarts 2,
-  6, 14, 17 et 19). Un appel par critère (\file{study/gemma\_reader.py}).
+  recopie les règles de \file{GRILLE-en.md} pour les quatre critères, avec leurs précisions
+  d'harmonisation. Un appel par critère (\file{study/gemma\_reader.py}).
   \item \textbf{Le contrôle.} Un \enquote{oui} n'est valide que si sa citation est retrouvée dans le
   PDF et contient le motif de son critère fixé pour la recherche contre les \enquote{non}
-  (écart 27). Sinon, un seul nouvel essai, puis la décision est \enquote{invalide} et sort des
+  (section~\ref{sec:sm-controles}). Sinon, un seul nouvel essai, puis la décision est \enquote{invalide} et sort des
   dénominateurs. Une réponse mal formée vaut invalide pour son seul critère. Un \enquote{non} est
-  toujours valide. L'appel par critère et la règle du motif ont été fixés après un pilote de trois
-  articles, hors analyse, avant la lecture complète ; la règle de la réponse mal formée, avant la
-  relecture du seul article concerné.
+  toujours valide. Un pilote de trois articles, hors analyse, a fixé l'appel par critère et la règle
+  du motif.
   \item \textbf{L'analyse.} Le script \file{study/gemma\_stats.py} donne, par critère et par année,
   l'accord des décisions valides avec nos codes finals, avec Wilson et un kappa bootstrap, puis un
   test de Fisher de l'accord de 2018 contre celui de 2026. Il refait ensuite la différence 2026 moins
   2018 avec ces seules décisions, Newcombe et Fisher avec Holm sur les quatre critères, à côté de celle
-  de nos lecteurs sur les mêmes articles. Une variante annoncée compte \enquote{non} toute décision
+  de nos lecteurs sur les mêmes articles. Une variante compte \enquote{non} toute décision
   invalide.
-  \item \textbf{La règle, fixée d'avance.} Même signe et intervalles qui se recouvrent :
+  \item \textbf{La règle.} Même signe et intervalles qui se recouvrent :
   \enquote{reproduite}. Même signe et intervalle de ce lecteur contenant zéro : \enquote{même sens,
-  non établie}. Signe contraire : \enquote{non reproduite}. Le protocole note qu'un modèle de 12
-  milliards de paramètres lit moins bien qu'un grand modèle : un désaccord ne réfute pas à lui seul nos
+  non établie}. Signe contraire : \enquote{non reproduite}. Un modèle de 12 milliards de paramètres
+  lit moins bien qu'un grand modèle : un désaccord ne réfute pas à lui seul nos
   lectures, un désaccord qui dépend de l'année serait le biais cherché.
 \end{itemize}
 Les résultats sont à la section~\ref{sec:sr-gemma}.
@@ -486,64 +469,36 @@ vient de \file{study/audit\_stats.py}, qui compte aussi les valeurs \file{na}.
 
 \paragraph{Des intervalles sur l'accord}
 Sur dix articles, un accord de 9 sur 10 a pour intervalle de Wilson $[60\,;\,98]$~\% : une paire
-seule dit peu. L'écart 30 (a), écrit avant son calcul, ajoute deux intervalles
-(\file{study/survey\_extra.py}). La part d'accord reçoit son intervalle de Wilson
+seule dit peu. Deux intervalles s'y ajoutent (\file{study/survey\_extra.py}). La part d'accord reçoit son intervalle de Wilson
 (section~\ref{sec:sm-stats}). Le kappa reçoit un intervalle percentile par bootstrap sur les articles :
 \num{10000} rééchantillonnages avec remise, générateur NumPy de graine 2030. Un rééchantillonnage où
 le kappa n'est pas défini est retiré et compté. Les trois paires sont ensuite réunies par critère : G
 pour la grille v1 ou G2 pour la v2, avec R2 et R3, soit au plus trente articles par critère
 (résultats à la section~\ref{sec:sr-accord}).
 
-\paragraph{La relecture humaine, abandonnée puis préenregistrée de nouveau}
-L'écart 13 prévoyait que nous relisions nous-mêmes, seuls, 10 articles de 2026 sur sept critères, sans
-voir les lectures des agents. Les articles avaient été tirés par \file{random.Random(2027)}. L'écart 23
-abandonne cette relecture avant qu'elle commence. Le dossier
-\file{study/relecture\_humaine/} reste comme trace du plan. Aucun humain n'a donc relu les articles à
-l'aveugle. Chaque décision reste vérifiable par sa citation et sa page.
-
-L'écart 35, écrit après les résultats et avant tout tirage, prévoit une nouvelle
-relecture humaine, sur les deux années cette fois. Nous relirons nous-mêmes, seuls, trente articles de la
-comparaison principale, quinze par année, tirés par \file{random.Random(2034)} parmi ceux qu'aucune
-double lecture ni le plan de l'écart 13 ne visaient déjà.
-\begin{itemize}
-  \item \textbf{L'aveugle.} Chaque article reçoit une feuille à nom opaque, H01 à H30, avec une copie
-  renommée de son PDF (\file{study/relecture\_humaine/feuilles/}). La feuille n'affiche ni identifiant,
-  ni titre, ni conférence, ni année, ni aucune valeur d'un agent. Le PDF montre pourtant l'année. Nous connaissons aussi l'hypothèse : l'écart
-  le dit d'avance.
-  \item \textbf{Les critères.} Q5, Y9, X7, X2 et X8, avec les règles des agents recopiées dans chaque
-  feuille. Toute décision s'accompagne d'une citation exacte et de sa page.
-  \item \textbf{L'analyse.} Le script \file{compare.py} refuse de tourner tant qu'une des trente
-  feuilles reste incomplète. Il lira ensuite les codes des agents, mesurera l'accord de l'humain avec
-  eux, puis dira si la différence entre années tient sous une lecture humaine.
-\end{itemize}
-Les trente feuilles sont encore vides.
-
 \section{Le pilote et l'harmonisation}\label{sec:sm-harmonisation}
 
 \paragraph{Le pilote}
-Avant les lecteurs principaux, un lecteur pilote code trois articles (écart 16) : LR08 (\file{llm}) et
+Avant les lecteurs principaux, un lecteur pilote code trois articles : LR08 (\file{llm}) et
 ML15 (\file{classic}), choisis par \file{random.Random(11)} parmi les 40 articles de 2026 hors double lecture, puis C218, premier des 38 nouveaux articles de 2018 après un mélange \file{random.Random(11)}. Le
 pilote sert seulement à trouver les règles ambiguës et à tester \file{check\_codes.py}. Ses fichiers
 (\file{codes\_v2/pilot/}) n'entrent dans aucune analyse. Les trois articles sont recodés par leur
-lecteur normal. L'écart 17 écrit les précisions qui en découlent, avant le codage principal et avant
-tout pourcentage v2.
+lecteur normal. Les précisions qui en découlent valent pour tout le codage principal.
 
 \paragraph{L'harmonisation de la grille v1}
-Les écarts 1 à 6 ont été écrits pendant le codage du premier tirage, avant l'agrégation. Ils
-s'appliquent depuis les citations, dans \file{study/overrides.json}. La vérification des citations
-introuvables a montré que ces règles n'avaient été appliquées qu'aux articles de
-2026 (écart 15). La comparaison entre années mêlait donc deux grilles un peu différentes. Les mêmes
-règles ont été appliquées aux 12 articles de 2018, sans règle nouvelle. Pour X4, C11, C13, C14 et C16
-passent à \file{no}. Pour Q7, C14 passe de \file{na} à \file{no}. Pour X7, C14 passe à \file{no}. Le
-script \file{study/analyze\_final.py} régénère désormais \file{study/results\_final.json}, jusque-là
-écrit sans script. Cette correction a été décidée après avoir vu les pourcentages, ce que le protocole
-déclare.
+Les règles d'harmonisation de la grille v1 s'appliquent depuis les citations, dans
+\file{study/overrides.json}. La vérification des citations introuvables a montré que nous ne les
+avions appliquées qu'aux articles de 2026 : la comparaison entre années mêlait deux grilles un peu
+différentes. Nous avons corrigé cette erreur en appliquant les mêmes règles aux 12 articles de 2018,
+sans règle nouvelle. Pour X4, C11, C13, C14 et C16 passent à \file{no}. Pour Q7, C14 passe de
+\file{na} à \file{no}. Pour X7, C14 passe à \file{no}. Nous avons aussi confié l'écriture de
+\file{study/results\_final.json}, jusque-là faite sans script, à \file{study/analyze\_final.py}.
 
 \paragraph{L'harmonisation de la grille v2}
 Après la lecture élargie, un audit relit tous les fichiers v2 des lecteurs principaux, critère par
 critère, sans calculer aucune part (\file{study/harmonisation\_audit-fr.md}, 170 fichiers). Il
-relève des codes contraires aux règles et dix cas qu'aucune règle ne tranchait. L'écart 19, écrit
-avant tout pourcentage, tranche ces cas pour les deux années. Ses décisions s'appliquent
+relève des codes contraires aux règles et dix cas qu'aucune règle ne tranchait. L'harmonisation
+tranche ces cas pour les deux années. Ses décisions s'appliquent
 depuis les citations, chacune avec sa raison, dans \file{study/overrides\_v2.json} : 80 changements,
 dont Y1 21, Y3 5 (et Y4 5 par la règle de portée), Y5 10, Y6 3, Y7 19, Y8 6, Y9 9 et Q5 2. Les pages
 de projet données comme lien vers le code ont été visitées. Cinq mènent au code,
@@ -554,9 +509,8 @@ présents seulement en annexe ne s'applique pas.
 
 \paragraph{Trois critères sans règle nouvelle}
 Pour X3, X4 et X7, l'audit a relevé des cas limites, comme un calcul réduit au temps d'inférence ou
-des graines aléatoires ratées écartées. Aucune règle nouvelle n'a été ajoutée. Une règle écrite à ce moment ne se
-serait appliquée qu'aux articles de la lecture élargie, ce que l'écart 15 interdit : les deux années
-auraient de nouveau été lues avec deux grilles différentes. Ces cas restent codés comme le lecteur les
+des graines aléatoires ratées écartées. Aucune règle nouvelle n'a été ajoutée : écrite à ce stade, elle ne se serait appliquée qu'aux
+articles de la lecture élargie et les deux années auraient été lues avec deux grilles différentes. Ces cas restent codés comme le lecteur les
 a lus.
 
 \paragraph{La valeur finale d'un critère}
@@ -573,17 +527,15 @@ Un agent d'audit les a toutes vérifiées dans les PDF (\file{study/v1\_quotes\_
 inventée : 83 sont présentes mot pour mot, 1 est une paraphrase fidèle, 5 ont une valeur contraire aux
 règles. Les échecs venaient de commentaires en français ajoutés par le lecteur à une citation anglaise
 exacte, de la mise en page à deux colonnes que \file{pdftotext} entrelace, enfin de trois annexes de
-NeurIPS 2018 absentes du dossier \file{study/pdf/}. Les cinq valeurs contraires aux règles ont conduit
-à l'écart 15.
+NeurIPS 2018 absentes du dossier \file{study/pdf/}. Les cinq valeurs contraires aux règles ont révélé
+l'harmonisation incomplète de 2018, corrigée plus haut (section~\ref{sec:sm-harmonisation}).
 
 \paragraph{La recherche mécanique contre les \enquote{non}}
 Une décision \file{yes} s'appuie sur une citation et une page. Une décision \file{no} ne s'appuie
-sur aucune citation. Or les verdicts \enquote{a changé} reposent surtout sur les \file{no} de 2018. L'écart 27, écrit
-après les résultats et avant toute recherche, confronte au texte chaque décision
-finale \file{no} des deux échantillons de la comparaison principale, sur les sept critères Q4, Q5, Q7,
+sur aucune citation. Or les verdicts \enquote{a changé} reposent surtout sur les \file{no} de 2018.
+Nous avons donc confronté au texte chaque décision finale \file{no} des deux échantillons de la comparaison principale, sur les sept critères Q4, Q5, Q7,
 Q8, X2, X7 et Y9. Le script \file{study/falsify\_no.py} extrait le texte de l'article et de son annexe,
-retire la section des références, puis cherche des motifs fixés dans l'écart et jamais modifiés
-ensuite. Par exemple, le motif de Q5 est
+retire la section des références, puis cherche des motifs fixés une fois pour toutes. Par exemple, le motif de Q5 est
 \begin{center}
 \small\verb!github|gitlab|bitbucket|anonymous\.4open|code (is |are |will be )?!\\
 \small\verb!(publicly )?available|source code|our (code|implementation)|open[- ]source!
@@ -592,43 +544,40 @@ Chaque occurrence est gardée avec 300 caractères de contexte. Un arbitre, agen
 deux échantillons et ne voit ni l'article ni l'année, dit selon les règles de \file{GRILLE.md} si
 l'extrait suffit à faire passer la décision à \file{yes}, ou s'il reste douteux. Les lots qu'il a vus et
 ses réponses brutes sont dans \file{study/falsify\_batches/}. Le script \file{study/falsify\_stats.py}
-refait ensuite la comparaison principale avec les décisions retournées, sans changer de test, comme
-l'écart l'annonce. Il la refait aussi avec les décisions retournées et les décisions douteuses, une
-borne que l'écart n'annonçait pas.
+refait ensuite la comparaison principale avec les décisions retournées, sans changer de test, puis,
+en borne, avec les décisions retournées et les décisions douteuses.
 
 \section{La calibration sur 2018 et la règle de verdict}\label{sec:sm-verdict}
 
 \paragraph{Pourquoi relire 2018}
 Pineau ne décrit ni son tirage ni sa façon de trancher les cas douteux. Comparer nos lectures de 2026
 à ses chiffres mêlerait deux changements : celui des pratiques et celui de la grille. La calibration
-sert à mesurer le second. Dès les 12 premiers articles, notre grille paraissait plus sévère que la
-sienne sur Q3 et plus large sur Q7 (écart 7). Le protocole prévoyait alors de ne conclure à un
-changement que s'il tenait à la fois contre ses chiffres et contre notre propre lecture de 2018.
+sert à mesurer le second. Notre grille lit 2018 plus sévèrement que Pineau sur Q3 et plus largement
+sur Q7.
 
 \paragraph{La règle de verdict à grille égale}
-Avec 50 articles de 2018, la comparaison secondaire de l'écart 12 a confirmé que notre grille lit 2018
-autrement que Pineau (chapitre~\ref{chap:04-sondage-resultats}). L'écart 20, décidé après ces
-premiers résultats, en tire la règle du rapport : un verdict repose seulement sur la comparaison
-principale de l'écart 12, nos 50 articles de RL classique de 2026 contre notre lecture de 50 articles
-de 2018, avec les mêmes grilles, lues par des agents du même modèle. Cette comparaison avait été fixée
-avant toute lecture des articles ajoutés. Le changement de règle, lui, suit les résultats, ce que le
-protocole déclare. Les comparaisons avec les chiffres de Pineau restent montrées comme contexte. Un
+Sur 50 articles de 2018, la comparaison secondaire montre que notre grille lit 2018 autrement que
+Pineau (chapitre~\ref{chap:04-sondage-resultats}). Un verdict repose donc seulement sur la comparaison
+principale : nos 50 articles de RL classique de 2026 contre notre lecture de 50 articles de 2018, avec
+les mêmes grilles, lues par des agents du même modèle. Les comparaisons avec les chiffres de Pineau
+sont montrées comme contexte. Un
 critère \enquote{a changé} quand la valeur $p$ de Fisher de sa différence entre années, ajustée par la
 correction de Holm, reste sous 5~\%. Nous disons alors que la différence passe la correction. Les
 agents de 2018 ne sont pas ceux de 2026 : dans cette comparaison, l'effet de l'année se confond avec
-celui des lecteurs (section~\ref{sec:sm-annees}), que l'écart 36 sépare (section~\ref{sec:sr-annees}).
+celui des lecteurs (section~\ref{sec:sm-annees}), que les huit lecteurs neufs séparent
+(section~\ref{sec:sr-annees}).
 
-\paragraph{Ce qu'aurait donné la règle d'origine}
-L'écart 30 (c) applique aux données finales la règle de l'écart 7. Il a été écrit avant le calcul du
-dépôt, mais après que la relecture technique en eut esquissé le résultat
-(section~\ref{sec:ecarts-audit}). Cette règle vaut pour Q3 à Q8, les critères où Pineau donne un chiffre.
+\paragraph{Une règle qui exige aussi les chiffres de Pineau}
+Nous appliquons aussi aux données finales une règle plus exigeante, qui demande qu'un changement tienne
+à la fois contre les chiffres de Pineau et contre notre lecture de 2018. Elle vaut pour Q3 à Q8, les
+critères où Pineau donne un chiffre.
 Un critère y \enquote{a changé} quand la différence entre le RL classique de 2026 et les chiffres de
 Pineau passe la correction de Holm sur ces six critères. Le changement est \enquote{confirmé} quand la
 différence avec notre lecture de 2018 la passe aussi, dans le même sens. Il est \enquote{ambigu} quand
 la différence ne passe que contre notre lecture de 2018. X2, X7 et Y9 n'ont pas de chiffre de Pineau :
-la règle d'origine ne les jugeait pas. Le résultat, à la section~\ref{sec:sr-pineau} avec le
-\cref{tab:regle-origine}, rend vérifiable le changement de règle, que justifie la calibration sur Q3
-(55~\% dans notre lecture de 2018, 90~\% chez Pineau).
+cette règle ne les juge pas. Le résultat, à la section~\ref{sec:sr-pineau} avec le
+\cref{tab:regle-origine}, montre ce que change la règle à grille égale, que justifie la calibration
+sur Q3 (55~\% dans notre lecture de 2018, 90~\% chez Pineau).
 
 \section{Les statistiques}\label{sec:sm-stats}
 
@@ -685,9 +634,7 @@ testés (Q5, Y9, X7, X2, Q8).
 
 \paragraph{Plus petite différence détectable}
 Une différence qui ne passe pas le seuil ne prouve pas l'absence de changement. Pour dire ce que le sondage
-pouvait voir, l'écart 30 (b), écrit avant le calcul du dépôt (la relecture technique en avait esquissé
-l'ordre de grandeur, section~\ref{sec:ecarts-audit}), calcule la puissance exacte du test de Fisher
-bilatéral. Soit $p_0$ la part observée dans notre lecture de 2018, $n_0$ et $n_1$ les dénominateurs réels
+pouvait voir, nous calculons la puissance exacte du test de Fisher bilatéral. Soit $p_0$ la part observée dans notre lecture de 2018, $n_0$ et $n_1$ les dénominateurs réels
 de 2018 et de 2026, $\alpha$ le seuil. Si la vraie part de 2026 vaut $p_1$, la puissance est
 \begin{equation}
   \pi(p_1) = \sum_{k_1 = 0}^{n_1} \sum_{k_0 = 0}^{n_0}
@@ -744,10 +691,10 @@ permutations des différences, générateur NumPy de graine 2026.
 
 \section{Les analyses de robustesse}\label{sec:sm-robustesse}
 
-Toutes ces analyses sont exploratoires. Aucune ne change un verdict de l'écart 20. Elles disent
+Toutes ces analyses sont exploratoires. Aucune ne change un verdict de la règle à grille égale. Elles disent
 seulement si un verdict est fragile.
 
-\paragraph{Quatre coupes des verdicts (écart 21, a)}
+\paragraph{Quatre coupes des verdicts}
 Pour les quatre critères qui ont changé (Q5, Y9, X7, X2) et les deux intervalles qui évitent zéro sans
 passer Holm (Q6, Y12), \file{study/robustness.py} refait la comparaison de quatre façons.
 \begin{itemize}
@@ -763,29 +710,29 @@ passer Holm (Q6, Y12), \file{study/robustness.py} refait la comparaison de quatr
   (section~\ref{sec:sm-annees}).
 \end{itemize}
 Un verdict est dit fragile si la différence change de signe dans une coupe, ou si l'intervalle de Newcombe
-refait contient zéro alors que chaque côté garde au moins 35 articles. La coupe (a2) a d'abord lu une
-copie locale abîmée d'un fichier. Refaite sur le fichier du dépôt, elle oppose 45 articles lus sur
-arXiv à 5 lus sur le site d'une conférence et ne peut rien trancher (écart 21, c). Pour Q5, la
+refait contient zéro alors que chaque côté garde au moins 35 articles. Nous avons corrigé la coupe
+(a2), qui lisait d'abord une copie locale abîmée d'un fichier : refaite sur le fichier du dépôt, elle
+oppose 45 articles lus sur arXiv à 5 lus sur le site d'une conférence et ne peut rien trancher. Pour Q5, la
 relecture de la section~\ref{sec:sm-versions} mesure directement l'effet de la version lue.
 
-\paragraph{Le coût et le risque de chaque pratique (écart 21, b)}
-Une version antérieure de nos conclusions avançait que Pineau avait été écoutée là où l'écouter
-coûtait peu. Ce jugement sur le coût venait de nous, formé après avoir vu les différences. Pour le mettre à l'épreuve, trois
+\paragraph{Le coût et le risque de chaque pratique}
+Une explication tentante veut que Pineau ait été écoutée là où l'écouter coûtait peu. Pour la mettre
+à l'épreuve sans que notre propre jugement s'en mêle, trois
 évaluateurs indépendants notent chacun des 17 critères de pratique de la comparaison principale sur deux échelles
 de 1 à 5 : le coût $C$ pour un auteur qui a déjà ses résultats principaux, puis le risque $R$ que la
 pratique affaiblisse ou renverse sa conclusion. Ce sont trois agents IA de trois
 tailles différentes, sans accès aux résultats ni au dépôt, qui reçoivent seulement l'intitulé et la
 règle de chaque critère (\file{study/blind\_cost/}). Le test est la corrélation de Spearman entre la
 médiane des trois notes et la différence observée, X3 retourné parce qu'une part plus basse y est un progrès.
-Une corrélation négative nette soutiendrait cette affirmation antérieure.
+Une corrélation négative nette soutiendrait cette explication.
 
-\paragraph{Sans les treize articles lus en partie par un autre modèle (écart 29)}
+\paragraph{Sans les treize articles lus en partie par un autre modèle}
 Les treize articles finis par \file{claude-opus-5} sont retirés, puis la comparaison principale et la
 trajectoire sont refaites avec les mêmes tests (variable d'environnement \file{EXCLUDE}, sorties
 \file{extension\_stats\_sans\_opus5.json} et \file{trajectory\_sans\_opus5.json}). Un verdict change si
 une différence ou une tendance passe d'un côté à l'autre du seuil après correction de Holm.
 
-\paragraph{Le filtre de titre (A6, écart 24)}
+\paragraph{Le filtre de titre (A6)}
 Pour chacun des 400 articles tirés hors du filtre, le résumé est lu sur la page officielle. Un article
 est \enquote{de RL caché} si son résumé correspond à la même expression régulière que les titres. Le
 script \file{study/title\_filter.py} donne la part de RL caché avec son intervalle de Wilson, le nombre
@@ -795,28 +742,27 @@ grilles, puis comparés de façon descriptive à l'échantillon de 2026 sur les 
 changé (\file{study/title\_filter\_compare.py}). Quatre d'entre eux n'avaient pas de PDF librement
 accessible et ont été remplacés par les suivants dans l'ordre.
 
-\paragraph{Ce que les articles déclarent (A5, écart 22)}
+\paragraph{Ce que les articles déclarent (A5)}
 Les articles de NeurIPS 2025 joignent la liste de contrôle remplie par leurs auteurs. Le script
 \file{study/checklist.py} retrouve la version des actes officiels de chacun des 30 articles par son
 titre, puis extrait la réponse et la justification de quatre questions : \enquote{Open access to data
 and code}, \enquote{Experimental setting/details}, \enquote{Experiment statistical significance},
-\enquote{Experiments compute resources}. La comparaison, fixée d'avance, les oppose à nos codes
+\enquote{Experiments compute resources}. La comparaison les oppose à nos codes
 harmonisés : Q5, Q3, X2 pour une incertitude et Q8 pour un test, X7. La mesure est la part des articles
 qui déclarent \enquote{Yes} alors que notre code vaut \file{no}, avec son intervalle de Wilson. Pour
 chaque désaccord sur le code, le script cherche un lien vers du code dans la version des actes, parce
 que nos codes viennent souvent de la version arXiv.
 
-\section{Deux relectures ajoutées après les résultats}\label{sec:sm-relectures}
+\section{Deux relectures complémentaires}\label{sec:sm-relectures}
 
-Un audit technique a relevé deux points que les contrôles précédents laissaient
-ouverts : ce que mesure X2, puis la version des articles lue pour Q5. Les deux relectures qui y
-répondent ont été écrites dans le protocole après les résultats et avant tout calcul (écarts 32 et 31).
-Elles sont exploratoires : aucun verdict de l'écart 20 n'en dépend.
+Deux points restent ouverts après les contrôles précédents : ce que mesure X2, puis la version des
+articles lue pour Q5. Les deux relectures qui y répondent sont exploratoires : aucun verdict de la
+règle à grille égale n'en dépend.
 
 \paragraph{Le critère X8 : une incertitude calculée sur des graines aléatoires}\label{sec:sm-x8}
 X2 compte toute barre d'erreur (section~\ref{sec:sm-grilles}). Une barre calculée sur les épisodes
 d'un seul essai est pourtant le piège de 2018 que l'expérience B1 reconstitue (section~\ref{sec:b1}).
-L'écart 32 définit le critère X8. Il vaut \file{yes} quand l'incertitude des résultats principaux est
+Le critère X8 vaut \file{yes} quand l'incertitude des résultats principaux est
 calculée entre au moins deux entraînements indépendants et que l'article le dit (\enquote{moyenne et
 écart type sur 5 graines}). Il vaut \file{no} quand elle est calculée sur des épisodes, des passages
 d'évaluation ou des éléments de test, quand elle mêle graines et épisodes dans une même dispersion, ou
@@ -842,17 +788,17 @@ indépendants, jamais les échantillons d'évaluation. Chaque lecture remplit au
   et Fisher, seul puis avec une correction de Holm sur les onze critères v1 et X8. À côté : la part
   parmi les articles à X2 \file{yes}, la même mesure avec \file{pooled} compté \file{yes}, puis une
   borne mécanique, qui cherche dans les citations de X2, Y2 et Y11 un mot désignant une graine aléatoire
-  ou un essai (écart 30, e). L'accord des doubles lectures reçoit les intervalles de la section~\ref{sec:sm-doubles}
+  ou un essai. L'accord des doubles lectures reçoit les intervalles de la section~\ref{sec:sm-doubles}
   (générateur de graine 2032).
 \end{itemize}
-X8 a été lu après les résultats, par d'autres agents que les lecteurs principaux (résultat à la
+X8 est lu par d'autres agents que les lecteurs principaux (résultat à la
 section~\ref{sec:sr-principale}).
 
 \paragraph{Q5 relu sur la même sorte de version}\label{sec:sm-versions}
 Sur les 50 articles de RL classique de 2026, 45 ont été lus sur arXiv, où un lien vers le code s'ajoute
 souvent après l'acceptation. Les articles de 2018 viennent surtout des actes. La hausse de Q5 pourrait
-donc venir en partie de la version lue. L'écart 31 la relit sur la même sorte de version les deux
-années, de façon mécanique, avec le motif de Q5 de l'écart 27 tel quel (\file{study/q5\_versions.py}).
+donc venir en partie de la version lue. Nous relisons Q5 sur la même sorte de version les deux
+années, de façon mécanique, avec le motif de Q5 de la recherche contre les \enquote{non} tel quel (\file{study/q5\_versions.py}).
 \begin{itemize}
   \item \textbf{Les versions.} Pour chacun des 33 articles de 2018 où Q5 vaut \file{no}, l'interface
   d'arXiv est interrogée sur le titre. L'entrée dont le titre ressemble à 85~\% au moins donne la
@@ -877,26 +823,3 @@ années, de façon mécanique, avec le motif de Q5 de l'écart 27 tel quel (\fil
 \end{itemize}
 Les téléchargements ont visé un hôte à la fois, à 3 à 6~secondes d'intervalle pour arXiv. Aucune
 requête n'a été refusée. La section~\ref{sec:sr-robustesse} donne les sept lectures.
-
-\section{Les écarts au protocole}\label{sec:sm-ecarts}
-
-Le protocole du sondage compte 35 écarts, numérotés de 1 à 36 : le numéro 34 attend une relecture humaine passée, qui ne s'écrira qu'avec ses faits. Le tableau~\ref{tab:ecarts} les donne tous avec leur date et leur
-position par rapport aux résultats, à côté de ceux des deux autres protocoles
-(chapitre~\ref{chap:09-ecarts}). Ils se rangent en cinq groupes.
-
-\begin{itemize}
-  \item \textbf{Règles précisées avant tout pourcentage} : écarts 1 à 6 (grille v1), 14, 16 à 19
-  (grille v2, pilote, famille X5, harmonisation). Ils lèvent des ambiguïtés sans viser un chiffre.
-  \item \textbf{Instruments ajoutés avant leur propre calcul} : écarts 11 et 12 (grille v2,
-  élargissement), 13 et 23 (relecture humaine prévue, puis abandonnée avant de commencer), 22, 24, 25 et 26 (A5, A6, A4 et sa
-  seconde lecture).
-  \item \textbf{Décisions prises après avoir vu des résultats} : écart 7 (calibration initiale), 15
-  (harmonisation de 2018 rattrapée), 20 (règle de verdict à grille égale), 21, 27, 28 et 29 (analyses
-  de réponse à une relecture critique), 30 à 33 (réponse à l'audit technique), 35 et 36 (relecture humaine
-  des deux années, huit lecteurs neufs sur les deux années). Les analyses ont toutes été écrites avant leur propre calcul. Le protocole déclare ces décisions comme
-  telles.
-  \item \textbf{Incidents sans effet sur les données} : écarts 9 (adresse de contact retirée de l'en-tête
-  des téléchargements) et 10 (scripts de travail écrasés dans un dossier temporaire partagé, codages
-  intacts).
-  \item \textbf{Faits de lecture} : écart 8 (annexes de 2018 et de 2026).
-\end{itemize}

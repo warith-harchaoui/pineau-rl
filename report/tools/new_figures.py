@@ -950,8 +950,8 @@ def grpo_courbes(lang):
 
 
 # ---------------------------------------------------------------------------------------------------------------
-# Analyses of 22 November 2026 (deviations 22, 31 and 33 of SIM_PROTOCOL.md, 31 and 32 of PROTOCOL.md, 19 of
-# LLM_PROTOCOL.md). Each figure reads its result file and nothing else.
+# Complementary analyses (E1 on sixteen pairs, E6 diagnosis, Q5 versions, X8, GRPO log measures). Each figure reads
+# its result file and nothing else.
 
 def swarm(xs, r, step):
     """Vertical offsets (in units of step) so that dots of radius r at positions xs do not overlap: each dot takes the
@@ -1150,7 +1150,7 @@ def e6_vitesse(lang):
 # 11. E6: four frames from each of the two evaluation videos.
 
 def video_frames(rel, steps, crop):
-    """PNG frames of an evaluation video, as base64: the video keeps one frame in four (deviation 33), so frame n is
+    """PNG frames of an evaluation video, as base64: the video keeps one frame in four, so frame n is
     step 4n. ffmpeg decodes, crops and writes each frame; the same video gives the same bytes."""
     import base64, tempfile
     out = []

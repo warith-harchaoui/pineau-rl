@@ -3,11 +3,11 @@
 \centering
 \footnotesize
 \setlength{\tabcolsep}{3pt}
-\caption[E5: seeds needed to recover the ranking]{Experiment E5: how many seeds recover the right ranking? For each E2 comparison, 10,000 draws with replacement of $n$ runs per program from its runs (the observed distribution stands in for the program), then the share of draws whose means give the right order, in percent. Right order: that of the means of all the chosen runs (10, or 20 with deviation 20); at ten seeds, PPO PyTorch on HalfCheetah draws from the 30 runs of E1, as preregistered. Difference: relative difference of the two means, divided by the larger in absolute value. \textbf{In bold}, close comparisons (difference under 20\%); the last row gives their number and the median of their shares. Sources: \file{sim/analysis/e5.json}, \file{sim/analysis/e5\_s20.json}.}
+\caption[E5: seeds needed to recover the ranking]{Experiment E5: how many seeds recover the right ranking? For each E2 comparison, 10,000 draws with replacement of $n$ runs per program from its runs (the observed distribution stands in for the program), then the share of draws whose means give the right order, in percent. Right order: that of the means of all the chosen runs (10 or 20); at ten seeds, PPO PyTorch on HalfCheetah draws from the 30 runs of E1, as preregistered. Difference: relative difference of the two means, divided by the larger in absolute value. \textbf{In bold}, close comparisons (difference under 20\%); the last row gives their number and the median of their shares. Sources: \file{sim/analysis/e5.json}, \file{sim/analysis/e5\_s20.json}.}
 \label{tab:e5}
 \begin{tabular}{@{}llrrrrrrrrrr@{}}
 \toprule
- & & \multicolumn{5}{c}{10 seeds (main result)} & \multicolumn{5}{c}{20 seeds (deviations 12 and 20)} \\
+ & & \multicolumn{5}{c}{10 seeds (main result)} & \multicolumn{5}{c}{20 seeds (consolidation)} \\
 \cmidrule(lr){3-7}\cmidrule(lr){8-12}
 Task & Pair & gap & $n=3$ & 5 & 10 & 20 & gap & $n=3$ & 5 & 10 & 20 \\
 \midrule

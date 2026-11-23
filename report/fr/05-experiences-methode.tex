@@ -12,15 +12,17 @@ des données publiés.
 Ce chapitre fixe tout ce qui précède un résultat : les outils et leurs versions, les programmes et leurs
 réglages, les tâches, les budgets, les graines aléatoires, le protocole d'évaluation, le format des fichiers,
 les statistiques et le plan de chaque expérience. Il décrit ce que le code fait, ligne à ligne quand c'est
-utile. Il signale aussi chaque endroit où le code s'écarte du protocole écrit. Les résultats viennent au
-\cref{chap:06-experiences-resultats}. La chaîne logicielle qui relie les essais aux documents est dessinée au
-\cref{chap:08-logiciel}.
+utile. Les résultats viennent au
+\cref{chap:06-experiences-resultats}. La chaîne logicielle qui relie les essais aux documents est dessinée à
+l'annexe~\ref{chap:08-logiciel}.
 
 \section{Un protocole écrit avant le premier entraînement}\label{sec:protocole}
 
-Le protocole des expériences est le fichier \file{sim/SIM\_PROTOCOL.md}. Sa première version a été
-écrite avant tout entraînement. Elle fixe les questions, les algorithmes, les
-tâches, les budgets, le nombre de graines aléatoires, l'évaluation et les analyses. Dans tout le rapport, un
+Le protocole des expériences est le fichier \file{sim/SIM\_PROTOCOL.md}. Il fixe les questions, les
+algorithmes, les tâches, les budgets, le nombre de graines aléatoires, l'évaluation et les analyses. Les
+trois protocoles du projet ont été écrits avant le travail qu'ils encadrent et chaque changement ultérieur y
+est consigné et publié dans le dépôt (\file{study/PROTOCOL.md}, \file{sim/SIM\_PROTOCOL.md},
+\file{sim/llm/LLM\_PROTOCOL.md}). Dans tout le rapport, un
 \emph{essai} désigne un entraînement complet d'un programme sur une tâche avec une graine aléatoire donnée. Le
 protocole pose trois règles de conduite :
 \begin{itemize}
@@ -29,15 +31,13 @@ protocole pose trois règles de conduite :
   \item un essai qui plante est relancé une fois avec la même graine aléatoire, puis l'incident est noté.
 \end{itemize}
 
-Tout ce qui change ensuite s'inscrit dans une liste numérotée d'\enquote{écarts}, datée, avec la mention de ce
-que nous avions déjà vu au moment de décider. Le protocole en compte trente-quatre. Le
-\cref{chap:09-ecarts} les reprend tous, avec ceux du sondage et du volet des modèles de langue. Ce chapitre
-cite par son numéro chaque écart du protocole des expériences qui change une méthode. La \cref{sec:avant-apres} classe les décisions selon
-qu'elles précèdent ou suivent les résultats qu'elles touchent.
+Aucune analyse n'a retiré un essai, changé un réglage ou changé la règle du vainqueur établi
+(\cref{sec:regle}).
 
-Les résultats \emph{principaux} sont ceux qu'annonçait le protocole : dix graines
-aléatoires par couple de programme et de tâche. Les ajouts de l'écart~12 (vingt graines aléatoires, budget
-égal, réplication) viennent à côté. Chaque divergence est dite.
+Les résultats \emph{principaux} sont ceux des expériences E1 à E7 du protocole, à dix graines aléatoires par
+couple de programme et de tâche. Les autres analyses les complètent sans les remplacer : B1 et B3, la
+consolidation (vingt graines aléatoires, budget égal, réplication) et les contrôles du
+\cref{tab:experiences}, qui donne le statut de chacune.
 
 \section{Les outils et leurs versions}\label{sec:outils}
 
@@ -66,17 +66,16 @@ PyTorch. SBX (\enquote{Stable-Baselines Jax}) réécrit PPO, SAC et CrossQ en JA
 sb3-contrib fournit TRPO. rliable calcule les moyennes interquartiles, leurs intervalles bootstrap et les
 probabilités d'amélioration.
 
-\paragraph{Stable-Baselines3~2.9.2 au lieu de 2.6.0}
-Le protocole annonçait Stable-Baselines3~2.6.0. Tous les entraînements ont tourné avec la version~2.9.2,
-installée avant le premier entraînement (écart~14, point~c). Les versions de
-\file{envs/train.txt} sont celles qui ont réellement tourné.
+\paragraph{Les versions qui ont tourné}
+Tous les entraînements ont tourné avec Stable-Baselines3~2.9.2. Les versions de \file{envs/train.txt} sont
+celles qui ont réellement tourné.
 
 \paragraph{Reproduire sur une autre machine}
 Chaque entraînement tourne sur un seul fil de calcul (\texttt{OMP\_NUM\_THREADS=1},
 \texttt{torch.set\_num\_threads(1)}, options XLA à un fil pour JAX), pour qu'un essai soit déterminé par sa
 graine aléatoire sur une machine donnée. Les relances de PPO PyTorch et de PPO JAX l'ont vérifié
-(\cref{sec:calcul}). Pour SAC et CrossQ, la vérification est l'objet de l'écart~32, écrit avant tout
-entraînement, dont les relances ne sont pas finies. Tous nos essais ont tourné sur cette seule machine. Sur un
+(\cref{sec:calcul}). Pour SAC et CrossQ, trois entraînements refaits à l'identique feront la même
+vérification : ils ne sont pas finis. Tous nos essais ont tourné sur cette seule machine. Sur un
 autre processeur, MuJoCo, JAX et PyTorch peuvent enchaîner les calculs en virgule flottante dans un autre ordre et
 arrondir autrement : la même graine aléatoire y donnerait alors une autre courbe. Nous ne l'avons pas mesuré. Une
 relance ailleurs met à l'épreuve les statistiques du rapport, sans espoir d'en retrouver les courbes au chiffre près.
@@ -147,9 +146,9 @@ initialisent les poids autrement :
 L'option ne fait pas non plus la même chose dans les deux bibliothèques. Activée dans SBX, elle n'initialise
 orthogonalement que la sortie de l'action, au gain 0,01 (\file{sbx/ppo/policies.py}, lignes 81 à 84). Les deux
 programmes diffèrent enfin par la bibliothèque de calcul, ses générateurs aléatoires et ses arrondis.
-L'expérience E3 mesure ce que ces différences coûtent ensemble, sans les séparer. L'écart~34, écrit avant tout
-entraînement, échange l'option entre les deux programmes pour isoler la part de l'initialisation. Ses
-entraînements tournent encore : ce rapport n'en donne aucun résultat.
+L'expérience E3 mesure ce que ces différences coûtent ensemble, sans les séparer. Une expérience de plus
+échange l'option entre les deux programmes pour isoler la part de l'initialisation. Ses entraînements
+tournent encore : ce rapport n'en donne aucun résultat.
 
 \paragraph{SAC}
 SAC (\emph{Soft Actor-Critic}, \cite{haarnoja2018sac}) sert de référence \enquote{hors politique}
@@ -194,10 +193,6 @@ politique, $\hat{\mathbb{E}}_t\bigl[\mathrm{KL}(\pi_{\theta_{\text{old}}}\Vert\p
 résolue par gradient conjugué puis recherche linéaire. Le programme est la classe \texttt{TRPO} de sb3-contrib
 (\texttt{trpo}), avec toutes ses valeurs par défaut.
 
-\paragraph{TD3, prévu puis abandonné}
-Le protocole prévoyait TD3 si le budget le permettait. Il ne l'a pas permis : TD3 n'a pas été lancé
-(écart~1).
-
 \paragraph{Pourquoi les valeurs par défaut}
 Les quatre programmes de la grille principale gardent les valeurs par défaut de leur bibliothèque. Aucun n'a
 été réglé. Ce choix applique à la lettre la demande de Pineau sur les références (faille F7, des références moins bien réglées que la méthode) : chaque
@@ -208,15 +203,14 @@ réglage publié. La seule commande qui construit un programme de la grille, dan
 \texttt{cls("MlpPolicy", TASK, seed=SEED, verbose=0)}, sans autre argument. Le \cref{tab:hyperparametres}
 relève les réglages tels qu'ils ont servi : \file{sim/analysis/hyperparams.py} reconstruit chaque programme comme
 \file{sim/run.py}, lit les attributs de l'algorithme, de la politique et de l'optimiseur, puis les compare à ceux
-d'un modèle enregistré (écart~28).
+d'un modèle enregistré.
 
 \gentable{hyperparametres}
 
 \paragraph{Les réglages publiés du Zoo, pour E6}
 L'expérience E6 oppose PPO PyTorch avec ses valeurs par défaut à PPO PyTorch avec les réglages que RL
 Baselines3 Zoo publie pour \task{Hopper-v4}. \file{sim/run.py} les recopie dans la constante
-\texttt{ZOO\_PPO\_HOPPER}, identiques à ceux de \file{rl\_zoo3/hyperparams/ppo.yml} dans la version~2.9.2
-(écart~5) :
+\texttt{ZOO\_PPO\_HOPPER}, identiques à ceux de \file{rl\_zoo3/hyperparams/ppo.yml} dans la version~2.9.2 :
 \begin{itemize}
   \item paquets de 512~pas, lots de 32, 5~passes, $\gamma = 0{,}999$, $\lambda = 0{,}99$ pour GAE ;
   \item taux d'apprentissage \num{9.80828e-5}, coefficient d'entropie \num{0.00229519}, coefficient de
@@ -228,9 +222,10 @@ Baselines3 Zoo publie pour \task{Hopper-v4}. \file{sim/run.py} les recopie dans 
 \end{itemize}
 La normalisation des récompenses divise chaque récompense par l'écart type d'un retour actualisé glissant.
 Dans la recette du Zoo, son facteur d'actualisation est celui de l'algorithme, 0,999. Notre premier passage
-(\texttt{ppo\_sb3\_zoo}, option \texttt{-{}-zoo}) a laissé la valeur par défaut de \texttt{VecNormalize},
-0,99. Le second passage (\texttt{ppo\_sb3\_zoofix}, option \texttt{-{}-zoofix}) passe 0,999 (écart~2). Les
-deux sont conservés.
+(\texttt{ppo\_sb3\_zoo}, option \texttt{-{}-zoo}) a laissé par erreur la valeur par défaut de
+\texttt{VecNormalize}, 0,99. Nous avons corrigé cette erreur par un second passage (\texttt{ppo\_sb3\_zoofix},
+option \texttt{-{}-zoofix}), qui passe 0,999. Les deux passages sont conservés. Le diagnostic de E6 les
+compare : la correction ne change pas le résultat de façon détectable (\cref{sec:e6}).
 
 \section{Les budgets}\label{sec:budgets}
 
@@ -242,9 +237,8 @@ pas est une transition de l'environnement : une observation, une action, une ré
 Les deux familles d'algorithmes ne se comparent pas au même régime. Un algorithme sur politique jette ses
 données après chaque mise à jour : il lui faut beaucoup de pas. Un million est l'ordre de grandeur de 2018
 pour ces tâches. Un algorithme hors politique réutilise ses données à chaque pas : les articles de 2024 à 2026 comparent SAC et
-CrossQ dans un régime \enquote{peu de données}. Le protocole fixait \num{300000}~pas. L'écart~1 les a
-ramenés à \num{200000}, avant le premier entraînement, pour tenir le calcul sur une machine partagée : nous
-mesurions alors 19~ms par pas pour ces deux algorithmes.
+CrossQ dans un régime \enquote{peu de données}. Le budget de \num{200000}~pas tient le calcul sur une
+machine partagée : ces deux algorithmes y prennent 19~ms par pas.
 
 \paragraph{Le nombre exact de pas}
 \file{sim/run.py} entraîne par blocs de \num{50000}~pas et évalue après chaque bloc. L'appel est
@@ -252,12 +246,11 @@ mesurions alors 19~ms par pas pour ces deux algorithmes.
 paquets de \num{2048}~pas et ne s'arrêtent qu'à la fin d'un paquet. Chaque bloc fait donc \num{51200}~pas.
 Les modèles enregistrés de PPO PyTorch, PPO JAX et TRPO comptent \num{1024000}~pas, alors que la colonne
 \texttt{step} des résultats écrit \num{1000000}. Ceux de E6 réglés comme le Zoo, à paquets de 512~pas, en
-comptent \num{1003520}. SAC et CrossQ font exactement \num{200000}~pas (écart~14, point~d).
+comptent \num{1003520}. SAC et CrossQ font exactement \num{200000}~pas.
 
 \paragraph{Le budget égal}
-La comparaison de E2 se fait à budgets inégaux. Le rapport le dit à chaque fois. L'écart~12, point~iii,
-ajoute une lecture à budget égal : PPO est lu à \num{200000}~pas sur sa courbe d'évaluation, au même point
-que SAC et CrossQ. Aucun score de PPO à \num{200000}~pas n'avait été regardé avant d'écrire cette règle.
+La comparaison de E2 se fait à budgets inégaux. Le rapport le dit à chaque fois. Une lecture à budget égal la
+complète : PPO est lu à \num{200000}~pas sur sa courbe d'évaluation, au même point que SAC et CrossQ.
 
 \section{Les graines aléatoires}\label{sec:graines}
 
@@ -268,13 +261,13 @@ tirés dans la mémoire de rejeu. \file{sim/run.py} la passe au constructeur du 
 (\texttt{seed=SEED}), qui en dérive les générateurs de NumPy, de PyTorch ou de JAX et celui de
 l'environnement d'entraînement. Pour PPO PyTorch et PPO JAX, une relance avec la même graine aléatoire sur la
 même machine a redonné les mêmes points d'évaluation (\cref{sec:calcul}). Pour SAC et CrossQ, la vérification
-attend l'écart~32 (\cref{sec:outils}).
+est en cours (\cref{sec:outils}).
 
 \paragraph{Graines aléatoires d'entraînement}
 Les graines aléatoires d'entraînement sont les entiers 0 à 29, fixés avant le premier entraînement :
 \begin{itemize}
   \item 0 à 9 pour chaque couple de programme et de tâche, les résultats principaux ;
-  \item 10 à 19 pour la consolidation de l'écart~12, les vingt graines aléatoires ;
+  \item 10 à 19 pour la consolidation, les vingt graines aléatoires ;
   \item 0 à 29 pour PPO PyTorch sur \task{HalfCheetah} (E1) et pour TRPO sur \task{HalfCheetah} (B1).
 \end{itemize}
 Les graines aléatoires 10 à 19 de PPO PyTorch sur \task{HalfCheetah}, entraînées pour E1 avec le même code, servent telles
@@ -293,9 +286,10 @@ B1 (\texttt{np.random.default\_rng(2018)}), 2026 pour E5 et pour tous les bootst
 près.
 
 \paragraph{Chaque script nomme ses graines aléatoires}
-Les scripts d'analyse lisaient d'abord tous les fichiers présents. Avec les graines aléatoires 10 à 19 de l'écart~12, E6
-serait passé de dix à vingt graines aléatoires sans le dire. Depuis l'écart~14, point~f, chaque script nomme
-ses graines aléatoires et s'arrête s'il en manque une. Les résultats publiés n'ont pas bougé.
+Six de nos scripts d'analyse lisaient tous les fichiers présents. Avec les graines aléatoires 10 à 19 de la
+consolidation, E6 serait passé de dix à vingt graines aléatoires sans le dire. Nous avons corrigé ce défaut :
+chaque script nomme ses graines aléatoires et s'arrête s'il en manque une. Les résultats publiés n'ont pas
+bougé.
 
 \section{L'évaluation, tenue à part}\label{sec:evaluation}
 
@@ -332,7 +326,7 @@ La moyenne des dix retours s'écrit dans la colonne \texttt{perturbed\_mean} de 
 l'expérience E7.
 
 \paragraph{La physique modifiée par degrés}
-L'écart~12, point~ii, réévalue chaque politique finale dans d'autres physiques, sans aucun entraînement
+La consolidation réévalue chaque politique finale dans d'autres physiques, sans aucun entraînement
 (\file{sim/dose.py}). Une seule grandeur change à la fois :
 \begin{itemize}
   \item les masses, multipliées par 0,7, 0,8, 0,9, 1,0, 1,1, 1,2 et 1,3, soit de 30~\% plus légères à
@@ -379,10 +373,10 @@ Le script \file{sim/fetch\_models.py} les télécharge une à une, espacées d'u
 \texttt{-{}-check} vérifie seulement les politiques présentes.
 
 \paragraph{Les journaux}
-Un journal accompagne chaque lancement. Depuis l'écart~14, chaque tentative garde le sien
+Un journal accompagne chaque lancement. Pour la consolidation, chaque tentative garde le sien
 (\file{logs/<tâche>.attempt<n>.log}, jamais écrasé) et ajoute une ligne au registre
 \file{logs/attempts.jsonl} : tâche, numéro de tentative, début, fin, code de sortie, empreinte SHA-256 du
-résultat. Pour la période antérieure, le registre \file{logs/attempts\_reconstructed.csv} reconstruit une ligne
+résultat. Pour les entraînements antérieurs, le registre \file{logs/attempts\_reconstructed.csv} reconstruit une ligne
 par tentative à partir des dates des journaux, des sorties des lanceurs et de l'historique git
 (\cref{sec:calcul}).
 
@@ -449,8 +443,7 @@ l'analogue pour un rapport : une perte est établie quand l'intervalle de l'IQM 
 
 \paragraph{Le niveau réel de la règle}
 Deux conditions réunies par un \enquote{ou} n'ont pas de niveau garanti. Un intervalle bootstrap percentile
-calculé sur dix essais n'a qu'un niveau approché. L'écart~26, écrit avant ce calcul, mesure le niveau de
-la règle là où aucune différence n'existe : deux groupes disjoints tirés parmi les trente essais d'un même
+calculé sur dix essais n'a qu'un niveau approché. Nous mesurons le niveau de la règle là où aucune différence n'existe : deux groupes disjoints tirés parmi les trente essais d'un même
 programme (\file{sim/analysis/rule\_calibration.py}, \num{2000} tirages, \num{2000} rééchantillons par
 intervalle). Une règle exacte au niveau de 95~\% y déclarerait un vainqueur dans 5~\% des tirages. Le
 \cref{tab:regle-tranche} donne le taux réel : 5,4~\% pour PPO PyTorch et 6,2~\% pour TRPO à dix essais contre
@@ -533,7 +526,7 @@ $S\sqrt{2/n}$, d'où l'identité exacte
   =\frac{\sqrt{n/5}}{\rho},\qquad \rho=\frac{S}{\sigma}.
 \end{equation}
 Avec nos dix épisodes, le facteur vaut $\sqrt2/\rho$. Il ne vaut $1/\rho$ que pour l'analyse de sensibilité à
-$n=5$. L'écart~27 vérifie cette identité sur les tirages de \file{b1\_script.py}
+$n=5$. Nous vérifions cette identité sur les tirages de \file{b1\_script.py}
 (\file{sim/analysis/b1\_factor.py}) et rapporte la médiane du facteur, $\rho$ étant recalculé dans chaque tirage.
 
 \subsection{Corrections pour comparaisons multiples}\label{sec:multiples}
@@ -542,12 +535,12 @@ servent.
 \begin{itemize}
   \item \emph{Bonferroni} \parencite{dunn1961multiple} élève chaque intervalle au niveau $1-0{,}05/m$. Les
     $m$ intervalles tiennent alors ensemble au niveau de 95~\% au moins. E2 compte $m=24$ comparaisons
-    (6~paires sur 4~tâches) : chaque intervalle passe au niveau $1-0{,}05/24$, soit 99,79~\% (écart~18).
+    (6~paires sur 4~tâches) : chaque intervalle passe au niveau $1-0{,}05/24$, soit 99,79~\%.
   \item \emph{Holm} \parencite{holm1979simple} ajuste des valeurs $p$ triées
     $p_{(1)}\le\dots\le p_{(m)}$ en
     $\tilde p_{(i)}=\min\bigl(1,\max_{j\le i}(m-j+1)\,p_{(j)}\bigr)$. Une hypothèse est rejetée quand
     $\tilde p_{(i)}<0{,}05$. La probabilité d'au moins un faux rejet dans la famille reste sous 5~\%, sans
-    hypothèse sur la dépendance des tests. Holm sert à E3 sur ses quatre tâches (écart~23) et à E6,
+    hypothèse sur la dépendance des tests. Holm sert à E3 sur ses quatre tâches et à E6,
     séparément sur les trois comparaisons de son diagnostic et sur les deux de son pipeline officiel.
 \end{itemize}
 Une même famille peut recevoir les deux corrections : E3 corrigé donne ses valeurs $p$ de Mann-Whitney ajustées
@@ -564,11 +557,10 @@ de l'\cref{eq:poi}. Sous l'hypothèse que les deux groupes viennent de la même 
 $n_xn_y/2$ et pour variance $n_xn_y(n_x+n_y+1)/12$, aux égalités près. SciPy calcule la valeur $p$ bilatérale
 exacte quand un groupe compte au plus huit scores sans égalité, sinon par l'approximation normale, corrigée des
 égalités et de la continuité (\texttt{scipy.stats.mannwhitneyu}, méthode \texttt{auto}). Le diagnostic de E6 le
-rapporte à côté du test de Welch. E3 corrigé (écart~23) et le test de E7 (écart~24) l'emploient pour leurs
-valeurs $p$.
+rapporte à côté du test de Welch. E3 corrigé et le test de E7 l'emploient pour leurs valeurs $p$.
 
 \paragraph{La différence de Hodges-Lehmann}
-Une probabilité d'amélioration dit qui gagne, pas de combien. La différence en points de score que l'écart~30 met à
+Une probabilité d'amélioration dit qui gagne, pas de combien. La différence en points de score que nous mettons à
 côté est l'estimateur de \textcite{hodges1963estimates}, la médiane des $n_xn_y$ différences deux à deux :
 \begin{equation}\label{eq:hl}
   \hat\Delta=\operatorname{med}\{\,x_i-y_j : 1\le i\le n_x,\ 1\le j\le n_y\,\}.
@@ -591,7 +583,7 @@ $U/n^2$ sous l'hypothèse nulle.
 
 \paragraph{Le nombre de points indépendants d'une courbe}
 Les vingt points d'une courbe d'apprentissage ne sont pas vingt mesures indépendantes : un essai au-dessus de la
-courbe moyenne à un point le reste au point suivant. L'écart~29 mesure cette dépendance par l'autocorrélation
+courbe moyenne à un point le reste au point suivant. Nous mesurons cette dépendance par l'autocorrélation
 d'ordre 1, $r$, de la différence entre chaque courbe et la courbe moyenne, puis en tire le nombre effectif de points
 indépendants d'une courbe de 20 points, $20\,(1-r)/(1+r)$, la formule approchée, pour une longue série, d'un
 processus autorégressif d'ordre 1
@@ -599,8 +591,8 @@ processus autorégressif d'ordre 1
 
 \subsection{Des intervalles reproductibles}\label{sec:reproductibilite-bootstrap}
 rliable~1.2.0 accepte un argument \texttt{random\_state} mais tire ses rééchantillons dans le générateur global
-de NumPy (\texttt{np.random.choice}). Six scripts ne redonnaient pas les mêmes intervalles d'une exécution
-à l'autre (écart~13). Chaque script fixe désormais ce générateur au départ
+de NumPy (\texttt{np.random.choice}). Six de nos scripts ne redonnaient donc pas les mêmes intervalles d'une
+exécution à l'autre. Nous avons corrigé ce défaut : chaque script fixe ce générateur au départ
 (\texttt{np.random.seed(2026)}), puis appelle rliable dans un ordre fixe. Comme tout appel consomme le
 générateur global, l'intervalle d'une comparaison dépend des appels qui la précèdent dans le même script. La correction
 n'a changé aucune estimation ponctuelle ni aucun verdict. Les bornes ont bougé de l'ordre du bruit de
@@ -618,100 +610,100 @@ celui du diagnostic, comme \file{docs/conclusions.md}.
 \section{Les expériences, une à une}\label{sec:plans}
 
 Le \cref{tab:experiences} résume les plans. Il ne contient que des faits de conception : la question, le plan,
-le nombre d'essais et le moment où l'analyse a été écrite.
+le nombre d'essais et le statut de l'analyse.
 
 {\small
 \begin{longtable}{@{}>{\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000\arraybackslash}p{2.1cm}
   >{\raggedright\arraybackslash}p{3.4cm}>{\raggedright\arraybackslash}p{3.85cm}
   >{\raggedright\arraybackslash}p{2.0cm}>{\raggedright\arraybackslash}p{2.5cm}@{}}
-\caption{Les expériences : la question posée, le plan, les essais employés et le moment où l'analyse a été
-fixée. \enquote{Préenregistrée} signifie écrite avant tout résultat de l'expérience. Aucun chiffre de cette
+\caption{Les expériences : la question posée, le plan, les essais employés et le statut de l'analyse.
+\enquote{Principale} désigne une expérience du protocole, \enquote{complémentaire} une analyse qui la
+complète sans la remplacer, \enquote{exploratoire} un contrôle de plus, dont le résultat se lit comme une
+indication. Aucun chiffre de cette
 table n'est un résultat.}\label{tab:experiences}\\
 \toprule
-Expérience & Question & Plan & Essais & Analyse fixée \\
+Expérience & Question & Plan & Essais & Statut \\
 \midrule
 \endfirsthead
 \toprule
-Expérience & Question & Plan & Essais & Analyse fixée \\
+Expérience & Question & Plan & Essais & Statut \\
 \midrule
 \endhead
 \bottomrule
 \endfoot
 E1 & Deux groupes d'essais du même programme passent-ils pour deux algorithmes ? &
 PPO PyTorch sur \task{HalfCheetah}, 30 graines aléatoires. \num{10000} tirages de deux groupes, test de Welch
-sur les scores finaux, au hasard puis triés. & 30 essais & préenregistrée \\
+sur les scores finaux, au hasard puis triés. & 30 essais & principale \\
 E1, seconde statistique & Le t moyen sur la courbe de 2018 se retrouve-t-il ? &
 Les mêmes 30 courbes, test de Welch à chacun des 20 points, t moyen et p moyen. & les 30 de E1 &
-après les résultats de E1 (écart~3) \\
+complémentaire \\
 B1, TRPO & La dispersion de TRPO explique-t-elle le t de 9 ? &
 TRPO sur \task{HalfCheetah}, 30 graines aléatoires, trois lectures du t moyen. & 30 essais &
-avant tout entraînement TRPO (écart~4) \\
+complémentaire \\
 B1, script & Le calcul de Henderson explique-t-il le t de 9 ? &
 Le script de 2017 appliqué aux courbes de TRPO et de PPO, mêmes tirages. & les 30 de E1 et les 30 de TRPO &
-après B1 TRPO, avant ce calcul (écart~6) \\
+complémentaire \\
 E2 & Le programme en tête change-t-il de tâche en tâche ? &
 4 programmes sur 4 tâches, IQM et intervalle, probabilité d'amélioration par paire. &
-160 essais & détails fixés avant tout score de CrossQ (écarts~7 et 14) \\
+160 essais & principale \\
 E2, Bonferroni & Le verdict de E2 résiste-t-il à 24 comparaisons ? &
 Les 24 intervalles de E2 au niveau simultané de 95~\%. & ceux de E2 &
-après E2, avant ce calcul (écart~18) \\
+complémentaire \\
 E3 & Deux programmes du même algorithme donnent-ils le même résultat ? &
-PPO PyTorch contre PPO JAX, 4 tâches, mêmes graines aléatoires. & 80 de ceux de E2 & préenregistrée \\
+PPO PyTorch contre PPO JAX, 4 tâches, mêmes graines aléatoires. & 80 de ceux de E2 & principale \\
 E4 & Que devient la moyenne quand on garde les 3 meilleurs essais sur 10 ? &
 Moyenne et écart type des 10 puis des 3 meilleurs, inversions parmi 24 comparaisons. & ceux de E2 &
-avant tout score de CrossQ (écart~7) \\
+principale \\
 E5 & Combien de graines aléatoires retrouvent le bon classement ? &
 Pour chaque comparaison, \num{10000} tirages avec remise de $n$ essais, $n$ de 3 à 20. &
-ceux de E2, les 30 de E1 & avant tout score de CrossQ (écart~7) \\
+ceux de E2, les 30 de E1 & principale \\
 E6 & Que change une référence réglée selon les réglages publiés ? &
 PPO PyTorch sur \task{Hopper}, valeurs par défaut contre réglages du Zoo, puis diagnostic et script
-officiel. & 40 essais de plus que E2, plus 10 officiels & préenregistrée, diagnostic après le premier résultat
-(écarts~2 et 5) \\
+officiel. & 40 essais de plus que E2, plus 10 officiels & principale, diagnostic complémentaire \\
 E7 & Que coûte une physique modifiée ? &
 Rapport du score en physique modifiée au score en physique d'entraînement, par essai. & ceux de E2 &
-préenregistrée, classement descriptif ajouté après (écart~11) \\
+principale, classement descriptif \\
 Physique par degrés & La perte de E7 tient-elle à une seule modification ? &
 Masses de 0,7 à 1,3 fois, frottements de 0,6 à 1,2 fois, une grandeur à la fois. &
-320 réévaluations (avec vingt graines aléatoires) & règle écrite avant tout calcul (écarts~12 et 14) \\
+320 réévaluations (avec vingt graines aléatoires) & complémentaire \\
 B3 & La mesure choisie change-t-elle le classement ? &
 Score final, meilleur score, moyenne de la courbe, inversions entre mesures. & ceux de E2 &
-avant tout score de CrossQ (écart~8) \\
+complémentaire \\
 Vingt graines aléatoires & Les résultats à dix graines aléatoires tiennent-ils ? &
 Graines aléatoires 10 à 19, mêmes règles, E2, E3, E5, E7, B3, physique par degrés. & 150 essais de plus &
-avant tout nouvel entraînement (écarts~12 et 20) \\
+complémentaire \\
 Budget égal & Le classement de E2 tient-il au budget de PPO ? &
 PPO lu à \num{200000}~pas, E2 et B3 recalculés. & ceux de E2 &
-avant tout regard sur ces scores (écart~12) \\
+complémentaire \\
 E4 répliquée & Le gonflement de E4 se refait-il ? & E4 à l'identique sur les graines aléatoires 10 à 19. &
-160 essais des graines aléatoires 10 à 19 & avant tout nouvel entraînement (écart~12) \\
+160 essais des graines aléatoires 10 à 19 & complémentaire \\
 \midrule
 E1, seize couples & Le taux de faux positifs de E1 vaut-il pour les autres couples ? &
 Les deux tirages de E1, à cinq contre cinq, sur chacun des seize couples. & les 320 de E2 à vingt graines aléatoires &
-après les résultats, avant ce calcul (écart~22) \\
+exploratoire \\
 E2 strict & Combien de paires s'inversent vraiment ? &
 Paires tranchées dans un sens sur une tâche, dans l'autre sur une autre, sans nouveau tirage. & ceux de E2 &
-après les résultats, avant ce calcul (écart~21) \\
+exploratoire \\
 E3 corrigé & La différence de E3 résiste-t-elle à quatre tâches ? &
 Mann-Whitney et Holm sur quatre tâches, intervalles à 98,75~\%, Hodges-Lehmann, puissance. & ceux de E3 &
-après les résultats, avant ce calcul (écart~23) \\
+exploratoire \\
 E5 hors échantillon & E5 se retrouve-t-il sur d'autres graines aléatoires ? &
 Ordre des graines aléatoires 0 à 9 jugé sur les graines 10 à 19, puis l'inverse. & ceux de E2 à vingt graines aléatoires &
-après les résultats, avant ce calcul (écart~25) \\
+exploratoire \\
 E7 testé & Le renversement sur \task{Hopper} est-il établi ? &
 Probabilité d'amélioration par paire, dans les deux physiques et à chaque degré. & ceux de E2 &
-après les résultats, avant ce calcul (écart~24) \\
+exploratoire \\
 Règle calibrée & Quel est le niveau réel de la règle du vainqueur établi ? &
 Groupes disjoints d'un même programme, 10 contre 10 et 5 contre 5. & les 30 de E1, les 30 de TRPO, ceux de E2 &
-après les résultats, avant ce calcul (écart~26) \\
+exploratoire \\
 E6, vitesse & Le plateau de la recette du Zoo est-il un robot immobile ? &
 Journaux d'entraînement, rejeu avec la vitesse, vidéo, agent publié par le Zoo. & ceux de E6 &
-avant ces calculs (écarts~31 et 33) \\
+exploratoire \\
 Déterminisme & Une relance de SAC et CrossQ redonne-t-elle le même essai ? &
-Trois essais refaits à l'identique, comparés point par point. & 3 essais, en cours & avant tout
-entraînement (écart~32) \\
+Trois essais refaits à l'identique, comparés point par point. & 3 essais & en cours \\
 Divergence des PPO & L'initialisation explique-t-elle la différence de E3 ? &
 Sur \task{Walker2d} et \task{Swimmer}, les deux PPO aux graines aléatoires 20 à 39, puis chacun avec l'option
-d'initialisation de l'autre aux graines aléatoires 0 à 19. & 160 essais, en cours & avant tout entraînement (écart~34) \\
+d'initialisation de l'autre aux graines aléatoires 0 à 19. & 160 essais & en cours \\
 \end{longtable}
 }
 
@@ -736,13 +728,12 @@ Puisque les deux groupes sortent toujours du même programme, toute différence 
 Avec des groupes tirés au hasard et un test bien calibré, la part attendue est de 5~\%.
 
 \paragraph{Les seize couples}
-E1 n'étudie qu'un couple, PPO PyTorch sur \task{HalfCheetah}. L'écart~22, écrit après les résultats et avant ce
-calcul, refait ses deux tirages à cinq contre cinq sur chacun des seize couples de programme et de tâche de E2,
+E1 n'étudie qu'un couple, PPO PyTorch sur \task{HalfCheetah}. Une analyse exploratoire refait ses deux tirages à cinq contre cinq sur chacun des seize couples de programme et de tâche de E2,
 graines aléatoires 0 à 19 (\file{sim/analysis/e1\_grid.py}) : \num{10000} tirages au hasard, \num{10000} tirages
 triés, la part des tirages où le test de Welch donne $p<0{,}05$. Pour juger de la précision de ces parts, le
 script rééchantillonne aussi \num{1000} fois les essais de chaque couple avec remise. Les doublons que crée ce
 rééchantillonnage écrasent la variance à l'intérieur des groupes et gonflent le taux trié : ces intervalles
-décrivent la fragilité de l'estimation, sans garantie de couverture. L'analyse est exploratoire.
+décrivent la fragilité de l'estimation, sans garantie de couverture.
 
 \paragraph{La seconde statistique}
 La figure~5 de \textcite{henderson2018matters} compare des courbes d'apprentissage entières
@@ -751,27 +742,25 @@ La figure~5 de \textcite{henderson2018matters} compare des courbes d'apprentissa
 essais, coupés en deux groupes de cinq au hasard ou triés par score final, puis un test de Welch à chacun des
 vingt points d'évaluation. Le script en tire la part des tirages déclarés différents par le t moyen, par le p moyen
 et par le test au dernier point, le 95\textsuperscript{e} centile de $|\bar t|$ et la part des tirages où
-$|\bar t|\ge 9{,}09$. Cette statistique a été ajoutée après les résultats de \file{e1.py}
-(écart~3). Elle complète l'analyse préenregistrée sans la remplacer.
+$|\bar t|\ge 9{,}09$. Cette statistique complète l'analyse principale de \file{e1.py} sans la remplacer.
 
 \subsection{B1 : l'énigme du t de 9}\label{sec:plan-b1}
 \textcite{henderson2018matters} publient, pour TRPO sur \task{HalfCheetah}, $t=-9{,}09$ et $p=0{,}0016$ entre
 deux groupes de cinq essais du même code. Pineau précise sur scène que ces groupes ne sont pas triés (faille F11, \cref{sec:failles}). B1 cherche d'où
-vient ce chiffre, en deux temps écrits chacun avant son calcul.
+vient ce chiffre, en deux temps.
 
 \paragraph{Premier temps : leur algorithme}
-L'écart~4, écrit avant tout entraînement de TRPO, lance trente essais de TRPO sur
+Le premier temps lance trente essais de TRPO sur
 \task{HalfCheetah-v5}, graines aléatoires 0 à 29, un million de pas, avec les valeurs par défaut de
 sb3-contrib~2.9.2 et la même évaluation que E1. \file{sim/analysis/b1\_trpo.py} applique les trois lectures de
 la \cref{sec:t-moyen} aux courbes de TRPO et de PPO, avec les mêmes tirages que \file{e1\_curve.py}. La règle
-de lecture était fixée d'avance. Si le 95\textsuperscript{e} centile de $|\bar t|$ au hasard approche 9 avec
+de lecture est la suivante. Si le 95\textsuperscript{e} centile de $|\bar t|$ au hasard approche 9 avec
 TRPO, la dispersion de l'algorithme explique leur chiffre. Si seule la lecture empilée l'approche, leur calcul
 l'explique. Si aucune lecture ne l'approche, le rapport conclut qu'aucune des deux pistes n'explique leur
 chiffre.
 
 \paragraph{Second temps : leur script}
-L'écart~6, écrit après les résultats de \file{b1\_trpo.py} et avant tout calcul avec
-le script, relève deux faits. Le couple publié $(t,p)=(-9{,}09\,;\,0{,}0016)$ impose environ 3,4~degrés de
+Le second temps part de deux faits. Le couple publié $(t,p)=(-9{,}09\,;\,0{,}0016)$ impose environ 3,4~degrés de
 liberté en test bilatéral. Il exclut la lecture des points empilés, à environ 198~degrés de liberté, qui
 donnerait un $p$ de l'ordre de $10^{-16}$. Il exclut aussi le t moyen converti en $p$, puisqu'un test de Welch
 sur cinq contre cinq a au moins 4~degrés de liberté. Seule la moyenne des $p$ reste compatible. Le second fait
@@ -781,7 +770,7 @@ tirages de dix essais coupés en cinq contre cinq, au hasard puis triés), pour 
 aussi, par programme, le rapport de l'écart type moyen entre épisodes au dernier point à l'écart type des
 scores finaux entre graines aléatoires.
 
-\paragraph{Différences dites d'avance}
+\paragraph{Ce qui nous sépare des essais de 2017}
 Nos épisodes d'évaluation suivent une politique déterministe, alors que les fichiers de progression de 2017
 enregistrent les épisodes d'entraînement, joués par la politique stochastique. Nous avons vingt points
 d'évaluation, quand leurs courbes comptent une ligne par itération. Nous ne pouvons pas prouver que ce script a produit leur
@@ -803,25 +792,24 @@ Le programme \emph{en tête} d'une tâche est celui de plus grande IQM. Le class
 programme en tête n'est pas le même sur toutes les tâches. Le changement est \emph{établi} quand le programme
 en tête d'une tâche est battu, de façon tranchée, par un autre programme sur une autre tâche. Le script compte
 ces changements établis : chaque triplet (tâche où $X$ mène, tâche où $X$ perd, programme qui bat $X$) en
-compte un. Ces détails ont été écrits après les résultats de PPO et de SAC et avant d'avoir
-regardé le moindre résultat de CrossQ (écart~7, lu avec la correction de l'écart~14, point~b).
+compte un.
 
 \paragraph{Avec la correction de Bonferroni}
 \file{sim/analysis/e2\_bonferroni.py} refait les mêmes appels, dans le même ordre, après la même graine aléatoire : les
 rééchantillons bootstrap sont identiques à ceux de \file{e2.py}, seul le niveau des centiles change, à
-99,79~\%. Il compte les changements établis avec la même définition (écart~18).
+99,79~\%. Il compte les changements établis avec la même définition.
 
 \paragraph{Le décompte strict}
-La définition préenregistrée compte un triplet sans demander si le programme en tête bat de façon tranchée,
+La définition du protocole compte un triplet sans demander si le programme en tête bat de façon tranchée,
 sur la tâche où il mène, celui qui le bat ailleurs. \enquote{SAC mène sur \task{HalfCheetah} et perd contre CrossQ sur
 \task{Walker2d}} y compte pour un changement établi, même quand l'ordre de SAC et de CrossQ sur
-\task{HalfCheetah} n'est pas tranché. L'écart~21, écrit avant ce calcul, ajoute un décompte strict, par paires
+\task{HalfCheetah} n'est pas tranché. Un décompte strict, par paires, la complète
 (\file{sim/analysis/e2\_strict.py}) : une paire $(A,B)$ \emph{s'inverse de façon établie} quand $A$ bat $B$ de
 façon tranchée sur une tâche et $B$ bat $A$ de façon tranchée sur une autre. Le script relit les intervalles
 déjà publiés, à 95~\% et au niveau de Bonferroni, sans nouveau rééchantillonnage, pour les quatre analyses (dix
-et vingt graines aléatoires, budget propre et budget égal). Il recopie le décompte préenregistré à côté. Le
-décompte strict au budget égal demandait les intervalles de Bonferroni au budget égal, que \file{e2\_bonferroni.py}
-calcule désormais aussi.
+et vingt graines aléatoires, budget propre et budget égal). Il recopie le décompte du protocole à côté. Le
+décompte strict au budget égal demande les intervalles de Bonferroni au budget égal, que \file{e2\_bonferroni.py}
+calcule aussi.
 
 \subsection{E3 : deux programmes du même algorithme}\label{sec:plan-e3}
 \file{sim/analysis/e3.py} oppose PPO PyTorch à PPO JAX sur chaque tâche, avec les mêmes graines aléatoires et
@@ -831,9 +819,9 @@ intervalles, puis le vainqueur selon la règle de la \cref{sec:regle}.
 
 \paragraph{Quatre tâches, une correction}
 E3 teste quatre tâches sans correction. L'analyse à vingt graines aléatoires pose en outre une seconde fois la
-même question. L'écart~23 corrige la première multiplicité et nomme la seconde sans la corriger :
+même question. L'analyse corrigée traite la première multiplicité et nomme la seconde sans la corriger :
 l'analyse à dix graines aléatoires et celle à vingt sont corrigées chacune sur ses quatre tâches, sans correction
-entre elles. Son plan, écrit avant le calcul du dépôt (\file{sim/analysis/e3\_holm.py}), fixe pour chaque tâche
+entre elles. Le script \file{sim/analysis/e3\_holm.py} calcule pour chaque tâche
 le test de Mann-Whitney bilatéral de PPO JAX contre PPO PyTorch, la correction de Holm sur les quatre tâches,
 l'intervalle de la probabilité d'amélioration au niveau de 98,75~\%, la différence de Hodges-Lehmann en points de
 score (\cref{eq:hl}). Le script estime aussi la puissance du test pour $n$ de 10 à 60 essais par programme
@@ -857,8 +845,8 @@ compte la part des tirages qui retrouvent le bon ordre :
 \end{equation}
 Pour PPO PyTorch sur \task{HalfCheetah}, l'analyse à dix graines aléatoires tire parmi les trente essais de E1. Le script
 publie la médiane de $\hat P_n$ sur les 24 comparaisons et, parmi elles, sur les comparaisons \emph{proches},
-dont la différence relative des moyennes $|\bar x-\bar y|/\max(|\bar x|,|\bar y|)$ reste sous 20~\%. L'écart~20 a corrigé
-un défaut avant le calcul à vingt graines aléatoires : le script prenait pour bon ordre la moyenne des dix premiers essais,
+dont la différence relative des moyennes $|\bar x-\bar y|/\max(|\bar x|,|\bar y|)$ reste sous 20~\%. Nous avons corrigé
+un défaut du script avant le calcul à vingt graines aléatoires : il prenait pour bon ordre la moyenne des dix premiers essais,
 même avec vingt. Il prend désormais la moyenne de toutes les graines choisies. L'analyse à dix graines aléatoires n'a pas
 changé d'un octet.
 
@@ -866,20 +854,20 @@ changé d'un octet.
 Le bon ordre de l'\cref{eq:e5} est le signe des moyennes de l'échantillon même où les tirages se font, avec
 remise. $\hat P_n$ estime donc la stabilité du signe observé quand on refait l'expérience avec $n$ essais tirés
 de cet échantillon. Il ne mesure pas la probabilité de retrouver l'ordre vrai des deux algorithmes. Tirer
-$n=20$ essais parmi dix observés, dans l'analyse à dix graines aléatoires, est une extrapolation. L'écart~25
-valide E5 hors échantillon (\file{sim/analysis/e5\_holdout.py}), selon un plan fixé avant que le script tourne. Le bon ordre y vient
+$n=20$ essais parmi dix observés, dans l'analyse à dix graines aléatoires, est une extrapolation. Une validation hors échantillon
+(\file{sim/analysis/e5\_holdout.py}) retire cette circularité. Le bon ordre y vient
 d'autres essais, les graines aléatoires 10 à 19. Le script compte les comparaisons dont le signe observé sur les
 graines aléatoires 0 à 9 se garde sur les graines 10 à 19. Il tire ensuite $n=3$, 5 et 10 essais sans remise
 parmi les graines aléatoires 0 à 9, \num{10000} fois, compte les tirages qui retrouvent l'ordre des graines
 aléatoires 10 à 19, puis fait le chemin inverse.
 
 \subsection{E6 : la référence réglée}\label{sec:plan-e6}
-E6 voulait illustrer la faille F7, la référence mal réglée : l'avance qu'une \enquote{nouvelle méthode}
-s'attribue quand elle est seule à être réglée. Le plan initial oppose, sur \task{Hopper-v5}, dix essais de PPO
+E6 met à l'épreuve la faille F7, la référence mal réglée : l'avance qu'une \enquote{nouvelle méthode}
+s'attribue quand elle est seule à être réglée. Son premier volet oppose, sur \task{Hopper-v5}, dix essais de PPO
 PyTorch avec ses valeurs par défaut (ceux de E2) à dix essais avec les réglages du Zoo (\file{e6.py}).
 
 \paragraph{Le diagnostic}
-Le premier résultat a déclenché un diagnostic, ajouté après l'avoir vu (écart~2). \file{e6\_diag.py} compare
+Le premier résultat a conduit à un diagnostic. \file{e6\_diag.py} compare
 cinq groupes de dix essais : valeurs par défaut sur v5, Zoo avec l'erreur de facteur d'actualisation sur v5,
 Zoo corrigé sur v5, valeurs par défaut sur v4, Zoo corrigé sur v4. Trois comparaisons sont corrigées par Holm :
 l'erreur (Zoo corrigé contre Zoo avec erreur, sur v5), le test loyal sur la version du Zoo (Zoo corrigé contre
@@ -887,7 +875,7 @@ valeurs par défaut, sur v4), le même test sur v5. Chaque comparaison rapporte 
 Mann-Whitney et la probabilité d'amélioration avec son intervalle.
 
 \paragraph{Le pipeline officiel}
-L'écart~5, écrit après le diagnostic et avant tout entraînement officiel, demande si le plafond observé au premier
+Le pipeline officiel demande si le plafond observé au premier
 résultat, un score qui cesse de monter dès les premiers blocs d'entraînement, vient de la recette publiée ou de
 notre façon de l'appliquer. Le script \file{sim/zoo\_official.sh} lance dix fois le
 script officiel du recueil, \texttt{python -m rl\_zoo3.train -{}-algo ppo -{}-env Hopper-v4 -{}-seed i}, pour
@@ -895,8 +883,8 @@ $i$ de 0 à 9, dans l'environnement séparé \file{sim/env-zoo}, sur un fil, san
 l'entraînement (\texttt{-{}-eval-freq -1}). \file{e6\_official.py} évalue ensuite chaque politique officielle
 avec notre protocole : dix épisodes déterministes, graines aléatoires d'évaluation \num{10000} à \num{10009},
 normalisation des observations chargée puis figée, sans normalisation de la récompense. Deux comparaisons,
-fixées d'avance et corrigées par Holm, opposent les politiques officielles à notre Zoo corrigé sur v4 puis à
-nos valeurs par défaut sur v4. La règle de lecture était écrite. Si l'officiel dépasse nettement \num{1000},
+corrigées par Holm, opposent les politiques officielles à notre Zoo corrigé sur v4 puis à
+nos valeurs par défaut sur v4. La règle de lecture est la suivante. Si l'officiel dépasse nettement \num{1000},
 notre application était fautive. S'il plafonne aussi, la recette publiée fait moins bien que les valeurs par
 défaut dans cette version des bibliothèques. Le rapport le constate alors, sans parler d'une
 référence que nous aurions mal réglée.
@@ -904,22 +892,21 @@ référence que nous aurions mal réglée.
 \paragraph{Un robot qui tient debout sans avancer}
 Sur \task{Hopper}, la récompense d'un pas vaut la vitesse vers l'avant, plus 1 tant que le robot tient debout,
 moins $10^{-3}\,\lVert a\rVert^2$ pour l'action $a$. Un épisode de \num{1000}~pas qui rapporte environ
-\num{1000} est donc un robot debout et immobile. Trois analyses, écrites chacune avant son calcul, lisent la
-vitesse au lieu du score :
+\num{1000} est donc un robot debout et immobile. Trois analyses lisent la vitesse au lieu du score :
 \begin{itemize}
-  \item l'écart~31 lit les journaux d'entraînement des dix agents officiels (\file{sim/analysis/e6\_speed.py}) :
+  \item la première lit les journaux d'entraînement des dix agents officiels (\file{sim/analysis/e6\_speed.py}) :
     sur les 200 derniers épisodes, la part d'épisodes de \num{1000}~pas et leur retour par pas, dont on déduit
     une borne basse de la vitesse moyenne, le retour par pas moins 1 ;
-  \item l'écart~33 (a) rejoue les politiques officielles, nos politiques réglées comme le Zoo et nos politiques
+  \item la deuxième rejoue les politiques officielles, nos politiques réglées comme le Zoo et nos politiques
     par défaut avec notre protocole, en relevant la vitesse et la position à chaque pas, puis filme un épisode
     (\file{sim/analysis/e6\_enjoy.py}). Contrôle : les retours rejoués doivent redonner au chiffre près les
     scores déjà publiés ;
-  \item l'écart~33 (b) télécharge l'agent publié par le Zoo pour \task{Hopper-v3}, inspecte chaque
+  \item la troisième télécharge l'agent publié par le Zoo pour \task{Hopper-v3}, inspecte chaque
     objet sérialisé avant de le charger, puis l'évalue avec notre protocole sur \task{Hopper-v4}
     (\file{sim/analysis/e6\_hub.py}).
 \end{itemize}
-L'écart~33 (c) réentraîne la recette du Zoo avec $\gamma=0{,}99$. Ses entraînements n'étaient pas finis quand
-ce rapport a été compilé : aucun de leurs résultats n'y figure.
+Un réentraînement de la recette du Zoo avec $\gamma=0{,}99$ tourne encore : aucun de ses résultats ne
+figure dans ce rapport.
 
 \subsection{E7 : la physique modifiée}\label{sec:plan-e7}
 \file{sim/analysis/e7.py} calcule, pour chaque essai $s$, le rapport des deux scores finaux
@@ -933,15 +920,13 @@ des IQM : la part de score gardée ne se lit pas sur deux classements de scores.
 
 \paragraph{Le classement descriptif}
 \file{e7\_rank.py} classe les quatre programmes sur chaque tâche par IQM du score, dans chacune des
-deux physiques. Il dit si le programme en tête change. Ce complément, décidé
-après les résultats de E7, n'a pas de test (écart~11).
+deux physiques. Il dit si le programme en tête change. Ce complément est descriptif, sans test.
 
 \paragraph{Le classement en physique modifiée, testé}
-L'écart~24 donne à ce classement le test qui lui manquait (\file{sim/analysis/e7\_test.py}). Sa règle a été
-écrite avant le calcul. Pour chaque tâche et chaque paire, le script calcule la probabilité d'amélioration avec son intervalle et la valeur $p$ de
+\file{sim/analysis/e7\_test.py} donne un test à ce classement. Pour chaque tâche et chaque paire, le script calcule la probabilité d'amélioration avec son intervalle et la valeur $p$ de
 Mann-Whitney, en physique d'entraînement comme en physique modifiée. Une paire \emph{se renverse de façon
 établie} quand elle est tranchée dans un sens dans la première et dans l'autre sens dans la seconde. La question
-principale était fixée d'avance : PPO JAX contre CrossQ et contre SAC sur \task{Hopper}. Le reste est descriptif.
+principale est PPO JAX contre CrossQ et contre SAC sur \task{Hopper}. Le reste est descriptif.
 Le script refait le même calcul à chaque degré de la physique par degrés.
 
 \paragraph{La physique par degrés}
@@ -949,10 +934,10 @@ Le script refait le même calcul à chaque degré de la physique par degrés.
 programme, tâche, grandeur et facteur, il calcule l'IQM du rapport au score à 1,0 fois, avec son intervalle
 bootstrap, puis le même verdict que E7. Pour chaque tâche et chaque physique, il classe les quatre programmes par
 IQM du score, sans test. Il vérifie enfin que le score à 1,0 fois retrouve le score final de \file{run.py} et note
-la plus grande différence relative entre les deux. La règle date de l'écart~12, point~ii, écrit avant tout calcul. Le script
-lui-même a été écrit alors que 30 des 160 réévaluations existaient déjà, dont une avait été affichée : le
-commit qui le disait \enquote{écrit avant les résultats} se trompait (écart~14, point~a). Le script n'a aucun
-paramètre libre.
+la plus grande différence relative entre les deux. Le script a été écrit alors que 30 des 160 réévaluations
+existaient déjà, dont une avait été affichée. Un commit le disait écrit avant tout résultat : nous avons
+corrigé cette déclaration. Le script n'a aucun paramètre libre, si bien que ce qui avait été vu ne pouvait
+rien changer à son calcul.
 
 \subsection{B3 : la mesure change-t-elle le classement ?}\label{sec:plan-b3}
 \file{sim/analysis/b3.py} calcule trois mesures par essai sur les courbes enregistrées, sans aucun
@@ -966,10 +951,10 @@ Pour chaque tâche et chaque mesure, il calcule l'IQM de chaque programme et le 
 programmes \emph{s'inverse} entre deux mesures si l'ordre de leurs IQM change. L'inversion est \emph{établie}
 si, sous chacune des deux mesures, l'intervalle de la probabilité d'amélioration exclut 0,5, dans des sens
 opposés. Les courbes de PPO ont vingt points sur un million de pas, celles de SAC et de CrossQ quatre points
-sur \num{200000} : la moyenne de la courbe ne couvre pas le même budget (écart~8).
+sur \num{200000} : la moyenne de la courbe ne couvre pas le même budget.
 
 \paragraph{Les courbes elles-mêmes}
-L'écart~29, antérieur à ces calculs, ajoute trois lectures exploratoires des courbes
+Trois lectures exploratoires des courbes complètent B3
 (\file{sim/analysis/curves.py}) :
 \begin{itemize}
   \item le classement des quatre programmes à \num{50000}, \num{100000}, \num{150000} et \num{200000}~pas,
@@ -981,8 +966,7 @@ L'écart~29, antérieur à ces calculs, ajoute trois lectures exploratoires des 
 \end{itemize}
 
 \subsection{La consolidation : vingt graines aléatoires et budget égal}\label{sec:plan-consolidation}
-L'écart~12, écrit avant tout nouvel entraînement, ajoute trois volets avec le même code et les
-mêmes réglages :
+La consolidation ajoute trois volets avec le même code et les mêmes réglages :
 \begin{itemize}
   \item les graines aléatoires 10 à 19 pour les quatre programmes sur les quatre tâches, soit 150 nouveaux
     entraînements, puisque PPO PyTorch sur \task{HalfCheetah} avait déjà les siens ;
@@ -991,18 +975,15 @@ mêmes réglages :
 \end{itemize}
 Le module \file{sim/analysis/runs.py} lit trois variables d'environnement, toutes inactives par défaut :
 \texttt{SEEDS} (par exemple \texttt{0:20}), \texttt{BUDGET=equal} et \texttt{SUFFIX}, ajouté au nom du fichier
-de sortie. L'écart~20, écrit après la fin de tous les entraînements et avant tout calcul sur les
-graines aléatoires 10 à 19, fixe la liste des calculs, tous lancés par \texttt{make analysis} :
+de sortie. Les calculs sont tous lancés par \texttt{make analysis} :
 \begin{itemize}
   \item sur les vingt graines aléatoires (suffixe \file{\_s20}) : E2, E3, E5, E7, B3, la physique par degrés, le
     classement descriptif de E7 et la correction de Bonferroni de E2 ;
   \item E4 sur les seules graines aléatoires 10 à 19 (suffixe \file{\_r10}), comme réplication indépendante ;
   \item E2 et B3 à budget égal, sur dix graines aléatoires (\file{\_equal}) et sur vingt (\file{\_equal\_s20}).
 \end{itemize}
-Les scores des graines aléatoires 10 à 19 n'avaient pas été lus avant l'écart~20, à une exception près : le
-contrôle de la physique par degrés à 1,0 fois, qui compare chaque fichier à lui-même. Les deux derniers ajouts de la première liste ne figuraient
-pas dans l'écart~12 : ils appliquent aux vingt graines aléatoires des règles déjà écrites. Ils sont publiés quels qu'ils
-soient. Les résultats à dix graines aléatoires restent les résultats principaux.
+Les deux derniers calculs de la première liste appliquent aux vingt graines aléatoires des règles déjà
+écrites. Les résultats à dix graines aléatoires restent les résultats principaux.
 
 \section{La file d'attente et le calcul}\label{sec:calcul}
 
@@ -1025,12 +1006,12 @@ Plusieurs scripts ont lancé les essais. Chacun saute un essai dont la politique
     entraînements, pour rester à quatre cœurs.
   \item \file{sim/zoo\_official.sh} attend la fin de la file TRPO, puis lance les dix entraînements officiels de
     E6 sur deux voies de cinq.
-  \item \file{sim/queue.sh} lit \file{jobs\_consolidation.txt}, la liste de l'écart~12 : 160 lignes
+  \item \file{sim/queue.sh} lit \file{jobs\_consolidation.txt}, la liste de la consolidation : 160 lignes
     \texttt{train} et 320 lignes \texttt{dose}. Il réserve chaque tâche par un \texttt{mkdir} atomique, ce qui
     permet à deux copies de tourner sans se gêner. Il tient le registre \file{logs/attempts.jsonl}. Un arrêt par
-    signal, code de sortie de 128 ou plus, n'est pas relancé (écart~14, point~g).
+    signal, code de sortie de 128 ou plus, n'est pas relancé.
   \item \file{sim/worker.sh} est \file{queue.sh} avec un plafond : il lit \file{workers.max} avant chaque tâche
-    et s'en va si trop de copies tournent (écart~15).
+    et s'en va si trop de copies tournent.
   \item \file{sim/scale.sh} décide ce plafond toutes les heures. Il somme le calcul pris par les autres
     programmes de la machine (\texttt{\%cpu} de \texttt{ps}), en déduit les cœurs libres moins un de marge. Il
     accorde au projet au plus \texttt{MAX\_CORES} cœurs, l'essai GRPO sur processeur en prenant deux. Il lance
@@ -1042,86 +1023,28 @@ Plusieurs scripts ont lancé les essais. Chacun saute un essai dont la politique
     d'échange a grossi de plus de 8~Go. Il inscrit chaque tâche arrêtée au registre et libère sa réservation.
 \end{itemize}
 
-\paragraph{Le nombre de cœurs au fil du projet}
-D'abord, le nombre d'essais simultanés était réglé à la main : quatre cœurs pour le projet, puis deux
-copies de \file{queue.sh} pour la consolidation. L'écart~15 a relevé le
-plafond à huit cœurs, décidé chaque heure par \file{scale.sh}. L'écart~19 l'a ramené à deux
-cœurs pour tout le projet, essai GRPO sur processeur compris. Chaque essai tourne sur un seul fil, dans son
+\paragraph{Le nombre de cœurs}
+Le projet a pris de deux à huit cœurs selon la charge de la machine : quatre réglés à la main pour la
+grille principale, puis deux copies de \file{queue.sh} pour la consolidation, puis un plafond décidé
+chaque heure par \file{scale.sh}, de huit cœurs au plus, enfin deux cœurs pour tout le projet, essai GRPO
+sur processeur compris. Chaque essai tourne sur un seul fil, dans son
 propre processus : le nombre de tâches parallèles n'entre dans aucun de ses calculs. Les relances de PPO
-retrouvent leurs points d'évaluation à l'identique. Pour SAC et CrossQ, la vérification de l'écart~32 est en
-cours.
+retrouvent leurs points d'évaluation à l'identique. Pour SAC et CrossQ, la vérification est en cours.
 
 \paragraph{Les arrêts et les relances}
-Le protocole voulait qu'un plantage soit relancé une fois et noté. Le registre reconstruit
-\file{logs/attempts\_reconstructed.csv} compte 292~lancements pour les 250~entraînements antérieurs à la
-consolidation : 42~tentatives arrêtées (2 seulement déclarées), aucune plantée (écart~14,
-point~e). Les arrêts ont trois causes : un premier arrêt général, probablement celui de l'incident
+Le registre reconstruit \file{logs/attempts\_reconstructed.csv} compte 292~lancements pour les
+250~entraînements antérieurs à la consolidation : 42~tentatives arrêtées, aucune plantée. Le protocole
+demande de noter chaque incident. Seules 2 de ces 42 tentatives l'avaient été : nous avons corrigé ce
+défaut par ce registre, puis par celui que tient \file{queue.sh}. Les arrêts ont trois causes : un premier arrêt général, probablement celui de l'incident
 mémoire du pilote GRPO, un arrêt demandé pour une machine surchargée, puis quatre arrêts pour
 rester à quatre cœurs. Chaque arrêt a frappé tous les essais en cours à la fois. Aucun essai n'a été relancé ni
 écarté après que son score final était connu, ni pour une raison liée à son score. Pour PPO PyTorch et PPO
 JAX, les relances retrouvent tels quels les points d'évaluation des tentatives arrêtées. Pour SAC et
 CrossQ, les courbes arrêtées ont été écrasées : cette vérification est impossible. Les arrêts suivants
-du surveillant sont décrits aux écarts~10, 14 et 16 (\cref{chap:09-ecarts}).
+du surveillant sont inscrits au registre \file{logs/attempts.jsonl}.
 
 \paragraph{La chaîne jusqu'aux documents}
 Les essais écrivent leurs fichiers CSV et JSON. Les scripts de \file{sim/analysis/} en tirent les fichiers
 JSON de résultats. \texttt{make verify} recalcule chaque analyse et compare les fichiers à l'octet près, puis
 \file{docs/check\_numbers.py} et \file{article/check\_article.py} vérifient chaque nombre des documents contre
-ces fichiers. Le \cref{chap:08-logiciel} décrit cette chaîne et la dessine (\cref{fig:architecture,fig:architecture-2}).
-
-\section{Ce qui a été écrit avant les résultats, ce qui l'a été après}\label{sec:avant-apres}
-
-Un protocole écrit d'avance protège contre une analyse choisie après avoir vu les données. Il ne protège que
-s'il dit honnêtement ce qui a été décidé après. Voici le classement, écart par écart, des décisions qui
-touchent une analyse.
-
-\paragraph{Écrit avant tout résultat concerné}
-\begin{itemize}
-  \item le protocole lui-même : E1, E2, E3, E4, E5, E6, E7, leurs statistiques, la règle du
-    vainqueur établi ;
-  \item le budget de SAC et CrossQ ramené à \num{200000}~pas (écart~1), avant le premier entraînement ;
-  \item B1 avec TRPO et ses trois lectures (écart~4), avant tout entraînement TRPO ;
-  \item le pipeline officiel de E6 et sa règle de lecture (écart~5), avant tout entraînement officiel ;
-  \item le calcul du script de Henderson (écart~6), avant ce calcul ;
-  \item les détails de E2, E4 et E5 (écart~7) et le plan de B3 (écart~8), avant d'avoir regardé le moindre
-    score de CrossQ, alors que 5 à 7 essais CrossQ sur 40 étaient finis, au lieu des 3 qu'écrivait
-    l'écart~7 (écart~14, point~b) ;
-  \item la consolidation (écart~12), avant tout nouvel entraînement ;
-  \item la correction de Bonferroni (écart~18), après E2 mais avant ce calcul ;
-  \item la liste des calculs à vingt graines aléatoires (écart~20), avant tout calcul sur les graines 10 à 19.
-\end{itemize}
-
-\paragraph{Écrit après avoir vu un résultat}
-\begin{itemize}
-  \item le diagnostic de E6 (écart~2), déclenché par le premier résultat de E6 ;
-  \item la seconde statistique de E1 (écart~3), après les résultats de \file{e1.py} ;
-  \item le classement descriptif de E7 (écart~11), après les résultats de E7, sans test ;
-  \item la graine aléatoire du générateur global des bootstraps (écart~13), correction technique sans effet sur les
-    verdicts ;
-  \item les sept corrections de l'écart~14 : la date du script de la physique par degrés, les comptes des
-    écarts~7 et~8, la version de Stable-Baselines3, le nombre exact de pas, les relances non déclarées, les
-    graines aléatoires nommées dans chaque script, le registre des tentatives.
-\end{itemize}
-\paragraph{Écrit après une relecture technique et avant le calcul du dépôt}
-Une relecture technique du dépôt a relevé des analyses trop faibles ou absentes. Les écarts~21
-à~31 en sont nés. Chacun a été écrit avant que le script du dépôt calcule son résultat. Pour les écarts~21 à~27
-et~31, la relecture avait déjà fait un calcul brouillon hors du dépôt. Chaque écart concerné le signale. Ce sont des
-compléments décidés après les résultats principaux, qu'ils ne remplacent pas :
-\begin{itemize}
-  \item le décompte strict de E2 (écart~21), E1 sur les seize couples (écart~22), E3 corrigé et sa puissance
-    (écart~23) ;
-  \item le renversement sur \task{Hopper} testé (écart~24), E5 hors échantillon (écart~25), le niveau réel de la
-    règle du vainqueur établi (écart~26) ;
-  \item le facteur de B1 corrigé (écart~27), le relevé des réglages (écart~28), les courbes (écart~29), les
-    tailles d'effet (écart~30) ;
-  \item la vitesse des agents officiels lue dans leurs journaux (écart~31).
-\end{itemize}
-
-\paragraph{Après la même relecture, avant toute donnée}
-Trois écarts nés de la même relecture précèdent toute donnée concernée : le déterminisme de SAC et CrossQ (écart~32), la suite du
-diagnostic de E6, rejeu, agent publié et recette à $\gamma=0{,}99$ (écart~33), la divergence des deux PPO
-(écart~34). Les entraînements des écarts~32, 33 (c) et 34 tournent encore au moment où ce rapport est compilé.
-
-Aucune de ces décisions n'a retiré un essai, changé un réglage ou changé la règle du vainqueur établi. Les
-écarts sans effet sur l'analyse (organisation, interruptions, nombre de cœurs, batterie) sont au
-\cref{chap:09-ecarts}.
+ces fichiers. L'annexe~\ref{chap:08-logiciel} décrit cette chaîne et la dessine (\cref{fig:architecture,fig:architecture-2}).

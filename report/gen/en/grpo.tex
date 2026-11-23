@@ -4,7 +4,7 @@
 \footnotesize
 \setlength{\tabcolsep}{3.2pt}
 \begin{threeparttable}
-\caption[GRPO: models, rewards, seeds]{GRPO strand (\file{sim/llm/LLM\_PROTOCOL.md}): two small open models, Qwen2.5 with 0.5 billion parameters and Llama 3.2 with 1 billion, trained for 100 steps on the \texttt{mul2} task (product of two numbers from 12 to 99), with the true reward and then with a reward decided by a coin toss, five seeds (0 to 2 then 3 and 4, deviation 14). \textbf{In bold}, intervals that exclude zero. Sources: \file{sim/llm/results/summary\_5.json}, \file{gains\_5.json}, \file{extra\_5.json}.}
+\caption[GRPO: models, rewards, seeds]{GRPO strand (\file{sim/llm/LLM\_PROTOCOL.md}): two small open models, Qwen2.5 with 0.5 billion parameters and Llama 3.2 with 1 billion, trained for 100 steps on the \texttt{mul2} task (product of two numbers from 12 to 99), with the true reward and then with a reward decided by a coin toss, five seeds (0 to 4). \textbf{In bold}, intervals that exclude zero. Sources: \file{sim/llm/results/summary\_5.json}, \file{gains\_5.json}, \file{extra\_5.json}.}
 \label{tab:grpo}
 \begin{tabular}{@{}lllrrrrrr@{}}
 \toprule
@@ -34,7 +34,7 @@ Llama 3.2 1B & true & 0 & GPU (MPS) & 25 & 20 & −4 & 2 & 9 \\
  &  & 1 & GPU (MPS) & 25 & 1 & −24 & 1 & 100 \\
  &  & 2 & GPU (MPS) & 23 & 0 & −23 & 2 & 2 \\
  &  & 3 & GPU (MPS) & 24 & 0 & −24 & 2 & 16 \\
- &  & 4 & GPU (MPS) & \multicolumn{5}{l}{failed twice (deviation 16)} \\
+ &  & 4 & GPU (MPS) & \multicolumn{5}{l}{failed twice} \\
 \midrule
 \multicolumn{7}{@{}l}{Mean gain in points [95\% bootstrap CI]} & \multicolumn{2}{r}{} \\
 \multicolumn{7}{@{}l}{\quad Qwen2.5 0.5B, true, 5 seeds} & \multicolumn{2}{r}{+14 [−3,\,+34]} \\
@@ -48,7 +48,7 @@ Llama 3.2 1B & true & 0 & GPU (MPS) & 25 & 20 & −4 & 2 & 9 \\
 \bottomrule
 \end{tabular}
 \begin{tablenotes}[flushleft]\scriptsize
-\item[] First-attempt success: sampled pass@1 on the test problems, in percent; gain: step 100 minus step 0, in points; cut-off answers: share of answers that hit the 160-token limit before giving a result, all scored as wrong. Device: Apple GPU (MPS) or CPU; three Qwen runs moved to CPU after non-finite gradients on MPS (deviations 10 and 11), so device and seed are confounded for Qwen. Bottom part: the preregistered statistic, mean of the per-seed gains with a 95\% percentile bootstrap interval (10,000 draws, \texttt{random.Random(0)}), very rough with five seeds. The Llama configuration with the random reward is summarised over its four finished runs (deviation 16), with the sensitivity to the missing gain. Cut-off share at step 0: first evaluation of each file \file{sim/llm/results/<model>/mul2/<reward>/seed<s>.jsonl}.
+\item[] First-attempt success: sampled pass@1 on the test problems, in percent; gain: step 100 minus step 0, in points; cut-off answers: share of answers that hit the 160-token limit before giving a result, all scored as wrong. Device: Apple GPU (MPS) or CPU; three Qwen runs moved to CPU after non-finite gradients on MPS, so device and seed are confounded for Qwen. Bottom part: the preregistered statistic, mean of the per-seed gains with a 95\% percentile bootstrap interval (10,000 draws, \texttt{random.Random(0)}), very rough with five seeds. The Llama configuration with the random reward is summarised over its four finished runs, with the sensitivity to the missing gain. Cut-off share at step 0: first evaluation of each file \file{sim/llm/results/<model>/mul2/<reward>/seed<s>.jsonl}.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}

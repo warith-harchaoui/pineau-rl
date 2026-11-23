@@ -76,12 +76,11 @@ make verify
         graine aléatoire : MuJoCo, JAX et PyTorch arrondissent différemment d'un processeur à l'autre
         (\cref{sec:reentrainer}).
   \item \textbf{GRPO} télécharge \path{Qwen/Qwen2.5-0.5B-Instruct} et
-        \path{unsloth/Llama-3.2-1B-Instruct} depuis Hugging Face. Depuis l'écart 15 (c) du volet
-        GRPO, \file{grpo.py} fixe la révision exacte de chaque modèle, celle de nos essais.
+        \path{unsloth/Llama-3.2-1B-Instruct} depuis Hugging Face. \file{grpo.py} fixe la révision exacte de chaque modèle, celle de nos essais.
                 \file{docs/figures/build.py} télécharge le découpeur en jetons de Qwen. Le fichier
         \file{generation\_config.json} de Qwen fixe une pénalité de répétition de 1,1, que les
-        essais publiés ont subie (écart 18 du volet GRPO). L'option \texttt{-{}-c7} de \file{grpo.py}
-        la ramène à 1,0 pour la relance de l'écart 20. Sans l'option, le code refait les anciens essais à l'identique.
+        essais publiés ont subie. L'option \texttt{-{}-c7} de \file{grpo.py}
+        la ramène à 1,0 pour la relance GRPO. Sans l'option, le code refait les anciens essais à l'identique.
 \end{itemize}
 
 \section{La chaîne des documents}
@@ -112,10 +111,9 @@ git & 2.50.0 & \texttt{make verify} \\
 \end{tabularx}
 \end{table}
 
-Deux outils hors de Python ont servi aux analyses ajoutées après la relecture technique. Le client
-\texttt{gh} 2.95.0 a lu la date de création des dépôts GitHub cités pour Q5 (écart 31 du
-sondage), une requête à la fois. Ollama 0.40.16 a servi localement \texttt{gemma3:12b}, le lecteur
-de l'écart 33 du sondage. Chaque fichier de lecture de ce lecteur note le condensé du modèle.
+Deux outils hors de Python ont servi aux analyses du sondage. Le client
+\texttt{gh} 2.95.0 a lu la date de création des dépôts GitHub cités pour Q5, une requête à la fois. Ollama 0.40.16 a servi localement \texttt{gemma3:12b}, le lecteur
+d'une autre famille de modèles. Chaque fichier de lecture de ce lecteur note le condensé du modèle.
 
 Le présent rapport se construit par \texttt{make report}, qui lance \file{report/build.sh} : les
 tableaux depuis les fichiers JSON (\file{report/tools/tables.py}), les figures

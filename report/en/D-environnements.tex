@@ -73,12 +73,11 @@ make verify
         from macOS arm64. A new run elsewhere gives other curves for the same random seed: MuJoCo,
         JAX and PyTorch round differently from one processor to another (\cref{sec:reentrainer}).
   \item \textbf{GRPO} downloads \path{Qwen/Qwen2.5-0.5B-Instruct} and
-        \path{unsloth/Llama-3.2-1B-Instruct} from Hugging Face. Since deviation 15 (c) of the GRPO
-        strand, \file{grpo.py} pins the exact revision of each model, the one used in our runs.
+        \path{unsloth/Llama-3.2-1B-Instruct} from Hugging Face. \file{grpo.py} pins the exact revision of each model, the one used in our runs.
         \file{docs/figures/build.py} downloads Qwen's tokeniser. Qwen's file
         \file{generation\_config.json} sets a repetition penalty of 1.1, which the published runs
-        underwent (deviation 18 of the GRPO strand). The option \texttt{-{}-c7} of \file{grpo.py}
-        brings it back to 1.0 for the rerun of deviation 20. Without the option, the code repeats
+        underwent. The option \texttt{-{}-c7} of \file{grpo.py}
+        brings it back to 1.0 for the GRPO rerun. Without the option, the code repeats
         the earlier runs identically.
 \end{itemize}
 
@@ -110,10 +109,10 @@ git & 2.50.0 & \texttt{make verify} \\
 \end{tabularx}
 \end{table}
 
-Two tools outside Python served the analyses added after the technical review. The \texttt{gh} client
-2.95.0 read the creation date of the GitHub repositories cited for Q5 (survey deviation 31), one
-request at a time. Ollama 0.40.16 served \texttt{gemma3:12b} locally, the reader of survey deviation
-33. Each reading file of this reader records the digest of the model.
+Two tools outside Python served the analyses of the survey. The \texttt{gh} client
+2.95.0 read the creation date of the GitHub repositories cited for Q5, one
+request at a time. Ollama 0.40.16 served \texttt{gemma3:12b} locally, the reader from another family
+of models. Each reading file of this reader records the digest of the model.
 
 This report is built by \texttt{make report}, which runs \file{report/build.sh}: the tables from the
 JSON files (\file{report/tools/tables.py}), the figures (\file{report/tools/figures.py}), then two

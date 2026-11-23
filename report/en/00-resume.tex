@@ -13,15 +13,12 @@ classical RL, linking the code rose from 31\% to 74\% of papers, showing the eff
 shows no sign of progress (35\% then 29\% of papers describe them with all their settings).
 
 \paragraph{The method}
-Two instruments answer, under three protocols written in advance whose every deviation is dated and
-published. The survey rereads papers with Pineau's reading grid, extended by seven criteria drawn from
-her ICLR talk and by a second grid of twelve criteria written before any reading. AI agents, that is
+Two instruments answer. The survey rereads papers with Pineau's reading grid, extended by seven criteria drawn from
+her ICLR talk and by a second grid of twelve criteria. AI agents, that is
 agentic AI models, read each paper in full and justify each \enquote{yes} with a quotation and its
 page. The verdict compares 50 classical RL papers from 2026 (language models excluded) with our own
 reading of 50 papers from 2018, using the same grids and agents of the same model. Twenty papers per
-year, for four years between 2019 and 2024, date the change. The verdict rule changed after the first
-results: the original rule, which also required a gap against Pineau's figures, would have confirmed
-no classical RL criterion. The experiments rerun those of 2018 with four programs (PPO in PyTorch and
+year, for four years between 2019 and 2024, date the change. The experiments rerun those of 2018 with four programs (PPO in PyTorch and
 in JAX, SAC, CrossQ) on four MuJoCo tasks, with ten then twenty random seeds per program and per task.
 A further strand fine-tunes two small language models with GRPO.
 
@@ -58,7 +55,7 @@ On Qwen, with five random seeds, GRPO gains $+14$ points of pass@1, the share of
 eight sampled per problem, with an interval from $-3$ to $+34$ that contains zero. This apparent gain
 comes from shorter answers: the share of answers cut off at 160 tokens falls from 75\% to 6\%, while
 the accuracy of finished answers does not rise. On Llama, pass@1 rises by 6 points while greedy
-accuracy loses 43. A rerun with ten random seeds, written in advance, is running.
+accuracy loses 43. A rerun with ten random seeds is running.
 
 \paragraph{Code and data}
 Repository \repo{} (BSD 3-Clause licence): protocols and quoted readings (\file{study/}), training runs

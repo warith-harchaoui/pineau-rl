@@ -13,7 +13,7 @@ following it detectably. The tuning of baselines shows no sign of progress.
 This answer applies to classical RL, read by AI agents in fifty papers on each side, then compared
 with our own reading of 2018 using the same grids
 (\cref{chap:03-sondage-methode,chap:04-sondage-resultats}). It also rests on experiments rerun with
-the algorithms of 2026 under protocols written in advance
+the algorithms of 2026
 (\cref{chap:05-experiences-methode,chap:06-experiences-resultats,chap:07-modeles-de-langue}). The
 numbers it rests on come from those chapters. This conclusion says what they establish and refers
 back to them.
@@ -55,7 +55,7 @@ checklist question on statistical significance apply no test. On code and on com
 
 \paragraph{Chance fools the eye, sorting fools the test} Two groups of five runs drawn at random from those of one
 program rarely fool a statistical test. Sorted, the five best against the five worst fool it from
-26\% to nearly 100\% of the time depending on the (program, task) pair, 31\% in the preregistered
+26\% to nearly 100\% of the time depending on the (program, task) pair, 31\% in the main
 case, PPO on \task{HalfCheetah} (\cref{sec:e1}). Keeping the best three of ten runs inflates the
 mean by 32\% at the median over the sixteen pairs (\cref{tab:e4}). The $t$ of 9.09 from 2018 probably
 comes from the script published by Peter Henderson, which measures the spread of the episodes and
@@ -68,8 +68,7 @@ values, has no well-defined degrees of freedom. Applied to our TRPO runs, the sc
 Yet PPO has five times more steps than SAC and CrossQ. At equal budget and with twenty random seeds,
 CrossQ leads on all four tasks, but the order of two pairs still reverses from one task to another in
 a settled way. The reversal of PPO JAX and SAC even survives the Bonferroni correction
-(\cref{sec:e2}). The preregistered count of ranking changes counted triplets rather than pairs and
-inflated the evidence: it stays published next to the strict count. The two implementations of PPO
+(\cref{sec:e2}). The two implementations of PPO
 differ in a settled way only on \task{Swimmer}, by a gap that is small in score points
 (\cref{sec:e3}). Under a physics modified by 20\%, CrossQ beats each of the three other programs on
 \task{Hopper}, at ten as at twenty random seeds. PPO JAX loses there against SAC, which it beat in
@@ -86,8 +85,8 @@ Llama, the true reward does better than the randomly drawn reward, because the l
 model. Under the true reward, Llama loses greedy accuracy and pass@8 in each of the five random seeds,
 while its pass@1 rises slightly. For Qwen, the pass@1 gain is explained by the end of truncated
 answers: the accuracy of finished answers does not rise. Qwen also ran with a repetition penalty that
-Llama did not have (\cref{chap:07-modeles-de-langue}). A rerun of ten random seeds per configuration,
-written in advance, waits for the GPU (\cref{sec:val-en-cours}).
+Llama did not have (\cref{chap:07-modeles-de-langue}). A rerun of ten random seeds per configuration
+waits for the GPU (\cref{sec:val-en-cours}).
 
 \section{Recommendations}
 \label{sec:recommandations}
@@ -132,8 +131,8 @@ targets and the result that justifies it.
         gain in accuracy is read together with the length limit, the truncated share before and
         after, the accuracy of the complete answers, the greedy answer and pass@$k$
         (\cref{chap:07-modeles-de-langue}, criterion X6).
-  \item \textbf{Write the protocol before the first run and date every deviation.} For each change,
-        state what had already been seen, including by a reviewer (\cref{chap:09-ecarts}).
+  \item \textbf{Write the protocol before the first run and publish every change.} For each change,
+        state what had already been seen when it was decided.
   \item \textbf{Recompute every published number from its files.} A script that checks every number
         in the text against its result file costs little and catches drift
         (\cref{sec:verification}).
@@ -211,11 +210,16 @@ curve, does not measure the variability between training runs.
 
 \paragraph{What we corrected}
 In 2018, Pineau asked researchers to be as critical of their good results as of their bad ones. We
-tried to hold to that. While checking our surprising results, we found two traps: an error in our
-code in E6, whose correction changed nothing, then the length limit of the GRPO strand. Two more
-random seeds undid the Qwen gain that we read at three random seeds. A technical review of our
-repository then found other errors of our own making: a count in E2 that was too generous, a factor
-written wrongly in B1, a repetition penalty overlooked in Qwen. The repository keeps a dated record
+looked for our own errors and corrected each one. In E6, our code gave the reward normalisation of
+the Zoo a discount factor of 0.99 instead of 0.999: the corrected recipe does no better in any
+detectable way (\cref{sec:e6}). The E2 count counted triplets instead of the pairs that reverse: the
+strict count finds three pairs instead of fourteen changes and the verdict holds (\cref{sec:e2}). The
+factor that links the $t$ of Henderson's script to that of a test over random seeds is $\sqrt2/\rho$
+for our ten episodes, not $1/\rho$ (\cref{sec:b1}). In the GRPO strand, the Qwen gain, clear at three
+random seeds, is no longer clear at five: it comes from the length limit, which cut its answers off.
+Qwen also decoded with a repetition penalty that Llama did not have and the pilot that set the task
+had read the test set: the published figures stay the same, while the comparison between families
+mixes the family with the decoding (\cref{chap:07-modeles-de-langue}). The repository keeps a record
 of every correction for anyone who wants to redo the work.
 
 \section{Opening}\label{sec:ouverture}

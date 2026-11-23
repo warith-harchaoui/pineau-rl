@@ -3,9 +3,9 @@
 
 Cette annexe reproduit la grille de lecture du sondage, critère par critère, avec la question posée
 au lecteur et sa règle de décision. Elle réunit la fiche du lecteur (\file{study/GRILLE.md}) et les
-règles du protocole du sondage (\file{study/PROTOCOL.md}) : écarts 1 à 6 pour l'harmonisation de la grille v1,
-écarts 11, 14, 17 et 19 pour la grille v2, écart 32 pour le critère X8, ajouté après les résultats.
-En cas de doute, le protocole fait foi.
+règles du protocole du sondage (\file{study/PROTOCOL.md}) telles qu'elles ont été appliquées,
+harmonisation comprise, pour les grilles v1 et v2 et pour le critère complémentaire X8. En cas de
+doute, le protocole fait foi.
 
 \section{Ce que fait le lecteur}
 \label{sec:a-lecteur}
@@ -64,7 +64,7 @@ Code & Question & Règle de décision \\
 \bottomrule
 \endfoot
 Q1 & L'article a-t-il des expériences ? & \texttt{no} : tous les autres critères valent \texttt{na}
-  et sortent des dénominateurs (écart 3). Les dénominateurs de Pineau sont les articles
+  et sortent des dénominateurs. Les dénominateurs de Pineau sont les articles
   expérimentaux. \\
 Q2 & Emploie-t-il des réseaux de neurones ? & Lecture directe. \\
 Q3 & Tous les hyperparamètres de la méthode sont-ils donnés ? & \texttt{yes} si un tableau ou un
@@ -75,15 +75,14 @@ Q4 & Tous les hyperparamètres des références sont-ils donnés ? & Même règl
 Q5 & Le code est-il en lien ? & Un lien vers du code dans l'article. \enquote{Sur demande},
   \enquote{sera publié}, \enquote{will be made public at <URL>} : \texttt{no}. Une page de projet
   compte \texttt{yes} seulement si elle mène à du code, vérifié en la visitant ;
-  un miroir anonyme qui contient le code compte \texttt{yes} (écarts 6 et 19). \\
+  un miroir anonyme qui contient le code compte \texttt{yes}. \\
 Q6 & La façon de choisir les hyperparamètres est-elle décrite ? & La méthode de choix est dite :
   grille, recherche aléatoire, budget, critère. \enquote{Tuned} sans plus : \texttt{no}. \\
 Q7 & L'évaluation se fait-elle sur des conditions tenues à part ? & Tâches, environnements, graines
   aléatoires d'environnement ou jeux de données non vus à l'entraînement ni au réglage. Pour un
   article \texttt{llm}, des bancs d'essai distincts des données d'entraînement RL comptent
-  \texttt{yes}. Article \texttt{theory} à expériences jouets : \texttt{no} (écart 4). Des graines aléatoires
-  d'entraînement nouvelles, utilisées pour entraîner, ne sont pas des conditions tenues à part
-  (écart 17). \\
+  \texttt{yes}. Article \texttt{theory} à expériences jouets : \texttt{no}. Des graines aléatoires
+  d'entraînement nouvelles, utilisées pour entraîner, ne sont pas des conditions tenues à part. \\
 Q8 & Un test statistique est-il appliqué à une comparaison ? & Un test (t, Welch, Mann-Whitney,
   bootstrap avec intervalle, moyenne interquartile de rliable avec intervalles stratifiés) appliqué
   à une comparaison. Des barres d'erreur seules : \texttt{no} pour Q8, \texttt{yes} pour X2. \\
@@ -94,8 +93,8 @@ Q8 & Un test statistique est-il appliqué à une comparaison ? & Un test (t, Wel
 \label{sec:a-x}
 
 Ces critères viennent de la conférence d'ICLR 2018 et du débat de 2025 sur les récompenses trompeuses des
-modèles de langue (\cref{sec:llm-pourquoi}). Ils ont été écrits avec le
-protocole, avant toute lecture (\cref{tab:a-grille-x}).
+modèles de langue (\cref{sec:llm-pourquoi}). Ils font partie du protocole
+(\cref{tab:a-grille-x}).
 
 \begin{small}
 \begin{longtable}{@{}p{0.07\linewidth}>{\raggedright\arraybackslash}p{0.27\linewidth}>{\raggedright\arraybackslash}p{0.6\linewidth}@{}}
@@ -120,32 +119,30 @@ X2 & Une incertitude est-elle rapportée sur les résultats principaux ? & Écar
 X3 & Les meilleurs essais sont-ils sélectionnés ? & \enquote{Top-k}, \enquote{best of N}, meilleur
   point de contrôle choisi sur le test. \texttt{yes} aussi quand les propres tableaux de l'article
   montrent que le résultat principal est le meilleur de plusieurs entraînements identiques, même si
-  le texte ne le dit pas (écart 5). \\
+  le texte ne le dit pas. \\
 X4 & L'article dit-il que les références sont réglées avec le même soin que la méthode ? & \texttt{yes} exige un
   réglage décrit pour les références, ou un budget de réglage égal annoncé. \enquote{Même
-  configuration que la méthode}, sans réglage décrit pour personne : \texttt{no} (écart 1). \\
+  configuration que la méthode}, sans réglage décrit pour personne : \texttt{no}. \\
 X5 & À quelle famille appartient l'article ? & \texttt{llm} si la politique optimisée est un modèle
   génératif préentraîné conditionné par le langage (modèle de langue de toute taille, modèle de
   vision-langage, modèle texte-image). \texttt{classic} si le RL entraîne autre chose, même au service
   d'un grand modèle, ou un réseau transformeur entraîné de zéro sur des tâches de RL.
   \texttt{theory} pour un article sans expérience ou à expériences jouets seulement. Un article à
   résultats théoriques qui compare des méthodes sur des bancs d'essai usuels, même en annexe, est
-  \texttt{classic} (écart 18). \\
+  \texttt{classic}. \\
 X6 & Pour \texttt{llm} : combien de familles de modèles de base distinctes ? & Un entier, ou
   \texttt{null}. Qwen, Llama, Mistral, Gemma, DeepSeek, OLMo\dots ; deux tailles de Qwen comptent pour
   une famille. \\
 X7 & Le calcul employé est-il chiffré ? & \texttt{yes} exige au moins une quantité : heures,
-  heures de GPU, FLOP, ou un nombre de GPU avec une durée. Le seul nom du matériel : \texttt{no}
-  (écart 2). \\
+  heures de GPU, FLOP, ou un nombre de GPU avec une durée. Le seul nom du matériel : \texttt{no}. \\
 \end{longtable}
 \end{small}
 
 \section{La grille v2 (Y1 à Y12)}
 \label{sec:a-y}
 
-La grille v2 a été écrite avant toute lecture v2 (écart 11), avec ses règles de
-décision (écart 14), précisées après un pilote de trois articles (écart 17) puis harmonisées après
-l'audit des lectures brutes, avant tout pourcentage (écart 19). Chaque critère renvoie à la source
+Les règles de décision de la grille v2 comprennent les précisions tirées du pilote de trois articles
+et de l'audit des lectures brutes. Chaque critère renvoie à la source
 de 2018 qui le motive.
 
 \paragraph{Règles de portée} Si Q1 vaut \texttt{no}, Y1 à Y12 valent \texttt{na}. Y2 et Y11 valent
@@ -172,10 +169,10 @@ Y1 & La mesure de performance est-elle définie ? (ICLR 2018, diapositive 27) & 
   épisodes, meilleur point, aire sous la courbe, pass@k avec k et le nombre d'échantillons, taux de
   réussite et sur quoi. \enquote{Return} ou \enquote{accuracy} sans plus : \texttt{no}. Un score
   normalisé dont on ne dit pas à quel point il est pris : \texttt{no}. Le nombre d'épisodes
-  d'évaluation n'est pas exigé (écart 17). Une courbe dont les points d'évaluation sont dits vaut un
+  d'évaluation n'est pas exigé. Une courbe dont les points d'évaluation sont dits vaut un
   point de mesure, \enquote{entraîné N pas} puis un seul chiffre vaut le point final. Pour une
   quantité qui n'est pas le score d'une politique entraînée (erreur d'un estimateur, temps de
-  calcul), \texttt{yes} si la quantité est définie (écart 19). \\
+  calcul), \texttt{yes} si la quantité est définie. \\
 Y2 & Les barres d'erreur sont-elles définies ? (liste de contrôle v1.2) & \texttt{yes} si l'article
   dit ce que représentent la bande ou l'intervalle : écart type, erreur type, intervalle de confiance
   à 95~\%, minimum et maximum. Des barres présentes mais non définies : \texttt{no}. \\
@@ -184,8 +181,8 @@ Y3 & Combien de tâches la conclusion principale couvre-t-elle ? (Henderson et a
   comparée, un environnement ou un jeu de données d'entraînement pour \texttt{llm}. Deux niveaux de
   difficulté d'un même jeu, ou les variantes de qualité d'un jeu de données d'un même environnement
   (D4RL medium, replay, expert), comptent pour une tâche. Plusieurs bancs d'évaluation d'un même
-  modèle entraîné ne multiplient pas les tâches (écart 17). Un seul méta-entraînement compte pour une
-  tâche. Un cadre présent seulement en annexe ne compte pas (écart 19). Valeur dérivée pour
+  modèle entraîné ne multiplient pas les tâches. Un seul méta-entraînement compte pour une
+  tâche. Un cadre présent seulement en annexe ne compte pas. Valeur dérivée pour
   l'analyse : \texttt{yes} si l'entier vaut au moins 2. \\
 Y4 & Une tâche où la méthode ne gagne pas est-elle montrée ? (Henderson et al., tableau 3) &
   \texttt{yes} si un résultat tâche par tâche est donné et qu'au moins une tâche où la méthode ne
@@ -195,32 +192,31 @@ Y5 & L'implémentation des références est-elle identifiée ? (Henderson et al.
   \texttt{yes} si, pour chaque référence principale, l'article dit d'où vient le code : dépôt,
   bibliothèque ou cadre logiciel nommé, avec ou sans version, \enquote{réimplémenté par nous},
   chiffres recopiés d'articles avec leur source, modèle publié désigné par son nom exact, cadre
-  d'entraînement des auteurs s'il est dit que les références y tournent (écarts 17 et 19). Une
+  d'entraînement des auteurs s'il est dit que les références y tournent. Une
   seule référence principale sans origine donne \texttt{no}. \\
 Y6 & Les exclusions sont-elles dites ? (liste de contrôle v1.2) & \texttt{yes} si l'article dit
   quels essais, graines aléatoires ou données ont été retirés, ou dit explicitement qu'aucun ne l'a été. Une
-  combinaison omise avec sa raison compte (écart 17), un filtrage des données d'entraînement dit avec
-  ce qu'il retire aussi (écart 19). Le silence vaut \texttt{no}. \\
+  combinaison omise avec sa raison compte, un filtrage des données d'entraînement dit avec
+  ce qu'il retire aussi. Le silence vaut \texttt{no}. \\
 Y7 & La version des environnements ou des bancs d'essai est-elle donnée ? (liste de contrôle v1.2)
   & \texttt{yes} si la version de chaque environnement ou banc principal est donnée : suffixe Gym ou
   Gymnasium, version de la suite, nom exact et date de la séparation de test pour \texttt{llm}.
   \enquote{MuJoCo} seul : \texttt{no}. \enquote{MATH-500} compte \texttt{yes}, \enquote{MATH} seul
   \texttt{no}. Un jeu publié sur un dépôt nommé compte comme versionné, une séparation construite par
-  les auteurs seulement si elle est publiée (écart 17). Un nom qui couvre plusieurs ensembles sans
+  les auteurs seulement si elle est publiée. Un nom qui couvre plusieurs ensembles sans
   dire lequel (\enquote{AMC}, \enquote{Minerva}) ne compte pas. Un environnement entièrement spécifié
-  dans l'article compte (écart 19). \\
+  dans l'article compte. \\
 Y8 & Un test de généralisation hors des conditions d'entraînement est-il fait ? (NeurIPS 2018,
   feuille de route) & \texttt{yes} si au moins une évaluation se fait sur des conditions absentes de
   l'entraînement et du réglage : autres graines aléatoires d'environnement annoncées comme telles, tâches
   nouvelles, dynamiques modifiées, distribution de test distincte. Plus strict que Q7 : pour
   \texttt{llm}, un banc différent ne compte que s'il est présenté comme un test hors distribution.
-  Une séparation de test de même distribution relève de Q7. Y8 \texttt{yes} entraîne Q7 \texttt{yes}
-  (écart 19). \\
+  Une séparation de test de même distribution relève de Q7. Y8 \texttt{yes} entraîne Q7 \texttt{yes}. \\
 Y9 & La sensibilité à au moins un hyperparamètre est-elle montrée ? (ICLR 2018, diapositives 24 à
   26) & \texttt{yes} si au moins un hyperparamètre de la méthode, présenté comme tel, est balayé et
   que le résultat est montré par une mesure de performance. Une ablation de composant ne compte pas.
   Un paramètre réglé à l'inférence compte s'il est présenté comme un hyperparamètre. Une condition
-  de l'environnement ne compte pas (écarts 17 et 19). \\
+  de l'environnement ne compte pas. \\
 Y10 & Les dépendances logicielles sont-elles listées avec leurs versions ? (liste de contrôle v1.2)
   & \texttt{yes} si les versions des bibliothèques principales sont dans l'article, ou si un fichier
   d'environnement est cité dans le dépôt lié. Le dépôt n'est pas visité, sauf si l'article renvoie
@@ -228,7 +224,7 @@ Y10 & Les dépendances logicielles sont-elles listées avec leurs versions ? (li
 Y11 & Le type d'incertitude est-il nommé ? (comparable à Gorsane et al., 2022) & \texttt{yes} ou
   \texttt{no}, plus un champ \texttt{kind} : \texttt{std}, \texttt{se}, \texttt{ci}, \texttt{iqr},
   \texttt{minmax} ou \texttt{other}. Plus large que Y2 : il suffit que le type soit nommé quelque
-  part. Des bandes de centiles autres que l'intervalle interquartile : \texttt{other} (écart 17). \\
+  part. Des bandes de centiles autres que l'intervalle interquartile : \texttt{other}. \\
 Y12 & Un outil statistique postérieur à 2018 est-il employé ? (adoption d'Agarwal et al., 2021) &
   \texttt{yes} si l'article emploie au moins un de ces outils : moyenne interquartile, intervalle
   bootstrap stratifié, rliable, profils de performance, probabilité d'amélioration. Un simple
@@ -236,14 +232,13 @@ Y12 & Un outil statistique postérieur à 2018 est-il employé ? (adoption d'Aga
 \end{longtable}
 \end{small}
 
-\section{Le critère ajouté après les résultats (X8)}
+\section{Le critère complémentaire X8}
 \label{sec:a-x8}
 
 X2 compte toute barre d'erreur. Or une barre calculée sur les épisodes d'un même entraînement est le
 piège que montre l'expérience B1 (\cref{sec:b1}). Le critère X8 (\cref{tab:a-grille-x8}) demande donc si l'incertitude est
-calculée sur des entraînements indépendants. Il a été écrit après les résultats
-et avant toute lecture de ce critère (écart 32 du sondage). Il est exploratoire : il s'ajoute aux
-résultats sans changer les verdicts rendus par la règle de l'écart 20 du sondage.
+calculée sur des entraînements indépendants. Il est exploratoire : il s'ajoute aux résultats sans
+changer les verdicts de la règle à grille égale.
 
 \begin{small}
 \begin{longtable}{@{}p{0.07\linewidth}>{\raggedright\arraybackslash}p{0.27\linewidth}>{\raggedright\arraybackslash}p{0.6\linewidth}@{}}
@@ -281,10 +276,9 @@ citations sont vérifiées par la fonction de \file{study/check\_codes.py}.
 \section{L'harmonisation}
 \label{sec:a-harmonisation}
 
-Une règle d'harmonisation s'écrit dans le protocole, datée, avant le premier pourcentage qu'elle
-touche. Elle s'applique aux deux années, depuis les citations, dans \file{study/overrides.json}
+Une règle d'harmonisation figure dans le protocole. Elle s'applique aux deux années, depuis les citations, dans \file{study/overrides.json}
 (grille v1) ou \file{study/overrides\_v2.json} (grille v2), chaque valeur modifiée avec sa raison.
 L'accord entre lecteurs se calcule sur les lectures brutes, avant harmonisation. Pour X3, X4 et X7,
 aucune règle n'a été ajoutée après la lecture élargie, pour que les deux années restent lues avec la
-même grille (écart 19). La fonction \texttt{pineau\_rl.grid.validate} contrôle le schéma et les règles
+même grille. La fonction \texttt{pineau\_rl.grid.validate} contrôle le schéma et les règles
 de portée de chaque fichier (\cref{sec:formats}).

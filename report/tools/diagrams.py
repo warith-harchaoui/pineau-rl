@@ -303,8 +303,8 @@ def flux_sondage(lang):
                   "Every paper read comes |from a draw written in advance"),
         "sub": ("Le sondage, première partie : des articles de RL publiés aux trois échantillons" if fr else
                 "The survey, part one: from the published RL papers to the three samples"),
-        "source": ("Sources : study/PROTOCOL.md (écarts 12 et 25), study/*.json, docs/conclusions.md" if fr else
-                   "Sources: study/PROTOCOL-en.md (deviations 12 and 25), study/*.json, docs/conclusions-en.md"),
+        "source": ("Sources : study/PROTOCOL.md, study/*.json, docs/conclusions.md" if fr else
+                   "Sources: study/PROTOCOL-en.md, study/*.json, docs/conclusions-en.md"),
         "desc": ("Première partie du diagramme de flux du sondage. Trois colonnes, 2018, les années 2019 à 2024 et "
                  "2026, descendent de la population d'articles de RL au tirage au sort puis à l'échantillon : 50 "
                  "articles de 2018, 80 articles de 2019 à 2024, 50 articles de RL classique de 2026." if fr else
@@ -397,16 +397,16 @@ def flux_sondage_2(lang):
                   "Every decision quotes its page; double readings |and checks put it to the test"),
         "sub": ("Le sondage, seconde partie : de la lecture des trois échantillons aux comparaisons finales" if fr
                 else "The survey, part two: from the reading of the three samples to the final comparisons"),
-        "source": ("Sources : study/PROTOCOL.md (écarts 17 à 29), study/*.json, study/readers/, docs/conclusions.md"
-                   if fr else "Sources: study/PROTOCOL-en.md (deviations 17 to 29), study/*.json, study/readers/, "
+        "source": ("Sources : study/PROTOCOL.md, study/*.json, study/readers/, docs/conclusions.md"
+                   if fr else "Sources: study/PROTOCOL-en.md, study/*.json, study/readers/, "
                               "docs/conclusions-en.md"),
         "desc": ("Seconde partie du diagramme de flux du sondage. Les trois échantillons sont lus par des agents de "
                  "modèle de langue, chaque décision avec une citation et sa page ; trente articles sont relus à "
-                 "l'aveugle ; une harmonisation datée précède tout pourcentage ; deux contrôles suivent les "
+                 "l'aveugle ; une harmonisation précède tout pourcentage ; deux contrôles éprouvent les "
                  "résultats ; deux comparaisons finales portent les verdicts." if fr else
                  "Part two of the survey's flow diagram. The three samples are read by language-model agents, each "
-                 "decision with a quote and its page; thirty papers are read again blind; a dated harmonisation "
-                 "comes before any percentage; two checks follow the results; two final comparisons carry the "
+                 "decision with a quote and its page; thirty papers are read again blind; a harmonisation "
+                 "comes before any percentage; two checks test the results; two final comparisons carry the "
                  "verdicts."),
     }
     f = figure(T)
@@ -459,12 +459,12 @@ def flux_sondage_2(lang):
          ("p", "127 décisions |sur 130 identiques |(grille 1)" if fr else "127 of 130 |decisions identical |(grid 1)")],
     ])
     band("Harmonisation, avant tout pourcentage" if fr else "Harmonisation, before any percentage", [
-        [("p", ("Des règles datées (écarts 17 à 19) |tranchent les cas ambigus : |80 codes changent, "
+        [("p", ("Des règles écrites |tranchent les cas ambigus : |80 codes changent, "
                 "|chacun avec sa raison |dans study/overrides_v2.json, |pour les deux années.") if fr else
-          ("Dated rules (deviations 17 to 19) |settle the ambiguous cases: |80 codes change, "
+          ("Written rules |settle the ambiguous cases: |80 codes change, "
            "|each with its reason |in study/overrides_v2.json, |for both years."))],
     ])
-    band("Contrôles, après les résultats" if fr else "Checks, after the results", [
+    band("Contrôles des résultats" if fr else "Checks of the results", [
         [("pb", "Recherche contre les « non »" if fr else "Search against the “no” decisions"),
          ("p", (f"{c['turned18'] + c['turned26']} décisions sur {c['no']} |passent à « oui » ; "
                 f"|aucun verdict ne change") if fr else
@@ -607,7 +607,7 @@ def architecture(lang):
          ("small", "9 scripts : |Wilson, Newcombe, |Fisher, Holm, |Cochran-Armitage" if fr else
           "9 scripts: |Wilson, Newcombe, |Fisher, Holm, |Cochran-Armitage")],
         [("code", "sim/analysis/*.py"),
-         ("small", "16 à dix graines, |13 de plus |pour l'écart 12" if fr else "16 with ten seeds, |13 more |for deviation 12")],
+         ("small", "16 à dix graines, |13 de plus |pour vingt graines" if fr else "16 with ten seeds, |13 more |for twenty seeds")],
         [("code", "sim/llm/summary.py"),
          ("small", "gains par graine, |intervalle bootstrap" if fr else "gains per seed, |bootstrap interval")],
     ], "prog")

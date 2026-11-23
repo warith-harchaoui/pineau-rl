@@ -178,8 +178,8 @@ seed.
 \paragraph{What stays fixed}
 Same program, same random seed, same library versions and same machine: the protocol expects the same
 result. Our logs confirm it for \algo{PPO PyTorch} and \algo{PPO JAX}: a run stopped then restarted recovers its evaluation
-points identically (\file{sim/SIM\_PROTOCOL.md}, deviation~14~(e)). For \algo{SAC} and \algo{CrossQ}, the same check is
-preregistered (deviation~32 of the same protocol) and under way.
+points identically. For \algo{SAC} and \algo{CrossQ}, the same check is under way
+(Chapter~\ref{chap:10-limites}).
 
 \paragraph{What changes}
 Changing the random seed changes the initialisation of the weights, the exploration, the order of the

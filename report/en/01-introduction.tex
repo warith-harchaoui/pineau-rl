@@ -114,7 +114,7 @@ task in the same version, the same budget of steps and the same evaluation proto
 conclusion. Only the random seeds and the machine change. Reproduction is checked at two levels. The
 first is the identical rerun: same random seed, same machine, a single computing thread. It gave back
 the same evaluation points for PPO PyTorch and PPO JAX (\cref{sec:calcul}). For SAC and CrossQ, the same check
-is preregistered (simulation deviation~32) and under way (\cref{sec:graines}). This level tests the code. The second level tests the conclusion: other
+is under way (\cref{sec:graines}). This level tests the code. The second level tests the conclusion: other
 random seeds, the same verdict. Bollen's report, the National Academies report and the 2021 grid call this level a replication. Experiment
 E1 measures how often two groups of random seeds of the same program pass for two algorithms
 (\cref{sec:e1}). E5 counts the random seeds needed to recover the right ranking (\cref{sec:e5}). The
@@ -170,6 +170,10 @@ the same severity to published papers and to our own experiments.
 
 \section{Two instruments: reread the papers, rerun the experiments}\label{sec:intro-instruments}
 
+Both instruments follow three protocols written before the work and published in the repository with
+every change made to them afterwards (\file{study/PROTOCOL.md}, \file{sim/SIM\_PROTOCOL.md},
+\file{sim/llm/LLM\_PROTOCOL.md}).
+
 \paragraph{The survey}
 The first instrument rereads papers with Pineau's reading grid (criteria Q1 to Q8), extended by seven
 criteria drawn from her ICLR talk (X1 to X7) and by a second grid of twelve criteria for the flaws she
@@ -197,12 +201,10 @@ instructions given to each agent are published word for word (\cref{sec:sm-lecte
 readings are made by copies of the same model. A reader from another model family,
 \texttt{gemma3:12b}, therefore reread the 98 papers behind the verdicts. It finds the direction of all
 four rises. Its disagreement with our readers does not depend on the year in any detectable way
-(\cref{sec:sr-gemma}). A blind human rereading of thirty papers, fifteen from each year, is
-preregistered. Its thirty sheets still await their reader (\cref{sec:futurs}).
+(\cref{sec:sr-gemma}).
 
 \paragraph{The experiments}
-The second instrument reruns the experiments of 2018 under a protocol written before the first
-training run: four programs (PPO in PyTorch and in JAX, SAC, CrossQ) on four MuJoCo tasks, with ten
+The second instrument reruns the experiments of 2018: four programs (PPO in PyTorch and in JAX, SAC, CrossQ) on four MuJoCo tasks, with ten
 random seeds per program and per task, then twenty. Thirty PPO runs and thirty TRPO runs on
 \task{HalfCheetah} complete the set, with one evaluation on random seeds never seen in training and
 another under modified physics. A further strand illustrates the same flaws on language models trained
@@ -254,13 +256,11 @@ and~\ref{chap:07-modeles-de-langue} describe these experiments.
   \item Pineau's grid applied again on equal terms: both years read with the same rules by agents
   of the same model, reread by eight readers who each read both years, then by a reader from another
   model family (\cref{chap:03-sondage-methode}).
-  \item A second grid of twelve criteria (Y1 to Y12), preregistered with its decision rules, for the
+  \item A second grid of twelve criteria (Y1 to Y12), with its decision rules, for the
   flaws the 2018 grid did not measure (\cref{chap:A-grille}).
   \item Checks published with their results: thirty papers reread blind with an interval on each
   agreement, the quotations audited, each negative decision set against the text and, for each
   criterion, the smallest difference the survey could detect (\cref{chap:04-sondage-resultats}).
-  \item Three protocols written before the first reading and the first training run, every deviation
-  dated and published (\cref{chap:09-ecarts}).
   \item A repository that checks itself: \texttt{make verify} recomputes every analysis from the
   result files, then checks compare every number of the summary document
   (\file{docs/conclusions-en.md}) and of the blog article with those files (\cref{chap:08-logiciel}).
@@ -277,8 +277,7 @@ tasks, inventories the sixteen flaws and places the work among related work.
 Chapters~\ref{chap:03-sondage-methode} and~\ref{chap:04-sondage-resultats} give the method and the
 results of the survey. Chapters~\ref{chap:05-experiences-methode} and~\ref{chap:06-experiences-resultats}
 do the same for the MuJoCo experiments. Chapter~\ref{chap:07-modeles-de-langue} describes the GRPO
-strand. Chapter~\ref{chap:08-logiciel} presents the software, from training to documents.
-Chapter~\ref{chap:09-ecarts} lists every deviation from the three protocols.
+strand. Appendix~\ref{chap:08-logiciel} presents the software, from training to documents.
 Chapter~\ref{chap:10-limites} gathers the limitations. Chapter~\ref{chap:11-conclusion} answers the
 question, says what the measurements establish with a pointer to their chapters, then draws
 recommendations.

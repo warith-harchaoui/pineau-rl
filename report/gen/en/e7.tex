@@ -3,11 +3,11 @@
 \centering
 \footnotesize
 \setlength{\tabcolsep}{3pt}
-\caption[E7: share of score kept under modified physics]{Experiment E7, modified physics: each final policy evaluated on the same held-out evaluation seeds, in the training physics and then with masses multiplied by 1.2 and friction by 0.8. Ratio: score in the modified physics divided by the score in the training physics, per run; IQM of the ratios over the seeds with its 95\% stratified bootstrap interval (rliable, 2,000 resamples). Preregistered verdict: loss when the interval stays below 1, gain when it stays above, n.s. (no detectable change) otherwise; \textbf{in bold}, losses and gains. Rank: the program's place on the task by IQM of the score, in the training physics and then in the modified physics (descriptive complement of deviation 11, decided after the results, no test). The leader changes on Hopper at ten seeds, on Hopper at twenty seeds. Sources: \file{sim/analysis/e7.json}, \file{e7\_s20.json}, \file{e7\_rank.json}, \file{e7\_rank\_s20.json}.}
+\caption[E7: share of score kept under modified physics]{Experiment E7, modified physics: each final policy evaluated on the same held-out evaluation seeds, in the training physics and then with masses multiplied by 1.2 and friction by 0.8. Ratio: score in the modified physics divided by the score in the training physics, per run; IQM of the ratios over the seeds with its 95\% stratified bootstrap interval (rliable, 2,000 resamples). Preregistered verdict: loss when the interval stays below 1, gain when it stays above, n.s. (no detectable change) otherwise; \textbf{in bold}, losses and gains. Rank: the program's place on the task by IQM of the score, in the training physics and then in the modified physics (descriptive and exploratory complement, no test). The leader changes on Hopper at ten seeds, on Hopper at twenty seeds. Sources: \file{sim/analysis/e7.json}, \file{e7\_s20.json}, \file{e7\_rank.json}, \file{e7\_rank\_s20.json}.}
 \label{tab:e7}
 \begin{tabular}{@{}llrcrrcr@{}}
 \toprule
- & & \multicolumn{3}{c}{10 seeds (main result)} & \multicolumn{3}{c}{20 seeds (deviation 12)} \\
+ & & \multicolumn{3}{c}{10 seeds (main result)} & \multicolumn{3}{c}{20 seeds (consolidation)} \\
 \cmidrule(lr){3-5}\cmidrule(lr){6-8}
 Task & Program & ratio [95\% CI] & verdict & rank & ratio [95\% CI] & verdict & rank \\
 \midrule

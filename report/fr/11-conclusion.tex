@@ -14,7 +14,7 @@ référence ne montre aucun signe de progrès.
 Cette réponse vaut pour le RL classique, lu par des agents IA sur cinquante articles de chaque
 côté, puis comparé à notre propre lecture de 2018 avec les mêmes grilles
 (\cref{chap:03-sondage-methode,chap:04-sondage-resultats}). Elle s'appuie aussi sur des expériences
-refaites avec les algorithmes de 2026 sous des protocoles écrits d'avance
+refaites avec les algorithmes de 2026
 (\cref{chap:05-experiences-methode,chap:06-experiences-resultats,chap:07-modeles-de-langue}). Les
 nombres qui la fondent viennent de ces chapitres. Cette conclusion dit ce qu'ils établissent et
 renvoie à eux.
@@ -59,7 +59,7 @@ code et sur le calcul, une partie des \enquote{oui} n'a ni lien ni chiffre derri
 \paragraph{Le hasard trompe l'œil, le tri trompe le test} Deux groupes de cinq essais tirés au hasard
 parmi ceux d'un même programme trompent rarement un test statistique. Triés, les cinq meilleurs
 contre les cinq pires le trompent de 26~\% à près de 100~\% des fois selon le couple (programme,
-tâche), 31~\% dans le cas préenregistré, PPO sur \task{HalfCheetah} (\cref{sec:e1}). Garder les trois
+tâche), 31~\% dans le cas principal, PPO sur \task{HalfCheetah} (\cref{sec:e1}). Garder les trois
 meilleurs de dix essais gonfle la moyenne de 32~\% en médiane sur les seize couples
 (\cref{tab:e4}). Le $t$ de 9,09 de 2018 s'explique probablement par le script publié par Peter
 Henderson, qui mesure la dispersion des épisodes et ignore celle des graines aléatoires. La paire
@@ -70,8 +70,7 @@ essais de TRPO, ce script dépasse 9 dans 38~\% des tirages au hasard (\cref{tab
 \paragraph{Le meilleur programme dépend de la tâche, du budget et de la physique} Sur nos quatre programmes, le meilleur change avec la tâche.
 PPO y dispose pourtant de cinq fois plus de pas que SAC et CrossQ. À budget égal et avec vingt
 graines aléatoires, CrossQ mène sur les quatre tâches, mais l'ordre de deux paires s'inverse encore
-de façon établie d'une tâche à l'autre. L'inversion de PPO JAX et de SAC résiste même à la correction de Bonferroni (\cref{sec:e2}). Le décompte préenregistré des changements de classement comptait des
-triplets plutôt que des paires et gonflait la preuve : il reste publié à côté du décompte strict.
+de façon établie d'une tâche à l'autre. L'inversion de PPO JAX et de SAC résiste même à la correction de Bonferroni (\cref{sec:e2}).
 Les deux écritures de PPO ne diffèrent de façon établie que sur \task{Swimmer}, d'un écart petit en
 points de score (\cref{sec:e3}). Sous une physique modifiée de 20~\%, CrossQ bat chacun des trois
 autres programmes sur \task{Hopper}, à dix comme à vingt graines aléatoires. PPO JAX y perd contre SAC, qu'il battait en physique d'entraînement (\cref{sec:e7}).
@@ -87,8 +86,8 @@ parce que celle-ci détruit le modèle. Sous la vraie récompense, Llama perd en
 pass@8 dans chacune des cinq graines aléatoires, alors que son pass@1 monte un peu. Chez Qwen, le gain
 de pass@1 s'explique par la fin des réponses coupées : la justesse des réponses finies ne monte pas.
 Qwen a de plus tourné avec une pénalité de répétition que Llama n'avait pas
-(\cref{chap:07-modeles-de-langue}). Une relance de dix graines aléatoires par configuration, écrite
-d'avance, attend le GPU (\cref{sec:val-en-cours}).
+(\cref{chap:07-modeles-de-langue}). Une relance de dix graines aléatoires par configuration
+attend le GPU (\cref{sec:val-en-cours}).
 
 \section{Recommandations}
 \label{sec:recommandations}
@@ -134,9 +133,8 @@ vise et le résultat qui la justifie.
         répétition, change ce que l'on échantillonne. Un gain de justesse se lit avec la limite de
         longueur, la part coupée avant et après, la justesse des réponses complètes, la réponse
         gloutonne et pass@$k$ (\cref{chap:07-modeles-de-langue}, critère X6).
-  \item \textbf{Écrire le protocole avant le premier essai et dater chaque écart.} Dire, pour
-        chaque changement, ce qui avait déjà été vu, y compris par un relecteur
-        (\cref{chap:09-ecarts}).
+  \item \textbf{Écrire le protocole avant le premier essai et publier chaque changement.} Dire,
+        pour chaque changement, ce qui avait déjà été vu au moment de le décider.
   \item \textbf{Recalculer chaque nombre publié depuis ses fichiers.} Un script qui confronte chaque
         nombre du texte à son fichier de résultats coûte peu et attrape les dérives
         (\cref{sec:verification}).
@@ -214,12 +212,17 @@ d'une courbe empilés, ne mesure pas la variabilité entre entraînements.
 
 \paragraph{Ce que nous avons corrigé}
 Pineau demandait en 2018 d'être aussi critique envers ses bons résultats qu'envers ses mauvais.
-Nous avons tenté de nous y tenir. En vérifiant nos résultats surprenants, nous avons trouvé deux
-pièges : une erreur de notre code dans E6, dont la correction n'a rien changé, puis la limite de
-longueur du volet GRPO. Deux graines aléatoires de plus ont défait le gain de Qwen que nous lisions
-à trois graines aléatoires. Une relecture technique de notre dépôt a trouvé ensuite d'autres erreurs
-de notre fait : un décompte de E2 trop généreux, un facteur mal écrit dans B1, une pénalité de
-répétition oubliée chez Qwen. Le dépôt garde la trace de chaque correction, datée, pour qui voudra
+Nous avons cherché nos propres erreurs et corrigé chacune. Dans E6, notre code donnait à la
+normalisation des récompenses du Zoo un facteur d'actualisation de 0,99 au lieu de 0,999 : la recette
+corrigée ne fait pas mieux de façon détectable (\cref{sec:e6}). Le décompte de E2 comptait des triplets
+au lieu des paires qui s'inversent : le décompte strict trouve trois paires au lieu de quatorze
+changements et le verdict tient (\cref{sec:e2}). Le facteur qui relie le $t$ du script de Henderson à
+celui d'un test sur les graines aléatoires vaut $\sqrt2/\rho$ pour nos dix épisodes, non $1/\rho$
+(\cref{sec:b1}). Dans le volet GRPO, le gain de Qwen, net à trois graines aléatoires, ne l'est plus à
+cinq : il tient à la limite de longueur, qui coupait ses réponses. Qwen décodait aussi avec une
+pénalité de répétition que Llama n'avait pas et le pilote qui a fixé la tâche avait lu le jeu de test :
+les chiffres publiés restent les mêmes, la comparaison entre familles mêle la famille et le décodage
+(\cref{chap:07-modeles-de-langue}). Le dépôt garde la trace de chaque correction pour qui voudra
 refaire le travail.
 
 \section{Ouverture}\label{sec:ouverture}

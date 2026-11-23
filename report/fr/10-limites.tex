@@ -17,19 +17,15 @@ autre machine.
 
 Tous les articles ont été lus par des agents IA, copies d'un même modèle
 (\texttt{claude-opus-5-5}). Deux lecteurs ont fini sur un modèle voisin (\texttt{claude-opus-5})
-pour treize articles, après l'arrêt d'une réponse par un filtre de contenu du fournisseur (écart 28
-du sondage). Aucun humain n'a relu les articles à l'aveugle : la relecture prévue par l'écart 13 a
-été abandonnée avant de commencer (écart 23). Celle de l'écart 35, trente articles des deux années
-tirés au sort, attend encore son lecteur (\cref{sec:sm-doubles}). Cinq garde-fous réduisent le
-risque sans l'annuler.
+pour treize articles, après l'arrêt d'une réponse par un filtre de contenu du fournisseur. Aucun
+humain n'a relu les articles. Cinq garde-fous réduisent le risque sans l'annuler.
 
 \begin{enumerate}
   \item \textbf{La citation obligatoire.} Chaque décision \enquote{oui} s'appuie sur une citation
         exacte et sa page. Chacun peut vérifier chaque décision contre le PDF. Le script
         \file{study/check\_codes.py} vérifie mécaniquement que chaque citation figure dans le texte.
-  \item \textbf{L'audit des citations.} Après les premiers pourcentages, nous avons cherché les
-        citations que la vérification mécanique ne retrouvait pas (écart 15, fichier
-        \file{study/v1\_quotes\_audit.md}) : sur 89 citations, aucune n'est inventée, 83 figurent mot
+  \item \textbf{L'audit des citations.} Nous avons cherché à la main les citations que la
+        vérification mécanique ne retrouvait pas (\file{study/v1\_quotes\_audit.md}) : sur 89 citations, aucune n'est inventée, 83 figurent mot
         pour mot dans l'article, une est une paraphrase fidèle, 5 donnent des valeurs contraires aux
         règles.
   \item \textbf{Les doubles lectures à l'aveugle.} Trente articles du sondage ont été relus par un
@@ -40,7 +36,7 @@ risque sans l'annuler.
         trente articles donnent trente accords, soit un intervalle de Wilson de $[0{,}89\,;\,1]$.
         Sur les trente articles réunis, chaque critère dépasse 80~\% d'accord. Les moins sûrs sont
         l'origine des références (Y5) et les exclusions (Y6), 25 accords sur 30 chacun, avec un kappa de Cohen de 0,65 et 0,62 dont l'intervalle bootstrap
-        descend sous 0,35 (\file{study/survey\_extra.json}, écart 30 (a)). Sur le premier tirage, la
+        descend sous 0,35 (\file{study/survey\_extra.json}). Sur le premier tirage, la
         mesure de performance (Y1) n'atteignait que 60~\% d'accord, avant que ses règles soient
         précisées. Les dix articles de la trajectoire concordent à 80~\% au moins sur chacun des 23
         critères (\cref{tab:accord}). L'accord sur des articles de 2018 repose sur les cinq articles
@@ -48,15 +44,15 @@ risque sans l'annuler.
   \item \textbf{La recherche contre les \enquote{non}.} Un \enquote{non} ne s'appuie sur aucune
         citation. Chaque \enquote{non} des critères des verdicts a été confronté au texte de
         l'article avec des mots-clés fixés d'avance, puis chaque extrait trouvé a été jugé par un
-        arbitre qui ne voyait ni l'article ni l'année (écart 27). Sur 377 décisions \enquote{non},
+        arbitre qui ne voyait ni l'article ni l'année. Sur 377 décisions \enquote{non},
         10 passent à \enquote{oui} (2 en 2018, 8 en 2026) et aucun verdict ne change. Si l'on
         retourne aussi les 24 décisions jugées douteuses, l'incertitude (X2) et la sensibilité (Y9)
         passent juste au-dessus du seuil ($p = 0{,}07$ et $p = 0{,}054$).
   \item \textbf{Le retrait du modèle voisin.} Des treize articles lus en partie par
         \texttt{claude-opus-5}, deux seulement sont dans la comparaison principale, tous deux du RL
         classique de 2026 et tous deux à \enquote{oui} pour X2. Sans eux, les verdicts tiennent,
-        sauf l'incertitude rapportée (X2), qui ne passe plus la correction de Holm ($p = 0{,}07$,
-        écart 29) : son verdict tient à deux articles.
+        sauf l'incertitude rapportée (X2), qui ne passe plus la correction de Holm ($p = 0{,}07$) :
+        son verdict tient à deux articles.
 \end{enumerate}
 
 Ces garde-fous laissent une menace entière. Les deux lecteurs d'une double lecture sont des copies
@@ -64,8 +60,8 @@ du même modèle : leur accord mesure la stabilité de ce modèle, non l'accord 
 indépendants. Un biais systématique du modèle, partagé par toutes ses copies, échappe aux doubles
 lectures. La consigne exacte, le modèle et les dates de chaque lecteur sont publiés
 (\file{study/readers/}), pour qu'un autre lecteur refasse la lecture. Un lecteur d'une autre famille
-de modèles, \texttt{gemma3:12b}, a relu les 98 articles expérimentaux de la comparaison principale
-(écart 33 du sondage). Il retrouve le signe des quatre différences. Son désaccord avec nos lecteurs,
+de modèles, \texttt{gemma3:12b}, a relu les 98 articles expérimentaux de la comparaison principale.
+Il retrouve le signe des quatre différences. Son désaccord avec nos lecteurs,
 fréquent et presque toujours dans le sens du \enquote{non}, ne dépend pas de l'année de façon
 détectable (\cref{sec:sr-gemma}).
 
@@ -75,55 +71,64 @@ Aucun lecteur principal n'a lu les deux années. Les articles de 2018 ont été 
 H4, ceux de RL classique de 2026 par d'autres agents (\file{study/survey\_extra.json}, clé
 \texttt{readers\_year}). Tous sont des copies du même modèle, mais chaque session a sa consigne, sa
 date et sa version de la grille. Dans la comparaison principale, un effet de l'ensemble des lecteurs
-ne se sépare donc pas d'un effet de l'année. Retirer un lecteur à la fois (écart 21) ne le détecte
+ne se sépare donc pas d'un effet de l'année. Retirer un lecteur à la fois ne le détecte
 pas, puisque l'effet viendrait de l'ensemble.
 
-Une analyse ajoutée après les résultats mesure ce que les données permettent (écart 30 (d)). Au sein d'une même année, les lecteurs
+Une analyse exploratoire mesure ce que les données permettent. Au sein d'une même année, les lecteurs
 diffèrent parfois plus que le hasard ne l'expliquerait : en 2018, la part de Q5 va de 0~\% (H3, 0
 article sur 8) à 55~\% (F, 6 sur 11), avec $p = 0{,}049$ par permutation des lecteurs. En 2026, celle de X7 va de 17~\% à 83~\%, avec $p = 0{,}027$. Ces écarts mêlent le lecteur et son lot d'articles :
 F a lu les douze articles de la calibration, H1 à H4 les articles ajoutés. Pour les critères des
 verdicts, seul le second lecteur R2 a lu les deux années. Sur ses cinq articles par année, il retrouve, pour les quatre critères, les mêmes différences entre années que les lecteurs principaux. Cinq articles par année restent trop peu
 pour clore la question. Le critère X8 la ferme pour lui seul, puisque chacun de ses six lecteurs
-principaux a lu les deux années (écart 32).
+principaux a lu les deux années.
 
-Une relecture ajoutée après les résultats sépare l'année des lecteurs pour les quatre critères des
-verdicts (écart 36). Huit lecteurs neufs, T1 à T8, ont relu les 98 articles, chacun sur les deux années. Un modèle à effet aléatoire du lecteur
+Une relecture exploratoire sépare l'année des lecteurs pour les quatre critères des
+verdicts. Huit lecteurs neufs, T1 à T8, ont relu les 98 articles, chacun sur les deux années. Un modèle à effet aléatoire du lecteur
 mesure ensuite l'effet de l'année à lecteur égal. Les verdicts de Q5, Y9 et X7 tiennent. Celui de X2, déjà le
 plus fragile, garde son sens sans être établi selon la règle fixée d'avance. L'écart type des
 lecteurs est nul ou indiscernable de zéro (\cref{sec:sr-annees}). Il subsiste deux limites. Les
 lecteurs T1 à T8 voient l'année dans chaque PDF. Ils sont aussi de la même famille de modèles que les lecteurs
 d'origine : un biais de cette famille qui jouerait selon l'année toucherait les deux lectures de la
 même façon. L'accord de 90~\% à 100~\% entre elles ne l'exclut donc pas. Le lecteur d'une autre famille
-de modèles (écart 33) et la relecture humaine (écart 35) visent ce biais. Le premier ne détecte aucun
+de modèles vise ce biais. Il ne détecte aucun
 désaccord qui dépende de l'année ($p$ de Fisher de 0,13 à 0,73 selon le critère), sur des décisions
 valides qui ne sont que 14 à 42 par année et par critère : il exclut un grand biais de ce genre, pas
-un petit (\cref{sec:sr-gemma}). La seconde n'a pas encore de résultat.
+un petit (\cref{sec:sr-gemma}).
 
-\subsection{Les décisions prises après les résultats}
+\subsection{Les analyses exploratoires}
 
-Plusieurs règles ont été fixées après avoir vu des résultats : la règle de verdict du sondage
-(écart 20), l'harmonisation de la calibration de 2018 (écart 15), le classement descriptif sous
-physique modifiée (écart 11 des simulations), les détails du bootstrap GRPO (écart 13) et la remise à
-zéro du compte des échecs GRPO (écart 10). Les vingt et un écarts nés de la relecture technique
-viennent tous après les résultats. Pour huit écarts des simulations, cette
-relecture avait déjà calculé une version brouillon des nombres (\cref{sec:ecarts-audit}). Ils sont
-publiés comme exploratoires ou correctifs, à côté des résultats préenregistrés. Le
-\cref{chap:09-ecarts} discute chacune de ces décisions. L'ordre d'écriture des écarts antérieurs à la
-publication du dépôt repose sur notre parole et sur les dates des commits (\cref{sec:parole}).
+Les résultats préenregistrés sont publiés tels quels. À côté d'eux, plusieurs règles et analyses
+sont exploratoires, parce qu'elles ont été fixées en connaissant des résultats : la règle de verdict
+du sondage, qui ne retient que la comparaison à grille égale, l'harmonisation appliquée aux douze
+articles de 2018 de la calibration, le classement descriptif sous physique modifiée, les détails du
+bootstrap GRPO et la remise à zéro du compte des échecs GRPO. Les analyses proposées par une
+relecture technique du dépôt le sont aussi : pour plusieurs d'entre elles, cette relecture avait
+calculé une version brouillon des nombres. Tous les nombres du rapport viennent des scripts du
+dépôt, relancés par \texttt{make analysis}. Appliquée aux mêmes données, la règle de verdict qui
+jugeait aussi 2026 contre les chiffres de Pineau n'aurait confirmé aucun critère et aurait laissé Q5
+\enquote{ambigu} (\cref{sec:sr-pineau}).
+
+La même relecture a trouvé quatre défauts de notre fait, que nous avons corrigés. Le décompte de E2
+comptait des triplets au lieu de paires qui s'inversent. Le facteur qui relie les deux $t$ de B1
+était mal écrit : les deux versions sont publiées côte à côte (\cref{sec:e2,sec:b1}). Qwen a tourné
+avec une pénalité de répétition et le pilote GRPO a lu le jeu de test : ces deux défauts changent la
+lecture du volet GRPO, pas ses chiffres. Une relecture critique du dépôt public a aussi trouvé des
+erreurs de détail dans ce que nos protocoles disaient avoir déjà vu, que nous avons corrigées sans effet sur aucun
+verdict. Un lecteur qui refuse une analyse exploratoire peut refaire chaque calcul sans elle à partir
+des fichiers commités.
 
 \subsection{Les essais des simulations}
 
-Le registre reconstruit compte 42 tentatives arrêtées que le protocole ne déclarait pas
-(\cref{sec:registres}). Chaque arrêt a frappé tous les essais en cours à la fois, sans lien avec un
-score. Pour SAC et CrossQ, les courbes des tentatives arrêtées ont été écrasées : nous ne pouvons
-pas montrer que la relance retrouve la même courbe. Le déterminisme de ces deux programmes JAX
-reste à établir (écart 32, pas encore fini). Le protocole annonçait Stable-Baselines3 2.6.0. Tous les
-entraînements ont tourné avec la 2.9.2, la même pour tous les essais. Ces écarts ne favorisent aucun
-programme. Ils sont dits ici pour que le lecteur les connaisse.
+Le registre des tentatives compte 42 tentatives arrêtées (\cref{sec:registres}). Chaque arrêt a
+frappé tous les essais en cours à la fois, sans lien avec un score. Pour SAC et CrossQ, les courbes
+des tentatives arrêtées ont été écrasées : nous ne pouvons pas encore montrer que la relance retrouve
+la même courbe, ce que testent trois entraînements refaits à l'identique (\cref{sec:val-en-cours}).
+Tous les entraînements ont tourné avec Stable-Baselines3 2.9.2, la même version pour tous les essais.
+Ces faits ne favorisent aucun programme.
 
 \subsection{Le volet GRPO}
 
-Trois défauts du volet GRPO touchent la cause des effets mesurés (écart 18 du volet GRPO).
+Trois défauts du volet GRPO touchent la cause des effets mesurés.
 \begin{itemize}
   \item \textbf{Le matériel change avec la graine aléatoire.} Pour Qwen, les deux essais à vraie
         récompense qui donnent le gain ont tourné sur GPU, les trois qui n'en donnent pas sur CPU.
@@ -139,7 +144,7 @@ Trois défauts du volet GRPO touchent la cause des effets mesurés (écart 18 du
   \item \textbf{Le pilote a lu le jeu de test.} La tâche et le plafond de 160 jetons ont été choisis
         en regardant les problèmes de test. Aucun entraînement n'a vu ce jeu.
 \end{itemize}
-La relance de l'écart 20 du volet GRPO corrige les trois défauts (\cref{sec:val-en-cours}).
+La relance GRPO corrige les trois défauts (\cref{sec:val-en-cours}).
 
 \Needspace*{8\baselineskip}
 \section{Validité externe}
@@ -153,7 +158,7 @@ La relance de l'écart 20 du volet GRPO corrige les trois défauts (\cref{sec:va
         classique.
   \item \textbf{Le filtre de titre.} L'expression régulière appliquée aux titres rate les articles
         de RL dont le titre ne le dit pas, en 2018 comme en 2026. Nous l'avons mesuré pour 2026 avec un
-        plan écrit d'avance (écart 24) : sur 400 articles tirés hors du filtre, 25 ont un résumé qui
+        plan écrit d'avance : sur 400 articles tirés hors du filtre, 25 ont un résumé qui
         parle de RL, soit environ 1\,037 articles manqués (de 708 à 1\,503), 45~\% de l'ensemble.
         C'est un majorant, puisque la règle mécanique compte aussi des faux positifs. Lus avec les
         deux grilles, 20 de ces articles ressemblent au premier tirage : le code en lien dans 60~\%
@@ -167,7 +172,7 @@ La relance de l'écart 20 du volet GRPO corrige les trois défauts (\cref{sec:va
         (45 articles de RL classique sur 50), ceux de 2018 dans les actes des conférences. Un lien
         vers le code s'ajoute souvent à la version arXiv après l'acceptation : la hausse de Q5
         pouvait en venir. Nous l'avons mesuré en relisant Q5 sur la même sorte de version les deux
-        années (écart 31 du sondage). Les deux années lues sur les actes, la hausse vaut $+41$ points,
+        années. Les deux années lues sur les actes, la hausse vaut $+41$ points,
         $[+21\,;\,+56]$. Les deux années lues sur la dernière version arXiv, elle vaut $+34$ points,
         $[+15\,;\,+51]$. Dans la lecture la plus défavorable, elle vaut encore $+30$ points,
         $[+11\,;\,+47]$, avec $p_{\text{Holm}} = 0{,}035$ (\file{study/q5\_versions.json},
@@ -188,20 +193,20 @@ Les expériences se limitent au simulateur MuJoCo et à quatre tâches de locomo
 \textcite{henderson2018matters}. Elles ne disent rien des jeux à images, de la robotique réelle ni
 du RL hors ligne. E1 et B1 se limitent dans leur forme préenregistrée à une seule tâche
 (\task{HalfCheetah}) et à deux programmes (PPO et TRPO). E1 refait sur les seize couples
-(programme, tâche) étend le constat aux quatre programmes et aux quatre tâches (écart 22,
-\cref{sec:e1}). Les quatre programmes sont pris avec leurs hyperparamètres par défaut, sauf dans E6 :
+(programme, tâche) étend le constat aux quatre programmes et aux quatre tâches
+(\cref{sec:e1}). Les quatre programmes sont pris avec leurs hyperparamètres par défaut, sauf dans E6 :
 un autre réglage pourrait changer les classements. La physique modifiée ne change que deux grandeurs,
 les masses et le frottement.
 
 \subsection{Les budgets}
 
-PPO s'entraîne 1\,024\,000 pas, SAC et CrossQ 200\,000 (écarts 1 et 14 (d) des simulations). La
-lecture à budget égal (écart 12 (iii)) compare PPO à 200\,000 pas, lu sur sa courbe d'un million de
+PPO s'entraîne 1\,024\,000 pas, SAC et CrossQ 200\,000. La
+lecture à budget égal compare PPO à 200\,000 pas, lu sur sa courbe d'un million de
 pas : un PPO réglé pour un budget de 200\,000 pas pourrait faire mieux. Le budget de SAC et de
 CrossQ, réduit pour rester dans le calcul disponible, les place dans le régime \enquote{peu de données}. Un budget
 plus long pourrait changer leur ordre. L'échauffement de la renormalisation par lots de CrossQ dure
 en outre 100\,000 mises à jour : le critique y passe la moitié de son budget, l'acteur tout son
-entraînement, mesuré sur la politique entraînée avec la graine aléatoire 0 sur \task{Hopper} (écart 28, \cref{tab:hyperparametres},
+entraînement, mesuré sur la politique entraînée avec la graine aléatoire 0 sur \task{Hopper} (\cref{tab:hyperparametres},
 \cref{sec:programmes}).
 
 \subsection{Une seule plateforme}
@@ -225,19 +230,19 @@ expérience et ne la réfute pas.
   \item \textbf{Notre grille lit 2018 autrement que Pineau.} Notre lecture trouve 55~\% d'articles
         de 2018 qui donnent tous les hyperparamètres de leur méthode, quand Pineau en comptait
         90~\%. Les critères ont le même intitulé mais des règles de décision implicites différentes.
-        C'est la raison de la règle de verdict à grille égale (écart 20).
+        C'est la raison de la règle de verdict à grille égale.
   \item \textbf{Un critère satisfait n'est pas une pratique bien faite.} Q5 vaut oui pour un lien
         vers du code, sans vérifier que ce code tourne. Q8 vaut oui pour un test appliqué, sans juger
         s'il est approprié. X2 vaut oui pour toute barre d'erreur, alors que la barre calculée sur les
         épisodes d'un même entraînement est le piège que montre l'expérience B1
-        (\cref{sec:b1}). Le critère X8, ajouté après les résultats (écart 32), demande si
+        (\cref{sec:b1}). Le critère X8, exploratoire, demande si
         l'incertitude principale est calculée sur des graines aléatoires. Elle l'est dans 35~\% des
         articles expérimentaux de 2018 et 42~\% de ceux de 2026, un écart de $+7$ points,
         $[-12\,;\,+25]$, que le sondage ne détecte pas. La hausse de X2 mesure donc la diffusion de la
         barre d'erreur plus que celle de la barre calculée sur des graines aléatoires
-        (\cref{sec:sr-principale}). X8 a été lu après les résultats par huit autres agents neufs,
+        (\cref{sec:sr-principale}). X8 a été lu par huit autres agents neufs,
         S1 à S8 (Claude Code, modèle \texttt{opus}), qui n'avaient lu aucun article du sondage. Ils
-        sont distincts des lecteurs T1 à T8 de l'écart 36.
+        sont distincts des lecteurs T1 à T8 (\cref{sec:sr-annees}).
   \item \textbf{La mesure de performance (Y1)} a longtemps divisé les lecteurs : 60~\% d'accord sur
         le premier tirage, avant que ses règles soient précisées, 26 accords sur 30 sur l'ensemble des
         doubles lectures. Le verdict de la faille F8 se lit avec cette réserve.
@@ -252,17 +257,17 @@ expérience et ne la réfute pas.
         au dernier pas. L'expérience B3 montre qu'une autre mesure (meilleur score, moyenne de la
         courbe) change l'ordre de certaines paires. Rapporter le meilleur point de la courbe au lieu
         du dernier gonfle la moyenne interquartile de PPO jusqu'à 48~\% (PPO JAX sur
-        \task{Walker2d}, dix graines aléatoires, écart 29, \file{sim/analysis/curves.json}).
+        \task{Walker2d}, dix graines aléatoires, \file{sim/analysis/curves.json}).
   \item \textbf{E3 compare deux programmes, pas deux écritures d'un même algorithme.} Les deux PPO
         partagent leurs hyperparamètres d'algorithme, pas leur initialisation par défaut :
         Stable-Baselines3 initialise toutes les couches de façon orthogonale, alors que sbx laisse son
         option orthogonale désactivée et garde l'initialisation par défaut de Flax
         (\cref{sec:programmes}). Une expérience en cours teste si cette différence explique E3
-        (écart 34, \cref{sec:val-en-cours}).
+        (\cref{sec:val-en-cours}).
   \item \textbf{Le pass@1 du volet GRPO} mêle justesse et concision, puisqu'une réponse coupée
         compte pour fausse (\cref{sec:llm-coupure}). Chez Qwen, le gain de pass@1 sous vraie
         récompense s'explique tout entier par la baisse des réponses coupées. La justesse des
-        réponses finies, elle, ne monte pas (écart 19 du volet GRPO).
+        réponses finies, elle, ne monte pas (\cref{tab:grpo-mesures}).
   \item \textbf{Les notes de coût et de risque} qui ont mis à l'épreuve la thèse du coût viennent de
         trois modèles d'IA agentique, de trois tailles différentes. Leur accord entre eux ne
         garantit pas qu'un chercheur noterait de même.
@@ -273,13 +278,13 @@ expérience et ne la réfute pas.
 
 \paragraph{La taille des échantillons du sondage} Avec 48 articles expérimentaux de 2018 et 50 de
 2026, le sondage ne voit que les grands changements. Pour chaque critère, nous avons calculé la
-plus petite hausse que le test de Fisher détecte quatre fois sur cinq (écart 30 (b)) : une trentaine de points pour la
+plus petite hausse que le test de Fisher détecte quatre fois sur cinq : une trentaine de points pour la
 plupart des critères, davantage au seuil corrigé (\cref{tab:difference-detectable},
 section~\ref{sec:sr-principale}). \enquote{Pas de changement détectable} ne
 veut donc pas dire \enquote{aucun changement}. Sur Q3, Q6, Q7 et Y8, le sondage voit des hausses de
 11 à 22 points sans pouvoir les établir. Celle de Q6 a même un intervalle de Newcombe qui évite zéro
 avant correction. Le premier tirage comptait 14 articles de RL
-classique, trop peu pour détecter un écart de trente points, d'où l'élargissement de l'écart 12. La
+classique, trop peu pour détecter un écart de trente points, d'où l'élargissement à 50 articles par année. La
 trajectoire repose sur 20 articles par année : une part y a une incertitude d'environ vingt points
 de part et d'autre.
 
@@ -288,13 +293,13 @@ principale, avec une correction de Holm appliquée séparément aux 11 critères
 12 de la grille v2. La correction protège le taux d'erreur de chaque famille, au prix de la
 puissance : un écart dont l'intervalle de Newcombe évite zéro sans passer Holm, comme Q6 ou Y12, est
 rapporté mais ne fait pas un verdict. Pour E2, les 24 intervalles de probabilité d'amélioration sont
-aussi donnés au niveau simultané de 95~\% par la correction de Bonferroni (écart 18 des simulations,
-\cref{tab:e2-bonferroni}). E3 teste quatre tâches : avec la correction de Holm (écart 23), seule la
+aussi donnés au niveau simultané de 95~\% par la correction de Bonferroni
+(\cref{tab:e2-bonferroni}). E3 teste quatre tâches : avec la correction de Holm, seule la
 différence sur \task{Swimmer} à vingt graines aléatoires reste établie.
 
 \paragraph{Les verdicts fragiles} La hausse de l'incertitude rapportée (X2) ne passe plus la
 correction de Holm dans deux contrôles ($p = 0{,}07$ chaque fois). Sa puissance observée après
-correction ne vaut que 0,52 (écart 30 (b)). Cette hausse est le plus fragile des quatre changements. Le
+correction ne vaut que 0,52. Cette hausse est le plus fragile des quatre changements. Le
 code et le calcul passent le seuil dans tous nos contrôles, la sensibilité à un hyperparamètre dans
 presque tous (\cref{tab:robustesse}).
 
@@ -302,7 +307,7 @@ presque tous (\cref{tab:robustesse}).
 dans les tableaux générés, quand l'intervalle à 95~\% de la probabilité d'amélioration exclut 0,5, ou quand les intervalles des deux
 moyennes interquartiles sont disjoints (\cref{sec:regle}). Nous avons mesuré le taux réel de faux
 positifs de cette règle sur deux groupes tirés du même programme, où aucune différence n'existe
-(écart 26, \cref{tab:regle-tranche}). La règle tranche à tort un peu plus d'une fois sur vingt à
+(\cref{tab:regle-tranche}). La règle tranche à tort un peu plus d'une fois sur vingt à
 dix essais contre dix, près d'une fois sur dix à cinq contre cinq. La condition sur les moyennes
 interquartiles n'y ajoute presque rien. Une paire tranchée de justesse à dix graines
 aléatoires, comme PPO JAX contre CrossQ sur \task{Hopper} (\cref{sec:e7}), se lit avec ce taux en
@@ -315,12 +320,11 @@ ordre que 71 fois sur cent en médiane, 62 fois mesuré sur vingt graines aléat
 ordre sur l'échantillon même où il tire. Jugé hors échantillon, sur les graines aléatoires 10 à 19,
 l'ordre tiré des graines aléatoires 0 à 9 se conserve dans 20 comparaisons sur 24, mais dans 5 sur 7
 seulement pour les comparaisons serrées. Sur ces comparaisons serrées, cinq graines aléatoires
-retrouvent l'ordre hors échantillon 65 fois sur cent en moyenne (écart 25,
-\file{sim/analysis/e5\_holdout.json}). La puissance de E3 donne le même
+retrouvent l'ordre hors échantillon 65 fois sur cent en moyenne
+(\file{sim/analysis/e5\_holdout.json}). La puissance de E3 donne le même
 ordre de grandeur : à dix graines aléatoires par programme, le test corrigé pour quatre tâches ne
-détecte quatre fois sur cinq qu'une probabilité d'amélioration de 0,94 au moins, 0,81 à vingt
-(écart 23). Sur les tâches où le premier ne bat pas nettement le deuxième, les classements à dix
-graines aléatoires n'offrent pas de meilleure garantie que ces taux. Les vingt graines aléatoires de l'écart 12 confirment ou
+détecte quatre fois sur cinq qu'une probabilité d'amélioration de 0,94 au moins, 0,81 à vingt. Sur les tâches où le premier ne bat pas nettement le deuxième, les classements à dix
+graines aléatoires n'offrent pas de meilleure garantie que ces taux. Les vingt graines aléatoires de la consolidation confirment ou
 nuancent chaque résultat. Le \cref{chap:06-experiences-resultats} dit chaque divergence.
 
 \paragraph{Le nombre de graines aléatoires du volet GRPO} Avec cinq graines aléatoires, le bootstrap
@@ -328,13 +332,12 @@ n'a que 126 rééchantillons distincts, dix avec trois graines aléatoires. Les 
 percentile du protocole sont trop étroits : sur cinq graines aléatoires, ils n'ont qu'environ 60~\%
 de la largeur d'un intervalle de Student. Le test exact de signe ne descend jamais sous
 $p = 2/32 = 0{,}0625$ avec cinq graines aléatoires, si bien qu'aucun gain à l'intérieur d'une
-configuration ne peut être établi, même quand les cinq graines aléatoires vont dans le même sens
-(écart 19 du volet GRPO). Un intervalle qui contient zéro dit que nous ne pouvons pas conclure, pas
+configuration ne peut être établi, même quand les cinq graines aléatoires vont dans le même sens. Un intervalle qui contient zéro dit que nous ne pouvons pas conclure, pas
 que l'effet est nul.
 
 \paragraph{Les intervalles bootstrap} Les intervalles de rliable dépendent du générateur global de
 NumPy et de l'ordre des appels. Leurs bornes bougent avec la graine aléatoire du bootstrap, de
-l'ordre du bruit de Monte-Carlo (écart 13 des simulations) : un verdict dont la borne frôle le seuil
+l'ordre du bruit de Monte-Carlo : un verdict dont la borne frôle le seuil
 est fragile.
 
 \section{Les expériences pas encore finies}
@@ -344,16 +347,16 @@ Cinq expériences sont écrites d'avance et pas encore finies. Le rapport n'en
 donne aucun résultat. Chacune répond à une limite de ce chapitre. Le surveillant a
 arrêté une fois la file des simulations sur une alerte de mémoire, puis la file a repris.
 \begin{itemize}
-  \item \textbf{Le déterminisme de SAC et de CrossQ} (écart 32 des simulations) : trois
+  \item \textbf{Le déterminisme de SAC et de CrossQ} : trois
         entraînements refaits à l'identique diront si ces programmes JAX redonnent le même essai.
-  \item \textbf{La recette du Zoo avec $\gamma = 0{,}99$} (écart 33 (c) des simulations) : dix
+  \item \textbf{La recette du Zoo avec $\gamma = 0{,}99$} : dix
         entraînements diront si le facteur d'actualisation explique les agents qui tiennent debout
         sans avancer.
-  \item \textbf{La cause de l'écart entre les deux PPO} (écart 34 des simulations) : 160
+  \item \textbf{La cause de l'écart entre les deux PPO} : 160
         entraînements ajoutent de la puissance à E3 et échangent l'initialisation orthogonale.
-  \item \textbf{La relecture humaine} (écart 35 du sondage) : nous relirons nous-mêmes à l'aveugle trente
+  \item \textbf{La relecture humaine} : nous relirons nous-mêmes à l'aveugle trente
         articles des deux années. Les trente feuilles attendent encore leur lecteur.
-  \item \textbf{La relance GRPO} (écart 20 du volet GRPO) : 40 essais sur un seul appareil, sans
+  \item \textbf{La relance GRPO} : 40 essais sur un seul appareil, sans
         pénalité de répétition, avec un pilote hors du test, attendent que le GPU se libère.
 \end{itemize}
 

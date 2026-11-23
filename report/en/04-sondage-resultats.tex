@@ -45,9 +45,8 @@ The main comparison sets our 50 classical RL papers from 2026 against our readin
 2018, with the same grids and the same harmonised rules (Section~\ref{sec:sm-verdict}). The 2018 papers
 and the 2026 papers were read by different readers. An effect peculiar to one year's readers therefore
 cannot be told apart from the year itself in this comparison (Section~\ref{sec:sm-annees}). A
-rereading added after the results separates the two: eight new readers reread the 98 papers, each
-across both years (Section~\ref{sec:sr-annees}).
-Criterion X8, further on, already escaped this confound.
+complete rereading separates the two: eight new readers reread the 98 papers, each across both years
+(Section~\ref{sec:sr-annees}). Criterion X8, further on, also escapes this confound.
 
 Table~\ref{tab:sondage-pineau} gives the criteria of grid v1, Table~\ref{tab:sondage-extension} those
 of grid v2. For each criterion, the tables give the share in 2018 and in 2026 with their Wilson
@@ -96,18 +95,18 @@ no reproducibility flaw.
 X2 is \file{yes} as soon as a paper reports an uncertainty. Experiment B1 (\cref{sec:b1}) shows, however, that
 a bar computed over the episodes of one training run is the trap that produces the 2018 $t$ of 9: it ignores
 the variability between random seeds, the one that decides whether two algorithms differ (flaw F11). A paper
-that draws such a bar still counts \file{yes} for X2. An exploratory criterion, X8, written before any
-reading, therefore asks whether the reported uncertainty is computed over random seeds, that is, over
-independent training runs (deviation 32). Six fresh AI agents, who had read no paper of the survey, shared the reading
+that draws such a bar still counts \file{yes} for X2. An exploratory criterion, X8, therefore asks
+whether the reported uncertainty is computed over random seeds, that is, over independent training
+runs. Six fresh AI agents, who had read no paper of the survey, shared the reading
 of the 74 papers that are \file{yes} for X2. Two more reread 20 of them blind. Each of the six read papers from
 both years, which removes the confound
 between readers and year for this criterion alone. Among papers with experiments, X8 goes from 35\% (17 of 48)
 to 42\% (21 of 50): $+7$ points, $[-12,\,+25]$, $p = 0.54$, $p_{\text{Holm}} = 1$ over the eleven v1
 criteria and X8 (\cref{tab:x8,fig:x2-x8}). The rise of X2 comes with
 no detectable rise of uncertainty computed over random seeds. Error bars spread while their source changed in
-no visible way. In 2026, 14 of the 44 papers that draw a bar do not say what it is computed over. X8 was
-decided after the main results and read by agents other than the primary readers: it qualifies the X2 verdict
-without replacing it.
+no visible way. In 2026, 14 of the 44 papers that draw a bar do not say what it is computed over. X8,
+exploratory and read by agents other than the primary readers, qualifies the X2 verdict without
+replacing it.
 
 \fig{x2-x8}{One square per paper with experiments, 48 in 2018 and 50 in 2026, coloured by what its
 uncertainty is computed over: random seeds, seeds and episodes pooled, episodes, test items, another source,
@@ -144,8 +143,8 @@ The 16 other criteria have intervals that contain zero. Those that measure a fla
 \end{itemize}
 
 \paragraph{The power of the survey}
-Each Newcombe interval spans twenty to forty points. An analysis written before its computation puts a
-number on what the survey could see (deviation 30 (b), \cref{tab:difference-detectable}). Starting from the
+Each Newcombe interval spans twenty to forty points. The power computation puts a number on what the
+survey could see (\cref{tab:difference-detectable}). Starting from the
 2018 share and the actual sample sizes, the two-sided Fisher exact test detects with an 80\% chance only a rise
 of 18 to 30 points at the 5\% level, depending on the criterion. At the Bonferroni level over eleven criteria,
 it needs 26 to 39 points. Q7 needs 29 points, 37 after correction. The rise actually seen, 12 points, had
@@ -270,8 +269,8 @@ the proceedings. For Q5, that measurement has been made.
 
 \paragraph{Q5 reread on the same version in both years}
 Code linked is the criterion most exposed to the asymmetry of versions: an author sometimes adds the address
-of the repository to an arXiv version posted after the conference. A rereading written before any
-download (deviation 31) takes up Q5 in three ways that treat both years alike:
+of the repository to an arXiv version posted after the conference. A mechanical rereading
+takes up Q5 in three ways that treat both years alike:
 \begin{itemize}
   \item \textbf{both years on the proceedings}: the 45 papers of 2026 read on arXiv were all found in the
   proceedings;
@@ -290,7 +289,7 @@ uncertain cases counted \file{yes}, still gives $+30$ points $[+11,\,+47]$, $p_{
 asymmetry exists: in 2018, four papers link their code only in their latest arXiv version (C19, C216, C22,
 C39). It affects four to six papers out of 48 and explains only a small part of the rise. One repository
 alone was created after its conference, that of C219, a year after NeurIPS 2018. One caveat: the arbiter
-counts C19 \file{yes} in the arXiv reading, whereas an earlier audit (deviation 19) had visited its page and judged that it led
+counts C19 \file{yes} in the arXiv reading, whereas the harmonisation had visited its page and judged that it led
 only to a library released after the paper. Without C19, that reading gives $+37$ points.
 
 \gentable{q5-versions}
@@ -308,7 +307,7 @@ for Y9 (without H2), $+7$ for X7 (without E, K2 or K5) and $+4$ for X2 (without 
 without reader H2 ($+18$ points, $[-3,\,+36]$). Y12 is fragile in 8 of the 16 cuts.
 
 \paragraph{Without the papers read partly by another model}
-Thirteen papers were finished by \file{claude-opus-5} (deviation 29). Only two belong to the main
+Thirteen papers were finished by \file{claude-opus-5}. Only two belong to the main
 comparison, both classical RL papers from 2026 and both \enquote{yes} for X2. Without them, the 2026
 sample drops to 48 papers and the 2018 sample stays at 50. Code (Q5, $p_{\text{Holm}} = 0.0001$),
 sensitivity (Y9, $0.008$) and compute (X7, $0.04$) still pass the correction. Reported uncertainty no
@@ -320,14 +319,13 @@ first draw outside classical RL, nine from the trajectory, whose trends do not c
 
 \paragraph{The search against the \enquote{no} decisions}
 On the seven criteria checked, the two samples hold 377 final \file{no} decisions. For 94 of them, the
-patterns fixed in advance find no match in the text. The other 283 went to the arbiter. The arbiter
+patterns find no match in the text. The other 283 went to the arbiter. The arbiter
 turns 10 of them: 2 in 2018 (C19 for Q5, C120 for Y9) and 8 in 2026 (K058, K063 and LR03 for Q4, K002
 for Q7, ML06 for Q8, K056, LR03 and LR09 for X7). The arbiter judges 24 of them doubtful. Redone with the
 turned decisions, the main comparison keeps all its verdicts (\file{study/falsify\_no.json}). The difference
 in quantified compute grows, to $+37$ points $[+17,\,+53]$. The difference in the baselines' hyperparameters
 falls to $-1$ point. If the 24 doubtful decisions are turned as well, reported uncertainty and
-sensitivity move just above the threshold ($p_{\text{Holm}} = 0.07$ and $0.054$). This second bound was
-not announced in advance (deviation 27).
+sensitivity move just above the threshold ($p_{\text{Holm}} = 0.07$ and $0.054$).
 
 \paragraph{Robustness summary}
 Code and compute pass the correction in all our checks. Code also passes it when both years are read on the
@@ -344,13 +342,13 @@ one another: their scores correlate from 0.78 to 0.91 for cost, from 0.90
 to 0.93 for risk (Spearman, per pair). Their scores do not predict the observed differences. The Spearman
 correlation is $+0.16$ for cost ($p = 0.52$ by permutation) and $-0.04$ for risk ($p = 0.89$). Sweeping
 a hyperparameter (Y9), scored costly (median 4), progressed. The versions of benchmarks (Y7) and of
-dependencies (Y10), scored nearly free (median 1), did not move. The reading \enquote{heeded where it
-cost little} is withdrawn.
+dependencies (Y10), scored nearly free (median 1), did not move. The explanation \enquote{heeded where it
+cost little} does not hold.
 
 \section{Our reading of 2018 differs from Pineau's}\label{sec:sr-pineau}
 
 \paragraph{The difference between the two readings}
-The secondary comparison announced with the enlargement (deviation 12) sets our reading of 2018 against Pineau's figures, on the six
+The secondary comparison sets our reading of 2018 against Pineau's figures, on the six
 criteria Q3 to Q8 for which she gives a comparable one, with a Holm correction over these six criteria
 (\file{extension\_stats.json}, field \file{ours2018\_vs\_pineau}).
 \begin{itemize}
@@ -397,21 +395,19 @@ Q7 do not.
 
 \paragraph{The verdict rule that follows}
 Comparing our 2026 papers with Pineau's figures would mix the change in practice with the change of
-grid. The same-grid verdict rule follows from this (deviation 20, Section~\ref{sec:sm-verdict}). Pineau's figures
+grid. The same-grid verdict rule follows from this (Section~\ref{sec:sm-verdict}). Pineau's figures
 stay on display as context, in Section~\ref{sec:sr-premier}.
 
-\paragraph{What the original rule would have given}
-An analysis written before its computation, but after a sketch by the technical review (deviation 30
-(c), Section~\ref{sec:ecarts-audit}), applies to the same data the original rule, which the same-grid
-rule replaced: each of Pineau's criteria was judged against her figures, then against our
-reading of 2018 (Section~\ref{sec:sm-verdict}, \cref{tab:regle-origine}). In classical RL in 2026, no criterion would have been \enquote{changed and
+\paragraph{A rule that also requires Pineau's figures}
+The stricter rule judges each of Pineau's criteria against her figures, then against our reading of
+2018 (Section~\ref{sec:sm-verdict}, \cref{tab:regle-origine}). In classical RL in 2026, no criterion would have been \enquote{changed and
 confirmed}. Q4, Q6 and Q7 would have \enquote{changed} against Pineau, without confirmation against our 2018.
 Q5, our strongest verdict, would have been \enquote{ambiguous}: it passes the correction against our reading of
 2018, not against Pineau's figures ($+18$ points, $p_{\text{Holm}} = 0.19$). In the first draw, large models
 included, only Q7 would have been \enquote{changed and confirmed}, driven by the papers on language models
-(Section~\ref{sec:sr-premier}). The original rule says nothing about X2, X7 and Y9, for which Pineau gives no
+(Section~\ref{sec:sr-premier}). This rule says nothing about X2, X7 and Y9, for which Pineau gives no
 figure. This table does not overturn the same-grid rule, which rests on the calibration difference measured
-for Q3, 55\% in our reading against 90\% in Pineau's. It makes that decision checkable.
+for Q3, 55\% in our reading against 90\% in Pineau's. It makes that choice checkable.
 
 \gentable{regle-origine}
 
@@ -531,8 +527,8 @@ threshold, below which a criterion is called fragile, is marked. Data: \file{stu
 \paragraph{Thirty papers reread, with their intervals}
 The four pairs of double readings cover 30 distinct papers. G and G2 reread the same ten papers from 2026, one
 with grid v1, the other with grid v2. R2 rereads ten added papers, five from 2018 and five from 2026. R3 rereads
-ten papers of the trajectory. An analysis written before this computation (deviation 30 (a)) pools these readings and
-gives each share of agreement its Wilson interval, each kappa a percentile bootstrap interval over papers
+ten papers of the trajectory. We pool these readings and
+give each share of agreement its Wilson interval, each kappa a percentile bootstrap interval over papers
 (\cref{tab:accord-intervalles}). On the four criteria of the verdicts, the 120 doubled decisions are identical:
 30 of 30 for each criterion, with a Wilson interval from 89\% to 100\%. Three criteria keep a kappa below 0.70:
 the measure defined (Y1), the origin of the baselines' code (Y5) and the exclusions stated (Y6). One pair alone
@@ -551,7 +547,7 @@ criteria on 10 papers. The three disagreements concern Q3, Q7 and X4, with kappa
 On the same ten papers, G2 and the primary readers agree completely on 9 criteria out of 12. Agreement
 falls to 90\% on exclusions (Y6, kappa 0.80), to 80\% on the implementation of the baselines (Y5, kappa
 0.52) and to 60\% on the performance measure (Y1, kappa 0.31). Y1 is the only fragile criterion in all
-the double readings. Deviations 17 and 19 then clarified its rules.
+the double readings. The pilot and the harmonisation then clarified its rules.
 
 \paragraph{The added papers}
 R2 rereads ten papers drawn from the additions of 2018 and 2026 with both grids. Agreement reaches at
@@ -568,12 +564,12 @@ All the readers are copies of the same model, except the two that finished thirt
 \file{claude-opus-5} (Section~\ref{sec:sm-lecteurs}). The agreement of the double readings therefore
 measures how stably this one model reads (Section~\ref{sec:sm-doubles}). A human might have read the same
 passages differently. The quotations and pages in \file{study/codes/} and \file{study/codes\_v2/} let
-anyone check each decision. Two rereadings added after the results put these readings to the test:
+anyone check each decision. Two complete rereadings put these readings to the test:
 eight fresh readers who each read both years, then a reader from another family of models.
 
 \paragraph{Year and readers disentangled}\label{sec:sr-annees}
 In the main comparison, the readers of 2018 are not those of 2026 (Section~\ref{sec:sm-annees}).
-A rereading written after the results and before any reading (deviation 36) has the 98 experimental papers of that comparison reread by eight fresh agents, T1 to T8,
+A complete rereading has the 98 experimental papers of that comparison reread by eight fresh agents, T1 to T8,
 each of whom reads six papers from 2018 and six or seven from 2026 (Section~\ref{sec:sm-doubles}). With
 these readings alone, the share of \enquote{yes} goes from 31\% to 72\% for code linked (Q5), from 42\%
 to 78\% for sensitivity to a hyperparameter (Y9), from 31\% to 66\% for quantified compute (X7) and from
@@ -585,7 +581,7 @@ The logistic mixed model gives each reader its own leaning towards \enquote{yes}
 year effect for a given reader. The standard deviation $s$ of the reader effect is 0 for Q5 and Y9, 0.24 for X7 and 0.44
 for X2: none of them stands out from zero ($p \geq 0.25$). The leaning towards \enquote{yes} therefore
 varies little from one reader to the next. After the Holm correction over the four criteria, Q5, Y9
-and X7 pass both tests fixed in advance, Fisher's test on the difference and the test of the year
+and X7 pass both tests of the rule, Fisher's test on the difference and the test of the year
 effect in the model. Their verdicts hold. For X2, the difference is $+17$ points, $[+0.6,\,+33.0]$.
 The year effect passes the correction ($p_{\text{Holm}} = 0.037$), but Fisher's test narrowly misses it
 ($p_{\text{Holm}} = 0.053$), so the rule calls this verdict \enquote{same direction, not established}.
@@ -601,7 +597,7 @@ criterion and the year (\cref{tab:r36-accord}). No criterion shows a clearly dif
 2018 and 2026: the smallest Fisher $p$ is 0.11. For X7, all six disagreements go towards
 \enquote{yes}, two in 2018 and four in 2026. Eight X7 \enquote{yes} rest on measured durations
 (running, inference or training times) rather than on a stated total compute. The harmonised rules
-leave this borderline case to the reader's judgement (deviation 19). Three of these papers are from 2018 and five from
+leave this borderline case to the reader's judgement. Three of these papers are from 2018 and five from
 2026. Six of the eight are already \enquote{yes} in the original code.
 Chapter~\ref{chap:10-limites} states what this rereading does not separate.
 
@@ -626,8 +622,8 @@ Read by this reader on its valid decisions, the difference between 2026 and 2018
 four verdicts and passes the Holm correction: $+55$ points $[+34,\,+69]$ for code linked, $+52$
 $[+24,\,+73]$ for sensitivity, $+43$ $[+25,\,+58]$ for quantified compute, $+54$ $[+22,\,+72]$ for
 reported uncertainty. On the same papers, our readers give $+45$, $+45$, $+35$ and $+41$ points. Each
-interval overlaps ours: under the rule fixed in advance, all four differences are
-\enquote{reproduced}. The announced variant, which counts every invalid decision as \enquote{no},
+interval overlaps ours: under the rule, all four differences are
+\enquote{reproduced}. The variant that counts every invalid decision as \enquote{no}
 brings the denominators back to 48 and 50 (\file{study/gemma\_stats\_invalid\_no.json}). Code linked
 ($+45$ points, $[+26,\,+60]$) and quantified compute ($+34$, $[+19,\,+48]$) stay reproduced.
 Sensitivity falls to $+16$ points $[+4,\,+29]$, $p_{\text{Holm}} = 0.03$, an interval that still
@@ -635,7 +631,7 @@ overlaps ours: it stays reproduced. Reported uncertainty falls to $+7$ points $[
 \enquote{same direction, not established}. In this variant, this reader sees a single \enquote{yes} in
 the 48 papers of 2018 for quantified compute as for sensitivity, against 13 and 21 for our readers.
 
-A model of 12 billion parameters reads less well than a large model, as the protocol had written: this
+A model of 12 billion parameters reads less well than a large model: this
 disagreement does not refute our readings. What this rereading looked for, a disagreement that depends
 on the year, does not show, on sample sizes that would detect only a large gap. For the third time,
 after the robustness checks and the fresh readers, reported uncertainty is the verdict that holds
@@ -695,6 +691,6 @@ concern what accompanies the result: the code link, the declared compute, the ef
 error bar.
 
 Our reading of 2018 differs from Pineau's on the method's hyperparameters and on held-out evaluation,
-hence the same-grid verdict rule. The original verdict rule, applied to the same data, would have
+hence the same-grid verdict rule. A rule that also requires Pineau's figures, applied to the same data, would have
 confirmed no change in classical RL. Chapter~\ref{chap:10-limites} gathers the limitations of these
 results. Chapter~\ref{chap:11-conclusion} sets them against the experiments.

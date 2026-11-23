@@ -3,7 +3,8 @@
 The technical report is the PDF the blog article links to as « le document complet » / "the full document":
 French `report/rapport.pdf`, English `report/report-en.pdf`, published on deraison.ai under
 `assets/pdf/`. It must be exhaustive and technical: everything the repository did, how the code does it,
-every result with its interval, every deviation. It replaces nothing: `docs/conclusions*.md` stays the
+every result with its interval, every check and correction, as a finished design (the history of the
+plan stays in the protocols' dated lists of changes). It replaces nothing: `docs/conclusions*.md` stays the
 argued essay; the report is the reference document.
 
 ## Layout
@@ -56,7 +57,6 @@ Ten random seeds are the main, preregistered results; twenty seeds (suffix `_s20
 | dose | E7 at several strengths: pairs losing per change of masses and friction, 10 and 20 seeds | dose*.json |
 | b3 | B3: does the measure (final, best, mean of curve) change the ranking | b3*.json |
 | grpo | GRPO: per model, reward, seed: success at start and after 100 steps, device, truncated share | sim/llm/results/summary_5.json, extra_5.json, gains_5.json |
-| ecarts | every deviation of the three protocols (study, SIM, LLM): number, date, before/after results, one-line summary | study/PROTOCOL.md, sim/SIM_PROTOCOL.md, sim/llm/LLM_PROTOCOL.md (and -en) |
 | env | pinned versions of the key packages per environment | envs/*.lock, envs/*.txt |
 | calcul | compute: runs per program and task, steps, median wall time, core-hours | sim/logs, sim/results |
 | articles-2026 | longtable of the 2026 papers read (id, title, venue) | study/final_2026.json, sample files |
@@ -72,11 +72,11 @@ Ten random seeds are the main, preregistered results; twenty seeds (suffix `_s20
 | e6-vitesse | E6 agents replayed: median return, median and extreme speed, agents that never fall; the Zoo's published agent | sim/analysis/e6_enjoy.json, e6_hub.json, e6_speed.json |
 | accord-intervalles | pooled double readings per criterion: agreement with Wilson interval, kappa with bootstrap interval | study/survey_extra.json |
 | difference-detectable | minimum detectable rise and fall per criterion at 5% and Bonferroni, power of the gap seen | study/survey_extra.json, extension_stats.json |
-| regle-origine | the original verdict rule (deviation 7) applied: against Pineau and against our 2018, verdict per criterion | study/survey_extra.json |
+| regle-origine | a verdict rule that also judges against Pineau's figures, applied: against Pineau and against our 2018, verdict per criterion | study/survey_extra.json |
 | q5-versions | Q5 under each version policy (published, proceedings, latest arXiv, available at conference, bounds) | study/q5_versions.json |
 | x8 | X8 (uncertainty over seeds) against X2, among X2 yes, pooled, mechanical bound; sources of uncertainty per year | study/x8_stats.json, extension_stats.json, survey_extra.json |
-| r36 | deviation 36, fresh readers on both years: Q5, Y9, X7, X2 shares 2018 and 2026, Newcombe gap, Fisher Holm p, mixed model year odds ratio with Wald interval and Holm p, reader SD, verdict; Q5 with every project page yes | study/r36_stats.json |
-| r36-accord | deviation 36: agreement of the fresh readings with the original final codes per criterion and year, Wilson, kappa, Fisher 2018 against 2026, direction of disagreements | study/r36_stats.json |
+| r36 | fresh readers on both years: Q5, Y9, X7, X2 shares 2018 and 2026, Newcombe gap, Fisher Holm p, mixed model year odds ratio with Wald interval and Holm p, reader SD, verdict; Q5 with every project page yes | study/r36_stats.json |
+| r36-accord | fresh readers: agreement of the fresh readings with the original final codes per criterion and year, Wilson, kappa, Fisher 2018 against 2026, direction of disagreements | study/r36_stats.json |
 | grpo-mesures | GRPO five measures per configuration: levels, gain, percentile and Student intervals, seeds up, sign p | sim/llm/results/logs_stats_5.json |
 | grpo-contraste | GRPO true minus coin-flip reward per model and measure: Welch interval, exact permutation p, Holm, established | sim/llm/results/logs_stats_5.json |
 

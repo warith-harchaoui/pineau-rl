@@ -3,11 +3,11 @@
 \centering
 \footnotesize
 \setlength{\tabcolsep}{3pt}
-\caption[E7 : part du score gardée en physique modifiée]{Expérience E7, physique modifiée : chaque politique finale évaluée sur les mêmes graines d'évaluation tenues à part, dans la physique d'entraînement puis avec les masses multipliées par 1,2 et le frottement par 0,8. Ratio : score en physique modifiée divisé par le score en physique d'entraînement, par essai ; IQM des ratios sur les graines avec intervalle à 95~\% par bootstrap stratifié (rliable, 2\,000 rééchantillons). Verdict préregistré : perte quand l'intervalle reste sous 1, gain quand il reste au-dessus, ns (aucun changement détectable) sinon ; \textbf{en gras}, les pertes et les gains. Rang : place du programme sur la tâche par IQM du score, dans la physique d'entraînement puis dans la physique modifiée (complément descriptif de l'écart 11, décidé après les résultats, sans test). Le chef change sur Hopper à 10 graines, sur Hopper à 20 graines. Sources : \file{sim/analysis/e7.json}, \file{e7\_s20.json}, \file{e7\_rank.json}, \file{e7\_rank\_s20.json}.}
+\caption[E7 : part du score gardée en physique modifiée]{Expérience E7, physique modifiée : chaque politique finale évaluée sur les mêmes graines d'évaluation tenues à part, dans la physique d'entraînement puis avec les masses multipliées par 1,2 et le frottement par 0,8. Ratio : score en physique modifiée divisé par le score en physique d'entraînement, par essai ; IQM des ratios sur les graines avec intervalle à 95~\% par bootstrap stratifié (rliable, 2\,000 rééchantillons). Verdict préregistré : perte quand l'intervalle reste sous 1, gain quand il reste au-dessus, ns (aucun changement détectable) sinon ; \textbf{en gras}, les pertes et les gains. Rang : place du programme sur la tâche par IQM du score, dans la physique d'entraînement puis dans la physique modifiée (complément descriptif et exploratoire, sans test). Le chef change sur Hopper à 10 graines, sur Hopper à 20 graines. Sources : \file{sim/analysis/e7.json}, \file{e7\_s20.json}, \file{e7\_rank.json}, \file{e7\_rank\_s20.json}.}
 \label{tab:e7}
 \begin{tabular}{@{}llrcrrcr@{}}
 \toprule
- & & \multicolumn{3}{c}{10 graines (résultat principal)} & \multicolumn{3}{c}{20 graines (écart 12)} \\
+ & & \multicolumn{3}{c}{10 graines (résultat principal)} & \multicolumn{3}{c}{20 graines (consolidation)} \\
 \cmidrule(lr){3-5}\cmidrule(lr){6-8}
 Tâche & Programme & ratio [IC 95~\%] & verdict & rang & ratio [IC 95~\%] & verdict & rang \\
 \midrule

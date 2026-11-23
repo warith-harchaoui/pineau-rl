@@ -4,7 +4,7 @@
 \footnotesize
 \setlength{\tabcolsep}{3.5pt}
 \begin{threeparttable}
-\caption[Accord entre lectures à l'aveugle]{Accord entre deux lectures à l'aveugle d'agents IA, sur les lectures brutes, avant toute harmonisation. \textbf{En gras}, le seul critère sous 70~\% d'accord, signalé comme fragile par le script : Y1, mesure de performance, avant que ses règles soient précisées (écarts 17 et 19). Sources : \file{study/agree\_v2.json}, \file{study/audit\_stats.json}.}
+\caption[Accord entre lectures à l'aveugle]{Accord entre deux lectures à l'aveugle d'agents IA, sur les lectures brutes, avant toute harmonisation. \textbf{En gras}, le seul critère sous 70~\% d'accord, signalé comme fragile par le script : Y1, mesure de performance, avant que ses règles soient précisées. Sources : \file{study/agree\_v2.json}, \file{study/audit\_stats.json}.}
 \label{tab:accord}
 \begin{tabularx}{\linewidth}{@{}l>{\raggedright\arraybackslash}Xrrrrrrrr@{}}
 \toprule
@@ -40,7 +40,7 @@ Y12 & Outil statistique postérieur à 2018 &  &  & 10/10 &  & 10/10 & 1,00 & 10
 \bottomrule
 \end{tabularx}
 \begin{tablenotes}[flushleft]\scriptsize
-\item[] G : dix articles du premier tirage de 2026 relus avec la grille v1 (127 décisions identiques sur 130, \file{study/audit\_stats.json}) ; G2 : les mêmes dix articles relus avec la grille v2 ; R2 : dix articles tirés au hasard parmi les articles ajoutés (\texttt{random.Random(7)}, écart 12), relus avec les deux grilles ; R3 : dix articles de la trajectoire 2019 à 2024 (\texttt{random.Random(2030)}, écart 26). Accord : décisions identiques sur les articles où les deux lecteurs ont répondu oui ou non (Y3 converti en oui à partir de deux tâches) ; $\kappa$ : kappa de Cohen, vide quand un des deux lecteurs ne varie pas (accord trivial). Une case vide hors $\kappa$ : critère absent de cette double lecture. Tous les lecteurs sont des copies du même modèle (écart 28) : l'accord mesure la constance de ce modèle, pas celle de deux lecteurs indépendants.
+\item[] G : dix articles du premier tirage de 2026 relus avec la grille v1 (127 décisions identiques sur 130, \file{study/audit\_stats.json}) ; G2 : les mêmes dix articles relus avec la grille v2 ; R2 : dix articles tirés au hasard parmi les articles ajoutés (\texttt{random.Random(7)}), relus avec les deux grilles ; R3 : dix articles de la trajectoire 2019 à 2024 (\texttt{random.Random(2030)}). Accord : décisions identiques sur les articles où les deux lecteurs ont répondu oui ou non (Y3 converti en oui à partir de deux tâches) ; $\kappa$ : kappa de Cohen, vide quand un des deux lecteurs ne varie pas (accord trivial). Une case vide hors $\kappa$ : critère absent de cette double lecture. Tous les lecteurs sont des copies du même modèle : l'accord mesure la constance de ce modèle, pas celle de deux lecteurs indépendants.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}

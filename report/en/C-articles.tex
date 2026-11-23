@@ -27,8 +27,8 @@ matches the regular expression of the protocol, out of \num{17836} accepted pape
 The classical RL sample of 2026 in the main comparison combines the 14 \texttt{classic} papers of
 the first draw and the 36 of queue A3. \Cref{tab:articles-2026} lists the papers read. These papers were read mostly in their arXiv version, the 2018 papers in the
 proceedings. For criterion Q5 alone, the 2026 papers were reread in the proceedings version and the
-2018 \enquote{no} decisions in their latest arXiv version (survey deviation 31,
-\file{pdf/<id>-proc.pdf} and \file{pdf/<id>-arxiv.pdf}), with the fingerprint of each file in \file{study/pdfs.csv}.
+2018 \enquote{no} decisions in their latest arXiv version
+(\file{pdf/<id>-proc.pdf} and \file{pdf/<id>-arxiv.pdf}), with the fingerprint of each file in \file{study/pdfs.csv}.
 
 \gentable{articles-2026}
 
@@ -39,7 +39,7 @@ Our reading of 2018 covers 50 RL papers from ICML 2018, NeurIPS 2018 and ICLR 20
 conferences Pineau named. The first 12 form the calibration of the protocol, 6 from ICML and 6 from
 NeurIPS (\file{study/calib\_2018.json}). The other 38 come from enlargement A2, which brings the 2018 reading to 50 papers, drawn in the order of
 a \texttt{random.Random(2018)} shuffle, with an allocation proportional to the size of each
-conference (deviation 12). The sample combines 21 papers from ICML 2018 (prefix \texttt{C1}), 20 from
+conference. The sample combines 21 papers from ICML 2018 (prefix \texttt{C1}), 20 from
 NeurIPS 2018 (\texttt{C2}) and 9 from ICLR 2018 (\texttt{C3}) (\file{study/calib\_2018\_v2.json}).
 The comparison for each criterion counts the papers where the criterion applies, so a denominator
 can fall below 50.

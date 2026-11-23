@@ -5,7 +5,7 @@ Pineau demandait en 2018 un travail reproductible, réutilisable et robuste. Ce 
 comment le dépôt du projet, \repo, tente de satisfaire ces trois exigences. Il présente
 l'organisation du dépôt, le paquet Python qui réunit les calculs réutilisables, les formats de
 fichiers, la vérification mécanique de chaque nombre publié, les tests, l'intégration continue,
-les environnements figés, le matériel et le calcul consommé. Un dernier point dit ce qui manque au
+les environnements figés, le matériel, le calcul consommé et les registres des tentatives. Un dernier point dit ce qui manque au
 dépôt et comment l'obtenir.
 
 \section{L'organisation du dépôt}
@@ -34,8 +34,8 @@ Chemin & Contenu \\
 \file{study/} & Le sondage : protocole (\file{PROTOCOL.md}), fiche du lecteur (\file{GRILLE.md}),
   tirages, lectures (\file{codes/}, \file{codes\_v2/}, \file{codes\_x8/}), harmonisation
   (\file{overrides*.json}), provenance des lecteurs (\file{readers/}), scripts d'analyse et fichiers JSON de
-  résultats, dont ceux des écarts 30 à 36 (\file{survey\_extra.py}, \file{x8\_stats.py},
-  \file{q5\_versions\_stats.py}, \file{gemma\_stats.py}, \file{r36\_stats.py}). \\
+  résultats, dont ceux des contrôles de robustesse et des relectures (\file{survey\_extra.py},
+  \file{x8\_stats.py}, \file{q5\_versions\_stats.py}, \file{gemma\_stats.py}, \file{r36\_stats.py}). \\
 \file{sim/} & Les simulations : protocole (\file{SIM\_PROTOCOL.md}), un essai (\file{run.py}), une
   réévaluation sous physique modifiée (\file{dose.py}), listes d'essais (\file{jobs*.txt}),
   lanceurs et surveillant (\file{drive.sh}, \file{queue.sh}, \file{worker.sh}, \file{scale.sh},
@@ -44,14 +44,14 @@ Chemin & Contenu \\
   publié par le Zoo et ses fichiers (\file{zoo\_hub/}). \\
 \file{sim/analysis/} & Un script et un fichier JSON par expérience (E1 à E7, B1, B3, dose,
   correction de Bonferroni), avec leurs variantes à vingt graines aléatoires et à budget égal. Les analyses
-  des écarts 21 à 31, une par fichier : décompte strict de E2 (\file{e2\_strict.py}), renversement de
+  complémentaires, une par fichier : décompte strict de E2 (\file{e2\_strict.py}), renversement de
   \task{Hopper} testé (\file{e7\_test.py}), E1 sur seize couples, E3 avec Holm, E5 hors échantillon,
   calibration de la règle, facteur de B1, courbes, tailles d'effet, vitesse des agents de E6. Le relevé des
   hyperparamètres (\file{hyperparams.py}). Trois analyses écrites d'avance, en attente de leurs
   entraînements (\file{c6\_determinism.py}, \file{e6\_gamma.py}, \file{c2.py}). \\
 \file{sim/llm/} & Le volet GRPO : protocole, \file{grpo.py}, lanceurs, diagnostics
-  (\file{diag/}), journaux, résultats, \file{summary.py} et \file{logs\_stats.py} (écart~19). La relance
-  de l'écart~20 : son lanceur \file{c7.sh} et son analyse \file{c7\_stats.py}, écrite avant tout
+  (\file{diag/}), journaux, résultats, \file{summary.py} et \file{logs\_stats.py}. La relance
+  GRPO : son lanceur \file{c7.sh} et son analyse \file{c7\_stats.py}, écrite avant tout
   essai. \\
 \file{src/pineau\_rl/} & Le paquet Python des calculs réutilisables (\cref{sec:paquet}). \\
 \file{tests/} & Les tests unitaires (\cref{sec:tests}). \\
@@ -132,13 +132,12 @@ Ce module enveloppe les intervalles bootstrap stratifiés de rliable
 moitié centrale des scores. \texttt{iqm\_interval(scores, reps=2000)} rend, pour chaque groupe
 d'essais, la moyenne interquartile et son intervalle bootstrap par percentile à 95~\%.
 \texttt{improvement\_interval(x, y, reps=2000, confidence=0.95)} rend la probabilité d'amélioration
-et son intervalle, au niveau voulu : l'analyse de Bonferroni de l'écart 18 des simulations s'en sert
+et son intervalle, au niveau voulu : l'analyse de Bonferroni de E2 s'en sert
 avec $1 - 0{,}05/24$. \texttt{probability\_of\_improvement\_bootstrap(x, y, rng)} rééchantillonne
 $x$ et $y$ avec un générateur NumPy explicite, sans rliable.
 
 Un défaut de rliable 1.2.0 commande l'usage de ce module. La bibliothèque accepte un argument
-\texttt{random\_state} mais tire ses rééchantillons dans le générateur global de NumPy (écart 13 des
-simulations). Un script fixe donc ce générateur une seule fois, au début
+\texttt{random\_state} mais tire ses rééchantillons dans le générateur global de NumPy. Un script fixe donc ce générateur une seule fois, au début
 (\texttt{np.random.seed(2026)}), puis appelle les fonctions dans un ordre fixe : chaque appel
 consomme le générateur global, si bien qu'un intervalle dépend des appels qui le précèdent. Le
 module importe rliable dès son propre chargement, jamais dans une fonction, pour qu'aucun import ne
@@ -207,8 +206,8 @@ PyTorch sur \task{HalfCheetah}, graine aléatoire 0, arrondies au dixième.
 (\cref{chap:07-modeles-de-langue}). Les lignes d'évaluation contiennent \texttt{step},
 \texttt{greedy}, \texttt{pass1}, \texttt{pass8} et \texttt{truncated}. Les lignes d'entraînement,
 tous les dix pas, \texttt{train\_right}, \texttt{truncated}, \texttt{loss}, \texttt{grad\_norm},
-\texttt{retries} et \texttt{wall}. Ces fichiers ne gardent aucun verdict par problème. La relance de
-l'écart~20 ajoute, pour chaque essai, un fichier \file{seed<graine>.items.jsonl.gz} qui garde le verdict, la
+\texttt{retries} et \texttt{wall}. Ces fichiers ne gardent aucun verdict par problème. La relance
+GRPO ajoute, pour chaque essai, un fichier \file{seed<graine>.items.jsonl.gz} qui garde le verdict, la
 longueur et la réponse de chaque problème à chaque évaluation. Son journal écrit une ligne à chaque pas.
 
 \paragraph{Une lecture d'article} Un fichier JSON par article et par lecteur, rangé
@@ -229,7 +228,7 @@ et liens} avec une page nulle (\cref{chap:A-grille}) :
 de lecture, vide quand il est valide. Il vérifie le schéma : chaque critère présent, des valeurs
 \texttt{yes}, \texttt{no} ou \texttt{na}, des entiers ou \texttt{null} pour X1, X6 et Y3, une famille
 X5 parmi \texttt{llm}, \texttt{classic} et \texttt{theory}, un champ \texttt{kind} quand Y11 vaut oui,
-une citation pour chaque critère. Il vérifie les règles de portée des écarts 3 et 14 du protocole :
+une citation pour chaque critère. Il vérifie les règles de portée de la grille :
 \begin{itemize}
   \item Q1 non impose \texttt{na} partout ;
   \item Y2 et Y11 valent \texttt{na} si et seulement si X2 vaut non ;
@@ -284,21 +283,21 @@ Aucune cible n'entraîne quoi que ce soit. L'entraînement passe par \file{sim/r
         sans dépendance téléchargée : elles viennent de \file{envs/analysis.lock}.
   \item[\texttt{make analysis}] relance tous les scripts d'analyse, dans l'ordre des dépendances, par trois
         cibles qui se lancent aussi seules.
-        \texttt{analysis-study} lance les scripts du sondage, dont ceux des écarts 30 à 36.
+        \texttt{analysis-study} lance les scripts du sondage, contrôles de robustesse et relectures compris.
         \texttt{analysis-sim} lance les dix-sept scripts des simulations à dix graines aléatoires, dont le
         décompte strict de E2 et le test du renversement de \task{Hopper}, puis l'analyse statistique du
-        pipeline officiel du Zoo, les variantes des écarts 12 et 20 (vingt graines aléatoires, réplication de
-        E4 sur les graines aléatoires 10 à 19, budget égal) et les huit analyses des écarts 22 à 31, qui lisent
+        pipeline officiel du Zoo, les variantes (vingt graines aléatoires, réplication de
+        E4 sur les graines aléatoires 10 à 19, budget égal) et les huit analyses complémentaires, qui lisent
         les fichiers des précédentes. \texttt{analysis-llm} lance \file{summary.py} à trois et à cinq graines
-        aléatoires, puis \file{logs\_stats.py} (écart~19). Les variantes passent par des variables
-        d'environnement (\texttt{SEEDS}, \texttt{SUFFIX}, \texttt{BUDGET}). Deux analyses de l'écart~33,
+        aléatoires, puis \file{logs\_stats.py}. Les variantes passent par des variables
+        d'environnement (\texttt{SEEDS}, \texttt{SUFFIX}, \texttt{BUDGET}). Deux analyses du diagnostic de E6,
         \file{e6\_enjoy.py} et \file{e6\_hub.py}, demandent l'environnement du Zoo et les politiques :
         aucune cible ne les relance, comme \file{e6\_official\_eval.json}.
   \item[\texttt{make hyperparams}] relit les réglages des cinq programmes dans les bibliothèques de
-        l'environnement d'entraînement et écrit \file{sim/analysis/hyperparams.json} (écart~28). Cette cible
+        l'environnement d'entraînement et écrit \file{sim/analysis/hyperparams.json}. Cette cible
         reste hors de \texttt{verify}, qui tourne dans l'environnement d'analyse.
   \item[\texttt{make analysis-suite}] lance les trois analyses écrites d'avance pour les expériences pas
-        encore finies (écarts 32 à 34). Leurs fichiers JSON n'entrent dans la vérification qu'une fois
+        encore finies (\cref{sec:val-en-cours}). Leurs fichiers JSON n'entrent dans la vérification qu'une fois
         leurs entraînements finis.
   \item[\texttt{make check}] lance les deux scripts de vérification de la \cref{sec:verification}.
   \item[\texttt{make test}] lance les tests unitaires avec pytest.
@@ -431,19 +430,40 @@ cd sim && python3 fetch_models.py --check
 
 Tous les essais ont tourné sur un seul ordinateur portable, un Mac à puce Apple M2 Max sous macOS
 27.2 (arm64), partagé avec d'autres projets. Chaque entraînement de simulation tourne sur un seul
-fil d'exécution. Le nombre de tâches en parallèle a changé au fil du projet : quatre cœurs au départ,
-jusqu'à huit accordés chaque heure selon la charge de la machine (écart 15 des simulations), puis
-deux cœurs pour tout le projet (écart 19). Ce partage ne touche pas les
-résultats tant qu'un essai ne dépend que de sa graine aléatoire : les relances le vérifient pour PPO,
-l'écart 32 le teste encore pour SAC et CrossQ (\cref{sec:registres}). La \cref{sec:calcul} décrit les lanceurs,
+fil d'exécution. Le nombre de tâches en parallèle a suivi la charge de la machine : quatre cœurs au
+départ, jusqu'à huit accordés chaque heure, puis deux cœurs pour tout le projet. Ce partage ne touche
+pas les résultats tant qu'un essai ne dépend que de sa graine aléatoire : les relances le vérifient
+pour PPO, une expérience en cours le teste pour SAC et CrossQ (\cref{sec:registres,sec:val-en-cours}). La \cref{sec:calcul} décrit les lanceurs,
 le surveillant et la file d'attente. Le \cref{tab:calcul} donne, par programme et par tâche, le
 nombre d'essais, le nombre de pas, la durée murale médiane d'un essai et la somme de ces durées.
 
 Les essais GRPO ont des durées très différentes selon l'appareil. D'après le champ \texttt{wall} de
 leurs journaux au pas 100, un essai Qwen a pris de 42 à 52 minutes sur GPU et de 4,3 à 11,4 heures
 sur CPU, un essai Llama de 69 à 148 minutes sur GPU. Ces écarts reflètent aussi la charge variable
-de la machine. La relance de l'écart~20 prévoit, d'après ces journaux, environ 58 heures de GPU pour ses
+de la machine. La relance GRPO prévoit, d'après ces journaux, environ 58 heures de GPU pour ses
 quarante essais, à lancer machine au repos.
+
+\section{Les registres des tentatives}
+\label{sec:registres}
+
+Un essai qui plante est relancé une fois avec la même graine aléatoire, puis l'incident est noté.
+Pour les 250 entraînements de la première phase, le registre
+\file{sim/logs/attempts\_reconstructed.csv} est reconstruit à partir des dates de création des
+journaux, des sorties des lanceurs, des versions commitées et de nos journaux de session. Il donne
+une ligne par tentative : algorithme, tâche, graine aléatoire, numéro de tentative, début, fin,
+issue, score vu avant la relance et preuve. Il compte 292 lancements, dont 42 tentatives arrêtées et
+aucune plantée. Chaque arrêt a frappé tous les essais en cours à la fois. Aucun essai n'a été relancé
+ni écarté après que son score final était connu. Pour PPO PyTorch et PPO JAX, les relances
+retrouvent à l'identique les points d'évaluation des tentatives arrêtées. Pour SAC et CrossQ, les
+courbes arrêtées ont été écrasées : trois entraînements refaits à l'identique testent ce point
+(\cref{sec:val-en-cours}).
+
+Pour les entraînements suivants, le lanceur \file{queue.sh} garde un journal par tentative, jamais
+écrasé. Il ajoute chaque tentative au registre \file{sim/logs/attempts.jsonl} : début, fin, code de
+sortie, empreinte SHA-256 du résultat. Le surveillant y inscrit chaque tâche qu'il arrête et les
+essais GRPO arrêtés y figurent aussi. Ces registres et les journaux d'évaluation de chaque essai,
+arrêtés compris quand ils n'ont pas été écrasés, sont commités : ils montrent quels essais ont
+tourné et combien de fois.
 
 \section{Ce qui n'est pas dans le dépôt}
 \label{sec:absent}
@@ -454,7 +474,10 @@ final\_2026.json pdf}). Les diapositives de Pineau ne sont pas dans le dépôt p
 elles se trouvent sur les sites d'ICLR 2018 et de NeurIPS 2018. Le fichier
 \file{slides-en.md} les décrit une à une. Les journaux des sessions de travail avec les agents qui
 ont lu les articles ne sont pas publics. La consigne exacte, le modèle et les dates de chaque
-lecteur, reconstruits à partir de ces journaux, le sont (\file{study/readers/}).
+lecteur, reconstruits à partir de ces journaux, le sont (\file{study/readers/}). L'ordre dans lequel
+protocoles, changements et résultats ont été écrits se lit dans l'historique git. Le premier commit
+du dépôt contient déjà des résultats à côté des protocoles : pour ce qui le précède, cet ordre repose
+sur notre parole et sur les dates des commits.
 
 \section{Licence et citation}
 \label{sec:licence}

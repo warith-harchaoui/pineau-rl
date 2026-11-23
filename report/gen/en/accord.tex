@@ -4,7 +4,7 @@
 \footnotesize
 \setlength{\tabcolsep}{3.5pt}
 \begin{threeparttable}
-\caption[Agreement between blind readings]{Agreement between two blind readings by AI agents, on the raw readings, before any harmonisation. \textbf{In bold}, the only criterion under 70\% agreement, flagged as fragile by the script: Y1, performance measure, before its rules were made more precise (deviations 17 and 19). Sources: \file{study/agree\_v2.json}, \file{study/audit\_stats.json}.}
+\caption[Agreement between blind readings]{Agreement between two blind readings by AI agents, on the raw readings, before any harmonisation. \textbf{In bold}, the only criterion under 70\% agreement, flagged as fragile by the script: Y1, performance measure, before its rules were made more precise. Sources: \file{study/agree\_v2.json}, \file{study/audit\_stats.json}.}
 \label{tab:accord}
 \begin{tabularx}{\linewidth}{@{}l>{\raggedright\arraybackslash}Xrrrrrrrr@{}}
 \toprule
@@ -40,7 +40,7 @@ Y12 & Post-2018 statistical tool &  &  & 10/10 &  & 10/10 & 1.00 & 10/10 & 1.00 
 \bottomrule
 \end{tabularx}
 \begin{tablenotes}[flushleft]\scriptsize
-\item[] G: ten papers of the first 2026 draw reread with grid v1 (127 identical decisions out of 130, \file{study/audit\_stats.json}); G2: the same ten papers reread with grid v2; R2: ten papers drawn at random from the added papers (\texttt{random.Random(7)}, deviation 12), reread with both grids; R3: ten papers of the 2019 to 2024 trajectory (\texttt{random.Random(2030)}, deviation 26). Agree: identical decisions over the papers where both readers answered yes or no (Y3 turned into yes from two tasks); $\kappa$: Cohen's kappa, blank when one of the two readers does not vary (trivial agreement). An empty cell outside $\kappa$: criterion absent from that double reading. All readers are copies of the same model (deviation 28): agreement measures that model's stability, not that of two independent readers.
+\item[] G: ten papers of the first 2026 draw reread with grid v1 (127 identical decisions out of 130, \file{study/audit\_stats.json}); G2: the same ten papers reread with grid v2; R2: ten papers drawn at random from the added papers (\texttt{random.Random(7)}), reread with both grids; R3: ten papers of the 2019 to 2024 trajectory (\texttt{random.Random(2030)}). Agree: identical decisions over the papers where both readers answered yes or no (Y3 turned into yes from two tasks); $\kappa$: Cohen's kappa, blank when one of the two readers does not vary (trivial agreement). An empty cell outside $\kappa$: criterion absent from that double reading. All readers are copies of the same model: agreement measures that model's stability, not that of two independent readers.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}

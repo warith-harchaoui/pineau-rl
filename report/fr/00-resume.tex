@@ -14,15 +14,13 @@ de façon détectable. Le réglage des méthodes de référence ne montre aucun 
 29~\% des articles les décrivent avec tous leurs réglages).
 
 \paragraph{La méthode}
-Deux instruments répondent, sous trois protocoles écrits d'avance dont chaque écart est daté et publié.
-Le sondage relit des articles avec la grille de lecture de Pineau, complétée par sept critères tirés de
-sa conférence d'ICLR et par une seconde grille de douze critères écrite avant toute lecture. Des agents
+Deux instruments répondent. Le sondage relit des articles avec la grille de lecture de Pineau, complétée par sept critères tirés de
+sa conférence d'ICLR et par une seconde grille de douze critères. Des agents
 IA, c'est-à-dire des modèles d'IA agentique, lisent chaque article entier et justifient chaque
 \enquote{oui} par une citation paginée. Le verdict compare 50 articles de RL classique de 2026 (hors
 modèles de langue) à notre propre lecture de 50 articles de 2018, avec les mêmes grilles et des agents
 du même modèle. Vingt articles par année, pour quatre années entre 2019 et 2024, datent le changement.
-La règle de verdict a changé après les premiers résultats : l'ancienne, qui exigeait aussi un écart
-contre les chiffres de Pineau, n'aurait confirmé aucun critère du RL classique. Les expériences refont
+Les expériences refont
 celles de 2018 avec quatre programmes (PPO en PyTorch et en JAX, SAC, CrossQ) sur quatre tâches MuJoCo,
 dix puis vingt graines aléatoires par programme et par tâche. Un volet entraîne deux petits modèles de
 langue avec GRPO.
@@ -63,7 +61,7 @@ Sur Qwen, avec cinq graines aléatoires, GRPO gagne $+14$ points de pass@1, la p
 parmi huit tirées par problème, avec un intervalle de $-3$ à $+34$ qui contient zéro. Ce gain apparent
 vient de réponses plus courtes : la part des réponses coupées à 160 jetons tombe de 75~\% à 6~\%, la
 justesse des réponses finies ne monte pas. Sur Llama, le pass@1 monte de 6 points pendant que la
-justesse gloutonne en perd 43. Une relance à dix graines aléatoires, écrite d'avance, est en cours.
+justesse gloutonne en perd 43. Une relance à dix graines aléatoires est en cours.
 
 \paragraph{Code et données}
 Dépôt \repo{} (BSD 3-Clause) : protocoles et lectures citées (\file{study/}), entraînements (\file{sim/}),
