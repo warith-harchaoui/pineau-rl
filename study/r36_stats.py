@@ -84,7 +84,7 @@ def polish(f, r, free):
     1e-5 from the maximum, differently on Linux and macOS; Newton reaches the maximum itself, so both platforms agree.
     The reader SD at its lower bound (zero) stays there."""
     x = r.x.copy()
-    if x[2] <= -7.9:  # reader SD at zero: pinned exactly on the bound, so every platform starts Newton from the same point
+    if x[2] <= -5.0:  # reader SD under 0.007, the likelihood flat in it: pinned on its bound (zero), the same on every platform
         x[2] = -8.0
     free = [i for i in free if not (i == 2 and x[2] <= -7.9)]
     for _ in range(50):
@@ -94,7 +94,7 @@ def polish(f, r, free):
             return f(t)
         v, h = x[free], 1e-5
         g = np.array([(fs(v + h * e) - fs(v - h * e)) / (2 * h) for e in np.eye(len(free))])
-        step = np.linalg.solve(hessian(fs, v), g)
+        step = np.linalg.lstsq(hessian(fs, v), g, rcond=None)[0]  # lstsq: a flat direction gives no step, not an error
         x[free] = v - step
         if np.max(np.abs(step)) < 1e-12:
             break
