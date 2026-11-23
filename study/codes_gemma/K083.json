@@ -1,0 +1,90 @@
+{
+ "id": "K083",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 99757,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "Code is available at https://github.com/AhmedMagdyHendawy/MINTO.",
+   "page": 1,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We report the AUC metric using IQM and the confidence interval computed across 5 seeds.",
+   "page": 24,
+   "invalid": false
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We report the AUC metric using IQM and the confidence interval computed across 5 seeds per game.",
+   "page": 24,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 312.7,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"Code is available at https://github.com/AhmedMagdyHendawy/MINTO.\", \"page\": 1}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"We report the AUC metric using IQM and the confidence interval computed across 5 seeds.\", \"page\": 24}"
+  ],
+  "X7": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"We report the AUC metric using IQM and the confidence interval computed across 5 seeds.\", \"page\": 24}",
+   "{\"value\": \"yes\", \"quote\": \"We report the AUC metric using IQM and the confidence interval computed across 5 seeds per game.\", \"page\": 24}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 31620,
+    "eval_count": 36,
+    "total_duration": 293461539625
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 31591,
+    "eval_count": 36,
+    "total_duration": 4624740333
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 31582,
+    "eval_count": 19,
+    "total_duration": 3637128541
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 31627,
+    "eval_count": 36,
+    "total_duration": 5264029792
+   },
+   {
+    "prompt_eval_count": 31727,
+    "eval_count": 38,
+    "total_duration": 4273146042
+   }
+  ]
+ }
+}

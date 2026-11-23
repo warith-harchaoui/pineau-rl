@@ -1,0 +1,96 @@
+{
+ "id": "K012",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 98684,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "We release a reproducible pipeline and open-source codebase to support further research on internal representations and behavior.",
+   "page": 2,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Error bars are 95% CI.",
+   "page": 35,
+   "invalid": false
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "We provide key hyperparameters and other settings to reproduce experiments in Table 3.",
+   "page": 38,
+   "invalid": true
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Learning Rate 0.00025",
+   "page": 28,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 223.8,
+ "raw": {
+  "Q5": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We release a reproducible pipeline and open-source codebase to support further research on internal representations and behavior.\",\n  \"page\": 2\n}"
+  ],
+  "X2": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"Error bars are 95% CI.\",\n  \"page\": 35\n}"
+  ],
+  "X7": [
+   "{\"value\": \"yes\", \"quote\": \"We provide key hyperparameters and other settings to reproduce experiments in Table 3.\", \"page\": 38}",
+   "{\"value\": \"yes\", \"quote\": \"We provide key hyperparameters and other settings to reproduce experiments in Table 3.\", \"page\": 38}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"We used the Adam optimizer with default momentum parameters.\", \"page\": 28}",
+   "{\"value\": \"yes\", \"quote\": \"Learning Rate 0.00025\", \"page\": 28}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 21608,
+    "eval_count": 45,
+    "total_duration": 199554830750
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 21579,
+    "eval_count": 35,
+    "total_duration": 4915289083
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 21570,
+    "eval_count": 33,
+    "total_duration": 5243907916
+   },
+   {
+    "prompt_eval_count": 21667,
+    "eval_count": 33,
+    "total_duration": 4062653625
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 21615,
+    "eval_count": 28,
+    "total_duration": 5138498625
+   },
+   {
+    "prompt_eval_count": 21707,
+    "eval_count": 29,
+    "total_duration": 3622928792
+   }
+  ]
+ }
+}

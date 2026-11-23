@@ -1,0 +1,96 @@
+{
+ "id": "C210",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 43794,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We show that MAESN is more effective at learning exploration strategies when compared to prior meta-RL methods, RL without learned exploration strategies, and task-agnostic exploration methods.",
+   "page": 1,
+   "invalid": true
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We swept over: number of trajectories per task in [20 , 50] for MAESN, latentspace baseline and MAML",
+   "page": 2,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 117.5,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"We show that MAESN is more effective at learning exploration strategies when compared to prior meta-RL methods, RL without learned exploration strategies, and task-agnostic exploration methods.\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"We show that MAESN is more effective at learning exploration strategies when compared to prior meta-RL methods, RL without learned exploration strategies, and task-agnostic exploration methods.\", \"page\": 1}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"We found that to get MAESN to work well, meta-learning a per-parameter stepsize is crucial, rather than keeping step-size fixed.\", \"page\": 2}",
+   "{\"value\": \"yes\", \"quote\": \"We swept over: number of trajectories per task in [20 , 50] for MAESN, latentspace baseline and MAML\", \"page\": 2}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 10698,
+    "eval_count": 19,
+    "total_duration": 89965524292
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 10669,
+    "eval_count": 53,
+    "total_duration": 6589832459
+   },
+   {
+    "prompt_eval_count": 10786,
+    "eval_count": 53,
+    "total_duration": 5532779167
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 10660,
+    "eval_count": 27,
+    "total_duration": 4073925167
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 10705,
+    "eval_count": 49,
+    "total_duration": 6387468542
+   },
+   {
+    "prompt_eval_count": 10818,
+    "eval_count": 48,
+    "total_duration": 4975079208
+   }
+  ]
+ }
+}

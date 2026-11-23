@@ -1,0 +1,90 @@
+{
+ "id": "K085",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 53050,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "Our code is available at https://github.com/daisophila/ABS.",
+   "page": 1,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Table 1 shows early training performance (first 10% of steps) and late training stability (last 10% of steps) separately.",
+   "page": 16,
+   "invalid": true
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Figure 5 presents the hyperparameter sensitivity of ABS with respect to the rollout range L (Top), policy change thresholds δ (Center), and adapt frequency K (Bottom) on Atari-10.",
+   "page": 17,
+   "invalid": false
+  }
+ },
+ "retried": true,
+ "seconds": 140.5,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"Our code is available at https://github.com/daisophila/ABS.\", \"page\": 1}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"Notably, this approach effectively scales to larger backbone architectures (Castanyer et al., 2025), surmounting the performance bottlenecks inherent in conventional RL training.\", \"page\": 2}",
+   "{\"value\": \"yes\", \"quote\": \"Table 1 shows early training performance (first 10% of steps) and late training stability (last 10% of steps) separately.\", \"page\": 16}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"Figure 5 presents the hyperparameter sensitivity of ABS with respect to the rollout range L (Top), policy change thresholds δ (Center), and adapt frequency K (Bottom) on Atari-10.\", \"page\": 17}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 15003,
+    "eval_count": 34,
+    "total_duration": 118161197084
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 14974,
+    "eval_count": 51,
+    "total_duration": 5484810916
+   },
+   {
+    "prompt_eval_count": 15089,
+    "eval_count": 49,
+    "total_duration": 5055036750
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 14965,
+    "eval_count": 27,
+    "total_duration": 3856251791
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 15010,
+    "eval_count": 58,
+    "total_duration": 6862725167
+   }
+  ]
+ }
+}

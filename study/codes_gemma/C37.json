@@ -1,0 +1,96 @@
+{
+ "id": "C37",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 84063,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": 0,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "The ratio figures plot the average algorithm selection proportions of ESBAS at each epoch. We define the relative pseudo regret as the difference between the ESBAS absolute pseudo-regret and the absolute pseudo-regret of the best canonical meta-algorithm.",
+   "page": 18,
+   "invalid": true
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": 0,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  }
+ },
+ "retried": true,
+ "seconds": 286.1,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": 0}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"The ratio figures plot the average algorithm selection proportions of ESBAS at each epoch. We define the relative pseudo regret as the difference between the ESBAS absolute pseudo-regret and the absolute pseudo-regret of the best canonical meta-algorithm.\", \"page\": 18}",
+   "{\"value\": \"yes\", \"quote\": \"The ratio figures plot the average algorithm selection proportions of ESBAS at each epoch. We define the relative pseudo regret as the difference between the ESBAS absolute pseudo-regret and the absolute pseudo-regret of the best canonical meta-algorithm.\", \"page\": 18}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": 0\n}"
+  ],
+  "Y9": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"ESBAS is then adapted to a true online setting where algorithms update their policies after each transition, which we call SSBAS. It is evaluated on a fruit collection task where it is shown to adapt the stepsize parameter more efficiently than the classical hyperbolic decay,\",\n  \"page\": 5\n}",
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 26263,
+    "eval_count": 20,
+    "total_duration": 251010886500
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 26234,
+    "eval_count": 67,
+    "total_duration": 8940110166
+   },
+   {
+    "prompt_eval_count": 26365,
+    "eval_count": 67,
+    "total_duration": 7696940000
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 26225,
+    "eval_count": 28,
+    "total_duration": 4840448792
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 26270,
+    "eval_count": 76,
+    "total_duration": 10110649209
+   },
+   {
+    "prompt_eval_count": 26410,
+    "eval_count": 27,
+    "total_duration": 3472212625
+   }
+  ]
+ }
+}

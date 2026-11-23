@@ -1,0 +1,102 @@
+{
+ "id": "K056",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 89630,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "The code and experimental results are available on the project website.",
+   "page": 1,
+   "invalid": true
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Table 1 reports Mean and CVaR0.1± s.e. for RADAC alongside baselines.",
+   "page": 18,
+   "invalid": false
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "The code and experimental results are available on the project website.",
+   "page": 1,
+   "invalid": true
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We sweep the RL weight η ∈ {1, 10, 50, 100, 300, 1000} for RADAC on the same Risky–Bandit",
+   "page": 28,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 288.5,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"The code and experimental results are available on the project website.\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"The code and experimental results are available on the project website.\", \"page\": 1}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"Table 1 reports Mean and CVaR0.1± s.e. for RADAC alongside baselines.\", \"page\": 18}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"The code and experimental results are available on the project website.\",\n  \"page\": 1\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"The code and experimental results are available on the project website.\",\n  \"page\": 1\n}"
+  ],
+  "Y9": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We also sweep the RL weight η in RADAC on the same Risky–Bandit (Fig. 9). As η increases from 0 (pure BC), probability mass smoothly moves from the risky outer ring to the safe central cluster, without creating off-support modes.\",\n  \"page\": 29\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We sweep the RL weight η ∈ {1, 10, 50, 100, 300, 1000} for RADAC on the same Risky–Bandit\",\n  \"page\": 28\n}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 28824,
+    "eval_count": 29,
+    "total_duration": 248792422584
+   },
+   {
+    "prompt_eval_count": 28917,
+    "eval_count": 29,
+    "total_duration": 3480996666
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 28795,
+    "eval_count": 42,
+    "total_duration": 5779665959
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 28786,
+    "eval_count": 37,
+    "total_duration": 4181155042
+   },
+   {
+    "prompt_eval_count": 28887,
+    "eval_count": 37,
+    "total_duration": 4199997917
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 28831,
+    "eval_count": 82,
+    "total_duration": 9903932000
+   },
+   {
+    "prompt_eval_count": 28977,
+    "eval_count": 72,
+    "total_duration": 7384355084
+   }
+  ]
+ }
+}

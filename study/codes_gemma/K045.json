@@ -1,0 +1,96 @@
+{
+ "id": "K045",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 99445,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "Our code is released at https://github.com/MarquisDarwin/EAWM.",
+   "page": 1,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We conduct experiments and demonstrate that EAWM enhances the performance of base world models by a large margin in tasks requiring event-aware reactions, for example, with improvements of 55% in Breakout and 115% in Acrobot Swingup.",
+   "page": 35,
+   "invalid": true
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "EADream Experiments of EADream on Atari 100K were conducted with NVIDIA V100 32GB GPUs.",
+   "page": 43,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We tune the additional hyperparameters required only a small number of validation runs on 6 Atari games that we used in our ablation studies: Assault, Breakout, Gopher, Krull, Ms Pacman, and Up N Down.",
+   "page": 27,
+   "invalid": false
+  }
+ },
+ "retried": true,
+ "seconds": 366.4,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"Our code is released at https://github.com/MarquisDarwin/EAWM.\", \"page\": 1}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"We follow the official implementation of Simulus (Cohen et al., 2025) and reproduce the results based on the default hyperparameters.\", \"page\": 35}",
+   "{\"value\": \"yes\", \"quote\": \"We conduct experiments and demonstrate that EAWM enhances the performance of base world models by a large margin in tasks requiring event-aware reactions, for example, with improvements of 55% in Breakout and 115% in Acrobot Swingup.\", \"page\": 35}"
+  ],
+  "X7": [
+   "{\"value\": \"yes\", \"quote\": \"EADream Experiments of EADream on Atari 100K were conducted with NVIDIA V100 32GB GPUs.\", \"page\": 43}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"We posit that a universally applicable configuration exists for diverse scenarios. We use the default values of CI = 16 and ω = 0.5 for all experiments across benchmarks.\", \"page\": 27}",
+   "{\"value\": \"yes\", \"quote\": \"We tune the additional hyperparameters required only a small number of validation runs on 6 Atari games that we used in our ablation studies: Assault, Breakout, Gopher, Krull, Ms Pacman, and Up N Down.\", \"page\": 27}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 36957,
+    "eval_count": 35,
+    "total_duration": 330064459125
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 36928,
+    "eval_count": 47,
+    "total_duration": 5895203333
+   },
+   {
+    "prompt_eval_count": 37039,
+    "eval_count": 70,
+    "total_duration": 7569428834
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 36919,
+    "eval_count": 47,
+    "total_duration": 6515895375
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 36964,
+    "eval_count": 54,
+    "total_duration": 7623418167
+   },
+   {
+    "prompt_eval_count": 37082,
+    "eval_count": 64,
+    "total_duration": 6958309875
+   }
+  ]
+ }
+}

@@ -1,0 +1,96 @@
+{
+ "id": "C120",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 63379,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "Videos and code available at: https://sites.google.com/view/goalgeneration4rl.",
+   "page": 1,
+   "invalid": true
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "This implies that the labels estimates (and hence our automatic curriculum generation algorithm) is almost invariant for any value of the hypermparameters Rmin and Rmax in these ranges.",
+   "page": 13,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 155.9,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"Videos and code available at: https://sites.google.com/view/goalgeneration4rl.\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"Videos and code available at: https://sites.google.com/view/goalgeneration4rl.\", \"page\": 1}"
+  ],
+  "X2": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X7": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"We have also shown that our method is robust to the choice of hyperparameters, as shown in Appendix C\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"This implies that the labels estimates (and hence our automatic curriculum generation algorithm) is almost invariant for any value of the hypermparameters Rmin and Rmax in these ranges.\", \"page\": 13}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 16358,
+    "eval_count": 38,
+    "total_duration": 133915800166
+   },
+   {
+    "prompt_eval_count": 16460,
+    "eval_count": 38,
+    "total_duration": 3518865792
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 16329,
+    "eval_count": 19,
+    "total_duration": 3609157625
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 16320,
+    "eval_count": 19,
+    "total_duration": 3265411583
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 16365,
+    "eval_count": 38,
+    "total_duration": 5214190375
+   },
+   {
+    "prompt_eval_count": 16467,
+    "eval_count": 53,
+    "total_duration": 5387106792
+   }
+  ]
+ }
+}

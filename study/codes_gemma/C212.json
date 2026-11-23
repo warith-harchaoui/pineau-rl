@@ -1,0 +1,96 @@
+{
+ "id": "C212",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 38066,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "Our code is available open-source at: https://github.com/tensorflow/models/tree/master/research/steve",
+   "page": 9,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We plot reward as a function of wall-clock time for these tasks in Figure 5. STEVE-DDPG learns more quickly on both tasks, and it achieves a higher reward than DDPG and MVE-DDPG on Humanoid-v1 and performs comparably to DDPG on RoboschoolHumanoidFlagrun-v1.",
+   "page": 7,
+   "invalid": true
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "All experiments were run four times.",
+   "page": 3,
+   "invalid": true
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  }
+ },
+ "retried": true,
+ "seconds": 96.6,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"Our code is available open-source at: https://github.com/tensorflow/models/tree/master/research/steve\", \"page\": 9}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"STEVE is the only variant to converge faster and higher than the baseline; this provides strong evidence that the gains come specifically from the uncertainty-aware reweighting of targets.\", \"page\": 4}",
+   "{\"value\": \"yes\", \"quote\": \"We plot reward as a function of wall-clock time for these tasks in Figure 5. STEVE-DDPG learns more quickly on both tasks, and it achieves a higher reward than DDPG and MVE-DDPG on Humanoid-v1 and performs comparably to DDPG on RoboschoolHumanoidFlagrun-v1.\", \"page\": 7}"
+  ],
+  "X7": [
+   "{\"value\": \"yes\", \"quote\": \"All algorithms were implemented in Tensorflow [1]. We use a distributed implementation to parallelize computation.\", \"page\": 6}",
+   "{\"value\": \"yes\", \"quote\": \"All experiments were run four times.\", \"page\": 3}"
+  ],
+  "Y9": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 9683,
+    "eval_count": 45,
+    "total_duration": 72695243208
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 9654,
+    "eval_count": 52,
+    "total_duration": 5263179542
+   },
+   {
+    "prompt_eval_count": 9770,
+    "eval_count": 92,
+    "total_duration": 8103623292
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 9645,
+    "eval_count": 36,
+    "total_duration": 4160706625
+   },
+   {
+    "prompt_eval_count": 9745,
+    "eval_count": 24,
+    "total_duration": 2475428083
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 9690,
+    "eval_count": 19,
+    "total_duration": 3285879167
+   }
+  ]
+ }
+}

@@ -1,0 +1,90 @@
+{
+ "id": "K035",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 71393,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Table A1 gives the full results on the interaction learning.",
+   "page": 30,
+   "invalid": true
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "For Sprites-World, we use 3 hours on 1x NVIDIA A100;",
+   "page": 35,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  }
+ },
+ "retried": true,
+ "seconds": 199.4,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"We report the full results on the normalized SHD of FIOC with different interaction learning models in predicting the ground truth interactions in Sprites World Environment.\", \"page\": 10}",
+   "{\"value\": \"yes\", \"quote\": \"Table A1 gives the full results on the interaction learning.\", \"page\": 30}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"For Sprites-World, we use 3 hours on 1x NVIDIA A100;\",\n  \"page\": 35\n}"
+  ],
+  "Y9": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 19265,
+    "eval_count": 19,
+    "total_duration": 177307844916
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 19236,
+    "eval_count": 48,
+    "total_duration": 6731379500
+   },
+   {
+    "prompt_eval_count": 19348,
+    "eval_count": 30,
+    "total_duration": 3752936667
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 19227,
+    "eval_count": 47,
+    "total_duration": 6733599791
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 19272,
+    "eval_count": 19,
+    "total_duration": 3407602625
+   }
+  ]
+ }
+}

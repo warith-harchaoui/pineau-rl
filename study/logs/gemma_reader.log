@@ -1,0 +1,105 @@
+00:32:36 1/98 K006 43.2 s {'Q5': 'yes', 'X2': 'yes!', 'X7': 'yes!', 'Y9': 'yes!'}  retried
+00:34:06 2/98 C214 90.2 s {'Q5': 'no', 'X2': 'no', 'X7': 'yes!', 'Y9': 'no'}  retried
+00:37:19 3/98 C26 192.1 s {'Q5': 'yes', 'X2': 'no', 'X7': 'yes!', 'Y9': 'yes!'}  retried
+00:41:31 4/98 C25 251.0 s {'Q5': 'no', 'X2': 'yes!', 'X7': 'no', 'Y9': 'yes!'}  retried
+00:45:23 5/98 K078 231.4 s {'Q5': 'yes', 'X2': 'yes!', 'X7': 'yes!', 'Y9': 'no'}  retried
+00:47:27 6/98 C12 123.3 s {'Q5': 'yes', 'X2': 'yes!', 'X7': 'no', 'Y9': 'yes!'}  retried
+00:51:20 7/98 C218 230.9 s {'Q5': 'no', 'X2': 'yes!', 'X7': 'yes!', 'Y9': 'yes!'}  retried
+00:56:07 8/98 NE10 285.2 s {'Q5': 'yes', 'X2': 'yes!', 'X7': 'yes!', 'Y9': 'yes'}  retried
+01:00:36 9/98 LR02 268.2 s {'Q5': 'yes!', 'X2': 'yes!', 'X7': 'no', 'Y9': 'yes!'}  retried
+01:02:37 10/98 C215 120.1 s {'Q5': 'no', 'X2': 'no', 'X7': 'no', 'Y9': 'yes!'}  retried
+01:04:28 11/98 C13 109.1 s {'Q5': 'no', 'X2': 'yes', 'X7': 'no', 'Y9': 'no'}  retried
+01:07:34 12/98 C114 184.9 s {'Q5': 'no', 'X2': 'yes', 'X7': 'no', 'Y9': 'yes!'}  retried
+01:10:20 13/98 NER06 164.5 s {'Q5': 'yes', 'X2': 'yes', 'X7': 'no', 'Y9': 'yes!'}  retried
+01:12:41 14/98 K085 140.5 s {'Q5': 'yes', 'X2': 'yes!', 'X7': 'no', 'Y9': 'yes'}  retried
+01:14:43 15/98 C32 121.1 s {'Q5': 'no', 'X2': 'no', 'X7': 'no', 'Y9': 'yes!'}  retried
+01:17:32 16/98 K021 168.1 s {'Q5': 'yes', 'X2': 'yes', 'X7': 'no', 'Y9': 'yes!'}  retried
+01:21:15 17/98 K072 217.1 s {'Q5': 'no', 'X2': 'yes!', 'X7': 'no', 'Y9': 'yes!'}  retried
+01:22:31 18/98 C219 75.5 s {'Q5': 'yes', 'X2': 'no', 'X7': 'no', 'Y9': 'no'}  
+01:25:07 19/98 C15 151.9 s {'Q5': 'no', 'X2': 'yes!', 'X7': 'no', 'Y9': 'no'}  retried
+01:29:52 20/98 LR12 284.2 s {'Q5': 'yes', 'X2': 'yes!', 'X7': 'yes', 'Y9': 'yes'}  retried
+01:31:56 21/98 C16 122.6 s {'Q5': 'no', 'X2': 'yes', 'X7': 'no', 'Y9': 'no'}  
+01:34:49 22/98 K030 171.6 s {'Q5': 'yes', 'X2': 'yes!', 'X7': 'yes', 'Y9': 'yes!'}  retried
+01:36:58 23/98 K082 127.8 s {'Q5': 'yes!', 'X2': 'yes!', 'X7': 'no', 'Y9': 'no'}  retried
+01:41:02 24/98 K089 242.5 s {'Q5': 'yes', 'X2': 'yes!', 'X7': 'no', 'Y9': 'yes!'}  retried
+01:43:58 25/98 C33 175.4 s {'Q5': 'no', 'X2': 'yes!', 'X7': 'no', 'Y9': 'yes!'}  retried
+01:48:52 26/98 K056 288.5 s {'Q5': 'yes!', 'X2': 'yes', 'X7': 'yes!', 'Y9': 'yes!'}  retried
+01:51:29 27/98 C120 155.9 s {'Q5': 'yes!', 'X2': 'no', 'X7': 'no', 'Y9': 'yes!'}  retried
+01:53:39 28/98 C35 129.1 s {'Q5': 'no', 'X2': 'yes!', 'X7': 'no', 'Y9': 'yes!'}  retried
+01:56:48 29/98 C29 187.6 s {'Q5': 'no', 'X2': 'no', 'X7': 'no', 'Y9': 'yes!'}  retried
+01:58:49 30/98 C39 120.5 s {'Q5': 'no', 'X2': 'yes!', 'X7': 'no', 'Y9': 'yes'}  retried
+02:04:23 31/98 K042 324.0 s {'Q5': 'yes', 'X2': 'yes', 'X7': 'yes!', 'Y9': 'yes!'}  retried
+02:09:29 32/98 K043 297.7 s {'Q5': 'no', 'X2': 'yes', 'X7': 'no', 'Y9': 'yes!'}  retried
+02:11:48 33/98 C34 138.0 s {'Q5': 'yes!', 'X2': 'yes!', 'X7': 'no', 'Y9': 'yes!'}  retried
+02:17:31 34/98 K079 340.0 s {'Q5': 'yes!', 'X2': 'yes', 'X7': 'yes!', 'Y9': 'yes!'}  retried
+02:21:36 35/98 LR09 243.6 s {'Q5': 'yes', 'X2': 'yes!', 'X7': 'no', 'Y9': 'yes!'}  retried
+02:27:44 36/98 K045 366.4 s {'Q5': 'yes', 'X2': 'yes!', 'X7': 'yes', 'Y9': 'yes'}  retried
+02:31:49 37/98 K049 243.0 s {'Q5': 'yes', 'X2': 'yes!', 'X7': 'yes', 'Y9': 'yes!'}  retried
+02:36:03 38/98 K081 252.5 s {'Q5': 'yes', 'X2': 'yes!', 'X7': 'yes!', 'Y9': 'yes!'}  retried
+04:04:58 C119 FAILED JSONDecodeError('Unterminated string starting at: line 1 column 27 (char 26)')
+04:14:35 40/98 K054 567.5 s {'Q5': 'no', 'X2': 'yes!', 'X7': 'no', 'Y9': 'no'}  retried
+04:20:45 41/98 K086 367.4 s {'Q5': 'no', 'X2': 'yes!', 'X7': 'yes', 'Y9': 'yes'}  retried
+04:22:51 42/98 C217 124.9 s {'Q5': 'no', 'X2': 'no', 'X7': 'no', 'Y9': 'yes!'}  retried
+04:24:49 43/98 C210 117.5 s {'Q5': 'no', 'X2': 'yes!', 'X7': 'no', 'Y9': 'yes!'}  retried
+04:27:52 44/98 ML11 181.1 s {'Q5': 'yes!', 'X2': 'yes!', 'X7': 'no', 'Y9': 'yes'}  retried
+04:30:39 45/98 C18 166.2 s {'Q5': 'yes!', 'X2': 'yes!', 'X7': 'no', 'Y9': 'yes!'}  retried
+04:34:30 46/98 K038 229.1 s {'Q5': 'yes', 'X2': 'yes!', 'X7': 'yes', 'Y9': 'yes!'}  retried
+04:38:47 47/98 NE12 255.3 s {'Q5': 'yes', 'X2': 'yes!', 'X7': 'yes', 'Y9': 'no'}  retried
+04:42:59 48/98 K084 249.3 s {'Q5': 'yes', 'X2': 'yes', 'X7': 'yes', 'Y9': 'no'}  
+04:55:40 49/98 K017 758.9 s {'Q5': 'yes', 'X2': 'yes!', 'X7': 'yes!', 'Y9': 'yes'}  retried
+04:59:25 50/98 K012 223.8 s {'Q5': 'yes', 'X2': 'yes', 'X7': 'yes!', 'Y9': 'yes!'}  retried
+05:06:39 51/98 K015 432.2 s {'Q5': 'yes', 'X2': 'no', 'X7': 'no', 'Y9': 'yes!'}  retried
+05:09:27 52/98 C116 165.3 s {'Q5': 'no', 'X2': 'yes!', 'X7': 'no', 'Y9': 'no'}  retried
+05:13:25 53/98 ML16 237.8 s {'Q5': 'yes!', 'X2': 'yes!', 'X7': 'no', 'Y9': 'yes!'}  retried
+05:18:49 54/98 ML06 321.0 s {'Q5': 'yes', 'X2': 'yes!', 'X7': 'yes', 'Y9': 'yes!'}  retried
+05:20:43 55/98 C22 109.5 s {'Q5': 'no', 'X2': 'no', 'X7': 'no', 'Y9': 'no'}  retried
+05:27:21 56/98 K052 396.5 s {'Q5': 'no', 'X2': 'yes!', 'X7': 'yes', 'Y9': 'yes!'}  retried
+05:29:27 57/98 C17 125.3 s {'Q5': 'yes', 'X2': 'yes', 'X7': 'no', 'Y9': 'no'}  
+05:31:37 58/98 C121 128.7 s {'Q5': 'no', 'X2': 'yes!', 'X7': 'no', 'Y9': 'no'}  retried
+05:40:04 59/98 K016 505.2 s {'Q5': 'yes', 'X2': 'yes!', 'X7': 'no', 'Y9': 'yes'}  retried
+05:46:21 60/98 K063 375.2 s {'Q5': 'yes', 'X2': 'yes!', 'X7': 'no', 'Y9': 'yes!'}  retried
+05:54:07 61/98 MLR06 465.4 s {'Q5': 'yes!', 'X2': 'yes', 'X7': 'no', 'Y9': 'yes!'}  retried
+05:55:54 62/98 C117 106.1 s {'Q5': 'no', 'X2': 'yes!', 'X7': 'no', 'Y9': 'no'}  retried
+05:59:51 63/98 ML15 236.5 s {'Q5': 'no', 'X2': 'yes', 'X7': 'yes!', 'Y9': 'yes'}  retried
+06:01:58 64/98 C19 126.5 s {'Q5': 'yes!', 'X2': 'yes!', 'X7': 'no', 'Y9': 'yes!'}  retried
+06:03:35 65/98 C27 96.7 s {'Q5': 'no', 'X2': 'yes!', 'X7': 'no', 'Y9': 'no'}  retried
+06:07:51 66/98 K060 255.0 s {'Q5': 'no', 'X2': 'yes', 'X7': 'no', 'Y9': 'yes!'}  retried
+06:09:20 67/98 C211 87.9 s {'Q5': 'no', 'X2': 'yes', 'X7': 'no', 'Y9': 'no'}  
+06:11:39 68/98 C24 138.8 s {'Q5': 'yes', 'X2': 'yes!', 'X7': 'no', 'Y9': 'yes!'}  retried
+06:17:50 69/98 LR15 369.6 s {'Q5': 'no', 'X2': 'yes!', 'X7': 'no', 'Y9': 'yes!'}  retried
+06:21:11 70/98 K035 199.4 s {'Q5': 'no', 'X2': 'yes!', 'X7': 'yes', 'Y9': 'no'}  retried
+06:23:46 71/98 C11 155.0 s {'Q5': 'yes!', 'X2': 'yes!', 'X7': 'yes!', 'Y9': 'yes!'}  retried
+06:28:30 72/98 K002 283.3 s {'Q5': 'yes!', 'X2': 'yes!', 'X7': 'yes', 'Y9': 'yes!'}  retried
+06:33:18 73/98 C37 286.1 s {'Q5': 'no', 'X2': 'yes!', 'X7': 'no', 'Y9': 'no'}  retried
+06:37:52 74/98 K058 272.7 s {'Q5': 'yes', 'X2': 'yes!', 'X7': 'no', 'Y9': 'yes!'}  retried
+06:39:42 75/98 K047 108.9 s {'Q5': 'yes', 'X2': 'yes!', 'X7': 'yes', 'Y9': 'yes!'}  retried
+06:45:50 76/98 LR03 367.3 s {'Q5': 'yes', 'X2': 'yes', 'X7': 'yes', 'Y9': 'yes!'}  retried
+06:49:43 77/98 K093 232.6 s {'Q5': 'no', 'X2': 'yes!', 'X7': 'yes', 'Y9': 'yes!'}  retried
+06:56:04 78/98 C111 378.9 s {'Q5': 'no', 'X2': 'no', 'X7': 'no', 'Y9': 'no'}  
+06:59:27 79/98 K051 201.8 s {'Q5': 'yes', 'X2': 'yes!', 'X7': 'no', 'Y9': 'yes!'}  retried
+07:01:28 80/98 C21 120.5 s {'Q5': 'no', 'X2': 'no', 'X7': 'no', 'Y9': 'no'}  
+07:03:40 81/98 C113 131.0 s {'Q5': 'no', 'X2': 'yes', 'X7': 'no', 'Y9': 'no'}  retried
+07:06:04 82/98 C216 141.4 s {'Q5': 'yes!', 'X2': 'yes!', 'X7': 'no', 'Y9': 'yes!'}  retried
+07:08:20 83/98 C220 135.4 s {'Q5': 'no', 'X2': 'yes!', 'X7': 'no', 'Y9': 'no'}  retried
+07:11:01 84/98 C213 159.2 s {'Q5': 'no', 'X2': 'yes!', 'X7': 'yes!', 'Y9': 'no'}  retried
+07:13:49 85/98 C36 167.4 s {'Q5': 'no', 'X2': 'yes!', 'X7': 'no', 'Y9': 'yes!'}  retried
+07:15:38 86/98 C110 108.6 s {'Q5': 'yes', 'X2': 'yes', 'X7': 'no', 'Y9': 'no'}  
+07:20:53 87/98 K083 312.7 s {'Q5': 'yes', 'X2': 'yes', 'X7': 'no', 'Y9': 'yes!'}  retried
+07:22:30 88/98 C212 96.6 s {'Q5': 'yes', 'X2': 'yes!', 'X7': 'yes!', 'Y9': 'no'}  retried
+07:24:01 89/98 C112 90.0 s {'Q5': 'no', 'X2': 'yes', 'X7': 'no', 'Y9': 'no'}  
+07:26:27 90/98 C31 145.5 s {'Q5': 'no', 'X2': 'no', 'X7': 'yes', 'Y9': 'yes!'}  retried
+07:30:19 91/98 C14 230.9 s {'Q5': 'no', 'X2': 'no', 'X7': 'yes!', 'Y9': 'no'}  retried
+07:34:02 92/98 K066 222.6 s {'Q5': 'yes', 'X2': 'yes!', 'X7': 'yes', 'Y9': 'yes!'}  retried
+07:37:00 93/98 C115 176.7 s {'Q5': 'no', 'X2': 'yes', 'X7': 'no', 'Y9': 'no'}  retried
+07:40:57 94/98 K073 236.0 s {'Q5': 'no', 'X2': 'yes!', 'X7': 'yes', 'Y9': 'yes!'}  retried
+07:43:59 95/98 K055 180.4 s {'Q5': 'yes', 'X2': 'yes!', 'X7': 'no', 'Y9': 'yes!'}  retried
+07:46:44 96/98 NER02 163.4 s {'Q5': 'yes', 'X2': 'yes!', 'X7': 'yes', 'Y9': 'no'}  retried
+07:48:48 97/98 C38 123.8 s {'Q5': 'no', 'X2': 'no', 'X7': 'yes!', 'Y9': 'yes!'}  retried
+07:50:39 98/98 C118 110.3 s {'Q5': 'no', 'X2': 'yes!', 'X7': 'no', 'Y9': 'yes!'}  retried
+Traceback (most recent call last):
+  File "/Users/warithharchaoui/pineau-rl/study/gemma_reader.py", line 18, in <module>
+    from check_codes import found
+  File "/Users/warithharchaoui/pineau-rl/study/check_codes.py", line 13, in <module>
+    from pineau_rl.grid import load_overrides, segments, validate
+ModuleNotFoundError: No module named 'pineau_rl'
+10:59:06 C119 FAILED JSONDecodeError('Unterminated string starting at: line 1 column 27 (char 26)')

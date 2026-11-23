@@ -1,0 +1,90 @@
+{
+ "id": "NE12",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 73772,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "The source code is available at https://github.com/linkjoker1006/RDC-pymarl.",
+   "page": 1,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "The results demonstrate that the model’s generalizability on SMAC is significantly lower than on MPE, demonstrating particularly robust delay adaptation in SPREAD and REFERENCE tasks where reward stability persists despite increasing delays.",
+   "page": 19,
+   "invalid": true
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "For the baseline algorithm FT-QMIX with RDC enhancement implemented via Transformer compensator, Echo requires an average of 23.8 and 58.3 hours for training on MPE and SMAC, respectively, while Flash needs 10.8 and 34.5 hours correspondingly.",
+   "page": 23,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  }
+ },
+ "retried": true,
+ "seconds": 255.3,
+ "raw": {
+  "Q5": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"The source code is available at https://github.com/linkjoker1006/RDC-pymarl.\",\n  \"page\": 1\n}"
+  ],
+  "X2": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"The results demonstrate that the model’s generalizability on SMAC is significantly lower than on MPE, which indicates that the impact of delay is more pronounced in complex scenarios.\",\n  \"page\": 19\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"The results demonstrate that the model’s generalizability on SMAC is significantly lower than on MPE, demonstrating particularly robust delay adaptation in SPREAD and REFERENCE tasks where reward stability persists despite increasing delays.\",\n  \"page\": 19\n}"
+  ],
+  "X7": [
+   "{\"value\": \"yes\", \"quote\": \"For the baseline algorithm FT-QMIX with RDC enhancement implemented via Transformer compensator, Echo requires an average of 23.8 and 58.3 hours for training on MPE and SMAC, respectively, while Flash needs 10.8 and 34.5 hours correspondingly.\", \"page\": 23}"
+  ],
+  "Y9": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 24853,
+    "eval_count": 51,
+    "total_duration": 225024731375
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 24824,
+    "eval_count": 61,
+    "total_duration": 7267320584
+   },
+   {
+    "prompt_eval_count": 24949,
+    "eval_count": 67,
+    "total_duration": 7295974209
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 24815,
+    "eval_count": 81,
+    "total_duration": 9755874333
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 24860,
+    "eval_count": 19,
+    "total_duration": 4113230500
+   }
+  ]
+ }
+}

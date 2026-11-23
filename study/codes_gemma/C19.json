@@ -1,0 +1,102 @@
+{
+ "id": "C19",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 37710,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "We demonstrate significant performance improvements for agents with time-awareness.",
+   "page": 1,
+   "invalid": true
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "For each task involving PPO, to achieve perfect reproducibility, we used the same 10 seeds (0, 1000, ..., 9000) to initialize the pseudo-random number generators for the agents and environments.",
+   "page": 1,
+   "invalid": true
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We use the OpenAI Baselines (Hesse et al., 2017) implementation of PPO with the hyperparameters reported by Schulman et al. (2017), unless stated otherwise.",
+   "page": 1,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 126.5,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"We empirically show that time-awareness significantly improves the performance of PPO for the time-limited tasks and can sometimes result in interesting behaviors.\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"We demonstrate significant performance improvements for agents with time-awareness.\", \"page\": 1}"
+  ],
+  "X2": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"For each task involving PPO, to achieve perfect reproducibility, we used the same 10 seeds (0, 1000, ..., 9000) to initialize the pseudo-random number generators for the agents and environments.\",\n  \"page\": 1\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"For each task involving PPO, to achieve perfect reproducibility, we used the same 10 seeds (0, 1000, ..., 9000) to initialize the pseudo-random number generators for the agents and environments.\",\n  \"page\": 1\n}"
+  ],
+  "X7": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "Y9": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We use the OpenAI Baselines (Hesse et al., 2017) implementation of PPO with the hyperparameters reported by Schulman et al. (2017), unless stated otherwise.\",\n  \"page\": 1\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We use the OpenAI Baselines (Hesse et al., 2017) implementation of PPO with the hyperparameters reported by Schulman et al. (2017), unless stated otherwise.\",\n  \"page\": 1\n}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 9654,
+    "eval_count": 45,
+    "total_duration": 88138632000
+   },
+   {
+    "prompt_eval_count": 9763,
+    "eval_count": 29,
+    "total_duration": 3369997583
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 9625,
+    "eval_count": 75,
+    "total_duration": 8651796542
+   },
+   {
+    "prompt_eval_count": 9764,
+    "eval_count": 75,
+    "total_duration": 7571259709
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 9616,
+    "eval_count": 19,
+    "total_duration": 3497416958
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 9661,
+    "eval_count": 67,
+    "total_duration": 8233123292
+   },
+   {
+    "prompt_eval_count": 9792,
+    "eval_count": 67,
+    "total_duration": 6970489542
+   }
+  ]
+ }
+}

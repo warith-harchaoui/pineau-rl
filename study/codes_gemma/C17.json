@@ -1,0 +1,84 @@
+{
+ "id": "C17",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 46976,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "Our source code is publicly available at https: //bitbucket.org/RToroIcarte/qrm.",
+   "page": 7,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We report the median performance and percentile 25 to 75 over the runs.",
+   "page": 7,
+   "invalid": false
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  }
+ },
+ "retried": false,
+ "seconds": 125.3,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"Our source code is publicly available at https: //bitbucket.org/RToroIcarte/qrm.\", \"page\": 7}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"We report the median performance and percentile 25 to 75 over the runs.\", \"page\": 7}"
+  ],
+  "X7": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "Y9": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 12354,
+    "eval_count": 40,
+    "total_duration": 112448144958
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 12325,
+    "eval_count": 35,
+    "total_duration": 4329999958
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 12316,
+    "eval_count": 19,
+    "total_duration": 3595091166
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 12361,
+    "eval_count": 19,
+    "total_duration": 3942690250
+   }
+  ]
+ }
+}

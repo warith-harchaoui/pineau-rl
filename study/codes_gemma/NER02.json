@@ -1,0 +1,90 @@
+{
+ "id": "NER02",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 86333,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "Our code is available at https://github.com/NJU-RL/T2DA.",
+   "page": 1,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Comprehensive experiments on MuJoCo and Meta-World benchmarks show that T2DA facilitates high-capacity zero-shot generalization and outperforms various types of baselines.",
+   "page": 1,
+   "invalid": true
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "We train our models on one Nvidia RTX4080 GPU with the Intel Core i9-10900X CPU and 256G RAM.",
+   "page": 22,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  }
+ },
+ "retried": true,
+ "seconds": 163.4,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"Our code is available at https://github.com/NJU-RL/T2DA.\", \"page\": 1}"
+  ],
+  "X2": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"Comprehensive experiments on MuJoCo and Meta-World benchmarks show that T2DA facilitates high-capacity zero-shot generalization and outperforms various types of baselines.\",\n  \"page\": 1\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"Comprehensive experiments on MuJoCo and Meta-World benchmarks show that T2DA facilitates high-capacity zero-shot generalization and outperforms various types of baselines.\",\n  \"page\": 1\n}"
+  ],
+  "X7": [
+   "{\"value\": \"yes\", \"quote\": \"We train our models on one Nvidia RTX4080 GPU with the Intel Core i9-10900X CPU and 256G RAM.\", \"page\": 22}"
+  ],
+  "Y9": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 21845,
+    "eval_count": 37,
+    "total_duration": 144063836125
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 21816,
+    "eval_count": 57,
+    "total_duration": 5003268708
+   },
+   {
+    "prompt_eval_count": 21937,
+    "eval_count": 57,
+    "total_duration": 4818863167
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 21807,
+    "eval_count": 53,
+    "total_duration": 5406951083
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 21852,
+    "eval_count": 19,
+    "total_duration": 3056090625
+   }
+  ]
+ }
+}

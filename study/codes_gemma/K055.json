@@ -1,0 +1,96 @@
+{
+ "id": "K055",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 78641,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "https://github.com/FutureAGI/Xenoverse/tree/main/xenoverse/anymdp",
+   "page": 1,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We further show that the generalization of ICRL potentially comes at the cost of increased task diversity and longer adaptation periods.",
+   "page": 1,
+   "invalid": true
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We further show that the generalization of ICRL potentially comes at the cost of increased task diversity and longer adaptation periods.",
+   "page": 1,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 180.4,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"https://github.com/FutureAGI/Xenoverse/tree/main/xenoverse/anymdp\", \"page\": 1}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"Our results demonstrate that, with a sufficiently large scale of AnyMDP tasks, the proposed model can generalize to tasks that were not considered in the training set through versatile in-context learning paradigms.\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"We further show that the generalization of ICRL potentially comes at the cost of increased task diversity and longer adaptation periods.\", \"page\": 1}"
+  ],
+  "X7": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"Our results demonstrate that, with a sufficiently large scale of AnyMDP tasks, the proposed model can generalize to tasks that were not considered in the training set through versatile in-context learning paradigms.\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"We further show that the generalization of ICRL potentially comes at the cost of increased task diversity and longer adaptation periods.\", \"page\": 1}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 23742,
+    "eval_count": 43,
+    "total_duration": 158488987666
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 23713,
+    "eval_count": 55,
+    "total_duration": 4835227458
+   },
+   {
+    "prompt_eval_count": 23832,
+    "eval_count": 40,
+    "total_duration": 3496509625
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 23704,
+    "eval_count": 19,
+    "total_duration": 3019072875
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 23749,
+    "eval_count": 55,
+    "total_duration": 5530977958
+   },
+   {
+    "prompt_eval_count": 23868,
+    "eval_count": 40,
+    "total_duration": 3526111333
+   }
+  ]
+ }
+}

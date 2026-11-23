@@ -1,0 +1,90 @@
+{
+ "id": "C15",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 54548,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Standard benchmarks like MuJoCo and Atari provide rich settings for experimentation, but the specifics of the underlying environments differ from each other in multiple ways, and hence determining the principles underlying any particular form of sub-optimal behavior is difficult.",
+   "page": 1,
+   "invalid": true
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  }
+ },
+ "retried": true,
+ "seconds": 151.9,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"Standard benchmarks like MuJoCo and Atari provide rich settings for experimentation, but the specifics of the underlying environments differ from each other in multiple ways, and hence determining the principles underlying any particular form of sub-optimal behavior is difficult.\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"Standard benchmarks like MuJoCo and Atari provide rich settings for experimentation, but the specifics of the underlying environments differ from each other in multiple ways, and hence determining the principles underlying any particular form of sub-optimal behavior is difficult.\", \"page\": 1}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ],
+  "Y9": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 16534,
+    "eval_count": 19,
+    "total_duration": 130929373625
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 16505,
+    "eval_count": 63,
+    "total_duration": 7105902042
+   },
+   {
+    "prompt_eval_count": 16632,
+    "eval_count": 63,
+    "total_duration": 6131036667
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 16496,
+    "eval_count": 27,
+    "total_duration": 4027664208
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 16541,
+    "eval_count": 19,
+    "total_duration": 3687307458
+   }
+  ]
+ }
+}

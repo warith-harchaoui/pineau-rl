@@ -1,0 +1,102 @@
+{
+ "id": "C34",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 55044,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "Videos of our experiments: https://sites.google.com/site/mlleavenotrace/",
+   "page": 1,
+   "invalid": true
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Our experiments illustrate that this approach reduces the number of “hard” manual resets required to learn a task.",
+   "page": 6,
+   "invalid": true
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Videos of our experiments: https://sites.google.com/site/mlleavenotrace/",
+   "page": 1,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 138.0,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"Videos of our experiments: https://sites.google.com/site/mlleavenotrace/\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"Videos of our experiments: https://sites.google.com/site/mlleavenotrace/\", \"page\": 1}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"Our experiments illustrate that this approach reduces the number of “hard” manual resets required during learning of a variety of simulated robotic skills.\", \"page\": 6}",
+   "{\"value\": \"yes\", \"quote\": \"Our experiments illustrate that this approach reduces the number of “hard” manual resets required to learn a task.\", \"page\": 6}"
+  ],
+  "X7": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"Videos of our experiments: https://sites.google.com/site/mlleavenotrace/\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"Videos of our experiments: https://sites.google.com/site/mlleavenotrace/\", \"page\": 1}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 13832,
+    "eval_count": 38,
+    "total_duration": 111780865209
+   },
+   {
+    "prompt_eval_count": 13934,
+    "eval_count": 38,
+    "total_duration": 3982675167
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 13803,
+    "eval_count": 43,
+    "total_duration": 5461623167
+   },
+   {
+    "prompt_eval_count": 13910,
+    "eval_count": 38,
+    "total_duration": 4007371833
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 13794,
+    "eval_count": 19,
+    "total_duration": 3480712917
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 13839,
+    "eval_count": 38,
+    "total_duration": 5167358333
+   },
+   {
+    "prompt_eval_count": 13941,
+    "eval_count": 38,
+    "total_duration": 4006793917
+   }
+  ]
+ }
+}

@@ -1,0 +1,102 @@
+{
+ "id": "LR02",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 99118,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "We additionally provide the first example of RL backdoor attacks transferring to real, robotic hardware.",
+   "page": 1,
+   "invalid": true
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We additionally provide the first example of RL backdoor attacks transferring to real, robotic hardware.",
+   "page": 1,
+   "invalid": true
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We additionally provide the first example of RL backdoor attacks transferring to real, robotic hardware.",
+   "page": 1,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 268.2,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"We additionally provide the first example of RL backdoor attacks transferring to real, robotic hardware.\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"We additionally provide the first example of RL backdoor attacks transferring to real, robotic hardware.\", \"page\": 1}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"We additionally provide the first example of RL backdoor attacks transferring to real, robotic hardware.\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"We additionally provide the first example of RL backdoor attacks transferring to real, robotic hardware.\", \"page\": 1}"
+  ],
+  "X7": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"We additionally provide the first example of RL backdoor attacks transferring to real, robotic hardware.\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"We additionally provide the first example of RL backdoor attacks transferring to real, robotic hardware.\", \"page\": 1}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 29224,
+    "eval_count": 34,
+    "total_duration": 242333619625
+   },
+   {
+    "prompt_eval_count": 29322,
+    "eval_count": 34,
+    "total_duration": 3841588417
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 29195,
+    "eval_count": 34,
+    "total_duration": 5014629250
+   },
+   {
+    "prompt_eval_count": 29293,
+    "eval_count": 34,
+    "total_duration": 3899962500
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 29186,
+    "eval_count": 19,
+    "total_duration": 3724597708
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 29231,
+    "eval_count": 34,
+    "total_duration": 5253964875
+   },
+   {
+    "prompt_eval_count": 29329,
+    "eval_count": 34,
+    "total_duration": 4062382916
+   }
+  ]
+ }
+}

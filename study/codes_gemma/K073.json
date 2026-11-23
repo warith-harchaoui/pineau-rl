@@ -1,0 +1,102 @@
+{
+ "id": "K073",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 90170,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We report normalized online regret averaged across the six environments (↓ lower is better). Values are min-max normalized per environment then averaged.",
+   "page": 17,
+   "invalid": true
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "In our implementation, training the diffusion model adds roughly 3–4 GPU hours on a single L40S, and the full SMAC offline phase takes about 3x the wall-clock time of IQL and 2x the wall-clock time of CalQL.",
+   "page": 19,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We plot the performance of SMAC when we use RvS to train and inference the diffusion model vs. when we train the diffusion model without any extra conditioning.",
+   "page": 28,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 236.0,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"We report normalized online regret averaged across the six environments (↓ lower is better). Values are min-max normalized per environment then averaged.\", \"page\": 17}",
+   "{\"value\": \"yes\", \"quote\": \"We report normalized online regret averaged across the six environments (↓ lower is better). Values are min-max normalized per environment then averaged.\", \"page\": 17}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"In our implementation, training the diffusion model adds roughly 3–4 GPU hours on a single L40S, and the full SMAC offline phase takes approximately 3x the wall-clock time of IQL and 2x the wall-clock time of CalQL.\",\n  \"page\": 19\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"In our implementation, training the diffusion model adds roughly 3–4 GPU hours on a single L40S, and the full SMAC offline phase takes about 3x the wall-clock time of IQL and 2x the wall-clock time of CalQL.\",\n  \"page\": 19\n}"
+  ],
+  "Y9": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We plot the performance of SMAC when we use RvS to train and inference the diffusion model vs. when we train the diffusion model without any extra conditioning.\",\n  \"page\": 28\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We plot the performance of SMAC when we use RvS to train and inference the diffusion model vs. when we train the diffusion model without any extra conditioning.\",\n  \"page\": 28\n}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 28687,
+    "eval_count": 19,
+    "total_duration": 200532230375
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 28658,
+    "eval_count": 45,
+    "total_duration": 4842653125
+   },
+   {
+    "prompt_eval_count": 28767,
+    "eval_count": 45,
+    "total_duration": 4045454250
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 28649,
+    "eval_count": 83,
+    "total_duration": 7813432792
+   },
+   {
+    "prompt_eval_count": 28796,
+    "eval_count": 83,
+    "total_duration": 6392204666
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 28694,
+    "eval_count": 58,
+    "total_duration": 6160947167
+   },
+   {
+    "prompt_eval_count": 28816,
+    "eval_count": 58,
+    "total_duration": 5106125958
+   }
+  ]
+ }
+}

@@ -1,0 +1,96 @@
+{
+ "id": "C36",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 54638,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Our experimental results show that, on a range of continuous control tasks, TDMs provide a substantial improvement in efficiency compared to state-of-the-art model-based and model-free methods.",
+   "page": 1,
+   "invalid": true
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We found that the vectorized formulation learns substantially better than the scalar variant.",
+   "page": 13,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 167.4,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"Our experimental results show that, on a range of continuous control tasks, TDMs provide a substantial improvement in efficiency compared to state-of-the-art model-based and model-free methods.\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"Our experimental results show that, on a range of continuous control tasks, TDMs provide a substantial improvement in efficiency compared to state-of-the-art model-based and model-free methods.\", \"page\": 1}"
+  ],
+  "X7": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"We found that the vectorized formulation learns substantially faster than the naı̈ve scalar variant.\", \"page\": 13}",
+   "{\"value\": \"yes\", \"quote\": \"We found that the vectorized formulation learns substantially better than the scalar variant.\", \"page\": 13}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 14375,
+    "eval_count": 19,
+    "total_duration": 139002235709
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 14346,
+    "eval_count": 57,
+    "total_duration": 7937634584
+   },
+   {
+    "prompt_eval_count": 14467,
+    "eval_count": 57,
+    "total_duration": 6599399875
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 14337,
+    "eval_count": 19,
+    "total_duration": 3799312667
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 14382,
+    "eval_count": 36,
+    "total_duration": 5954108750
+   },
+   {
+    "prompt_eval_count": 14482,
+    "eval_count": 32,
+    "total_duration": 4006601625
+   }
+  ]
+ }
+}

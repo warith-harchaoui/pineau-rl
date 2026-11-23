@@ -1,0 +1,84 @@
+{
+ "id": "C110",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 40692,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "Our code-base is made available online1 .",
+   "page": 2,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "In all figures, we show the mean and standard error of the mean across 20 runs using different random seeds",
+   "page": 2,
+   "invalid": false
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  }
+ },
+ "retried": false,
+ "seconds": 108.6,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"Our code-base is made available online1 .\", \"page\": 2}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"In all figures, we show the mean and standard error of the mean across 20 runs using different random seeds\", \"page\": 2}"
+  ],
+  "X7": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "Y9": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 10175,
+    "eval_count": 28,
+    "total_duration": 94572887292
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 10146,
+    "eval_count": 41,
+    "total_duration": 5489736042
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 10137,
+    "eval_count": 19,
+    "total_duration": 3662751375
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 10182,
+    "eval_count": 19,
+    "total_duration": 4165102750
+   }
+  ]
+ }
+}

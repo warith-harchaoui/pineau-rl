@@ -1,0 +1,84 @@
+{
+ "id": "C112",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 40842,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Figure 3 shows the mean and standard deviation of the reward across 5 runs with different random seeds obtained by SOM.",
+   "page": 7,
+   "invalid": false
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  }
+ },
+ "retried": false,
+ "seconds": 90.0,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X2": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"Figure 3 shows the mean and standard deviation of the reward across 5 runs with different random seeds obtained by SOM.\",\n  \"page\": 7\n}"
+  ],
+  "X7": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "Y9": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 11212,
+    "eval_count": 19,
+    "total_duration": 78497660834
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 11183,
+    "eval_count": 49,
+    "total_duration": 5088243792
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 11174,
+    "eval_count": 19,
+    "total_duration": 2668639959
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 11219,
+    "eval_count": 19,
+    "total_duration": 3153432291
+   }
+  ]
+ }
+}

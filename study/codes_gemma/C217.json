@@ -1,0 +1,96 @@
+{
+ "id": "C217",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 41787,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "The value of c has been experimentally set to 2 when learned policy and value are used.",
+   "page": 3,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 124.9,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X2": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X7": [
+   "{\"value\": \"yes\", \"quote\": \"The rest of the paper is organized as follows. Section 2 explains the basic connection tableau setting and introduces the bare prover.\", \"page\": 2}",
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"The value of c has been experimentally set to 2 when learned policy and value are used.\", \"page\": 3}",
+   "{\"value\": \"yes\", \"quote\": \"The value of c has been experimentally set to 2 when learned policy and value are used.\", \"page\": 3}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 12252,
+    "eval_count": 19,
+    "total_duration": 103970219666
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 12223,
+    "eval_count": 19,
+    "total_duration": 3329659834
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 12214,
+    "eval_count": 42,
+    "total_duration": 5555861708
+   },
+   {
+    "prompt_eval_count": 12320,
+    "eval_count": 19,
+    "total_duration": 2483816500
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 12259,
+    "eval_count": 36,
+    "total_duration": 5241377583
+   },
+   {
+    "prompt_eval_count": 12359,
+    "eval_count": 36,
+    "total_duration": 4214997083
+   }
+  ]
+ }
+}

@@ -1,0 +1,96 @@
+{
+ "id": "K078",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 86514,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "Our code can be found at this GitHub Repo.",
+   "page": 1,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Our results show that it can break all known defenses, lower agents’ cumulative reward in various environments by more than 50%, while being stealthier than prior attacks, as shown by lower reconstruction error, Wasserstein-1 distance, and LPIPS, and higher SSIM.",
+   "page": 2,
+   "invalid": true
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Our code can be found at this GitHub Repo.",
+   "page": 1,
+   "invalid": true
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  }
+ },
+ "retried": true,
+ "seconds": 231.4,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"Our code can be found at this GitHub Repo.\", \"page\": 1}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"Our results show that it can break all known defenses, lower agents’ cumulative reward in various environments by more than 50%, while being stealthier than prior attacks, as shown by lower reconstruction error, Wasserstein-1 distance, and LPIPS, and higher SSIM.\", \"page\": 2}",
+   "{\"value\": \"yes\", \"quote\": \"Our results show that it can break all known defenses, lower agents’ cumulative reward in various environments by more than 50%, while being stealthier than prior attacks, as shown by lower reconstruction error, Wasserstein-1 distance, and LPIPS, and higher SSIM.\", \"page\": 2}"
+  ],
+  "X7": [
+   "{\"value\": \"yes\", \"quote\": \"Our code can be found at this GitHub Repo.\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"Our code can be found at this GitHub Repo.\", \"page\": 1}"
+  ],
+  "Y9": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 26011,
+    "eval_count": 27,
+    "total_duration": 204989365333
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 25982,
+    "eval_count": 73,
+    "total_duration": 7598433916
+   },
+   {
+    "prompt_eval_count": 26119,
+    "eval_count": 73,
+    "total_duration": 7079125083
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 25973,
+    "eval_count": 27,
+    "total_duration": 4025374041
+   },
+   {
+    "prompt_eval_count": 26064,
+    "eval_count": 27,
+    "total_duration": 3125104459
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 26018,
+    "eval_count": 19,
+    "total_duration": 3662211542
+   }
+  ]
+ }
+}

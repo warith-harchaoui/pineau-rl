@@ -1,0 +1,102 @@
+{
+ "id": "K058",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 76469,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "The code is available at https://github.com/thu-rllab/ANQ.",
+   "page": 10,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Empirically, ANQ achieves state-of-the-art performance on standard offline RL benchmarks and exhibits strong robustness in scenarios with noisy or limited data.",
+   "page": 1,
+   "invalid": true
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "For the Lagrange multiplier λ, we tune λ within a small set of values {0.1, 5.0} for all tasks.",
+   "page": 25,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 272.7,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"The code is available at https://github.com/thu-rllab/ANQ.\", \"page\": 10}"
+  ],
+  "X2": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"Empirically, ANQ achieves state-of-the-art performance on standard offline RL benchmarks and exhibits strong robustness in scenarios with noisy or limited data.\",\n  \"page\": 1\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"Empirically, ANQ achieves state-of-the-art performance on standard offline RL benchmarks and exhibits strong robustness in scenarios with noisy or limited data.\",\n  \"page\": 1\n}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We conduct experiments to evaluate the performance and properties of the proposed approach ANQ. Experimental details and extended results are provided in Sections C and D.\",\n  \"page\": 23\n}",
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ],
+  "Y9": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"For the Lagrange multiplier, we tune λ within a small set of values {0.1, 5.0} for all tasks.\",\n  \"page\": 25\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"For the Lagrange multiplier λ, we tune λ within a small set of values {0.1, 5.0} for all tasks.\",\n  \"page\": 25\n}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 24325,
+    "eval_count": 38,
+    "total_duration": 232585203125
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 24296,
+    "eval_count": 57,
+    "total_duration": 7243476000
+   },
+   {
+    "prompt_eval_count": 24417,
+    "eval_count": 57,
+    "total_duration": 6606974834
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 24287,
+    "eval_count": 55,
+    "total_duration": 7559939292
+   },
+   {
+    "prompt_eval_count": 24406,
+    "eval_count": 27,
+    "total_duration": 3527578625
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 24332,
+    "eval_count": 54,
+    "total_duration": 7933825375
+   },
+   {
+    "prompt_eval_count": 24450,
+    "eval_count": 55,
+    "total_duration": 6311418417
+   }
+  ]
+ }
+}

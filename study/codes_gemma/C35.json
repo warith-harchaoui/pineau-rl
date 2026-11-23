@@ -1,0 +1,102 @@
+{
+ "id": "C35",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 46470,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Our experiments on MuJoCo tasks show that GPO as a genetic algorithm is able to provide superior performance over the state-of-the-art policy gradient methods and achieves comparable or higher sample efficiency.",
+   "page": 1,
+   "invalid": true
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We also show results with A2C as the policy gradient method for mutation.",
+   "page": 14,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 129.1,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"Published as a conference paper at ICLR 2018\", \"page\": 1}",
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"Our experiments on several continuous control tasks show that GPO as a genetic algorithm is able to provide superior performance over the state-of-the-art policy gradient methods and achieves comparable or higher sample efficiency.\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"Our experiments on MuJoCo tasks show that GPO as a genetic algorithm is able to provide superior performance over the state-of-the-art policy gradient methods and achieves comparable or higher sample efficiency.\", \"page\": 1}"
+  ],
+  "X7": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"Our experiments on several continuous control tasks show that GPO as a genetic algorithm is able to provide superior performance over the state-of-the-art policy gradient methods and achieves comparable or higher sample efficiency.\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"We also show results with A2C as the policy gradient method for mutation.\", \"page\": 14}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 12692,
+    "eval_count": 31,
+    "total_duration": 100794707042
+   },
+   {
+    "prompt_eval_count": 12787,
+    "eval_count": 19,
+    "total_duration": 2365724791
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 12663,
+    "eval_count": 58,
+    "total_duration": 6633786917
+   },
+   {
+    "prompt_eval_count": 12785,
+    "eval_count": 58,
+    "total_duration": 5641960625
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 12654,
+    "eval_count": 19,
+    "total_duration": 3369681875
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 12699,
+    "eval_count": 58,
+    "total_duration": 6747120333
+   },
+   {
+    "prompt_eval_count": 12821,
+    "eval_count": 34,
+    "total_duration": 3518422542
+   }
+  ]
+ }
+}

@@ -1,0 +1,90 @@
+{
+ "id": "C29",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 59342,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We defer the detailed proofs to the supplementary material.",
+   "page": 1,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 187.6,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X2": [
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"We defer the detailed proofs to the supplementary material.\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"We defer the detailed proofs to the supplementary material.\", \"page\": 1}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 21197,
+    "eval_count": 19,
+    "total_duration": 171584343625
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 21168,
+    "eval_count": 27,
+    "total_duration": 4239460375
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 21159,
+    "eval_count": 27,
+    "total_duration": 4122627208
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 21204,
+    "eval_count": 27,
+    "total_duration": 4554245834
+   },
+   {
+    "prompt_eval_count": 21295,
+    "eval_count": 27,
+    "total_duration": 3054404333
+   }
+  ]
+ }
+}

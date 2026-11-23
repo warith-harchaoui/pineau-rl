@@ -1,0 +1,84 @@
+{
+ "id": "C16",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 51714,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Figures 3 and 4 plot the mean test win rate across 20 runs for each method, together with 95% confidence intervals.",
+   "page": 4,
+   "invalid": false
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  }
+ },
+ "retried": false,
+ "seconds": 122.6,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"Figures 3 and 4 plot the mean test win rate across 20 runs for each method, together with 95% confidence intervals.\", \"page\": 4}"
+  ],
+  "X7": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "Y9": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 13891,
+    "eval_count": 19,
+    "total_duration": 109797846208
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 13862,
+    "eval_count": 47,
+    "total_duration": 5659367333
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 13853,
+    "eval_count": 19,
+    "total_duration": 2809673167
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 13898,
+    "eval_count": 19,
+    "total_duration": 3551062708
+   }
+  ]
+ }
+}

@@ -1,0 +1,96 @@
+{
+ "id": "ML11",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 59260,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "Code URL.",
+   "page": 1,
+   "invalid": true
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "RAT matches or outperforms established natural policy gradient methods while offering a simpler implementation and broader applicability, including support for shared actor-critic architectures.",
+   "page": 2,
+   "invalid": true
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We further study sensitivity of RAT to batch size, number of Kaczmarz iterations and damping coefficient λ. The results are presented in Figure 5(b), (c) and (d).",
+   "page": 18,
+   "invalid": false
+  }
+ },
+ "retried": true,
+ "seconds": 181.1,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"Code URL.\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"Code URL.\", \"page\": 1}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"RAT matches or exceeds established natural-gradient methods while remaining simple to implement and compatible with various architectures.\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"RAT matches or outperforms established natural policy gradient methods while offering a simpler implementation and broader applicability, including support for shared actor-critic architectures.\", \"page\": 2}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ],
+  "Y9": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We further study sensitivity of RAT to batch size, number of Kaczmarz iterations and damping coefficient λ. The results are presented in Figure 5(b), (c) and (d).\",\n  \"page\": 18\n}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 18276,
+    "eval_count": 20,
+    "total_duration": 154646499083
+   },
+   {
+    "prompt_eval_count": 18360,
+    "eval_count": 20,
+    "total_duration": 2456073584
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 18247,
+    "eval_count": 37,
+    "total_duration": 5257495541
+   },
+   {
+    "prompt_eval_count": 18348,
+    "eval_count": 44,
+    "total_duration": 4801701542
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 18238,
+    "eval_count": 27,
+    "total_duration": 4264033834
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 18283,
+    "eval_count": 67,
+    "total_duration": 8233001667
+   }
+  ]
+ }
+}

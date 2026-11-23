@@ -1,0 +1,96 @@
+{
+ "id": "LR09",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 90589,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "Source code is available at https://github.com/MinWangcs/WISDOM",
+   "page": 1,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Testing average return on MuJoCo over 6 random seeds.",
+   "page": 24,
+   "invalid": true
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "In Fig. 13 (left), increasing M moderately can filter out task-irrelevant information and improve adaptability.",
+   "page": 25,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 243.6,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"Source code is available at https://github.com/MinWangcs/WISDOM\", \"page\": 1}"
+  ],
+  "X2": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"Testing average performance on Meta-World over 6 random seeds. Our WISDOM achieves rapid convergence and exhibits excellent asymptotic performance.\",\n  \"page\": 9\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"Testing average return on MuJoCo over 6 random seeds.\",\n  \"page\": 24\n}"
+  ],
+  "X7": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "Y9": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"In Fig. 13 (left), increasing M moderately can filter out task-irrelevant information and improve adaptability.\",\n  \"page\": 25\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"In Fig. 13 (left), increasing M moderately can filter out task-irrelevant information and improve adaptability.\",\n  \"page\": 25\n}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 25396,
+    "eval_count": 35,
+    "total_duration": 216240257417
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 25367,
+    "eval_count": 50,
+    "total_duration": 5696423125
+   },
+   {
+    "prompt_eval_count": 25481,
+    "eval_count": 39,
+    "total_duration": 4372732625
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 25358,
+    "eval_count": 19,
+    "total_duration": 3678945083
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 25403,
+    "eval_count": 50,
+    "total_duration": 6665620167
+   },
+   {
+    "prompt_eval_count": 25517,
+    "eval_count": 50,
+    "total_duration": 5314063292
+   }
+  ]
+ }
+}

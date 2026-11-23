@@ -1,0 +1,96 @@
+{
+ "id": "K049",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 79867,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "Code is available at this link.",
+   "page": 1,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Results demonstrate smoother value approximations, more stable training, and improved performance over safe MARL baselines.",
+   "page": 1,
+   "invalid": true
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "We conduct experiments on hardware comprising an Intel(R) Xeon(R) Gold 6254 CPU @ 3.10GHz, four NVIDIA A5000 GPUs and eight NVIDIA A6000 GPUs.",
+   "page": 27,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "The z range for MPE (0–10), moderate in MuJoCo (0–5), and narrow in the didactic task (0–2).",
+   "page": 26,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 243.0,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"Code is available at this link.\", \"page\": 1}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"Results demonstrate smoother value approximations, more stable training, and improved performance over safe MARL baselines, validating the effectiveness and robustness of our method.\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"Results demonstrate smoother value approximations, more stable training, and improved performance over safe MARL baselines.\", \"page\": 1}"
+  ],
+  "X7": [
+   "{\"value\": \"yes\", \"quote\": \"We conduct experiments on hardware comprising an Intel(R) Xeon(R) Gold 6254 CPU @ 3.10GHz, four NVIDIA A5000 GPUs and eight NVIDIA A6000 GPUs.\", \"page\": 27}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"The z range for MPE (0–10), moderate in MuJoCo (0–5), and narrow in the didactic task (0–2).\", \"page\": 26}",
+   "{\"value\": \"yes\", \"quote\": \"The z range for MPE (0–10), moderate in MuJoCo (0–5), and narrow in the didactic task (0–2).\", \"page\": 26}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 24719,
+    "eval_count": 24,
+    "total_duration": 211151329209
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 24690,
+    "eval_count": 46,
+    "total_duration": 5395069208
+   },
+   {
+    "prompt_eval_count": 24800,
+    "eval_count": 37,
+    "total_duration": 4087942291
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 24681,
+    "eval_count": 66,
+    "total_duration": 7943392458
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 24726,
+    "eval_count": 52,
+    "total_duration": 6872901583
+   },
+   {
+    "prompt_eval_count": 24842,
+    "eval_count": 52,
+    "total_duration": 5429997584
+   }
+  ]
+ }
+}

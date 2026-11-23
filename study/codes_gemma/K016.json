@@ -1,0 +1,96 @@
+{
+ "id": "K016",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 147497,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "Code is available at https://github.com/safe-autonomylab/GlucoSim and https://github.com/safeautonomy-lab/GlucoAlg.",
+   "page": 1,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "All reported results are averaged over three random seeds.",
+   "page": 17,
+   "invalid": true
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We evaluate the sensitivity of BA-NODE to the hidden size of the latent dynamics model. As shown in Table 7, performance is relatively stable across hidden sizes, with only moderate variation in MAE, FDE, and RMSE.",
+   "page": 33,
+   "invalid": false
+  }
+ },
+ "retried": true,
+ "seconds": 505.2,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"Code is available at https://github.com/safe-autonomylab/GlucoSim and https://github.com/safeautonomy-lab/GlucoAlg.\", \"page\": 1}"
+  ],
+  "X2": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"All reported results are averaged over three random seeds.\",\n  \"page\": 17\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"All reported results are averaged over three random seeds.\",\n  \"page\": 17\n}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"We train BA-NODE on patient trajectories converted into supervised sequence-to-sequence prediction problems. Each trajectory is segmented into sliding windows consisting of a history context of length T and a prediction horizon of length P .\", \"page\": 33}",
+   "{\"value\": \"yes\", \"quote\": \"We evaluate the sensitivity of BA-NODE to the hidden size of the latent dynamics model. As shown in Table 7, performance is relatively stable across hidden sizes, with only moderate variation in MAE, FDE, and RMSE.\", \"page\": 33}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 45373,
+    "eval_count": 53,
+    "total_duration": 470217023667
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 45344,
+    "eval_count": 36,
+    "total_duration": 5722274542
+   },
+   {
+    "prompt_eval_count": 45444,
+    "eval_count": 36,
+    "total_duration": 4804881750
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 45335,
+    "eval_count": 27,
+    "total_duration": 5270739000
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 45380,
+    "eval_count": 61,
+    "total_duration": 9543079375
+   },
+   {
+    "prompt_eval_count": 45505,
+    "eval_count": 65,
+    "total_duration": 8025886625
+   }
+  ]
+ }
+}

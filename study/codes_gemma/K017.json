@@ -1,0 +1,96 @@
+{
+ "id": "K017",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 182104,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "Code is available at github.com/twni2016/neubay.",
+   "page": 1,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Code is available at github.com/twni2016/neubay.",
+   "page": 1,
+   "invalid": true
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Code is available at github.com/twni2016/neubay.",
+   "page": 1,
+   "invalid": true
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We sweep ηϕ ∈ {3 × 10−7 , 1 × 10−6 , 3 × 10−6 , 1 × 10−5 , 3 × 10−5 } and κ ∈ {0.5, 0.8}.",
+   "page": 36,
+   "invalid": false
+  }
+ },
+ "retried": true,
+ "seconds": 758.9,
+ "raw": {
+  "Q5": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"Code is available at github.com/twni2016/neubay.\",\n  \"page\": 1\n}"
+  ],
+  "X2": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"Code is available at github.com/twni2016/neubay.\",\n  \"page\": 1\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"Code is available at github.com/twni2016/neubay.\",\n  \"page\": 1\n}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"Code is available at github.com/twni2016/neubay.\",\n  \"page\": 1\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"Code is available at github.com/twni2016/neubay.\",\n  \"page\": 1\n}"
+  ],
+  "Y9": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We sweep ηϕ ∈ {3 × 10−7 , 1 × 10−6 , 3 × 10−6 , 1 × 10−5 , 3 × 10−5 } and κ ∈ {0.5, 0.8}.\",\n  \"page\": 36\n}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 64491,
+    "eval_count": 45,
+    "total_duration": 713907925708
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 64462,
+    "eval_count": 45,
+    "total_duration": 7463158166
+   },
+   {
+    "prompt_eval_count": 64571,
+    "eval_count": 45,
+    "total_duration": 6366321625
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 64453,
+    "eval_count": 45,
+    "total_duration": 8029587125
+   },
+   {
+    "prompt_eval_count": 64562,
+    "eval_count": 45,
+    "total_duration": 6371859375
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 64498,
+    "eval_count": 89,
+    "total_duration": 13643079209
+   }
+  ]
+ }
+}

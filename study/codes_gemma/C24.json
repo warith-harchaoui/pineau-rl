@@ -1,0 +1,96 @@
+{
+ "id": "C24",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 50644,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "An implementation of EPG is available at http://github.com/openai/EPG.",
+   "page": 2,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We also demonstrate that EPG’s learned loss can generalize to out-of-distribution test time tasks, and exhibits qualitatively different behavior from other popular metalearning algorithms.",
+   "page": 1,
+   "invalid": true
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We tabulate the hyperparameters for each randomized environment in Table 1 in Section G.",
+   "page": 8,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 138.8,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"An implementation of EPG is available at http://github.com/openai/EPG.\", \"page\": 2}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"Empirical results show that our evolved policy gradient algorithm (EPG) achieves faster learning on several randomized environments compared to an off-the-shelf policy gradient method.\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"We also demonstrate that EPG’s learned loss can generalize to out-of-distribution test time tasks, and exhibits qualitatively different behavior from other popular metalearning algorithms.\", \"page\": 1}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ],
+  "Y9": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We tabulate the hyperparameters for each randomized environment in Table 1 in Section G.\",\n  \"page\": 8\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We tabulate the hyperparameters for each randomized environment in Table 1 in Section G.\",\n  \"page\": 8\n}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 12295,
+    "eval_count": 36,
+    "total_duration": 111436099042
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 12266,
+    "eval_count": 50,
+    "total_duration": 6146858542
+   },
+   {
+    "prompt_eval_count": 12380,
+    "eval_count": 52,
+    "total_duration": 5587761584
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 12257,
+    "eval_count": 27,
+    "total_duration": 4354965458
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 12302,
+    "eval_count": 42,
+    "total_duration": 6079524750
+   },
+   {
+    "prompt_eval_count": 12408,
+    "eval_count": 42,
+    "total_duration": 4624108791
+   }
+  ]
+ }
+}

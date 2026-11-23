@@ -1,0 +1,90 @@
+{
+ "id": "C220",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 34123,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "For any ϵ > 0, there exists a policy ˆy 2 {ˆy1 , ..., ˆyN } such that J(ˆy)  J(y⇤) + T ˜N + Õ(1) with probability at least 1 − 2max T 2 log(1/ϵ).",
+   "page": 3,
+   "invalid": true
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  }
+ },
+ "retried": true,
+ "seconds": 135.4,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X2": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"For any ϵ > 0, there exists a policy ˆy 2 {ˆy1 , ..., ˆyN } such that J(ˆy)  J(y⇤) + T ˜N + Õ(1) with probability at least 1 − 2max T 2 log(1/ϵ).\",\n  \"page\": 3\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"For any ϵ > 0, there exists a policy ˆy 2 {ˆy1 , ..., ˆyN } such that J(ˆy)  J(y⇤) + T ˜N + Õ(1) with probability at least 1 − 2max T 2 log(1/ϵ).\",\n  \"page\": 3\n}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ],
+  "Y9": [
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 10418,
+    "eval_count": 19,
+    "total_duration": 102955729375
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 10389,
+    "eval_count": 98,
+    "total_duration": 12199616833
+   },
+   {
+    "prompt_eval_count": 10551,
+    "eval_count": 98,
+    "total_duration": 10832511208
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 10380,
+    "eval_count": 27,
+    "total_duration": 4472216250
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 10425,
+    "eval_count": 27,
+    "total_duration": 4836186708
+   }
+  ]
+ }
+}

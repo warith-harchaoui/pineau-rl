@@ -1,0 +1,96 @@
+{
+ "id": "K066",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 93952,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "Code available at: https://github.com/theovincent/iS-DQN",
+   "page": 1,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We report the AUC of each algorithm, normalized by the AUC of the target-based approach, to facilitate comparison.",
+   "page": 17,
+   "invalid": true
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "We used GreenAlgorithms (Lannelongue et al., 2021) and ML CO2 Impact (Lacoste et al., 2019) to compute the carbon emission related to the production of the electricity used for the computations of our experiments.",
+   "page": 11,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "Interestingly, increasing the number of heads to learn 49 Bellman iterations in parallel is beneficial in this scenario.",
+   "page": 6,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 222.6,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"Code available at: https://github.com/theovincent/iS-DQN\", \"page\": 1}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"We report the AUC of each algorithm, normalized by the AUC of the target-based approach, to facilitate comparison.\", \"page\": 17}",
+   "{\"value\": \"yes\", \"quote\": \"We report the AUC of each algorithm, normalized by the AUC of the target-based approach, to facilitate comparison.\", \"page\": 17}"
+  ],
+  "X7": [
+   "{\"value\": \"yes\", \"quote\": \"We used GreenAlgorithms (Lannelongue et al., 2021) and ML CO2 Impact (Lacoste et al., 2019) to compute the carbon emission related to the production of the electricity used for the computations of our experiments.\", \"page\": 11}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"We note that the number of heads can be increased at minimal cost.\", \"page\": 5}",
+   "{\"value\": \"yes\", \"quote\": \"Interestingly, increasing the number of heads to learn 49 Bellman iterations in parallel is beneficial in this scenario.\", \"page\": 6}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 27279,
+    "eval_count": 37,
+    "total_duration": 197938988917
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 27250,
+    "eval_count": 41,
+    "total_duration": 4397527334
+   },
+   {
+    "prompt_eval_count": 27355,
+    "eval_count": 41,
+    "total_duration": 3992931333
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 27241,
+    "eval_count": 73,
+    "total_duration": 7342678709
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 27286,
+    "eval_count": 31,
+    "total_duration": 4230400042
+   },
+   {
+    "prompt_eval_count": 27381,
+    "eval_count": 40,
+    "total_duration": 3796228542
+   }
+  ]
+ }
+}

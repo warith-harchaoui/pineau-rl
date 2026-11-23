@@ -1,0 +1,90 @@
+{
+ "id": "C113",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 39872,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Figure 1a compares SVRPG with G(PO)MDP on a continuous variant of the classical Cart-pole task, which is a 2D balancing task. Despite using more trajectories on average for each parameter update, our algorithm shows faster convergence, which can be ascribed to the better quality of updates due to variance reduction.",
+   "page": 7,
+   "invalid": false
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  }
+ },
+ "retried": true,
+ "seconds": 131.0,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"Figure 1a compares SVRPG with G(PO)MDP on a continuous variant of the classical Cart-pole task, which is a 2D balancing task.\", \"page\": 7}",
+   "{\"value\": \"yes\", \"quote\": \"Figure 1a compares SVRPG with G(PO)MDP on a continuous variant of the classical Cart-pole task, which is a 2D balancing task. Despite using more trajectories on average for each parameter update, our algorithm shows faster convergence, which can be ascribed to the better quality of updates due to variance reduction.\", \"page\": 7}"
+  ],
+  "X7": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "Y9": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 11157,
+    "eval_count": 19,
+    "total_duration": 105760705542
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 11128,
+    "eval_count": 51,
+    "total_duration": 7319555834
+   },
+   {
+    "prompt_eval_count": 11243,
+    "eval_count": 83,
+    "total_duration": 9555150042
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 11119,
+    "eval_count": 19,
+    "total_duration": 3142195500
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 11164,
+    "eval_count": 19,
+    "total_duration": 4302131917
+   }
+  ]
+ }
+}

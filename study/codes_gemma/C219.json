@@ -1,0 +1,84 @@
+{
+ "id": "C219",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 32206,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "Code for Krazy World available at: https://github.com/bstadie/krazyworld",
+   "page": 1,
+   "invalid": false
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  }
+ },
+ "retried": false,
+ "seconds": 75.5,
+ "raw": {
+  "Q5": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"Code for Krazy World available at: https://github.com/bstadie/krazyworld\",\n  \"page\": 1\n}"
+  ],
+  "X2": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ],
+  "Y9": [
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 8089,
+    "eval_count": 46,
+    "total_duration": 64108756500
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 8060,
+    "eval_count": 19,
+    "total_duration": 2642885333
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 8051,
+    "eval_count": 27,
+    "total_duration": 3663397875
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 8096,
+    "eval_count": 27,
+    "total_duration": 4070050875
+   }
+  ]
+ }
+}

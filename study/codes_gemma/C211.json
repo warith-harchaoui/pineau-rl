@@ -1,0 +1,84 @@
+{
+ "id": "C211",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 30405,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "The Bayesian approximation of the Q-function is represented by two surfaces that define 95%-confidence intervals for the expected return.",
+   "page": 8,
+   "invalid": false
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  }
+ },
+ "retried": false,
+ "seconds": 87.9,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X2": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"The Bayesian approximation of the Q-function is represented by two surfaces that define 95%-confidence intervals for the expected return.\",\n  \"page\": 8\n}"
+  ],
+  "X7": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "Y9": [
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 8473,
+    "eval_count": 19,
+    "total_duration": 73148002917
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 8444,
+    "eval_count": 51,
+    "total_duration": 6476386209
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 8435,
+    "eval_count": 19,
+    "total_duration": 2969265209
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 8480,
+    "eval_count": 27,
+    "total_duration": 4545389709
+   }
+  ]
+ }
+}

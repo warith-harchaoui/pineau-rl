@@ -1,0 +1,102 @@
+{
+ "id": "C216",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 45470,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "Videos of our method can be found at sites.google.com/site/visualrlwithimaginedgoals",
+   "page": 1,
+   "invalid": true
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We see in Figure 3 that our method can efficiently learn policies from visual inputs to perform simulated reaching and pushing, without access to the object state.",
+   "page": 7,
+   "invalid": true
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We also propose a retroactive goal relabeling scheme to further improve the sample-efficiency of our method.",
+   "page": 1,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 141.4,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"Videos of our method in simulated and real-world environments can be found at https://sites.google.com/site/visualrlwithimaginedgoals/\", \"page\": 2}",
+   "{\"value\": \"yes\", \"quote\": \"Videos of our method can be found at sites.google.com/site/visualrlwithimaginedgoals\", \"page\": 1}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"We see in Figure 3 that our method can efficiently learn policies from visual inputs to perform simulated reaching and pushing, without access to the object state.\", \"page\": 7}",
+   "{\"value\": \"yes\", \"quote\": \"We see in Figure 3 that our method can efficiently learn policies from visual inputs to perform simulated reaching and pushing, without access to the object state.\", \"page\": 7}"
+  ],
+  "X7": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"We also propose a retroactive goal relabeling scheme to further improve the sample-efficiency of our method.\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"We also propose a retroactive goal relabeling scheme to further improve the sample-efficiency of our method.\", \"page\": 1}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 10985,
+    "eval_count": 49,
+    "total_duration": 108488999000
+   },
+   {
+    "prompt_eval_count": 11098,
+    "eval_count": 40,
+    "total_duration": 4906520083
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 10956,
+    "eval_count": 47,
+    "total_duration": 6959784042
+   },
+   {
+    "prompt_eval_count": 11067,
+    "eval_count": 47,
+    "total_duration": 5734413625
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 10947,
+    "eval_count": 19,
+    "total_duration": 3835594709
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 10992,
+    "eval_count": 38,
+    "total_duration": 6268449375
+   },
+   {
+    "prompt_eval_count": 11094,
+    "eval_count": 38,
+    "total_duration": 5036452834
+   }
+  ]
+ }
+}

@@ -1,0 +1,90 @@
+{
+ "id": "LR12",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 76954,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "This paper introduces a new algorithm, named GAS. A clear theoretical explanation of GAS is illustrated in sections A and B. The clear pseudo code is shown in algorithm 1. Detailed experiment settings, including hyperparameters, are shown in section E. The experimental code is available at https://github.com/Ziffer-byakuya/GAS.",
+   "page": 14,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Empirical results validate the effectiveness of GAS, demonstrating superior performance in balancing reward maximization and constraint satisfaction compared to existing methods.",
+   "page": 1,
+   "invalid": true
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "We run all the experiments and all the baselines with:\n1. GPT version: NVIDIA GeForce RTX 3080.\n2. CPU version: Intel(R) Xeon(R) Platinum 8375C CPU @ 2.90GHz.",
+   "page": 36,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "In fig. 10, GAS is robust to the dataset reshape threshold when q% ≤ 40% and is sensitive when q% is extremely large.",
+   "page": 31,
+   "invalid": false
+  }
+ },
+ "retried": true,
+ "seconds": 284.2,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"This paper introduces a new algorithm, named GAS. A clear theoretical explanation of GAS is illustrated in sections A and B. The clear pseudo code is shown in algorithm 1. Detailed experiment settings, including hyperparameters, are shown in section E. The experimental code is available at https://github.com/Ziffer-byakuya/GAS.\", \"page\": 14}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"Empirical results validate the effectiveness of GAS, demonstrating superior performance in balancing reward maximization and constraint satisfaction compared to existing methods.\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"Empirical results validate the effectiveness of GAS, demonstrating superior performance in balancing reward maximization and constraint satisfaction compared to existing methods.\", \"page\": 1}"
+  ],
+  "X7": [
+   "{\"value\": \"yes\", \"quote\": \"We run all the experiments and all the baselines with:\\n1. GPT version: NVIDIA GeForce RTX 3080.\\n2. CPU version: Intel(R) Xeon(R) Platinum 8375C CPU @ 2.90GHz.\", \"page\": 36}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"In fig. 10, GAS is robust to the dataset reshape threshold when q% ≤ 40% and is sensitive when q% is extremely large.\", \"page\": 31}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 29985,
+    "eval_count": 87,
+    "total_duration": 257595103584
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 29956,
+    "eval_count": 41,
+    "total_duration": 4839297667
+   },
+   {
+    "prompt_eval_count": 30061,
+    "eval_count": 41,
+    "total_duration": 4479128292
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 29947,
+    "eval_count": 75,
+    "total_duration": 8746545834
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 29992,
+    "eval_count": 51,
+    "total_duration": 6771194750
+   }
+  ]
+ }
+}

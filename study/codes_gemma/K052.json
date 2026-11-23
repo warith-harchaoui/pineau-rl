@@ -1,0 +1,96 @@
+{
+ "id": "K052",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 121459,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Table 1 summarizes the evaluation results across FR, PG, PI, and FT, with BKS identified among all methods.",
+   "page": 6,
+   "invalid": true
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "We conducted all evaluations under identical configurations. The evaluation machine is equipped with two AMD EPYC 7302 @ 3.0GHz, 2048GB RAM, and four NVIDIA A100 GPUs.",
+   "page": 28,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We conducted an additional experiment to evaluate the robustness of RL-SPH to changes in distribution.",
+   "page": 26,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 396.5,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"We denote RL-SPH initialized with LP as RL-SPH(LP), and RL-SPH initialized with a randomly generated solution as RL-SPH(Random).\", \"page\": 6}",
+   "{\"value\": \"yes\", \"quote\": \"Table 1 summarizes the evaluation results across FR, PG, PI, and FT, with BKS identified among all methods.\", \"page\": 6}"
+  ],
+  "X7": [
+   "{\"value\": \"yes\", \"quote\": \"We conducted all evaluations under identical configurations. The evaluation machine is equipped with two AMD EPYC 7302 @ 3.0GHz, 2048GB RAM, and four NVIDIA A100 GPUs.\", \"page\": 28}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"We also introduce ILP-GT, a Graph Transformer specifically designed for ILP to effectively model long-range dependencies between variables (see Appendix D.4).\", \"page\": 5}",
+   "{\"value\": \"yes\", \"quote\": \"We conducted an additional experiment to evaluate the robustness of RL-SPH to changes in distribution.\", \"page\": 26}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 37074,
+    "eval_count": 19,
+    "total_duration": 360417089416
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 37045,
+    "eval_count": 54,
+    "total_duration": 8236827250
+   },
+   {
+    "prompt_eval_count": 37163,
+    "eval_count": 42,
+    "total_duration": 5301732250
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 37036,
+    "eval_count": 66,
+    "total_duration": 9232029791
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 37081,
+    "eval_count": 50,
+    "total_duration": 7511564208
+   },
+   {
+    "prompt_eval_count": 37195,
+    "eval_count": 37,
+    "total_duration": 4854029291
+   }
+  ]
+ }
+}

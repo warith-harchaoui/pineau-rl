@@ -1,0 +1,90 @@
+{
+ "id": "K043",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 97105,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Results are averaged over three seeds, and the shade represents the standard deviation.",
+   "page": 33,
+   "invalid": false
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We substantiate that the uncertainty-aware regularization is crucial to the outperformance of CDRL over classical RL by varying ϵ in the return density decomposition.",
+   "page": 30,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 297.7,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"Results are averaged over three seeds, and the shade represents the standard deviation.\", \"page\": 33}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ],
+  "Y9": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We substantiate that the decomposed uncertainty-aware entropy regularization, derived in Eq. 29, plays a crucial role in the empirical advantage of CDRL over classical RL by varying ϵ in the return density decomposition.\",\n  \"page\": 30\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We substantiate that the uncertainty-aware regularization is crucial to the outperformance of CDRL over classical RL by varying ϵ in the return density decomposition.\",\n  \"page\": 30\n}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 30906,
+    "eval_count": 19,
+    "total_duration": 265007012125
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 30877,
+    "eval_count": 33,
+    "total_duration": 4932793750
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 30868,
+    "eval_count": 27,
+    "total_duration": 3583827958
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 30913,
+    "eval_count": 69,
+    "total_duration": 8739841083
+   },
+   {
+    "prompt_eval_count": 31046,
+    "eval_count": 56,
+    "total_duration": 6103629500
+   }
+  ]
+ }
+}

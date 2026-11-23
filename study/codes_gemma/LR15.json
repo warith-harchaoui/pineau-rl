@@ -1,0 +1,96 @@
+{
+ "id": "LR15",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 90574,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We study distributed reinforcement learning (RL) with policy gradient methods under asynchronous and parallel computations and communications.",
+   "page": 1,
+   "invalid": true
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We defer details, parameters, and additional experiments to Section H.",
+   "page": 32,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 369.6,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"Our results are further corroborated by experiments, showing that our methods significantly outperform prior approaches.\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"We study distributed reinforcement learning (RL) with policy gradient methods under asynchronous and parallel computations and communications.\", \"page\": 1}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"We defer details, parameters, and additional experiments to Section H.\", \"page\": 32}",
+   "{\"value\": \"yes\", \"quote\": \"We defer details, parameters, and additional experiments to Section H.\", \"page\": 32}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 35031,
+    "eval_count": 19,
+    "total_duration": 344399386375
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 35002,
+    "eval_count": 34,
+    "total_duration": 5733934750
+   },
+   {
+    "prompt_eval_count": 35100,
+    "eval_count": 37,
+    "total_duration": 4712000625
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 34993,
+    "eval_count": 27,
+    "total_duration": 4878270125
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 35038,
+    "eval_count": 31,
+    "total_duration": 5840422791
+   },
+   {
+    "prompt_eval_count": 35133,
+    "eval_count": 31,
+    "total_duration": 4008334375
+   }
+  ]
+ }
+}

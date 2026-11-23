@@ -1,0 +1,96 @@
+{
+ "id": "K021",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 68755,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "To enable immediate verification of our results, we provide the following: Pre-trained Models: Trained policy weights demonstrating reported performance. Evaluation Scripts: Evaluation protocols enabling exact reproduction of reported metrics. Availability: Anonymized resources available during review at: https://github.com/geometric-rl-anonymous/Geometric-Action-Control-for-Reproducibility",
+   "page": 19,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We report mean episodic returns ± standard deviation.",
+   "page": 1,
+   "invalid": false
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "While this default r = 2.5 works robustly across diverse tasks, we find specific environments like Ant-v4 benefit from adjusted scaling (r = 1.0) for finer multi-leg control.",
+   "page": 6,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 168.1,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"We provide the following: Pre-trained Models: Trained policy weights demonstrating reported performance. Evaluation Scripts: Evaluation protocols enabling exact reproduction of reported metrics.\", \"page\": 19}",
+   "{\"value\": \"yes\", \"quote\": \"To enable immediate verification of our results, we provide the following: Pre-trained Models: Trained policy weights demonstrating reported performance. Evaluation Scripts: Evaluation protocols enabling exact reproduction of reported metrics. Availability: Anonymized resources available during review at: https://github.com/geometric-rl-anonymous/Geometric-Action-Control-for-Reproducibility\", \"page\": 19}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"We report mean episodic returns ± standard deviation.\", \"page\": 1}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ],
+  "Y9": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We introduce a fixed radius r for principled rescaling. The default r = 2.5 works robustly across diverse tasks\",\n  \"page\": 6\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"While this default r = 2.5 works robustly across diverse tasks, we find specific environments like Ant-v4 benefit from adjusted scaling (r = 1.0) for finer multi-leg control.\",\n  \"page\": 6\n}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 17405,
+    "eval_count": 47,
+    "total_duration": 138474342959
+   },
+   {
+    "prompt_eval_count": 17516,
+    "eval_count": 90,
+    "total_duration": 8501474000
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 17376,
+    "eval_count": 26,
+    "total_duration": 3315942291
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 17367,
+    "eval_count": 27,
+    "total_duration": 4016023709
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 17412,
+    "eval_count": 50,
+    "total_duration": 6264646208
+   },
+   {
+    "prompt_eval_count": 17526,
+    "eval_count": 69,
+    "total_duration": 6660703834
+   }
+  ]
+ }
+}

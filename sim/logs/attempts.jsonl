@@ -443,3 +443,12 @@
 {"job": "dose-crossq-Swimmer-v5-17", "attempt": 1, "start": "2026-11-19 19:25:43", "end": "2026-11-19 19:26:02", "exit": 0, "sha256": "9bbd6c9d072f87d14f4960dcfa053af8d4f22051bef8c3dbfe3141331708985d"}
 {"job": "dose-crossq-Swimmer-v5-18", "attempt": 1, "start": "2026-11-19 19:26:00", "end": "2026-11-19 19:26:19", "exit": 0, "sha256": "978528d0e4d55ffc1046be215cd9e2e792e283b1b5ea449f266ffca20d22bb0f"}
 {"job": "dose-crossq-Swimmer-v5-19", "attempt": 1, "start": "2026-11-19 19:26:02", "end": "2026-11-19 19:26:19", "exit": 0, "sha256": "f0a33dbcb03db7ac13ab85881fdc97ecb1beaf3509fdc05e0cd491839e2af759"}
+{"job": "train-sac_rerun-Hopper-v5-0", "attempt": 1, "start": "2026-11-22 00:01:23", "end": "2026-11-22 01:23:39", "exit": 0, "sha256": "98c56a22f0a26a877bbc7ac895f203cbf8b66a8738841afbc28e416126288c98"}
+{"job": "train-sac_rerun-Hopper-v5-1", "attempt": 1, "start": "2026-11-22 01:23:40", "end": "2026-11-22 03:58:30", "exit": 0, "sha256": "4369d526a35189edef8a3a7683810767157bbd9169e4cd829289b7f70da6cb8b"}
+{"job": "train-crossq_rerun-Walker2d-v5-0", "end": "2026-11-22 05:22:01", "stopped_by": "watchdog", "free_gb": 6, "swap_growth_mb": -127}
+{"job": "train-ppo_sb3_zoog99-Hopper-v4-0", "end": "2026-11-22 05:22:07", "stopped_by": "watchdog", "free_gb": 6, "swap_growth_mb": -127}
+{"job": "train-ppo_sb3_zoog99-Hopper-v4-0", "attempt": 2, "start": "2026-11-22 11:37:47", "end": "2026-11-22 12:10:49", "exit": 0, "sha256": "586896ee8c47da300c25fc1eb1691e74f407828772b68fa21ea8b43b665e7dc5"}
+{"job": "train-ppo_sb3_zoog99-Hopper-v4-1", "attempt": 1, "start": "2026-11-22 12:10:49", "end": "2026-11-22 12:35:26", "exit": 0, "sha256": "ce0b3da3e18b391ce47200017fc9818b528cdc99824a833740faf091cc5fb6c1"}
+{"job": "train-ppo_sb3_zoog99-Hopper-v4-2", "attempt": 1, "start": "2026-11-22 12:35:26", "end": "2026-11-22 12:58:39", "exit": 0, "sha256": "3800a63838b249f4be25c47d791eaa48f48e2ed9f9723de05e687320212b81f7"}
+{"job": "train-crossq_rerun-Walker2d-v5-0", "end": "2026-11-22 13:18:09", "stopped_by": "watchdog", "free_gb": 9, "swap_growth_mb": 14161}
+{"job": "train-ppo_sb3_zoog99-Hopper-v4-3", "end": "2026-11-22 13:18:12", "stopped_by": "watchdog", "free_gb": 9, "swap_growth_mb": 14161}

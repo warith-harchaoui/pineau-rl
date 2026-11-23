@@ -1,0 +1,102 @@
+{
+ "id": "K054",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 145747,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We run two experiments to test our theoretical results. The first experiment seeks to collect data on the perturbations used by the adversary as well as the changes in the victim learning algorithm’s policy due to the reward poisoning attack.",
+   "page": 43,
+   "invalid": true
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  }
+ },
+ "retried": true,
+ "seconds": 567.5,
+ "raw": {
+  "Q5": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"Proceedings of the 43 rd International Conference on Machine Learning, Seoul, South Korea. PMLR 306, 2026. Copyright 2026 by the author(s).\",\n  \"page\": 1\n}",
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"We ran two experiments to test our theoretical results. The first experiment seeks to collect data on the perturbations used by the adversary as well as the changes in the victim learning algorithm’s policy due to the reward poisoning attack.\", \"page\": 43}",
+   "{\"value\": \"yes\", \"quote\": \"We run two experiments to test our theoretical results. The first experiment seeks to collect data on the perturbations used by the adversary as well as the changes in the victim learning algorithm’s policy due to the reward poisoning attack.\", \"page\": 43}"
+  ],
+  "X7": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"We also test our results on the FrozenLake-8x8 tabular MDP environment. We use CTRL to obtain linear MDP representations for these environments.\", \"page\": 1}",
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 51855,
+    "eval_count": 69,
+    "total_duration": 531466921000
+   },
+   {
+    "prompt_eval_count": 51988,
+    "eval_count": 27,
+    "total_duration": 3785426375
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 51826,
+    "eval_count": 62,
+    "total_duration": 9159203792
+   },
+   {
+    "prompt_eval_count": 51952,
+    "eval_count": 62,
+    "total_duration": 7675820625
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 51817,
+    "eval_count": 19,
+    "total_duration": 4461825083
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 51862,
+    "eval_count": 46,
+    "total_duration": 7898525916
+   },
+   {
+    "prompt_eval_count": 51972,
+    "eval_count": 19,
+    "total_duration": 3014463667
+   }
+  ]
+ }
+}

@@ -1,0 +1,1 @@
+{"model": "llama1_c7", "task": "mul2", "split": "ALL[300:450]", "device": "mps", "greedy": 0.66, "greedy512": 0.66, "pass1": 0.2375, "pass8": 0.72, "truncated": 0.014166666666666666, "truncated_greedy512": 0.0, "finished": 0.2400676246830093, "cut_right": 1, "mean_len": 84.2675, "n_items": 150}

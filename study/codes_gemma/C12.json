@@ -1,0 +1,96 @@
+{
+ "id": "C12",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 46954,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "The full code for VaST can be found at https://github.com/danecor/VaST./",
+   "page": 2,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We compared the performance of VaST against two recently published sample–efficient model–free approaches: Neural Episodic Control (NEC) (Pritzel et al., 2017) and Prioritized Double–DQN (Schaul et al., 2015).",
+   "page": 2,
+   "invalid": true
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We used a latent dimensionality of d = 32 unless otherwise stated.",
+   "page": 6,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 123.3,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"The full code for VaST can be found at https://github.com/danecor/VaST./\", \"page\": 2}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"We show how VaST can rapidly learn to maximize reward in tasks like 3D navigation and efficiently adapt to sudden changes in rewards or transition probabilities.\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"We compared the performance of VaST against two recently published sample–efficient model–free approaches: Neural Episodic Control (NEC) (Pritzel et al., 2017) and Prioritized Double–DQN (Schaul et al., 2015).\", \"page\": 2}"
+  ],
+  "X7": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"We used a latent dimensionality of d = 32 unless otherwise stated.\", \"page\": 6}",
+   "{\"value\": \"yes\", \"quote\": \"We used a latent dimensionality of d = 32 unless otherwise stated.\", \"page\": 6}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 13061,
+    "eval_count": 41,
+    "total_duration": 99956095791
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 13032,
+    "eval_count": 47,
+    "total_duration": 4810650792
+   },
+   {
+    "prompt_eval_count": 13143,
+    "eval_count": 76,
+    "total_duration": 6870324958
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 13023,
+    "eval_count": 19,
+    "total_duration": 3218396917
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 13068,
+    "eval_count": 32,
+    "total_duration": 4277761417
+   },
+   {
+    "prompt_eval_count": 13164,
+    "eval_count": 32,
+    "total_duration": 3311731958
+   }
+  ]
+ }
+}

@@ -1,0 +1,84 @@
+{
+ "id": "C111",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 103832,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  }
+ },
+ "retried": false,
+ "seconds": 378.9,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X2": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ],
+  "Y9": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 35649,
+    "eval_count": 19,
+    "total_duration": 364397008209
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 35620,
+    "eval_count": 19,
+    "total_duration": 4402416334
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 35611,
+    "eval_count": 27,
+    "total_duration": 5228887250
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 35656,
+    "eval_count": 19,
+    "total_duration": 4793782750
+   }
+  ]
+ }
+}

@@ -1,0 +1,90 @@
+{
+ "id": "C117",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 35543,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "In Tab. 1, we report the results in an independent testing environment named Standard (see supplementary materials for its detailed description).",
+   "page": 1,
+   "invalid": true
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  }
+ },
+ "retried": true,
+ "seconds": 106.1,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X2": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"In Tab. 1, we report the results in an independent testing environment named Standard (see supplementary materials for its detailed description).\",\n  \"page\": 7\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"In Tab. 1, we report the results in an independent testing environment named Standard (see supplementary materials for its detailed description).\",\n  \"page\": 1\n}"
+  ],
+  "X7": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "Y9": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 9734,
+    "eval_count": 19,
+    "total_duration": 86884296750
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 9705,
+    "eval_count": 52,
+    "total_duration": 6475535083
+   },
+   {
+    "prompt_eval_count": 9821,
+    "eval_count": 52,
+    "total_duration": 5421678833
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 9696,
+    "eval_count": 19,
+    "total_duration": 3496363125
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 9741,
+    "eval_count": 19,
+    "total_duration": 3724843584
+   }
+  ]
+ }
+}

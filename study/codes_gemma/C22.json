@@ -1,0 +1,90 @@
+{
+ "id": "C22",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 37637,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  }
+ },
+ "retried": true,
+ "seconds": 109.5,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X2": [
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We conducted experiments on various synthetic and real data and showed that our approach outperforms the state-of-the-art regarding both data description and computational efficiency.\",\n  \"page\": 1\n}",
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ],
+  "Y9": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 10587,
+    "eval_count": 19,
+    "total_duration": 91070878000
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 10558,
+    "eval_count": 27,
+    "total_duration": 4231659000
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 10549,
+    "eval_count": 56,
+    "total_duration": 7020096042
+   },
+   {
+    "prompt_eval_count": 10669,
+    "eval_count": 27,
+    "total_duration": 3269408583
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 10594,
+    "eval_count": 19,
+    "total_duration": 3885366500
+   }
+  ]
+ }
+}

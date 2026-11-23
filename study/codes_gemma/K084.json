@@ -1,0 +1,84 @@
+{
+ "id": "K084",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 89541,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "FastSVERL code is available at: https://github.com/djeb20/fastsverl.",
+   "page": 1,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Shaded regions, which are negligible, indicate standard error over 20 runs.",
+   "page": 4,
+   "invalid": false
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "All experiments were conducted on a local workstation equipped with the following specifications: • Processor: Intel i9-14900K (24 cores, up to 6.0GHz) • GPU: NVIDIA RTX 4090 (24GB VRAM) • Memory: 96GB DDR5 RAM • Storage: 2x1TB NVMe (Samsung 990 EVO) and 4TB SSD (Samsung 870 QVO)",
+   "page": 35,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  }
+ },
+ "retried": false,
+ "seconds": 249.3,
+ "raw": {
+  "Q5": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"FastSVERL code is available at: https://github.com/djeb20/fastsverl.\",\n  \"page\": 1\n}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"Shaded regions, which are negligible, indicate standard error over 20 runs.\", \"page\": 4}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"All experiments were conducted on a local workstation equipped with the following specifications: • Processor: Intel i9-14900K (24 cores, up to 6.0GHz) • GPU: NVIDIA RTX 4090 (24GB VRAM) • Memory: 96GB DDR5 RAM • Storage: 2x1TB NVMe (Samsung 990 EVO) and 4TB SSD (Samsung 870 QVO)\",\n  \"page\": 35\n}"
+  ],
+  "Y9": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 24543,
+    "eval_count": 50,
+    "total_duration": 224018296333
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 24514,
+    "eval_count": 34,
+    "total_duration": 4313740875
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 24505,
+    "eval_count": 125,
+    "total_duration": 14116186250
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 24550,
+    "eval_count": 19,
+    "total_duration": 4136465291
+   }
+  ]
+ }
+}

@@ -1,0 +1,90 @@
+{
+ "id": "C14",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 95358,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Our experimental results indicate that the proposed methods are over 1,000 times faster than Gurobi, a state-of-the-art commercial optimization package, for small instances, and the performance gap grows considerably with problem size.",
+   "page": 1,
+   "invalid": true
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  }
+ },
+ "retried": true,
+ "seconds": 230.9,
+ "raw": {
+  "Q5": [
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ],
+  "X2": [
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"Our experimental results indicate that the proposed methods are over 1,000 times faster than Gurobi, a state-of-the-art commercial optimization package, for small instances, and the performance gap grows considerably with problem size.\",\n  \"page\": 1\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"Our experimental results indicate that the proposed methods are over 1,000 times faster than Gurobi, a state-of-the-art commercial optimization package, for small instances, and the performance gap grows considerably with problem size.\",\n  \"page\": 1\n}"
+  ],
+  "Y9": [
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 28012,
+    "eval_count": 27,
+    "total_duration": 208440354042
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 27983,
+    "eval_count": 27,
+    "total_duration": 3875524959
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 27974,
+    "eval_count": 74,
+    "total_duration": 7626767500
+   },
+   {
+    "prompt_eval_count": 28112,
+    "eval_count": 74,
+    "total_duration": 6709835791
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 28019,
+    "eval_count": 27,
+    "total_duration": 4148051083
+   }
+  ]
+ }
+}

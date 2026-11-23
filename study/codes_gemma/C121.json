@@ -1,0 +1,96 @@
+{
+ "id": "C121",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 45002,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We show the broad applicability of our method by demonstrating significant performance gains in three different experimental setups: (1) We train an agent able to control more than 700 actions in a challenging 3D first-person task; using our method to progress through an action-space curriculum we achieve both faster training and better final performance than one obtains using traditional methods.",
+   "page": 1,
+   "invalid": true
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  }
+ },
+ "retried": true,
+ "seconds": 128.7,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"We show the broad applicability of our method by demonstrating significant performance gains in three different experimental setups: (1) We train an agent able to control more than 700 actions in a challenging 3D first-person task;\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"We show the broad applicability of our method by demonstrating significant performance gains in three different experimental setups: (1) We train an agent able to control more than 700 actions in a challenging 3D first-person task; using our method to progress through an action-space curriculum we achieve both faster training and better final performance than one obtains using traditional methods.\", \"page\": 1}"
+  ],
+  "X7": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"We also note that while analogous techniques to ours can be applied to train mixtures of experts/policies (i.e. maximising performance across agents), this is not the focus of the present research\", \"page\": 2}",
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 11230,
+    "eval_count": 19,
+    "total_duration": 98081011000
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 11201,
+    "eval_count": 64,
+    "total_duration": 7904836042
+   },
+   {
+    "prompt_eval_count": 11329,
+    "eval_count": 91,
+    "total_duration": 9232125125
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 11192,
+    "eval_count": 19,
+    "total_duration": 3602488583
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 11237,
+    "eval_count": 56,
+    "total_duration": 7382755500
+   },
+   {
+    "prompt_eval_count": 11357,
+    "eval_count": 19,
+    "total_duration": 2466020667
+   }
+  ]
+ }
+}

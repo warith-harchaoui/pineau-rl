@@ -1,0 +1,108 @@
+{
+ "id": "C11",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 47787,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "RLlib is available as part of the open source Ray project 1 .",
+   "page": 1,
+   "invalid": true
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "RLlib: a library that provides scalable software primitives for RL. These primitives enable a broad range of algorithms to be implemented with high performance, scalability, and substantial code reuse.",
+   "page": 1,
+   "invalid": true
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "We demonstrate the benefits of this principle through RLlib: a library that provides scalable software primitives for RL.",
+   "page": 1,
+   "invalid": true
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We note that composability without scalability can trivially be achieved with a single-threaded library and that all of the difficulty lies in achieving these two objectives simultaneously.",
+   "page": 2,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 155.0,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"RLlib is available as part of the open source Ray project 1 .\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"RLlib is available as part of the open source Ray project 1 .\", \"page\": 1}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"We demonstrate the benefits of this principle through RLlib: a library that provides scalable software primitives for RL. These primitives enable a broad range of algorithms to be implemented with high performance, scalability, and substantial code reuse.\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"RLlib: a library that provides scalable software primitives for RL. These primitives enable a broad range of algorithms to be implemented with high performance, scalability, and substantial code reuse.\", \"page\": 1}"
+  ],
+  "X7": [
+   "{\"value\": \"yes\", \"quote\": \"We believe that the ability to build scalable RL algorithms by composing and reusing existing components and implementations is essential for the rapid development and progress of the field.\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"We demonstrate the benefits of this principle through RLlib: a library that provides scalable software primitives for RL.\", \"page\": 1}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"We note that composability without scalability can trivially be achieved with a single-threaded library and that all of the difficulty lies in achieving these two objectives simultaneously.\", \"page\": 2}",
+   "{\"value\": \"yes\", \"quote\": \"We note that composability without scalability can trivially be achieved with a single-threaded library and that all of the difficulty lies in achieving these two objectives simultaneously.\", \"page\": 2}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 12502,
+    "eval_count": 33,
+    "total_duration": 115437299167
+   },
+   {
+    "prompt_eval_count": 12599,
+    "eval_count": 33,
+    "total_duration": 3395464875
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 12473,
+    "eval_count": 60,
+    "total_duration": 7503489833
+   },
+   {
+    "prompt_eval_count": 12597,
+    "eval_count": 52,
+    "total_duration": 5523053291
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 12464,
+    "eval_count": 47,
+    "total_duration": 6183551709
+   },
+   {
+    "prompt_eval_count": 12575,
+    "eval_count": 38,
+    "total_duration": 4271025917
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 12509,
+    "eval_count": 48,
+    "total_duration": 6700314000
+   },
+   {
+    "prompt_eval_count": 12621,
+    "eval_count": 48,
+    "total_duration": 5265432417
+   }
+  ]
+ }
+}

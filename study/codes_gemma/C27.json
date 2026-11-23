@@ -1,0 +1,90 @@
+{
+ "id": "C27",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 33781,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Figure 1 plots the reward achieved by the evaluation agent for increasing number of PSRL, seed sampling, concurrent UCRL and Thompson resampling agents operating in parallel in the cartpole environment.",
+   "page": 2,
+   "invalid": true
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  }
+ },
+ "retried": true,
+ "seconds": 96.7,
+ "raw": {
+  "Q5": [
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ],
+  "X2": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"Figure 2c shows the mean reward per agent achieved as K increases.\",\n  \"page\": 7\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"Figure 1 plots the reward achieved by the evaluation agent for increasing number of PSRL, seed sampling, concurrent UCRL and Thompson resampling agents operating in parallel in the cartpole environment.\",\n  \"page\": 2\n}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ],
+  "Y9": [
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 8480,
+    "eval_count": 27,
+    "total_duration": 76009814625
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 8451,
+    "eval_count": 40,
+    "total_duration": 5491293292
+   },
+   {
+    "prompt_eval_count": 8555,
+    "eval_count": 62,
+    "total_duration": 6445598125
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 8442,
+    "eval_count": 27,
+    "total_duration": 4259216250
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 8487,
+    "eval_count": 27,
+    "total_duration": 4446979125
+   }
+  ]
+ }
+}

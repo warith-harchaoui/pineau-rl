@@ -1,0 +1,96 @@
+{
+ "id": "K072",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 62219,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We compare the performance of our CQSM algorithm against two benchmark methods in terms of the running average reward obtained during the learning process.",
+   "page": 8,
+   "invalid": true
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We parameterize the Q-function as Qθ = 21 θ0 x2 +θ1 x+θ2 a2 +θ3 a+θ4 xa+θ5 and the corresponding score function asΨv (x, a) = −ev1 a + v2 x + v3 . Using these parameterizations and the model setup, the optimal parameter values are computed as: θ∗ =[−0.59047134, −0.23069812, −0.46141679, −0.35624157, −0.15119060, 0.17312350], v ∗ =[1.52913155, −1.5119060, −3.5624157].",
+   "page": 18,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 217.1,
+ "raw": {
+  "Q5": [
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ],
+  "X2": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We compare the performance of our CQSM algorithm against two benchmark methods in terms of the running average reward obtained during the learning process.\",\n  \"page\": 8\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We compare the performance of our CQSM algorithm against two benchmark methods in terms of the running average reward obtained during the learning process.\",\n  \"page\": 8\n}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ],
+  "Y9": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We further provide theoretical closed-form solutions for linear-quadratic (LQ) control problems within our framework. Numerical results in simulated environments demonstrate the effectiveness of our proposed method and compare it to popular baselines.\",\n  \"page\": 1\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We parameterize the Q-function as Qθ = 21 θ0 x2 +θ1 x+θ2 a2 +θ3 a+θ4 xa+θ5 and the corresponding score function asΨv (x, a) = −ev1 a + v2 x + v3 . Using these parameterizations and the model setup, the optimal parameter values are computed as: θ∗ =[−0.59047134, −0.23069812, −0.46141679, −0.35624157, −0.15119060, 0.17312350], v ∗ =[1.52913155, −1.5119060, −3.5624157].\",\n  \"page\": 18\n}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 21841,
+    "eval_count": 27,
+    "total_duration": 173953587666
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 21812,
+    "eval_count": 51,
+    "total_duration": 6272488834
+   },
+   {
+    "prompt_eval_count": 21927,
+    "eval_count": 51,
+    "total_duration": 5191545125
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 21803,
+    "eval_count": 27,
+    "total_duration": 4041229500
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 21848,
+    "eval_count": 66,
+    "total_duration": 7811921666
+   },
+   {
+    "prompt_eval_count": 21978,
+    "eval_count": 219,
+    "total_duration": 19805880333
+   }
+  ]
+ }
+}

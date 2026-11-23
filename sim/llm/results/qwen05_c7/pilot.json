@@ -1,0 +1,1 @@
+{"model": "qwen05_c7", "task": "mul2", "split": "ALL[300:450]", "device": "mps", "greedy": 0.06, "greedy512": 0.34, "pass1": 0.15833333333333333, "pass8": 0.64, "truncated": 0.6575, "truncated_greedy512": 0.013333333333333334, "finished": 0.40389294403892945, "cut_right": 24, "mean_len": 138.80583333333334, "n_items": 150}

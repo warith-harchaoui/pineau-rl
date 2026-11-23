@@ -1,0 +1,96 @@
+{
+ "id": "K063",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 130957,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "We release the full benchmark, including the teammate suite, dataset generator, and evaluation pipeline, to facilitate reproducibility and future research. Our repository is available at https://github.com/AHT-Hub/ICRL4AHT.",
+   "page": 2,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Our results reveal a notable limitation in current sequence-model ICRL baselines: across both generalization tracks, existing ICRL methods often underperform simple random baselines.",
+   "page": 2,
+   "invalid": true
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We employ a combined warmup and cosine decay schedule: ηmax · t / twarmup if t < Twarmup (t−twarmup)/(T−twarmup) 1+cos(π· ) ηmax · otherwise",
+   "page": 34,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 375.2,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"We release the full benchmark, including the teammate suite, dataset generator, and evaluation pipeline, to facilitate reproducibility and future research. Our repository is available at https://github.com/AHT-Hub/ICRL4AHT.\", \"page\": 2}"
+  ],
+  "X2": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"Our results reveal a notable limitation in current sequence-model ICRL baselines: across both generalization tracks, existing ICRL methods often underperform simple random baselines.\",\n  \"page\": 2\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"Our results reveal a notable limitation in current sequence-model ICRL baselines: across both generalization tracks, existing ICRL methods often underperform simple random baselines.\",\n  \"page\": 2\n}"
+  ],
+  "X7": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"Our results reveal a notable limitation in current sequence-model ICRL baselines: across both generalization tracks, existing ICRL methods often underperform simple random baselines.\", \"page\": 4}",
+   "{\"value\": \"yes\", \"quote\": \"We employ a combined warmup and cosine decay schedule: ηmax · t / twarmup if t < Twarmup (t−twarmup)/(T−twarmup) 1+cos(π· ) ηmax · otherwise\", \"page\": 34}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 33658,
+    "eval_count": 64,
+    "total_duration": 339117581167
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 33629,
+    "eval_count": 58,
+    "total_duration": 7620018917
+   },
+   {
+    "prompt_eval_count": 33751,
+    "eval_count": 58,
+    "total_duration": 6909805375
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 33620,
+    "eval_count": 19,
+    "total_duration": 4060915584
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 33665,
+    "eval_count": 50,
+    "total_duration": 7712627583
+   },
+   {
+    "prompt_eval_count": 33779,
+    "eval_count": 76,
+    "total_duration": 8677310041
+   }
+  ]
+ }
+}

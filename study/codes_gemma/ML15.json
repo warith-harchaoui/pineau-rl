@@ -1,0 +1,90 @@
+{
+ "id": "ML15",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 64326,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We report the normalized average scores over five random seeds with standard deviations reported.",
+   "page": 1,
+   "invalid": false
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "We report the detailed hyperparameters used for training MoMa QL in Table 4. We use a consistent set of hyperparameters across most D4RL Gym locomotion tasks to demonstrate the robustness of our method.",
+   "page": 18,
+   "invalid": true
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We conduct comprehensive ablation studies to demonstrate that MoMa QL is highly robust to hyperparameter variations.",
+   "page": 17,
+   "invalid": false
+  }
+ },
+ "retried": true,
+ "seconds": 236.5,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"We report the normalized average scores over five random seeds with standard deviations reported.\", \"page\": 1}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"To address this problem, we introduced Moment Matching Q-Learning (MoMa QL), which involves a stable and theoretically rigorous policy learning procedure based on actor-critic style algorithm.\",\n  \"page\": 1\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We report the detailed hyperparameters used for training MoMa QL in Table 4. We use a consistent set of hyperparameters across most D4RL Gym locomotion tasks to demonstrate the robustness of our method.\",\n  \"page\": 18\n}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"We conduct comprehensive ablation studies to demonstrate that MoMa QL is highly robust to hyperparameter variations.\", \"page\": 17}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 22752,
+    "eval_count": 19,
+    "total_duration": 209743716167
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 22723,
+    "eval_count": 32,
+    "total_duration": 5122213834
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 22714,
+    "eval_count": 61,
+    "total_duration": 7385787250
+   },
+   {
+    "prompt_eval_count": 22839,
+    "eval_count": 66,
+    "total_duration": 7490757542
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 22759,
+    "eval_count": 38,
+    "total_duration": 6084229334
+   }
+  ]
+ }
+}

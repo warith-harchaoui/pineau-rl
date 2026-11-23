@@ -1,0 +1,102 @@
+{
+ "id": "ML06",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 106291,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "The code and environments are accessible on GitHub.",
+   "page": 2,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Table 2 reports the exact metrics for all levels.",
+   "page": 18,
+   "invalid": true
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "By leveraging JAX and GPU acceleration, MEAL enables training on sequences of 100 tasks on a single GPU in a few hours.",
+   "page": 1,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We adopt many of JaxMARL’s default settings for our network configuration, IPPO setup, and training processes.",
+   "page": 18,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 321.0,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"The code and environments are accessible on GitHub.\", \"page\": 2}"
+  ],
+  "X2": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We report the exact metrics for all levels in Table 2.\",\n  \"page\": 17\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"Table 2 reports the exact metrics for all levels.\",\n  \"page\": 18\n}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We find that long task sequences reveal failure modes that do not appear at smaller scales.\",\n  \"page\": 1\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"By leveraging JAX and GPU acceleration, MEAL enables training on sequences of 100 tasks on a single GPU in a few hours.\",\n  \"page\": 1\n}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"We adopt many of JaxMARL’s default settings for our network configuration, IPPO setup, and training processes.\", \"page\": 18}",
+   "{\"value\": \"yes\", \"quote\": \"We adopt many of JaxMARL’s default settings for our network configuration, IPPO setup, and training processes.\", \"page\": 18}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 30263,
+    "eval_count": 26,
+    "total_duration": 283646916500
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 30234,
+    "eval_count": 39,
+    "total_duration": 5137377542
+   },
+   {
+    "prompt_eval_count": 30337,
+    "eval_count": 37,
+    "total_duration": 4623113166
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 30225,
+    "eval_count": 42,
+    "total_duration": 6282028208
+   },
+   {
+    "prompt_eval_count": 30331,
+    "eval_count": 54,
+    "total_duration": 6586799250
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 30270,
+    "eval_count": 42,
+    "total_duration": 6593020250
+   },
+   {
+    "prompt_eval_count": 30376,
+    "eval_count": 42,
+    "total_duration": 5107593166
+   }
+  ]
+ }
+}

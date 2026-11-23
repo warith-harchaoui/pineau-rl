@@ -1,0 +1,90 @@
+{
+ "id": "C39",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 48295,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We also present ablation studies that demonstrate the effect of different auxiliary losses on learning transition models.",
+   "page": 6,
+   "invalid": true
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We also present ablation studies that demonstrate the effect of different auxiliary losses on learning transition models.",
+   "page": 2,
+   "invalid": false
+  }
+ },
+ "retried": true,
+ "seconds": 120.5,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"We also present ablation studies that demonstrate the effect of different auxiliary losses on learning transition models.\", \"page\": 6}",
+   "{\"value\": \"yes\", \"quote\": \"We also present ablation studies that demonstrate the effect of different auxiliary losses on learning transition models.\", \"page\": 6}"
+  ],
+  "X7": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"We also present ablation studies that demonstrate the effect of different auxiliary losses on learning transition models.\", \"page\": 2}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 13147,
+    "eval_count": 19,
+    "total_duration": 103237212459
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 13118,
+    "eval_count": 35,
+    "total_duration": 4673791542
+   },
+   {
+    "prompt_eval_count": 13217,
+    "eval_count": 35,
+    "total_duration": 3675632292
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 13109,
+    "eval_count": 19,
+    "total_duration": 3382787625
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 13154,
+    "eval_count": 35,
+    "total_duration": 4809561291
+   }
+  ]
+ }
+}

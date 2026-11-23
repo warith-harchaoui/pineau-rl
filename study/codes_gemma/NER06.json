@@ -1,0 +1,90 @@
+{
+ "id": "NER06",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 56946,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "Our code is available at: https://github.com/ku-dmlab/FairDICE.git.",
+   "page": 27,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Results are averaged over 1000 seeds, and reported with 95 % confidence intervals.",
+   "page": 6,
+   "invalid": false
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We also show that FairDICE effectively finds welfare-optimal policies in both discrete and continuous domains with minimal additional parameters, outperforming preference-conditioned baselines even with exhaustive weight search.",
+   "page": 1,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 164.5,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"Our code is available at: https://github.com/ku-dmlab/FairDICE.git.\", \"page\": 27}"
+  ],
+  "X2": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"Results are averaged over 1000 seeds, and reported with 95 % confidence intervals.\",\n  \"page\": 6\n}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ],
+  "Y9": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"Across multiple offline benchmarks, FairDICE demonstrates strong fairness-aware performance compared to existing baselines.\",\n  \"page\": 1\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We also show that FairDICE effectively finds welfare-optimal policies in both discrete and continuous domains with minimal additional parameters, outperforming preference-conditioned baselines even with exhaustive weight search.\",\n  \"page\": 1\n}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 17600,
+    "eval_count": 41,
+    "total_duration": 141555000917
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 17571,
+    "eval_count": 46,
+    "total_duration": 5121447083
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 17562,
+    "eval_count": 27,
+    "total_duration": 3952864917
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 17607,
+    "eval_count": 45,
+    "total_duration": 6083300875
+   },
+   {
+    "prompt_eval_count": 17716,
+    "eval_count": 62,
+    "total_duration": 6395299708
+   }
+  ]
+ }
+}

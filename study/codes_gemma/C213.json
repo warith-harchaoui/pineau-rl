@@ -1,0 +1,102 @@
+{
+ "id": "C213",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 44995,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We show that ELIRL can successfully transfer knowledge between IRL tasks to improve performance, and this improvement increases as it learns more tasks.",
+   "page": 2,
+   "invalid": true
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "We show that ELIRL can successfully transfer knowledge between IRL tasks to improve performance, and this improvement increases as it learns more tasks.",
+   "page": 2,
+   "invalid": true
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  }
+ },
+ "retried": true,
+ "seconds": 159.2,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"We show that ELIRL can successfully transfer knowledge between IRL tasks to improve performance, and this improvement increases as it learns more tasks.\", \"page\": 2}",
+   "{\"value\": \"yes\", \"quote\": \"We show that ELIRL can successfully transfer knowledge between IRL tasks to improve performance, and this improvement increases as it learns more tasks.\", \"page\": 2}"
+  ],
+  "X7": [
+   "{\"value\": \"yes\", \"quote\": \"We show that ELIRL can successfully transfer knowledge between IRL tasks to improve performance, and this improvement increases as it learns more tasks.\", \"page\": 2}",
+   "{\"value\": \"yes\", \"quote\": \"We show that ELIRL can successfully transfer knowledge between IRL tasks to improve performance, and this improvement increases as it learns more tasks.\", \"page\": 2}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"As an instantiation of our framework, we propose the Efficient Lifelong IRL (ELIRL) algorithm, which adapts Maximum Entropy (MaxEnt) IRL [43] into a lifelong learning setting.\", \"page\": 2}",
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 12320,
+    "eval_count": 19,
+    "total_duration": 123169868583
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 12291,
+    "eval_count": 44,
+    "total_duration": 6651918583
+   },
+   {
+    "prompt_eval_count": 12399,
+    "eval_count": 44,
+    "total_duration": 5527116791
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 12282,
+    "eval_count": 44,
+    "total_duration": 6893059708
+   },
+   {
+    "prompt_eval_count": 12390,
+    "eval_count": 44,
+    "total_duration": 5707410084
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 12327,
+    "eval_count": 57,
+    "total_duration": 8406034541
+   },
+   {
+    "prompt_eval_count": 12448,
+    "eval_count": 19,
+    "total_duration": 2753034500
+   }
+  ]
+ }
+}

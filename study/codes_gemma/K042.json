@@ -1,0 +1,102 @@
+{
+ "id": "K042",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 86449,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "Code Repository: github.com/chandar-lab/stream-rep-rl",
+   "page": 1,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We report the Inter-Quartile Mean (IQM) of our aggregate results with a confidence interval of 95% (Agarwal et al., 2021), computed over all environment and seed runs for each algorithm.",
+   "page": 1,
+   "invalid": false
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "Code Repository: github.com/chandar-lab/stream-rep-rl",
+   "page": 1,
+   "invalid": true
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We provide the details of all our hyperparameter choices in Table 4.",
+   "page": 15,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 324.0,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"Code Repository: github.com/chandar-lab/stream-rep-rl\", \"page\": 1}"
+  ],
+  "X2": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"Our contributions are as follows: ... We report the Inter-Quartile Mean (IQM) of our aggregate results with a confidence interval of 95% (Agarwal et al., 2021), computed over all environment and seed runs for each algorithm.\",\n  \"page\": 1\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We report the Inter-Quartile Mean (IQM) of our aggregate results with a confidence interval of 95% (Agarwal et al., 2021), computed over all environment and seed runs for each algorithm.\",\n  \"page\": 1\n}"
+  ],
+  "X7": [
+   "{\"value\": \"yes\", \"quote\": \"Code Repository: github.com/chandar-lab/stream-rep-rl\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"Code Repository: github.com/chandar-lab/stream-rep-rl\", \"page\": 1}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"We use this framework directly in the streaming setting, except the updates are performed with SGD.\", \"page\": 2}",
+   "{\"value\": \"yes\", \"quote\": \"We provide the details of all our hyperparameter choices in Table 4.\", \"page\": 15}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 32279,
+    "eval_count": 35,
+    "total_duration": 276861929458
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 32250,
+    "eval_count": 81,
+    "total_duration": 8726438375
+   },
+   {
+    "prompt_eval_count": 32395,
+    "eval_count": 74,
+    "total_duration": 7754078375
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 32241,
+    "eval_count": 35,
+    "total_duration": 5271988000
+   },
+   {
+    "prompt_eval_count": 32340,
+    "eval_count": 35,
+    "total_duration": 4061042708
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 32286,
+    "eval_count": 35,
+    "total_duration": 5487860458
+   },
+   {
+    "prompt_eval_count": 32385,
+    "eval_count": 33,
+    "total_duration": 3832938292
+   }
+  ]
+ }
+}

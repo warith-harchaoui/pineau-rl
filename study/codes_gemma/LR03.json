@@ -1,0 +1,96 @@
+{
+ "id": "LR03",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 94835,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "Our codes are available at: https://github.com/guoyihonggyh/MOBODY-Model-Based-Off-DynamicsOffline-Reinforcement-Learning.",
+   "page": 13,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We report normalized target-domain scores (mean ± std over three seeds).",
+   "page": 1,
+   "invalid": false
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "We run all experiments on a single GPU (NVIDIA RTX A5000, 24,564 MiB) paired with 8 CPUs (AMD Ryzen Threadripper 3960X, 24-Core).",
+   "page": 23,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We conducted two hyperparameter analyses: the BC loss weight and uncertainty penalty of the model-based method in the policy learning part, as detailed in Table 9.",
+   "page": 23,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 367.3,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"Our codes are available at: https://github.com/guoyihonggyh/MOBODY-Model-Based-Off-DynamicsOffline-Reinforcement-Learning.\", \"page\": 13}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"We report normalized target-domain scores (mean ± std over three seeds).\", \"page\": 1}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We provide detailed information on the training loss for the dynamics learning and the policy optimization in the main text as well as the Algorithm 1 for dynamics learning and Algorithm 2 for policy optimization in Appendix B.\",\n  \"page\": 23\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We run all experiments on a single GPU (NVIDIA RTX A5000, 24,564 MiB) paired with 8 CPUs (AMD Ryzen Threadripper 3960X, 24-Core).\",\n  \"page\": 23\n}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"We also provide hyperparameter analysis and rule-of-thumb hyperparameters in Appendix C.4, as well as the hyperparameters and model architecture that we used for tuning in Table 11.\", \"page\": 23}",
+   "{\"value\": \"yes\", \"quote\": \"We conducted two hyperparameter analyses: the BC loss weight and uncertainty penalty of the model-based method in the policy learning part, as detailed in Table 9.\", \"page\": 23}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 32702,
+    "eval_count": 54,
+    "total_duration": 328374127750
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 32673,
+    "eval_count": 33,
+    "total_duration": 5203161167
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 32664,
+    "eval_count": 67,
+    "total_duration": 9196405625
+   },
+   {
+    "prompt_eval_count": 32795,
+    "eval_count": 79,
+    "total_duration": 9169440500
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 32709,
+    "eval_count": 56,
+    "total_duration": 8433334917
+   },
+   {
+    "prompt_eval_count": 32829,
+    "eval_count": 51,
+    "total_duration": 6157210292
+   }
+  ]
+ }
+}

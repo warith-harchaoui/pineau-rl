@@ -1,0 +1,14 @@
+2026-11-22 00:22:24 c7.sh started (window: night, seeds: 0 1 2 3 4 5 6 7 8 9)
+2026-11-22 00:22:24 waiting (window: night, GPU free: no, disk: 12 GB)
+2026-11-22 23:09:32 qwen05_c7 pilot: {"model": "qwen05_c7", "task": "mul2", "split": "ALL[300:450]", "device": "mps", "greedy": 0.06, "greedy512": 0.34, "pass1": 0.15833333333333333, "pass8": 0.64, "truncated": 0.6575, "truncated_greedy5
+2026-11-22 23:16:24 llama1_c7 pilot: {"model": "llama1_c7", "task": "mul2", "split": "ALL[300:450]", "device": "mps", "greedy": 0.66, "greedy512": 0.66, "pass1": 0.2375, "pass8": 0.72, "truncated": 0.014166666666666666, "truncated_greedy
+2026-11-22 23:16:24 qwen05_c7 true 0: start
+2026-11-23 00:20:33 qwen05_c7 true 0: {"model": "qwen05_c7", "task": "mul2", "reward": "true", "seed": 0, "done": true, "retries": {"generate": 0, "update": 4}, "wall": 3242.1}
+2026-11-23 00:20:33 qwen05_c7 random 0: start
+2026-11-23 01:16:41 qwen05_c7 random 0: {"model": "qwen05_c7", "task": "mul2", "reward": "random", "seed": 0, "done": true, "retries": {"generate": 0, "update": 8}, "wall": 2783.8}
+2026-11-23 01:16:41 llama1_c7 true 0: start
+2026-11-23 02:43:07 llama1_c7 true 0: {"model": "llama1_c7", "task": "mul2", "reward": "true", "seed": 0, "done": true, "retries": {"generate": 0, "update": 0}, "wall": 4417.6}
+2026-11-23 02:43:07 waiting (window: night, GPU free: no, disk: 36 GB)
+2026-11-23 03:08:08 llama1_c7 random 0: start
+2026-11-23 04:56:44 llama1_c7 random 0: {"model": "llama1_c7", "task": "mul2", "reward": "random", "seed": 0, "done": true, "retries": {"generate": 0, "update": 0}, "wall": 5713.7}
+2026-11-23 04:56:45 qwen05_c7 true 1: start

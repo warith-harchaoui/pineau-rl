@@ -1,0 +1,96 @@
+{
+ "id": "C25",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 78910,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We report the results in Table 1 and 2.",
+   "page": 7,
+   "invalid": true
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "↵ is set to 0.01 for RepBM.",
+   "page": 6,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 251.0,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"We report the results in Table 4 and 5.\", \"page\": 18}",
+   "{\"value\": \"yes\", \"quote\": \"We report the results in Table 1 and 2.\", \"page\": 7}"
+  ],
+  "X7": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"↵ is set to 0.01 for RepBM.\", \"page\": 6}",
+   "{\"value\": \"yes\", \"quote\": \"↵ is set to 0.01 for RepBM.\", \"page\": 6}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 30285,
+    "eval_count": 19,
+    "total_duration": 232065491333
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 30256,
+    "eval_count": 30,
+    "total_duration": 4258129166
+   },
+   {
+    "prompt_eval_count": 30350,
+    "eval_count": 29,
+    "total_duration": 3232933625
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 30247,
+    "eval_count": 19,
+    "total_duration": 3520532583
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 30292,
+    "eval_count": 30,
+    "total_duration": 4515686959
+   },
+   {
+    "prompt_eval_count": 30386,
+    "eval_count": 30,
+    "total_duration": 3348735833
+   }
+  ]
+ }
+}

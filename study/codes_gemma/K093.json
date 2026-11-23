@@ -1,0 +1,96 @@
+{
+ "id": "K093",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 74153,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Our experiments confirm that this combined approach excels at pre-training with datasets rich in suboptimal trajectories, outperforming pure behavior cloning.",
+   "page": 1,
+   "invalid": true
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "To mitigate this, we propose a novel group-task update strategy based on robot embodiment information. We encode each robot as a morphology graph, compute pairwise distances, and cluster robots accordingly.",
+   "page": 10,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We examine how gradient conflicts change as the number and diversity of robots increase (Figure 2b).",
+   "page": 6,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 232.6,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X2": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"Our experiments confirm that this combined approach excels at pre-training with datasets rich in suboptimal trajectories, outperforming pure behavior cloning.\",\n  \"page\": 1\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"Our experiments confirm that this combined approach excels at pre-training with datasets rich in suboptimal trajectories, outperforming pure behavior cloning.\",\n  \"page\": 1\n}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"To mitigate this, we propose a novel group-task update strategy based on robot embodiment information. We encode each robot as a morphology graph, compute pairwise distances, and cluster robots accordingly.\",\n  \"page\": 10\n}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"We examine how gradient conflicts change as the number and diversity of robots increase (Figure 2b).\", \"page\": 6}",
+   "{\"value\": \"yes\", \"quote\": \"We examine how gradient conflicts change as the number and diversity of robots increase (Figure 2b).\", \"page\": 6}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 21233,
+    "eval_count": 19,
+    "total_duration": 200569655500
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 21204,
+    "eval_count": 50,
+    "total_duration": 7093609375
+   },
+   {
+    "prompt_eval_count": 21318,
+    "eval_count": 50,
+    "total_duration": 5796561458
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 21195,
+    "eval_count": 63,
+    "total_duration": 8230760959
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 21240,
+    "eval_count": 38,
+    "total_duration": 5651174666
+   },
+   {
+    "prompt_eval_count": 21342,
+    "eval_count": 38,
+    "total_duration": 4507713583
+   }
+  ]
+ }
+}

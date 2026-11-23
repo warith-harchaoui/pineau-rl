@@ -1,0 +1,96 @@
+{
+ "id": "K038",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 76800,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "https://wang-kevin3290.github.io/scaling-crl/",
+   "page": 1,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We used 5 seeds in Figure 1.",
+   "page": 23,
+   "invalid": true
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "We report the wall-clock time of our approach in Table 3. The table shows results for depths of 4, 8, 16, 32, and 64 across all ten environments.",
+   "page": 21,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We will do this by building on recent GPU-accelerated RL frameworks (Makoviychuk et al., 2021; Rutherford et al., 2023; Rudin et al., 2022; Bortkiewicz et al., 2024).",
+   "page": 5,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 229.1,
+ "raw": {
+  "Q5": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"https://wang-kevin3290.github.io/scaling-crl/\",\n  \"page\": 1\n}"
+  ],
+  "X2": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We used 5 seeds in Figure 1.\",\n  \"page\": 23\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We used 5 seeds in Figure 1.\",\n  \"page\": 23\n}"
+  ],
+  "X7": [
+   "{\"value\": \"yes\", \"quote\": \"We report the wall-clock time of our approach in Table 3. The table shows results for depths of 4, 8, 16, 32, and 64 across all ten environments.\", \"page\": 21}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"Our experiments will also study the relative importance of batch size and network width.\", \"page\": 6}",
+   "{\"value\": \"yes\", \"quote\": \"We will do this by building on recent GPU-accelerated RL frameworks (Makoviychuk et al., 2021; Rutherford et al., 2023; Rudin et al., 2022; Bortkiewicz et al., 2024).\", \"page\": 5}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 22234,
+    "eval_count": 45,
+    "total_duration": 197473212291
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 22205,
+    "eval_count": 36,
+    "total_duration": 4476705791
+   },
+   {
+    "prompt_eval_count": 22305,
+    "eval_count": 36,
+    "total_duration": 4216760625
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 22196,
+    "eval_count": 63,
+    "total_duration": 7842546917
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 22241,
+    "eval_count": 32,
+    "total_duration": 5208535250
+   },
+   {
+    "prompt_eval_count": 22337,
+    "eval_count": 78,
+    "total_duration": 8228611583
+   }
+  ]
+ }
+}

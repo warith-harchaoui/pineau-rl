@@ -1,0 +1,90 @@
+{
+ "id": "K015",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 122906,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "Code and supplementary material are available at: https://github.com/WtxwNs/AES.",
+   "page": 1,
+   "invalid": false
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We next vary the main hyperparameters that define the default scheduler: the TD-error quantile level, the smoothing strength, and the clipping range.",
+   "page": 41,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 432.2,
+ "raw": {
+  "Q5": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"Code and supplementary material are available at: https://github.com/WtxwNs/AES.\",\n  \"page\": 1\n}"
+  ],
+  "X2": [
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ],
+  "Y9": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We next vary the main hyperparameters that define the default scheduler: the TD-error quantile level, the smoothing strength, and the clipping range.\",\n  \"page\": 41\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We next vary the main hyperparameters that define the default scheduler: the TD-error quantile level, the smoothing strength, and the clipping range.\",\n  \"page\": 41\n}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 41257,
+    "eval_count": 46,
+    "total_duration": 406011073458
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 41228,
+    "eval_count": 27,
+    "total_duration": 4255155500
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 41219,
+    "eval_count": 27,
+    "total_duration": 5096552125
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 41264,
+    "eval_count": 54,
+    "total_duration": 8345609958
+   },
+   {
+    "prompt_eval_count": 41382,
+    "eval_count": 54,
+    "total_duration": 6530654500
+   }
+  ]
+ }
+}

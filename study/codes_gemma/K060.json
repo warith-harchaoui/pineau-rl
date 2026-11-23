@@ -1,0 +1,90 @@
+{
+ "id": "K060",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 91040,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We report results averaged over 3 independent random seeds, with shaded regions and error bars indicating one standard deviation.",
+   "page": 10,
+   "invalid": false
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We report results averaged over 3 independent random seeds, with shaded regions and error bars indicating one standard deviation.",
+   "page": 36,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 255.0,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"We report results averaged over 3 independent random seeds, with shaded regions and error bars indicating one standard deviation.\", \"page\": 10}"
+  ],
+  "X7": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"We report results averaged over 3 independent random seeds, with shaded regions and error bars indicating one standard deviation.\", \"page\": 7}",
+   "{\"value\": \"yes\", \"quote\": \"We report results averaged over 3 independent random seeds, with shaded regions and error bars indicating one standard deviation.\", \"page\": 36}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 24873,
+    "eval_count": 19,
+    "total_duration": 233534992417
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 24844,
+    "eval_count": 40,
+    "total_duration": 6112540583
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 24835,
+    "eval_count": 19,
+    "total_duration": 3431971458
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 24880,
+    "eval_count": 39,
+    "total_duration": 6403787417
+   },
+   {
+    "prompt_eval_count": 24983,
+    "eval_count": 40,
+    "total_duration": 4759598416
+   }
+  ]
+ }
+}

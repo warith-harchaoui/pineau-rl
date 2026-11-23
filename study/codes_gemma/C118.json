@@ -1,0 +1,96 @@
+{
+ "id": "C118",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 45542,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Results show that the algorithms are practical and can significantly speed up reinforcement learning.",
+   "page": 1,
+   "invalid": true
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We employ the algorithms implemented in the Manopt package (Boumal et al., 2014).",
+   "page": 7,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 110.3,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"We develop two algorithms for discovering the exogenous variables and test them on several MDPs. Results show that the algorithms are practical and can significantly speed up reinforcement learning.\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"Results show that the algorithms are practical and can significantly speed up reinforcement learning.\", \"page\": 1}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"We employ the algorithms implemented in the Manopt package (Boumal et al., 2014).\", \"page\": 7}",
+   "{\"value\": \"yes\", \"quote\": \"We employ the algorithms implemented in the Manopt package (Boumal et al., 2014).\", \"page\": 7}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 14714,
+    "eval_count": 19,
+    "total_duration": 91597943542
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 14685,
+    "eval_count": 49,
+    "total_duration": 4820212375
+   },
+   {
+    "prompt_eval_count": 14798,
+    "eval_count": 32,
+    "total_duration": 2843230083
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 14676,
+    "eval_count": 27,
+    "total_duration": 3223335708
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 14721,
+    "eval_count": 40,
+    "total_duration": 4375222125
+   },
+   {
+    "prompt_eval_count": 14825,
+    "eval_count": 40,
+    "total_duration": 3375641291
+   }
+  ]
+ }
+}

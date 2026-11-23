@@ -1,0 +1,102 @@
+{
+ "id": "C18",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 49185,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "We evaluate our method on the suite of OpenAI gym tasks, outperforming the state of the art in every environment tested.",
+   "page": 1,
+   "invalid": true
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We evaluate our method on the suite of OpenAI gym tasks, outperforming the state of the art in every environment tested.",
+   "page": 1,
+   "invalid": true
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We evaluate our method on the suite of OpenAI gym tasks, performing ablation studies across each contribution, and open source both our code and learning curves (https://github.com/sfujim/TD3).",
+   "page": 2,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 166.2,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"We evaluate our algorithm on seven continuous control domains from OpenAI gym (Brockman et al., 2016), where we outperform the state of the art by a wide margin.\", \"page\": 2}",
+   "{\"value\": \"yes\", \"quote\": \"We evaluate our method on the suite of OpenAI gym tasks, outperforming the state of the art in every environment tested.\", \"page\": 1}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"We evaluate our algorithm on seven continuous control domains from OpenAI gym (Brockman et al., 2016), where we outperform the state of the art by a wide margin.\", \"page\": 2}",
+   "{\"value\": \"yes\", \"quote\": \"We evaluate our method on the suite of OpenAI gym tasks, outperforming the state of the art in every environment tested.\", \"page\": 1}"
+  ],
+  "X7": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"We evaluate our method on the suite of OpenAI gym tasks, performing ablation studies across each contribution, and open source both our code and learning curves (https://github.com/sfujim/TD3).\", \"page\": 2}",
+   "{\"value\": \"yes\", \"quote\": \"We evaluate our method on the suite of OpenAI gym tasks, performing ablation studies across each contribution, and open source both our code and learning curves (https://github.com/sfujim/TD3).\", \"page\": 2}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 14873,
+    "eval_count": 54,
+    "total_duration": 132189312583
+   },
+   {
+    "prompt_eval_count": 14991,
+    "eval_count": 41,
+    "total_duration": 4449370500
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 14844,
+    "eval_count": 54,
+    "total_duration": 6830484000
+   },
+   {
+    "prompt_eval_count": 14962,
+    "eval_count": 41,
+    "total_duration": 4477824042
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 14835,
+    "eval_count": 19,
+    "total_duration": 3597957167
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 14880,
+    "eval_count": 60,
+    "total_duration": 7542690125
+   },
+   {
+    "prompt_eval_count": 15004,
+    "eval_count": 60,
+    "total_duration": 5477367959
+   }
+  ]
+ }
+}

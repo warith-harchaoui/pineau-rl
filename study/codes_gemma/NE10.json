@@ -1,0 +1,102 @@
+{
+ "id": "NE10",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 77484,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "The official implementation is available at: https://github.com/Whiterrrrr/BREEZE.",
+   "page": 1,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We record the Interquartile Mean (IQM), a robust metric that reduces the influence of outliers.",
+   "page": 10,
+   "invalid": true
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "As shown in Table 9, BREEZE typically converges within 400k steps, matching or exceeding baselines trained for 1M steps.",
+   "page": 29,
+   "invalid": true
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "• Effect of components. Representation architectures are responsible for a high performance ceiling, as we can observe from Table 3.",
+   "page": 28,
+   "invalid": false
+  }
+ },
+ "retried": true,
+ "seconds": 285.2,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"The official implementation is available at: https://github.com/Whiterrrrr/BREEZE.\", \"page\": 1}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"We record the Interquartile Mean (IQM), a robust metric that reduces the influence of outliers.\", \"page\": 10}",
+   "{\"value\": \"yes\", \"quote\": \"We record the Interquartile Mean (IQM), a robust metric that reduces the influence of outliers.\", \"page\": 10}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"BREEZE typically converges within 400k steps, matching or exceeding baselines trained for 1M steps.\",\n  \"page\": 29\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"As shown in Table 9, BREEZE typically converges within 400k steps, matching or exceeding baselines trained for 1M steps.\",\n  \"page\": 29\n}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"We conduct extensive experiments on the ExORL benchmark [70], which provides a variety of datasets collected by several unsupervised RL algorithms [34].\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"• Effect of components. Representation architectures are responsible for a high performance ceiling, as we can observe from Table 3.\", \"page\": 28}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 29868,
+    "eval_count": 38,
+    "total_duration": 249823305042
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 29839,
+    "eval_count": 39,
+    "total_duration": 5115782333
+   },
+   {
+    "prompt_eval_count": 29942,
+    "eval_count": 39,
+    "total_duration": 4242366083
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 29830,
+    "eval_count": 51,
+    "total_duration": 6484012333
+   },
+   {
+    "prompt_eval_count": 29945,
+    "eval_count": 58,
+    "total_duration": 6217615709
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 29875,
+    "eval_count": 48,
+    "total_duration": 6666255834
+   },
+   {
+    "prompt_eval_count": 29987,
+    "eval_count": 42,
+    "total_duration": 4691390459
+   }
+  ]
+ }
+}

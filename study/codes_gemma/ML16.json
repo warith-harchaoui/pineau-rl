@@ -1,0 +1,102 @@
+{
+ "id": "ML16",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 70555,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "Causal-FQL is built upon the codebase of FQL (Park et al., 2025b)3 .",
+   "page": 16,
+   "invalid": true
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Experiments across 25 pixel-based tasks demonstrate that our proposed confounding-robust augmentation procedure achieves a success rate 120% that of confounding-unaware, state-of-the-art offline RL methods.",
+   "page": 1,
+   "invalid": true
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We sweep the discriminator loss coefficient over {1, 5, 10, 15}. Sec. 4.3 shows the full success rate curve over different coefficients.",
+   "page": 15,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 237.8,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"Causal-FQL is built upon the codebase of FQL (Park et al., 2025b)3 .\", \"page\": 16}",
+   "{\"value\": \"yes\", \"quote\": \"Causal-FQL is built upon the codebase of FQL (Park et al., 2025b)3 .\", \"page\": 16}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"Despite these progresses, all the algorithms described above build on the standard off-policy policy gradient framework (Sutton, 2018), which relies on the key assumption that the demonstrator’s behavioral policy and the learner’s target policy share the same support over the state-action domain (Precup et al., 2000).\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"Experiments across 25 pixel-based tasks demonstrate that our proposed confounding-robust augmentation procedure achieves a success rate 120% that of confounding-unaware, state-of-the-art offline RL methods.\", \"page\": 1}"
+  ],
+  "X7": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"We sweep the discriminator loss coefficient over {1, 5, 10, 15}. Sec. 4.3 shows the full success rate curve over different coefficients.\", \"page\": 15}",
+   "{\"value\": \"yes\", \"quote\": \"We sweep the discriminator loss coefficient over {1, 5, 10, 15}. Sec. 4.3 shows the full success rate curve over different coefficients.\", \"page\": 15}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 22161,
+    "eval_count": 46,
+    "total_duration": 197378758500
+   },
+   {
+    "prompt_eval_count": 22271,
+    "eval_count": 46,
+    "total_duration": 5180867542
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 22132,
+    "eval_count": 90,
+    "total_duration": 10641889500
+   },
+   {
+    "prompt_eval_count": 22286,
+    "eval_count": 62,
+    "total_duration": 6722163875
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 22123,
+    "eval_count": 19,
+    "total_duration": 3747835125
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 22168,
+    "eval_count": 55,
+    "total_duration": 7512758000
+   },
+   {
+    "prompt_eval_count": 22287,
+    "eval_count": 55,
+    "total_duration": 5432596166
+   }
+  ]
+ }
+}

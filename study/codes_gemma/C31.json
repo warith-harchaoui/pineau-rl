@@ -1,0 +1,96 @@
+{
+ "id": "C31",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 56597,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "The runtime for 100 iterations of the layer removal policy on a ResNet-34 teacher and a batch size of 3 was approximately 272 hours.",
+   "page": 13,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We also demonstrate that the compression policies exhibit generalization across networks with similar architectures. In particular, we use a policy trained on a ResNet-18 model on a ResNet-34 model and show that it greatly accelerates the reinforcement learning process.",
+   "page": 2,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 145.5,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X2": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X7": [
+   "{\"value\": \"yes\", \"quote\": \"We also demonstrate that the compression policies exhibit generalization across networks with similar architectures. In particular, we use a policy trained on a ResNet-18 model on a ResNet-34 model and show that it greatly accelerates the reinforcement learning process.\", \"page\": 2}",
+   "{\"value\": \"yes\", \"quote\": \"The runtime for 100 iterations of the layer removal policy on a ResNet-34 teacher and a batch size of 3 was approximately 272 hours.\", \"page\": 13}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"Our experiments show that we can achieve compression rates of more than 10× for models such as ResNet34 while maintaining similar performance to the input ‘teacher’ network.\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"We also demonstrate that the compression policies exhibit generalization across networks with similar architectures. In particular, we use a policy trained on a ResNet-18 model on a ResNet-34 model and show that it greatly accelerates the reinforcement learning process.\", \"page\": 2}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 15540,
+    "eval_count": 19,
+    "total_duration": 119456638625
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 15511,
+    "eval_count": 19,
+    "total_duration": 2886886500
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 15502,
+    "eval_count": 67,
+    "total_duration": 6695660042
+   },
+   {
+    "prompt_eval_count": 15633,
+    "eval_count": 54,
+    "total_duration": 4783746042
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 15547,
+    "eval_count": 53,
+    "total_duration": 5454365958
+   },
+   {
+    "prompt_eval_count": 15664,
+    "eval_count": 67,
+    "total_duration": 5758982917
+   }
+  ]
+ }
+}

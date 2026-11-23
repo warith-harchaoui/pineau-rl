@@ -1,0 +1,96 @@
+{
+ "id": "K086",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 94267,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "We report the data efficiency ratios of various approaches to allocate compute to our compute-optimal (𝜎, 𝑁 ) scaling in Table 2.",
+   "page": 33,
+   "invalid": true
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "We obtain scaling rules that extrapolate to new budgets/compute for practitioners.",
+   "page": 3,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We run a sweep over 𝜏 ∈ [5e-4, 1e-3, 2e-3, 5e-3, 1e-2, 2e-2, 5e-2, 1e-1, 2e-1].",
+   "page": 36,
+   "invalid": false
+  }
+ },
+ "retried": true,
+ "seconds": 367.4,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X2": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We report the data efficiency ratios of various approaches to allocate compute to our compute-optimal (𝜎, 𝑁 ) scaling in Table 2.\",\n  \"page\": 33\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We report the data efficiency ratios of various approaches to allocate compute to our compute-optimal (𝜎, 𝑁 ) scaling in Table 2.\",\n  \"page\": 33\n}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We obtain scaling rules that extrapolate to new budgets/compute for practitioners.\",\n  \"page\": 3\n}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"We then attempt to identify the best way to allocate compute between model size and the UTD ratio, given an upper bound on either compute or on a combination of compute and data budget.\", \"page\": 13}",
+   "{\"value\": \"yes\", \"quote\": \"We run a sweep over 𝜏 ∈ [5e-4, 1e-3, 2e-3, 5e-3, 1e-2, 2e-2, 5e-2, 1e-1, 2e-1].\", \"page\": 36}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 34940,
+    "eval_count": 19,
+    "total_duration": 328180682583
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 34911,
+    "eval_count": 55,
+    "total_duration": 7677169625
+   },
+   {
+    "prompt_eval_count": 35030,
+    "eval_count": 55,
+    "total_duration": 6424027000
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 34902,
+    "eval_count": 39,
+    "total_duration": 6127449375
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 34947,
+    "eval_count": 55,
+    "total_duration": 7175673458
+   },
+   {
+    "prompt_eval_count": 35066,
+    "eval_count": 84,
+    "total_duration": 9321698625
+   }
+  ]
+ }
+}

@@ -1,0 +1,90 @@
+{
+ "id": "C215",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 41290,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "However, we have experimented with some hyper-parameters to see what characteristics G2N shows for these.",
+   "page": 8,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 120.1,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X2": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X7": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"We also have conducted experiments in 50 Atari games with the same settings as those of Table 1.\", \"page\": 7}",
+   "{\"value\": \"yes\", \"quote\": \"However, we have experimented with some hyper-parameters to see what characteristics G2N shows for these.\", \"page\": 8}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 13755,
+    "eval_count": 19,
+    "total_duration": 104540030209
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 13726,
+    "eval_count": 19,
+    "total_duration": 3237868542
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 13717,
+    "eval_count": 19,
+    "total_duration": 3264943083
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 13762,
+    "eval_count": 39,
+    "total_duration": 5035342375
+   },
+   {
+    "prompt_eval_count": 13865,
+    "eval_count": 38,
+    "total_duration": 3987878250
+   }
+  ]
+ }
+}

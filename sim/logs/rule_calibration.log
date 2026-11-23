@@ -1,0 +1,19 @@
+ppo_sb3 {'10v10': {'k': 10, 'draws': 2000, 'poi_excludes_half': 0.0535, 'iqm_disjoint': np.float64(0.006), 'either': np.float64(0.0535)}, '5v5': {'k': 5, 'draws': 2000, 'poi_excludes_half': 0.0985, 'iqm_disjoint': np.float64(0.0255), 'either': np.float64(0.0985)}}
+trpo {'10v10': {'k': 10, 'draws': 2000, 'poi_excludes_half': 0.062, 'iqm_disjoint': np.float64(0.0085), 'either': np.float64(0.062)}, '5v5': {'k': 5, 'draws': 2000, 'poi_excludes_half': 0.0905, 'iqm_disjoint': np.float64(0.022), 'either': np.float64(0.091)}}
+ppo_sb3 HalfCheetah-v5 {'k': 5, 'draws': 2000, 'poi_excludes_half': 0.101, 'iqm_disjoint': np.float64(0.0255), 'either': np.float64(0.101)}
+ppo_sbx HalfCheetah-v5 {'k': 5, 'draws': 2000, 'poi_excludes_half': 0.0855, 'iqm_disjoint': np.float64(0.019), 'either': np.float64(0.0855)}
+sac HalfCheetah-v5 {'k': 5, 'draws': 2000, 'poi_excludes_half': 0.098, 'iqm_disjoint': np.float64(0.0295), 'either': np.float64(0.0985)}
+crossq HalfCheetah-v5 {'k': 5, 'draws': 2000, 'poi_excludes_half': 0.0935, 'iqm_disjoint': np.float64(0.0245), 'either': np.float64(0.096)}
+ppo_sb3 Hopper-v5 {'k': 5, 'draws': 2000, 'poi_excludes_half': 0.091, 'iqm_disjoint': np.float64(0.0175), 'either': np.float64(0.0915)}
+ppo_sbx Hopper-v5 {'k': 5, 'draws': 2000, 'poi_excludes_half': 0.0945, 'iqm_disjoint': np.float64(0.02), 'either': np.float64(0.095)}
+sac Hopper-v5 {'k': 5, 'draws': 2000, 'poi_excludes_half': 0.097, 'iqm_disjoint': np.float64(0.0295), 'either': np.float64(0.099)}
+crossq Hopper-v5 {'k': 5, 'draws': 2000, 'poi_excludes_half': 0.089, 'iqm_disjoint': np.float64(0.0195), 'either': np.float64(0.0895)}
+ppo_sb3 Walker2d-v5 {'k': 5, 'draws': 2000, 'poi_excludes_half': 0.092, 'iqm_disjoint': np.float64(0.0245), 'either': np.float64(0.093)}
+ppo_sbx Walker2d-v5 {'k': 5, 'draws': 2000, 'poi_excludes_half': 0.095, 'iqm_disjoint': np.float64(0.0225), 'either': np.float64(0.0955)}
+sac Walker2d-v5 {'k': 5, 'draws': 2000, 'poi_excludes_half': 0.086, 'iqm_disjoint': np.float64(0.018), 'either': np.float64(0.086)}
+crossq Walker2d-v5 {'k': 5, 'draws': 2000, 'poi_excludes_half': 0.098, 'iqm_disjoint': np.float64(0.0195), 'either': np.float64(0.0985)}
+ppo_sb3 Swimmer-v5 {'k': 5, 'draws': 2000, 'poi_excludes_half': 0.0925, 'iqm_disjoint': np.float64(0.0225), 'either': np.float64(0.093)}
+ppo_sbx Swimmer-v5 {'k': 5, 'draws': 2000, 'poi_excludes_half': 0.0975, 'iqm_disjoint': np.float64(0.0215), 'either': np.float64(0.0975)}
+sac Swimmer-v5 {'k': 5, 'draws': 2000, 'poi_excludes_half': 0.0855, 'iqm_disjoint': np.float64(0.013), 'either': np.float64(0.0855)}
+crossq Swimmer-v5 {'k': 5, 'draws': 2000, 'poi_excludes_half': 0.1005, 'iqm_disjoint': np.float64(0.0215), 'either': np.float64(0.1005)}
+{'median': 0.09525, 'min': 0.0855, 'max': 0.101}

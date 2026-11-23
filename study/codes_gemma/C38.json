@@ -1,0 +1,96 @@
+{
+ "id": "C38",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 60222,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "We demonstrate empirically that the Neural Map surpasses previous DRL memories on a set of challenging 2D and 3D maze environments and show that it is capable of generalizing to environments that were not seen during training.",
+   "page": 1,
+   "invalid": true
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We used an auxiliary weighted entropy loss on the Synchronous Actor-Critic with weight 0.01.",
+   "page": 13,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 123.8,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X2": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X7": [
+   "{\"value\": \"yes\", \"quote\": \"We demonstrate empirically that the Neural Map surpasses previous DRL memories on a set of challenging 2D and 3D maze environments\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"We demonstrate empirically that the Neural Map surpasses previous DRL memories on a set of challenging 2D and 3D maze environments and show that it is capable of generalizing to environments that were not seen during training.\", \"page\": 1}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"The first disadvantage is that a potentially significant amount of redundant information could be stored.\", \"page\": 2}",
+   "{\"value\": \"yes\", \"quote\": \"We used an auxiliary weighted entropy loss on the Synchronous Actor-Critic with weight 0.01.\", \"page\": 13}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 16505,
+    "eval_count": 19,
+    "total_duration": 104522329750
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 16476,
+    "eval_count": 19,
+    "total_duration": 2586810083
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 16467,
+    "eval_count": 44,
+    "total_duration": 4463692291
+   },
+   {
+    "prompt_eval_count": 16575,
+    "eval_count": 60,
+    "total_duration": 4920468458
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 16512,
+    "eval_count": 33,
+    "total_duration": 3910317541
+   },
+   {
+    "prompt_eval_count": 16609,
+    "eval_count": 40,
+    "total_duration": 3366643833
+   }
+  ]
+ }
+}

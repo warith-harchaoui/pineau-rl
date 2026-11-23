@@ -1,0 +1,102 @@
+{
+ "id": "K002",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 63436,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "We release MolEdit-Instruct publicly on Hugging Face to facilitate future research.",
+   "page": 2,
+   "invalid": true
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Experimental results demonstrate that MolEditRL significantly outperforms state-of-the-art methods in both property optimization accuracy and structural fidelity, achieving a 74% improvement in editing success rate while using 98% fewer parameters (Figure 1).",
+   "page": 1,
+   "invalid": true
+  },
+  "X7": {
+   "value": "yes",
+   "quote": "We train MolEditRL on a multi-GPU cluster using PyTorch with Distributed Data Parallel (DDP).",
+   "page": 16,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "For optimization, we use the AdamW optimizer with a learning rate of 5e-5, weight decay of 0.01, and a linear warm-up scheduler over 10,000 steps.",
+   "page": 16,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 283.3,
+ "raw": {
+  "Q5": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We release MolEdit-Instruct publicly on Hugging Face to facilitate future research.\",\n  \"page\": 2\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We release MolEdit-Instruct publicly on Hugging Face to facilitate future research.\",\n  \"page\": 2\n}"
+  ],
+  "X2": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"Experimental results demonstrate that MolEditRL significantly outperforms state-of-the-art methods in both property optimization accuracy and structural fidelity, achieving a 74% improvement in editing success rate while using 98% fewer parameters (Figure 1).\",\n  \"page\": 1\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"Experimental results demonstrate that MolEditRL significantly outperforms state-of-the-art methods in both property optimization accuracy and structural fidelity, achieving a 74% improvement in editing success rate while using 98% fewer parameters (Figure 1).\",\n  \"page\": 1\n}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"We train MolEditRL on a multi-GPU cluster using PyTorch with Distributed Data Parallel (DDP).\",\n  \"page\": 16\n}"
+  ],
+  "Y9": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"For optimization, we use the AdamW optimizer with a learning rate of 5e-5, weight decay of 0.01, and a linear warm-up scheduler over 10,000 steps.\",\n  \"page\": 16\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"For optimization, we use the AdamW optimizer with a learning rate of 5e-5, weight decay of 0.01, and a linear warm-up scheduler over 10,000 steps.\",\n  \"page\": 16\n}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 24539,
+    "eval_count": 41,
+    "total_duration": 235503790709
+   },
+   {
+    "prompt_eval_count": 24644,
+    "eval_count": 41,
+    "total_duration": 4974414667
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 24510,
+    "eval_count": 76,
+    "total_duration": 9737167917
+   },
+   {
+    "prompt_eval_count": 24650,
+    "eval_count": 76,
+    "total_duration": 8438567667
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 24501,
+    "eval_count": 49,
+    "total_duration": 7073059666
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 24546,
+    "eval_count": 72,
+    "total_duration": 9266913333
+   },
+   {
+    "prompt_eval_count": 24682,
+    "eval_count": 72,
+    "total_duration": 7843096833
+   }
+  ]
+ }
+}

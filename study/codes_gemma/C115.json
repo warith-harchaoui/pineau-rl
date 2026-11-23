@@ -1,0 +1,90 @@
+{
+ "id": "C115",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 69136,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "Results are reported with 95% confidence intervals.",
+   "page": 7,
+   "invalid": false
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  }
+ },
+ "retried": true,
+ "seconds": 176.7,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X2": [
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"Furthermore, we empirically compare the proposed algorithm to state-of-the-art approaches, showing that it achieves better learning performance and is very robust to negative transfer, even when some source tasks are significantly different from the target task.\",\n  \"page\": 1\n}",
+   "{\n  \"value\": \"yes\",\n  \"quote\": \"Results are reported with 95% confidence intervals.\",\n  \"page\": 7\n}"
+  ],
+  "X7": [
+   "{\n  \"value\": \"no\",\n  \"quote\": \"absent\",\n  \"page\": null\n}"
+  ],
+  "Y9": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 22691,
+    "eval_count": 19,
+    "total_duration": 159180461209
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 22662,
+    "eval_count": 71,
+    "total_duration": 6952561375
+   },
+   {
+    "prompt_eval_count": 22797,
+    "eval_count": 36,
+    "total_duration": 3312125334
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 22653,
+    "eval_count": 27,
+    "total_duration": 3217176792
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 22698,
+    "eval_count": 19,
+    "total_duration": 3350131542
+   }
+  ]
+ }
+}

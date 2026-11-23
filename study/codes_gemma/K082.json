@@ -1,0 +1,96 @@
+{
+ "id": "K082",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 43741,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "yes",
+   "quote": "We acknowledge support from a UKRI Turing AI Acceleration Fellowship (EPSRC EP/V024868/1).",
+   "page": 15,
+   "invalid": true
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "InterRetro achieves state-of-the-art results – solving 100% of targets on the Retro*-190 benchmark, shortening synthetic routes by 4.9%, and achieving promising performance using only 10% of the training data.",
+   "page": 1,
+   "invalid": true
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  }
+ },
+ "retried": true,
+ "seconds": 127.8,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"yes\", \"quote\": \"We acknowledge support from a UKRI Turing AI Acceleration Fellowship (EPSRC EP/V024868/1).\", \"page\": 15}",
+   "{\"value\": \"yes\", \"quote\": \"We acknowledge support from a UKRI Turing AI Acceleration Fellowship (EPSRC EP/V024868/1).\", \"page\": 15}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"Empirically, InterRetro achieves state-of-the-art results – solving 100% of targets on the Retro*-190 benchmark, shortening synthetic routes by 4.9%, and achieving promising performance using only 10% of the training data.\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"InterRetro achieves state-of-the-art results – solving 100% of targets on the Retro*-190 benchmark, shortening synthetic routes by 4.9%, and achieving promising performance using only 10% of the training data.\", \"page\": 1}"
+  ],
+  "X7": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "Y9": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 12776,
+    "eval_count": 45,
+    "total_duration": 102043152250
+   },
+   {
+    "prompt_eval_count": 12885,
+    "eval_count": 45,
+    "total_duration": 4481758000
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 12747,
+    "eval_count": 74,
+    "total_duration": 7934269750
+   },
+   {
+    "prompt_eval_count": 12885,
+    "eval_count": 70,
+    "total_duration": 6561880500
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 12738,
+    "eval_count": 19,
+    "total_duration": 3245315709
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 12783,
+    "eval_count": 19,
+    "total_duration": 3513590666
+   }
+  ]
+ }
+}

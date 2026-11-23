@@ -1,0 +1,96 @@
+{
+ "id": "C33",
+ "coder": "gemma3:12b",
+ "model_digest": "b92b218582c521ba287f38f1d6057dcd3c6cbff036f13cac97b5d861f5e58ec3",
+ "options": {
+  "temperature": 0,
+  "seed": 0,
+  "num_ctx": 98304
+ },
+ "text_chars": 61480,
+ "truncated": false,
+ "criteria": {
+  "Q5": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "X2": {
+   "value": "yes",
+   "quote": "On a comprehensive evaluation on seven knowledge base datasets, we found MINERVA to be competitive with many current state-of-the-art methods.",
+   "page": 1,
+   "invalid": true
+  },
+  "X7": {
+   "value": "no",
+   "quote": "absent",
+   "page": null,
+   "invalid": false
+  },
+  "Y9": {
+   "value": "yes",
+   "quote": "We also tune our model over two hyper parameters, viz., β which is the entropy regularization constant and λ which is the moving average constant for the REINFORCE baseline.",
+   "page": 17,
+   "invalid": true
+  }
+ },
+ "retried": true,
+ "seconds": 175.4,
+ "raw": {
+  "Q5": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "X2": [
+   "{\"value\": \"yes\", \"quote\": \"We found MINERVA to be competitive with many current state-of-the-art methods.\", \"page\": 1}",
+   "{\"value\": \"yes\", \"quote\": \"On a comprehensive evaluation on seven knowledge base datasets, we found MINERVA to be competitive with many current state-of-the-art methods.\", \"page\": 1}"
+  ],
+  "X7": [
+   "{\"value\": \"no\", \"quote\": \"absent\", \"page\": null}"
+  ],
+  "Y9": [
+   "{\"value\": \"yes\", \"quote\": \"We also tune our model over two hyper parameters, viz., β which is the entropy regularization constant and λ which is the moving average constant for the REINFORCE baseline.\", \"page\": 17}",
+   "{\"value\": \"yes\", \"quote\": \"We also tune our model over two hyper parameters, viz., β which is the entropy regularization constant and λ which is the moving average constant for the REINFORCE baseline.\", \"page\": 17}"
+  ]
+ },
+ "ollama": {
+  "Q5": [
+   {
+    "prompt_eval_count": 17968,
+    "eval_count": 19,
+    "total_duration": 149587969166
+   }
+  ],
+  "X2": [
+   {
+    "prompt_eval_count": 17939,
+    "eval_count": 37,
+    "total_duration": 5050036792
+   },
+   {
+    "prompt_eval_count": 18040,
+    "eval_count": 47,
+    "total_duration": 5038592916
+   }
+  ],
+  "X7": [
+   {
+    "prompt_eval_count": 17930,
+    "eval_count": 19,
+    "total_duration": 3518984791
+   }
+  ],
+  "Y9": [
+   {
+    "prompt_eval_count": 17975,
+    "eval_count": 52,
+    "total_duration": 6716330375
+   },
+   {
+    "prompt_eval_count": 18091,
+    "eval_count": 52,
+    "total_duration": 5416283834
+   }
+  ]
+ }
+}
