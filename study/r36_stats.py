@@ -49,9 +49,6 @@ def r4(x):
     return None if x is None else round(float(x), 4)
 
 
-def r3(x):  # odds ratios: the report prints two decimals; a fourth one lands on a rounding edge across platforms
-    return None if x is None else round(float(x), 3)
-
 
 def value(pid, k, invalid_no=False, pages_yes=False):
     rd, rec = reads[pid]
@@ -79,7 +76,30 @@ def fit(y, x, g, b1_free=True):
                      options=dict(ftol=1e-15, gtol=1e-10, maxiter=10000))  # converged to the maximum, not to the stopping rule
         if best is None or r.fun < best.fun:
             best = r
-    return best
+    return polish(f, best, [0, 1, 2] if b1_free else [0, 2])
+
+
+def polish(f, r, free):
+    """Newton steps on the free coordinates from the L-BFGS-B point: its finite-difference gradient stops it about
+    1e-5 from the maximum, differently on Linux and macOS; Newton reaches the maximum itself, so both platforms agree.
+    The reader SD at its lower bound (zero) stays there."""
+    x = r.x.copy()
+    if x[2] <= -7.9:  # reader SD at zero: pinned exactly on the bound, so every platform starts Newton from the same point
+        x[2] = -8.0
+    free = [i for i in free if not (i == 2 and x[2] <= -7.9)]
+    for _ in range(50):
+        def fs(v):
+            t = x.copy()
+            t[free] = v
+            return f(t)
+        v, h = x[free], 1e-5
+        g = np.array([(fs(v + h * e) - fs(v - h * e)) / (2 * h) for e in np.eye(len(free))])
+        step = np.linalg.solve(hessian(fs, v), g)
+        x[free] = v - step
+        if np.max(np.abs(step)) < 1e-12:
+            break
+    r.x, r.fun = x, f(x)
+    return r
 
 
 def hessian(f, t, h=1e-4):
@@ -109,8 +129,8 @@ def glmm(ids, k):
     # reader SD = 0: plain logistic regression (the model at the lower bound of log s)
     lr0 = max(0.0, 2 * (nll((b0, b1, -50.0), y, x, g) - full.fun)) if not boundary else 0.0
     lo, hi = b1 - norm.ppf(.975) * se, b1 + norm.ppf(.975) * se
-    return dict(n=len(ids), b0=r4(b0), b1=r4(b1), se_b1=r4(se), odds_ratio=r3(np.exp(b1)),
-                or_wald95=[r3(np.exp(lo)), r3(np.exp(hi))], b1_wald95=[r4(lo), r4(hi)], p_lrt=r6(chi2.sf(lr, 1)),
+    return dict(n=len(ids), b0=r4(b0), b1=r4(b1), se_b1=r4(se), odds_ratio=r4(np.exp(b1)),
+                or_wald95=[r4(np.exp(lo)), r4(np.exp(hi))], b1_wald95=[r4(lo), r4(hi)], p_lrt=r6(chi2.sf(lr, 1)),
                 reader_sd=r4(0.0 if boundary else np.exp(ls)), p_reader_sd=r6(0.5 * chi2.sf(lr0, 1) if lr0 else 1.0),
                 converged=bool(full.success and null.success))
 
