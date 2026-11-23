@@ -350,7 +350,7 @@ claim("GRPO5 alt Llama true", *both(lambda l: ("Llama avec la vraie récompense 
 assert len(run5("qwen05", "random")) == 5 and max(x["pass1_100"] for x in run5("qwen05", "random")) <= 0.0125
 assert len(run5("llama1", "random")) == 4 and max(x["pass1_100"] for x in run5("llama1", "random")) <= 0.0125
 claim("GRPO5 alt coin flip", *both(lambda l: (f"cinq flèches qui tombent à {pct(0.01, l)} ou {pct(0, l)}" if l == "fr" else f"five arrows falling to {pct(0.01, l)} or {pct(0, l)}")))
-claim("GRPO5 alt Llama coin flip", *both(lambda l: (f"quatre flèches qui tombent à {pct(0.01, l)} ou moins" if l == "fr" else f"four arrows falling to {pct(0.01, l)} or less")))
+claim("GRPO5 alt Llama coin flip", *both(lambda l: (f"quatre flèches qui tombent à {pct(0.0125, l, 2)} au plus" if l == "fr" else f"four arrows falling to {pct(0.0125, l, 2)} at most")))
 assert [x["device"] for x in q5] == ["mps", "mps", "cpu", "cpu", "cpu"]
 # (removed from the article on 2026-11-21) claim_("GRPO5 GPU runs", *both(lambda l: ("{} et {} points" if l == "fr" else "{} and {} points").format(*[sg(x * 100) for x in gn5["qwen05 true"]["gains"][:2]])))
 cpu = ex5["cpu"]["qwen05 true"]
@@ -361,9 +361,9 @@ assert -0.01 < gl5["ci"][0] < 0  # "just below zero"
 claim("GRPO5 Llama gain", *both(lambda l: ("le gain moyen vaut {} points, de juste sous zéro à {}" if l == "fr" else "the mean gain is {} points, from just below zero to {}").format(
     sg(gl5["mean"] * 100), sg(gl5["ci"][1] * 100))))
 # "nine finished runs" with the coin flip, all at 1% or less; the tenth failed (ex5["failed"]).
-assert sum(x["reward"] == "random" for x in sm5) == 9 and max(x["pass1_100"] for x in sm5 if x["reward"] == "random") <= 0.0125
+assert sum(x["reward"] == "random" for x in sm5) == 9 and max(x["pass1_100"] for x in sm5 if x["reward"] == "random") == 0.0125
 assert ex5["failed"] == [{"model": "llama1", "reward": "random", "seed": 4}]
-claim("GRPO coin flip <= 1%", *both(lambda l: f"{pct(0.01, l)} {'ou moins' if l == 'fr' else 'or less'}"))
+claim("GRPO coin flip <= 1.25%", *both(lambda l: f"{pct(0.0125, l, 2)} {'au plus' if l == 'fr' else 'at most'}"))
 cut = lambda m, r: [x["truncated_100"] for x in sm if x["model"] == m and x["reward"] == r]
 # Cut-off answers over the five random seeds (summary_5.json): the ten true-reward runs, the nine finished coin-flip runs.
 ct = [x["truncated_100"] for x in sm5 if x["reward"] == "true"]

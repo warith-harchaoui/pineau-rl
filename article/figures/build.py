@@ -482,9 +482,9 @@ def text(name, lang):
             source="Données : vingt entraînements GRPO de cent pas, dont un arrêté deux fois par le garde-fou des gradients" if fr
             else "Data: twenty GRPO trainings of a hundred steps, one of them stopped twice by the gradient safeguard",
             desc="Dix-neuf flèches du départ à 100 pas, une croix pour l'essai arrêté. Vraie récompense : Qwen finit "
-                 "entre 0 et 61 %, Llama entre 20 et 48 %. Pile ou face : 1 % ou moins dans les neuf essais finis." if fr else
+                 "entre 0 et 61 %, Llama entre 20 et 48 %. Pile ou face : 1,25 % au plus dans les neuf essais finis." if fr else
                  "Nineteen arrows from the start to step 100, a cross for the stopped run. True reward: Qwen ends between "
-                 "0 and 61%, Llama between 20 and 48%. Coin flip: 1% or less in all nine finished runs."),
+                 "0 and 61%, Llama between 20 and 48%. Coin flip: 1.25% at most in all nine finished runs."),
         "grpo-coupure": dict(
             count=lambda c, t: (f"{c} sur {t}" if fr else f"{c} of {t}"),
             count_note=("réponses coupées | avant de donner un résultat, | toutes comptées fausses" if fr
