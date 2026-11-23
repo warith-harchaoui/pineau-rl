@@ -7,6 +7,7 @@ the analysis); the full run writes codes_gemma/<id>.json and skips the files alr
 Input: pdftotext (no -layout) of pdf/<id>.pdf and pdf/<id>-supp.pdf, page marks "[[page N]]", the references section cut
 as in falsify_no.py, truncated at 320,000 characters. Ollama: temperature 0, seed 0, num_ctx 98,304, JSON schema output.
 One Ollama call per criterion (precision after the pilot, deviation 33): the paper text first, then the rule.
+A malformed JSON answer is an invalid decision for its criterion only (precision of 23 November 2026).
 Each "yes" quote must contain its criterion's pattern of deviation 27 and is checked with check_codes.found (threshold 0.9); a failing quote gives one retry naming the failing
 criteria; still failing, the decision is "invalid" (it leaves the denominators of gemma_stats.py).
 The GPU is used alone: the script waits while a GRPO training (sim/llm/grpo.py) runs.
@@ -98,7 +99,12 @@ def read(pid, dig):
         messages = [dict(role="system", content=SYSTEM),
                     dict(role="user", content=f"PAPER TEXT:\n\n{text}" + ASK.format(rule=RULE[k]))]
         r1 = chat(messages)
-        ans, raw[k], stats[k] = json.loads(r1["message"]["content"]), [r1["message"]["content"]], [stat(r1)]
+        raw[k], stats[k] = [r1["message"]["content"]], [stat(r1)]
+        try:
+            ans = json.loads(r1["message"]["content"])
+        except json.JSONDecodeError:  # precision of 23 November 2026: a malformed answer is an invalid decision for its criterion
+            crit[k] = dict(value="no", quote="", page=None, invalid=True, malformed=True)
+            continue
         if not ok(ans, k, pid):  # one retry
             retried = True
             messages += [r1["message"], dict(role="user", content=(
@@ -106,9 +112,13 @@ def read(pid, dig):
                 "Copy exactly from the paper text the passage that states it, or answer \"no\" if no passage supports "
                 "\"yes\". Give the JSON object again."))]
             r2 = chat(messages)
-            ans = json.loads(r2["message"]["content"])
             raw[k].append(r2["message"]["content"])
             stats[k].append(stat(r2))
+            try:
+                ans = json.loads(r2["message"]["content"])
+            except json.JSONDecodeError:
+                crit[k] = dict(value="no", quote="", page=None, invalid=True, malformed=True)
+                continue
         crit[k] = dict(ans, invalid=not ok(ans, k, pid))
     return dict(id=pid, coder="gemma3:12b", model_digest=dig, options=OPTIONS, text_chars=chars, truncated=truncated,
                 criteria=crit, retried=retried, seconds=round(time.time() - t0, 1), raw=raw, ollama=stats)
