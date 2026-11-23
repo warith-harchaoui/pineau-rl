@@ -393,6 +393,14 @@ claim("160-token limit", "limite de 160 jetons", "160-token limit", "doc")
 
 # Numbers with no result file: the survey document holds them (slides, cited papers, sample sizes).
 D = lambda label, fr, en: claim(label, fr, en, "doc")
+
+# Deviation 36 (study/r36_stats.json): eight fresh readers, each reading both years, on the four verdict criteria.
+R36 = J("study/r36_stats.json")["main"]
+r36s = lambda k, y: Decimal(R36[k]["counts"][y]["yes"]) / Decimal(R36[k]["counts"][y]["n"])
+for k in ("Q5", "Y9", "X7", "X2"):
+    claim(f"r36 {k}", *both(lambda l: de_a(pct(r36s(k, "2018"), l), pct(r36s(k, "2026"), l), l)))
+claim("r36 X2 p", *both(lambda l: f"(p = {num(R36['X2']['diff']['p'], l, 3)})"))
+claim("r36 papers", *both(lambda l: f"{R36['Q5']['counts']['2018']['n'] + R36['Q5']['counts']['2026']['n']} " + ("articles expérimentaux" if l == "fr" else "experimental papers")))
 D("t and p of 2018", "t = −9,09, p = 0,0016", "t = −9.09, p = 0.0016")
 D("published t", "9,09 avec p = 0,0016", "9.09 with p = 0.0016")
 D("degrees of freedom", "3,4 degrés de liberté", "3.4 degrees of freedom")
