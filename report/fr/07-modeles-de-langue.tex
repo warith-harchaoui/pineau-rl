@@ -6,7 +6,7 @@ chapitre décrit un volet plus petit, consacré aux modèles d'IA générative q
 présente le vocabulaire retenu, l'algorithme tel que nous l'avons écrit, le protocole, les essais et
 leurs résultats, puis le piège de mesure que ces essais ont révélé. Le protocole complet se trouve
 dans \file{sim/llm/LLM\_PROTOCOL.md}. Ses vingt écarts sont résumés au \cref{chap:09-ecarts}. Les écarts~18
-et~19, écrits le 21 novembre 2026 après tous les résultats, déclarent des défauts trouvés par une relecture
+et~19, écrits après tous les résultats, déclarent des défauts trouvés par une relecture
 technique et relèvent dans les journaux des mesures que la première version de ce chapitre laissait de côté. Ils
 changent la lecture du volet sans changer aucun chiffre publié.
 
@@ -147,7 +147,7 @@ $3 \times 10^{-6}$. Les poids restent en virgule flottante sur 32 bits.
 \begin{notebox}
 \textbf{Ce qui distingue notre GRPO de celui de \textcite{shao2024deepseekmath}.} Notre perte n'a
 aucun terme de divergence de Kullback-Leibler par rapport au modèle de départ, ce que le protocole
-du 8 novembre 2026 annonçait. Le groupe compte 8 réponses par problème et le pas 4 problèmes, bien
+annonçait. Le groupe compte 8 réponses par problème et le pas 4 problèmes, bien
 moins que dans les articles de référence. La limite de 160 jetons est très courte pour un
 raisonnement écrit. Le taux d'apprentissage n'a pas été choisi par le pilote prévu, interrompu au
 pas 10 (écarts 4 et 6). Ces choix suffisent à une illustration. Ils interdisent de lire nos chiffres
@@ -218,8 +218,8 @@ paramètres, version \emph{Instruct} \parencite{qwen2025qwen25}, puis Llama 3.2 
 version \emph{Instruct}, dans la copie publiée par \texttt{unsloth}
 \parencite{meta2024llama32,grattafiori2024llama3}. Depuis l'écart 15 (c), \file{grpo.py} fixe la
 révision exacte des fichiers téléchargés (\texttt{7ae5576\dots} pour Qwen, \texttt{5a8abab\dots}
-pour Llama), les seules présentes dans le cache de la machine, téléchargées les 22 et 27 octobre
-2026, avant le premier essai.
+pour Llama), les seules présentes dans le cache de la machine, téléchargées
+avant le premier essai.
 
 \paragraph{Pilote} Un pilote sans entraînement devait fixer la tâche : celle où les deux modèles se situent
 entre 15~\% et 70~\% de justesse. Le protocole le voulait sur des problèmes hors test. Il a tourné sur le test
@@ -235,7 +235,7 @@ au vu de vraies sorties, avant tout entraînement (écart 1).
 \paragraph{Plan} Deux modèles, deux récompenses, 100 pas par essai, taux d'apprentissage $3 \times
 10^{-6}$ pour toutes les conditions. Le protocole prévoyait 200 pas et cinq graines aléatoires.
 L'écart 6 a réduit le plan à 100 pas et trois graines aléatoires (0 à 2), avant tout essai retenu, pour tenir
-dans le calcul disponible. L'écart 14, écrit le 15 novembre 2026 avant tout nouvel essai, a rétabli
+dans le calcul disponible. L'écart 14, écrit avant tout nouvel essai, a rétabli
 les graines aléatoires 3 et 4, avec le même code et les mêmes réglages. Le point de départ de chaque essai est
 le modèle de base, mesuré avec la graine aléatoire de l'essai.
 
@@ -249,7 +249,7 @@ n'offrent que dix rééchantillons distincts, cinq graines aléatoires 126.
 
 \paragraph{Statistique ajoutée} L'écart~19, écrit avant le script \file{sim/llm/logs\_stats.py}, ajoute
 trois outils pour les cinq mesures. Une partie de ces valeurs avait été affichée par la relecture technique
-du même jour : la règle de lecture ne dépend pas de leur signe.
+qui l'a précédé : la règle de lecture ne dépend pas de leur signe.
 \begin{itemize}
   \item Dans chaque configuration, à côté de l'intervalle par percentile, l'intervalle de Student
     $\bar g \pm t_{n-1;\,0{,}975}\, s_g/\sqrt n$, où $\bar g$ et $s_g$ sont la moyenne et l'écart type des
@@ -274,16 +274,16 @@ environ 24~points pour Qwen et 10 pour Llama. La précision du gain moyen dépen
 bien plus que du nombre de réponses.
 
 \paragraph{Un essai qui échoue deux fois} L'essai Llama à récompense tirée au sort et graine aléatoire 4
-s'est arrêté deux nuits de suite sur le premier garde-fou, dès sa première mise à jour. L'écart 16
+s'est arrêté deux fois de suite sur le premier garde-fou, dès sa première mise à jour. L'écart 16
 compte ce second échec comme un résultat : la configuration se résume sur ses quatre essais finis,
 l'échec écrit à côté. Une analyse de sensibilité remplace aussi le gain manquant par le plus petit
 puis par le plus grand gain des dix-neuf essais finis.
 
 \paragraph{Matériel} Tous les essais ont tourné sur le Mac du projet
 (\cref{chap:08-logiciel,chap:D-environnements}). Les trois premiers essais Qwen ont tourné sur le
-GPU, tôt le matin, machine au repos. Après les plantages de l'écart 8 et le diagnostic de l'écart 10, les essais Qwen
+GPU, machine au repos. Après les plantages de l'écart 8 et le diagnostic de l'écart 10, les essais Qwen
 restants sont passés sur CPU, avec deux fils d'exécution (\file{cpu.sh}, écart 11). Les essais
-Llama, environ deux fois et demie plus lents que Qwen sur CPU, sont restés sur GPU, la nuit
+Llama, environ deux fois et demie plus lents que Qwen sur CPU, sont restés sur GPU, machine au repos
 seulement (\file{night.sh}), avec les garde-fous. Le \cref{tab:grpo} donne l'appareil de chaque
 essai.
 
@@ -412,7 +412,7 @@ un gradient nul.
 
 \paragraph{Un essai hors protocole} L'écart 16 (e) prévoyait de lancer une fois sur CPU l'essai
 Llama à récompense tirée au sort et graine aléatoire 4, après tous les autres calculs, pour savoir si son
-double échec tenait au GPU. L'essai a abouti le 21 novembre 2026, sans aucun recalcul. Son pass@1
+double échec tenait au GPU. L'essai a abouti sans aucun recalcul. Son pass@1
 passe de \num{23.25}~\% au pas 0 à \num{0.25}~\% au pas 100
 (\file{sim/llm/results/llama1\_cpu/mul2/random/seed4.jsonl}). Le résultat sort de toute
 statistique, comme l'écart l'avait fixé. Il cadre avec un échec dû au GPU, sans le prouver : un
@@ -430,15 +430,13 @@ sans entraînement, le lot exact du pas 10 du pilote : les quatre multiplication
 $14 \times 36$, $21 \times 50$ et $45 \times 17$, huit réponses chacune, avec le modèle Qwen de
 départ. Le modèle donne 5 réponses justes sur 32, ce qui concorde avec le test. Mais 23 réponses sur 32
 atteignent la limite de 160 jetons avant de donner un résultat. Aucune de ces réponses coupées n'est
-juste. Parmi les 9 réponses complètes, 5 sont justes (\cref{fig:grpo-coupure,fig:grpo-truncation}).
+juste. Parmi les 9 réponses complètes, 5 sont justes (\cref{fig:grpo-coupure}).
 
 \fig{grpo-coupure}{Les réponses du modèle Qwen2.5 de 0,5 milliard de paramètres avant tout
 entraînement, huit par problème, sur les quatre multiplications du dixième pas du pilote. Une réponse
 complète et juste est en vert, une réponse complète et fausse en gris, une réponse coupée en rouge.
 La plupart atteignent la limite de 160 jetons avant de donner un résultat et comptent pour fausses.}
 
-\fig[0.8\linewidth]{grpo-truncation}{Les mêmes trente-deux réponses, en barres empilées : pour chaque
-problème, la part des huit réponses complètes et justes, complètes et fausses, coupées à 160 jetons.}
 
 Le 0,91 du pas 10 n'était pas une erreur de décompte. L'explication la plus simple est que la vraie
 récompense apprend d'abord au modèle à terminer avant la coupure. Or, quand le modèle de départ rejoue ce lot,
@@ -500,8 +498,8 @@ Deux défauts déclarés pèsent sur ces faits : la pénalité de répétition d
 (écart~18). Le protocole à cinq graines aléatoires ne peut établir aucun gain dans une
 configuration. Une relance est écrite d'avance pour lever ces défauts (écart~20) : pénalité de répétition à
 1, pilote tenu hors du test, dix graines aléatoires par configuration sur le seul GPU, verdicts par problème
-gardés et une réponse gloutonne à 512 jetons, que la limite de longueur ne touche pas. Lancée le 22 novembre
-2026, elle attend que le GPU se libère et n'a encore produit aucun résultat. Sa règle est fixée : si le
+gardés et une réponse gloutonne à 512 jetons, que la limite de longueur ne touche pas. Elle est
+lancée, attend que le GPU se libère et n'a encore produit aucun résultat. Sa règle est fixée : si le
 contraste principal n'est établi pour aucun des deux modèles, ce volet passe en annexe.
 
 Ce volet n'établit ni l'effet de GRPO à l'échelle des articles, ni l'absence de l'effet de

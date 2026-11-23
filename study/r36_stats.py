@@ -71,7 +71,8 @@ def fit(y, x, g, b1_free=True):
     f = (lambda t: nll(t, y, x, g)) if b1_free else (lambda t: nll((t[0], 0.0, t[2]), y, x, g))
     best = None
     for ls0 in (-2.0, 0.0):                                   # two starts for the reader SD, the best kept
-        r = minimize(f, np.array([0.0, 0.0, ls0]), method="L-BFGS-B", bounds=[(-10, 10), (-10, 10), (-8, 3)])
+        r = minimize(f, np.array([0.0, 0.0, ls0]), method="L-BFGS-B", bounds=[(-10, 10), (-10, 10), (-8, 3)],
+                     options=dict(ftol=1e-15, gtol=1e-10, maxiter=10000))  # converged to the maximum, not to the stopping rule
         if best is None or r.fun < best.fun:
             best = r
     return best

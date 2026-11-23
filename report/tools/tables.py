@@ -350,11 +350,11 @@ def t_sondage():
                    r"@{}l>{\raggedright\arraybackslash}p{4cm}rrr r@{\hspace{0.28em}}l rr@{}", head, body, tabcolsep="4pt")
         body = survey_rows(rows, v2, lang)
         cap = L(lang,
-                rf"Grille v2 (critères Y1 à Y12, écarts 11 et 14 de \file{{study/PROTOCOL.md}}, écrite le 9 novembre 2026 avant toute lecture v2), sur les mêmes échantillons que le tableau~\ref{{tab:sondage-pineau}} : {s['ours2018']} articles de 2018 lus par nous et {s['classic2026']} articles de RL classique de 2026. "
+                rf"Grille v2 (critères Y1 à Y12, écarts 11 et 14 de \file{{study/PROTOCOL.md}}, écrite avant toute lecture v2), sur les mêmes échantillons que le tableau~\ref{{tab:sondage-pineau}} : {s['ours2018']} articles de 2018 lus par nous et {s['classic2026']} articles de RL classique de 2026. "
                 r"Mêmes colonnes : $k/n$ sur les articles où le critère s'applique, part avec intervalle de Wilson à 95~\%, différence en points avec l'intervalle de Newcombe à 95~\%, test exact de Fisher, correction de Holm sur les douze critères de la grille v2 (famille distincte de la grille v1). "
                 r"Y3 vaut « oui » quand la conclusion principale porte sur au moins deux tâches ; Y2 et Y11 ne s'appliquent qu'aux articles qui rapportent une incertitude, Y4 qu'aux articles à plusieurs tâches. "
                 r"\textbf{En gras}, les critères dont la différence passe la correction de Holm : seul Y9. Valeurs harmonisées (\file{study/overrides_v2.json}). Source : \file{study/extension_stats.json}.",
-                rf"Grid v2 (criteria Y1 to Y12, deviations 11 and 14 of \file{{study/PROTOCOL.md}}, written on 9 November 2026 before any v2 reading), on the same samples as Table~\ref{{tab:sondage-pineau}}: {s['ours2018']} papers from 2018 read by us and {s['classic2026']} classical RL papers from 2026. "
+                rf"Grid v2 (criteria Y1 to Y12, deviations 11 and 14 of \file{{study/PROTOCOL.md}}, written before any v2 reading), on the same samples as Table~\ref{{tab:sondage-pineau}}: {s['ours2018']} papers from 2018 read by us and {s['classic2026']} classical RL papers from 2026. "
                 r"Same columns: $k/n$ over the papers where the criterion applies, share with its 95\% Wilson interval, gap in points with its 95\% Newcombe interval, Fisher exact test, Holm correction over the twelve criteria of grid v2 (a family separate from grid v1). "
                 r"Y3 is `yes' when the main conclusion rests on at least two tasks; Y2 and Y11 apply only to papers that report an uncertainty, Y4 only to papers with several tasks. "
                 r"\textbf{In bold}, the criteria whose gap passes the Holm correction: Y9 alone. Harmonised values (\file{study/overrides_v2.json}). Source: \file{study/extension_stats.json}.")
@@ -700,12 +700,12 @@ def t_e2():
         cap = L(lang,
                 r"Expérience E2 : moyenne interquartile (IQM) du score final de chaque programme sur chaque tâche MuJoCo (Gymnasium 1.1.1), avec son intervalle de confiance à 95~\% par bootstrap stratifié (rliable, 2\,000 rééchantillons, \texttt{np.random.seed(2026)}). "
                 r"Score final : moyenne de 10 épisodes d'évaluation sur des graines jamais vues à l'entraînement, à 1 million de pas pour PPO et 200\,000 pour SAC et CrossQ (écart 1). "
-                r"10 graines (0 à 9) : résultat principal préregistré ; 20 graines (0 à 19) et budget égal (PPO lu à 200\,000 pas sur sa courbe d'évaluation) : consolidation de l'écart 12, calculée le 21 novembre 2026 (écart 20). Les colonnes SAC et CrossQ sont identiques à budget égal et à budget propre. "
+                r"10 graines (0 à 9) : résultat principal préregistré ; 20 graines (0 à 19) et budget égal (PPO lu à 200\,000 pas sur sa courbe d'évaluation) : consolidation de l'écart 12, calculée après tous les entraînements (écart 20). Les colonnes SAC et CrossQ sont identiques à budget égal et à budget propre. "
                 r"\textbf{En gras}, le chef de chaque tâche (plus forte IQM, sans test). Dernière ligne : changements de chef tranchés, quand le chef d'une tâche est battu par un autre programme sur une autre tâche avec un intervalle de probabilité d'amélioration qui exclut 0,5 ; entre parenthèses, avec les 24 intervalles rendus simultanés par Bonferroni (écart 18, tableau~\ref{tab:e2-bonferroni}). "
                 r"Sources : \file{sim/analysis/e2.json}, \file{e2\_s20.json}, \file{e2\_equal.json}, \file{e2\_equal\_s20.json}, \file{e2\_bonferroni.json}, \file{e2\_bonferroni\_s20.json}.",
                 r"Experiment E2: interquartile mean (IQM) of the final score of each program on each MuJoCo task (Gymnasium 1.1.1), with its 95\% stratified bootstrap confidence interval (rliable, 2,000 resamples, \texttt{np.random.seed(2026)}). "
                 r"Final score: mean of 10 evaluation episodes on seeds never seen in training, at 1 million steps for PPO and 200,000 for SAC and CrossQ (deviation 1). "
-                r"10 seeds (0 to 9): the main, preregistered result; 20 seeds (0 to 19) and equal budget (PPO read at 200,000 steps on its evaluation curve): the consolidation of deviation 12, computed on 21 November 2026 (deviation 20). The SAC and CrossQ columns are the same at equal and at own budget. "
+                r"10 seeds (0 to 9): the main, preregistered result; 20 seeds (0 to 19) and equal budget (PPO read at 200,000 steps on its evaluation curve): the consolidation of deviation 12, computed after all training had finished (deviation 20). The SAC and CrossQ columns are the same at equal and at own budget. "
                 r"\textbf{In bold}, the leader of each task (highest IQM, no test). Last row: settled changes of leader, when the leader of one task is beaten by another program on another task with a probability-of-improvement interval that excludes 0.5; in parentheses, with the 24 intervals made simultaneous by Bonferroni (deviation 18, Table~\ref{tab:e2-bonferroni}). "
                 r"Sources: \file{sim/analysis/e2.json}, \file{e2\_s20.json}, \file{e2\_equal.json}, \file{e2\_equal\_s20.json}, \file{e2\_bonferroni.json}, \file{e2\_bonferroni\_s20.json}.")
         floattable("e2", lang, cap, L(lang, "E2 : IQM par programme et par tâche", "E2: IQM per program and task"),
@@ -1161,8 +1161,8 @@ DEV_STUDY = [
      r"Contact address removed from the User-Agent header of the downloads; no effect on the data."),
     (10, None, "cod", r"Scripts de travail écrasés dans l'espace partagé des lecteurs ; les codages, dans des dossiers séparés, sont intacts.",
      r"Working scripts overwritten in the readers' shared space; the codings, in separate folders, are untouched."),
-    (11, 9, "av", r"Grille v2 (Y1 à Y12) pour les failles que la v1 ne mesure pas ; Y11 et Y12 ajoutés le même jour, avant tout codage.",
-     r"Grid v2 (Y1 to Y12) for the flaws grid v1 leaves unmeasured; Y11 and Y12 added the same day, before any coding."),
+    (11, 9, "av", r"Grille v2 (Y1 à Y12) pour les failles que la v1 ne mesure pas ; Y11 et Y12 ajoutés ensuite, avant tout codage.",
+     r"Grid v2 (Y1 to Y12) for the flaws grid v1 leaves unmeasured; Y11 and Y12 added next, before any coding."),
     (12, 9, "av", r"Élargissement : 2018 porté à 50 articles (A2), RL classique de 2026 à 50 (A3, tri sur le titre) ; analyse fixée (Newcombe, Fisher, Holm) ; double lecture de 10 articles.",
      r"Enlargement: 2018 brought to 50 papers (A2), classical RL 2026 to 50 (A3, title screen); analysis fixed (Newcombe, Fisher, Holm); double reading of 10 papers."),
     (13, 9, "av", r"Relecture humaine à l'aveugle de 10 articles prévue (A1), abandonnée à l'écart 23.",
@@ -1187,8 +1187,8 @@ DEV_STUDY = [
      r"Exploratory checks (provenance, PDF source, Mantel-Haenszel, reader removed) and blind test of the cost and risk thesis."),
     (22, 10, "av", r"Listes de contrôle des 30 articles NeurIPS 2025 lus, extraites et confrontées à nos codes (A5).",
      r"Checklists of the 30 NeurIPS 2025 papers read, extracted and set against our codes (A5)."),
-    (23, 10, "av", r"Relecture humaine (A1) abandonnée, décision de Warith Harchaoui ; dite parmi les limites.",
-     r"Human review (A1) abandoned, decision of Warith Harchaoui; stated among the limitations."),
+    (23, 10, "av", r"Relecture humaine (A1) abandonnée, de notre propre décision ; dite parmi les limites.",
+     r"Human review (A1) abandoned, by our own decision; stated among the limitations."),
     (24, 10, "av", r"Sensibilité au filtre de titre (A6) : 400 articles hors filtre, résumés lus, puis 20 articles de RL caché lus avec les deux grilles.",
      r"Sensitivity to the title filter (A6): 400 papers outside the filter, abstracts read, then 20 hidden RL papers read with both grids."),
     (25, 10, "av", r"Trajectoire de 2018 à 2026 (A4) : 20 articles de RL classique par année d'ICML et NeurIPS 2019, 2020, 2022 et 2024 ; Cochran-Armitage.",
@@ -1211,8 +1211,8 @@ DEV_STUDY = [
     (33, 21, ("après les résultats, avant toute lecture", "after the results, before any reading"), r"Lecteur d'une autre famille de modèles (\texttt{gemma3:12b}, local) sur les 98 articles de la comparaison principale.",
      r"A reader from another model family (\texttt{gemma3:12b}, local) on the 98 papers of the main comparison."),
     (35, 22, ("après les résultats, avant tout tirage et toute lecture humaine", "after the results, before any draw and any human reading"),
-     r"Relecture humaine à l'aveugle des deux années par Warith : 15 articles de 2018 et 15 de 2026, critères Q5, Y9, X7, X2, X8.",
-     r"Blind human re-reading of both years by Warith: 15 papers from 2018 and 15 from 2026, criteria Q5, Y9, X7, X2, X8."),
+     r"Relecture humaine à l'aveugle des deux années par nous : 15 articles de 2018 et 15 de 2026, critères Q5, Y9, X7, X2, X8.",
+     r"Blind human re-reading of both years by us: 15 papers from 2018 and 15 from 2026, criteria Q5, Y9, X7, X2, X8."),
     (36, 22, ("après les résultats, avant toute lecture et tout calcul", "after the results, before any reading and any computation"),
      r"L'année et les lecteurs démêlés : huit lecteurs neufs lisent chacun les deux années sur Q5, Y9, X7 et X2.",
      r"Year and readers disentangled: eight fresh readers each read both years on Q5, Y9, X7 and X2."),
@@ -1249,8 +1249,8 @@ DEV_SIM = [
      r"Corrections after a critical review: date of \file{dose.py}, counts in deviations 7 and 8, SB3 2.9.2, actual steps, undeclared relaunches, seeds read, ledger."),
     (15, 15, "ne", r"Jusqu'à huit cœurs accordés au projet selon la charge de la machine.",
      r"Up to eight cores granted to the project depending on the machine's load."),
-    (16, 16, "ne", r"Nuit du 15 au 16 novembre : arrêt par le surveillant, worker survivant corrigé, règle de batterie.",
-     r"Night of 15 to 16 November: stop by the watchdog, surviving worker fixed, battery rule."),
+    (16, 16, "ne", r"Arrêt par le surveillant, worker survivant corrigé, règle de batterie.",
+     r"Stop by the watchdog, surviving worker fixed, battery rule."),
     (17, 16, "ne", r"Condition de batterie levée.", r"Battery condition lifted."),
     (18, 16, "apav", r"E2 : les 24 intervalles de probabilité d'amélioration rendus simultanés par Bonferroni (99,79~\%).",
      r"E2: the 24 probability-of-improvement intervals made simultaneous by Bonferroni (99.79\%)."),
@@ -1302,16 +1302,16 @@ DEV_LLM = [
      r"Diagnosis without training: 23 answers out of 32 cut off at 160 tokens at step 10 of the pilot."),
     (6, 9, ("avant tout essai retenu", "before any retained run"), r"Version réduite : 100 pas, graines 0 à 2, taux 3e-6, mises à jour par lots de 8 réponses, plafond mémoire.",
      r"Reduced version: 100 steps, seeds 0 to 2, learning rate 3e-6, updates in batches of 8 answers, memory cap."),
-    (7, 9, ("règle fixée avant tout résultat de la graine", "rule fixed before any result for the seed"), r"Pause à la demande de Warith ; plantage \texttt{nan} d'un essai Qwen ; une seule relance prévue.",
-     r"Pause at Warith's request; \texttt{nan} crash of a Qwen run; a single relaunch planned."),
+    (7, 9, ("règle fixée avant tout résultat de la graine", "rule fixed before any result for the seed"), r"Pause à notre demande ; plantage \texttt{nan} d'un essai Qwen ; une seule relance prévue.",
+     r"Pause at our request; \texttt{nan} crash of a Qwen run; a single relaunch planned."),
     (8, 9, "fait", r"Reprise : aucun des neuf essais restants n'aboutit (\texttt{nan}, coupure par macOS, mémoire MPS).",
      r"Resumption: none of the nine remaining runs completes (\texttt{nan}, macOS cut-off, MPS memory)."),
-    (9, 9, ("avant tout résultat de ces essais", "before any result of these runs"), r"Relance de nuit (\file{night.sh}) avec un essai de contrôle en tête.",
-     r"Night relaunch (\file{night.sh}) with a control run first."),
+    (9, 9, ("avant tout résultat de ces essais", "before any result of these runs"), r"Relance machine au repos (\file{night.sh}) avec un essai de contrôle en tête.",
+     r"Relaunch on an idle machine (\file{night.sh}) with a control run first."),
     (10, 10, "fait", r"Cause des \texttt{nan} trouvée : gradients non finis sur MPS, propres sur CPU ; garde-fous de recalcul.",
      r"Cause of the \texttt{nan} found: non-finite gradients on MPS, clean on CPU; recomputation safeguards."),
-    (11, 10, ("avant tout essai retenu avec ce code", "before any retained run with this code"), r"Les essais Qwen restants passent sur CPU ; Llama reste sur GPU la nuit.",
-     r"The remaining Qwen runs move to CPU; Llama stays on GPU at night."),
+    (11, 10, ("avant tout essai retenu avec ce code", "before any retained run with this code"), r"Les essais Qwen restants passent sur CPU ; Llama reste sur GPU, machine au repos.",
+     r"The remaining Qwen runs move to CPU; Llama stays on GPU, on an idle machine."),
     (12, "10-11", ("corrections avant toute relance", "corrections before any relaunch"), r"Qwen fini sur CPU ; les six essais Llama manquent de mémoire MPS ; cache vidé à chaque pas, plafond relevé.",
      r"Qwen finished on CPU; the six Llama runs run out of MPS memory; cache emptied at every step, cap raised."),
     (13, "11-12", ("détails de la statistique fixés après les résultats", "statistic details set after the results"), r"Les douze essais finis ; bootstrap percentile sur les graines, 10\,000 tirages.",
@@ -1370,34 +1370,25 @@ def t_ecarts():
                 assert re.search(r"APRÈS|après", ifr[n]), (fr, n)
     total = sum(len(s[2]) for s in sets)
     for lang in LANGS:
-        head = [L(lang, r"N\textsuperscript{o} & Date & Moment & Résumé", r"No. & Date & Timing & Summary")]
+        head = [L(lang, r"N\textsuperscript{o} & Moment & Résumé", r"No. & Timing & Summary")]
         rows = []
         for fr, en, devs, title in sets:
-            rows.append(rf"\multicolumn{{4}}{{@{{}}l}}{{\textbf{{{L(lang, *title)}}} (\file{{{(fr if lang == 'fr' else en).replace('_', chr(92) + '_')}}}, {len(devs)} {L(lang, 'écarts', 'deviations')})}}")
-            for n, date, mom, sfr, sen in devs:
-                if date is None:
-                    ds = L(lang, "n. d.", "undated")
-                elif isinstance(date, str):
-                    a, b = date.split("-")
-                    ds = L(lang, f"{a}-{b} nov.", f"{a}-{b} Nov.")
-                else:
-                    ds = L(lang, f"{date} nov.", f"{date} Nov.")
+            rows.append(rf"\multicolumn{{3}}{{@{{}}l}}{{\textbf{{{L(lang, *title)}}} (\file{{{(fr if lang == 'fr' else en).replace('_', chr(92) + '_')}}}, {len(devs)} {L(lang, 'écarts', 'deviations')})}}")
+            for n, date, mom, sfr, sen in devs:  # no date column (Warith, 23 November 2026); the dates stay checked above
                 m = mom if isinstance(mom, tuple) else MOM[mom]
-                rows.append(f"{n} & {ds} & {m[0] if lang == 'fr' else m[1]} & {sfr if lang == 'fr' else sen}")
+                rows.append(f"{n} & {m[0] if lang == 'fr' else m[1]} & {sfr if lang == 'fr' else sen}")
             rows.append(r"\addlinespace")
         rows = rows[:-1]
         cap = L(lang,
                 rf"Les {total} écarts aux trois protocoles, dans l'ordre de leurs listes : sondage (\file{{study/PROTOCOL.md}}), expériences (\file{{sim/SIM\_PROTOCOL.md}}), volet GRPO (\file{{sim/llm/LLM\_PROTOCOL.md}}). "
-                r"Date : jour de novembre 2026 donné par le protocole (« n. d. » quand l'écart n'est pas daté ; les écarts 1 à 10 du sondage ont été notés pendant le codage, avant l'agrégation). "
                 r"Moment : ce que le protocole déclare avoir déjà vu quand l'écart a été écrit (avant ou après les résultats concernés, ou sans effet sur les résultats pour l'organisation du calcul). "
-                r"Le résumé tient en une ligne ; le texte complet, qui fait foi, est dans le protocole (version anglaise : fichiers \file{-en.md}). Le nombre des écarts, leur numérotation et leurs dates sont vérifiés contre les fichiers par \file{report/tools/tables.py}.",
+                r"Le résumé tient en une ligne ; le texte complet, qui fait foi, est dans le protocole (version anglaise : fichiers \file{-en.md}). Le nombre des écarts et leur numérotation sont vérifiés contre les fichiers par \file{report/tools/tables.py}.",
                 rf"The {total} deviations from the three protocols, in the order of their lists: survey (\file{{study/PROTOCOL-en.md}}), experiments (\file{{sim/SIM\_PROTOCOL-en.md}}), GRPO strand (\file{{sim/llm/LLM\_PROTOCOL-en.md}}). "
-                r"Date: day of November 2026 given by the protocol (`undated' when the deviation carries no date; survey deviations 1 to 10 were noted during coding, before aggregation). "
                 r"Timing: what the protocol declares had already been seen when the deviation was written (before or after the results concerned, or no effect on the results for the organisation of the computation). "
-                r"The summary takes one line; the full text, which prevails, is in the protocol (the French files are the dated originals). The number of deviations, their numbering and their dates are checked against the files by \file{report/tools/tables.py}.")
+                r"The summary takes one line; the full text, which prevails, is in the protocol (the French files are the dated originals). The number of deviations and their numbering are checked against the files by \file{report/tools/tables.py}.")
         longtable("ecarts", lang, cap, L(lang, "Écarts aux trois protocoles", "Deviations from the three protocols"),
-                  r"@{}r>{\raggedright\arraybackslash}p{1.25cm}>{\raggedright\arraybackslash}p{3.1cm}>{\raggedright\arraybackslash}p{9.6cm}@{}",
-                  head, rows, 4, tabcolsep="3.5pt")
+                  r"@{}r>{\raggedright\arraybackslash}p{3.1cm}>{\raggedright\arraybackslash}p{10.95cm}@{}",
+                  head, rows, 3, tabcolsep="3.5pt")
 
 
 # ----------------------------------------------------------------------------------------------------------------
@@ -1439,12 +1430,12 @@ def t_env():
         rows.append(L(lang, "Paquets épinglés & ", "Pinned packages & ") + " & ".join(str(nlines[f]) for f, _ in files))
         cap = L(lang,
                 rf"Versions épinglées des paquets principaux dans les quatre environnements Python du projet, toutes sur Python {py['train']}, macOS 27.2 sur puce Apple M2 Max (arm64). "
-                r"Chaque fichier \file{envs/<nom>.txt} est le \texttt{pip freeze} de l'environnement, relevé le 15 novembre 2026 ; \file{envs/<nom>.lock} en est le jumeau verrouillé par empreintes SHA-256 (mêmes versions). "
+                r"Chaque fichier \file{envs/<nom>.txt} est le \texttt{pip freeze} de l'environnement ; \file{envs/<nom>.lock} en est le jumeau verrouillé par empreintes SHA-256 (mêmes versions). "
                 r"\file{train} : entraînements (\file{sim/run.py}, \file{sim/dose.py}) ; \file{analysis} : tous les scripts d'analyse et l'intégration continue ; \file{zoo} : le pipeline officiel de RL Baselines3 Zoo (E6) ; \file{llm} : GRPO (\file{sim/llm/grpo.py}). "
                 rf"Un point : paquet absent de l'environnement. Les tests unitaires ajoutent pytest {test.get('pytest', '')} (\file{{envs/test.txt}}). "
                 r"Le protocole annonçait Stable-Baselines3 2.6.0 ; tous les entraînements ont tourné avec 2.9.2 (écart 14 (c) de \file{sim/SIM_PROTOCOL.md}). Les révisions des modèles de langue téléchargés ne sont pas épinglées. Source : \file{envs/*.txt}.",
                 rf"Pinned versions of the key packages in the project's four Python environments, all on Python {py['train']}, macOS 27.2 on an Apple M2 Max chip (arm64). "
-                r"Each file \file{envs/<name>.txt} is the environment's \texttt{pip freeze}, taken on 15 November 2026; \file{envs/<name>.lock} is its twin locked by SHA-256 hashes (same versions). "
+                r"Each file \file{envs/<name>.txt} is the environment's \texttt{pip freeze}; \file{envs/<name>.lock} is its twin locked by SHA-256 hashes (same versions). "
                 r"\file{train}: training (\file{sim/run.py}, \file{sim/dose.py}); \file{analysis}: every analysis script and the continuous integration; \file{zoo}: the official RL Baselines3 Zoo pipeline (E6); \file{llm}: GRPO (\file{sim/llm/grpo.py}). "
                 rf"A dot: package absent from the environment. The unit tests add pytest {test.get('pytest', '')} (\file{{envs/test.txt}}). "
                 r"The protocol announced Stable-Baselines3 2.6.0; every training run used 2.9.2 (deviation 14 (c) of \file{sim/SIM_PROTOCOL.md}). The revisions of the downloaded language models are not pinned. Source: \file{envs/*.txt}.")
@@ -1888,12 +1879,17 @@ def t_hyperparametres():
             R.append((L(lang, fr, en), [f(p, H[p]) for p in P]))
         on = lambda *ks: lambda f: (lambda p, h: f(p, h) if p in ks else "")  # noqa: E731
         ppo, off = ("ppo_sb3", "ppo_sbx"), ("sac", "crossq")
+
+        def group(fr, en):
+            R.append(("GROUP", L(lang, fr, en)))
+        group("Communs aux cinq programmes", "Common to the five programs")
         row("Taux d'apprentissage", "Learning rate",
             lambda p, h: sci(h["learning_rate"]) + (L(lang, " (critique)", " (critic)") if p == "trpo" else ""))
         row(r"Facteur d'actualisation $\gamma$", r"Discount factor $\gamma$", lambda p, h: dec(h["gamma"]))
         row("Pas collectés par mise à jour", "Steps collected per update",
             lambda p, h: num(h["n_steps"], lang) if p not in off else str(h["train_freq"][0]))
         row("Taille des lots", "Batch size", lambda p, h: str(h["batch_size"]))
+        group("PPO et TRPO, qui apprennent sur leurs propres paquets d'expérience", "PPO and TRPO, which learn from their own rollouts")
         row("Passes sur chaque paquet", "Epochs over each rollout", on(*ppo)(lambda p, h: str(h["n_epochs"])))
         row(r"Paramètre $\lambda$ de GAE", r"GAE parameter $\lambda$", on(*ppo, "trpo")(lambda p, h: dec(h["gae_lambda"])))
         row(r"Troncature $\epsilon$", r"Clipping $\epsilon$", on(*ppo)(lambda p, h: clip(h["clip_range"])))
@@ -1906,6 +1902,7 @@ def t_hyperparametres():
         row("Recherche linéaire : facteur, essais", "Line search: factor, tries",
             on("trpo")(lambda p, h: f"{dec(h['line_search_shrinking_factor'])}{L(lang, ' ; ', '; ')}{h['line_search_max_iter']}"))
         row("Mises à jour du critique par itération", "Critic updates per iteration", on("trpo")(lambda p, h: str(h["n_critic_updates"])))
+        group("SAC et CrossQ, qui apprennent d'une mémoire de rejeu", "SAC and CrossQ, which learn from a replay buffer")
         row("Coefficient d'entropie", "Entropy coefficient",
             lambda p, h: (dec(h["ent_coef"]) if p in ppo else auto if h.get("ent_coef_init") == "auto" else ""))
         row("Entropie cible", "Target entropy", on(*off)(lambda p, h: num(h["target_entropy"], lang)))
@@ -1916,6 +1913,7 @@ def t_hyperparametres():
             on(*off)(lambda p, h: dec(h["tau"]) if p == "sac" else L(lang, "sans réseau cible", "no target network")))
         row("Mises à jour du critique par mise à jour de l'acteur", "Critic updates per actor update",
             on(*off)(lambda p, h: str(h["policy_delay"])))
+        group("Réseaux et optimiseur", "Networks and optimiser")
         row("Réseau de la politique", "Policy network",
             lambda p, h: arch(h["policy"]["net_arch"]["pi"], h["policy"]["activation_fn"]) if p in ("ppo_sb3", "trpo")
             else arch(h["policy"]["actor"]["net_arch"], h["policy"]["activation_fn"]))
@@ -1934,17 +1932,24 @@ def t_hyperparametres():
             if "optimizer" in h:  # PyTorch: read from the optimiser itself
                 o = h["optimizer"]
                 bs = L(lang, r"\,;\,", r",\,")
-                return rf"Adam, $\beta = ({dec(o['betas'][0])}{bs}{dec(o['betas'][1])})$, $\varepsilon = $ \num{{{o['eps']:.0e}}}"
+                return rf"\makecell[tl]{{Adam\\{{}}$\beta = ({dec(o['betas'][0])}{bs}{dec(o['betas'][1])})$\\{{}}$\varepsilon = $ \num{{{o['eps']:.0e}}}}}"
             kw = h["policy"]["optimizer_kwargs"]
-            s = L(lang, "Adam d'optax", "optax Adam")
+            s = [L(lang, "Adam d'optax", "optax Adam")]
             if "b1" in kw:
-                s += rf", $\beta_1 = {dec(kw['b1'])}$"
+                s.append(rf"$\beta_1 = {dec(kw['b1'])}$")
             if "eps" in kw:
-                s += rf", $\varepsilon = $ \num{{{kw['eps']:.0e}}}"
-            return s if kw else s + L(lang, ", par défaut", ", defaults")
+                s.append(rf"$\varepsilon = $ \num{{{kw['eps']:.0e}}}")
+            if not kw:
+                s.append(L(lang, "par défaut", "defaults"))
+            return r"\makecell[tl]{" + r"\\{}".join(s) + "}"
         row("Optimiseur", "Optimiser", opt)
         head = [L(lang, "Réglage", "Setting") + " & " + " & ".join(["PPO PyTorch", "PPO JAX", "SAC", "CrossQ", "TRPO"])]
-        rows = [" & ".join([lab] + vals) for lab, vals in R]
+        rows = []
+        for it in R:
+            if it[0] == "GROUP":
+                rows += [r"\addlinespace[5pt]", rf"\multicolumn{{6}}{{@{{}}l}}{{\textit{{{it[1]}}}}}", r"\addlinespace[1pt]"]
+            else:
+                rows.append(" & ".join([it[0]] + it[1]))
         cap = L(lang,
                 r"Les réglages des cinq programmes, tels qu'ils ont servi : \file{sim/analysis/hyperparams.py} (écart 28 de \file{sim/SIM_PROTOCOL.md}) construit chaque programme sur Hopper-v5 exactement comme \file{sim/run.py} (TRPO sur HalfCheetah-v5), lit les attributs de l'algorithme, de la politique et de l'optimiseur, puis les compare aux paramètres rangés dans un modèle sauvegardé par programme. "
                 r"Ce sont les valeurs par défaut des bibliothèques installées (versions au tableau~\ref{tab:env}) : aucun programme n'a été réglé. Une case vide : le réglage n'existe pas pour cet algorithme, ou il est désactivé. "
@@ -2214,88 +2219,85 @@ def t_r36():
     r = J("study/r36_stats.json")
     keys = ["Q5", "Y9", "X7", "X2"]
     for lang in LANGS:
-        def share(c):
-            return f"{kn(c['yes'], c['n'])} & {pc(c['share'], lang)}"
-        head = [L(lang, r" & & \multicolumn{2}{c}{2018} & \multicolumn{2}{c}{2026} & \multicolumn{2}{c}{Différence, Fisher} & \multicolumn{2}{c}{Effet de l'année} & & ",
-                  r" & & \multicolumn{2}{c}{2018} & \multicolumn{2}{c}{2026} & \multicolumn{2}{c}{Difference, Fisher} & \multicolumn{2}{c}{Year effect} & & "),
-                r"\cmidrule(lr){3-4}\cmidrule(lr){5-6}\cmidrule(lr){7-8}\cmidrule(lr){9-10}",
-                L(lang, r"Code & Critère & $k/n$ & \% & $k/n$ & \% & \makecell[r]{points\\{}[Newcombe]} & \makecell[r]{$p$\\{}Holm} & \makecell[r]{rapport de cotes\\{}[Wald]} & \makecell[r]{$p$\\{}Holm} & \makecell[r]{$s$ lecteurs\\{}($p$)} & Verdict",
-                  r"Code & Criterion & $k/n$ & \% & $k/n$ & \% & \makecell[r]{points\\{}[Newcombe]} & \makecell[r]{Holm\\{}$p$} & \makecell[r]{odds ratio\\{}[Wald]} & \makecell[r]{Holm\\{}$p$} & \makecell[r]{reader $s$\\{}($p$)} & Verdict")]
+        def share(c):  # "31 % (15/48)": the share first, its count beside it
+            return rf"{pc(c['share'], lang)} \textcolor{{ink2}}{{({kn(c['yes'], c['n'])})}}"
+
+        def diff(d):
+            return mc(pc(d["diff"], lang, sign=True), iv(num(D(d["lo"]) * 100, lang, 1, sign=True), num(D(d["hi"]) * 100, lang, 1, sign=True), lang))
+        head = [L(lang, r" & & & \multicolumn{2}{c}{Différence, Fisher} & \multicolumn{3}{c}{Effet de l'année, modèle mixte} & ",
+                  r" & & & \multicolumn{2}{c}{Difference, Fisher} & \multicolumn{3}{c}{Year effect, mixed model} & "),
+                r"\cmidrule(lr){4-5}\cmidrule(lr){6-8}",
+                L(lang, r"Critère & 2018 & 2026 & \makecell[r]{points\\{}[Newcombe]} & \makecell[r]{$p$\\{}Holm} & \makecell[r]{rapport de cotes\\{}[Wald]} & \makecell[r]{$p$\\{}Holm} & \makecell[r]{$s$ lecteurs\\{}($p$)} & Verdict",
+                  r"Criterion & 2018 & 2026 & \makecell[r]{points\\{}[Newcombe]} & \makecell[r]{Holm\\{}$p$} & \makecell[r]{odds ratio\\{}[Wald]} & \makecell[r]{Holm\\{}$p$} & \makecell[r]{reader $s$\\{}($p$)} & Verdict")]
         rows = []
         for k in keys:
             m, mm, v = r["main"][k], r["mixed_model"][k], r["verdicts"][k]
             hold = v["verdict"] == "holds"
-            d = m["diff"]
-            cells = [k, CRIT[k][0 if lang == "fr" else 1], share(m["counts"]["2018"]), share(m["counts"]["2026"]),
-                     mc(pc(d["diff"], lang, sign=True), iv(num(D(d["lo"]) * 100, lang, 1, sign=True), num(D(d["hi"]) * 100, lang, 1, sign=True), lang)),
-                     p3(d["p_holm4"], lang),
-                     mc(num(mm["odds_ratio"], lang, 2), iv(num(mm["or_wald95"][0], lang, 2), num(mm["or_wald95"][1], lang, 2), lang)),
-                     p3(mm["p_lrt_holm4"], lang),
-                     f"{num(mm['reader_sd'], lang, 2)} ({pval(mm['p_reader_sd'], lang)})",
-                     R36_VERDICT[v["verdict"]][0 if lang == "fr" else 1]]
-            rows.append(" & ".join(bold(x, hold) if i < 2 else x for i, x in enumerate(cells)))
+            name = bold(f"{CRIT[k][0 if lang == 'fr' else 1]} ({k})", hold)
+            rows.append(" & ".join([name, share(m["counts"]["2018"]), share(m["counts"]["2026"]), diff(m["diff"]),
+                                    p3(m["diff"]["p_holm4"], lang),
+                                    mc(num(mm["odds_ratio"], lang, 2), iv(num(mm["or_wald95"][0], lang, 2), num(mm["or_wald95"][1], lang, 2), lang)),
+                                    p3(mm["p_lrt_holm4"], lang),
+                                    f"{num(mm['reader_sd'], lang, 2)} ({pval(mm['p_reader_sd'], lang)})",
+                                    bold(R36_VERDICT[v["verdict"]][0 if lang == "fr" else 1], hold)]))
+            rows.append(r"\addlinespace[2pt]")
         pp = r["project_pages_yes"]["Q5"]
-        d = pp["diff"]
-        rows.append(" & ".join([r"\quad Q5", L(lang, "toute page de projet comptée oui", "every project page counted yes"),
-                                share(pp["counts"]["2018"]), share(pp["counts"]["2026"]),
-                                mc(pc(d["diff"], lang, sign=True), iv(num(D(d["lo"]) * 100, lang, 1, sign=True), num(D(d["hi"]) * 100, lang, 1, sign=True), lang)),
-                                p3(d["p_holm4"], lang), "", "", "", ""]))
+        rows.append(" & ".join([r"\textit{" + L(lang, "Q5, toute page de projet comptée oui", "Q5, every project page counted yes") + "}",
+                                share(pp["counts"]["2018"]), share(pp["counts"]["2026"]), diff(pp["diff"]),
+                                p3(pp["diff"]["p_holm4"], lang), "", "", "", ""]))
         nr = len(r["readers"])
         nw = L(lang, "huit", "eight") if nr == 8 else str(nr)
         n18 = r["main"]["Q5"]["counts"]["2018"]["n"]
         n26 = r["main"]["Q5"]["counts"]["2026"]["n"]
-        overlap = all(r["verdicts"][k]["intervals_overlap"] for k in keys)
-        orig = L(lang, " ; ", "; ").join(f"{k} {pc(r['verdicts'][k]['original']['diff'], lang, sign=True)}" for k in keys)
         cap = L(lang,
-                rf"Écart 36 de \file{{study/PROTOCOL.md}} (écrit avant toute lecture et tout calcul) : les {n18 + n26} articles expérimentaux de la comparaison principale ({n18} de 2018, {n26} de 2026) relus par {nw} agents neufs, T1 à T{nr}, qui lisent chacun les deux années (6 articles de 2018 et 6 ou 7 de 2026). "
-                r"Différence 2026 moins 2018 en points, intervalle de Newcombe à 95~\%, test exact de Fisher avec Holm sur les quatre critères. "
-                r"Effet de l'année : modèle logistique mixte par critère, logit P(oui) = $b_0 + b_1 \times [2026] + u$, $u$ effet aléatoire du lecteur d'écart type $s$, maximum de vraisemblance par quadrature de Gauss-Hermite ; rapport de cotes $e^{b_1}$ avec son intervalle de Wald à 95~\%, test du rapport de vraisemblance de $b_1 = 0$ avec Holm sur les quatre critères ; $s$ avec son test à la frontière (demi-khi-deux). "
-                r"Règle fixée d'avance : un verdict tient si les deux tests passent Holm à 5~\% avec un effet positif ; « même sens, non établi » si les deux effets sont positifs et qu'un test échoue. \textbf{En gras}, les verdicts qui tiennent. "
-                + (r"Chaque intervalle de Newcombe recouvre celui de la comparaison principale" if overlap else r"Un intervalle de Newcombe au moins ne recouvre pas celui de la comparaison principale")
-                + rf" (écarts d'origine : {orig} points). "
-                r"Dernière ligne : la lecture où toute page de projet compte « oui » pour Q5, la moins favorable à son verdict. Aucune décision invalide. "
-                r"Source : \file{study/r36_stats.json} (\file{study/r36_stats.py}).",
-                rf"Deviation 36 of \file{{study/PROTOCOL.md}} (written before any reading and any computation): the {n18 + n26} experimental papers of the main comparison ({n18} from 2018, {n26} from 2026) reread by {nw} fresh agents, T1 to T{nr}, each of whom reads both years (6 papers from 2018 and 6 or 7 from 2026). "
-                r"Difference 2026 minus 2018 in points, 95\% Newcombe interval, Fisher's exact test with Holm over the four criteria. "
-                r"Year effect: a logistic mixed model per criterion, logit P(yes) = $b_0 + b_1 \times [2026] + u$, $u$ a random reader effect with standard deviation $s$, maximum likelihood with Gauss-Hermite quadrature; odds ratio $e^{b_1}$ with its 95\% Wald interval, likelihood-ratio test of $b_1 = 0$ with Holm over the four criteria; $s$ with its boundary test (half chi-square). "
-                r"Rule fixed in advance: a verdict holds if both tests pass Holm at 5\% with a positive effect; ``same direction, not established'' if both effects are positive and one test fails. \textbf{In bold}, the verdicts that hold. "
-                + (r"Every Newcombe interval overlaps the one of the main comparison" if overlap else r"At least one Newcombe interval does not overlap the one of the main comparison")
-                + rf" (original gaps: {orig} points). "
-                r"Last row: the reading where every project page counts ``yes'' for Q5, the least favourable to its verdict. No decision is invalid. "
-                r"Source: \file{study/r36_stats.json} (\file{study/r36_stats.py}).")
+                rf"L'année et les lecteurs démêlés (écart 36). Les {n18 + n26} articles expérimentaux de la comparaison principale ({n18} de 2018, {n26} de 2026), relus par {nw} agents neufs qui lisent chacun les deux années. "
+                r"Parts des articles qui suivent la pratique ; différence 2026 moins 2018 en points avec l'intervalle de Newcombe à 95~\% et le test exact de Fisher. "
+                r"Effet de l'année : modèle logistique mixte avec un effet aléatoire du lecteur d'écart type $s$, rapport de cotes avec son intervalle de Wald à 95~\% et test du rapport de vraisemblance. "
+                r"Holm porte sur les quatre critères. Règle fixée d'avance : un verdict tient si les deux tests passent avec un effet positif (\textbf{en gras}). "
+                r"Dernière ligne : Q5 quand toute page de projet compte « oui », la lecture la moins favorable. "
+                r"Source : \file{study/r36_stats.json}.",
+                rf"Year and readers disentangled (deviation 36). The {n18 + n26} experimental papers of the main comparison ({n18} from 2018, {n26} from 2026), reread by {nw} fresh agents, each of whom reads both years. "
+                r"Shares of papers that follow the practice; difference 2026 minus 2018 in points with the 95\% Newcombe interval and Fisher's exact test. "
+                r"Year effect: a logistic mixed model with a random reader effect of standard deviation $s$, odds ratio with its 95\% Wald interval and likelihood-ratio test. "
+                r"Holm runs over the four criteria. Rule fixed in advance: a verdict holds if both tests pass with a positive effect (\textbf{in bold}). "
+                r"Last row: Q5 when every project page counts ``yes'', the least favourable reading. "
+                r"Source: \file{study/r36_stats.json}.")
         floattable("r36", lang, cap, L(lang, "L'année et les lecteurs démêlés (écart 36)", "Year and readers disentangled (deviation 36)"),
-                   r"@{}l>{\raggedright\arraybackslash}p{2.6cm}rrrrrrrrr>{\raggedright\arraybackslash}p{1.9cm}@{}", head, rows, tabcolsep="2.4pt")
+                   r"@{}>{\raggedright\arraybackslash}p{3cm}rrrrrrr>{\raggedright\arraybackslash}p{1.7cm}@{}", head, rows, tabcolsep="3.5pt")
 
 
 def t_r36_accord():
     a = J("study/r36_stats.json")["agreement_with_final_codes"]
     for lang in LANGS:
         def ag(c):
-            return f"{kn(c['same'], c['n'])} & {pc(c['agree'], lang)}"
-        head = [L(lang, r" & & \multicolumn{3}{c}{Les deux années} & \multicolumn{2}{c}{2018} & \multicolumn{2}{c}{2026} & & \multicolumn{2}{c}{Désaccords} ",
-                  r" & & \multicolumn{3}{c}{Both years} & \multicolumn{2}{c}{2018} & \multicolumn{2}{c}{2026} & & \multicolumn{2}{c}{Disagreements} "),
-                r"\cmidrule(lr){3-5}\cmidrule(lr){6-7}\cmidrule(lr){8-9}\cmidrule(lr){11-12}",
-                L(lang, r"Code & Critère & $k/n$ & \% [Wilson] & kappa & $k/n$ & \% & $k/n$ & \% & \makecell[r]{$p$ Fisher\\{}2018/2026} & \makecell[r]{oui neuf,\\{}non d'origine} & \makecell[r]{non neuf,\\{}oui d'origine}",
-                  r"Code & Criterion & $k/n$ & \% [Wilson] & kappa & $k/n$ & \% & $k/n$ & \% & \makecell[r]{Fisher $p$\\{}2018/2026} & \makecell[r]{new yes,\\{}original no} & \makecell[r]{new no,\\{}original yes}")]
+            return rf"{pc(c['agree'], lang)} \textcolor{{ink2}}{{({kn(c['same'], c['n'])})}}"
+        head = [L(lang, r" & \multicolumn{2}{c}{Les deux années} & \multicolumn{3}{c}{Par année} & \multicolumn{2}{c}{Désaccords} ",
+                  r" & \multicolumn{2}{c}{Both years} & \multicolumn{3}{c}{Per year} & \multicolumn{2}{c}{Disagreements} "),
+                r"\cmidrule(lr){2-3}\cmidrule(lr){4-6}\cmidrule(lr){7-8}",
+                L(lang, r"Critère & \makecell[r]{accord\\{}[Wilson]} & kappa & 2018 & 2026 & \makecell[r]{$p$ de\\{}Fisher} & \makecell[r]{oui neuf,\\{}non d'origine} & \makecell[r]{non neuf,\\{}oui d'origine}",
+                  r"Criterion & \makecell[r]{agreement\\{}[Wilson]} & kappa & 2018 & 2026 & \makecell[r]{Fisher\\{}$p$} & \makecell[r]{new yes,\\{}original no} & \makecell[r]{new no,\\{}original yes}")]
         rows = []
         for k in ("Q5", "Y9", "X7", "X2"):
             c = a[k]
             al = c["all"]
-            rows.append(" & ".join([k, CRIT[k][0 if lang == "fr" else 1], kn(al["same"], al["n"]),
-                                    f"{pc(al['agree'], lang)} {iv(pc(al['wilson'][0], lang), pc(al['wilson'][1], lang), lang)}",
+            rows.append(" & ".join([f"{CRIT[k][0 if lang == 'fr' else 1]} ({k})",
+                                    mc(rf"{pc(al['agree'], lang)} \textcolor{{ink2}}{{({kn(al['same'], al['n'])})}}",
+                                       iv(pc(al['wilson'][0], lang), pc(al['wilson'][1], lang), lang)),
                                     num(al["kappa"], lang, 2), ag(c["2018"]), ag(c["2026"]), pval(c["p_fisher_2018_vs_2026"], lang),
                                     str(al["new_yes_orig_no"]), str(al["new_no_orig_yes"])]))
+            rows.append(r"\addlinespace[2pt]")
+        rows.pop()
         cap = L(lang,
-                r"Écart 36 : accord des lectures neuves (huit agents, chacun sur les deux années) avec les codes finals harmonisés de la comparaison principale, sur les mêmes articles. "
-                r"$k/n$ : décisions identiques sur décisions comparées ; part de décisions identiques avec son intervalle de Wilson à 95~\%, kappa de Cohen, puis l'accord par année et le test exact de Fisher de l'accord de 2018 contre celui de 2026 : un désaccord qui dépendrait de l'année serait le biais que l'écart vise. "
-                r"Deux dernières colonnes : les articles où la lecture neuve dit oui et le code final non, puis l'inverse. "
-                r"Source : \file{study/r36_stats.json} (\file{study/r36_stats.py}).",
-                r"Deviation 36: agreement of the new readings (eight agents, each on both years) with the final harmonised codes of the main comparison, on the same papers. "
-                r"$k/n$: identical decisions out of decisions compared; share of identical decisions with its 95\% Wilson interval, Cohen's kappa, then the agreement per year and Fisher's exact test of the 2018 agreement against the 2026 one: a disagreement that depended on the year would be the bias the deviation targets. "
-                r"Last two columns: the papers where the new reading says yes and the final code no, then the reverse. "
-                r"Source: \file{study/r36_stats.json} (\file{study/r36_stats.py}).")
+                r"Écart 36 : accord des lectures neuves avec les codes finals harmonisés de la comparaison principale, sur les mêmes articles. "
+                r"Part des décisions identiques (décisions identiques sur décisions comparées) avec son intervalle de Wilson à 95~\%, kappa de Cohen, puis l'accord par année et le test exact de Fisher de 2018 contre 2026 : un accord qui dépendrait de l'année serait le biais que l'écart vise. "
+                r"Deux dernières colonnes : nombre d'articles où la lecture neuve dit oui et le code final non, puis l'inverse. "
+                r"Source : \file{study/r36_stats.json}.",
+                r"Deviation 36: agreement of the new readings with the final harmonised codes of the main comparison, on the same papers. "
+                r"Share of identical decisions (identical decisions out of decisions compared) with its 95\% Wilson interval, Cohen's kappa, then the agreement per year and Fisher's exact test of 2018 against 2026: an agreement that depended on the year would be the bias the deviation targets. "
+                r"Last two columns: number of papers where the new reading says yes and the final code no, then the reverse. "
+                r"Source: \file{study/r36_stats.json}.")
         floattable("r36-accord", lang, cap, L(lang, "Écart 36 : accord avec les codes d'origine", "Deviation 36: agreement with the original codes"),
-                   r"@{}l>{\raggedright\arraybackslash}p{2.6cm}rrrrrrrrrr@{}", head, rows, tabcolsep="2.6pt")
+                   r"@{}>{\raggedright\arraybackslash}p{3cm}rrrrrrr@{}", head, rows, tabcolsep="4pt")
 
 
 GMOD = {"qwen05": ("Qwen2.5 0,5B", "Qwen2.5 0.5B"), "llama1": ("Llama 3.2 1B", "Llama 3.2 1B")}

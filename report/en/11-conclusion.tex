@@ -7,9 +7,7 @@
 \begin{keybox}
 Joelle Pineau was heard on what accompanies the result: the code link, the declared compute, the
 effect of a setting, the error bar. The bar has spread without uncertainty computed over random seeds
-following it detectably. The tuning of baselines shows no sign of progress. For the rest, including
-the statistical test and held-out evaluation, the survey cannot decide: it could only see rises of
-about thirty points.
+following it detectably. The tuning of baselines shows no sign of progress.
 \end{keybox}
 
 This answer applies to classical RL, read by AI agents in fifty papers on each side, then compared
@@ -195,8 +193,8 @@ curve, does not measure the variability between training runs.
   \item \textbf{The papers that apply what they call RL to large language models, read with the same
         grid} on a sample of comparable size, would tell whether held-out evaluation, which is
         progressing there, comes with the other practices.
-  \item \textbf{The human rereading of deviation 35.} Thirty papers, fifteen per year, await the
-        author's blind reading. The script that will compare it with the agents is written and refuses
+  \item \textbf{The human rereading of deviation 35.} Thirty papers, fifteen per year, await our
+        blind reading. The script that will compare it with the agents is written and refuses
         to run until all thirty sheets are filled.
   \item \textbf{A new complete training run on another platform}, Linux on x86-64, would test the
         statistics of our experiments with other draws (\cref{sec:reentrainer}).
@@ -214,3 +212,22 @@ random seeds undid the Qwen gain that we read at three random seeds. A technical
 repository then found other errors of our own making: a count in E2 that was too generous, a factor
 written wrongly in B1, a repetition penalty overlooked in Qwen. The repository keeps a dated record
 of every correction for anyone who wants to redo the work.
+
+\section{Opening}\label{sec:ouverture}
+As early as 2019, Michael I. Jordan described artificial intelligence as an engineering discipline
+still to be built, rather than a revolution already made \parencite{mijordan2019revolution,mijordan2019drai}.
+He returns to that idea about recent incidents in which AI agents were left free to act: they are,
+he says, ``mostly bad engineering practice''. He compares: ``in chemical engineering, we would never
+have had a situation where explosions were allowed to happen to see how far things could go wrong''
+\parencite[our translation from the French]{mijordan2026liberation}.
+
+Pineau's three Rs state the same demand at the scale of a paper. A reproducible result, reusable
+parts, a robust conclusion: that is what an engineer expects of any structure before using it. Our
+survey shows that RL has adopted the outward marks of that discipline, the published code, the
+declared compute, the error bar. The way a result is judged has changed much less: the number of
+runs, the statistical test, the held-out evaluation.
+
+Michael I. Jordan also sees AI as an economic and social phenomenon, made of producers, consumers and
+people who decide in which domains they accept it. For AI programs that learn by trial and error,
+their trust will come through results that others can redo. The methods exist. A protocol written in
+advance costs little next to a false conclusion.

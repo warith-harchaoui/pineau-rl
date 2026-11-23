@@ -59,7 +59,7 @@ independent readers. A systematic bias of the model, shared by all its copies, e
 readings. The exact instructions, the model and the dates of every reader are published
 (\file{study/readers/}), so that another reader can redo the reading. A reader from another family
 of models, \texttt{gemma3:12b}, is rereading the 98 experimental papers of the main comparison
-(survey deviation 33). Its reading had not finished by 22 November 2026 (\cref{sec:val-en-cours}).
+(survey deviation 33). Its reading has not finished yet (\cref{sec:val-en-cours}).
 
 \subsection{Readers and year}
 
@@ -95,11 +95,11 @@ Several rules were fixed after results had been seen: the verdict rule of the su
 (deviation 20), the harmonisation of the 2018 calibration (deviation 15), the descriptive ranking
 under modified physics (simulation deviation 11), the details of the GRPO bootstrap (deviation 13)
 and the reset of the GRPO failure count (deviation 10). The twenty-one deviations born of the
-technical review of 21 November 2026 all come after the results. For eight simulation
+technical review all come after the results. For eight simulation
 deviations, that review had already computed a draft version of the numbers
 (\cref{sec:ecarts-audit}). They are published as exploratory or corrective, next to the
 preregistered results. \Cref{chap:09-ecarts} discusses each of these decisions. The order in which
-the deviations before 15 November 2026 were written rests on our word and on the commit dates
+the deviations before the repository became public were written rests on our word and on the commit dates
 (\cref{sec:parole}).
 
 \subsection{The simulation runs}
@@ -152,7 +152,7 @@ The rerun of deviation 20 of the GRPO strand corrects all three defects (\cref{s
         to test our verdicts.
   \item \textbf{The title screen of the 2026 queue.} A classical RL paper whose title contains
         \enquote{reasoning}, \enquote{preference} or \enquote{math} could not enter the classical 2026
-        sample. The 9 ICLR 2026 papers at the head of the queue, unreachable on 9 November 2026, were
+        sample. The 9 ICLR 2026 papers at the head of the queue, unreachable at the time of reading, were
         skipped.
   \item \textbf{The source of the PDFs.} The 2026 papers were read mostly in their arXiv version (45
         of the 50 classical RL papers), the 2018 papers in the conference proceedings. A link to code
@@ -319,10 +319,9 @@ Carlo noise (simulation deviation 13): a verdict whose bound grazes the threshol
 \section{The experiments not yet finished}
 \label{sec:val-en-cours}
 
-Six experiments are written in advance and not yet finished on 22 November 2026. The report gives
-no result for any of them. Each answers a limitation of this chapter. At 13:18 that day, the
-watchdog stopped the simulation queue on a memory alert: one CrossQ training run (deviation 32) and
-one run of the Zoo recipe (deviation 33 (c)) were left unfinished.
+Six experiments are written in advance and not yet finished. The report gives
+no result for any of them. Each answers a limitation of this chapter. The watchdog stopped
+the simulation queue once on a memory alert, then the queue resumed.
 \begin{itemize}
   \item \textbf{The determinism of SAC and CrossQ} (simulation deviation 32): three training runs
         repeated identically will tell whether these JAX programs give the same run again.
@@ -333,7 +332,7 @@ one run of the Zoo recipe (deviation 33 (c)) were left unfinished.
         runs add power to E3 and swap the orthogonal initialisation.
   \item \textbf{A reader from another family of models} (survey deviation 33): \texttt{gemma3:12b}
         rereads the four verdict criteria on the 98 experimental papers.
-  \item \textbf{The human rereading} (survey deviation 35): the author will reread thirty papers of
+  \item \textbf{The human rereading} (survey deviation 35): we will reread ourselves thirty papers of
         both years blind. The thirty sheets still await their reader.
   \item \textbf{The GRPO rerun} (deviation 20 of the GRPO strand): 40 runs on a single device, with
         no repetition penalty and a pilot kept out of the test set, wait for the GPU to become free.

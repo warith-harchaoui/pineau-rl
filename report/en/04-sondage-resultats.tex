@@ -464,11 +464,12 @@ report therefore hold for classical RL alone.
 \paragraph{The shares year by year}
 Table~\ref{tab:trajectoire} and Figure~\ref{fig:trajectoire} give, for each practice, the share of
 classical RL papers that follow it in 2018 (48 papers), in 2019, 2020, 2022 and 2024 (20 papers per
-year, ICML and NeurIPS) and in 2026 (50 papers). Code linked goes from 31\% in 2018 to 60\%, 50\%, 70\%
-and 75\% from 2019 to 2024, then 74\% in 2026. Sensitivity to a hyperparameter is at 44\%, then 35\%,
-45\%, 60\%, 85\% and 80\%. Compute quantified is at 27\%, then 30\%, 40\%, 40\%, 55\% and 58\%. Reported
-uncertainty is at 63\%, then 80\%, 85\%, 95\%, 100\% and 88\%. The statistical test is at 6\%, then
-5\%, 10\%, 10\%, 25\% and 12\%. With 20 papers, a share is uncertain by about twenty points either way.
+year, ICML and NeurIPS) and in 2026 (50 papers). Four practices rise steadily: code linked (from 31\% to
+74\%), sensitivity to a hyperparameter (from 44\% to 80\%), compute quantified (from 27\% to 58\%) and
+reported uncertainty (from 63\% to 88\%). None jumps right after the NeurIPS checklist of 2019: the rise
+spreads over the whole period. The statistical test stays rare, from 6\% to 12\%, with no trend. With 20
+papers, a yearly share is uncertain by about twenty points either way: the dip or peak of a single year
+cannot be read.
 
 \gentable{trajectoire}
 
@@ -645,8 +646,7 @@ being established. Code linked also keeps its verdict when both years are read o
 All four practices rise slowly from 2018 to 2024, with no jump right after the 2019 checklist.
 
 The statistical test, baselines described and tuned with care, held-out evaluation, benchmark versions
-and library versions show no detectable change. The tuning of baselines shows no sign of progress. For
-the rest, the survey cannot decide, since it could only see rises of about thirty points. Error bars
+and library versions show no detectable change. The tuning of baselines shows no sign of progress. Error bars
 spread while the share computed over random seeds moved in no detectable way (X8). The clear changes
 concern what accompanies the result: the code link, the declared compute, the effect of a setting, the
 error bar.

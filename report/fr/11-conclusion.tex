@@ -8,9 +8,7 @@
 Joelle Pineau a été écoutée sur ce qui accompagne le résultat : le lien vers le code, le calcul
 chiffré, l'effet d'un réglage, la barre d'erreur. La barre s'est répandue sans que l'incertitude
 calculée sur des graines aléatoires la suive de façon détectable. Le réglage des méthodes de
-référence ne montre aucun signe de progrès. Pour le reste, dont le test statistique et l'évaluation
-tenue à part, le sondage ne peut pas trancher : il ne voyait que des hausses d'environ trente
-points.
+référence ne montre aucun signe de progrès.
 \end{keybox}
 
 Cette réponse vaut pour le RL classique, lu par des agents IA sur cinquante articles de chaque
@@ -198,8 +196,8 @@ d'une courbe empilés, ne mesure pas la variabilité entre entraînements.
   \item \textbf{Une lecture, avec la même grille, des articles qui appliquent ce qu'ils appellent RL
         à de grands modèles de langue}, sur un échantillon de taille comparable, dirait si
         l'évaluation tenue à part, qui y progresse, s'accompagne des autres pratiques.
-  \item \textbf{La relecture humaine de l'écart 35.} Trente articles, quinze par année, attendent la
-        lecture à l'aveugle de l'auteur. Le script qui la comparera aux agents est écrit et refuse de
+  \item \textbf{La relecture humaine de l'écart 35.} Trente articles, quinze par année, attendent notre
+        lecture à l'aveugle. Le script qui la comparera aux agents est écrit et refuse de
         tourner avant que les trente feuilles soient remplies.
   \item \textbf{Un nouvel entraînement complet sur une autre plateforme}, Linux sur x86-64,
         testerait les statistiques de nos expériences avec d'autres tirages (\cref{sec:reentrainer}).
@@ -218,3 +216,23 @@ longueur du volet GRPO. Deux graines aléatoires de plus ont défait le gain de 
 de notre fait : un décompte de E2 trop généreux, un facteur mal écrit dans B1, une pénalité de
 répétition oubliée chez Qwen. Le dépôt garde la trace de chaque correction, datée, pour qui voudra
 refaire le travail.
+
+\section{Ouverture}\label{sec:ouverture}
+Michael I. Jordan décrivait dès 2019 l'intelligence artificielle comme une discipline d'ingénieurs
+encore à bâtir, plus que comme une révolution déjà faite
+\parencite{mijordan2019revolution,mijordan2019drai}. Il y revient à propos d'incidents récents où des
+agents IA ont été laissés libres d'agir : ce sont, dit-il, \enquote{surtout des mauvaises pratiques
+d'ingénierie}. Il compare : \enquote{en ingénierie chimique, on n'aurait jamais eu une situation où
+l'on aurait laissé des explosions se produire pour voir jusqu'où les choses pouvaient mal tourner}
+\parencite{mijordan2026liberation}.
+
+Les trois R de Pineau disent la même exigence à l'échelle d'un article. Un résultat reproductible,
+des pièces réutilisables, une conclusion robuste : c'est ce qu'un ingénieur attend de tout ouvrage
+avant de s'en servir. Notre sondage montre que le RL a adopté les marques extérieures de cette
+discipline, le code publié, le calcul déclaré, la barre d'erreur. La façon de juger un résultat a
+beaucoup moins changé : le nombre d'essais, le test statistique, l'évaluation tenue à part.
+
+Michael I. Jordan voit aussi l'IA comme un phénomène économique et social, fait de producteurs, de
+consommateurs et de gens qui décident dans quels domaines ils l'acceptent. Pour les programmes IA qui
+apprennent par essais et erreurs, leur confiance passera par des résultats que d'autres peuvent
+refaire. Les méthodes existent. Un protocole écrit d'avance coûte peu à côté d'une conclusion fausse.

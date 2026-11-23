@@ -181,17 +181,27 @@ bornes signées d'une différence, en style français ou anglais.
 \label{sec:formats}
 
 \paragraph{Un essai de simulation} Un fichier CSV par programme, tâche et graine aléatoire,
-\file{sim/results/<algo>/<tâche>/seed<k>.csv}, une ligne par évaluation :
-\begin{lstlisting}
-step,eval_mean,eval_std,perturbed_mean,wall
-50000,329.39900605740297,26.605081154353954,,85.5
-100000,690.435139859871,70.99379344477602,,188.4
-\end{lstlisting}
+\file{sim/results/<algo>/<tâche>/seed<k>.csv}, une ligne par évaluation (\cref{tab:format-essai}).
+\begin{table}[htbp]
+\centering
+\small
+\caption{Les deux premières lignes du fichier d'un essai de simulation : PPO PyTorch sur \task{HalfCheetah}, graine aléatoire 0. Sous chaque intitulé, le nom de la colonne dans le fichier CSV. La case vide est une mesure non faite.}
+\label{tab:format-essai}
+\begin{tabular}{@{}rrrrr@{}}
+\toprule
+Pas & Retour moyen & Écart type & Retour moyen, physique modifiée & Secondes écoulées \\
+{\footnotesize\texttt{step}} & {\footnotesize\texttt{eval\_mean}} & {\footnotesize\texttt{eval\_std}} & {\footnotesize\texttt{perturbed\_mean}} & {\footnotesize\texttt{wall}} \\
+\midrule
+\num{50000} & \num{329.4} & \num{26.6} & & \num{85.5} \\
+\num{100000} & \num{690.4} & \num{71.0} & & \num{188.4} \\
+\bottomrule
+\end{tabular}
+\end{table}
 \texttt{eval\_mean} et \texttt{eval\_std} donnent la moyenne et l'écart type des retours des dix
 épisodes d'évaluation, \texttt{perturbed\_mean} le retour moyen sous physique modifiée (vide quand il
 n'est pas mesuré), \texttt{wall} les secondes écoulées. Un essai est fini quand son dernier pas
-atteint le budget du programme. Les deux lignes ci-dessus sont les premières de PPO PyTorch sur
-\task{HalfCheetah}, graine aléatoire 0.
+atteint le budget du programme. Le \cref{tab:format-essai} donne les deux premières lignes de PPO
+PyTorch sur \task{HalfCheetah}, graine aléatoire 0, arrondies au dixième.
 
 \paragraph{Un essai GRPO} Un fichier JSONL par modèle, récompense et graine aléatoire
 (\cref{chap:07-modeles-de-langue}). Les lignes d'évaluation contiennent \texttt{step},
@@ -308,10 +318,14 @@ Aucune cible n'entraîne quoi que ce soit. L'entraînement passe par \file{sim/r
 \end{description}
 
 \begin{lstlisting}[language=bash,caption={Recalculer tous les nombres depuis les résultats commités, sans entraînement.},captionpos=b]
+# Créer l'environnement d'analyse
 python3.11 -m venv sim/env-an
+# Installer les paquets de l'analyse et des tests
 sim/env-an/bin/pip install -r envs/analysis.txt -r envs/test.txt
-make verify          # analyses, nombres des textes, tests, diff octet par octet
-make verify-head     # la même chose dans un export neuf du dernier commit
+# Analyses, nombres des textes, tests, diff octet par octet
+make verify
+# La même chose dans un export neuf du dernier commit
+make verify-head
 \end{lstlisting}
 
 \section{L'intégration continue}
@@ -325,7 +339,7 @@ commit, pas par étiquette. Chaque tâche installe l'environnement d'analyse dep
 les analyses, vérifie les nombres des textes et compare chaque fichier de résultats au commit avec
 \file{tools/compare\_results.py}.
 \begin{itemize}
-  \item Sur Ubuntu 24.04 (x86-64), avec Python 3.11.18, la version employée par l'auteur, la
+  \item Sur Ubuntu 24.04 (x86-64), avec Python 3.11.18, la version que nous employons, la
         comparaison accepte un écart relatif de $10^{-12}$ sur les flottants. Elle exige l'égalité
         des comptes, des verdicts, des classements et de toutes les chaînes. Les valeurs $p$ bougent à leur
         quinzième ou seizième chiffre avec la bibliothèque mathématique.
@@ -381,7 +395,7 @@ change.
 \label{sec:envs}
 
 Quatre environnements Python ont fait tourner le projet, tous sous Python 3.11.18. Chaque fichier de
-\file{envs/} est le \texttt{pip freeze} de l'un d'eux, pris le 15 novembre 2026, avec la version de
+\file{envs/} est le \texttt{pip freeze} de l'un d'eux, avec la version de
 Python et la plateforme en tête. Les fichiers \file{*.lock} ajoutent l'empreinte SHA-256 de chaque
 paquet. Le \cref{chap:D-environnements} donne les versions. L'environnement d'entraînement
 (\file{envs/train.txt}) sert à \file{run.py} et \file{dose.py}, l'environnement d'analyse
@@ -399,15 +413,17 @@ l'expérience E6 sont dans le dépôt. Les poids de SAC et de CrossQ, trop lourd
 attachés à la publication GitHub \texttt{policies-v1}, sous forme d'archives tar listées avec leur
 empreinte SHA-256 dans un fichier \file{SHA256SUMS}. Le script \file{sim/fetch\_models.py}
 télécharge chaque archive, vérifie son empreinte, la décompresse sous \file{models/}, puis vérifie
-chaque fichier de politique contre \file{sim/models/MANIFEST.sha256}, les empreintes prises le
-15 novembre 2026 sur la machine qui les a entraînées. Les téléchargements se suivent un par un,
+chaque fichier de politique contre \file{sim/models/MANIFEST.sha256}, les empreintes prises
+sur la machine qui les a entraînées. Les téléchargements se suivent un par un,
 séparés par une pause aléatoire de 1,5 à 4 secondes. Une requête refusée est reprise après une
 attente tirée au hasard entre zéro et un plafond qui double à chaque échec (recul exponentiel à gigue
 complète), cinq tentatives au plus.
 
 \begin{lstlisting}[language=bash,caption={Récupérer et vérifier les politiques de SAC et de CrossQ.},captionpos=b]
-cd sim && python3 fetch_models.py          # télécharger, décompresser, tout vérifier
-cd sim && python3 fetch_models.py --check  # vérifier seulement les politiques présentes
+# Télécharger, décompresser, tout vérifier
+cd sim && python3 fetch_models.py
+# Vérifier seulement les politiques présentes
+cd sim && python3 fetch_models.py --check
 \end{lstlisting}
 
 \section{Le matériel et le calcul}
@@ -417,7 +433,7 @@ Tous les essais ont tourné sur un seul ordinateur portable, un Mac à puce Appl
 27.2 (arm64), partagé avec d'autres projets. Chaque entraînement de simulation tourne sur un seul
 fil d'exécution. Le nombre de tâches en parallèle a changé au fil du projet : quatre cœurs au départ,
 jusqu'à huit accordés chaque heure selon la charge de la machine (écart 15 des simulations), puis
-deux cœurs pour tout le projet à partir du 19 novembre 2026 (écart 19). Ce partage ne touche pas les
+deux cœurs pour tout le projet (écart 19). Ce partage ne touche pas les
 résultats tant qu'un essai ne dépend que de sa graine aléatoire : les relances le vérifient pour PPO,
 l'écart 32 le teste encore pour SAC et CrossQ (\cref{sec:registres}). La \cref{sec:calcul} décrit les lanceurs,
 le surveillant et la file d'attente. Le \cref{tab:calcul} donne, par programme et par tâche, le
@@ -427,7 +443,7 @@ Les essais GRPO ont des durées très différentes selon l'appareil. D'après le
 leurs journaux au pas 100, un essai Qwen a pris de 42 à 52 minutes sur GPU et de 4,3 à 11,4 heures
 sur CPU, un essai Llama de 69 à 148 minutes sur GPU. Ces écarts reflètent aussi la charge variable
 de la machine. La relance de l'écart~20 prévoit, d'après ces journaux, environ 58 heures de GPU pour ses
-quarante essais, à lancer la nuit.
+quarante essais, à lancer machine au repos.
 
 \section{Ce qui n'est pas dans le dépôt}
 \label{sec:absent}

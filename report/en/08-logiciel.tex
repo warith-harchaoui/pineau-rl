@@ -179,17 +179,27 @@ English style.
 \label{sec:formats}
 
 \paragraph{A simulation run} The file \file{sim/results/<algo>/<task>/seed<k>.csv} holds one
-run, that is one program, task and random seed, with one line per evaluation:
-\begin{lstlisting}
-step,eval_mean,eval_std,perturbed_mean,wall
-50000,329.39900605740297,26.605081154353954,,85.5
-100000,690.435139859871,70.99379344477602,,188.4
-\end{lstlisting}
+run, that is one program, task and random seed, with one line per evaluation (\cref{tab:format-essai}).
+\begin{table}[htbp]
+\centering
+\small
+\caption{The first two lines of the file of one simulation run: PPO PyTorch on \task{HalfCheetah}, random seed 0. Under each heading, the name of the column in the CSV file. The empty cell is a measurement not made.}
+\label{tab:format-essai}
+\begin{tabular}{@{}rrrrr@{}}
+\toprule
+Step & Mean return & Standard deviation & Mean return, modified physics & Elapsed seconds \\
+{\footnotesize\texttt{step}} & {\footnotesize\texttt{eval\_mean}} & {\footnotesize\texttt{eval\_std}} & {\footnotesize\texttt{perturbed\_mean}} & {\footnotesize\texttt{wall}} \\
+\midrule
+\num{50000} & \num{329.4} & \num{26.6} & & \num{85.5} \\
+\num{100000} & \num{690.4} & \num{71.0} & & \num{188.4} \\
+\bottomrule
+\end{tabular}
+\end{table}
 \texttt{eval\_mean} and \texttt{eval\_std} give the mean and the standard deviation of the returns of
 the ten evaluation episodes, \texttt{perturbed\_mean} the mean return under modified physics (empty
 when not measured), \texttt{wall} the elapsed seconds. A run is finished when its last step reaches
-the program's budget. The two lines above are the first of PPO PyTorch on \task{HalfCheetah},
-random seed 0.
+the program's budget. \Cref{tab:format-essai} gives the first two lines of PPO PyTorch on
+\task{HalfCheetah}, random seed 0, rounded to one decimal.
 
 \paragraph{A GRPO run} One JSONL file per model, reward and random seed
 (\cref{chap:07-modeles-de-langue}). Evaluation lines contain \texttt{step}, \texttt{greedy},
@@ -302,10 +312,14 @@ The \file{Makefile} trains nothing. Training goes through \file{sim/run.py}, \fi
 \end{description}
 
 \begin{lstlisting}[language=bash,caption={Recomputing every number from the committed results, without training.},captionpos=b]
+# Create the analysis environment
 python3.11 -m venv sim/env-an
+# Install the packages of the analysis and of the tests
 sim/env-an/bin/pip install -r envs/analysis.txt -r envs/test.txt
-make verify          # analyses, numbers of the texts, tests, byte-for-byte diff
-make verify-head     # the same in a fresh export of the last commit
+# Analyses, numbers of the texts, tests, byte-for-byte diff
+make verify
+# The same in a fresh export of the last commit
+make verify-head
 \end{lstlisting}
 
 \section{Continuous integration}
@@ -318,7 +332,7 @@ against its SHA-256 hash (\texttt{pip install -{}-require-hashes}), then install
 the tests, reruns all the analyses, checks the numbers of the texts and compares every result file
 with the commit using \file{tools/compare\_results.py}.
 \begin{itemize}
-  \item On Ubuntu 24.04 (x86-64), with Python 3.11.18, the version the author used, the comparison
+  \item On Ubuntu 24.04 (x86-64), with Python 3.11.18, the version we use, the comparison
         accepts a relative difference of $10^{-12}$ on floats. It requires equality of counts,
         verdicts, rankings and all strings. The $p$-values move in their fifteenth or sixteenth digit
         with the mathematics library.
@@ -372,7 +386,7 @@ that changes announces a result file that changes.
 \label{sec:envs}
 
 Four Python environments ran the project, all under Python 3.11.18. Each file in \file{envs/} is the
-\texttt{pip freeze} of one of them, taken on 15 November 2026, with the Python version and the
+\texttt{pip freeze} of one of them, with the Python version and the
 platform at the top. The \file{*.lock} files add the SHA-256 hash of each package.
 \Cref{chap:D-environnements} gives the versions. The training environment (\file{envs/train.txt})
 serves \file{run.py} and \file{dose.py}, the analysis environment (\file{analysis.txt}) the analyses,
@@ -389,14 +403,16 @@ in the repository. The weights of SAC and CrossQ, too heavy for git, are attache
 release \texttt{policies-v1}, as tar archives listed with their SHA-256 hash in a \file{SHA256SUMS}
 file. The script \file{sim/fetch\_models.py} downloads each archive, checks its hash, unpacks it
 under \file{models/}, then checks each policy file against \file{sim/models/MANIFEST.sha256}, the
-hashes taken on 15 November 2026 on the machine that trained them. The downloads run one after
+hashes taken on the machine that trained them. The downloads run one after
 another, separated by a random pause of 1.5 to 4 seconds. A refused request is retried after a
 wait drawn at random between zero and a ceiling that doubles with each failure (exponential backoff
 with full jitter), five attempts at most.
 
 \begin{lstlisting}[language=bash,caption={Fetching and checking the policies of SAC and CrossQ.},captionpos=b]
-cd sim && python3 fetch_models.py          # download, unpack, check everything
-cd sim && python3 fetch_models.py --check  # only check the policies already present
+# Download, unpack, check everything
+cd sim && python3 fetch_models.py
+# Only check the policies already present
+cd sim && python3 fetch_models.py --check
 \end{lstlisting}
 
 \section{Hardware and compute}
@@ -406,7 +422,7 @@ All runs ran on one laptop, a Mac with an Apple M2 Max chip under macOS 27.2 (ar
 with other projects. Each simulation training runs on a single thread. The number of jobs in
 parallel changed over the project: four cores at the start, up to eight granted every hour according
 to the load of the machine (deviation 15 of the simulations), then two cores for the whole project
-from 19 November 2026 (deviation 19). This sharing leaves the results untouched as long as a run
+(deviation 19). This sharing leaves the results untouched as long as a run
 depends on its random seed alone: the relaunches check it for PPO, while deviation 32 is still
 testing it for SAC and CrossQ (\cref{sec:registres}). \Cref{sec:calcul} describes the launchers, the watchdog and the job queue.
 \Cref{tab:calcul} gives, per program and per task, the number of runs, the number of steps, the
@@ -416,7 +432,7 @@ The GRPO runs have very different durations depending on the device. According t
 field of their logs at step 100, a Qwen run took 42 to 52 minutes on GPU and 4.3 to 11.4 hours on
 CPU, a Llama run 69 to 148 minutes on GPU. These spreads also reflect the varying load of the
 machine. From these logs, the rerun of deviation~20 plans about 58 GPU hours for its forty runs, to be
-run at night.
+run on an idle machine.
 
 \section{What is not in the repository}
 \label{sec:absent}

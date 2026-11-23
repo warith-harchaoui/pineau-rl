@@ -17,8 +17,8 @@ the documents.
 
 \section{A protocol written before the first training run}\label{sec:protocole}
 
-The protocol of the experiments is the file \file{sim/SIM\_PROTOCOL.md}. Its first version is dated
-8~November~2026. It was written before any training. It fixes the questions, the algorithms, the tasks, the
+The protocol of the experiments is the file \file{sim/SIM\_PROTOCOL.md}. Its first version was
+written before any training. It fixes the questions, the algorithms, the tasks, the
 budgets, the number of random seeds, the evaluation and the analyses. Throughout the report, a \emph{run} is one
 complete training of one program on one task with a given random seed. The protocol lays down three rules of
 conduct:
@@ -29,7 +29,7 @@ conduct:
 \end{itemize}
 
 Every later change enters a numbered, dated list of \enquote{deviations}, together with a note of what we had
-already seen when we decided it. The protocol counts thirty-four of them as of 22~November~2026.
+already seen when we decided it. The protocol counts thirty-four of them.
 \Cref{chap:09-ecarts} gives all of them, with those of the survey and of the language-model study. This chapter
 cites by number every deviation of the experiment protocol that changes a method. \Cref{sec:avant-apres} sorts the decisions by
 whether they precede or follow the results they affect.
@@ -42,7 +42,7 @@ Every divergence is stated.
 
 \paragraph{Four frozen Python environments}
 Four Python~3.11.18 environments were used, all on a Mac with an Apple M2 Max chip (macOS~27.2, arm64). Each
-is frozen by a \texttt{pip freeze} taken on 15~November~2026, in \file{envs/} (\cref{tab:env},
+is frozen by a \texttt{pip freeze}, in \file{envs/} (\cref{tab:env},
 \cref{chap:D-environnements}):
 \begin{itemize}
   \item \file{sim/env} serves training and re-evaluation (\file{sim/run.py}, \file{sim/dose.py}). It holds
@@ -66,8 +66,8 @@ provides TRPO. rliable computes interquartile means, their bootstrap intervals a
 improvement.
 
 \paragraph{Stable-Baselines3~2.9.2 instead of 2.6.0}
-The protocol announced Stable-Baselines3~2.6.0. Every training run used version~2.9.2, installed on
-8~November at 10:11, before the first training run (deviation~14, item~c). The versions in
+The protocol announced Stable-Baselines3~2.6.0. Every training run used version~2.9.2, installed
+before the first training run (deviation~14, item~c). The versions in
 \file{envs/train.txt} are the ones that actually ran.
 
 \paragraph{Reproducing on another machine}
@@ -362,7 +362,7 @@ budget. On request, it also cuts a curve at a given step (the equal-budget readi
 The final policy of each run is saved in
 \file{models/}\allowbreak\file{<program>/}\allowbreak\file{<task>/}\allowbreak\file{seed<k>.zip}, with the
 normalisation statistics alongside for the programs tuned like the Zoo (\file{.vecnorm.pkl}). The file
-\file{sim/models/MANIFEST.sha256} gives the SHA-256 fingerprint of 250~policies, taken on 15~November~2026 on
+\file{sim/models/MANIFEST.sha256} gives the SHA-256 fingerprint of 250~policies, taken on
 the machine that trained them. The PPO, TRPO and E6 policies are in the repository. Those of SAC and CrossQ,
 too heavy for git, are attached to the \texttt{policies-v1} release of the repository on GitHub. The script
 \file{sim/fetch\_models.py} downloads them one at a time, separated by a random pause of 1.5 to 4~seconds, then
@@ -624,7 +624,7 @@ Experiment & Question & Design & Runs & Analysis fixed \\
 \endfoot
 E1 & Do two groups of runs of the same program pass for two algorithms? &
 PPO PyTorch on \task{HalfCheetah}, 30 random seeds. \num{10000} draws of two groups, Welch test on the final
-scores, at random then sorted. & 30 training runs & preregistered (8~November) \\
+scores, at random then sorted. & 30 training runs & preregistered \\
 E1, second statistic & Is the average t on the 2018 curve recovered? &
 The same 30 curves, Welch test at each of the 20 points, average t and average p. & the 30 of E1 &
 after the E1 results (deviation~3) \\
@@ -736,7 +736,7 @@ compares final scores.
 split into two groups of five at random or sorted by final score, then a Welch test at each of the twenty
 evaluation points. The script derives from them the share of draws declared different by the average t, by the average p and by
 the test at the last point, the 95th percentile of $|\bar t|$ and the share of draws where
-$|\bar t|\ge 9.09$. This statistic was added on 9~November, after the results of \file{e1.py} (deviation~3).
+$|\bar t|\ge 9.09$. This statistic was added after the results of \file{e1.py} (deviation~3).
 It complements the preregistered analysis without replacing it.
 
 \subsection{B1: the puzzle of the t of 9}\label{sec:plan-b1}
@@ -745,7 +745,7 @@ groups of five runs of the same code. Pineau states on stage that these groups a
 origin of this number in two stages, each written before its computation.
 
 \paragraph{First stage: their algorithm}
-Deviation~4, written on 9~November before any TRPO training, launches thirty TRPO runs on
+Deviation~4, written before any TRPO training, launches thirty TRPO runs on
 \task{HalfCheetah-v5}, random seeds 0 to 29, one million steps, with the default values of sb3-contrib~2.9.2
 and the same evaluation as E1. \file{sim/analysis/b1\_trpo.py} applies the three readings of
 \cref{sec:t-moyen} to the TRPO and PPO curves, with the same draws as \file{e1\_curve.py}. The reading rule
@@ -754,7 +754,7 @@ spread of the algorithm explains their number. If only the pooled reading comes 
 explains it. If no reading comes close, the report concludes that neither lead explains their number.
 
 \paragraph{Second stage: their script}
-Deviation~6, written on 9~November at 23:55 after the results of \file{b1\_trpo.py} and before any computation
+Deviation~6, written after the results of \file{b1\_trpo.py} and before any computation
 with the script, notes two facts. The first is arithmetic. The published pair $(t,p)=(-9.09,\,0.0016)$ implies
 about 3.4~degrees of freedom in a two-sided test. It rules out the pooled-points reading, with about
 198~degrees of freedom, which would give a $p$ of the order of $10^{-16}$. It also rules out the average t
@@ -787,7 +787,7 @@ The \emph{leader} of a task is the program with the highest IQM. The ranking \em
 not the same on every task. The change is \emph{settled} when the leader of one task is beaten, in a
 settled way, by another program on another task. The script counts these settled changes: each triple
 (task where $X$ leads, task where $X$ loses, program that beats $X$) counts as one. These details were written
-on 10~November, after the PPO and SAC results and before looking at any CrossQ result (deviation~7, read with
+after the PPO and SAC results and before looking at any CrossQ result (deviation~7, read with
 the correction of deviation~14, item~b).
 
 \paragraph{With the Bonferroni correction}
@@ -966,7 +966,7 @@ Deviation~29, which predates these computations, adds three exploratory readings
 \end{itemize}
 
 \subsection{The consolidation: twenty random seeds and equal budget}\label{sec:plan-consolidation}
-Deviation~12, written on 15~November before any new training, adds three parts with the same code and the
+Deviation~12, written before any new training, adds three parts with the same code and the
 same settings:
 \begin{itemize}
   \item random seeds 10 to 19 for the four programs on the four tasks, that is 150 new training runs, since
@@ -976,7 +976,7 @@ same settings:
 \end{itemize}
 The module \file{sim/analysis/runs.py} reads three environment variables, all inactive by default:
 \texttt{SEEDS} (for example \texttt{0:20}), \texttt{BUDGET=equal} and \texttt{SUFFIX}, appended to the name of
-the output file. Deviation~20, written on 21~November after all training had finished and before any
+the output file. Deviation~20, written after all training had finished and before any
 computation on random seeds 10 to 19, fixes the list of computations, all launched by \texttt{make analysis}:
 \begin{itemize}
   \item on the twenty random seeds (suffix \file{\_s20}): E2, E3, E5, E7, B3, the physics by degrees, the
@@ -1026,10 +1026,10 @@ Several scripts launched the runs. Each skips a run whose final policy already e
     stopped job in the ledger and releases its reservation.
 \end{itemize}
 
-\paragraph{The number of cores over the days}
-Until 15~November, the number of simultaneous runs was set by hand: four cores for the project from
-9~November, then two copies of \file{queue.sh} for the consolidation. Deviation~15 (15~November) raised the
-ceiling to eight cores, set every hour by \file{scale.sh}. Deviation~19 (19~November) brought it down to two
+\paragraph{The number of cores over the project}
+At first, the number of simultaneous runs was set by hand: four cores for the project, then two
+copies of \file{queue.sh} for the consolidation. Deviation~15 raised the
+ceiling to eight cores, set every hour by \file{scale.sh}. Deviation~19 brought it down to two
 cores for the whole project, the GRPO run on the processor included. Each run executes on a single thread,
 in its own process: the number of parallel jobs enters none of its computations. The PPO relaunches recover
 their evaluation points identically. For SAC and CrossQ, the check of deviation~32 is under way.
@@ -1038,12 +1038,12 @@ their evaluation points identically. For SAC and CrossQ, the check of deviation~
 The protocol required a crash to be relaunched once and recorded. The reconstructed ledger
 \file{logs/attempts\_reconstructed.csv} counts 292~launches for the 250~training runs that precede the
 consolidation: 42~attempts were stopped and none crashed. Of the 42 stops, only 2 had been declared
-(deviation~14, item~e). The stops have three causes: a general stop on 8~November, probably the one of the
-memory incident of the GRPO pilot, a stop requested on 9~November for an overloaded machine, then four stops
+(deviation~14, item~e). The stops have three causes: a first general stop, probably the one of the
+memory incident of the GRPO pilot, a stop requested for an overloaded machine, then four stops
 to stay at four cores. Each stop hit every running run at once. No run was relaunched or discarded after its
 final score was known, nor for any reason linked to its score. For PPO PyTorch and PPO JAX, the relaunches
 recover the evaluation points of the stopped attempts as they were. For SAC and CrossQ, the stopped curves were
-overwritten, which makes this check impossible. The later stops by the watchdog, on 12, 15 and 16~November,
+overwritten, which makes this check impossible. The later stops by the watchdog
 are described in deviations~10, 14 and 16 (\cref{chap:09-ecarts}).
 
 \paragraph{The chain to the documents}
@@ -1060,7 +1060,7 @@ by deviation.
 
 \paragraph{Written before any result concerned}
 \begin{itemize}
-  \item the protocol itself (8~November): E1, E2, E3, E4, E5, E6, E7, their statistics, the settled-winner
+  \item the protocol itself: E1, E2, E3, E4, E5, E6, E7, their statistics, the settled-winner
     rule;
   \item the budget of SAC and CrossQ brought down to \num{200000}~steps (deviation~1), before the first
     training run;
@@ -1086,8 +1086,8 @@ by deviation.
     deviations~7 and~8, the version of Stable-Baselines3, the exact number of steps, the undeclared relaunches,
     the random seeds named in each script, the ledger of attempts.
 \end{itemize}
-\paragraph{Written on 21~November, after a technical review and before the repository's computation}
-A technical review of the repository flagged, on 21~November, analyses that were too weak or missing.
+\paragraph{Written after a technical review and before the repository's computation}
+A technical review of the repository flagged analyses that were too weak or missing.
 Deviations~21 to~31 came out of it. Each was written before the repository's script computed its result. For
 deviations~21 to~27 and~31, the review had already made a draft computation outside the repository. Each
 deviation concerned flags it. These are complements decided after the main results, which they do not replace:
@@ -1101,8 +1101,8 @@ deviation concerned flags it. These are complements decided after the main resul
   \item the speed of the official agents read in their logs (deviation~31).
 \end{itemize}
 
-\paragraph{Still on 21~November, before any data}
-Three deviations of 21~November precede any data concerned: the determinism of SAC and CrossQ (deviation~32), the
+\paragraph{After the same review, before any data}
+Three deviations born of the same review precede any data concerned: the determinism of SAC and CrossQ (deviation~32), the
 continuation of the E6 diagnosis, with replay, published agent and recipe at $\gamma=0.99$ (deviation~33),
 the divergence of the two PPOs (deviation~34). The training runs of deviations~32, 33 (c) and 34 are still going
 when this report is compiled.

@@ -5,8 +5,8 @@ The previous chapters deal with programs that learn to act in a simulated world.
 describes a smaller strand, devoted to the generative AI models that write text. It sets out the
 vocabulary we use, the algorithm as we wrote it, the protocol, the runs and their results, then the
 measurement trap these runs exposed. The full protocol is in \file{sim/llm/LLM\_PROTOCOL.md}. Its
-twenty deviations are summarised in \cref{chap:09-ecarts}. Deviations~18 and~19, written on
-21 November 2026 after all the results, declare defects found by a technical review and pick out in the
+twenty deviations are summarised in \cref{chap:09-ecarts}. Deviations~18 and~19, written
+after all the results, declare defects found by a technical review and pick out in the
 logs measurements that the first version of this chapter left aside. They change how the strand reads
 without changing any published figure.
 
@@ -144,8 +144,8 @@ stay in 32-bit floating point.
 
 \begin{notebox}
 \textbf{How our GRPO differs from that of \textcite{shao2024deepseekmath}.} Our loss has no
-Kullback-Leibler divergence term with respect to the starting model, as the protocol of 8 November
-2026 announced. The group holds 8 answers per problem and the step 4 problems, far fewer than in the
+Kullback-Leibler divergence term with respect to the starting model, as the protocol
+announced. The group holds 8 answers per problem and the step 4 problems, far fewer than in the
 reference papers. The 160-token limit is very short for written reasoning. The learning rate was not
 chosen by the planned pilot, which was stopped at step 10 (deviations 4 and 6). These choices are
 adequate for an illustration. They rule out reading our figures as a measurement of GRPO at the
@@ -214,7 +214,7 @@ does it concentrate probability on answers the model already found within severa
 version, in the copy published by \texttt{unsloth} \parencite{meta2024llama32,grattafiori2024llama3}.
 Since deviation 15 (c), \file{grpo.py} pins the exact revision of the downloaded files
 (\texttt{7ae5576\dots} for Qwen, \texttt{5a8abab\dots} for Llama), the only revisions present in the
-machine's cache, downloaded on 22 and 27 October 2026, before the first run.
+machine's cache, downloaded before the first run.
 
 \paragraph{Pilot} A pilot without training was to fix the task: the one on which both models lie
 between 15\% and 70\% accuracy. The protocol wanted it on problems outside the test set. It ran on the
@@ -230,7 +230,7 @@ real outputs, before any training (deviation 1).
 \paragraph{Plan} Two models, two rewards, 100 steps per run, a learning rate of $3 \times 10^{-6}$
 for all conditions. The protocol planned 200 steps and five random seeds. Deviation 6 reduced the
 plan to 100 steps and three random seeds (0 to 2), before any retained run, to fit the available
-compute. Deviation 14, written on 15 November 2026 before any new run, restored random seeds 3 and
+compute. Deviation 14, written before any new run, restored random seeds 3 and
 4, with the same code and the same settings. The starting point of each run is the base model,
 measured with the random seed of the run.
 
@@ -243,7 +243,7 @@ no choice among several variants (deviation 13). The interval is very rough: thr
 allow only ten distinct resamples, five random seeds 126.
 
 \paragraph{Added statistics} Deviation~19, written before the script \file{sim/llm/logs\_stats.py},
-adds three tools for the five measures. The technical review of the same day had displayed some of these
+adds three tools for the five measures. The technical review that preceded it had displayed some of these
 values: the reading rule does not depend on their sign.
 \begin{itemize}
   \item Within each configuration, beside the percentile interval, the Student interval
@@ -270,16 +270,16 @@ to the spread of the gains under the true reward, whose standard deviation is ab
 number of answers.
 
 \paragraph{A run that fails twice} The Llama run with the random reward and random seed 4 stopped
-two nights in a row on the first safeguard, at its first update. Deviation 16 counts this second
+twice in a row on the first safeguard, at its first update. Deviation 16 counts this second
 failure as a result: the configuration is summarised over its four finished runs, with the failure
 stated next to them. A sensitivity analysis also replaces the missing gain with the smallest, then
 with the largest gain of the nineteen finished runs.
 
 \paragraph{Hardware} All runs ran on the project's Mac
-(\cref{chap:08-logiciel,chap:D-environnements}). The first three Qwen runs ran on the GPU, early in
-the morning, on an idle machine. After the crashes of deviation 8 and the diagnosis of deviation 10,
+(\cref{chap:08-logiciel,chap:D-environnements}). The first three Qwen runs ran on the GPU, on an
+idle machine. After the crashes of deviation 8 and the diagnosis of deviation 10,
 the remaining Qwen runs moved to the CPU, with two threads (\file{cpu.sh}, deviation 11). The Llama
-runs, about two and a half times slower than Qwen on CPU, stayed on the GPU, at night only
+runs, about two and a half times slower than Qwen on CPU, stayed on the GPU, on an idle machine only
 (\file{night.sh}), with the safeguards. \Cref{tab:grpo} gives the device of each run.
 
 \section{Results}
@@ -401,7 +401,7 @@ coin almost always gives mixed rewards: no logged step has a zero gradient.
 
 \paragraph{A run outside the protocol} Deviation 16 (e) planned to run the Llama run with the random
 reward and random seed 4 once on CPU, after all other computations, to learn whether its double
-failure was due to the GPU. The run completed on 21 November 2026, with no recomputation. Its pass@1
+failure was due to the GPU. The run completed with no recomputation. Its pass@1
 goes from \num{23.25}\% at step 0 to \num{0.25}\% at step 100
 (\file{sim/llm/results/llama1\_cpu/mul2/random/seed4.jsonl}). The result stays out of every
 statistic, as the deviation had set. It is consistent with a failure due to the GPU without proving
@@ -420,16 +420,13 @@ exact batch of step 10 of the pilot: the four multiplications $48 \times 49$, $1
 $21 \times 50$ and $45 \times 17$, eight answers each, with the starting Qwen model. The model gives
 5 correct answers out of 32, in line with the test. Yet 23 of the 32 answers reach the 160-token
 limit before giving a result. None of these cut-off answers is correct. Among the 9 complete
-answers, 5 are correct (\cref{fig:grpo-coupure,fig:grpo-truncation}).
+answers, 5 are correct (\cref{fig:grpo-coupure}).
 
 \fig{grpo-coupure}{The answers of the Qwen2.5 model with 0.5 billion parameters before any training,
 eight per problem, on the four multiplications of the tenth step of the pilot. A complete correct
 answer is green, a complete wrong answer grey, a cut-off answer red. Most answers reach the 160-token
 limit before giving a result and are scored as wrong.}
 
-\fig[0.8\linewidth]{grpo-truncation}{The same thirty-two answers, as stacked bars: for each problem,
-the share of the eight answers that are complete and correct, complete and wrong, or cut off at 160
-tokens.}
 
 The 0.91 of step 10 was no counting error. The simplest explanation is that the true reward first
 teaches the model to finish before the cutoff. Yet when the starting model replays this batch, 5 complete
@@ -490,7 +487,7 @@ Two declared defects weigh on these facts: Qwen's repetition penalty and a pilot
 (deviation~18). The five-seed protocol cannot establish any gain within a configuration. A rerun is
 written in advance to remove these defects (deviation~20): repetition penalty at 1, pilot kept off the
 test set, ten random seeds per configuration on the GPU alone, verdicts kept per problem and a greedy
-answer at 512 tokens, which the length limit does not touch. Launched on 22 November 2026, it is waiting
+answer at 512 tokens, which the length limit does not touch. It has been launched, is waiting
 for the GPU to become free and has produced no result yet. Its rule is fixed: if the main contrast is
 established for neither model, this strand moves to an appendix.
 

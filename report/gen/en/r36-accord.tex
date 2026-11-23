@@ -2,19 +2,22 @@
 \begin{table}[tbp]
 \centering
 \footnotesize
-\setlength{\tabcolsep}{2.6pt}
-\caption[Deviation 36: agreement with the original codes]{Deviation 36: agreement of the new readings (eight agents, each on both years) with the final harmonised codes of the main comparison, on the same papers. $k/n$: identical decisions out of decisions compared; share of identical decisions with its 95\% Wilson interval, Cohen's kappa, then the agreement per year and Fisher's exact test of the 2018 agreement against the 2026 one: a disagreement that depended on the year would be the bias the deviation targets. Last two columns: the papers where the new reading says yes and the final code no, then the reverse. Source: \file{study/r36\_stats.json} (\file{study/r36\_stats.py}).}
+\setlength{\tabcolsep}{4pt}
+\caption[Deviation 36: agreement with the original codes]{Deviation 36: agreement of the new readings with the final harmonised codes of the main comparison, on the same papers. Share of identical decisions (identical decisions out of decisions compared) with its 95\% Wilson interval, Cohen's kappa, then the agreement per year and Fisher's exact test of 2018 against 2026: an agreement that depended on the year would be the bias the deviation targets. Last two columns: number of papers where the new reading says yes and the final code no, then the reverse. Source: \file{study/r36\_stats.json}.}
 \label{tab:r36-accord}
-\begin{tabularx}{\linewidth}{@{}l>{\raggedright\arraybackslash}Xrrrrrrrrrr@{}}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}Xrrrrrrr@{}}
 \toprule
- & & \multicolumn{3}{c}{Both years} & \multicolumn{2}{c}{2018} & \multicolumn{2}{c}{2026} & & \multicolumn{2}{c}{Disagreements}  \\
-\cmidrule(lr){3-5}\cmidrule(lr){6-7}\cmidrule(lr){8-9}\cmidrule(lr){11-12}
-Code & Criterion & $k/n$ & \% [Wilson] & kappa & $k/n$ & \% & $k/n$ & \% & \makecell[r]{Fisher $p$\\{}2018/2026} & \makecell[r]{new yes,\\{}original no} & \makecell[r]{new no,\\{}original yes} \\
+ & \multicolumn{2}{c}{Both years} & \multicolumn{3}{c}{Per year} & \multicolumn{2}{c}{Disagreements}  \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-6}\cmidrule(lr){7-8}
+Criterion & \makecell[r]{agreement\\{}[Wilson]} & kappa & 2018 & 2026 & \makecell[r]{Fisher\\{}$p$} & \makecell[r]{new yes,\\{}original no} & \makecell[r]{new no,\\{}original yes} \\
 \midrule
-Q5 & Code linked & 97/98 & 99 [94,\,100] & 0.98 & 48/48 & 100 & 49/50 & 98 & 1 & 0 & 1 \\
-Y9 & Sensitivity to a hyperparameter & 92/98 & 94 [87,\,97] & 0.87 & 43/48 & 90 & 49/50 & 98 & 0.11 & 2 & 4 \\
-X7 & Compute quantified & 92/98 & 94 [87,\,97] & 0.88 & 46/48 & 96 & 46/50 & 92 & 0.68 & 6 & 0 \\
-X2 & Uncertainty reported & 92/98 & 94 [87,\,97] & 0.83 & 43/48 & 90 & 49/50 & 98 & 0.11 & 4 & 2 \\
+Code linked (Q5) & \makecell{99 \textcolor{ink2}{(97/98)}\\{}[94,\,100]} & 0.98 & 100 \textcolor{ink2}{(48/48)} & 98 \textcolor{ink2}{(49/50)} & 1 & 0 & 1 \\
+\addlinespace[2pt]
+Sensitivity to a hyperparameter (Y9) & \makecell{94 \textcolor{ink2}{(92/98)}\\{}[87,\,97]} & 0.87 & 90 \textcolor{ink2}{(43/48)} & 98 \textcolor{ink2}{(49/50)} & 0.11 & 2 & 4 \\
+\addlinespace[2pt]
+Compute quantified (X7) & \makecell{94 \textcolor{ink2}{(92/98)}\\{}[87,\,97]} & 0.88 & 96 \textcolor{ink2}{(46/48)} & 92 \textcolor{ink2}{(46/50)} & 0.68 & 6 & 0 \\
+\addlinespace[2pt]
+Uncertainty reported (X2) & \makecell{94 \textcolor{ink2}{(92/98)}\\{}[87,\,97]} & 0.83 & 90 \textcolor{ink2}{(43/48)} & 98 \textcolor{ink2}{(49/50)} & 0.11 & 4 & 2 \\
 \bottomrule
 \end{tabularx}
 \end{table}

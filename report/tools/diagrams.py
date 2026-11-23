@@ -291,8 +291,8 @@ def columns(f):
 def column_heads(f, y, fr):
     s = f.s
     CW, _, X = columns(f)
-    heads = ("2018", "2026", "2019 à 2024" if fr else "2019 to 2024")
-    for i, (a, col) in enumerate(zip(heads, (C18, C26, CTR))):
+    heads = ("2018", "2019 à 2024" if fr else "2019 to 2024", "2026")  # chronological order
+    for i, (a, col) in enumerate(zip(heads, (C18, CTR, C26))):
         s.circle(X[i] + 6, y - 5.5, 6, col)
         tx(s, X[i] + 18, y, a, "sans7", 16, INK)
     return y + 24
@@ -309,21 +309,23 @@ def flux_sondage(lang):
                 "The survey, part one: from the published RL papers to the three samples"),
         "source": ("Sources : study/PROTOCOL.md (écarts 12 et 25), study/*.json, docs/conclusions.md" if fr else
                    "Sources: study/PROTOCOL-en.md (deviations 12 and 25), study/*.json, docs/conclusions-en.md"),
-        "desc": ("Première partie du diagramme de flux du sondage. Trois colonnes, 2018, 2026 et les années 2019 à "
-                 "2024, descendent de la population d'articles de RL au tirage au sort puis à l'échantillon : 50 "
-                 "articles de 2018, 50 articles de RL classique de 2026, 80 articles de 2019 à 2024." if fr else
-                 "Part one of the survey's flow diagram. Three columns, 2018, 2026 and the years 2019 to 2024, go "
-                 "down from the population of RL papers to the random draw and the sample: 50 papers from 2018, 50 "
-                 "classical RL papers from 2026, 80 papers from 2019 to 2024."),
+        "desc": ("Première partie du diagramme de flux du sondage. Trois colonnes, 2018, les années 2019 à 2024 et "
+                 "2026, descendent de la population d'articles de RL au tirage au sort puis à l'échantillon : 50 "
+                 "articles de 2018, 80 articles de 2019 à 2024, 50 articles de RL classique de 2026." if fr else
+                 "Part one of the survey's flow diagram. Three columns, 2018, the years 2019 to 2024 and 2026, go "
+                 "down from the population of RL papers to the random draw and the sample: 50 papers from 2018, 80 "
+                 "papers from 2019 to 2024, 50 classical RL papers from 2026."),
     }
     f = figure(T)
     s, L, W = f.s, f.L, f.W
     CW, G_, X = columns(f)
-    cols = (C18, C26, CTR)
+    cols = (C18, CTR, C26)
     y = column_heads(f, f.top + 8, fr)
 
     def row(label, cells, styles, arrows=True):
+        """cells and styles in the order 2018, 2026, 2019 to 2024; drawn in chronological order."""
         nonlocal y
+        cells, styles = [cells[i] for i in (0, 2, 1)], [styles[i] for i in (0, 2, 1)]
         stage(s, L, y + 10, W - 2 * L, label)
         y += 22
         h = max(fill_card(s, X[i], y, CW, cells[i], styles[i], cols[i]) for i in range(3))
@@ -451,14 +453,14 @@ def flux_sondage_2(lang):
           "for every decision, |in study/codes/ |and codes_v2/")],
     ])
     band("Double lecture à l'aveugle" if fr else "Blind double reading", [
-        [("big", "10", "du 1er tirage" if fr else "first draw", C26),
-         ("p", "127 décisions |sur 130 identiques |(grille 1)" if fr else "127 of 130 |decisions identical |(grid 1)")],
         [("big", "10", "ajoutés" if fr else "added", C18),
          ("p", "au moins 80 % |d'accord sur chacun |des 23 critères" if fr else
           "at least 80% |agreement on each |of the 23 criteria")],
         [("big", "10", "de 2019 à 2024" if fr else "2019 to 2024", CTR),
          ("p", "au moins 80 % |d'accord sur chacun |des 23 critères" if fr else
           "at least 80% |agreement on each |of the 23 criteria")],
+        [("big", "10", "du 1er tirage" if fr else "first draw", C26),
+         ("p", "127 décisions |sur 130 identiques |(grille 1)" if fr else "127 of 130 |decisions identical |(grid 1)")],
     ])
     band("Harmonisation, avant tout pourcentage" if fr else "Harmonisation, before any percentage", [
         [("p", ("Des règles datées (écarts 17 à 19) |tranchent les cas ambigus : |80 codes changent, "
@@ -484,9 +486,9 @@ def flux_sondage_2(lang):
     stage(s, L, y + 10, W - 2 * L, "Comparaisons finales" if fr else "Final comparisons")
     y += 22
     A = [("pb", "Comparaison principale, à grille égale" if fr else "Main comparison, with the same grid"),
-         ("p", ("48 articles expérimentaux de 2018 |contre 50 de RL classique de 2026, |mêmes grilles, mêmes lecteurs ; "
+         ("p", ("48 articles expérimentaux de 2018 |contre 50 de RL classique de 2026, |mêmes grilles, lecteurs du même modèle ; "
                 "|Newcombe, Fisher, Holm.") if fr else
-          ("48 experimental papers from 2018 |against 50 classical RL papers of 2026, |same grids, same readers; "
+          ("48 experimental papers from 2018 |against 50 classical RL papers of 2026, |same grids, readers of the same model; "
            "|Newcombe, Fisher, Holm."))]
     B = [("pb", "Trajectoire" if fr else "Trajectory"),
          ("p", "48, 4 × 20, 50 articles ; |Cochran-Armitage |sur cinq critères" if fr else
@@ -560,7 +562,7 @@ def frise_ecarts(lang):
     MS = {  # milestones per day: (French, English); every one from the protocols, README or git history
         8: [("Les trois protocoles, |avant toute lecture |et tout entraînement",
              "The three protocols, |before any reading |or training")],
-        9: [("Premier commit, |6 h 07", "First commit, |6:07")],
+        9: [("Premier commit", "First commit")],
         12: [("Les 12 essais GRPO |à trois graines finis", "The 12 GRPO runs |with three seeds done")],
         13: [("Les 40 essais CrossQ |finis : fin des |simulations prévues",
               "The 40 CrossQ runs |done: planned |simulations finished")],

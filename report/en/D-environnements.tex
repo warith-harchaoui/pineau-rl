@@ -18,7 +18,7 @@ installed each package. An ordinary \texttt{venv} environment receives the same 
 \section{The four environments}
 \label{sec:d-envs}
 
-Each file in \file{envs/} is the \texttt{pip freeze} of an environment, taken on 15 November 2026, with the Python
+Each file in \file{envs/} is the \texttt{pip freeze} of an environment, with the Python
 version and the platform at the top. The \file{*.lock} files give the same lists with the SHA-256
 fingerprint of each package, for an installation with \texttt{pip install -{}-require-hashes}. Four
 \file{*.txt} files, one per environment, repeat the lists that the protocols cite,
@@ -54,8 +54,11 @@ File & Environment & What it runs \\
   \item \textbf{Recreating an environment.} The paths matter, since the scripts and the launchers
         call \file{sim/env/bin/python} and its siblings:
 \begin{lstlisting}[language=bash]
+# Create the analysis environment
 python3.11 -m venv sim/env-an
+# Install the packages of the analysis and of the tests
 sim/env-an/bin/pip install -r envs/analysis.txt -r envs/test.txt
+# Recompute and check everything
 make verify
 \end{lstlisting}
         The other three follow the same pattern. \file{sim/env-zoo} is a \texttt{venv} built on the
@@ -107,7 +110,7 @@ git & 2.50.0 & \texttt{make verify} \\
 \end{tabularx}
 \end{table}
 
-Two tools outside Python served the analyses of 21 and 22 November 2026. The \texttt{gh} client
+Two tools outside Python served the analyses added after the technical review. The \texttt{gh} client
 2.95.0 read the creation date of the GitHub repositories cited for Q5 (survey deviation 31), one
 request at a time. Ollama 0.40.16 serves \texttt{gemma3:12b} locally, the reader of survey deviation
 33. Each reading file of this reader records the digest of the model.

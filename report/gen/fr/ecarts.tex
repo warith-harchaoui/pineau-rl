@@ -3,114 +3,114 @@
 \footnotesize
 \setlength{\tabcolsep}{3.5pt}
 \setlength{\LTcapwidth}{\textwidth}
-\begin{longtable}{@{}r>{\raggedright\arraybackslash}p{1.25cm}>{\raggedright\arraybackslash}p{3.1cm}>{\raggedright\arraybackslash}p{9.6cm}@{}}
-\caption[Écarts aux trois protocoles]{Les 89 écarts aux trois protocoles, dans l'ordre de leurs listes : sondage (\file{study/PROTOCOL.md}), expériences (\file{sim/SIM\_PROTOCOL.md}), volet GRPO (\file{sim/llm/LLM\_PROTOCOL.md}). Date : jour de novembre 2026 donné par le protocole (« n. d. » quand l'écart n'est pas daté ; les écarts 1 à 10 du sondage ont été notés pendant le codage, avant l'agrégation). Moment : ce que le protocole déclare avoir déjà vu quand l'écart a été écrit (avant ou après les résultats concernés, ou sans effet sur les résultats pour l'organisation du calcul). Le résumé tient en une ligne ; le texte complet, qui fait foi, est dans le protocole (version anglaise : fichiers \file{-en.md}). Le nombre des écarts, leur numérotation et leurs dates sont vérifiés contre les fichiers par \file{report/tools/tables.py}.}\label{tab:ecarts}\\
+\begin{longtable}{@{}r>{\raggedright\arraybackslash}p{3.1cm}>{\raggedright\arraybackslash}p{10.95cm}@{}}
+\caption[Écarts aux trois protocoles]{Les 89 écarts aux trois protocoles, dans l'ordre de leurs listes : sondage (\file{study/PROTOCOL.md}), expériences (\file{sim/SIM\_PROTOCOL.md}), volet GRPO (\file{sim/llm/LLM\_PROTOCOL.md}). Moment : ce que le protocole déclare avoir déjà vu quand l'écart a été écrit (avant ou après les résultats concernés, ou sans effet sur les résultats pour l'organisation du calcul). Le résumé tient en une ligne ; le texte complet, qui fait foi, est dans le protocole (version anglaise : fichiers \file{-en.md}). Le nombre des écarts et leur numérotation sont vérifiés contre les fichiers par \file{report/tools/tables.py}.}\label{tab:ecarts}\\
 \toprule
-N\textsuperscript{o} & Date & Moment & Résumé \\
+N\textsuperscript{o} & Moment & Résumé \\
 \midrule
 \endfirsthead
-\multicolumn{4}{l}{\emph{Tableau \thetable, suite}}\\
+\multicolumn{3}{l}{\emph{Tableau \thetable, suite}}\\
 \toprule
-N\textsuperscript{o} & Date & Moment & Résumé \\
+N\textsuperscript{o} & Moment & Résumé \\
 \midrule
 \endhead
-\midrule\multicolumn{4}{r}{\emph{suite page suivante}}\\
+\midrule\multicolumn{3}{r}{\emph{suite page suivante}}\\
 \endfoot
 \bottomrule
 \endlastfoot
-\multicolumn{4}{@{}l}{\textbf{Sondage} (\file{study/PROTOCOL.md}, 35 écarts)} \\
-1 & n. d. & pendant le codage, avant l'agrégation & X4 harmonisé : \texttt{yes} exige un réglage décrit des références ; « même configuration » sans réglage devient \texttt{no}. \\
-2 & n. d. & pendant le codage, avant l'agrégation & X7 harmonisé : \texttt{yes} exige une quantité de calcul (heures, GPU-heures, FLOP) ; le nom du matériel seul vaut \texttt{no}. \\
-3 & n. d. & pendant le codage, avant l'agrégation & Articles sans expérience (Q1 \texttt{no}) : Q2 à Q8 et X1 à X4 en \texttt{na}, hors des dénominateurs. \\
-4 & n. d. & pendant le codage, avant l'agrégation & Q7 pour un article théorique à expériences jouets : \texttt{no}, pas \texttt{na}. \\
-5 & n. d. & pendant le codage, avant l'agrégation & X3 : une sélection non dite mais visible dans les tableaux de l'article (LR10) vaut \texttt{yes}. \\
-6 & n. d. & pendant le codage, avant l'agrégation & Q5 : un code « rendu public plus tard » vaut \texttt{no} ; une page de projet vaut \texttt{yes} seulement si elle mène au code. \\
-7 & n. d. & pendant le codage, avant l'agrégation & Calibration sur 12 articles de 2018 : notre grille plus sévère que Pineau sur Q3, plus indulgente sur Q7 ; un changement doit tenir contre les deux références. \\
-8 & n. d. & pendant le codage, avant l'agrégation & Annexes séparées de 2018 lues (ICML, NeurIPS) ; en 2026 elles sont dans le PDF ; C21 n'a pas d'annexe publiée. \\
-9 & n. d. & pendant le codage, avant l'agrégation & Adresse de contact retirée de l'en-tête User-Agent des téléchargements ; sans effet sur les données. \\
-10 & n. d. & pendant le codage, avant l'agrégation & Scripts de travail écrasés dans l'espace partagé des lecteurs ; les codages, dans des dossiers séparés, sont intacts. \\
-11 & 9 nov. & avant les résultats & Grille v2 (Y1 à Y12) pour les failles que la v1 ne mesure pas ; Y11 et Y12 ajoutés le même jour, avant tout codage. \\
-12 & 9 nov. & avant les résultats & Élargissement : 2018 porté à 50 articles (A2), RL classique de 2026 à 50 (A3, tri sur le titre) ; analyse fixée (Newcombe, Fisher, Holm) ; double lecture de 10 articles. \\
-13 & 9 nov. & avant les résultats & Relecture humaine à l'aveugle de 10 articles prévue (A1), abandonnée à l'écart 23. \\
-14 & 9 nov. & avant les résultats & Règles de décision de la grille v2 (portée, cas limites de Y1 à Y12) ; fiche \file{GRILLE.md}, contrôle \file{check\_codes.py}. \\
-15 & 9 nov. & après les résultats & Règles des écarts 1, 2 et 4 appliquées aussi aux 12 articles de 2018, oubliés jusque-là ; aucune règle nouvelle. \\
-16 & 9 nov. & avant les résultats & Pilote de trois articles (LR08, ML15, C218) pour repérer les règles ambiguës ; ses lectures n'entrent dans aucune analyse. \\
-17 & 9 nov. & avant les résultats & Règles précisées après le pilote (annexes de 2018, Y1, Y3, Y5 à Y9, Y11, format) ; 9 articles d'ICLR 2026 injoignables sautés dans la file A3. \\
-18 & 9 nov. & après la lecture de A3, avant tout pourcentage & X5 (famille) lu sur le modèle que le RL entraîne, pour décider l'entrée des articles de A3 dans l'échantillon classique. \\
-19 & 9 nov. & après l'audit des lectures, avant tout pourcentage & Harmonisation de la grille v2 : 80 codes changés, chacun motivé dans \file{overrides\_v2.json}, pour les deux années. \\
-20 & 9 nov. & après les résultats & Règle de verdict : seule la comparaison avec la même grille (RL classique 2026 contre notre lecture de 2018) tranche ; les chiffres de Pineau restent un contexte. \\
-21 & 10 nov. & après les résultats, avant ce calcul & Contrôles exploratoires (provenance, source du PDF, Mantel-Haenszel, lecteur retiré) et test à l'aveugle de la thèse du coût et du risque. \\
-22 & 10 nov. & avant les résultats & Listes de contrôle des 30 articles NeurIPS 2025 lus, extraites et confrontées à nos codes (A5). \\
-23 & 10 nov. & avant les résultats & Relecture humaine (A1) abandonnée, décision de Warith Harchaoui ; dite parmi les limites. \\
-24 & 10 nov. & avant les résultats & Sensibilité au filtre de titre (A6) : 400 articles hors filtre, résumés lus, puis 20 articles de RL caché lus avec les deux grilles. \\
-25 & 10 nov. & avant les résultats & Trajectoire de 2018 à 2026 (A4) : 20 articles de RL classique par année d'ICML et NeurIPS 2019, 2020, 2022 et 2024 ; Cochran-Armitage. \\
-26 & 11 nov. & avant les résultats & Seconde lecture à l'aveugle de 10 articles de A4 (lecteur R3). \\
-27 & 15 nov. & après les résultats, avant toute recherche & Recherche par mots-clés contre les « non » de la comparaison principale, arbitre à l'aveugle ; décisions retournées, puis douteuses. \\
-28 & 15 nov. & après les résultats & Provenance des lecteurs publiée (\file{readers/}) : deux lecteurs ont fini sur \texttt{claude-opus-5} (13 articles) ; les lectures ne changent pas. \\
-29 & 15 nov. & après les résultats, avant ce calcul & Comparaison principale et trajectoire refaites sans les 13 articles lus en partie par \texttt{claude-opus-5}. \\
-30 & 21 nov. & après les résultats, avant ce calcul & Analyses complémentaires sans lecture nouvelle : intervalles de l'accord, plus petite différence détectable, règle de verdict d'origine, lecteurs et année confondus. \\
-31 & 21 nov. & après les résultats, avant tout téléchargement & Q5 relu sur la dernière version arXiv (2018) et sur les actes (2026), arbitre à l'aveugle, dates de création des dépôts. \\
-32 & 21 nov. & après les résultats, avant toute lecture & Nouveau critère X8 : incertitude calculée sur des graines, lue par huit agents neufs sur les deux années. \\
-33 & 21 nov. & après les résultats, avant toute lecture & Lecteur d'une autre famille de modèles (\texttt{gemma3:12b}, local) sur les 98 articles de la comparaison principale. \\
-35 & 22 nov. & après les résultats, avant tout tirage et toute lecture humaine & Relecture humaine à l'aveugle des deux années par Warith : 15 articles de 2018 et 15 de 2026, critères Q5, Y9, X7, X2, X8. \\
-36 & 22 nov. & après les résultats, avant toute lecture et tout calcul & L'année et les lecteurs démêlés : huit lecteurs neufs lisent chacun les deux années sur Q5, Y9, X7 et X2. \\
+\multicolumn{3}{@{}l}{\textbf{Sondage} (\file{study/PROTOCOL.md}, 35 écarts)} \\
+1 & pendant le codage, avant l'agrégation & X4 harmonisé : \texttt{yes} exige un réglage décrit des références ; « même configuration » sans réglage devient \texttt{no}. \\
+2 & pendant le codage, avant l'agrégation & X7 harmonisé : \texttt{yes} exige une quantité de calcul (heures, GPU-heures, FLOP) ; le nom du matériel seul vaut \texttt{no}. \\
+3 & pendant le codage, avant l'agrégation & Articles sans expérience (Q1 \texttt{no}) : Q2 à Q8 et X1 à X4 en \texttt{na}, hors des dénominateurs. \\
+4 & pendant le codage, avant l'agrégation & Q7 pour un article théorique à expériences jouets : \texttt{no}, pas \texttt{na}. \\
+5 & pendant le codage, avant l'agrégation & X3 : une sélection non dite mais visible dans les tableaux de l'article (LR10) vaut \texttt{yes}. \\
+6 & pendant le codage, avant l'agrégation & Q5 : un code « rendu public plus tard » vaut \texttt{no} ; une page de projet vaut \texttt{yes} seulement si elle mène au code. \\
+7 & pendant le codage, avant l'agrégation & Calibration sur 12 articles de 2018 : notre grille plus sévère que Pineau sur Q3, plus indulgente sur Q7 ; un changement doit tenir contre les deux références. \\
+8 & pendant le codage, avant l'agrégation & Annexes séparées de 2018 lues (ICML, NeurIPS) ; en 2026 elles sont dans le PDF ; C21 n'a pas d'annexe publiée. \\
+9 & pendant le codage, avant l'agrégation & Adresse de contact retirée de l'en-tête User-Agent des téléchargements ; sans effet sur les données. \\
+10 & pendant le codage, avant l'agrégation & Scripts de travail écrasés dans l'espace partagé des lecteurs ; les codages, dans des dossiers séparés, sont intacts. \\
+11 & avant les résultats & Grille v2 (Y1 à Y12) pour les failles que la v1 ne mesure pas ; Y11 et Y12 ajoutés ensuite, avant tout codage. \\
+12 & avant les résultats & Élargissement : 2018 porté à 50 articles (A2), RL classique de 2026 à 50 (A3, tri sur le titre) ; analyse fixée (Newcombe, Fisher, Holm) ; double lecture de 10 articles. \\
+13 & avant les résultats & Relecture humaine à l'aveugle de 10 articles prévue (A1), abandonnée à l'écart 23. \\
+14 & avant les résultats & Règles de décision de la grille v2 (portée, cas limites de Y1 à Y12) ; fiche \file{GRILLE.md}, contrôle \file{check\_codes.py}. \\
+15 & après les résultats & Règles des écarts 1, 2 et 4 appliquées aussi aux 12 articles de 2018, oubliés jusque-là ; aucune règle nouvelle. \\
+16 & avant les résultats & Pilote de trois articles (LR08, ML15, C218) pour repérer les règles ambiguës ; ses lectures n'entrent dans aucune analyse. \\
+17 & avant les résultats & Règles précisées après le pilote (annexes de 2018, Y1, Y3, Y5 à Y9, Y11, format) ; 9 articles d'ICLR 2026 injoignables sautés dans la file A3. \\
+18 & après la lecture de A3, avant tout pourcentage & X5 (famille) lu sur le modèle que le RL entraîne, pour décider l'entrée des articles de A3 dans l'échantillon classique. \\
+19 & après l'audit des lectures, avant tout pourcentage & Harmonisation de la grille v2 : 80 codes changés, chacun motivé dans \file{overrides\_v2.json}, pour les deux années. \\
+20 & après les résultats & Règle de verdict : seule la comparaison avec la même grille (RL classique 2026 contre notre lecture de 2018) tranche ; les chiffres de Pineau restent un contexte. \\
+21 & après les résultats, avant ce calcul & Contrôles exploratoires (provenance, source du PDF, Mantel-Haenszel, lecteur retiré) et test à l'aveugle de la thèse du coût et du risque. \\
+22 & avant les résultats & Listes de contrôle des 30 articles NeurIPS 2025 lus, extraites et confrontées à nos codes (A5). \\
+23 & avant les résultats & Relecture humaine (A1) abandonnée, de notre propre décision ; dite parmi les limites. \\
+24 & avant les résultats & Sensibilité au filtre de titre (A6) : 400 articles hors filtre, résumés lus, puis 20 articles de RL caché lus avec les deux grilles. \\
+25 & avant les résultats & Trajectoire de 2018 à 2026 (A4) : 20 articles de RL classique par année d'ICML et NeurIPS 2019, 2020, 2022 et 2024 ; Cochran-Armitage. \\
+26 & avant les résultats & Seconde lecture à l'aveugle de 10 articles de A4 (lecteur R3). \\
+27 & après les résultats, avant toute recherche & Recherche par mots-clés contre les « non » de la comparaison principale, arbitre à l'aveugle ; décisions retournées, puis douteuses. \\
+28 & après les résultats & Provenance des lecteurs publiée (\file{readers/}) : deux lecteurs ont fini sur \texttt{claude-opus-5} (13 articles) ; les lectures ne changent pas. \\
+29 & après les résultats, avant ce calcul & Comparaison principale et trajectoire refaites sans les 13 articles lus en partie par \texttt{claude-opus-5}. \\
+30 & après les résultats, avant ce calcul & Analyses complémentaires sans lecture nouvelle : intervalles de l'accord, plus petite différence détectable, règle de verdict d'origine, lecteurs et année confondus. \\
+31 & après les résultats, avant tout téléchargement & Q5 relu sur la dernière version arXiv (2018) et sur les actes (2026), arbitre à l'aveugle, dates de création des dépôts. \\
+32 & après les résultats, avant toute lecture & Nouveau critère X8 : incertitude calculée sur des graines, lue par huit agents neufs sur les deux années. \\
+33 & après les résultats, avant toute lecture & Lecteur d'une autre famille de modèles (\texttt{gemma3:12b}, local) sur les 98 articles de la comparaison principale. \\
+35 & après les résultats, avant tout tirage et toute lecture humaine & Relecture humaine à l'aveugle des deux années par nous : 15 articles de 2018 et 15 de 2026, critères Q5, Y9, X7, X2, X8. \\
+36 & après les résultats, avant toute lecture et tout calcul & L'année et les lecteurs démêlés : huit lecteurs neufs lisent chacun les deux années sur Q5, Y9, X7 et X2. \\
 \addlinespace
-\multicolumn{4}{@{}l}{\textbf{Expériences} (\file{sim/SIM\_PROTOCOL.md}, 34 écarts)} \\
-1 & n. d. & avant le premier entraînement & SAC et CrossQ : 200\,000 pas au lieu de 300\,000, faute de calcul ; TD3 non lancé. \\
-2 & n. d. & après les résultats & E6 : erreur de notre côté (gamma de normalisation 0,99 au lieu de 0,999) ; recette corrigée relancée, diagnostic sur Hopper v4 et v5. \\
-3 & 9 nov. & après les résultats & E1 : seconde statistique, le $t$ moyen le long de la courbe comme Henderson et al. (\file{e1\_curve.py}). \\
-4 & 9 nov. & avant tout entraînement TRPO & B1 : 30 entraînements de TRPO sur HalfCheetah et trois lectures de la statistique de Henderson et al. \\
-5 & 9 nov. & après \file{e6\_diag}, avant tout entraînement officiel & E6 : dix agents entraînés avec le script officiel du Zoo, évalués avec notre protocole. \\
-6 & 9 nov. & après \file{b1\_trpo}, avant ce calcul & B1 : le script publié par Henderson en 2017 (\file{from\_same\_dist.py}) appliqué à nos courbes. \\
-7 & 10 nov. & après PPO et SAC, avant de regarder CrossQ & Détails d'analyse de E2, E4 et E5 (score final, IQM, probabilité d'amélioration, inversions, tirages). \\
-8 & 10 nov. & après PPO et SAC, avant de regarder CrossQ & B3 : trois mesures (score final, meilleur score, moyenne de la courbe) et inversions de classement. \\
-9 & 11 nov. & sans effet sur les résultats & Organisation : le second worker prend la file CrossQ par l'autre bout. \\
-10 & 12 nov. & sans effet sur les résultats & Arrêt par le surveillant (swap) ; deux entraînements CrossQ relancés depuis zéro. \\
-11 & 13 nov. & après les résultats & Fin des simulations ; complément descriptif de E7 (classement par IQM dans les deux physiques, sans test). \\
-12 & 15 nov. & avant tout nouvel entraînement & Consolidation : graines 10 à 19 (160 entraînements), E7 à plusieurs intensités, lecture à budget égal (200\,000 pas). \\
-13 & 15 nov. & après les résultats & Intervalles rendus reproductibles : rliable ignore \texttt{random\_state}, le générateur global de NumPy est fixé ; verdicts inchangés. \\
-14 & 15 nov. & après les résultats & Corrections après relecture critique : date du script \file{dose.py}, comptes des écarts 7 et 8, SB3 2.9.2, pas réels, relances non déclarées, graines lues, registre. \\
-15 & 15 nov. & sans effet sur les résultats & Jusqu'à huit cœurs accordés au projet selon la charge de la machine. \\
-16 & 16 nov. & sans effet sur les résultats & Nuit du 15 au 16 novembre : arrêt par le surveillant, worker survivant corrigé, règle de batterie. \\
-17 & 16 nov. & sans effet sur les résultats & Condition de batterie levée. \\
-18 & 16 nov. & après les résultats, avant ce calcul & E2 : les 24 intervalles de probabilité d'amélioration rendus simultanés par Bonferroni (99,79~\%). \\
-19 & 19 nov. & sans effet sur les résultats & Plafond de deux cœurs pour tout le projet ; surveillant relancé. \\
-20 & 21 nov. & après les entraînements, avant tout calcul sur les graines 10 à 19 & Calcul des ajouts de l'écart 12 ; défaut de \file{e5.py} corrigé (bon ordre sur toutes les graines choisies). \\
-21 & 21 nov. & après les résultats, avant ce calcul & E2 : décompte strict, une paire ne compte que si chacun bat l'autre de façon tranchée sur une tâche (défaut corrigé). \\
-22 & 21 nov. & après les résultats, avant ce calcul & E1 refait sur les seize couples (programme, tâche), graines 0 à 19. \\
-23 & 21 nov. & après les résultats, avant ce calcul & E3 avec la correction de Holm sur quatre tâches, écart en points et puissance. \\
-24 & 21 nov. & après les résultats, avant ce calcul & E7 : le renversement sur Hopper en physique modifiée, testé paire par paire. \\
-25 & 21 nov. & après les résultats, avant ce calcul & E5 vérifié hors échantillon : graines 0 à 9 jugées sur les graines 10 à 19, puis l'inverse. \\
-26 & 21 nov. & après les résultats, avant ce calcul & La règle « tranché » calibrée sur de vraies hypothèses nulles (deux groupes du même programme). \\
-27 & 21 nov. & après les résultats, avant ce calcul & B1 : le facteur entre le $t$ du script et celui des graines vaut $\sqrt{n/5}/\rho$ (défaut corrigé). \\
-28 & 21 nov. & relevé, sans calcul statistique & Les hyperparamètres effectivement utilisés, lus dans les programmes construits et les modèles sauvegardés. \\
-29 & 21 nov. & après les résultats, avant ce calcul & Courbes d'apprentissage : classement au fil de l'entraînement, score final contre meilleur point, autocorrélation. \\
-30 & 21 nov. & avant ce calcul & Tailles d'effet en points de score (Hodges-Lehmann) pour E2, E3 et E6. \\
-31 & 21 nov. & après les résultats, avant ce calcul & E6 : vitesse des agents officiels lue dans leurs journaux d'entraînement. \\
-32 & 21 nov. & avant tout entraînement & Déterminisme de SAC et CrossQ : trois entraînements refaits à l'identique. \\
-33 & 21 nov. & avant ces évaluations et cet entraînement & E6 : agents officiels rejoués (vitesse, vidéos), agent publié par le Zoo évalué, recette avec $\gamma = 0{,}99$. \\
-34 & 21 nov. & avant tout entraînement & Pourquoi les deux PPO divergent : graines 20 à 39 et initialisation orthogonale échangée. \\
+\multicolumn{3}{@{}l}{\textbf{Expériences} (\file{sim/SIM\_PROTOCOL.md}, 34 écarts)} \\
+1 & avant le premier entraînement & SAC et CrossQ : 200\,000 pas au lieu de 300\,000, faute de calcul ; TD3 non lancé. \\
+2 & après les résultats & E6 : erreur de notre côté (gamma de normalisation 0,99 au lieu de 0,999) ; recette corrigée relancée, diagnostic sur Hopper v4 et v5. \\
+3 & après les résultats & E1 : seconde statistique, le $t$ moyen le long de la courbe comme Henderson et al. (\file{e1\_curve.py}). \\
+4 & avant tout entraînement TRPO & B1 : 30 entraînements de TRPO sur HalfCheetah et trois lectures de la statistique de Henderson et al. \\
+5 & après \file{e6\_diag}, avant tout entraînement officiel & E6 : dix agents entraînés avec le script officiel du Zoo, évalués avec notre protocole. \\
+6 & après \file{b1\_trpo}, avant ce calcul & B1 : le script publié par Henderson en 2017 (\file{from\_same\_dist.py}) appliqué à nos courbes. \\
+7 & après PPO et SAC, avant de regarder CrossQ & Détails d'analyse de E2, E4 et E5 (score final, IQM, probabilité d'amélioration, inversions, tirages). \\
+8 & après PPO et SAC, avant de regarder CrossQ & B3 : trois mesures (score final, meilleur score, moyenne de la courbe) et inversions de classement. \\
+9 & sans effet sur les résultats & Organisation : le second worker prend la file CrossQ par l'autre bout. \\
+10 & sans effet sur les résultats & Arrêt par le surveillant (swap) ; deux entraînements CrossQ relancés depuis zéro. \\
+11 & après les résultats & Fin des simulations ; complément descriptif de E7 (classement par IQM dans les deux physiques, sans test). \\
+12 & avant tout nouvel entraînement & Consolidation : graines 10 à 19 (160 entraînements), E7 à plusieurs intensités, lecture à budget égal (200\,000 pas). \\
+13 & après les résultats & Intervalles rendus reproductibles : rliable ignore \texttt{random\_state}, le générateur global de NumPy est fixé ; verdicts inchangés. \\
+14 & après les résultats & Corrections après relecture critique : date du script \file{dose.py}, comptes des écarts 7 et 8, SB3 2.9.2, pas réels, relances non déclarées, graines lues, registre. \\
+15 & sans effet sur les résultats & Jusqu'à huit cœurs accordés au projet selon la charge de la machine. \\
+16 & sans effet sur les résultats & Arrêt par le surveillant, worker survivant corrigé, règle de batterie. \\
+17 & sans effet sur les résultats & Condition de batterie levée. \\
+18 & après les résultats, avant ce calcul & E2 : les 24 intervalles de probabilité d'amélioration rendus simultanés par Bonferroni (99,79~\%). \\
+19 & sans effet sur les résultats & Plafond de deux cœurs pour tout le projet ; surveillant relancé. \\
+20 & après les entraînements, avant tout calcul sur les graines 10 à 19 & Calcul des ajouts de l'écart 12 ; défaut de \file{e5.py} corrigé (bon ordre sur toutes les graines choisies). \\
+21 & après les résultats, avant ce calcul & E2 : décompte strict, une paire ne compte que si chacun bat l'autre de façon tranchée sur une tâche (défaut corrigé). \\
+22 & après les résultats, avant ce calcul & E1 refait sur les seize couples (programme, tâche), graines 0 à 19. \\
+23 & après les résultats, avant ce calcul & E3 avec la correction de Holm sur quatre tâches, écart en points et puissance. \\
+24 & après les résultats, avant ce calcul & E7 : le renversement sur Hopper en physique modifiée, testé paire par paire. \\
+25 & après les résultats, avant ce calcul & E5 vérifié hors échantillon : graines 0 à 9 jugées sur les graines 10 à 19, puis l'inverse. \\
+26 & après les résultats, avant ce calcul & La règle « tranché » calibrée sur de vraies hypothèses nulles (deux groupes du même programme). \\
+27 & après les résultats, avant ce calcul & B1 : le facteur entre le $t$ du script et celui des graines vaut $\sqrt{n/5}/\rho$ (défaut corrigé). \\
+28 & relevé, sans calcul statistique & Les hyperparamètres effectivement utilisés, lus dans les programmes construits et les modèles sauvegardés. \\
+29 & après les résultats, avant ce calcul & Courbes d'apprentissage : classement au fil de l'entraînement, score final contre meilleur point, autocorrélation. \\
+30 & avant ce calcul & Tailles d'effet en points de score (Hodges-Lehmann) pour E2, E3 et E6. \\
+31 & après les résultats, avant ce calcul & E6 : vitesse des agents officiels lue dans leurs journaux d'entraînement. \\
+32 & avant tout entraînement & Déterminisme de SAC et CrossQ : trois entraînements refaits à l'identique. \\
+33 & avant ces évaluations et cet entraînement & E6 : agents officiels rejoués (vitesse, vidéos), agent publié par le Zoo évalué, recette avec $\gamma = 0{,}99$. \\
+34 & avant tout entraînement & Pourquoi les deux PPO divergent : graines 20 à 39 et initialisation orthogonale échangée. \\
 \addlinespace
-\multicolumn{4}{@{}l}{\textbf{GRPO} (\file{sim/llm/LLM\_PROTOCOL.md}, 20 écarts)} \\
-1 & n. d. & après lecture de sorties, avant tout entraînement & Limite de longueur portée de 64 à 160 jetons. \\
-2 & n. d. & avant tout entraînement & Mesures réduites à 150 problèmes en glouton et 50 en échantillonnage, pour le coût. \\
-3 & n. d. & après le pilote, avant tout entraînement & Tâche \texttt{mul2} retenue ; mesure principale : pass@1 échantillonné. \\
-4 & 8 nov. & constat, sans résultat retenu & Le pilote du taux d'apprentissage sature la mémoire (swap) ; arrêté, aucun résultat utilisable. \\
-5 & 9 nov. & constat, sans résultat retenu & Diagnostic sans entraînement : 23 réponses sur 32 coupées à 160 jetons au pas 10 du pilote. \\
-6 & 9 nov. & avant tout essai retenu & Version réduite : 100 pas, graines 0 à 2, taux 3e-6, mises à jour par lots de 8 réponses, plafond mémoire. \\
-7 & 9 nov. & règle fixée avant tout résultat de la graine & Pause à la demande de Warith ; plantage \texttt{nan} d'un essai Qwen ; une seule relance prévue. \\
-8 & 9 nov. & constat, sans résultat retenu & Reprise : aucun des neuf essais restants n'aboutit (\texttt{nan}, coupure par macOS, mémoire MPS). \\
-9 & 9 nov. & avant tout résultat de ces essais & Relance de nuit (\file{night.sh}) avec un essai de contrôle en tête. \\
-10 & 10 nov. & constat, sans résultat retenu & Cause des \texttt{nan} trouvée : gradients non finis sur MPS, propres sur CPU ; garde-fous de recalcul. \\
-11 & 10 nov. & avant tout essai retenu avec ce code & Les essais Qwen restants passent sur CPU ; Llama reste sur GPU la nuit. \\
-12 & 10-11 nov. & corrections avant toute relance & Qwen fini sur CPU ; les six essais Llama manquent de mémoire MPS ; cache vidé à chaque pas, plafond relevé. \\
-13 & 11-12 nov. & détails de la statistique fixés après les résultats & Les douze essais finis ; bootstrap percentile sur les graines, 10\,000 tirages. \\
-14 & 15 nov. & avant tout nouvel essai & Cinq graines : graines 3 et 4 ajoutées pour les deux modèles et les deux récompenses. \\
-15 & 15 nov. & après les résultats & Corrections après relecture critique (comptes de l'écart 8, dates) ; aucun résultat ne change. \\
-16 & 17 nov. & après les valeurs au pas 100, avant tout gain & Llama, récompense au hasard, graine 4 échoue deux fois : compté comme résultat ; statistique sur les essais finis, sensibilité au gain manquant. \\
-17 & 19 nov. & sans effet sur les résultats & L'essai Llama sur CPU part après la file, sous le plafond de deux cœurs. \\
-18 & 21 nov. & après les résultats & Défauts constatés : pénalité de répétition 1,1 chez Qwen, pilote lu sur le jeu de test, matériel et graine mêlés. \\
-19 & 21 nov. & avant le script & Analyses tirées des journaux : justesse gloutonne, pass@8, intervalles de Student, vraie récompense contre hasard, coupure. \\
-20 & 22 nov. & avant tout essai de la relance & Relance planifiée : 10 graines, sans pénalité de répétition, pilote hors du jeu de test ; rien n'est lancé. \\
+\multicolumn{3}{@{}l}{\textbf{GRPO} (\file{sim/llm/LLM\_PROTOCOL.md}, 20 écarts)} \\
+1 & après lecture de sorties, avant tout entraînement & Limite de longueur portée de 64 à 160 jetons. \\
+2 & avant tout entraînement & Mesures réduites à 150 problèmes en glouton et 50 en échantillonnage, pour le coût. \\
+3 & après le pilote, avant tout entraînement & Tâche \texttt{mul2} retenue ; mesure principale : pass@1 échantillonné. \\
+4 & constat, sans résultat retenu & Le pilote du taux d'apprentissage sature la mémoire (swap) ; arrêté, aucun résultat utilisable. \\
+5 & constat, sans résultat retenu & Diagnostic sans entraînement : 23 réponses sur 32 coupées à 160 jetons au pas 10 du pilote. \\
+6 & avant tout essai retenu & Version réduite : 100 pas, graines 0 à 2, taux 3e-6, mises à jour par lots de 8 réponses, plafond mémoire. \\
+7 & règle fixée avant tout résultat de la graine & Pause à notre demande ; plantage \texttt{nan} d'un essai Qwen ; une seule relance prévue. \\
+8 & constat, sans résultat retenu & Reprise : aucun des neuf essais restants n'aboutit (\texttt{nan}, coupure par macOS, mémoire MPS). \\
+9 & avant tout résultat de ces essais & Relance machine au repos (\file{night.sh}) avec un essai de contrôle en tête. \\
+10 & constat, sans résultat retenu & Cause des \texttt{nan} trouvée : gradients non finis sur MPS, propres sur CPU ; garde-fous de recalcul. \\
+11 & avant tout essai retenu avec ce code & Les essais Qwen restants passent sur CPU ; Llama reste sur GPU, machine au repos. \\
+12 & corrections avant toute relance & Qwen fini sur CPU ; les six essais Llama manquent de mémoire MPS ; cache vidé à chaque pas, plafond relevé. \\
+13 & détails de la statistique fixés après les résultats & Les douze essais finis ; bootstrap percentile sur les graines, 10\,000 tirages. \\
+14 & avant tout nouvel essai & Cinq graines : graines 3 et 4 ajoutées pour les deux modèles et les deux récompenses. \\
+15 & après les résultats & Corrections après relecture critique (comptes de l'écart 8, dates) ; aucun résultat ne change. \\
+16 & après les valeurs au pas 100, avant tout gain & Llama, récompense au hasard, graine 4 échoue deux fois : compté comme résultat ; statistique sur les essais finis, sensibilité au gain manquant. \\
+17 & sans effet sur les résultats & L'essai Llama sur CPU part après la file, sous le plafond de deux cœurs. \\
+18 & après les résultats & Défauts constatés : pénalité de répétition 1,1 chez Qwen, pilote lu sur le jeu de test, matériel et graine mêlés. \\
+19 & avant le script & Analyses tirées des journaux : justesse gloutonne, pass@8, intervalles de Student, vraie récompense contre hasard, coupure. \\
+20 & avant tout essai de la relance & Relance planifiée : 10 graines, sans pénalité de répétition, pilote hors du jeu de test ; rien n'est lancé. \\
 \end{longtable}
 \endgroup

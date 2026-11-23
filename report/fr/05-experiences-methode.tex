@@ -18,8 +18,8 @@ utile. Il signale aussi chaque endroit où le code s'écarte du protocole écrit
 
 \section{Un protocole écrit avant le premier entraînement}\label{sec:protocole}
 
-Le protocole des expériences est le fichier \file{sim/SIM\_PROTOCOL.md}. Sa première version date du
-8~novembre~2026. Elle a été écrite avant tout entraînement. Elle fixe les questions, les algorithmes, les
+Le protocole des expériences est le fichier \file{sim/SIM\_PROTOCOL.md}. Sa première version a été
+écrite avant tout entraînement. Elle fixe les questions, les algorithmes, les
 tâches, les budgets, le nombre de graines aléatoires, l'évaluation et les analyses. Dans tout le rapport, un
 \emph{essai} désigne un entraînement complet d'un programme sur une tâche avec une graine aléatoire donnée. Le
 protocole pose trois règles de conduite :
@@ -30,7 +30,7 @@ protocole pose trois règles de conduite :
 \end{itemize}
 
 Tout ce qui change ensuite s'inscrit dans une liste numérotée d'\enquote{écarts}, datée, avec la mention de ce
-que nous avions déjà vu au moment de décider. Le protocole en compte trente-quatre au 22~novembre~2026. Le
+que nous avions déjà vu au moment de décider. Le protocole en compte trente-quatre. Le
 \cref{chap:09-ecarts} les reprend tous, avec ceux du sondage et du volet des modèles de langue. Ce chapitre
 cite par son numéro chaque écart du protocole des expériences qui change une méthode. La \cref{sec:avant-apres} classe les décisions selon
 qu'elles précèdent ou suivent les résultats qu'elles touchent.
@@ -43,7 +43,7 @@ aléatoires par couple de programme et de tâche. Les ajouts de l'écart~12 (vin
 
 \paragraph{Quatre environnements Python figés}
 Quatre environnements Python~3.11.18 ont servi, tous sur un Mac à puce Apple M2 Max (macOS~27.2, arm64).
-Chacun est figé par un \texttt{pip freeze} pris le 15~novembre~2026, dans \file{envs/} (\cref{tab:env},
+Chacun est figé par un \texttt{pip freeze}, dans \file{envs/} (\cref{tab:env},
 \cref{chap:D-environnements}) :
 \begin{itemize}
   \item \file{sim/env} entraîne et réévalue (\file{sim/run.py}, \file{sim/dose.py}) : Stable-Baselines3~2.9.2
@@ -68,7 +68,7 @@ probabilités d'amélioration.
 
 \paragraph{Stable-Baselines3~2.9.2 au lieu de 2.6.0}
 Le protocole annonçait Stable-Baselines3~2.6.0. Tous les entraînements ont tourné avec la version~2.9.2,
-installée le 8~novembre à 10~h~11, avant le premier entraînement (écart~14, point~c). Les versions de
+installée avant le premier entraînement (écart~14, point~c). Les versions de
 \file{envs/train.txt} sont celles qui ont réellement tourné.
 
 \paragraph{Reproduire sur une autre machine}
@@ -371,7 +371,7 @@ programme. Elle coupe aussi, sur demande, une courbe à un pas donné (lecture �
 La politique finale de chaque essai est enregistrée dans
 \file{models/}\allowbreak\file{<programme>/}\allowbreak\file{<tâche>/}\allowbreak\file{seed<k>.zip}, avec les
 statistiques de normalisation à côté pour les programmes réglés comme le Zoo (\file{.vecnorm.pkl}). Le fichier
-\file{sim/models/MANIFEST.sha256} donne l'empreinte SHA-256 de 250~politiques, prises le 15~novembre~2026 sur
+\file{sim/models/MANIFEST.sha256} donne l'empreinte SHA-256 de 250~politiques, prises sur
 la machine qui les a entraînées. Les politiques de PPO, de TRPO et de E6 sont dans le dépôt. Celles de SAC et
 de CrossQ, trop lourdes pour git, sont attachées à la publication \texttt{policies-v1} du dépôt sur GitHub.
 Le script \file{sim/fetch\_models.py} les télécharge une à une, espacées d'une pause aléatoire de 1,5 à
@@ -639,7 +639,7 @@ Expérience & Question & Plan & Essais & Analyse fixée \\
 \endfoot
 E1 & Deux groupes d'essais du même programme passent-ils pour deux algorithmes ? &
 PPO PyTorch sur \task{HalfCheetah}, 30 graines aléatoires. \num{10000} tirages de deux groupes, test de Welch
-sur les scores finaux, au hasard puis triés. & 30 entraînements & préenregistrée (8~novembre) \\
+sur les scores finaux, au hasard puis triés. & 30 entraînements & préenregistrée \\
 E1, seconde statistique & Le t moyen sur la courbe de 2018 se retrouve-t-il ? &
 Les mêmes 30 courbes, test de Welch à chacun des 20 points, t moyen et p moyen. & les 30 de E1 &
 après les résultats de E1 (écart~3) \\
@@ -751,7 +751,7 @@ La figure~5 de \textcite{henderson2018matters} compare des courbes d'apprentissa
 essais, coupés en deux groupes de cinq au hasard ou triés par score final, puis un test de Welch à chacun des
 vingt points d'évaluation. Le script en tire la part des tirages déclarés différents par le t moyen, par le p moyen
 et par le test au dernier point, le 95\textsuperscript{e} centile de $|\bar t|$ et la part des tirages où
-$|\bar t|\ge 9{,}09$. Cette statistique a été ajoutée le 9~novembre, après les résultats de \file{e1.py}
+$|\bar t|\ge 9{,}09$. Cette statistique a été ajoutée après les résultats de \file{e1.py}
 (écart~3). Elle complète l'analyse préenregistrée sans la remplacer.
 
 \subsection{B1 : l'énigme du t de 9}\label{sec:plan-b1}
@@ -760,7 +760,7 @@ deux groupes de cinq essais du même code. Pineau précise sur scène que ces gr
 vient ce chiffre, en deux temps écrits chacun avant son calcul.
 
 \paragraph{Premier temps : leur algorithme}
-L'écart~4, écrit le 9~novembre avant tout entraînement de TRPO, lance trente essais de TRPO sur
+L'écart~4, écrit avant tout entraînement de TRPO, lance trente essais de TRPO sur
 \task{HalfCheetah-v5}, graines aléatoires 0 à 29, un million de pas, avec les valeurs par défaut de
 sb3-contrib~2.9.2 et la même évaluation que E1. \file{sim/analysis/b1\_trpo.py} applique les trois lectures de
 la \cref{sec:t-moyen} aux courbes de TRPO et de PPO, avec les mêmes tirages que \file{e1\_curve.py}. La règle
@@ -770,7 +770,7 @@ l'explique. Si aucune lecture ne l'approche, le rapport conclut qu'aucune des de
 chiffre.
 
 \paragraph{Second temps : leur script}
-L'écart~6, écrit le 9~novembre à 23~h~55 après les résultats de \file{b1\_trpo.py} et avant tout calcul avec
+L'écart~6, écrit après les résultats de \file{b1\_trpo.py} et avant tout calcul avec
 le script, relève deux faits. Le couple publié $(t,p)=(-9{,}09\,;\,0{,}0016)$ impose environ 3,4~degrés de
 liberté en test bilatéral. Il exclut la lecture des points empilés, à environ 198~degrés de liberté, qui
 donnerait un $p$ de l'ordre de $10^{-16}$. Il exclut aussi le t moyen converti en $p$, puisqu'un test de Welch
@@ -803,7 +803,7 @@ Le programme \emph{en tête} d'une tâche est celui de plus grande IQM. Le class
 programme en tête n'est pas le même sur toutes les tâches. Le changement est \emph{établi} quand le programme
 en tête d'une tâche est battu, de façon tranchée, par un autre programme sur une autre tâche. Le script compte
 ces changements établis : chaque triplet (tâche où $X$ mène, tâche où $X$ perd, programme qui bat $X$) en
-compte un. Ces détails ont été écrits le 10~novembre, après les résultats de PPO et de SAC et avant d'avoir
+compte un. Ces détails ont été écrits après les résultats de PPO et de SAC et avant d'avoir
 regardé le moindre résultat de CrossQ (écart~7, lu avec la correction de l'écart~14, point~b).
 
 \paragraph{Avec la correction de Bonferroni}
@@ -981,7 +981,7 @@ L'écart~29, antérieur à ces calculs, ajoute trois lectures exploratoires des 
 \end{itemize}
 
 \subsection{La consolidation : vingt graines aléatoires et budget égal}\label{sec:plan-consolidation}
-L'écart~12, écrit le 15~novembre avant tout nouvel entraînement, ajoute trois volets avec le même code et les
+L'écart~12, écrit avant tout nouvel entraînement, ajoute trois volets avec le même code et les
 mêmes réglages :
 \begin{itemize}
   \item les graines aléatoires 10 à 19 pour les quatre programmes sur les quatre tâches, soit 150 nouveaux
@@ -991,7 +991,7 @@ mêmes réglages :
 \end{itemize}
 Le module \file{sim/analysis/runs.py} lit trois variables d'environnement, toutes inactives par défaut :
 \texttt{SEEDS} (par exemple \texttt{0:20}), \texttt{BUDGET=equal} et \texttt{SUFFIX}, ajouté au nom du fichier
-de sortie. L'écart~20, écrit le 21~novembre après la fin de tous les entraînements et avant tout calcul sur les
+de sortie. L'écart~20, écrit après la fin de tous les entraînements et avant tout calcul sur les
 graines aléatoires 10 à 19, fixe la liste des calculs, tous lancés par \texttt{make analysis} :
 \begin{itemize}
   \item sur les vingt graines aléatoires (suffixe \file{\_s20}) : E2, E3, E5, E7, B3, la physique par degrés, le
@@ -1042,10 +1042,10 @@ Plusieurs scripts ont lancé les essais. Chacun saute un essai dont la politique
     d'échange a grossi de plus de 8~Go. Il inscrit chaque tâche arrêtée au registre et libère sa réservation.
 \end{itemize}
 
-\paragraph{Le nombre de cœurs au fil des jours}
-Jusqu'au 15~novembre, le nombre d'essais simultanés était réglé à la main : quatre cœurs pour le projet à
-partir du 9~novembre, puis deux copies de \file{queue.sh} pour la consolidation. L'écart~15 (15~novembre) a relevé le
-plafond à huit cœurs, décidé chaque heure par \file{scale.sh}. L'écart~19 (19~novembre) l'a ramené à deux
+\paragraph{Le nombre de cœurs au fil du projet}
+D'abord, le nombre d'essais simultanés était réglé à la main : quatre cœurs pour le projet, puis deux
+copies de \file{queue.sh} pour la consolidation. L'écart~15 a relevé le
+plafond à huit cœurs, décidé chaque heure par \file{scale.sh}. L'écart~19 l'a ramené à deux
 cœurs pour tout le projet, essai GRPO sur processeur compris. Chaque essai tourne sur un seul fil, dans son
 propre processus : le nombre de tâches parallèles n'entre dans aucun de ses calculs. Les relances de PPO
 retrouvent leurs points d'évaluation à l'identique. Pour SAC et CrossQ, la vérification de l'écart~32 est en
@@ -1055,13 +1055,13 @@ cours.
 Le protocole voulait qu'un plantage soit relancé une fois et noté. Le registre reconstruit
 \file{logs/attempts\_reconstructed.csv} compte 292~lancements pour les 250~entraînements antérieurs à la
 consolidation : 42~tentatives arrêtées (2 seulement déclarées), aucune plantée (écart~14,
-point~e). Les arrêts ont trois causes : un arrêt général le 8~novembre, probablement celui de l'incident
-mémoire du pilote GRPO, un arrêt demandé le 9~novembre pour une machine surchargée, puis quatre arrêts pour
+point~e). Les arrêts ont trois causes : un premier arrêt général, probablement celui de l'incident
+mémoire du pilote GRPO, un arrêt demandé pour une machine surchargée, puis quatre arrêts pour
 rester à quatre cœurs. Chaque arrêt a frappé tous les essais en cours à la fois. Aucun essai n'a été relancé ni
 écarté après que son score final était connu, ni pour une raison liée à son score. Pour PPO PyTorch et PPO
 JAX, les relances retrouvent tels quels les points d'évaluation des tentatives arrêtées. Pour SAC et
 CrossQ, les courbes arrêtées ont été écrasées : cette vérification est impossible. Les arrêts suivants
-du surveillant, les 12, 15 et 16~novembre, sont décrits aux écarts~10, 14 et 16 (\cref{chap:09-ecarts}).
+du surveillant sont décrits aux écarts~10, 14 et 16 (\cref{chap:09-ecarts}).
 
 \paragraph{La chaîne jusqu'aux documents}
 Les essais écrivent leurs fichiers CSV et JSON. Les scripts de \file{sim/analysis/} en tirent les fichiers
@@ -1077,7 +1077,7 @@ touchent une analyse.
 
 \paragraph{Écrit avant tout résultat concerné}
 \begin{itemize}
-  \item le protocole lui-même (8~novembre) : E1, E2, E3, E4, E5, E6, E7, leurs statistiques, la règle du
+  \item le protocole lui-même : E1, E2, E3, E4, E5, E6, E7, leurs statistiques, la règle du
     vainqueur établi ;
   \item le budget de SAC et CrossQ ramené à \num{200000}~pas (écart~1), avant le premier entraînement ;
   \item B1 avec TRPO et ses trois lectures (écart~4), avant tout entraînement TRPO ;
@@ -1102,8 +1102,8 @@ touchent une analyse.
     écarts~7 et~8, la version de Stable-Baselines3, le nombre exact de pas, les relances non déclarées, les
     graines aléatoires nommées dans chaque script, le registre des tentatives.
 \end{itemize}
-\paragraph{Écrit le 21~novembre, après une relecture technique et avant le calcul du dépôt}
-Une relecture technique du dépôt a relevé, le 21~novembre, des analyses trop faibles ou absentes. Les écarts~21
+\paragraph{Écrit après une relecture technique et avant le calcul du dépôt}
+Une relecture technique du dépôt a relevé des analyses trop faibles ou absentes. Les écarts~21
 à~31 en sont nés. Chacun a été écrit avant que le script du dépôt calcule son résultat. Pour les écarts~21 à~27
 et~31, la relecture avait déjà fait un calcul brouillon hors du dépôt. Chaque écart concerné le signale. Ce sont des
 compléments décidés après les résultats principaux, qu'ils ne remplacent pas :
@@ -1117,8 +1117,8 @@ compléments décidés après les résultats principaux, qu'ils ne remplacent pa
   \item la vitesse des agents officiels lue dans leurs journaux (écart~31).
 \end{itemize}
 
-\paragraph{Le 21~novembre encore, avant toute donnée}
-Trois écarts du 21~novembre précèdent toute donnée concernée : le déterminisme de SAC et CrossQ (écart~32), la suite du
+\paragraph{Après la même relecture, avant toute donnée}
+Trois écarts nés de la même relecture précèdent toute donnée concernée : le déterminisme de SAC et CrossQ (écart~32), la suite du
 diagnostic de E6, rejeu, agent publié et recette à $\gamma=0{,}99$ (écart~33), la divergence des deux PPO
 (écart~34). Les entraînements des écarts~32, 33 (c) et 34 tournent encore au moment où ce rapport est compilé.
 

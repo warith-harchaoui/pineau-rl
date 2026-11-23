@@ -2,20 +2,24 @@
 \begin{table}[tbp]
 \centering
 \footnotesize
-\setlength{\tabcolsep}{2.4pt}
-\caption[L'année et les lecteurs démêlés (écart 36)]{Écart 36 de \file{study/PROTOCOL.md} (écrit avant toute lecture et tout calcul) : les 98 articles expérimentaux de la comparaison principale (48 de 2018, 50 de 2026) relus par huit agents neufs, T1 à T8, qui lisent chacun les deux années (6 articles de 2018 et 6 ou 7 de 2026). Différence 2026 moins 2018 en points, intervalle de Newcombe à 95~\%, test exact de Fisher avec Holm sur les quatre critères. Effet de l'année : modèle logistique mixte par critère, logit P(oui) = $b_0 + b_1 \times [2026] + u$, $u$ effet aléatoire du lecteur d'écart type $s$, maximum de vraisemblance par quadrature de Gauss-Hermite ; rapport de cotes $e^{b_1}$ avec son intervalle de Wald à 95~\%, test du rapport de vraisemblance de $b_1 = 0$ avec Holm sur les quatre critères ; $s$ avec son test à la frontière (demi-khi-deux). Règle fixée d'avance : un verdict tient si les deux tests passent Holm à 5~\% avec un effet positif ; « même sens, non établi » si les deux effets sont positifs et qu'un test échoue. \textbf{En gras}, les verdicts qui tiennent. Chaque intervalle de Newcombe recouvre celui de la comparaison principale (écarts d'origine : Q5 +43 ; Y9 +36 ; X7 +31 ; X2 +26 points). Dernière ligne : la lecture où toute page de projet compte « oui » pour Q5, la moins favorable à son verdict. Aucune décision invalide. Source : \file{study/r36\_stats.json} (\file{study/r36\_stats.py}).}
+\setlength{\tabcolsep}{3.5pt}
+\caption[L'année et les lecteurs démêlés (écart 36)]{L'année et les lecteurs démêlés (écart 36). Les 98 articles expérimentaux de la comparaison principale (48 de 2018, 50 de 2026), relus par huit agents neufs qui lisent chacun les deux années. Parts des articles qui suivent la pratique ; différence 2026 moins 2018 en points avec l'intervalle de Newcombe à 95~\% et le test exact de Fisher. Effet de l'année : modèle logistique mixte avec un effet aléatoire du lecteur d'écart type $s$, rapport de cotes avec son intervalle de Wald à 95~\% et test du rapport de vraisemblance. Holm porte sur les quatre critères. Règle fixée d'avance : un verdict tient si les deux tests passent avec un effet positif (\textbf{en gras}). Dernière ligne : Q5 quand toute page de projet compte « oui », la lecture la moins favorable. Source : \file{study/r36\_stats.json}.}
 \label{tab:r36}
-\begin{tabularx}{\linewidth}{@{}l>{\raggedright\arraybackslash}Xrrrrrrrrr>{\raggedright\arraybackslash}p{1.9cm}@{}}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}Xrrrrrrr>{\raggedright\arraybackslash}p{1.7cm}@{}}
 \toprule
- & & \multicolumn{2}{c}{2018} & \multicolumn{2}{c}{2026} & \multicolumn{2}{c}{Différence, Fisher} & \multicolumn{2}{c}{Effet de l'année} & &  \\
-\cmidrule(lr){3-4}\cmidrule(lr){5-6}\cmidrule(lr){7-8}\cmidrule(lr){9-10}
-Code & Critère & $k/n$ & \% & $k/n$ & \% & \makecell[r]{points\\{}[Newcombe]} & \makecell[r]{$p$\\{}Holm} & \makecell[r]{rapport de cotes\\{}[Wald]} & \makecell[r]{$p$\\{}Holm} & \makecell[r]{$s$ lecteurs\\{}($p$)} & Verdict \\
+ & & & \multicolumn{2}{c}{Différence, Fisher} & \multicolumn{3}{c}{Effet de l'année, modèle mixte} &  \\
+\cmidrule(lr){4-5}\cmidrule(lr){6-8}
+Critère & 2018 & 2026 & \makecell[r]{points\\{}[Newcombe]} & \makecell[r]{$p$\\{}Holm} & \makecell[r]{rapport de cotes\\{}[Wald]} & \makecell[r]{$p$\\{}Holm} & \makecell[r]{$s$ lecteurs\\{}($p$)} & Verdict \\
 \midrule
-\textbf{Q5} & \textbf{Code en lien} & 15/48 & 31 & 36/50 & 72 & \makecell{+41\\{}[+21,1\,;\,+56,2]} & 0,0004 & \makecell{5,66\\{}[2,37\,;\,13,48]} & 0,0002 & 0,00 (1) & tient \\
-\textbf{Y9} & \textbf{Sensibilité à un hyperparamètre} & 20/48 & 42 & 39/50 & 78 & \makecell{+36\\{}[+17,0\,;\,+52,1]} & 0,001 & \makecell{4,96\\{}[2,06\,;\,11,99]} & 0,0006 & 0,00 (1) & tient \\
-\textbf{X7} & \textbf{Calcul chiffré} & 15/48 & 31 & 33/50 & 66 & \makecell{+35\\{}[+15,0\,;\,+50,9]} & 0,001 & \makecell{4,37\\{}[1,83\,;\,10,42]} & 0,001 & 0,24 (0,39) & tient \\
-X2 & Incertitude rapportée & 33/48 & 69 & 43/50 & 86 & \makecell{+17\\{}[+0,6\,;\,+33,0]} & 0,053 & \makecell{2,88\\{}[1,03\,;\,8,03]} & 0,037 & 0,44 (0,25) & même sens, non établi \\
-\quad Q5 & toute page de projet comptée oui & 20/48 & 42 & 37/50 & 74 & \makecell{+32\\{}[+12,8\,;\,+48,7]} & 0,004 &  &  &  &  \\
+\textbf{Code en lien (Q5)} & 31 \textcolor{ink2}{(15/48)} & 72 \textcolor{ink2}{(36/50)} & \makecell{+41\\{}[+21,1\,;\,+56,2]} & 0,0004 & \makecell{5,66\\{}[2,37\,;\,13,48]} & 0,0002 & 0,00 (1) & \textbf{tient} \\
+\addlinespace[2pt]
+\textbf{Sensibilité à un hyperparamètre (Y9)} & 42 \textcolor{ink2}{(20/48)} & 78 \textcolor{ink2}{(39/50)} & \makecell{+36\\{}[+17,0\,;\,+52,1]} & 0,001 & \makecell{4,96\\{}[2,06\,;\,11,98]} & 0,0006 & 0,00 (1) & \textbf{tient} \\
+\addlinespace[2pt]
+\textbf{Calcul chiffré (X7)} & 31 \textcolor{ink2}{(15/48)} & 66 \textcolor{ink2}{(33/50)} & \makecell{+35\\{}[+15,0\,;\,+50,9]} & 0,001 & \makecell{4,37\\{}[1,83\,;\,10,42]} & 0,001 & 0,24 (0,39) & \textbf{tient} \\
+\addlinespace[2pt]
+Incertitude rapportée (X2) & 69 \textcolor{ink2}{(33/48)} & 86 \textcolor{ink2}{(43/50)} & \makecell{+17\\{}[+0,6\,;\,+33,0]} & 0,053 & \makecell{2,88\\{}[1,03\,;\,8,03]} & 0,037 & 0,44 (0,25) & même sens, non établi \\
+\addlinespace[2pt]
+\textit{Q5, toute page de projet comptée oui} & 42 \textcolor{ink2}{(20/48)} & 74 \textcolor{ink2}{(37/50)} & \makecell{+32\\{}[+12,8\,;\,+48,7]} & 0,004 &  &  &  &  \\
 \bottomrule
 \end{tabularx}
 \end{table}

@@ -2,7 +2,7 @@
 
 The survey, the first instrument of this report, rereads published papers with Pineau's reading grid,
 extended by seven criteria drawn from her ICLR talk and by a second grid that we wrote. This chapter describes the
-method in full: the timeline and the protocol (Section~\ref{sec:sm-protocole}), the populations and
+method in full: the stages and the protocol (Section~\ref{sec:sm-protocole}), the populations and
 the draws (Section~\ref{sec:sm-tirages}), the grids and their decision rules
 (Section~\ref{sec:sm-grilles}), the readers (Section~\ref{sec:sm-lecteurs}), the double readings
 (Section~\ref{sec:sm-doubles}), the harmonisation (Section~\ref{sec:sm-harmonisation}), the checks of
@@ -12,45 +12,45 @@ robustness analyses (Section~\ref{sec:sm-robustesse}) and two re-readings added 
 (Section~\ref{sec:sm-relectures}). Section~\ref{sec:sm-ecarts} summarises the
 deviations from the protocol. Chapter~\ref{chap:04-sondage-resultats} gives the results.
 
-\section{The protocol and its timeline}\label{sec:sm-protocole}
+\section{The protocol and its stages}\label{sec:sm-protocole}
 
 \paragraph{A protocol written before the reading}
-The survey protocol (\file{study/PROTOCOL.md}) is dated 8 November 2026, before the first paper was
+The survey protocol (\file{study/PROTOCOL.md}) was written before the first paper was
 read. It fixes the question, the populations, the draws, the grid, the decision rules, the double
 reading and the analysis. Every later change is entered at the bottom of the file, in a numbered list
 of \enquote{deviations}. Each deviation is dated and states whether it was decided before or after the
-result it concerns was known. As of 22 November 2026, the file holds 35 of them, numbered 1 to 36
+result it concerns was known. The file holds 35 of them, numbered 1 to 36
 (Section~\ref{sec:sm-ecarts}). The instruction sheet
 given to the readers (\file{study/GRILLE.md}) summarises the protocol. The plan of the second grid
-(\file{study/planification\_v2.md}), written on 9 November 2026 before any coding, was made public as
-it stood on 15 November 2026.
+(\file{study/planification\_v2.md}), written before any coding, was made public as
+it stood.
 
 \paragraph{The stages}
 Figure~\ref{fig:flux-sondage} shows the complete flow, from the populations to the final counts. The
 stages followed one another as below.
 \begin{enumerate}
-  \item \textbf{8 November.} Protocol, first draw of 50 papers from 2025 and 2026, calibration on 12
+  \item \textbf{Protocol and grid v1.} Protocol, first draw of 50 papers from 2025 and 2026, calibration on 12
   papers from 2018, reading with grid v1 (Q1 to Q8, X1 to X7) by seven readers, one of them a second
   reader.
-  \item \textbf{9 November.} Grid v2 (Y1 to Y12) and its decision rules, written before any coding
+  \item \textbf{Grid v2 and enlargement.} Grid v2 (Y1 to Y12) and its decision rules, written before any coding
   (deviations 11 and 14). Enlargement of the two samples, written before any draw (deviation 12).
   Human rereading planned (deviation 13). Harmonisation of the 2018 calibration caught up (deviation
   15). Pilot (deviations 16 and 17), enlarged reading, audit of the raw readings, harmonisation
   (deviations 18 and 19), then first percentages. Same-grid verdict rule (deviation 20).
-  \item \textbf{10 and 11 November.} Robustness analyses (deviation 21), checklist declarations (A5,
+  \item \textbf{Robustness and trajectory.} Robustness analyses (deviation 21), checklist declarations (A5,
   deviation 22), human rereading abandoned (deviation 23), sensitivity to the title filter (A6,
   deviation 24), trajectory from 2019 to 2024 (A4, deviations 25 and 26).
-  \item \textbf{15 November.} Keyword search against the negative decisions (deviation 27), provenance
+  \item \textbf{Counter-checks.} Keyword search against the negative decisions (deviation 27), provenance
   of the readers (deviation 28), sensitivity to the change of model (deviation 29).
-  \item \textbf{21 and 22 November.} Response to a technical audit, each deviation written before its
+  \item \textbf{Technical audit and re-readings.} Response to a technical audit, each deviation written before its
   own computation: complementary analyses of the data already read (deviation 30), a re-reading of Q5
   on the same kind of version in both years (deviation 31), criterion X8 (deviation 32), a reader from
-  another family of models (deviation 33, running). On 22 November, after the results, a human
+  another family of models (deviation 33, running). Then, after the results, a human
   rereading of both years, preregistered and not yet done (deviation 35), then eight fresh readers who
   each read both years (deviation 36).
 \end{enumerate}
 
-\fig{flux-sondage}{The survey, first part: from the populations to the samples. The three populations are the RL papers of ICML, NeurIPS and ICLR 2018, those of ICLR 2026, ICML 2026 and NeurIPS 2025, those of ICML and NeurIPS in 2019, 2020, 2022 and 2024. Every sample comes from a draw whose random seed is written in the protocol: 50 papers from 2018 (48 with experiments), 50 classical RL papers from 2026, 20 papers per year for 2019, 2020, 2022 and 2024. The first 2026 draw is kept as context.}
+\fig{flux-sondage}{The survey, first part: from the populations to the samples. The three populations are the RL papers of ICML, NeurIPS and ICLR 2018, those of ICML and NeurIPS in 2019, 2020, 2022 and 2024, those of ICLR 2026, ICML 2026 and NeurIPS 2025. Every sample comes from a draw whose random seed is written in the protocol: 50 papers from 2018 (48 with experiments), 20 papers per year for 2019, 2020, 2022 and 2024, 50 classical RL papers from 2026. The first 2026 draw is kept as context.}
 
 \fig{flux-sondage-2}{The survey, second part: from reading to comparisons. Every decision of the readers quotes a sentence of the paper with its page. Three sets of blind double readings, the harmonisation of the rules, the quote audit and the search for evidence against every \enquote{no} test these decisions before the final comparisons.}
 
@@ -69,7 +69,7 @@ filter on the title misses the RL papers whose title does not say so. Analysis A
 (Section~\ref{sec:sm-robustesse}).
 
 \paragraph{The 2026 papers}
-The three most recent conferences as of 8 November 2026 are ICLR 2026, ICML 2026 and NeurIPS 2025.
+The three most recent conferences when the protocol was written are ICLR 2026, ICML 2026 and NeurIPS 2025.
 Their public lists hold 17,836 papers, 1,252 of them on RL: 420 at ICLR, 494 at ICML, 338 at
 NeurIPS. The list of RL papers is \file{study/rl\_population\_2026.json}. The first draw takes 17 papers
 from ICLR, 17 from ICML and 16 from NeurIPS with \file{random.Random(2018)}, in that order, by
@@ -89,12 +89,12 @@ for ICML, the proceedings archives for NeurIPS (deviation 8).
 
 \paragraph{Enlargement A2: 50 papers from 2018}
 With 12 papers from 2018 and 14 classical RL papers from 2026, the statistical audit of the first draw
-(\file{study/audit\_stats.py}) lacks the power to detect a difference of 30 points. Deviation 12, written on 9
-November 2026 before any draw and before any reading of the added papers, enlarges both samples. For
+(\file{study/audit\_stats.py}) lacks the power to detect a difference of 30 points. Deviation 12, written
+before any draw and before any reading of the added papers, enlarges both samples. For
 2018, the population brings together the three conferences Pineau names: 131 RL papers, 54 at ICML, 52
 at NeurIPS and 25 at ICLR (\file{study/rl\_population\_2018.json}). The ICLR 2018 list, 336 papers of
 the main track, orals and posters together, was taken from the official programme of the conference,
-since the OpenReview and dblp interfaces refused automated requests on 9 November 2026. The 50 papers
+since the OpenReview and dblp interfaces refused automated requests at the time of the draw. The 50 papers
 are allocated to conferences in proportion to their size, by the largest-remainder method: 21 for
 ICML, 20 for NeurIPS, 9 for ICLR. The 12 initial papers stay. The 38 others (15, 14 and 9 per
 conference) are taken in the order of a \file{random.Random(2018)} shuffle of the rest of the
@@ -114,7 +114,7 @@ skips the titles that contain \enquote{LLM}, \enquote{language model}, \enquote{
 sets aside 429 papers (\file{study/classic\_screened\_out\_2026.json}) and leaves an ordered queue of
 773 papers (\file{study/classic\_queue\_2026.json}). The readers code the family of each paper in the
 queue (criterion X5), in order, up to the thirty-sixth \file{classic} paper. The 9 ICLR 2026 papers at
-the head of the queue were unreachable on 9 November 2026, the proceedings site being down: they are
+the head of the queue were unreachable at the time of reading, the proceedings site being down: they are
 skipped. The queue is frozen so that the selection does not depend on the reading date (deviation 17).
 In all, 70 papers of the queue were read. The first 36 \file{classic} papers form the sample. Before
 the thirty-sixth, 18 papers belonged to large language models (\file{llm}) and 3 to theory
@@ -126,7 +126,7 @@ is frozen: applied to the 120 papers read, the rule changes one code, K006, from
 \file{classic}.
 
 \paragraph{Trajectory A4: 2019, 2020, 2022 and 2024}
-Deviation 25, written on 10 November 2026 before any draw, adds four years to date the change. The
+Deviation 25, written before any draw, adds four years to date the change. The
 population of each year brings together the RL papers of the main proceedings of ICML (PMLR volumes 97,
 119, 162 and 235) and of NeurIPS. ICLR is missing, as OpenReview refuses automated downloads. After the
 title screen of deviation 12, the population counts 134 papers in 2019, 222 in 2020, 301 in 2022 and
@@ -174,9 +174,9 @@ A6, title filter & 2026 papers outside the filter & \file{Random(2029)}: 400 & 4
 Table~\ref{tab:criteres} lists the 27 criteria of the two grids, plus criterion X8, added after the
 results (Section~\ref{sec:sm-x8}). Grid v1 brings together Pineau's eight criteria (Q1 to
 Q8), as she presents them at NeurIPS (page 29), then seven criteria drawn from her ICLR talk (X1 to
-X7). Grid v2 (Y1 to Y12) covers the flaws that v1 leaves unmeasured. It was written on 9 November 2026
+X7). Grid v2 (Y1 to Y12) covers the flaws that v1 leaves unmeasured. It was written
 (deviation 11), with its decision rules (deviation 14), before any v2 coding. Y11 and Y12 were added
-the same day, after the search for related work, still before any coding.
+next, after the search for related work, still before any coding.
 Appendix~\ref{chap:A-grille} reproduces the rules in full.
 
 \begin{small}
@@ -317,7 +317,7 @@ baseline for Q4. Pineau reports 100\% experimental papers: her denominators are 
 \paragraph{Agentic AI models}
 The reading is entrusted to agentic AI models, generative AI models that act: they open the PDF, find the sentence behind each decision and fill in the grid. We also call them AI agents. They are Claude Code subagents, each launched with a written
 instruction, a list of identifiers and a folder to write in. The folder \file{study/readers/} gives the
-provenance of each agent, reconstructed on 15 November 2026 from the session transcripts (deviation
+provenance of each agent, reconstructed from the session transcripts (deviation
 28): the exact instruction (\file{prompts/<reader>.md}), the model recorded in the transcript, the
 dates, the papers written and the way the PDFs were read (\file{readers.csv}). The 38 reading folders
 each match one agent and its papers, without discrepancy (\file{folder\_check.csv}). All readers ran
@@ -352,7 +352,7 @@ second failure on the same criterion is decided from the PDF and recorded in
 The reconstruction of deviation 28 established three facts the protocol left unstated. Readers C2 and
 M4 finished on the model \file{claude-opus-5}. The primary reader M7 opened the file K002 of reader K1
 as a format example. K002 is not M7's and enters no double reading. The grid v1 readings (readers A to
-G) took place on 8 November in a session opened in a folder other than the repository. The reconstruction
+G) took place in a session opened in a folder other than the repository. The reconstruction
 also checks that the second readers G, G2, R2 and R3 opened no file of another reader.
 
 \paragraph{In the main comparison, year and readers are confounded}\label{sec:sm-annees}
@@ -401,7 +401,7 @@ reader from another family of models, \file{gemma3:12b}, which rereads the paper
 Its reading is running: this report gives no result from it.
 
 \paragraph{Eight fresh readers on both years (deviation 36)}
-Deviation 36, written on 22 November 2026 after the results and before any reading, adds a complete
+Deviation 36, written after the results and before any reading, adds a complete
 rereading of the 98 experimental papers of the main comparison, 48 from 2018 and 50 from 2026, on the
 four criteria behind the verdicts: Q5, Y9, X7 and X2.
 \begin{itemize}
@@ -452,19 +452,19 @@ for v2, with R2 and R3, that is at most thirty papers per criterion
 (results in Section~\ref{sec:sr-accord}).
 
 \paragraph{The human rereading, abandoned then preregistered again}
-Deviation 13 planned for a human, the author, to reread 10 papers from 2026 alone on seven criteria,
+Deviation 13 planned for us to reread 10 papers from 2026 ourselves, alone, on seven criteria,
 without seeing the agents' readings. The papers had been drawn by \file{random.Random(2027)}. Deviation
-23 abandons this rereading on 10 November 2026, before it started. The folder
+23 abandons this rereading before it started. The folder
 \file{study/relecture\_humaine/} remains as a trace of the plan. No human reread the papers
 blind. Each decision remains checkable through its quotation and its page.
 
-Deviation 35, written on 22 November 2026 after the results and before any draw, plans a new human
-rereading, this time on both years. The author will reread alone thirty papers of the main comparison,
+Deviation 35, written after the results and before any draw, plans a new human
+rereading, this time on both years. We will reread thirty papers of the main comparison ourselves, alone,
 fifteen per year, drawn by \file{random.Random(2034)} among those that no double reading and no part of
 the deviation 13 plan had already covered.
 \begin{itemize}
   \item \textbf{Blindness.} Each paper gets a sheet with an opaque name (H01 to H30) and a renamed copy of its PDF (\file{study/relecture\_humaine/feuilles/}). The sheet shows no identifier, title,
-  conference, year or agent value. The PDF still shows the year. The reader, who wrote the survey, also knows the hypothesis: the
+  conference, year or agent value. The PDF still shows the year. We also know the hypothesis: the
   deviation says so in advance.
   \item \textbf{Criteria.} Q5, Y9, X7, X2 and X8, with the agents' rules copied into each sheet. Every
   decision comes with an exact quotation and its page.
@@ -472,7 +472,7 @@ the deviation 13 plan had already covered.
   incomplete. It will then read the agents' codes, measure the human's agreement with them and say
   whether the difference between years holds under a human reading.
 \end{itemize}
-On 22 November 2026, the thirty sheets are still empty.
+The thirty sheets are still empty.
 
 \section{The pilot and the harmonisation}\label{sec:sm-harmonisation}
 
@@ -488,7 +488,7 @@ percentage.
 \paragraph{The harmonisation of grid v1}
 Deviations 1 to 6 were written during the coding of the first draw, before aggregation. They are
 applied from the quotations, in \file{study/overrides.json}. The check of the quotations not found
-showed on 9 November 2026 that these rules had been applied only to the 2026 papers (deviation 15). The
+showed that these rules had been applied only to the 2026 papers (deviation 15). The
 comparison between years therefore mixed two slightly different grids. The same rules were applied to
 the 12 papers from 2018, with no new rule. For X4, C11, C13, C14 and C16 switch to \file{no}. For Q7,
 C14 switches from \file{na} to \file{no}. For X7, C14 switches to \file{no}. The script
@@ -499,13 +499,13 @@ declares.
 \paragraph{The harmonisation of grid v2}
 After the enlarged reading, an audit rereads all the v2 files of the primary readers, criterion by
 criterion, without computing any share (\file{study/harmonisation\_audit.md}, 170 files). It finds
-codes contrary to the rules and ten cases that no rule covered. Deviation 19, written on 9 November
-2026 before any percentage, rules on these cases for both years. Its decisions are applied from the
+codes contrary to the rules and ten cases that no rule covered. Deviation 19, written
+before any percentage, rules on these cases for both years. Its decisions are applied from the
 quotations, each with its reason, in \file{study/overrides\_v2.json}: 80 changes, of which Y1 21, Y3 5
 (and Y4 5 through the scope rule), Y5 10, Y6 3, Y7 19, Y8 6, Y9 9 and Q5 2. The project pages given as
-a link to the code were visited on 9 November 2026. Five lead to the code, two do not. The link of K090
+a link to the code were visited. Five lead to the code, two do not. The link of K090
 leads to an expired anonymous mirror (HTTP 410). The link of C19 leads to a library released after the
-paper, without its scripts. The author of the protocol ruled on two cases, NE16 and ML14, all of whose
+paper, without its scripts. We, the authors of the protocol, ruled on two cases, NE16 and ML14, all of whose
 experiments are in the appendix, so that the rule on settings present only in an appendix does not
 apply to them.
 
@@ -533,8 +533,8 @@ folder. The five values contrary to the rules led to deviation 15.
 
 \paragraph{The keyword search against the \enquote{no} decisions}
 A \file{yes} decision rests on a quotation and a page. A \file{no} decision rests on no quotation. Yet the
-\enquote{changed} verdicts rest mostly on the \file{no} decisions of 2018. Deviation 27, written on 15
-November 2026 after the results and before any search, checks every final \file{no} decision of the
+\enquote{changed} verdicts rest mostly on the \file{no} decisions of 2018. Deviation 27, written
+after the results and before any search, checks every final \file{no} decision of the
 two samples of the main comparison against the text of the paper, on the seven criteria Q4, Q5, Q7,
 Q8, X2, X7 and Y9. The script \file{study/falsify\_no.py} extracts the text of the paper and of its appendix, removes
 the references section, then searches for patterns fixed in the deviation and never modified
@@ -562,8 +562,8 @@ against her figures and against our own reading of 2018.
 
 \paragraph{The same-grid verdict rule}
 With 50 papers from 2018, the secondary comparison of deviation 12 confirmed that our grid reads 2018
-differently from Pineau (Chapter~\ref{chap:04-sondage-resultats}). Deviation 20, decided on 9 November
-2026 after these first results, draws from it the rule of the report: a verdict rests only on the main
+differently from Pineau (Chapter~\ref{chap:04-sondage-resultats}). Deviation 20, decided
+after these first results, draws from it the rule of the report: a verdict rests only on the main
 comparison of deviation 12, our 50 classical RL papers from 2026 against our reading of 50 papers from
 2018, with the same grids, read by agents of the same model. This comparison had been fixed before
 any reading of the added papers. The change of rule, by contrast, followed the results, which the
@@ -575,7 +575,7 @@ correction, stays below 5\%. We then say that the difference passes the correcti
 
 \paragraph{What the original rule would have given}
 Deviation 30 (c) applies the rule of deviation 7 to the final data. It was written before the
-repository's computation, but after the technical review of 21 November had sketched its result
+repository's computation, but after the technical review had sketched its result
 (Section~\ref{sec:ecarts-audit}). This rule applies to Q3 to Q8, the criteria for which Pineau gives a
 figure. A criterion \enquote{changed} under it when the difference between classical RL in 2026 and
 Pineau's figures passes the Holm correction over these six criteria. The change is \enquote{confirmed}
@@ -762,7 +762,7 @@ often come from the arXiv version.
 
 \section{Two re-readings added after the results}\label{sec:sm-relectures}
 
-A technical audit of 21 November 2026 raised two points the earlier checks had left open: what X2
+A technical audit raised two points the earlier checks had left open: what X2
 measures, then the version of the papers read for Q5. The two re-readings that answer them were written
 into the protocol after the results and before any computation (deviations 32 and 31). They are
 exploratory: no verdict of deviation 20 depends on them.
@@ -843,7 +843,7 @@ their position relative to the results, next to those of the two other protocols
   second reading).
   \item \textbf{Decisions taken after seeing results}: deviations 7 (initial calibration), 15 (2018
   harmonisation caught up), 20 (same-grid verdict rule), 21, 27, 28 and 29 (analyses answering a
-  critical review), 30 to 33 (response to the technical audit of 21 November), 35 and 36 (human rereading of both
+  critical review), 30 to 33 (response to the technical audit), 35 and 36 (human rereading of both
   years, eight fresh readers on both years). The analyses were all
   written before their own computation. The protocol declares these decisions as such.
   \item \textbf{Incidents with no effect on the data}: deviations 9 (contact address removed from the

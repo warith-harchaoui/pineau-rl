@@ -63,7 +63,7 @@ indépendants. Un biais systématique du modèle, partagé par toutes ses copies
 lectures. La consigne exacte, le modèle et les dates de chaque lecteur sont publiés
 (\file{study/readers/}), pour qu'un autre lecteur refasse la lecture. Un lecteur d'une autre famille
 de modèles, \texttt{gemma3:12b}, relit les 98 articles expérimentaux de la comparaison principale
-(écart 33 du sondage). Sa lecture n'était pas finie au 22 novembre 2026 (\cref{sec:val-en-cours}).
+(écart 33 du sondage). Sa lecture n'est pas encore finie (\cref{sec:val-en-cours}).
 
 \subsection{Les lecteurs et l'année}
 
@@ -98,12 +98,12 @@ de résultat.
 Plusieurs règles ont été fixées après avoir vu des résultats : la règle de verdict du sondage
 (écart 20), l'harmonisation de la calibration de 2018 (écart 15), le classement descriptif sous
 physique modifiée (écart 11 des simulations), les détails du bootstrap GRPO (écart 13) et la remise à
-zéro du compte des échecs GRPO (écart 10). Les vingt et un écarts nés de la relecture technique du
-21 novembre 2026 viennent tous après les résultats. Pour huit écarts des simulations, cette
+zéro du compte des échecs GRPO (écart 10). Les vingt et un écarts nés de la relecture technique
+viennent tous après les résultats. Pour huit écarts des simulations, cette
 relecture avait déjà calculé une version brouillon des nombres (\cref{sec:ecarts-audit}). Ils sont
 publiés comme exploratoires ou correctifs, à côté des résultats préenregistrés. Le
-\cref{chap:09-ecarts} discute chacune de ces décisions. L'ordre d'écriture des écarts antérieurs au
-15 novembre 2026 repose sur notre parole et sur les dates des commits (\cref{sec:parole}).
+\cref{chap:09-ecarts} discute chacune de ces décisions. L'ordre d'écriture des écarts antérieurs à la
+publication du dépôt repose sur notre parole et sur les dates des commits (\cref{sec:parole}).
 
 \subsection{Les essais des simulations}
 
@@ -155,7 +155,7 @@ La relance de l'écart 20 du volet GRPO corrige les trois défauts (\cref{sec:va
   \item \textbf{Le tri sur le titre de la file de 2026.} Un article de RL classique dont le titre
         contient \enquote{reasoning}, \enquote{preference} ou \enquote{math} n'a pas pu entrer dans
         l'échantillon classique de 2026. Les 9 articles d'ICLR 2026 en tête de la file, injoignables
-        le 9 novembre 2026, ont été sautés.
+        au moment de la lecture, ont été sautés.
   \item \textbf{La source des PDF.} Les articles de 2026 ont été lus surtout dans leur version arXiv
         (45 articles de RL classique sur 50), ceux de 2018 dans les actes des conférences. Un lien
         vers le code s'ajoute souvent à la version arXiv après l'acceptation : la hausse de Q5
@@ -332,10 +332,9 @@ est fragile.
 \section{Les expériences pas encore finies}
 \label{sec:val-en-cours}
 
-Six expériences sont écrites d'avance et pas encore finies au 22 novembre 2026. Le rapport n'en
-donne aucun résultat. Chacune répond à une limite de ce chapitre. Ce jour-là à 13 h 18, le
-surveillant a arrêté la file des simulations sur une alerte de mémoire : un entraînement de CrossQ
-(écart 32) et un de la recette du Zoo (écart 33 (c)) sont restés inachevés.
+Six expériences sont écrites d'avance et pas encore finies. Le rapport n'en
+donne aucun résultat. Chacune répond à une limite de ce chapitre. Le surveillant a
+arrêté une fois la file des simulations sur une alerte de mémoire, puis la file a repris.
 \begin{itemize}
   \item \textbf{Le déterminisme de SAC et de CrossQ} (écart 32 des simulations) : trois
         entraînements refaits à l'identique diront si ces programmes JAX redonnent le même essai.
@@ -346,7 +345,7 @@ surveillant a arrêté la file des simulations sur une alerte de mémoire : un e
         entraînements ajoutent de la puissance à E3 et échangent l'initialisation orthogonale.
   \item \textbf{Un lecteur d'une autre famille de modèles} (écart 33 du sondage) : \texttt{gemma3:12b}
         relit les quatre critères des verdicts sur les 98 articles expérimentaux.
-  \item \textbf{La relecture humaine} (écart 35 du sondage) : l'auteur relira à l'aveugle trente
+  \item \textbf{La relecture humaine} (écart 35 du sondage) : nous relirons nous-mêmes à l'aveugle trente
         articles des deux années. Les trente feuilles attendent encore leur lecteur.
   \item \textbf{La relance GRPO} (écart 20 du volet GRPO) : 40 essais sur un seul appareil, sans
         pénalité de répétition, avec un pilote hors du test, attendent que le GPU se libère.

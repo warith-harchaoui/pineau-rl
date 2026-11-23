@@ -19,7 +19,7 @@ un fil d'exécution par essai. Les essais GRPO ont tourné sur le processeur gra
 \section{Les quatre environnements}
 \label{sec:d-envs}
 
-Chaque fichier de \file{envs/} est le \texttt{pip freeze} d'un environnement, pris le 15 novembre 2026, avec la
+Chaque fichier de \file{envs/} est le \texttt{pip freeze} d'un environnement, avec la
 version de Python et la plateforme en tête. Les fichiers \file{*.lock} donnent les mêmes listes avec
 l'empreinte SHA-256 de chaque paquet, pour une installation par \texttt{pip install
 -{}-require-hashes}. Quatre fichiers \file{*.txt}, un par environnement, reprennent les listes que
@@ -55,8 +55,11 @@ Fichier & Environnement & Ce qu'il fait tourner \\
   \item \textbf{Recréer un environnement.} Les chemins comptent, puisque les scripts et les
         lanceurs appellent \file{sim/env/bin/python} et ses voisins :
 \begin{lstlisting}[language=bash]
+# Créer l'environnement d'analyse
 python3.11 -m venv sim/env-an
+# Installer les paquets de l'analyse et des tests
 sim/env-an/bin/pip install -r envs/analysis.txt -r envs/test.txt
+# Tout recalculer et tout vérifier
 make verify
 \end{lstlisting}
         Les trois autres suivent le même modèle. \file{sim/env-zoo} est un \texttt{venv} construit
@@ -108,7 +111,7 @@ git & 2.50.0 & \texttt{make verify} \\
 \end{tabularx}
 \end{table}
 
-Deux outils hors de Python ont servi aux analyses des 21 et 22 novembre 2026. Le client
+Deux outils hors de Python ont servi aux analyses ajoutées après la relecture technique. Le client
 \texttt{gh} 2.95.0 a lu la date de création des dépôts GitHub cités pour Q5 (écart 31 du
 sondage), une requête à la fois. Ollama 0.40.16 sert localement \texttt{gemma3:12b}, le lecteur de
 l'écart 33 du sondage. Chaque fichier de lecture de ce lecteur note le condensé du modèle.

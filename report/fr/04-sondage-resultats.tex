@@ -479,12 +479,12 @@ ce rapport valent donc pour le RL classique seul.
 \paragraph{Les parts année par année}
 Le tableau~\ref{tab:trajectoire} et la figure~\ref{fig:trajectoire} donnent, pour chaque pratique, la part des
 articles de RL classique qui la suivent en 2018 (48 articles), en 2019, 2020, 2022 et 2024 (20 articles
-par année, ICML et NeurIPS) et en 2026 (50 articles). Le code en lien passe de 31~\% en 2018 à 60~\%,
-50~\%, 70~\% et 75~\% de 2019 à 2024, puis 74~\% en 2026. La sensibilité à un hyperparamètre vaut 44~\%,
-puis 35~\%, 45~\%, 60~\%, 85~\% et 80~\%. Le calcul chiffré vaut 27~\%, puis 30~\%, 40~\%, 40~\%, 55~\%
-et 58~\%. Une incertitude rapportée vaut 63~\%, puis 80~\%, 85~\%, 95~\%, 100~\% et 88~\%. Le test
-statistique vaut 6~\%, puis 5~\%, 10~\%, 10~\%, 25~\% et 12~\%. Avec 20 articles, une part a une
-incertitude d'environ vingt points de part et d'autre.
+par année, ICML et NeurIPS) et en 2026 (50 articles). Quatre pratiques montent régulièrement : le code
+en lien (de 31~\% à 74~\%), la sensibilité à un hyperparamètre (de 44~\% à 80~\%), le calcul chiffré (de
+27~\% à 58~\%) et l'incertitude rapportée (de 63~\% à 88~\%). Aucune ne fait un bond juste après la liste
+de contrôle de 2019 : la hausse s'étale sur toute la période. Le test statistique reste rare, de 6~\% à
+12~\%, sans tendance. Avec 20 articles, une part annuelle a une incertitude d'environ vingt points de part
+et d'autre : le creux ou la pointe d'une seule année ne se lit pas.
 
 \gentable{trajectoire}
 
@@ -665,8 +665,7 @@ après la liste de contrôle de 2019.
 
 Le test statistique, les références décrites et réglées avec soin, l'évaluation tenue à part, les
 versions des bancs d'essai et des bibliothèques n'ont pas bougé de façon détectable. Le réglage des
-références ne montre aucun signe de progrès. Pour le reste, le sondage ne peut pas trancher, puisqu'il
-ne voyait que des hausses d'environ trente points. La barre d'erreur s'est répandue sans que la part
+références ne montre aucun signe de progrès. La barre d'erreur s'est répandue sans que la part
 calculée sur des graines aléatoires bouge de façon détectable (X8). Les changements nets concernent ce
 qui accompagne le résultat : le lien vers le code, le calcul chiffré, l'effet d'un réglage, la barre
 d'erreur.

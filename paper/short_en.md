@@ -3,7 +3,7 @@
 **Warith Harchaoui**, Deraison.ai, warithmetics@deraison.ai
 
 Short version of the technical report *Reinforcement Learning: Did We Listen to Joelle Pineau in 2018?* (version 1.0,
-21 November 2026). Every number below comes from a result file of the repository. `paper/check_short.py` ties
+24 November 2026). Every number below comes from a result file of the repository. `paper/check_short.py` ties
 each one to its key. Code, data and protocols: the repository of the technical report, BSD 3-Clause licence for the
 code.
 
@@ -428,7 +428,7 @@ property a recipe keeps once published: it holds only with the software the reci
 This short version, like version 1.0 of the technical report, comes before an addendum. Each item below has a
 deviation written before its result.
 
-- **A blind human re-reading** (survey deviation 35). The author rereads thirty papers, fifteen from each year, drawn
+- **A blind human re-reading** (survey deviation 35). We reread thirty papers, fifteen from each year, drawn
   in advance and shown without their year.
 - **A reader from another model family** (survey deviation 33). A local open model reads the 98 papers with
   experiments of the main comparison on the four verdict criteria.

@@ -4,13 +4,13 @@
 Un protocole écrit d'avance ne protège un résultat que si chaque changement ultérieur se voit. Ce
 chapitre décrit la règle que nous avons suivie, ce qu'un lecteur peut en vérifier et ce qui repose
 sur notre parole. Il donne ensuite la liste complète des écarts des trois protocoles et commente
-ceux qui comptent le plus pour les résultats, à commencer par la vague du 21 novembre 2026, née d'une
+ceux qui comptent le plus pour les résultats, à commencer par la vague née d'une
 relecture technique du dépôt.
 
 \section{Le principe}
 \label{sec:ecarts-principe}
 
-Les trois protocoles datent du 8 novembre 2026 : celui du sondage (\file{study/PROTOCOL.md}), écrit
+Le projet suit trois protocoles : celui du sondage (\file{study/PROTOCOL.md}), écrit
 avant toute lecture d'article, celui des simulations (\file{sim/SIM\_PROTOCOL.md}) et celui du volet
 GRPO (\file{sim/llm/LLM\_PROTOCOL.md}), écrits avant tout entraînement. Chacun fixe la question, la
 population ou les essais, les mesures et les analyses. Tout changement ultérieur s'ajoute en bas du
@@ -31,11 +31,8 @@ dispositif :
 \end{itemize}
 
 Les trois protocoles comptent 89 écarts : 35 pour le sondage, numérotés de 1 à 36 (le numéro 34 est
-réservé, \cref{sec:sm-ecarts}), 34 pour les simulations, 20 pour le volet GRPO. Le \cref{tab:ecarts} les résume tous, la
-\cref{fig:frise-ecarts} les place dans le temps, du 8 au 22 novembre 2026. Vingt-quatre d'entre eux
-datent des 21 et 22 novembre : les écarts 30 à 33, 35 et 36 du sondage, 20 à 34 des simulations, 18
-à 20 du volet GRPO. Vingt et un sont nés de la relecture technique du 21 novembre
-(\cref{sec:ecarts-audit}).
+réservé, \cref{sec:sm-ecarts}), 34 pour les simulations, 20 pour le volet GRPO. Le \cref{tab:ecarts} les résume tous. Vingt et un sont nés d'une relecture technique
+du dépôt (\cref{sec:ecarts-audit}).
 
 \section{Ce qui repose sur notre parole}
 \label{sec:parole}
@@ -45,9 +42,9 @@ Un lecteur peut recalculer chaque nombre à partir des résultats commités
 lesquelles elle s'appuie. Il ne peut pas vérifier seul l'ordre dans lequel les choses ont été
 écrites.
 
-Le dépôt est devenu public le 15 novembre 2026. Son premier commit, du 9 novembre à 6 h 07, contient
-déjà des résultats à côté des protocoles. Pour tout ce qui précède le 15 novembre, l'ordre
-d'écriture repose sur notre parole et sur les dates des commits, que leur auteur aurait pu forger.
+Le dépôt est devenu public en cours de projet. Son premier commit contient
+déjà des résultats à côté des protocoles. Pour tout ce qui précède sa publication, l'ordre
+d'écriture repose sur notre parole et sur les dates des commits, que nous aurions pu forger.
 Une relecture critique du dépôt public a de plus trouvé plusieurs déclarations
 \enquote{avant}/\enquote{après} fausses dans leurs détails. Les corrections sont datées et
 publiées : écart 14 des simulations, écart 15 du volet GRPO. Elles montrent que la règle a été
@@ -64,7 +61,7 @@ modèle, dates, articles écrits) est reconstruite à partir des transcriptions 
 \label{sec:registres}
 
 Le protocole des simulations dit qu'un essai qui plante est relancé une fois et que l'incident est
-noté. Jusqu'au 15 novembre, aucun registre ne gardait la trace de chaque lancement. Le registre
+noté. Jusqu'à la publication du dépôt, aucun registre ne gardait la trace de chaque lancement. Le registre
 reconstruit, \file{sim/logs/attempts\_reconstructed.csv}, s'appuie sur les dates de création des
 journaux, les sorties des lanceurs, les versions commitées et nos journaux de session. Il donne une
 ligne par tentative : algorithme, tâche, graine aléatoire, numéro de tentative, début, fin, issue,
@@ -75,26 +72,18 @@ n'a été relancé ni écarté après que son score final était connu. Pour PPO
 relances retrouvent à l'identique les points d'évaluation des tentatives arrêtées. Pour SAC et
 CrossQ, les courbes arrêtées ont été écrasées et ne permettent pas cette vérification. L'écart 32
 des simulations refait trois de ces entraînements à l'identique pour combler ce manque. Il n'est
-pas fini au 22 novembre 2026 (\cref{sec:val-en-cours}).
+pas encore fini (\cref{sec:val-en-cours}).
 
-Depuis le 15 novembre, le lanceur \file{queue.sh} garde un journal par tentative, jamais écrasé. Il
+Depuis la publication du dépôt, le lanceur \file{queue.sh} garde un journal par tentative, jamais écrasé. Il
 ajoute chaque tentative au registre \file{sim/logs/attempts.jsonl} : début, fin, code de sortie,
 empreinte SHA-256 du résultat. Le surveillant y inscrit chaque tâche qu'il arrête. Un arrêt par
 signal n'est plus relancé automatiquement. Les essais GRPO arrêtés y figurent aussi, comme les
-entraînements lancés le 22 novembre pour les écarts 32 et 33 (c).
+entraînements lancés pour les écarts 32 et 33 (c).
 
 \section{La liste des écarts}
 \label{sec:liste-ecarts}
 
 \gentable{ecarts}
-
-\fig{frise-ecarts}{Les protocoles et leurs écarts datés, du 8 au 22 novembre 2026, une ligne par jour
-et une colonne par protocole (sondage, simulations, volet GRPO). Chaque pastille numérotée est un
-écart, posée au jour que donne son texte. Une pastille creuse marque un écart sans date, noté
-pendant le codage ou les premiers essais avant le premier commit, posé au 8. La colonne de droite
-date les jalons : protocoles, premier commit, dépôt public, fin des entraînements, publication de
-l'article. La frise date les écarts sans dire s'ils précèdent les résultats qu'ils touchent :
-cette information est dans le \cref{tab:ecarts}.}
 
 \section{Les écarts du sondage}
 \label{sec:ecarts-sondage}
@@ -114,11 +103,11 @@ pourcentage : 80 changements, chacun avec sa raison. Pour X3, X4 et X7, aucune r
 le lecteur les a lus.
 
 \paragraph{La grille v2 et sa planification (écarts 11, 14, 16 et 17)} La grille v1 ne mesurait
-qu'une partie des failles. La grille v2, Y1 à Y12, a été écrite le 9 novembre 2026 avant toute
-lecture v2 (écart 11), ses règles de décision le même jour (écart 14), puis précisées après un
+qu'une partie des failles. La grille v2, Y1 à Y12, a été écrite avant toute
+lecture v2 (écart 11), avec ses règles de décision (écart 14), puis précisées après un
 pilote de trois articles (écarts 16 et 17), toujours avant le codage principal. Le plan de travail
-qui précède ces écarts, \file{study/planification\_v2.md}, a été gardé tel quel et rendu public le
-15 novembre 2026. Il annonce, faille par faille, quels critères v2 sont chargés de sortir chaque
+qui précède ces écarts, \file{study/planification\_v2.md}, a été gardé tel quel et rendu public avec
+le dépôt. Il annonce, faille par faille, quels critères v2 sont chargés de sortir chaque
 verdict de l'état \enquote{à mesurer}.
 
 \paragraph{L'élargissement (écart 12)} L'audit de puissance du premier tirage montre que douze
@@ -156,9 +145,9 @@ sans rapport avec les verdicts. L'écart entre notre Q5 de 2018 et le sien s'exp
 les versions lues, puisque relire nos articles de 2018 sur leur dernière version arXiv le rapproche
 de son chiffre (écart 31, \cref{sec:sr-robustesse}).
 
-\paragraph{La relecture humaine abandonnée (écarts 13 et 23)} L'écart 13 prévoyait que Warith
-Harchaoui relise seul dix articles de 2026, à l'aveugle, sur sept critères. L'écart 23 l'abandonne
-le 10 novembre 2026, avant toute relecture. Aucun humain n'a donc relu les articles. Chaque décision
+\paragraph{La relecture humaine abandonnée (écarts 13 et 23)} L'écart 13 prévoyait que nous
+relisions nous-mêmes, seuls, dix articles de 2026, à l'aveugle, sur sept critères. L'écart 23 l'abandonne
+avant toute relecture. Aucun humain n'a donc relu les articles. Chaque décision
 se vérifie toujours contre sa citation. Le dossier \file{study/relecture\_humaine/} est gardé comme trace
 du plan.
 
@@ -172,10 +161,10 @@ treize articles lus en partie par un autre modèle (écart 29). L'écart 21 a re
 document : la thèse \enquote{Pineau écoutée là où cela coûtait peu} ne résiste pas au test de
 corrélation qu'il annonçait (\cref{chap:04-sondage-resultats}).
 
-\section{La vague du 21 novembre}
+\section{La vague de la relecture technique}
 \label{sec:ecarts-audit}
 
-Le 21 novembre 2026, une relecture technique du dépôt a relu le code de chaque analyse contre le
+Une relecture technique du dépôt a relu le code de chaque analyse contre le
 texte du rapport, puis listé ce qui ne tenait pas et ce qui restait à mesurer. Elle a trouvé des
 défauts de notre fait : un décompte de E2 qui compte des triplets au lieu de paires, un facteur mal
 écrit dans B1, une pénalité de répétition oubliée chez Qwen, un pilote GRPO lancé sur le jeu de test.
@@ -193,7 +182,7 @@ d'entraînement du Zoo. Les écarts 21, 22, 24, 26 et 31 le disent en tête. Les
 la relecture avait déjà affiché une partie de ses valeurs : les gains en justesse gloutonne et en
 pass@8, des intervalles de Student, le contraste entre récompenses sur pass@1. Les analyses de
 l'écart 30 du sondage reprennent des points de la même relecture, qui avait esquissé la règle de
-verdict d'origine et l'ordre de grandeur de la puissance du sondage. L'écart 30 ne le disait pas. Une précision datée du 22 novembre 2026, ajoutée à la fin de l'écart, le dit désormais. Ces analyses ont été choisies en connaissant leur sens. Elles sont donc déclarées
+verdict d'origine et l'ordre de grandeur de la puissance du sondage. L'écart 30 ne le disait pas. Une précision ajoutée à la fin de l'écart le dit désormais. Ces analyses ont été choisies en connaissant leur sens. Elles sont donc déclarées
 exploratoires ou correctives, jamais préenregistrées. Les nombres du rapport viennent des scripts
 du dépôt, relancés par \texttt{make analysis}. Les brouillons, dont certains différaient des nombres
 finaux, ne sont publiés nulle part.
@@ -221,7 +210,7 @@ préenregistré reste publié, avec sa correction à côté. Plusieurs lectures 
 \end{itemize}
 
 \paragraph{Ce qui n'est pas fini} Cinq expériences de la vague sont écrites d'avance et pas encore
-finies au 22 novembre 2026 (\cref{sec:val-en-cours}) : le déterminisme de SAC et de CrossQ (écart 32 des simulations), la
+finies (\cref{sec:val-en-cours}) : le déterminisme de SAC et de CrossQ (écart 32 des simulations), la
 recette du Zoo avec $\gamma = 0{,}99$ (écart 33 (c)), la cause de l'écart entre les deux PPO (écart
 34), le lecteur d'une autre famille de modèles (écart 33 du sondage) et la relance GRPO (écart 20 du
 volet GRPO). Le rapport n'en donne aucun résultat.
@@ -234,7 +223,7 @@ réduction décidée avant le premier entraînement pour rester dans le calcul d
 comparaison à budgets inégaux que l'écart 12 (iii) corrige ensuite par une lecture à budget égal.
 
 \paragraph{B3, écrit en cours de route (écart 8)} L'expérience B3, qui demande si la mesure (score
-final, meilleur score, moyenne de la courbe) change le classement, a été écrite le 10 novembre 2026
+final, meilleur score, moyenne de la courbe) change le classement, a été écrite
 après les résultats de PPO et de SAC. Elle n'entraîne rien : elle relit les courbes enregistrées. L'écart 8 la datait \enquote{AVANT tout résultat de CrossQ}. L'écart 14 (b) corrige ce
 compte, sept essais CrossQ étant finis à l'écriture. D'après nos journaux de session, non publics,
 aucun score CrossQ n'avait été lu. La formulation exacte devient \enquote{avant d'avoir regardé le
@@ -254,7 +243,7 @@ qu'il battait de façon établie en physique d'entraînement, le renversement ti
 Contre CrossQ, il ne tient qu'à dix graines aléatoires, puisqu'à vingt l'avance de PPO JAX en
 physique d'entraînement n'est plus établie (\cref{sec:e7}).
 
-\paragraph{La consolidation (écart 12)} Écrit le 15 novembre 2026, avant tout nouvel entraînement et
+\paragraph{La consolidation (écart 12)} Écrit avant tout nouvel entraînement et
 toute nouvelle évaluation, cet écart ajoute trois analyses avec le même code et les mêmes réglages :
 vingt graines aléatoires par couple (160 entraînements), la réévaluation de chaque politique sous
 des masses et des frottements modifiés par degrés, enfin la lecture de PPO à 200\,000 pas, au budget
@@ -283,22 +272,22 @@ dépôt public (\cref{sec:parole}) a établi sept points, tous sans effet sur le
   \item Six scripts lisaient tous les fichiers présents. Avec les graines aléatoires 10 à 19, E6
         serait passé de dix à vingt graines aléatoires sans le dire. Depuis, chaque script nomme
         ses graines aléatoires.
-  \item Le registre \file{attempts.jsonl} et les journaux par tentative existent à partir du 15
-        novembre.
+  \item Le registre \file{attempts.jsonl} et les journaux par tentative existent depuis la
+        publication du dépôt.
 \end{enumerate}
 
-\paragraph{Les intervalles simultanés de E2 (écart 18)} Écrit le 16 novembre 2026, après les
+\paragraph{Les intervalles simultanés de E2 (écart 18)} Écrit après les
 résultats de E2 et avant ce calcul, cet écart donne les 24 intervalles de probabilité
 d'amélioration de E2 au niveau simultané de 95~\% par la correction de Bonferroni
 (\cref{tab:e2-bonferroni}).
 
 \paragraph{L'organisation du calcul (écarts 9, 10, 15 à 17 et 19)} Ces écarts notent des arrêts du
 surveillant, des relances, le passage à huit cœurs puis à deux, une suspension liée à la batterie
-du Mac, levée le même matin. Aucun ne change un résultat : chaque essai tourne sur un seul fil et
+du Mac, vite levée. Aucun ne change un résultat : chaque essai tourne sur un seul fil et
 dépend de sa seule graine aléatoire. Pour PPO, les relances le vérifient
 (\cref{sec:registres}). Pour SAC et CrossQ, c'est l'objet de l'écart 32, pas encore fini.
 
-\paragraph{Le calcul des ajouts (écart 20)} Le 21 novembre 2026, après la fin de tous les
+\paragraph{Le calcul des ajouts (écart 20)} Après la fin de tous les
 entraînements et avant tout calcul sur les graines aléatoires 10 à 19, l'écart 20 corrige un défaut
 de \file{analysis/e5.py}, qui prenait pour ordre \enquote{correct} la moyenne des dix premiers
 essais même avec vingt graines aléatoires. Il liste ensuite les calculs, tous dans \texttt{make
@@ -338,7 +327,7 @@ lecture était fixée d'avance : un agent publié vers 2\,000 à 3\,000 dirait u
 dans sa pile d'origine et a vieilli. C'est ce que montre le résultat (\cref{sec:e6}). Son volet (c),
 la même recette avec $\gamma = 0{,}99$, n'est pas fini.
 
-\paragraph{Trois expériences mises en file le 22 novembre (écarts 32 à 34)} Ces écarts sont écrits
+\paragraph{Trois expériences mises en file après la relecture (écarts 32 à 34)} Ces écarts sont écrits
 avant tout entraînement : trois entraînements de SAC et de CrossQ refaits à l'identique (écart 32), dix
 entraînements de la recette du Zoo avec $\gamma = 0{,}99$ (écart 33 (c)), puis 160 entraînements
 qui cherchent pourquoi les deux PPO divergent (écart 34). Ce dernier ajoute vingt graines
@@ -350,14 +339,14 @@ orthogonale entre les deux bibliothèques, seule différence connue entre leurs 
 
 \paragraph{Le plan réduit puis rétabli (écarts 6 et 14)} L'écart 6, décidé avant tout essai retenu,
 réduit le plan à 100 pas et trois graines aléatoires, fixe le taux d'apprentissage à $3 \times
-10^{-6}$ sans pilote complet et découpe la mise à jour en sous-lots. L'écart 14, écrit le 15
-novembre 2026 avant tout nouvel essai, ajoute les graines aléatoires 3 et 4. Ce rétablissement a
+10^{-6}$ sans pilote complet et découpe la mise à jour en sous-lots. L'écart 14, écrit
+avant tout nouvel essai, ajoute les graines aléatoires 3 et 4. Ce rétablissement a
 changé la lecture du volet : le gain de Qwen avec la vraie récompense, net à trois graines
 aléatoires, ne l'est plus à cinq (\cref{chap:07-modeles-de-langue}).
 
 \paragraph{Les plantages et leur cause (écarts 7 à 11)} Les premiers essais retenus ont planté sur
 des probabilités non finies ou manqué de mémoire GPU. Les écarts 7 et 8 posent une règle de relance,
-décidée avant de voir un résultat de ces essais. L'écart 9 déplace les essais vers la nuit. L'écart
+décidée avant de voir un résultat de ces essais. L'écart 9 déplace les essais vers les moments où la machine est au repos. L'écart
 10 trouve la cause, un calcul GPU interrompu par macOS qui revient avec des valeurs corrompues. Il
 ajoute les garde-fous de \file{grpo.py}. Il remet aussi à zéro le compte des échecs, puisque les
 plantages passés venaient de la machine : ce changement de règle est décidé après avoir vu ces
@@ -365,13 +354,13 @@ plantages, alors qu'aucun résultat de ces essais n'existait. L'écart 11 fait p
 restants sur CPU. C'est l'origine du mélange entre matériel et graine aléatoire discuté à la
 \cref{sec:llm-materiel}.
 
-\paragraph{Corrections après relecture (écart 15)} L'écart 15 date du 15 novembre 2026, après les
-résultats. Il corrige la répartition des neuf échecs du 9 novembre et la date d'un essai, puis fixe
-la révision exacte des deux modèles dans \file{grpo.py}. Il documente aussi les arrêts du 15 novembre
+\paragraph{Corrections après relecture (écart 15)} L'écart 15 est écrit après les
+résultats. Il corrige la répartition des neuf premiers échecs et la date d'un essai, puis fixe
+la révision exacte des deux modèles dans \file{grpo.py}. Il documente aussi les arrêts survenus depuis
 et promet la comparaison des seuls essais CPU, puisque l'appareil change entre les graines
 aléatoires de Qwen.
 
-\paragraph{L'essai qui échoue deux fois (écart 16)} Nous avons écrit cet écart le 17 novembre 2026,
+\paragraph{L'essai qui échoue deux fois (écart 16)} Nous avons écrit cet écart
 après l'affichage, lors d'un point d'avancement, des valeurs au pas 100 des sept autres nouveaux
 essais, mais avant tout calcul de gain ou d'intervalle à cinq graines aléatoires. L'essai Llama à récompense tirée au sort et
 graine aléatoire 4 échoue deux fois sur le garde-fou du gradient. Selon l'écart 14, ce second échec
@@ -383,7 +372,7 @@ le résultat reste à part.
 simulations, l'essai Llama sur CPU part après tous les autres calculs. Cet ordre ne change aucun
 résultat.
 
-\paragraph{Les défauts constatés (écart 18)} L'écart 18, du 21 novembre 2026, vient après tous les
+\paragraph{Les défauts constatés (écart 18)} L'écart 18 vient après tous les
 résultats et déclare ce que la relecture technique a trouvé dans \file{grpo.py}. Qwen a échantillonné
 et décodé avec une pénalité de répétition de 1,1, venue de son fichier
 \file{generation\_config.json}. L'échantillonnage \enquote{sans troncature de la distribution} est
@@ -399,7 +388,7 @@ exigeante que l'intervalle par percentile de l'écart 13 : un gain est établi s
 Student exclut zéro et si son $p$ exact, corrigé par Holm, passe sous 0,05. La question du protocole,
 vraie récompense contre récompense tirée au sort, reçoit enfin son test.
 
-\paragraph{La relance (écart 20)} L'écart 20 du volet GRPO prépare, le 22 novembre 2026 et avant
+\paragraph{La relance (écart 20)} L'écart 20 du volet GRPO prépare, avant
 tout essai, une relance de 40 essais, dix graines aléatoires par modèle et par récompense, tous sur le même appareil,
 sans pénalité de répétition, avec un pilote tenu hors du test et une mesure de justesse que le
 plafond de longueur ne touche pas. Il fixe d'avance la règle qui décidera de la place du volet dans
@@ -419,7 +408,7 @@ décisions touchent une conclusion de plus près que les autres.
         analyse écrite d'avance l'a mis à l'épreuve, puis l'écart 24 l'a testé paire par paire.
   \item \textbf{La remise à zéro du compte des échecs GRPO (écart 10).} Elle ne touche aucun nombre
         publié, puisqu'aucun essai planté n'avait de résultat.
-  \item \textbf{La vague du 21 novembre.} Une relecture qui connaissait certains nombres l'a choisie.
+  \item \textbf{La vague de la relecture technique.} Une relecture qui connaissait certains nombres l'a choisie.
         Elle corrige des défauts et nuance des lectures, sans créer de verdict nouveau.
 \end{itemize}
 Un lecteur qui refuse ces décisions peut refaire chaque calcul sans elles à partir des fichiers
