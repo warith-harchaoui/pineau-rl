@@ -435,7 +435,7 @@ assert gx["lo"] < 0 < gx["hi"] and GN["X2"]["difference"]["reading"] == "same di
 claim("gemma X2 invalid as no", *both(lambda l: f"({sg(gx['diff'] * 100)} points, {de_a(sg(gx['lo'] * 100), sg(gx['hi'] * 100), l)})"))
 # Power of the survey (study/survey_extra.json): the smallest rise detected with 80% power, over the criteria.
 MDE = [c["up_5"] for c in J("study/survey_extra.json")["mde"].values() if c["up_5"] is not None]
-claim("survey power 18 to 30", *both(lambda l: (f"hausse de {int(hu(min(MDE) * 100))} à {int(hu(max(MDE) * 100))} points" if l == "fr" else f"rise of {int(hu(min(MDE) * 100))} to {int(hu(max(MDE) * 100))} points")))
+claim("survey power 18 to 30", *both(lambda l: (f"hausse d'au moins {int(hu(min(MDE) * 100))} à {int(hu(max(MDE) * 100))} points" if l == "fr" else f"rise of at least {int(hu(min(MDE) * 100))} to {int(hu(max(MDE) * 100))} points")))
 claim("r36 papers", *both(lambda l: f"{R36['Q5']['counts']['2018']['n'] + R36['Q5']['counts']['2026']['n']} " + ("articles expérimentaux" if l == "fr" else "experimental papers")))
 D("t and p of 2018", "t = −9,09, p = 0,0016", "t = −9.09, p = 0.0016")
 D("published t", "9,09 avec p = 0,0016", "9.09 with p = 0.0016")
