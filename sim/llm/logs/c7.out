@@ -14,3 +14,14 @@
 2026-11-23 04:56:45 qwen05_c7 true 1: start
 2026-11-23 06:02:05 qwen05_c7 true 1: {"model": "qwen05_c7", "task": "mul2", "reward": "true", "seed": 1, "done": true, "retries": {"generate": 0, "update": 6}, "wall": 3348.1}
 2026-11-23 06:02:05 waiting (window: night, GPU free: no, disk: 36 GB)
+2026-11-23 23:04:42 qwen05_c7 random 1: start
+2026-11-23 23:48:47 qwen05_c7 random 1: {"model": "qwen05_c7", "task": "mul2", "reward": "random", "seed": 1, "done": true, "retries": {"generate": 0, "update": 0}, "wall": 2078.4}
+2026-11-23 23:48:47 llama1_c7 true 1: start
+2026-11-24 01:21:59 llama1_c7 true 1: {"model": "llama1_c7", "task": "mul2", "reward": "true", "seed": 1, "done": true, "retries": {"generate": 0, "update": 0}, "wall": 4829.5}
+2026-11-24 01:22:00 llama1_c7 random 1: start
+2026-11-24 03:26:19 llama1_c7 random 1: {"model": "llama1_c7", "task": "mul2", "reward": "random", "seed": 1, "done": true, "retries": {"generate": 0, "update": 0}, "wall": 6737.4}
+2026-11-24 03:26:19 qwen05_c7 true 2: start
+2026-11-24 04:24:24 qwen05_c7 true 2: {"model": "qwen05_c7", "task": "mul2", "reward": "true", "seed": 2, "done": true, "retries": {"generate": 0, "update": 0}, "wall": 2933.2}
+2026-11-24 04:24:25 qwen05_c7 random 2: start
+2026-11-24 04:41:26 qwen05_c7 random 2: FAILED (1) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-24 04:41:26 llama1_c7 true 2: start

@@ -19,7 +19,10 @@ while read -r kind algo task seed; do
   [ "$kind" = dose ] && [ ! -f "models/$algo/$task/seed$seed.zip" ] && continue  # model not trained yet: a later pass
   job="$kind-$algo-$task-$seed"
   max=$(cat workers.max 2>/dev/null || echo 2)  # deviation 15: scale.sh sets it every hour; a worker in excess leaves here
-  if [ "$(pgrep -f "/bin/bash ./(queue|worker).sh" | wc -l)" -ge "$max" ]; then
+  # workers whose parent is not a worker: the $(...) subshell, a fork named like its worker, is not counted
+  n=$(ps -axo pid=,ppid=,command= | awk '$3 == "/bin/bash" && $4 ~ /^\.\/(queue|worker)\.sh$/ { w[$1] = $2 }
+        END { n = 0; for (p in w) if (!(w[p] in w)) n++; print n }')
+  if [ "$n" -gt "$max" ]; then
     echo "$(date '+%F %T') worker $$ leaves: more workers than workers.max=$max" >> logs/queue.out; exit 0
   fi
   mkdir "locks/$job" 2>/dev/null || continue
