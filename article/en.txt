@@ -200,7 +200,7 @@ The checklist is meant for authors. Anyone reading a paper, a press release or a
 - **What compute?** A result that nobody else can afford to recompute cannot be reproduced.
 
 ## the-full-document | The full document and the code
-I have been thinking about this almost since 2020. This article summarizes a much longer document, which goes through the sixteen flaws one by one, with all the numbers, their intervals and their limits: [the full document](/assets/pdf/reinforcement-learning-did-we-listen-to-joelle-pineau.pdf) (PDF). The code, the protocols, the training logs, the paper readings with their quotations and the scripts that regenerate every figure are in [the project repository](https://github.com/warith-harchaoui/pineau-rl)[[12]].
+I have been thinking about this almost since 2020. This blog article summarizes a much longer document, which I am also taking the liberty of sharing. It goes through the sixteen flaws one by one, with all the numbers, their intervals and their limits: [the full document](/assets/pdf/reinforcement-learning-did-we-listen-to-joelle-pineau.pdf) (PDF). The code, the protocols, the training logs, the paper readings with their quotations and the scripts that regenerate every figure are in [the project repository](https://github.com/warith-harchaoui/pineau-rl)[[12]].
 
 My verdicts hold for classical RL, read by generative AI programs on fifty papers on each side. At that sample size, a shift of twenty points can still escape measurement. Joelle Pineau asked researchers to criticize themselves first: my work is online, number by number, for anyone who wants to redo it.
 
