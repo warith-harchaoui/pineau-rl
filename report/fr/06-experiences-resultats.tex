@@ -671,6 +671,26 @@ $[-\num{2342}\,;\,-606]$. Entre une politique officielle et une politique du Zoo
 $[-18\,;\,54]$. La différence avec les valeurs par défaut est grande. Celle avec notre application de la
 recette est nulle à la précision de la mesure.
 
+\paragraph{Le facteur d'actualisation fige le robot}
+Restait à savoir quel réglage de la recette fige le robot. Le facteur d'actualisation $\gamma$ pèse le futur.
+À 0,999, une récompense reçue dans \num{1000}~pas compte encore pour 37~\% de sa valeur. À 0,99, elle ne
+compte presque plus. Avec 0,999, une chute coûte des centaines de primes futures. Rester droit sans avancer
+évite ce risque. Une dernière relance, écrite avant son entraînement (\cref{sec:plan-e6}), refait la
+recette corrigée avec $\gamma = 0{,}99$ pour l'algorithme et pour la normalisation, rien d'autre, sur dix
+graines aléatoires et \task{Hopper-v4}. Notre erreur de départ ne touchait que la normalisation. Cette
+relance obtient \num{2649} $[\num{1671}\,;\,\num{3377}]$.
+\begin{itemize}
+  \item Elle bat la recette à 0,999 (\num{984}) : un essai à 0,99 bat un essai à 0,999 avec une probabilité
+    de 0,92, de 0,73 à 1. La différence résiste à la correction de Holm ($p=0{,}003$).
+  \item Elle fait jeu égal avec les valeurs par défaut (\num{2423}) : probabilité de 0,54, de 0,27 à 0,82
+    ($p=0{,}79$).
+  \item Rejoués avec notre protocole (\cref{tab:e6-vitesse}), ses agents courent à 2,40~m/s en médiane. Deux
+    graines aléatoires sur dix tiennent encore debout sans avancer : 20~\% des épisodes, contre 87~\% avec
+    0,999.
+\end{itemize}
+Avec les bibliothèques d'aujourd'hui, ce seul réglage suffit à faire courir le robot. En 2022, la recette
+courait pourtant avec 0,999. Ce qui a vieilli est l'accord entre ce réglage et le reste de la pile logicielle.
+
 \paragraph{Un réglage publié qui a vieilli}
 Selon la règle de lecture du pipeline officiel (\cref{sec:plan-e6}), notre application de la recette n'était pas en cause. Avec
 Stable-Baselines3~2.9.2, Gymnasium~1.1.1 et MuJoCo~4.0.0, la recette réglée et publiée par le Zoo fait
@@ -683,8 +703,8 @@ beau se vérifie jusqu'au script officiel.
 
 \paragraph{Limites}
 Nous ne savons pas quel changement de bibliothèque a fait vieillir la recette. Nous n'avons essayé qu'une
-tâche et qu'un algorithme du Zoo. Le contrôle de 2022 repose sur un seul agent publié. Une relance de la
-recette avec le facteur d'actualisation 0,99 au lieu de 0,999 tourne encore.
+tâche et qu'un algorithme du Zoo. Le contrôle de 2022 repose sur un seul agent publié. Le facteur
+d'actualisation explique l'arrêt sur place d'aujourd'hui, pas pourquoi la même valeur marchait en 2022.
 
 \section{E7 : dans une physique voisine, le premier de Hopper finit dernier}\label{sec:e7}
 

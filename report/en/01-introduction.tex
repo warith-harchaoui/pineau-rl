@@ -245,7 +245,8 @@ and~\ref{chap:07-modeles-de-langue} describe these experiments.
   \item \textbf{A published recipe ages with its libraries.} The RL Baselines3 Zoo settings for PPO on
   \task{Hopper}, reused in 2026, give robots that stand upright without moving forward (0.00~m/s).
   The agent the Zoo published in 2022 with these settings reaches a score of \num{2439} under our
-  protocol (\cref{sec:e6}).
+  protocol. With a discount factor of 0.99 instead of 0.999, the recipe makes the robot run again, at
+  \num{2649} (\cref{sec:e6}).
   \item \textbf{On small language models, no GRPO gain is established at five random seeds.} Qwen's
   apparent gain comes from shorter answers: the share of cut-off answers falls from 75\% to 6\%, while
   the accuracy of finished answers does not rise (\cref{sec:llm-resultats}).

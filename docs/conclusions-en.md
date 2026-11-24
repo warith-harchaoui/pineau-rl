@@ -567,7 +567,10 @@ The gap survives Holm's correction (p = 0.001). Our way of applying the recipe w
 not the cause. With the current versions of the libraries, the collection's tuned recipe does worse
 than the default values on Hopper. So E6 does not show a baseline badly tuned by its authors. It
 shows that a published setting ages with the software around it and that a result that looks too
-good deserves checking all the way through.
+good deserves checking all the way through. A single setting freezes the robot today: with a discount
+factor of 0.99 instead of 0.999, the recipe scores 2,649 [1,671, 3,377], ahead of the recipe at 0.999
+(Holm p = 0.003) and tied with the default values; 20% of its episodes stand without moving forward,
+against 87% at 0.999.
 
 # Random seeds and statistics (F8 to F12)
 

@@ -327,6 +327,11 @@ for qn in ("mass", "friction"):
 e6, e6o, e6d = J("sim/analysis/e6.json"), J("sim/analysis/e6_official.json"), J("sim/analysis/e6_diag.json")
 claim("E6 first pass", *both(lambda l: f"{num(e6['iqm']['default'], l)} {'pour les valeurs par défaut,' if l == 'fr' else 'for the default values,'} {num(e6['iqm']['zoo'], l)}"))
 claim("E6 official", *both(lambda l: f"{'obtiennent' if l == 'fr' else 'score'} {num(e6o['groups']['official v4']['iqm'], l)}, {'contre' if l == 'fr' else 'against'} {num(e6o['groups']['default v4']['iqm'], l)}"))
+e6g = J("sim/analysis/e6_gamma.json")["groups"]
+claim("E6 gamma", *both(lambda l: f"{'courir le robot :' if l == 'fr' else 'run again:'} {num(e6g['ppo_sb3_zoog99']['iqm'], l)}, {'autant que les valeurs par défaut' if l == 'fr' else 'as much as the default values'}"))
+claim("E6 gamma setting", *both(lambda l: f"{'Réglée à' if l == 'fr' else 'Set to'} {num(0.999, l, 3)} {'comme dans le recueil' if l == 'fr' else 'as in the collection'}"), "doc")
+claim("E6 gamma 0.99", *both(lambda l: f"{'Réglée à' if l == 'fr' else 'Set to'} {num(0.99, l, 2)} {'dans l' if l == 'fr' else 'in the learning'}"), "doc")
+claim("E6 gamma 2022", *both(lambda l: f"{'la même recette courait avec' if l == 'fr' else 'the same recipe ran with'} {num(0.999, l, 3)}"), "doc")
 # (removed from the article on 2026-11-21) claim_("E6 fixed recipe", "1 012 sur la version 5 de la tâche, 984 sur la version 4", "1,012 on version 5 of the task and 984 on version 4", "doc")
 claim("E6 discount", *both(lambda l: f"{num(0.99, l, 2)}, {'là où le recueil emploie' if l == 'fr' else 'whereas the collection uses'} {num(0.999, l, 3)}"), "doc")
 

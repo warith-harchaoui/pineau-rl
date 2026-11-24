@@ -54,7 +54,8 @@ quatre tâches. Sous une physique modifiée de 20~\%, PPO JAX passe de la premi�
 \task{Hopper}, où SAC bat alors les deux PPO qui le battaient à l'entraînement. La recette publiée du RL
 Baselines3 Zoo, appliquée aujourd'hui, donne sur \task{Hopper} des robots qui tiennent debout sans
 avancer (0,00~m/s). L'agent que le Zoo a publié en 2022 avec ces réglages atteint un score de \num{2439}
-sous notre protocole : la recette a vieilli avec ses bibliothèques.
+sous notre protocole : la recette a vieilli avec ses bibliothèques. Un seul réglage suffit aujourd'hui à
+faire courir le robot : avec un facteur d'actualisation de 0,99 au lieu de 0,999, la recette obtient \num{2649}.
 
 \paragraph{Le volet GRPO}
 Sur Qwen, avec cinq graines aléatoires, GRPO gagne $+14$ points de pass@1, la part des réponses justes

@@ -905,8 +905,11 @@ moins $10^{-3}\,\lVert a\rVert^2$ pour l'action $a$. Un épisode de \num{1000}~p
     objet sérialisé avant de le charger, puis l'évalue avec notre protocole sur \task{Hopper-v4}
     (\file{sim/analysis/e6\_hub.py}).
 \end{itemize}
-Un réentraînement de la recette du Zoo avec $\gamma=0{,}99$ tourne encore : aucun de ses résultats ne
-figure dans ce rapport.
+Un réentraînement de la recette du Zoo avec $\gamma=0{,}99$ pour l'algorithme et la normalisation, rien
+d'autre, dix graines aléatoires sur \task{Hopper-v4}, est analysé par \file{sim/analysis/e6\_gamma.py},
+écrit avant son entraînement : moyenne interquartile et son intervalle, probabilité d'amélioration contre
+la recette à 0,999 et contre les valeurs par défaut, correction de Holm sur les deux comparaisons, part des
+épisodes debout et immobiles.
 
 \subsection{E7 : la physique modifiée}\label{sec:plan-e7}
 \file{sim/analysis/e7.py} calcule, pour chaque essai $s$, le rapport des deux scores finaux

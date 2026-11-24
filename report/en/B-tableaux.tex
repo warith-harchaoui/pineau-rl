@@ -186,9 +186,10 @@ Script & Content of the result file \\
 \file{effect\_sizes.py} & Effect sizes in score points. \\
 \file{e6\_speed.py}, \file{e6\_enjoy.py}, \file{e6\_hub.py} & E6: speed read in the logs, agents
   replayed with our protocol, agent published by the Zoo. \\
-\file{c6\_determinism.py}, \file{e6\_gamma.py}, \file{c2.py} & Determinism of SAC and CrossQ, the Zoo
-  recipe with $\gamma = 0.99$, why the two PPOs diverge. Ready in \texttt{make analysis-suite}, their
-  training runs had not finished at compilation: no published result. \\
+\file{e6\_gamma.py} & E6: the Zoo recipe with $\gamma = 0.99$ (\file{e6\_gamma.json}). \\
+\file{c6\_determinism.py}, \file{c2.py} & Determinism of SAC and CrossQ, why the two PPOs diverge.
+  Ready in \texttt{make analysis-suite}, their training runs had not finished at compilation: no
+  published result. \\
 \multicolumn{2}{@{}l}{\textit{GRPO strand, folder \file{sim/llm/}}}\\
 \file{summary.py} & Pass@1 at steps 0 and 100 of every run, gains, intervals, sensitivity to the
   missing gain, CPU runs alone (\file{summary*.json}, \file{gains*.json}, \file{extra*.json}). \\

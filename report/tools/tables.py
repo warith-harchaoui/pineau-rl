@@ -1744,8 +1744,9 @@ def t_e6_vitesse():
         rows = []
         lab = {"official": L(lang, "Script officiel du Zoo, 10 graines", "Official Zoo script, 10 seeds"),
                "zoofix": L(lang, "Zoo corrigé, notre code, 10 graines", "Zoo corrected, our code, 10 seeds"),
-               "default": L(lang, "Valeurs par défaut, 10 graines", "Default values, 10 seeds")}
-        for g in ("official", "zoofix", "default"):
+               "default": L(lang, "Valeurs par défaut, 10 graines", "Default values, 10 seeds"),
+               "zoog99": L(lang, r"Zoo corrigé avec $\gamma = 0{,}99$, 10 graines", r"Zoo corrected with $\gamma = 0.99$, 10 seeds")}
+        for g in ("official", "zoofix", "default", "zoog99"):
             d = en["groups"][g]
             runs = d["runs"].values()
             assert d["all_controls_equal"]
@@ -1762,11 +1763,13 @@ def t_e6_vitesse():
                 rf"Les politiques finales rejouées avec notre protocole (10 épisodes déterministes, graines d'évaluation 10\,000 à 10\,009, normalisation figée) ; les retours redonnent exactement ceux de \file{{e6\_official\_eval.json}} (contrôle). Vitesse : moyenne de \texttt{{x\_velocity}} sur l'épisode, puis moyenne des épisodes ; agents sans chute : les dix épisodes vont aux 1\,000 pas. "
                 rf"Dernière ligne : l'agent que le Zoo a publié sur Hugging Face, entraîné en 2022 avec Stable-Baselines3 1.5.1a8 et Gym 0.21, avec nos réglages ; sa fiche annonce {num(mc['mean_reward'], lang)} ± {num(mc['std_reward'], lang)} sur 10 épisodes, notre protocole donne {num(hub['score_10_episodes'], lang)} sur 10 épisodes. "
                 rf"Les journaux d'entraînement officiels disent la même chose : retour par pas des épisodes complets, médiane des graines {num(s['return_per_step_median_of_seeds'], lang, 3)} (de {num(s['range'][0], lang, 3)}{to(lang)}{num(s['range'][1], lang, 3)}). "
+                r"Avant-dernière ligne : la recette corrigée avec un facteur d'actualisation de 0,99 au lieu de 0,999, rien d'autre. "
                 r"Sources : \file{sim/analysis/e6_enjoy.json}, \file{e6_hub.json}, \file{e6_speed.json}.",
                 r"Experiment E6, what the agents of the published recipe do. On Hopper, the reward of a step is the forward velocity, plus 1 while the robot stays upright, minus a small action cost: a return of about 1,000 over 1,000 steps is that of a robot standing still. "
                 rf"The final policies replayed with our protocol (10 deterministic episodes, evaluation seeds 10,000 to 10,009, frozen normalisation); the returns match those of \file{{e6\_official\_eval.json}} exactly (control). Speed: mean of \texttt{{x\_velocity}} over the episode, then mean of the episodes; agents that never fall: all ten episodes reach 1,000 steps. "
                 rf"Last row: the agent the Zoo published on Hugging Face, trained in 2022 with Stable-Baselines3 1.5.1a8 and Gym 0.21, with our settings; its model card states {num(mc['mean_reward'], lang)} ± {num(mc['std_reward'], lang)} over 10 episodes, our protocol gives {num(hub['score_10_episodes'], lang)} over 10 episodes. "
                 rf"The official training logs say the same: return per step of the full-length episodes, median over seeds {num(s['return_per_step_median_of_seeds'], lang, 3)} (from {num(s['range'][0], lang, 3)}{to(lang)}{num(s['range'][1], lang, 3)}). "
+                r"Second-to-last row: the corrected recipe with a discount factor of 0.99 instead of 0.999, nothing else. "
                 r"Sources: \file{sim/analysis/e6_enjoy.json}, \file{e6_hub.json}, \file{e6_speed.json}.")
         floattable("e6-vitesse", lang, cap, L(lang, "E6 : la vitesse des agents", "E6: the agents' speed"),
                    r"@{}>{\raggedright\arraybackslash}p{5.6cm}rrrr@{}", head, rows, tabcolsep="4pt")

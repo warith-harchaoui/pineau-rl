@@ -657,6 +657,25 @@ $[-\num{2342}, -606]$. Between an official policy and a policy of the corrected 
 $[-18, 54]$. The difference from the default values is large. The difference from our application of the
 recipe is zero to the precision of the measurement.
 
+\paragraph{The discount factor freezes the robot}
+It remained to find which setting of the recipe freezes the robot. The discount factor $\gamma$ weighs the
+future. At 0.999, a reward received \num{1000}~steps ahead still counts for 37\% of its value. At 0.99, it
+hardly counts any more. With 0.999, a fall costs hundreds of future bonuses. Standing upright without
+moving avoids that risk. A last rerun, written before its training (\cref{sec:plan-e6}), repeats the
+corrected recipe with $\gamma = 0.99$ for the algorithm and for the normalisation, nothing else, over ten
+random seeds on \task{Hopper-v4}. Our initial error touched only the normalisation. This rerun scores
+\num{2649} $[\num{1671}, \num{3377}]$.
+\begin{itemize}
+  \item It beats the recipe at 0.999 (\num{984}): a run at 0.99 beats a run at 0.999 with a probability of
+    0.92, from 0.73 to 1. The difference survives Holm's correction ($p=0.003$).
+  \item It ties with the default values (\num{2423}): probability 0.54, from 0.27 to 0.82 ($p=0.79$).
+  \item Replayed with our protocol (\cref{tab:e6-vitesse}), its agents run at 2.40~m/s at the median. Two
+    random seeds out of ten still stand without moving forward: 20\% of the episodes, against 87\% with
+    0.999.
+\end{itemize}
+With today's libraries, this single setting is enough to make the robot run. In 2022, though, the recipe ran
+with 0.999. What has aged is the fit between this setting and the rest of the software stack.
+
 \paragraph{A published tuning that has aged}
 Under the reading rule of the official pipeline (\cref{sec:plan-e6}), our application of the recipe was not at fault. With
 Stable-Baselines3~2.9.2, Gymnasium~1.1.1 and MuJoCo~4.0.0, the recipe tuned and published by the Zoo
@@ -669,8 +688,8 @@ official script.
 
 \paragraph{Limits}
 We do not know which library change made the recipe age. We tried only one task and one algorithm of the
-Zoo. The 2022 control rests on a single published agent. A rerun of the recipe with the discount factor
-0.99 instead of 0.999 is still running.
+Zoo. The 2022 control rests on a single published agent. The discount factor
+explains today's standing still, not why the same value worked in 2022.
 
 \section{E7: in a nearby physics, the leader on Hopper ends last}\label{sec:e7}
 

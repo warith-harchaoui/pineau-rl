@@ -48,7 +48,8 @@ twenty random seeds, CrossQ leads on all four tasks. Under physics modified by 2
 from first to last place on \task{Hopper}, where SAC now beats both PPOs that beat it in training. The
 published recipe of the RL Baselines3 Zoo, applied today, gives robots on \task{Hopper} that stand
 upright without moving forward (0.00~m/s). The agent the Zoo published in 2022 with these settings
-reaches a score of \num{2439} under our protocol: the recipe aged with its libraries.
+reaches a score of \num{2439} under our protocol: the recipe aged with its libraries. A single setting is
+enough today to make the robot run: with a discount factor of 0.99 instead of 0.999, the recipe scores \num{2649}.
 
 \paragraph{The GRPO strand}
 On Qwen, with five random seeds, GRPO gains $+14$ points of pass@1, the share of correct answers among

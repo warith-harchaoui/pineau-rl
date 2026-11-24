@@ -457,6 +457,14 @@ add("E6 official", f"Les dix agents officiels obtiennent {ci('official v4', 'fr'
 add("E6 default", f"obtiennent {ci('default v4', 'fr')}. Un agent officiel ne bat un agent par défaut qu'avec une probabilité de {str(half_up(cmp_def['p_improve'], 2)).replace('.', ',')}",
     f"score {ci('default v4', 'en')}. An official agent beats a default agent with a probability of only {half_up(cmp_def['p_improve'], 2)}")
 assert half_up(cmp_def["welch_p_holm"], 3) == half_up(0.001, 3)
+# E6, the recipe with gamma = 0.99 (e6_gamma.py, deviation 33 (c)).
+e6g = J("sim/analysis/e6_gamma.json")
+gg = e6g["groups"]
+cg = lambda k, lang: f"{num(gg[k]['iqm'], lang)} [{num(gg[k]['iqm_ci'][0], lang)}, {num(gg[k]['iqm_ci'][1], lang)}]"
+c99 = {c["b"]: c for c in e6g["comparisons"]}
+assert c99["ppo_sb3_zoofix"]["settled"] and not c99["ppo_sb3"]["settled"]
+add("E6 gamma", f"la recette obtient {cg('ppo_sb3_zoog99', 'fr')}, devant la recette à 0,999 (p de Holm = {str(half_up(c99['ppo_sb3_zoofix']['mw_p_holm'], 3)).replace('.', ',')}) et à égalité avec les valeurs par défaut ; {pct(gg['ppo_sb3_zoog99']['share_episodes_standing'])} de ses épisodes restent debout sans avancer, contre {pct(gg['ppo_sb3_zoofix']['share_episodes_standing'])} à 0,999",
+    f"the recipe scores {cg('ppo_sb3_zoog99', 'en')}, ahead of the recipe at 0.999 (Holm p = {half_up(c99['ppo_sb3_zoofix']['mw_p_holm'], 3)}) and tied with the default values; {pct(gg['ppo_sb3_zoog99']['share_episodes_standing'], lang='en')} of its episodes stand without moving forward, against {pct(gg['ppo_sb3_zoofix']['share_episodes_standing'], lang='en')} at 0.999")
 
 # E7 continued, E2, E4, E5 and B3 (sim/analysis/*.py), once the forty CrossQ runs were done.
 assert [k for k, v in e7.items() if v["verdict"] == "gain"] == ["sac/Swimmer-v5"]

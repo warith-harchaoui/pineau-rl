@@ -326,15 +326,13 @@ Carlo noise: a verdict whose bound grazes the threshold is fragile.
 \section{The experiments not yet finished}
 \label{sec:val-en-cours}
 
-Five experiments are written in advance and not yet finished. The report gives
-no result for any of them. Each answers a limitation of this chapter. The watchdog stopped
+Four experiments are written in advance and not yet finished. The report gives
+no result for any of them. A fifth, the Zoo recipe with $\gamma = 0.99$, is finished: its result is in
+\cref{sec:e6}. Each answers a limitation of this chapter. The watchdog stopped
 the simulation queue once on a memory alert, then the queue resumed.
 \begin{itemize}
   \item \textbf{The determinism of SAC and CrossQ}: three training runs
         repeated identically will tell whether these JAX programs give the same run again.
-  \item \textbf{The Zoo recipe with $\gamma = 0.99$}: ten training runs
-        will tell whether the discount factor explains the agents that stay upright without moving
-        forward.
   \item \textbf{The cause of the gap between the two PPOs}: 160 training
         runs add power to E3 and swap the orthogonal initialisation.
   \item \textbf{The human rereading}: we will reread ourselves thirty papers of

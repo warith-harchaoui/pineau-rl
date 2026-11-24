@@ -251,7 +251,8 @@ modèles de langue entraînés avec GRPO. Les chapitres~\ref{chap:05-experiences
   \item \textbf{Une recette publiée vieillit avec ses bibliothèques.} Les réglages du RL Baselines3
   Zoo pour PPO sur \task{Hopper}, repris en 2026, donnent des robots qui tiennent debout sans avancer
   (0,00~m/s). L'agent que le Zoo a publié en 2022 avec ces réglages atteint un score de \num{2439}
-  sous notre protocole (\cref{sec:e6}).
+  sous notre protocole. Avec un facteur d'actualisation de 0,99 au lieu de 0,999, la recette fait de
+  nouveau courir le robot, à \num{2649} (\cref{sec:e6}).
   \item \textbf{Sur de petits modèles de langue, aucun gain de GRPO n'est établi à cinq graines
   aléatoires.} Le gain apparent de Qwen vient de réponses plus courtes : la part des réponses coupées
   tombe de 75~\% à 6~\%, la justesse des réponses finies ne monte pas (\cref{sec:llm-resultats}).

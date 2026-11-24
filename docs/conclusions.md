@@ -600,7 +600,10 @@ probabilité de 0,09. L'écart résiste à la correction de Holm (p = 0,001). No
 d'appliquer la recette n'était donc pas en cause. Avec les versions actuelles des bibliothèques,
 la recette réglée du recueil fait moins bien que les valeurs par défaut sur Hopper. E6 ne montre
 donc pas une référence mal réglée par ses auteurs. Elle montre qu'un réglage publié vieillit avec
-les logiciels qui l'entourent et qu'un résultat trop beau se vérifie jusqu'au bout.
+les logiciels qui l'entourent et qu'un résultat trop beau se vérifie jusqu'au bout. Un seul réglage
+fige le robot aujourd'hui : avec un facteur d'actualisation de 0,99 au lieu de 0,999, la recette obtient
+2 649 [1 671, 3 377], devant la recette à 0,999 (p de Holm = 0,003) et à égalité avec les valeurs par
+défaut ; 20 % de ses épisodes restent debout sans avancer, contre 87 % à 0,999.
 
 # Les graines aléatoires et la statistique (F8 à F12)
 

@@ -886,8 +886,10 @@ minus $10^{-3}\,\lVert a\rVert^2$ for the action $a$. An episode of \num{1000}~s
     object before loading it, then evaluates it with our protocol on \task{Hopper-v4}
     (\file{sim/analysis/e6\_hub.py}).
 \end{itemize}
-A retraining of the Zoo recipe with $\gamma=0.99$ is still running: none of its results appear in this
-report.
+A retraining of the Zoo recipe with $\gamma=0.99$ for the algorithm and the normalisation, nothing else,
+ten random seeds on \task{Hopper-v4}, is analysed by \file{sim/analysis/e6\_gamma.py}, written before its
+training: interquartile mean and its interval, probability of improvement against the recipe at 0.999 and
+against the default values, Holm's correction over the two comparisons, share of episodes standing still.
 
 \subsection{E7: the modified physics}\label{sec:plan-e7}
 For each run $s$, \file{sim/analysis/e7.py} computes the ratio of the two final scores
