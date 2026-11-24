@@ -200,7 +200,7 @@ La liste de contrôle s'adresse aux auteurs. Une personne qui lit un article, un
 - **Quel calcul ?** Un résultat que personne d'autre n'a les moyens de recalculer ne se reproduit pas.
 
 ## le-document-complet | Le document complet et le code
-Cet article résume un document bien plus long, qui reprend les seize failles une à une, avec tous les chiffres, leurs intervalles et leurs limites : [le document complet](/assets/pdf/apprentissage-par-renforcement-a-t-on-ecoute-joelle-pineau.pdf) (PDF). Le code, les protocoles, les journaux d'entraînement, les lectures d'articles avec leurs citations et les scripts qui régénèrent chaque figure se trouvent dans [le dépôt du projet](https://github.com/warith-harchaoui/pineau-rl)[[12]].
+J'y réfléchis quasiment depuis 2018. Cet article résume un document bien plus long, qui reprend les seize failles une à une, avec tous les chiffres, leurs intervalles et leurs limites : [le document complet](/assets/pdf/apprentissage-par-renforcement-a-t-on-ecoute-joelle-pineau.pdf) (PDF). Le code, les protocoles, les journaux d'entraînement, les lectures d'articles avec leurs citations et les scripts qui régénèrent chaque figure se trouvent dans [le dépôt du projet](https://github.com/warith-harchaoui/pineau-rl)[[12]].
 
 Mes verdicts valent pour le RL classique, lu par des programmes d'IA générative sur cinquante articles de chaque côté. À cette taille d'échantillon, une évolution de vingt points peut encore échapper à la mesure. Joelle Pineau demandait que la critique s'applique d'abord à soi : mon travail est en ligne, chiffre par chiffre, pour qui voudra le refaire.
 
