@@ -44,7 +44,7 @@ import sys
 from pathlib import Path
 
 ICI = Path(__file__).parent
-SITE = Path("/Users/warithharchaoui/web/deraison")  # read-only here: CSS, fonts and photos for the preview
+SITE = Path(os.environ.get("DERAISON_SITE", Path.home() / "web/deraison"))  # read-only here: CSS, fonts and photos for the preview
 SLUGS = {"fr": "ecouter-joelle-pineau", "en": "listen-to-joelle-pineau"}  # the site pairs them through the registry key "twin"
 FIG_PREFIX = "rl-pineau-"
 # The full document is the technical report (report/), served by deraison.ai itself rather than GitHub: (source, name on the site)

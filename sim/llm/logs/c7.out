@@ -25,3 +25,5 @@
 2026-11-24 04:24:25 qwen05_c7 random 2: start
 2026-11-24 04:41:26 qwen05_c7 random 2: FAILED (1) RuntimeError: gradient non-finite or above 1000 5 times in a row
 2026-11-24 04:41:26 llama1_c7 true 2: start
+2026-11-24 06:41:01 llama1_c7 true 2: {"model": "llama1_c7", "task": "mul2", "reward": "true", "seed": 2, "done": true, "retries": {"generate": 0, "update": 5}, "wall": 6318.3}
+2026-11-24 06:41:02 waiting (window: night, GPU free: yes, disk: 34 GB)

@@ -6,6 +6,11 @@
 [deraison.ai/blog/ecouter-joelle-pineau](https://deraison.ai/blog/ecouter-joelle-pineau)
 (en anglais : [deraison.ai/en/blog/listen-to-joelle-pineau](https://deraison.ai/en/blog/listen-to-joelle-pineau)).
 
+**Le rapport technique**, le document de référence avec chaque chiffre, chaque intervalle et chaque limite :
+[PDF en français](https://deraison.ai/assets/pdf/apprentissage-par-renforcement-a-t-on-ecoute-joelle-pineau.pdf)
+([en anglais](https://deraison.ai/assets/pdf/reinforcement-learning-did-we-listen-to-joelle-pineau.pdf) ;
+sources dans [`report/`](report/)).
+
 En 2018, Joelle Pineau a montré, à ICLR puis à NeurIPS, seize failles qui rendaient peu crédibles
 les résultats de l'apprentissage par renforcement profond (RL). Parmi elles : du code absent, des
 réglages tus, des méthodes concurrentes mal réglées, trop peu d'essais, aucun test statistique,
@@ -14,13 +19,16 @@ reproductible, réutilisable et robuste. Ce dépôt mesure, faille par faille, c
 Il s'applique les trois mêmes mots : chaque chiffre du document revient d'une seule commande, chaque
 pièce resservira sur d'autres articles ou d'autres essais, des tests gardent les calculs.
 
-**État au 21 novembre 2026.** Les expériences sont finies, consolidation comprise : vingt graines
-aléatoires par algorithme et par tâche au lieu de dix, cinq graines aléatoires par configuration de
-GRPO au lieu de trois. Les deux extensions sont inscrites dans les protocoles avant tout nouvel essai
-(écart 12 de `sim/SIM_PROTOCOL.md`, calculé selon son écart 20 ; écart 14 de `sim/llm/LLM_PROTOCOL.md`,
-clos par son écart 16). Comme le protocole l'a fixé d'avance, les résultats à dix graines restent les
-résultats principaux. Le document donne à côté ceux de vingt graines et dit chaque divergence. Les
-chiffres ci-dessous viennent du document.
+**État.** La version 1.0 du rapport technique est datée du 24 novembre 2026. Quatre expériences,
+inscrites dans les protocoles avant leur lancement, tournent encore : pourquoi les deux programmations
+de PPO divergent (160 entraînements), le déterminisme de SAC et de CrossQ, une relance de GRPO sur dix
+graines aléatoires et une relecture humaine à l'aveugle de trente articles (section 8.5 du rapport).
+Leurs résultats viendront dans un addendum, quels qu'ils soient. La consolidation est finie : vingt
+graines aléatoires par algorithme et par tâche au lieu de dix, cinq graines aléatoires par configuration
+de GRPO au lieu de trois (écart 12 de `sim/SIM_PROTOCOL.md`, écart 14 de `sim/llm/LLM_PROTOCOL.md`).
+Comme le protocole l'a fixé d'avance, les résultats à dix graines restent les résultats principaux ; le
+rapport donne à côté ceux de vingt graines et dit chaque divergence. Les chiffres ci-dessous viennent du
+rapport.
 
 **Ce qu'un lecteur peut vérifier, et ce qui repose sur notre parole.** Les protocoles disent, pour chaque
 règle, si elle a été écrite avant ou après les résultats ; une relecture critique de ce dépôt a trouvé
@@ -54,15 +62,19 @@ commités, et chaque décision du sondage, face à la citation et à la page sur
   mène sur les quatre tâches. Une physique modifiée
   de 20 % bouleverse le classement sur Hopper : le premier y finit dernier (une description choisie
   après avoir vu les résultats, sans test : écart 11).
+- **Une recette publiée vieillit.** Les réglages que RL Baselines3 Zoo publie pour PPO sur Hopper,
+  relancés avec les bibliothèques d'aujourd'hui, donnent un robot qui tient debout sans avancer ; l'agent
+  que le Zoo a lui-même publié en 2022 avec les mêmes réglages court. Avec un facteur d'actualisation de
+  0,99 au lieu de 0,999, la recette fait de nouveau courir le robot.
 - **Les modèles de langue.** Dans notre GRPO écrit à la main, une part du gain mesuré vient des
   réponses coupées à 160 jetons, une leçon que la récompense au hasard n'enseigne jamais. Avec cinq
   graines aléatoires, l'intervalle du gain moyen de Qwen avec la vraie récompense contient zéro
   (+14 points, de −3 à +34) : le gain repose sur les deux essais faits sur GPU. Le matériel et la
   graine aléatoire y ont changé ensemble.
 
-L'argument complet, avec chaque source : [`docs/conclusions.md`](docs/conclusions.md)
-([PDF](docs/conclusions.pdf)) ; en anglais, [`docs/conclusions-en.md`](docs/conclusions-en.md)
-([PDF](docs/conclusions-en.pdf)).
+L'argument complet est le rapport technique ci-dessus. Une version plus courte, avec chaque source :
+[`docs/conclusions.md`](docs/conclusions.md) ([PDF](docs/conclusions.pdf)) ; en anglais,
+[`docs/conclusions-en.md`](docs/conclusions-en.md) ([PDF](docs/conclusions-en.pdf)).
 
 ## Deux instruments
 
@@ -86,7 +98,7 @@ résultats, nos propres erreurs comprises.
 
 | Chemin | Contenu |
 |---|---|
-| `docs/` | Le document en deux langues, sa bibliographie, ses figures (`docs/figures/build.py`) et `check_numbers.py`, qui recalcule 188 chiffres clés des deux textes à partir des fichiers de résultats. |
+| `docs/` | Le document en deux langues, sa bibliographie, ses figures (`docs/figures/build.py`) et `check_numbers.py`, qui recalcule 189 chiffres clés des deux textes à partir des fichiers de résultats. |
 | `study/PROTOCOL.md`, `study/GRILLE.md` | Le protocole du sondage et la fiche des lecteurs avec les deux grilles (traductions anglaises : suffixe `-en`). |
 | `study/codes/`, `study/codes_v2/` | Un fichier JSON par article et par lecteur : une décision par critère, avec citation et page. |
 | `study/*.py`, `study/*.json` | Les tirages, les analyses (intervalles de Wilson, différences de Newcombe, Fisher, Holm, Cochran-Armitage) et leurs résultats. |
@@ -117,7 +129,7 @@ make verify
 ```
 
 `make verify` relance les neuf analyses du sondage, les analyses des expériences (seize à dix
-graines aléatoires, treize de plus pour l'écart 12) et le bilan de GRPO, vérifie les 188 chiffres
+graines aléatoires, treize de plus pour l'écart 12) et le bilan de GRPO, vérifie les 189 chiffres
 des deux textes et chaque nombre de l'article de blog (`make check`), passe les tests unitaires
 (`make test`), puis demande à git si chaque fichier JSON est revenu octet pour octet. Sur le M2 Max,
 saturé en même temps par des entraînements, la séquence entière a pris environ 45 minutes ; E1,

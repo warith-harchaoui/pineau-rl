@@ -6,6 +6,11 @@
 [deraison.ai/en/blog/listen-to-joelle-pineau](https://deraison.ai/en/blog/listen-to-joelle-pineau)
 (in French: [deraison.ai/blog/ecouter-joelle-pineau](https://deraison.ai/blog/ecouter-joelle-pineau)).
 
+**The technical report**, the reference document with every number, interval and limit:
+[PDF in English](https://deraison.ai/assets/pdf/reinforcement-learning-did-we-listen-to-joelle-pineau.pdf)
+([in French](https://deraison.ai/assets/pdf/apprentissage-par-renforcement-a-t-on-ecoute-joelle-pineau.pdf);
+sources in [`report/`](report/)).
+
 In 2018, at ICLR and then at NeurIPS, Joelle Pineau showed sixteen flaws that made results in deep
 reinforcement learning (RL) hard to believe. Among them: missing code, unreported settings,
 competing methods tuned less carefully, too few runs, no statistical test, evaluation on the
@@ -14,13 +19,15 @@ repository measures, flaw by flaw, what has changed since. It holds itself to th
 every number of the document comes back with one command, each piece serves again on other papers
 or other runs, tests guard the computations.
 
-**Status on 21 November 2026.** The experiments are finished, consolidation included: twenty random
-seeds per algorithm and task instead of ten, five random seeds per GRPO configuration instead of three.
-Both extensions were written into the protocols before any new run (deviation 12 of
-`sim/SIM_PROTOCOL-en.md`, computed under its deviation 20; deviation 14 of `sim/llm/LLM_PROTOCOL-en.md`,
-closed by its deviation 16). As the protocol set in advance, the ten-seed results stay the main ones.
-The document gives the twenty-seed results next to them and states every divergence. The figures below
-come from the document.
+**Status.** Version 1.0 of the technical report is dated 24 November 2026. Four experiments, written
+into the protocols before they started, are still running: why the two PPO implementations diverge
+(160 runs), the determinism of SAC and CrossQ, a GRPO rerun on ten random seeds, and a blind human
+rereading of thirty papers (section 8.5 of the report). Their results will come as an addendum, whatever
+they are. The consolidation is finished: twenty random seeds per algorithm and task instead of ten, five
+random seeds per GRPO configuration instead of three (deviation 12 of `sim/SIM_PROTOCOL-en.md`, deviation
+14 of `sim/llm/LLM_PROTOCOL-en.md`). As the protocol set in advance, the ten-seed results stay the main
+ones; the report gives the twenty-seed results next to them and states every divergence. The figures
+below come from the report.
 
 **What a reader can check, and what rests on our word.** The protocols say, for each rule, whether it was
 written before or after the results; a critical review of this repository found several of those statements
@@ -51,14 +58,18 @@ recomputed from the committed results, and every survey decision against the quo
   tasks. Physics modified by 20%
   upends the ranking on Hopper: the leader ends last (a description chosen after seeing the results,
   with no test: deviation 11).
+- **A published recipe ages.** The settings RL Baselines3 Zoo publishes for PPO on Hopper, rerun with
+  today's libraries, give a robot that stands upright without moving forward; the agent the Zoo itself
+  published in 2022 with the same settings runs. With a discount factor of 0.99 instead of 0.999, the
+  recipe makes the robot run again.
 - **Language models.** In our hand-written GRPO, part of the measured gain comes from answers cut off
   at 160 tokens, a lesson the random reward never teaches. With five random seeds, the interval of
   Qwen's mean gain with the true reward contains zero (+14 points, from −3 to +34): the gain rests on
   the two runs made on the GPU. Hardware and random seed changed together.
 
-The full argument, with every source: [`docs/conclusions-en.md`](docs/conclusions-en.md)
-([PDF](docs/conclusions-en.pdf)); in French, [`docs/conclusions.md`](docs/conclusions.md)
-([PDF](docs/conclusions.pdf)).
+The full argument is the technical report above. A shorter version, with every source:
+[`docs/conclusions-en.md`](docs/conclusions-en.md) ([PDF](docs/conclusions-en.pdf)); in French,
+[`docs/conclusions.md`](docs/conclusions.md) ([PDF](docs/conclusions.pdf)).
 
 ## Two instruments
 
@@ -80,7 +91,7 @@ stays in the results, our own mistakes included.
 
 | Path | Contents |
 |---|---|
-| `docs/` | The document in two languages, its bibliography, its figures (`docs/figures/build.py`) and `check_numbers.py`, which recomputes 188 key numbers of both texts from the result files. |
+| `docs/` | The document in two languages, its bibliography, its figures (`docs/figures/build.py`) and `check_numbers.py`, which recomputes 189 key numbers of both texts from the result files. |
 | `study/PROTOCOL-en.md`, `study/GRILLE-en.md` | The survey protocol; the readers' sheet with both grids (French originals without `-en`). |
 | `study/codes/`, `study/codes_v2/` | One JSON file per paper and per reader: one decision per criterion, with quote and page. |
 | `study/*.py`, `study/*.json` | The draws, the analyses (Wilson intervals, Newcombe differences, Fisher, Holm, Cochran-Armitage) and their results. |
@@ -111,7 +122,7 @@ make verify
 ```
 
 `make verify` reruns the nine survey analyses, the experiment analyses (sixteen at ten random seeds,
-thirteen more for deviation 12) and the GRPO summary, checks the 188 numbers of both texts and every
+thirteen more for deviation 12) and the GRPO summary, checks the 189 numbers of both texts and every
 number of the blog article (`make check`), runs the unit tests (`make test`), then asks git
 whether every JSON file came back byte for byte. On the M2 Max, saturated by training runs at the
 same time, the whole sequence took about 45 minutes; E1, B1, B3 and E2, with their tens of thousands of
