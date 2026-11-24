@@ -32,7 +32,7 @@ lectures. Les quatre hausses passent la correction de Holm, la règle usuelle qu
 critères à la fois. Celle de l'incertitude rapportée est la plus fragile. Elle échoue à la correction
 quand on retire les deux articles de la comparaison lus en partie par un autre modèle
 ($p_{\text{Holm}} = 0{,}07$). Huit lecteurs neufs, qui lisent chacun les deux années, confirment les trois
-autres hausses et lui laissent son sens sans l'établir. Un lecteur d'une autre famille de modèles,
+autres hausses et trouvent pour l'incertitude une hausse de même sens, sans qu'elle passe le seuil. Un lecteur d'une autre famille de modèles,
 \texttt{gemma3:12b}, retrouve le sens des quatre hausses. Quand ses \enquote{oui} sans citation
 retrouvée comptent \enquote{non}, la hausse de l'incertitude n'est plus établie ($+7$ points, de $-9$
 à $+23$). La barre d'erreur s'est d'ailleurs répandue plus vite que la barre calculée sur des graines
@@ -62,7 +62,7 @@ Sur Qwen, avec cinq graines aléatoires, GRPO gagne $+14$ points de pass@1, la p
 parmi huit tirées par problème, avec un intervalle de $-3$ à $+34$ qui contient zéro. Ce gain apparent
 vient de réponses plus courtes : la part des réponses coupées à 160 jetons tombe de 75~\% à 6~\%, la
 justesse des réponses finies ne monte pas. Sur Llama, le pass@1 monte de 6 points pendant que la
-justesse gloutonne en perd 43. Une relance à dix graines aléatoires est en cours.
+justesse gloutonne en perd 43.
 
 \paragraph{Code et données}
 Dépôt \repo{} (BSD 3-Clause) : protocoles et lectures citées (\file{study/}), entraînements (\file{sim/}),

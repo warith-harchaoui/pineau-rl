@@ -471,11 +471,7 @@ This strand establishes four facts, for two small models, one multiplication tas
   \item In Qwen, the whole pass@1 gain is a gain in brevity, since the finished accuracy does not rise.
 \end{itemize}
 Two defects of our own weigh on these facts: Qwen's repetition penalty and a pilot that read the test
-set. With five random seeds, no gain can be established within a configuration. A rerun corrects these
-defects: repetition penalty at 1, pilot kept off the
-test set, ten random seeds per configuration on the GPU alone, verdicts kept per problem and a greedy
-answer at 512 tokens, which the length limit does not touch. It is still running and has produced no
-result.
+set. With five random seeds, no gain can be established within a configuration. 
 
 The strand establishes neither the effect of GRPO at the scale of the papers nor the absence of the
 effect of \textcite{shao2025spurious} on larger models or on models specialised in mathematics. It does

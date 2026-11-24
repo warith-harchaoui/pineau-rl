@@ -292,9 +292,9 @@ The \file{Makefile} trains nothing. Training goes through \file{sim/run.py}, \fi
   \item[\texttt{make hyperparams}] reads the settings of the five programs back from the libraries of the
         training environment and writes \file{sim/analysis/hyperparams.json}. This target stays
         outside \texttt{verify}, which runs in the analysis environment.
-  \item[\texttt{make analysis-suite}] runs the three analyses written in advance for the experiments
-        not yet finished (\cref{sec:val-en-cours}). Their JSON files enter the verification only once their
-        training runs have finished.
+  \item[\texttt{make analysis-suite}] runs the analyses written in advance for three complementary experiments
+        (\file{e6\_gamma.py}, \file{c6\_determinism.py}, \file{c2.py}). Each writes its JSON file only once
+        its training runs have finished.
   \item[\texttt{make check}] runs the two checking scripts of \cref{sec:verification}.
   \item[\texttt{make test}] runs the unit tests with pytest.
   \item[\texttt{make lint}] runs ruff and mypy on the package and the tests.
@@ -422,8 +422,8 @@ All runs ran on one laptop, a Mac with an Apple M2 Max chip under macOS 27.2 (ar
 with other projects. Each simulation training runs on a single thread. The number of jobs in
 parallel followed the load of the machine: four cores at the start, up to eight granted every hour,
 then two cores for the whole project. This sharing leaves the results untouched as long as a run
-depends on its random seed alone: the relaunches check it for PPO, an experiment in progress tests it
-for SAC and CrossQ (\cref{sec:registres,sec:val-en-cours}). \Cref{sec:calcul} describes the launchers, the watchdog and the job queue.
+depends on its random seed alone: the relaunches check it for PPO; for SAC and CrossQ, we have not checked it
+(\cref{sec:registres}). \Cref{sec:calcul} describes the launchers, the watchdog and the job queue.
 \Cref{tab:calcul} gives, per program and per task, the number of runs, the number of steps, the
 median wall-clock time of a run and the sum of these times.
 
@@ -444,8 +444,7 @@ number, start, end, outcome, score seen before the relaunch and evidence. It cou
 with 42 stopped attempts and no crashed one. Every stop hit all the runs in progress at once. No run
 was relaunched or set aside after its final score was known. For PPO PyTorch and PPO JAX, the
 relaunches reproduce exactly the evaluation points of the stopped attempts. For SAC and CrossQ, the
-stopped curves were overwritten: three training runs redone identically test this point
-(\cref{sec:val-en-cours}).
+stopped curves were overwritten: we cannot show it.
 
 For the later training runs, the launcher \file{queue.sh} keeps one log per attempt, never
 overwritten. It appends each attempt to the register \file{sim/logs/attempts.jsonl}: start, end, exit

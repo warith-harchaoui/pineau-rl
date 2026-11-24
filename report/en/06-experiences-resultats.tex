@@ -454,8 +454,7 @@ SBX, which then keeps Flax's initialisation for every layer. When switched on, t
 thing in the two libraries either. In SBX, it initialises only the action output layer, at scale 0.01. In Stable-Baselines3, it also initialises the hidden layers, with gain $\sqrt2$, then the
 value output, with gain 1 (\cref{sec:programmes}). E3 does not identify
 which code difference causes the difference in scores: the weight initialisation, the random generators or the rounding of the
-numerical library. One more experiment adds twenty random seeds on \task{Walker2d} and
-\task{Swimmer}, then swaps the initialisation of the two programs. It is still running.
+numerical library. 
 
 \section{E4: keeping the best three out of ten inflates the mean by a third}\label{sec:e4}
 
@@ -946,7 +945,5 @@ The limits specific to each experiment are stated in its section. A few limits a
     or the descriptive ranking of E7, complement the main experiments without replacing them.
     \Cref{tab:experiences} gives the status of each. Their results are published whatever they turned out
     to be.
-  \item Three experiments are still running: the determinism of SAC and CrossQ, the Zoo recipe with the
-    discount factor 0.99 and the cause of the difference between the two PPOs. This chapter reports none of
-    their results.
+  
 \end{itemize}

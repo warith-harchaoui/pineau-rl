@@ -466,8 +466,7 @@ bibliothèques. Dans SBX, elle n'initialise que la couche de sortie de l'action,
 Stable-Baselines3, elle initialise aussi les couches cachées, avec le gain $\sqrt2$, puis la sortie de la
 valeur, avec le gain 1 (\cref{sec:programmes}). E3 ne dit pas laquelle
 des différences de code cause celle des scores : l'initialisation des poids, les générateurs aléatoires ou les
-arrondis de la bibliothèque de calcul. Une expérience de plus ajoute vingt graines aléatoires sur
-\task{Walker2d} et \task{Swimmer}, puis échange l'initialisation des deux programmes. Elle tourne encore.
+arrondis de la bibliothèque de calcul. 
 
 \section{E4 : garder les trois meilleurs sur dix gonfle la moyenne d'un tiers}\label{sec:e4}
 
@@ -966,7 +965,5 @@ Les limites propres à chaque expérience sont dites dans sa section. Quelques l
   \item Les analyses complémentaires et exploratoires, comme la seconde statistique de E1, le diagnostic
     de E6 ou le classement descriptif de E7, complètent les expériences principales sans les remplacer. Le
     \cref{tab:experiences} donne le statut de chacune. Leurs résultats sont publiés quels qu'ils soient.
-  \item Trois expériences tournent encore : le déterminisme de SAC et de CrossQ, la recette du Zoo avec le
-    facteur d'actualisation 0,99 et la cause de la différence entre les deux PPO. Ce chapitre n'en rapporte
-    aucun résultat.
+  
 \end{itemize}

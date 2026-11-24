@@ -86,8 +86,7 @@ parce que celle-ci détruit le modèle. Sous la vraie récompense, Llama perd en
 pass@8 dans chacune des cinq graines aléatoires, alors que son pass@1 monte un peu. Chez Qwen, le gain
 de pass@1 s'explique par la fin des réponses coupées : la justesse des réponses finies ne monte pas.
 Qwen a de plus tourné avec une pénalité de répétition que Llama n'avait pas
-(\cref{chap:07-modeles-de-langue}). Une relance de dix graines aléatoires par configuration
-attend le GPU (\cref{sec:val-en-cours}).
+(\cref{chap:07-modeles-de-langue}). 
 
 \section{Recommandations}
 \label{sec:recommandations}
@@ -198,15 +197,13 @@ d'une courbe empilés, ne mesure pas la variabilité entre entraînements.
   \item \textbf{Une lecture, avec la même grille, des articles qui appliquent ce qu'ils appellent RL
         à de grands modèles de langue}, sur un échantillon de taille comparable, dirait si
         l'évaluation tenue à part, qui y progresse, s'accompagne des autres pratiques.
-  \item \textbf{La relecture humaine à l'aveugle.} Trente articles, quinze par année, attendent notre
-        lecture à l'aveugle. Le script qui la comparera aux agents est écrit et refuse de
-        tourner avant que les trente feuilles soient remplies.
+  \item \textbf{Une relecture humaine à l'aveugle} de trente articles, quinze par année, mesurerait l'écart
+        entre les agents et un lecteur humain.
   \item \textbf{Un nouvel entraînement complet sur une autre plateforme}, Linux sur x86-64,
         testerait les statistiques de nos expériences avec d'autres tirages (\cref{sec:reentrainer}).
   \item \textbf{D'autres familles de tâches} que la locomotion MuJoCo : jeux à images, RL hors
         ligne, robotique réelle, où les conclusions de E2 à E7 restent à éprouver.
-  \item \textbf{Le volet GRPO à plus grande échelle.} Si la relance à dix graines aléatoires établit
-        son contraste, le même protocole sur des modèles de 7 milliards de paramètres rapprocherait le
+  \item \textbf{Le volet GRPO à plus grande échelle.} Si une relance à dix graines aléatoires établissait son contraste, le même protocole sur des modèles de 7 milliards de paramètres rapprocherait le
         volet de \textcite{shao2025spurious}.
 \end{itemize}
 

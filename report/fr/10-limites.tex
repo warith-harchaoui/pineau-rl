@@ -6,9 +6,8 @@ range selon les quatre familles de menaces de \textcite{shadish2002experimental}
 interne demande si l'effet mesuré vient bien de la cause supposée. La validité externe demande à
 quelles populations, tâches et conditions le résultat s'étend. La validité de construit demande si
 la mesure saisit la notion qu'elle prétend saisir. La validité de la conclusion statistique demande
-si les tests et les intervalles autorisent la conclusion tirée. Deux sections finissent le chapitre :
-les expériences pas encore finies, puis ce que testerait un nouvel entraînement complet sur une
-autre machine.
+si les tests et les intervalles autorisent la conclusion tirée. Une section finit le chapitre : ce que testerait un nouvel
+entraînement complet sur une autre machine.
 
 \section{Validité interne}
 \label{sec:val-interne}
@@ -121,8 +120,8 @@ des fichiers commités.
 
 Le registre des tentatives compte 42 tentatives arrêtées (\cref{sec:registres}). Chaque arrêt a
 frappé tous les essais en cours à la fois, sans lien avec un score. Pour SAC et CrossQ, les courbes
-des tentatives arrêtées ont été écrasées : nous ne pouvons pas encore montrer que la relance retrouve
-la même courbe, ce que testent trois entraînements refaits à l'identique (\cref{sec:val-en-cours}).
+des tentatives arrêtées ont été écrasées : nous ne pouvons pas montrer que la relance retrouve
+la même courbe.
 Tous les entraînements ont tourné avec Stable-Baselines3 2.9.2, la même version pour tous les essais.
 Ces faits ne favorisent aucun programme.
 
@@ -144,7 +143,7 @@ Trois défauts du volet GRPO touchent la cause des effets mesurés.
   \item \textbf{Le pilote a lu le jeu de test.} La tâche et le plafond de 160 jetons ont été choisis
         en regardant les problèmes de test. Aucun entraînement n'a vu ce jeu.
 \end{itemize}
-La relance GRPO corrige les trois défauts (\cref{sec:val-en-cours}).
+
 
 \Needspace*{8\baselineskip}
 \section{Validité externe}
@@ -262,8 +261,7 @@ expérience et ne la réfute pas.
         partagent leurs hyperparamètres d'algorithme, pas leur initialisation par défaut :
         Stable-Baselines3 initialise toutes les couches de façon orthogonale, alors que sbx laisse son
         option orthogonale désactivée et garde l'initialisation par défaut de Flax
-        (\cref{sec:programmes}). Une expérience en cours teste si cette différence explique E3
-        (\cref{sec:val-en-cours}).
+        (\cref{sec:programmes}). Nous ne savons pas si cette différence explique E3.
   \item \textbf{Le pass@1 du volet GRPO} mêle justesse et concision, puisqu'une réponse coupée
         compte pour fausse (\cref{sec:llm-coupure}). Chez Qwen, le gain de pass@1 sous vraie
         récompense s'explique tout entier par la baisse des réponses coupées. La justesse des
@@ -339,24 +337,6 @@ que l'effet est nul.
 NumPy et de l'ordre des appels. Leurs bornes bougent avec la graine aléatoire du bootstrap, de
 l'ordre du bruit de Monte-Carlo : un verdict dont la borne frôle le seuil
 est fragile.
-
-\section{Les expériences pas encore finies}
-\label{sec:val-en-cours}
-
-Quatre expériences sont écrites d'avance et pas encore finies. Le rapport n'en
-donne aucun résultat. Une cinquième, la recette du Zoo avec $\gamma = 0{,}99$, est finie : son résultat est
-dans la \cref{sec:e6}. Chacune répond à une limite de ce chapitre. Le surveillant a
-arrêté une fois la file des simulations sur une alerte de mémoire, puis la file a repris.
-\begin{itemize}
-  \item \textbf{Le déterminisme de SAC et de CrossQ} : trois
-        entraînements refaits à l'identique diront si ces programmes JAX redonnent le même essai.
-  \item \textbf{La cause de l'écart entre les deux PPO} : 160
-        entraînements ajoutent de la puissance à E3 et échangent l'initialisation orthogonale.
-  \item \textbf{La relecture humaine} : nous relirons nous-mêmes à l'aveugle trente
-        articles des deux années. Les trente feuilles attendent encore leur lecteur.
-  \item \textbf{La relance GRPO} : 40 essais sur un seul appareil, sans
-        pénalité de répétition, avec un pilote hors du test, attendent que le GPU se libère.
-\end{itemize}
 
 \section{Ce que testerait un nouvel entraînement sur une autre machine}
 \label{sec:reentrainer}

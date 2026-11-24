@@ -296,9 +296,9 @@ Aucune cible n'entraîne quoi que ce soit. L'entraînement passe par \file{sim/r
   \item[\texttt{make hyperparams}] relit les réglages des cinq programmes dans les bibliothèques de
         l'environnement d'entraînement et écrit \file{sim/analysis/hyperparams.json}. Cette cible
         reste hors de \texttt{verify}, qui tourne dans l'environnement d'analyse.
-  \item[\texttt{make analysis-suite}] lance les trois analyses écrites d'avance pour les expériences pas
-        encore finies (\cref{sec:val-en-cours}). Leurs fichiers JSON n'entrent dans la vérification qu'une fois
-        leurs entraînements finis.
+  \item[\texttt{make analysis-suite}] lance les analyses écrites d'avance pour trois expériences complémentaires
+        (\file{e6\_gamma.py}, \file{c6\_determinism.py}, \file{c2.py}). Chacune n'écrit son fichier JSON
+        qu'une fois ses entraînements finis.
   \item[\texttt{make check}] lance les deux scripts de vérification de la \cref{sec:verification}.
   \item[\texttt{make test}] lance les tests unitaires avec pytest.
   \item[\texttt{make lint}] lance ruff et mypy sur le paquet et les tests.
@@ -432,8 +432,8 @@ Tous les essais ont tourné sur un seul ordinateur portable, un Mac à puce Appl
 27.2 (arm64), partagé avec d'autres projets. Chaque entraînement de simulation tourne sur un seul
 fil d'exécution. Le nombre de tâches en parallèle a suivi la charge de la machine : quatre cœurs au
 départ, jusqu'à huit accordés chaque heure, puis deux cœurs pour tout le projet. Ce partage ne touche
-pas les résultats tant qu'un essai ne dépend que de sa graine aléatoire : les relances le vérifient
-pour PPO, une expérience en cours le teste pour SAC et CrossQ (\cref{sec:registres,sec:val-en-cours}). La \cref{sec:calcul} décrit les lanceurs,
+pas les résultats tant qu'un essai ne dépend que de sa graine aléatoire : les relances le vérifient pour PPO ; pour SAC et CrossQ, nous ne l'avons pas vérifié
+(\cref{sec:registres}). La \cref{sec:calcul} décrit les lanceurs,
 le surveillant et la file d'attente. Le \cref{tab:calcul} donne, par programme et par tâche, le
 nombre d'essais, le nombre de pas, la durée murale médiane d'un essai et la somme de ces durées.
 
@@ -454,9 +454,7 @@ une ligne par tentative : algorithme, tâche, graine aléatoire, numéro de tent
 issue, score vu avant la relance et preuve. Il compte 292 lancements, dont 42 tentatives arrêtées et
 aucune plantée. Chaque arrêt a frappé tous les essais en cours à la fois. Aucun essai n'a été relancé
 ni écarté après que son score final était connu. Pour PPO PyTorch et PPO JAX, les relances
-retrouvent à l'identique les points d'évaluation des tentatives arrêtées. Pour SAC et CrossQ, les
-courbes arrêtées ont été écrasées : trois entraînements refaits à l'identique testent ce point
-(\cref{sec:val-en-cours}).
+retrouvent à l'identique les points d'évaluation des tentatives arrêtées. Pour SAC et CrossQ, les courbes arrêtées ont été écrasées : nous ne pouvons pas le montrer.
 
 Pour les entraînements suivants, le lanceur \file{queue.sh} garde un journal par tentative, jamais
 écrasé. Il ajoute chaque tentative au registre \file{sim/logs/attempts.jsonl} : début, fin, code de

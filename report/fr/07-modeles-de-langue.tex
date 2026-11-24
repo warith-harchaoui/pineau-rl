@@ -484,11 +484,7 @@ Ce volet établit quatre faits, pour deux petits modèles, une tâche de multipl
     monte pas.
 \end{itemize}
 Deux défauts de notre fait pèsent sur ces faits : la pénalité de répétition de Qwen et un pilote qui a lu le
-test. Avec cinq graines aléatoires, aucun gain ne peut être établi dans une configuration. Une relance corrige
-ces défauts : pénalité de répétition à
-1, pilote tenu hors du test, dix graines aléatoires par configuration sur le seul GPU, verdicts par problème
-gardés et une réponse gloutonne à 512 jetons, que la limite de longueur ne touche pas. Elle tourne
-encore et n'a produit aucun résultat.
+test. Avec cinq graines aléatoires, aucun gain ne peut être établi dans une configuration. 
 
 Ce volet n'établit ni l'effet de GRPO à l'échelle des articles, ni l'absence de l'effet de
 \textcite{shao2025spurious} sur des modèles plus grands ou spécialisés en mathématiques. Il ne

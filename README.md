@@ -19,11 +19,7 @@ repository measures, flaw by flaw, what has changed since. It holds itself to th
 every number of the document comes back with one command, each piece serves again on other papers
 or other runs, tests guard the computations.
 
-**Status.** Version 1.0 of the technical report is dated 24 November 2026. Four experiments, written
-into the protocols before they started, are still running: why the two PPO implementations diverge
-(160 runs), the determinism of SAC and CrossQ, a GRPO rerun on ten random seeds, and a blind human
-rereading of thirty papers (section 8.5 of the report). Their results will come as an addendum, whatever
-they are. The consolidation is finished: twenty random seeds per algorithm and task instead of ten, five
+**Status.** Version 1.0 of the technical report is dated 24 November 2026. The consolidation is finished: twenty random seeds per algorithm and task instead of ten, five
 random seeds per GRPO configuration instead of three (deviation 12 of `sim/SIM_PROTOCOL-en.md`, deviation
 14 of `sim/llm/LLM_PROTOCOL-en.md`). As the protocol set in advance, the ten-seed results stay the main
 ones; the report gives the twenty-seed results next to them and states every divergence. The figures

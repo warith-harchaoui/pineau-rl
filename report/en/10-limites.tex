@@ -6,8 +6,8 @@ them into the four families of threats of \textcite{shadish2002experimental}. In
 whether the measured effect really comes from the presumed cause. External validity asks to which
 populations, tasks and conditions the result extends. Construct validity asks whether the measure
 captures the notion it claims to capture. Statistical conclusion validity asks whether the tests and
-intervals license the conclusion drawn. Two sections close the chapter: the experiments not yet
-finished, then what a new complete training run on another machine would test.
+intervals license the conclusion drawn. One section closes the chapter: what a new complete
+training run on another machine would test.
 
 \section{Internal validity}
 \label{sec:val-interne}
@@ -117,8 +117,8 @@ rejects an exploratory analysis can redo every computation without it from the c
 
 The register of attempts counts 42 stopped attempts (\cref{sec:registres}). Every stop hit all the
 runs in progress at once, with no link to a score. For SAC and CrossQ, the curves of the stopped
-attempts were overwritten: we cannot yet show that the relaunch reproduces the same curve, which
-three training runs redone identically test (\cref{sec:val-en-cours}). Every training ran with
+attempts were overwritten: we cannot show that the relaunch reproduces the same
+curve. Every training ran with
 Stable-Baselines3 2.9.2, the same version for all runs. These facts favour no program.
 
 \subsection{The GRPO strand}
@@ -140,7 +140,7 @@ Three defects of the GRPO strand affect the cause of the measured effects.
   \item \textbf{The pilot read the test set.} The task and the 160-token ceiling were chosen by
         looking at the test problems. No training saw that set.
 \end{itemize}
-The GRPO rerun corrects all three defects (\cref{sec:val-en-cours}).
+
 
 \Needspace*{8\baselineskip}
 \section{External validity}
@@ -250,8 +250,8 @@ MATH-500, with far more compute. Our strand neither replicates nor refutes their
   \item \textbf{E3 compares two programs, not two implementations of one algorithm.} The two PPOs
         share their algorithm hyperparameters, not their default initialisation: Stable-Baselines3
         initialises every layer orthogonally, while sbx leaves its orthogonal option off and keeps
-        Flax's default initialisation (\cref{sec:programmes}). An experiment still running tests
-        whether this difference explains E3 (\cref{sec:val-en-cours}).
+        Flax's default initialisation (\cref{sec:programmes}). We do not know whether this difference
+        explains E3.
   \item \textbf{The pass@1 of the GRPO strand} mixes correctness and concision, since a truncated
         answer counts as wrong (\cref{sec:llm-coupure}). For Qwen, the pass@1 gain under the true
         reward is explained entirely by the drop in truncated answers. The accuracy of finished
@@ -322,24 +322,6 @@ the effect is zero.
 \paragraph{The bootstrap intervals} The rliable intervals depend on NumPy's global generator and on
 the order of the calls. Their bounds move with the random seed of the bootstrap, at the level of Monte
 Carlo noise: a verdict whose bound grazes the threshold is fragile.
-
-\section{The experiments not yet finished}
-\label{sec:val-en-cours}
-
-Four experiments are written in advance and not yet finished. The report gives
-no result for any of them. A fifth, the Zoo recipe with $\gamma = 0.99$, is finished: its result is in
-\cref{sec:e6}. Each answers a limitation of this chapter. The watchdog stopped
-the simulation queue once on a memory alert, then the queue resumed.
-\begin{itemize}
-  \item \textbf{The determinism of SAC and CrossQ}: three training runs
-        repeated identically will tell whether these JAX programs give the same run again.
-  \item \textbf{The cause of the gap between the two PPOs}: 160 training
-        runs add power to E3 and swap the orthogonal initialisation.
-  \item \textbf{The human rereading}: we will reread ourselves thirty papers of
-        both years blind. The thirty sheets still await their reader.
-  \item \textbf{The GRPO rerun}: 40 runs on a single device, with
-        no repetition penalty and a pilot kept out of the test set, wait for the GPU to become free.
-\end{itemize}
 
 \section{What a new training run on another machine would test}
 \label{sec:reentrainer}

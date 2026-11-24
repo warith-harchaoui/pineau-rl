@@ -85,8 +85,7 @@ Llama, the true reward does better than the randomly drawn reward, because the l
 model. Under the true reward, Llama loses greedy accuracy and pass@8 in each of the five random seeds,
 while its pass@1 rises slightly. For Qwen, the pass@1 gain is explained by the end of truncated
 answers: the accuracy of finished answers does not rise. Qwen also ran with a repetition penalty that
-Llama did not have (\cref{chap:07-modeles-de-langue}). A rerun of ten random seeds per configuration
-waits for the GPU (\cref{sec:val-en-cours}).
+Llama did not have (\cref{chap:07-modeles-de-langue}). 
 
 \section{Recommendations}
 \label{sec:recommandations}
@@ -196,15 +195,13 @@ curve, does not measure the variability between training runs.
   \item \textbf{The papers that apply what they call RL to large language models, read with the same
         grid} on a sample of comparable size, would tell whether held-out evaluation, which is
         progressing there, comes with the other practices.
-  \item \textbf{The blind human rereading.} Thirty papers, fifteen per year, await our
-        blind reading. The script that will compare it with the agents is written and refuses
-        to run until all thirty sheets are filled.
+  \item \textbf{A blind human rereading} of thirty papers, fifteen per year, would measure the gap between
+        the agents and a human reader.
   \item \textbf{A new complete training run on another platform}, Linux on x86-64, would test the
         statistics of our experiments with other draws (\cref{sec:reentrainer}).
   \item \textbf{Other families of tasks} than MuJoCo locomotion: image-based games, offline RL, real
         robotics, where the conclusions of E2 to E7 have yet to be tested.
-  \item \textbf{The GRPO strand at a larger scale.} If the rerun with ten random seeds establishes
-        its contrast, the same protocol on 7-billion-parameter models would bring the strand closer to
+  \item \textbf{The GRPO strand at a larger scale.} If a rerun with ten random seeds established its contrast, the same protocol on 7-billion-parameter models would bring the strand closer to
         \textcite{shao2025spurious}.
 \end{itemize}
 

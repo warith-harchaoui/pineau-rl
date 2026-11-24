@@ -254,7 +254,7 @@ initialisation of the networks, the initial positions of the simulated body, the
 the batches drawn from the replay buffer. \file{sim/run.py} passes it to the constructor of the program
 (\texttt{seed=SEED}), which derives from it the generators of NumPy, PyTorch or JAX and that of the training
 environment. For PPO PyTorch and PPO JAX, a relaunch with the same random seed on the same machine gave back
-the same evaluation points (\cref{sec:calcul}). For SAC and CrossQ, the check is under way
+the same evaluation points (\cref{sec:calcul}). For SAC and CrossQ, we have not checked it
 (\cref{sec:outils}).
 
 \paragraph{Training random seeds}
@@ -683,11 +683,7 @@ exploratory \\
 E6, speed & Is the plateau of the Zoo recipe a robot standing still? &
 Training logs, replay with speed, video, agent published by the Zoo. & those of E6 &
 exploratory \\
-Determinism & Does a relaunch of SAC and CrossQ give back the same run? &
-Three runs redone unchanged, compared point by point. & 3 runs & running \\
-PPO divergence & Does the initialisation explain the E3 difference? &
-On \task{Walker2d} and \task{Swimmer}, both PPOs at random seeds 20 to 39, then each with the other's
-initialisation option at random seeds 0 to 19. & 160 runs & running \\
+
 \end{longtable}
 }
 
@@ -1012,7 +1008,7 @@ grid, then two copies of \file{queue.sh} for the consolidation, then a ceiling s
 \file{scale.sh}, of eight cores at most, finally two cores for the whole project, the GRPO run on the
 processor included. Each run executes on a single thread,
 in its own process: the number of parallel jobs enters none of its computations. The PPO relaunches recover
-their evaluation points identically. For SAC and CrossQ, the check is under way.
+their evaluation points identically. For SAC and CrossQ, we have not checked it.
 
 \paragraph{Stops and relaunches}
 The reconstructed ledger \file{logs/attempts\_reconstructed.csv} counts 292~launches for the

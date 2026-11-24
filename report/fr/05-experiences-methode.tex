@@ -260,8 +260,8 @@ l'initialisation des réseaux, les positions initiales du corps simulé, le brui
 tirés dans la mémoire de rejeu. \file{sim/run.py} la passe au constructeur du programme
 (\texttt{seed=SEED}), qui en dérive les générateurs de NumPy, de PyTorch ou de JAX et celui de
 l'environnement d'entraînement. Pour PPO PyTorch et PPO JAX, une relance avec la même graine aléatoire sur la
-même machine a redonné les mêmes points d'évaluation (\cref{sec:calcul}). Pour SAC et CrossQ, la vérification
-est en cours (\cref{sec:outils}).
+même machine a redonné les mêmes points d'évaluation (\cref{sec:calcul}). Pour SAC et CrossQ, nous ne l'avons
+pas vérifié (\cref{sec:outils}).
 
 \paragraph{Graines aléatoires d'entraînement}
 Les graines aléatoires d'entraînement sont les entiers 0 à 29, fixés avant le premier entraînement :
@@ -699,11 +699,7 @@ exploratoire \\
 E6, vitesse & Le plateau de la recette du Zoo est-il un robot immobile ? &
 Journaux d'entraînement, rejeu avec la vitesse, vidéo, agent publié par le Zoo. & ceux de E6 &
 exploratoire \\
-Déterminisme & Une relance de SAC et CrossQ redonne-t-elle le même essai ? &
-Trois essais refaits à l'identique, comparés point par point. & 3 essais & en cours \\
-Divergence des PPO & L'initialisation explique-t-elle la différence de E3 ? &
-Sur \task{Walker2d} et \task{Swimmer}, les deux PPO aux graines aléatoires 20 à 39, puis chacun avec l'option
-d'initialisation de l'autre aux graines aléatoires 0 à 19. & 160 essais & en cours \\
+
 \end{longtable}
 }
 
@@ -1032,7 +1028,7 @@ grille principale, puis deux copies de \file{queue.sh} pour la consolidation, pu
 chaque heure par \file{scale.sh}, de huit cœurs au plus, enfin deux cœurs pour tout le projet, essai GRPO
 sur processeur compris. Chaque essai tourne sur un seul fil, dans son
 propre processus : le nombre de tâches parallèles n'entre dans aucun de ses calculs. Les relances de PPO
-retrouvent leurs points d'évaluation à l'identique. Pour SAC et CrossQ, la vérification est en cours.
+retrouvent leurs points d'évaluation à l'identique. Pour SAC et CrossQ, nous ne l'avons pas vérifié.
 
 \paragraph{Les arrêts et les relances}
 Le registre reconstruit \file{logs/attempts\_reconstructed.csv} compte 292~lancements pour les

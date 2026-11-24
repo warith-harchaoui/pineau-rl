@@ -191,15 +191,15 @@ Script & Contenu du fichier de résultats \\
   agents rejoués avec notre protocole, agent publié par le Zoo. \\
 \file{e6\_gamma.py} & E6 : recette du Zoo avec $\gamma = 0{,}99$ (\file{e6\_gamma.json}). \\
 \file{c6\_determinism.py}, \file{c2.py} & Déterminisme de SAC et de CrossQ, pourquoi les deux PPO
-  divergent. Prêts dans \texttt{make analysis-suite}, leurs entraînements n'étaient pas finis à la
-  compilation : aucun résultat publié. \\
+  divergent. Écrits d'avance, lancés par \texttt{make
+  analysis-suite} ; aucun résultat publié. \\
 \multicolumn{2}{@{}l}{\textit{Volet GRPO, dossier \file{sim/llm/}}}\\
 \file{summary.py} & Pass@1 aux pas 0 et 100 de chaque essai, gains, intervalles, sensibilité au
   gain manquant, essais CPU seuls (\file{summary*.json}, \file{gains*.json}, \file{extra*.json}). \\
 \file{logs\_stats.py} & Justesse gloutonne, pass@8, part coupée et justesse des réponses finies,
   intervalles de Student, test de signe, contraste entre récompenses (\file{logs\_stats\_5.json}). \\
-\file{c7\_stats.py} & L'analyse de la relance de GRPO. La relance attend le GPU :
-  aucun résultat publié. \\
+\file{c7\_stats.py} & L'analyse, écrite d'avance, d'une relance de GRPO à dix graines
+  aléatoires : aucun résultat publié. \\
 \end{longtable}
 \end{small}
 

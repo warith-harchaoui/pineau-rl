@@ -28,7 +28,8 @@ method, where she counted 90\%. The verdicts therefore compare our two readings.
 the Holm correction, the usual rule when several criteria are compared at once. The rise in reported
 uncertainty is the most fragile. It fails the correction once the two papers of the comparison read
 partly by another model are removed ($p_{\text{Holm}} = 0.07$). Eight fresh readers, each reading both
-years, confirm the other three rises and leave this one its direction without establishing it. A
+years, confirm the other three rises and find for uncertainty a rise in the same direction, without it
+passing the threshold. A
 reader from another model family, \texttt{gemma3:12b}, finds the direction of all four rises. When
 its \enquote{yes} answers without a quotation found in the paper count as \enquote{no}, the rise in
 uncertainty is no longer established ($+7$ points, from $-9$ to $+23$). The error bar has also spread
@@ -56,7 +57,7 @@ On Qwen, with five random seeds, GRPO gains $+14$ points of pass@1, the share of
 eight sampled per problem, with an interval from $-3$ to $+34$ that contains zero. This apparent gain
 comes from shorter answers: the share of answers cut off at 160 tokens falls from 75\% to 6\%, while
 the accuracy of finished answers does not rise. On Llama, pass@1 rises by 6 points while greedy
-accuracy loses 43. A rerun with ten random seeds is running.
+accuracy loses 43.
 
 \paragraph{Code and data}
 Repository \repo{} (BSD 3-Clause licence): protocols and quoted readings (\file{study/}), training runs
