@@ -2,16 +2,17 @@
 \addcontentsline{toc}{chapter}{Résumé}
 
 \paragraph{La question et la réponse}
-En 2018, à ICLR puis à NeurIPS, Joelle Pineau a montré pourquoi les résultats publiés en apprentissage
-par renforcement profond (RL) inspiraient peu confiance. Nous relevons seize failles dans ses deux
-conférences et demandons, pour chacune, si les articles de 2018 à 2026 l'ont corrigée. La réponse tient
-en une phrase : Joelle Pineau a été écoutée sur ce qui accompagne le résultat, beaucoup moins sur la
-façon de le juger. Dans le RL classique, le lien vers le code passe de 31~\% à 74~\% des articles,
-l'effet d'un réglage montré de 44~\% à 80~\%, le calcul chiffré de 27~\% à 58~\% et une incertitude
-rapportée de 63~\% à 88~\%. Le test statistique (de 6~\% à 12~\%), l'évaluation tenue à part du monde
-de l'entraînement (de 33~\% à 45~\%) et la version des bancs d'essai (de 23~\% à 26~\%) ne bougent pas
-de façon détectable. Le réglage des méthodes de référence ne montre aucun signe de progrès (35~\% puis
-29~\% des articles les décrivent avec tous leurs réglages).
+En 2018, Joelle Pineau a présenté aux congrès ICLR puis NeurIPS les raisons de se méfier des résultats
+publiés en apprentissage par renforcement profond (RL). Nous relevons seize failles dans ces deux
+conférences, et posons pour chacune la question de savoir si les articles de 2018 à 2026 l'ont
+corrigée. En résumé : on a écouté Joelle Pineau quand il s'agissait de ce qui accompagne le résultat,
+beaucoup moins quand il s'agissait de la façon de le juger. Dans le RL classique, la proportion
+d'articles donnant un lien vers le code s'élève de 31~\% à 74~\%, celle montrant l'effet d'un réglage
+passe de 44~\% à 80~\%, celle donnant le calcul chiffré de 27~\% à 58~\% et celle rapportant une
+incertitude de 63~\% à 88~\%. On ne note aucune hausse détectable pour le test statistique (de 6~\% à
+12~\%), l'évaluation tenue à part du monde de l'entraînement (de 33~\% à 45~\%) et la version des bancs
+d'essai (de 23~\% à 26~\%). On ne constate enfin aucun signe de progrès sur le réglage des méthodes de
+référence (35~\% puis 29~\% des articles les décrivent avec tous leurs réglages).
 
 \paragraph{La méthode}
 Deux instruments répondent. Le sondage relit des articles avec la grille de lecture de Pineau, complétée par sept critères tirés de
@@ -26,20 +27,17 @@ dix puis vingt graines aléatoires par programme et par tâche. Un volet entraî
 langue avec GRPO.
 
 \paragraph{Les résultats du sondage}
-Notre lecture de 2018 s'écarte des chiffres de Pineau : 55~\% des articles donnent tous les
-hyperparamètres de leur méthode, quand elle en comptait 90~\%. Les verdicts comparent donc nos deux
-lectures. Les quatre hausses passent la correction de Holm, la règle usuelle quand on compare plusieurs
-critères à la fois. Celle de l'incertitude rapportée est la plus fragile. Elle échoue à la correction
-quand on retire les deux articles de la comparaison lus en partie par un autre modèle
-($p_{\text{Holm}} = 0{,}07$). Huit lecteurs neufs, qui lisent chacun les deux années, confirment les trois
-autres hausses et trouvent pour l'incertitude une hausse de même sens, sans qu'elle passe le seuil. Un lecteur d'une autre famille de modèles,
-\texttt{gemma3:12b}, retrouve le sens des quatre hausses. Quand ses \enquote{oui} sans citation
-retrouvée comptent \enquote{non}, la hausse de l'incertitude n'est plus établie ($+7$ points, de $-9$
-à $+23$). La barre d'erreur s'est d'ailleurs répandue plus vite que la barre calculée sur des graines
-aléatoires indépendantes (35~\% puis 42~\% des articles, sans changement détectable). Les quatre
-pratiques montent lentement, sans saut après la liste de contrôle de NeurIPS de 2019. Avec une
-cinquantaine d'articles par année, le sondage ne détectait avec 80~\% de puissance que des hausses de
-18 à 30 points selon le critère : \enquote{aucun changement détectable} ne veut pas dire \enquote{aucun
+Selon notre lecture, en 2018, 55~\% des articles donnent tous les hyperparamètres de leur méthode, quand Pineau en comptait 90~\%. Les
+verdicts comparent donc nos deux lectures. Les quatre hausses passent la correction de Holm, appropriée pour des comparaisons multiples. La
+plus fragile est celle de l'incertitude rapportée. Elle échoue à la correction si l'on retire les deux articles de la comparaison lus en
+partie par un autre modèle ($p_{\text{Holm}} = 0{,}07$). Huit lecteurs neufs annotant les deux années confirment les trois autres hausses et
+retrouvent une hausse dans le même sens pour l'incertitude, mais qui ne passe pas le seuil. Un lecteur d'une autre famille de modèles
+(\texttt{gemma3:12b}) retrouve lui aussi le sens des quatre hausses. Si ses \enquote{oui} sans citation retrouvée comptent \enquote{non}, la
+hausse de l'incertitude n'est plus établie ($+7$ points, de $-9$ à $+23$). La barre d'erreur s'est d'ailleurs répandue plus vite que la barre
+calculée sur des graines aléatoires indépendantes (35~\% puis 42~\% des articles, sans changement détectable). Les quatre pratiques montent
+lentement, sans saut après la liste de contrôle de NeurIPS de 2019. Avec une cinquantaine d'articles par année, le sondage ne détectait avec
+80~\% de puissance que des hausses de 18 à 30 points selon le critère : \enquote{aucun changement détectable} ne veut pas dire
+\enquote{aucun
 changement}.
 
 \paragraph{Les résultats des expériences}
