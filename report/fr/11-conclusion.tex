@@ -11,13 +11,13 @@ calculée sur des graines aléatoires la suive de façon détectable. Le réglag
 référence ne montre aucun signe de progrès.
 \end{keybox}
 
-Cette réponse vaut pour le RL classique, lu par des agents IA sur cinquante articles de chaque
-côté, puis comparé à notre propre lecture de 2018 avec les mêmes grilles
-(\cref{chap:03-sondage-methode,chap:04-sondage-resultats}). Elle s'appuie aussi sur des expériences
-refaites avec les algorithmes de 2026
+Cette réponse concerne le RL classique. Des agents IA ont lu cinquante articles de chaque côté.
+Nous avons ensuite comparé à notre propre lecture de 2018, toujours avec les mêmes grilles
+(\cref{chap:03-sondage-methode,chap:04-sondage-resultats}). Nous avons de plus refait des
+expériences avec les algorithmes de 2026
 (\cref{chap:05-experiences-methode,chap:06-experiences-resultats,chap:07-modeles-de-langue}). Les
-nombres qui la fondent viennent de ces chapitres. Cette conclusion dit ce qu'ils établissent et
-renvoie à eux.
+chiffres qui suivent sont issus de ces chapitres. Nous nous bornons ici à résumer ce que chacun
+établit et renvoyons au chapitre concerné.
 
 \section{Ce que les mesures établissent}
 \label{sec:nombres}
@@ -41,15 +41,14 @@ barre calculée sur les entraînements indépendants (\cref{sec:sr-principale}).
 par année entre les deux dates, les quatre pratiques montent lentement, sans saut juste après la
 liste de contrôle que NeurIPS impose depuis 2019 (\cref{tab:trajectoire}).
 
-\paragraph{Le jugement du résultat a peu bougé} Le réglage des références stagne : les hyperparamètres des
-références donnés (Q4), le même soin de réglage annoncé (X4) et l'origine de leur code (Y5) ne
-montent pas. La version des bancs d'essai (Y7), la définition de la mesure de performance (Y1) et la
-sélection des meilleurs essais (X3) ne bougent pas non plus. Le test statistique, l'évaluation tenue
-à part, les hyperparamètres de la méthode et la façon de les choisir montent de 6 à 22 points selon
-le critère, sans qu'aucune de ces hausses ne passe la correction. Le sondage ne détectait avec
-80~\% de puissance qu'une hausse de 18 à 30 points selon le critère, de 26 à 39 après correction
-(\cref{sec:val-stat}) : il ne dit pas que ces pratiques
-stagnent, il dit qu'il ne peut pas le savoir.
+\paragraph{Le jugement du résultat a peu bougé} Le réglage des références stagne : hyperparamètres des références donnés (Q4), même soin de réglage
+annoncé (X4) et origine de leur code (Y5). La version des bancs d'essai (Y7), la définition de la
+mesure de performance (Y1) et la sélection des meilleurs essais (X3) restent constantes. Le test
+statistique, l'évaluation tenue à part, les hyperparamètres de la méthode et la façon de les choisir
+montent de 6 à 22 points selon le critère, aucune de ces hausses ne passant la correction. Avec une
+puissance de 80~\%, le sondage ne pouvait détecter qu'une hausse de 18 à 30 points selon le critère,
+et de 26 à 39 après correction (\cref{sec:val-stat}) : il ne dit pas que ces pratiques stagnent, il
+ne peut pas le savoir.
 
 \paragraph{Une case cochée ne garantit pas la pratique} Les 18 articles de NeurIPS 2025 qui répondent oui à la
 question de leur liste de contrôle sur la signification statistique n'appliquent aucun test. Sur le
@@ -75,9 +74,10 @@ Les deux écritures de PPO ne diffèrent de façon établie que sur \task{Swimme
 points de score (\cref{sec:e3}). Sous une physique modifiée de 20~\%, CrossQ bat chacun des trois
 autres programmes sur \task{Hopper}, à dix comme à vingt graines aléatoires. PPO JAX y perd contre SAC, qu'il battait en physique d'entraînement (\cref{sec:e7}).
 
-\paragraph{Une recette publiée a vieilli} Les agents entraînés avec la recette publiée par RL
-Baselines3 Zoo tiennent debout sur \task{Hopper} sans avancer. L'agent que le Zoo a lui-même publié
-en 2022, avec les mêmes réglages et une pile logicielle plus ancienne, avance et obtient un score proche de celui de nos agents par défaut. La recette marchait dans sa pile d'origine et a vieilli (\cref{sec:e6}).
+\paragraph{Une recette publiée a vieilli} Les agents entraînés avec la recette publiée par RL Baselines3 Zoo ne font que se tenir debout sur
+\task{Hopper}. L'agent que le Zoo a lui-même publié en 2022, avec les mêmes réglages mais une pile
+logicielle plus ancienne, avance et atteint un score voisin de celui de nos agents par défaut. La
+recette fonctionnait avec la pile d'origine et a vieilli (\cref{sec:e6}).
 
 \paragraph{Sur les modèles de langue, aucun gain de GRPO n'est établi} Avec cinq graines aléatoires, aucun gain à l'intérieur
 d'une configuration ne peut être établi, puisque le test exact de signe ne descend pas sous 0,0625.
@@ -105,10 +105,10 @@ vise et le résultat qui la justifie.
         failles F9 et F10).
   \item \textbf{Ne jamais trier ni sélectionner les essais.} Rapporter tous les essais, y compris
         ceux qui échouent. Dire ceux qui ont été exclus (E1, E4, critères X3 et Y6).
-  \item \textbf{Tester sur les graines aléatoires.} L'unité indépendante
-        est l'entraînement complet. Un test qui compte les épisodes déclare une différence entre
-        deux groupes du même code (B1, faille F11). La même règle vaut pour la barre d'erreur : en
-        2026, moins d'un article expérimental sur deux la calcule sur des graines aléatoires (X8).
+  \item \textbf{Tester sur les graines aléatoires.} L'entraînement complet est l'unité indépendante. Un
+        test qui dénombre les épisodes déclare une différence entre deux groupes du même code (B1, faille
+        F11). C'est la même chose pour la barre d'erreur : moins d'un article expérimental sur deux paru
+        en 2026 la calcule à partir de graines aléatoires (X8).
   \item \textbf{Montrer un intervalle à côté de chaque courbe et dire sur quoi il est calculé.}
         Nommer l'écart type, l'erreur type ou l'intervalle de confiance, puis la dispersion qu'il
         résume : 14 des 44 articles de 2026 qui tracent une barre ne disent pas sur quoi elle est
@@ -168,14 +168,14 @@ d'une courbe empilés, ne mesure pas la variabilité entre entraînements.
         signification statistique accepte des barres d'erreur \enquote{ou une autre information
         appropriée}. Les 18 articles de notre tirage qui y répondent oui n'appliquent aucun test. Une question qui
         demande l'unité du test et le nombre d'entraînements indépendants serait plus exigeante.
-  \item \textbf{Vérifier une case cochée sur un échantillon.} Des articles répondent oui sur le code
-        sans lien, sur le calcul sans chiffre. Un contrôle tiré au sort sur une part des articles
-        acceptés mesurerait l'écart entre déclaration et pratique.
+  \item \textbf{Vérifier une case cochée sur un échantillon.} Certains articles répondent oui sur le code
+        sans lien, ou sur le calcul sans chiffre. Un tirage au sort d'une fraction des articles acceptés
+        mesurerait l'écart entre ce qui est déclaré et ce qui est pratiqué.
   \item \textbf{Exiger le lien vers le code dans la version finale.} \enquote{Le code sera publié}
         ne vaut pas un lien. Un lien ajouté à la seule version arXiv échappe aux actes.
-  \item \textbf{Demander la version de chaque banc d'essai.} Elle n'a pas bougé de façon détectable
-        depuis 2018 (23~\% puis 26~\%), alors que les trois modèles d'IA agentique qui ont noté le
-        coût de chaque pratique (\cref{chap:04-sondage-resultats}) la jugent presque gratuite.
+  \item \textbf{Demander la version de chaque banc d'essai.} Elle n'a pas bougé de façon détectable depuis
+        2018 (23~\% puis 26~\%), quand les trois modèles d'IA agentique qui notent le coût de chaque
+        pratique (\cref{chap:04-sondage-resultats}) estiment qu'elle est presque gratuite.
   \item \textbf{Soutenir les défis de reproduction.} Le défi d'ICLR 2018 présenté par Pineau a montré
         qu'une reproduction par des tiers est faisable : parmi les participants qui ont répondu au
         sondage, 54,5~\% en ont reproduit une partie, 32,7~\% l'essentiel
@@ -202,7 +202,8 @@ d'une courbe empilés, ne mesure pas la variabilité entre entraînements.
   \item \textbf{Un nouvel entraînement complet sur une autre plateforme}, Linux sur x86-64,
         testerait les statistiques de nos expériences avec d'autres tirages (\cref{sec:reentrainer}).
   \item \textbf{D'autres familles de tâches} que la locomotion MuJoCo : jeux à images, RL hors
-        ligne, robotique réelle, où les conclusions de E2 à E7 restent à éprouver.
+        ligne, robotique réelle. Il reste à vérifier si les conclusions de E2 à E7 s'y
+        généralisent.
   \item \textbf{Le volet GRPO à plus grande échelle.} Si une relance à dix graines aléatoires établissait son contraste, le même protocole sur des modèles de 7 milliards de paramètres rapprocherait le
         volet de \textcite{shao2025spurious}.
 \end{itemize}
@@ -237,7 +238,7 @@ avant de s'en servir. Notre sondage montre que le RL a adopté les marques exté
 discipline, le code publié, le calcul déclaré, la barre d'erreur. La façon de juger un résultat a
 beaucoup moins changé : le nombre d'essais, le test statistique, l'évaluation tenue à part.
 
-Michael I. Jordan voit aussi l'IA comme un phénomène économique et social, fait de producteurs, de
-consommateurs et de gens qui décident dans quels domaines ils l'acceptent. Pour les programmes IA qui
-apprennent par essais et erreurs, leur confiance passera par des résultats que d'autres peuvent
+Michael I. Jordan voit aussi l'IA comme un phénomène économique et social. Il y a des producteurs,
+des consommateurs et ceux qui décident dans quels domaines ils l'acceptent. Pour les programmes IA
+qui apprennent par essais et erreurs, leur confiance passera par des résultats que d'autres peuvent
 refaire. Les méthodes existent. Un protocole écrit d'avance coûte peu à côté d'une conclusion fausse.
