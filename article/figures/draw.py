@@ -7,9 +7,9 @@ made once from the variable fonts of sprezzature-figures with fontTools; the dra
 Each figure exists in two widths: 760 px for a desktop column, 400 px for a phone. The same input always gives the
 same bytes.
 
-Two font sets, chosen by the environment variable DRAW_FONTS. The default, roboto, is the one above: the blog's.
-DRAW_FONTS=latex draws the same figures in Latin Modern, the fonts of the technical report (report/tools/figures.py
-sets it): Latin Modern Roman 12 bold for titles, Latin Modern Roman 10 for text (demibold where the Roboto set uses
+Two font sets, chosen by the environment variable DRAW_FONTS: roboto, the one above, and latex, the default since
+2026-11-26 (Warith: the blog's figures take the report's LaTeX fonts too). DRAW_FONTS=latex draws the figures in
+Latin Modern, the fonts of the technical report: Latin Modern Roman 12 bold for titles, Latin Modern Roman 10 for text (demibold where the Roboto set uses
 medium, bold where it uses bold) and for axis ticks, Latin Modern Mono for code. Its subsets and their widths
 (fonts/lm-*.woff2, fonts/metrics-latex.json) come from TeX Live through fonts/build_latex.py. Latin Modern looks
 smaller than Roboto at the same size, so the latex set never prints a text under 13 px: width() and Svg.text() apply
@@ -23,9 +23,9 @@ from xml.sax.saxutils import escape
 HERE = Path(__file__).resolve().parent
 FONTS = HERE / "fonts"
 METRICS = json.load(open(FONTS / "metrics.json", encoding="utf-8"))
-FONT_SET = os.environ.get("DRAW_FONTS", "roboto")
+FONT_SET = os.environ.get("DRAW_FONTS", "latex")
 if FONT_SET not in ("roboto", "latex"):
-    raise SystemExit(f"draw.py: DRAW_FONTS={FONT_SET!r}, expected 'roboto' (the default) or 'latex'")
+    raise SystemExit(f"draw.py: DRAW_FONTS={FONT_SET!r}, expected 'latex' (the default) or 'roboto'")
 LATEX = FONT_SET == "latex"
 
 # Faces: (file, CSS family, weight). "tick" is the face of axis graduations: Roboto Mono in the Roboto set (an alias
@@ -605,7 +605,9 @@ def grille_egale(rows, lang, mob, title, sub, T):
         s.line(X(a), y, X(b), y, col, 3, ' stroke-linecap="round"')
         s.circle(X(mean), y, 6.5 if clear else 5.5, col, f' stroke="{PAPER}" stroke-width="2"')
         s.text(X(b) + 8, y + 4.5, num(mean, lang, sign=True), "sans7" if clear else "sans5", 12, col, halo=bg)
-    s.text((x0 + x1) / 2, bottom + 36, T["axis"], "sans", 12, INK2, "middle")
+    # centred under the plot, moved left if the wider Latin Modern would run past the canvas (phone)
+    half = width(T["axis"], "sans", 12) / 2
+    s.text(min((x0 + x1) / 2, W - L - half), bottom + 36, T["axis"], "sans", 12, INK2, "middle")
     return f.finish(bottom + 44, T["source"])
 
 

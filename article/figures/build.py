@@ -13,7 +13,7 @@ Writes data/<name>_<lang>.csv, then <name>-fr.svg and <name>-en.svg, and runs `s
 The technical report draws the same figures in its own fonts, into its own directory, desktop width only:
     DRAW_FONTS=latex python3 article/figures/build.py --out DIR --data DIR2
 (--out: where the SVGs go, phone versions skipped; --data: where the CSVs go, default data/ here). Without these
-options nothing changes: the blog's figures, in Roboto, next to this file.
+options: the blog's figures, in Latin Modern like the report's (draw.py's default), next to this file.
 """
 import argparse, csv, json, re, subprocess, sys
 
