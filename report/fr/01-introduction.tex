@@ -20,15 +20,17 @@ reproductible, réutilisable et robuste} \parencite{pineau2018neurips}. ICLR, Ne
 l'apprentissage automatique.
 
 \paragraph{La question de départ}
-Si une équipe publie un résultat, une autre équipe qui suit la recette obtient-elle le même ? Pineau
-part d'un sondage de la revue \emph{Nature} : sur \num{1576} chercheurs de toutes disciplines, plus de 70~\%
-disaient avoir déjà échoué à reproduire l'expérience d'un collègue, 52~\% voyaient une crise
-\enquote{significative} de la reproductibilité et 38~\% une crise \enquote{légère}
-\parencite{baker2016reproducibility}. Lors d'un atelier en décembre 2017, elle a posé la même question à
-vingt spécialistes de l'apprentissage automatique : 80~\% y voient une crise, légère ou significative
-\parencite{pineau2018iclr}. Elle cite ensuite \textcite{buckheit1995wavelab} : un article scientifique sur
-le calcul est seulement la publicité de la recherche. La recherche elle-même est l'environnement
-logiciel complet et l'ensemble des instructions qui ont produit les figures.
+Si une équipe décide de réaliser l'expérience décrite dans un article, sera-t-elle en mesure d'obtenir les
+mêmes résultats ? C'est la question que pose Pineau en citant un sondage mené par la revue \emph{Nature}
+auprès de \num{1576} scientifiques, disciplines confondues : plus de 70~\% d'entre eux avaient déjà tenté de
+reproduire une expérience décrite par d'autres sans y parvenir, 52~\% voyaient une crise
+\enquote{significative} de la reproductibilité et 38~\% une crise
+\enquote{légère} \parencite{baker2016reproducibility}. En décembre 2017, lors d'un atelier, elle posait
+cette même question à vingt experts en apprentissage automatique : 80~\% d'entre eux estimaient qu'il
+s'agissait d'une crise, légère ou significative \parencite{pineau2018iclr}. Elle cite ensuite
+\textcite{buckheit1995wavelab} : un article en sciences du calcul est seulement la publicité de la
+recherche. La recherche elle-même est l'ensemble du logiciel et des instructions qui ont produit les
+figures.
 
 \paragraph{Un domaine qui grandit, des erreurs qui coûtent}
 Pineau rappelle que le RL a cité pendant près de vingt ans un seul succès marquant, le programme de
@@ -76,15 +78,16 @@ hasard d'un entraînement (pages 21 et 22), le passage \enquote{des comparaisons
 (page 44).
 
 \paragraph{Les vocabulaires voisins}
-Le rapport que cite Pineau distingue la reproduction, avec les mêmes données, de la réplication, qui
-suit les mêmes procédures sur des données nouvelles. Il appelle robuste un résultat à la fois
-reproductible, réplicable et généralisable à d'autres contextes \parencite[p.~3]{bollen2015robust}. Le
-rapport des académies américaines \parencite[résumé, p.~1]{nasem2019reproducibility} distingue deux
-mots. La reproductibilité y désigne des résultats cohérents obtenus avec les mêmes données d'entrée, les
-mêmes étapes de calcul, le même code et les mêmes conditions d'analyse. La réplicabilité désigne des
-résultats cohérents entre des études qui posent la même question, chacune avec ses propres données. Le
-rapport de \textcite[section~2.1, figure~1]{pineau2021improving} croise deux axes, les données et
-l'analyse. Il en tire quatre cases :
+Pineau cite un rapport qui distingue la reproduction (avec les mêmes données) d'une part, la réplication
+d'autre part, qui désigne la mise en place des mêmes procédures sur des données nouvelles. Un résultat
+robuste y est reproductible et réplicable, et de surcroît généralisable à d'autres
+contextes \parencite[p.~3]{bollen2015robust}. Pour le rapport des académies
+américaines \parencite[résumé, p.~1]{nasem2019reproducibility}, deux termes sont utilisés. Une analyse
+est reproductible si elle donne des résultats cohérents avec les mêmes données d'entrée, étapes de
+calcul, code et conditions d'analyse. Elle est réplicable si d'autres études posant la même question,
+chacune avec ses propres données, donnent des résultats cohérents. Le rapport de
+\textcite[section~2.1, figure~1]{pineau2021improving} définit deux dimensions, données d'une part et
+analyse d'autre part, et en tire quatre cases :
 \begin{itemize}
   \item mêmes données et même analyse : le travail est reproductible ;
   \item nouvelles données et même analyse : il est réplicable ;
@@ -157,9 +160,10 @@ et ce qu'elle appelle généralisable (E2 et E7 changent la tâche ou la physiqu
 aussi les pages de Pineau, qui rangent le changement de tâche sous le titre de la robustesse.
 
 \paragraph{L'ordre des trois exigences}
-Les trois exigences s'enchaînent dans l'ordre de la diapositive 16. Le matériel réutilisable rend la
-reproduction possible. Une conclusion reproduite sur d'autres graines aléatoires devient la référence à
-laquelle on compare la même conclusion sous une autre tâche, un autre programme ou une autre physique.
+Les trois exigences s'enchaînent dans l'ordre indiqué par la diapositive 16. Il faut du matériel
+réutilisable pour permettre la reproduction. Une même conclusion obtenue avec d'autres graines
+aléatoires constitue alors une référence par rapport à laquelle on comparera la conclusion obtenue pour
+d'autres tâches, programmes ou physiques.
 
 \section{La question}\label{sec:intro-question}
 
@@ -217,18 +221,20 @@ modèles de langue entraînés avec GRPO. Les chapitres~\ref{chap:05-experiences
 
 \paragraph{Les résultats}
 \begin{enumerate}
-  \item \textbf{Quatre pratiques ont changé dans le RL classique, toutes autour du résultat.} À grille
-  égale, le lien vers le code passe de 31~\% à 74~\% des articles, l'effet d'un réglage montré de
-  44~\% à 80~\%, le calcul chiffré de 27~\% à 58~\% et une incertitude rapportée de 63~\% à 88~\%.
-  Les trois premières hausses résistent à nos contrôles, dont une relecture des 98 articles par huit
-  lecteurs neufs qui lisent chacun les deux années. La quatrième garde son sens sans être établie : son
-  verdict dépend de deux articles lus en partie par un autre modèle
+  \item \textbf{Quatre pratiques ont changé dans le RL classique, toutes autour du résultat.} À grille égale,
+  la part des articles comportant un lien vers le code passe de 31 à 74~\%, celle des articles montrant
+  l'effet d'un réglage de 44 à 80~\%, celle des articles comportant un calcul chiffré de 27 à 58~\% et
+  enfin celle des articles rapportant une incertitude de 63 à 88~\%. Pour les trois premiers aspects, la
+  hausse subsiste après application de nos contrôles, dont une relecture des 98 articles par huit
+  nouveaux lecteurs lisant chacun les deux années. La quatrième hausse garde son sens sans être établie :
+  son verdict dépend de deux articles lus en partie par un autre modèle
   (\cref{sec:sr-principale,sec:sr-annees}).
-  \item \textbf{La façon de juger le résultat a peu bougé.} Le test statistique passe de 6~\% à
-  12~\%, les références décrites avec tous leurs réglages de 35~\% à 29~\%, l'évaluation tenue à part
-  de 33~\% à 45~\%, la version des bancs d'essai de 23~\% à 26~\%. Aucun de ces écarts n'est
-  détectable : avec cinquante articles par année, le sondage ne voyait avec 80~\% de puissance qu'une
-  hausse de 18 à 30 points selon le critère (\cref{sec:sr-principale,sec:val-stat}).
+  \item \textbf{La façon de juger le résultat a peu bougé.} Le recours à un test statistique passe de 6 à
+  12~\%, la description des références avec tous leurs réglages de 35 à 29~\%, l'évaluation tenue à
+  part de 33 à 45~\%, la mention de la version des bancs d'essai de 23 à 26~\%. Aucun de ces écarts
+  n'est détectable : comme l'échantillon n'est que de cinquante articles par année, un sondage à 80~\%
+  de puissance ne verrait qu'une hausse de 18 à 30 points selon le critère
+  (\cref{sec:sr-principale,sec:val-stat}).
   \item \textbf{La barre d'erreur s'est répandue plus vite que la barre calculée sur des graines
   aléatoires.} Les articles qui calculent leur incertitude sur des entraînements indépendants passent
   de 35~\% à 42~\% seulement, sans changement détectable (critère X8, \cref{sec:sr-principale}).
@@ -244,18 +250,18 @@ modèles de langue entraînés avec GRPO. Les chapitres~\ref{chap:05-experiences
   en 2017 mesure la dispersion entre épisodes et ignore celle entre graines aléatoires. Appliqué à nos
   trente essais de TRPO, il dépasse 9,09 dans 38~\% des tirages au hasard. Le couple $(t, p)$ de 2018
   écarte les autres façons de calculer plus qu'il ne désigne ce script (\cref{sec:b1}).
-  \item \textbf{Le meilleur programme dépend de la tâche, du budget et de la physique.} À budget égal
-  et vingt graines aléatoires, CrossQ mène sur les quatre tâches. Sous une physique modifiée de
-  20~\%, PPO JAX passe de la première à la dernière place sur \task{Hopper}
-  (\cref{sec:e2,sec:e7}).
+  \item \textbf{Le meilleur programme dépend de la tâche, du budget et de la physique.} Avec les mêmes
+  budgets et vingt graines aléatoires, CrossQ obtient les meilleurs résultats sur les quatre
+  tâches. Avec une physique modifiée de 20~\%, PPO JAX descend de la première à la dernière
+  position sur \task{Hopper} (\cref{sec:e2,sec:e7}).
   \item \textbf{Une recette publiée vieillit avec ses bibliothèques.} Les réglages du RL Baselines3
   Zoo pour PPO sur \task{Hopper}, repris en 2026, donnent des robots qui tiennent debout sans avancer
   (0,00~m/s). L'agent que le Zoo a publié en 2022 avec ces réglages atteint un score de \num{2439}
   sous notre protocole. Avec un facteur d'actualisation de 0,99 au lieu de 0,999, la recette fait de
   nouveau courir le robot, à \num{2649} (\cref{sec:e6}).
-  \item \textbf{Sur de petits modèles de langue, aucun gain de GRPO n'est établi à cinq graines
-  aléatoires.} Le gain apparent de Qwen vient de réponses plus courtes : la part des réponses coupées
-  tombe de 75~\% à 6~\%, la justesse des réponses finies ne monte pas (\cref{sec:llm-resultats}).
+  \item \textbf{Sur de petits modèles de langue, aucun gain de GRPO n'est établi à cinq graines aléatoires.}
+  L'avantage apparent de Qwen est dû à des réponses plus courtes : le pourcentage de réponses coupées
+  diminue de 75~\% à 6~\% et la justesse des réponses finies n'augmente pas (\cref{sec:llm-resultats}).
 \end{enumerate}
 
 \paragraph{Ce qui est nouveau dans la méthode}
