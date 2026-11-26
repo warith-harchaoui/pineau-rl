@@ -443,8 +443,8 @@ def text(name, lang):
             else f"Sixteen bars, four per task: the mean inflates by {P(6)} to {P(84)}, {P(E4MED)} at the median."),
         "physique-modifiee": dict(
             hot={"PPO (JAX)", "CrossQ"}, rank=RANK[lang],
-            note="Physique modifiée : masses alourdies de 20 %, frottements réduits de 20 %." if fr
-            else "Modified physics: masses 20% heavier, friction 20% lower.",
+            note="Physique modifiée : masses alourdies de 20 %,|frottements réduits de 20 %." if fr
+            else "Modified physics: masses 20% heavier,|friction 20% lower.",
             source="Données : Hopper, moyenne interquartile de dix graines aléatoires, mêmes politiques dans les deux physiques" if fr
             else "Data: Hopper, interquartile mean over ten random seeds, the same policies in both physics",
             desc="Quatre lignes du score d'entraînement au score en physique modifiée : PPO (JAX) passe de premier à dernier, "

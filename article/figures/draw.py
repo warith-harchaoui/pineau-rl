@@ -93,14 +93,51 @@ def missing(text, face):
 
 
 def _GLUE(text):
-    """French typography: no line break before : ; ? ! % » or after «, so a sign never starts a line."""
+    """French typography: no line break before : ; ? ! % » or after «, so a sign never starts a line; and none
+    between a number and the word it counts (100 pas, 160 tokens)."""
     text = re.sub(r" ([:;?!%»])", "\u00a0\\1", text)
+    text = re.sub(r"(?<=\d) (?=[^\W\d_])", "\u00a0", text)
     return text.replace("« ", "«\u00a0")
 
 
 def wrap(text, face, size, maxw):
-    """Lines of at most maxw pixels. A '|' in the text marks the only places a line may break (sense groups);
-    without one, any space may break."""
+    """Lines of at most maxw pixels, balanced: as many lines as the greedy fill needs, their lengths as even as the
+    breaks allow (least sum of squared slack), so no line ends on a lone word (a widow). A '|' in the text marks the
+    only places a line may break (sense groups); without one, any space may break."""
+    greedy = _fill(text, face, size, maxw)
+    n = len(greedy)
+    if n < 2:
+        return greedy
+    glued = _GLUE(text)
+    units = [c.strip() for c in glued.split("|")] if "|" in glued else glued.split(" ")
+    m = len(units)
+    line = lambda i, j: " ".join(units[i:j])
+    w = {(i, j): width(line(i, j), face, size) for i in range(m) for j in range(i + 1, m + 1)}
+    INF = float("inf")
+    best = {(m, 0): (0.0, None)}  # (start, lines left) -> (cost, end of the first line)
+    for k in range(1, n + 1):
+        for i in range(m - 1, -1, -1):
+            cands = []
+            for j in range(i + 1, m + 1):
+                if w[(i, j)] > maxw and j > i + 1:
+                    break
+                rest = best.get((j, k - 1))
+                if rest is not None:
+                    cands.append((rest[0] + (maxw - w[(i, j)]) ** 2, j))
+            if cands:
+                best[(i, k)] = min(cands)
+    if (0, n) not in best:
+        return greedy
+    lines, i = [], 0
+    for k in range(n, 0, -1):
+        j = best[(i, k)][1]
+        lines.append(line(i, j))
+        i = j
+    return lines
+
+
+def _fill(text, face, size, maxw):
+    """Greedy line fill: each line takes as many words (or sense groups) as fit in maxw."""
     text = _GLUE(text)
     if "|" in text:
         chunks = [c.strip() for c in text.split("|")]
@@ -310,7 +347,7 @@ def e1_graines(rows, lang, mob, title, sub, T):
     cut = T["cut"]
     for x, y, u in placed:
         s.circle(x, y, r, RED if u >= cut else "#55637A")
-    ax = cy + (52 if mob else 62)
+    ax = max(cy + (52 if mob else 62), max(py for _, py, _ in placed) + r + 10)  # the lowest dot clears the axis
     s.line(x0, ax, x1, ax, RULE)
     for t in ticks(lo, hi, 1000 if mob else 500):
         s.line(X(t), ax, X(t), ax + 4, RULE)
@@ -417,7 +454,10 @@ def waffles(f, items, lang, label_size, ref=None, note=None):
             txt, face, size = ("aucun tirage" if lang == "fr" else "no draw"), "sans5", small - 3
         else:
             txt, face, size = pct(val, lang, 1 if val != int(val) else 0), "sans7", big if bold else small
-        s.text(x + side / 2, yv, txt, face, size, col if bold else INK2, "middle")
+        # a value wider than its column wraps upward, its last line on the shared baseline
+        vl = wrap(txt, face, size, side + gapx - 6) if val == 0 else [txt]
+        for j, ln in enumerate(vl):
+            s.text(x + side / 2, yv - (len(vl) - 1 - j) * (size_of(size) + 3), ln, face, size, col if bold else INK2, "middle")
         for j, ln in enumerate(wrap(lab, "sans7" if bold else "sans", label_size, side + gapx - 6)):
             s.text(x + side / 2, yl + j * (label_size + 3), ln, "sans7" if bold else "sans",
                    label_size, INK if bold else INK2, "middle")
@@ -497,7 +537,8 @@ def meilleurs_sur_dix(rows, lang, mob, title, sub, T):
     V = {(r[0], r[1]): float(r[2]) for r in rows}
     s, L, W = f.s, f.L, f.W
     f.top = f.legend([(a, ALGO_C[a]) for a in algos]) + 14
-    lab_w = 86 if mob else 112
+    tsize = 12.5 if mob else 13.5
+    lab_w = max(86 if mob else 112, max(width(t, "sans7", tsize) for t in tasks) + 14 + 4)  # the longest name inside its band
     x0, x1 = L + lab_w, W - L - 14
     vmax = 90
     X = lambda u: x0 + u / vmax * (x1 - x0)
@@ -517,7 +558,7 @@ def meilleurs_sur_dix(rows, lang, mob, title, sub, T):
     for i, t in enumerate(tasks):
         yc = top + i * rh + rh / 2
         bg = PANEL if i % 2 == 0 else PAPER
-        s.text(x0 - 14, yc + 5, t, "sans7", 13.5 if not mob else 12.5, INK, "end", halo=bg)
+        s.text(x0 - 14, yc + 5, t, "sans7", tsize, INK, "end", halo=bg)
         vals = sorted(((V[(t, a)], a) for a in algos))
         s.line(X(vals[0][0]), yc, X(vals[-1][0]), yc, RULE, 2)
         placed = []  # (x, dy): each dot takes the free offset nearest the row's line, like a beeswarm
@@ -659,13 +700,20 @@ def trajectoire(rows, lang, mob, title, sub, T):
     ef = lambda n, a, b: (f"{n}, de {num(a, lang)} à {pct(b, lang)}" if lang == "fr" else f"{n}, from {num(a, lang)} to {pct(b, lang)}")
     right = max(width(ef(n, p[0][1], p[-1][1]), "sans7", 12.5) for n, p in series.items()) + 18 if not mob else \
         max(width(n, "sans7", 12.5) for n in series) + 16
+    # The 2019 note sits above the plot in the latex set, on as many lines as the width left of 2019 allows: inside
+    # the plot, Latin Modern at 13 px would cross the top series. Its extra lines push the plot down.
+    xn0 = f.L + 30 + (2019 - 2018) / (2026 - 2018) * (f.W - 2 * f.L - right - 30)
+    note = wrap(T["neurips"], "sans5", 11.5, f.W - f.L - xn0 - 6) if LATEX else []
+    f.top += 16 * max(len(note) - 1, 0)
     top, bottom, X, Y = lines(f, series, lang, 2018, 2026, 4 if mob else 2, 0, 100, 25,
                               lambda u: pct(u, lang), colours, 220 if mob else 260, right, T["axis"], end_fmt=ef)
     s = f.s
     xn = X(2019)
-    if LATEX and not mob:  # one line above the plot: two lines of Latin Modern at 13 px would cross the top series
-        s.line(xn, top - 24, xn, top + 260, INK2, 1, ' stroke-dasharray="3 3"')
-        s.text(xn + 6, top - 14, T["neurips"], "sans5", 11.5, INK2)
+    if LATEX:
+        H = 220 if mob else 260
+        s.line(xn, top - 24 - 16 * (len(note) - 1), xn, top + H, INK2, 1, ' stroke-dasharray="3 3"')
+        for i, ln in enumerate(note):
+            s.text(xn + 6, top - 14 - 16 * (len(note) - 1 - i), ln, "sans5", 11.5, INK2)
         return f.finish(bottom, T["source"])
     s.line(xn, top - 6, xn, top + (220 if mob else 260), INK2, 1, ' stroke-dasharray="3 3"')
     for i, ln in enumerate(wrap(T["neurips"], "sans5", 11.5, 130 if mob else 170)):
@@ -689,6 +737,7 @@ def grpo_graines(rows, lang, mob, title, sub, T):
         s.text(x0 - 8, Y(t) + 4, pct(t, lang), "tick", 11, MUTED, "end")
     gw = (x1 - x0) / len(groups)
     lsize = 11.5 if mob else 12.5
+    vals = []  # (x, baseline, width) of the values already printed
     for gi, g in enumerate(groups):
         gx = x0 + gi * gw
         col = GREEN if gi % 2 == 0 else RED
@@ -710,8 +759,14 @@ def grpo_graines(rows, lang, mob, title, sub, T):
             else:
                 s.rect(x - 4, a - 4, 8, 8, PAPER, 1, f' stroke="{INK2}" stroke-width="1.6"')
             s.path(f"M{x - 4.5:.1f},{b - dirn * 6.5:.1f} L{x:.1f},{b:.1f} L{x + 4.5:.1f},{b - dirn * 6.5:.1f}", col, 2.4)
-            if dirn < 0:
-                s.text(x, b - 9, num(float(v100), lang), "sans7", 10.5 if mob else 11, col, "middle")
+            if dirn < 0:  # a value above its head, lifted over a neighbour's value it would touch
+                vt, vs = num(float(v100), lang), 10.5 if mob else 11
+                vw, vy = width(vt, "sans7", vs), b - 9
+                for px, py, pw in sorted(vals, key=lambda p: -p[1]):
+                    if abs(x - px) < (vw + pw) / 2 + 3 and abs(vy - py) < size_of(vs) + 1:
+                        vy = py - size_of(vs) - 1
+                vals.append((x, vy, vw))
+                s.text(x, vy, vt, "sans7", vs, col, "middle")
             elif gi % 2 == 0 and float(v100) >= 3:
                 s.text(x + 6, b + 4, num(float(v100), lang), "sans7", 10.5 if mob else 11, col)
         model, _, reward = g.partition(", ")  # the model once above its pair, the reward under each group
