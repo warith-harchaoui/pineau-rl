@@ -454,7 +454,33 @@ SBX, which then keeps Flax's initialisation for every layer. When switched on, t
 thing in the two libraries either. In SBX, it initialises only the action output layer, at scale 0.01. In Stable-Baselines3, it also initialises the hidden layers, with gain $\sqrt2$, then the
 value output, with gain 1 (\cref{sec:programmes}). E3 does not identify
 which code difference causes the difference in scores: the weight initialisation, the random generators or the rounding of the
-numerical library. 
+numerical library.
+
+\paragraph{The initialisation does not explain the gap}\label{sec:e3-init}
+Two complements, fixed in advance, look for the cause on \task{Walker2d} and \task{Swimmer}. The first takes
+each program to forty random seeds. The second swaps the initialisation: PPO JAX runs with the option
+\texttt{ortho\_init} switched on, PPO PyTorch with the option switched off, twenty random seeds each, with
+nothing else changed. Holm's correction covers the six contrasts (\cref{tab:e3-init}).
+
+\gentable{e3-init}
+
+With forty random seeds, both differences pass the correction. On \task{Walker2d}, PPO PyTorch wins, with an
+IQM of \num{2233} against \num{1512}. The probability that JAX does better is 0.31 $[0.20,\,0.43]$, the
+difference $-638$~points $[-\num{1084},\,-218]$ ($p = 0.004$, Holm $p$ 0.02). On \task{Swimmer}, PPO JAX wins
+by 9~points $[6,\,14]$ (Holm $p$ $1 \times 10^{-5}$). The lead of PyTorch on \task{Walker2d}, likely with twenty
+random seeds, is settled with forty.
+
+The swap does not settle anything. Switching the option on in PPO JAX brings its scores closer to those of
+PyTorch on both tasks, by $+625$~points on \task{Walker2d} and $-7$ on \task{Swimmer}, but neither effect passes
+the correction (Holm $p$ 0.23 each). Switching it off in PPO PyTorch changes nothing settled (Holm $p$ 0.70 on
+each task). On \task{Swimmer}, PyTorch without the option even does slightly worse, where the explanation by
+the initialisation would move it closer to JAX. Our rule, fixed before the training runs, attributed the gap to
+the initialisation if both swaps were settled in the direction of the gap. They are not: the cause lies
+elsewhere, or the initialisation is only a share of it that twenty random seeds do not reveal. The crossed
+comparisons, which we give as description only, point the same way. With the option, PPO JAX joins PPO
+PyTorch on both tasks (probability of improvement 0.46 and 0.56). Without the option, PPO PyTorch does not
+join PPO JAX on \task{Swimmer} (0.16 $[0.05,\,0.29]$). The initialisation may weigh on \task{Walker2d}; it does
+not explain \task{Swimmer}. 
 
 \section{E4: keeping the best three out of ten inflates the mean by a third}\label{sec:e4}
 
@@ -915,7 +941,8 @@ seeds, equal budget, replication) confirm or qualify them.
   \item On \task{HalfCheetah}, CrossQ takes the lead from SAC, with no settled difference between them (E2).
   \item The two PPOs part ways on \task{Walker2d} and \task{Swimmer}, in opposite directions, under
     the settled-winner rule (E3). After Holm's correction for the four tasks, only the difference on
-    \task{Swimmer} remains settled.
+    \task{Swimmer} remains settled. With forty random seeds, the one on \task{Walker2d} is settled too
+    (\cref{sec:e3-init}).
   \item The close comparisons are harder to order: with five random seeds, the correct order is recovered in
     only 62\% of the draws at the median, instead of 71\% (E5).
   \item At equal budget with twenty random seeds, CrossQ leads on all four tasks and the protocol's count

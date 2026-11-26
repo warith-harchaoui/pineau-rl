@@ -178,8 +178,8 @@ seed.
 \paragraph{What stays fixed}
 Same program, same random seed, same library versions and same machine: the protocol expects the same
 result. Our logs confirm it for \algo{PPO PyTorch} and \algo{PPO JAX}: a run stopped then restarted recovers its evaluation
-points identically. For \algo{SAC} and \algo{CrossQ}, we have not checked it
-(Chapter~\ref{chap:10-limites}).
+points identically. For \algo{SAC} and \algo{CrossQ}, three training runs redone unchanged recover their
+evaluation points to the byte (\cref{sec:outils}).
 
 \paragraph{What changes}
 Changing the random seed changes the initialisation of the weights, the exploration, the order of the

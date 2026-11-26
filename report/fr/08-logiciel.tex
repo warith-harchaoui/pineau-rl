@@ -432,7 +432,7 @@ Tous les essais ont tourné sur un seul ordinateur portable, un Mac à puce Appl
 27.2 (arm64), partagé avec d'autres projets. Chaque entraînement de simulation tourne sur un seul
 fil d'exécution. Le nombre de tâches en parallèle a suivi la charge de la machine : quatre cœurs au
 départ, jusqu'à huit accordés chaque heure, puis deux cœurs pour tout le projet. Ce partage ne touche
-pas les résultats tant qu'un essai ne dépend que de sa graine aléatoire : les relances le vérifient pour PPO ; pour SAC et CrossQ, nous ne l'avons pas vérifié
+pas les résultats tant qu'un essai ne dépend que de sa graine aléatoire : les relances le vérifient pour PPO, et trois entraînements refaits à l'identique pour SAC et CrossQ
 (\cref{sec:registres}). La \cref{sec:calcul} décrit les lanceurs,
 le surveillant et la file d'attente. Le \cref{tab:calcul} donne, par programme et par tâche, le
 nombre d'essais, le nombre de pas, la durée murale médiane d'un essai et la somme de ces durées.

@@ -113,8 +113,8 @@ A result is reproducible when another person, with the same code, the same hyper
 task in the same version, the same budget of steps and the same evaluation protocol, reaches the same
 conclusion. Only the random seeds and the machine change. Reproduction is checked at two levels. The
 first is the identical rerun: same random seed, same machine, a single computing thread. It gave back
-the same evaluation points for PPO PyTorch and PPO JAX (\cref{sec:calcul}). For SAC and CrossQ, we have not checked it
-(\cref{sec:graines}). This level tests the code. The second level tests the conclusion: other
+the same evaluation points for PPO PyTorch and PPO JAX (\cref{sec:calcul}), and to the byte for three training
+runs of SAC and CrossQ redone unchanged (\cref{sec:graines}). This level tests the code. The second level tests the conclusion: other
 random seeds, the same verdict. Bollen's report, the National Academies report and the 2021 grid call this level a replication. Experiment
 E1 measures how often two groups of random seeds of the same program pass for two algorithms
 (\cref{sec:e1}). E5 counts the random seeds needed to recover the right ranking (\cref{sec:e5}). The

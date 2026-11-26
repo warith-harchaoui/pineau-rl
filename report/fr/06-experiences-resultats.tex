@@ -466,7 +466,33 @@ bibliothèques. Dans SBX, elle n'initialise que la couche de sortie de l'action,
 Stable-Baselines3, elle initialise aussi les couches cachées, avec le gain $\sqrt2$, puis la sortie de la
 valeur, avec le gain 1 (\cref{sec:programmes}). E3 ne dit pas laquelle
 des différences de code cause celle des scores : l'initialisation des poids, les générateurs aléatoires ou les
-arrondis de la bibliothèque de calcul. 
+arrondis de la bibliothèque de calcul.
+
+\paragraph{L'initialisation n'explique pas l'écart}\label{sec:e3-init}
+Deux compléments, fixés d'avance, cherchent la cause sur \task{Walker2d} et \task{Swimmer}. Le premier porte
+chaque programme à quarante graines aléatoires. Le second échange l'initialisation : PPO JAX tourne avec
+l'option \texttt{ortho\_init} activée, PPO PyTorch avec l'option désactivée, vingt graines aléatoires chacun,
+sans rien changer d'autre. La correction de Holm couvre les six contrastes (\cref{tab:e3-init}).
+
+\gentable{e3-init}
+
+Avec quarante graines aléatoires, les deux différences passent la correction. Sur \task{Walker2d}, PPO PyTorch
+l'emporte, avec une IQM de \num{2233} contre \num{1512}. La probabilité que JAX fasse mieux vaut 0,31
+$[0{,}20\,;\,0{,}43]$, la différence $-638$~points $[-\num{1084}\,;\,-218]$ ($p = 0{,}004$, $p$ de Holm 0,02).
+Sur \task{Swimmer}, PPO JAX l'emporte de 9~points $[6\,;\,14]$ ($p$ de Holm $1 \times 10^{-5}$). L'avance de
+PyTorch sur \task{Walker2d}, probable avec vingt graines aléatoires, est établie avec quarante.
+
+L'échange ne tranche pas. Activer l'option dans PPO JAX rapproche ses scores de ceux de PyTorch sur les deux
+tâches, de $+625$~points sur \task{Walker2d} et de $-7$ sur \task{Swimmer}, mais aucun de ces deux effets ne
+passe la correction ($p$ de Holm 0,23 chacun). La désactiver dans PPO PyTorch ne change rien d'établi ($p$ de
+Holm 0,70 sur chaque tâche). Sur \task{Swimmer}, PyTorch sans l'option fait même un peu moins bien, quand
+l'explication par l'initialisation le voudrait plus proche de JAX. Notre règle, fixée avant les entraînements,
+attribuait l'écart à l'initialisation si les deux échanges étaient établis dans le sens de l'écart. Ils ne le
+sont pas : la cause reste ailleurs, ou l'initialisation n'en est qu'une part que vingt graines aléatoires ne
+font pas voir. Les comparaisons croisées, que nous donnons à titre descriptif, vont dans le même sens. Avec
+l'option, PPO JAX rejoint PPO PyTorch sur les deux tâches (probabilité d'amélioration 0,46 et 0,56). Sans
+l'option, PPO PyTorch ne rejoint pas PPO JAX sur \task{Swimmer} (0,16 $[0{,}05\,;\,0{,}29]$).
+L'initialisation pèse peut-être sur \task{Walker2d} ; elle n'explique pas \task{Swimmer}. 
 
 \section{E4 : garder les trois meilleurs sur dix gonfle la moyenne d'un tiers}\label{sec:e4}
 
@@ -936,7 +962,8 @@ Les résultats à dix graines aléatoires restent les résultats principaux. Les
   \item Sur \task{HalfCheetah}, CrossQ prend la tête à SAC, sans différence établie entre eux (E2).
   \item Les deux PPO se séparent sur \task{Walker2d} et \task{Swimmer}, dans des sens opposés,
     selon la règle du vainqueur établi (E3). Après correction de Holm pour les quatre tâches, seule la différence
-    de \task{Swimmer} reste établie.
+    de \task{Swimmer} reste établie. Avec quarante graines aléatoires, celle de \task{Walker2d} l'est aussi
+    (\cref{sec:e3-init}).
   \item Les comparaisons proches sont plus difficiles à ordonner : avec cinq graines aléatoires, le bon ordre n'est
     retrouvé que dans 62~\% des tirages en médiane, au lieu de 71~\% (E5).
   \item À budget égal et vingt graines aléatoires, CrossQ mène sur les quatre tâches et le décompte

@@ -1217,7 +1217,8 @@ def t_env():
 
 def t_calcul():
     groups = []
-    for algo in ["ppo_sb3", "ppo_sbx", "sac", "crossq", "trpo", "ppo_sb3_zoo", "ppo_sb3_zoofix"]:
+    for algo in ["ppo_sb3", "ppo_sbx", "sac", "crossq", "trpo", "ppo_sb3_zoo", "ppo_sb3_zoofix", "ppo_sb3_zoog99",
+                 "ppo_sbx_ortho", "ppo_sb3_noortho", "sac_rerun", "crossq_rerun"]:
         for d in sorted(glob.glob(str(REPO / f"sim/results/{algo}/*"))):
             task = os.path.basename(d)
             walls, steps = [], set()
@@ -1244,8 +1245,13 @@ def t_calcul():
     launches = [a for a in att if a["kind"] in train_kinds]
     ok = [a for a in launches if a["outcome"].startswith("success")]
     names = {"ppo_sb3": "PPO PyTorch", "ppo_sbx": "PPO JAX", "sac": "SAC", "crossq": "CrossQ", "trpo": "TRPO",
-             "ppo_sb3_zoo": "PPO PyTorch, Zoo (gamma 0,99)", "ppo_sb3_zoofix": "PPO PyTorch, Zoo corrigé"}
-    names_en = dict(names, ppo_sb3_zoo="PPO PyTorch, Zoo (gamma 0.99)", ppo_sb3_zoofix="PPO PyTorch, Zoo corrected")
+             "ppo_sb3_zoo": "PPO PyTorch, Zoo (gamma 0,99)", "ppo_sb3_zoofix": "PPO PyTorch, Zoo corrigé",
+             "ppo_sb3_zoog99": "PPO PyTorch, Zoo corrigé, $\\gamma = 0{,}99$", "ppo_sbx_ortho": "PPO JAX avec ortho",
+             "ppo_sb3_noortho": "PPO PyTorch sans ortho", "sac_rerun": "SAC, relance à l'identique",
+             "crossq_rerun": "CrossQ, relance à l'identique"}
+    names_en = dict(names, ppo_sb3_zoo="PPO PyTorch, Zoo (gamma 0.99)", ppo_sb3_zoofix="PPO PyTorch, Zoo corrected",
+                    ppo_sb3_zoog99="PPO PyTorch, Zoo corrected, $\\gamma = 0.99$", ppo_sbx_ortho="PPO JAX with ortho",
+                    ppo_sb3_noortho="PPO PyTorch without ortho", sac_rerun="SAC, identical rerun", crossq_rerun="CrossQ, identical rerun")
     for lang in LANGS:
         nm = names if lang == "fr" else names_en
         head = [L(lang, r"Programme & Tâche & essais & \makecell[r]{pas\\{}par essai} & \makecell[r]{durée\\{}médiane (h)} & \makecell[r]{total\\{}(h)}",
@@ -1479,6 +1485,46 @@ def t_e3_holm():
                 r"The preregistered result remains that of \file{sim/analysis/e3.json} (Table~\ref{tab:e3}). Source: \file{sim/analysis/e3_holm.json} (\file{sim/analysis/e3_holm.py}).")
         floattable("e3-holm", lang, cap, L(lang, "E3 avec la correction de Holm et sa puissance", "E3 with Holm's correction and its power"),
                    r"@{}lrrrrrr@{}", head, rows, tabcolsep="3.5pt")
+
+
+def t_e3_init():
+    e = J("sim/analysis/c2.json")
+    names = {"ppo_sb3": ("PyTorch", "PyTorch"), "ppo_sbx": ("JAX", "JAX"),
+             "ppo_sbx_ortho": ("JAX avec ortho", "JAX with ortho"), "ppo_sb3_noortho": ("PyTorch sans ortho", "PyTorch without ortho")}
+    for lang in LANGS:
+        nm = lambda k: names[k][0 if lang == "fr" else 1]  # noqa: E731
+        head = [L(lang, r"Comparaison $A$ contre $B$ & IQM $A$ & IQM $B$ & \makecell[r]{$P(A > B)$\\{}[IC 95~\%]} & \makecell[r]{$A - B$\\{}[IC 95~\%]} & \makecell[r]{$p$ Mann-\\{}Whitney} & $p$ Holm",
+                  r"Comparison $A$ against $B$ & IQM $A$ & IQM $B$ & \makecell[r]{$P(A > B)$\\{}[95\% CI]} & \makecell[r]{$A - B$\\{}[95\% CI]} & \makecell[r]{Mann-\\{}Whitney $p$} & Holm $p$")]
+        rows = []
+        for group, fr, en in (("contrasts", "Contrastes fixés d'avance, Holm sur les six", "Contrasts fixed in advance, Holm over the six"),
+                              ("descriptive", "Descriptif", "Descriptive")):
+            rows.append(rf"\multicolumn{{7}}{{@{{}}l}}{{\emph{{{L(lang, fr, en)}}}}}")
+            for t in ("Walker2d-v5", "Swimmer-v5"):
+                rows.append(rf"\multicolumn{{7}}{{@{{}}l}}{{\quad {T(t)}}}")
+                for k, r in e[group].items():
+                    if not k.startswith(t):
+                        continue
+                    hl = r["hodges_lehmann_ci"]
+                    cells = [rf"\hangindent=3em\hangafter=1 \quad\quad \mbox{{{nm(r['a'])}}} / \mbox{{{nm(r['b'])}}}",
+                             num(r["iqm"][r["a"]], lang), num(r["iqm"][r["b"]], lang), pr_cell(r["p_improve"], r["ci"], lang),
+                             f"{num(r['hodges_lehmann'], lang, sign=True)} {iv(num(hl[0], lang, sign=True), num(hl[1], lang, sign=True), lang)}",
+                             pval(r["mw_p"], lang), pval(r.get("mw_p_holm"), lang)]
+                    rows.append(" & ".join(bold(c, r.get("settled_holm", False)) for c in cells))
+        cap = L(lang,
+                r"Les deux PPO à quarante graines aléatoires et l'échange de leur initialisation, sur Walker2d et Swimmer. "
+                r"JAX avec ortho : PPO JAX avec \texttt{ortho\_init} activée ; PyTorch sans ortho : PPO PyTorch avec l'option désactivée ; rien d'autre ne change. "
+                r"La comparaison des deux programmes par défaut porte sur les graines 0 à 39, les autres sur les graines 0 à 19 ; score final à un million de pas. "
+                r"Probabilité d'amélioration avec son intervalle à 95~\% (rliable, 2\,000 rééchantillons) ; test de Mann-Whitney bilatéral, correction de Holm sur les six contrastes fixés d'avance ; colonne $A - B$ : écart de Hodges-Lehmann en points de score, intervalle percentile à 95~\% (5\,000 rééchantillons). "
+                r"\textbf{En gras}, les contrastes qui passent Holm. "
+                r"Source : \file{sim/analysis/c2.json} (\file{sim/analysis/c2.py}).",
+                r"The two PPOs at forty seeds and the swap of their initialisation, on Walker2d and Swimmer. "
+                r"JAX with ortho: PPO JAX with \texttt{ortho\_init} switched on; PyTorch without ortho: PPO PyTorch with the option switched off; nothing else changes. "
+                r"The comparison of the two default programs covers seeds 0 to 39, the others seeds 0 to 19; final score at one million steps. "
+                r"Probability of improvement with its 95\% interval (rliable, 2,000 resamples); two-sided Mann-Whitney test, Holm's correction over the six contrasts fixed in advance; column $A - B$: Hodges-Lehmann gap in score points, 95\% percentile interval (5,000 resamples). "
+                r"\textbf{In bold}, the contrasts that pass Holm. "
+                r"Source: \file{sim/analysis/c2.json} (\file{sim/analysis/c2.py}).")
+        floattable("e3-init", lang, cap, L(lang, "Les deux PPO à quarante graines et l'échange de l'initialisation", "The two PPOs at forty seeds and the initialisation swap"),
+                   r"@{}>{\raggedright\arraybackslash}p{4.2cm}rrrrrr@{}", head, rows, size=r"\scriptsize", tabcolsep="3pt")
 
 
 def t_e3_puissance():
@@ -2146,7 +2192,7 @@ def t_grpo_contraste():
 def main():
     for f in (t_sondage, t_sondage_lrl, t_trajectoire, t_accord, t_robustesse, t_e1, t_b1, t_e2, t_e2_bonferroni, t_e3,
               t_e4, t_e5, t_e6, t_e7, t_dose, t_b3, t_grpo, t_env, t_calcul, t_articles,
-              t_e2_strict, t_e1_grille, t_e3_holm, t_e3_puissance, t_e7_test, t_e5_holdout, t_regle_tranche, t_hyperparametres,
+              t_e2_strict, t_e1_grille, t_e3_holm, t_e3_init, t_e3_puissance, t_e7_test, t_e5_holdout, t_regle_tranche, t_hyperparametres,
               t_e6_vitesse, t_accord_intervalles, t_difference_detectable, t_regle_origine, t_q5_versions, t_x8,
               t_r36, t_r36_accord, t_grpo_mesures, t_grpo_contraste):
         if len(sys.argv) > 1 and f.__name__[2:].replace("_", "-") not in sys.argv[1:]:

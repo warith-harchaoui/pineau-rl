@@ -833,7 +833,9 @@ policies recover their final score exactly.
 **What changes.** Two results move. The two versions of PPO separate (E3): PyTorch wins on Walker2d
 (2,204 against 1,435; probability that JAX does better 0.30, from 0.15 to 0.48) and JAX on Swimmer
 (115 against 107; 0.79, from 0.63 to 0.91). The gaps resemble those at ten seeds; the added seeds
-narrow the intervals. Next, close comparisons are harder than ten seeds suggested (E5). The right
+narrow the intervals. At forty seeds, PyTorch's lead on Walker2d passes Holm's correction (2,233 against
+1,512, Holm p = 0.02). Swapping the orthogonal initialisation between the two programs does not close the gap
+in a settled way (Holm p from 0.23 to 0.70): its cause remains unknown. Next, close comparisons are harder than ten seeds suggested (E5). The right
 order is now that of the means of twenty runs, and the draws come from the twenty. Over the 24
 comparisons, the median barely moves (93% with three random seeds, 97% with five). For the 8 close
 comparisons, it falls to 59%, 62%, 67% and 74% with three, five, ten and twenty random seeds,

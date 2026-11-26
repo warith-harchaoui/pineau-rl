@@ -70,8 +70,9 @@ actually ran.
 \paragraph{Reproducing on another machine}
 To make a run on a given machine depend on its random seed alone, each training runs on a single thread
 (\texttt{OMP\_NUM\_THREADS=1}, \texttt{torch.set\_num\_threads(1)}, single-thread XLA options for JAX). The
-relaunches of PPO PyTorch and PPO JAX confirmed it (\cref{sec:calcul}). For SAC and CrossQ, three training runs redone unchanged will make the
-same check: they have not finished. All our runs used this
+relaunches of PPO PyTorch and PPO JAX confirmed it (\cref{sec:calcul}). For SAC and CrossQ, three training runs
+redone unchanged, SAC on \task{Hopper} with random seeds 0 and 1 and CrossQ on \task{Walker2d} with seed 0, give
+back the same evaluation points to the byte (\file{sim/analysis/c6\_determinism.json}). All our runs used this
 one machine. On another processor, MuJoCo, JAX and PyTorch may order floating-point operations differently and
 round differently, so the same random seed would give a different curve there. We have not measured this. A
 rerun elsewhere tests the statistics of the report, with no hope of recovering its curves digit for digit.
@@ -140,9 +141,9 @@ differently:
 Nor does the option do the same thing in the two libraries. Switched on in SBX, it initialises only the
 action output orthogonally, with gain 0.01 (\file{sbx/ppo/policies.py}, lines 81 to 84). Finally, the two
 programs differ in the numerical library, its random generators and its rounding. Experiment E3 measures what
-these differences cost together, without separating them. One more experiment swaps the
-option between the two programs to isolate the share of the initialisation. Its training runs are still going:
-this report gives no result from it.
+these differences cost together, without separating them. A complement, fixed in advance, takes both
+programs to forty random seeds on \task{Walker2d} and \task{Swimmer}, then swaps the option between them to
+isolate the share of the initialisation (\cref{sec:e3-init}).
 
 \paragraph{SAC}
 SAC (\emph{Soft Actor-Critic}, \cite{haarnoja2018sac}) has served as the \enquote{off-policy} baseline of
@@ -254,8 +255,8 @@ initialisation of the networks, the initial positions of the simulated body, the
 the batches drawn from the replay buffer. \file{sim/run.py} passes it to the constructor of the program
 (\texttt{seed=SEED}), which derives from it the generators of NumPy, PyTorch or JAX and that of the training
 environment. For PPO PyTorch and PPO JAX, a relaunch with the same random seed on the same machine gave back
-the same evaluation points (\cref{sec:calcul}). For SAC and CrossQ, we have not checked it
-(\cref{sec:outils}).
+the same evaluation points (\cref{sec:calcul}). For SAC and CrossQ, three training runs redone unchanged give
+them back to the byte (\cref{sec:outils}).
 
 \paragraph{Training random seeds}
 The training random seeds are the integers 0 to 29, fixed before the first training run:
@@ -1008,7 +1009,7 @@ grid, then two copies of \file{queue.sh} for the consolidation, then a ceiling s
 \file{scale.sh}, of eight cores at most, finally two cores for the whole project, the GRPO run on the
 processor included. Each run executes on a single thread,
 in its own process: the number of parallel jobs enters none of its computations. The PPO relaunches recover
-their evaluation points identically. For SAC and CrossQ, we have not checked it.
+their evaluation points identically. For SAC and CrossQ, so do three training runs redone unchanged.
 
 \paragraph{Stops and relaunches}
 The reconstructed ledger \file{logs/attempts\_reconstructed.csv} counts 292~launches for the

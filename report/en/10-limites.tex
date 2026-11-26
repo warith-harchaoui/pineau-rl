@@ -118,7 +118,8 @@ rejects an exploratory analysis can redo every computation without it from the c
 The register of attempts counts 42 stopped attempts (\cref{sec:registres}). Every stop hit all the
 runs in progress at once, with no link to a score. For SAC and CrossQ, the curves of the stopped
 attempts were overwritten: we cannot show that the relaunch reproduces the same
-curve. Every training ran with
+curve. Three training runs of these programs redone unchanged do reproduce theirs to the byte
+(\cref{sec:outils}). Every training ran with
 Stable-Baselines3 2.9.2, the same version for all runs. These facts favour no program.
 
 \subsection{The GRPO strand}
@@ -250,8 +251,8 @@ MATH-500, with far more compute. Our strand neither replicates nor refutes their
   \item \textbf{E3 compares two programs, not two implementations of one algorithm.} The two PPOs
         share their algorithm hyperparameters, not their default initialisation: Stable-Baselines3
         initialises every layer orthogonally, while sbx leaves its orthogonal option off and keeps
-        Flax's default initialisation (\cref{sec:programmes}). We do not know whether this difference
-        explains E3.
+        Flax's default initialisation (\cref{sec:programmes}). Swapping the option does not close the
+        gap in a settled way (\cref{sec:e3-init}): the cause of E3 remains unknown.
   \item \textbf{The pass@1 of the GRPO strand} mixes correctness and concision, since a truncated
         answer counts as wrong (\cref{sec:llm-coupure}). For Qwen, the pass@1 gain under the true
         reward is explained entirely by the drop in truncated answers. The accuracy of finished

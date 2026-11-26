@@ -884,7 +884,10 @@ exactement leur score final.
 **Ce qui change.** Deux résultats bougent. Les deux versions de PPO se séparent (E3) :
 PyTorch l'emporte sur Walker2d (2 204 contre 1 435 ; probabilité que JAX fasse mieux 0,30, de 0,15
 à 0,48) et JAX sur Swimmer (115 contre 107 ; 0,79, de 0,63 à 0,91). Les écarts ressemblent à ceux de
-dix graines ; les graines ajoutées resserrent les intervalles. Ensuite, les comparaisons serrées
+dix graines ; les graines ajoutées resserrent les intervalles. À quarante graines, l'avance de PyTorch sur
+Walker2d passe la correction de Holm (2 233 contre 1 512, p de Holm = 0,02). Échanger l'initialisation
+orthogonale entre les deux programmes ne referme pas l'écart de façon établie (p de Holm de 0,23 à 0,70) : sa
+cause reste inconnue. Ensuite, les comparaisons serrées
 sont plus difficiles que dix graines ne le laissaient voir (E5). Le bon ordre est désormais celui
 des moyennes de vingt essais, et les tirages se font parmi les vingt. Sur les 24 comparaisons, la
 médiane ne bouge presque pas (93 % avec trois graines, 97 % avec cinq). Pour les 8 comparaisons

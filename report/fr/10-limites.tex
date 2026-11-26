@@ -121,7 +121,8 @@ des fichiers commités.
 Le registre des tentatives compte 42 tentatives arrêtées (\cref{sec:registres}). Chaque arrêt a
 frappé tous les essais en cours à la fois, sans lien avec un score. Pour SAC et CrossQ, les courbes
 des tentatives arrêtées ont été écrasées : nous ne pouvons pas montrer que la relance retrouve
-la même courbe.
+la même courbe. Trois entraînements de ces programmes refaits à l'identique retrouvent pourtant la leur
+à l'octet près (\cref{sec:outils}).
 Tous les entraînements ont tourné avec Stable-Baselines3 2.9.2, la même version pour tous les essais.
 Ces faits ne favorisent aucun programme.
 
@@ -261,7 +262,8 @@ expérience et ne la réfute pas.
         partagent leurs hyperparamètres d'algorithme, pas leur initialisation par défaut :
         Stable-Baselines3 initialise toutes les couches de façon orthogonale, alors que sbx laisse son
         option orthogonale désactivée et garde l'initialisation par défaut de Flax
-        (\cref{sec:programmes}). Nous ne savons pas si cette différence explique E3.
+        (\cref{sec:programmes}). Échanger l'option ne referme pas l'écart de façon établie
+        (\cref{sec:e3-init}) : la cause de E3 reste inconnue.
   \item \textbf{Le pass@1 du volet GRPO} mêle justesse et concision, puisqu'une réponse coupée
         compte pour fausse (\cref{sec:llm-coupure}). Chez Qwen, le gain de pass@1 sous vraie
         récompense s'explique tout entier par la baisse des réponses coupées. La justesse des

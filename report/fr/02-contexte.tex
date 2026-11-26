@@ -187,7 +187,8 @@ complet avec une graine aléatoire donnée.
 Même programme, même graine aléatoire, mêmes versions des bibliothèques et même machine : le protocole
 attend le même résultat. Nos journaux le vérifient pour \algo{PPO PyTorch} et \algo{PPO JAX} : un essai
 arrêté puis relancé retrouve à l'identique ses points d'évaluation. Pour \algo{SAC} et \algo{CrossQ},
-nous ne l'avons pas vérifiée (chapitre~\ref{chap:10-limites}).
+trois entraînements refaits à l'identique retrouvent leurs points d'évaluation à l'octet près
+(\cref{sec:outils}).
 
 \paragraph{Ce qui change}
 Changer la graine aléatoire change l'initialisation des poids, l'exploration, l'ordre des mini-lots et

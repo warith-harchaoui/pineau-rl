@@ -466,6 +466,15 @@ assert c99["ppo_sb3_zoofix"]["settled"] and not c99["ppo_sb3"]["settled"]
 add("E6 gamma", f"la recette obtient {cg('ppo_sb3_zoog99', 'fr')}, devant la recette à 0,999 (p de Holm = {str(half_up(c99['ppo_sb3_zoofix']['mw_p_holm'], 3)).replace('.', ',')}) et à égalité avec les valeurs par défaut ; {pct(gg['ppo_sb3_zoog99']['share_episodes_standing'])} de ses épisodes restent debout sans avancer, contre {pct(gg['ppo_sb3_zoofix']['share_episodes_standing'])} à 0,999",
     f"the recipe scores {cg('ppo_sb3_zoog99', 'en')}, ahead of the recipe at 0.999 (Holm p = {half_up(c99['ppo_sb3_zoofix']['mw_p_holm'], 3)}) and tied with the default values; {pct(gg['ppo_sb3_zoog99']['share_episodes_standing'], lang='en')} of its episodes stand without moving forward, against {pct(gg['ppo_sb3_zoofix']['share_episodes_standing'], lang='en')} at 0.999")
 
+# E3 at forty seeds and the initialisation swap (c2.py, deviation 34).
+c2 = J("sim/analysis/c2.json")["contrasts"]
+w40 = c2["Walker2d-v5 (1) sbx vs sb3, seeds 0-39"]
+assert w40["settled_holm"] and w40["p_improve"] < .5 and not any(v["settled_holm"] for k, v in c2.items() if "(2)" in k or "(3)" in k)
+swap = sorted(half_up(v["mw_p_holm"], 2) for k, v in c2.items() if "(2)" in k or "(3)" in k)
+add("E3 forty seeds", f"({num(w40['iqm']['ppo_sb3'], 'fr')} contre {num(w40['iqm']['ppo_sbx'], 'fr')}, p de Holm = {str(half_up(w40['mw_p_holm'], 2)).replace('.', ',')})",
+    f"({num(w40['iqm']['ppo_sb3'], 'en')} against {num(w40['iqm']['ppo_sbx'], 'en')}, Holm p = {half_up(w40['mw_p_holm'], 2)})")
+add("E3 swap", f"(p de Holm de {str(swap[0]).replace('.', ',')} à {str(swap[-1]).replace('.', ',')})", f"(Holm p from {swap[0]} to {swap[-1]})")
+
 # E7 continued, E2, E4, E5 and B3 (sim/analysis/*.py), once the forty CrossQ runs were done.
 assert [k for k, v in e7.items() if v["verdict"] == "gain"] == ["sac/Swimmer-v5"]
 add("E7 crossq", f"SAC en garde {pct(e7['sac/Hopper-v5']['iqm'])} et CrossQ {pct(e7['crossq/Hopper-v5']['iqm'])}. Sur Swimmer, aucun ne perd ; SAC y gagne même {pct(e7['sac/Swimmer-v5']['iqm'] - 1)}",

@@ -74,8 +74,9 @@ celles qui ont réellement tourné.
 Chaque entraînement tourne sur un seul fil de calcul (\texttt{OMP\_NUM\_THREADS=1},
 \texttt{torch.set\_num\_threads(1)}, options XLA à un fil pour JAX), pour qu'un essai soit déterminé par sa
 graine aléatoire sur une machine donnée. Les relances de PPO PyTorch et de PPO JAX l'ont vérifié
-(\cref{sec:calcul}). Pour SAC et CrossQ, trois entraînements refaits à l'identique feront la même
-vérification : ils ne sont pas finis. Tous nos essais ont tourné sur cette seule machine. Sur un
+(\cref{sec:calcul}). Pour SAC et CrossQ, trois entraînements refaits à l'identique, SAC sur \task{Hopper}
+aux graines aléatoires 0 et 1 et CrossQ sur \task{Walker2d} à la graine 0, redonnent les mêmes points
+d'évaluation à l'octet près (\file{sim/analysis/c6\_determinism.json}). Tous nos essais ont tourné sur cette seule machine. Sur un
 autre processeur, MuJoCo, JAX et PyTorch peuvent enchaîner les calculs en virgule flottante dans un autre ordre et
 arrondir autrement : la même graine aléatoire y donnerait alors une autre courbe. Nous ne l'avons pas mesuré. Une
 relance ailleurs met à l'épreuve les statistiques du rapport, sans espoir d'en retrouver les courbes au chiffre près.
@@ -146,9 +147,9 @@ initialisent les poids autrement :
 L'option ne fait pas non plus la même chose dans les deux bibliothèques. Activée dans SBX, elle n'initialise
 orthogonalement que la sortie de l'action, au gain 0,01 (\file{sbx/ppo/policies.py}, lignes 81 à 84). Les deux
 programmes diffèrent enfin par la bibliothèque de calcul, ses générateurs aléatoires et ses arrondis.
-L'expérience E3 mesure ce que ces différences coûtent ensemble, sans les séparer. Une expérience de plus
-échange l'option entre les deux programmes pour isoler la part de l'initialisation. Ses entraînements
-tournent encore : ce rapport n'en donne aucun résultat.
+L'expérience E3 mesure ce que ces différences coûtent ensemble, sans les séparer. Un complément, fixé
+d'avance, porte les deux programmes à quarante graines aléatoires sur \task{Walker2d} et \task{Swimmer}, puis
+échange l'option entre eux pour isoler la part de l'initialisation (\cref{sec:e3-init}).
 
 \paragraph{SAC}
 SAC (\emph{Soft Actor-Critic}, \cite{haarnoja2018sac}) sert de référence \enquote{hors politique}
@@ -260,8 +261,8 @@ l'initialisation des réseaux, les positions initiales du corps simulé, le brui
 tirés dans la mémoire de rejeu. \file{sim/run.py} la passe au constructeur du programme
 (\texttt{seed=SEED}), qui en dérive les générateurs de NumPy, de PyTorch ou de JAX et celui de
 l'environnement d'entraînement. Pour PPO PyTorch et PPO JAX, une relance avec la même graine aléatoire sur la
-même machine a redonné les mêmes points d'évaluation (\cref{sec:calcul}). Pour SAC et CrossQ, nous ne l'avons
-pas vérifié (\cref{sec:outils}).
+même machine a redonné les mêmes points d'évaluation (\cref{sec:calcul}). Pour SAC et CrossQ, trois
+entraînements refaits à l'identique les redonnent à l'octet près (\cref{sec:outils}).
 
 \paragraph{Graines aléatoires d'entraînement}
 Les graines aléatoires d'entraînement sont les entiers 0 à 29, fixés avant le premier entraînement :
@@ -1028,7 +1029,8 @@ grille principale, puis deux copies de \file{queue.sh} pour la consolidation, pu
 chaque heure par \file{scale.sh}, de huit cœurs au plus, enfin deux cœurs pour tout le projet, essai GRPO
 sur processeur compris. Chaque essai tourne sur un seul fil, dans son
 propre processus : le nombre de tâches parallèles n'entre dans aucun de ses calculs. Les relances de PPO
-retrouvent leurs points d'évaluation à l'identique. Pour SAC et CrossQ, nous ne l'avons pas vérifié.
+retrouvent leurs points d'évaluation à l'identique. Pour SAC et CrossQ, trois entraînements refaits à
+l'identique aussi.
 
 \paragraph{Les arrêts et les relances}
 Le registre reconstruit \file{logs/attempts\_reconstructed.csv} compte 292~lancements pour les

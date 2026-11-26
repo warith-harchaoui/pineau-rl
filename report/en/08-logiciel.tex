@@ -422,7 +422,7 @@ All runs ran on one laptop, a Mac with an Apple M2 Max chip under macOS 27.2 (ar
 with other projects. Each simulation training runs on a single thread. The number of jobs in
 parallel followed the load of the machine: four cores at the start, up to eight granted every hour,
 then two cores for the whole project. This sharing leaves the results untouched as long as a run
-depends on its random seed alone: the relaunches check it for PPO; for SAC and CrossQ, we have not checked it
+depends on its random seed alone: the relaunches check it for PPO, and three training runs redone unchanged for SAC and CrossQ
 (\cref{sec:registres}). \Cref{sec:calcul} describes the launchers, the watchdog and the job queue.
 \Cref{tab:calcul} gives, per program and per task, the number of runs, the number of steps, the
 median wall-clock time of a run and the sum of these times.

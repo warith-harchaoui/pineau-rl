@@ -72,12 +72,15 @@ def claim(label, fr, en, kind="json"):
 
 both = lambda f: (f("fr"), f("en"))
 de_a = lambda a, b, l: f"de {a} à {b}" if l == "fr" else f"from {a} to {b}"
+de_a1 = lambda a, b, l: de_a(a.rstrip(" %\u202f\u00a0"), b, l) if l == "fr" else de_a(a, b, l)  # French prose: "de 35 à 29 %"
 
 # Survey with the same grid (study/extension_stats.json): classical RL 2026 against our reading of 2018.
 X = {r["k"]: r for r in J("study/extension_stats.json")["rows"]}
 sh = lambda k, s: Decimal(X[k][s][0]) / Decimal(X[k][s][1])
 for k in ("Q5", "X7", "Y9", "X2", "Q4", "Q7", "Y7", "Q8"):
-    claim(f"{k} 2018 to 2026", *both(lambda l: de_a(pct(sh(k, "ours2018"), l), pct(sh(k, "classic2026"), l), l)))
+    claim(f"{k} 2018 to 2026", *both(lambda l: (de_a1 if k in ("Q4", "Y7") else de_a)(pct(sh(k, "ours2018"), l), pct(sh(k, "classic2026"), l), l)))
+for k in ("Q5", "X7", "Y9", "X2", "Q7", "Q8"):  # the French prose writes them "de 31 à 74 %" since 26 Nov; the alt text keeps "de 31 % à 74 %"
+    claim(f"{k} 2018 to 2026, prose", *both(lambda l: de_a1(pct(sh(k, "ours2018"), l), pct(sh(k, "classic2026"), l), l)))
 claim("Q8 then", *both(lambda l: f"{pct(sh('Q8', 'ours2018'), l)} {'puis' if l == 'fr' else 'then'} {pct(sh('Q8', 'classic2026'), l)}"))
 for k in ("Q5", "Y9", "X7", "X2", "Q7", "Q8", "Y7", "Q4"):
     t = X[k]["classic_vs_ours2018"]
@@ -130,7 +133,7 @@ claim("X2 in 2024", *both(lambda l: f"{pct(ty('X2', '2024'), l)} {'en' if l == '
 claim("Q8 in 2024", *both(lambda l: f"{pct(ty('Q8', '2024'), l)} {'en' if l == 'fr' else 'in'} 2024"))
 claim("20 papers per year", "20 par année de 2019 à 2024, 50 de 2026", "20 per year from 2019 to 2024, 50 from 2026")
 assert {T["sizes"][y] for y in ("2019", "2020", "2022", "2024")} == {20} and T["sizes"]["2026"] == 50
-claim("20 per year read", "20 articles de RL classique par année d'ICML et de NeurIPS, en 2019, 2020, 2022 et 2024",
+claim("20 per year read", "20 articles de RL classique tirés au hasard, par année, d'ICML et de NeurIPS, sur les années 2019, 2020, 2022 et 2024",
       "20 classical RL papers read per year from ICML and NeurIPS, in 2019, 2020, 2022 and 2024")
 y9 = lambda ys: sum(T["rows"]["Y9"]["by_year"][y]["k"] for y in ys) / sum(T["rows"]["Y9"]["by_year"][y]["n"] for y in ys)
 claim("Y9 later", f"de {pct(y9(['2019', '2020']), 'fr')} sur 2019 et 2020 à {pct(y9(['2022', '2024']), 'fr')} sur 2022 et 2024",
@@ -157,12 +160,12 @@ claim("GRPO5 alt after 100 steps", "à la réussite après 100 pas", "to success
 claim("E1 alt max", *both(lambda l: f"{'jusqu' + Q + 'à' if l == 'fr' else 'up to'} {num(max(s), l)}"))
 claim("E1 alt median", *both(lambda l: f"{'la médiane' if l == 'fr' else 'the median'}, {num(e1['median'], l)}"))
 claim_("E1 random 5v5 (removed 2026-11-23, the alt text keeps it)", *both(lambda l: f"{'dans' if l == 'fr' else 'in'} {pct(e1['random_5v5']['false_positive'], l, 1)} {'des tirages' if l == 'fr' else 'of the draws'}"))
-claim("E1 gaps", *both(lambda l: f"{pct(e1['random_5v5']['median_gap'], l)} {'en médiane et de' if l == 'fr' else 'at the median and by'} {pct(e1['random_5v5']['p95_gap'], l)}"))
+claim("E1 gaps", *both(lambda l: f"{pct(e1['random_5v5']['median_gap'], l)} {'et atteint' if l == 'fr' else 'at the median and by'} {pct(e1['random_5v5']['p95_gap'], l)}"))
 claim_("E1 sorted 31% (removed 2026-11-23, the alt text keeps it)", *both(lambda l: f"{pct(e1['extreme_5v5_of_10']['false_positive'], l)} {'de faux positifs' if l == 'fr' else 'false positives'}"))
 claim("E1 near one in three (brief)", *both(lambda l: "près d'une fois sur trois" if l == "fr" else "nearly a third of the time"))
 claim("E1 draws", *both(lambda l: f"{num(10000, l)} {'tirages' if l == 'fr' else 'draws'}"))
 claim("E1 draws (verb)", *both(lambda l: f"{num(10000, l)} {'fois' if l == 'fr' else 'times'}"))
-claim("E1 top3", *both(lambda l: f"{pct(e1['top3_of_10']['inflation'], l)} : {num(e1['top3_of_10']['mean_top3'], l)} au lieu de {num(e1['top3_of_10']['mean_all'], l)}" if l == "fr"
+claim("E1 top3", *both(lambda l: f"{pct(e1['top3_of_10']['inflation'], l)}, passant de {num(e1['top3_of_10']['mean_all'], l)} à {num(e1['top3_of_10']['mean_top3'], l)}" if l == "fr"
                        else f"{pct(e1['top3_of_10']['inflation'], l)}: {num(e1['top3_of_10']['mean_top3'], l)} instead of {num(e1['top3_of_10']['mean_all'], l)}"))
 claim("5% threshold", "seuil habituel de 5 %", "usual 5% threshold", "doc")
 
@@ -178,9 +181,9 @@ claim("B1 pooled", *both(lambda l: f"{num(tr['random_5v5']['pooled']['abs_t_p95'
 claim("B1 pooled false positives", *both(lambda l: f"{pct(tr['random_5v5']['pooled']['false_positive'], l)} {'des tirages au hasard' if l == 'fr' else 'of the random draws'}"))
 assert all(tr[g][m]["share_abs_t_ge_henderson"] == 0 for g in ("random_5v5", "sorted_5v5") for m in ("mean_t", "pooled"))
 hs = b1s["trpo"]["n10"]["random_5v5"]
-claim("Henderson script share >= 9.09", *both(lambda l: f"{'dépasse' if l == 'fr' else 'exceeds'} {num(9.09, l, 2)} {'dans' if l == 'fr' else 'in'} {pct(hs['share_abs_t_ge_henderson'], l)}"))
+claim("Henderson script share >= 9.09", *both(lambda l: f"Sur {pct(hs['share_abs_t_ge_henderson'], l)} des tirages aléatoires le t moyen est supérieur à {num(9.09, l, 2)}" if l == "fr" else f"exceeds {num(9.09, l, 2)} in {pct(hs['share_abs_t_ge_henderson'], l)}"))
 claim("Henderson script false positives", *both(lambda l: f"{pct(hs['false_positive'], l)} {'des cas' if l == 'fr' else 'of the cases'}"))
-claim("TRPO episode/agent sd", *both(lambda l: f"{pct(b1s['trpo']['eval_std_over_between_seed_sd'], l)} {('de l' + Q + 'écart type entre agents') if l == 'fr' else 'of the standard deviation between agents'}"))
+claim("TRPO episode/agent sd", *both(lambda l: f"{pct(b1s['trpo']['eval_std_over_between_seed_sd'], l)} {'de la dispersion entre agents' if l == 'fr' else 'of the standard deviation between agents'}"))
 assert b1s["ppo_sb3"]["n10"]["random_5v5"]["share_abs_t_ge_henderson"] == 0
 # Welch-Satterthwaite degrees of freedom for two groups of 5: the minimum over every ratio of variances is n - 1.
 _n = 5
@@ -211,7 +214,7 @@ claim("E4 alt", *both(lambda l: (f"HalfCheetah{' :' if l == 'fr' else ':'} SAC +
                                   + ". ".join(f"{t[:-3]}{' :' if l == 'fr' else ':'} " + ", ".join("+" + str(inf(a, t)) for a in ALG) for t in TK[1:]))))
 claim("E4 alt median", *both(lambda l: f"{'à la médiane de' if l == 'fr' else 'at the median of'} +{pct(e4['inflation_median'], l)}"))
 e5 = J("sim/analysis/e5.json")
-claim("E5 close comparisons", *both(lambda l: f"{'moins de' if l == 'fr' else 'less than'} {pct(0.2, l)}, {'cinq graines aléatoires ne retrouvent le bon ordre que' if l == 'fr' else 'five random seeds recover the right order only'} {int(hu(e5['median_close']['5'] * 100))}"))
+claim("E5 close comparisons", *both(lambda l: f"{'moins de' if l == 'fr' else 'less than'} {pct(0.2, l)}, {'on ne retrouve le bon ordre que' if l == 'fr' else 'five random seeds recover the right order only'} {int(hu(e5['median_close']['5'] * 100))}"))
 assert e5["n_close"] == 7
 
 # E2, E3 (sim/analysis/e2.json, e3.json).
@@ -231,7 +234,7 @@ loss = sum(v["verdict"] == "loss" for v in e7.values())
 assert loss == 12 and len(e7) == 16
 claim("E7 masses and friction", *both(lambda l: f"{'masses alourdies de' if l == 'fr' else 'masses'} {pct(0.2, l)} {'et des frottements réduits de' if l == 'fr' else 'heavier and friction'} {pct(0.2, l)}"), "doc")
 ret = lambda a, t: e7[f"{a}/{t}"]["iqm"]
-claim("E7 Hopper retention", *both(lambda l: f"{pct(ret('ppo_sb3', 'Hopper-v5'), l)} {'de son score dans sa version PyTorch et' if l == 'fr' else 'of its score in its PyTorch version and'} {pct(ret('ppo_sbx', 'Hopper-v5'), l)} {'dans sa version JAX, quand SAC en garde' if l == 'fr' else 'in its JAX version, while SAC keeps'} {pct(ret('sac', 'Hopper-v5'), l)} {'et CrossQ' if l == 'fr' else 'and CrossQ'} {pct(ret('crossq', 'Hopper-v5'), l)}"))
+claim("E7 Hopper retention", *both(lambda l: f"{pct(ret('ppo_sb3', 'Hopper-v5'), l)} {'et' if l == 'fr' else 'of its score in its PyTorch version and'} {pct(ret('ppo_sbx', 'Hopper-v5'), l)} {'de son score d' + Q + 'origine sous PyTorch et JAX respectivement, contre' if l == 'fr' else 'in its JAX version, while SAC keeps'} {pct(ret('sac', 'Hopper-v5'), l)} {'pour SAC et' if l == 'fr' else 'and CrossQ'} {pct(ret('crossq', 'Hopper-v5'), l)}"))
 # (removed from the article on 2026-11-21) claim_("E7 SAC Swimmer gain", *both(lambda l: f"SAC {'y gagne même' if l == 'fr' else 'even gains'} {pct(ret('sac', 'Swimmer-v5') - 1, l)}"))
 hp = rk["Hopper-v5"]
 pm = lambda a: num(hp["iqm"]["perturbed_mean"][a], "x")
@@ -290,9 +293,9 @@ claim("dose alt", dose_alt("fr"), dose_alt("en"))
 # Twenty random seeds and equal budget (SIM deviations 12 and 20): e4_r10, e5_s20, e2_s20, e2_equal(_s20), e3_s20,
 # dose_s20. The ten-seed files above stay the main results.
 e4r, e5s = J("sim/analysis/e4_r10.json"), J("sim/analysis/e5_s20.json")
-claim("E4 seeds 10 to 19", *both(lambda l: (f"gonfle la moyenne de {pct(e4r['inflation_median'], l)} en médiane et renverse encore {e4r['n_reversed']} comparaisons sur {e4r['n_comparisons']}" if l == "fr" else
+claim("E4 seeds 10 to 19", *both(lambda l: (f"gonfle de {pct(e4r['inflation_median'], l)} la moyenne (médiane), et retourne à nouveau {e4r['n_reversed']} comparaisons sur {e4r['n_comparisons']}" if l == "fr" else
                                             f"inflates the mean by {pct(e4r['inflation_median'], l)} at the median and again reverses {e4r['n_reversed']} comparisons out of {e4r['n_comparisons']}")))
-claim("E5 close, twenty seeds", *both(lambda l: f"{'ce chiffre tombe à' if l == 'fr' else 'this figure falls to'} {int(hu(e5s['median_close']['5'] * 100))} {'fois sur cent' if l == 'fr' else 'times out of a hundred'}"))
+claim("E5 close, twenty seeds", *both(lambda l: f"{'on n' + Q + 'atteint plus que' if l == 'fr' else 'this figure falls to'} {int(hu(e5s['median_close']['5'] * 100))} {'fois sur cent' if l == 'fr' else 'times out of a hundred'}"))
 e2s, e2q, e2qs = (J(f"sim/analysis/{f}.json") for f in ("e2_s20", "e2_equal", "e2_equal_s20"))
 assert e2s["leader_changes"] and [e2s["leaders"][t] for t in TK] == ["crossq", "ppo_sbx", "crossq", "ppo_sbx"]
 assert not e2s["tasks"]["HalfCheetah-v5"]["pairs"]["crossq>sac"]["settled"]  # "sans que l'écart soit établi"
@@ -305,6 +308,9 @@ claim("E3 twenty seeds", *both(lambda l: f"{'avec' if l == 'fr' else 'with'} {nu
 e3h = J("sim/analysis/e3_holm.json")["s20"]  # Holm over the four tasks: only Swimmer stays established
 assert [t_ for t_ in TK if e3h[t_]["settled_holm"]] == ["Swimmer-v5"] and e3h["Swimmer-v5"]["hodges_lehmann_sbx_minus_sb3"] > 0
 claim("E3 Holm Swimmer", *both(lambda l: f"{num(e3s['Swimmer-v5']['iqm']['sbx'], l)} {'contre' if l == 'fr' else 'against'} {num(e3s['Swimmer-v5']['iqm']['sb3'], l)}"))
+c2w = J("sim/analysis/c2.json")["contrasts"]["Walker2d-v5 (1) sbx vs sb3, seeds 0-39"]  # forty seeds: Walker2d passes Holm too
+assert c2w["settled_holm"] and c2w["p_improve"] < .5
+claim("E3 forty seeds", *both(lambda l: f"{num(c2w['iqm']['ppo_sb3'], l)} {'contre' if l == 'fr' else 'against'} {num(c2w['iqm']['ppo_sbx'], l)}"))
 dss = J("sim/analysis/dose_s20.json")
 assert dss["missing"] == {} and dss["control_max_rel_gap"] == 0 and dss["seeds"] == [0, 20]
 hks = {k.split("/", 1)[1]: v["ranking"] for k, v in dss["ranking"].items() if k.startswith("Hopper-v5/")}
@@ -326,14 +332,14 @@ for qn in ("mass", "friction"):
 # E6 (sim/analysis/e6.json, e6_official.json, e6_diag.json).
 e6, e6o, e6d = J("sim/analysis/e6.json"), J("sim/analysis/e6_official.json"), J("sim/analysis/e6_diag.json")
 claim("E6 first pass", *both(lambda l: f"{num(e6['iqm']['default'], l)} {'pour les valeurs par défaut,' if l == 'fr' else 'for the default values,'} {num(e6['iqm']['zoo'], l)}"))
-claim("E6 official", *both(lambda l: f"{'obtiennent' if l == 'fr' else 'score'} {num(e6o['groups']['official v4']['iqm'], l)}, {'contre' if l == 'fr' else 'against'} {num(e6o['groups']['default v4']['iqm'], l)}"))
+claim("E6 official", *both(lambda l: f"{'obtenu' if l == 'fr' else 'score'} {num(e6o['groups']['official v4']['iqm'], l)}{' points. Avec les valeurs par défaut, j' + Q + 'obtiens' if l == 'fr' else ', against'} {num(e6o['groups']['default v4']['iqm'], l)}"))
 e6g = J("sim/analysis/e6_gamma.json")["groups"]
-claim("E6 gamma", *both(lambda l: f"{'courir le robot :' if l == 'fr' else 'run again:'} {num(e6g['ppo_sb3_zoog99']['iqm'], l)}, {'autant que les valeurs par défaut' if l == 'fr' else 'as much as the default values'}"))
-claim("E6 gamma setting", *both(lambda l: f"{'Réglée à' if l == 'fr' else 'Set to'} {num(0.999, l, 3)} {'comme dans le recueil' if l == 'fr' else 'as in the collection'}"), "doc")
-claim("E6 gamma 0.99", *both(lambda l: f"{'Réglée à' if l == 'fr' else 'Set to'} {num(0.99, l, 2)} {'dans l' if l == 'fr' else 'in the learning'}"), "doc")
-claim("E6 gamma 2022", *both(lambda l: f"{'la même recette courait avec' if l == 'fr' else 'the same recipe ran with'} {num(0.999, l, 3)}"), "doc")
+claim("E6 gamma", *both(lambda l: f"{'atteignant' if l == 'fr' else 'run again:'} {num(e6g['ppo_sb3_zoog99']['iqm'], l)}{' points, soit autant que les valeurs par défaut' if l == 'fr' else ', as much as the default values'}"))
+claim("E6 gamma setting", *both(lambda l: f"{'Si je le mets à' if l == 'fr' else 'Set to'} {num(0.999, l, 3)}{', comme dans le recueil' if l == 'fr' else ' as in the collection'}"), "doc")
+claim("E6 gamma 0.99", *both(lambda l: f"{'Le ramener à' if l == 'fr' else 'Set to'} {num(0.99, l, 2)} {'permet à l' if l == 'fr' else 'in the learning'}"), "doc")
+claim("E6 gamma 2022", *both(lambda l: f"{'cette même valeur de' if l == 'fr' else 'the same recipe ran with'} {num(0.999, l, 3)}"), "doc")
 # (removed from the article on 2026-11-21) claim_("E6 fixed recipe", "1 012 sur la version 5 de la tâche, 984 sur la version 4", "1,012 on version 5 of the task and 984 on version 4", "doc")
-claim("E6 discount", *both(lambda l: f"{num(0.99, l, 2)}, {'là où le recueil emploie' if l == 'fr' else 'whereas the collection uses'} {num(0.999, l, 3)}"), "doc")
+claim("E6 discount", *both(lambda l: f"{num(0.99, l, 2)}{' alors que c' + Q + 'était' if l == 'fr' else ', whereas the collection uses'} {num(0.999, l, 3)}"), "doc")
 
 # GRPO (sim/llm/results/summary.json, gains.json; docs/figures/data/grpo_truncation_*.csv).
 sm, gn = J("sim/llm/results/summary.json"), J("sim/llm/results/gains.json")
@@ -401,6 +407,8 @@ TRC = {l: list(csv.DictReader(open(ROOT / f"docs/figures/data/grpo_truncation_{l
 cutn = sum(int(x["share"]) for x in TRC["fr"] if x["type"].startswith("Coupée"))
 tot = sum(int(x["share"]) for x in TRC["fr"])
 claim("GRPO base model cut", f"{cutn} réponses sur {tot}", f"{cutn} answers out of {tot}")
+claim("GRPO base model cut, prose", f"Sur {tot} réponses issues du modèle initial", f"{cutn} answers out of {tot}")
+claim("GRPO base model cut, prose 2", f"{cutn} sont coupées sans obtenir de résultat", f"{cutn} answers out of {tot}")
 
 
 def trunc_alt(l):
@@ -424,7 +432,7 @@ D = lambda label, fr, en: claim(label, fr, en, "doc")
 R36 = J("study/r36_stats.json")["main"]
 r36s = lambda k, y: Decimal(R36[k]["counts"][y]["yes"]) / Decimal(R36[k]["counts"][y]["n"])
 for k in ("Q5", "Y9", "X7", "X2"):
-    claim(f"r36 {k}", *both(lambda l: de_a(pct(r36s(k, "2018"), l), pct(r36s(k, "2026"), l), l)))
+    claim(f"r36 {k}", *both(lambda l: de_a1(pct(r36s(k, "2018"), l), pct(r36s(k, "2026"), l), l)))
 claim("r36 X2 p", *both(lambda l: f"(p = {num(R36['X2']['diff']['p'], l, 3)})"))
 # The reader from another model family (study/gemma_stats.json, gemma_stats_invalid_no.json): the sign of the four
 # rises kept; with its invalid "yes" counted "no", the rise of X2 no longer established.
@@ -436,20 +444,20 @@ claim("gemma X2 invalid as no", *both(lambda l: f"({sg(gx['diff'] * 100)} points
 # Power of the survey (study/survey_extra.json): the smallest rise detected with 80% power, over the criteria.
 MDE = [c["up_5"] for c in J("study/survey_extra.json")["mde"].values() if c["up_5"] is not None]
 claim("survey power 18 to 30", *both(lambda l: (f"hausse d'au moins {int(hu(min(MDE) * 100))} à {int(hu(max(MDE) * 100))} points" if l == "fr" else f"rise of at least {int(hu(min(MDE) * 100))} to {int(hu(max(MDE) * 100))} points")))
-claim("r36 papers", *both(lambda l: f"{R36['Q5']['counts']['2018']['n'] + R36['Q5']['counts']['2026']['n']} " + ("articles expérimentaux" if l == "fr" else "experimental papers")))
+claim("r36 papers", *both(lambda l: (f"les {R36['Q5']['counts']['2018']['n'] + R36['Q5']['counts']['2026']['n']} articles des deux années" if l == "fr" else f"{R36['Q5']['counts']['2018']['n'] + R36['Q5']['counts']['2026']['n']} experimental papers")))
 D("t and p of 2018", "t = −9,09, p = 0,0016", "t = −9.09, p = 0.0016")
 D("published t", "9,09 avec p = 0,0016", "9.09 with p = 0.0016")
 D("degrees of freedom", "3,4 degrés de liberté", "3.4 degrees of freedom")
 D("Nature survey", "1 576 chercheurs", "1,576 researchers")
-D("Nature 70%", "plus de 70 %", "more than 70%")
+D("Nature 70%", "Plus de 70 %", "more than 70%")
 D("Buckheit Donoho", "1995", "1995")
 D("p threshold", "0,05", "0.05")
-D("checklist 2019", "en 2019", "in 2019")
+D("checklist 2019", "En 2019, NeurIPS a adopté", "in 2019")
 D("population 2026", "1 252 sur 17 836", "1,252 out of 17,836")
 D("first draw", "27 appliquent ce qu'ils appellent RL à de grands modèles de langue, 14 relèvent du RL classique", "27 apply what they call RL to large language models, 14 belong to classical RL")
 D("theory", "et 9 sont théoriques", "and 9 are theoretical")
 D("agreement", "127 décisions sur 130 (98 %)", "127 decisions out of 130 (98%)")
-D("Pineau 55 vs 90", "55 % d'articles qui donnent tous les réglages de leur méthode, quand Pineau en comptait 90 %", "55% of papers giving all the settings of their method, whereas Pineau counted 90%")
+D("Pineau 55 vs 90", "55 % déclarent tous les réglages de leur méthode, contre 90 % pour Pineau", "55% of papers giving all the settings of their method, whereas Pineau counted 90%")
 D("Pineau read 50", "Pineau avait lu 50 articles", "Pineau had read 50")
 D("we reread 50 from 2018", "50 articles de 2018", "50 papers from 2018")
 D("topped up to 50", "jusqu'à 50", "up to 50")
@@ -458,14 +466,14 @@ D("NeurIPS 2025 checklist", "Sur les 30 articles de NeurIPS 2025", "Of the 30 Ne
 D("checklist yes no test", "Les 18 articles", "The 18 papers")
 D("checklist code", "5 articles sur 22", "5 papers out of 22")
 D("40% to 73%", "40 %", "40%")
-D("runs silent", "Sur 41 articles de RL expérimentaux", "Of 41 experimental RL papers")
-D("runs silent 2", "20 ne disent pas combien", "20 do not say how many")
-D("runs single", "4 n'en ont qu'un", "4 have only one")
+D("runs silent", "Sur les 41 articles de RL expérimentaux", "Of 41 experimental RL papers")
+D("runs silent 2", "20 n'indiquent pas ce nombre", "20 do not say how many")
+D("runs single", "4 n'en utilisent qu'une", "4 have only one")
 D("best of N in papers", "14 % des articles de RL classique de 2026 la laissent voir, contre 19 % en 2018", "14% of classical RL papers from 2026 let it show, against 19% in 2018")
 D("CrossQ 2024", "paru en 2024", "published in 2024")
 D("TRPO script date", "En juin 2017", "In June 2017")
 D("script name", "script de 2017", "2017 script")
-D("Shao gains", "29,1 points de pourcentage, une récompense tirée au hasard 21,4", "29.1 percentage points, a reward drawn at random 21.4")
+D("Shao gains", "29,1 points de pourcentage, contre 21,4 lors d'un tirage au hasard", "29.1 percentage points, a reward drawn at random 21.4")
 D("Shao model", "Qwen2.5-Math-7B et le banc d'essai MATH-500", "Qwen2.5-Math-7B and the MATH-500 benchmark")
 D("Shao year", "En 2025, une équipe", "In 2025, a team")
 D("models", "Qwen2.5 de 0,5 milliard de paramètres", "Qwen2.5 with 0.5 billion parameters")

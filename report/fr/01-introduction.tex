@@ -119,8 +119,8 @@ Un résultat est reproductible quand une autre personne, avec le même code, les
 même tâche dans la même version, le même budget de pas et le même protocole d'évaluation, retrouve la même
 conclusion. Seules les graines aléatoires et la machine changent. La reproduction se vérifie à deux
 niveaux. Le premier est la relance à l'identique : même graine aléatoire, même machine, un seul fil de calcul. Elle a redonné les mêmes points
-d'évaluation pour PPO PyTorch et PPO JAX (\cref{sec:calcul}). Pour SAC et CrossQ, nous ne l'avons pas
-vérifiée (\cref{sec:graines}). Ce niveau éprouve le code. Le second niveau éprouve la conclusion : d'autres graines
+d'évaluation pour PPO PyTorch et PPO JAX (\cref{sec:calcul}), et à l'octet près pour trois entraînements de SAC
+et de CrossQ refaits à l'identique (\cref{sec:graines}). Ce niveau éprouve le code. Le second niveau éprouve la conclusion : d'autres graines
 aléatoires, le même verdict. Le rapport de Bollen, celui des académies américaines et la grille de 2021 nomment ce niveau une réplication. L'expérience E1 mesure combien de fois deux groupes de graines aléatoires du
 même programme passent pour deux algorithmes (\cref{sec:e1}). E5 compte les graines aléatoires qu'il faut
 pour retrouver le bon classement (\cref{sec:e5}). La consolidation relance E2, E3, E5, E7 et B3 sur les

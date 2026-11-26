@@ -31,7 +31,14 @@ TRPO & HalfCheetah-v5 & 30 & 1,000,000 & 0.09 & 2.6 \\
 PPO PyTorch, Zoo (gamma 0.99) & Hopper-v5 & 10 & 1,000,000 & 0.83 & 8.1 \\
 PPO PyTorch, Zoo corrected & Hopper-v4 & 10 & 1,000,000 & 0.64 & 6.3 \\
  & Hopper-v5 & 10 & 1,000,000 & 0.73 & 7.7 \\
-\multicolumn{2}{@{}l}{\emph{Total MuJoCo training}} & 480 & & & 554.6 \\
+PPO PyTorch, Zoo corrected, $\gamma = 0.99$ & Hopper-v4 & 10 & 1,000,000 & 0.40 & 6.8 \\
+PPO JAX with ortho & Swimmer-v5 & 20 & 1,000,000 & 0.11 & 4.4 \\
+ & Walker2d-v5 & 20 & 1,000,000 & 0.13 & 4.7 \\
+PPO PyTorch without ortho & Swimmer-v5 & 20 & 1,000,000 & 0.10 & 2.8 \\
+ & Walker2d-v5 & 20 & 1,000,000 & 0.12 & 3.1 \\
+SAC, identical rerun & Hopper-v5 & 2 & 200,000 & 1.96 & 3.9 \\
+CrossQ, identical rerun & Walker2d-v5 & 1 & 200,000 & 9.81 & 9.8 \\
+\multicolumn{2}{@{}l}{\emph{Total MuJoCo training}} & 573 & & & 590.1 \\
 \midrule
 GRPO, Qwen2.5 0.5B & mul2, true reward & 5 & 100 & 4.32 & 19.0 \\
  & mul2, random reward & 5 & 100 & 5.61 & 29.4 \\
