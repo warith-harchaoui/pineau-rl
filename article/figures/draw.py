@@ -55,6 +55,34 @@ LOGO_BODY = _LOGO.split(">", 1)[1].rsplit("</svg>", 1)[0]
 # Colours. Ink and paper, then one hue per algorithm, the same in every figure, then the colours of a verdict.
 INK, INK2, MUTED, RULE, GRID, PANEL, PAPER = "#15171C", "#4A4F58", "#868C96", "#C9CDD3", "#ECEEF1", "#F5F6F8", "#FFFFFF"
 ALGO_C = {"SAC": "#2F6FD6", "CrossQ": "#EE8320", "PPO (PyTorch)": "#C23B75", "PPO (JAX)": "#109C86"}
+# Text must clear 4.5:1 (WCAG AA) against what it is drawn on. Marks keep their bright colour; a label in a mark's
+# colour takes the same hue darkened on the OKLCH L axis until it clears 4.5:1 on PAPER, PANEL and the pale green band (shades computed
+# with sprezzature-colors' darken(), 27 November 2026). Light text on a coloured mark stays white where white clears
+# 4.5:1 and turns to INK where it does not.
+TEXT_ON_LIGHT = {"#868C96": "#6A707A", "#9097A1": "#6A707A", "#EE8320": "#B75100", "#2F9E5B": "#007E3D",
+                 "#D6453D": "#CB3A34", "#109C86": "#007D69", "#2F6FD6": "#2C6CD3"}
+
+
+def _lum(h):
+    c = [int(h[i:i + 2], 16) / 255 for i in (1, 3, 5)]
+    c = [v / 12.92 if v <= 0.04045 else ((v + 0.055) / 1.055) ** 2.4 for v in c]
+    return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]
+
+
+def contrast(a, b):
+    la, lb = sorted((_lum(a), _lum(b)), reverse=True)
+    return (la + 0.05) / (lb + 0.05)
+
+
+def readable(fill, bg):
+    """The colour a text in `fill` is written in on `bg`, at 4.5:1 at least."""
+    if not (fill.startswith("#") and bg.startswith("#") and len(fill) == len(bg) == 7):
+        return fill
+    if contrast(fill, bg) >= 4.5:
+        return fill
+    if _lum(fill) > _lum(bg):  # light text on a coloured mark
+        return INK
+    return TEXT_ON_LIGHT.get(fill.upper(), fill)
 RED, GREEN, GREY = "#D6453D", "#2F9E5B", "#B9BEC6"
 
 
@@ -196,6 +224,7 @@ class Svg:
             raise ValueError(f"draw.py: {missing(s, face)!r} not in the {FACE[face][0]} subset, in {s!r}")
         self.used.add(face)
         fam, wt = FACE[face][1], FACE[face][2]
+        fill = readable(fill, halo)
         a = "" if anchor == "start" else f' text-anchor="{anchor}"'
         self.add(f'<text x="{x:.1f}" y="{y:.1f}" font-family="{fam}" font-weight="{wt}" font-size="{size}" '
                  f'fill="{fill}"{a} stroke="{halo}" stroke-width="3" stroke-linejoin="round" paint-order="stroke"{extra}>'

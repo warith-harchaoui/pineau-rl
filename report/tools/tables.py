@@ -2045,8 +2045,8 @@ def t_r36():
         head = [L(lang, r" & & & \multicolumn{2}{c}{Différence, Fisher} & \multicolumn{3}{c}{Effet de l'année, modèle mixte} & ",
                   r" & & & \multicolumn{2}{c}{Difference, Fisher} & \multicolumn{3}{c}{Year effect, mixed model} & "),
                 r"\cmidrule(lr){4-5}\cmidrule(lr){6-8}",
-                L(lang, r"Critère & 2018 & 2026 & \makecell[r]{points\\{}[Newcombe]} & \makecell[r]{$p$\\{}Holm} & \makecell[r]{rapport de cotes\\{}[Wald]} & \makecell[r]{$p$\\{}Holm} & \makecell[r]{$s$ lecteurs\\{}($p$)} & Verdict",
-                  r"Criterion & 2018 & 2026 & \makecell[r]{points\\{}[Newcombe]} & \makecell[r]{Holm\\{}$p$} & \makecell[r]{odds ratio\\{}[Wald]} & \makecell[r]{Holm\\{}$p$} & \makecell[r]{reader $s$\\{}($p$)} & Verdict")]
+                L(lang, r"Critère & 2018 & 2026 & \makecell{écart\\{}(points)} & \makecell{$p$\\{}Holm} & \makecell{rapport\\{}de cotes} & \makecell{$p$\\{}Holm} & \makecell{$s$ des\\{}lecteurs} & Verdict",
+                  r"Criterion & 2018 & 2026 & \makecell{gap\\{}(points)} & \makecell{Holm\\{}$p$} & \makecell{odds\\{}ratio} & \makecell{Holm\\{}$p$} & \makecell{reader\\{}$s$} & Verdict")]
         rows = []
         for k in keys:
             m, mm, v = r["main"][k], r["mixed_model"][k], r["verdicts"][k]
@@ -2070,18 +2070,19 @@ def t_r36():
         cap = L(lang,
                 rf"L'année et les lecteurs démêlés. Les {n18 + n26} articles expérimentaux de la comparaison principale ({n18} de 2018, {n26} de 2026), relus par {nw} agents neufs qui lisent chacun les deux années. "
                 r"Parts des articles qui suivent la pratique ; différence 2026 moins 2018 en points avec l'intervalle de Newcombe à 95~\% et le test exact de Fisher. "
-                r"Effet de l'année : modèle logistique mixte avec un effet aléatoire du lecteur d'écart type $s$, rapport de cotes avec son intervalle de Wald à 95~\% et test du rapport de vraisemblance. "
+                r"Effet de l'année : modèle logistique mixte avec un effet aléatoire du lecteur d'écart type $s$ (entre parenthèses, le $p$ de son test), rapport de cotes avec son intervalle de Wald à 95~\% et test du rapport de vraisemblance. "
                 r"Holm porte sur les quatre critères. Règle fixée d'avance : un verdict tient si les deux tests passent avec un effet positif (\textbf{en gras}). "
                 r"Dernière ligne : Q5 quand toute page de projet compte « oui », la lecture la moins favorable. "
                 r"Source : \file{study/r36_stats.json}.",
                 rf"Year and readers disentangled. The {n18 + n26} experimental papers of the main comparison ({n18} from 2018, {n26} from 2026), reread by {nw} fresh agents, each of whom reads both years. "
                 r"Shares of papers that follow the practice; difference 2026 minus 2018 in points with the 95\% Newcombe interval and Fisher's exact test. "
-                r"Year effect: a logistic mixed model with a random reader effect of standard deviation $s$, odds ratio with its 95\% Wald interval and likelihood-ratio test. "
+                r"Year effect: a logistic mixed model with a random reader effect of standard deviation $s$ (in parentheses, the $p$ of its test), odds ratio with its 95\% Wald interval and likelihood-ratio test. "
                 r"Holm runs over the four criteria. Rule fixed in advance: a verdict holds if both tests pass with a positive effect (\textbf{in bold}). "
                 r"Last row: Q5 when every project page counts ``yes'', the least favourable reading. "
                 r"Source: \file{study/r36_stats.json}.")
         floattable("r36", lang, cap, L(lang, "L'année et les lecteurs démêlés", "Year and readers disentangled"),
-                   r"@{}>{\raggedright\arraybackslash}p{3.3cm}rrrrrrr>{\raggedright\arraybackslash}p{1.6cm}@{}", head, rows, tabcolsep="2.5pt")
+                   r"@{}>{\raggedright\arraybackslash}p{3.3cm}ccccccc>{\raggedright\arraybackslash}p{" + L(lang, "1.6cm", "2.2cm") + "}@{}",
+                   head, rows, tabcolsep="3pt")  # the English verdict "same direction, not established" needs the wider column
 
 
 def t_r36_accord():
@@ -2092,8 +2093,8 @@ def t_r36_accord():
         head = [L(lang, r" & \multicolumn{3}{c}{Les deux années} & \multicolumn{3}{c}{Par année} & \multicolumn{2}{c}{Désaccords} ",
                   r" & \multicolumn{3}{c}{Both years} & \multicolumn{3}{c}{Per year} & \multicolumn{2}{c}{Disagreements} "),
                 r"\cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(lr){8-9}",
-                L(lang, r"Critère & accord & [Wilson] & kappa & 2018 & 2026 & \makecell[r]{$p$ de\\{}Fisher} & \makecell[r]{oui neuf,\\{}non d'origine} & \makecell[r]{non neuf,\\{}oui d'origine}",
-                  r"Criterion & agreement & [Wilson] & kappa & 2018 & 2026 & \makecell[r]{Fisher\\{}$p$} & \makecell[r]{new yes,\\{}original no} & \makecell[r]{new no,\\{}original yes}")]
+                L(lang, r"Critère & accord & [Wilson] & kappa & 2018 & 2026 & \makecell{$p$ de\\{}Fisher} & \makecell{oui neuf,\\{}non d'origine} & \makecell{non neuf,\\{}oui d'origine}",
+                  r"Criterion & agreement & [Wilson] & kappa & 2018 & 2026 & \makecell{Fisher\\{}$p$} & \makecell{new yes,\\{}original no} & \makecell{new no,\\{}original yes}")]
         rows = []
         for k in ("Q5", "Y9", "X7", "X2"):
             c = a[k]
@@ -2114,7 +2115,7 @@ def t_r36_accord():
                 r"Last two columns: number of papers where the new reading says yes and the final code no, then the reverse. "
                 r"Source: \file{study/r36_stats.json}.")
         floattable("r36-accord", lang, cap, L(lang, "Lecteurs neufs : accord avec les codes d'origine", "Fresh readers: agreement with the original codes"),
-                   r"@{}>{\raggedright\arraybackslash}p{3.6cm}rrrrrrrr@{}", head, rows, tabcolsep="4pt", env="tabular")
+                   r"@{}>{\raggedright\arraybackslash}p{4.2cm}cccccccc@{}", head, rows, tabcolsep="4pt", env="tabular")
 
 
 GMOD = {"qwen05": ("Qwen2.5 0,5B", "Qwen2.5 0.5B"), "llama1": ("Llama 3.2 1B", "Llama 3.2 1B")}

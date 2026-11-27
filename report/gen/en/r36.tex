@@ -2,14 +2,14 @@
 \begin{table}[tbp]
 \centering
 \footnotesize
-\setlength{\tabcolsep}{2.5pt}
-\caption[Year and readers disentangled]{Year and readers disentangled. The 98 experimental papers of the main comparison (48 from 2018, 50 from 2026), reread by eight fresh agents, each of whom reads both years. Shares of papers that follow the practice; difference 2026 minus 2018 in points with the 95\% Newcombe interval and Fisher's exact test. Year effect: a logistic mixed model with a random reader effect of standard deviation $s$, odds ratio with its 95\% Wald interval and likelihood-ratio test. Holm runs over the four criteria. Rule fixed in advance: a verdict holds if both tests pass with a positive effect (\textbf{in bold}). Last row: Q5 when every project page counts ``yes'', the least favourable reading. Source: \file{study/r36\_stats.json}.}
+\setlength{\tabcolsep}{3pt}
+\caption[Year and readers disentangled]{Year and readers disentangled. The 98 experimental papers of the main comparison (48 from 2018, 50 from 2026), reread by eight fresh agents, each of whom reads both years. Shares of papers that follow the practice; difference 2026 minus 2018 in points with the 95\% Newcombe interval and Fisher's exact test. Year effect: a logistic mixed model with a random reader effect of standard deviation $s$ (in parentheses, the $p$ of its test), odds ratio with its 95\% Wald interval and likelihood-ratio test. Holm runs over the four criteria. Rule fixed in advance: a verdict holds if both tests pass with a positive effect (\textbf{in bold}). Last row: Q5 when every project page counts ``yes'', the least favourable reading. Source: \file{study/r36\_stats.json}.}
 \label{tab:r36}
-\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}Xrrrrrrr>{\raggedright\arraybackslash}p{1.6cm}@{}}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}Xccccccc>{\raggedright\arraybackslash}p{2.2cm}@{}}
 \toprule
  & & & \multicolumn{2}{c}{Difference, Fisher} & \multicolumn{3}{c}{Year effect, mixed model} &  \\
 \cmidrule(lr){4-5}\cmidrule(lr){6-8}
-Criterion & 2018 & 2026 & \makecell[r]{points\\{}[Newcombe]} & \makecell[r]{Holm\\{}$p$} & \makecell[r]{odds ratio\\{}[Wald]} & \makecell[r]{Holm\\{}$p$} & \makecell[r]{reader $s$\\{}($p$)} & Verdict \\
+Criterion & 2018 & 2026 & \makecell{gap\\{}(points)} & \makecell{Holm\\{}$p$} & \makecell{odds\\{}ratio} & \makecell{Holm\\{}$p$} & \makecell{reader\\{}$s$} & Verdict \\
 \midrule
 \textbf{Code linked (Q5)} & \makecell{31\\{}\textcolor{ink2}{15/48}} & \makecell{72\\{}\textcolor{ink2}{36/50}} & \makecell{+41\\{}[+21.1,\,+56.2]} & 0.0004 & \makecell{5.66\\{}[2.37,\,13.48]} & 0.0002 & \makecell{0.00\\{}(1)} & \textbf{holds} \\
 \addlinespace[2pt]

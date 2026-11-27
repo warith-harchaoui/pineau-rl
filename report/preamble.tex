@@ -19,6 +19,8 @@
 \def\langfr{fr}
 \newcommand{\iffr}[2]{\ifx\reportlang\langfr #1\else #2\fi}
 \ifx\reportlang\langfr \usepackage[french]{babel}\frenchsetup{StandardItemLabels=true,ItemLabels=\textbullet}\else \usepackage[british]{babel}\fi
+% babel-french names tables « Table » by default; the text says « tableau », so the captions say « Tableau » too.
+\ifx\reportlang\langfr \addto\captionsfrench{\def\tablename{Tableau}}\fi
 \usepackage{csquotes}
 \usepackage{microtype}
 \usepackage{amsmath,amssymb}

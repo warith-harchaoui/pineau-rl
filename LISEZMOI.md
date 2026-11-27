@@ -19,7 +19,7 @@ reproductible, réutilisable et robuste. Ce dépôt mesure, faille par faille, c
 Il s'applique les trois mêmes mots : chaque chiffre du document revient d'une seule commande, chaque
 pièce resservira sur d'autres articles ou d'autres essais, des tests gardent les calculs.
 
-**État.** La version 1.0 du rapport technique est datée du 24 novembre 2026. La consolidation est finie : vingt
+**État.** Le rapport technique est daté du 24 novembre 2026. La consolidation est finie : vingt
 graines aléatoires par algorithme et par tâche au lieu de dix, cinq graines aléatoires par configuration
 de GRPO au lieu de trois (écart 12 de `sim/SIM_PROTOCOL.md`, écart 14 de `sim/llm/LLM_PROTOCOL.md`).
 Comme le protocole l'a fixé d'avance, les résultats à dix graines restent les résultats principaux ; le
