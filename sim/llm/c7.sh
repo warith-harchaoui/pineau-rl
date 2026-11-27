@@ -10,7 +10,7 @@
 # A run that fails is retried once on a later pass; a second failure is reported as a result (deviation 20), never on CPU.
 cd "$(dirname "$0")"
 export DEVICE=mps PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.45 PYTORCH_MPS_LOW_WATERMARK_RATIO=0.3 TOKENIZERS_PARALLELISM=false \
-       OMP_NUM_THREADS=2 HF_HUB_OFFLINE=1  # 2 threads: the project's 2-core cap (SIM deviation 19)
+       OMP_NUM_THREADS=${OMP_NUM_THREADS:-2} HF_HUB_OFFLINE=1  # 2 threads by default (SIM deviation 19); 4 from deviation 21
 WINDOW=${WINDOW:-night}
 SEEDS=${SEEDS:-0 1 2 3 4 5 6 7 8 9}
 MIN_FREE_GB=${MIN_FREE_GB:-11}  # sim/watchdog.sh stops every job under 10 GB
@@ -62,7 +62,7 @@ one() {  # one <model id> <tag> <reward> <seed> <micro>: 0 finished or given up,
   return 0
 }
 QWEN="Qwen/Qwen2.5-0.5B-Instruct qwen05_c7 8"; LLAMA="unsloth/Llama-3.2-1B-Instruct llama1_c7 2"  # MICRO as before
-log "c7.sh started (window: $WINDOW, seeds: $SEEDS)"
+log "c7.sh started (window: $WINDOW, seeds: $SEEDS, threads: $OMP_NUM_THREADS)"
 for spec in "$QWEN" "$LLAMA"; do  # the pilot on ALL[300:450], once per model, before any training
   set -- $spec
   [ -f "results/$2/pilot.json" ] && continue
