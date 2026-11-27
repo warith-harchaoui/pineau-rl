@@ -2,65 +2,55 @@
 \addcontentsline{toc}{chapter}{Résumé}
 
 \paragraph{La question et la réponse}
-En 2018, Joelle Pineau a présenté aux congrès ICLR puis NeurIPS les raisons de se méfier des résultats
-publiés en apprentissage par renforcement profond (RL). Nous relevons seize failles dans ces deux
-conférences, et posons pour chacune la question de savoir si les articles de 2018 à 2026 l'ont
-corrigée. En résumé : on a écouté Joelle Pineau quand il s'agissait de ce qui accompagne le résultat,
-beaucoup moins quand il s'agissait de la façon de le juger. Dans le RL classique, la proportion
-d'articles donnant un lien vers le code s'élève de 31~\% à 74~\%, celle montrant l'effet d'un réglage
-passe de 44~\% à 80~\%, celle donnant le calcul chiffré de 27~\% à 58~\% et celle rapportant une
-incertitude de 63~\% à 88~\%. On ne note aucune hausse détectable pour le test statistique (de 6~\% à
-12~\%), l'évaluation tenue à part du monde de l'entraînement (de 33~\% à 45~\%) et la version des bancs
-d'essai (de 23~\% à 26~\%). On ne constate enfin aucun signe de progrès sur le réglage des méthodes de
-référence (35~\% puis 29~\% des articles les décrivent avec tous leurs réglages).
+En 2018, aux congrès ICLR puis NeurIPS, Joelle Pineau a montré pourquoi les résultats publiés en
+apprentissage par renforcement profond (RL) inspiraient peu confiance. Nous relevons seize failles dans
+ses deux conférences et cherchons, pour chacune, si les articles de 2018 à 2026 l'ont corrigée. Joelle Pineau a été écoutée sur ce qui accompagne le résultat, beaucoup
+moins sur la façon de le juger. Le lien vers le code est passé de 31~\% à 74~\% des articles de RL
+classique, le test statistique de 6~\% à 12~\% seulement.
 
-\paragraph{La méthode}
-Deux instruments répondent. Le sondage relit des articles avec la grille de lecture de Pineau, complétée par sept critères tirés de
-sa conférence d'ICLR et par une seconde grille de douze critères. Des agents
-IA, c'est-à-dire des modèles d'IA agentique, lisent chaque article entier et justifient chaque
-\enquote{oui} par une citation paginée. Le verdict compare 50 articles de RL classique de 2026 (hors
-modèles de langue) à notre propre lecture de 50 articles de 2018, avec les mêmes grilles et des agents
-du même modèle. Vingt articles par année, pour quatre années entre 2019 et 2024, datent le changement.
-Les expériences refont
-celles de 2018 avec quatre programmes (PPO en PyTorch et en JAX, SAC, CrossQ) sur quatre tâches MuJoCo,
-dix puis vingt graines aléatoires par programme et par tâche. Un volet entraîne deux petits modèles de
-langue avec GRPO.
+\paragraph{Deux instruments}
+Nous relisons les articles avec la grille de lecture de Pineau, complétée par nos propres critères :
+cinquante articles de RL classique de 2026 face à cinquante articles de 2018, plus vingt articles par
+année en 2019, 2020, 2022 et 2024 pour dater le changement. Nous refaisons aussi les expériences
+qu'elle montrait, avec quatre programmes d'aujourd'hui sur quatre tâches de locomotion simulée
+(MuJoCo), dix puis vingt graines aléatoires par programme et par tâche.
 
-\paragraph{Les résultats du sondage}
-Selon notre lecture, en 2018, 55~\% des articles donnent tous les hyperparamètres de leur méthode, quand Pineau en comptait 90~\%. Les
-verdicts comparent donc nos deux lectures. Les quatre hausses passent la correction de Holm, appropriée pour des comparaisons multiples. La
-plus fragile est celle de l'incertitude rapportée. Elle échoue à la correction si l'on retire les deux articles de la comparaison lus en
-partie par un autre modèle ($p_{\text{Holm}} = 0{,}07$). Huit lecteurs neufs annotant les deux années confirment les trois autres hausses et
-retrouvent une hausse dans le même sens pour l'incertitude, mais qui ne passe pas le seuil. Un lecteur d'une autre famille de modèles
-(\texttt{gemma3:12b}) retrouve lui aussi le sens des quatre hausses. Si ses \enquote{oui} sans citation retrouvée comptent \enquote{non}, la
-hausse de l'incertitude n'est plus établie ($+7$ points, de $-9$ à $+23$). La barre d'erreur s'est d'ailleurs répandue plus vite que la barre
-calculée sur des graines aléatoires indépendantes (35~\% puis 42~\% des articles, sans changement détectable). Les quatre pratiques montent
-lentement, sans saut après la liste de contrôle de NeurIPS de 2019. Avec une cinquantaine d'articles par année, le sondage ne détectait avec
-80~\% de puissance que des hausses de 18 à 30 points selon le critère : \enquote{aucun changement détectable} ne veut pas dire
-\enquote{aucun
-changement}.
+\paragraph{Ce que le sondage trouve}
+Quatre pratiques ont progressé de façon établie : le lien vers le code, le calcul chiffré, l'effet d'un réglage et l'incertitude rapportée, cette dernière moins solidement que les trois
+autres. Le test statistique, l'évaluation tenue à
+part, le réglage des méthodes de référence et la version des bancs d'essai n'ont pas bougé de façon
+détectable. La montée est lente, sans saut après la liste de contrôle que NeurIPS impose depuis 2019.
 
-\paragraph{Les résultats des expériences}
-Le hasard trompe l'œil, le tri trompe le test. Sur trente essais de PPO sur \task{HalfCheetah}, deux
-groupes de cinq tirés au hasard trompent un test de Welch dans 1,2~\% des tirages, les cinq meilleurs
-contre les cinq pires dans 31~\%. Sur les seize couples (programme, tâche), le tri trompe le test dans
-26~\% à près de 100~\% des tirages. Garder les trois meilleurs essais sur dix gonfle la moyenne de
-33~\%. Le script de Peter Henderson, qui ignore la dispersion entre graines aléatoires, explique
-probablement le $t$ de 9 de 2018 : sur nos essais de TRPO, il dépasse 9,09 dans 38~\% des tirages. Le
-meilleur programme change avec la tâche. À budget égal et vingt graines aléatoires, CrossQ mène sur les
-quatre tâches. Sous une physique modifiée de 20~\%, PPO JAX passe de la première à la dernière place sur
-\task{Hopper}, où SAC bat alors les deux PPO qui le battaient à l'entraînement. La recette publiée du RL
-Baselines3 Zoo, appliquée aujourd'hui, donne sur \task{Hopper} des robots qui tiennent debout sans
-avancer (0,00~m/s). L'agent que le Zoo a publié en 2022 avec ces réglages atteint un score de \num{2439}
-sous notre protocole : la recette a vieilli avec ses bibliothèques. Un seul réglage suffit aujourd'hui à
-faire courir le robot : avec un facteur d'actualisation de 0,99 au lieu de 0,999, la recette obtient \num{2649}.
+\paragraph{Ce que le sondage ne peut pas dire}
+Trois limites encadrent ces verdicts. Les lecteurs sont des modèles d'IA agentique : chaque
+\enquote{oui} cite une phrase de l'article, que nous retrouvons dans le PDF, et huit nouveaux lecteurs
+puis un lecteur d'une autre famille de modèles retrouvent le sens des quatre hausses. Le point de départ est notre propre lecture de 2018, non le compte de Pineau : elle ne dit ni
+quels articles elle a lus ni comment elle a tranché, et nous trouvons 55~\% d'articles qui donnent tous leurs réglages là où elle en comptait
+90~\%. Nous comparons donc notre lecture de 2018 à notre lecture de 2026,
+faites avec les mêmes règles. Enfin, avec cinquante articles
+par année, seule une hausse de 18 à 30 points était détectable : \enquote{aucun changement
+détectable} ne veut pas dire \enquote{aucun changement}.
 
-\paragraph{Le volet GRPO}
-Sur Qwen, avec cinq graines aléatoires, GRPO gagne $+14$ points de pass@1, la part des réponses justes
-parmi huit tirées par problème, avec un intervalle de $-3$ à $+34$ qui contient zéro. Ce gain apparent
-vient de réponses plus courtes : la part des réponses coupées à 160 jetons tombe de 75~\% à 6~\%, la
-justesse des réponses finies ne monte pas. Sur Llama, le pass@1 monte de 6 points pendant que la
-justesse gloutonne en perd 43.
+\paragraph{Les expériences}
+Le hasard trompe l'œil, le tri trompe le test. Entre deux groupes de cinq essais d'un même programme
+tirés au hasard, un test de Welch voit une différence dans 1,2~\% des tirages. Entre les cinq
+meilleurs et les cinq pires, il en voit une dans 31~\% des tirages. Garder les trois meilleurs essais
+sur dix gonfle la moyenne d'environ un tiers. Le $t$ de 9 montré en 2018 vient probablement d'un
+calcul qui ignore la dispersion entre graines aléatoires. Le meilleur programme change avec la tâche, le budget et la physique. Aux budgets du
+protocole, le premier change d'une tâche à l'autre. À budget égal, CrossQ mène sur les quatre tâches.
+Sous une physique modifiée de 20~\%, PPO JAX, premier sur \task{Hopper}, finit dernier. Enfin, une recette publiée vieillit :
+celle du RL Baselines3 Zoo pour PPO laisse aujourd'hui sur \task{Hopper} un robot debout qui n'avance pas,
+alors que l'agent publié avec elle en 2022 court. Changer un seul réglage, le facteur
+d'actualisation, suffit à faire courir de nouveau le robot d'aujourd'hui.
+
+\paragraph{Un volet exploratoire sur les modèles de langue}
+À petite échelle (deux modèles de 0,5 et 1~milliard de paramètres, cinq graines aléatoires), GRPO
+(\emph{Group Relative Policy Optimization}) n'apporte aucun gain établi. Le gain apparent de Qwen, le modèle de 0,5~milliard, vient de réponses plus courtes, moins
+souvent coupées par la limite de longueur, et non de réponses plus justes. Ce volet montre un piège de mesure, sans juger GRPO.
+
+\paragraph{La version courte}
+Le billet de blog \href{https://deraison.ai/blog/ecouter-joelle-pineau}{\texttt{deraison.ai/blog/ecouter-joelle-pineau}}
+raconte ce travail en quelques pages, pour qui n'a pas le temps de lire ce rapport.
 
 \paragraph{Code et données}
 Dépôt \repo{} (BSD 3-Clause) : protocoles et lectures citées (\file{study/}), entraînements (\file{sim/}),

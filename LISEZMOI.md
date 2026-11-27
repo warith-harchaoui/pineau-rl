@@ -68,7 +68,8 @@ commités, et chaque décision du sondage, face à la citation et à la page sur
   (+14 points, de −3 à +34) : le gain repose sur les deux essais faits sur GPU. Le matériel et la
   graine aléatoire y ont changé ensemble.
 
-L'argument complet est le rapport technique ci-dessus. Une version plus courte, avec chaque source :
+L'argument complet est le rapport technique ci-dessus. La version courte est le billet de blog,
+[deraison.ai/blog/ecouter-joelle-pineau](https://deraison.ai/blog/ecouter-joelle-pineau). Une synthèse avec chaque source :
 [`docs/conclusions.md`](docs/conclusions.md) ([PDF](docs/conclusions.pdf)) ; en anglais,
 [`docs/conclusions-en.md`](docs/conclusions-en.md) ([PDF](docs/conclusions-en.pdf)).
 

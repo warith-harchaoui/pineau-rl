@@ -247,7 +247,7 @@ and~\ref{chap:07-modeles-de-langue} describe these experiments.
   The agent the Zoo published in 2022 with these settings reaches a score of \num{2439} under our
   protocol. With a discount factor of 0.99 instead of 0.999, the recipe makes the robot run again, at
   \num{2649} (\cref{sec:e6}).
-  \item \textbf{On small language models, no GRPO gain is established at five random seeds.} Qwen's
+  \item \textbf{Exploratory strand: on small language models, no GRPO gain is established at five random seeds.} Qwen's
   apparent gain comes from shorter answers: the share of cut-off answers falls from 75\% to 6\%, while
   the accuracy of finished answers does not rise (\cref{sec:llm-resultats}).
 \end{enumerate}
@@ -269,7 +269,9 @@ and~\ref{chap:07-modeles-de-langue} describe these experiments.
 
 \section{Reading guide}\label{sec:intro-guide}
 
-A reader in a hurry can read the abstract, Section~\ref{sec:intro-contributions},
+The short version of this report is the blog post
+(\href{https://deraison.ai/en/blog/listen-to-joelle-pineau}{\texttt{deraison.ai/en/blog/listen-to-joelle-pineau}}).
+Within the report, a reader in a hurry can read the abstract, Section~\ref{sec:intro-contributions},
 Table~\ref{tab:failles}, Section~\ref{sec:sr-principale}, Figures~\ref{fig:grille-egale}
 and~\ref{fig:e1-faux-positifs}, then Chapter~\ref{chap:11-conclusion}.
 
@@ -278,7 +280,7 @@ tasks, inventories the sixteen flaws and places the work among related work.
 Chapters~\ref{chap:03-sondage-methode} and~\ref{chap:04-sondage-resultats} give the method and the
 results of the survey. Chapters~\ref{chap:05-experiences-methode} and~\ref{chap:06-experiences-resultats}
 do the same for the MuJoCo experiments. Chapter~\ref{chap:07-modeles-de-langue} describes the GRPO
-strand. Appendix~\ref{chap:08-logiciel} presents the software, from training to documents.
+strand, exploratory and small in scale, which can be read on its own. Appendix~\ref{chap:08-logiciel} presents the software, from training to documents.
 Chapter~\ref{chap:10-limites} gathers the limitations. Chapter~\ref{chap:11-conclusion} answers the
 question, says what the measurements establish with a pointer to their chapters, then draws
 recommendations.

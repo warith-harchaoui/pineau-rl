@@ -259,7 +259,7 @@ modèles de langue entraînés avec GRPO. Les chapitres~\ref{chap:05-experiences
   (0,00~m/s). L'agent que le Zoo a publié en 2022 avec ces réglages atteint un score de \num{2439}
   sous notre protocole. Avec un facteur d'actualisation de 0,99 au lieu de 0,999, la recette fait de
   nouveau courir le robot, à \num{2649} (\cref{sec:e6}).
-  \item \textbf{Sur de petits modèles de langue, aucun gain de GRPO n'est établi à cinq graines aléatoires.}
+  \item \textbf{Volet exploratoire : sur de petits modèles de langue, aucun gain de GRPO n'est établi à cinq graines aléatoires.}
   L'avantage apparent de Qwen est dû à des réponses plus courtes : le pourcentage de réponses coupées
   diminue de 75~\% à 6~\% et la justesse des réponses finies n'augmente pas (\cref{sec:llm-resultats}).
 \end{enumerate}
@@ -282,14 +282,16 @@ modèles de langue entraînés avec GRPO. Les chapitres~\ref{chap:05-experiences
 
 \section{Guide de lecture}\label{sec:intro-guide}
 
-Un lecteur pressé lira le résumé, la section~\ref{sec:intro-contributions}, le
+La version courte de ce rapport est le billet de blog
+(\href{https://deraison.ai/blog/ecouter-joelle-pineau}{\texttt{deraison.ai/blog/ecouter-joelle-pineau}}).
+Dans le rapport, un lecteur pressé lira le résumé, la section~\ref{sec:intro-contributions}, le
 tableau~\ref{tab:failles}, la section~\ref{sec:sr-principale}, les figures~\ref{fig:grille-egale}
 et~\ref{fig:e1-faux-positifs}, puis le chapitre~\ref{chap:11-conclusion}.
 
 Le chapitre~\ref{chap:02-contexte} pose le cadre formel du RL, décrit les programmes et les tâches, dresse
 l'inventaire des seize failles et situe le travail parmi les travaux voisins. Les chapitres~\ref{chap:03-sondage-methode} et~\ref{chap:04-sondage-resultats} donnent la méthode et les résultats du
 sondage. Les chapitres~\ref{chap:05-experiences-methode} et~\ref{chap:06-experiences-resultats} font de même pour les
-expériences sur MuJoCo. Le chapitre~\ref{chap:07-modeles-de-langue} décrit le volet GRPO. L'annexe~\ref{chap:08-logiciel} présente le logiciel, de l'entraînement aux documents.
+expériences sur MuJoCo. Le chapitre~\ref{chap:07-modeles-de-langue} décrit le volet GRPO, exploratoire et à petite échelle, qui se lit à part. L'annexe~\ref{chap:08-logiciel} présente le logiciel, de l'entraînement aux documents.
 Le chapitre~\ref{chap:10-limites} rassemble les limites. Le chapitre~\ref{chap:11-conclusion} répond à la question, dit ce que les mesures établissent en renvoyant à leurs chapitres et en tire des recommandations. Le verdict faille par faille se lit à la section~\ref{sec:sr-failles}. Les annexes donnent les règles
 complètes de la grille (annexe~\ref{chap:A-grille}), des tableaux supplémentaires (annexe~\ref{chap:B-tableaux}),
 la liste des articles lus (annexe~\ref{chap:C-articles}) et les environnements logiciels

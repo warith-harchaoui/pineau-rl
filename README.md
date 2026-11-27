@@ -63,7 +63,8 @@ recomputed from the committed results, and every survey decision against the quo
   Qwen's mean gain with the true reward contains zero (+14 points, from −3 to +34): the gain rests on
   the two runs made on the GPU. Hardware and random seed changed together.
 
-The full argument is the technical report above. A shorter version, with every source:
+The full argument is the technical report above. The short version is the blog post,
+[deraison.ai/en/blog/listen-to-joelle-pineau](https://deraison.ai/en/blog/listen-to-joelle-pineau). A synthesis with every source:
 [`docs/conclusions-en.md`](docs/conclusions-en.md) ([PDF](docs/conclusions-en.pdf)); in French,
 [`docs/conclusions.md`](docs/conclusions.md) ([PDF](docs/conclusions.pdf)).
 
