@@ -70,8 +70,9 @@ essais de TRPO, ce script dépasse 9 dans 38~\% des tirages au hasard (\cref{tab
 PPO y dispose pourtant de cinq fois plus de pas que SAC et CrossQ. À budget égal et avec vingt
 graines aléatoires, CrossQ mène sur les quatre tâches, mais l'ordre de deux paires s'inverse encore
 de façon établie d'une tâche à l'autre. L'inversion de PPO JAX et de SAC résiste même à la correction de Bonferroni (\cref{sec:e2}).
-Les deux écritures de PPO ne diffèrent de façon établie que sur \task{Swimmer}, d'un écart petit en
-points de score (\cref{sec:e3}). Sous une physique modifiée de 20~\%, CrossQ bat chacun des trois
+Les deux écritures de PPO diffèrent de façon établie sur \task{Swimmer}, d'un écart petit en
+points de score, puis, avec quarante graines aléatoires, sur \task{Walker2d}, où PyTorch l'emporte. Échanger
+leur initialisation ne referme pas l'écart de façon établie (\cref{sec:e3}). Sous une physique modifiée de 20~\%, CrossQ bat chacun des trois
 autres programmes sur \task{Hopper}, à dix comme à vingt graines aléatoires. PPO JAX y perd contre SAC, qu'il battait en physique d'entraînement (\cref{sec:e7}).
 
 \paragraph{Une recette publiée a vieilli} Les agents entraînés avec la recette publiée par RL Baselines3 Zoo ne font que se tenir debout sur

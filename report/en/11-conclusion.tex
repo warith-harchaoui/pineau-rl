@@ -69,8 +69,9 @@ Yet PPO has five times more steps than SAC and CrossQ. At equal budget and with 
 CrossQ leads on all four tasks, but the order of two pairs still reverses from one task to another in
 a settled way. The reversal of PPO JAX and SAC even survives the Bonferroni correction
 (\cref{sec:e2}). The two implementations of PPO
-differ in a settled way only on \task{Swimmer}, by a gap that is small in score points
-(\cref{sec:e3}). Under a physics modified by 20\%, CrossQ beats each of the three other programs on
+differ in a settled way on \task{Swimmer}, by a gap that is small in score points, then, with forty random
+seeds, on \task{Walker2d}, where PyTorch wins. Swapping their initialisation does not close the gap in a
+settled way (\cref{sec:e3}). Under a physics modified by 20\%, CrossQ beats each of the three other programs on
 \task{Hopper}, at ten as at twenty random seeds. PPO JAX loses there against SAC, which it beat in
 the training physics (\cref{sec:e7}).
 
