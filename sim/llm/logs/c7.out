@@ -27,3 +27,22 @@
 2026-11-24 04:41:26 llama1_c7 true 2: start
 2026-11-24 06:41:01 llama1_c7 true 2: {"model": "llama1_c7", "task": "mul2", "reward": "true", "seed": 2, "done": true, "retries": {"generate": 0, "update": 5}, "wall": 6318.3}
 2026-11-24 06:41:02 waiting (window: night, GPU free: yes, disk: 34 GB)
+2026-11-26 08:41:02 c7.sh started (window: night, seeds: 0 1 2 3 4 5 6 7 8 9)
+2026-11-26 08:41:02 waiting (window: night, GPU free: yes, disk: 28 GB)
+2026-11-26 23:01:06 qwen05_c7 random 2: start
+2026-11-26 23:45:08 qwen05_c7 random 2: {"model": "qwen05_c7", "task": "mul2", "reward": "random", "seed": 2, "done": true, "retries": {"generate": 0, "update": 9}, "wall": 2187.8}
+2026-11-26 23:45:08 llama1_c7 random 2: start
+2026-11-27 01:34:11 llama1_c7 random 2: {"model": "llama1_c7", "task": "mul2", "reward": "random", "seed": 2, "done": true, "retries": {"generate": 0, "update": 0}, "wall": 5856.8}
+2026-11-27 01:34:11 qwen05_c7 true 3: start
+2026-11-27 02:15:13 qwen05_c7 true 3: {"model": "qwen05_c7", "task": "mul2", "reward": "true", "seed": 3, "done": true, "retries": {"generate": 0, "update": 0}, "wall": 2062.9}
+2026-11-27 02:15:13 qwen05_c7 random 3: start
+2026-11-27 03:07:14 qwen05_c7 random 3: {"model": "qwen05_c7", "task": "mul2", "reward": "random", "seed": 3, "done": true, "retries": {"generate": 0, "update": 2}, "wall": 2739.9}
+2026-11-27 03:07:15 llama1_c7 true 3: start
+2026-11-27 04:09:16 llama1_c7 true 3: {"model": "llama1_c7", "task": "mul2", "reward": "true", "seed": 3, "done": true, "retries": {"generate": 0, "update": 0}, "wall": 3055.9}
+2026-11-27 04:09:17 llama1_c7 random 3: start
+2026-11-27 05:00:19 llama1_c7 random 3: {"model": "llama1_c7", "task": "mul2", "reward": "random", "seed": 3, "done": true, "retries": {"generate": 0, "update": 1}, "wall": 2325.7}
+2026-11-27 05:00:19 qwen05_c7 true 4: start
+2026-11-27 05:31:20 qwen05_c7 true 4: {"model": "qwen05_c7", "task": "mul2", "reward": "true", "seed": 4, "done": true, "retries": {"generate": 0, "update": 0}, "wall": 1356.8}
+2026-11-27 05:31:20 qwen05_c7 random 4: start
+2026-11-27 06:19:22 qwen05_c7 random 4: {"model": "qwen05_c7", "task": "mul2", "reward": "random", "seed": 4, "done": true, "retries": {"generate": 0, "update": 1}, "wall": 2416.1}
+2026-11-27 06:19:22 waiting (window: night, GPU free: yes, disk: 38 GB)

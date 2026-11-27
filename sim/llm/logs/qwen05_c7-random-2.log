@@ -1,7 +1,4 @@
 [transformers] `torch_dtype` is deprecated! Use `dtype` instead!
-W1124 04:24:28.345000 54704 site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
-Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:  55%|█████▍    | 159/290 [00:00<00:00, 1580.33it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 1909.52it/s]
-Traceback (most recent call last):
-  File "/Users/warithharchaoui/pineau-rl/sim/llm/grpo.py", line 245, in <module>
-    raise RuntimeError(f"gradient non-finite or above {GRAD_SANE:g} {RETRIES} times in a row")
-RuntimeError: gradient non-finite or above 1000 5 times in a row
+W1126 23:01:14.811000 3152 site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights:   0%|          | 1/290 [00:14<1:09:47, 14.49s/it]Loading weights:  59%|█████▉    | 171/290 [00:14<00:07, 16.33it/s]Loading weights:  78%|███████▊  | 227/290 [00:18<00:03, 16.18it/s]Loading weights:  87%|████████▋ | 251/290 [00:19<00:02, 16.79it/s]Loading weights:  91%|█████████▏| 265/290 [00:20<00:01, 16.46it/s]Loading weights:  94%|█████████▍| 274/290 [00:20<00:00, 17.58it/s]Loading weights:  97%|█████████▋| 282/290 [00:21<00:00, 17.04it/s]Loading weights: 100%|██████████| 290/290 [00:21<00:00, 13.66it/s]
+{"model": "qwen05_c7", "task": "mul2", "reward": "random", "seed": 2, "done": true, "retries": {"generate": 0, "update": 9}, "wall": 2187.8}

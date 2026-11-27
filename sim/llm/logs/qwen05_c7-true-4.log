@@ -1,0 +1,4 @@
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+W1127 05:00:25.334000 70437 site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 3650.19it/s]
+{"model": "qwen05_c7", "task": "mul2", "reward": "true", "seed": 4, "done": true, "retries": {"generate": 0, "update": 0}, "wall": 1356.8}
