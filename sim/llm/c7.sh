@@ -25,9 +25,14 @@ can_start() {  # can_start <minutes needed>
   [ "$m" -ge -60 ] && [ $((m + $1)) -le 420 ]
 }
 in_window() { [ "$WINDOW" = any ] && return 0; local m; m=$(mins); [ "$m" -ge 1380 ] || [ "$m" -lt 420 ]; }
-gpu_free() {  # the survey's local reader (study/gemma_reader.py) is not running and nothing is loaded in Ollama
-  ! pgrep -f "python gemma_reader.py" > /dev/null && [ "$(ollama ps 2>/dev/null | tail -n +2 | grep -c .)" -eq 0 ] \
-    && ! pgrep -f "ollama runner" > /dev/null
+GPU_BUSY_PROGS="python gemma_reader.py|ollama runner|chatterbox|whisper|mlx_lm|mlx-|kokoro|openvoice"
+gpu_util() { ioreg -r -d 1 -c IOAccelerator 2>/dev/null | grep -o '"Device Utilization %"=[0-9]*' | head -1 | cut -d= -f2; }
+gpu_free() {  # deviation 22: no program known to use the GPU, nothing loaded in Ollama, and the GPU idle on three readings
+  pgrep -if "$GPU_BUSY_PROGS" > /dev/null && return 1
+  [ "$(ollama ps 2>/dev/null | tail -n +2 | grep -c .)" -eq 0 ] || return 1
+  local i u
+  for i in 1 2 3; do u=$(gpu_util); [ "${u:-0}" -lt "${GPU_IDLE_MAX:-30}" ] || return 1; [ $i -lt 3 ] && sleep 60; done
+  return 0
 }
 disk_ok() { [ "$(df -g . | awk 'NR==2 {print $4}')" -ge "$MIN_FREE_GB" ]; }
 main_pids() { pgrep -f "env/bin/python (run|dose).py"; }  # the simulation jobs, paused while GRPO runs (as night.sh)
@@ -58,7 +63,9 @@ one() {  # one <model id> <tag> <reward> <seed> <micro>: 0 finished or given up,
   done
   resume_main
   if done_run "$2" "$3" "$4"; then log "$2 $3 $4: $(tail -1 "logs/$2-$3-$4.log" | cut -c1-200)"
-  else echo "FAIL $2 $3 $4" >> logs/c7.fails; log "$2 $3 $4: FAILED ($(fails "$2" "$3" "$4")) $(tail -1 "logs/$2-$3-$4.log" | cut -c1-200)"; fi
+  else echo "FAIL $2 $3 $4" >> logs/c7.fails; log "$2 $3 $4: FAILED ($(fails "$2" "$3" "$4")) $(tail -1 "logs/$2-$3-$4.log" | cut -c1-300)"
+    # deviation 22 (d): a failure on a GPU that was free means the diagnosis of deviation 22 is wrong: stop everything
+    log "STOP: a run failed although the GPU was free (deviation 22 (d)); nothing else is started"; exit 3; fi
   return 0
 }
 QWEN="Qwen/Qwen2.5-0.5B-Instruct qwen05_c7 8"; LLAMA="unsloth/Llama-3.2-1B-Instruct llama1_c7 2"  # MICRO as before

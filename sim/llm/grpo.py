@@ -26,6 +26,7 @@ MICRO = int(os.environ.get("MICRO", 8))  # completions per backward pass (same g
 # aborted computation can come back as NaN or as a finite but absurd gradient (LLM_PROTOCOL.md, écart 10). The same
 # update on CPU has a gradient norm of 14 before clipping: above GRAD_SANE, or non-finite, the update is recomputed.
 GRAD_SANE, RETRIES = 1e3, 5
+RETRY_WAIT = int(os.environ.get("RETRY_WAIT", 60))  # deviation 22: seconds between two attempts of one update on MPS
 device = os.environ.get("DEVICE") or ("mps" if torch.backends.mps.is_available() else "cpu")  # DEVICE=cpu: écart 11
 torch.manual_seed(SEED); random.seed(SEED)
 
@@ -223,7 +224,7 @@ for step in range(1, STEPS + 1):
         old_lp = [token_logps(seqs[c], plen)[0] for c in chunks]
     if not all(torch.isfinite(o).all() for o in old_lp):
         raise RuntimeError("non-finite log-probabilities before the update: the weights are already corrupted")
-    norms = []
+    norms, refused = [], []
     for _ in range(EPOCHS):
         for attempt in range(RETRIES):
             opt.zero_grad(); loss = 0.0
@@ -241,8 +242,11 @@ for step in range(1, STEPS + 1):
             if math.isfinite(norm) and norm < GRAD_SANE:
                 break
             retries["update"] += 1
+            refused.append(norm if math.isfinite(norm) else str(norm))  # deviation 22: what each refused attempt saw
+            if device == "mps":
+                time.sleep(RETRY_WAIT)  # deviation 22: a contended GPU gets a minute before the next attempt
         else:
-            raise RuntimeError(f"gradient non-finite or above {GRAD_SANE:g} {RETRIES} times in a row")
+            raise RuntimeError(f"gradient non-finite or above {GRAD_SANE:g} {RETRIES} times in a row (norms seen: {refused})")
         norms.append(norm)
         opt.step()
         if not all(torch.isfinite(q).all() for q in model.parameters()):
@@ -252,7 +256,7 @@ for step in range(1, STEPS + 1):
     if C7:
         cut = [ended(q, plen) is None for q in seqs]
         log.write(json.dumps(dict(step=step, train_right=sum(right) / len(right), truncated=sum(cut) / len(cut), loss=loss,
-                                  grad_norms=norms, zero_adv_groups=int((groups.std(1) == 0).sum()), retries=dict(retries),
+                                  grad_norms=norms, refused_norms=refused, zero_adv_groups=int((groups.std(1) == 0).sum()), retries=dict(retries),
                                   wall=round(time.time() - t0, 1))) + "\n"); log.flush()
     elif step % 10 == 0:
         log.write(json.dumps(dict(step=step, train_right=sum(right) / len(right), truncated=sum(truncated(q, plen) for q in seqs) / len(seqs), loss=loss, grad_norm=norm, retries=dict(retries), wall=round(time.time() - t0, 1))) + "\n"); log.flush()
