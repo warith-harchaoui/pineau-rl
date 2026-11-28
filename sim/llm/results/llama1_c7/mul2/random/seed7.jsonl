@@ -1,0 +1,2 @@
+{"step": -1, "device": "mps", "c7": true, "model": "unsloth/Llama-3.2-1B-Instruct", "revision": "5a8abab4a5d6f164389b1079fb721cfab8d7126c", "lr": 3e-06, "steps": 100, "micro": 2, "stop": [128001, 128004, 128008, 128009], "gen_extra": {"repetition_penalty": 1.0}, "torch": "2.15.0", "transformers": "5.22.2", "eval_n": 300}
+{"step": 0, "greedy": 0.7, "greedy512": 0.7, "pass1": 0.24041666666666667, "pass8": 0.7333333333333333, "truncated": 0.0175, "truncated_greedy512": 0.0, "finished": 0.24427480916030533, "cut_right": 1, "mean_len": 81.82, "n_items": 300}

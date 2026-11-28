@@ -1,0 +1,7 @@
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+W1128 00:09:10.848000 87598 site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]Loading weights: 100%|██████████| 290/290 [00:00<00:00, 3868.28it/s]
+Traceback (most recent call last):
+  File "/Users/warithharchaoui/pineau-rl/sim/llm/grpo.py", line 245, in <module>
+    raise RuntimeError(f"gradient non-finite or above {GRAD_SANE:g} {RETRIES} times in a row")
+RuntimeError: gradient non-finite or above 1000 5 times in a row

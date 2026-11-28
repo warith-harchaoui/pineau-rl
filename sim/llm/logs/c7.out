@@ -46,3 +46,97 @@
 2026-11-27 05:31:20 qwen05_c7 random 4: start
 2026-11-27 06:19:22 qwen05_c7 random 4: {"model": "qwen05_c7", "task": "mul2", "reward": "random", "seed": 4, "done": true, "retries": {"generate": 0, "update": 1}, "wall": 2416.1}
 2026-11-27 06:19:22 waiting (window: night, GPU free: yes, disk: 38 GB)
+2026-11-27 15:20:50 c7.sh started (window: any, seeds: 0 1 2 3 4 5 6 7 8 9, threads: 4)
+2026-11-27 15:20:50 waiting (window: any, GPU free: no, disk: 28 GB)
+2026-11-27 15:35:50 llama1_c7 true 4: start
+2026-11-27 16:21:51 llama1_c7 true 4: FAILED (1) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-27 16:21:51 waiting (window: any, GPU free: no, disk: 31 GB)
+2026-11-27 16:31:52 llama1_c7 random 4: start
+2026-11-27 17:02:52 llama1_c7 random 4: FAILED (1) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-27 17:02:52 waiting (window: any, GPU free: no, disk: 31 GB)
+2026-11-27 17:42:53 qwen05_c7 true 5: start
+2026-11-27 17:51:53 qwen05_c7 true 5: FAILED (1) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-27 17:51:53 qwen05_c7 random 5: start
+2026-11-27 17:59:53 qwen05_c7 random 5: FAILED (1) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-27 17:59:53 llama1_c7 true 5: start
+2026-11-27 18:15:54 llama1_c7 true 5: FAILED (1) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-27 18:15:54 llama1_c7 random 5: start
+2026-11-27 18:32:54 llama1_c7 random 5: FAILED (1) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-27 18:32:54 qwen05_c7 true 6: start
+2026-11-27 18:40:54 qwen05_c7 true 6: FAILED (1) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-27 18:40:54 qwen05_c7 random 6: start
+2026-11-27 18:48:55 qwen05_c7 random 6: FAILED (1) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-27 18:48:55 llama1_c7 true 6: start
+2026-11-27 19:10:55 llama1_c7 true 6: FAILED (1) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-27 19:10:55 llama1_c7 random 6: start
+2026-11-27 19:25:55 llama1_c7 random 6: FAILED (1) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-27 19:25:56 qwen05_c7 true 7: start
+2026-11-27 19:33:56 qwen05_c7 true 7: FAILED (1) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-27 19:33:56 qwen05_c7 random 7: start
+2026-11-27 19:41:56 qwen05_c7 random 7: FAILED (1) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-27 19:41:56 llama1_c7 true 7: start
+2026-11-27 19:57:56 llama1_c7 true 7: FAILED (1) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-27 19:57:56 llama1_c7 random 7: start
+2026-11-27 20:24:57 llama1_c7 random 7: FAILED (1) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-27 20:24:57 qwen05_c7 true 8: start
+2026-11-27 20:38:58 qwen05_c7 true 8: FAILED (1) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-27 20:38:58 qwen05_c7 random 8: start
+2026-11-27 20:52:58 qwen05_c7 random 8: FAILED (1) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-27 20:52:58 llama1_c7 true 8: start
+2026-11-27 21:17:59 llama1_c7 true 8: FAILED (1) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-27 21:17:59 llama1_c7 random 8: start
+2026-11-27 21:37:59 llama1_c7 random 8: FAILED (1) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-27 21:37:59 qwen05_c7 true 9: start
+2026-11-27 21:49:00 qwen05_c7 true 9: FAILED (1) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-27 21:49:00 qwen05_c7 random 9: start
+2026-11-27 21:59:00 qwen05_c7 random 9: FAILED (1) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-27 21:59:00 llama1_c7 true 9: start
+2026-11-27 22:15:00 llama1_c7 true 9: FAILED (1) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-27 22:15:01 llama1_c7 random 9: start
+2026-11-27 22:35:01 llama1_c7 random 9: FAILED (1) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-27 22:35:01 pass finished, 22 runs left
+2026-11-27 22:35:01 llama1_c7 true 4: start
+2026-11-27 22:54:02 llama1_c7 true 4: FAILED (2) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-27 22:54:02 llama1_c7 random 4: start
+2026-11-27 23:11:02 llama1_c7 random 4: FAILED (2) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-27 23:11:02 qwen05_c7 true 5: start
+2026-11-27 23:22:02 qwen05_c7 true 5: FAILED (2) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-27 23:22:03 qwen05_c7 random 5: start
+2026-11-27 23:33:03 qwen05_c7 random 5: FAILED (2) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-27 23:33:03 llama1_c7 true 5: start
+2026-11-27 23:51:03 llama1_c7 true 5: FAILED (2) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-27 23:51:03 llama1_c7 random 5: start
+2026-11-28 00:09:04 llama1_c7 random 5: FAILED (2) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-28 00:09:04 qwen05_c7 true 6: start
+2026-11-28 00:20:04 qwen05_c7 true 6: FAILED (2) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-28 00:20:04 qwen05_c7 random 6: start
+2026-11-28 00:31:05 qwen05_c7 random 6: FAILED (2) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-28 00:31:05 llama1_c7 true 6: start
+2026-11-28 00:48:05 llama1_c7 true 6: FAILED (2) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-28 00:48:06 llama1_c7 random 6: start
+2026-11-28 01:08:06 llama1_c7 random 6: FAILED (2) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-28 01:08:06 qwen05_c7 true 7: start
+2026-11-28 01:20:06 qwen05_c7 true 7: FAILED (2) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-28 01:20:06 qwen05_c7 random 7: start
+2026-11-28 01:30:07 qwen05_c7 random 7: FAILED (2) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-28 01:30:07 llama1_c7 true 7: start
+2026-11-28 01:47:07 llama1_c7 true 7: FAILED (2) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-28 01:47:07 llama1_c7 random 7: start
+2026-11-28 02:07:08 llama1_c7 random 7: FAILED (2) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-28 02:07:08 qwen05_c7 true 8: start
+2026-11-28 02:17:08 qwen05_c7 true 8: FAILED (2) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-28 02:17:08 qwen05_c7 random 8: start
+2026-11-28 02:26:08 qwen05_c7 random 8: FAILED (2) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-28 02:26:08 llama1_c7 true 8: start
+2026-11-28 02:45:09 llama1_c7 true 8: FAILED (2) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-28 02:45:09 llama1_c7 random 8: start
+2026-11-28 03:04:09 llama1_c7 random 8: FAILED (2) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-28 03:04:09 qwen05_c7 true 9: start
+2026-11-28 03:13:10 qwen05_c7 true 9: FAILED (2) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-28 03:13:10 qwen05_c7 random 9: start
+2026-11-28 03:24:10 qwen05_c7 random 9: FAILED (2) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-28 03:24:10 llama1_c7 true 9: start
+2026-11-28 03:44:11 llama1_c7 true 9: FAILED (2) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-28 03:44:11 llama1_c7 random 9: start
+2026-11-28 04:00:11 llama1_c7 random 9: FAILED (2) RuntimeError: gradient non-finite or above 1000 5 times in a row
+2026-11-28 04:00:11 ALL_DONE (failures reported as results: 45 lines in logs/c7.fails)
